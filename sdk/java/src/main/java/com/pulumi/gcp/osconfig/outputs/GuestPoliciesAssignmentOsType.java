@@ -15,28 +15,19 @@ public final class GuestPoliciesAssignmentOsType {
      * @return Targets VM instances with OS Inventory enabled and having the following OS architecture.
      * 
      */
-    private final @Nullable String osArchitecture;
+    private @Nullable String osArchitecture;
     /**
      * @return Targets VM instances with OS Inventory enabled and having the following OS short name, for example &#34;debian&#34; or &#34;windows&#34;.
      * 
      */
-    private final @Nullable String osShortName;
+    private @Nullable String osShortName;
     /**
      * @return Targets VM instances with OS Inventory enabled and having the following following OS version.
      * 
      */
-    private final @Nullable String osVersion;
+    private @Nullable String osVersion;
 
-    @CustomType.Constructor
-    private GuestPoliciesAssignmentOsType(
-        @CustomType.Parameter("osArchitecture") @Nullable String osArchitecture,
-        @CustomType.Parameter("osShortName") @Nullable String osShortName,
-        @CustomType.Parameter("osVersion") @Nullable String osVersion) {
-        this.osArchitecture = osArchitecture;
-        this.osShortName = osShortName;
-        this.osVersion = osVersion;
-    }
-
+    private GuestPoliciesAssignmentOsType() {}
     /**
      * @return Targets VM instances with OS Inventory enabled and having the following OS architecture.
      * 
@@ -66,16 +57,12 @@ public final class GuestPoliciesAssignmentOsType {
     public static Builder builder(GuestPoliciesAssignmentOsType defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String osArchitecture;
         private @Nullable String osShortName;
         private @Nullable String osVersion;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesAssignmentOsType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.osArchitecture = defaults.osArchitecture;
@@ -83,19 +70,27 @@ public final class GuestPoliciesAssignmentOsType {
     	      this.osVersion = defaults.osVersion;
         }
 
+        @CustomType.Setter
         public Builder osArchitecture(@Nullable String osArchitecture) {
             this.osArchitecture = osArchitecture;
             return this;
         }
+        @CustomType.Setter
         public Builder osShortName(@Nullable String osShortName) {
             this.osShortName = osShortName;
             return this;
         }
+        @CustomType.Setter
         public Builder osVersion(@Nullable String osVersion) {
             this.osVersion = osVersion;
             return this;
-        }        public GuestPoliciesAssignmentOsType build() {
-            return new GuestPoliciesAssignmentOsType(osArchitecture, osShortName, osVersion);
+        }
+        public GuestPoliciesAssignmentOsType build() {
+            final var o = new GuestPoliciesAssignmentOsType();
+            o.osArchitecture = osArchitecture;
+            o.osShortName = osShortName;
+            o.osVersion = osVersion;
+            return o;
         }
     }
 }

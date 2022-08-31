@@ -13,13 +13,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
      * @return Required. The name of the repository.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper(@CustomType.Parameter("name") String name) {
-        this.name = name;
-    }
-
+    private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper() {}
     /**
      * @return Required. The name of the repository.
      * 
@@ -35,24 +31,24 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
     public static Builder builder(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper build() {
-            return new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper(name);
+        }
+        public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper build() {
+            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper();
+            o.name = name;
+            return o;
         }
     }
 }

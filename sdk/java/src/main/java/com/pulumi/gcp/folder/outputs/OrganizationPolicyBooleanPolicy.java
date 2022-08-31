@@ -13,13 +13,9 @@ public final class OrganizationPolicyBooleanPolicy {
      * @return If true, then the Policy is enforced. If false, then any configuration is acceptable.
      * 
      */
-    private final Boolean enforced;
+    private Boolean enforced;
 
-    @CustomType.Constructor
-    private OrganizationPolicyBooleanPolicy(@CustomType.Parameter("enforced") Boolean enforced) {
-        this.enforced = enforced;
-    }
-
+    private OrganizationPolicyBooleanPolicy() {}
     /**
      * @return If true, then the Policy is enforced. If false, then any configuration is acceptable.
      * 
@@ -35,24 +31,24 @@ public final class OrganizationPolicyBooleanPolicy {
     public static Builder builder(OrganizationPolicyBooleanPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enforced;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OrganizationPolicyBooleanPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enforced = defaults.enforced;
         }
 
+        @CustomType.Setter
         public Builder enforced(Boolean enforced) {
             this.enforced = Objects.requireNonNull(enforced);
             return this;
-        }        public OrganizationPolicyBooleanPolicy build() {
-            return new OrganizationPolicyBooleanPolicy(enforced);
+        }
+        public OrganizationPolicyBooleanPolicy build() {
+            final var o = new OrganizationPolicyBooleanPolicy();
+            o.enforced = enforced;
+            return o;
         }
     }
 }

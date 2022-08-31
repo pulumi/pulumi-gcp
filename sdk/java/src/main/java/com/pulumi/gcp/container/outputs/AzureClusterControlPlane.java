@@ -23,77 +23,54 @@ public final class AzureClusterControlPlane {
      * @return Optional. Configuration related to application-layer secrets encryption.
      * 
      */
-    private final @Nullable AzureClusterControlPlaneDatabaseEncryption databaseEncryption;
+    private @Nullable AzureClusterControlPlaneDatabaseEncryption databaseEncryption;
     /**
      * @return Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster&#39;s etcd state. When unspecified, it defaults to a 8-GiB Azure Disk.
      * 
      */
-    private final @Nullable AzureClusterControlPlaneMainVolume mainVolume;
+    private @Nullable AzureClusterControlPlaneMainVolume mainVolume;
     /**
      * @return Proxy configuration for outbound HTTP(S) traffic.
      * 
      */
-    private final @Nullable AzureClusterControlPlaneProxyConfig proxyConfig;
+    private @Nullable AzureClusterControlPlaneProxyConfig proxyConfig;
     /**
      * @return Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
      * 
      */
-    private final @Nullable List<AzureClusterControlPlaneReplicaPlacement> replicaPlacements;
+    private @Nullable List<AzureClusterControlPlaneReplicaPlacement> replicaPlacements;
     /**
      * @return Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
      * 
      */
-    private final @Nullable AzureClusterControlPlaneRootVolume rootVolume;
+    private @Nullable AzureClusterControlPlaneRootVolume rootVolume;
     /**
      * @return SSH configuration for how to access the underlying control plane machines.
      * 
      */
-    private final AzureClusterControlPlaneSshConfig sshConfig;
+    private AzureClusterControlPlaneSshConfig sshConfig;
     /**
      * @return For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it&#39;s a subnet under the virtual network in the cluster configuration.
      * 
      */
-    private final String subnetId;
+    private String subnetId;
     /**
      * @return Optional. A set of tags to apply to all underlying control plane Azure resources.
      * 
      */
-    private final @Nullable Map<String,String> tags;
+    private @Nullable Map<String,String> tags;
     /**
      * @return The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
      * 
      */
-    private final String version;
+    private String version;
     /**
      * @return Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
      * 
      */
-    private final @Nullable String vmSize;
+    private @Nullable String vmSize;
 
-    @CustomType.Constructor
-    private AzureClusterControlPlane(
-        @CustomType.Parameter("databaseEncryption") @Nullable AzureClusterControlPlaneDatabaseEncryption databaseEncryption,
-        @CustomType.Parameter("mainVolume") @Nullable AzureClusterControlPlaneMainVolume mainVolume,
-        @CustomType.Parameter("proxyConfig") @Nullable AzureClusterControlPlaneProxyConfig proxyConfig,
-        @CustomType.Parameter("replicaPlacements") @Nullable List<AzureClusterControlPlaneReplicaPlacement> replicaPlacements,
-        @CustomType.Parameter("rootVolume") @Nullable AzureClusterControlPlaneRootVolume rootVolume,
-        @CustomType.Parameter("sshConfig") AzureClusterControlPlaneSshConfig sshConfig,
-        @CustomType.Parameter("subnetId") String subnetId,
-        @CustomType.Parameter("tags") @Nullable Map<String,String> tags,
-        @CustomType.Parameter("version") String version,
-        @CustomType.Parameter("vmSize") @Nullable String vmSize) {
-        this.databaseEncryption = databaseEncryption;
-        this.mainVolume = mainVolume;
-        this.proxyConfig = proxyConfig;
-        this.replicaPlacements = replicaPlacements;
-        this.rootVolume = rootVolume;
-        this.sshConfig = sshConfig;
-        this.subnetId = subnetId;
-        this.tags = tags;
-        this.version = version;
-        this.vmSize = vmSize;
-    }
-
+    private AzureClusterControlPlane() {}
     /**
      * @return Optional. Configuration related to application-layer secrets encryption.
      * 
@@ -172,7 +149,7 @@ public final class AzureClusterControlPlane {
     public static Builder builder(AzureClusterControlPlane defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable AzureClusterControlPlaneDatabaseEncryption databaseEncryption;
         private @Nullable AzureClusterControlPlaneMainVolume mainVolume;
@@ -184,11 +161,7 @@ public final class AzureClusterControlPlane {
         private @Nullable Map<String,String> tags;
         private String version;
         private @Nullable String vmSize;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AzureClusterControlPlane defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databaseEncryption = defaults.databaseEncryption;
@@ -203,18 +176,22 @@ public final class AzureClusterControlPlane {
     	      this.vmSize = defaults.vmSize;
         }
 
+        @CustomType.Setter
         public Builder databaseEncryption(@Nullable AzureClusterControlPlaneDatabaseEncryption databaseEncryption) {
             this.databaseEncryption = databaseEncryption;
             return this;
         }
+        @CustomType.Setter
         public Builder mainVolume(@Nullable AzureClusterControlPlaneMainVolume mainVolume) {
             this.mainVolume = mainVolume;
             return this;
         }
+        @CustomType.Setter
         public Builder proxyConfig(@Nullable AzureClusterControlPlaneProxyConfig proxyConfig) {
             this.proxyConfig = proxyConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder replicaPlacements(@Nullable List<AzureClusterControlPlaneReplicaPlacement> replicaPlacements) {
             this.replicaPlacements = replicaPlacements;
             return this;
@@ -222,31 +199,49 @@ public final class AzureClusterControlPlane {
         public Builder replicaPlacements(AzureClusterControlPlaneReplicaPlacement... replicaPlacements) {
             return replicaPlacements(List.of(replicaPlacements));
         }
+        @CustomType.Setter
         public Builder rootVolume(@Nullable AzureClusterControlPlaneRootVolume rootVolume) {
             this.rootVolume = rootVolume;
             return this;
         }
+        @CustomType.Setter
         public Builder sshConfig(AzureClusterControlPlaneSshConfig sshConfig) {
             this.sshConfig = Objects.requireNonNull(sshConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder subnetId(String subnetId) {
             this.subnetId = Objects.requireNonNull(subnetId);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,String> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
         }
+        @CustomType.Setter
         public Builder vmSize(@Nullable String vmSize) {
             this.vmSize = vmSize;
             return this;
-        }        public AzureClusterControlPlane build() {
-            return new AzureClusterControlPlane(databaseEncryption, mainVolume, proxyConfig, replicaPlacements, rootVolume, sshConfig, subnetId, tags, version, vmSize);
+        }
+        public AzureClusterControlPlane build() {
+            final var o = new AzureClusterControlPlane();
+            o.databaseEncryption = databaseEncryption;
+            o.mainVolume = mainVolume;
+            o.proxyConfig = proxyConfig;
+            o.replicaPlacements = replicaPlacements;
+            o.rootVolume = rootVolume;
+            o.sshConfig = sshConfig;
+            o.subnetId = subnetId;
+            o.tags = tags;
+            o.version = version;
+            o.vmSize = vmSize;
+            return o;
         }
     }
 }

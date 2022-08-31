@@ -16,30 +16,21 @@ public final class ApplicationUrlDispatchRulesDispatchRule {
      * Defaults to matching all domains: &#34;*&#34;.
      * 
      */
-    private final @Nullable String domain;
+    private @Nullable String domain;
     /**
      * @return Pathname within the host. Must start with a &#34;/&#34;. A single &#34;*&#34; can be included at the end of the path.
      * The sum of the lengths of the domain and path may not exceed 100 characters.
      * 
      */
-    private final String path;
+    private String path;
     /**
      * @return Pathname within the host. Must start with a &#34;/&#34;. A single &#34;*&#34; can be included at the end of the path.
      * The sum of the lengths of the domain and path may not exceed 100 characters.
      * 
      */
-    private final String service;
+    private String service;
 
-    @CustomType.Constructor
-    private ApplicationUrlDispatchRulesDispatchRule(
-        @CustomType.Parameter("domain") @Nullable String domain,
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("service") String service) {
-        this.domain = domain;
-        this.path = path;
-        this.service = service;
-    }
-
+    private ApplicationUrlDispatchRulesDispatchRule() {}
     /**
      * @return Domain name to match against. The wildcard &#34;*&#34; is supported if specified before a period: &#34;*.&#34;.
      * Defaults to matching all domains: &#34;*&#34;.
@@ -72,16 +63,12 @@ public final class ApplicationUrlDispatchRulesDispatchRule {
     public static Builder builder(ApplicationUrlDispatchRulesDispatchRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String domain;
         private String path;
         private String service;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationUrlDispatchRulesDispatchRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domain = defaults.domain;
@@ -89,19 +76,27 @@ public final class ApplicationUrlDispatchRulesDispatchRule {
     	      this.service = defaults.service;
         }
 
+        @CustomType.Setter
         public Builder domain(@Nullable String domain) {
             this.domain = domain;
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder service(String service) {
             this.service = Objects.requireNonNull(service);
             return this;
-        }        public ApplicationUrlDispatchRulesDispatchRule build() {
-            return new ApplicationUrlDispatchRulesDispatchRule(domain, path, service);
+        }
+        public ApplicationUrlDispatchRulesDispatchRule build() {
+            final var o = new ApplicationUrlDispatchRulesDispatchRule();
+            o.domain = domain;
+            o.path = path;
+            o.service = service;
+            return o;
         }
     }
 }

@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigX509ConfigAdditionalExtensionObjectId {
-    private final List<Integer> objectIdPaths;
+    private List<Integer> objectIdPaths;
 
-    @CustomType.Constructor
-    private GetAuthorityConfigX509ConfigAdditionalExtensionObjectId(@CustomType.Parameter("objectIdPaths") List<Integer> objectIdPaths) {
-        this.objectIdPaths = objectIdPaths;
-    }
-
+    private GetAuthorityConfigX509ConfigAdditionalExtensionObjectId() {}
     public List<Integer> objectIdPaths() {
         return this.objectIdPaths;
     }
@@ -28,27 +24,27 @@ public final class GetAuthorityConfigX509ConfigAdditionalExtensionObjectId {
     public static Builder builder(GetAuthorityConfigX509ConfigAdditionalExtensionObjectId defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<Integer> objectIdPaths;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthorityConfigX509ConfigAdditionalExtensionObjectId defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.objectIdPaths = defaults.objectIdPaths;
         }
 
+        @CustomType.Setter
         public Builder objectIdPaths(List<Integer> objectIdPaths) {
             this.objectIdPaths = Objects.requireNonNull(objectIdPaths);
             return this;
         }
         public Builder objectIdPaths(Integer... objectIdPaths) {
             return objectIdPaths(List.of(objectIdPaths));
-        }        public GetAuthorityConfigX509ConfigAdditionalExtensionObjectId build() {
-            return new GetAuthorityConfigX509ConfigAdditionalExtensionObjectId(objectIdPaths);
+        }
+        public GetAuthorityConfigX509ConfigAdditionalExtensionObjectId build() {
+            final var o = new GetAuthorityConfigX509ConfigAdditionalExtensionObjectId();
+            o.objectIdPaths = objectIdPaths;
+            return o;
         }
     }
 }

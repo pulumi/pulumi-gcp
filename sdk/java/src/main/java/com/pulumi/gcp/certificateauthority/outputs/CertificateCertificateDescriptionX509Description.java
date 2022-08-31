@@ -20,46 +20,33 @@ public final class CertificateCertificateDescriptionX509Description {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<CertificateCertificateDescriptionX509DescriptionAdditionalExtension> additionalExtensions;
+    private @Nullable List<CertificateCertificateDescriptionX509DescriptionAdditionalExtension> additionalExtensions;
     /**
      * @return Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
      * &#34;Authority Information Access&#34; extension in the certificate.
      * 
      */
-    private final @Nullable List<String> aiaOcspServers;
+    private @Nullable List<String> aiaOcspServers;
     /**
      * @return Describes values that are relevant in a CA certificate.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<CertificateCertificateDescriptionX509DescriptionCaOption> caOptions;
+    private @Nullable List<CertificateCertificateDescriptionX509DescriptionCaOption> caOptions;
     /**
      * @return Indicates the intended use for keys that correspond to a certificate.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<CertificateCertificateDescriptionX509DescriptionKeyUsage> keyUsages;
+    private @Nullable List<CertificateCertificateDescriptionX509DescriptionKeyUsage> keyUsages;
     /**
      * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<CertificateCertificateDescriptionX509DescriptionPolicyId> policyIds;
+    private @Nullable List<CertificateCertificateDescriptionX509DescriptionPolicyId> policyIds;
 
-    @CustomType.Constructor
-    private CertificateCertificateDescriptionX509Description(
-        @CustomType.Parameter("additionalExtensions") @Nullable List<CertificateCertificateDescriptionX509DescriptionAdditionalExtension> additionalExtensions,
-        @CustomType.Parameter("aiaOcspServers") @Nullable List<String> aiaOcspServers,
-        @CustomType.Parameter("caOptions") @Nullable List<CertificateCertificateDescriptionX509DescriptionCaOption> caOptions,
-        @CustomType.Parameter("keyUsages") @Nullable List<CertificateCertificateDescriptionX509DescriptionKeyUsage> keyUsages,
-        @CustomType.Parameter("policyIds") @Nullable List<CertificateCertificateDescriptionX509DescriptionPolicyId> policyIds) {
-        this.additionalExtensions = additionalExtensions;
-        this.aiaOcspServers = aiaOcspServers;
-        this.caOptions = caOptions;
-        this.keyUsages = keyUsages;
-        this.policyIds = policyIds;
-    }
-
+    private CertificateCertificateDescriptionX509Description() {}
     /**
      * @return Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
      * Structure is documented below.
@@ -108,18 +95,14 @@ public final class CertificateCertificateDescriptionX509Description {
     public static Builder builder(CertificateCertificateDescriptionX509Description defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<CertificateCertificateDescriptionX509DescriptionAdditionalExtension> additionalExtensions;
         private @Nullable List<String> aiaOcspServers;
         private @Nullable List<CertificateCertificateDescriptionX509DescriptionCaOption> caOptions;
         private @Nullable List<CertificateCertificateDescriptionX509DescriptionKeyUsage> keyUsages;
         private @Nullable List<CertificateCertificateDescriptionX509DescriptionPolicyId> policyIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateCertificateDescriptionX509Description defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalExtensions = defaults.additionalExtensions;
@@ -129,6 +112,7 @@ public final class CertificateCertificateDescriptionX509Description {
     	      this.policyIds = defaults.policyIds;
         }
 
+        @CustomType.Setter
         public Builder additionalExtensions(@Nullable List<CertificateCertificateDescriptionX509DescriptionAdditionalExtension> additionalExtensions) {
             this.additionalExtensions = additionalExtensions;
             return this;
@@ -136,6 +120,7 @@ public final class CertificateCertificateDescriptionX509Description {
         public Builder additionalExtensions(CertificateCertificateDescriptionX509DescriptionAdditionalExtension... additionalExtensions) {
             return additionalExtensions(List.of(additionalExtensions));
         }
+        @CustomType.Setter
         public Builder aiaOcspServers(@Nullable List<String> aiaOcspServers) {
             this.aiaOcspServers = aiaOcspServers;
             return this;
@@ -143,6 +128,7 @@ public final class CertificateCertificateDescriptionX509Description {
         public Builder aiaOcspServers(String... aiaOcspServers) {
             return aiaOcspServers(List.of(aiaOcspServers));
         }
+        @CustomType.Setter
         public Builder caOptions(@Nullable List<CertificateCertificateDescriptionX509DescriptionCaOption> caOptions) {
             this.caOptions = caOptions;
             return this;
@@ -150,6 +136,7 @@ public final class CertificateCertificateDescriptionX509Description {
         public Builder caOptions(CertificateCertificateDescriptionX509DescriptionCaOption... caOptions) {
             return caOptions(List.of(caOptions));
         }
+        @CustomType.Setter
         public Builder keyUsages(@Nullable List<CertificateCertificateDescriptionX509DescriptionKeyUsage> keyUsages) {
             this.keyUsages = keyUsages;
             return this;
@@ -157,14 +144,22 @@ public final class CertificateCertificateDescriptionX509Description {
         public Builder keyUsages(CertificateCertificateDescriptionX509DescriptionKeyUsage... keyUsages) {
             return keyUsages(List.of(keyUsages));
         }
+        @CustomType.Setter
         public Builder policyIds(@Nullable List<CertificateCertificateDescriptionX509DescriptionPolicyId> policyIds) {
             this.policyIds = policyIds;
             return this;
         }
         public Builder policyIds(CertificateCertificateDescriptionX509DescriptionPolicyId... policyIds) {
             return policyIds(List.of(policyIds));
-        }        public CertificateCertificateDescriptionX509Description build() {
-            return new CertificateCertificateDescriptionX509Description(additionalExtensions, aiaOcspServers, caOptions, keyUsages, policyIds);
+        }
+        public CertificateCertificateDescriptionX509Description build() {
+            final var o = new CertificateCertificateDescriptionX509Description();
+            o.additionalExtensions = additionalExtensions;
+            o.aiaOcspServers = aiaOcspServers;
+            o.caOptions = caOptions;
+            o.keyUsages = keyUsages;
+            o.policyIds = policyIds;
+            return o;
         }
     }
 }

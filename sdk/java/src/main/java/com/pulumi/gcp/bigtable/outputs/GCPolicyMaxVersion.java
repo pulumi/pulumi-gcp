@@ -13,13 +13,9 @@ public final class GCPolicyMaxVersion {
      * @return Number of version before applying the GC policy.
      * 
      */
-    private final Integer number;
+    private Integer number;
 
-    @CustomType.Constructor
-    private GCPolicyMaxVersion(@CustomType.Parameter("number") Integer number) {
-        this.number = number;
-    }
-
+    private GCPolicyMaxVersion() {}
     /**
      * @return Number of version before applying the GC policy.
      * 
@@ -35,24 +31,24 @@ public final class GCPolicyMaxVersion {
     public static Builder builder(GCPolicyMaxVersion defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer number;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GCPolicyMaxVersion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.number = defaults.number;
         }
 
+        @CustomType.Setter
         public Builder number(Integer number) {
             this.number = Objects.requireNonNull(number);
             return this;
-        }        public GCPolicyMaxVersion build() {
-            return new GCPolicyMaxVersion(number);
+        }
+        public GCPolicyMaxVersion build() {
+            final var o = new GCPolicyMaxVersion();
+            o.number = number;
+            return o;
         }
     }
 }

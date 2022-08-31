@@ -18,20 +18,20 @@ public final class HealthCheckHttpsHealthCheck {
      * check is performed will be used.
      * 
      */
-    private final @Nullable String host;
+    private @Nullable String host;
     /**
      * @return The port number for the health check request.
      * Must be specified if portName and portSpecification are not set
      * or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
      * 
      */
-    private final @Nullable Integer port;
+    private @Nullable Integer port;
     /**
      * @return Port name as defined in InstanceGroup#NamedPort#name. If both port and
      * port_name are defined, port takes precedence.
      * 
      */
-    private final @Nullable String portName;
+    private @Nullable String portName;
     /**
      * @return Specifies how port is selected for health checking, can be one of the
      * following values:
@@ -46,7 +46,7 @@ public final class HealthCheckHttpsHealthCheck {
      *   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
      * 
      */
-    private final @Nullable String portSpecification;
+    private @Nullable String portSpecification;
     /**
      * @return Specifies the type of proxy header to append before sending data to the
      * backend.
@@ -54,39 +54,22 @@ public final class HealthCheckHttpsHealthCheck {
      * Possible values are `NONE` and `PROXY_V1`.
      * 
      */
-    private final @Nullable String proxyHeader;
+    private @Nullable String proxyHeader;
     /**
      * @return The request path of the HTTP2 health check request.
      * The default value is /.
      * 
      */
-    private final @Nullable String requestPath;
+    private @Nullable String requestPath;
     /**
      * @return The bytes to match against the beginning of the response data. If left empty
      * (the default value), any response will indicate health. The response data
      * can only be ASCII.
      * 
      */
-    private final @Nullable String response;
+    private @Nullable String response;
 
-    @CustomType.Constructor
-    private HealthCheckHttpsHealthCheck(
-        @CustomType.Parameter("host") @Nullable String host,
-        @CustomType.Parameter("port") @Nullable Integer port,
-        @CustomType.Parameter("portName") @Nullable String portName,
-        @CustomType.Parameter("portSpecification") @Nullable String portSpecification,
-        @CustomType.Parameter("proxyHeader") @Nullable String proxyHeader,
-        @CustomType.Parameter("requestPath") @Nullable String requestPath,
-        @CustomType.Parameter("response") @Nullable String response) {
-        this.host = host;
-        this.port = port;
-        this.portName = portName;
-        this.portSpecification = portSpecification;
-        this.proxyHeader = proxyHeader;
-        this.requestPath = requestPath;
-        this.response = response;
-    }
-
+    private HealthCheckHttpsHealthCheck() {}
     /**
      * @return The value of the host header in the HTTP2 health check request.
      * If left empty (default value), the public IP on behalf of which this health
@@ -165,7 +148,7 @@ public final class HealthCheckHttpsHealthCheck {
     public static Builder builder(HealthCheckHttpsHealthCheck defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String host;
         private @Nullable Integer port;
@@ -174,11 +157,7 @@ public final class HealthCheckHttpsHealthCheck {
         private @Nullable String proxyHeader;
         private @Nullable String requestPath;
         private @Nullable String response;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(HealthCheckHttpsHealthCheck defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.host = defaults.host;
@@ -190,35 +169,51 @@ public final class HealthCheckHttpsHealthCheck {
     	      this.response = defaults.response;
         }
 
+        @CustomType.Setter
         public Builder host(@Nullable String host) {
             this.host = host;
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder portName(@Nullable String portName) {
             this.portName = portName;
             return this;
         }
+        @CustomType.Setter
         public Builder portSpecification(@Nullable String portSpecification) {
             this.portSpecification = portSpecification;
             return this;
         }
+        @CustomType.Setter
         public Builder proxyHeader(@Nullable String proxyHeader) {
             this.proxyHeader = proxyHeader;
             return this;
         }
+        @CustomType.Setter
         public Builder requestPath(@Nullable String requestPath) {
             this.requestPath = requestPath;
             return this;
         }
+        @CustomType.Setter
         public Builder response(@Nullable String response) {
             this.response = response;
             return this;
-        }        public HealthCheckHttpsHealthCheck build() {
-            return new HealthCheckHttpsHealthCheck(host, port, portName, portSpecification, proxyHeader, requestPath, response);
+        }
+        public HealthCheckHttpsHealthCheck build() {
+            final var o = new HealthCheckHttpsHealthCheck();
+            o.host = host;
+            o.port = port;
+            o.portName = portName;
+            o.portSpecification = portSpecification;
+            o.proxyHeader = proxyHeader;
+            o.requestPath = requestPath;
+            o.response = response;
+            return o;
         }
     }
 }

@@ -21,7 +21,7 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
      * Structure is documented below.
      * 
      */
-    private final @Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut distributionCut;
+    private @Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut distributionCut;
     /**
      * @return A means to compute a ratio of `good_service` to `total_service`.
      * Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
@@ -31,16 +31,9 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
      * Structure is documented below.
      * 
      */
-    private final @Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio goodTotalRatio;
+    private @Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio goodTotalRatio;
 
-    @CustomType.Constructor
-    private SloWindowsBasedSliGoodTotalRatioThresholdPerformance(
-        @CustomType.Parameter("distributionCut") @Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut distributionCut,
-        @CustomType.Parameter("goodTotalRatio") @Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio goodTotalRatio) {
-        this.distributionCut = distributionCut;
-        this.goodTotalRatio = goodTotalRatio;
-    }
-
+    private SloWindowsBasedSliGoodTotalRatioThresholdPerformance() {}
     /**
      * @return Used when good_service is defined by a count of values aggregated in a
      * Distribution that fall into a good range. The total_service is the
@@ -73,30 +66,32 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
     public static Builder builder(SloWindowsBasedSliGoodTotalRatioThresholdPerformance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut distributionCut;
         private @Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio goodTotalRatio;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloWindowsBasedSliGoodTotalRatioThresholdPerformance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.distributionCut = defaults.distributionCut;
     	      this.goodTotalRatio = defaults.goodTotalRatio;
         }
 
+        @CustomType.Setter
         public Builder distributionCut(@Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut distributionCut) {
             this.distributionCut = distributionCut;
             return this;
         }
+        @CustomType.Setter
         public Builder goodTotalRatio(@Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio goodTotalRatio) {
             this.goodTotalRatio = goodTotalRatio;
             return this;
-        }        public SloWindowsBasedSliGoodTotalRatioThresholdPerformance build() {
-            return new SloWindowsBasedSliGoodTotalRatioThresholdPerformance(distributionCut, goodTotalRatio);
+        }
+        public SloWindowsBasedSliGoodTotalRatioThresholdPerformance build() {
+            final var o = new SloWindowsBasedSliGoodTotalRatioThresholdPerformance();
+            o.distributionCut = distributionCut;
+            o.goodTotalRatio = goodTotalRatio;
+            return o;
         }
     }
 }

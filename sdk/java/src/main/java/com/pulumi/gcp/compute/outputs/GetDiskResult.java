@@ -18,101 +18,46 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDiskResult {
-    private final String creationTimestamp;
-    private final String description;
-    private final List<GetDiskDiskEncryptionKey> diskEncryptionKeys;
+    private String creationTimestamp;
+    private String description;
+    private List<GetDiskDiskEncryptionKey> diskEncryptionKeys;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String image;
-    private final String interface_;
-    private final String labelFingerprint;
+    private String id;
+    private String image;
+    private String interface_;
+    private String labelFingerprint;
     /**
      * @return A map of labels applied to this disk.
      * 
      */
-    private final Map<String,String> labels;
-    private final String lastAttachTimestamp;
-    private final String lastDetachTimestamp;
-    private final Boolean multiWriter;
-    private final String name;
-    private final Integer physicalBlockSizeBytes;
-    private final @Nullable String project;
-    private final Integer provisionedIops;
-    private final List<String> resourcePolicies;
+    private Map<String,String> labels;
+    private String lastAttachTimestamp;
+    private String lastDetachTimestamp;
+    private Boolean multiWriter;
+    private String name;
+    private Integer physicalBlockSizeBytes;
+    private @Nullable String project;
+    private Integer provisionedIops;
+    private List<String> resourcePolicies;
     /**
      * @return The URI of the created resource.
      * 
      */
-    private final String selfLink;
-    private final Integer size;
-    private final String snapshot;
-    private final List<GetDiskSourceImageEncryptionKey> sourceImageEncryptionKeys;
-    private final String sourceImageId;
-    private final List<GetDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
-    private final String sourceSnapshotId;
-    private final String type;
-    private final List<String> users;
-    private final @Nullable String zone;
+    private String selfLink;
+    private Integer size;
+    private String snapshot;
+    private List<GetDiskSourceImageEncryptionKey> sourceImageEncryptionKeys;
+    private String sourceImageId;
+    private List<GetDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
+    private String sourceSnapshotId;
+    private String type;
+    private List<String> users;
+    private @Nullable String zone;
 
-    @CustomType.Constructor
-    private GetDiskResult(
-        @CustomType.Parameter("creationTimestamp") String creationTimestamp,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("diskEncryptionKeys") List<GetDiskDiskEncryptionKey> diskEncryptionKeys,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("image") String image,
-        @CustomType.Parameter("interface") String interface_,
-        @CustomType.Parameter("labelFingerprint") String labelFingerprint,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("lastAttachTimestamp") String lastAttachTimestamp,
-        @CustomType.Parameter("lastDetachTimestamp") String lastDetachTimestamp,
-        @CustomType.Parameter("multiWriter") Boolean multiWriter,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("physicalBlockSizeBytes") Integer physicalBlockSizeBytes,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("provisionedIops") Integer provisionedIops,
-        @CustomType.Parameter("resourcePolicies") List<String> resourcePolicies,
-        @CustomType.Parameter("selfLink") String selfLink,
-        @CustomType.Parameter("size") Integer size,
-        @CustomType.Parameter("snapshot") String snapshot,
-        @CustomType.Parameter("sourceImageEncryptionKeys") List<GetDiskSourceImageEncryptionKey> sourceImageEncryptionKeys,
-        @CustomType.Parameter("sourceImageId") String sourceImageId,
-        @CustomType.Parameter("sourceSnapshotEncryptionKeys") List<GetDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys,
-        @CustomType.Parameter("sourceSnapshotId") String sourceSnapshotId,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("users") List<String> users,
-        @CustomType.Parameter("zone") @Nullable String zone) {
-        this.creationTimestamp = creationTimestamp;
-        this.description = description;
-        this.diskEncryptionKeys = diskEncryptionKeys;
-        this.id = id;
-        this.image = image;
-        this.interface_ = interface_;
-        this.labelFingerprint = labelFingerprint;
-        this.labels = labels;
-        this.lastAttachTimestamp = lastAttachTimestamp;
-        this.lastDetachTimestamp = lastDetachTimestamp;
-        this.multiWriter = multiWriter;
-        this.name = name;
-        this.physicalBlockSizeBytes = physicalBlockSizeBytes;
-        this.project = project;
-        this.provisionedIops = provisionedIops;
-        this.resourcePolicies = resourcePolicies;
-        this.selfLink = selfLink;
-        this.size = size;
-        this.snapshot = snapshot;
-        this.sourceImageEncryptionKeys = sourceImageEncryptionKeys;
-        this.sourceImageId = sourceImageId;
-        this.sourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
-        this.sourceSnapshotId = sourceSnapshotId;
-        this.type = type;
-        this.users = users;
-        this.zone = zone;
-    }
-
+    private GetDiskResult() {}
     public String creationTimestamp() {
         return this.creationTimestamp;
     }
@@ -211,7 +156,7 @@ public final class GetDiskResult {
     public static Builder builder(GetDiskResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String creationTimestamp;
         private String description;
@@ -239,11 +184,7 @@ public final class GetDiskResult {
         private String type;
         private List<String> users;
         private @Nullable String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDiskResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.creationTimestamp = defaults.creationTimestamp;
@@ -274,14 +215,17 @@ public final class GetDiskResult {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
             this.creationTimestamp = Objects.requireNonNull(creationTimestamp);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder diskEncryptionKeys(List<GetDiskDiskEncryptionKey> diskEncryptionKeys) {
             this.diskEncryptionKeys = Objects.requireNonNull(diskEncryptionKeys);
             return this;
@@ -289,54 +233,67 @@ public final class GetDiskResult {
         public Builder diskEncryptionKeys(GetDiskDiskEncryptionKey... diskEncryptionKeys) {
             return diskEncryptionKeys(List.of(diskEncryptionKeys));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder image(String image) {
             this.image = Objects.requireNonNull(image);
             return this;
         }
+        @CustomType.Setter("interface")
         public Builder interface_(String interface_) {
             this.interface_ = Objects.requireNonNull(interface_);
             return this;
         }
+        @CustomType.Setter
         public Builder labelFingerprint(String labelFingerprint) {
             this.labelFingerprint = Objects.requireNonNull(labelFingerprint);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder lastAttachTimestamp(String lastAttachTimestamp) {
             this.lastAttachTimestamp = Objects.requireNonNull(lastAttachTimestamp);
             return this;
         }
+        @CustomType.Setter
         public Builder lastDetachTimestamp(String lastDetachTimestamp) {
             this.lastDetachTimestamp = Objects.requireNonNull(lastDetachTimestamp);
             return this;
         }
+        @CustomType.Setter
         public Builder multiWriter(Boolean multiWriter) {
             this.multiWriter = Objects.requireNonNull(multiWriter);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder physicalBlockSizeBytes(Integer physicalBlockSizeBytes) {
             this.physicalBlockSizeBytes = Objects.requireNonNull(physicalBlockSizeBytes);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder provisionedIops(Integer provisionedIops) {
             this.provisionedIops = Objects.requireNonNull(provisionedIops);
             return this;
         }
+        @CustomType.Setter
         public Builder resourcePolicies(List<String> resourcePolicies) {
             this.resourcePolicies = Objects.requireNonNull(resourcePolicies);
             return this;
@@ -344,18 +301,22 @@ public final class GetDiskResult {
         public Builder resourcePolicies(String... resourcePolicies) {
             return resourcePolicies(List.of(resourcePolicies));
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder snapshot(String snapshot) {
             this.snapshot = Objects.requireNonNull(snapshot);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceImageEncryptionKeys(List<GetDiskSourceImageEncryptionKey> sourceImageEncryptionKeys) {
             this.sourceImageEncryptionKeys = Objects.requireNonNull(sourceImageEncryptionKeys);
             return this;
@@ -363,10 +324,12 @@ public final class GetDiskResult {
         public Builder sourceImageEncryptionKeys(GetDiskSourceImageEncryptionKey... sourceImageEncryptionKeys) {
             return sourceImageEncryptionKeys(List.of(sourceImageEncryptionKeys));
         }
+        @CustomType.Setter
         public Builder sourceImageId(String sourceImageId) {
             this.sourceImageId = Objects.requireNonNull(sourceImageId);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceSnapshotEncryptionKeys(List<GetDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys) {
             this.sourceSnapshotEncryptionKeys = Objects.requireNonNull(sourceSnapshotEncryptionKeys);
             return this;
@@ -374,14 +337,17 @@ public final class GetDiskResult {
         public Builder sourceSnapshotEncryptionKeys(GetDiskSourceSnapshotEncryptionKey... sourceSnapshotEncryptionKeys) {
             return sourceSnapshotEncryptionKeys(List.of(sourceSnapshotEncryptionKeys));
         }
+        @CustomType.Setter
         public Builder sourceSnapshotId(String sourceSnapshotId) {
             this.sourceSnapshotId = Objects.requireNonNull(sourceSnapshotId);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder users(List<String> users) {
             this.users = Objects.requireNonNull(users);
             return this;
@@ -389,11 +355,40 @@ public final class GetDiskResult {
         public Builder users(String... users) {
             return users(List.of(users));
         }
+        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
             this.zone = zone;
             return this;
-        }        public GetDiskResult build() {
-            return new GetDiskResult(creationTimestamp, description, diskEncryptionKeys, id, image, interface_, labelFingerprint, labels, lastAttachTimestamp, lastDetachTimestamp, multiWriter, name, physicalBlockSizeBytes, project, provisionedIops, resourcePolicies, selfLink, size, snapshot, sourceImageEncryptionKeys, sourceImageId, sourceSnapshotEncryptionKeys, sourceSnapshotId, type, users, zone);
+        }
+        public GetDiskResult build() {
+            final var o = new GetDiskResult();
+            o.creationTimestamp = creationTimestamp;
+            o.description = description;
+            o.diskEncryptionKeys = diskEncryptionKeys;
+            o.id = id;
+            o.image = image;
+            o.interface_ = interface_;
+            o.labelFingerprint = labelFingerprint;
+            o.labels = labels;
+            o.lastAttachTimestamp = lastAttachTimestamp;
+            o.lastDetachTimestamp = lastDetachTimestamp;
+            o.multiWriter = multiWriter;
+            o.name = name;
+            o.physicalBlockSizeBytes = physicalBlockSizeBytes;
+            o.project = project;
+            o.provisionedIops = provisionedIops;
+            o.resourcePolicies = resourcePolicies;
+            o.selfLink = selfLink;
+            o.size = size;
+            o.snapshot = snapshot;
+            o.sourceImageEncryptionKeys = sourceImageEncryptionKeys;
+            o.sourceImageId = sourceImageId;
+            o.sourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
+            o.sourceSnapshotId = sourceSnapshotId;
+            o.type = type;
+            o.users = users;
+            o.zone = zone;
+            return o;
         }
     }
 }

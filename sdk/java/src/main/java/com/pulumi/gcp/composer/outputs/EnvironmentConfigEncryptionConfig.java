@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class EnvironmentConfigEncryptionConfig {
-    private final String kmsKeyName;
+    private String kmsKeyName;
 
-    @CustomType.Constructor
-    private EnvironmentConfigEncryptionConfig(@CustomType.Parameter("kmsKeyName") String kmsKeyName) {
-        this.kmsKeyName = kmsKeyName;
-    }
-
+    private EnvironmentConfigEncryptionConfig() {}
     public String kmsKeyName() {
         return this.kmsKeyName;
     }
@@ -27,24 +23,24 @@ public final class EnvironmentConfigEncryptionConfig {
     public static Builder builder(EnvironmentConfigEncryptionConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String kmsKeyName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EnvironmentConfigEncryptionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeyName = defaults.kmsKeyName;
         }
 
+        @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
             this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
             return this;
-        }        public EnvironmentConfigEncryptionConfig build() {
-            return new EnvironmentConfigEncryptionConfig(kmsKeyName);
+        }
+        public EnvironmentConfigEncryptionConfig build() {
+            final var o = new EnvironmentConfigEncryptionConfig();
+            o.kmsKeyName = kmsKeyName;
+            return o;
         }
     }
 }

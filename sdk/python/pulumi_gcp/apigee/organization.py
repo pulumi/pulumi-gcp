@@ -20,6 +20,7 @@ class OrganizationArgs:
                  billing_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 retention: Optional[pulumi.Input[str]] = None,
                  runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  runtime_type: Optional[pulumi.Input[str]] = None):
         """
@@ -32,6 +33,12 @@ class OrganizationArgs:
         :param pulumi.Input[str] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
         :param pulumi.Input[str] description: Description of the Apigee organization.
         :param pulumi.Input[str] display_name: The display name of the Apigee organization.
+        :param pulumi.Input[str] retention: Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+               is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+               operation completes. During this period, the Organization may be restored to its last known state.
+               After this period, the Organization will no longer be able to be restored.
+               Default value is `DELETION_RETENTION_UNSPECIFIED`.
+               Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
         :param pulumi.Input[str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
                Update is not allowed after the organization is created.
                If not specified, a Google-Managed encryption key will be used.
@@ -51,6 +58,8 @@ class OrganizationArgs:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if retention is not None:
+            pulumi.set(__self__, "retention", retention)
         if runtime_database_encryption_key_name is not None:
             pulumi.set(__self__, "runtime_database_encryption_key_name", runtime_database_encryption_key_name)
         if runtime_type is not None:
@@ -131,6 +140,23 @@ class OrganizationArgs:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter
+    def retention(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+        is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+        operation completes. During this period, the Organization may be restored to its last known state.
+        After this period, the Organization will no longer be able to be restored.
+        Default value is `DELETION_RETENTION_UNSPECIFIED`.
+        Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+        """
+        return pulumi.get(self, "retention")
+
+    @retention.setter
+    def retention(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "retention", value)
+
+    @property
     @pulumi.getter(name="runtimeDatabaseEncryptionKeyName")
     def runtime_database_encryption_key_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -171,6 +197,7 @@ class _OrganizationState:
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 retention: Optional[pulumi.Input[str]] = None,
                  runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  runtime_type: Optional[pulumi.Input[str]] = None,
                  subscription_type: Optional[pulumi.Input[str]] = None):
@@ -187,6 +214,12 @@ class _OrganizationState:
         :param pulumi.Input[str] display_name: The display name of the Apigee organization.
         :param pulumi.Input[str] name: Output only. Name of the Apigee organization.
         :param pulumi.Input[str] project_id: The project ID associated with the Apigee organization.
+        :param pulumi.Input[str] retention: Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+               is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+               operation completes. During this period, the Organization may be restored to its last known state.
+               After this period, the Organization will no longer be able to be restored.
+               Default value is `DELETION_RETENTION_UNSPECIFIED`.
+               Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
         :param pulumi.Input[str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
                Update is not allowed after the organization is created.
                If not specified, a Google-Managed encryption key will be used.
@@ -213,6 +246,8 @@ class _OrganizationState:
             pulumi.set(__self__, "name", name)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if retention is not None:
+            pulumi.set(__self__, "retention", retention)
         if runtime_database_encryption_key_name is not None:
             pulumi.set(__self__, "runtime_database_encryption_key_name", runtime_database_encryption_key_name)
         if runtime_type is not None:
@@ -320,6 +355,23 @@ class _OrganizationState:
         pulumi.set(self, "project_id", value)
 
     @property
+    @pulumi.getter
+    def retention(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+        is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+        operation completes. During this period, the Organization may be restored to its last known state.
+        After this period, the Organization will no longer be able to be restored.
+        Default value is `DELETION_RETENTION_UNSPECIFIED`.
+        Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+        """
+        return pulumi.get(self, "retention")
+
+    @retention.setter
+    def retention(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "retention", value)
+
+    @property
     @pulumi.getter(name="runtimeDatabaseEncryptionKeyName")
     def runtime_database_encryption_key_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -373,6 +425,7 @@ class Organization(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 retention: Optional[pulumi.Input[str]] = None,
                  runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  runtime_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -471,6 +524,12 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the Apigee organization.
         :param pulumi.Input[str] display_name: The display name of the Apigee organization.
         :param pulumi.Input[str] project_id: The project ID associated with the Apigee organization.
+        :param pulumi.Input[str] retention: Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+               is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+               operation completes. During this period, the Organization may be restored to its last known state.
+               After this period, the Organization will no longer be able to be restored.
+               Default value is `DELETION_RETENTION_UNSPECIFIED`.
+               Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
         :param pulumi.Input[str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
                Update is not allowed after the organization is created.
                If not specified, a Google-Managed encryption key will be used.
@@ -591,6 +650,7 @@ class Organization(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 retention: Optional[pulumi.Input[str]] = None,
                  runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  runtime_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -610,6 +670,7 @@ class Organization(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["retention"] = retention
             __props__.__dict__["runtime_database_encryption_key_name"] = runtime_database_encryption_key_name
             __props__.__dict__["runtime_type"] = runtime_type
             __props__.__dict__["ca_certificate"] = None
@@ -633,6 +694,7 @@ class Organization(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
+            retention: Optional[pulumi.Input[str]] = None,
             runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
             runtime_type: Optional[pulumi.Input[str]] = None,
             subscription_type: Optional[pulumi.Input[str]] = None) -> 'Organization':
@@ -654,6 +716,12 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the Apigee organization.
         :param pulumi.Input[str] name: Output only. Name of the Apigee organization.
         :param pulumi.Input[str] project_id: The project ID associated with the Apigee organization.
+        :param pulumi.Input[str] retention: Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+               is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+               operation completes. During this period, the Organization may be restored to its last known state.
+               After this period, the Organization will no longer be able to be restored.
+               Default value is `DELETION_RETENTION_UNSPECIFIED`.
+               Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
         :param pulumi.Input[str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
                Update is not allowed after the organization is created.
                If not specified, a Google-Managed encryption key will be used.
@@ -676,6 +744,7 @@ class Organization(pulumi.CustomResource):
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["name"] = name
         __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["retention"] = retention
         __props__.__dict__["runtime_database_encryption_key_name"] = runtime_database_encryption_key_name
         __props__.__dict__["runtime_type"] = runtime_type
         __props__.__dict__["subscription_type"] = subscription_type
@@ -747,6 +816,19 @@ class Organization(pulumi.CustomResource):
         The project ID associated with the Apigee organization.
         """
         return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def retention(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+        is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+        operation completes. During this period, the Organization may be restored to its last known state.
+        After this period, the Organization will no longer be able to be restored.
+        Default value is `DELETION_RETENTION_UNSPECIFIED`.
+        Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+        """
+        return pulumi.get(self, "retention")
 
     @property
     @pulumi.getter(name="runtimeDatabaseEncryptionKeyName")

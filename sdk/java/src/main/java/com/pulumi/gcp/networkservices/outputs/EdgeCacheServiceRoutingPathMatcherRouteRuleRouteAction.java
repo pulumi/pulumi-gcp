@@ -18,30 +18,21 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction {
      * Structure is documented below.
      * 
      */
-    private final @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy cdnPolicy;
+    private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy cdnPolicy;
     /**
      * @return CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
      * Structure is documented below.
      * 
      */
-    private final @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy corsPolicy;
+    private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy corsPolicy;
     /**
      * @return The URL rewrite configuration for requests that match this route.
      * Structure is documented below.
      * 
      */
-    private final @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite urlRewrite;
+    private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite urlRewrite;
 
-    @CustomType.Constructor
-    private EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction(
-        @CustomType.Parameter("cdnPolicy") @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy cdnPolicy,
-        @CustomType.Parameter("corsPolicy") @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy corsPolicy,
-        @CustomType.Parameter("urlRewrite") @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite urlRewrite) {
-        this.cdnPolicy = cdnPolicy;
-        this.corsPolicy = corsPolicy;
-        this.urlRewrite = urlRewrite;
-    }
-
+    private EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction() {}
     /**
      * @return The policy to use for defining caching and signed request behaviour for requests that match this route.
      * Structure is documented below.
@@ -74,16 +65,12 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction {
     public static Builder builder(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy cdnPolicy;
         private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy corsPolicy;
         private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite urlRewrite;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cdnPolicy = defaults.cdnPolicy;
@@ -91,19 +78,27 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction {
     	      this.urlRewrite = defaults.urlRewrite;
         }
 
+        @CustomType.Setter
         public Builder cdnPolicy(@Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy cdnPolicy) {
             this.cdnPolicy = cdnPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder corsPolicy(@Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy corsPolicy) {
             this.corsPolicy = corsPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder urlRewrite(@Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite urlRewrite) {
             this.urlRewrite = urlRewrite;
             return this;
-        }        public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction build() {
-            return new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction(cdnPolicy, corsPolicy, urlRewrite);
+        }
+        public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction build() {
+            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction();
+            o.cdnPolicy = cdnPolicy;
+            o.corsPolicy = corsPolicy;
+            o.urlRewrite = urlRewrite;
+            return o;
         }
     }
 }

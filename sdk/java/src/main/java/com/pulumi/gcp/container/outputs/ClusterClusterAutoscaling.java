@@ -20,7 +20,7 @@ public final class ClusterClusterAutoscaling {
      * Structure is documented below.
      * 
      */
-    private final @Nullable ClusterClusterAutoscalingAutoProvisioningDefaults autoProvisioningDefaults;
+    private @Nullable ClusterClusterAutoscalingAutoProvisioningDefaults autoProvisioningDefaults;
     /**
      * @return ) Configuration
      * options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
@@ -28,13 +28,13 @@ public final class ClusterClusterAutoscaling {
      * when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
      * 
      */
-    private final @Nullable String autoscalingProfile;
+    private @Nullable String autoscalingProfile;
     /**
      * @return Enable the PodSecurityPolicy controller for this cluster.
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return Global constraints for machine resources in the
      * cluster. Configuring the `cpu` and `memory` types is required if node
@@ -42,20 +42,9 @@ public final class ClusterClusterAutoscaling {
      * in addition to node auto-provisioning. Structure is documented below.
      * 
      */
-    private final @Nullable List<ClusterClusterAutoscalingResourceLimit> resourceLimits;
+    private @Nullable List<ClusterClusterAutoscalingResourceLimit> resourceLimits;
 
-    @CustomType.Constructor
-    private ClusterClusterAutoscaling(
-        @CustomType.Parameter("autoProvisioningDefaults") @Nullable ClusterClusterAutoscalingAutoProvisioningDefaults autoProvisioningDefaults,
-        @CustomType.Parameter("autoscalingProfile") @Nullable String autoscalingProfile,
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("resourceLimits") @Nullable List<ClusterClusterAutoscalingResourceLimit> resourceLimits) {
-        this.autoProvisioningDefaults = autoProvisioningDefaults;
-        this.autoscalingProfile = autoscalingProfile;
-        this.enabled = enabled;
-        this.resourceLimits = resourceLimits;
-    }
-
+    private ClusterClusterAutoscaling() {}
     /**
      * @return Contains defaults for a node pool created by NAP.
      * Structure is documented below.
@@ -100,17 +89,13 @@ public final class ClusterClusterAutoscaling {
     public static Builder builder(ClusterClusterAutoscaling defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterClusterAutoscalingAutoProvisioningDefaults autoProvisioningDefaults;
         private @Nullable String autoscalingProfile;
         private Boolean enabled;
         private @Nullable List<ClusterClusterAutoscalingResourceLimit> resourceLimits;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterClusterAutoscaling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoProvisioningDefaults = defaults.autoProvisioningDefaults;
@@ -119,26 +104,36 @@ public final class ClusterClusterAutoscaling {
     	      this.resourceLimits = defaults.resourceLimits;
         }
 
+        @CustomType.Setter
         public Builder autoProvisioningDefaults(@Nullable ClusterClusterAutoscalingAutoProvisioningDefaults autoProvisioningDefaults) {
             this.autoProvisioningDefaults = autoProvisioningDefaults;
             return this;
         }
+        @CustomType.Setter
         public Builder autoscalingProfile(@Nullable String autoscalingProfile) {
             this.autoscalingProfile = autoscalingProfile;
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceLimits(@Nullable List<ClusterClusterAutoscalingResourceLimit> resourceLimits) {
             this.resourceLimits = resourceLimits;
             return this;
         }
         public Builder resourceLimits(ClusterClusterAutoscalingResourceLimit... resourceLimits) {
             return resourceLimits(List.of(resourceLimits));
-        }        public ClusterClusterAutoscaling build() {
-            return new ClusterClusterAutoscaling(autoProvisioningDefaults, autoscalingProfile, enabled, resourceLimits);
+        }
+        public ClusterClusterAutoscaling build() {
+            final var o = new ClusterClusterAutoscaling();
+            o.autoProvisioningDefaults = autoProvisioningDefaults;
+            o.autoscalingProfile = autoscalingProfile;
+            o.enabled = enabled;
+            o.resourceLimits = resourceLimits;
+            return o;
         }
     }
 }

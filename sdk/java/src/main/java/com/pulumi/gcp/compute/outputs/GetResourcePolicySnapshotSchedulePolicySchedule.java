@@ -12,20 +12,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicySnapshotSchedulePolicySchedule {
-    private final List<GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule> dailySchedules;
-    private final List<GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule> hourlySchedules;
-    private final List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule> weeklySchedules;
+    private List<GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule> dailySchedules;
+    private List<GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule> hourlySchedules;
+    private List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule> weeklySchedules;
 
-    @CustomType.Constructor
-    private GetResourcePolicySnapshotSchedulePolicySchedule(
-        @CustomType.Parameter("dailySchedules") List<GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule> dailySchedules,
-        @CustomType.Parameter("hourlySchedules") List<GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule> hourlySchedules,
-        @CustomType.Parameter("weeklySchedules") List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule> weeklySchedules) {
-        this.dailySchedules = dailySchedules;
-        this.hourlySchedules = hourlySchedules;
-        this.weeklySchedules = weeklySchedules;
-    }
-
+    private GetResourcePolicySnapshotSchedulePolicySchedule() {}
     public List<GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule> dailySchedules() {
         return this.dailySchedules;
     }
@@ -43,16 +34,12 @@ public final class GetResourcePolicySnapshotSchedulePolicySchedule {
     public static Builder builder(GetResourcePolicySnapshotSchedulePolicySchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule> dailySchedules;
         private List<GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule> hourlySchedules;
         private List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule> weeklySchedules;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetResourcePolicySnapshotSchedulePolicySchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dailySchedules = defaults.dailySchedules;
@@ -60,6 +47,7 @@ public final class GetResourcePolicySnapshotSchedulePolicySchedule {
     	      this.weeklySchedules = defaults.weeklySchedules;
         }
 
+        @CustomType.Setter
         public Builder dailySchedules(List<GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule> dailySchedules) {
             this.dailySchedules = Objects.requireNonNull(dailySchedules);
             return this;
@@ -67,6 +55,7 @@ public final class GetResourcePolicySnapshotSchedulePolicySchedule {
         public Builder dailySchedules(GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule... dailySchedules) {
             return dailySchedules(List.of(dailySchedules));
         }
+        @CustomType.Setter
         public Builder hourlySchedules(List<GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule> hourlySchedules) {
             this.hourlySchedules = Objects.requireNonNull(hourlySchedules);
             return this;
@@ -74,14 +63,20 @@ public final class GetResourcePolicySnapshotSchedulePolicySchedule {
         public Builder hourlySchedules(GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule... hourlySchedules) {
             return hourlySchedules(List.of(hourlySchedules));
         }
+        @CustomType.Setter
         public Builder weeklySchedules(List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule> weeklySchedules) {
             this.weeklySchedules = Objects.requireNonNull(weeklySchedules);
             return this;
         }
         public Builder weeklySchedules(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule... weeklySchedules) {
             return weeklySchedules(List.of(weeklySchedules));
-        }        public GetResourcePolicySnapshotSchedulePolicySchedule build() {
-            return new GetResourcePolicySnapshotSchedulePolicySchedule(dailySchedules, hourlySchedules, weeklySchedules);
+        }
+        public GetResourcePolicySnapshotSchedulePolicySchedule build() {
+            final var o = new GetResourcePolicySnapshotSchedulePolicySchedule();
+            o.dailySchedules = dailySchedules;
+            o.hourlySchedules = hourlySchedules;
+            o.weeklySchedules = weeklySchedules;
+            return o;
         }
     }
 }

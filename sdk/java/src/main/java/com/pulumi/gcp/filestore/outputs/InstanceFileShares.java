@@ -18,29 +18,20 @@ public final class InstanceFileShares {
      * for the standard tier, or 2560 GiB for the premium tier.
      * 
      */
-    private final Integer capacityGb;
+    private Integer capacityGb;
     /**
      * @return The name of the fileshare (16 characters or less)
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Nfs Export Options. There is a limit of 10 export options per file share.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<InstanceFileSharesNfsExportOption> nfsExportOptions;
+    private @Nullable List<InstanceFileSharesNfsExportOption> nfsExportOptions;
 
-    @CustomType.Constructor
-    private InstanceFileShares(
-        @CustomType.Parameter("capacityGb") Integer capacityGb,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nfsExportOptions") @Nullable List<InstanceFileSharesNfsExportOption> nfsExportOptions) {
-        this.capacityGb = capacityGb;
-        this.name = name;
-        this.nfsExportOptions = nfsExportOptions;
-    }
-
+    private InstanceFileShares() {}
     /**
      * @return File share capacity in GiB. This must be at least 1024 GiB
      * for the standard tier, or 2560 GiB for the premium tier.
@@ -72,16 +63,12 @@ public final class InstanceFileShares {
     public static Builder builder(InstanceFileShares defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer capacityGb;
         private String name;
         private @Nullable List<InstanceFileSharesNfsExportOption> nfsExportOptions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceFileShares defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.capacityGb = defaults.capacityGb;
@@ -89,22 +76,30 @@ public final class InstanceFileShares {
     	      this.nfsExportOptions = defaults.nfsExportOptions;
         }
 
+        @CustomType.Setter
         public Builder capacityGb(Integer capacityGb) {
             this.capacityGb = Objects.requireNonNull(capacityGb);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nfsExportOptions(@Nullable List<InstanceFileSharesNfsExportOption> nfsExportOptions) {
             this.nfsExportOptions = nfsExportOptions;
             return this;
         }
         public Builder nfsExportOptions(InstanceFileSharesNfsExportOption... nfsExportOptions) {
             return nfsExportOptions(List.of(nfsExportOptions));
-        }        public InstanceFileShares build() {
-            return new InstanceFileShares(capacityGb, name, nfsExportOptions);
+        }
+        public InstanceFileShares build() {
+            final var o = new InstanceFileShares();
+            o.capacityGb = capacityGb;
+            o.name = name;
+            o.nfsExportOptions = nfsExportOptions;
+            return o;
         }
     }
 }

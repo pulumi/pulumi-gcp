@@ -16,21 +16,14 @@ public final class EnvironmentContainerImage {
      * For example: gcr.io/{project_id}/{imageName}
      * 
      */
-    private final String repository;
+    private String repository;
     /**
      * @return The tag of the container image. If not specified, this defaults to the latest tag.
      * 
      */
-    private final @Nullable String tag;
+    private @Nullable String tag;
 
-    @CustomType.Constructor
-    private EnvironmentContainerImage(
-        @CustomType.Parameter("repository") String repository,
-        @CustomType.Parameter("tag") @Nullable String tag) {
-        this.repository = repository;
-        this.tag = tag;
-    }
-
+    private EnvironmentContainerImage() {}
     /**
      * @return The path to the container image repository.
      * For example: gcr.io/{project_id}/{imageName}
@@ -54,30 +47,32 @@ public final class EnvironmentContainerImage {
     public static Builder builder(EnvironmentContainerImage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String repository;
         private @Nullable String tag;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EnvironmentContainerImage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.repository = defaults.repository;
     	      this.tag = defaults.tag;
         }
 
+        @CustomType.Setter
         public Builder repository(String repository) {
             this.repository = Objects.requireNonNull(repository);
             return this;
         }
+        @CustomType.Setter
         public Builder tag(@Nullable String tag) {
             this.tag = tag;
             return this;
-        }        public EnvironmentContainerImage build() {
-            return new EnvironmentContainerImage(repository, tag);
+        }
+        public EnvironmentContainerImage build() {
+            final var o = new EnvironmentContainerImage();
+            o.repository = repository;
+            o.tag = tag;
+            return o;
         }
     }
 }

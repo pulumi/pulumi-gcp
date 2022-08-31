@@ -16,21 +16,14 @@ public final class WorkflowTemplatePlacement {
      * @return Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
      * 
      */
-    private final @Nullable WorkflowTemplatePlacementClusterSelector clusterSelector;
+    private @Nullable WorkflowTemplatePlacementClusterSelector clusterSelector;
     /**
      * @return A cluster that is managed by the workflow.
      * 
      */
-    private final @Nullable WorkflowTemplatePlacementManagedCluster managedCluster;
+    private @Nullable WorkflowTemplatePlacementManagedCluster managedCluster;
 
-    @CustomType.Constructor
-    private WorkflowTemplatePlacement(
-        @CustomType.Parameter("clusterSelector") @Nullable WorkflowTemplatePlacementClusterSelector clusterSelector,
-        @CustomType.Parameter("managedCluster") @Nullable WorkflowTemplatePlacementManagedCluster managedCluster) {
-        this.clusterSelector = clusterSelector;
-        this.managedCluster = managedCluster;
-    }
-
+    private WorkflowTemplatePlacement() {}
     /**
      * @return Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
      * 
@@ -53,30 +46,32 @@ public final class WorkflowTemplatePlacement {
     public static Builder builder(WorkflowTemplatePlacement defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable WorkflowTemplatePlacementClusterSelector clusterSelector;
         private @Nullable WorkflowTemplatePlacementManagedCluster managedCluster;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplatePlacement defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterSelector = defaults.clusterSelector;
     	      this.managedCluster = defaults.managedCluster;
         }
 
+        @CustomType.Setter
         public Builder clusterSelector(@Nullable WorkflowTemplatePlacementClusterSelector clusterSelector) {
             this.clusterSelector = clusterSelector;
             return this;
         }
+        @CustomType.Setter
         public Builder managedCluster(@Nullable WorkflowTemplatePlacementManagedCluster managedCluster) {
             this.managedCluster = managedCluster;
             return this;
-        }        public WorkflowTemplatePlacement build() {
-            return new WorkflowTemplatePlacement(clusterSelector, managedCluster);
+        }
+        public WorkflowTemplatePlacement build() {
+            final var o = new WorkflowTemplatePlacement();
+            o.clusterSelector = clusterSelector;
+            o.managedCluster = managedCluster;
+            return o;
         }
     }
 }

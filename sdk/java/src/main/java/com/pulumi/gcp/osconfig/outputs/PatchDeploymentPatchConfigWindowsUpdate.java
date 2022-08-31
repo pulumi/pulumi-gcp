@@ -16,29 +16,20 @@ public final class PatchDeploymentPatchConfigWindowsUpdate {
      * Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
      * 
      */
-    private final @Nullable List<String> classifications;
+    private @Nullable List<String> classifications;
     /**
      * @return List of KBs to exclude from update.
      * 
      */
-    private final @Nullable List<String> excludes;
+    private @Nullable List<String> excludes;
     /**
      * @return An exclusive list of kbs to be updated. These are the only patches that will be updated.
      * This field must not be used with other patch configurations.
      * 
      */
-    private final @Nullable List<String> exclusivePatches;
+    private @Nullable List<String> exclusivePatches;
 
-    @CustomType.Constructor
-    private PatchDeploymentPatchConfigWindowsUpdate(
-        @CustomType.Parameter("classifications") @Nullable List<String> classifications,
-        @CustomType.Parameter("excludes") @Nullable List<String> excludes,
-        @CustomType.Parameter("exclusivePatches") @Nullable List<String> exclusivePatches) {
-        this.classifications = classifications;
-        this.excludes = excludes;
-        this.exclusivePatches = exclusivePatches;
-    }
-
+    private PatchDeploymentPatchConfigWindowsUpdate() {}
     /**
      * @return Only apply updates of these windows update classifications. If empty, all updates are applied.
      * Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
@@ -70,16 +61,12 @@ public final class PatchDeploymentPatchConfigWindowsUpdate {
     public static Builder builder(PatchDeploymentPatchConfigWindowsUpdate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> classifications;
         private @Nullable List<String> excludes;
         private @Nullable List<String> exclusivePatches;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PatchDeploymentPatchConfigWindowsUpdate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.classifications = defaults.classifications;
@@ -87,6 +74,7 @@ public final class PatchDeploymentPatchConfigWindowsUpdate {
     	      this.exclusivePatches = defaults.exclusivePatches;
         }
 
+        @CustomType.Setter
         public Builder classifications(@Nullable List<String> classifications) {
             this.classifications = classifications;
             return this;
@@ -94,6 +82,7 @@ public final class PatchDeploymentPatchConfigWindowsUpdate {
         public Builder classifications(String... classifications) {
             return classifications(List.of(classifications));
         }
+        @CustomType.Setter
         public Builder excludes(@Nullable List<String> excludes) {
             this.excludes = excludes;
             return this;
@@ -101,14 +90,20 @@ public final class PatchDeploymentPatchConfigWindowsUpdate {
         public Builder excludes(String... excludes) {
             return excludes(List.of(excludes));
         }
+        @CustomType.Setter
         public Builder exclusivePatches(@Nullable List<String> exclusivePatches) {
             this.exclusivePatches = exclusivePatches;
             return this;
         }
         public Builder exclusivePatches(String... exclusivePatches) {
             return exclusivePatches(List.of(exclusivePatches));
-        }        public PatchDeploymentPatchConfigWindowsUpdate build() {
-            return new PatchDeploymentPatchConfigWindowsUpdate(classifications, excludes, exclusivePatches);
+        }
+        public PatchDeploymentPatchConfigWindowsUpdate build() {
+            final var o = new PatchDeploymentPatchConfigWindowsUpdate();
+            o.classifications = classifications;
+            o.excludes = excludes;
+            o.exclusivePatches = exclusivePatches;
+            return o;
         }
     }
 }

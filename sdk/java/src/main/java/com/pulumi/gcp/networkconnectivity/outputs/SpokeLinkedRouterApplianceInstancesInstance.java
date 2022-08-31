@@ -15,21 +15,14 @@ public final class SpokeLinkedRouterApplianceInstancesInstance {
      * @return The IP address on the VM to use for peering.
      * 
      */
-    private final @Nullable String ipAddress;
+    private @Nullable String ipAddress;
     /**
      * @return The URI of the virtual machine resource
      * 
      */
-    private final @Nullable String virtualMachine;
+    private @Nullable String virtualMachine;
 
-    @CustomType.Constructor
-    private SpokeLinkedRouterApplianceInstancesInstance(
-        @CustomType.Parameter("ipAddress") @Nullable String ipAddress,
-        @CustomType.Parameter("virtualMachine") @Nullable String virtualMachine) {
-        this.ipAddress = ipAddress;
-        this.virtualMachine = virtualMachine;
-    }
-
+    private SpokeLinkedRouterApplianceInstancesInstance() {}
     /**
      * @return The IP address on the VM to use for peering.
      * 
@@ -52,30 +45,32 @@ public final class SpokeLinkedRouterApplianceInstancesInstance {
     public static Builder builder(SpokeLinkedRouterApplianceInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String ipAddress;
         private @Nullable String virtualMachine;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SpokeLinkedRouterApplianceInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipAddress = defaults.ipAddress;
     	      this.virtualMachine = defaults.virtualMachine;
         }
 
+        @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
             this.ipAddress = ipAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder virtualMachine(@Nullable String virtualMachine) {
             this.virtualMachine = virtualMachine;
             return this;
-        }        public SpokeLinkedRouterApplianceInstancesInstance build() {
-            return new SpokeLinkedRouterApplianceInstancesInstance(ipAddress, virtualMachine);
+        }
+        public SpokeLinkedRouterApplianceInstancesInstance build() {
+            final var o = new SpokeLinkedRouterApplianceInstancesInstance();
+            o.ipAddress = ipAddress;
+            o.virtualMachine = virtualMachine;
+            return o;
         }
     }
 }

@@ -19,35 +19,16 @@ public final class GetTopicResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String kmsKeyName;
-    private final Map<String,String> labels;
-    private final String messageRetentionDuration;
-    private final List<GetTopicMessageStoragePolicy> messageStoragePolicies;
-    private final String name;
-    private final @Nullable String project;
-    private final List<GetTopicSchemaSetting> schemaSettings;
+    private String id;
+    private String kmsKeyName;
+    private Map<String,String> labels;
+    private String messageRetentionDuration;
+    private List<GetTopicMessageStoragePolicy> messageStoragePolicies;
+    private String name;
+    private @Nullable String project;
+    private List<GetTopicSchemaSetting> schemaSettings;
 
-    @CustomType.Constructor
-    private GetTopicResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("kmsKeyName") String kmsKeyName,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("messageRetentionDuration") String messageRetentionDuration,
-        @CustomType.Parameter("messageStoragePolicies") List<GetTopicMessageStoragePolicy> messageStoragePolicies,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("schemaSettings") List<GetTopicSchemaSetting> schemaSettings) {
-        this.id = id;
-        this.kmsKeyName = kmsKeyName;
-        this.labels = labels;
-        this.messageRetentionDuration = messageRetentionDuration;
-        this.messageStoragePolicies = messageStoragePolicies;
-        this.name = name;
-        this.project = project;
-        this.schemaSettings = schemaSettings;
-    }
-
+    private GetTopicResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -84,7 +65,7 @@ public final class GetTopicResult {
     public static Builder builder(GetTopicResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String kmsKeyName;
@@ -94,11 +75,7 @@ public final class GetTopicResult {
         private String name;
         private @Nullable String project;
         private List<GetTopicSchemaSetting> schemaSettings;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTopicResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -111,22 +88,27 @@ public final class GetTopicResult {
     	      this.schemaSettings = defaults.schemaSettings;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
             this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder messageRetentionDuration(String messageRetentionDuration) {
             this.messageRetentionDuration = Objects.requireNonNull(messageRetentionDuration);
             return this;
         }
+        @CustomType.Setter
         public Builder messageStoragePolicies(List<GetTopicMessageStoragePolicy> messageStoragePolicies) {
             this.messageStoragePolicies = Objects.requireNonNull(messageStoragePolicies);
             return this;
@@ -134,22 +116,35 @@ public final class GetTopicResult {
         public Builder messageStoragePolicies(GetTopicMessageStoragePolicy... messageStoragePolicies) {
             return messageStoragePolicies(List.of(messageStoragePolicies));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder schemaSettings(List<GetTopicSchemaSetting> schemaSettings) {
             this.schemaSettings = Objects.requireNonNull(schemaSettings);
             return this;
         }
         public Builder schemaSettings(GetTopicSchemaSetting... schemaSettings) {
             return schemaSettings(List.of(schemaSettings));
-        }        public GetTopicResult build() {
-            return new GetTopicResult(id, kmsKeyName, labels, messageRetentionDuration, messageStoragePolicies, name, project, schemaSettings);
+        }
+        public GetTopicResult build() {
+            final var o = new GetTopicResult();
+            o.id = id;
+            o.kmsKeyName = kmsKeyName;
+            o.labels = labels;
+            o.messageRetentionDuration = messageRetentionDuration;
+            o.messageStoragePolicies = messageStoragePolicies;
+            o.name = name;
+            o.project = project;
+            o.schemaSettings = schemaSettings;
+            return o;
         }
     }
 }

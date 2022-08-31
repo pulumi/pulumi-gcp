@@ -19,30 +19,21 @@ public final class TriggerBuildArtifactsObjects {
      * this location as a prefix.
      * 
      */
-    private final @Nullable String location;
+    private @Nullable String location;
     /**
      * @return Path globs used to match files in the build&#39;s workspace.
      * 
      */
-    private final @Nullable List<String> paths;
+    private @Nullable List<String> paths;
     /**
      * @return -
      * Output only. Stores timing information for pushing all artifact objects.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<TriggerBuildArtifactsObjectsTiming> timings;
+    private @Nullable List<TriggerBuildArtifactsObjectsTiming> timings;
 
-    @CustomType.Constructor
-    private TriggerBuildArtifactsObjects(
-        @CustomType.Parameter("location") @Nullable String location,
-        @CustomType.Parameter("paths") @Nullable List<String> paths,
-        @CustomType.Parameter("timings") @Nullable List<TriggerBuildArtifactsObjectsTiming> timings) {
-        this.location = location;
-        this.paths = paths;
-        this.timings = timings;
-    }
-
+    private TriggerBuildArtifactsObjects() {}
     /**
      * @return Cloud Storage bucket and optional object path, in the form &#34;gs://bucket/path/to/somewhere/&#34;.
      * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
@@ -76,16 +67,12 @@ public final class TriggerBuildArtifactsObjects {
     public static Builder builder(TriggerBuildArtifactsObjects defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String location;
         private @Nullable List<String> paths;
         private @Nullable List<TriggerBuildArtifactsObjectsTiming> timings;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerBuildArtifactsObjects defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.location = defaults.location;
@@ -93,10 +80,12 @@ public final class TriggerBuildArtifactsObjects {
     	      this.timings = defaults.timings;
         }
 
+        @CustomType.Setter
         public Builder location(@Nullable String location) {
             this.location = location;
             return this;
         }
+        @CustomType.Setter
         public Builder paths(@Nullable List<String> paths) {
             this.paths = paths;
             return this;
@@ -104,14 +93,20 @@ public final class TriggerBuildArtifactsObjects {
         public Builder paths(String... paths) {
             return paths(List.of(paths));
         }
+        @CustomType.Setter
         public Builder timings(@Nullable List<TriggerBuildArtifactsObjectsTiming> timings) {
             this.timings = timings;
             return this;
         }
         public Builder timings(TriggerBuildArtifactsObjectsTiming... timings) {
             return timings(List.of(timings));
-        }        public TriggerBuildArtifactsObjects build() {
-            return new TriggerBuildArtifactsObjects(location, paths, timings);
+        }
+        public TriggerBuildArtifactsObjects build() {
+            final var o = new TriggerBuildArtifactsObjects();
+            o.location = location;
+            o.paths = paths;
+            o.timings = timings;
+            return o;
         }
     }
 }

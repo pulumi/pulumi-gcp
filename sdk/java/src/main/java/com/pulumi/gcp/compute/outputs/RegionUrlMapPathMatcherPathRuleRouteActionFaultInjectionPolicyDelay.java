@@ -15,23 +15,16 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolic
      * Structure is documented below.
      * 
      */
-    private final RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay fixedDelay;
+    private RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay fixedDelay;
     /**
      * @return The percentage of traffic (connections/operations/requests) on which delay will
      * be introduced as part of fault injection. The value must be between 0.0 and
      * 100.0 inclusive.
      * 
      */
-    private final Double percentage;
+    private Double percentage;
 
-    @CustomType.Constructor
-    private RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay(
-        @CustomType.Parameter("fixedDelay") RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay fixedDelay,
-        @CustomType.Parameter("percentage") Double percentage) {
-        this.fixedDelay = fixedDelay;
-        this.percentage = percentage;
-    }
-
+    private RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay() {}
     /**
      * @return Specifies the value of the fixed delay interval.
      * Structure is documented below.
@@ -57,30 +50,32 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolic
     public static Builder builder(RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay fixedDelay;
         private Double percentage;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fixedDelay = defaults.fixedDelay;
     	      this.percentage = defaults.percentage;
         }
 
+        @CustomType.Setter
         public Builder fixedDelay(RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay fixedDelay) {
             this.fixedDelay = Objects.requireNonNull(fixedDelay);
             return this;
         }
+        @CustomType.Setter
         public Builder percentage(Double percentage) {
             this.percentage = Objects.requireNonNull(percentage);
             return this;
-        }        public RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay build() {
-            return new RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay(fixedDelay, percentage);
+        }
+        public RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay build() {
+            final var o = new RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay();
+            o.fixedDelay = fixedDelay;
+            o.percentage = percentage;
+            return o;
         }
     }
 }

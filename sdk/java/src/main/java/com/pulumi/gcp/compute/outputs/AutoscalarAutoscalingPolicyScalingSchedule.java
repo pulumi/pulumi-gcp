@@ -17,56 +17,39 @@ public final class AutoscalarAutoscalingPolicyScalingSchedule {
      * @return An optional description of this resource.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
      * 
      */
-    private final @Nullable Boolean disabled;
+    private @Nullable Boolean disabled;
     /**
      * @return The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
      * 
      */
-    private final Integer durationSec;
+    private Integer durationSec;
     /**
      * @return Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
      * 
      */
-    private final Integer minRequiredReplicas;
+    private Integer minRequiredReplicas;
     /**
      * @return The identifier for this object. Format specified above.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
      * 
      */
-    private final String schedule;
+    private String schedule;
     /**
      * @return The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
      * 
      */
-    private final @Nullable String timeZone;
+    private @Nullable String timeZone;
 
-    @CustomType.Constructor
-    private AutoscalarAutoscalingPolicyScalingSchedule(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("disabled") @Nullable Boolean disabled,
-        @CustomType.Parameter("durationSec") Integer durationSec,
-        @CustomType.Parameter("minRequiredReplicas") Integer minRequiredReplicas,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("schedule") String schedule,
-        @CustomType.Parameter("timeZone") @Nullable String timeZone) {
-        this.description = description;
-        this.disabled = disabled;
-        this.durationSec = durationSec;
-        this.minRequiredReplicas = minRequiredReplicas;
-        this.name = name;
-        this.schedule = schedule;
-        this.timeZone = timeZone;
-    }
-
+    private AutoscalarAutoscalingPolicyScalingSchedule() {}
     /**
      * @return An optional description of this resource.
      * 
@@ -124,7 +107,7 @@ public final class AutoscalarAutoscalingPolicyScalingSchedule {
     public static Builder builder(AutoscalarAutoscalingPolicyScalingSchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private @Nullable Boolean disabled;
@@ -133,11 +116,7 @@ public final class AutoscalarAutoscalingPolicyScalingSchedule {
         private String name;
         private String schedule;
         private @Nullable String timeZone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AutoscalarAutoscalingPolicyScalingSchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -149,35 +128,51 @@ public final class AutoscalarAutoscalingPolicyScalingSchedule {
     	      this.timeZone = defaults.timeZone;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
             this.disabled = disabled;
             return this;
         }
+        @CustomType.Setter
         public Builder durationSec(Integer durationSec) {
             this.durationSec = Objects.requireNonNull(durationSec);
             return this;
         }
+        @CustomType.Setter
         public Builder minRequiredReplicas(Integer minRequiredReplicas) {
             this.minRequiredReplicas = Objects.requireNonNull(minRequiredReplicas);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder schedule(String schedule) {
             this.schedule = Objects.requireNonNull(schedule);
             return this;
         }
+        @CustomType.Setter
         public Builder timeZone(@Nullable String timeZone) {
             this.timeZone = timeZone;
             return this;
-        }        public AutoscalarAutoscalingPolicyScalingSchedule build() {
-            return new AutoscalarAutoscalingPolicyScalingSchedule(description, disabled, durationSec, minRequiredReplicas, name, schedule, timeZone);
+        }
+        public AutoscalarAutoscalingPolicyScalingSchedule build() {
+            final var o = new AutoscalarAutoscalingPolicyScalingSchedule();
+            o.description = description;
+            o.disabled = disabled;
+            o.durationSec = durationSec;
+            o.minRequiredReplicas = minRequiredReplicas;
+            o.name = name;
+            o.schedule = schedule;
+            o.timeZone = timeZone;
+            return o;
         }
     }
 }

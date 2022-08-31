@@ -15,21 +15,14 @@ public final class CxIntentTrainingPhrasePart {
      * @return The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
      * 
      */
-    private final @Nullable String parameterId;
+    private @Nullable String parameterId;
     /**
      * @return The text for this part.
      * 
      */
-    private final String text;
+    private String text;
 
-    @CustomType.Constructor
-    private CxIntentTrainingPhrasePart(
-        @CustomType.Parameter("parameterId") @Nullable String parameterId,
-        @CustomType.Parameter("text") String text) {
-        this.parameterId = parameterId;
-        this.text = text;
-    }
-
+    private CxIntentTrainingPhrasePart() {}
     /**
      * @return The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
      * 
@@ -52,30 +45,32 @@ public final class CxIntentTrainingPhrasePart {
     public static Builder builder(CxIntentTrainingPhrasePart defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String parameterId;
         private String text;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CxIntentTrainingPhrasePart defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameterId = defaults.parameterId;
     	      this.text = defaults.text;
         }
 
+        @CustomType.Setter
         public Builder parameterId(@Nullable String parameterId) {
             this.parameterId = parameterId;
             return this;
         }
+        @CustomType.Setter
         public Builder text(String text) {
             this.text = Objects.requireNonNull(text);
             return this;
-        }        public CxIntentTrainingPhrasePart build() {
-            return new CxIntentTrainingPhrasePart(parameterId, text);
+        }
+        public CxIntentTrainingPhrasePart build() {
+            final var o = new CxIntentTrainingPhrasePart();
+            o.parameterId = parameterId;
+            o.text = text;
+            return o;
         }
     }
 }

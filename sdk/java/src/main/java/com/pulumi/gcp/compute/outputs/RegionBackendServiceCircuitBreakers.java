@@ -17,25 +17,25 @@ public final class RegionBackendServiceCircuitBreakers {
      * Structure is documented below.
      * 
      */
-    private final @Nullable RegionBackendServiceCircuitBreakersConnectTimeout connectTimeout;
+    private @Nullable RegionBackendServiceCircuitBreakersConnectTimeout connectTimeout;
     /**
      * @return The maximum number of connections to the backend cluster.
      * Defaults to 1024.
      * 
      */
-    private final @Nullable Integer maxConnections;
+    private @Nullable Integer maxConnections;
     /**
      * @return The maximum number of pending requests to the backend cluster.
      * Defaults to 1024.
      * 
      */
-    private final @Nullable Integer maxPendingRequests;
+    private @Nullable Integer maxPendingRequests;
     /**
      * @return The maximum number of parallel requests to the backend cluster.
      * Defaults to 1024.
      * 
      */
-    private final @Nullable Integer maxRequests;
+    private @Nullable Integer maxRequests;
     /**
      * @return Maximum requests for a single backend connection. This parameter
      * is respected by both the HTTP/1.1 and HTTP/2 implementations. If
@@ -43,30 +43,15 @@ public final class RegionBackendServiceCircuitBreakers {
      * will effectively disable keep alive.
      * 
      */
-    private final @Nullable Integer maxRequestsPerConnection;
+    private @Nullable Integer maxRequestsPerConnection;
     /**
      * @return The maximum number of parallel retries to the backend cluster.
      * Defaults to 3.
      * 
      */
-    private final @Nullable Integer maxRetries;
+    private @Nullable Integer maxRetries;
 
-    @CustomType.Constructor
-    private RegionBackendServiceCircuitBreakers(
-        @CustomType.Parameter("connectTimeout") @Nullable RegionBackendServiceCircuitBreakersConnectTimeout connectTimeout,
-        @CustomType.Parameter("maxConnections") @Nullable Integer maxConnections,
-        @CustomType.Parameter("maxPendingRequests") @Nullable Integer maxPendingRequests,
-        @CustomType.Parameter("maxRequests") @Nullable Integer maxRequests,
-        @CustomType.Parameter("maxRequestsPerConnection") @Nullable Integer maxRequestsPerConnection,
-        @CustomType.Parameter("maxRetries") @Nullable Integer maxRetries) {
-        this.connectTimeout = connectTimeout;
-        this.maxConnections = maxConnections;
-        this.maxPendingRequests = maxPendingRequests;
-        this.maxRequests = maxRequests;
-        this.maxRequestsPerConnection = maxRequestsPerConnection;
-        this.maxRetries = maxRetries;
-    }
-
+    private RegionBackendServiceCircuitBreakers() {}
     /**
      * @return The timeout for new network connections to hosts.
      * Structure is documented below.
@@ -125,7 +110,7 @@ public final class RegionBackendServiceCircuitBreakers {
     public static Builder builder(RegionBackendServiceCircuitBreakers defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable RegionBackendServiceCircuitBreakersConnectTimeout connectTimeout;
         private @Nullable Integer maxConnections;
@@ -133,11 +118,7 @@ public final class RegionBackendServiceCircuitBreakers {
         private @Nullable Integer maxRequests;
         private @Nullable Integer maxRequestsPerConnection;
         private @Nullable Integer maxRetries;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionBackendServiceCircuitBreakers defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectTimeout = defaults.connectTimeout;
@@ -148,31 +129,45 @@ public final class RegionBackendServiceCircuitBreakers {
     	      this.maxRetries = defaults.maxRetries;
         }
 
+        @CustomType.Setter
         public Builder connectTimeout(@Nullable RegionBackendServiceCircuitBreakersConnectTimeout connectTimeout) {
             this.connectTimeout = connectTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder maxConnections(@Nullable Integer maxConnections) {
             this.maxConnections = maxConnections;
             return this;
         }
+        @CustomType.Setter
         public Builder maxPendingRequests(@Nullable Integer maxPendingRequests) {
             this.maxPendingRequests = maxPendingRequests;
             return this;
         }
+        @CustomType.Setter
         public Builder maxRequests(@Nullable Integer maxRequests) {
             this.maxRequests = maxRequests;
             return this;
         }
+        @CustomType.Setter
         public Builder maxRequestsPerConnection(@Nullable Integer maxRequestsPerConnection) {
             this.maxRequestsPerConnection = maxRequestsPerConnection;
             return this;
         }
+        @CustomType.Setter
         public Builder maxRetries(@Nullable Integer maxRetries) {
             this.maxRetries = maxRetries;
             return this;
-        }        public RegionBackendServiceCircuitBreakers build() {
-            return new RegionBackendServiceCircuitBreakers(connectTimeout, maxConnections, maxPendingRequests, maxRequests, maxRequestsPerConnection, maxRetries);
+        }
+        public RegionBackendServiceCircuitBreakers build() {
+            final var o = new RegionBackendServiceCircuitBreakers();
+            o.connectTimeout = connectTimeout;
+            o.maxConnections = maxConnections;
+            o.maxPendingRequests = maxPendingRequests;
+            o.maxRequests = maxRequests;
+            o.maxRequestsPerConnection = maxRequestsPerConnection;
+            o.maxRetries = maxRetries;
+            return o;
         }
     }
 }

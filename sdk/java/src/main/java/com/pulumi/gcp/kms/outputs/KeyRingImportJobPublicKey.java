@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KeyRingImportJobPublicKey {
-    private final @Nullable String pem;
+    private @Nullable String pem;
 
-    @CustomType.Constructor
-    private KeyRingImportJobPublicKey(@CustomType.Parameter("pem") @Nullable String pem) {
-        this.pem = pem;
-    }
-
+    private KeyRingImportJobPublicKey() {}
     public Optional<String> pem() {
         return Optional.ofNullable(this.pem);
     }
@@ -29,24 +25,24 @@ public final class KeyRingImportJobPublicKey {
     public static Builder builder(KeyRingImportJobPublicKey defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String pem;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KeyRingImportJobPublicKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pem = defaults.pem;
         }
 
+        @CustomType.Setter
         public Builder pem(@Nullable String pem) {
             this.pem = pem;
             return this;
-        }        public KeyRingImportJobPublicKey build() {
-            return new KeyRingImportJobPublicKey(pem);
+        }
+        public KeyRingImportJobPublicKey build() {
+            final var o = new KeyRingImportJobPublicKey();
+            o.pem = pem;
+            return o;
         }
     }
 }

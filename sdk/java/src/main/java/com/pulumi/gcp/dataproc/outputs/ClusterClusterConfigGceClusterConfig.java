@@ -23,26 +23,26 @@ public final class ClusterClusterConfigGceClusterConfig {
      * will be launched in.
      * 
      */
-    private final @Nullable Boolean internalIpOnly;
+    private @Nullable Boolean internalIpOnly;
     /**
      * @return A map of the Compute Engine metadata entries to add to all instances
      * (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
      * 
      */
-    private final @Nullable Map<String,String> metadata;
+    private @Nullable Map<String,String> metadata;
     /**
      * @return The name or self_link of the Google Compute Engine
      * network to the cluster will be part of. Conflicts with `subnetwork`.
      * If neither is specified, this defaults to the &#34;default&#34; network.
      * 
      */
-    private final @Nullable String network;
+    private @Nullable String network;
     /**
      * @return The service account to be used by the Node VMs.
      * If not specified, the &#34;default&#34; service account is used.
      * 
      */
-    private final @Nullable String serviceAccount;
+    private @Nullable String serviceAccount;
     /**
      * @return The set of Google API scopes
      * to be made available on all of the node VMs under the `service_account`
@@ -51,24 +51,24 @@ public final class ClusterClusterConfigGceClusterConfig {
      * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
      * 
      */
-    private final @Nullable List<String> serviceAccountScopes;
+    private @Nullable List<String> serviceAccountScopes;
     /**
      * @return Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
      * 
      */
-    private final @Nullable ClusterClusterConfigGceClusterConfigShieldedInstanceConfig shieldedInstanceConfig;
+    private @Nullable ClusterClusterConfigGceClusterConfigShieldedInstanceConfig shieldedInstanceConfig;
     /**
      * @return The name or self_link of the Google Compute Engine
      * subnetwork the cluster will be part of. Conflicts with `network`.
      * 
      */
-    private final @Nullable String subnetwork;
+    private @Nullable String subnetwork;
     /**
      * @return The list of instance tags applied to instances in the cluster.
      * Tags are used to identify valid sources or targets for network firewalls.
      * 
      */
-    private final @Nullable List<String> tags;
+    private @Nullable List<String> tags;
     /**
      * @return The GCP zone where your data is stored and used (i.e. where
      * the master and the worker nodes will be created in). If `region` is set to &#39;global&#39; (default)
@@ -79,30 +79,9 @@ public final class ClusterClusterConfigGceClusterConfig {
      * `cluster_config.master_config.machine_type` and `cluster_config.worker_config.machine_type`.
      * 
      */
-    private final @Nullable String zone;
+    private @Nullable String zone;
 
-    @CustomType.Constructor
-    private ClusterClusterConfigGceClusterConfig(
-        @CustomType.Parameter("internalIpOnly") @Nullable Boolean internalIpOnly,
-        @CustomType.Parameter("metadata") @Nullable Map<String,String> metadata,
-        @CustomType.Parameter("network") @Nullable String network,
-        @CustomType.Parameter("serviceAccount") @Nullable String serviceAccount,
-        @CustomType.Parameter("serviceAccountScopes") @Nullable List<String> serviceAccountScopes,
-        @CustomType.Parameter("shieldedInstanceConfig") @Nullable ClusterClusterConfigGceClusterConfigShieldedInstanceConfig shieldedInstanceConfig,
-        @CustomType.Parameter("subnetwork") @Nullable String subnetwork,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("zone") @Nullable String zone) {
-        this.internalIpOnly = internalIpOnly;
-        this.metadata = metadata;
-        this.network = network;
-        this.serviceAccount = serviceAccount;
-        this.serviceAccountScopes = serviceAccountScopes;
-        this.shieldedInstanceConfig = shieldedInstanceConfig;
-        this.subnetwork = subnetwork;
-        this.tags = tags;
-        this.zone = zone;
-    }
-
+    private ClusterClusterConfigGceClusterConfig() {}
     /**
      * @return By default, clusters are not restricted to internal IP addresses,
      * and will have ephemeral external IP addresses assigned to each instance. If set to true, all
@@ -194,7 +173,7 @@ public final class ClusterClusterConfigGceClusterConfig {
     public static Builder builder(ClusterClusterConfigGceClusterConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean internalIpOnly;
         private @Nullable Map<String,String> metadata;
@@ -205,11 +184,7 @@ public final class ClusterClusterConfigGceClusterConfig {
         private @Nullable String subnetwork;
         private @Nullable List<String> tags;
         private @Nullable String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterClusterConfigGceClusterConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.internalIpOnly = defaults.internalIpOnly;
@@ -223,22 +198,27 @@ public final class ClusterClusterConfigGceClusterConfig {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder internalIpOnly(@Nullable Boolean internalIpOnly) {
             this.internalIpOnly = internalIpOnly;
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(@Nullable Map<String,String> metadata) {
             this.metadata = metadata;
             return this;
         }
+        @CustomType.Setter
         public Builder network(@Nullable String network) {
             this.network = network;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
             this.serviceAccount = serviceAccount;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccountScopes(@Nullable List<String> serviceAccountScopes) {
             this.serviceAccountScopes = serviceAccountScopes;
             return this;
@@ -246,14 +226,17 @@ public final class ClusterClusterConfigGceClusterConfig {
         public Builder serviceAccountScopes(String... serviceAccountScopes) {
             return serviceAccountScopes(List.of(serviceAccountScopes));
         }
+        @CustomType.Setter
         public Builder shieldedInstanceConfig(@Nullable ClusterClusterConfigGceClusterConfigShieldedInstanceConfig shieldedInstanceConfig) {
             this.shieldedInstanceConfig = shieldedInstanceConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder subnetwork(@Nullable String subnetwork) {
             this.subnetwork = subnetwork;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -261,11 +244,23 @@ public final class ClusterClusterConfigGceClusterConfig {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
             this.zone = zone;
             return this;
-        }        public ClusterClusterConfigGceClusterConfig build() {
-            return new ClusterClusterConfigGceClusterConfig(internalIpOnly, metadata, network, serviceAccount, serviceAccountScopes, shieldedInstanceConfig, subnetwork, tags, zone);
+        }
+        public ClusterClusterConfigGceClusterConfig build() {
+            final var o = new ClusterClusterConfigGceClusterConfig();
+            o.internalIpOnly = internalIpOnly;
+            o.metadata = metadata;
+            o.network = network;
+            o.serviceAccount = serviceAccount;
+            o.serviceAccountScopes = serviceAccountScopes;
+            o.shieldedInstanceConfig = shieldedInstanceConfig;
+            o.subnetwork = subnetwork;
+            o.tags = tags;
+            o.zone = zone;
+            return o;
         }
     }
 }

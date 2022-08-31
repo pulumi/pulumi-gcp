@@ -14,13 +14,9 @@ public final class WorkflowTemplateParameterValidationValues {
      * @return Optional. Corresponds to the label values of reservation resource.
      * 
      */
-    private final List<String> values;
+    private List<String> values;
 
-    @CustomType.Constructor
-    private WorkflowTemplateParameterValidationValues(@CustomType.Parameter("values") List<String> values) {
-        this.values = values;
-    }
-
+    private WorkflowTemplateParameterValidationValues() {}
     /**
      * @return Optional. Corresponds to the label values of reservation resource.
      * 
@@ -36,27 +32,27 @@ public final class WorkflowTemplateParameterValidationValues {
     public static Builder builder(WorkflowTemplateParameterValidationValues defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplateParameterValidationValues defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public WorkflowTemplateParameterValidationValues build() {
-            return new WorkflowTemplateParameterValidationValues(values);
+        }
+        public WorkflowTemplateParameterValidationValues build() {
+            final var o = new WorkflowTemplateParameterValidationValues();
+            o.values = values;
+            return o;
         }
     }
 }

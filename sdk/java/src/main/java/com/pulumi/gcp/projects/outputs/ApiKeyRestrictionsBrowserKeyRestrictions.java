@@ -14,13 +14,9 @@ public final class ApiKeyRestrictionsBrowserKeyRestrictions {
      * @return A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
      * 
      */
-    private final List<String> allowedReferrers;
+    private List<String> allowedReferrers;
 
-    @CustomType.Constructor
-    private ApiKeyRestrictionsBrowserKeyRestrictions(@CustomType.Parameter("allowedReferrers") List<String> allowedReferrers) {
-        this.allowedReferrers = allowedReferrers;
-    }
-
+    private ApiKeyRestrictionsBrowserKeyRestrictions() {}
     /**
      * @return A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
      * 
@@ -36,27 +32,27 @@ public final class ApiKeyRestrictionsBrowserKeyRestrictions {
     public static Builder builder(ApiKeyRestrictionsBrowserKeyRestrictions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> allowedReferrers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApiKeyRestrictionsBrowserKeyRestrictions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedReferrers = defaults.allowedReferrers;
         }
 
+        @CustomType.Setter
         public Builder allowedReferrers(List<String> allowedReferrers) {
             this.allowedReferrers = Objects.requireNonNull(allowedReferrers);
             return this;
         }
         public Builder allowedReferrers(String... allowedReferrers) {
             return allowedReferrers(List.of(allowedReferrers));
-        }        public ApiKeyRestrictionsBrowserKeyRestrictions build() {
-            return new ApiKeyRestrictionsBrowserKeyRestrictions(allowedReferrers);
+        }
+        public ApiKeyRestrictionsBrowserKeyRestrictions build() {
+            final var o = new ApiKeyRestrictionsBrowserKeyRestrictions();
+            o.allowedReferrers = allowedReferrers;
+            return o;
         }
     }
 }

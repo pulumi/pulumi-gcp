@@ -17,21 +17,14 @@ public final class ClusterNotificationConfigPubsub {
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
      * 
      */
-    private final @Nullable String topic;
+    private @Nullable String topic;
 
-    @CustomType.Constructor
-    private ClusterNotificationConfigPubsub(
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("topic") @Nullable String topic) {
-        this.enabled = enabled;
-        this.topic = topic;
-    }
-
+    private ClusterNotificationConfigPubsub() {}
     /**
      * @return Enable the PodSecurityPolicy controller for this cluster.
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -55,30 +48,32 @@ public final class ClusterNotificationConfigPubsub {
     public static Builder builder(ClusterNotificationConfigPubsub defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
         private @Nullable String topic;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNotificationConfigPubsub defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.topic = defaults.topic;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder topic(@Nullable String topic) {
             this.topic = topic;
             return this;
-        }        public ClusterNotificationConfigPubsub build() {
-            return new ClusterNotificationConfigPubsub(enabled, topic);
+        }
+        public ClusterNotificationConfigPubsub build() {
+            final var o = new ClusterNotificationConfigPubsub();
+            o.enabled = enabled;
+            o.topic = topic;
+            return o;
         }
     }
 }

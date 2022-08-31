@@ -11,28 +11,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectResult {
-    private final String filter;
+    private String filter;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of projects matching the provided filter. Structure is defined below.
      * 
      */
-    private final List<GetProjectProject> projects;
+    private List<GetProjectProject> projects;
 
-    @CustomType.Constructor
-    private GetProjectResult(
-        @CustomType.Parameter("filter") String filter,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("projects") List<GetProjectProject> projects) {
-        this.filter = filter;
-        this.id = id;
-        this.projects = projects;
-    }
-
+    private GetProjectResult() {}
     public String filter() {
         return this.filter;
     }
@@ -58,16 +49,12 @@ public final class GetProjectResult {
     public static Builder builder(GetProjectResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String filter;
         private String id;
         private List<GetProjectProject> projects;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filter = defaults.filter;
@@ -75,22 +62,30 @@ public final class GetProjectResult {
     	      this.projects = defaults.projects;
         }
 
+        @CustomType.Setter
         public Builder filter(String filter) {
             this.filter = Objects.requireNonNull(filter);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder projects(List<GetProjectProject> projects) {
             this.projects = Objects.requireNonNull(projects);
             return this;
         }
         public Builder projects(GetProjectProject... projects) {
             return projects(List.of(projects));
-        }        public GetProjectResult build() {
-            return new GetProjectResult(filter, id, projects);
+        }
+        public GetProjectResult build() {
+            final var o = new GetProjectResult();
+            o.filter = filter;
+            o.id = id;
+            o.projects = projects;
+            return o;
         }
     }
 }

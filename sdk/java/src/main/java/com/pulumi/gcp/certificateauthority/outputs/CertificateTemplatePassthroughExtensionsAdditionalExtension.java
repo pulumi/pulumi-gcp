@@ -14,13 +14,9 @@ public final class CertificateTemplatePassthroughExtensionsAdditionalExtension {
      * @return Required. The parts of an OID path. The most significant parts of the path come first.
      * 
      */
-    private final List<Integer> objectIdPaths;
+    private List<Integer> objectIdPaths;
 
-    @CustomType.Constructor
-    private CertificateTemplatePassthroughExtensionsAdditionalExtension(@CustomType.Parameter("objectIdPaths") List<Integer> objectIdPaths) {
-        this.objectIdPaths = objectIdPaths;
-    }
-
+    private CertificateTemplatePassthroughExtensionsAdditionalExtension() {}
     /**
      * @return Required. The parts of an OID path. The most significant parts of the path come first.
      * 
@@ -36,27 +32,27 @@ public final class CertificateTemplatePassthroughExtensionsAdditionalExtension {
     public static Builder builder(CertificateTemplatePassthroughExtensionsAdditionalExtension defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<Integer> objectIdPaths;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateTemplatePassthroughExtensionsAdditionalExtension defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.objectIdPaths = defaults.objectIdPaths;
         }
 
+        @CustomType.Setter
         public Builder objectIdPaths(List<Integer> objectIdPaths) {
             this.objectIdPaths = Objects.requireNonNull(objectIdPaths);
             return this;
         }
         public Builder objectIdPaths(Integer... objectIdPaths) {
             return objectIdPaths(List.of(objectIdPaths));
-        }        public CertificateTemplatePassthroughExtensionsAdditionalExtension build() {
-            return new CertificateTemplatePassthroughExtensionsAdditionalExtension(objectIdPaths);
+        }
+        public CertificateTemplatePassthroughExtensionsAdditionalExtension build() {
+            final var o = new CertificateTemplatePassthroughExtensionsAdditionalExtension();
+            o.objectIdPaths = objectIdPaths;
+            return o;
         }
     }
 }

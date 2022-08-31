@@ -13,13 +13,9 @@ public final class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFie
      * @return Name describing the field.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField(@CustomType.Parameter("name") String name) {
-        this.name = name;
-    }
-
+    private PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField() {}
     /**
      * @return Name describing the field.
      * 
@@ -35,24 +31,24 @@ public final class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFie
     public static Builder builder(PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField build() {
-            return new PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField(name);
+        }
+        public PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField build() {
+            final var o = new PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField();
+            o.name = name;
+            return o;
         }
     }
 }

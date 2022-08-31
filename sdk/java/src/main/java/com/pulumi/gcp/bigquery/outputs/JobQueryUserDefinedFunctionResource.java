@@ -16,21 +16,14 @@ public final class JobQueryUserDefinedFunctionResource {
      * Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
      * 
      */
-    private final @Nullable String inlineCode;
+    private @Nullable String inlineCode;
     /**
      * @return A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
      * 
      */
-    private final @Nullable String resourceUri;
+    private @Nullable String resourceUri;
 
-    @CustomType.Constructor
-    private JobQueryUserDefinedFunctionResource(
-        @CustomType.Parameter("inlineCode") @Nullable String inlineCode,
-        @CustomType.Parameter("resourceUri") @Nullable String resourceUri) {
-        this.inlineCode = inlineCode;
-        this.resourceUri = resourceUri;
-    }
-
+    private JobQueryUserDefinedFunctionResource() {}
     /**
      * @return An inline resource that contains code for a user-defined function (UDF).
      * Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
@@ -54,30 +47,32 @@ public final class JobQueryUserDefinedFunctionResource {
     public static Builder builder(JobQueryUserDefinedFunctionResource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String inlineCode;
         private @Nullable String resourceUri;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobQueryUserDefinedFunctionResource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.inlineCode = defaults.inlineCode;
     	      this.resourceUri = defaults.resourceUri;
         }
 
+        @CustomType.Setter
         public Builder inlineCode(@Nullable String inlineCode) {
             this.inlineCode = inlineCode;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceUri(@Nullable String resourceUri) {
             this.resourceUri = resourceUri;
             return this;
-        }        public JobQueryUserDefinedFunctionResource build() {
-            return new JobQueryUserDefinedFunctionResource(inlineCode, resourceUri);
+        }
+        public JobQueryUserDefinedFunctionResource build() {
+            final var o = new JobQueryUserDefinedFunctionResource();
+            o.inlineCode = inlineCode;
+            o.resourceUri = resourceUri;
+            return o;
         }
     }
 }

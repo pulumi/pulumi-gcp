@@ -14,23 +14,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromTemplateBootDiskInitializeParams {
-    private final @Nullable String image;
-    private final @Nullable Map<String,Object> labels;
-    private final @Nullable Integer size;
-    private final @Nullable String type;
+    private @Nullable String image;
+    private @Nullable Map<String,Object> labels;
+    private @Nullable Integer size;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private InstanceFromTemplateBootDiskInitializeParams(
-        @CustomType.Parameter("image") @Nullable String image,
-        @CustomType.Parameter("labels") @Nullable Map<String,Object> labels,
-        @CustomType.Parameter("size") @Nullable Integer size,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.image = image;
-        this.labels = labels;
-        this.size = size;
-        this.type = type;
-    }
-
+    private InstanceFromTemplateBootDiskInitializeParams() {}
     public Optional<String> image() {
         return Optional.ofNullable(this.image);
     }
@@ -51,17 +40,13 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
     public static Builder builder(InstanceFromTemplateBootDiskInitializeParams defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String image;
         private @Nullable Map<String,Object> labels;
         private @Nullable Integer size;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceFromTemplateBootDiskInitializeParams defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.image = defaults.image;
@@ -70,23 +55,33 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder image(@Nullable String image) {
             this.image = image;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder size(@Nullable Integer size) {
             this.size = size;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public InstanceFromTemplateBootDiskInitializeParams build() {
-            return new InstanceFromTemplateBootDiskInitializeParams(image, labels, size, type);
+        }
+        public InstanceFromTemplateBootDiskInitializeParams build() {
+            final var o = new InstanceFromTemplateBootDiskInitializeParams();
+            o.image = image;
+            o.labels = labels;
+            o.size = size;
+            o.type = type;
+            return o;
         }
     }
 }

@@ -15,13 +15,9 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
      * @return An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
      * 
      */
-    private final @Nullable List<Integer> objectIdPaths;
+    private @Nullable List<Integer> objectIdPaths;
 
-    @CustomType.Constructor
-    private CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId(@CustomType.Parameter("objectIdPaths") @Nullable List<Integer> objectIdPaths) {
-        this.objectIdPaths = objectIdPaths;
-    }
-
+    private CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId() {}
     /**
      * @return An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
      * 
@@ -37,27 +33,27 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
     public static Builder builder(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<Integer> objectIdPaths;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.objectIdPaths = defaults.objectIdPaths;
         }
 
+        @CustomType.Setter
         public Builder objectIdPaths(@Nullable List<Integer> objectIdPaths) {
             this.objectIdPaths = objectIdPaths;
             return this;
         }
         public Builder objectIdPaths(Integer... objectIdPaths) {
             return objectIdPaths(List.of(objectIdPaths));
-        }        public CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId build() {
-            return new CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId(objectIdPaths);
+        }
+        public CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId build() {
+            final var o = new CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId();
+            o.objectIdPaths = objectIdPaths;
+            return o;
         }
     }
 }

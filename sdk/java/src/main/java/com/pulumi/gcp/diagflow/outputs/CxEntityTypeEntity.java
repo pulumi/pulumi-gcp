@@ -17,21 +17,14 @@ public final class CxEntityTypeEntity {
      * For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
      * 
      */
-    private final @Nullable List<String> synonyms;
+    private @Nullable List<String> synonyms;
     /**
      * @return The word or phrase to be excluded.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private CxEntityTypeEntity(
-        @CustomType.Parameter("synonyms") @Nullable List<String> synonyms,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.synonyms = synonyms;
-        this.value = value;
-    }
-
+    private CxEntityTypeEntity() {}
     /**
      * @return A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
      * For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
@@ -55,21 +48,18 @@ public final class CxEntityTypeEntity {
     public static Builder builder(CxEntityTypeEntity defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> synonyms;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CxEntityTypeEntity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.synonyms = defaults.synonyms;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder synonyms(@Nullable List<String> synonyms) {
             this.synonyms = synonyms;
             return this;
@@ -77,11 +67,16 @@ public final class CxEntityTypeEntity {
         public Builder synonyms(String... synonyms) {
             return synonyms(List.of(synonyms));
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public CxEntityTypeEntity build() {
-            return new CxEntityTypeEntity(synonyms, value);
+        }
+        public CxEntityTypeEntity build() {
+            final var o = new CxEntityTypeEntity();
+            o.synonyms = synonyms;
+            o.value = value;
+            return o;
         }
     }
 }

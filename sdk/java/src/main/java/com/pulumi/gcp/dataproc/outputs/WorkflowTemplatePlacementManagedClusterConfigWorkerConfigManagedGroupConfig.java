@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig {
-    private final @Nullable String instanceGroupManagerName;
-    private final @Nullable String instanceTemplateName;
+    private @Nullable String instanceGroupManagerName;
+    private @Nullable String instanceTemplateName;
 
-    @CustomType.Constructor
-    private WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig(
-        @CustomType.Parameter("instanceGroupManagerName") @Nullable String instanceGroupManagerName,
-        @CustomType.Parameter("instanceTemplateName") @Nullable String instanceTemplateName) {
-        this.instanceGroupManagerName = instanceGroupManagerName;
-        this.instanceTemplateName = instanceTemplateName;
-    }
-
+    private WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig() {}
     public Optional<String> instanceGroupManagerName() {
         return Optional.ofNullable(this.instanceGroupManagerName);
     }
@@ -36,30 +29,32 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigMana
     public static Builder builder(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String instanceGroupManagerName;
         private @Nullable String instanceTemplateName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instanceGroupManagerName = defaults.instanceGroupManagerName;
     	      this.instanceTemplateName = defaults.instanceTemplateName;
         }
 
+        @CustomType.Setter
         public Builder instanceGroupManagerName(@Nullable String instanceGroupManagerName) {
             this.instanceGroupManagerName = instanceGroupManagerName;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceTemplateName(@Nullable String instanceTemplateName) {
             this.instanceTemplateName = instanceTemplateName;
             return this;
-        }        public WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig build() {
-            return new WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig(instanceGroupManagerName, instanceTemplateName);
+        }
+        public WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig build() {
+            final var o = new WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig();
+            o.instanceGroupManagerName = instanceGroupManagerName;
+            o.instanceTemplateName = instanceTemplateName;
+            return o;
         }
     }
 }

@@ -15,22 +15,15 @@ public final class RouterPeerAdvertisedIpRange {
      * @return User-specified description for the IP range.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return The IP range to advertise. The value must be a
      * CIDR-formatted string.
      * 
      */
-    private final String range;
+    private String range;
 
-    @CustomType.Constructor
-    private RouterPeerAdvertisedIpRange(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("range") String range) {
-        this.description = description;
-        this.range = range;
-    }
-
+    private RouterPeerAdvertisedIpRange() {}
     /**
      * @return User-specified description for the IP range.
      * 
@@ -54,30 +47,32 @@ public final class RouterPeerAdvertisedIpRange {
     public static Builder builder(RouterPeerAdvertisedIpRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private String range;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RouterPeerAdvertisedIpRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.range = defaults.range;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder range(String range) {
             this.range = Objects.requireNonNull(range);
             return this;
-        }        public RouterPeerAdvertisedIpRange build() {
-            return new RouterPeerAdvertisedIpRange(description, range);
+        }
+        public RouterPeerAdvertisedIpRange build() {
+            final var o = new RouterPeerAdvertisedIpRange();
+            o.description = description;
+            o.range = range;
+            return o;
         }
     }
 }

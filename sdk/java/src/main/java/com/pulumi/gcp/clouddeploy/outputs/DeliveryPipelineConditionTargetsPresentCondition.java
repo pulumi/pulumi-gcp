@@ -13,20 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeliveryPipelineConditionTargetsPresentCondition {
-    private final @Nullable List<String> missingTargets;
-    private final @Nullable Boolean status;
-    private final @Nullable String updateTime;
+    private @Nullable List<String> missingTargets;
+    private @Nullable Boolean status;
+    private @Nullable String updateTime;
 
-    @CustomType.Constructor
-    private DeliveryPipelineConditionTargetsPresentCondition(
-        @CustomType.Parameter("missingTargets") @Nullable List<String> missingTargets,
-        @CustomType.Parameter("status") @Nullable Boolean status,
-        @CustomType.Parameter("updateTime") @Nullable String updateTime) {
-        this.missingTargets = missingTargets;
-        this.status = status;
-        this.updateTime = updateTime;
-    }
-
+    private DeliveryPipelineConditionTargetsPresentCondition() {}
     public List<String> missingTargets() {
         return this.missingTargets == null ? List.of() : this.missingTargets;
     }
@@ -44,16 +35,12 @@ public final class DeliveryPipelineConditionTargetsPresentCondition {
     public static Builder builder(DeliveryPipelineConditionTargetsPresentCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> missingTargets;
         private @Nullable Boolean status;
         private @Nullable String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DeliveryPipelineConditionTargetsPresentCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.missingTargets = defaults.missingTargets;
@@ -61,6 +48,7 @@ public final class DeliveryPipelineConditionTargetsPresentCondition {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder missingTargets(@Nullable List<String> missingTargets) {
             this.missingTargets = missingTargets;
             return this;
@@ -68,15 +56,22 @@ public final class DeliveryPipelineConditionTargetsPresentCondition {
         public Builder missingTargets(String... missingTargets) {
             return missingTargets(List.of(missingTargets));
         }
+        @CustomType.Setter
         public Builder status(@Nullable Boolean status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
             this.updateTime = updateTime;
             return this;
-        }        public DeliveryPipelineConditionTargetsPresentCondition build() {
-            return new DeliveryPipelineConditionTargetsPresentCondition(missingTargets, status, updateTime);
+        }
+        public DeliveryPipelineConditionTargetsPresentCondition build() {
+            final var o = new DeliveryPipelineConditionTargetsPresentCondition();
+            o.missingTargets = missingTargets;
+            o.status = status;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

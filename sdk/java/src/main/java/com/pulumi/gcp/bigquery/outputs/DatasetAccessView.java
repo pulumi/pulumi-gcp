@@ -13,30 +13,21 @@ public final class DatasetAccessView {
      * @return The ID of the dataset containing this table.
      * 
      */
-    private final String datasetId;
+    private String datasetId;
     /**
      * @return The ID of the project containing this table.
      * 
      */
-    private final String projectId;
+    private String projectId;
     /**
      * @return The ID of the table. The ID must contain only letters (a-z,
      * A-Z), numbers (0-9), or underscores (_). The maximum length
      * is 1,024 characters.
      * 
      */
-    private final String tableId;
+    private String tableId;
 
-    @CustomType.Constructor
-    private DatasetAccessView(
-        @CustomType.Parameter("datasetId") String datasetId,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("tableId") String tableId) {
-        this.datasetId = datasetId;
-        this.projectId = projectId;
-        this.tableId = tableId;
-    }
-
+    private DatasetAccessView() {}
     /**
      * @return The ID of the dataset containing this table.
      * 
@@ -68,16 +59,12 @@ public final class DatasetAccessView {
     public static Builder builder(DatasetAccessView defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String datasetId;
         private String projectId;
         private String tableId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatasetAccessView defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datasetId = defaults.datasetId;
@@ -85,19 +72,27 @@ public final class DatasetAccessView {
     	      this.tableId = defaults.tableId;
         }
 
+        @CustomType.Setter
         public Builder datasetId(String datasetId) {
             this.datasetId = Objects.requireNonNull(datasetId);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder tableId(String tableId) {
             this.tableId = Objects.requireNonNull(tableId);
             return this;
-        }        public DatasetAccessView build() {
-            return new DatasetAccessView(datasetId, projectId, tableId);
+        }
+        public DatasetAccessView build() {
+            final var o = new DatasetAccessView();
+            o.datasetId = datasetId;
+            o.projectId = projectId;
+            o.tableId = tableId;
+            return o;
         }
     }
 }

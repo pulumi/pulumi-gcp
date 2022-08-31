@@ -16,21 +16,14 @@ public final class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
      * @return If set to true, enables CAAP for L7 DDoS detection.
      * 
      */
-    private final @Nullable Boolean enable;
+    private @Nullable Boolean enable;
     /**
      * @return Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
      * 
      */
-    private final @Nullable String ruleVisibility;
+    private @Nullable String ruleVisibility;
 
-    @CustomType.Constructor
-    private SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig(
-        @CustomType.Parameter("enable") @Nullable Boolean enable,
-        @CustomType.Parameter("ruleVisibility") @Nullable String ruleVisibility) {
-        this.enable = enable;
-        this.ruleVisibility = ruleVisibility;
-    }
-
+    private SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig() {}
     /**
      * @return If set to true, enables CAAP for L7 DDoS detection.
      * 
@@ -53,30 +46,32 @@ public final class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
     public static Builder builder(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enable;
         private @Nullable String ruleVisibility;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
     	      this.ruleVisibility = defaults.ruleVisibility;
         }
 
+        @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
             this.enable = enable;
             return this;
         }
+        @CustomType.Setter
         public Builder ruleVisibility(@Nullable String ruleVisibility) {
             this.ruleVisibility = ruleVisibility;
             return this;
-        }        public SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig build() {
-            return new SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig(enable, ruleVisibility);
+        }
+        public SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig build() {
+            final var o = new SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig();
+            o.enable = enable;
+            o.ruleVisibility = ruleVisibility;
+            return o;
         }
     }
 }

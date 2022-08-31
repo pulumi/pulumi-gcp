@@ -16,28 +16,19 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
      * year by itself or a year and month where the day is not significant.
      * 
      */
-    private final @Nullable Integer day;
+    private @Nullable Integer day;
     /**
      * @return Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.
      * 
      */
-    private final @Nullable Integer month;
+    private @Nullable Integer month;
     /**
      * @return Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
      * 
      */
-    private final @Nullable Integer year;
+    private @Nullable Integer year;
 
-    @CustomType.Constructor
-    private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue(
-        @CustomType.Parameter("day") @Nullable Integer day,
-        @CustomType.Parameter("month") @Nullable Integer month,
-        @CustomType.Parameter("year") @Nullable Integer year) {
-        this.day = day;
-        this.month = month;
-        this.year = year;
-    }
-
+    private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue() {}
     /**
      * @return Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
      * year by itself or a year and month where the day is not significant.
@@ -68,16 +59,12 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     public static Builder builder(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer day;
         private @Nullable Integer month;
         private @Nullable Integer year;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.day = defaults.day;
@@ -85,19 +72,27 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     	      this.year = defaults.year;
         }
 
+        @CustomType.Setter
         public Builder day(@Nullable Integer day) {
             this.day = day;
             return this;
         }
+        @CustomType.Setter
         public Builder month(@Nullable Integer month) {
             this.month = month;
             return this;
         }
+        @CustomType.Setter
         public Builder year(@Nullable Integer year) {
             this.year = year;
             return this;
-        }        public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue build() {
-            return new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue(day, month, year);
+        }
+        public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue build() {
+            final var o = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue();
+            o.day = day;
+            o.month = month;
+            o.year = year;
+            return o;
         }
     }
 }

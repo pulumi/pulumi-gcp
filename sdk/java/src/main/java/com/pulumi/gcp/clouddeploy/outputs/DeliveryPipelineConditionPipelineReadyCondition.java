@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeliveryPipelineConditionPipelineReadyCondition {
-    private final @Nullable Boolean status;
-    private final @Nullable String updateTime;
+    private @Nullable Boolean status;
+    private @Nullable String updateTime;
 
-    @CustomType.Constructor
-    private DeliveryPipelineConditionPipelineReadyCondition(
-        @CustomType.Parameter("status") @Nullable Boolean status,
-        @CustomType.Parameter("updateTime") @Nullable String updateTime) {
-        this.status = status;
-        this.updateTime = updateTime;
-    }
-
+    private DeliveryPipelineConditionPipelineReadyCondition() {}
     public Optional<Boolean> status() {
         return Optional.ofNullable(this.status);
     }
@@ -37,30 +30,32 @@ public final class DeliveryPipelineConditionPipelineReadyCondition {
     public static Builder builder(DeliveryPipelineConditionPipelineReadyCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean status;
         private @Nullable String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DeliveryPipelineConditionPipelineReadyCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.status = defaults.status;
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder status(@Nullable Boolean status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
             this.updateTime = updateTime;
             return this;
-        }        public DeliveryPipelineConditionPipelineReadyCondition build() {
-            return new DeliveryPipelineConditionPipelineReadyCondition(status, updateTime);
+        }
+        public DeliveryPipelineConditionPipelineReadyCondition build() {
+            final var o = new DeliveryPipelineConditionPipelineReadyCondition();
+            o.status = status;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

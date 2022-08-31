@@ -13,13 +13,9 @@ public final class OrganizationFeedFeedOutputConfigPubsubDestination {
      * @return Destination on Cloud Pubsub topic.
      * 
      */
-    private final String topic;
+    private String topic;
 
-    @CustomType.Constructor
-    private OrganizationFeedFeedOutputConfigPubsubDestination(@CustomType.Parameter("topic") String topic) {
-        this.topic = topic;
-    }
-
+    private OrganizationFeedFeedOutputConfigPubsubDestination() {}
     /**
      * @return Destination on Cloud Pubsub topic.
      * 
@@ -35,24 +31,24 @@ public final class OrganizationFeedFeedOutputConfigPubsubDestination {
     public static Builder builder(OrganizationFeedFeedOutputConfigPubsubDestination defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String topic;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OrganizationFeedFeedOutputConfigPubsubDestination defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.topic = defaults.topic;
         }
 
+        @CustomType.Setter
         public Builder topic(String topic) {
             this.topic = Objects.requireNonNull(topic);
             return this;
-        }        public OrganizationFeedFeedOutputConfigPubsubDestination build() {
-            return new OrganizationFeedFeedOutputConfigPubsubDestination(topic);
+        }
+        public OrganizationFeedFeedOutputConfigPubsubDestination build() {
+            final var o = new OrganizationFeedFeedOutputConfigPubsubDestination();
+            o.topic = topic;
+            return o;
         }
     }
 }

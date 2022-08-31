@@ -17,35 +17,24 @@ public final class TriggerDestination {
      * @return [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
      * 
      */
-    private final @Nullable String cloudFunction;
+    private @Nullable String cloudFunction;
     /**
      * @return Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
      * 
      */
-    private final @Nullable TriggerDestinationCloudRunService cloudRunService;
+    private @Nullable TriggerDestinationCloudRunService cloudRunService;
     /**
      * @return A GKE service capable of receiving events. The service should be running in the same project as the trigger.
      * 
      */
-    private final @Nullable TriggerDestinationGke gke;
+    private @Nullable TriggerDestinationGke gke;
     /**
      * @return The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
      * 
      */
-    private final @Nullable String workflow;
+    private @Nullable String workflow;
 
-    @CustomType.Constructor
-    private TriggerDestination(
-        @CustomType.Parameter("cloudFunction") @Nullable String cloudFunction,
-        @CustomType.Parameter("cloudRunService") @Nullable TriggerDestinationCloudRunService cloudRunService,
-        @CustomType.Parameter("gke") @Nullable TriggerDestinationGke gke,
-        @CustomType.Parameter("workflow") @Nullable String workflow) {
-        this.cloudFunction = cloudFunction;
-        this.cloudRunService = cloudRunService;
-        this.gke = gke;
-        this.workflow = workflow;
-    }
-
+    private TriggerDestination() {}
     /**
      * @return [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
      * 
@@ -82,17 +71,13 @@ public final class TriggerDestination {
     public static Builder builder(TriggerDestination defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cloudFunction;
         private @Nullable TriggerDestinationCloudRunService cloudRunService;
         private @Nullable TriggerDestinationGke gke;
         private @Nullable String workflow;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerDestination defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cloudFunction = defaults.cloudFunction;
@@ -101,23 +86,33 @@ public final class TriggerDestination {
     	      this.workflow = defaults.workflow;
         }
 
+        @CustomType.Setter
         public Builder cloudFunction(@Nullable String cloudFunction) {
             this.cloudFunction = cloudFunction;
             return this;
         }
+        @CustomType.Setter
         public Builder cloudRunService(@Nullable TriggerDestinationCloudRunService cloudRunService) {
             this.cloudRunService = cloudRunService;
             return this;
         }
+        @CustomType.Setter
         public Builder gke(@Nullable TriggerDestinationGke gke) {
             this.gke = gke;
             return this;
         }
+        @CustomType.Setter
         public Builder workflow(@Nullable String workflow) {
             this.workflow = workflow;
             return this;
-        }        public TriggerDestination build() {
-            return new TriggerDestination(cloudFunction, cloudRunService, gke, workflow);
+        }
+        public TriggerDestination build() {
+            final var o = new TriggerDestination();
+            o.cloudFunction = cloudFunction;
+            o.cloudRunService = cloudRunService;
+            o.gke = gke;
+            o.workflow = workflow;
+            return o;
         }
     }
 }

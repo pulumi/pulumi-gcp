@@ -20,44 +20,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterAddonsConfig {
-    private final List<GetClusterAddonsConfigCloudrunConfig> cloudrunConfigs;
-    private final List<GetClusterAddonsConfigConfigConnectorConfig> configConnectorConfigs;
-    private final List<GetClusterAddonsConfigDnsCacheConfig> dnsCacheConfigs;
-    private final List<GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig> gcePersistentDiskCsiDriverConfigs;
-    private final List<GetClusterAddonsConfigGcpFilestoreCsiDriverConfig> gcpFilestoreCsiDriverConfigs;
-    private final List<GetClusterAddonsConfigGkeBackupAgentConfig> gkeBackupAgentConfigs;
-    private final List<GetClusterAddonsConfigHorizontalPodAutoscaling> horizontalPodAutoscalings;
-    private final List<GetClusterAddonsConfigHttpLoadBalancing> httpLoadBalancings;
-    private final List<GetClusterAddonsConfigIstioConfig> istioConfigs;
-    private final List<GetClusterAddonsConfigKalmConfig> kalmConfigs;
-    private final List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs;
+    private List<GetClusterAddonsConfigCloudrunConfig> cloudrunConfigs;
+    private List<GetClusterAddonsConfigConfigConnectorConfig> configConnectorConfigs;
+    private List<GetClusterAddonsConfigDnsCacheConfig> dnsCacheConfigs;
+    private List<GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig> gcePersistentDiskCsiDriverConfigs;
+    private List<GetClusterAddonsConfigGcpFilestoreCsiDriverConfig> gcpFilestoreCsiDriverConfigs;
+    private List<GetClusterAddonsConfigGkeBackupAgentConfig> gkeBackupAgentConfigs;
+    private List<GetClusterAddonsConfigHorizontalPodAutoscaling> horizontalPodAutoscalings;
+    private List<GetClusterAddonsConfigHttpLoadBalancing> httpLoadBalancings;
+    private List<GetClusterAddonsConfigIstioConfig> istioConfigs;
+    private List<GetClusterAddonsConfigKalmConfig> kalmConfigs;
+    private List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs;
 
-    @CustomType.Constructor
-    private GetClusterAddonsConfig(
-        @CustomType.Parameter("cloudrunConfigs") List<GetClusterAddonsConfigCloudrunConfig> cloudrunConfigs,
-        @CustomType.Parameter("configConnectorConfigs") List<GetClusterAddonsConfigConfigConnectorConfig> configConnectorConfigs,
-        @CustomType.Parameter("dnsCacheConfigs") List<GetClusterAddonsConfigDnsCacheConfig> dnsCacheConfigs,
-        @CustomType.Parameter("gcePersistentDiskCsiDriverConfigs") List<GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig> gcePersistentDiskCsiDriverConfigs,
-        @CustomType.Parameter("gcpFilestoreCsiDriverConfigs") List<GetClusterAddonsConfigGcpFilestoreCsiDriverConfig> gcpFilestoreCsiDriverConfigs,
-        @CustomType.Parameter("gkeBackupAgentConfigs") List<GetClusterAddonsConfigGkeBackupAgentConfig> gkeBackupAgentConfigs,
-        @CustomType.Parameter("horizontalPodAutoscalings") List<GetClusterAddonsConfigHorizontalPodAutoscaling> horizontalPodAutoscalings,
-        @CustomType.Parameter("httpLoadBalancings") List<GetClusterAddonsConfigHttpLoadBalancing> httpLoadBalancings,
-        @CustomType.Parameter("istioConfigs") List<GetClusterAddonsConfigIstioConfig> istioConfigs,
-        @CustomType.Parameter("kalmConfigs") List<GetClusterAddonsConfigKalmConfig> kalmConfigs,
-        @CustomType.Parameter("networkPolicyConfigs") List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs) {
-        this.cloudrunConfigs = cloudrunConfigs;
-        this.configConnectorConfigs = configConnectorConfigs;
-        this.dnsCacheConfigs = dnsCacheConfigs;
-        this.gcePersistentDiskCsiDriverConfigs = gcePersistentDiskCsiDriverConfigs;
-        this.gcpFilestoreCsiDriverConfigs = gcpFilestoreCsiDriverConfigs;
-        this.gkeBackupAgentConfigs = gkeBackupAgentConfigs;
-        this.horizontalPodAutoscalings = horizontalPodAutoscalings;
-        this.httpLoadBalancings = httpLoadBalancings;
-        this.istioConfigs = istioConfigs;
-        this.kalmConfigs = kalmConfigs;
-        this.networkPolicyConfigs = networkPolicyConfigs;
-    }
-
+    private GetClusterAddonsConfig() {}
     public List<GetClusterAddonsConfigCloudrunConfig> cloudrunConfigs() {
         return this.cloudrunConfigs;
     }
@@ -99,7 +74,7 @@ public final class GetClusterAddonsConfig {
     public static Builder builder(GetClusterAddonsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetClusterAddonsConfigCloudrunConfig> cloudrunConfigs;
         private List<GetClusterAddonsConfigConfigConnectorConfig> configConnectorConfigs;
@@ -112,11 +87,7 @@ public final class GetClusterAddonsConfig {
         private List<GetClusterAddonsConfigIstioConfig> istioConfigs;
         private List<GetClusterAddonsConfigKalmConfig> kalmConfigs;
         private List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterAddonsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cloudrunConfigs = defaults.cloudrunConfigs;
@@ -132,6 +103,7 @@ public final class GetClusterAddonsConfig {
     	      this.networkPolicyConfigs = defaults.networkPolicyConfigs;
         }
 
+        @CustomType.Setter
         public Builder cloudrunConfigs(List<GetClusterAddonsConfigCloudrunConfig> cloudrunConfigs) {
             this.cloudrunConfigs = Objects.requireNonNull(cloudrunConfigs);
             return this;
@@ -139,6 +111,7 @@ public final class GetClusterAddonsConfig {
         public Builder cloudrunConfigs(GetClusterAddonsConfigCloudrunConfig... cloudrunConfigs) {
             return cloudrunConfigs(List.of(cloudrunConfigs));
         }
+        @CustomType.Setter
         public Builder configConnectorConfigs(List<GetClusterAddonsConfigConfigConnectorConfig> configConnectorConfigs) {
             this.configConnectorConfigs = Objects.requireNonNull(configConnectorConfigs);
             return this;
@@ -146,6 +119,7 @@ public final class GetClusterAddonsConfig {
         public Builder configConnectorConfigs(GetClusterAddonsConfigConfigConnectorConfig... configConnectorConfigs) {
             return configConnectorConfigs(List.of(configConnectorConfigs));
         }
+        @CustomType.Setter
         public Builder dnsCacheConfigs(List<GetClusterAddonsConfigDnsCacheConfig> dnsCacheConfigs) {
             this.dnsCacheConfigs = Objects.requireNonNull(dnsCacheConfigs);
             return this;
@@ -153,6 +127,7 @@ public final class GetClusterAddonsConfig {
         public Builder dnsCacheConfigs(GetClusterAddonsConfigDnsCacheConfig... dnsCacheConfigs) {
             return dnsCacheConfigs(List.of(dnsCacheConfigs));
         }
+        @CustomType.Setter
         public Builder gcePersistentDiskCsiDriverConfigs(List<GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig> gcePersistentDiskCsiDriverConfigs) {
             this.gcePersistentDiskCsiDriverConfigs = Objects.requireNonNull(gcePersistentDiskCsiDriverConfigs);
             return this;
@@ -160,6 +135,7 @@ public final class GetClusterAddonsConfig {
         public Builder gcePersistentDiskCsiDriverConfigs(GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig... gcePersistentDiskCsiDriverConfigs) {
             return gcePersistentDiskCsiDriverConfigs(List.of(gcePersistentDiskCsiDriverConfigs));
         }
+        @CustomType.Setter
         public Builder gcpFilestoreCsiDriverConfigs(List<GetClusterAddonsConfigGcpFilestoreCsiDriverConfig> gcpFilestoreCsiDriverConfigs) {
             this.gcpFilestoreCsiDriverConfigs = Objects.requireNonNull(gcpFilestoreCsiDriverConfigs);
             return this;
@@ -167,6 +143,7 @@ public final class GetClusterAddonsConfig {
         public Builder gcpFilestoreCsiDriverConfigs(GetClusterAddonsConfigGcpFilestoreCsiDriverConfig... gcpFilestoreCsiDriverConfigs) {
             return gcpFilestoreCsiDriverConfigs(List.of(gcpFilestoreCsiDriverConfigs));
         }
+        @CustomType.Setter
         public Builder gkeBackupAgentConfigs(List<GetClusterAddonsConfigGkeBackupAgentConfig> gkeBackupAgentConfigs) {
             this.gkeBackupAgentConfigs = Objects.requireNonNull(gkeBackupAgentConfigs);
             return this;
@@ -174,6 +151,7 @@ public final class GetClusterAddonsConfig {
         public Builder gkeBackupAgentConfigs(GetClusterAddonsConfigGkeBackupAgentConfig... gkeBackupAgentConfigs) {
             return gkeBackupAgentConfigs(List.of(gkeBackupAgentConfigs));
         }
+        @CustomType.Setter
         public Builder horizontalPodAutoscalings(List<GetClusterAddonsConfigHorizontalPodAutoscaling> horizontalPodAutoscalings) {
             this.horizontalPodAutoscalings = Objects.requireNonNull(horizontalPodAutoscalings);
             return this;
@@ -181,6 +159,7 @@ public final class GetClusterAddonsConfig {
         public Builder horizontalPodAutoscalings(GetClusterAddonsConfigHorizontalPodAutoscaling... horizontalPodAutoscalings) {
             return horizontalPodAutoscalings(List.of(horizontalPodAutoscalings));
         }
+        @CustomType.Setter
         public Builder httpLoadBalancings(List<GetClusterAddonsConfigHttpLoadBalancing> httpLoadBalancings) {
             this.httpLoadBalancings = Objects.requireNonNull(httpLoadBalancings);
             return this;
@@ -188,6 +167,7 @@ public final class GetClusterAddonsConfig {
         public Builder httpLoadBalancings(GetClusterAddonsConfigHttpLoadBalancing... httpLoadBalancings) {
             return httpLoadBalancings(List.of(httpLoadBalancings));
         }
+        @CustomType.Setter
         public Builder istioConfigs(List<GetClusterAddonsConfigIstioConfig> istioConfigs) {
             this.istioConfigs = Objects.requireNonNull(istioConfigs);
             return this;
@@ -195,6 +175,7 @@ public final class GetClusterAddonsConfig {
         public Builder istioConfigs(GetClusterAddonsConfigIstioConfig... istioConfigs) {
             return istioConfigs(List.of(istioConfigs));
         }
+        @CustomType.Setter
         public Builder kalmConfigs(List<GetClusterAddonsConfigKalmConfig> kalmConfigs) {
             this.kalmConfigs = Objects.requireNonNull(kalmConfigs);
             return this;
@@ -202,14 +183,28 @@ public final class GetClusterAddonsConfig {
         public Builder kalmConfigs(GetClusterAddonsConfigKalmConfig... kalmConfigs) {
             return kalmConfigs(List.of(kalmConfigs));
         }
+        @CustomType.Setter
         public Builder networkPolicyConfigs(List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs) {
             this.networkPolicyConfigs = Objects.requireNonNull(networkPolicyConfigs);
             return this;
         }
         public Builder networkPolicyConfigs(GetClusterAddonsConfigNetworkPolicyConfig... networkPolicyConfigs) {
             return networkPolicyConfigs(List.of(networkPolicyConfigs));
-        }        public GetClusterAddonsConfig build() {
-            return new GetClusterAddonsConfig(cloudrunConfigs, configConnectorConfigs, dnsCacheConfigs, gcePersistentDiskCsiDriverConfigs, gcpFilestoreCsiDriverConfigs, gkeBackupAgentConfigs, horizontalPodAutoscalings, httpLoadBalancings, istioConfigs, kalmConfigs, networkPolicyConfigs);
+        }
+        public GetClusterAddonsConfig build() {
+            final var o = new GetClusterAddonsConfig();
+            o.cloudrunConfigs = cloudrunConfigs;
+            o.configConnectorConfigs = configConnectorConfigs;
+            o.dnsCacheConfigs = dnsCacheConfigs;
+            o.gcePersistentDiskCsiDriverConfigs = gcePersistentDiskCsiDriverConfigs;
+            o.gcpFilestoreCsiDriverConfigs = gcpFilestoreCsiDriverConfigs;
+            o.gkeBackupAgentConfigs = gkeBackupAgentConfigs;
+            o.horizontalPodAutoscalings = horizontalPodAutoscalings;
+            o.httpLoadBalancings = httpLoadBalancings;
+            o.istioConfigs = istioConfigs;
+            o.kalmConfigs = kalmConfigs;
+            o.networkPolicyConfigs = networkPolicyConfigs;
+            return o;
         }
     }
 }

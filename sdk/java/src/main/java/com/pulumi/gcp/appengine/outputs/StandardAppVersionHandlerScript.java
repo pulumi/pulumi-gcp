@@ -13,13 +13,9 @@ public final class StandardAppVersionHandlerScript {
      * @return Path to the script from the application root directory.
      * 
      */
-    private final String scriptPath;
+    private String scriptPath;
 
-    @CustomType.Constructor
-    private StandardAppVersionHandlerScript(@CustomType.Parameter("scriptPath") String scriptPath) {
-        this.scriptPath = scriptPath;
-    }
-
+    private StandardAppVersionHandlerScript() {}
     /**
      * @return Path to the script from the application root directory.
      * 
@@ -35,24 +31,24 @@ public final class StandardAppVersionHandlerScript {
     public static Builder builder(StandardAppVersionHandlerScript defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String scriptPath;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StandardAppVersionHandlerScript defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.scriptPath = defaults.scriptPath;
         }
 
+        @CustomType.Setter
         public Builder scriptPath(String scriptPath) {
             this.scriptPath = Objects.requireNonNull(scriptPath);
             return this;
-        }        public StandardAppVersionHandlerScript build() {
-            return new StandardAppVersionHandlerScript(scriptPath);
+        }
+        public StandardAppVersionHandlerScript build() {
+            final var o = new StandardAppVersionHandlerScript();
+            o.scriptPath = scriptPath;
+            return o;
         }
     }
 }

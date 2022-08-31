@@ -13,17 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class UserSqlServerUserDetails {
-    private final @Nullable Boolean disabled;
-    private final @Nullable List<String> serverRoles;
+    private @Nullable Boolean disabled;
+    private @Nullable List<String> serverRoles;
 
-    @CustomType.Constructor
-    private UserSqlServerUserDetails(
-        @CustomType.Parameter("disabled") @Nullable Boolean disabled,
-        @CustomType.Parameter("serverRoles") @Nullable List<String> serverRoles) {
-        this.disabled = disabled;
-        this.serverRoles = serverRoles;
-    }
-
+    private UserSqlServerUserDetails() {}
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
@@ -38,33 +31,35 @@ public final class UserSqlServerUserDetails {
     public static Builder builder(UserSqlServerUserDetails defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean disabled;
         private @Nullable List<String> serverRoles;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(UserSqlServerUserDetails defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disabled = defaults.disabled;
     	      this.serverRoles = defaults.serverRoles;
         }
 
+        @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
             this.disabled = disabled;
             return this;
         }
+        @CustomType.Setter
         public Builder serverRoles(@Nullable List<String> serverRoles) {
             this.serverRoles = serverRoles;
             return this;
         }
         public Builder serverRoles(String... serverRoles) {
             return serverRoles(List.of(serverRoles));
-        }        public UserSqlServerUserDetails build() {
-            return new UserSqlServerUserDetails(disabled, serverRoles);
+        }
+        public UserSqlServerUserDetails build() {
+            final var o = new UserSqlServerUserDetails();
+            o.disabled = disabled;
+            o.serverRoles = serverRoles;
+            return o;
         }
     }
 }

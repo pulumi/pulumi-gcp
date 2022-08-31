@@ -14,13 +14,9 @@ public final class CertificateTemplatePredefinedValuesPolicyId {
      * @return Required. The parts of an OID path. The most significant parts of the path come first.
      * 
      */
-    private final List<Integer> objectIdPaths;
+    private List<Integer> objectIdPaths;
 
-    @CustomType.Constructor
-    private CertificateTemplatePredefinedValuesPolicyId(@CustomType.Parameter("objectIdPaths") List<Integer> objectIdPaths) {
-        this.objectIdPaths = objectIdPaths;
-    }
-
+    private CertificateTemplatePredefinedValuesPolicyId() {}
     /**
      * @return Required. The parts of an OID path. The most significant parts of the path come first.
      * 
@@ -36,27 +32,27 @@ public final class CertificateTemplatePredefinedValuesPolicyId {
     public static Builder builder(CertificateTemplatePredefinedValuesPolicyId defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<Integer> objectIdPaths;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateTemplatePredefinedValuesPolicyId defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.objectIdPaths = defaults.objectIdPaths;
         }
 
+        @CustomType.Setter
         public Builder objectIdPaths(List<Integer> objectIdPaths) {
             this.objectIdPaths = Objects.requireNonNull(objectIdPaths);
             return this;
         }
         public Builder objectIdPaths(Integer... objectIdPaths) {
             return objectIdPaths(List.of(objectIdPaths));
-        }        public CertificateTemplatePredefinedValuesPolicyId build() {
-            return new CertificateTemplatePredefinedValuesPolicyId(objectIdPaths);
+        }
+        public CertificateTemplatePredefinedValuesPolicyId build() {
+            final var o = new CertificateTemplatePredefinedValuesPolicyId();
+            o.objectIdPaths = objectIdPaths;
+            return o;
         }
     }
 }

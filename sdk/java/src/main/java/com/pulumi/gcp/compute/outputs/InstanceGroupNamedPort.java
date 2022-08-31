@@ -14,21 +14,14 @@ public final class InstanceGroupNamedPort {
      * @return The name which the port will be mapped to.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The port number to map the name to.
      * 
      */
-    private final Integer port;
+    private Integer port;
 
-    @CustomType.Constructor
-    private InstanceGroupNamedPort(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("port") Integer port) {
-        this.name = name;
-        this.port = port;
-    }
-
+    private InstanceGroupNamedPort() {}
     /**
      * @return The name which the port will be mapped to.
      * 
@@ -51,30 +44,32 @@ public final class InstanceGroupNamedPort {
     public static Builder builder(InstanceGroupNamedPort defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private Integer port;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceGroupNamedPort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.port = defaults.port;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
-        }        public InstanceGroupNamedPort build() {
-            return new InstanceGroupNamedPort(name, port);
+        }
+        public InstanceGroupNamedPort build() {
+            final var o = new InstanceGroupNamedPort();
+            o.name = name;
+            o.port = port;
+            return o;
         }
     }
 }

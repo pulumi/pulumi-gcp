@@ -12,20 +12,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicySnapshotSchedulePolicy {
-    private final List<GetResourcePolicySnapshotSchedulePolicyRetentionPolicy> retentionPolicies;
-    private final List<GetResourcePolicySnapshotSchedulePolicySchedule> schedules;
-    private final List<GetResourcePolicySnapshotSchedulePolicySnapshotProperty> snapshotProperties;
+    private List<GetResourcePolicySnapshotSchedulePolicyRetentionPolicy> retentionPolicies;
+    private List<GetResourcePolicySnapshotSchedulePolicySchedule> schedules;
+    private List<GetResourcePolicySnapshotSchedulePolicySnapshotProperty> snapshotProperties;
 
-    @CustomType.Constructor
-    private GetResourcePolicySnapshotSchedulePolicy(
-        @CustomType.Parameter("retentionPolicies") List<GetResourcePolicySnapshotSchedulePolicyRetentionPolicy> retentionPolicies,
-        @CustomType.Parameter("schedules") List<GetResourcePolicySnapshotSchedulePolicySchedule> schedules,
-        @CustomType.Parameter("snapshotProperties") List<GetResourcePolicySnapshotSchedulePolicySnapshotProperty> snapshotProperties) {
-        this.retentionPolicies = retentionPolicies;
-        this.schedules = schedules;
-        this.snapshotProperties = snapshotProperties;
-    }
-
+    private GetResourcePolicySnapshotSchedulePolicy() {}
     public List<GetResourcePolicySnapshotSchedulePolicyRetentionPolicy> retentionPolicies() {
         return this.retentionPolicies;
     }
@@ -43,16 +34,12 @@ public final class GetResourcePolicySnapshotSchedulePolicy {
     public static Builder builder(GetResourcePolicySnapshotSchedulePolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetResourcePolicySnapshotSchedulePolicyRetentionPolicy> retentionPolicies;
         private List<GetResourcePolicySnapshotSchedulePolicySchedule> schedules;
         private List<GetResourcePolicySnapshotSchedulePolicySnapshotProperty> snapshotProperties;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetResourcePolicySnapshotSchedulePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.retentionPolicies = defaults.retentionPolicies;
@@ -60,6 +47,7 @@ public final class GetResourcePolicySnapshotSchedulePolicy {
     	      this.snapshotProperties = defaults.snapshotProperties;
         }
 
+        @CustomType.Setter
         public Builder retentionPolicies(List<GetResourcePolicySnapshotSchedulePolicyRetentionPolicy> retentionPolicies) {
             this.retentionPolicies = Objects.requireNonNull(retentionPolicies);
             return this;
@@ -67,6 +55,7 @@ public final class GetResourcePolicySnapshotSchedulePolicy {
         public Builder retentionPolicies(GetResourcePolicySnapshotSchedulePolicyRetentionPolicy... retentionPolicies) {
             return retentionPolicies(List.of(retentionPolicies));
         }
+        @CustomType.Setter
         public Builder schedules(List<GetResourcePolicySnapshotSchedulePolicySchedule> schedules) {
             this.schedules = Objects.requireNonNull(schedules);
             return this;
@@ -74,14 +63,20 @@ public final class GetResourcePolicySnapshotSchedulePolicy {
         public Builder schedules(GetResourcePolicySnapshotSchedulePolicySchedule... schedules) {
             return schedules(List.of(schedules));
         }
+        @CustomType.Setter
         public Builder snapshotProperties(List<GetResourcePolicySnapshotSchedulePolicySnapshotProperty> snapshotProperties) {
             this.snapshotProperties = Objects.requireNonNull(snapshotProperties);
             return this;
         }
         public Builder snapshotProperties(GetResourcePolicySnapshotSchedulePolicySnapshotProperty... snapshotProperties) {
             return snapshotProperties(List.of(snapshotProperties));
-        }        public GetResourcePolicySnapshotSchedulePolicy build() {
-            return new GetResourcePolicySnapshotSchedulePolicy(retentionPolicies, schedules, snapshotProperties);
+        }
+        public GetResourcePolicySnapshotSchedulePolicy build() {
+            final var o = new GetResourcePolicySnapshotSchedulePolicy();
+            o.retentionPolicies = retentionPolicies;
+            o.schedules = schedules;
+            o.snapshotProperties = snapshotProperties;
+            return o;
         }
     }
 }

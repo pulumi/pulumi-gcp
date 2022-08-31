@@ -15,21 +15,14 @@ public final class GetUptimeCheckIPsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of uptime check IPs used by Stackdriver Monitoring. Each `uptime_check_ip` contains:
      * 
      */
-    private final List<GetUptimeCheckIPsUptimeCheckIp> uptimeCheckIps;
+    private List<GetUptimeCheckIPsUptimeCheckIp> uptimeCheckIps;
 
-    @CustomType.Constructor
-    private GetUptimeCheckIPsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("uptimeCheckIps") List<GetUptimeCheckIPsUptimeCheckIp> uptimeCheckIps) {
-        this.id = id;
-        this.uptimeCheckIps = uptimeCheckIps;
-    }
-
+    private GetUptimeCheckIPsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -52,33 +45,35 @@ public final class GetUptimeCheckIPsResult {
     public static Builder builder(GetUptimeCheckIPsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<GetUptimeCheckIPsUptimeCheckIp> uptimeCheckIps;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUptimeCheckIPsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.uptimeCheckIps = defaults.uptimeCheckIps;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder uptimeCheckIps(List<GetUptimeCheckIPsUptimeCheckIp> uptimeCheckIps) {
             this.uptimeCheckIps = Objects.requireNonNull(uptimeCheckIps);
             return this;
         }
         public Builder uptimeCheckIps(GetUptimeCheckIPsUptimeCheckIp... uptimeCheckIps) {
             return uptimeCheckIps(List.of(uptimeCheckIps));
-        }        public GetUptimeCheckIPsResult build() {
-            return new GetUptimeCheckIPsResult(id, uptimeCheckIps);
+        }
+        public GetUptimeCheckIPsResult build() {
+            final var o = new GetUptimeCheckIPsResult();
+            o.id = id;
+            o.uptimeCheckIps = uptimeCheckIps;
+            return o;
         }
     }
 }

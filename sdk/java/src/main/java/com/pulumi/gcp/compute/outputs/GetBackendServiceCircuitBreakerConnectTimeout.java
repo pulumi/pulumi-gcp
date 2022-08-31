@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendServiceCircuitBreakerConnectTimeout {
-    private final Integer nanos;
-    private final Integer seconds;
+    private Integer nanos;
+    private Integer seconds;
 
-    @CustomType.Constructor
-    private GetBackendServiceCircuitBreakerConnectTimeout(
-        @CustomType.Parameter("nanos") Integer nanos,
-        @CustomType.Parameter("seconds") Integer seconds) {
-        this.nanos = nanos;
-        this.seconds = seconds;
-    }
-
+    private GetBackendServiceCircuitBreakerConnectTimeout() {}
     public Integer nanos() {
         return this.nanos;
     }
@@ -34,30 +27,32 @@ public final class GetBackendServiceCircuitBreakerConnectTimeout {
     public static Builder builder(GetBackendServiceCircuitBreakerConnectTimeout defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer nanos;
         private Integer seconds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackendServiceCircuitBreakerConnectTimeout defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.nanos = defaults.nanos;
     	      this.seconds = defaults.seconds;
         }
 
+        @CustomType.Setter
         public Builder nanos(Integer nanos) {
             this.nanos = Objects.requireNonNull(nanos);
             return this;
         }
+        @CustomType.Setter
         public Builder seconds(Integer seconds) {
             this.seconds = Objects.requireNonNull(seconds);
             return this;
-        }        public GetBackendServiceCircuitBreakerConnectTimeout build() {
-            return new GetBackendServiceCircuitBreakerConnectTimeout(nanos, seconds);
+        }
+        public GetBackendServiceCircuitBreakerConnectTimeout build() {
+            final var o = new GetBackendServiceCircuitBreakerConnectTimeout();
+            o.nanos = nanos;
+            o.seconds = seconds;
+            return o;
         }
     }
 }

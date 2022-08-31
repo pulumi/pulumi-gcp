@@ -16,30 +16,17 @@ public final class GetZonesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of zones available in the given region
      * 
      */
-    private final List<String> names;
-    private final String project;
-    private final @Nullable String region;
-    private final @Nullable String status;
+    private List<String> names;
+    private String project;
+    private @Nullable String region;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetZonesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.id = id;
-        this.names = names;
-        this.project = project;
-        this.region = region;
-        this.status = status;
-    }
-
+    private GetZonesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -71,18 +58,14 @@ public final class GetZonesResult {
     public static Builder builder(GetZonesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> names;
         private String project;
         private @Nullable String region;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -92,10 +75,12 @@ public final class GetZonesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -103,19 +88,29 @@ public final class GetZonesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetZonesResult build() {
-            return new GetZonesResult(id, names, project, region, status);
+        }
+        public GetZonesResult build() {
+            final var o = new GetZonesResult();
+            o.id = id;
+            o.names = names;
+            o.project = project;
+            o.region = region;
+            o.status = status;
+            return o;
         }
     }
 }

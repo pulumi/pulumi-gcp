@@ -97,19 +97,25 @@ import javax.annotation.Nullable;
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/run.invoker&#34;)
  *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(gcs_pubsub_publishing)
+ *                 .build());
  * 
  *         var event_receiving = new IAMMember(&#34;event-receiving&#34;, IAMMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/eventarc.eventReceiver&#34;)
  *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(invoking)
+ *                 .build());
  * 
  *         var artifactregistry_reader = new IAMMember(&#34;artifactregistry-reader&#34;, IAMMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/artifactregistry.reader&#34;)
  *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(event_receiving)
+ *                 .build());
  * 
  *         var function = new Function(&#34;function&#34;, FunctionArgs.builder()        
  *             .location(&#34;us-central1&#34;)
@@ -221,13 +227,17 @@ import javax.annotation.Nullable;
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/eventarc.eventReceiver&#34;)
  *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(invoking)
+ *                 .build());
  * 
  *         var artifactregistry_reader = new IAMMember(&#34;artifactregistry-reader&#34;, IAMMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/artifactregistry.reader&#34;)
  *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(event_receiving)
+ *                 .build());
  * 
  *         var function = new Function(&#34;function&#34;, FunctionArgs.builder()        
  *             .location(&#34;us-central1&#34;)

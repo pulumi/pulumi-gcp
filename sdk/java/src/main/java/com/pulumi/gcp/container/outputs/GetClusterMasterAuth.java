@@ -11,23 +11,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterMasterAuth {
-    private final String clientCertificate;
-    private final List<GetClusterMasterAuthClientCertificateConfig> clientCertificateConfigs;
-    private final String clientKey;
-    private final String clusterCaCertificate;
+    private String clientCertificate;
+    private List<GetClusterMasterAuthClientCertificateConfig> clientCertificateConfigs;
+    private String clientKey;
+    private String clusterCaCertificate;
 
-    @CustomType.Constructor
-    private GetClusterMasterAuth(
-        @CustomType.Parameter("clientCertificate") String clientCertificate,
-        @CustomType.Parameter("clientCertificateConfigs") List<GetClusterMasterAuthClientCertificateConfig> clientCertificateConfigs,
-        @CustomType.Parameter("clientKey") String clientKey,
-        @CustomType.Parameter("clusterCaCertificate") String clusterCaCertificate) {
-        this.clientCertificate = clientCertificate;
-        this.clientCertificateConfigs = clientCertificateConfigs;
-        this.clientKey = clientKey;
-        this.clusterCaCertificate = clusterCaCertificate;
-    }
-
+    private GetClusterMasterAuth() {}
     public String clientCertificate() {
         return this.clientCertificate;
     }
@@ -48,17 +37,13 @@ public final class GetClusterMasterAuth {
     public static Builder builder(GetClusterMasterAuth defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clientCertificate;
         private List<GetClusterMasterAuthClientCertificateConfig> clientCertificateConfigs;
         private String clientKey;
         private String clusterCaCertificate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterMasterAuth defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientCertificate = defaults.clientCertificate;
@@ -67,10 +52,12 @@ public final class GetClusterMasterAuth {
     	      this.clusterCaCertificate = defaults.clusterCaCertificate;
         }
 
+        @CustomType.Setter
         public Builder clientCertificate(String clientCertificate) {
             this.clientCertificate = Objects.requireNonNull(clientCertificate);
             return this;
         }
+        @CustomType.Setter
         public Builder clientCertificateConfigs(List<GetClusterMasterAuthClientCertificateConfig> clientCertificateConfigs) {
             this.clientCertificateConfigs = Objects.requireNonNull(clientCertificateConfigs);
             return this;
@@ -78,15 +65,23 @@ public final class GetClusterMasterAuth {
         public Builder clientCertificateConfigs(GetClusterMasterAuthClientCertificateConfig... clientCertificateConfigs) {
             return clientCertificateConfigs(List.of(clientCertificateConfigs));
         }
+        @CustomType.Setter
         public Builder clientKey(String clientKey) {
             this.clientKey = Objects.requireNonNull(clientKey);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterCaCertificate(String clusterCaCertificate) {
             this.clusterCaCertificate = Objects.requireNonNull(clusterCaCertificate);
             return this;
-        }        public GetClusterMasterAuth build() {
-            return new GetClusterMasterAuth(clientCertificate, clientCertificateConfigs, clientKey, clusterCaCertificate);
+        }
+        public GetClusterMasterAuth build() {
+            final var o = new GetClusterMasterAuth();
+            o.clientCertificate = clientCertificate;
+            o.clientCertificateConfigs = clientCertificateConfigs;
+            o.clientKey = clientKey;
+            o.clusterCaCertificate = clusterCaCertificate;
+            return o;
         }
     }
 }

@@ -17,22 +17,15 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
      * Structure is documented below.
      * 
      */
-    private final @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath cloudStoragePath;
+    private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath cloudStoragePath;
     /**
      * @return List of words or phrases to search for.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList wordList;
+    private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList wordList;
 
-    @CustomType.Constructor
-    private PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary(
-        @CustomType.Parameter("cloudStoragePath") @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath cloudStoragePath,
-        @CustomType.Parameter("wordList") @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList wordList) {
-        this.cloudStoragePath = cloudStoragePath;
-        this.wordList = wordList;
-    }
-
+    private PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary() {}
     /**
      * @return Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
      * Structure is documented below.
@@ -57,30 +50,32 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
     public static Builder builder(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath cloudStoragePath;
         private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList wordList;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cloudStoragePath = defaults.cloudStoragePath;
     	      this.wordList = defaults.wordList;
         }
 
+        @CustomType.Setter
         public Builder cloudStoragePath(@Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath cloudStoragePath) {
             this.cloudStoragePath = cloudStoragePath;
             return this;
         }
+        @CustomType.Setter
         public Builder wordList(@Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList wordList) {
             this.wordList = wordList;
             return this;
-        }        public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary build() {
-            return new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary(cloudStoragePath, wordList);
+        }
+        public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary build() {
+            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary();
+            o.cloudStoragePath = cloudStoragePath;
+            o.wordList = wordList;
+            return o;
         }
     }
 }

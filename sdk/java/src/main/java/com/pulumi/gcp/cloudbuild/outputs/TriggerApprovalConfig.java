@@ -16,13 +16,9 @@ public final class TriggerApprovalConfig {
      * and will need to be explicitly approved to start.
      * 
      */
-    private final @Nullable Boolean approvalRequired;
+    private @Nullable Boolean approvalRequired;
 
-    @CustomType.Constructor
-    private TriggerApprovalConfig(@CustomType.Parameter("approvalRequired") @Nullable Boolean approvalRequired) {
-        this.approvalRequired = approvalRequired;
-    }
-
+    private TriggerApprovalConfig() {}
     /**
      * @return Whether or not approval is needed. If this is set on a build, it will become pending when run,
      * and will need to be explicitly approved to start.
@@ -39,24 +35,24 @@ public final class TriggerApprovalConfig {
     public static Builder builder(TriggerApprovalConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean approvalRequired;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerApprovalConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.approvalRequired = defaults.approvalRequired;
         }
 
+        @CustomType.Setter
         public Builder approvalRequired(@Nullable Boolean approvalRequired) {
             this.approvalRequired = approvalRequired;
             return this;
-        }        public TriggerApprovalConfig build() {
-            return new TriggerApprovalConfig(approvalRequired);
+        }
+        public TriggerApprovalConfig build() {
+            final var o = new TriggerApprovalConfig();
+            o.approvalRequired = approvalRequired;
+            return o;
         }
     }
 }

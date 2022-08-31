@@ -17,22 +17,22 @@ public final class FlexibleAppVersionNetwork {
      * @return List of ports, or port pairs, to forward from the virtual machine to the application container.
      * 
      */
-    private final @Nullable List<String> forwardedPorts;
+    private @Nullable List<String> forwardedPorts;
     /**
      * @return Tag to apply to the instance during creation.
      * 
      */
-    private final @Nullable String instanceTag;
+    private @Nullable String instanceTag;
     /**
      * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Enable session affinity.
      * 
      */
-    private final @Nullable Boolean sessionAffinity;
+    private @Nullable Boolean sessionAffinity;
     /**
      * @return Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.
      * If the network that the instance is being created in is a Legacy network, then the IP address is allocated from the IPv4Range.
@@ -41,22 +41,9 @@ public final class FlexibleAppVersionNetwork {
      * If specified, the subnetwork must exist in the same region as the App Engine flexible environment application.
      * 
      */
-    private final @Nullable String subnetwork;
+    private @Nullable String subnetwork;
 
-    @CustomType.Constructor
-    private FlexibleAppVersionNetwork(
-        @CustomType.Parameter("forwardedPorts") @Nullable List<String> forwardedPorts,
-        @CustomType.Parameter("instanceTag") @Nullable String instanceTag,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("sessionAffinity") @Nullable Boolean sessionAffinity,
-        @CustomType.Parameter("subnetwork") @Nullable String subnetwork) {
-        this.forwardedPorts = forwardedPorts;
-        this.instanceTag = instanceTag;
-        this.name = name;
-        this.sessionAffinity = sessionAffinity;
-        this.subnetwork = subnetwork;
-    }
-
+    private FlexibleAppVersionNetwork() {}
     /**
      * @return List of ports, or port pairs, to forward from the virtual machine to the application container.
      * 
@@ -104,18 +91,14 @@ public final class FlexibleAppVersionNetwork {
     public static Builder builder(FlexibleAppVersionNetwork defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> forwardedPorts;
         private @Nullable String instanceTag;
         private String name;
         private @Nullable Boolean sessionAffinity;
         private @Nullable String subnetwork;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FlexibleAppVersionNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.forwardedPorts = defaults.forwardedPorts;
@@ -125,6 +108,7 @@ public final class FlexibleAppVersionNetwork {
     	      this.subnetwork = defaults.subnetwork;
         }
 
+        @CustomType.Setter
         public Builder forwardedPorts(@Nullable List<String> forwardedPorts) {
             this.forwardedPorts = forwardedPorts;
             return this;
@@ -132,23 +116,34 @@ public final class FlexibleAppVersionNetwork {
         public Builder forwardedPorts(String... forwardedPorts) {
             return forwardedPorts(List.of(forwardedPorts));
         }
+        @CustomType.Setter
         public Builder instanceTag(@Nullable String instanceTag) {
             this.instanceTag = instanceTag;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder sessionAffinity(@Nullable Boolean sessionAffinity) {
             this.sessionAffinity = sessionAffinity;
             return this;
         }
+        @CustomType.Setter
         public Builder subnetwork(@Nullable String subnetwork) {
             this.subnetwork = subnetwork;
             return this;
-        }        public FlexibleAppVersionNetwork build() {
-            return new FlexibleAppVersionNetwork(forwardedPorts, instanceTag, name, sessionAffinity, subnetwork);
+        }
+        public FlexibleAppVersionNetwork build() {
+            final var o = new FlexibleAppVersionNetwork();
+            o.forwardedPorts = forwardedPorts;
+            o.instanceTag = instanceTag;
+            o.name = name;
+            o.sessionAffinity = sessionAffinity;
+            o.subnetwork = subnetwork;
+            return o;
         }
     }
 }

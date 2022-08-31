@@ -13,21 +13,14 @@ public final class FunctionSecretVolumeVersion {
      * @return Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as &#34;/etc/secrets&#34; and path as &#34;/secret_foo&#34; would mount the secret value file at &#34;/etc/secrets/secret_foo&#34;.
      * 
      */
-    private final String path;
+    private String path;
     /**
      * @return Version of the secret (version number or the string &#34;latest&#34;). It is preferable to use &#34;latest&#34; version with secret volumes as secret value changes are reflected immediately.
      * 
      */
-    private final String version;
+    private String version;
 
-    @CustomType.Constructor
-    private FunctionSecretVolumeVersion(
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("version") String version) {
-        this.path = path;
-        this.version = version;
-    }
-
+    private FunctionSecretVolumeVersion() {}
     /**
      * @return Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as &#34;/etc/secrets&#34; and path as &#34;/secret_foo&#34; would mount the secret value file at &#34;/etc/secrets/secret_foo&#34;.
      * 
@@ -50,30 +43,32 @@ public final class FunctionSecretVolumeVersion {
     public static Builder builder(FunctionSecretVolumeVersion defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String path;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FunctionSecretVolumeVersion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.path = defaults.path;
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public FunctionSecretVolumeVersion build() {
-            return new FunctionSecretVolumeVersion(path, version);
+        }
+        public FunctionSecretVolumeVersion build() {
+            final var o = new FunctionSecretVolumeVersion();
+            o.path = path;
+            o.version = version;
+            return o;
         }
     }
 }

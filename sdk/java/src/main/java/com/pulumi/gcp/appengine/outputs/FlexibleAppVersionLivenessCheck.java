@@ -16,57 +16,40 @@ public final class FlexibleAppVersionLivenessCheck {
      * @return Interval between health checks.
      * 
      */
-    private final @Nullable String checkInterval;
+    private @Nullable String checkInterval;
     /**
      * @return Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
      * 
      */
-    private final @Nullable Double failureThreshold;
+    private @Nullable Double failureThreshold;
     /**
      * @return Host header to send when performing a HTTP Readiness check. Example: &#34;myapp.appspot.com&#34;
      * 
      */
-    private final @Nullable String host;
+    private @Nullable String host;
     /**
      * @return The initial delay before starting to execute the checks. Default: &#34;300s&#34;
      * 
      */
-    private final @Nullable String initialDelay;
+    private @Nullable String initialDelay;
     /**
      * @return Path to the static files matched by the URL pattern, from the application root directory.
      * The path can refer to text matched in groupings in the URL pattern.
      * 
      */
-    private final String path;
+    private String path;
     /**
      * @return Number of consecutive successful checks required before considering the VM healthy. Default: 2.
      * 
      */
-    private final @Nullable Double successThreshold;
+    private @Nullable Double successThreshold;
     /**
      * @return Time before the check is considered failed. Default: &#34;4s&#34;
      * 
      */
-    private final @Nullable String timeout;
+    private @Nullable String timeout;
 
-    @CustomType.Constructor
-    private FlexibleAppVersionLivenessCheck(
-        @CustomType.Parameter("checkInterval") @Nullable String checkInterval,
-        @CustomType.Parameter("failureThreshold") @Nullable Double failureThreshold,
-        @CustomType.Parameter("host") @Nullable String host,
-        @CustomType.Parameter("initialDelay") @Nullable String initialDelay,
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("successThreshold") @Nullable Double successThreshold,
-        @CustomType.Parameter("timeout") @Nullable String timeout) {
-        this.checkInterval = checkInterval;
-        this.failureThreshold = failureThreshold;
-        this.host = host;
-        this.initialDelay = initialDelay;
-        this.path = path;
-        this.successThreshold = successThreshold;
-        this.timeout = timeout;
-    }
-
+    private FlexibleAppVersionLivenessCheck() {}
     /**
      * @return Interval between health checks.
      * 
@@ -125,7 +108,7 @@ public final class FlexibleAppVersionLivenessCheck {
     public static Builder builder(FlexibleAppVersionLivenessCheck defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String checkInterval;
         private @Nullable Double failureThreshold;
@@ -134,11 +117,7 @@ public final class FlexibleAppVersionLivenessCheck {
         private String path;
         private @Nullable Double successThreshold;
         private @Nullable String timeout;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FlexibleAppVersionLivenessCheck defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.checkInterval = defaults.checkInterval;
@@ -150,35 +129,51 @@ public final class FlexibleAppVersionLivenessCheck {
     	      this.timeout = defaults.timeout;
         }
 
+        @CustomType.Setter
         public Builder checkInterval(@Nullable String checkInterval) {
             this.checkInterval = checkInterval;
             return this;
         }
+        @CustomType.Setter
         public Builder failureThreshold(@Nullable Double failureThreshold) {
             this.failureThreshold = failureThreshold;
             return this;
         }
+        @CustomType.Setter
         public Builder host(@Nullable String host) {
             this.host = host;
             return this;
         }
+        @CustomType.Setter
         public Builder initialDelay(@Nullable String initialDelay) {
             this.initialDelay = initialDelay;
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder successThreshold(@Nullable Double successThreshold) {
             this.successThreshold = successThreshold;
             return this;
         }
+        @CustomType.Setter
         public Builder timeout(@Nullable String timeout) {
             this.timeout = timeout;
             return this;
-        }        public FlexibleAppVersionLivenessCheck build() {
-            return new FlexibleAppVersionLivenessCheck(checkInterval, failureThreshold, host, initialDelay, path, successThreshold, timeout);
+        }
+        public FlexibleAppVersionLivenessCheck build() {
+            final var o = new FlexibleAppVersionLivenessCheck();
+            o.checkInterval = checkInterval;
+            o.failureThreshold = failureThreshold;
+            o.host = host;
+            o.initialDelay = initialDelay;
+            o.path = path;
+            o.successThreshold = successThreshold;
+            o.timeout = timeout;
+            return o;
         }
     }
 }

@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class NodePoolNodeConfigGcfsConfig {
-    private final Boolean enabled;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private NodePoolNodeConfigGcfsConfig(@CustomType.Parameter("enabled") Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private NodePoolNodeConfigGcfsConfig() {}
     public Boolean enabled() {
         return this.enabled;
     }
@@ -27,24 +23,24 @@ public final class NodePoolNodeConfigGcfsConfig {
     public static Builder builder(NodePoolNodeConfigGcfsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodePoolNodeConfigGcfsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public NodePoolNodeConfigGcfsConfig build() {
-            return new NodePoolNodeConfigGcfsConfig(enabled);
+        }
+        public NodePoolNodeConfigGcfsConfig build() {
+            final var o = new NodePoolNodeConfigGcfsConfig();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

@@ -20,7 +20,7 @@ public final class ClusterPrivateClusterConfig {
      * to private clusters, when `enable_private_nodes` is `true`.
      * 
      */
-    private final Boolean enablePrivateEndpoint;
+    private Boolean enablePrivateEndpoint;
     /**
      * @return Enables the private cluster feature,
      * creating a private endpoint on the cluster. In a private cluster, nodes only
@@ -28,14 +28,14 @@ public final class ClusterPrivateClusterConfig {
      * endpoint via private networking.
      * 
      */
-    private final @Nullable Boolean enablePrivateNodes;
+    private @Nullable Boolean enablePrivateNodes;
     /**
      * @return Controls cluster master global
      * access settings. If unset, the provider will no longer manage this field and will
      * not modify the previously-set value. Structure is documented below.
      * 
      */
-    private final @Nullable ClusterPrivateClusterConfigMasterGlobalAccessConfig masterGlobalAccessConfig;
+    private @Nullable ClusterPrivateClusterConfigMasterGlobalAccessConfig masterGlobalAccessConfig;
     /**
      * @return The IP range in CIDR notation to use for
      * the hosted master network. This range will be used for assigning private IP
@@ -46,41 +46,24 @@ public final class ClusterPrivateClusterConfig {
      * `enable_private_nodes` is `true`.
      * 
      */
-    private final @Nullable String masterIpv4CidrBlock;
+    private @Nullable String masterIpv4CidrBlock;
     /**
      * @return The name of the peering between this cluster and the Google owned VPC.
      * 
      */
-    private final @Nullable String peeringName;
+    private @Nullable String peeringName;
     /**
      * @return The internal IP address of this cluster&#39;s master endpoint.
      * 
      */
-    private final @Nullable String privateEndpoint;
+    private @Nullable String privateEndpoint;
     /**
      * @return The external IP address of this cluster&#39;s master endpoint.
      * 
      */
-    private final @Nullable String publicEndpoint;
+    private @Nullable String publicEndpoint;
 
-    @CustomType.Constructor
-    private ClusterPrivateClusterConfig(
-        @CustomType.Parameter("enablePrivateEndpoint") Boolean enablePrivateEndpoint,
-        @CustomType.Parameter("enablePrivateNodes") @Nullable Boolean enablePrivateNodes,
-        @CustomType.Parameter("masterGlobalAccessConfig") @Nullable ClusterPrivateClusterConfigMasterGlobalAccessConfig masterGlobalAccessConfig,
-        @CustomType.Parameter("masterIpv4CidrBlock") @Nullable String masterIpv4CidrBlock,
-        @CustomType.Parameter("peeringName") @Nullable String peeringName,
-        @CustomType.Parameter("privateEndpoint") @Nullable String privateEndpoint,
-        @CustomType.Parameter("publicEndpoint") @Nullable String publicEndpoint) {
-        this.enablePrivateEndpoint = enablePrivateEndpoint;
-        this.enablePrivateNodes = enablePrivateNodes;
-        this.masterGlobalAccessConfig = masterGlobalAccessConfig;
-        this.masterIpv4CidrBlock = masterIpv4CidrBlock;
-        this.peeringName = peeringName;
-        this.privateEndpoint = privateEndpoint;
-        this.publicEndpoint = publicEndpoint;
-    }
-
+    private ClusterPrivateClusterConfig() {}
     /**
      * @return When `true`, the cluster&#39;s private
      * endpoint is used as the cluster endpoint and access through the public endpoint
@@ -152,7 +135,7 @@ public final class ClusterPrivateClusterConfig {
     public static Builder builder(ClusterPrivateClusterConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enablePrivateEndpoint;
         private @Nullable Boolean enablePrivateNodes;
@@ -161,11 +144,7 @@ public final class ClusterPrivateClusterConfig {
         private @Nullable String peeringName;
         private @Nullable String privateEndpoint;
         private @Nullable String publicEndpoint;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterPrivateClusterConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enablePrivateEndpoint = defaults.enablePrivateEndpoint;
@@ -177,35 +156,51 @@ public final class ClusterPrivateClusterConfig {
     	      this.publicEndpoint = defaults.publicEndpoint;
         }
 
+        @CustomType.Setter
         public Builder enablePrivateEndpoint(Boolean enablePrivateEndpoint) {
             this.enablePrivateEndpoint = Objects.requireNonNull(enablePrivateEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder enablePrivateNodes(@Nullable Boolean enablePrivateNodes) {
             this.enablePrivateNodes = enablePrivateNodes;
             return this;
         }
+        @CustomType.Setter
         public Builder masterGlobalAccessConfig(@Nullable ClusterPrivateClusterConfigMasterGlobalAccessConfig masterGlobalAccessConfig) {
             this.masterGlobalAccessConfig = masterGlobalAccessConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder masterIpv4CidrBlock(@Nullable String masterIpv4CidrBlock) {
             this.masterIpv4CidrBlock = masterIpv4CidrBlock;
             return this;
         }
+        @CustomType.Setter
         public Builder peeringName(@Nullable String peeringName) {
             this.peeringName = peeringName;
             return this;
         }
+        @CustomType.Setter
         public Builder privateEndpoint(@Nullable String privateEndpoint) {
             this.privateEndpoint = privateEndpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder publicEndpoint(@Nullable String publicEndpoint) {
             this.publicEndpoint = publicEndpoint;
             return this;
-        }        public ClusterPrivateClusterConfig build() {
-            return new ClusterPrivateClusterConfig(enablePrivateEndpoint, enablePrivateNodes, masterGlobalAccessConfig, masterIpv4CidrBlock, peeringName, privateEndpoint, publicEndpoint);
+        }
+        public ClusterPrivateClusterConfig build() {
+            final var o = new ClusterPrivateClusterConfig();
+            o.enablePrivateEndpoint = enablePrivateEndpoint;
+            o.enablePrivateNodes = enablePrivateNodes;
+            o.masterGlobalAccessConfig = masterGlobalAccessConfig;
+            o.masterIpv4CidrBlock = masterIpv4CidrBlock;
+            o.peeringName = peeringName;
+            o.privateEndpoint = privateEndpoint;
+            o.publicEndpoint = publicEndpoint;
+            return o;
         }
     }
 }

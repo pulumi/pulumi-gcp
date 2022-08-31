@@ -17,7 +17,7 @@ public final class CxFlowNluSettings {
      * If the returned score value is less than the threshold value, then a no-match event will be triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
      * 
      */
-    private final @Nullable Double classificationThreshold;
+    private @Nullable Double classificationThreshold;
     /**
      * @return Indicates NLU model training mode.
      * * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
@@ -25,7 +25,7 @@ public final class CxFlowNluSettings {
      *   Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
      * 
      */
-    private final @Nullable String modelTrainingMode;
+    private @Nullable String modelTrainingMode;
     /**
      * @return Indicates the type of NLU model.
      * * MODEL_TYPE_STANDARD: Use standard NLU model.
@@ -33,18 +33,9 @@ public final class CxFlowNluSettings {
      *   Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
      * 
      */
-    private final @Nullable String modelType;
+    private @Nullable String modelType;
 
-    @CustomType.Constructor
-    private CxFlowNluSettings(
-        @CustomType.Parameter("classificationThreshold") @Nullable Double classificationThreshold,
-        @CustomType.Parameter("modelTrainingMode") @Nullable String modelTrainingMode,
-        @CustomType.Parameter("modelType") @Nullable String modelType) {
-        this.classificationThreshold = classificationThreshold;
-        this.modelTrainingMode = modelTrainingMode;
-        this.modelType = modelType;
-    }
-
+    private CxFlowNluSettings() {}
     /**
      * @return To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold.
      * If the returned score value is less than the threshold value, then a no-match event will be triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
@@ -81,16 +72,12 @@ public final class CxFlowNluSettings {
     public static Builder builder(CxFlowNluSettings defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Double classificationThreshold;
         private @Nullable String modelTrainingMode;
         private @Nullable String modelType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CxFlowNluSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.classificationThreshold = defaults.classificationThreshold;
@@ -98,19 +85,27 @@ public final class CxFlowNluSettings {
     	      this.modelType = defaults.modelType;
         }
 
+        @CustomType.Setter
         public Builder classificationThreshold(@Nullable Double classificationThreshold) {
             this.classificationThreshold = classificationThreshold;
             return this;
         }
+        @CustomType.Setter
         public Builder modelTrainingMode(@Nullable String modelTrainingMode) {
             this.modelTrainingMode = modelTrainingMode;
             return this;
         }
+        @CustomType.Setter
         public Builder modelType(@Nullable String modelType) {
             this.modelType = modelType;
             return this;
-        }        public CxFlowNluSettings build() {
-            return new CxFlowNluSettings(classificationThreshold, modelTrainingMode, modelType);
+        }
+        public CxFlowNluSettings build() {
+            final var o = new CxFlowNluSettings();
+            o.classificationThreshold = classificationThreshold;
+            o.modelTrainingMode = modelTrainingMode;
+            o.modelType = modelType;
+            return o;
         }
     }
 }

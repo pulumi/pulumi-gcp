@@ -20,62 +20,43 @@ public final class SecurityPolicyRuleRateLimitOptions {
      * If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
      * 
      */
-    private final @Nullable Integer banDurationSec;
+    private @Nullable Integer banDurationSec;
     /**
      * @return Can only be specified if the `action` for the rule is &#34;rate_based_ban&#34;.
      * If specified, the key will be banned for the configured &#39;ban_duration_sec&#39; when the number of requests that exceed the &#39;rate_limit_threshold&#39; also
      * exceed this &#39;ban_threshold&#39;. Structure is documented below.
      * 
      */
-    private final @Nullable SecurityPolicyRuleRateLimitOptionsBanThreshold banThreshold;
+    private @Nullable SecurityPolicyRuleRateLimitOptionsBanThreshold banThreshold;
     /**
      * @return Action to take for requests that are under the configured rate limit threshold. Valid option is &#34;allow&#34; only.
      * 
      */
-    private final String conformAction;
+    private String conformAction;
     /**
      * @return Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to &#34;ALL&#34;.
      * 
      */
-    private final @Nullable String enforceOnKey;
+    private @Nullable String enforceOnKey;
     /**
      * @return Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
      * 
      */
-    private final @Nullable String enforceOnKeyName;
+    private @Nullable String enforceOnKeyName;
     /**
      * @return When a request is denied, returns the HTTP response code specified.
      * Valid options are &#34;deny()&#34; where valid values for status are 403, 404, 429, and 502.
      * 
      */
-    private final String exceedAction;
-    private final @Nullable SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions exceedRedirectOptions;
+    private String exceedAction;
+    private @Nullable SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions exceedRedirectOptions;
     /**
      * @return Threshold at which to begin ratelimiting. Structure is documented below.
      * 
      */
-    private final SecurityPolicyRuleRateLimitOptionsRateLimitThreshold rateLimitThreshold;
+    private SecurityPolicyRuleRateLimitOptionsRateLimitThreshold rateLimitThreshold;
 
-    @CustomType.Constructor
-    private SecurityPolicyRuleRateLimitOptions(
-        @CustomType.Parameter("banDurationSec") @Nullable Integer banDurationSec,
-        @CustomType.Parameter("banThreshold") @Nullable SecurityPolicyRuleRateLimitOptionsBanThreshold banThreshold,
-        @CustomType.Parameter("conformAction") String conformAction,
-        @CustomType.Parameter("enforceOnKey") @Nullable String enforceOnKey,
-        @CustomType.Parameter("enforceOnKeyName") @Nullable String enforceOnKeyName,
-        @CustomType.Parameter("exceedAction") String exceedAction,
-        @CustomType.Parameter("exceedRedirectOptions") @Nullable SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions exceedRedirectOptions,
-        @CustomType.Parameter("rateLimitThreshold") SecurityPolicyRuleRateLimitOptionsRateLimitThreshold rateLimitThreshold) {
-        this.banDurationSec = banDurationSec;
-        this.banThreshold = banThreshold;
-        this.conformAction = conformAction;
-        this.enforceOnKey = enforceOnKey;
-        this.enforceOnKeyName = enforceOnKeyName;
-        this.exceedAction = exceedAction;
-        this.exceedRedirectOptions = exceedRedirectOptions;
-        this.rateLimitThreshold = rateLimitThreshold;
-    }
-
+    private SecurityPolicyRuleRateLimitOptions() {}
     /**
      * @return Can only be specified if the `action` for the rule is &#34;rate_based_ban&#34;.
      * If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
@@ -140,7 +121,7 @@ public final class SecurityPolicyRuleRateLimitOptions {
     public static Builder builder(SecurityPolicyRuleRateLimitOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer banDurationSec;
         private @Nullable SecurityPolicyRuleRateLimitOptionsBanThreshold banThreshold;
@@ -150,11 +131,7 @@ public final class SecurityPolicyRuleRateLimitOptions {
         private String exceedAction;
         private @Nullable SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions exceedRedirectOptions;
         private SecurityPolicyRuleRateLimitOptionsRateLimitThreshold rateLimitThreshold;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecurityPolicyRuleRateLimitOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.banDurationSec = defaults.banDurationSec;
@@ -167,39 +144,57 @@ public final class SecurityPolicyRuleRateLimitOptions {
     	      this.rateLimitThreshold = defaults.rateLimitThreshold;
         }
 
+        @CustomType.Setter
         public Builder banDurationSec(@Nullable Integer banDurationSec) {
             this.banDurationSec = banDurationSec;
             return this;
         }
+        @CustomType.Setter
         public Builder banThreshold(@Nullable SecurityPolicyRuleRateLimitOptionsBanThreshold banThreshold) {
             this.banThreshold = banThreshold;
             return this;
         }
+        @CustomType.Setter
         public Builder conformAction(String conformAction) {
             this.conformAction = Objects.requireNonNull(conformAction);
             return this;
         }
+        @CustomType.Setter
         public Builder enforceOnKey(@Nullable String enforceOnKey) {
             this.enforceOnKey = enforceOnKey;
             return this;
         }
+        @CustomType.Setter
         public Builder enforceOnKeyName(@Nullable String enforceOnKeyName) {
             this.enforceOnKeyName = enforceOnKeyName;
             return this;
         }
+        @CustomType.Setter
         public Builder exceedAction(String exceedAction) {
             this.exceedAction = Objects.requireNonNull(exceedAction);
             return this;
         }
+        @CustomType.Setter
         public Builder exceedRedirectOptions(@Nullable SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions exceedRedirectOptions) {
             this.exceedRedirectOptions = exceedRedirectOptions;
             return this;
         }
+        @CustomType.Setter
         public Builder rateLimitThreshold(SecurityPolicyRuleRateLimitOptionsRateLimitThreshold rateLimitThreshold) {
             this.rateLimitThreshold = Objects.requireNonNull(rateLimitThreshold);
             return this;
-        }        public SecurityPolicyRuleRateLimitOptions build() {
-            return new SecurityPolicyRuleRateLimitOptions(banDurationSec, banThreshold, conformAction, enforceOnKey, enforceOnKeyName, exceedAction, exceedRedirectOptions, rateLimitThreshold);
+        }
+        public SecurityPolicyRuleRateLimitOptions build() {
+            final var o = new SecurityPolicyRuleRateLimitOptions();
+            o.banDurationSec = banDurationSec;
+            o.banThreshold = banThreshold;
+            o.conformAction = conformAction;
+            o.enforceOnKey = enforceOnKey;
+            o.enforceOnKeyName = enforceOnKeyName;
+            o.exceedAction = exceedAction;
+            o.exceedRedirectOptions = exceedRedirectOptions;
+            o.rateLimitThreshold = rateLimitThreshold;
+            return o;
         }
     }
 }

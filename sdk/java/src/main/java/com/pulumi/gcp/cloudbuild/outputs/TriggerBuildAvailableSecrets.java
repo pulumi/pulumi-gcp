@@ -15,13 +15,9 @@ public final class TriggerBuildAvailableSecrets {
      * Structure is documented below.
      * 
      */
-    private final List<TriggerBuildAvailableSecretsSecretManager> secretManagers;
+    private List<TriggerBuildAvailableSecretsSecretManager> secretManagers;
 
-    @CustomType.Constructor
-    private TriggerBuildAvailableSecrets(@CustomType.Parameter("secretManagers") List<TriggerBuildAvailableSecretsSecretManager> secretManagers) {
-        this.secretManagers = secretManagers;
-    }
-
+    private TriggerBuildAvailableSecrets() {}
     /**
      * @return Pairs a secret environment variable with a SecretVersion in Secret Manager.
      * Structure is documented below.
@@ -38,27 +34,27 @@ public final class TriggerBuildAvailableSecrets {
     public static Builder builder(TriggerBuildAvailableSecrets defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<TriggerBuildAvailableSecretsSecretManager> secretManagers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerBuildAvailableSecrets defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.secretManagers = defaults.secretManagers;
         }
 
+        @CustomType.Setter
         public Builder secretManagers(List<TriggerBuildAvailableSecretsSecretManager> secretManagers) {
             this.secretManagers = Objects.requireNonNull(secretManagers);
             return this;
         }
         public Builder secretManagers(TriggerBuildAvailableSecretsSecretManager... secretManagers) {
             return secretManagers(List.of(secretManagers));
-        }        public TriggerBuildAvailableSecrets build() {
-            return new TriggerBuildAvailableSecrets(secretManagers);
+        }
+        public TriggerBuildAvailableSecrets build() {
+            final var o = new TriggerBuildAvailableSecrets();
+            o.secretManagers = secretManagers;
+            return o;
         }
     }
 }

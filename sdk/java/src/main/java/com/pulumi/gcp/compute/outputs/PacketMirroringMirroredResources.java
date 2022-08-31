@@ -18,29 +18,20 @@ public final class PacketMirroringMirroredResources {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<PacketMirroringMirroredResourcesInstance> instances;
+    private @Nullable List<PacketMirroringMirroredResourcesInstance> instances;
     /**
      * @return All instances in one of these subnetworks will be mirrored.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<PacketMirroringMirroredResourcesSubnetwork> subnetworks;
+    private @Nullable List<PacketMirroringMirroredResourcesSubnetwork> subnetworks;
     /**
      * @return All instances with these tags will be mirrored.
      * 
      */
-    private final @Nullable List<String> tags;
+    private @Nullable List<String> tags;
 
-    @CustomType.Constructor
-    private PacketMirroringMirroredResources(
-        @CustomType.Parameter("instances") @Nullable List<PacketMirroringMirroredResourcesInstance> instances,
-        @CustomType.Parameter("subnetworks") @Nullable List<PacketMirroringMirroredResourcesSubnetwork> subnetworks,
-        @CustomType.Parameter("tags") @Nullable List<String> tags) {
-        this.instances = instances;
-        this.subnetworks = subnetworks;
-        this.tags = tags;
-    }
-
+    private PacketMirroringMirroredResources() {}
     /**
      * @return All the listed instances will be mirrored.  Specify at most 50.
      * Structure is documented below.
@@ -72,16 +63,12 @@ public final class PacketMirroringMirroredResources {
     public static Builder builder(PacketMirroringMirroredResources defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<PacketMirroringMirroredResourcesInstance> instances;
         private @Nullable List<PacketMirroringMirroredResourcesSubnetwork> subnetworks;
         private @Nullable List<String> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PacketMirroringMirroredResources defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instances = defaults.instances;
@@ -89,6 +76,7 @@ public final class PacketMirroringMirroredResources {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder instances(@Nullable List<PacketMirroringMirroredResourcesInstance> instances) {
             this.instances = instances;
             return this;
@@ -96,6 +84,7 @@ public final class PacketMirroringMirroredResources {
         public Builder instances(PacketMirroringMirroredResourcesInstance... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder subnetworks(@Nullable List<PacketMirroringMirroredResourcesSubnetwork> subnetworks) {
             this.subnetworks = subnetworks;
             return this;
@@ -103,14 +92,20 @@ public final class PacketMirroringMirroredResources {
         public Builder subnetworks(PacketMirroringMirroredResourcesSubnetwork... subnetworks) {
             return subnetworks(List.of(subnetworks));
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
             return tags(List.of(tags));
-        }        public PacketMirroringMirroredResources build() {
-            return new PacketMirroringMirroredResources(instances, subnetworks, tags);
+        }
+        public PacketMirroringMirroredResources build() {
+            final var o = new PacketMirroringMirroredResources();
+            o.instances = instances;
+            o.subnetworks = subnetworks;
+            o.tags = tags;
+            return o;
         }
     }
 }

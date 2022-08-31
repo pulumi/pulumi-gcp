@@ -14,13 +14,9 @@ public final class ApiConfigGatewayConfig {
      * Structure is documented below.
      * 
      */
-    private final ApiConfigGatewayConfigBackendConfig backendConfig;
+    private ApiConfigGatewayConfigBackendConfig backendConfig;
 
-    @CustomType.Constructor
-    private ApiConfigGatewayConfig(@CustomType.Parameter("backendConfig") ApiConfigGatewayConfigBackendConfig backendConfig) {
-        this.backendConfig = backendConfig;
-    }
-
+    private ApiConfigGatewayConfig() {}
     /**
      * @return Backend settings that are applied to all backends of the Gateway.
      * Structure is documented below.
@@ -37,24 +33,24 @@ public final class ApiConfigGatewayConfig {
     public static Builder builder(ApiConfigGatewayConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private ApiConfigGatewayConfigBackendConfig backendConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApiConfigGatewayConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backendConfig = defaults.backendConfig;
         }
 
+        @CustomType.Setter
         public Builder backendConfig(ApiConfigGatewayConfigBackendConfig backendConfig) {
             this.backendConfig = Objects.requireNonNull(backendConfig);
             return this;
-        }        public ApiConfigGatewayConfig build() {
-            return new ApiConfigGatewayConfig(backendConfig);
+        }
+        public ApiConfigGatewayConfig build() {
+            final var o = new ApiConfigGatewayConfig();
+            o.backendConfig = backendConfig;
+            return o;
         }
     }
 }

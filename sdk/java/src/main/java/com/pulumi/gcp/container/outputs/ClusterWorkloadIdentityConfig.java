@@ -15,13 +15,9 @@ public final class ClusterWorkloadIdentityConfig {
      * @return The workload pool to attach all Kubernetes service accounts to.
      * 
      */
-    private final @Nullable String workloadPool;
+    private @Nullable String workloadPool;
 
-    @CustomType.Constructor
-    private ClusterWorkloadIdentityConfig(@CustomType.Parameter("workloadPool") @Nullable String workloadPool) {
-        this.workloadPool = workloadPool;
-    }
-
+    private ClusterWorkloadIdentityConfig() {}
     /**
      * @return The workload pool to attach all Kubernetes service accounts to.
      * 
@@ -37,24 +33,24 @@ public final class ClusterWorkloadIdentityConfig {
     public static Builder builder(ClusterWorkloadIdentityConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String workloadPool;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterWorkloadIdentityConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.workloadPool = defaults.workloadPool;
         }
 
+        @CustomType.Setter
         public Builder workloadPool(@Nullable String workloadPool) {
             this.workloadPool = workloadPool;
             return this;
-        }        public ClusterWorkloadIdentityConfig build() {
-            return new ClusterWorkloadIdentityConfig(workloadPool);
+        }
+        public ClusterWorkloadIdentityConfig build() {
+            final var o = new ClusterWorkloadIdentityConfig();
+            o.workloadPool = workloadPool;
+            return o;
         }
     }
 }

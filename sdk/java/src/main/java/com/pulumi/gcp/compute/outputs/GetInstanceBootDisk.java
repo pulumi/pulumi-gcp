@@ -16,53 +16,34 @@ public final class GetInstanceBootDisk {
      * @return Whether the disk will be auto-deleted when the instance is deleted.
      * 
      */
-    private final Boolean autoDelete;
+    private Boolean autoDelete;
     /**
      * @return Name with which the attached disk is accessible
      * under `/dev/disk/by-id/`
      * 
      */
-    private final String deviceName;
-    private final String diskEncryptionKeyRaw;
-    private final String diskEncryptionKeySha256;
+    private String deviceName;
+    private String diskEncryptionKeyRaw;
+    private String diskEncryptionKeySha256;
     /**
      * @return Parameters with which a disk was created alongside the instance.
      * Structure is documented below.
      * 
      */
-    private final List<GetInstanceBootDiskInitializeParam> initializeParams;
-    private final String kmsKeySelfLink;
+    private List<GetInstanceBootDiskInitializeParam> initializeParams;
+    private String kmsKeySelfLink;
     /**
      * @return Read/write mode for the disk. One of `&#34;READ_ONLY&#34;` or `&#34;READ_WRITE&#34;`.
      * 
      */
-    private final String mode;
+    private String mode;
     /**
      * @return The name or self_link of the disk attached to this instance.
      * 
      */
-    private final String source;
+    private String source;
 
-    @CustomType.Constructor
-    private GetInstanceBootDisk(
-        @CustomType.Parameter("autoDelete") Boolean autoDelete,
-        @CustomType.Parameter("deviceName") String deviceName,
-        @CustomType.Parameter("diskEncryptionKeyRaw") String diskEncryptionKeyRaw,
-        @CustomType.Parameter("diskEncryptionKeySha256") String diskEncryptionKeySha256,
-        @CustomType.Parameter("initializeParams") List<GetInstanceBootDiskInitializeParam> initializeParams,
-        @CustomType.Parameter("kmsKeySelfLink") String kmsKeySelfLink,
-        @CustomType.Parameter("mode") String mode,
-        @CustomType.Parameter("source") String source) {
-        this.autoDelete = autoDelete;
-        this.deviceName = deviceName;
-        this.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
-        this.diskEncryptionKeySha256 = diskEncryptionKeySha256;
-        this.initializeParams = initializeParams;
-        this.kmsKeySelfLink = kmsKeySelfLink;
-        this.mode = mode;
-        this.source = source;
-    }
-
+    private GetInstanceBootDisk() {}
     /**
      * @return Whether the disk will be auto-deleted when the instance is deleted.
      * 
@@ -117,7 +98,7 @@ public final class GetInstanceBootDisk {
     public static Builder builder(GetInstanceBootDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean autoDelete;
         private String deviceName;
@@ -127,11 +108,7 @@ public final class GetInstanceBootDisk {
         private String kmsKeySelfLink;
         private String mode;
         private String source;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceBootDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoDelete = defaults.autoDelete;
@@ -144,22 +121,27 @@ public final class GetInstanceBootDisk {
     	      this.source = defaults.source;
         }
 
+        @CustomType.Setter
         public Builder autoDelete(Boolean autoDelete) {
             this.autoDelete = Objects.requireNonNull(autoDelete);
             return this;
         }
+        @CustomType.Setter
         public Builder deviceName(String deviceName) {
             this.deviceName = Objects.requireNonNull(deviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder diskEncryptionKeyRaw(String diskEncryptionKeyRaw) {
             this.diskEncryptionKeyRaw = Objects.requireNonNull(diskEncryptionKeyRaw);
             return this;
         }
+        @CustomType.Setter
         public Builder diskEncryptionKeySha256(String diskEncryptionKeySha256) {
             this.diskEncryptionKeySha256 = Objects.requireNonNull(diskEncryptionKeySha256);
             return this;
         }
+        @CustomType.Setter
         public Builder initializeParams(List<GetInstanceBootDiskInitializeParam> initializeParams) {
             this.initializeParams = Objects.requireNonNull(initializeParams);
             return this;
@@ -167,19 +149,32 @@ public final class GetInstanceBootDisk {
         public Builder initializeParams(GetInstanceBootDiskInitializeParam... initializeParams) {
             return initializeParams(List.of(initializeParams));
         }
+        @CustomType.Setter
         public Builder kmsKeySelfLink(String kmsKeySelfLink) {
             this.kmsKeySelfLink = Objects.requireNonNull(kmsKeySelfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder mode(String mode) {
             this.mode = Objects.requireNonNull(mode);
             return this;
         }
+        @CustomType.Setter
         public Builder source(String source) {
             this.source = Objects.requireNonNull(source);
             return this;
-        }        public GetInstanceBootDisk build() {
-            return new GetInstanceBootDisk(autoDelete, deviceName, diskEncryptionKeyRaw, diskEncryptionKeySha256, initializeParams, kmsKeySelfLink, mode, source);
+        }
+        public GetInstanceBootDisk build() {
+            final var o = new GetInstanceBootDisk();
+            o.autoDelete = autoDelete;
+            o.deviceName = deviceName;
+            o.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
+            o.diskEncryptionKeySha256 = diskEncryptionKeySha256;
+            o.initializeParams = initializeParams;
+            o.kmsKeySelfLink = kmsKeySelfLink;
+            o.mode = mode;
+            o.source = source;
+            return o;
         }
     }
 }

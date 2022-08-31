@@ -13,13 +13,9 @@ public final class BucketVersioning {
      * @return While set to `true`, versioning is fully enabled for this bucket.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private BucketVersioning(@CustomType.Parameter("enabled") Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private BucketVersioning() {}
     /**
      * @return While set to `true`, versioning is fully enabled for this bucket.
      * 
@@ -35,24 +31,24 @@ public final class BucketVersioning {
     public static Builder builder(BucketVersioning defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BucketVersioning defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public BucketVersioning build() {
-            return new BucketVersioning(enabled);
+        }
+        public BucketVersioning build() {
+            final var o = new BucketVersioning();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

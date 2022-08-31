@@ -12,20 +12,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecVolumeSecret {
-    private final Integer defaultMode;
-    private final List<GetServiceTemplateSpecVolumeSecretItem> items;
-    private final String secretName;
+    private Integer defaultMode;
+    private List<GetServiceTemplateSpecVolumeSecretItem> items;
+    private String secretName;
 
-    @CustomType.Constructor
-    private GetServiceTemplateSpecVolumeSecret(
-        @CustomType.Parameter("defaultMode") Integer defaultMode,
-        @CustomType.Parameter("items") List<GetServiceTemplateSpecVolumeSecretItem> items,
-        @CustomType.Parameter("secretName") String secretName) {
-        this.defaultMode = defaultMode;
-        this.items = items;
-        this.secretName = secretName;
-    }
-
+    private GetServiceTemplateSpecVolumeSecret() {}
     public Integer defaultMode() {
         return this.defaultMode;
     }
@@ -43,16 +34,12 @@ public final class GetServiceTemplateSpecVolumeSecret {
     public static Builder builder(GetServiceTemplateSpecVolumeSecret defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer defaultMode;
         private List<GetServiceTemplateSpecVolumeSecretItem> items;
         private String secretName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceTemplateSpecVolumeSecret defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultMode = defaults.defaultMode;
@@ -60,10 +47,12 @@ public final class GetServiceTemplateSpecVolumeSecret {
     	      this.secretName = defaults.secretName;
         }
 
+        @CustomType.Setter
         public Builder defaultMode(Integer defaultMode) {
             this.defaultMode = Objects.requireNonNull(defaultMode);
             return this;
         }
+        @CustomType.Setter
         public Builder items(List<GetServiceTemplateSpecVolumeSecretItem> items) {
             this.items = Objects.requireNonNull(items);
             return this;
@@ -71,11 +60,17 @@ public final class GetServiceTemplateSpecVolumeSecret {
         public Builder items(GetServiceTemplateSpecVolumeSecretItem... items) {
             return items(List.of(items));
         }
+        @CustomType.Setter
         public Builder secretName(String secretName) {
             this.secretName = Objects.requireNonNull(secretName);
             return this;
-        }        public GetServiceTemplateSpecVolumeSecret build() {
-            return new GetServiceTemplateSpecVolumeSecret(defaultMode, items, secretName);
+        }
+        public GetServiceTemplateSpecVolumeSecret build() {
+            final var o = new GetServiceTemplateSpecVolumeSecret();
+            o.defaultMode = defaultMode;
+            o.items = items;
+            o.secretName = secretName;
+            return o;
         }
     }
 }

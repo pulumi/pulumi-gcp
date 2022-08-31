@@ -16,13 +16,9 @@ public final class FolderSinkBigqueryOptions {
      * has to be used instead. In both cases, tables are sharded based on UTC timezone.
      * 
      */
-    private final Boolean usePartitionedTables;
+    private Boolean usePartitionedTables;
 
-    @CustomType.Constructor
-    private FolderSinkBigqueryOptions(@CustomType.Parameter("usePartitionedTables") Boolean usePartitionedTables) {
-        this.usePartitionedTables = usePartitionedTables;
-    }
-
+    private FolderSinkBigqueryOptions() {}
     /**
      * @return Whether to use [BigQuery&#39;s partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
      * By default, Logging creates dated tables based on the log entries&#39; timestamps, e.g. syslog_20170523. With partitioned
@@ -41,24 +37,24 @@ public final class FolderSinkBigqueryOptions {
     public static Builder builder(FolderSinkBigqueryOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean usePartitionedTables;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FolderSinkBigqueryOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.usePartitionedTables = defaults.usePartitionedTables;
         }
 
+        @CustomType.Setter
         public Builder usePartitionedTables(Boolean usePartitionedTables) {
             this.usePartitionedTables = Objects.requireNonNull(usePartitionedTables);
             return this;
-        }        public FolderSinkBigqueryOptions build() {
-            return new FolderSinkBigqueryOptions(usePartitionedTables);
+        }
+        public FolderSinkBigqueryOptions build() {
+            final var o = new FolderSinkBigqueryOptions();
+            o.usePartitionedTables = usePartitionedTables;
+            return o;
         }
     }
 }

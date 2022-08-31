@@ -30,6 +30,7 @@ import com.pulumi.gcp.container.outputs.ClusterMonitoringConfig;
 import com.pulumi.gcp.container.outputs.ClusterNetworkPolicy;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePool;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolAutoConfig;
 import com.pulumi.gcp.container.outputs.ClusterNotificationConfig;
 import com.pulumi.gcp.container.outputs.ClusterPodSecurityPolicyConfig;
 import com.pulumi.gcp.container.outputs.ClusterPrivateClusterConfig;
@@ -993,6 +994,24 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> nodeLocations() {
         return this.nodeLocations;
+    }
+    /**
+     * ) Node pool configs that apply to auto-provisioned node pools in
+     * [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+     * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+     * 
+     */
+    @Export(name="nodePoolAutoConfig", type=ClusterNodePoolAutoConfig.class, parameters={})
+    private Output</* @Nullable */ ClusterNodePoolAutoConfig> nodePoolAutoConfig;
+
+    /**
+     * @return ) Node pool configs that apply to auto-provisioned node pools in
+     * [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+     * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterNodePoolAutoConfig>> nodePoolAutoConfig() {
+        return Codegen.optional(this.nodePoolAutoConfig);
     }
     /**
      * List of node pools associated with this cluster.

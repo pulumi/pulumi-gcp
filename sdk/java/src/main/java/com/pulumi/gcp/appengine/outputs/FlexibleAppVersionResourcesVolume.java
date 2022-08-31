@@ -14,28 +14,19 @@ public final class FlexibleAppVersionResourcesVolume {
      * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Volume size in gigabytes.
      * 
      */
-    private final Integer sizeGb;
+    private Integer sizeGb;
     /**
      * @return Underlying volume type, e.g. &#39;tmpfs&#39;.
      * 
      */
-    private final String volumeType;
+    private String volumeType;
 
-    @CustomType.Constructor
-    private FlexibleAppVersionResourcesVolume(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("sizeGb") Integer sizeGb,
-        @CustomType.Parameter("volumeType") String volumeType) {
-        this.name = name;
-        this.sizeGb = sizeGb;
-        this.volumeType = volumeType;
-    }
-
+    private FlexibleAppVersionResourcesVolume() {}
     /**
      * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      * 
@@ -65,16 +56,12 @@ public final class FlexibleAppVersionResourcesVolume {
     public static Builder builder(FlexibleAppVersionResourcesVolume defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private Integer sizeGb;
         private String volumeType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FlexibleAppVersionResourcesVolume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
@@ -82,19 +69,27 @@ public final class FlexibleAppVersionResourcesVolume {
     	      this.volumeType = defaults.volumeType;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder sizeGb(Integer sizeGb) {
             this.sizeGb = Objects.requireNonNull(sizeGb);
             return this;
         }
+        @CustomType.Setter
         public Builder volumeType(String volumeType) {
             this.volumeType = Objects.requireNonNull(volumeType);
             return this;
-        }        public FlexibleAppVersionResourcesVolume build() {
-            return new FlexibleAppVersionResourcesVolume(name, sizeGb, volumeType);
+        }
+        public FlexibleAppVersionResourcesVolume build() {
+            final var o = new FlexibleAppVersionResourcesVolume();
+            o.name = name;
+            o.sizeGb = sizeGb;
+            o.volumeType = volumeType;
+            return o;
         }
     }
 }

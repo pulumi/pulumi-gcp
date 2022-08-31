@@ -17,12 +17,12 @@ public final class AutoscalingPolicyWorkerConfig {
      * Bounds: [minInstances, ). Defaults to 0.
      * 
      */
-    private final Integer maxInstances;
+    private Integer maxInstances;
     /**
      * @return Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
      * 
      */
-    private final @Nullable Integer minInstances;
+    private @Nullable Integer minInstances;
     /**
      * @return Weight for the instance group, which is used to determine the fraction of total workers
      * in the cluster from this instance group. For example, if primary workers have weight 2,
@@ -38,18 +38,9 @@ public final class AutoscalingPolicyWorkerConfig {
      * only on primary workers, the cluster will use primary workers only and no secondary workers.
      * 
      */
-    private final @Nullable Integer weight;
+    private @Nullable Integer weight;
 
-    @CustomType.Constructor
-    private AutoscalingPolicyWorkerConfig(
-        @CustomType.Parameter("maxInstances") Integer maxInstances,
-        @CustomType.Parameter("minInstances") @Nullable Integer minInstances,
-        @CustomType.Parameter("weight") @Nullable Integer weight) {
-        this.maxInstances = maxInstances;
-        this.minInstances = minInstances;
-        this.weight = weight;
-    }
-
+    private AutoscalingPolicyWorkerConfig() {}
     /**
      * @return Maximum number of instances for this group. Note that by default, clusters will not use
      * secondary workers. Required for secondary workers if the minimum secondary instances is set.
@@ -92,16 +83,12 @@ public final class AutoscalingPolicyWorkerConfig {
     public static Builder builder(AutoscalingPolicyWorkerConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer maxInstances;
         private @Nullable Integer minInstances;
         private @Nullable Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AutoscalingPolicyWorkerConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxInstances = defaults.maxInstances;
@@ -109,19 +96,27 @@ public final class AutoscalingPolicyWorkerConfig {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder maxInstances(Integer maxInstances) {
             this.maxInstances = Objects.requireNonNull(maxInstances);
             return this;
         }
+        @CustomType.Setter
         public Builder minInstances(@Nullable Integer minInstances) {
             this.minInstances = minInstances;
             return this;
         }
+        @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
             this.weight = weight;
             return this;
-        }        public AutoscalingPolicyWorkerConfig build() {
-            return new AutoscalingPolicyWorkerConfig(maxInstances, minInstances, weight);
+        }
+        public AutoscalingPolicyWorkerConfig build() {
+            final var o = new AutoscalingPolicyWorkerConfig();
+            o.maxInstances = maxInstances;
+            o.minInstances = minInstances;
+            o.weight = weight;
+            return o;
         }
     }
 }

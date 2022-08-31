@@ -14,13 +14,9 @@ public final class DicomStoreStreamConfig {
      * Structure is documented below.
      * 
      */
-    private final DicomStoreStreamConfigBigqueryDestination bigqueryDestination;
+    private DicomStoreStreamConfigBigqueryDestination bigqueryDestination;
 
-    @CustomType.Constructor
-    private DicomStoreStreamConfig(@CustomType.Parameter("bigqueryDestination") DicomStoreStreamConfigBigqueryDestination bigqueryDestination) {
-        this.bigqueryDestination = bigqueryDestination;
-    }
-
+    private DicomStoreStreamConfig() {}
     /**
      * @return BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
      * Structure is documented below.
@@ -37,24 +33,24 @@ public final class DicomStoreStreamConfig {
     public static Builder builder(DicomStoreStreamConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private DicomStoreStreamConfigBigqueryDestination bigqueryDestination;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DicomStoreStreamConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bigqueryDestination = defaults.bigqueryDestination;
         }
 
+        @CustomType.Setter
         public Builder bigqueryDestination(DicomStoreStreamConfigBigqueryDestination bigqueryDestination) {
             this.bigqueryDestination = Objects.requireNonNull(bigqueryDestination);
             return this;
-        }        public DicomStoreStreamConfig build() {
-            return new DicomStoreStreamConfig(bigqueryDestination);
+        }
+        public DicomStoreStreamConfig build() {
+            final var o = new DicomStoreStreamConfig();
+            o.bigqueryDestination = bigqueryDestination;
+            return o;
         }
     }
 }

@@ -16,14 +16,14 @@ public final class RegionNetworkEndpointGroupServerlessDeployment {
      * API Gateway: apigateway.googleapis.com
      * 
      */
-    private final String platform;
+    private String platform;
     /**
      * @return The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask.
      * The resource identified by this value is platform-specific and is as follows: API Gateway: The gateway ID, App Engine: The service name,
      * Cloud Functions: The function name, Cloud Run: The service name
      * 
      */
-    private final @Nullable String resource;
+    private @Nullable String resource;
     /**
      * @return A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
      * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
@@ -31,26 +31,15 @@ public final class RegionNetworkEndpointGroupServerlessDeployment {
      * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
      * 
      */
-    private final @Nullable String urlMask;
+    private @Nullable String urlMask;
     /**
      * @return The optional resource version. The version identified by this value is platform-specific and is follows:
      * API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
      * 
      */
-    private final @Nullable String version;
+    private @Nullable String version;
 
-    @CustomType.Constructor
-    private RegionNetworkEndpointGroupServerlessDeployment(
-        @CustomType.Parameter("platform") String platform,
-        @CustomType.Parameter("resource") @Nullable String resource,
-        @CustomType.Parameter("urlMask") @Nullable String urlMask,
-        @CustomType.Parameter("version") @Nullable String version) {
-        this.platform = platform;
-        this.resource = resource;
-        this.urlMask = urlMask;
-        this.version = version;
-    }
-
+    private RegionNetworkEndpointGroupServerlessDeployment() {}
     /**
      * @return The platform of the NEG backend target(s). Possible values:
      * API Gateway: apigateway.googleapis.com
@@ -94,17 +83,13 @@ public final class RegionNetworkEndpointGroupServerlessDeployment {
     public static Builder builder(RegionNetworkEndpointGroupServerlessDeployment defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String platform;
         private @Nullable String resource;
         private @Nullable String urlMask;
         private @Nullable String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionNetworkEndpointGroupServerlessDeployment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.platform = defaults.platform;
@@ -113,23 +98,33 @@ public final class RegionNetworkEndpointGroupServerlessDeployment {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder platform(String platform) {
             this.platform = Objects.requireNonNull(platform);
             return this;
         }
+        @CustomType.Setter
         public Builder resource(@Nullable String resource) {
             this.resource = resource;
             return this;
         }
+        @CustomType.Setter
         public Builder urlMask(@Nullable String urlMask) {
             this.urlMask = urlMask;
             return this;
         }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
-        }        public RegionNetworkEndpointGroupServerlessDeployment build() {
-            return new RegionNetworkEndpointGroupServerlessDeployment(platform, resource, urlMask, version);
+        }
+        public RegionNetworkEndpointGroupServerlessDeployment build() {
+            final var o = new RegionNetworkEndpointGroupServerlessDeployment();
+            o.platform = platform;
+            o.resource = resource;
+            o.urlMask = urlMask;
+            o.version = version;
+            return o;
         }
     }
 }

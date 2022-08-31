@@ -16,30 +16,21 @@ public final class DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork {
      * formatted date time string indicating when this whitelist expires.
      * 
      */
-    private final @Nullable String expirationTime;
+    private @Nullable String expirationTime;
     /**
      * @return A name for this whitelist entry.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return A CIDR notation IPv4 or IPv6 address that is allowed to
      * access this instance. Must be set even if other two attributes are not for
      * the whitelist to become active.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork(
-        @CustomType.Parameter("expirationTime") @Nullable String expirationTime,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("value") String value) {
-        this.expirationTime = expirationTime;
-        this.name = name;
-        this.value = value;
-    }
-
+    private DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork() {}
     /**
      * @return The [RFC 3339](https://tools.ietf.org/html/rfc3339)
      * formatted date time string indicating when this whitelist expires.
@@ -72,16 +63,12 @@ public final class DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork {
     public static Builder builder(DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String expirationTime;
         private @Nullable String name;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expirationTime = defaults.expirationTime;
@@ -89,19 +76,27 @@ public final class DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder expirationTime(@Nullable String expirationTime) {
             this.expirationTime = expirationTime;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork build() {
-            return new DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork(expirationTime, name, value);
+        }
+        public DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork build() {
+            final var o = new DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork();
+            o.expirationTime = expirationTime;
+            o.name = name;
+            o.value = value;
+            return o;
         }
     }
 }

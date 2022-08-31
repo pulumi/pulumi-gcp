@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class NodePoolNodeConfigLinuxNodeConfig {
-    private final Map<String,String> sysctls;
+    private Map<String,String> sysctls;
 
-    @CustomType.Constructor
-    private NodePoolNodeConfigLinuxNodeConfig(@CustomType.Parameter("sysctls") Map<String,String> sysctls) {
-        this.sysctls = sysctls;
-    }
-
+    private NodePoolNodeConfigLinuxNodeConfig() {}
     public Map<String,String> sysctls() {
         return this.sysctls;
     }
@@ -28,24 +24,24 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
     public static Builder builder(NodePoolNodeConfigLinuxNodeConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> sysctls;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodePoolNodeConfigLinuxNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sysctls = defaults.sysctls;
         }
 
+        @CustomType.Setter
         public Builder sysctls(Map<String,String> sysctls) {
             this.sysctls = Objects.requireNonNull(sysctls);
             return this;
-        }        public NodePoolNodeConfigLinuxNodeConfig build() {
-            return new NodePoolNodeConfigLinuxNodeConfig(sysctls);
+        }
+        public NodePoolNodeConfigLinuxNodeConfig build() {
+            final var o = new NodePoolNodeConfigLinuxNodeConfig();
+            o.sysctls = sysctls;
+            return o;
         }
     }
 }

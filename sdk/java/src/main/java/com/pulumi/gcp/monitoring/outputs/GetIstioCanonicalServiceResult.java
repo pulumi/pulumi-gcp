@@ -14,45 +14,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetIstioCanonicalServiceResult {
-    private final String canonicalService;
-    private final String canonicalServiceNamespace;
-    private final String displayName;
+    private String canonicalService;
+    private String canonicalServiceNamespace;
+    private String displayName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String meshUid;
-    private final String name;
-    private final @Nullable String project;
-    private final String serviceId;
-    private final List<GetIstioCanonicalServiceTelemetry> telemetries;
-    private final Map<String,String> userLabels;
+    private String id;
+    private String meshUid;
+    private String name;
+    private @Nullable String project;
+    private String serviceId;
+    private List<GetIstioCanonicalServiceTelemetry> telemetries;
+    private Map<String,String> userLabels;
 
-    @CustomType.Constructor
-    private GetIstioCanonicalServiceResult(
-        @CustomType.Parameter("canonicalService") String canonicalService,
-        @CustomType.Parameter("canonicalServiceNamespace") String canonicalServiceNamespace,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("meshUid") String meshUid,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("serviceId") String serviceId,
-        @CustomType.Parameter("telemetries") List<GetIstioCanonicalServiceTelemetry> telemetries,
-        @CustomType.Parameter("userLabels") Map<String,String> userLabels) {
-        this.canonicalService = canonicalService;
-        this.canonicalServiceNamespace = canonicalServiceNamespace;
-        this.displayName = displayName;
-        this.id = id;
-        this.meshUid = meshUid;
-        this.name = name;
-        this.project = project;
-        this.serviceId = serviceId;
-        this.telemetries = telemetries;
-        this.userLabels = userLabels;
-    }
-
+    private GetIstioCanonicalServiceResult() {}
     public String canonicalService() {
         return this.canonicalService;
     }
@@ -95,7 +72,7 @@ public final class GetIstioCanonicalServiceResult {
     public static Builder builder(GetIstioCanonicalServiceResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String canonicalService;
         private String canonicalServiceNamespace;
@@ -107,11 +84,7 @@ public final class GetIstioCanonicalServiceResult {
         private String serviceId;
         private List<GetIstioCanonicalServiceTelemetry> telemetries;
         private Map<String,String> userLabels;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetIstioCanonicalServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.canonicalService = defaults.canonicalService;
@@ -126,38 +99,47 @@ public final class GetIstioCanonicalServiceResult {
     	      this.userLabels = defaults.userLabels;
         }
 
+        @CustomType.Setter
         public Builder canonicalService(String canonicalService) {
             this.canonicalService = Objects.requireNonNull(canonicalService);
             return this;
         }
+        @CustomType.Setter
         public Builder canonicalServiceNamespace(String canonicalServiceNamespace) {
             this.canonicalServiceNamespace = Objects.requireNonNull(canonicalServiceNamespace);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder meshUid(String meshUid) {
             this.meshUid = Objects.requireNonNull(meshUid);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceId(String serviceId) {
             this.serviceId = Objects.requireNonNull(serviceId);
             return this;
         }
+        @CustomType.Setter
         public Builder telemetries(List<GetIstioCanonicalServiceTelemetry> telemetries) {
             this.telemetries = Objects.requireNonNull(telemetries);
             return this;
@@ -165,11 +147,24 @@ public final class GetIstioCanonicalServiceResult {
         public Builder telemetries(GetIstioCanonicalServiceTelemetry... telemetries) {
             return telemetries(List.of(telemetries));
         }
+        @CustomType.Setter
         public Builder userLabels(Map<String,String> userLabels) {
             this.userLabels = Objects.requireNonNull(userLabels);
             return this;
-        }        public GetIstioCanonicalServiceResult build() {
-            return new GetIstioCanonicalServiceResult(canonicalService, canonicalServiceNamespace, displayName, id, meshUid, name, project, serviceId, telemetries, userLabels);
+        }
+        public GetIstioCanonicalServiceResult build() {
+            final var o = new GetIstioCanonicalServiceResult();
+            o.canonicalService = canonicalService;
+            o.canonicalServiceNamespace = canonicalServiceNamespace;
+            o.displayName = displayName;
+            o.id = id;
+            o.meshUid = meshUid;
+            o.name = name;
+            o.project = project;
+            o.serviceId = serviceId;
+            o.telemetries = telemetries;
+            o.userLabels = userLabels;
+            return o;
         }
     }
 }

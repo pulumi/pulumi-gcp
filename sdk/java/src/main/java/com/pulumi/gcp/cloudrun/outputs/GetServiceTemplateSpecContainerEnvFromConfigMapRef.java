@@ -11,17 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecContainerEnvFromConfigMapRef {
-    private final List<GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference> localObjectReferences;
-    private final Boolean optional;
+    private List<GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference> localObjectReferences;
+    private Boolean optional;
 
-    @CustomType.Constructor
-    private GetServiceTemplateSpecContainerEnvFromConfigMapRef(
-        @CustomType.Parameter("localObjectReferences") List<GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference> localObjectReferences,
-        @CustomType.Parameter("optional") Boolean optional) {
-        this.localObjectReferences = localObjectReferences;
-        this.optional = optional;
-    }
-
+    private GetServiceTemplateSpecContainerEnvFromConfigMapRef() {}
     public List<GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference> localObjectReferences() {
         return this.localObjectReferences;
     }
@@ -36,21 +29,18 @@ public final class GetServiceTemplateSpecContainerEnvFromConfigMapRef {
     public static Builder builder(GetServiceTemplateSpecContainerEnvFromConfigMapRef defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference> localObjectReferences;
         private Boolean optional;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceTemplateSpecContainerEnvFromConfigMapRef defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.localObjectReferences = defaults.localObjectReferences;
     	      this.optional = defaults.optional;
         }
 
+        @CustomType.Setter
         public Builder localObjectReferences(List<GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference> localObjectReferences) {
             this.localObjectReferences = Objects.requireNonNull(localObjectReferences);
             return this;
@@ -58,11 +48,16 @@ public final class GetServiceTemplateSpecContainerEnvFromConfigMapRef {
         public Builder localObjectReferences(GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference... localObjectReferences) {
             return localObjectReferences(List.of(localObjectReferences));
         }
+        @CustomType.Setter
         public Builder optional(Boolean optional) {
             this.optional = Objects.requireNonNull(optional);
             return this;
-        }        public GetServiceTemplateSpecContainerEnvFromConfigMapRef build() {
-            return new GetServiceTemplateSpecContainerEnvFromConfigMapRef(localObjectReferences, optional);
+        }
+        public GetServiceTemplateSpecContainerEnvFromConfigMapRef build() {
+            final var o = new GetServiceTemplateSpecContainerEnvFromConfigMapRef();
+            o.localObjectReferences = localObjectReferences;
+            o.optional = optional;
+            return o;
         }
     }
 }

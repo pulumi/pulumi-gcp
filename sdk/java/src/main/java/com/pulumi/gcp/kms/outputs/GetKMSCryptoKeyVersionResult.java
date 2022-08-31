@@ -18,55 +18,36 @@ public final class GetKMSCryptoKeyVersionResult {
      * @return The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
      * 
      */
-    private final String algorithm;
-    private final String cryptoKey;
+    private String algorithm;
+    private String cryptoKey;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The resource name for this CryptoKeyVersion in the format `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*{@literal /}cryptoKeyVersions/*`
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protection_level reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
      * 
      */
-    private final String protectionLevel;
+    private String protectionLevel;
     /**
      * @return If the enclosing CryptoKey has purpose `ASYMMETRIC_SIGN` or `ASYMMETRIC_DECRYPT`, this block contains details about the public key associated to this CryptoKeyVersion. Structure is documented below.
      * 
      */
-    private final List<GetKMSCryptoKeyVersionPublicKey> publicKeys;
+    private List<GetKMSCryptoKeyVersionPublicKey> publicKeys;
     /**
      * @return The current state of the CryptoKeyVersion. See the [state reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions#CryptoKeyVersion.CryptoKeyVersionState) for possible outputs.
      * 
      */
-    private final String state;
-    private final @Nullable Integer version;
+    private String state;
+    private @Nullable Integer version;
 
-    @CustomType.Constructor
-    private GetKMSCryptoKeyVersionResult(
-        @CustomType.Parameter("algorithm") String algorithm,
-        @CustomType.Parameter("cryptoKey") String cryptoKey,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("protectionLevel") String protectionLevel,
-        @CustomType.Parameter("publicKeys") List<GetKMSCryptoKeyVersionPublicKey> publicKeys,
-        @CustomType.Parameter("state") String state,
-        @CustomType.Parameter("version") @Nullable Integer version) {
-        this.algorithm = algorithm;
-        this.cryptoKey = cryptoKey;
-        this.id = id;
-        this.name = name;
-        this.protectionLevel = protectionLevel;
-        this.publicKeys = publicKeys;
-        this.state = state;
-        this.version = version;
-    }
-
+    private GetKMSCryptoKeyVersionResult() {}
     /**
      * @return The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
      * 
@@ -123,7 +104,7 @@ public final class GetKMSCryptoKeyVersionResult {
     public static Builder builder(GetKMSCryptoKeyVersionResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String algorithm;
         private String cryptoKey;
@@ -133,11 +114,7 @@ public final class GetKMSCryptoKeyVersionResult {
         private List<GetKMSCryptoKeyVersionPublicKey> publicKeys;
         private String state;
         private @Nullable Integer version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKMSCryptoKeyVersionResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.algorithm = defaults.algorithm;
@@ -150,26 +127,32 @@ public final class GetKMSCryptoKeyVersionResult {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder algorithm(String algorithm) {
             this.algorithm = Objects.requireNonNull(algorithm);
             return this;
         }
+        @CustomType.Setter
         public Builder cryptoKey(String cryptoKey) {
             this.cryptoKey = Objects.requireNonNull(cryptoKey);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder protectionLevel(String protectionLevel) {
             this.protectionLevel = Objects.requireNonNull(protectionLevel);
             return this;
         }
+        @CustomType.Setter
         public Builder publicKeys(List<GetKMSCryptoKeyVersionPublicKey> publicKeys) {
             this.publicKeys = Objects.requireNonNull(publicKeys);
             return this;
@@ -177,15 +160,27 @@ public final class GetKMSCryptoKeyVersionResult {
         public Builder publicKeys(GetKMSCryptoKeyVersionPublicKey... publicKeys) {
             return publicKeys(List.of(publicKeys));
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
         }
+        @CustomType.Setter
         public Builder version(@Nullable Integer version) {
             this.version = version;
             return this;
-        }        public GetKMSCryptoKeyVersionResult build() {
-            return new GetKMSCryptoKeyVersionResult(algorithm, cryptoKey, id, name, protectionLevel, publicKeys, state, version);
+        }
+        public GetKMSCryptoKeyVersionResult build() {
+            final var o = new GetKMSCryptoKeyVersionResult();
+            o.algorithm = algorithm;
+            o.cryptoKey = cryptoKey;
+            o.id = id;
+            o.name = name;
+            o.protectionLevel = protectionLevel;
+            o.publicKeys = publicKeys;
+            o.state = state;
+            o.version = version;
+            return o;
         }
     }
 }

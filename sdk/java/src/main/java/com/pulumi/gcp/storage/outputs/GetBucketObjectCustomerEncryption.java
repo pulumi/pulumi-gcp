@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketObjectCustomerEncryption {
-    private final String encryptionAlgorithm;
-    private final String encryptionKey;
+    private String encryptionAlgorithm;
+    private String encryptionKey;
 
-    @CustomType.Constructor
-    private GetBucketObjectCustomerEncryption(
-        @CustomType.Parameter("encryptionAlgorithm") String encryptionAlgorithm,
-        @CustomType.Parameter("encryptionKey") String encryptionKey) {
-        this.encryptionAlgorithm = encryptionAlgorithm;
-        this.encryptionKey = encryptionKey;
-    }
-
+    private GetBucketObjectCustomerEncryption() {}
     public String encryptionAlgorithm() {
         return this.encryptionAlgorithm;
     }
@@ -34,30 +27,32 @@ public final class GetBucketObjectCustomerEncryption {
     public static Builder builder(GetBucketObjectCustomerEncryption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String encryptionAlgorithm;
         private String encryptionKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBucketObjectCustomerEncryption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.encryptionAlgorithm = defaults.encryptionAlgorithm;
     	      this.encryptionKey = defaults.encryptionKey;
         }
 
+        @CustomType.Setter
         public Builder encryptionAlgorithm(String encryptionAlgorithm) {
             this.encryptionAlgorithm = Objects.requireNonNull(encryptionAlgorithm);
             return this;
         }
+        @CustomType.Setter
         public Builder encryptionKey(String encryptionKey) {
             this.encryptionKey = Objects.requireNonNull(encryptionKey);
             return this;
-        }        public GetBucketObjectCustomerEncryption build() {
-            return new GetBucketObjectCustomerEncryption(encryptionAlgorithm, encryptionKey);
+        }
+        public GetBucketObjectCustomerEncryption build() {
+            final var o = new GetBucketObjectCustomerEncryption();
+            o.encryptionAlgorithm = encryptionAlgorithm;
+            o.encryptionKey = encryptionKey;
+            return o;
         }
     }
 }

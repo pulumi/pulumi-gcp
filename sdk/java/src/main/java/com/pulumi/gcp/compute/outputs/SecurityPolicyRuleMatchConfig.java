@@ -16,13 +16,9 @@ public final class SecurityPolicyRuleMatchConfig {
      * (can be used to override the default behavior).
      * 
      */
-    private final List<String> srcIpRanges;
+    private List<String> srcIpRanges;
 
-    @CustomType.Constructor
-    private SecurityPolicyRuleMatchConfig(@CustomType.Parameter("srcIpRanges") List<String> srcIpRanges) {
-        this.srcIpRanges = srcIpRanges;
-    }
-
+    private SecurityPolicyRuleMatchConfig() {}
     /**
      * @return Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
      * to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of &#39;\*&#39; matches all IPs
@@ -40,27 +36,27 @@ public final class SecurityPolicyRuleMatchConfig {
     public static Builder builder(SecurityPolicyRuleMatchConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> srcIpRanges;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecurityPolicyRuleMatchConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.srcIpRanges = defaults.srcIpRanges;
         }
 
+        @CustomType.Setter
         public Builder srcIpRanges(List<String> srcIpRanges) {
             this.srcIpRanges = Objects.requireNonNull(srcIpRanges);
             return this;
         }
         public Builder srcIpRanges(String... srcIpRanges) {
             return srcIpRanges(List.of(srcIpRanges));
-        }        public SecurityPolicyRuleMatchConfig build() {
-            return new SecurityPolicyRuleMatchConfig(srcIpRanges);
+        }
+        public SecurityPolicyRuleMatchConfig build() {
+            final var o = new SecurityPolicyRuleMatchConfig();
+            o.srcIpRanges = srcIpRanges;
+            return o;
         }
     }
 }

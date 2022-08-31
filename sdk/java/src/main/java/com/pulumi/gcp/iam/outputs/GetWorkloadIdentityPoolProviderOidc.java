@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetWorkloadIdentityPoolProviderOidc {
-    private final List<String> allowedAudiences;
-    private final String issuerUri;
+    private List<String> allowedAudiences;
+    private String issuerUri;
 
-    @CustomType.Constructor
-    private GetWorkloadIdentityPoolProviderOidc(
-        @CustomType.Parameter("allowedAudiences") List<String> allowedAudiences,
-        @CustomType.Parameter("issuerUri") String issuerUri) {
-        this.allowedAudiences = allowedAudiences;
-        this.issuerUri = issuerUri;
-    }
-
+    private GetWorkloadIdentityPoolProviderOidc() {}
     public List<String> allowedAudiences() {
         return this.allowedAudiences;
     }
@@ -35,21 +28,18 @@ public final class GetWorkloadIdentityPoolProviderOidc {
     public static Builder builder(GetWorkloadIdentityPoolProviderOidc defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> allowedAudiences;
         private String issuerUri;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetWorkloadIdentityPoolProviderOidc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedAudiences = defaults.allowedAudiences;
     	      this.issuerUri = defaults.issuerUri;
         }
 
+        @CustomType.Setter
         public Builder allowedAudiences(List<String> allowedAudiences) {
             this.allowedAudiences = Objects.requireNonNull(allowedAudiences);
             return this;
@@ -57,11 +47,16 @@ public final class GetWorkloadIdentityPoolProviderOidc {
         public Builder allowedAudiences(String... allowedAudiences) {
             return allowedAudiences(List.of(allowedAudiences));
         }
+        @CustomType.Setter
         public Builder issuerUri(String issuerUri) {
             this.issuerUri = Objects.requireNonNull(issuerUri);
             return this;
-        }        public GetWorkloadIdentityPoolProviderOidc build() {
-            return new GetWorkloadIdentityPoolProviderOidc(allowedAudiences, issuerUri);
+        }
+        public GetWorkloadIdentityPoolProviderOidc build() {
+            final var o = new GetWorkloadIdentityPoolProviderOidc();
+            o.allowedAudiences = allowedAudiences;
+            o.issuerUri = issuerUri;
+            return o;
         }
     }
 }

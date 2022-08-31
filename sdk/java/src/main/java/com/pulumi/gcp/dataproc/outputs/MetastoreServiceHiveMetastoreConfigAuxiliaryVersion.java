@@ -16,28 +16,19 @@ public final class MetastoreServiceHiveMetastoreConfigAuxiliaryVersion {
      * If keys are present in both the auxiliary version&#39;s overrides and the primary version&#39;s overrides, the value from the auxiliary version&#39;s overrides takes precedence.
      * 
      */
-    private final @Nullable Map<String,String> configOverrides;
+    private @Nullable Map<String,String> configOverrides;
     /**
      * @return The identifier for this object. Format specified above.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service&#39;s version.
      * 
      */
-    private final String version;
+    private String version;
 
-    @CustomType.Constructor
-    private MetastoreServiceHiveMetastoreConfigAuxiliaryVersion(
-        @CustomType.Parameter("configOverrides") @Nullable Map<String,String> configOverrides,
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("version") String version) {
-        this.configOverrides = configOverrides;
-        this.key = key;
-        this.version = version;
-    }
-
+    private MetastoreServiceHiveMetastoreConfigAuxiliaryVersion() {}
     /**
      * @return A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version&#39;s overrides.
      * If keys are present in both the auxiliary version&#39;s overrides and the primary version&#39;s overrides, the value from the auxiliary version&#39;s overrides takes precedence.
@@ -68,16 +59,12 @@ public final class MetastoreServiceHiveMetastoreConfigAuxiliaryVersion {
     public static Builder builder(MetastoreServiceHiveMetastoreConfigAuxiliaryVersion defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> configOverrides;
         private String key;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MetastoreServiceHiveMetastoreConfigAuxiliaryVersion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configOverrides = defaults.configOverrides;
@@ -85,19 +72,27 @@ public final class MetastoreServiceHiveMetastoreConfigAuxiliaryVersion {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder configOverrides(@Nullable Map<String,String> configOverrides) {
             this.configOverrides = configOverrides;
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public MetastoreServiceHiveMetastoreConfigAuxiliaryVersion build() {
-            return new MetastoreServiceHiveMetastoreConfigAuxiliaryVersion(configOverrides, key, version);
+        }
+        public MetastoreServiceHiveMetastoreConfigAuxiliaryVersion build() {
+            final var o = new MetastoreServiceHiveMetastoreConfigAuxiliaryVersion();
+            o.configOverrides = configOverrides;
+            o.key = key;
+            o.version = version;
+            return o;
         }
     }
 }

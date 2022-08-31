@@ -14,13 +14,9 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
      * Structure is documented below.
      * 
      */
-    private final PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference tableReference;
+    private PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference tableReference;
 
-    @CustomType.Constructor
-    private PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(@CustomType.Parameter("tableReference") PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference tableReference) {
-        this.tableReference = tableReference;
-    }
-
+    private PreventionJobTriggerInspectJobStorageConfigBigQueryOptions() {}
     /**
      * @return Set of files to scan.
      * Structure is documented below.
@@ -37,24 +33,24 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
     public static Builder builder(PreventionJobTriggerInspectJobStorageConfigBigQueryOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference tableReference;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionJobTriggerInspectJobStorageConfigBigQueryOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.tableReference = defaults.tableReference;
         }
 
+        @CustomType.Setter
         public Builder tableReference(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference tableReference) {
             this.tableReference = Objects.requireNonNull(tableReference);
             return this;
-        }        public PreventionJobTriggerInspectJobStorageConfigBigQueryOptions build() {
-            return new PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(tableReference);
+        }
+        public PreventionJobTriggerInspectJobStorageConfigBigQueryOptions build() {
+            final var o = new PreventionJobTriggerInspectJobStorageConfigBigQueryOptions();
+            o.tableReference = tableReference;
+            return o;
         }
     }
 }

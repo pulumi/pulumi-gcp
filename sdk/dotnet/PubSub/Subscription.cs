@@ -193,7 +193,7 @@ namespace Pulumi.Gcp.PubSub
     ///                 var project = values.Item1;
     ///                 var datasetId = values.Item2;
     ///                 var tableId = values.Item3;
-    ///                 return $"{project.Apply(getProjectResult =&gt; getProjectResult)}.{datasetId}.{tableId}";
+    ///                 return $"{project.Apply(getProjectResult =&gt; getProjectResult)}:{datasetId}.{tableId}";
     ///             }),
     ///         },
     ///     }, new CustomResourceOptions

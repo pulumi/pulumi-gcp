@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigWorkloadsConfigWebServer {
-    private final Double cpu;
-    private final Double memoryGb;
-    private final Double storageGb;
+    private Double cpu;
+    private Double memoryGb;
+    private Double storageGb;
 
-    @CustomType.Constructor
-    private GetEnvironmentConfigWorkloadsConfigWebServer(
-        @CustomType.Parameter("cpu") Double cpu,
-        @CustomType.Parameter("memoryGb") Double memoryGb,
-        @CustomType.Parameter("storageGb") Double storageGb) {
-        this.cpu = cpu;
-        this.memoryGb = memoryGb;
-        this.storageGb = storageGb;
-    }
-
+    private GetEnvironmentConfigWorkloadsConfigWebServer() {}
     public Double cpu() {
         return this.cpu;
     }
@@ -40,16 +31,12 @@ public final class GetEnvironmentConfigWorkloadsConfigWebServer {
     public static Builder builder(GetEnvironmentConfigWorkloadsConfigWebServer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Double cpu;
         private Double memoryGb;
         private Double storageGb;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEnvironmentConfigWorkloadsConfigWebServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpu = defaults.cpu;
@@ -57,19 +44,27 @@ public final class GetEnvironmentConfigWorkloadsConfigWebServer {
     	      this.storageGb = defaults.storageGb;
         }
 
+        @CustomType.Setter
         public Builder cpu(Double cpu) {
             this.cpu = Objects.requireNonNull(cpu);
             return this;
         }
+        @CustomType.Setter
         public Builder memoryGb(Double memoryGb) {
             this.memoryGb = Objects.requireNonNull(memoryGb);
             return this;
         }
+        @CustomType.Setter
         public Builder storageGb(Double storageGb) {
             this.storageGb = Objects.requireNonNull(storageGb);
             return this;
-        }        public GetEnvironmentConfigWorkloadsConfigWebServer build() {
-            return new GetEnvironmentConfigWorkloadsConfigWebServer(cpu, memoryGb, storageGb);
+        }
+        public GetEnvironmentConfigWorkloadsConfigWebServer build() {
+            final var o = new GetEnvironmentConfigWorkloadsConfigWebServer();
+            o.cpu = cpu;
+            o.memoryGb = memoryGb;
+            o.storageGb = storageGb;
+            return o;
         }
     }
 }

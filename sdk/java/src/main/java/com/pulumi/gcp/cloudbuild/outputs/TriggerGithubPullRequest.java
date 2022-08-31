@@ -16,29 +16,20 @@ public final class TriggerGithubPullRequest {
      * @return Regex of branches to match.  Specify only one of branch or tag.
      * 
      */
-    private final String branch;
+    private String branch;
     /**
      * @return Whether to block builds on a &#34;/gcbrun&#34; comment from a repository owner or collaborator.
      * Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
      * 
      */
-    private final @Nullable String commentControl;
+    private @Nullable String commentControl;
     /**
      * @return Only trigger a build if the revision regex does NOT match the revision regex.
      * 
      */
-    private final @Nullable Boolean invertRegex;
+    private @Nullable Boolean invertRegex;
 
-    @CustomType.Constructor
-    private TriggerGithubPullRequest(
-        @CustomType.Parameter("branch") String branch,
-        @CustomType.Parameter("commentControl") @Nullable String commentControl,
-        @CustomType.Parameter("invertRegex") @Nullable Boolean invertRegex) {
-        this.branch = branch;
-        this.commentControl = commentControl;
-        this.invertRegex = invertRegex;
-    }
-
+    private TriggerGithubPullRequest() {}
     /**
      * @return Regex of branches to match.  Specify only one of branch or tag.
      * 
@@ -69,16 +60,12 @@ public final class TriggerGithubPullRequest {
     public static Builder builder(TriggerGithubPullRequest defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String branch;
         private @Nullable String commentControl;
         private @Nullable Boolean invertRegex;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerGithubPullRequest defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.branch = defaults.branch;
@@ -86,19 +73,27 @@ public final class TriggerGithubPullRequest {
     	      this.invertRegex = defaults.invertRegex;
         }
 
+        @CustomType.Setter
         public Builder branch(String branch) {
             this.branch = Objects.requireNonNull(branch);
             return this;
         }
+        @CustomType.Setter
         public Builder commentControl(@Nullable String commentControl) {
             this.commentControl = commentControl;
             return this;
         }
+        @CustomType.Setter
         public Builder invertRegex(@Nullable Boolean invertRegex) {
             this.invertRegex = invertRegex;
             return this;
-        }        public TriggerGithubPullRequest build() {
-            return new TriggerGithubPullRequest(branch, commentControl, invertRegex);
+        }
+        public TriggerGithubPullRequest build() {
+            final var o = new TriggerGithubPullRequest();
+            o.branch = branch;
+            o.commentControl = commentControl;
+            o.invertRegex = invertRegex;
+            return o;
         }
     }
 }

@@ -17,40 +17,23 @@ public final class GetRecordSetResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String managedZone;
-    private final String name;
-    private final @Nullable String project;
+    private String id;
+    private String managedZone;
+    private String name;
+    private @Nullable String project;
     /**
      * @return The string data for the records in this record set.
      * 
      */
-    private final List<String> rrdatas;
+    private List<String> rrdatas;
     /**
      * @return The time-to-live of this record set (seconds).
      * 
      */
-    private final Integer ttl;
-    private final String type;
+    private Integer ttl;
+    private String type;
 
-    @CustomType.Constructor
-    private GetRecordSetResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("managedZone") String managedZone,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("rrdatas") List<String> rrdatas,
-        @CustomType.Parameter("ttl") Integer ttl,
-        @CustomType.Parameter("type") String type) {
-        this.id = id;
-        this.managedZone = managedZone;
-        this.name = name;
-        this.project = project;
-        this.rrdatas = rrdatas;
-        this.ttl = ttl;
-        this.type = type;
-    }
-
+    private GetRecordSetResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -92,7 +75,7 @@ public final class GetRecordSetResult {
     public static Builder builder(GetRecordSetResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String managedZone;
@@ -101,11 +84,7 @@ public final class GetRecordSetResult {
         private List<String> rrdatas;
         private Integer ttl;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRecordSetResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -117,22 +96,27 @@ public final class GetRecordSetResult {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder managedZone(String managedZone) {
             this.managedZone = Objects.requireNonNull(managedZone);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder rrdatas(List<String> rrdatas) {
             this.rrdatas = Objects.requireNonNull(rrdatas);
             return this;
@@ -140,15 +124,26 @@ public final class GetRecordSetResult {
         public Builder rrdatas(String... rrdatas) {
             return rrdatas(List.of(rrdatas));
         }
+        @CustomType.Setter
         public Builder ttl(Integer ttl) {
             this.ttl = Objects.requireNonNull(ttl);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetRecordSetResult build() {
-            return new GetRecordSetResult(id, managedZone, name, project, rrdatas, ttl, type);
+        }
+        public GetRecordSetResult build() {
+            final var o = new GetRecordSetResult();
+            o.id = id;
+            o.managedZone = managedZone;
+            o.name = name;
+            o.project = project;
+            o.rrdatas = rrdatas;
+            o.ttl = ttl;
+            o.type = type;
+            return o;
         }
     }
 }

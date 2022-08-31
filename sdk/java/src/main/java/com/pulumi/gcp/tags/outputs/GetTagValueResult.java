@@ -9,39 +9,20 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTagValueResult {
-    private final String createTime;
-    private final String description;
+    private String createTime;
+    private String description;
     /**
      * @return an identifier for the resource with format `tagValues/{{name}}`
      * 
      */
-    private final String id;
-    private final String name;
-    private final String namespacedName;
-    private final String parent;
-    private final String shortName;
-    private final String updateTime;
+    private String id;
+    private String name;
+    private String namespacedName;
+    private String parent;
+    private String shortName;
+    private String updateTime;
 
-    @CustomType.Constructor
-    private GetTagValueResult(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("namespacedName") String namespacedName,
-        @CustomType.Parameter("parent") String parent,
-        @CustomType.Parameter("shortName") String shortName,
-        @CustomType.Parameter("updateTime") String updateTime) {
-        this.createTime = createTime;
-        this.description = description;
-        this.id = id;
-        this.name = name;
-        this.namespacedName = namespacedName;
-        this.parent = parent;
-        this.shortName = shortName;
-        this.updateTime = updateTime;
-    }
-
+    private GetTagValueResult() {}
     public String createTime() {
         return this.createTime;
     }
@@ -78,7 +59,7 @@ public final class GetTagValueResult {
     public static Builder builder(GetTagValueResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String description;
@@ -88,11 +69,7 @@ public final class GetTagValueResult {
         private String parent;
         private String shortName;
         private String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTagValueResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -105,39 +82,57 @@ public final class GetTagValueResult {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder namespacedName(String namespacedName) {
             this.namespacedName = Objects.requireNonNull(namespacedName);
             return this;
         }
+        @CustomType.Setter
         public Builder parent(String parent) {
             this.parent = Objects.requireNonNull(parent);
             return this;
         }
+        @CustomType.Setter
         public Builder shortName(String shortName) {
             this.shortName = Objects.requireNonNull(shortName);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
-        }        public GetTagValueResult build() {
-            return new GetTagValueResult(createTime, description, id, name, namespacedName, parent, shortName, updateTime);
+        }
+        public GetTagValueResult build() {
+            final var o = new GetTagValueResult();
+            o.createTime = createTime;
+            o.description = description;
+            o.id = id;
+            o.name = name;
+            o.namespacedName = namespacedName;
+            o.parent = parent;
+            o.shortName = shortName;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

@@ -10,20 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class InstanceFromMachineImageSchedulingNodeAffinity {
-    private final String key;
-    private final String operator;
-    private final List<String> values;
+    private String key;
+    private String operator;
+    private List<String> values;
 
-    @CustomType.Constructor
-    private InstanceFromMachineImageSchedulingNodeAffinity(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("operator") String operator,
-        @CustomType.Parameter("values") List<String> values) {
-        this.key = key;
-        this.operator = operator;
-        this.values = values;
-    }
-
+    private InstanceFromMachineImageSchedulingNodeAffinity() {}
     public String key() {
         return this.key;
     }
@@ -41,16 +32,12 @@ public final class InstanceFromMachineImageSchedulingNodeAffinity {
     public static Builder builder(InstanceFromMachineImageSchedulingNodeAffinity defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String operator;
         private List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceFromMachineImageSchedulingNodeAffinity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
@@ -58,22 +45,30 @@ public final class InstanceFromMachineImageSchedulingNodeAffinity {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder operator(String operator) {
             this.operator = Objects.requireNonNull(operator);
             return this;
         }
+        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public InstanceFromMachineImageSchedulingNodeAffinity build() {
-            return new InstanceFromMachineImageSchedulingNodeAffinity(key, operator, values);
+        }
+        public InstanceFromMachineImageSchedulingNodeAffinity build() {
+            final var o = new InstanceFromMachineImageSchedulingNodeAffinity();
+            o.key = key;
+            o.operator = operator;
+            o.values = values;
+            return o;
         }
     }
 }

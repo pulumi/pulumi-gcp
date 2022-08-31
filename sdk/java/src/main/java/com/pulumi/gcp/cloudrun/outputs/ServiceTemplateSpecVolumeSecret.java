@@ -21,7 +21,7 @@ public final class ServiceTemplateSpecVolumeSecret {
      * file mode, like fsGroup, and the result can be other mode bits set.
      * 
      */
-    private final @Nullable Integer defaultMode;
+    private @Nullable Integer defaultMode;
     /**
      * @return If unspecified, the volume will expose a file whose name is the
      * secret_name.
@@ -31,7 +31,7 @@ public final class ServiceTemplateSpecVolumeSecret {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<ServiceTemplateSpecVolumeSecretItem> items;
+    private @Nullable List<ServiceTemplateSpecVolumeSecretItem> items;
     /**
      * @return The name of the secret in Cloud Secret Manager. By default, the secret
      * is assumed to be in the same project.
@@ -44,18 +44,9 @@ public final class ServiceTemplateSpecVolumeSecret {
      * annotation.
      * 
      */
-    private final String secretName;
+    private String secretName;
 
-    @CustomType.Constructor
-    private ServiceTemplateSpecVolumeSecret(
-        @CustomType.Parameter("defaultMode") @Nullable Integer defaultMode,
-        @CustomType.Parameter("items") @Nullable List<ServiceTemplateSpecVolumeSecretItem> items,
-        @CustomType.Parameter("secretName") String secretName) {
-        this.defaultMode = defaultMode;
-        this.items = items;
-        this.secretName = secretName;
-    }
-
+    private ServiceTemplateSpecVolumeSecret() {}
     /**
      * @return Mode bits to use on created files by default. Must be a value between 0000
      * and 0777. Defaults to 0644. Directories within the path are not affected by
@@ -101,16 +92,12 @@ public final class ServiceTemplateSpecVolumeSecret {
     public static Builder builder(ServiceTemplateSpecVolumeSecret defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer defaultMode;
         private @Nullable List<ServiceTemplateSpecVolumeSecretItem> items;
         private String secretName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceTemplateSpecVolumeSecret defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultMode = defaults.defaultMode;
@@ -118,10 +105,12 @@ public final class ServiceTemplateSpecVolumeSecret {
     	      this.secretName = defaults.secretName;
         }
 
+        @CustomType.Setter
         public Builder defaultMode(@Nullable Integer defaultMode) {
             this.defaultMode = defaultMode;
             return this;
         }
+        @CustomType.Setter
         public Builder items(@Nullable List<ServiceTemplateSpecVolumeSecretItem> items) {
             this.items = items;
             return this;
@@ -129,11 +118,17 @@ public final class ServiceTemplateSpecVolumeSecret {
         public Builder items(ServiceTemplateSpecVolumeSecretItem... items) {
             return items(List.of(items));
         }
+        @CustomType.Setter
         public Builder secretName(String secretName) {
             this.secretName = Objects.requireNonNull(secretName);
             return this;
-        }        public ServiceTemplateSpecVolumeSecret build() {
-            return new ServiceTemplateSpecVolumeSecret(defaultMode, items, secretName);
+        }
+        public ServiceTemplateSpecVolumeSecret build() {
+            final var o = new ServiceTemplateSpecVolumeSecret();
+            o.defaultMode = defaultMode;
+            o.items = items;
+            o.secretName = secretName;
+            return o;
         }
     }
 }

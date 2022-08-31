@@ -17,30 +17,21 @@ public final class OrganizationSecurityPolicyRuleMatchConfig {
      * EGRESS rules.
      * 
      */
-    private final @Nullable List<String> destIpRanges;
+    private @Nullable List<String> destIpRanges;
     /**
      * @return Pairs of IP protocols and ports that the rule should match.
      * Structure is documented below.
      * 
      */
-    private final List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config> layer4Configs;
+    private List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config> layer4Configs;
     /**
      * @return Source IP address range in CIDR format. Required for
      * INGRESS rules.
      * 
      */
-    private final @Nullable List<String> srcIpRanges;
+    private @Nullable List<String> srcIpRanges;
 
-    @CustomType.Constructor
-    private OrganizationSecurityPolicyRuleMatchConfig(
-        @CustomType.Parameter("destIpRanges") @Nullable List<String> destIpRanges,
-        @CustomType.Parameter("layer4Configs") List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config> layer4Configs,
-        @CustomType.Parameter("srcIpRanges") @Nullable List<String> srcIpRanges) {
-        this.destIpRanges = destIpRanges;
-        this.layer4Configs = layer4Configs;
-        this.srcIpRanges = srcIpRanges;
-    }
-
+    private OrganizationSecurityPolicyRuleMatchConfig() {}
     /**
      * @return Destination IP address range in CIDR format. Required for
      * EGRESS rules.
@@ -73,16 +64,12 @@ public final class OrganizationSecurityPolicyRuleMatchConfig {
     public static Builder builder(OrganizationSecurityPolicyRuleMatchConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> destIpRanges;
         private List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config> layer4Configs;
         private @Nullable List<String> srcIpRanges;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OrganizationSecurityPolicyRuleMatchConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destIpRanges = defaults.destIpRanges;
@@ -90,6 +77,7 @@ public final class OrganizationSecurityPolicyRuleMatchConfig {
     	      this.srcIpRanges = defaults.srcIpRanges;
         }
 
+        @CustomType.Setter
         public Builder destIpRanges(@Nullable List<String> destIpRanges) {
             this.destIpRanges = destIpRanges;
             return this;
@@ -97,6 +85,7 @@ public final class OrganizationSecurityPolicyRuleMatchConfig {
         public Builder destIpRanges(String... destIpRanges) {
             return destIpRanges(List.of(destIpRanges));
         }
+        @CustomType.Setter
         public Builder layer4Configs(List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config> layer4Configs) {
             this.layer4Configs = Objects.requireNonNull(layer4Configs);
             return this;
@@ -104,14 +93,20 @@ public final class OrganizationSecurityPolicyRuleMatchConfig {
         public Builder layer4Configs(OrganizationSecurityPolicyRuleMatchConfigLayer4Config... layer4Configs) {
             return layer4Configs(List.of(layer4Configs));
         }
+        @CustomType.Setter
         public Builder srcIpRanges(@Nullable List<String> srcIpRanges) {
             this.srcIpRanges = srcIpRanges;
             return this;
         }
         public Builder srcIpRanges(String... srcIpRanges) {
             return srcIpRanges(List.of(srcIpRanges));
-        }        public OrganizationSecurityPolicyRuleMatchConfig build() {
-            return new OrganizationSecurityPolicyRuleMatchConfig(destIpRanges, layer4Configs, srcIpRanges);
+        }
+        public OrganizationSecurityPolicyRuleMatchConfig build() {
+            final var o = new OrganizationSecurityPolicyRuleMatchConfig();
+            o.destIpRanges = destIpRanges;
+            o.layer4Configs = layer4Configs;
+            o.srcIpRanges = srcIpRanges;
+            return o;
         }
     }
 }

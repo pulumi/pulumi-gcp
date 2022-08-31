@@ -13,13 +13,9 @@ public final class TransferJobTransferSpecPosixDataSink {
      * @return Root directory path to the filesystem.
      * 
      */
-    private final String rootDirectory;
+    private String rootDirectory;
 
-    @CustomType.Constructor
-    private TransferJobTransferSpecPosixDataSink(@CustomType.Parameter("rootDirectory") String rootDirectory) {
-        this.rootDirectory = rootDirectory;
-    }
-
+    private TransferJobTransferSpecPosixDataSink() {}
     /**
      * @return Root directory path to the filesystem.
      * 
@@ -35,24 +31,24 @@ public final class TransferJobTransferSpecPosixDataSink {
     public static Builder builder(TransferJobTransferSpecPosixDataSink defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String rootDirectory;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TransferJobTransferSpecPosixDataSink defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.rootDirectory = defaults.rootDirectory;
         }
 
+        @CustomType.Setter
         public Builder rootDirectory(String rootDirectory) {
             this.rootDirectory = Objects.requireNonNull(rootDirectory);
             return this;
-        }        public TransferJobTransferSpecPosixDataSink build() {
-            return new TransferJobTransferSpecPosixDataSink(rootDirectory);
+        }
+        public TransferJobTransferSpecPosixDataSink build() {
+            final var o = new TransferJobTransferSpecPosixDataSink();
+            o.rootDirectory = rootDirectory;
+            return o;
         }
     }
 }

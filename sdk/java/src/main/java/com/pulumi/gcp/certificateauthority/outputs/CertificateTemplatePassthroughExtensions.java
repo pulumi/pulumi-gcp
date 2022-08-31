@@ -16,21 +16,14 @@ public final class CertificateTemplatePassthroughExtensions {
      * @return Optional. Describes custom X.509 extensions.
      * 
      */
-    private final @Nullable List<CertificateTemplatePassthroughExtensionsAdditionalExtension> additionalExtensions;
+    private @Nullable List<CertificateTemplatePassthroughExtensionsAdditionalExtension> additionalExtensions;
     /**
      * @return Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
      * 
      */
-    private final @Nullable List<String> knownExtensions;
+    private @Nullable List<String> knownExtensions;
 
-    @CustomType.Constructor
-    private CertificateTemplatePassthroughExtensions(
-        @CustomType.Parameter("additionalExtensions") @Nullable List<CertificateTemplatePassthroughExtensionsAdditionalExtension> additionalExtensions,
-        @CustomType.Parameter("knownExtensions") @Nullable List<String> knownExtensions) {
-        this.additionalExtensions = additionalExtensions;
-        this.knownExtensions = knownExtensions;
-    }
-
+    private CertificateTemplatePassthroughExtensions() {}
     /**
      * @return Optional. Describes custom X.509 extensions.
      * 
@@ -53,21 +46,18 @@ public final class CertificateTemplatePassthroughExtensions {
     public static Builder builder(CertificateTemplatePassthroughExtensions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<CertificateTemplatePassthroughExtensionsAdditionalExtension> additionalExtensions;
         private @Nullable List<String> knownExtensions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateTemplatePassthroughExtensions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalExtensions = defaults.additionalExtensions;
     	      this.knownExtensions = defaults.knownExtensions;
         }
 
+        @CustomType.Setter
         public Builder additionalExtensions(@Nullable List<CertificateTemplatePassthroughExtensionsAdditionalExtension> additionalExtensions) {
             this.additionalExtensions = additionalExtensions;
             return this;
@@ -75,14 +65,19 @@ public final class CertificateTemplatePassthroughExtensions {
         public Builder additionalExtensions(CertificateTemplatePassthroughExtensionsAdditionalExtension... additionalExtensions) {
             return additionalExtensions(List.of(additionalExtensions));
         }
+        @CustomType.Setter
         public Builder knownExtensions(@Nullable List<String> knownExtensions) {
             this.knownExtensions = knownExtensions;
             return this;
         }
         public Builder knownExtensions(String... knownExtensions) {
             return knownExtensions(List.of(knownExtensions));
-        }        public CertificateTemplatePassthroughExtensions build() {
-            return new CertificateTemplatePassthroughExtensions(additionalExtensions, knownExtensions);
+        }
+        public CertificateTemplatePassthroughExtensions build() {
+            final var o = new CertificateTemplatePassthroughExtensions();
+            o.additionalExtensions = additionalExtensions;
+            o.knownExtensions = knownExtensions;
+            return o;
         }
     }
 }

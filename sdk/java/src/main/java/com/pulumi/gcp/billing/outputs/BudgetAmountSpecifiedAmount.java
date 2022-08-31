@@ -16,7 +16,7 @@ public final class BudgetAmountSpecifiedAmount {
      * @return The 3-letter currency code defined in ISO 4217.
      * 
      */
-    private final @Nullable String currencyCode;
+    private @Nullable String currencyCode;
     /**
      * @return Number of nano (10^-9) units of the amount.
      * The value must be between -999,999,999 and +999,999,999
@@ -27,24 +27,15 @@ public final class BudgetAmountSpecifiedAmount {
      * nanos=-750,000,000.
      * 
      */
-    private final @Nullable Integer nanos;
+    private @Nullable Integer nanos;
     /**
      * @return The whole units of the amount. For example if currencyCode
      * is &#34;USD&#34;, then 1 unit is one US dollar.
      * 
      */
-    private final @Nullable String units;
+    private @Nullable String units;
 
-    @CustomType.Constructor
-    private BudgetAmountSpecifiedAmount(
-        @CustomType.Parameter("currencyCode") @Nullable String currencyCode,
-        @CustomType.Parameter("nanos") @Nullable Integer nanos,
-        @CustomType.Parameter("units") @Nullable String units) {
-        this.currencyCode = currencyCode;
-        this.nanos = nanos;
-        this.units = units;
-    }
-
+    private BudgetAmountSpecifiedAmount() {}
     /**
      * @return The 3-letter currency code defined in ISO 4217.
      * 
@@ -81,16 +72,12 @@ public final class BudgetAmountSpecifiedAmount {
     public static Builder builder(BudgetAmountSpecifiedAmount defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String currencyCode;
         private @Nullable Integer nanos;
         private @Nullable String units;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BudgetAmountSpecifiedAmount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.currencyCode = defaults.currencyCode;
@@ -98,19 +85,27 @@ public final class BudgetAmountSpecifiedAmount {
     	      this.units = defaults.units;
         }
 
+        @CustomType.Setter
         public Builder currencyCode(@Nullable String currencyCode) {
             this.currencyCode = currencyCode;
             return this;
         }
+        @CustomType.Setter
         public Builder nanos(@Nullable Integer nanos) {
             this.nanos = nanos;
             return this;
         }
+        @CustomType.Setter
         public Builder units(@Nullable String units) {
             this.units = units;
             return this;
-        }        public BudgetAmountSpecifiedAmount build() {
-            return new BudgetAmountSpecifiedAmount(currencyCode, nanos, units);
+        }
+        public BudgetAmountSpecifiedAmount build() {
+            final var o = new BudgetAmountSpecifiedAmount();
+            o.currencyCode = currencyCode;
+            o.nanos = nanos;
+            o.units = units;
+            return o;
         }
     }
 }

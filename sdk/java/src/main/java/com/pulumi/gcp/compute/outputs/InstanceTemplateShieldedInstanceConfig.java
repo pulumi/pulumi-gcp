@@ -15,28 +15,19 @@ public final class InstanceTemplateShieldedInstanceConfig {
      * @return -- Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
      * 
      */
-    private final @Nullable Boolean enableIntegrityMonitoring;
+    private @Nullable Boolean enableIntegrityMonitoring;
     /**
      * @return -- Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
      * 
      */
-    private final @Nullable Boolean enableSecureBoot;
+    private @Nullable Boolean enableSecureBoot;
     /**
      * @return -- Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
      * 
      */
-    private final @Nullable Boolean enableVtpm;
+    private @Nullable Boolean enableVtpm;
 
-    @CustomType.Constructor
-    private InstanceTemplateShieldedInstanceConfig(
-        @CustomType.Parameter("enableIntegrityMonitoring") @Nullable Boolean enableIntegrityMonitoring,
-        @CustomType.Parameter("enableSecureBoot") @Nullable Boolean enableSecureBoot,
-        @CustomType.Parameter("enableVtpm") @Nullable Boolean enableVtpm) {
-        this.enableIntegrityMonitoring = enableIntegrityMonitoring;
-        this.enableSecureBoot = enableSecureBoot;
-        this.enableVtpm = enableVtpm;
-    }
-
+    private InstanceTemplateShieldedInstanceConfig() {}
     /**
      * @return -- Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
      * 
@@ -66,16 +57,12 @@ public final class InstanceTemplateShieldedInstanceConfig {
     public static Builder builder(InstanceTemplateShieldedInstanceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableIntegrityMonitoring;
         private @Nullable Boolean enableSecureBoot;
         private @Nullable Boolean enableVtpm;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceTemplateShieldedInstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableIntegrityMonitoring = defaults.enableIntegrityMonitoring;
@@ -83,19 +70,27 @@ public final class InstanceTemplateShieldedInstanceConfig {
     	      this.enableVtpm = defaults.enableVtpm;
         }
 
+        @CustomType.Setter
         public Builder enableIntegrityMonitoring(@Nullable Boolean enableIntegrityMonitoring) {
             this.enableIntegrityMonitoring = enableIntegrityMonitoring;
             return this;
         }
+        @CustomType.Setter
         public Builder enableSecureBoot(@Nullable Boolean enableSecureBoot) {
             this.enableSecureBoot = enableSecureBoot;
             return this;
         }
+        @CustomType.Setter
         public Builder enableVtpm(@Nullable Boolean enableVtpm) {
             this.enableVtpm = enableVtpm;
             return this;
-        }        public InstanceTemplateShieldedInstanceConfig build() {
-            return new InstanceTemplateShieldedInstanceConfig(enableIntegrityMonitoring, enableSecureBoot, enableVtpm);
+        }
+        public InstanceTemplateShieldedInstanceConfig build() {
+            final var o = new InstanceTemplateShieldedInstanceConfig();
+            o.enableIntegrityMonitoring = enableIntegrityMonitoring;
+            o.enableSecureBoot = enableSecureBoot;
+            o.enableVtpm = enableVtpm;
+            return o;
         }
     }
 }

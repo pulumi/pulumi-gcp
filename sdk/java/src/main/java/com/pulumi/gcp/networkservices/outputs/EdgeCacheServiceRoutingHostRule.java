@@ -16,7 +16,7 @@ public final class EdgeCacheServiceRoutingHostRule {
      * @return A human-readable description of the resource.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return The list of host patterns to match.
      * Host patterns must be valid hostnames. Ports are not allowed. Wildcard hosts are supported in the suffix or prefix form. * matches any string of ([a-z0-9-.]*). It does not match the empty string.
@@ -31,23 +31,14 @@ public final class EdgeCacheServiceRoutingHostRule {
      *    You may specify up to 10 hosts.
      * 
      */
-    private final List<String> hosts;
+    private List<String> hosts;
     /**
      * @return The name of the pathMatcher associated with this hostRule.
      * 
      */
-    private final String pathMatcher;
+    private String pathMatcher;
 
-    @CustomType.Constructor
-    private EdgeCacheServiceRoutingHostRule(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("hosts") List<String> hosts,
-        @CustomType.Parameter("pathMatcher") String pathMatcher) {
-        this.description = description;
-        this.hosts = hosts;
-        this.pathMatcher = pathMatcher;
-    }
-
+    private EdgeCacheServiceRoutingHostRule() {}
     /**
      * @return A human-readable description of the resource.
      * 
@@ -87,16 +78,12 @@ public final class EdgeCacheServiceRoutingHostRule {
     public static Builder builder(EdgeCacheServiceRoutingHostRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private List<String> hosts;
         private String pathMatcher;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EdgeCacheServiceRoutingHostRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -104,10 +91,12 @@ public final class EdgeCacheServiceRoutingHostRule {
     	      this.pathMatcher = defaults.pathMatcher;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder hosts(List<String> hosts) {
             this.hosts = Objects.requireNonNull(hosts);
             return this;
@@ -115,11 +104,17 @@ public final class EdgeCacheServiceRoutingHostRule {
         public Builder hosts(String... hosts) {
             return hosts(List.of(hosts));
         }
+        @CustomType.Setter
         public Builder pathMatcher(String pathMatcher) {
             this.pathMatcher = Objects.requireNonNull(pathMatcher);
             return this;
-        }        public EdgeCacheServiceRoutingHostRule build() {
-            return new EdgeCacheServiceRoutingHostRule(description, hosts, pathMatcher);
+        }
+        public EdgeCacheServiceRoutingHostRule build() {
+            final var o = new EdgeCacheServiceRoutingHostRule();
+            o.description = description;
+            o.hosts = hosts;
+            o.pathMatcher = pathMatcher;
+            return o;
         }
     }
 }

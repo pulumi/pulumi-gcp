@@ -21,38 +21,27 @@ public final class ManagedZoneDnssecConfig {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<ManagedZoneDnssecConfigDefaultKeySpec> defaultKeySpecs;
+    private @Nullable List<ManagedZoneDnssecConfigDefaultKeySpec> defaultKeySpecs;
     /**
      * @return Identifies what kind of resource this is
      * 
      */
-    private final @Nullable String kind;
+    private @Nullable String kind;
     /**
      * @return Specifies the mechanism used to provide authenticated denial-of-existence responses.
      * non_existence can only be updated when the state is `off`.
      * Possible values are `nsec` and `nsec3`.
      * 
      */
-    private final @Nullable String nonExistence;
+    private @Nullable String nonExistence;
     /**
      * @return Specifies whether DNSSEC is enabled, and what mode it is in
      * Possible values are `off`, `on`, and `transfer`.
      * 
      */
-    private final @Nullable String state;
+    private @Nullable String state;
 
-    @CustomType.Constructor
-    private ManagedZoneDnssecConfig(
-        @CustomType.Parameter("defaultKeySpecs") @Nullable List<ManagedZoneDnssecConfigDefaultKeySpec> defaultKeySpecs,
-        @CustomType.Parameter("kind") @Nullable String kind,
-        @CustomType.Parameter("nonExistence") @Nullable String nonExistence,
-        @CustomType.Parameter("state") @Nullable String state) {
-        this.defaultKeySpecs = defaultKeySpecs;
-        this.kind = kind;
-        this.nonExistence = nonExistence;
-        this.state = state;
-    }
-
+    private ManagedZoneDnssecConfig() {}
     /**
      * @return Specifies parameters that will be used for generating initial DnsKeys
      * for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
@@ -96,17 +85,13 @@ public final class ManagedZoneDnssecConfig {
     public static Builder builder(ManagedZoneDnssecConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ManagedZoneDnssecConfigDefaultKeySpec> defaultKeySpecs;
         private @Nullable String kind;
         private @Nullable String nonExistence;
         private @Nullable String state;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ManagedZoneDnssecConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultKeySpecs = defaults.defaultKeySpecs;
@@ -115,6 +100,7 @@ public final class ManagedZoneDnssecConfig {
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
         public Builder defaultKeySpecs(@Nullable List<ManagedZoneDnssecConfigDefaultKeySpec> defaultKeySpecs) {
             this.defaultKeySpecs = defaultKeySpecs;
             return this;
@@ -122,19 +108,28 @@ public final class ManagedZoneDnssecConfig {
         public Builder defaultKeySpecs(ManagedZoneDnssecConfigDefaultKeySpec... defaultKeySpecs) {
             return defaultKeySpecs(List.of(defaultKeySpecs));
         }
+        @CustomType.Setter
         public Builder kind(@Nullable String kind) {
             this.kind = kind;
             return this;
         }
+        @CustomType.Setter
         public Builder nonExistence(@Nullable String nonExistence) {
             this.nonExistence = nonExistence;
             return this;
         }
+        @CustomType.Setter
         public Builder state(@Nullable String state) {
             this.state = state;
             return this;
-        }        public ManagedZoneDnssecConfig build() {
-            return new ManagedZoneDnssecConfig(defaultKeySpecs, kind, nonExistence, state);
+        }
+        public ManagedZoneDnssecConfig build() {
+            final var o = new ManagedZoneDnssecConfig();
+            o.defaultKeySpecs = defaultKeySpecs;
+            o.kind = kind;
+            o.nonExistence = nonExistence;
+            o.state = state;
+            return o;
         }
     }
 }

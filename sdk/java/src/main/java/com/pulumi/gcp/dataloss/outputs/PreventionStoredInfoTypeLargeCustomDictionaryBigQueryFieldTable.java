@@ -13,28 +13,19 @@ public final class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTab
      * @return The dataset ID of the table.
      * 
      */
-    private final String datasetId;
+    private String datasetId;
     /**
      * @return The Google Cloud Platform project ID of the project containing the table.
      * 
      */
-    private final String projectId;
+    private String projectId;
     /**
      * @return The name of the table.
      * 
      */
-    private final String tableId;
+    private String tableId;
 
-    @CustomType.Constructor
-    private PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable(
-        @CustomType.Parameter("datasetId") String datasetId,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("tableId") String tableId) {
-        this.datasetId = datasetId;
-        this.projectId = projectId;
-        this.tableId = tableId;
-    }
-
+    private PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable() {}
     /**
      * @return The dataset ID of the table.
      * 
@@ -64,16 +55,12 @@ public final class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTab
     public static Builder builder(PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String datasetId;
         private String projectId;
         private String tableId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datasetId = defaults.datasetId;
@@ -81,19 +68,27 @@ public final class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTab
     	      this.tableId = defaults.tableId;
         }
 
+        @CustomType.Setter
         public Builder datasetId(String datasetId) {
             this.datasetId = Objects.requireNonNull(datasetId);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder tableId(String tableId) {
             this.tableId = Objects.requireNonNull(tableId);
             return this;
-        }        public PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable build() {
-            return new PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable(datasetId, projectId, tableId);
+        }
+        public PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable build() {
+            final var o = new PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable();
+            o.datasetId = datasetId;
+            o.projectId = projectId;
+            o.tableId = tableId;
+            return o;
         }
     }
 }

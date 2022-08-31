@@ -16,21 +16,14 @@ public final class FlexibleAppVersionAutomaticScalingCpuUtilization {
      * @return Period of time over which CPU utilization is calculated.
      * 
      */
-    private final @Nullable String aggregationWindowLength;
+    private @Nullable String aggregationWindowLength;
     /**
      * @return Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
      * 
      */
-    private final Double targetUtilization;
+    private Double targetUtilization;
 
-    @CustomType.Constructor
-    private FlexibleAppVersionAutomaticScalingCpuUtilization(
-        @CustomType.Parameter("aggregationWindowLength") @Nullable String aggregationWindowLength,
-        @CustomType.Parameter("targetUtilization") Double targetUtilization) {
-        this.aggregationWindowLength = aggregationWindowLength;
-        this.targetUtilization = targetUtilization;
-    }
-
+    private FlexibleAppVersionAutomaticScalingCpuUtilization() {}
     /**
      * @return Period of time over which CPU utilization is calculated.
      * 
@@ -53,30 +46,32 @@ public final class FlexibleAppVersionAutomaticScalingCpuUtilization {
     public static Builder builder(FlexibleAppVersionAutomaticScalingCpuUtilization defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String aggregationWindowLength;
         private Double targetUtilization;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FlexibleAppVersionAutomaticScalingCpuUtilization defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aggregationWindowLength = defaults.aggregationWindowLength;
     	      this.targetUtilization = defaults.targetUtilization;
         }
 
+        @CustomType.Setter
         public Builder aggregationWindowLength(@Nullable String aggregationWindowLength) {
             this.aggregationWindowLength = aggregationWindowLength;
             return this;
         }
+        @CustomType.Setter
         public Builder targetUtilization(Double targetUtilization) {
             this.targetUtilization = Objects.requireNonNull(targetUtilization);
             return this;
-        }        public FlexibleAppVersionAutomaticScalingCpuUtilization build() {
-            return new FlexibleAppVersionAutomaticScalingCpuUtilization(aggregationWindowLength, targetUtilization);
+        }
+        public FlexibleAppVersionAutomaticScalingCpuUtilization build() {
+            final var o = new FlexibleAppVersionAutomaticScalingCpuUtilization();
+            o.aggregationWindowLength = aggregationWindowLength;
+            o.targetUtilization = targetUtilization;
+            return o;
         }
     }
 }

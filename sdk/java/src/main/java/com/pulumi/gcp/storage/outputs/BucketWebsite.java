@@ -16,22 +16,15 @@ public final class BucketWebsite {
      * missing objects are treated as potential directories.
      * 
      */
-    private final @Nullable String mainPageSuffix;
+    private @Nullable String mainPageSuffix;
     /**
      * @return The custom object to return when a requested
      * resource is not found.
      * 
      */
-    private final @Nullable String notFoundPage;
+    private @Nullable String notFoundPage;
 
-    @CustomType.Constructor
-    private BucketWebsite(
-        @CustomType.Parameter("mainPageSuffix") @Nullable String mainPageSuffix,
-        @CustomType.Parameter("notFoundPage") @Nullable String notFoundPage) {
-        this.mainPageSuffix = mainPageSuffix;
-        this.notFoundPage = notFoundPage;
-    }
-
+    private BucketWebsite() {}
     /**
      * @return Behaves as the bucket&#39;s directory index where
      * missing objects are treated as potential directories.
@@ -56,30 +49,32 @@ public final class BucketWebsite {
     public static Builder builder(BucketWebsite defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String mainPageSuffix;
         private @Nullable String notFoundPage;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BucketWebsite defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mainPageSuffix = defaults.mainPageSuffix;
     	      this.notFoundPage = defaults.notFoundPage;
         }
 
+        @CustomType.Setter
         public Builder mainPageSuffix(@Nullable String mainPageSuffix) {
             this.mainPageSuffix = mainPageSuffix;
             return this;
         }
+        @CustomType.Setter
         public Builder notFoundPage(@Nullable String notFoundPage) {
             this.notFoundPage = notFoundPage;
             return this;
-        }        public BucketWebsite build() {
-            return new BucketWebsite(mainPageSuffix, notFoundPage);
+        }
+        public BucketWebsite build() {
+            final var o = new BucketWebsite();
+            o.mainPageSuffix = mainPageSuffix;
+            o.notFoundPage = notFoundPage;
+            return o;
         }
     }
 }

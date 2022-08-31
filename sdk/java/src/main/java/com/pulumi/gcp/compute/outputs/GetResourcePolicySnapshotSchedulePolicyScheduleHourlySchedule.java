@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
-    private final Integer hoursInCycle;
-    private final String startTime;
+    private Integer hoursInCycle;
+    private String startTime;
 
-    @CustomType.Constructor
-    private GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule(
-        @CustomType.Parameter("hoursInCycle") Integer hoursInCycle,
-        @CustomType.Parameter("startTime") String startTime) {
-        this.hoursInCycle = hoursInCycle;
-        this.startTime = startTime;
-    }
-
+    private GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule() {}
     public Integer hoursInCycle() {
         return this.hoursInCycle;
     }
@@ -35,30 +28,32 @@ public final class GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule
     public static Builder builder(GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer hoursInCycle;
         private String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hoursInCycle = defaults.hoursInCycle;
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder hoursInCycle(Integer hoursInCycle) {
             this.hoursInCycle = Objects.requireNonNull(hoursInCycle);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
-        }        public GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule build() {
-            return new GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule(hoursInCycle, startTime);
+        }
+        public GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule build() {
+            final var o = new GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule();
+            o.hoursInCycle = hoursInCycle;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

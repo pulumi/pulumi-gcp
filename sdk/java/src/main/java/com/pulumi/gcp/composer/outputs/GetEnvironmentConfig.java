@@ -21,56 +21,23 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfig {
-    private final String airflowUri;
-    private final String dagGcsPrefix;
-    private final List<GetEnvironmentConfigDatabaseConfig> databaseConfigs;
-    private final List<GetEnvironmentConfigEncryptionConfig> encryptionConfigs;
-    private final String environmentSize;
-    private final String gkeCluster;
-    private final List<GetEnvironmentConfigMaintenanceWindow> maintenanceWindows;
-    private final List<GetEnvironmentConfigMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs;
-    private final List<GetEnvironmentConfigNodeConfig> nodeConfigs;
-    private final Integer nodeCount;
-    private final List<GetEnvironmentConfigPrivateEnvironmentConfig> privateEnvironmentConfigs;
-    private final List<GetEnvironmentConfigSoftwareConfig> softwareConfigs;
-    private final List<GetEnvironmentConfigWebServerConfig> webServerConfigs;
-    private final List<GetEnvironmentConfigWebServerNetworkAccessControl> webServerNetworkAccessControls;
-    private final List<GetEnvironmentConfigWorkloadsConfig> workloadsConfigs;
+    private String airflowUri;
+    private String dagGcsPrefix;
+    private List<GetEnvironmentConfigDatabaseConfig> databaseConfigs;
+    private List<GetEnvironmentConfigEncryptionConfig> encryptionConfigs;
+    private String environmentSize;
+    private String gkeCluster;
+    private List<GetEnvironmentConfigMaintenanceWindow> maintenanceWindows;
+    private List<GetEnvironmentConfigMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs;
+    private List<GetEnvironmentConfigNodeConfig> nodeConfigs;
+    private Integer nodeCount;
+    private List<GetEnvironmentConfigPrivateEnvironmentConfig> privateEnvironmentConfigs;
+    private List<GetEnvironmentConfigSoftwareConfig> softwareConfigs;
+    private List<GetEnvironmentConfigWebServerConfig> webServerConfigs;
+    private List<GetEnvironmentConfigWebServerNetworkAccessControl> webServerNetworkAccessControls;
+    private List<GetEnvironmentConfigWorkloadsConfig> workloadsConfigs;
 
-    @CustomType.Constructor
-    private GetEnvironmentConfig(
-        @CustomType.Parameter("airflowUri") String airflowUri,
-        @CustomType.Parameter("dagGcsPrefix") String dagGcsPrefix,
-        @CustomType.Parameter("databaseConfigs") List<GetEnvironmentConfigDatabaseConfig> databaseConfigs,
-        @CustomType.Parameter("encryptionConfigs") List<GetEnvironmentConfigEncryptionConfig> encryptionConfigs,
-        @CustomType.Parameter("environmentSize") String environmentSize,
-        @CustomType.Parameter("gkeCluster") String gkeCluster,
-        @CustomType.Parameter("maintenanceWindows") List<GetEnvironmentConfigMaintenanceWindow> maintenanceWindows,
-        @CustomType.Parameter("masterAuthorizedNetworksConfigs") List<GetEnvironmentConfigMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs,
-        @CustomType.Parameter("nodeConfigs") List<GetEnvironmentConfigNodeConfig> nodeConfigs,
-        @CustomType.Parameter("nodeCount") Integer nodeCount,
-        @CustomType.Parameter("privateEnvironmentConfigs") List<GetEnvironmentConfigPrivateEnvironmentConfig> privateEnvironmentConfigs,
-        @CustomType.Parameter("softwareConfigs") List<GetEnvironmentConfigSoftwareConfig> softwareConfigs,
-        @CustomType.Parameter("webServerConfigs") List<GetEnvironmentConfigWebServerConfig> webServerConfigs,
-        @CustomType.Parameter("webServerNetworkAccessControls") List<GetEnvironmentConfigWebServerNetworkAccessControl> webServerNetworkAccessControls,
-        @CustomType.Parameter("workloadsConfigs") List<GetEnvironmentConfigWorkloadsConfig> workloadsConfigs) {
-        this.airflowUri = airflowUri;
-        this.dagGcsPrefix = dagGcsPrefix;
-        this.databaseConfigs = databaseConfigs;
-        this.encryptionConfigs = encryptionConfigs;
-        this.environmentSize = environmentSize;
-        this.gkeCluster = gkeCluster;
-        this.maintenanceWindows = maintenanceWindows;
-        this.masterAuthorizedNetworksConfigs = masterAuthorizedNetworksConfigs;
-        this.nodeConfigs = nodeConfigs;
-        this.nodeCount = nodeCount;
-        this.privateEnvironmentConfigs = privateEnvironmentConfigs;
-        this.softwareConfigs = softwareConfigs;
-        this.webServerConfigs = webServerConfigs;
-        this.webServerNetworkAccessControls = webServerNetworkAccessControls;
-        this.workloadsConfigs = workloadsConfigs;
-    }
-
+    private GetEnvironmentConfig() {}
     public String airflowUri() {
         return this.airflowUri;
     }
@@ -124,7 +91,7 @@ public final class GetEnvironmentConfig {
     public static Builder builder(GetEnvironmentConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String airflowUri;
         private String dagGcsPrefix;
@@ -141,11 +108,7 @@ public final class GetEnvironmentConfig {
         private List<GetEnvironmentConfigWebServerConfig> webServerConfigs;
         private List<GetEnvironmentConfigWebServerNetworkAccessControl> webServerNetworkAccessControls;
         private List<GetEnvironmentConfigWorkloadsConfig> workloadsConfigs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEnvironmentConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.airflowUri = defaults.airflowUri;
@@ -165,14 +128,17 @@ public final class GetEnvironmentConfig {
     	      this.workloadsConfigs = defaults.workloadsConfigs;
         }
 
+        @CustomType.Setter
         public Builder airflowUri(String airflowUri) {
             this.airflowUri = Objects.requireNonNull(airflowUri);
             return this;
         }
+        @CustomType.Setter
         public Builder dagGcsPrefix(String dagGcsPrefix) {
             this.dagGcsPrefix = Objects.requireNonNull(dagGcsPrefix);
             return this;
         }
+        @CustomType.Setter
         public Builder databaseConfigs(List<GetEnvironmentConfigDatabaseConfig> databaseConfigs) {
             this.databaseConfigs = Objects.requireNonNull(databaseConfigs);
             return this;
@@ -180,6 +146,7 @@ public final class GetEnvironmentConfig {
         public Builder databaseConfigs(GetEnvironmentConfigDatabaseConfig... databaseConfigs) {
             return databaseConfigs(List.of(databaseConfigs));
         }
+        @CustomType.Setter
         public Builder encryptionConfigs(List<GetEnvironmentConfigEncryptionConfig> encryptionConfigs) {
             this.encryptionConfigs = Objects.requireNonNull(encryptionConfigs);
             return this;
@@ -187,14 +154,17 @@ public final class GetEnvironmentConfig {
         public Builder encryptionConfigs(GetEnvironmentConfigEncryptionConfig... encryptionConfigs) {
             return encryptionConfigs(List.of(encryptionConfigs));
         }
+        @CustomType.Setter
         public Builder environmentSize(String environmentSize) {
             this.environmentSize = Objects.requireNonNull(environmentSize);
             return this;
         }
+        @CustomType.Setter
         public Builder gkeCluster(String gkeCluster) {
             this.gkeCluster = Objects.requireNonNull(gkeCluster);
             return this;
         }
+        @CustomType.Setter
         public Builder maintenanceWindows(List<GetEnvironmentConfigMaintenanceWindow> maintenanceWindows) {
             this.maintenanceWindows = Objects.requireNonNull(maintenanceWindows);
             return this;
@@ -202,6 +172,7 @@ public final class GetEnvironmentConfig {
         public Builder maintenanceWindows(GetEnvironmentConfigMaintenanceWindow... maintenanceWindows) {
             return maintenanceWindows(List.of(maintenanceWindows));
         }
+        @CustomType.Setter
         public Builder masterAuthorizedNetworksConfigs(List<GetEnvironmentConfigMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs) {
             this.masterAuthorizedNetworksConfigs = Objects.requireNonNull(masterAuthorizedNetworksConfigs);
             return this;
@@ -209,6 +180,7 @@ public final class GetEnvironmentConfig {
         public Builder masterAuthorizedNetworksConfigs(GetEnvironmentConfigMasterAuthorizedNetworksConfig... masterAuthorizedNetworksConfigs) {
             return masterAuthorizedNetworksConfigs(List.of(masterAuthorizedNetworksConfigs));
         }
+        @CustomType.Setter
         public Builder nodeConfigs(List<GetEnvironmentConfigNodeConfig> nodeConfigs) {
             this.nodeConfigs = Objects.requireNonNull(nodeConfigs);
             return this;
@@ -216,10 +188,12 @@ public final class GetEnvironmentConfig {
         public Builder nodeConfigs(GetEnvironmentConfigNodeConfig... nodeConfigs) {
             return nodeConfigs(List.of(nodeConfigs));
         }
+        @CustomType.Setter
         public Builder nodeCount(Integer nodeCount) {
             this.nodeCount = Objects.requireNonNull(nodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder privateEnvironmentConfigs(List<GetEnvironmentConfigPrivateEnvironmentConfig> privateEnvironmentConfigs) {
             this.privateEnvironmentConfigs = Objects.requireNonNull(privateEnvironmentConfigs);
             return this;
@@ -227,6 +201,7 @@ public final class GetEnvironmentConfig {
         public Builder privateEnvironmentConfigs(GetEnvironmentConfigPrivateEnvironmentConfig... privateEnvironmentConfigs) {
             return privateEnvironmentConfigs(List.of(privateEnvironmentConfigs));
         }
+        @CustomType.Setter
         public Builder softwareConfigs(List<GetEnvironmentConfigSoftwareConfig> softwareConfigs) {
             this.softwareConfigs = Objects.requireNonNull(softwareConfigs);
             return this;
@@ -234,6 +209,7 @@ public final class GetEnvironmentConfig {
         public Builder softwareConfigs(GetEnvironmentConfigSoftwareConfig... softwareConfigs) {
             return softwareConfigs(List.of(softwareConfigs));
         }
+        @CustomType.Setter
         public Builder webServerConfigs(List<GetEnvironmentConfigWebServerConfig> webServerConfigs) {
             this.webServerConfigs = Objects.requireNonNull(webServerConfigs);
             return this;
@@ -241,6 +217,7 @@ public final class GetEnvironmentConfig {
         public Builder webServerConfigs(GetEnvironmentConfigWebServerConfig... webServerConfigs) {
             return webServerConfigs(List.of(webServerConfigs));
         }
+        @CustomType.Setter
         public Builder webServerNetworkAccessControls(List<GetEnvironmentConfigWebServerNetworkAccessControl> webServerNetworkAccessControls) {
             this.webServerNetworkAccessControls = Objects.requireNonNull(webServerNetworkAccessControls);
             return this;
@@ -248,14 +225,32 @@ public final class GetEnvironmentConfig {
         public Builder webServerNetworkAccessControls(GetEnvironmentConfigWebServerNetworkAccessControl... webServerNetworkAccessControls) {
             return webServerNetworkAccessControls(List.of(webServerNetworkAccessControls));
         }
+        @CustomType.Setter
         public Builder workloadsConfigs(List<GetEnvironmentConfigWorkloadsConfig> workloadsConfigs) {
             this.workloadsConfigs = Objects.requireNonNull(workloadsConfigs);
             return this;
         }
         public Builder workloadsConfigs(GetEnvironmentConfigWorkloadsConfig... workloadsConfigs) {
             return workloadsConfigs(List.of(workloadsConfigs));
-        }        public GetEnvironmentConfig build() {
-            return new GetEnvironmentConfig(airflowUri, dagGcsPrefix, databaseConfigs, encryptionConfigs, environmentSize, gkeCluster, maintenanceWindows, masterAuthorizedNetworksConfigs, nodeConfigs, nodeCount, privateEnvironmentConfigs, softwareConfigs, webServerConfigs, webServerNetworkAccessControls, workloadsConfigs);
+        }
+        public GetEnvironmentConfig build() {
+            final var o = new GetEnvironmentConfig();
+            o.airflowUri = airflowUri;
+            o.dagGcsPrefix = dagGcsPrefix;
+            o.databaseConfigs = databaseConfigs;
+            o.encryptionConfigs = encryptionConfigs;
+            o.environmentSize = environmentSize;
+            o.gkeCluster = gkeCluster;
+            o.maintenanceWindows = maintenanceWindows;
+            o.masterAuthorizedNetworksConfigs = masterAuthorizedNetworksConfigs;
+            o.nodeConfigs = nodeConfigs;
+            o.nodeCount = nodeCount;
+            o.privateEnvironmentConfigs = privateEnvironmentConfigs;
+            o.softwareConfigs = softwareConfigs;
+            o.webServerConfigs = webServerConfigs;
+            o.webServerNetworkAccessControls = webServerNetworkAccessControls;
+            o.workloadsConfigs = workloadsConfigs;
+            return o;
         }
     }
 }

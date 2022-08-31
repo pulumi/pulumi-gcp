@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterAddonsConfigHttpLoadBalancing {
-    private final Boolean disabled;
+    private Boolean disabled;
 
-    @CustomType.Constructor
-    private GetClusterAddonsConfigHttpLoadBalancing(@CustomType.Parameter("disabled") Boolean disabled) {
-        this.disabled = disabled;
-    }
-
+    private GetClusterAddonsConfigHttpLoadBalancing() {}
     public Boolean disabled() {
         return this.disabled;
     }
@@ -27,24 +23,24 @@ public final class GetClusterAddonsConfigHttpLoadBalancing {
     public static Builder builder(GetClusterAddonsConfigHttpLoadBalancing defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean disabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterAddonsConfigHttpLoadBalancing defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disabled = defaults.disabled;
         }
 
+        @CustomType.Setter
         public Builder disabled(Boolean disabled) {
             this.disabled = Objects.requireNonNull(disabled);
             return this;
-        }        public GetClusterAddonsConfigHttpLoadBalancing build() {
-            return new GetClusterAddonsConfigHttpLoadBalancing(disabled);
+        }
+        public GetClusterAddonsConfigHttpLoadBalancing build() {
+            final var o = new GetClusterAddonsConfigHttpLoadBalancing();
+            o.disabled = disabled;
+            return o;
         }
     }
 }

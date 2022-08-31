@@ -16,44 +16,27 @@ public final class GetRegionInstanceGroupResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return List of instances in the group, as a list of resources, each containing:
      * 
      */
-    private final List<GetRegionInstanceGroupInstance> instances;
+    private List<GetRegionInstanceGroupInstance> instances;
     /**
      * @return String port name
      * 
      */
-    private final String name;
-    private final String project;
-    private final String region;
-    private final String selfLink;
+    private String name;
+    private String project;
+    private String region;
+    private String selfLink;
     /**
      * @return The number of instances in the group.
      * 
      */
-    private final Integer size;
+    private Integer size;
 
-    @CustomType.Constructor
-    private GetRegionInstanceGroupResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instances") List<GetRegionInstanceGroupInstance> instances,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("selfLink") String selfLink,
-        @CustomType.Parameter("size") Integer size) {
-        this.id = id;
-        this.instances = instances;
-        this.name = name;
-        this.project = project;
-        this.region = region;
-        this.selfLink = selfLink;
-        this.size = size;
-    }
-
+    private GetRegionInstanceGroupResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -99,7 +82,7 @@ public final class GetRegionInstanceGroupResult {
     public static Builder builder(GetRegionInstanceGroupResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<GetRegionInstanceGroupInstance> instances;
@@ -108,11 +91,7 @@ public final class GetRegionInstanceGroupResult {
         private String region;
         private String selfLink;
         private Integer size;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRegionInstanceGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -124,10 +103,12 @@ public final class GetRegionInstanceGroupResult {
     	      this.size = defaults.size;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instances(List<GetRegionInstanceGroupInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -135,27 +116,41 @@ public final class GetRegionInstanceGroupResult {
         public Builder instances(GetRegionInstanceGroupInstance... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
-        }        public GetRegionInstanceGroupResult build() {
-            return new GetRegionInstanceGroupResult(id, instances, name, project, region, selfLink, size);
+        }
+        public GetRegionInstanceGroupResult build() {
+            final var o = new GetRegionInstanceGroupResult();
+            o.id = id;
+            o.instances = instances;
+            o.name = name;
+            o.project = project;
+            o.region = region;
+            o.selfLink = selfLink;
+            o.size = size;
+            return o;
         }
     }
 }

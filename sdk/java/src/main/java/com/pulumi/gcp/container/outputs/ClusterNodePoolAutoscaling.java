@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterNodePoolAutoscaling {
-    private final Integer maxNodeCount;
-    private final Integer minNodeCount;
+    private Integer maxNodeCount;
+    private Integer minNodeCount;
 
-    @CustomType.Constructor
-    private ClusterNodePoolAutoscaling(
-        @CustomType.Parameter("maxNodeCount") Integer maxNodeCount,
-        @CustomType.Parameter("minNodeCount") Integer minNodeCount) {
-        this.maxNodeCount = maxNodeCount;
-        this.minNodeCount = minNodeCount;
-    }
-
+    private ClusterNodePoolAutoscaling() {}
     public Integer maxNodeCount() {
         return this.maxNodeCount;
     }
@@ -34,30 +27,32 @@ public final class ClusterNodePoolAutoscaling {
     public static Builder builder(ClusterNodePoolAutoscaling defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer maxNodeCount;
         private Integer minNodeCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNodePoolAutoscaling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxNodeCount = defaults.maxNodeCount;
     	      this.minNodeCount = defaults.minNodeCount;
         }
 
+        @CustomType.Setter
         public Builder maxNodeCount(Integer maxNodeCount) {
             this.maxNodeCount = Objects.requireNonNull(maxNodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder minNodeCount(Integer minNodeCount) {
             this.minNodeCount = Objects.requireNonNull(minNodeCount);
             return this;
-        }        public ClusterNodePoolAutoscaling build() {
-            return new ClusterNodePoolAutoscaling(maxNodeCount, minNodeCount);
+        }
+        public ClusterNodePoolAutoscaling build() {
+            final var o = new ClusterNodePoolAutoscaling();
+            o.maxNodeCount = maxNodeCount;
+            o.minNodeCount = minNodeCount;
+            return o;
         }
     }
 }

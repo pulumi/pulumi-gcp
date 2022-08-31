@@ -16,31 +16,22 @@ public final class URLMapHostRule {
      * @return Description of this test case.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return The list of host patterns to match. They must be valid hostnames, except * will
      * match any string of ([a-z0-9-.]*). In that case, * must be the first character
      * and must be followed in the pattern by either - or ..
      * 
      */
-    private final List<String> hosts;
+    private List<String> hosts;
     /**
      * @return The name of the PathMatcher to use to match the path portion of the URL if the
      * hostRule matches the URL&#39;s host portion.
      * 
      */
-    private final String pathMatcher;
+    private String pathMatcher;
 
-    @CustomType.Constructor
-    private URLMapHostRule(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("hosts") List<String> hosts,
-        @CustomType.Parameter("pathMatcher") String pathMatcher) {
-        this.description = description;
-        this.hosts = hosts;
-        this.pathMatcher = pathMatcher;
-    }
-
+    private URLMapHostRule() {}
     /**
      * @return Description of this test case.
      * 
@@ -73,16 +64,12 @@ public final class URLMapHostRule {
     public static Builder builder(URLMapHostRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private List<String> hosts;
         private String pathMatcher;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(URLMapHostRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -90,10 +77,12 @@ public final class URLMapHostRule {
     	      this.pathMatcher = defaults.pathMatcher;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder hosts(List<String> hosts) {
             this.hosts = Objects.requireNonNull(hosts);
             return this;
@@ -101,11 +90,17 @@ public final class URLMapHostRule {
         public Builder hosts(String... hosts) {
             return hosts(List.of(hosts));
         }
+        @CustomType.Setter
         public Builder pathMatcher(String pathMatcher) {
             this.pathMatcher = Objects.requireNonNull(pathMatcher);
             return this;
-        }        public URLMapHostRule build() {
-            return new URLMapHostRule(description, hosts, pathMatcher);
+        }
+        public URLMapHostRule build() {
+            final var o = new URLMapHostRule();
+            o.description = description;
+            o.hosts = hosts;
+            o.pathMatcher = pathMatcher;
+            return o;
         }
     }
 }

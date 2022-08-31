@@ -18,31 +18,31 @@ public final class DatabaseInstanceReplicaConfiguration {
      * certificate.
      * 
      */
-    private final @Nullable String caCertificate;
+    private @Nullable String caCertificate;
     /**
      * @return PEM representation of the replica&#39;s x509
      * certificate.
      * 
      */
-    private final @Nullable String clientCertificate;
+    private @Nullable String clientCertificate;
     /**
      * @return PEM representation of the replica&#39;s private key. The
      * corresponding public key in encoded in the `client_certificate`.
      * 
      */
-    private final @Nullable String clientKey;
+    private @Nullable String clientKey;
     /**
      * @return The number of seconds
      * between connect retries.
      * 
      */
-    private final @Nullable Integer connectRetryInterval;
+    private @Nullable Integer connectRetryInterval;
     /**
      * @return Path to a SQL file in GCS from which replica
      * instances are created. Format is `gs://bucket/filename`.
      * 
      */
-    private final @Nullable String dumpFilePath;
+    private @Nullable String dumpFilePath;
     /**
      * @return Specifies if the replica is the failover target.
      * If the field is set to true the replica will be designated as a failover replica.
@@ -50,57 +50,32 @@ public final class DatabaseInstanceReplicaConfiguration {
      * the new master instance.
      * 
      */
-    private final @Nullable Boolean failoverTarget;
+    private @Nullable Boolean failoverTarget;
     /**
      * @return Time in ms between replication
      * heartbeats.
      * 
      */
-    private final @Nullable Integer masterHeartbeatPeriod;
+    private @Nullable Integer masterHeartbeatPeriod;
     /**
      * @return Password for the replication connection.
      * 
      */
-    private final @Nullable String password;
-    private final @Nullable String sslCipher;
+    private @Nullable String password;
+    private @Nullable String sslCipher;
     /**
      * @return Username for replication connection.
      * 
      */
-    private final @Nullable String username;
+    private @Nullable String username;
     /**
      * @return True if the master&#39;s common name
      * value is checked during the SSL handshake.
      * 
      */
-    private final @Nullable Boolean verifyServerCertificate;
+    private @Nullable Boolean verifyServerCertificate;
 
-    @CustomType.Constructor
-    private DatabaseInstanceReplicaConfiguration(
-        @CustomType.Parameter("caCertificate") @Nullable String caCertificate,
-        @CustomType.Parameter("clientCertificate") @Nullable String clientCertificate,
-        @CustomType.Parameter("clientKey") @Nullable String clientKey,
-        @CustomType.Parameter("connectRetryInterval") @Nullable Integer connectRetryInterval,
-        @CustomType.Parameter("dumpFilePath") @Nullable String dumpFilePath,
-        @CustomType.Parameter("failoverTarget") @Nullable Boolean failoverTarget,
-        @CustomType.Parameter("masterHeartbeatPeriod") @Nullable Integer masterHeartbeatPeriod,
-        @CustomType.Parameter("password") @Nullable String password,
-        @CustomType.Parameter("sslCipher") @Nullable String sslCipher,
-        @CustomType.Parameter("username") @Nullable String username,
-        @CustomType.Parameter("verifyServerCertificate") @Nullable Boolean verifyServerCertificate) {
-        this.caCertificate = caCertificate;
-        this.clientCertificate = clientCertificate;
-        this.clientKey = clientKey;
-        this.connectRetryInterval = connectRetryInterval;
-        this.dumpFilePath = dumpFilePath;
-        this.failoverTarget = failoverTarget;
-        this.masterHeartbeatPeriod = masterHeartbeatPeriod;
-        this.password = password;
-        this.sslCipher = sslCipher;
-        this.username = username;
-        this.verifyServerCertificate = verifyServerCertificate;
-    }
-
+    private DatabaseInstanceReplicaConfiguration() {}
     /**
      * @return PEM representation of the trusted CA&#39;s x509
      * certificate.
@@ -192,7 +167,7 @@ public final class DatabaseInstanceReplicaConfiguration {
     public static Builder builder(DatabaseInstanceReplicaConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String caCertificate;
         private @Nullable String clientCertificate;
@@ -205,11 +180,7 @@ public final class DatabaseInstanceReplicaConfiguration {
         private @Nullable String sslCipher;
         private @Nullable String username;
         private @Nullable Boolean verifyServerCertificate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatabaseInstanceReplicaConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.caCertificate = defaults.caCertificate;
@@ -225,51 +196,75 @@ public final class DatabaseInstanceReplicaConfiguration {
     	      this.verifyServerCertificate = defaults.verifyServerCertificate;
         }
 
+        @CustomType.Setter
         public Builder caCertificate(@Nullable String caCertificate) {
             this.caCertificate = caCertificate;
             return this;
         }
+        @CustomType.Setter
         public Builder clientCertificate(@Nullable String clientCertificate) {
             this.clientCertificate = clientCertificate;
             return this;
         }
+        @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
             this.clientKey = clientKey;
             return this;
         }
+        @CustomType.Setter
         public Builder connectRetryInterval(@Nullable Integer connectRetryInterval) {
             this.connectRetryInterval = connectRetryInterval;
             return this;
         }
+        @CustomType.Setter
         public Builder dumpFilePath(@Nullable String dumpFilePath) {
             this.dumpFilePath = dumpFilePath;
             return this;
         }
+        @CustomType.Setter
         public Builder failoverTarget(@Nullable Boolean failoverTarget) {
             this.failoverTarget = failoverTarget;
             return this;
         }
+        @CustomType.Setter
         public Builder masterHeartbeatPeriod(@Nullable Integer masterHeartbeatPeriod) {
             this.masterHeartbeatPeriod = masterHeartbeatPeriod;
             return this;
         }
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
         }
+        @CustomType.Setter
         public Builder sslCipher(@Nullable String sslCipher) {
             this.sslCipher = sslCipher;
             return this;
         }
+        @CustomType.Setter
         public Builder username(@Nullable String username) {
             this.username = username;
             return this;
         }
+        @CustomType.Setter
         public Builder verifyServerCertificate(@Nullable Boolean verifyServerCertificate) {
             this.verifyServerCertificate = verifyServerCertificate;
             return this;
-        }        public DatabaseInstanceReplicaConfiguration build() {
-            return new DatabaseInstanceReplicaConfiguration(caCertificate, clientCertificate, clientKey, connectRetryInterval, dumpFilePath, failoverTarget, masterHeartbeatPeriod, password, sslCipher, username, verifyServerCertificate);
+        }
+        public DatabaseInstanceReplicaConfiguration build() {
+            final var o = new DatabaseInstanceReplicaConfiguration();
+            o.caCertificate = caCertificate;
+            o.clientCertificate = clientCertificate;
+            o.clientKey = clientKey;
+            o.connectRetryInterval = connectRetryInterval;
+            o.dumpFilePath = dumpFilePath;
+            o.failoverTarget = failoverTarget;
+            o.masterHeartbeatPeriod = masterHeartbeatPeriod;
+            o.password = password;
+            o.sslCipher = sslCipher;
+            o.username = username;
+            o.verifyServerCertificate = verifyServerCertificate;
+            return o;
         }
     }
 }

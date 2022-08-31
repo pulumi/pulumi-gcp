@@ -17,13 +17,9 @@ public final class PolicyAlternativeNameServerConfig {
      * Structure is documented below.
      * 
      */
-    private final List<PolicyAlternativeNameServerConfigTargetNameServer> targetNameServers;
+    private List<PolicyAlternativeNameServerConfigTargetNameServer> targetNameServers;
 
-    @CustomType.Constructor
-    private PolicyAlternativeNameServerConfig(@CustomType.Parameter("targetNameServers") List<PolicyAlternativeNameServerConfigTargetNameServer> targetNameServers) {
-        this.targetNameServers = targetNameServers;
-    }
-
+    private PolicyAlternativeNameServerConfig() {}
     /**
      * @return Sets an alternative name server for the associated networks. When specified,
      * all DNS queries are forwarded to a name server that you choose. Names such as .internal
@@ -42,27 +38,27 @@ public final class PolicyAlternativeNameServerConfig {
     public static Builder builder(PolicyAlternativeNameServerConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<PolicyAlternativeNameServerConfigTargetNameServer> targetNameServers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PolicyAlternativeNameServerConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.targetNameServers = defaults.targetNameServers;
         }
 
+        @CustomType.Setter
         public Builder targetNameServers(List<PolicyAlternativeNameServerConfigTargetNameServer> targetNameServers) {
             this.targetNameServers = Objects.requireNonNull(targetNameServers);
             return this;
         }
         public Builder targetNameServers(PolicyAlternativeNameServerConfigTargetNameServer... targetNameServers) {
             return targetNameServers(List.of(targetNameServers));
-        }        public PolicyAlternativeNameServerConfig build() {
-            return new PolicyAlternativeNameServerConfig(targetNameServers);
+        }
+        public PolicyAlternativeNameServerConfig build() {
+            final var o = new PolicyAlternativeNameServerConfig();
+            o.targetNameServers = targetNameServers;
+            return o;
         }
     }
 }

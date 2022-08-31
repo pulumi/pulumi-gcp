@@ -14,22 +14,15 @@ public final class InstanceAcceleratorConfig {
      * @return Count of cores of this accelerator.
      * 
      */
-    private final Integer coreCount;
+    private Integer coreCount;
     /**
      * @return Type of this accelerator.
      * Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, and `TPU_V3`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private InstanceAcceleratorConfig(
-        @CustomType.Parameter("coreCount") Integer coreCount,
-        @CustomType.Parameter("type") String type) {
-        this.coreCount = coreCount;
-        this.type = type;
-    }
-
+    private InstanceAcceleratorConfig() {}
     /**
      * @return Count of cores of this accelerator.
      * 
@@ -53,30 +46,32 @@ public final class InstanceAcceleratorConfig {
     public static Builder builder(InstanceAcceleratorConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer coreCount;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceAcceleratorConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.coreCount = defaults.coreCount;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder coreCount(Integer coreCount) {
             this.coreCount = Objects.requireNonNull(coreCount);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public InstanceAcceleratorConfig build() {
-            return new InstanceAcceleratorConfig(coreCount, type);
+        }
+        public InstanceAcceleratorConfig build() {
+            final var o = new InstanceAcceleratorConfig();
+            o.coreCount = coreCount;
+            o.type = type;
+            return o;
         }
     }
 }

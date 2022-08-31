@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class JobHadoopConfigLoggingConfig {
-    private final Map<String,String> driverLogLevels;
+    private Map<String,String> driverLogLevels;
 
-    @CustomType.Constructor
-    private JobHadoopConfigLoggingConfig(@CustomType.Parameter("driverLogLevels") Map<String,String> driverLogLevels) {
-        this.driverLogLevels = driverLogLevels;
-    }
-
+    private JobHadoopConfigLoggingConfig() {}
     public Map<String,String> driverLogLevels() {
         return this.driverLogLevels;
     }
@@ -28,24 +24,24 @@ public final class JobHadoopConfigLoggingConfig {
     public static Builder builder(JobHadoopConfigLoggingConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> driverLogLevels;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobHadoopConfigLoggingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.driverLogLevels = defaults.driverLogLevels;
         }
 
+        @CustomType.Setter
         public Builder driverLogLevels(Map<String,String> driverLogLevels) {
             this.driverLogLevels = Objects.requireNonNull(driverLogLevels);
             return this;
-        }        public JobHadoopConfigLoggingConfig build() {
-            return new JobHadoopConfigLoggingConfig(driverLogLevels);
+        }
+        public JobHadoopConfigLoggingConfig build() {
+            final var o = new JobHadoopConfigLoggingConfig();
+            o.driverLogLevels = driverLogLevels;
+            return o;
         }
     }
 }

@@ -14,37 +14,22 @@ public final class GetInstanceAttachedDisk {
      * under `/dev/disk/by-id/`
      * 
      */
-    private final String deviceName;
-    private final String diskEncryptionKeyRaw;
-    private final String diskEncryptionKeySha256;
-    private final String kmsKeySelfLink;
+    private String deviceName;
+    private String diskEncryptionKeyRaw;
+    private String diskEncryptionKeySha256;
+    private String kmsKeySelfLink;
     /**
      * @return Read/write mode for the disk. One of `&#34;READ_ONLY&#34;` or `&#34;READ_WRITE&#34;`.
      * 
      */
-    private final String mode;
+    private String mode;
     /**
      * @return The name or self_link of the disk attached to this instance.
      * 
      */
-    private final String source;
+    private String source;
 
-    @CustomType.Constructor
-    private GetInstanceAttachedDisk(
-        @CustomType.Parameter("deviceName") String deviceName,
-        @CustomType.Parameter("diskEncryptionKeyRaw") String diskEncryptionKeyRaw,
-        @CustomType.Parameter("diskEncryptionKeySha256") String diskEncryptionKeySha256,
-        @CustomType.Parameter("kmsKeySelfLink") String kmsKeySelfLink,
-        @CustomType.Parameter("mode") String mode,
-        @CustomType.Parameter("source") String source) {
-        this.deviceName = deviceName;
-        this.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
-        this.diskEncryptionKeySha256 = diskEncryptionKeySha256;
-        this.kmsKeySelfLink = kmsKeySelfLink;
-        this.mode = mode;
-        this.source = source;
-    }
-
+    private GetInstanceAttachedDisk() {}
     /**
      * @return Name with which the attached disk is accessible
      * under `/dev/disk/by-id/`
@@ -84,7 +69,7 @@ public final class GetInstanceAttachedDisk {
     public static Builder builder(GetInstanceAttachedDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String deviceName;
         private String diskEncryptionKeyRaw;
@@ -92,11 +77,7 @@ public final class GetInstanceAttachedDisk {
         private String kmsKeySelfLink;
         private String mode;
         private String source;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceAttachedDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deviceName = defaults.deviceName;
@@ -107,31 +88,45 @@ public final class GetInstanceAttachedDisk {
     	      this.source = defaults.source;
         }
 
+        @CustomType.Setter
         public Builder deviceName(String deviceName) {
             this.deviceName = Objects.requireNonNull(deviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder diskEncryptionKeyRaw(String diskEncryptionKeyRaw) {
             this.diskEncryptionKeyRaw = Objects.requireNonNull(diskEncryptionKeyRaw);
             return this;
         }
+        @CustomType.Setter
         public Builder diskEncryptionKeySha256(String diskEncryptionKeySha256) {
             this.diskEncryptionKeySha256 = Objects.requireNonNull(diskEncryptionKeySha256);
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKeySelfLink(String kmsKeySelfLink) {
             this.kmsKeySelfLink = Objects.requireNonNull(kmsKeySelfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder mode(String mode) {
             this.mode = Objects.requireNonNull(mode);
             return this;
         }
+        @CustomType.Setter
         public Builder source(String source) {
             this.source = Objects.requireNonNull(source);
             return this;
-        }        public GetInstanceAttachedDisk build() {
-            return new GetInstanceAttachedDisk(deviceName, diskEncryptionKeyRaw, diskEncryptionKeySha256, kmsKeySelfLink, mode, source);
+        }
+        public GetInstanceAttachedDisk build() {
+            final var o = new GetInstanceAttachedDisk();
+            o.deviceName = deviceName;
+            o.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
+            o.diskEncryptionKeySha256 = diskEncryptionKeySha256;
+            o.kmsKeySelfLink = kmsKeySelfLink;
+            o.mode = mode;
+            o.source = source;
+            return o;
         }
     }
 }

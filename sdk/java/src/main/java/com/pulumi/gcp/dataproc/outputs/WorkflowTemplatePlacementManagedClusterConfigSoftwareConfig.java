@@ -17,24 +17,15 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
      * @return Optional. The version of software inside the cluster. It must be one of the supported (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
      * 
      */
-    private final @Nullable String imageVersion;
-    private final @Nullable List<String> optionalComponents;
+    private @Nullable String imageVersion;
+    private @Nullable List<String> optionalComponents;
     /**
      * @return Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
      * 
      */
-    private final @Nullable Map<String,String> properties;
+    private @Nullable Map<String,String> properties;
 
-    @CustomType.Constructor
-    private WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(
-        @CustomType.Parameter("imageVersion") @Nullable String imageVersion,
-        @CustomType.Parameter("optionalComponents") @Nullable List<String> optionalComponents,
-        @CustomType.Parameter("properties") @Nullable Map<String,String> properties) {
-        this.imageVersion = imageVersion;
-        this.optionalComponents = optionalComponents;
-        this.properties = properties;
-    }
-
+    private WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig() {}
     /**
      * @return Optional. The version of software inside the cluster. It must be one of the supported (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
      * 
@@ -60,16 +51,12 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
     public static Builder builder(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String imageVersion;
         private @Nullable List<String> optionalComponents;
         private @Nullable Map<String,String> properties;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.imageVersion = defaults.imageVersion;
@@ -77,10 +64,12 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
     	      this.properties = defaults.properties;
         }
 
+        @CustomType.Setter
         public Builder imageVersion(@Nullable String imageVersion) {
             this.imageVersion = imageVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder optionalComponents(@Nullable List<String> optionalComponents) {
             this.optionalComponents = optionalComponents;
             return this;
@@ -88,11 +77,17 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
         public Builder optionalComponents(String... optionalComponents) {
             return optionalComponents(List.of(optionalComponents));
         }
+        @CustomType.Setter
         public Builder properties(@Nullable Map<String,String> properties) {
             this.properties = properties;
             return this;
-        }        public WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig build() {
-            return new WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(imageVersion, optionalComponents, properties);
+        }
+        public WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig build() {
+            final var o = new WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig();
+            o.imageVersion = imageVersion;
+            o.optionalComponents = optionalComponents;
+            o.properties = properties;
+            return o;
         }
     }
 }

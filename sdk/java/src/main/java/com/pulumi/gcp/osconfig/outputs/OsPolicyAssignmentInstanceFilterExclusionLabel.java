@@ -15,13 +15,9 @@ public final class OsPolicyAssignmentInstanceFilterExclusionLabel {
      * @return Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
      * 
      */
-    private final @Nullable Map<String,String> labels;
+    private @Nullable Map<String,String> labels;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentInstanceFilterExclusionLabel(@CustomType.Parameter("labels") @Nullable Map<String,String> labels) {
-        this.labels = labels;
-    }
-
+    private OsPolicyAssignmentInstanceFilterExclusionLabel() {}
     /**
      * @return Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
      * 
@@ -37,24 +33,24 @@ public final class OsPolicyAssignmentInstanceFilterExclusionLabel {
     public static Builder builder(OsPolicyAssignmentInstanceFilterExclusionLabel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> labels;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentInstanceFilterExclusionLabel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.labels = defaults.labels;
         }
 
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
             this.labels = labels;
             return this;
-        }        public OsPolicyAssignmentInstanceFilterExclusionLabel build() {
-            return new OsPolicyAssignmentInstanceFilterExclusionLabel(labels);
+        }
+        public OsPolicyAssignmentInstanceFilterExclusionLabel build() {
+            final var o = new OsPolicyAssignmentInstanceFilterExclusionLabel();
+            o.labels = labels;
+            return o;
         }
     }
 }

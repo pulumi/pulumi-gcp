@@ -17,13 +17,9 @@ public final class ClusterNodePoolNodeConfigWorkloadMetadataConfig {
      * * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
      * 
      */
-    private final String mode;
+    private String mode;
 
-    @CustomType.Constructor
-    private ClusterNodePoolNodeConfigWorkloadMetadataConfig(@CustomType.Parameter("mode") String mode) {
-        this.mode = mode;
-    }
-
+    private ClusterNodePoolNodeConfigWorkloadMetadataConfig() {}
     /**
      * @return How to expose the node metadata to the workload running on the node.
      * Accepted values are:
@@ -43,24 +39,24 @@ public final class ClusterNodePoolNodeConfigWorkloadMetadataConfig {
     public static Builder builder(ClusterNodePoolNodeConfigWorkloadMetadataConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String mode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNodePoolNodeConfigWorkloadMetadataConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mode = defaults.mode;
         }
 
+        @CustomType.Setter
         public Builder mode(String mode) {
             this.mode = Objects.requireNonNull(mode);
             return this;
-        }        public ClusterNodePoolNodeConfigWorkloadMetadataConfig build() {
-            return new ClusterNodePoolNodeConfigWorkloadMetadataConfig(mode);
+        }
+        public ClusterNodePoolNodeConfigWorkloadMetadataConfig build() {
+            final var o = new ClusterNodePoolNodeConfigWorkloadMetadataConfig();
+            o.mode = mode;
+            return o;
         }
     }
 }

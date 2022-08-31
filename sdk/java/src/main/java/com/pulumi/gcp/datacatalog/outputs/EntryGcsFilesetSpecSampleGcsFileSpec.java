@@ -17,22 +17,15 @@ public final class EntryGcsFilesetSpecSampleGcsFileSpec {
      * The full file path
      * 
      */
-    private final @Nullable String filePath;
+    private @Nullable String filePath;
     /**
      * @return -
      * The size of the file, in bytes.
      * 
      */
-    private final @Nullable Integer sizeBytes;
+    private @Nullable Integer sizeBytes;
 
-    @CustomType.Constructor
-    private EntryGcsFilesetSpecSampleGcsFileSpec(
-        @CustomType.Parameter("filePath") @Nullable String filePath,
-        @CustomType.Parameter("sizeBytes") @Nullable Integer sizeBytes) {
-        this.filePath = filePath;
-        this.sizeBytes = sizeBytes;
-    }
-
+    private EntryGcsFilesetSpecSampleGcsFileSpec() {}
     /**
      * @return -
      * The full file path
@@ -57,30 +50,32 @@ public final class EntryGcsFilesetSpecSampleGcsFileSpec {
     public static Builder builder(EntryGcsFilesetSpecSampleGcsFileSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String filePath;
         private @Nullable Integer sizeBytes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EntryGcsFilesetSpecSampleGcsFileSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filePath = defaults.filePath;
     	      this.sizeBytes = defaults.sizeBytes;
         }
 
+        @CustomType.Setter
         public Builder filePath(@Nullable String filePath) {
             this.filePath = filePath;
             return this;
         }
+        @CustomType.Setter
         public Builder sizeBytes(@Nullable Integer sizeBytes) {
             this.sizeBytes = sizeBytes;
             return this;
-        }        public EntryGcsFilesetSpecSampleGcsFileSpec build() {
-            return new EntryGcsFilesetSpecSampleGcsFileSpec(filePath, sizeBytes);
+        }
+        public EntryGcsFilesetSpecSampleGcsFileSpec build() {
+            final var o = new EntryGcsFilesetSpecSampleGcsFileSpec();
+            o.filePath = filePath;
+            o.sizeBytes = sizeBytes;
+            return o;
         }
     }
 }

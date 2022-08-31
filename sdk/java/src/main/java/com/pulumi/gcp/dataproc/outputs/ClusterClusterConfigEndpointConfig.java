@@ -18,17 +18,10 @@ public final class ClusterClusterConfigEndpointConfig {
      * on the cluster from external sources (aka Component Gateway). Defaults to false.
      * 
      */
-    private final Boolean enableHttpPortAccess;
-    private final @Nullable Map<String,Object> httpPorts;
+    private Boolean enableHttpPortAccess;
+    private @Nullable Map<String,Object> httpPorts;
 
-    @CustomType.Constructor
-    private ClusterClusterConfigEndpointConfig(
-        @CustomType.Parameter("enableHttpPortAccess") Boolean enableHttpPortAccess,
-        @CustomType.Parameter("httpPorts") @Nullable Map<String,Object> httpPorts) {
-        this.enableHttpPortAccess = enableHttpPortAccess;
-        this.httpPorts = httpPorts;
-    }
-
+    private ClusterClusterConfigEndpointConfig() {}
     /**
      * @return The flag to enable http access to specific ports
      * on the cluster from external sources (aka Component Gateway). Defaults to false.
@@ -48,30 +41,32 @@ public final class ClusterClusterConfigEndpointConfig {
     public static Builder builder(ClusterClusterConfigEndpointConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enableHttpPortAccess;
         private @Nullable Map<String,Object> httpPorts;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterClusterConfigEndpointConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableHttpPortAccess = defaults.enableHttpPortAccess;
     	      this.httpPorts = defaults.httpPorts;
         }
 
+        @CustomType.Setter
         public Builder enableHttpPortAccess(Boolean enableHttpPortAccess) {
             this.enableHttpPortAccess = Objects.requireNonNull(enableHttpPortAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder httpPorts(@Nullable Map<String,Object> httpPorts) {
             this.httpPorts = httpPorts;
             return this;
-        }        public ClusterClusterConfigEndpointConfig build() {
-            return new ClusterClusterConfigEndpointConfig(enableHttpPortAccess, httpPorts);
+        }
+        public ClusterClusterConfigEndpointConfig build() {
+            final var o = new ClusterClusterConfigEndpointConfig();
+            o.enableHttpPortAccess = enableHttpPortAccess;
+            o.httpPorts = httpPorts;
+            return o;
         }
     }
 }

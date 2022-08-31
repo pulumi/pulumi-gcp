@@ -13,13 +13,9 @@ public final class DeploymentTargetConfig {
      * @return The full contents of the template that you want to import.
      * 
      */
-    private final String content;
+    private String content;
 
-    @CustomType.Constructor
-    private DeploymentTargetConfig(@CustomType.Parameter("content") String content) {
-        this.content = content;
-    }
-
+    private DeploymentTargetConfig() {}
     /**
      * @return The full contents of the template that you want to import.
      * 
@@ -35,24 +31,24 @@ public final class DeploymentTargetConfig {
     public static Builder builder(DeploymentTargetConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String content;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DeploymentTargetConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
         }
 
+        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
-        }        public DeploymentTargetConfig build() {
-            return new DeploymentTargetConfig(content);
+        }
+        public DeploymentTargetConfig build() {
+            final var o = new DeploymentTargetConfig();
+            o.content = content;
+            return o;
         }
     }
 }

@@ -15,21 +15,14 @@ public final class StandardAppVersionLibrary {
      * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return Version of the library to select, or &#34;latest&#34;.
      * 
      */
-    private final @Nullable String version;
+    private @Nullable String version;
 
-    @CustomType.Constructor
-    private StandardAppVersionLibrary(
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("version") @Nullable String version) {
-        this.name = name;
-        this.version = version;
-    }
-
+    private StandardAppVersionLibrary() {}
     /**
      * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      * 
@@ -52,30 +45,32 @@ public final class StandardAppVersionLibrary {
     public static Builder builder(StandardAppVersionLibrary defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
         private @Nullable String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StandardAppVersionLibrary defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
-        }        public StandardAppVersionLibrary build() {
-            return new StandardAppVersionLibrary(name, version);
+        }
+        public StandardAppVersionLibrary build() {
+            final var o = new StandardAppVersionLibrary();
+            o.name = name;
+            o.version = version;
+            return o;
         }
     }
 }

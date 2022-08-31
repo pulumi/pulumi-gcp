@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek {
-    private final String day;
-    private final String startTime;
+    private String day;
+    private String startTime;
 
-    @CustomType.Constructor
-    private GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek(
-        @CustomType.Parameter("day") String day,
-        @CustomType.Parameter("startTime") String startTime) {
-        this.day = day;
-        this.startTime = startTime;
-    }
-
+    private GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek() {}
     public String day() {
         return this.day;
     }
@@ -34,30 +27,32 @@ public final class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule
     public static Builder builder(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String day;
         private String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.day = defaults.day;
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder day(String day) {
             this.day = Objects.requireNonNull(day);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
-        }        public GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek build() {
-            return new GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek(day, startTime);
+        }
+        public GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek build() {
+            final var o = new GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek();
+            o.day = day;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

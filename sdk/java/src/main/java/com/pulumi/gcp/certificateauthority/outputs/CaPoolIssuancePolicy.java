@@ -21,14 +21,14 @@ public final class CaPoolIssuancePolicy {
      * Structure is documented below.
      * 
      */
-    private final @Nullable CaPoolIssuancePolicyAllowedIssuanceModes allowedIssuanceModes;
+    private @Nullable CaPoolIssuancePolicyAllowedIssuanceModes allowedIssuanceModes;
     /**
      * @return If any AllowedKeyType is specified, then the certificate request&#39;s public key must match one of the key types listed here.
      * Otherwise, any key may be used.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<CaPoolIssuancePolicyAllowedKeyType> allowedKeyTypes;
+    private @Nullable List<CaPoolIssuancePolicyAllowedKeyType> allowedKeyTypes;
     /**
      * @return A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
      * includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
@@ -37,35 +37,22 @@ public final class CaPoolIssuancePolicy {
      * Structure is documented below.
      * 
      */
-    private final @Nullable CaPoolIssuancePolicyBaselineValues baselineValues;
+    private @Nullable CaPoolIssuancePolicyBaselineValues baselineValues;
     /**
      * @return Describes constraints on identities that may appear in Certificates issued through this CaPool.
      * If this is omitted, then this CaPool will not add restrictions on a certificate&#39;s identity.
      * Structure is documented below.
      * 
      */
-    private final @Nullable CaPoolIssuancePolicyIdentityConstraints identityConstraints;
+    private @Nullable CaPoolIssuancePolicyIdentityConstraints identityConstraints;
     /**
      * @return The maximum lifetime allowed for issued Certificates. Note that if the issuing CertificateAuthority
      * expires before a Certificate&#39;s requested maximumLifetime, the effective lifetime will be explicitly truncated to match it.
      * 
      */
-    private final @Nullable String maximumLifetime;
+    private @Nullable String maximumLifetime;
 
-    @CustomType.Constructor
-    private CaPoolIssuancePolicy(
-        @CustomType.Parameter("allowedIssuanceModes") @Nullable CaPoolIssuancePolicyAllowedIssuanceModes allowedIssuanceModes,
-        @CustomType.Parameter("allowedKeyTypes") @Nullable List<CaPoolIssuancePolicyAllowedKeyType> allowedKeyTypes,
-        @CustomType.Parameter("baselineValues") @Nullable CaPoolIssuancePolicyBaselineValues baselineValues,
-        @CustomType.Parameter("identityConstraints") @Nullable CaPoolIssuancePolicyIdentityConstraints identityConstraints,
-        @CustomType.Parameter("maximumLifetime") @Nullable String maximumLifetime) {
-        this.allowedIssuanceModes = allowedIssuanceModes;
-        this.allowedKeyTypes = allowedKeyTypes;
-        this.baselineValues = baselineValues;
-        this.identityConstraints = identityConstraints;
-        this.maximumLifetime = maximumLifetime;
-    }
-
+    private CaPoolIssuancePolicy() {}
     /**
      * @return IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
      * Structure is documented below.
@@ -119,18 +106,14 @@ public final class CaPoolIssuancePolicy {
     public static Builder builder(CaPoolIssuancePolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable CaPoolIssuancePolicyAllowedIssuanceModes allowedIssuanceModes;
         private @Nullable List<CaPoolIssuancePolicyAllowedKeyType> allowedKeyTypes;
         private @Nullable CaPoolIssuancePolicyBaselineValues baselineValues;
         private @Nullable CaPoolIssuancePolicyIdentityConstraints identityConstraints;
         private @Nullable String maximumLifetime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CaPoolIssuancePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedIssuanceModes = defaults.allowedIssuanceModes;
@@ -140,10 +123,12 @@ public final class CaPoolIssuancePolicy {
     	      this.maximumLifetime = defaults.maximumLifetime;
         }
 
+        @CustomType.Setter
         public Builder allowedIssuanceModes(@Nullable CaPoolIssuancePolicyAllowedIssuanceModes allowedIssuanceModes) {
             this.allowedIssuanceModes = allowedIssuanceModes;
             return this;
         }
+        @CustomType.Setter
         public Builder allowedKeyTypes(@Nullable List<CaPoolIssuancePolicyAllowedKeyType> allowedKeyTypes) {
             this.allowedKeyTypes = allowedKeyTypes;
             return this;
@@ -151,19 +136,29 @@ public final class CaPoolIssuancePolicy {
         public Builder allowedKeyTypes(CaPoolIssuancePolicyAllowedKeyType... allowedKeyTypes) {
             return allowedKeyTypes(List.of(allowedKeyTypes));
         }
+        @CustomType.Setter
         public Builder baselineValues(@Nullable CaPoolIssuancePolicyBaselineValues baselineValues) {
             this.baselineValues = baselineValues;
             return this;
         }
+        @CustomType.Setter
         public Builder identityConstraints(@Nullable CaPoolIssuancePolicyIdentityConstraints identityConstraints) {
             this.identityConstraints = identityConstraints;
             return this;
         }
+        @CustomType.Setter
         public Builder maximumLifetime(@Nullable String maximumLifetime) {
             this.maximumLifetime = maximumLifetime;
             return this;
-        }        public CaPoolIssuancePolicy build() {
-            return new CaPoolIssuancePolicy(allowedIssuanceModes, allowedKeyTypes, baselineValues, identityConstraints, maximumLifetime);
+        }
+        public CaPoolIssuancePolicy build() {
+            final var o = new CaPoolIssuancePolicy();
+            o.allowedIssuanceModes = allowedIssuanceModes;
+            o.allowedKeyTypes = allowedKeyTypes;
+            o.baselineValues = baselineValues;
+            o.identityConstraints = identityConstraints;
+            o.maximumLifetime = maximumLifetime;
+            return o;
         }
     }
 }

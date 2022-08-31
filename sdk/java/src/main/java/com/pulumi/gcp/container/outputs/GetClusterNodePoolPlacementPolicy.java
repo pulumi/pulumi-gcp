@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolPlacementPolicy {
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetClusterNodePoolPlacementPolicy(@CustomType.Parameter("type") String type) {
-        this.type = type;
-    }
-
+    private GetClusterNodePoolPlacementPolicy() {}
     public String type() {
         return this.type;
     }
@@ -27,24 +23,24 @@ public final class GetClusterNodePoolPlacementPolicy {
     public static Builder builder(GetClusterNodePoolPlacementPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterNodePoolPlacementPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetClusterNodePoolPlacementPolicy build() {
-            return new GetClusterNodePoolPlacementPolicy(type);
+        }
+        public GetClusterNodePoolPlacementPolicy build() {
+            final var o = new GetClusterNodePoolPlacementPolicy();
+            o.type = type;
+            return o;
         }
     }
 }

@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class JobPysparkConfigLoggingConfig {
-    private final Map<String,String> driverLogLevels;
+    private Map<String,String> driverLogLevels;
 
-    @CustomType.Constructor
-    private JobPysparkConfigLoggingConfig(@CustomType.Parameter("driverLogLevels") Map<String,String> driverLogLevels) {
-        this.driverLogLevels = driverLogLevels;
-    }
-
+    private JobPysparkConfigLoggingConfig() {}
     public Map<String,String> driverLogLevels() {
         return this.driverLogLevels;
     }
@@ -28,24 +24,24 @@ public final class JobPysparkConfigLoggingConfig {
     public static Builder builder(JobPysparkConfigLoggingConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> driverLogLevels;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobPysparkConfigLoggingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.driverLogLevels = defaults.driverLogLevels;
         }
 
+        @CustomType.Setter
         public Builder driverLogLevels(Map<String,String> driverLogLevels) {
             this.driverLogLevels = Objects.requireNonNull(driverLogLevels);
             return this;
-        }        public JobPysparkConfigLoggingConfig build() {
-            return new JobPysparkConfigLoggingConfig(driverLogLevels);
+        }
+        public JobPysparkConfigLoggingConfig build() {
+            final var o = new JobPysparkConfigLoggingConfig();
+            o.driverLogLevels = driverLogLevels;
+            return o;
         }
     }
 }

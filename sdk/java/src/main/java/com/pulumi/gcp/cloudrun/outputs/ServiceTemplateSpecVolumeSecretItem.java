@@ -17,7 +17,7 @@ public final class ServiceTemplateSpecVolumeSecretItem {
      * Can be &#39;latest&#39; for the latest value or an integer for a specific version.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Mode bits to use on this file, must be a value between 0000 and 0777. If
      * not specified, the volume defaultMode will be used. This might be in
@@ -25,7 +25,7 @@ public final class ServiceTemplateSpecVolumeSecretItem {
      * the result can be other mode bits set.
      * 
      */
-    private final @Nullable Integer mode;
+    private @Nullable Integer mode;
     /**
      * @return The relative path of the file to map the key to.
      * May not be an absolute path.
@@ -33,18 +33,9 @@ public final class ServiceTemplateSpecVolumeSecretItem {
      * May not start with the string &#39;..&#39;.
      * 
      */
-    private final String path;
+    private String path;
 
-    @CustomType.Constructor
-    private ServiceTemplateSpecVolumeSecretItem(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("mode") @Nullable Integer mode,
-        @CustomType.Parameter("path") String path) {
-        this.key = key;
-        this.mode = mode;
-        this.path = path;
-    }
-
+    private ServiceTemplateSpecVolumeSecretItem() {}
     /**
      * @return The Cloud Secret Manager secret version.
      * Can be &#39;latest&#39; for the latest value or an integer for a specific version.
@@ -81,16 +72,12 @@ public final class ServiceTemplateSpecVolumeSecretItem {
     public static Builder builder(ServiceTemplateSpecVolumeSecretItem defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private @Nullable Integer mode;
         private String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceTemplateSpecVolumeSecretItem defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
@@ -98,19 +85,27 @@ public final class ServiceTemplateSpecVolumeSecretItem {
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder mode(@Nullable Integer mode) {
             this.mode = mode;
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
-        }        public ServiceTemplateSpecVolumeSecretItem build() {
-            return new ServiceTemplateSpecVolumeSecretItem(key, mode, path);
+        }
+        public ServiceTemplateSpecVolumeSecretItem build() {
+            final var o = new ServiceTemplateSpecVolumeSecretItem();
+            o.key = key;
+            o.mode = mode;
+            o.path = path;
+            return o;
         }
     }
 }

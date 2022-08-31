@@ -18,42 +18,29 @@ public final class OsPolicyAssignmentOsPolicy {
      * @return This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
      * 
      */
-    private final @Nullable Boolean allowNoResourceGroupMatch;
+    private @Nullable Boolean allowNoResourceGroupMatch;
     /**
      * @return OS policy assignment description. Length of the description is limited to 1024 characters.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
      * 
      */
-    private final String mode;
+    private String mode;
     /**
      * @return Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
      * 
      */
-    private final List<OsPolicyAssignmentOsPolicyResourceGroup> resourceGroups;
+    private List<OsPolicyAssignmentOsPolicyResourceGroup> resourceGroups;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentOsPolicy(
-        @CustomType.Parameter("allowNoResourceGroupMatch") @Nullable Boolean allowNoResourceGroupMatch,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("mode") String mode,
-        @CustomType.Parameter("resourceGroups") List<OsPolicyAssignmentOsPolicyResourceGroup> resourceGroups) {
-        this.allowNoResourceGroupMatch = allowNoResourceGroupMatch;
-        this.description = description;
-        this.id = id;
-        this.mode = mode;
-        this.resourceGroups = resourceGroups;
-    }
-
+    private OsPolicyAssignmentOsPolicy() {}
     /**
      * @return This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
      * 
@@ -97,18 +84,14 @@ public final class OsPolicyAssignmentOsPolicy {
     public static Builder builder(OsPolicyAssignmentOsPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowNoResourceGroupMatch;
         private @Nullable String description;
         private String id;
         private String mode;
         private List<OsPolicyAssignmentOsPolicyResourceGroup> resourceGroups;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentOsPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowNoResourceGroupMatch = defaults.allowNoResourceGroupMatch;
@@ -118,30 +101,42 @@ public final class OsPolicyAssignmentOsPolicy {
     	      this.resourceGroups = defaults.resourceGroups;
         }
 
+        @CustomType.Setter
         public Builder allowNoResourceGroupMatch(@Nullable Boolean allowNoResourceGroupMatch) {
             this.allowNoResourceGroupMatch = allowNoResourceGroupMatch;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder mode(String mode) {
             this.mode = Objects.requireNonNull(mode);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroups(List<OsPolicyAssignmentOsPolicyResourceGroup> resourceGroups) {
             this.resourceGroups = Objects.requireNonNull(resourceGroups);
             return this;
         }
         public Builder resourceGroups(OsPolicyAssignmentOsPolicyResourceGroup... resourceGroups) {
             return resourceGroups(List.of(resourceGroups));
-        }        public OsPolicyAssignmentOsPolicy build() {
-            return new OsPolicyAssignmentOsPolicy(allowNoResourceGroupMatch, description, id, mode, resourceGroups);
+        }
+        public OsPolicyAssignmentOsPolicy build() {
+            final var o = new OsPolicyAssignmentOsPolicy();
+            o.allowNoResourceGroupMatch = allowNoResourceGroupMatch;
+            o.description = description;
+            o.id = id;
+            o.mode = mode;
+            o.resourceGroups = resourceGroups;
+            return o;
         }
     }
 }

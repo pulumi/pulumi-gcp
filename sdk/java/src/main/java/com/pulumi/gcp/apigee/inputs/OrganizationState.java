@@ -142,6 +142,31 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+     * is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+     * operation completes. During this period, the Organization may be restored to its last known state.
+     * After this period, the Organization will no longer be able to be restored.
+     * Default value is `DELETION_RETENTION_UNSPECIFIED`.
+     * Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+     * 
+     */
+    @Import(name="retention")
+    private @Nullable Output<String> retention;
+
+    /**
+     * @return Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+     * is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+     * operation completes. During this period, the Organization may be restored to its last known state.
+     * After this period, the Organization will no longer be able to be restored.
+     * Default value is `DELETION_RETENTION_UNSPECIFIED`.
+     * Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+     * 
+     */
+    public Optional<Output<String>> retention() {
+        return Optional.ofNullable(this.retention);
+    }
+
+    /**
      * Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
      * Update is not allowed after the organization is created.
      * If not specified, a Google-Managed encryption key will be used.
@@ -209,6 +234,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         this.displayName = $.displayName;
         this.name = $.name;
         this.projectId = $.projectId;
+        this.retention = $.retention;
         this.runtimeDatabaseEncryptionKeyName = $.runtimeDatabaseEncryptionKeyName;
         this.runtimeType = $.runtimeType;
         this.subscriptionType = $.subscriptionType;
@@ -404,6 +430,37 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        /**
+         * @param retention Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+         * is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+         * operation completes. During this period, the Organization may be restored to its last known state.
+         * After this period, the Organization will no longer be able to be restored.
+         * Default value is `DELETION_RETENTION_UNSPECIFIED`.
+         * Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retention(@Nullable Output<String> retention) {
+            $.retention = retention;
+            return this;
+        }
+
+        /**
+         * @param retention Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+         * is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+         * operation completes. During this period, the Organization may be restored to its last known state.
+         * After this period, the Organization will no longer be able to be restored.
+         * Default value is `DELETION_RETENTION_UNSPECIFIED`.
+         * Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retention(String retention) {
+            return retention(Output.of(retention));
         }
 
         /**

@@ -13,21 +13,14 @@ public final class AzureNodePoolConfigProxyConfig {
      * @return The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/&lt;subscription-id&gt;/resourceGroups/&lt;resource-group-name&gt;`
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return The URL the of the proxy setting secret with its version. Secret ids are formatted as `https:&lt;key-vault-name&gt;.vault.azure.net/secrets/&lt;secret-name&gt;/&lt;secret-version&gt;`.
      * 
      */
-    private final String secretId;
+    private String secretId;
 
-    @CustomType.Constructor
-    private AzureNodePoolConfigProxyConfig(
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("secretId") String secretId) {
-        this.resourceGroupId = resourceGroupId;
-        this.secretId = secretId;
-    }
-
+    private AzureNodePoolConfigProxyConfig() {}
     /**
      * @return The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/&lt;subscription-id&gt;/resourceGroups/&lt;resource-group-name&gt;`
      * 
@@ -50,30 +43,32 @@ public final class AzureNodePoolConfigProxyConfig {
     public static Builder builder(AzureNodePoolConfigProxyConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String resourceGroupId;
         private String secretId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AzureNodePoolConfigProxyConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.resourceGroupId = defaults.resourceGroupId;
     	      this.secretId = defaults.secretId;
         }
 
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder secretId(String secretId) {
             this.secretId = Objects.requireNonNull(secretId);
             return this;
-        }        public AzureNodePoolConfigProxyConfig build() {
-            return new AzureNodePoolConfigProxyConfig(resourceGroupId, secretId);
+        }
+        public AzureNodePoolConfigProxyConfig build() {
+            final var o = new AzureNodePoolConfigProxyConfig();
+            o.resourceGroupId = resourceGroupId;
+            o.secretId = secretId;
+            return o;
         }
     }
 }

@@ -15,21 +15,14 @@ public final class AssetResourceSpec {
      * @return Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private AssetResourceSpec(
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("type") String type) {
-        this.name = name;
-        this.type = type;
-    }
-
+    private AssetResourceSpec() {}
     /**
      * @return Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
      * 
@@ -52,30 +45,32 @@ public final class AssetResourceSpec {
     public static Builder builder(AssetResourceSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AssetResourceSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public AssetResourceSpec build() {
-            return new AssetResourceSpec(name, type);
+        }
+        public AssetResourceSpec build() {
+            final var o = new AssetResourceSpec();
+            o.name = name;
+            o.type = type;
+            return o;
         }
     }
 }

@@ -13,13 +13,9 @@ public final class FolderFeedFeedOutputConfigPubsubDestination {
      * @return Destination on Cloud Pubsub topic.
      * 
      */
-    private final String topic;
+    private String topic;
 
-    @CustomType.Constructor
-    private FolderFeedFeedOutputConfigPubsubDestination(@CustomType.Parameter("topic") String topic) {
-        this.topic = topic;
-    }
-
+    private FolderFeedFeedOutputConfigPubsubDestination() {}
     /**
      * @return Destination on Cloud Pubsub topic.
      * 
@@ -35,24 +31,24 @@ public final class FolderFeedFeedOutputConfigPubsubDestination {
     public static Builder builder(FolderFeedFeedOutputConfigPubsubDestination defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String topic;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FolderFeedFeedOutputConfigPubsubDestination defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.topic = defaults.topic;
         }
 
+        @CustomType.Setter
         public Builder topic(String topic) {
             this.topic = Objects.requireNonNull(topic);
             return this;
-        }        public FolderFeedFeedOutputConfigPubsubDestination build() {
-            return new FolderFeedFeedOutputConfigPubsubDestination(topic);
+        }
+        public FolderFeedFeedOutputConfigPubsubDestination build() {
+            final var o = new FolderFeedFeedOutputConfigPubsubDestination();
+            o.topic = topic;
+            return o;
         }
     }
 }

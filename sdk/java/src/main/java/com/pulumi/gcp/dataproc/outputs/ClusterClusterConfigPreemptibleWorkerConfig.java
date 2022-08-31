@@ -18,14 +18,14 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
      * @return Disk Config
      * 
      */
-    private final @Nullable ClusterClusterConfigPreemptibleWorkerConfigDiskConfig diskConfig;
-    private final @Nullable List<String> instanceNames;
+    private @Nullable ClusterClusterConfigPreemptibleWorkerConfigDiskConfig diskConfig;
+    private @Nullable List<String> instanceNames;
     /**
      * @return Specifies the number of preemptible nodes to create.
      * Defaults to 0.
      * 
      */
-    private final @Nullable Integer numInstances;
+    private @Nullable Integer numInstances;
     /**
      * @return Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
      * Accepted values are:
@@ -34,20 +34,9 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
      * * PREEMPTIBLE
      * 
      */
-    private final @Nullable String preemptibility;
+    private @Nullable String preemptibility;
 
-    @CustomType.Constructor
-    private ClusterClusterConfigPreemptibleWorkerConfig(
-        @CustomType.Parameter("diskConfig") @Nullable ClusterClusterConfigPreemptibleWorkerConfigDiskConfig diskConfig,
-        @CustomType.Parameter("instanceNames") @Nullable List<String> instanceNames,
-        @CustomType.Parameter("numInstances") @Nullable Integer numInstances,
-        @CustomType.Parameter("preemptibility") @Nullable String preemptibility) {
-        this.diskConfig = diskConfig;
-        this.instanceNames = instanceNames;
-        this.numInstances = numInstances;
-        this.preemptibility = preemptibility;
-    }
-
+    private ClusterClusterConfigPreemptibleWorkerConfig() {}
     /**
      * @return Disk Config
      * 
@@ -85,17 +74,13 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
     public static Builder builder(ClusterClusterConfigPreemptibleWorkerConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterClusterConfigPreemptibleWorkerConfigDiskConfig diskConfig;
         private @Nullable List<String> instanceNames;
         private @Nullable Integer numInstances;
         private @Nullable String preemptibility;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterClusterConfigPreemptibleWorkerConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.diskConfig = defaults.diskConfig;
@@ -104,10 +89,12 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
     	      this.preemptibility = defaults.preemptibility;
         }
 
+        @CustomType.Setter
         public Builder diskConfig(@Nullable ClusterClusterConfigPreemptibleWorkerConfigDiskConfig diskConfig) {
             this.diskConfig = diskConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceNames(@Nullable List<String> instanceNames) {
             this.instanceNames = instanceNames;
             return this;
@@ -115,15 +102,23 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
         public Builder instanceNames(String... instanceNames) {
             return instanceNames(List.of(instanceNames));
         }
+        @CustomType.Setter
         public Builder numInstances(@Nullable Integer numInstances) {
             this.numInstances = numInstances;
             return this;
         }
+        @CustomType.Setter
         public Builder preemptibility(@Nullable String preemptibility) {
             this.preemptibility = preemptibility;
             return this;
-        }        public ClusterClusterConfigPreemptibleWorkerConfig build() {
-            return new ClusterClusterConfigPreemptibleWorkerConfig(diskConfig, instanceNames, numInstances, preemptibility);
+        }
+        public ClusterClusterConfigPreemptibleWorkerConfig build() {
+            final var o = new ClusterClusterConfigPreemptibleWorkerConfig();
+            o.diskConfig = diskConfig;
+            o.instanceNames = instanceNames;
+            o.numInstances = numInstances;
+            o.preemptibility = preemptibility;
+            return o;
         }
     }
 }

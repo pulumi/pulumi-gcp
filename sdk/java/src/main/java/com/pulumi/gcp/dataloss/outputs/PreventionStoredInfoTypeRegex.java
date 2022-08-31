@@ -16,22 +16,15 @@ public final class PreventionStoredInfoTypeRegex {
      * @return The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
      * 
      */
-    private final @Nullable List<Integer> groupIndexes;
+    private @Nullable List<Integer> groupIndexes;
     /**
      * @return Pattern defining the regular expression.
      * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
      * 
      */
-    private final String pattern;
+    private String pattern;
 
-    @CustomType.Constructor
-    private PreventionStoredInfoTypeRegex(
-        @CustomType.Parameter("groupIndexes") @Nullable List<Integer> groupIndexes,
-        @CustomType.Parameter("pattern") String pattern) {
-        this.groupIndexes = groupIndexes;
-        this.pattern = pattern;
-    }
-
+    private PreventionStoredInfoTypeRegex() {}
     /**
      * @return The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
      * 
@@ -55,21 +48,18 @@ public final class PreventionStoredInfoTypeRegex {
     public static Builder builder(PreventionStoredInfoTypeRegex defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<Integer> groupIndexes;
         private String pattern;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionStoredInfoTypeRegex defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groupIndexes = defaults.groupIndexes;
     	      this.pattern = defaults.pattern;
         }
 
+        @CustomType.Setter
         public Builder groupIndexes(@Nullable List<Integer> groupIndexes) {
             this.groupIndexes = groupIndexes;
             return this;
@@ -77,11 +67,16 @@ public final class PreventionStoredInfoTypeRegex {
         public Builder groupIndexes(Integer... groupIndexes) {
             return groupIndexes(List.of(groupIndexes));
         }
+        @CustomType.Setter
         public Builder pattern(String pattern) {
             this.pattern = Objects.requireNonNull(pattern);
             return this;
-        }        public PreventionStoredInfoTypeRegex build() {
-            return new PreventionStoredInfoTypeRegex(groupIndexes, pattern);
+        }
+        public PreventionStoredInfoTypeRegex build() {
+            final var o = new PreventionStoredInfoTypeRegex();
+            o.groupIndexes = groupIndexes;
+            o.pattern = pattern;
+            return o;
         }
     }
 }

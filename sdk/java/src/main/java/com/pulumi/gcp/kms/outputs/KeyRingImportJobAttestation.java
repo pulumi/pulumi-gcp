@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KeyRingImportJobAttestation {
-    private final @Nullable String content;
-    private final @Nullable String format;
+    private @Nullable String content;
+    private @Nullable String format;
 
-    @CustomType.Constructor
-    private KeyRingImportJobAttestation(
-        @CustomType.Parameter("content") @Nullable String content,
-        @CustomType.Parameter("format") @Nullable String format) {
-        this.content = content;
-        this.format = format;
-    }
-
+    private KeyRingImportJobAttestation() {}
     public Optional<String> content() {
         return Optional.ofNullable(this.content);
     }
@@ -36,30 +29,32 @@ public final class KeyRingImportJobAttestation {
     public static Builder builder(KeyRingImportJobAttestation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String content;
         private @Nullable String format;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KeyRingImportJobAttestation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
     	      this.format = defaults.format;
         }
 
+        @CustomType.Setter
         public Builder content(@Nullable String content) {
             this.content = content;
             return this;
         }
+        @CustomType.Setter
         public Builder format(@Nullable String format) {
             this.format = format;
             return this;
-        }        public KeyRingImportJobAttestation build() {
-            return new KeyRingImportJobAttestation(content, format);
+        }
+        public KeyRingImportJobAttestation build() {
+            final var o = new KeyRingImportJobAttestation();
+            o.content = content;
+            o.format = format;
+            return o;
         }
     }
 }

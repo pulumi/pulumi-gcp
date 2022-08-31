@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSecretRotation {
-    private final String nextRotationTime;
-    private final String rotationPeriod;
+    private String nextRotationTime;
+    private String rotationPeriod;
 
-    @CustomType.Constructor
-    private GetSecretRotation(
-        @CustomType.Parameter("nextRotationTime") String nextRotationTime,
-        @CustomType.Parameter("rotationPeriod") String rotationPeriod) {
-        this.nextRotationTime = nextRotationTime;
-        this.rotationPeriod = rotationPeriod;
-    }
-
+    private GetSecretRotation() {}
     public String nextRotationTime() {
         return this.nextRotationTime;
     }
@@ -34,30 +27,32 @@ public final class GetSecretRotation {
     public static Builder builder(GetSecretRotation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String nextRotationTime;
         private String rotationPeriod;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSecretRotation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.nextRotationTime = defaults.nextRotationTime;
     	      this.rotationPeriod = defaults.rotationPeriod;
         }
 
+        @CustomType.Setter
         public Builder nextRotationTime(String nextRotationTime) {
             this.nextRotationTime = Objects.requireNonNull(nextRotationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder rotationPeriod(String rotationPeriod) {
             this.rotationPeriod = Objects.requireNonNull(rotationPeriod);
             return this;
-        }        public GetSecretRotation build() {
-            return new GetSecretRotation(nextRotationTime, rotationPeriod);
+        }
+        public GetSecretRotation build() {
+            final var o = new GetSecretRotation();
+            o.nextRotationTime = nextRotationTime;
+            o.rotationPeriod = rotationPeriod;
+            return o;
         }
     }
 }

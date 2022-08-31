@@ -11,28 +11,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGroupMembershipsResult {
-    private final String group;
+    private String group;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The list of memberships under the given group. Structure is documented below.
      * 
      */
-    private final List<GetGroupMembershipsMembership> memberships;
+    private List<GetGroupMembershipsMembership> memberships;
 
-    @CustomType.Constructor
-    private GetGroupMembershipsResult(
-        @CustomType.Parameter("group") String group,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("memberships") List<GetGroupMembershipsMembership> memberships) {
-        this.group = group;
-        this.id = id;
-        this.memberships = memberships;
-    }
-
+    private GetGroupMembershipsResult() {}
     public String group() {
         return this.group;
     }
@@ -58,16 +49,12 @@ public final class GetGroupMembershipsResult {
     public static Builder builder(GetGroupMembershipsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String group;
         private String id;
         private List<GetGroupMembershipsMembership> memberships;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGroupMembershipsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.group = defaults.group;
@@ -75,22 +62,30 @@ public final class GetGroupMembershipsResult {
     	      this.memberships = defaults.memberships;
         }
 
+        @CustomType.Setter
         public Builder group(String group) {
             this.group = Objects.requireNonNull(group);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder memberships(List<GetGroupMembershipsMembership> memberships) {
             this.memberships = Objects.requireNonNull(memberships);
             return this;
         }
         public Builder memberships(GetGroupMembershipsMembership... memberships) {
             return memberships(List.of(memberships));
-        }        public GetGroupMembershipsResult build() {
-            return new GetGroupMembershipsResult(group, id, memberships);
+        }
+        public GetGroupMembershipsResult build() {
+            final var o = new GetGroupMembershipsResult();
+            o.group = group;
+            o.id = id;
+            o.memberships = memberships;
+            return o;
         }
     }
 }

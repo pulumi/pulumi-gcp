@@ -14,7 +14,7 @@ public final class ServiceTemplateSpecVolume {
      * @return Volume&#39;s name.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The secret&#39;s value will be presented as the content of a file whose
      * name is defined in the item path. If no items are defined, the name of
@@ -22,16 +22,9 @@ public final class ServiceTemplateSpecVolume {
      * Structure is documented below.
      * 
      */
-    private final ServiceTemplateSpecVolumeSecret secret;
+    private ServiceTemplateSpecVolumeSecret secret;
 
-    @CustomType.Constructor
-    private ServiceTemplateSpecVolume(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("secret") ServiceTemplateSpecVolumeSecret secret) {
-        this.name = name;
-        this.secret = secret;
-    }
-
+    private ServiceTemplateSpecVolume() {}
     /**
      * @return Volume&#39;s name.
      * 
@@ -57,30 +50,32 @@ public final class ServiceTemplateSpecVolume {
     public static Builder builder(ServiceTemplateSpecVolume defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private ServiceTemplateSpecVolumeSecret secret;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceTemplateSpecVolume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.secret = defaults.secret;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder secret(ServiceTemplateSpecVolumeSecret secret) {
             this.secret = Objects.requireNonNull(secret);
             return this;
-        }        public ServiceTemplateSpecVolume build() {
-            return new ServiceTemplateSpecVolume(name, secret);
+        }
+        public ServiceTemplateSpecVolume build() {
+            final var o = new ServiceTemplateSpecVolume();
+            o.name = name;
+            o.secret = secret;
+            return o;
         }
     }
 }

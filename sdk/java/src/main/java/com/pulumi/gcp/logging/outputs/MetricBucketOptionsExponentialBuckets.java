@@ -16,28 +16,19 @@ public final class MetricBucketOptionsExponentialBuckets {
      * @return Must be greater than 1.
      * 
      */
-    private final @Nullable Double growthFactor;
+    private @Nullable Double growthFactor;
     /**
      * @return Must be greater than 0.
      * 
      */
-    private final @Nullable Integer numFiniteBuckets;
+    private @Nullable Integer numFiniteBuckets;
     /**
      * @return Must be greater than 0.
      * 
      */
-    private final @Nullable Double scale;
+    private @Nullable Double scale;
 
-    @CustomType.Constructor
-    private MetricBucketOptionsExponentialBuckets(
-        @CustomType.Parameter("growthFactor") @Nullable Double growthFactor,
-        @CustomType.Parameter("numFiniteBuckets") @Nullable Integer numFiniteBuckets,
-        @CustomType.Parameter("scale") @Nullable Double scale) {
-        this.growthFactor = growthFactor;
-        this.numFiniteBuckets = numFiniteBuckets;
-        this.scale = scale;
-    }
-
+    private MetricBucketOptionsExponentialBuckets() {}
     /**
      * @return Must be greater than 1.
      * 
@@ -67,16 +58,12 @@ public final class MetricBucketOptionsExponentialBuckets {
     public static Builder builder(MetricBucketOptionsExponentialBuckets defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Double growthFactor;
         private @Nullable Integer numFiniteBuckets;
         private @Nullable Double scale;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MetricBucketOptionsExponentialBuckets defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.growthFactor = defaults.growthFactor;
@@ -84,19 +71,27 @@ public final class MetricBucketOptionsExponentialBuckets {
     	      this.scale = defaults.scale;
         }
 
+        @CustomType.Setter
         public Builder growthFactor(@Nullable Double growthFactor) {
             this.growthFactor = growthFactor;
             return this;
         }
+        @CustomType.Setter
         public Builder numFiniteBuckets(@Nullable Integer numFiniteBuckets) {
             this.numFiniteBuckets = numFiniteBuckets;
             return this;
         }
+        @CustomType.Setter
         public Builder scale(@Nullable Double scale) {
             this.scale = scale;
             return this;
-        }        public MetricBucketOptionsExponentialBuckets build() {
-            return new MetricBucketOptionsExponentialBuckets(growthFactor, numFiniteBuckets, scale);
+        }
+        public MetricBucketOptionsExponentialBuckets build() {
+            final var o = new MetricBucketOptionsExponentialBuckets();
+            o.growthFactor = growthFactor;
+            o.numFiniteBuckets = numFiniteBuckets;
+            o.scale = scale;
+            return o;
         }
     }
 }

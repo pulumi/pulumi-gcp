@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketLifecycleRuleAction {
-    private final String storageClass;
-    private final String type;
+    private String storageClass;
+    private String type;
 
-    @CustomType.Constructor
-    private GetBucketLifecycleRuleAction(
-        @CustomType.Parameter("storageClass") String storageClass,
-        @CustomType.Parameter("type") String type) {
-        this.storageClass = storageClass;
-        this.type = type;
-    }
-
+    private GetBucketLifecycleRuleAction() {}
     public String storageClass() {
         return this.storageClass;
     }
@@ -34,30 +27,32 @@ public final class GetBucketLifecycleRuleAction {
     public static Builder builder(GetBucketLifecycleRuleAction defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String storageClass;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBucketLifecycleRuleAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.storageClass = defaults.storageClass;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder storageClass(String storageClass) {
             this.storageClass = Objects.requireNonNull(storageClass);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetBucketLifecycleRuleAction build() {
-            return new GetBucketLifecycleRuleAction(storageClass, type);
+        }
+        public GetBucketLifecycleRuleAction build() {
+            final var o = new GetBucketLifecycleRuleAction();
+            o.storageClass = storageClass;
+            o.type = type;
+            return o;
         }
     }
 }

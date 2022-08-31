@@ -15,13 +15,9 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy
      * headerActions specified as part of this backendServiceWeight.
      * 
      */
-    private final String backendService;
+    private String backendService;
 
-    @CustomType.Constructor
-    private RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy(@CustomType.Parameter("backendService") String backendService) {
-        this.backendService = backendService;
-    }
-
+    private RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy() {}
     /**
      * @return The default RegionBackendService resource. Before
      * forwarding the request to backendService, the loadbalancer applies any relevant
@@ -39,24 +35,24 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy
     public static Builder builder(RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String backendService;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backendService = defaults.backendService;
         }
 
+        @CustomType.Setter
         public Builder backendService(String backendService) {
             this.backendService = Objects.requireNonNull(backendService);
             return this;
-        }        public RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy build() {
-            return new RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy(backendService);
+        }
+        public RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy build() {
+            final var o = new RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy();
+            o.backendService = backendService;
+            return o;
         }
     }
 }

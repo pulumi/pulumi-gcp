@@ -19,13 +19,9 @@ public final class TopicMessageStoragePolicy {
      * and is not a valid configuration.
      * 
      */
-    private final List<String> allowedPersistenceRegions;
+    private List<String> allowedPersistenceRegions;
 
-    @CustomType.Constructor
-    private TopicMessageStoragePolicy(@CustomType.Parameter("allowedPersistenceRegions") List<String> allowedPersistenceRegions) {
-        this.allowedPersistenceRegions = allowedPersistenceRegions;
-    }
-
+    private TopicMessageStoragePolicy() {}
     /**
      * @return A list of IDs of GCP regions where messages that are published to
      * the topic may be persisted in storage. Messages published by
@@ -46,27 +42,27 @@ public final class TopicMessageStoragePolicy {
     public static Builder builder(TopicMessageStoragePolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> allowedPersistenceRegions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TopicMessageStoragePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedPersistenceRegions = defaults.allowedPersistenceRegions;
         }
 
+        @CustomType.Setter
         public Builder allowedPersistenceRegions(List<String> allowedPersistenceRegions) {
             this.allowedPersistenceRegions = Objects.requireNonNull(allowedPersistenceRegions);
             return this;
         }
         public Builder allowedPersistenceRegions(String... allowedPersistenceRegions) {
             return allowedPersistenceRegions(List.of(allowedPersistenceRegions));
-        }        public TopicMessageStoragePolicy build() {
-            return new TopicMessageStoragePolicy(allowedPersistenceRegions);
+        }
+        public TopicMessageStoragePolicy build() {
+            final var o = new TopicMessageStoragePolicy();
+            o.allowedPersistenceRegions = allowedPersistenceRegions;
+            return o;
         }
     }
 }

@@ -18,52 +18,37 @@ public final class StandardAppVersionAutomaticScaling {
      * Defaults to a runtime-specific value.
      * 
      */
-    private final @Nullable Integer maxConcurrentRequests;
+    private @Nullable Integer maxConcurrentRequests;
     /**
      * @return Maximum number of idle instances that should be maintained for this version.
      * 
      */
-    private final @Nullable Integer maxIdleInstances;
+    private @Nullable Integer maxIdleInstances;
     /**
      * @return Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    private final @Nullable String maxPendingLatency;
+    private @Nullable String maxPendingLatency;
     /**
      * @return Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
      * 
      */
-    private final @Nullable Integer minIdleInstances;
+    private @Nullable Integer minIdleInstances;
     /**
      * @return Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    private final @Nullable String minPendingLatency;
+    private @Nullable String minPendingLatency;
     /**
      * @return Scheduler settings for standard environment.
      * Structure is documented below.
      * 
      */
-    private final @Nullable StandardAppVersionAutomaticScalingStandardSchedulerSettings standardSchedulerSettings;
+    private @Nullable StandardAppVersionAutomaticScalingStandardSchedulerSettings standardSchedulerSettings;
 
-    @CustomType.Constructor
-    private StandardAppVersionAutomaticScaling(
-        @CustomType.Parameter("maxConcurrentRequests") @Nullable Integer maxConcurrentRequests,
-        @CustomType.Parameter("maxIdleInstances") @Nullable Integer maxIdleInstances,
-        @CustomType.Parameter("maxPendingLatency") @Nullable String maxPendingLatency,
-        @CustomType.Parameter("minIdleInstances") @Nullable Integer minIdleInstances,
-        @CustomType.Parameter("minPendingLatency") @Nullable String minPendingLatency,
-        @CustomType.Parameter("standardSchedulerSettings") @Nullable StandardAppVersionAutomaticScalingStandardSchedulerSettings standardSchedulerSettings) {
-        this.maxConcurrentRequests = maxConcurrentRequests;
-        this.maxIdleInstances = maxIdleInstances;
-        this.maxPendingLatency = maxPendingLatency;
-        this.minIdleInstances = minIdleInstances;
-        this.minPendingLatency = minPendingLatency;
-        this.standardSchedulerSettings = standardSchedulerSettings;
-    }
-
+    private StandardAppVersionAutomaticScaling() {}
     /**
      * @return Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
      * Defaults to a runtime-specific value.
@@ -118,7 +103,7 @@ public final class StandardAppVersionAutomaticScaling {
     public static Builder builder(StandardAppVersionAutomaticScaling defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer maxConcurrentRequests;
         private @Nullable Integer maxIdleInstances;
@@ -126,11 +111,7 @@ public final class StandardAppVersionAutomaticScaling {
         private @Nullable Integer minIdleInstances;
         private @Nullable String minPendingLatency;
         private @Nullable StandardAppVersionAutomaticScalingStandardSchedulerSettings standardSchedulerSettings;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StandardAppVersionAutomaticScaling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxConcurrentRequests = defaults.maxConcurrentRequests;
@@ -141,31 +122,45 @@ public final class StandardAppVersionAutomaticScaling {
     	      this.standardSchedulerSettings = defaults.standardSchedulerSettings;
         }
 
+        @CustomType.Setter
         public Builder maxConcurrentRequests(@Nullable Integer maxConcurrentRequests) {
             this.maxConcurrentRequests = maxConcurrentRequests;
             return this;
         }
+        @CustomType.Setter
         public Builder maxIdleInstances(@Nullable Integer maxIdleInstances) {
             this.maxIdleInstances = maxIdleInstances;
             return this;
         }
+        @CustomType.Setter
         public Builder maxPendingLatency(@Nullable String maxPendingLatency) {
             this.maxPendingLatency = maxPendingLatency;
             return this;
         }
+        @CustomType.Setter
         public Builder minIdleInstances(@Nullable Integer minIdleInstances) {
             this.minIdleInstances = minIdleInstances;
             return this;
         }
+        @CustomType.Setter
         public Builder minPendingLatency(@Nullable String minPendingLatency) {
             this.minPendingLatency = minPendingLatency;
             return this;
         }
+        @CustomType.Setter
         public Builder standardSchedulerSettings(@Nullable StandardAppVersionAutomaticScalingStandardSchedulerSettings standardSchedulerSettings) {
             this.standardSchedulerSettings = standardSchedulerSettings;
             return this;
-        }        public StandardAppVersionAutomaticScaling build() {
-            return new StandardAppVersionAutomaticScaling(maxConcurrentRequests, maxIdleInstances, maxPendingLatency, minIdleInstances, minPendingLatency, standardSchedulerSettings);
+        }
+        public StandardAppVersionAutomaticScaling build() {
+            final var o = new StandardAppVersionAutomaticScaling();
+            o.maxConcurrentRequests = maxConcurrentRequests;
+            o.maxIdleInstances = maxIdleInstances;
+            o.maxPendingLatency = maxPendingLatency;
+            o.minIdleInstances = minIdleInstances;
+            o.minPendingLatency = minPendingLatency;
+            o.standardSchedulerSettings = standardSchedulerSettings;
+            return o;
         }
     }
 }

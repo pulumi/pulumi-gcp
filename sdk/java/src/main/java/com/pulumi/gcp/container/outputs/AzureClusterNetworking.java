@@ -14,28 +14,19 @@ public final class AzureClusterNetworking {
      * @return The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
      * 
      */
-    private final List<String> podAddressCidrBlocks;
+    private List<String> podAddressCidrBlocks;
     /**
      * @return The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
      * 
      */
-    private final List<String> serviceAddressCidrBlocks;
+    private List<String> serviceAddressCidrBlocks;
     /**
      * @return The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*{@literal /}resourceGroups/*{@literal /}providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
      * 
      */
-    private final String virtualNetworkId;
+    private String virtualNetworkId;
 
-    @CustomType.Constructor
-    private AzureClusterNetworking(
-        @CustomType.Parameter("podAddressCidrBlocks") List<String> podAddressCidrBlocks,
-        @CustomType.Parameter("serviceAddressCidrBlocks") List<String> serviceAddressCidrBlocks,
-        @CustomType.Parameter("virtualNetworkId") String virtualNetworkId) {
-        this.podAddressCidrBlocks = podAddressCidrBlocks;
-        this.serviceAddressCidrBlocks = serviceAddressCidrBlocks;
-        this.virtualNetworkId = virtualNetworkId;
-    }
-
+    private AzureClusterNetworking() {}
     /**
      * @return The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
      * 
@@ -65,16 +56,12 @@ public final class AzureClusterNetworking {
     public static Builder builder(AzureClusterNetworking defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> podAddressCidrBlocks;
         private List<String> serviceAddressCidrBlocks;
         private String virtualNetworkId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AzureClusterNetworking defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.podAddressCidrBlocks = defaults.podAddressCidrBlocks;
@@ -82,6 +69,7 @@ public final class AzureClusterNetworking {
     	      this.virtualNetworkId = defaults.virtualNetworkId;
         }
 
+        @CustomType.Setter
         public Builder podAddressCidrBlocks(List<String> podAddressCidrBlocks) {
             this.podAddressCidrBlocks = Objects.requireNonNull(podAddressCidrBlocks);
             return this;
@@ -89,6 +77,7 @@ public final class AzureClusterNetworking {
         public Builder podAddressCidrBlocks(String... podAddressCidrBlocks) {
             return podAddressCidrBlocks(List.of(podAddressCidrBlocks));
         }
+        @CustomType.Setter
         public Builder serviceAddressCidrBlocks(List<String> serviceAddressCidrBlocks) {
             this.serviceAddressCidrBlocks = Objects.requireNonNull(serviceAddressCidrBlocks);
             return this;
@@ -96,11 +85,17 @@ public final class AzureClusterNetworking {
         public Builder serviceAddressCidrBlocks(String... serviceAddressCidrBlocks) {
             return serviceAddressCidrBlocks(List.of(serviceAddressCidrBlocks));
         }
+        @CustomType.Setter
         public Builder virtualNetworkId(String virtualNetworkId) {
             this.virtualNetworkId = Objects.requireNonNull(virtualNetworkId);
             return this;
-        }        public AzureClusterNetworking build() {
-            return new AzureClusterNetworking(podAddressCidrBlocks, serviceAddressCidrBlocks, virtualNetworkId);
+        }
+        public AzureClusterNetworking build() {
+            final var o = new AzureClusterNetworking();
+            o.podAddressCidrBlocks = podAddressCidrBlocks;
+            o.serviceAddressCidrBlocks = serviceAddressCidrBlocks;
+            o.virtualNetworkId = virtualNetworkId;
+            return o;
         }
     }
 }

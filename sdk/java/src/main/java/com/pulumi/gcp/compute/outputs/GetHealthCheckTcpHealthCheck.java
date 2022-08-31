@@ -10,29 +10,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHealthCheckTcpHealthCheck {
-    private final Integer port;
-    private final String portName;
-    private final String portSpecification;
-    private final String proxyHeader;
-    private final String request;
-    private final String response;
+    private Integer port;
+    private String portName;
+    private String portSpecification;
+    private String proxyHeader;
+    private String request;
+    private String response;
 
-    @CustomType.Constructor
-    private GetHealthCheckTcpHealthCheck(
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("portName") String portName,
-        @CustomType.Parameter("portSpecification") String portSpecification,
-        @CustomType.Parameter("proxyHeader") String proxyHeader,
-        @CustomType.Parameter("request") String request,
-        @CustomType.Parameter("response") String response) {
-        this.port = port;
-        this.portName = portName;
-        this.portSpecification = portSpecification;
-        this.proxyHeader = proxyHeader;
-        this.request = request;
-        this.response = response;
-    }
-
+    private GetHealthCheckTcpHealthCheck() {}
     public Integer port() {
         return this.port;
     }
@@ -59,7 +44,7 @@ public final class GetHealthCheckTcpHealthCheck {
     public static Builder builder(GetHealthCheckTcpHealthCheck defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer port;
         private String portName;
@@ -67,11 +52,7 @@ public final class GetHealthCheckTcpHealthCheck {
         private String proxyHeader;
         private String request;
         private String response;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHealthCheckTcpHealthCheck defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.port = defaults.port;
@@ -82,31 +63,45 @@ public final class GetHealthCheckTcpHealthCheck {
     	      this.response = defaults.response;
         }
 
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder portName(String portName) {
             this.portName = Objects.requireNonNull(portName);
             return this;
         }
+        @CustomType.Setter
         public Builder portSpecification(String portSpecification) {
             this.portSpecification = Objects.requireNonNull(portSpecification);
             return this;
         }
+        @CustomType.Setter
         public Builder proxyHeader(String proxyHeader) {
             this.proxyHeader = Objects.requireNonNull(proxyHeader);
             return this;
         }
+        @CustomType.Setter
         public Builder request(String request) {
             this.request = Objects.requireNonNull(request);
             return this;
         }
+        @CustomType.Setter
         public Builder response(String response) {
             this.response = Objects.requireNonNull(response);
             return this;
-        }        public GetHealthCheckTcpHealthCheck build() {
-            return new GetHealthCheckTcpHealthCheck(port, portName, portSpecification, proxyHeader, request, response);
+        }
+        public GetHealthCheckTcpHealthCheck build() {
+            final var o = new GetHealthCheckTcpHealthCheck();
+            o.port = port;
+            o.portName = portName;
+            o.portSpecification = portSpecification;
+            o.proxyHeader = proxyHeader;
+            o.request = request;
+            o.response = response;
+            return o;
         }
     }
 }

@@ -877,7 +877,7 @@ class Subscription(pulumi.CustomResource):
         example_subscription = gcp.pubsub.Subscription("exampleSubscription",
             topic=example_topic.name,
             bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
-                table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
+                table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}:{dataset_id}.{table_id}"),
             ),
             opts=pulumi.ResourceOptions(depends_on=[
                     viewer,
@@ -1099,7 +1099,7 @@ class Subscription(pulumi.CustomResource):
         example_subscription = gcp.pubsub.Subscription("exampleSubscription",
             topic=example_topic.name,
             bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
-                table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
+                table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}:{dataset_id}.{table_id}"),
             ),
             opts=pulumi.ResourceOptions(depends_on=[
                     viewer,

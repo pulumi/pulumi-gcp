@@ -16,29 +16,20 @@ public final class DatabaseInstanceSettingsMaintenanceWindow {
      * @return Day of week (`1-7`), starting on Monday
      * 
      */
-    private final @Nullable Integer day;
+    private @Nullable Integer day;
     /**
      * @return Hour of day (`0-23`), ignored if `day` not set
      * 
      */
-    private final @Nullable Integer hour;
+    private @Nullable Integer hour;
     /**
      * @return Receive updates earlier (`canary`) or later
      * (`stable`)
      * 
      */
-    private final @Nullable String updateTrack;
+    private @Nullable String updateTrack;
 
-    @CustomType.Constructor
-    private DatabaseInstanceSettingsMaintenanceWindow(
-        @CustomType.Parameter("day") @Nullable Integer day,
-        @CustomType.Parameter("hour") @Nullable Integer hour,
-        @CustomType.Parameter("updateTrack") @Nullable String updateTrack) {
-        this.day = day;
-        this.hour = hour;
-        this.updateTrack = updateTrack;
-    }
-
+    private DatabaseInstanceSettingsMaintenanceWindow() {}
     /**
      * @return Day of week (`1-7`), starting on Monday
      * 
@@ -69,16 +60,12 @@ public final class DatabaseInstanceSettingsMaintenanceWindow {
     public static Builder builder(DatabaseInstanceSettingsMaintenanceWindow defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer day;
         private @Nullable Integer hour;
         private @Nullable String updateTrack;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatabaseInstanceSettingsMaintenanceWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.day = defaults.day;
@@ -86,19 +73,27 @@ public final class DatabaseInstanceSettingsMaintenanceWindow {
     	      this.updateTrack = defaults.updateTrack;
         }
 
+        @CustomType.Setter
         public Builder day(@Nullable Integer day) {
             this.day = day;
             return this;
         }
+        @CustomType.Setter
         public Builder hour(@Nullable Integer hour) {
             this.hour = hour;
             return this;
         }
+        @CustomType.Setter
         public Builder updateTrack(@Nullable String updateTrack) {
             this.updateTrack = updateTrack;
             return this;
-        }        public DatabaseInstanceSettingsMaintenanceWindow build() {
-            return new DatabaseInstanceSettingsMaintenanceWindow(day, hour, updateTrack);
+        }
+        public DatabaseInstanceSettingsMaintenanceWindow build() {
+            final var o = new DatabaseInstanceSettingsMaintenanceWindow();
+            o.day = day;
+            o.hour = hour;
+            o.updateTrack = updateTrack;
+            return o;
         }
     }
 }

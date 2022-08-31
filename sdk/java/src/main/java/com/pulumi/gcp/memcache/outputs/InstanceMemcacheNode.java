@@ -12,26 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceMemcacheNode {
-    private final @Nullable String host;
-    private final @Nullable String nodeId;
-    private final @Nullable Integer port;
-    private final @Nullable String state;
-    private final @Nullable String zone;
+    private @Nullable String host;
+    private @Nullable String nodeId;
+    private @Nullable Integer port;
+    private @Nullable String state;
+    private @Nullable String zone;
 
-    @CustomType.Constructor
-    private InstanceMemcacheNode(
-        @CustomType.Parameter("host") @Nullable String host,
-        @CustomType.Parameter("nodeId") @Nullable String nodeId,
-        @CustomType.Parameter("port") @Nullable Integer port,
-        @CustomType.Parameter("state") @Nullable String state,
-        @CustomType.Parameter("zone") @Nullable String zone) {
-        this.host = host;
-        this.nodeId = nodeId;
-        this.port = port;
-        this.state = state;
-        this.zone = zone;
-    }
-
+    private InstanceMemcacheNode() {}
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
@@ -55,18 +42,14 @@ public final class InstanceMemcacheNode {
     public static Builder builder(InstanceMemcacheNode defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String host;
         private @Nullable String nodeId;
         private @Nullable Integer port;
         private @Nullable String state;
         private @Nullable String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceMemcacheNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.host = defaults.host;
@@ -76,27 +59,39 @@ public final class InstanceMemcacheNode {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder host(@Nullable String host) {
             this.host = host;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
             this.nodeId = nodeId;
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder state(@Nullable String state) {
             this.state = state;
             return this;
         }
+        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
             this.zone = zone;
             return this;
-        }        public InstanceMemcacheNode build() {
-            return new InstanceMemcacheNode(host, nodeId, port, state, zone);
+        }
+        public InstanceMemcacheNode build() {
+            final var o = new InstanceMemcacheNode();
+            o.host = host;
+            o.nodeId = nodeId;
+            o.port = port;
+            o.state = state;
+            o.zone = zone;
+            return o;
         }
     }
 }

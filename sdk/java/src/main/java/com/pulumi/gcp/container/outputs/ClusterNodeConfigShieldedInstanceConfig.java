@@ -15,21 +15,14 @@ public final class ClusterNodeConfigShieldedInstanceConfig {
      * @return Defines if the instance has integrity monitoring enabled.
      * 
      */
-    private final @Nullable Boolean enableIntegrityMonitoring;
+    private @Nullable Boolean enableIntegrityMonitoring;
     /**
      * @return Defines if the instance has Secure Boot enabled.
      * 
      */
-    private final @Nullable Boolean enableSecureBoot;
+    private @Nullable Boolean enableSecureBoot;
 
-    @CustomType.Constructor
-    private ClusterNodeConfigShieldedInstanceConfig(
-        @CustomType.Parameter("enableIntegrityMonitoring") @Nullable Boolean enableIntegrityMonitoring,
-        @CustomType.Parameter("enableSecureBoot") @Nullable Boolean enableSecureBoot) {
-        this.enableIntegrityMonitoring = enableIntegrityMonitoring;
-        this.enableSecureBoot = enableSecureBoot;
-    }
-
+    private ClusterNodeConfigShieldedInstanceConfig() {}
     /**
      * @return Defines if the instance has integrity monitoring enabled.
      * 
@@ -52,30 +45,32 @@ public final class ClusterNodeConfigShieldedInstanceConfig {
     public static Builder builder(ClusterNodeConfigShieldedInstanceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableIntegrityMonitoring;
         private @Nullable Boolean enableSecureBoot;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNodeConfigShieldedInstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableIntegrityMonitoring = defaults.enableIntegrityMonitoring;
     	      this.enableSecureBoot = defaults.enableSecureBoot;
         }
 
+        @CustomType.Setter
         public Builder enableIntegrityMonitoring(@Nullable Boolean enableIntegrityMonitoring) {
             this.enableIntegrityMonitoring = enableIntegrityMonitoring;
             return this;
         }
+        @CustomType.Setter
         public Builder enableSecureBoot(@Nullable Boolean enableSecureBoot) {
             this.enableSecureBoot = enableSecureBoot;
             return this;
-        }        public ClusterNodeConfigShieldedInstanceConfig build() {
-            return new ClusterNodeConfigShieldedInstanceConfig(enableIntegrityMonitoring, enableSecureBoot);
+        }
+        public ClusterNodeConfigShieldedInstanceConfig build() {
+            final var o = new ClusterNodeConfigShieldedInstanceConfig();
+            o.enableIntegrityMonitoring = enableIntegrityMonitoring;
+            o.enableSecureBoot = enableSecureBoot;
+            return o;
         }
     }
 }

@@ -15,20 +15,11 @@ public final class GetBackendServiceConsistentHashHttpCooky {
      * @return The name of the Backend Service.
      * 
      */
-    private final String name;
-    private final String path;
-    private final List<GetBackendServiceConsistentHashHttpCookyTtl> ttls;
+    private String name;
+    private String path;
+    private List<GetBackendServiceConsistentHashHttpCookyTtl> ttls;
 
-    @CustomType.Constructor
-    private GetBackendServiceConsistentHashHttpCooky(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("ttls") List<GetBackendServiceConsistentHashHttpCookyTtl> ttls) {
-        this.name = name;
-        this.path = path;
-        this.ttls = ttls;
-    }
-
+    private GetBackendServiceConsistentHashHttpCooky() {}
     /**
      * @return The name of the Backend Service.
      * 
@@ -50,16 +41,12 @@ public final class GetBackendServiceConsistentHashHttpCooky {
     public static Builder builder(GetBackendServiceConsistentHashHttpCooky defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private String path;
         private List<GetBackendServiceConsistentHashHttpCookyTtl> ttls;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackendServiceConsistentHashHttpCooky defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
@@ -67,22 +54,30 @@ public final class GetBackendServiceConsistentHashHttpCooky {
     	      this.ttls = defaults.ttls;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder ttls(List<GetBackendServiceConsistentHashHttpCookyTtl> ttls) {
             this.ttls = Objects.requireNonNull(ttls);
             return this;
         }
         public Builder ttls(GetBackendServiceConsistentHashHttpCookyTtl... ttls) {
             return ttls(List.of(ttls));
-        }        public GetBackendServiceConsistentHashHttpCooky build() {
-            return new GetBackendServiceConsistentHashHttpCooky(name, path, ttls);
+        }
+        public GetBackendServiceConsistentHashHttpCooky build() {
+            final var o = new GetBackendServiceConsistentHashHttpCooky();
+            o.name = name;
+            o.path = path;
+            o.ttls = ttls;
+            return o;
         }
     }
 }

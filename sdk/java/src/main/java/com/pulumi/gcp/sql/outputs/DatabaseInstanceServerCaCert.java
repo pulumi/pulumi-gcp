@@ -11,31 +11,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DatabaseInstanceServerCaCert {
-    private final @Nullable String cert;
-    private final @Nullable String commonName;
-    private final @Nullable String createTime;
+    private @Nullable String cert;
+    private @Nullable String commonName;
+    private @Nullable String createTime;
     /**
      * @return The [RFC 3339](https://tools.ietf.org/html/rfc3339)
      * formatted date time string indicating when this whitelist expires.
      * 
      */
-    private final @Nullable String expirationTime;
-    private final @Nullable String sha1Fingerprint;
+    private @Nullable String expirationTime;
+    private @Nullable String sha1Fingerprint;
 
-    @CustomType.Constructor
-    private DatabaseInstanceServerCaCert(
-        @CustomType.Parameter("cert") @Nullable String cert,
-        @CustomType.Parameter("commonName") @Nullable String commonName,
-        @CustomType.Parameter("createTime") @Nullable String createTime,
-        @CustomType.Parameter("expirationTime") @Nullable String expirationTime,
-        @CustomType.Parameter("sha1Fingerprint") @Nullable String sha1Fingerprint) {
-        this.cert = cert;
-        this.commonName = commonName;
-        this.createTime = createTime;
-        this.expirationTime = expirationTime;
-        this.sha1Fingerprint = sha1Fingerprint;
-    }
-
+    private DatabaseInstanceServerCaCert() {}
     public Optional<String> cert() {
         return Optional.ofNullable(this.cert);
     }
@@ -64,18 +51,14 @@ public final class DatabaseInstanceServerCaCert {
     public static Builder builder(DatabaseInstanceServerCaCert defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cert;
         private @Nullable String commonName;
         private @Nullable String createTime;
         private @Nullable String expirationTime;
         private @Nullable String sha1Fingerprint;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatabaseInstanceServerCaCert defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cert = defaults.cert;
@@ -85,27 +68,39 @@ public final class DatabaseInstanceServerCaCert {
     	      this.sha1Fingerprint = defaults.sha1Fingerprint;
         }
 
+        @CustomType.Setter
         public Builder cert(@Nullable String cert) {
             this.cert = cert;
             return this;
         }
+        @CustomType.Setter
         public Builder commonName(@Nullable String commonName) {
             this.commonName = commonName;
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(@Nullable String createTime) {
             this.createTime = createTime;
             return this;
         }
+        @CustomType.Setter
         public Builder expirationTime(@Nullable String expirationTime) {
             this.expirationTime = expirationTime;
             return this;
         }
+        @CustomType.Setter
         public Builder sha1Fingerprint(@Nullable String sha1Fingerprint) {
             this.sha1Fingerprint = sha1Fingerprint;
             return this;
-        }        public DatabaseInstanceServerCaCert build() {
-            return new DatabaseInstanceServerCaCert(cert, commonName, createTime, expirationTime, sha1Fingerprint);
+        }
+        public DatabaseInstanceServerCaCert build() {
+            final var o = new DatabaseInstanceServerCaCert();
+            o.cert = cert;
+            o.commonName = commonName;
+            o.createTime = createTime;
+            o.expirationTime = expirationTime;
+            o.sha1Fingerprint = sha1Fingerprint;
+            return o;
         }
     }
 }

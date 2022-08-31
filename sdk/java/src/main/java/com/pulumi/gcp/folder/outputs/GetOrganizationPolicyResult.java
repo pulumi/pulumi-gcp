@@ -14,42 +14,21 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOrganizationPolicyResult {
-    private final List<GetOrganizationPolicyBooleanPolicy> booleanPolicies;
-    private final String constraint;
-    private final String etag;
-    private final String folder;
+    private List<GetOrganizationPolicyBooleanPolicy> booleanPolicies;
+    private String constraint;
+    private String etag;
+    private String folder;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<GetOrganizationPolicyListPolicy> listPolicies;
-    private final List<GetOrganizationPolicyRestorePolicy> restorePolicies;
-    private final String updateTime;
-    private final Integer version;
+    private String id;
+    private List<GetOrganizationPolicyListPolicy> listPolicies;
+    private List<GetOrganizationPolicyRestorePolicy> restorePolicies;
+    private String updateTime;
+    private Integer version;
 
-    @CustomType.Constructor
-    private GetOrganizationPolicyResult(
-        @CustomType.Parameter("booleanPolicies") List<GetOrganizationPolicyBooleanPolicy> booleanPolicies,
-        @CustomType.Parameter("constraint") String constraint,
-        @CustomType.Parameter("etag") String etag,
-        @CustomType.Parameter("folder") String folder,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("listPolicies") List<GetOrganizationPolicyListPolicy> listPolicies,
-        @CustomType.Parameter("restorePolicies") List<GetOrganizationPolicyRestorePolicy> restorePolicies,
-        @CustomType.Parameter("updateTime") String updateTime,
-        @CustomType.Parameter("version") Integer version) {
-        this.booleanPolicies = booleanPolicies;
-        this.constraint = constraint;
-        this.etag = etag;
-        this.folder = folder;
-        this.id = id;
-        this.listPolicies = listPolicies;
-        this.restorePolicies = restorePolicies;
-        this.updateTime = updateTime;
-        this.version = version;
-    }
-
+    private GetOrganizationPolicyResult() {}
     public List<GetOrganizationPolicyBooleanPolicy> booleanPolicies() {
         return this.booleanPolicies;
     }
@@ -89,7 +68,7 @@ public final class GetOrganizationPolicyResult {
     public static Builder builder(GetOrganizationPolicyResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetOrganizationPolicyBooleanPolicy> booleanPolicies;
         private String constraint;
@@ -100,11 +79,7 @@ public final class GetOrganizationPolicyResult {
         private List<GetOrganizationPolicyRestorePolicy> restorePolicies;
         private String updateTime;
         private Integer version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetOrganizationPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.booleanPolicies = defaults.booleanPolicies;
@@ -118,6 +93,7 @@ public final class GetOrganizationPolicyResult {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder booleanPolicies(List<GetOrganizationPolicyBooleanPolicy> booleanPolicies) {
             this.booleanPolicies = Objects.requireNonNull(booleanPolicies);
             return this;
@@ -125,22 +101,27 @@ public final class GetOrganizationPolicyResult {
         public Builder booleanPolicies(GetOrganizationPolicyBooleanPolicy... booleanPolicies) {
             return booleanPolicies(List.of(booleanPolicies));
         }
+        @CustomType.Setter
         public Builder constraint(String constraint) {
             this.constraint = Objects.requireNonNull(constraint);
             return this;
         }
+        @CustomType.Setter
         public Builder etag(String etag) {
             this.etag = Objects.requireNonNull(etag);
             return this;
         }
+        @CustomType.Setter
         public Builder folder(String folder) {
             this.folder = Objects.requireNonNull(folder);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder listPolicies(List<GetOrganizationPolicyListPolicy> listPolicies) {
             this.listPolicies = Objects.requireNonNull(listPolicies);
             return this;
@@ -148,6 +129,7 @@ public final class GetOrganizationPolicyResult {
         public Builder listPolicies(GetOrganizationPolicyListPolicy... listPolicies) {
             return listPolicies(List.of(listPolicies));
         }
+        @CustomType.Setter
         public Builder restorePolicies(List<GetOrganizationPolicyRestorePolicy> restorePolicies) {
             this.restorePolicies = Objects.requireNonNull(restorePolicies);
             return this;
@@ -155,15 +137,28 @@ public final class GetOrganizationPolicyResult {
         public Builder restorePolicies(GetOrganizationPolicyRestorePolicy... restorePolicies) {
             return restorePolicies(List.of(restorePolicies));
         }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
         }
+        @CustomType.Setter
         public Builder version(Integer version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetOrganizationPolicyResult build() {
-            return new GetOrganizationPolicyResult(booleanPolicies, constraint, etag, folder, id, listPolicies, restorePolicies, updateTime, version);
+        }
+        public GetOrganizationPolicyResult build() {
+            final var o = new GetOrganizationPolicyResult();
+            o.booleanPolicies = booleanPolicies;
+            o.constraint = constraint;
+            o.etag = etag;
+            o.folder = folder;
+            o.id = id;
+            o.listPolicies = listPolicies;
+            o.restorePolicies = restorePolicies;
+            o.updateTime = updateTime;
+            o.version = version;
+            return o;
         }
     }
 }

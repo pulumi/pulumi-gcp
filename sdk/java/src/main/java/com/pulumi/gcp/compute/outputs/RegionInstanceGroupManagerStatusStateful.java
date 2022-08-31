@@ -17,21 +17,14 @@ public final class RegionInstanceGroupManagerStatusStateful {
      * @return A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
      * 
      */
-    private final @Nullable Boolean hasStatefulConfig;
+    private @Nullable Boolean hasStatefulConfig;
     /**
      * @return Status of per-instance configs on the instance.
      * 
      */
-    private final @Nullable List<RegionInstanceGroupManagerStatusStatefulPerInstanceConfig> perInstanceConfigs;
+    private @Nullable List<RegionInstanceGroupManagerStatusStatefulPerInstanceConfig> perInstanceConfigs;
 
-    @CustomType.Constructor
-    private RegionInstanceGroupManagerStatusStateful(
-        @CustomType.Parameter("hasStatefulConfig") @Nullable Boolean hasStatefulConfig,
-        @CustomType.Parameter("perInstanceConfigs") @Nullable List<RegionInstanceGroupManagerStatusStatefulPerInstanceConfig> perInstanceConfigs) {
-        this.hasStatefulConfig = hasStatefulConfig;
-        this.perInstanceConfigs = perInstanceConfigs;
-    }
-
+    private RegionInstanceGroupManagerStatusStateful() {}
     /**
      * @return A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
      * 
@@ -54,33 +47,35 @@ public final class RegionInstanceGroupManagerStatusStateful {
     public static Builder builder(RegionInstanceGroupManagerStatusStateful defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean hasStatefulConfig;
         private @Nullable List<RegionInstanceGroupManagerStatusStatefulPerInstanceConfig> perInstanceConfigs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionInstanceGroupManagerStatusStateful defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hasStatefulConfig = defaults.hasStatefulConfig;
     	      this.perInstanceConfigs = defaults.perInstanceConfigs;
         }
 
+        @CustomType.Setter
         public Builder hasStatefulConfig(@Nullable Boolean hasStatefulConfig) {
             this.hasStatefulConfig = hasStatefulConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder perInstanceConfigs(@Nullable List<RegionInstanceGroupManagerStatusStatefulPerInstanceConfig> perInstanceConfigs) {
             this.perInstanceConfigs = perInstanceConfigs;
             return this;
         }
         public Builder perInstanceConfigs(RegionInstanceGroupManagerStatusStatefulPerInstanceConfig... perInstanceConfigs) {
             return perInstanceConfigs(List.of(perInstanceConfigs));
-        }        public RegionInstanceGroupManagerStatusStateful build() {
-            return new RegionInstanceGroupManagerStatusStateful(hasStatefulConfig, perInstanceConfigs);
+        }
+        public RegionInstanceGroupManagerStatusStateful build() {
+            final var o = new RegionInstanceGroupManagerStatusStateful();
+            o.hasStatefulConfig = hasStatefulConfig;
+            o.perInstanceConfigs = perInstanceConfigs;
+            return o;
         }
     }
 }

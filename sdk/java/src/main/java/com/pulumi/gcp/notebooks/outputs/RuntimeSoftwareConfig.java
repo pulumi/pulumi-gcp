@@ -20,85 +20,62 @@ public final class RuntimeSoftwareConfig {
      * If not specified, we&#39;ll automatically choose from official GPU drivers.
      * 
      */
-    private final @Nullable String customGpuDriverPath;
+    private @Nullable String customGpuDriverPath;
     /**
      * @return Verifies core internal services are running. Default: True.
      * 
      */
-    private final @Nullable Boolean enableHealthMonitoring;
+    private @Nullable Boolean enableHealthMonitoring;
     /**
      * @return Runtime will automatically shutdown after idle_shutdown_time.
      * Default: True
      * 
      */
-    private final @Nullable Boolean idleShutdown;
+    private @Nullable Boolean idleShutdown;
     /**
      * @return Time in minutes to wait before shuting down runtime.
      * Default: 180 minutes
      * 
      */
-    private final @Nullable Integer idleShutdownTimeout;
+    private @Nullable Integer idleShutdownTimeout;
     /**
      * @return Install Nvidia Driver automatically.
      * 
      */
-    private final @Nullable Boolean installGpuDriver;
+    private @Nullable Boolean installGpuDriver;
     /**
      * @return Use a list of container images to use as Kernels in the notebook instance.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<RuntimeSoftwareConfigKernel> kernels;
+    private @Nullable List<RuntimeSoftwareConfigKernel> kernels;
     /**
      * @return Cron expression in UTC timezone for schedule instance auto upgrade.
      * Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
      * 
      */
-    private final @Nullable String notebookUpgradeSchedule;
+    private @Nullable String notebookUpgradeSchedule;
     /**
      * @return Path to a Bash script that automatically runs after a notebook instance
      * fully boots up. The path must be a URL or
      * Cloud Storage path (gs://path-to-file/file-name).
      * 
      */
-    private final @Nullable String postStartupScript;
+    private @Nullable String postStartupScript;
     /**
      * @return Behavior for the post startup script.
      * Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
      * 
      */
-    private final @Nullable String postStartupScriptBehavior;
+    private @Nullable String postStartupScriptBehavior;
     /**
      * @return -
      * Bool indicating whether an newer image is available in an image family.
      * 
      */
-    private final @Nullable Boolean upgradeable;
+    private @Nullable Boolean upgradeable;
 
-    @CustomType.Constructor
-    private RuntimeSoftwareConfig(
-        @CustomType.Parameter("customGpuDriverPath") @Nullable String customGpuDriverPath,
-        @CustomType.Parameter("enableHealthMonitoring") @Nullable Boolean enableHealthMonitoring,
-        @CustomType.Parameter("idleShutdown") @Nullable Boolean idleShutdown,
-        @CustomType.Parameter("idleShutdownTimeout") @Nullable Integer idleShutdownTimeout,
-        @CustomType.Parameter("installGpuDriver") @Nullable Boolean installGpuDriver,
-        @CustomType.Parameter("kernels") @Nullable List<RuntimeSoftwareConfigKernel> kernels,
-        @CustomType.Parameter("notebookUpgradeSchedule") @Nullable String notebookUpgradeSchedule,
-        @CustomType.Parameter("postStartupScript") @Nullable String postStartupScript,
-        @CustomType.Parameter("postStartupScriptBehavior") @Nullable String postStartupScriptBehavior,
-        @CustomType.Parameter("upgradeable") @Nullable Boolean upgradeable) {
-        this.customGpuDriverPath = customGpuDriverPath;
-        this.enableHealthMonitoring = enableHealthMonitoring;
-        this.idleShutdown = idleShutdown;
-        this.idleShutdownTimeout = idleShutdownTimeout;
-        this.installGpuDriver = installGpuDriver;
-        this.kernels = kernels;
-        this.notebookUpgradeSchedule = notebookUpgradeSchedule;
-        this.postStartupScript = postStartupScript;
-        this.postStartupScriptBehavior = postStartupScriptBehavior;
-        this.upgradeable = upgradeable;
-    }
-
+    private RuntimeSoftwareConfig() {}
     /**
      * @return Specify a custom Cloud Storage path where the GPU driver is stored.
      * If not specified, we&#39;ll automatically choose from official GPU drivers.
@@ -186,7 +163,7 @@ public final class RuntimeSoftwareConfig {
     public static Builder builder(RuntimeSoftwareConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String customGpuDriverPath;
         private @Nullable Boolean enableHealthMonitoring;
@@ -198,11 +175,7 @@ public final class RuntimeSoftwareConfig {
         private @Nullable String postStartupScript;
         private @Nullable String postStartupScriptBehavior;
         private @Nullable Boolean upgradeable;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuntimeSoftwareConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customGpuDriverPath = defaults.customGpuDriverPath;
@@ -217,26 +190,32 @@ public final class RuntimeSoftwareConfig {
     	      this.upgradeable = defaults.upgradeable;
         }
 
+        @CustomType.Setter
         public Builder customGpuDriverPath(@Nullable String customGpuDriverPath) {
             this.customGpuDriverPath = customGpuDriverPath;
             return this;
         }
+        @CustomType.Setter
         public Builder enableHealthMonitoring(@Nullable Boolean enableHealthMonitoring) {
             this.enableHealthMonitoring = enableHealthMonitoring;
             return this;
         }
+        @CustomType.Setter
         public Builder idleShutdown(@Nullable Boolean idleShutdown) {
             this.idleShutdown = idleShutdown;
             return this;
         }
+        @CustomType.Setter
         public Builder idleShutdownTimeout(@Nullable Integer idleShutdownTimeout) {
             this.idleShutdownTimeout = idleShutdownTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder installGpuDriver(@Nullable Boolean installGpuDriver) {
             this.installGpuDriver = installGpuDriver;
             return this;
         }
+        @CustomType.Setter
         public Builder kernels(@Nullable List<RuntimeSoftwareConfigKernel> kernels) {
             this.kernels = kernels;
             return this;
@@ -244,23 +223,39 @@ public final class RuntimeSoftwareConfig {
         public Builder kernels(RuntimeSoftwareConfigKernel... kernels) {
             return kernels(List.of(kernels));
         }
+        @CustomType.Setter
         public Builder notebookUpgradeSchedule(@Nullable String notebookUpgradeSchedule) {
             this.notebookUpgradeSchedule = notebookUpgradeSchedule;
             return this;
         }
+        @CustomType.Setter
         public Builder postStartupScript(@Nullable String postStartupScript) {
             this.postStartupScript = postStartupScript;
             return this;
         }
+        @CustomType.Setter
         public Builder postStartupScriptBehavior(@Nullable String postStartupScriptBehavior) {
             this.postStartupScriptBehavior = postStartupScriptBehavior;
             return this;
         }
+        @CustomType.Setter
         public Builder upgradeable(@Nullable Boolean upgradeable) {
             this.upgradeable = upgradeable;
             return this;
-        }        public RuntimeSoftwareConfig build() {
-            return new RuntimeSoftwareConfig(customGpuDriverPath, enableHealthMonitoring, idleShutdown, idleShutdownTimeout, installGpuDriver, kernels, notebookUpgradeSchedule, postStartupScript, postStartupScriptBehavior, upgradeable);
+        }
+        public RuntimeSoftwareConfig build() {
+            final var o = new RuntimeSoftwareConfig();
+            o.customGpuDriverPath = customGpuDriverPath;
+            o.enableHealthMonitoring = enableHealthMonitoring;
+            o.idleShutdown = idleShutdown;
+            o.idleShutdownTimeout = idleShutdownTimeout;
+            o.installGpuDriver = installGpuDriver;
+            o.kernels = kernels;
+            o.notebookUpgradeSchedule = notebookUpgradeSchedule;
+            o.postStartupScript = postStartupScript;
+            o.postStartupScriptBehavior = postStartupScriptBehavior;
+            o.upgradeable = upgradeable;
+            return o;
         }
     }
 }

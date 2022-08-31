@@ -13,13 +13,9 @@ public final class PreventionStoredInfoTypeLargeCustomDictionaryOutputPath {
      * @return A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
      * 
      */
-    private final String path;
+    private String path;
 
-    @CustomType.Constructor
-    private PreventionStoredInfoTypeLargeCustomDictionaryOutputPath(@CustomType.Parameter("path") String path) {
-        this.path = path;
-    }
-
+    private PreventionStoredInfoTypeLargeCustomDictionaryOutputPath() {}
     /**
      * @return A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
      * 
@@ -35,24 +31,24 @@ public final class PreventionStoredInfoTypeLargeCustomDictionaryOutputPath {
     public static Builder builder(PreventionStoredInfoTypeLargeCustomDictionaryOutputPath defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionStoredInfoTypeLargeCustomDictionaryOutputPath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
-        }        public PreventionStoredInfoTypeLargeCustomDictionaryOutputPath build() {
-            return new PreventionStoredInfoTypeLargeCustomDictionaryOutputPath(path);
+        }
+        public PreventionStoredInfoTypeLargeCustomDictionaryOutputPath build() {
+            final var o = new PreventionStoredInfoTypeLargeCustomDictionaryOutputPath();
+            o.path = path;
+            return o;
         }
     }
 }

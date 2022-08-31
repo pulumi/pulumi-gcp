@@ -12,49 +12,26 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetObjectSignedUrlResult {
-    private final String bucket;
-    private final @Nullable String contentMd5;
-    private final @Nullable String contentType;
-    private final @Nullable String credentials;
-    private final @Nullable String duration;
-    private final @Nullable Map<String,String> extensionHeaders;
-    private final @Nullable String httpMethod;
+    private String bucket;
+    private @Nullable String contentMd5;
+    private @Nullable String contentType;
+    private @Nullable String credentials;
+    private @Nullable String duration;
+    private @Nullable Map<String,String> extensionHeaders;
+    private @Nullable String httpMethod;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String path;
+    private String id;
+    private String path;
     /**
      * @return The signed URL that can be used to access the storage object without authentication.
      * 
      */
-    private final String signedUrl;
+    private String signedUrl;
 
-    @CustomType.Constructor
-    private GetObjectSignedUrlResult(
-        @CustomType.Parameter("bucket") String bucket,
-        @CustomType.Parameter("contentMd5") @Nullable String contentMd5,
-        @CustomType.Parameter("contentType") @Nullable String contentType,
-        @CustomType.Parameter("credentials") @Nullable String credentials,
-        @CustomType.Parameter("duration") @Nullable String duration,
-        @CustomType.Parameter("extensionHeaders") @Nullable Map<String,String> extensionHeaders,
-        @CustomType.Parameter("httpMethod") @Nullable String httpMethod,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("signedUrl") String signedUrl) {
-        this.bucket = bucket;
-        this.contentMd5 = contentMd5;
-        this.contentType = contentType;
-        this.credentials = credentials;
-        this.duration = duration;
-        this.extensionHeaders = extensionHeaders;
-        this.httpMethod = httpMethod;
-        this.id = id;
-        this.path = path;
-        this.signedUrl = signedUrl;
-    }
-
+    private GetObjectSignedUrlResult() {}
     public String bucket() {
         return this.bucket;
     }
@@ -101,7 +78,7 @@ public final class GetObjectSignedUrlResult {
     public static Builder builder(GetObjectSignedUrlResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bucket;
         private @Nullable String contentMd5;
@@ -113,11 +90,7 @@ public final class GetObjectSignedUrlResult {
         private String id;
         private String path;
         private String signedUrl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetObjectSignedUrlResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
@@ -132,47 +105,69 @@ public final class GetObjectSignedUrlResult {
     	      this.signedUrl = defaults.signedUrl;
         }
 
+        @CustomType.Setter
         public Builder bucket(String bucket) {
             this.bucket = Objects.requireNonNull(bucket);
             return this;
         }
+        @CustomType.Setter
         public Builder contentMd5(@Nullable String contentMd5) {
             this.contentMd5 = contentMd5;
             return this;
         }
+        @CustomType.Setter
         public Builder contentType(@Nullable String contentType) {
             this.contentType = contentType;
             return this;
         }
+        @CustomType.Setter
         public Builder credentials(@Nullable String credentials) {
             this.credentials = credentials;
             return this;
         }
+        @CustomType.Setter
         public Builder duration(@Nullable String duration) {
             this.duration = duration;
             return this;
         }
+        @CustomType.Setter
         public Builder extensionHeaders(@Nullable Map<String,String> extensionHeaders) {
             this.extensionHeaders = extensionHeaders;
             return this;
         }
+        @CustomType.Setter
         public Builder httpMethod(@Nullable String httpMethod) {
             this.httpMethod = httpMethod;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder signedUrl(String signedUrl) {
             this.signedUrl = Objects.requireNonNull(signedUrl);
             return this;
-        }        public GetObjectSignedUrlResult build() {
-            return new GetObjectSignedUrlResult(bucket, contentMd5, contentType, credentials, duration, extensionHeaders, httpMethod, id, path, signedUrl);
+        }
+        public GetObjectSignedUrlResult build() {
+            final var o = new GetObjectSignedUrlResult();
+            o.bucket = bucket;
+            o.contentMd5 = contentMd5;
+            o.contentType = contentType;
+            o.credentials = credentials;
+            o.duration = duration;
+            o.extensionHeaders = extensionHeaders;
+            o.httpMethod = httpMethod;
+            o.id = id;
+            o.path = path;
+            o.signedUrl = signedUrl;
+            return o;
         }
     }
 }

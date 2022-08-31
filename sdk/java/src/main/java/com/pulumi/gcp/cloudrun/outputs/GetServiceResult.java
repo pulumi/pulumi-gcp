@@ -17,42 +17,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceResult {
-    private final Boolean autogenerateRevisionName;
+    private Boolean autogenerateRevisionName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String location;
-    private final List<GetServiceMetadata> metadatas;
-    private final String name;
-    private final @Nullable String project;
-    private final List<GetServiceStatus> statuses;
-    private final List<GetServiceTemplate> templates;
-    private final List<GetServiceTraffic> traffics;
+    private String id;
+    private String location;
+    private List<GetServiceMetadata> metadatas;
+    private String name;
+    private @Nullable String project;
+    private List<GetServiceStatus> statuses;
+    private List<GetServiceTemplate> templates;
+    private List<GetServiceTraffic> traffics;
 
-    @CustomType.Constructor
-    private GetServiceResult(
-        @CustomType.Parameter("autogenerateRevisionName") Boolean autogenerateRevisionName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("location") String location,
-        @CustomType.Parameter("metadatas") List<GetServiceMetadata> metadatas,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("statuses") List<GetServiceStatus> statuses,
-        @CustomType.Parameter("templates") List<GetServiceTemplate> templates,
-        @CustomType.Parameter("traffics") List<GetServiceTraffic> traffics) {
-        this.autogenerateRevisionName = autogenerateRevisionName;
-        this.id = id;
-        this.location = location;
-        this.metadatas = metadatas;
-        this.name = name;
-        this.project = project;
-        this.statuses = statuses;
-        this.templates = templates;
-        this.traffics = traffics;
-    }
-
+    private GetServiceResult() {}
     public Boolean autogenerateRevisionName() {
         return this.autogenerateRevisionName;
     }
@@ -92,7 +71,7 @@ public final class GetServiceResult {
     public static Builder builder(GetServiceResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean autogenerateRevisionName;
         private String id;
@@ -103,11 +82,7 @@ public final class GetServiceResult {
         private List<GetServiceStatus> statuses;
         private List<GetServiceTemplate> templates;
         private List<GetServiceTraffic> traffics;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autogenerateRevisionName = defaults.autogenerateRevisionName;
@@ -121,18 +96,22 @@ public final class GetServiceResult {
     	      this.traffics = defaults.traffics;
         }
 
+        @CustomType.Setter
         public Builder autogenerateRevisionName(Boolean autogenerateRevisionName) {
             this.autogenerateRevisionName = Objects.requireNonNull(autogenerateRevisionName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder location(String location) {
             this.location = Objects.requireNonNull(location);
             return this;
         }
+        @CustomType.Setter
         public Builder metadatas(List<GetServiceMetadata> metadatas) {
             this.metadatas = Objects.requireNonNull(metadatas);
             return this;
@@ -140,14 +119,17 @@ public final class GetServiceResult {
         public Builder metadatas(GetServiceMetadata... metadatas) {
             return metadatas(List.of(metadatas));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder statuses(List<GetServiceStatus> statuses) {
             this.statuses = Objects.requireNonNull(statuses);
             return this;
@@ -155,6 +137,7 @@ public final class GetServiceResult {
         public Builder statuses(GetServiceStatus... statuses) {
             return statuses(List.of(statuses));
         }
+        @CustomType.Setter
         public Builder templates(List<GetServiceTemplate> templates) {
             this.templates = Objects.requireNonNull(templates);
             return this;
@@ -162,14 +145,26 @@ public final class GetServiceResult {
         public Builder templates(GetServiceTemplate... templates) {
             return templates(List.of(templates));
         }
+        @CustomType.Setter
         public Builder traffics(List<GetServiceTraffic> traffics) {
             this.traffics = Objects.requireNonNull(traffics);
             return this;
         }
         public Builder traffics(GetServiceTraffic... traffics) {
             return traffics(List.of(traffics));
-        }        public GetServiceResult build() {
-            return new GetServiceResult(autogenerateRevisionName, id, location, metadatas, name, project, statuses, templates, traffics);
+        }
+        public GetServiceResult build() {
+            final var o = new GetServiceResult();
+            o.autogenerateRevisionName = autogenerateRevisionName;
+            o.id = id;
+            o.location = location;
+            o.metadatas = metadatas;
+            o.name = name;
+            o.project = project;
+            o.statuses = statuses;
+            o.templates = templates;
+            o.traffics = traffics;
+            return o;
         }
     }
 }

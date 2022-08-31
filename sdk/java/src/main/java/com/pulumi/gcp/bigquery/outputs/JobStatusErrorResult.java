@@ -15,20 +15,11 @@ public final class JobStatusErrorResult {
      * @return The geographic location of the job. The default value is US.
      * 
      */
-    private final @Nullable String location;
-    private final @Nullable String message;
-    private final @Nullable String reason;
+    private @Nullable String location;
+    private @Nullable String message;
+    private @Nullable String reason;
 
-    @CustomType.Constructor
-    private JobStatusErrorResult(
-        @CustomType.Parameter("location") @Nullable String location,
-        @CustomType.Parameter("message") @Nullable String message,
-        @CustomType.Parameter("reason") @Nullable String reason) {
-        this.location = location;
-        this.message = message;
-        this.reason = reason;
-    }
-
+    private JobStatusErrorResult() {}
     /**
      * @return The geographic location of the job. The default value is US.
      * 
@@ -50,16 +41,12 @@ public final class JobStatusErrorResult {
     public static Builder builder(JobStatusErrorResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String location;
         private @Nullable String message;
         private @Nullable String reason;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobStatusErrorResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.location = defaults.location;
@@ -67,19 +54,27 @@ public final class JobStatusErrorResult {
     	      this.reason = defaults.reason;
         }
 
+        @CustomType.Setter
         public Builder location(@Nullable String location) {
             this.location = location;
             return this;
         }
+        @CustomType.Setter
         public Builder message(@Nullable String message) {
             this.message = message;
             return this;
         }
+        @CustomType.Setter
         public Builder reason(@Nullable String reason) {
             this.reason = reason;
             return this;
-        }        public JobStatusErrorResult build() {
-            return new JobStatusErrorResult(location, message, reason);
+        }
+        public JobStatusErrorResult build() {
+            final var o = new JobStatusErrorResult();
+            o.location = location;
+            o.message = message;
+            o.reason = reason;
+            return o;
         }
     }
 }

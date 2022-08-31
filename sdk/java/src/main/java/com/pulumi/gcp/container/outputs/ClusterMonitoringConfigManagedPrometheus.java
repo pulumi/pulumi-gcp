@@ -14,13 +14,9 @@ public final class ClusterMonitoringConfigManagedPrometheus {
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private ClusterMonitoringConfigManagedPrometheus(@CustomType.Parameter("enabled") Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private ClusterMonitoringConfigManagedPrometheus() {}
     /**
      * @return Enable the PodSecurityPolicy controller for this cluster.
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -37,24 +33,24 @@ public final class ClusterMonitoringConfigManagedPrometheus {
     public static Builder builder(ClusterMonitoringConfigManagedPrometheus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterMonitoringConfigManagedPrometheus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public ClusterMonitoringConfigManagedPrometheus build() {
-            return new ClusterMonitoringConfigManagedPrometheus(enabled);
+        }
+        public ClusterMonitoringConfigManagedPrometheus build() {
+            final var o = new ClusterMonitoringConfigManagedPrometheus();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

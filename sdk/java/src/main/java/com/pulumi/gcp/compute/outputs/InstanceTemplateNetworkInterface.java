@@ -25,98 +25,71 @@ public final class InstanceTemplateNetworkInterface {
      * on that network). This block can be repeated multiple times. Structure documented below.
      * 
      */
-    private final @Nullable List<InstanceTemplateNetworkInterfaceAccessConfig> accessConfigs;
+    private @Nullable List<InstanceTemplateNetworkInterfaceAccessConfig> accessConfigs;
     /**
      * @return An
      * array of alias IP ranges for this network interface. Can only be specified for network
      * interfaces on subnet-mode networks. Structure documented below.
      * 
      */
-    private final @Nullable List<InstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
+    private @Nullable List<InstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
     /**
      * @return An array of IPv6 access configurations for this interface.
      * Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
      * specified, then this instance will have no external IPv6 Internet access. Structure documented below.
      * 
      */
-    private final @Nullable List<InstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
-    private final @Nullable String ipv6AccessType;
+    private @Nullable List<InstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
+    private @Nullable String ipv6AccessType;
     /**
      * @return The name of the instance template. If you leave
      * this blank, the provider will auto-generate a unique name.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return The name or self_link of the network to attach this interface to.
      * Use `network` attribute for Legacy or Auto subnetted networks and
      * `subnetwork` for custom subnetted networks.
      * 
      */
-    private final @Nullable String network;
+    private @Nullable String network;
     /**
      * @return The private IP address to assign to the instance. If
      * empty, the address will be automatically assigned.
      * 
      */
-    private final @Nullable String networkIp;
+    private @Nullable String networkIp;
     /**
      * @return The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
      * 
      */
-    private final @Nullable String nicType;
+    private @Nullable String nicType;
     /**
      * @return The networking queue count that&#39;s specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
      * 
      */
-    private final @Nullable Integer queueCount;
+    private @Nullable Integer queueCount;
     /**
      * @return The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
      * 
      */
-    private final @Nullable String stackType;
+    private @Nullable String stackType;
     /**
      * @return the name of the subnetwork to attach this interface
      * to. The subnetwork must exist in the same `region` this instance will be
      * created in. Either `network` or `subnetwork` must be provided.
      * 
      */
-    private final @Nullable String subnetwork;
+    private @Nullable String subnetwork;
     /**
      * @return The ID of the project in which the subnetwork belongs.
      * If it is not provided, the provider project is used.
      * 
      */
-    private final @Nullable String subnetworkProject;
+    private @Nullable String subnetworkProject;
 
-    @CustomType.Constructor
-    private InstanceTemplateNetworkInterface(
-        @CustomType.Parameter("accessConfigs") @Nullable List<InstanceTemplateNetworkInterfaceAccessConfig> accessConfigs,
-        @CustomType.Parameter("aliasIpRanges") @Nullable List<InstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges,
-        @CustomType.Parameter("ipv6AccessConfigs") @Nullable List<InstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs,
-        @CustomType.Parameter("ipv6AccessType") @Nullable String ipv6AccessType,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("network") @Nullable String network,
-        @CustomType.Parameter("networkIp") @Nullable String networkIp,
-        @CustomType.Parameter("nicType") @Nullable String nicType,
-        @CustomType.Parameter("queueCount") @Nullable Integer queueCount,
-        @CustomType.Parameter("stackType") @Nullable String stackType,
-        @CustomType.Parameter("subnetwork") @Nullable String subnetwork,
-        @CustomType.Parameter("subnetworkProject") @Nullable String subnetworkProject) {
-        this.accessConfigs = accessConfigs;
-        this.aliasIpRanges = aliasIpRanges;
-        this.ipv6AccessConfigs = ipv6AccessConfigs;
-        this.ipv6AccessType = ipv6AccessType;
-        this.name = name;
-        this.network = network;
-        this.networkIp = networkIp;
-        this.nicType = nicType;
-        this.queueCount = queueCount;
-        this.stackType = stackType;
-        this.subnetwork = subnetwork;
-        this.subnetworkProject = subnetworkProject;
-    }
-
+    private InstanceTemplateNetworkInterface() {}
     /**
      * @return Access configurations, i.e. IPs via which this
      * instance can be accessed via the Internet. Omit to ensure that the instance
@@ -221,7 +194,7 @@ public final class InstanceTemplateNetworkInterface {
     public static Builder builder(InstanceTemplateNetworkInterface defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<InstanceTemplateNetworkInterfaceAccessConfig> accessConfigs;
         private @Nullable List<InstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
@@ -235,11 +208,7 @@ public final class InstanceTemplateNetworkInterface {
         private @Nullable String stackType;
         private @Nullable String subnetwork;
         private @Nullable String subnetworkProject;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceTemplateNetworkInterface defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessConfigs = defaults.accessConfigs;
@@ -256,6 +225,7 @@ public final class InstanceTemplateNetworkInterface {
     	      this.subnetworkProject = defaults.subnetworkProject;
         }
 
+        @CustomType.Setter
         public Builder accessConfigs(@Nullable List<InstanceTemplateNetworkInterfaceAccessConfig> accessConfigs) {
             this.accessConfigs = accessConfigs;
             return this;
@@ -263,6 +233,7 @@ public final class InstanceTemplateNetworkInterface {
         public Builder accessConfigs(InstanceTemplateNetworkInterfaceAccessConfig... accessConfigs) {
             return accessConfigs(List.of(accessConfigs));
         }
+        @CustomType.Setter
         public Builder aliasIpRanges(@Nullable List<InstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges) {
             this.aliasIpRanges = aliasIpRanges;
             return this;
@@ -270,6 +241,7 @@ public final class InstanceTemplateNetworkInterface {
         public Builder aliasIpRanges(InstanceTemplateNetworkInterfaceAliasIpRange... aliasIpRanges) {
             return aliasIpRanges(List.of(aliasIpRanges));
         }
+        @CustomType.Setter
         public Builder ipv6AccessConfigs(@Nullable List<InstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs) {
             this.ipv6AccessConfigs = ipv6AccessConfigs;
             return this;
@@ -277,43 +249,66 @@ public final class InstanceTemplateNetworkInterface {
         public Builder ipv6AccessConfigs(InstanceTemplateNetworkInterfaceIpv6AccessConfig... ipv6AccessConfigs) {
             return ipv6AccessConfigs(List.of(ipv6AccessConfigs));
         }
+        @CustomType.Setter
         public Builder ipv6AccessType(@Nullable String ipv6AccessType) {
             this.ipv6AccessType = ipv6AccessType;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder network(@Nullable String network) {
             this.network = network;
             return this;
         }
+        @CustomType.Setter
         public Builder networkIp(@Nullable String networkIp) {
             this.networkIp = networkIp;
             return this;
         }
+        @CustomType.Setter
         public Builder nicType(@Nullable String nicType) {
             this.nicType = nicType;
             return this;
         }
+        @CustomType.Setter
         public Builder queueCount(@Nullable Integer queueCount) {
             this.queueCount = queueCount;
             return this;
         }
+        @CustomType.Setter
         public Builder stackType(@Nullable String stackType) {
             this.stackType = stackType;
             return this;
         }
+        @CustomType.Setter
         public Builder subnetwork(@Nullable String subnetwork) {
             this.subnetwork = subnetwork;
             return this;
         }
+        @CustomType.Setter
         public Builder subnetworkProject(@Nullable String subnetworkProject) {
             this.subnetworkProject = subnetworkProject;
             return this;
-        }        public InstanceTemplateNetworkInterface build() {
-            return new InstanceTemplateNetworkInterface(accessConfigs, aliasIpRanges, ipv6AccessConfigs, ipv6AccessType, name, network, networkIp, nicType, queueCount, stackType, subnetwork, subnetworkProject);
+        }
+        public InstanceTemplateNetworkInterface build() {
+            final var o = new InstanceTemplateNetworkInterface();
+            o.accessConfigs = accessConfigs;
+            o.aliasIpRanges = aliasIpRanges;
+            o.ipv6AccessConfigs = ipv6AccessConfigs;
+            o.ipv6AccessType = ipv6AccessType;
+            o.name = name;
+            o.network = network;
+            o.networkIp = networkIp;
+            o.nicType = nicType;
+            o.queueCount = queueCount;
+            o.stackType = stackType;
+            o.subnetwork = subnetwork;
+            o.subnetworkProject = subnetworkProject;
+            return o;
         }
     }
 }

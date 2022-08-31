@@ -12,20 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZoneAssetStatus {
-    private final @Nullable Integer activeAssets;
-    private final @Nullable Integer securityPolicyApplyingAssets;
-    private final @Nullable String updateTime;
+    private @Nullable Integer activeAssets;
+    private @Nullable Integer securityPolicyApplyingAssets;
+    private @Nullable String updateTime;
 
-    @CustomType.Constructor
-    private ZoneAssetStatus(
-        @CustomType.Parameter("activeAssets") @Nullable Integer activeAssets,
-        @CustomType.Parameter("securityPolicyApplyingAssets") @Nullable Integer securityPolicyApplyingAssets,
-        @CustomType.Parameter("updateTime") @Nullable String updateTime) {
-        this.activeAssets = activeAssets;
-        this.securityPolicyApplyingAssets = securityPolicyApplyingAssets;
-        this.updateTime = updateTime;
-    }
-
+    private ZoneAssetStatus() {}
     public Optional<Integer> activeAssets() {
         return Optional.ofNullable(this.activeAssets);
     }
@@ -43,16 +34,12 @@ public final class ZoneAssetStatus {
     public static Builder builder(ZoneAssetStatus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer activeAssets;
         private @Nullable Integer securityPolicyApplyingAssets;
         private @Nullable String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ZoneAssetStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.activeAssets = defaults.activeAssets;
@@ -60,19 +47,27 @@ public final class ZoneAssetStatus {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder activeAssets(@Nullable Integer activeAssets) {
             this.activeAssets = activeAssets;
             return this;
         }
+        @CustomType.Setter
         public Builder securityPolicyApplyingAssets(@Nullable Integer securityPolicyApplyingAssets) {
             this.securityPolicyApplyingAssets = securityPolicyApplyingAssets;
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
             this.updateTime = updateTime;
             return this;
-        }        public ZoneAssetStatus build() {
-            return new ZoneAssetStatus(activeAssets, securityPolicyApplyingAssets, updateTime);
+        }
+        public ZoneAssetStatus build() {
+            final var o = new ZoneAssetStatus();
+            o.activeAssets = activeAssets;
+            o.securityPolicyApplyingAssets = securityPolicyApplyingAssets;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

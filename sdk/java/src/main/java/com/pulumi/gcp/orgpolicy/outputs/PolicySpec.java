@@ -19,43 +19,30 @@ public final class PolicySpec {
      * An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
      * 
      */
-    private final @Nullable String etag;
+    private @Nullable String etag;
     /**
      * @return Determines the inheritance behavior for this `Policy`. If `inherit_from_parent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
      * 
      */
-    private final @Nullable Boolean inheritFromParent;
+    private @Nullable Boolean inheritFromParent;
     /**
      * @return Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
      * 
      */
-    private final @Nullable Boolean reset;
+    private @Nullable Boolean reset;
     /**
      * @return Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
      * 
      */
-    private final @Nullable List<PolicySpecRule> rules;
+    private @Nullable List<PolicySpecRule> rules;
     /**
      * @return -
      * Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
      * 
      */
-    private final @Nullable String updateTime;
+    private @Nullable String updateTime;
 
-    @CustomType.Constructor
-    private PolicySpec(
-        @CustomType.Parameter("etag") @Nullable String etag,
-        @CustomType.Parameter("inheritFromParent") @Nullable Boolean inheritFromParent,
-        @CustomType.Parameter("reset") @Nullable Boolean reset,
-        @CustomType.Parameter("rules") @Nullable List<PolicySpecRule> rules,
-        @CustomType.Parameter("updateTime") @Nullable String updateTime) {
-        this.etag = etag;
-        this.inheritFromParent = inheritFromParent;
-        this.reset = reset;
-        this.rules = rules;
-        this.updateTime = updateTime;
-    }
-
+    private PolicySpec() {}
     /**
      * @return -
      * An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
@@ -101,18 +88,14 @@ public final class PolicySpec {
     public static Builder builder(PolicySpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String etag;
         private @Nullable Boolean inheritFromParent;
         private @Nullable Boolean reset;
         private @Nullable List<PolicySpecRule> rules;
         private @Nullable String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PolicySpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.etag = defaults.etag;
@@ -122,18 +105,22 @@ public final class PolicySpec {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder etag(@Nullable String etag) {
             this.etag = etag;
             return this;
         }
+        @CustomType.Setter
         public Builder inheritFromParent(@Nullable Boolean inheritFromParent) {
             this.inheritFromParent = inheritFromParent;
             return this;
         }
+        @CustomType.Setter
         public Builder reset(@Nullable Boolean reset) {
             this.reset = reset;
             return this;
         }
+        @CustomType.Setter
         public Builder rules(@Nullable List<PolicySpecRule> rules) {
             this.rules = rules;
             return this;
@@ -141,11 +128,19 @@ public final class PolicySpec {
         public Builder rules(PolicySpecRule... rules) {
             return rules(List.of(rules));
         }
+        @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
             this.updateTime = updateTime;
             return this;
-        }        public PolicySpec build() {
-            return new PolicySpec(etag, inheritFromParent, reset, rules, updateTime);
+        }
+        public PolicySpec build() {
+            final var o = new PolicySpec();
+            o.etag = etag;
+            o.inheritFromParent = inheritFromParent;
+            o.reset = reset;
+            o.rules = rules;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

@@ -11,70 +11,37 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRouterStatusBestRoute {
-    private final String description;
-    private final String destRange;
+    private String description;
+    private String destRange;
     /**
      * @return The name of the router.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The network name or resource link to the parent
      * network of this subnetwork.
      * 
      */
-    private final String network;
-    private final String nextHopGateway;
-    private final String nextHopIlb;
-    private final String nextHopInstance;
-    private final String nextHopInstanceZone;
-    private final String nextHopIp;
-    private final String nextHopNetwork;
-    private final String nextHopVpnTunnel;
-    private final Integer priority;
+    private String network;
+    private String nextHopGateway;
+    private String nextHopIlb;
+    private String nextHopInstance;
+    private String nextHopInstanceZone;
+    private String nextHopIp;
+    private String nextHopNetwork;
+    private String nextHopVpnTunnel;
+    private Integer priority;
     /**
      * @return The ID of the project in which the resource
      * belongs. If it is not provided, the provider project is used.
      * 
      */
-    private final String project;
-    private final String selfLink;
-    private final List<String> tags;
+    private String project;
+    private String selfLink;
+    private List<String> tags;
 
-    @CustomType.Constructor
-    private GetRouterStatusBestRoute(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("destRange") String destRange,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("network") String network,
-        @CustomType.Parameter("nextHopGateway") String nextHopGateway,
-        @CustomType.Parameter("nextHopIlb") String nextHopIlb,
-        @CustomType.Parameter("nextHopInstance") String nextHopInstance,
-        @CustomType.Parameter("nextHopInstanceZone") String nextHopInstanceZone,
-        @CustomType.Parameter("nextHopIp") String nextHopIp,
-        @CustomType.Parameter("nextHopNetwork") String nextHopNetwork,
-        @CustomType.Parameter("nextHopVpnTunnel") String nextHopVpnTunnel,
-        @CustomType.Parameter("priority") Integer priority,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("selfLink") String selfLink,
-        @CustomType.Parameter("tags") List<String> tags) {
-        this.description = description;
-        this.destRange = destRange;
-        this.name = name;
-        this.network = network;
-        this.nextHopGateway = nextHopGateway;
-        this.nextHopIlb = nextHopIlb;
-        this.nextHopInstance = nextHopInstance;
-        this.nextHopInstanceZone = nextHopInstanceZone;
-        this.nextHopIp = nextHopIp;
-        this.nextHopNetwork = nextHopNetwork;
-        this.nextHopVpnTunnel = nextHopVpnTunnel;
-        this.priority = priority;
-        this.project = project;
-        this.selfLink = selfLink;
-        this.tags = tags;
-    }
-
+    private GetRouterStatusBestRoute() {}
     public String description() {
         return this.description;
     }
@@ -142,7 +109,7 @@ public final class GetRouterStatusBestRoute {
     public static Builder builder(GetRouterStatusBestRoute defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String destRange;
@@ -159,11 +126,7 @@ public final class GetRouterStatusBestRoute {
         private String project;
         private String selfLink;
         private List<String> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRouterStatusBestRoute defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -183,70 +146,102 @@ public final class GetRouterStatusBestRoute {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder destRange(String destRange) {
             this.destRange = Objects.requireNonNull(destRange);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder network(String network) {
             this.network = Objects.requireNonNull(network);
             return this;
         }
+        @CustomType.Setter
         public Builder nextHopGateway(String nextHopGateway) {
             this.nextHopGateway = Objects.requireNonNull(nextHopGateway);
             return this;
         }
+        @CustomType.Setter
         public Builder nextHopIlb(String nextHopIlb) {
             this.nextHopIlb = Objects.requireNonNull(nextHopIlb);
             return this;
         }
+        @CustomType.Setter
         public Builder nextHopInstance(String nextHopInstance) {
             this.nextHopInstance = Objects.requireNonNull(nextHopInstance);
             return this;
         }
+        @CustomType.Setter
         public Builder nextHopInstanceZone(String nextHopInstanceZone) {
             this.nextHopInstanceZone = Objects.requireNonNull(nextHopInstanceZone);
             return this;
         }
+        @CustomType.Setter
         public Builder nextHopIp(String nextHopIp) {
             this.nextHopIp = Objects.requireNonNull(nextHopIp);
             return this;
         }
+        @CustomType.Setter
         public Builder nextHopNetwork(String nextHopNetwork) {
             this.nextHopNetwork = Objects.requireNonNull(nextHopNetwork);
             return this;
         }
+        @CustomType.Setter
         public Builder nextHopVpnTunnel(String nextHopVpnTunnel) {
             this.nextHopVpnTunnel = Objects.requireNonNull(nextHopVpnTunnel);
             return this;
         }
+        @CustomType.Setter
         public Builder priority(Integer priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
         public Builder tags(String... tags) {
             return tags(List.of(tags));
-        }        public GetRouterStatusBestRoute build() {
-            return new GetRouterStatusBestRoute(description, destRange, name, network, nextHopGateway, nextHopIlb, nextHopInstance, nextHopInstanceZone, nextHopIp, nextHopNetwork, nextHopVpnTunnel, priority, project, selfLink, tags);
+        }
+        public GetRouterStatusBestRoute build() {
+            final var o = new GetRouterStatusBestRoute();
+            o.description = description;
+            o.destRange = destRange;
+            o.name = name;
+            o.network = network;
+            o.nextHopGateway = nextHopGateway;
+            o.nextHopIlb = nextHopIlb;
+            o.nextHopInstance = nextHopInstance;
+            o.nextHopInstanceZone = nextHopInstanceZone;
+            o.nextHopIp = nextHopIp;
+            o.nextHopNetwork = nextHopNetwork;
+            o.nextHopVpnTunnel = nextHopVpnTunnel;
+            o.priority = priority;
+            o.project = project;
+            o.selfLink = selfLink;
+            o.tags = tags;
+            return o;
         }
     }
 }

@@ -17,28 +17,19 @@ public final class PreventionInspectTemplateInspectConfigLimits {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType> maxFindingsPerInfoTypes;
+    private @Nullable List<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType> maxFindingsPerInfoTypes;
     /**
      * @return Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
      * 
      */
-    private final Integer maxFindingsPerItem;
+    private Integer maxFindingsPerItem;
     /**
      * @return Max number of findings that will be returned per request/job. The maximum returned is 2000.
      * 
      */
-    private final Integer maxFindingsPerRequest;
+    private Integer maxFindingsPerRequest;
 
-    @CustomType.Constructor
-    private PreventionInspectTemplateInspectConfigLimits(
-        @CustomType.Parameter("maxFindingsPerInfoTypes") @Nullable List<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType> maxFindingsPerInfoTypes,
-        @CustomType.Parameter("maxFindingsPerItem") Integer maxFindingsPerItem,
-        @CustomType.Parameter("maxFindingsPerRequest") Integer maxFindingsPerRequest) {
-        this.maxFindingsPerInfoTypes = maxFindingsPerInfoTypes;
-        this.maxFindingsPerItem = maxFindingsPerItem;
-        this.maxFindingsPerRequest = maxFindingsPerRequest;
-    }
-
+    private PreventionInspectTemplateInspectConfigLimits() {}
     /**
      * @return Configuration of findings limit given for specified infoTypes.
      * Structure is documented below.
@@ -69,16 +60,12 @@ public final class PreventionInspectTemplateInspectConfigLimits {
     public static Builder builder(PreventionInspectTemplateInspectConfigLimits defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType> maxFindingsPerInfoTypes;
         private Integer maxFindingsPerItem;
         private Integer maxFindingsPerRequest;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfigLimits defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxFindingsPerInfoTypes = defaults.maxFindingsPerInfoTypes;
@@ -86,6 +73,7 @@ public final class PreventionInspectTemplateInspectConfigLimits {
     	      this.maxFindingsPerRequest = defaults.maxFindingsPerRequest;
         }
 
+        @CustomType.Setter
         public Builder maxFindingsPerInfoTypes(@Nullable List<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType> maxFindingsPerInfoTypes) {
             this.maxFindingsPerInfoTypes = maxFindingsPerInfoTypes;
             return this;
@@ -93,15 +81,22 @@ public final class PreventionInspectTemplateInspectConfigLimits {
         public Builder maxFindingsPerInfoTypes(PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType... maxFindingsPerInfoTypes) {
             return maxFindingsPerInfoTypes(List.of(maxFindingsPerInfoTypes));
         }
+        @CustomType.Setter
         public Builder maxFindingsPerItem(Integer maxFindingsPerItem) {
             this.maxFindingsPerItem = Objects.requireNonNull(maxFindingsPerItem);
             return this;
         }
+        @CustomType.Setter
         public Builder maxFindingsPerRequest(Integer maxFindingsPerRequest) {
             this.maxFindingsPerRequest = Objects.requireNonNull(maxFindingsPerRequest);
             return this;
-        }        public PreventionInspectTemplateInspectConfigLimits build() {
-            return new PreventionInspectTemplateInspectConfigLimits(maxFindingsPerInfoTypes, maxFindingsPerItem, maxFindingsPerRequest);
+        }
+        public PreventionInspectTemplateInspectConfigLimits build() {
+            final var o = new PreventionInspectTemplateInspectConfigLimits();
+            o.maxFindingsPerInfoTypes = maxFindingsPerInfoTypes;
+            o.maxFindingsPerItem = maxFindingsPerItem;
+            o.maxFindingsPerRequest = maxFindingsPerRequest;
+            return o;
         }
     }
 }

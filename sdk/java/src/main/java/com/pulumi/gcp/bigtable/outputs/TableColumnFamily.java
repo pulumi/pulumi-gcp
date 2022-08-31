@@ -13,13 +13,9 @@ public final class TableColumnFamily {
      * @return The name of the column family.
      * 
      */
-    private final String family;
+    private String family;
 
-    @CustomType.Constructor
-    private TableColumnFamily(@CustomType.Parameter("family") String family) {
-        this.family = family;
-    }
-
+    private TableColumnFamily() {}
     /**
      * @return The name of the column family.
      * 
@@ -35,24 +31,24 @@ public final class TableColumnFamily {
     public static Builder builder(TableColumnFamily defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String family;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TableColumnFamily defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.family = defaults.family;
         }
 
+        @CustomType.Setter
         public Builder family(String family) {
             this.family = Objects.requireNonNull(family);
             return this;
-        }        public TableColumnFamily build() {
-            return new TableColumnFamily(family);
+        }
+        public TableColumnFamily build() {
+            final var o = new TableColumnFamily();
+            o.family = family;
+            return o;
         }
     }
 }

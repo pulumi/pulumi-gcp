@@ -18,32 +18,21 @@ public final class OrganizationPolicyListPolicy {
      * @return or `deny` - (Optional) One or the other must be set.
      * 
      */
-    private final @Nullable OrganizationPolicyListPolicyAllow allow;
-    private final @Nullable OrganizationPolicyListPolicyDeny deny;
+    private @Nullable OrganizationPolicyListPolicyAllow allow;
+    private @Nullable OrganizationPolicyListPolicyDeny deny;
     /**
      * @return If set to true, the values from the effective Policy of the parent resource
      * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
      * 
      */
-    private final @Nullable Boolean inheritFromParent;
+    private @Nullable Boolean inheritFromParent;
     /**
      * @return The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
      * 
      */
-    private final @Nullable String suggestedValue;
+    private @Nullable String suggestedValue;
 
-    @CustomType.Constructor
-    private OrganizationPolicyListPolicy(
-        @CustomType.Parameter("allow") @Nullable OrganizationPolicyListPolicyAllow allow,
-        @CustomType.Parameter("deny") @Nullable OrganizationPolicyListPolicyDeny deny,
-        @CustomType.Parameter("inheritFromParent") @Nullable Boolean inheritFromParent,
-        @CustomType.Parameter("suggestedValue") @Nullable String suggestedValue) {
-        this.allow = allow;
-        this.deny = deny;
-        this.inheritFromParent = inheritFromParent;
-        this.suggestedValue = suggestedValue;
-    }
-
+    private OrganizationPolicyListPolicy() {}
     /**
      * @return or `deny` - (Optional) One or the other must be set.
      * 
@@ -77,17 +66,13 @@ public final class OrganizationPolicyListPolicy {
     public static Builder builder(OrganizationPolicyListPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable OrganizationPolicyListPolicyAllow allow;
         private @Nullable OrganizationPolicyListPolicyDeny deny;
         private @Nullable Boolean inheritFromParent;
         private @Nullable String suggestedValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OrganizationPolicyListPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allow = defaults.allow;
@@ -96,23 +81,33 @@ public final class OrganizationPolicyListPolicy {
     	      this.suggestedValue = defaults.suggestedValue;
         }
 
+        @CustomType.Setter
         public Builder allow(@Nullable OrganizationPolicyListPolicyAllow allow) {
             this.allow = allow;
             return this;
         }
+        @CustomType.Setter
         public Builder deny(@Nullable OrganizationPolicyListPolicyDeny deny) {
             this.deny = deny;
             return this;
         }
+        @CustomType.Setter
         public Builder inheritFromParent(@Nullable Boolean inheritFromParent) {
             this.inheritFromParent = inheritFromParent;
             return this;
         }
+        @CustomType.Setter
         public Builder suggestedValue(@Nullable String suggestedValue) {
             this.suggestedValue = suggestedValue;
             return this;
-        }        public OrganizationPolicyListPolicy build() {
-            return new OrganizationPolicyListPolicy(allow, deny, inheritFromParent, suggestedValue);
+        }
+        public OrganizationPolicyListPolicy build() {
+            final var o = new OrganizationPolicyListPolicy();
+            o.allow = allow;
+            o.deny = deny;
+            o.inheritFromParent = inheritFromParent;
+            o.suggestedValue = suggestedValue;
+            return o;
         }
     }
 }

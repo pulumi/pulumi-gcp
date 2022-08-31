@@ -14,13 +14,9 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionReques
      * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
      * 
      */
-    private final String headerName;
+    private String headerName;
 
-    @CustomType.Constructor
-    private EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove(@CustomType.Parameter("headerName") String headerName) {
-        this.headerName = headerName;
-    }
-
+    private EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove() {}
     /**
      * @return Headers to remove from the response prior to sending it back to the client.
      * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
@@ -37,24 +33,24 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionReques
     public static Builder builder(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String headerName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.headerName = defaults.headerName;
         }
 
+        @CustomType.Setter
         public Builder headerName(String headerName) {
             this.headerName = Objects.requireNonNull(headerName);
             return this;
-        }        public EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove build() {
-            return new EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove(headerName);
+        }
+        public EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove build() {
+            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove();
+            o.headerName = headerName;
+            return o;
         }
     }
 }

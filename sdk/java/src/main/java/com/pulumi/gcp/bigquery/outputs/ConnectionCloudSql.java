@@ -15,36 +15,25 @@ public final class ConnectionCloudSql {
      * Structure is documented below.
      * 
      */
-    private final ConnectionCloudSqlCredential credential;
+    private ConnectionCloudSqlCredential credential;
     /**
      * @return Cloud Spanner database in the form `project/instance/database&#39;
      * 
      */
-    private final String database;
+    private String database;
     /**
      * @return Cloud SQL instance ID in the form project:location:instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return Type of the Cloud SQL database.
      * Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private ConnectionCloudSql(
-        @CustomType.Parameter("credential") ConnectionCloudSqlCredential credential,
-        @CustomType.Parameter("database") String database,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("type") String type) {
-        this.credential = credential;
-        this.database = database;
-        this.instanceId = instanceId;
-        this.type = type;
-    }
-
+    private ConnectionCloudSql() {}
     /**
      * @return Cloud SQL properties.
      * Structure is documented below.
@@ -83,17 +72,13 @@ public final class ConnectionCloudSql {
     public static Builder builder(ConnectionCloudSql defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private ConnectionCloudSqlCredential credential;
         private String database;
         private String instanceId;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionCloudSql defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.credential = defaults.credential;
@@ -102,23 +87,33 @@ public final class ConnectionCloudSql {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder credential(ConnectionCloudSqlCredential credential) {
             this.credential = Objects.requireNonNull(credential);
             return this;
         }
+        @CustomType.Setter
         public Builder database(String database) {
             this.database = Objects.requireNonNull(database);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public ConnectionCloudSql build() {
-            return new ConnectionCloudSql(credential, database, instanceId, type);
+        }
+        public ConnectionCloudSql build() {
+            final var o = new ConnectionCloudSql();
+            o.credential = credential;
+            o.database = database;
+            o.instanceId = instanceId;
+            o.type = type;
+            return o;
         }
     }
 }

@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNetworkPolicy {
-    private final Boolean enabled;
-    private final String provider;
+    private Boolean enabled;
+    private String provider;
 
-    @CustomType.Constructor
-    private GetClusterNetworkPolicy(
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("provider") String provider) {
-        this.enabled = enabled;
-        this.provider = provider;
-    }
-
+    private GetClusterNetworkPolicy() {}
     public Boolean enabled() {
         return this.enabled;
     }
@@ -35,30 +28,32 @@ public final class GetClusterNetworkPolicy {
     public static Builder builder(GetClusterNetworkPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
         private String provider;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterNetworkPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.provider = defaults.provider;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder provider(String provider) {
             this.provider = Objects.requireNonNull(provider);
             return this;
-        }        public GetClusterNetworkPolicy build() {
-            return new GetClusterNetworkPolicy(enabled, provider);
+        }
+        public GetClusterNetworkPolicy build() {
+            final var o = new GetClusterNetworkPolicy();
+            o.enabled = enabled;
+            o.provider = provider;
+            return o;
         }
     }
 }

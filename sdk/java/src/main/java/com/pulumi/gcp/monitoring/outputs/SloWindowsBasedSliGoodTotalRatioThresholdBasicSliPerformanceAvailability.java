@@ -15,13 +15,9 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceA
      * @return Whether an availability SLI is enabled or not. Must be set to ` true. Defaults to  `true`.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
 
-    @CustomType.Constructor
-    private SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability(@CustomType.Parameter("enabled") @Nullable Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability() {}
     /**
      * @return Whether an availability SLI is enabled or not. Must be set to ` true. Defaults to  `true`.
      * 
@@ -37,24 +33,24 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceA
     public static Builder builder(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
-        }        public SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability build() {
-            return new SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability(enabled);
+        }
+        public SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability build() {
+            final var o = new SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

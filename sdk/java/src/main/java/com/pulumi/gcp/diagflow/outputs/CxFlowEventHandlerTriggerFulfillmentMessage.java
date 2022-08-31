@@ -15,13 +15,9 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessage {
      * @return A collection of text responses.
      * 
      */
-    private final @Nullable CxFlowEventHandlerTriggerFulfillmentMessageText text;
+    private @Nullable CxFlowEventHandlerTriggerFulfillmentMessageText text;
 
-    @CustomType.Constructor
-    private CxFlowEventHandlerTriggerFulfillmentMessage(@CustomType.Parameter("text") @Nullable CxFlowEventHandlerTriggerFulfillmentMessageText text) {
-        this.text = text;
-    }
-
+    private CxFlowEventHandlerTriggerFulfillmentMessage() {}
     /**
      * @return A collection of text responses.
      * 
@@ -37,24 +33,24 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessage {
     public static Builder builder(CxFlowEventHandlerTriggerFulfillmentMessage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable CxFlowEventHandlerTriggerFulfillmentMessageText text;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CxFlowEventHandlerTriggerFulfillmentMessage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.text = defaults.text;
         }
 
+        @CustomType.Setter
         public Builder text(@Nullable CxFlowEventHandlerTriggerFulfillmentMessageText text) {
             this.text = text;
             return this;
-        }        public CxFlowEventHandlerTriggerFulfillmentMessage build() {
-            return new CxFlowEventHandlerTriggerFulfillmentMessage(text);
+        }
+        public CxFlowEventHandlerTriggerFulfillmentMessage build() {
+            final var o = new CxFlowEventHandlerTriggerFulfillmentMessage();
+            o.text = text;
+            return o;
         }
     }
 }

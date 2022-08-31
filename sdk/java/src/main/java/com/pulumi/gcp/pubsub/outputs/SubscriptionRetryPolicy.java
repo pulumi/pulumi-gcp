@@ -16,22 +16,15 @@ public final class SubscriptionRetryPolicy {
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    private final @Nullable String maximumBackoff;
+    private @Nullable String maximumBackoff;
     /**
      * @return The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    private final @Nullable String minimumBackoff;
+    private @Nullable String minimumBackoff;
 
-    @CustomType.Constructor
-    private SubscriptionRetryPolicy(
-        @CustomType.Parameter("maximumBackoff") @Nullable String maximumBackoff,
-        @CustomType.Parameter("minimumBackoff") @Nullable String minimumBackoff) {
-        this.maximumBackoff = maximumBackoff;
-        this.minimumBackoff = minimumBackoff;
-    }
-
+    private SubscriptionRetryPolicy() {}
     /**
      * @return The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
@@ -56,30 +49,32 @@ public final class SubscriptionRetryPolicy {
     public static Builder builder(SubscriptionRetryPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String maximumBackoff;
         private @Nullable String minimumBackoff;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SubscriptionRetryPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maximumBackoff = defaults.maximumBackoff;
     	      this.minimumBackoff = defaults.minimumBackoff;
         }
 
+        @CustomType.Setter
         public Builder maximumBackoff(@Nullable String maximumBackoff) {
             this.maximumBackoff = maximumBackoff;
             return this;
         }
+        @CustomType.Setter
         public Builder minimumBackoff(@Nullable String minimumBackoff) {
             this.minimumBackoff = minimumBackoff;
             return this;
-        }        public SubscriptionRetryPolicy build() {
-            return new SubscriptionRetryPolicy(maximumBackoff, minimumBackoff);
+        }
+        public SubscriptionRetryPolicy build() {
+            final var o = new SubscriptionRetryPolicy();
+            o.maximumBackoff = maximumBackoff;
+            o.minimumBackoff = minimumBackoff;
+            return o;
         }
     }
 }

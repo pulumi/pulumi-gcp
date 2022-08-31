@@ -18,22 +18,15 @@ public final class BudgetBudgetFilterCustomPeriod {
      * Structure is documented below.
      * 
      */
-    private final @Nullable BudgetBudgetFilterCustomPeriodEndDate endDate;
+    private @Nullable BudgetBudgetFilterCustomPeriodEndDate endDate;
     /**
      * @return A start date is required. The start date must be after January 1, 2017.
      * Structure is documented below.
      * 
      */
-    private final BudgetBudgetFilterCustomPeriodStartDate startDate;
+    private BudgetBudgetFilterCustomPeriodStartDate startDate;
 
-    @CustomType.Constructor
-    private BudgetBudgetFilterCustomPeriod(
-        @CustomType.Parameter("endDate") @Nullable BudgetBudgetFilterCustomPeriodEndDate endDate,
-        @CustomType.Parameter("startDate") BudgetBudgetFilterCustomPeriodStartDate startDate) {
-        this.endDate = endDate;
-        this.startDate = startDate;
-    }
-
+    private BudgetBudgetFilterCustomPeriod() {}
     /**
      * @return Optional. The end date of the time period. Budgets with elapsed end date won&#39;t be processed.
      * If unset, specifies to track all usage incurred since the startDate.
@@ -59,30 +52,32 @@ public final class BudgetBudgetFilterCustomPeriod {
     public static Builder builder(BudgetBudgetFilterCustomPeriod defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable BudgetBudgetFilterCustomPeriodEndDate endDate;
         private BudgetBudgetFilterCustomPeriodStartDate startDate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BudgetBudgetFilterCustomPeriod defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endDate = defaults.endDate;
     	      this.startDate = defaults.startDate;
         }
 
+        @CustomType.Setter
         public Builder endDate(@Nullable BudgetBudgetFilterCustomPeriodEndDate endDate) {
             this.endDate = endDate;
             return this;
         }
+        @CustomType.Setter
         public Builder startDate(BudgetBudgetFilterCustomPeriodStartDate startDate) {
             this.startDate = Objects.requireNonNull(startDate);
             return this;
-        }        public BudgetBudgetFilterCustomPeriod build() {
-            return new BudgetBudgetFilterCustomPeriod(endDate, startDate);
+        }
+        public BudgetBudgetFilterCustomPeriod build() {
+            final var o = new BudgetBudgetFilterCustomPeriod();
+            o.endDate = endDate;
+            o.startDate = startDate;
+            return o;
         }
     }
 }

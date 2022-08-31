@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodePoolManagement {
-    private final @Nullable Boolean autoRepair;
-    private final @Nullable Boolean autoUpgrade;
+    private @Nullable Boolean autoRepair;
+    private @Nullable Boolean autoUpgrade;
 
-    @CustomType.Constructor
-    private ClusterNodePoolManagement(
-        @CustomType.Parameter("autoRepair") @Nullable Boolean autoRepair,
-        @CustomType.Parameter("autoUpgrade") @Nullable Boolean autoUpgrade) {
-        this.autoRepair = autoRepair;
-        this.autoUpgrade = autoUpgrade;
-    }
-
+    private ClusterNodePoolManagement() {}
     public Optional<Boolean> autoRepair() {
         return Optional.ofNullable(this.autoRepair);
     }
@@ -36,30 +29,32 @@ public final class ClusterNodePoolManagement {
     public static Builder builder(ClusterNodePoolManagement defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean autoRepair;
         private @Nullable Boolean autoUpgrade;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNodePoolManagement defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoRepair = defaults.autoRepair;
     	      this.autoUpgrade = defaults.autoUpgrade;
         }
 
+        @CustomType.Setter
         public Builder autoRepair(@Nullable Boolean autoRepair) {
             this.autoRepair = autoRepair;
             return this;
         }
+        @CustomType.Setter
         public Builder autoUpgrade(@Nullable Boolean autoUpgrade) {
             this.autoUpgrade = autoUpgrade;
             return this;
-        }        public ClusterNodePoolManagement build() {
-            return new ClusterNodePoolManagement(autoRepair, autoUpgrade);
+        }
+        public ClusterNodePoolManagement build() {
+            final var o = new ClusterNodePoolManagement();
+            o.autoRepair = autoRepair;
+            o.autoUpgrade = autoUpgrade;
+            return o;
         }
     }
 }

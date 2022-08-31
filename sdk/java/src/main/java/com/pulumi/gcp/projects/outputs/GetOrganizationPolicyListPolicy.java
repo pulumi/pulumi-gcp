@@ -13,23 +13,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOrganizationPolicyListPolicy {
-    private final List<GetOrganizationPolicyListPolicyAllow> allows;
-    private final List<GetOrganizationPolicyListPolicyDeny> denies;
-    private final Boolean inheritFromParent;
-    private final String suggestedValue;
+    private List<GetOrganizationPolicyListPolicyAllow> allows;
+    private List<GetOrganizationPolicyListPolicyDeny> denies;
+    private Boolean inheritFromParent;
+    private String suggestedValue;
 
-    @CustomType.Constructor
-    private GetOrganizationPolicyListPolicy(
-        @CustomType.Parameter("allows") List<GetOrganizationPolicyListPolicyAllow> allows,
-        @CustomType.Parameter("denies") List<GetOrganizationPolicyListPolicyDeny> denies,
-        @CustomType.Parameter("inheritFromParent") Boolean inheritFromParent,
-        @CustomType.Parameter("suggestedValue") String suggestedValue) {
-        this.allows = allows;
-        this.denies = denies;
-        this.inheritFromParent = inheritFromParent;
-        this.suggestedValue = suggestedValue;
-    }
-
+    private GetOrganizationPolicyListPolicy() {}
     public List<GetOrganizationPolicyListPolicyAllow> allows() {
         return this.allows;
     }
@@ -50,17 +39,13 @@ public final class GetOrganizationPolicyListPolicy {
     public static Builder builder(GetOrganizationPolicyListPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetOrganizationPolicyListPolicyAllow> allows;
         private List<GetOrganizationPolicyListPolicyDeny> denies;
         private Boolean inheritFromParent;
         private String suggestedValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetOrganizationPolicyListPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allows = defaults.allows;
@@ -69,6 +54,7 @@ public final class GetOrganizationPolicyListPolicy {
     	      this.suggestedValue = defaults.suggestedValue;
         }
 
+        @CustomType.Setter
         public Builder allows(List<GetOrganizationPolicyListPolicyAllow> allows) {
             this.allows = Objects.requireNonNull(allows);
             return this;
@@ -76,6 +62,7 @@ public final class GetOrganizationPolicyListPolicy {
         public Builder allows(GetOrganizationPolicyListPolicyAllow... allows) {
             return allows(List.of(allows));
         }
+        @CustomType.Setter
         public Builder denies(List<GetOrganizationPolicyListPolicyDeny> denies) {
             this.denies = Objects.requireNonNull(denies);
             return this;
@@ -83,15 +70,23 @@ public final class GetOrganizationPolicyListPolicy {
         public Builder denies(GetOrganizationPolicyListPolicyDeny... denies) {
             return denies(List.of(denies));
         }
+        @CustomType.Setter
         public Builder inheritFromParent(Boolean inheritFromParent) {
             this.inheritFromParent = Objects.requireNonNull(inheritFromParent);
             return this;
         }
+        @CustomType.Setter
         public Builder suggestedValue(String suggestedValue) {
             this.suggestedValue = Objects.requireNonNull(suggestedValue);
             return this;
-        }        public GetOrganizationPolicyListPolicy build() {
-            return new GetOrganizationPolicyListPolicy(allows, denies, inheritFromParent, suggestedValue);
+        }
+        public GetOrganizationPolicyListPolicy build() {
+            final var o = new GetOrganizationPolicyListPolicy();
+            o.allows = allows;
+            o.denies = denies;
+            o.inheritFromParent = inheritFromParent;
+            o.suggestedValue = suggestedValue;
+            return o;
         }
     }
 }

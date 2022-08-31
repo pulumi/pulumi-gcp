@@ -15,21 +15,14 @@ public final class ReservationShareSettingsProjectMap {
      * @return The identifier for this object. Format specified above.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The project id/number, should be same as the key of this project config in the project map.
      * 
      */
-    private final @Nullable String projectId;
+    private @Nullable String projectId;
 
-    @CustomType.Constructor
-    private ReservationShareSettingsProjectMap(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("projectId") @Nullable String projectId) {
-        this.id = id;
-        this.projectId = projectId;
-    }
-
+    private ReservationShareSettingsProjectMap() {}
     /**
      * @return The identifier for this object. Format specified above.
      * 
@@ -52,30 +45,32 @@ public final class ReservationShareSettingsProjectMap {
     public static Builder builder(ReservationShareSettingsProjectMap defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private @Nullable String projectId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ReservationShareSettingsProjectMap defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.projectId = defaults.projectId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
             this.projectId = projectId;
             return this;
-        }        public ReservationShareSettingsProjectMap build() {
-            return new ReservationShareSettingsProjectMap(id, projectId);
+        }
+        public ReservationShareSettingsProjectMap build() {
+            final var o = new ReservationShareSettingsProjectMap();
+            o.id = id;
+            o.projectId = projectId;
+            return o;
         }
     }
 }

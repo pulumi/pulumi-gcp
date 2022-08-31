@@ -11,34 +11,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountJwtResult {
-    private final @Nullable List<String> delegates;
+    private @Nullable List<String> delegates;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The signed JWT containing the JWT Claims Set from the `payload`.
      * 
      */
-    private final String jwt;
-    private final String payload;
-    private final String targetServiceAccount;
+    private String jwt;
+    private String payload;
+    private String targetServiceAccount;
 
-    @CustomType.Constructor
-    private GetAccountJwtResult(
-        @CustomType.Parameter("delegates") @Nullable List<String> delegates,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("jwt") String jwt,
-        @CustomType.Parameter("payload") String payload,
-        @CustomType.Parameter("targetServiceAccount") String targetServiceAccount) {
-        this.delegates = delegates;
-        this.id = id;
-        this.jwt = jwt;
-        this.payload = payload;
-        this.targetServiceAccount = targetServiceAccount;
-    }
-
+    private GetAccountJwtResult() {}
     public List<String> delegates() {
         return this.delegates == null ? List.of() : this.delegates;
     }
@@ -70,18 +57,14 @@ public final class GetAccountJwtResult {
     public static Builder builder(GetAccountJwtResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> delegates;
         private String id;
         private String jwt;
         private String payload;
         private String targetServiceAccount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccountJwtResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.delegates = defaults.delegates;
@@ -91,6 +74,7 @@ public final class GetAccountJwtResult {
     	      this.targetServiceAccount = defaults.targetServiceAccount;
         }
 
+        @CustomType.Setter
         public Builder delegates(@Nullable List<String> delegates) {
             this.delegates = delegates;
             return this;
@@ -98,23 +82,34 @@ public final class GetAccountJwtResult {
         public Builder delegates(String... delegates) {
             return delegates(List.of(delegates));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder jwt(String jwt) {
             this.jwt = Objects.requireNonNull(jwt);
             return this;
         }
+        @CustomType.Setter
         public Builder payload(String payload) {
             this.payload = Objects.requireNonNull(payload);
             return this;
         }
+        @CustomType.Setter
         public Builder targetServiceAccount(String targetServiceAccount) {
             this.targetServiceAccount = Objects.requireNonNull(targetServiceAccount);
             return this;
-        }        public GetAccountJwtResult build() {
-            return new GetAccountJwtResult(delegates, id, jwt, payload, targetServiceAccount);
+        }
+        public GetAccountJwtResult build() {
+            final var o = new GetAccountJwtResult();
+            o.delegates = delegates;
+            o.id = id;
+            o.jwt = jwt;
+            o.payload = payload;
+            o.targetServiceAccount = targetServiceAccount;
+            return o;
         }
     }
 }

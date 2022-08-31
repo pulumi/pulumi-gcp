@@ -212,6 +212,17 @@ namespace Pulumi.Gcp.Apigee
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+        /// is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+        /// operation completes. During this period, the Organization may be restored to its last known state.
+        /// After this period, the Organization will no longer be able to be restored.
+        /// Default value is `DELETION_RETENTION_UNSPECIFIED`.
+        /// Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+        /// </summary>
+        [Output("retention")]
+        public Output<string?> Retention { get; private set; } = null!;
+
+        /// <summary>
         /// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
         /// Update is not allowed after the organization is created.
         /// If not specified, a Google-Managed encryption key will be used.
@@ -320,6 +331,17 @@ namespace Pulumi.Gcp.Apigee
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
+        /// Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+        /// is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+        /// operation completes. During this period, the Organization may be restored to its last known state.
+        /// After this period, the Organization will no longer be able to be restored.
+        /// Default value is `DELETION_RETENTION_UNSPECIFIED`.
+        /// Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+        /// </summary>
+        [Input("retention")]
+        public Input<string>? Retention { get; set; }
+
+        /// <summary>
         /// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
         /// Update is not allowed after the organization is created.
         /// If not specified, a Google-Managed encryption key will be used.
@@ -394,6 +416,17 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+        /// is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+        /// operation completes. During this period, the Organization may be restored to its last known state.
+        /// After this period, the Organization will no longer be able to be restored.
+        /// Default value is `DELETION_RETENTION_UNSPECIFIED`.
+        /// Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+        /// </summary>
+        [Input("retention")]
+        public Input<string>? Retention { get; set; }
 
         /// <summary>
         /// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.

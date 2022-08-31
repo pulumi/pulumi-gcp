@@ -15,13 +15,9 @@ public final class LiteTopicReservationConfig {
      * @return The Reservation to use for this topic&#39;s throughput capacity.
      * 
      */
-    private final @Nullable String throughputReservation;
+    private @Nullable String throughputReservation;
 
-    @CustomType.Constructor
-    private LiteTopicReservationConfig(@CustomType.Parameter("throughputReservation") @Nullable String throughputReservation) {
-        this.throughputReservation = throughputReservation;
-    }
-
+    private LiteTopicReservationConfig() {}
     /**
      * @return The Reservation to use for this topic&#39;s throughput capacity.
      * 
@@ -37,24 +33,24 @@ public final class LiteTopicReservationConfig {
     public static Builder builder(LiteTopicReservationConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String throughputReservation;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(LiteTopicReservationConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.throughputReservation = defaults.throughputReservation;
         }
 
+        @CustomType.Setter
         public Builder throughputReservation(@Nullable String throughputReservation) {
             this.throughputReservation = throughputReservation;
             return this;
-        }        public LiteTopicReservationConfig build() {
-            return new LiteTopicReservationConfig(throughputReservation);
+        }
+        public LiteTopicReservationConfig build() {
+            final var o = new LiteTopicReservationConfig();
+            o.throughputReservation = throughputReservation;
+            return o;
         }
     }
 }

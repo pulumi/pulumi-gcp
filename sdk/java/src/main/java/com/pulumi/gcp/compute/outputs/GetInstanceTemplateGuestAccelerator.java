@@ -14,21 +14,14 @@ public final class GetInstanceTemplateGuestAccelerator {
      * @return The number of the guest accelerator cards exposed to this instance.
      * 
      */
-    private final Integer count;
+    private Integer count;
     /**
      * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetInstanceTemplateGuestAccelerator(
-        @CustomType.Parameter("count") Integer count,
-        @CustomType.Parameter("type") String type) {
-        this.count = count;
-        this.type = type;
-    }
-
+    private GetInstanceTemplateGuestAccelerator() {}
     /**
      * @return The number of the guest accelerator cards exposed to this instance.
      * 
@@ -51,30 +44,32 @@ public final class GetInstanceTemplateGuestAccelerator {
     public static Builder builder(GetInstanceTemplateGuestAccelerator defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer count;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTemplateGuestAccelerator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder count(Integer count) {
             this.count = Objects.requireNonNull(count);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetInstanceTemplateGuestAccelerator build() {
-            return new GetInstanceTemplateGuestAccelerator(count, type);
+        }
+        public GetInstanceTemplateGuestAccelerator build() {
+            final var o = new GetInstanceTemplateGuestAccelerator();
+            o.count = count;
+            o.type = type;
+            return o;
         }
     }
 }

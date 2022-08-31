@@ -15,24 +15,15 @@ public final class GetGroupsResult {
      * @return The list of groups under the provided customer or namespace. Structure is documented below.
      * 
      */
-    private final List<GetGroupsGroup> groups;
+    private List<GetGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String parent;
+    private String id;
+    private String parent;
 
-    @CustomType.Constructor
-    private GetGroupsResult(
-        @CustomType.Parameter("groups") List<GetGroupsGroup> groups,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("parent") String parent) {
-        this.groups = groups;
-        this.id = id;
-        this.parent = parent;
-    }
-
+    private GetGroupsResult() {}
     /**
      * @return The list of groups under the provided customer or namespace. Structure is documented below.
      * 
@@ -58,16 +49,12 @@ public final class GetGroupsResult {
     public static Builder builder(GetGroupsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetGroupsGroup> groups;
         private String id;
         private String parent;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groups = defaults.groups;
@@ -75,6 +62,7 @@ public final class GetGroupsResult {
     	      this.parent = defaults.parent;
         }
 
+        @CustomType.Setter
         public Builder groups(List<GetGroupsGroup> groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
@@ -82,15 +70,22 @@ public final class GetGroupsResult {
         public Builder groups(GetGroupsGroup... groups) {
             return groups(List.of(groups));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder parent(String parent) {
             this.parent = Objects.requireNonNull(parent);
             return this;
-        }        public GetGroupsResult build() {
-            return new GetGroupsResult(groups, id, parent);
+        }
+        public GetGroupsResult build() {
+            final var o = new GetGroupsResult();
+            o.groups = groups;
+            o.id = id;
+            o.parent = parent;
+            return o;
         }
     }
 }

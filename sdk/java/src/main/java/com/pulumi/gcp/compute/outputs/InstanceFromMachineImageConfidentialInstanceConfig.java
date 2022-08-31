@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class InstanceFromMachineImageConfidentialInstanceConfig {
-    private final Boolean enableConfidentialCompute;
+    private Boolean enableConfidentialCompute;
 
-    @CustomType.Constructor
-    private InstanceFromMachineImageConfidentialInstanceConfig(@CustomType.Parameter("enableConfidentialCompute") Boolean enableConfidentialCompute) {
-        this.enableConfidentialCompute = enableConfidentialCompute;
-    }
-
+    private InstanceFromMachineImageConfidentialInstanceConfig() {}
     public Boolean enableConfidentialCompute() {
         return this.enableConfidentialCompute;
     }
@@ -27,24 +23,24 @@ public final class InstanceFromMachineImageConfidentialInstanceConfig {
     public static Builder builder(InstanceFromMachineImageConfidentialInstanceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enableConfidentialCompute;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceFromMachineImageConfidentialInstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableConfidentialCompute = defaults.enableConfidentialCompute;
         }
 
+        @CustomType.Setter
         public Builder enableConfidentialCompute(Boolean enableConfidentialCompute) {
             this.enableConfidentialCompute = Objects.requireNonNull(enableConfidentialCompute);
             return this;
-        }        public InstanceFromMachineImageConfidentialInstanceConfig build() {
-            return new InstanceFromMachineImageConfidentialInstanceConfig(enableConfidentialCompute);
+        }
+        public InstanceFromMachineImageConfidentialInstanceConfig build() {
+            final var o = new InstanceFromMachineImageConfidentialInstanceConfig();
+            o.enableConfidentialCompute = enableConfidentialCompute;
+            return o;
         }
     }
 }

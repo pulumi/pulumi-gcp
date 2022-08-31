@@ -13,13 +13,9 @@ public final class StandardAppVersionEntrypoint {
      * @return The format should be a shell command that can be fed to bash -c.
      * 
      */
-    private final String shell;
+    private String shell;
 
-    @CustomType.Constructor
-    private StandardAppVersionEntrypoint(@CustomType.Parameter("shell") String shell) {
-        this.shell = shell;
-    }
-
+    private StandardAppVersionEntrypoint() {}
     /**
      * @return The format should be a shell command that can be fed to bash -c.
      * 
@@ -35,24 +31,24 @@ public final class StandardAppVersionEntrypoint {
     public static Builder builder(StandardAppVersionEntrypoint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String shell;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StandardAppVersionEntrypoint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.shell = defaults.shell;
         }
 
+        @CustomType.Setter
         public Builder shell(String shell) {
             this.shell = Objects.requireNonNull(shell);
             return this;
-        }        public StandardAppVersionEntrypoint build() {
-            return new StandardAppVersionEntrypoint(shell);
+        }
+        public StandardAppVersionEntrypoint build() {
+            final var o = new StandardAppVersionEntrypoint();
+            o.shell = shell;
+            return o;
         }
     }
 }

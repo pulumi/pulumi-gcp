@@ -17,7 +17,7 @@ public final class ClusterNodeConfigKubeletConfig {
      * containers that specify CPU limits.
      * 
      */
-    private final @Nullable Boolean cpuCfsQuota;
+    private @Nullable Boolean cpuCfsQuota;
     /**
      * @return The CPU CFS quota period value. Specified
      * as a sequence of decimal numbers, each with optional fraction and a unit suffix,
@@ -25,25 +25,16 @@ public final class ClusterNodeConfigKubeletConfig {
      * &#34;h&#34;. The value must be a positive duration.
      * 
      */
-    private final @Nullable String cpuCfsQuotaPeriod;
+    private @Nullable String cpuCfsQuotaPeriod;
     /**
      * @return The CPU management policy on the node. See
      * [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
      * One of `&#34;none&#34;` or `&#34;static&#34;`. Defaults to `none` when `kubelet_config` is unset.
      * 
      */
-    private final String cpuManagerPolicy;
+    private String cpuManagerPolicy;
 
-    @CustomType.Constructor
-    private ClusterNodeConfigKubeletConfig(
-        @CustomType.Parameter("cpuCfsQuota") @Nullable Boolean cpuCfsQuota,
-        @CustomType.Parameter("cpuCfsQuotaPeriod") @Nullable String cpuCfsQuotaPeriod,
-        @CustomType.Parameter("cpuManagerPolicy") String cpuManagerPolicy) {
-        this.cpuCfsQuota = cpuCfsQuota;
-        this.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
-        this.cpuManagerPolicy = cpuManagerPolicy;
-    }
-
+    private ClusterNodeConfigKubeletConfig() {}
     /**
      * @return If true, enables CPU CFS quota enforcement for
      * containers that specify CPU limits.
@@ -79,16 +70,12 @@ public final class ClusterNodeConfigKubeletConfig {
     public static Builder builder(ClusterNodeConfigKubeletConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean cpuCfsQuota;
         private @Nullable String cpuCfsQuotaPeriod;
         private String cpuManagerPolicy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNodeConfigKubeletConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuCfsQuota = defaults.cpuCfsQuota;
@@ -96,19 +83,27 @@ public final class ClusterNodeConfigKubeletConfig {
     	      this.cpuManagerPolicy = defaults.cpuManagerPolicy;
         }
 
+        @CustomType.Setter
         public Builder cpuCfsQuota(@Nullable Boolean cpuCfsQuota) {
             this.cpuCfsQuota = cpuCfsQuota;
             return this;
         }
+        @CustomType.Setter
         public Builder cpuCfsQuotaPeriod(@Nullable String cpuCfsQuotaPeriod) {
             this.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             return this;
         }
+        @CustomType.Setter
         public Builder cpuManagerPolicy(String cpuManagerPolicy) {
             this.cpuManagerPolicy = Objects.requireNonNull(cpuManagerPolicy);
             return this;
-        }        public ClusterNodeConfigKubeletConfig build() {
-            return new ClusterNodeConfigKubeletConfig(cpuCfsQuota, cpuCfsQuotaPeriod, cpuManagerPolicy);
+        }
+        public ClusterNodeConfigKubeletConfig build() {
+            final var o = new ClusterNodeConfigKubeletConfig();
+            o.cpuCfsQuota = cpuCfsQuota;
+            o.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
+            o.cpuManagerPolicy = cpuManagerPolicy;
+            return o;
         }
     }
 }

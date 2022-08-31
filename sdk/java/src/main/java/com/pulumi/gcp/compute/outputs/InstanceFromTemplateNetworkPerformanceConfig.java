@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class InstanceFromTemplateNetworkPerformanceConfig {
-    private final String totalEgressBandwidthTier;
+    private String totalEgressBandwidthTier;
 
-    @CustomType.Constructor
-    private InstanceFromTemplateNetworkPerformanceConfig(@CustomType.Parameter("totalEgressBandwidthTier") String totalEgressBandwidthTier) {
-        this.totalEgressBandwidthTier = totalEgressBandwidthTier;
-    }
-
+    private InstanceFromTemplateNetworkPerformanceConfig() {}
     public String totalEgressBandwidthTier() {
         return this.totalEgressBandwidthTier;
     }
@@ -27,24 +23,24 @@ public final class InstanceFromTemplateNetworkPerformanceConfig {
     public static Builder builder(InstanceFromTemplateNetworkPerformanceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String totalEgressBandwidthTier;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceFromTemplateNetworkPerformanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.totalEgressBandwidthTier = defaults.totalEgressBandwidthTier;
         }
 
+        @CustomType.Setter
         public Builder totalEgressBandwidthTier(String totalEgressBandwidthTier) {
             this.totalEgressBandwidthTier = Objects.requireNonNull(totalEgressBandwidthTier);
             return this;
-        }        public InstanceFromTemplateNetworkPerformanceConfig build() {
-            return new InstanceFromTemplateNetworkPerformanceConfig(totalEgressBandwidthTier);
+        }
+        public InstanceFromTemplateNetworkPerformanceConfig build() {
+            final var o = new InstanceFromTemplateNetworkPerformanceConfig();
+            o.totalEgressBandwidthTier = totalEgressBandwidthTier;
+            return o;
         }
     }
 }

@@ -18,29 +18,29 @@ public final class TagField {
      * @return Holds the value for a tag field with boolean type.
      * 
      */
-    private final @Nullable Boolean boolValue;
+    private @Nullable Boolean boolValue;
     /**
      * @return -
      * The display name of this field
      * 
      */
-    private final @Nullable String displayName;
+    private @Nullable String displayName;
     /**
      * @return Holds the value for a tag field with double type.
      * 
      */
-    private final @Nullable Double doubleValue;
+    private @Nullable Double doubleValue;
     /**
      * @return Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
      * Structure is documented below.
      * 
      */
-    private final @Nullable String enumValue;
+    private @Nullable String enumValue;
     /**
      * @return The identifier for this object. Format specified above.
      * 
      */
-    private final String fieldName;
+    private String fieldName;
     /**
      * @return -
      * The order of this field with respect to other fields in this tag. For example, a higher value can indicate
@@ -48,38 +48,19 @@ public final class TagField {
      * within a tag do not have to be sequential.
      * 
      */
-    private final @Nullable Integer order;
+    private @Nullable Integer order;
     /**
      * @return Holds the value for a tag field with string type.
      * 
      */
-    private final @Nullable String stringValue;
+    private @Nullable String stringValue;
     /**
      * @return Holds the value for a tag field with timestamp type.
      * 
      */
-    private final @Nullable String timestampValue;
+    private @Nullable String timestampValue;
 
-    @CustomType.Constructor
-    private TagField(
-        @CustomType.Parameter("boolValue") @Nullable Boolean boolValue,
-        @CustomType.Parameter("displayName") @Nullable String displayName,
-        @CustomType.Parameter("doubleValue") @Nullable Double doubleValue,
-        @CustomType.Parameter("enumValue") @Nullable String enumValue,
-        @CustomType.Parameter("fieldName") String fieldName,
-        @CustomType.Parameter("order") @Nullable Integer order,
-        @CustomType.Parameter("stringValue") @Nullable String stringValue,
-        @CustomType.Parameter("timestampValue") @Nullable String timestampValue) {
-        this.boolValue = boolValue;
-        this.displayName = displayName;
-        this.doubleValue = doubleValue;
-        this.enumValue = enumValue;
-        this.fieldName = fieldName;
-        this.order = order;
-        this.stringValue = stringValue;
-        this.timestampValue = timestampValue;
-    }
-
+    private TagField() {}
     /**
      * @return Holds the value for a tag field with boolean type.
      * 
@@ -149,7 +130,7 @@ public final class TagField {
     public static Builder builder(TagField defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean boolValue;
         private @Nullable String displayName;
@@ -159,11 +140,7 @@ public final class TagField {
         private @Nullable Integer order;
         private @Nullable String stringValue;
         private @Nullable String timestampValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TagField defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.boolValue = defaults.boolValue;
@@ -176,39 +153,57 @@ public final class TagField {
     	      this.timestampValue = defaults.timestampValue;
         }
 
+        @CustomType.Setter
         public Builder boolValue(@Nullable Boolean boolValue) {
             this.boolValue = boolValue;
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
             this.displayName = displayName;
             return this;
         }
+        @CustomType.Setter
         public Builder doubleValue(@Nullable Double doubleValue) {
             this.doubleValue = doubleValue;
             return this;
         }
+        @CustomType.Setter
         public Builder enumValue(@Nullable String enumValue) {
             this.enumValue = enumValue;
             return this;
         }
+        @CustomType.Setter
         public Builder fieldName(String fieldName) {
             this.fieldName = Objects.requireNonNull(fieldName);
             return this;
         }
+        @CustomType.Setter
         public Builder order(@Nullable Integer order) {
             this.order = order;
             return this;
         }
+        @CustomType.Setter
         public Builder stringValue(@Nullable String stringValue) {
             this.stringValue = stringValue;
             return this;
         }
+        @CustomType.Setter
         public Builder timestampValue(@Nullable String timestampValue) {
             this.timestampValue = timestampValue;
             return this;
-        }        public TagField build() {
-            return new TagField(boolValue, displayName, doubleValue, enumValue, fieldName, order, stringValue, timestampValue);
+        }
+        public TagField build() {
+            final var o = new TagField();
+            o.boolValue = boolValue;
+            o.displayName = displayName;
+            o.doubleValue = doubleValue;
+            o.enumValue = enumValue;
+            o.fieldName = fieldName;
+            o.order = order;
+            o.stringValue = stringValue;
+            o.timestampValue = timestampValue;
+            return o;
         }
     }
 }

@@ -17,7 +17,7 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistribut
      * MetricKind = DELTA or MetricKind = CUMULATIVE.
      * 
      */
-    private final String distributionFilter;
+    private String distributionFilter;
     /**
      * @return Range of numerical values. The computed good_service
      * will be the count of values x in the Distribution such
@@ -28,16 +28,9 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistribut
      * Structure is documented below.
      * 
      */
-    private final SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange range;
+    private SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange range;
 
-    @CustomType.Constructor
-    private SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut(
-        @CustomType.Parameter("distributionFilter") String distributionFilter,
-        @CustomType.Parameter("range") SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange range) {
-        this.distributionFilter = distributionFilter;
-        this.range = range;
-    }
-
+    private SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut() {}
     /**
      * @return A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
      * aggregating values to quantify the good service provided.
@@ -69,30 +62,32 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistribut
     public static Builder builder(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String distributionFilter;
         private SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange range;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.distributionFilter = defaults.distributionFilter;
     	      this.range = defaults.range;
         }
 
+        @CustomType.Setter
         public Builder distributionFilter(String distributionFilter) {
             this.distributionFilter = Objects.requireNonNull(distributionFilter);
             return this;
         }
+        @CustomType.Setter
         public Builder range(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange range) {
             this.range = Objects.requireNonNull(range);
             return this;
-        }        public SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut build() {
-            return new SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut(distributionFilter, range);
+        }
+        public SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut build() {
+            final var o = new SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut();
+            o.distributionFilter = distributionFilter;
+            o.range = range;
+            return o;
         }
     }
 }

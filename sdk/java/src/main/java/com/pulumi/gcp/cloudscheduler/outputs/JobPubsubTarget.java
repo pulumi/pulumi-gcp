@@ -17,14 +17,14 @@ public final class JobPubsubTarget {
      * Pubsub message must contain either non-empty data, or at least one attribute.
      * 
      */
-    private final @Nullable Map<String,String> attributes;
+    private @Nullable Map<String,String> attributes;
     /**
      * @return The message payload for PubsubMessage.
      * Pubsub message must contain either non-empty data, or at least one attribute.
      * A base64-encoded string.
      * 
      */
-    private final @Nullable String data;
+    private @Nullable String data;
     /**
      * @return The full resource name for the Cloud Pub/Sub topic to which
      * messages will be published when a job is delivered. ~&gt;**NOTE:**
@@ -32,18 +32,9 @@ public final class JobPubsubTarget {
      * PublishRequest.name, e.g. `projects/my-project/topics/my-topic`.
      * 
      */
-    private final String topicName;
+    private String topicName;
 
-    @CustomType.Constructor
-    private JobPubsubTarget(
-        @CustomType.Parameter("attributes") @Nullable Map<String,String> attributes,
-        @CustomType.Parameter("data") @Nullable String data,
-        @CustomType.Parameter("topicName") String topicName) {
-        this.attributes = attributes;
-        this.data = data;
-        this.topicName = topicName;
-    }
-
+    private JobPubsubTarget() {}
     /**
      * @return Attributes for PubsubMessage.
      * Pubsub message must contain either non-empty data, or at least one attribute.
@@ -79,16 +70,12 @@ public final class JobPubsubTarget {
     public static Builder builder(JobPubsubTarget defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> attributes;
         private @Nullable String data;
         private String topicName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobPubsubTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attributes = defaults.attributes;
@@ -96,19 +83,27 @@ public final class JobPubsubTarget {
     	      this.topicName = defaults.topicName;
         }
 
+        @CustomType.Setter
         public Builder attributes(@Nullable Map<String,String> attributes) {
             this.attributes = attributes;
             return this;
         }
+        @CustomType.Setter
         public Builder data(@Nullable String data) {
             this.data = data;
             return this;
         }
+        @CustomType.Setter
         public Builder topicName(String topicName) {
             this.topicName = Objects.requireNonNull(topicName);
             return this;
-        }        public JobPubsubTarget build() {
-            return new JobPubsubTarget(attributes, data, topicName);
+        }
+        public JobPubsubTarget build() {
+            final var o = new JobPubsubTarget();
+            o.attributes = attributes;
+            o.data = data;
+            o.topicName = topicName;
+            return o;
         }
     }
 }

@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthoritySubordinateConfigPemIssuerChain {
-    private final List<String> pemCertificates;
+    private List<String> pemCertificates;
 
-    @CustomType.Constructor
-    private GetAuthoritySubordinateConfigPemIssuerChain(@CustomType.Parameter("pemCertificates") List<String> pemCertificates) {
-        this.pemCertificates = pemCertificates;
-    }
-
+    private GetAuthoritySubordinateConfigPemIssuerChain() {}
     public List<String> pemCertificates() {
         return this.pemCertificates;
     }
@@ -28,27 +24,27 @@ public final class GetAuthoritySubordinateConfigPemIssuerChain {
     public static Builder builder(GetAuthoritySubordinateConfigPemIssuerChain defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> pemCertificates;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthoritySubordinateConfigPemIssuerChain defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pemCertificates = defaults.pemCertificates;
         }
 
+        @CustomType.Setter
         public Builder pemCertificates(List<String> pemCertificates) {
             this.pemCertificates = Objects.requireNonNull(pemCertificates);
             return this;
         }
         public Builder pemCertificates(String... pemCertificates) {
             return pemCertificates(List.of(pemCertificates));
-        }        public GetAuthoritySubordinateConfigPemIssuerChain build() {
-            return new GetAuthoritySubordinateConfigPemIssuerChain(pemCertificates);
+        }
+        public GetAuthoritySubordinateConfigPemIssuerChain build() {
+            final var o = new GetAuthoritySubordinateConfigPemIssuerChain();
+            o.pemCertificates = pemCertificates;
+            return o;
         }
     }
 }

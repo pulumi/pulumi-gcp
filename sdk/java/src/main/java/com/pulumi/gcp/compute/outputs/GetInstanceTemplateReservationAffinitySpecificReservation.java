@@ -14,17 +14,10 @@ public final class GetInstanceTemplateReservationAffinitySpecificReservation {
      * @return The key for the node affinity label.
      * 
      */
-    private final String key;
-    private final List<String> values;
+    private String key;
+    private List<String> values;
 
-    @CustomType.Constructor
-    private GetInstanceTemplateReservationAffinitySpecificReservation(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("values") List<String> values) {
-        this.key = key;
-        this.values = values;
-    }
-
+    private GetInstanceTemplateReservationAffinitySpecificReservation() {}
     /**
      * @return The key for the node affinity label.
      * 
@@ -43,33 +36,35 @@ public final class GetInstanceTemplateReservationAffinitySpecificReservation {
     public static Builder builder(GetInstanceTemplateReservationAffinitySpecificReservation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTemplateReservationAffinitySpecificReservation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public GetInstanceTemplateReservationAffinitySpecificReservation build() {
-            return new GetInstanceTemplateReservationAffinitySpecificReservation(key, values);
+        }
+        public GetInstanceTemplateReservationAffinitySpecificReservation build() {
+            final var o = new GetInstanceTemplateReservationAffinitySpecificReservation();
+            o.key = key;
+            o.values = values;
+            return o;
         }
     }
 }

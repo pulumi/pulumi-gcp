@@ -16,33 +16,18 @@ public final class GetAccountAccessTokenResult {
      * @return The `access_token` representing the new generated identity.
      * 
      */
-    private final String accessToken;
-    private final @Nullable List<String> delegates;
+    private String accessToken;
+    private @Nullable List<String> delegates;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String lifetime;
-    private final List<String> scopes;
-    private final String targetServiceAccount;
+    private String id;
+    private @Nullable String lifetime;
+    private List<String> scopes;
+    private String targetServiceAccount;
 
-    @CustomType.Constructor
-    private GetAccountAccessTokenResult(
-        @CustomType.Parameter("accessToken") String accessToken,
-        @CustomType.Parameter("delegates") @Nullable List<String> delegates,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("lifetime") @Nullable String lifetime,
-        @CustomType.Parameter("scopes") List<String> scopes,
-        @CustomType.Parameter("targetServiceAccount") String targetServiceAccount) {
-        this.accessToken = accessToken;
-        this.delegates = delegates;
-        this.id = id;
-        this.lifetime = lifetime;
-        this.scopes = scopes;
-        this.targetServiceAccount = targetServiceAccount;
-    }
-
+    private GetAccountAccessTokenResult() {}
     /**
      * @return The `access_token` representing the new generated identity.
      * 
@@ -77,7 +62,7 @@ public final class GetAccountAccessTokenResult {
     public static Builder builder(GetAccountAccessTokenResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessToken;
         private @Nullable List<String> delegates;
@@ -85,11 +70,7 @@ public final class GetAccountAccessTokenResult {
         private @Nullable String lifetime;
         private List<String> scopes;
         private String targetServiceAccount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccountAccessTokenResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessToken = defaults.accessToken;
@@ -100,10 +81,12 @@ public final class GetAccountAccessTokenResult {
     	      this.targetServiceAccount = defaults.targetServiceAccount;
         }
 
+        @CustomType.Setter
         public Builder accessToken(String accessToken) {
             this.accessToken = Objects.requireNonNull(accessToken);
             return this;
         }
+        @CustomType.Setter
         public Builder delegates(@Nullable List<String> delegates) {
             this.delegates = delegates;
             return this;
@@ -111,14 +94,17 @@ public final class GetAccountAccessTokenResult {
         public Builder delegates(String... delegates) {
             return delegates(List.of(delegates));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder lifetime(@Nullable String lifetime) {
             this.lifetime = lifetime;
             return this;
         }
+        @CustomType.Setter
         public Builder scopes(List<String> scopes) {
             this.scopes = Objects.requireNonNull(scopes);
             return this;
@@ -126,11 +112,20 @@ public final class GetAccountAccessTokenResult {
         public Builder scopes(String... scopes) {
             return scopes(List.of(scopes));
         }
+        @CustomType.Setter
         public Builder targetServiceAccount(String targetServiceAccount) {
             this.targetServiceAccount = Objects.requireNonNull(targetServiceAccount);
             return this;
-        }        public GetAccountAccessTokenResult build() {
-            return new GetAccountAccessTokenResult(accessToken, delegates, id, lifetime, scopes, targetServiceAccount);
+        }
+        public GetAccountAccessTokenResult build() {
+            final var o = new GetAccountAccessTokenResult();
+            o.accessToken = accessToken;
+            o.delegates = delegates;
+            o.id = id;
+            o.lifetime = lifetime;
+            o.scopes = scopes;
+            o.targetServiceAccount = targetServiceAccount;
+            return o;
         }
     }
 }

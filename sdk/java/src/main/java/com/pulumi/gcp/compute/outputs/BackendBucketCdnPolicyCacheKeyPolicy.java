@@ -16,23 +16,16 @@ public final class BackendBucketCdnPolicyCacheKeyPolicy {
      * cache key.
      * 
      */
-    private final @Nullable List<String> includeHttpHeaders;
+    private @Nullable List<String> includeHttpHeaders;
     /**
      * @return Names of query string parameters to include in cache keys.
      * Default parameters are always included. &#39;&amp;&#39; and &#39;=&#39; will
      * be percent encoded and not treated as delimiters.
      * 
      */
-    private final @Nullable List<String> queryStringWhitelists;
+    private @Nullable List<String> queryStringWhitelists;
 
-    @CustomType.Constructor
-    private BackendBucketCdnPolicyCacheKeyPolicy(
-        @CustomType.Parameter("includeHttpHeaders") @Nullable List<String> includeHttpHeaders,
-        @CustomType.Parameter("queryStringWhitelists") @Nullable List<String> queryStringWhitelists) {
-        this.includeHttpHeaders = includeHttpHeaders;
-        this.queryStringWhitelists = queryStringWhitelists;
-    }
-
+    private BackendBucketCdnPolicyCacheKeyPolicy() {}
     /**
      * @return Allows HTTP request headers (by name) to be used in the
      * cache key.
@@ -58,21 +51,18 @@ public final class BackendBucketCdnPolicyCacheKeyPolicy {
     public static Builder builder(BackendBucketCdnPolicyCacheKeyPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> includeHttpHeaders;
         private @Nullable List<String> queryStringWhitelists;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BackendBucketCdnPolicyCacheKeyPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.includeHttpHeaders = defaults.includeHttpHeaders;
     	      this.queryStringWhitelists = defaults.queryStringWhitelists;
         }
 
+        @CustomType.Setter
         public Builder includeHttpHeaders(@Nullable List<String> includeHttpHeaders) {
             this.includeHttpHeaders = includeHttpHeaders;
             return this;
@@ -80,14 +70,19 @@ public final class BackendBucketCdnPolicyCacheKeyPolicy {
         public Builder includeHttpHeaders(String... includeHttpHeaders) {
             return includeHttpHeaders(List.of(includeHttpHeaders));
         }
+        @CustomType.Setter
         public Builder queryStringWhitelists(@Nullable List<String> queryStringWhitelists) {
             this.queryStringWhitelists = queryStringWhitelists;
             return this;
         }
         public Builder queryStringWhitelists(String... queryStringWhitelists) {
             return queryStringWhitelists(List.of(queryStringWhitelists));
-        }        public BackendBucketCdnPolicyCacheKeyPolicy build() {
-            return new BackendBucketCdnPolicyCacheKeyPolicy(includeHttpHeaders, queryStringWhitelists);
+        }
+        public BackendBucketCdnPolicyCacheKeyPolicy build() {
+            final var o = new BackendBucketCdnPolicyCacheKeyPolicy();
+            o.includeHttpHeaders = includeHttpHeaders;
+            o.queryStringWhitelists = queryStringWhitelists;
+            return o;
         }
     }
 }

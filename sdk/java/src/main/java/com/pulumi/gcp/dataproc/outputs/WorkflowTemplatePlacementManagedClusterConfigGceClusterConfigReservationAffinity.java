@@ -16,28 +16,19 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
      * @return Optional. Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
      * 
      */
-    private final @Nullable String consumeReservationType;
+    private @Nullable String consumeReservationType;
     /**
      * @return Optional. Corresponds to the label key of reservation resource.
      * 
      */
-    private final @Nullable String key;
+    private @Nullable String key;
     /**
      * @return Optional. Corresponds to the label values of reservation resource.
      * 
      */
-    private final @Nullable List<String> values;
+    private @Nullable List<String> values;
 
-    @CustomType.Constructor
-    private WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity(
-        @CustomType.Parameter("consumeReservationType") @Nullable String consumeReservationType,
-        @CustomType.Parameter("key") @Nullable String key,
-        @CustomType.Parameter("values") @Nullable List<String> values) {
-        this.consumeReservationType = consumeReservationType;
-        this.key = key;
-        this.values = values;
-    }
-
+    private WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity() {}
     /**
      * @return Optional. Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
      * 
@@ -67,16 +58,12 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     public static Builder builder(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String consumeReservationType;
         private @Nullable String key;
         private @Nullable List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.consumeReservationType = defaults.consumeReservationType;
@@ -84,22 +71,30 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder consumeReservationType(@Nullable String consumeReservationType) {
             this.consumeReservationType = consumeReservationType;
             return this;
         }
+        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
+        @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
             this.values = values;
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity build() {
-            return new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity(consumeReservationType, key, values);
+        }
+        public WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity build() {
+            final var o = new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity();
+            o.consumeReservationType = consumeReservationType;
+            o.key = key;
+            o.values = values;
+            return o;
         }
     }
 }

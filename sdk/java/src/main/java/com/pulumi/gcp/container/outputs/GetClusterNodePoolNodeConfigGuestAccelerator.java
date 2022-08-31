@@ -10,20 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfigGuestAccelerator {
-    private final Integer count;
-    private final String gpuPartitionSize;
-    private final String type;
+    private Integer count;
+    private String gpuPartitionSize;
+    private String type;
 
-    @CustomType.Constructor
-    private GetClusterNodePoolNodeConfigGuestAccelerator(
-        @CustomType.Parameter("count") Integer count,
-        @CustomType.Parameter("gpuPartitionSize") String gpuPartitionSize,
-        @CustomType.Parameter("type") String type) {
-        this.count = count;
-        this.gpuPartitionSize = gpuPartitionSize;
-        this.type = type;
-    }
-
+    private GetClusterNodePoolNodeConfigGuestAccelerator() {}
     public Integer count() {
         return this.count;
     }
@@ -41,16 +32,12 @@ public final class GetClusterNodePoolNodeConfigGuestAccelerator {
     public static Builder builder(GetClusterNodePoolNodeConfigGuestAccelerator defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer count;
         private String gpuPartitionSize;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterNodePoolNodeConfigGuestAccelerator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
@@ -58,19 +45,27 @@ public final class GetClusterNodePoolNodeConfigGuestAccelerator {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder count(Integer count) {
             this.count = Objects.requireNonNull(count);
             return this;
         }
+        @CustomType.Setter
         public Builder gpuPartitionSize(String gpuPartitionSize) {
             this.gpuPartitionSize = Objects.requireNonNull(gpuPartitionSize);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetClusterNodePoolNodeConfigGuestAccelerator build() {
-            return new GetClusterNodePoolNodeConfigGuestAccelerator(count, gpuPartitionSize, type);
+        }
+        public GetClusterNodePoolNodeConfigGuestAccelerator build() {
+            final var o = new GetClusterNodePoolNodeConfigGuestAccelerator();
+            o.count = count;
+            o.gpuPartitionSize = gpuPartitionSize;
+            o.type = type;
+            return o;
         }
     }
 }

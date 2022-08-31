@@ -370,6 +370,12 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly nodeLocations!: pulumi.Output<string[]>;
     /**
+     * ) Node pool configs that apply to auto-provisioned node pools in
+     * [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+     * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+     */
+    public readonly nodePoolAutoConfig!: pulumi.Output<outputs.container.ClusterNodePoolAutoConfig | undefined>;
+    /**
      * List of node pools associated with this cluster.
      * See gcp.container.NodePool for schema.
      * **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -537,6 +543,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["networkingMode"] = state ? state.networkingMode : undefined;
             resourceInputs["nodeConfig"] = state ? state.nodeConfig : undefined;
             resourceInputs["nodeLocations"] = state ? state.nodeLocations : undefined;
+            resourceInputs["nodePoolAutoConfig"] = state ? state.nodePoolAutoConfig : undefined;
             resourceInputs["nodePools"] = state ? state.nodePools : undefined;
             resourceInputs["nodeVersion"] = state ? state.nodeVersion : undefined;
             resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
@@ -598,6 +605,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["networkingMode"] = args ? args.networkingMode : undefined;
             resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             resourceInputs["nodeLocations"] = args ? args.nodeLocations : undefined;
+            resourceInputs["nodePoolAutoConfig"] = args ? args.nodePoolAutoConfig : undefined;
             resourceInputs["nodePools"] = args ? args.nodePools : undefined;
             resourceInputs["nodeVersion"] = args ? args.nodeVersion : undefined;
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
@@ -888,6 +896,12 @@ export interface ClusterState {
      * a zonal cluster, omit the cluster's zone.
      */
     nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ) Node pool configs that apply to auto-provisioned node pools in
+     * [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+     * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+     */
+    nodePoolAutoConfig?: pulumi.Input<inputs.container.ClusterNodePoolAutoConfig>;
     /**
      * List of node pools associated with this cluster.
      * See gcp.container.NodePool for schema.
@@ -1249,6 +1263,12 @@ export interface ClusterArgs {
      * a zonal cluster, omit the cluster's zone.
      */
     nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ) Node pool configs that apply to auto-provisioned node pools in
+     * [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+     * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+     */
+    nodePoolAutoConfig?: pulumi.Input<inputs.container.ClusterNodePoolAutoConfig>;
     /**
      * List of node pools associated with this cluster.
      * See gcp.container.NodePool for schema.

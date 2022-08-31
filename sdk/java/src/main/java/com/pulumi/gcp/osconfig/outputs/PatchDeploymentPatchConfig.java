@@ -24,77 +24,56 @@ public final class PatchDeploymentPatchConfig {
      * Structure is documented below.
      * 
      */
-    private final @Nullable PatchDeploymentPatchConfigApt apt;
+    private @Nullable PatchDeploymentPatchConfigApt apt;
     /**
      * @return goo update settings. Use this setting to override the default goo patch rules.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PatchDeploymentPatchConfigGoo goo;
+    private @Nullable PatchDeploymentPatchConfigGoo goo;
     /**
      * @return Allows the patch job to run on Managed instance groups (MIGs).
      * 
      */
-    private final @Nullable Boolean migInstancesAllowed;
+    private @Nullable Boolean migInstancesAllowed;
     /**
      * @return The ExecStep to run after the patch update.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PatchDeploymentPatchConfigPostStep postStep;
+    private @Nullable PatchDeploymentPatchConfigPostStep postStep;
     /**
      * @return The ExecStep to run before the patch update.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PatchDeploymentPatchConfigPreStep preStep;
+    private @Nullable PatchDeploymentPatchConfigPreStep preStep;
     /**
      * @return Post-patch reboot settings.
      * Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
      * 
      */
-    private final @Nullable String rebootConfig;
+    private @Nullable String rebootConfig;
     /**
      * @return Windows update settings. Use this setting to override the default Windows patch rules.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PatchDeploymentPatchConfigWindowsUpdate windowsUpdate;
+    private @Nullable PatchDeploymentPatchConfigWindowsUpdate windowsUpdate;
     /**
      * @return Yum update settings. Use this setting to override the default yum patch rules.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PatchDeploymentPatchConfigYum yum;
+    private @Nullable PatchDeploymentPatchConfigYum yum;
     /**
      * @return zypper update settings. Use this setting to override the default zypper patch rules.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PatchDeploymentPatchConfigZypper zypper;
+    private @Nullable PatchDeploymentPatchConfigZypper zypper;
 
-    @CustomType.Constructor
-    private PatchDeploymentPatchConfig(
-        @CustomType.Parameter("apt") @Nullable PatchDeploymentPatchConfigApt apt,
-        @CustomType.Parameter("goo") @Nullable PatchDeploymentPatchConfigGoo goo,
-        @CustomType.Parameter("migInstancesAllowed") @Nullable Boolean migInstancesAllowed,
-        @CustomType.Parameter("postStep") @Nullable PatchDeploymentPatchConfigPostStep postStep,
-        @CustomType.Parameter("preStep") @Nullable PatchDeploymentPatchConfigPreStep preStep,
-        @CustomType.Parameter("rebootConfig") @Nullable String rebootConfig,
-        @CustomType.Parameter("windowsUpdate") @Nullable PatchDeploymentPatchConfigWindowsUpdate windowsUpdate,
-        @CustomType.Parameter("yum") @Nullable PatchDeploymentPatchConfigYum yum,
-        @CustomType.Parameter("zypper") @Nullable PatchDeploymentPatchConfigZypper zypper) {
-        this.apt = apt;
-        this.goo = goo;
-        this.migInstancesAllowed = migInstancesAllowed;
-        this.postStep = postStep;
-        this.preStep = preStep;
-        this.rebootConfig = rebootConfig;
-        this.windowsUpdate = windowsUpdate;
-        this.yum = yum;
-        this.zypper = zypper;
-    }
-
+    private PatchDeploymentPatchConfig() {}
     /**
      * @return Apt update settings. Use this setting to override the default apt patch rules.
      * Structure is documented below.
@@ -174,7 +153,7 @@ public final class PatchDeploymentPatchConfig {
     public static Builder builder(PatchDeploymentPatchConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable PatchDeploymentPatchConfigApt apt;
         private @Nullable PatchDeploymentPatchConfigGoo goo;
@@ -185,11 +164,7 @@ public final class PatchDeploymentPatchConfig {
         private @Nullable PatchDeploymentPatchConfigWindowsUpdate windowsUpdate;
         private @Nullable PatchDeploymentPatchConfigYum yum;
         private @Nullable PatchDeploymentPatchConfigZypper zypper;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PatchDeploymentPatchConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apt = defaults.apt;
@@ -203,43 +178,63 @@ public final class PatchDeploymentPatchConfig {
     	      this.zypper = defaults.zypper;
         }
 
+        @CustomType.Setter
         public Builder apt(@Nullable PatchDeploymentPatchConfigApt apt) {
             this.apt = apt;
             return this;
         }
+        @CustomType.Setter
         public Builder goo(@Nullable PatchDeploymentPatchConfigGoo goo) {
             this.goo = goo;
             return this;
         }
+        @CustomType.Setter
         public Builder migInstancesAllowed(@Nullable Boolean migInstancesAllowed) {
             this.migInstancesAllowed = migInstancesAllowed;
             return this;
         }
+        @CustomType.Setter
         public Builder postStep(@Nullable PatchDeploymentPatchConfigPostStep postStep) {
             this.postStep = postStep;
             return this;
         }
+        @CustomType.Setter
         public Builder preStep(@Nullable PatchDeploymentPatchConfigPreStep preStep) {
             this.preStep = preStep;
             return this;
         }
+        @CustomType.Setter
         public Builder rebootConfig(@Nullable String rebootConfig) {
             this.rebootConfig = rebootConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder windowsUpdate(@Nullable PatchDeploymentPatchConfigWindowsUpdate windowsUpdate) {
             this.windowsUpdate = windowsUpdate;
             return this;
         }
+        @CustomType.Setter
         public Builder yum(@Nullable PatchDeploymentPatchConfigYum yum) {
             this.yum = yum;
             return this;
         }
+        @CustomType.Setter
         public Builder zypper(@Nullable PatchDeploymentPatchConfigZypper zypper) {
             this.zypper = zypper;
             return this;
-        }        public PatchDeploymentPatchConfig build() {
-            return new PatchDeploymentPatchConfig(apt, goo, migInstancesAllowed, postStep, preStep, rebootConfig, windowsUpdate, yum, zypper);
+        }
+        public PatchDeploymentPatchConfig build() {
+            final var o = new PatchDeploymentPatchConfig();
+            o.apt = apt;
+            o.goo = goo;
+            o.migInstancesAllowed = migInstancesAllowed;
+            o.postStep = postStep;
+            o.preStep = preStep;
+            o.rebootConfig = rebootConfig;
+            o.windowsUpdate = windowsUpdate;
+            o.yum = yum;
+            o.zypper = zypper;
+            return o;
         }
     }
 }

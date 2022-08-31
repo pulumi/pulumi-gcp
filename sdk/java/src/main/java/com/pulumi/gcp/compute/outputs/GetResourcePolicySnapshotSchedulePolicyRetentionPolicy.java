@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicySnapshotSchedulePolicyRetentionPolicy {
-    private final Integer maxRetentionDays;
-    private final String onSourceDiskDelete;
+    private Integer maxRetentionDays;
+    private String onSourceDiskDelete;
 
-    @CustomType.Constructor
-    private GetResourcePolicySnapshotSchedulePolicyRetentionPolicy(
-        @CustomType.Parameter("maxRetentionDays") Integer maxRetentionDays,
-        @CustomType.Parameter("onSourceDiskDelete") String onSourceDiskDelete) {
-        this.maxRetentionDays = maxRetentionDays;
-        this.onSourceDiskDelete = onSourceDiskDelete;
-    }
-
+    private GetResourcePolicySnapshotSchedulePolicyRetentionPolicy() {}
     public Integer maxRetentionDays() {
         return this.maxRetentionDays;
     }
@@ -35,30 +28,32 @@ public final class GetResourcePolicySnapshotSchedulePolicyRetentionPolicy {
     public static Builder builder(GetResourcePolicySnapshotSchedulePolicyRetentionPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer maxRetentionDays;
         private String onSourceDiskDelete;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetResourcePolicySnapshotSchedulePolicyRetentionPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxRetentionDays = defaults.maxRetentionDays;
     	      this.onSourceDiskDelete = defaults.onSourceDiskDelete;
         }
 
+        @CustomType.Setter
         public Builder maxRetentionDays(Integer maxRetentionDays) {
             this.maxRetentionDays = Objects.requireNonNull(maxRetentionDays);
             return this;
         }
+        @CustomType.Setter
         public Builder onSourceDiskDelete(String onSourceDiskDelete) {
             this.onSourceDiskDelete = Objects.requireNonNull(onSourceDiskDelete);
             return this;
-        }        public GetResourcePolicySnapshotSchedulePolicyRetentionPolicy build() {
-            return new GetResourcePolicySnapshotSchedulePolicyRetentionPolicy(maxRetentionDays, onSourceDiskDelete);
+        }
+        public GetResourcePolicySnapshotSchedulePolicyRetentionPolicy build() {
+            final var o = new GetResourcePolicySnapshotSchedulePolicyRetentionPolicy();
+            o.maxRetentionDays = maxRetentionDays;
+            o.onSourceDiskDelete = onSourceDiskDelete;
+            return o;
         }
     }
 }

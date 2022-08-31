@@ -14,13 +14,9 @@ public final class ClusterPrivateClusterConfigMasterGlobalAccessConfig {
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private ClusterPrivateClusterConfigMasterGlobalAccessConfig(@CustomType.Parameter("enabled") Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private ClusterPrivateClusterConfigMasterGlobalAccessConfig() {}
     /**
      * @return Enable the PodSecurityPolicy controller for this cluster.
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -37,24 +33,24 @@ public final class ClusterPrivateClusterConfigMasterGlobalAccessConfig {
     public static Builder builder(ClusterPrivateClusterConfigMasterGlobalAccessConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterPrivateClusterConfigMasterGlobalAccessConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public ClusterPrivateClusterConfigMasterGlobalAccessConfig build() {
-            return new ClusterPrivateClusterConfigMasterGlobalAccessConfig(enabled);
+        }
+        public ClusterPrivateClusterConfigMasterGlobalAccessConfig build() {
+            final var o = new ClusterPrivateClusterConfigMasterGlobalAccessConfig();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

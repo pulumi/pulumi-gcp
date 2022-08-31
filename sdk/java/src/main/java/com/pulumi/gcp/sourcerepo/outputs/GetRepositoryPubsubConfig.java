@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryPubsubConfig {
-    private final String messageFormat;
-    private final String serviceAccountEmail;
-    private final String topic;
+    private String messageFormat;
+    private String serviceAccountEmail;
+    private String topic;
 
-    @CustomType.Constructor
-    private GetRepositoryPubsubConfig(
-        @CustomType.Parameter("messageFormat") String messageFormat,
-        @CustomType.Parameter("serviceAccountEmail") String serviceAccountEmail,
-        @CustomType.Parameter("topic") String topic) {
-        this.messageFormat = messageFormat;
-        this.serviceAccountEmail = serviceAccountEmail;
-        this.topic = topic;
-    }
-
+    private GetRepositoryPubsubConfig() {}
     public String messageFormat() {
         return this.messageFormat;
     }
@@ -40,16 +31,12 @@ public final class GetRepositoryPubsubConfig {
     public static Builder builder(GetRepositoryPubsubConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String messageFormat;
         private String serviceAccountEmail;
         private String topic;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRepositoryPubsubConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.messageFormat = defaults.messageFormat;
@@ -57,19 +44,27 @@ public final class GetRepositoryPubsubConfig {
     	      this.topic = defaults.topic;
         }
 
+        @CustomType.Setter
         public Builder messageFormat(String messageFormat) {
             this.messageFormat = Objects.requireNonNull(messageFormat);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccountEmail(String serviceAccountEmail) {
             this.serviceAccountEmail = Objects.requireNonNull(serviceAccountEmail);
             return this;
         }
+        @CustomType.Setter
         public Builder topic(String topic) {
             this.topic = Objects.requireNonNull(topic);
             return this;
-        }        public GetRepositoryPubsubConfig build() {
-            return new GetRepositoryPubsubConfig(messageFormat, serviceAccountEmail, topic);
+        }
+        public GetRepositoryPubsubConfig build() {
+            final var o = new GetRepositoryPubsubConfig();
+            o.messageFormat = messageFormat;
+            o.serviceAccountEmail = serviceAccountEmail;
+            o.topic = topic;
+            return o;
         }
     }
 }

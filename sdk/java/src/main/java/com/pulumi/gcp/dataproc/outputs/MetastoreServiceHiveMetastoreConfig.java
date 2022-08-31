@@ -15,40 +15,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MetastoreServiceHiveMetastoreConfig {
-    private final @Nullable List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersion> auxiliaryVersions;
+    private @Nullable List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersion> auxiliaryVersions;
     /**
      * @return A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version&#39;s overrides.
      * If keys are present in both the auxiliary version&#39;s overrides and the primary version&#39;s overrides, the value from the auxiliary version&#39;s overrides takes precedence.
      * 
      */
-    private final @Nullable Map<String,String> configOverrides;
-    private final @Nullable String endpointProtocol;
+    private @Nullable Map<String,String> configOverrides;
+    private @Nullable String endpointProtocol;
     /**
      * @return Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
      * Structure is documented below.
      * 
      */
-    private final @Nullable MetastoreServiceHiveMetastoreConfigKerberosConfig kerberosConfig;
+    private @Nullable MetastoreServiceHiveMetastoreConfigKerberosConfig kerberosConfig;
     /**
      * @return The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service&#39;s version.
      * 
      */
-    private final String version;
+    private String version;
 
-    @CustomType.Constructor
-    private MetastoreServiceHiveMetastoreConfig(
-        @CustomType.Parameter("auxiliaryVersions") @Nullable List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersion> auxiliaryVersions,
-        @CustomType.Parameter("configOverrides") @Nullable Map<String,String> configOverrides,
-        @CustomType.Parameter("endpointProtocol") @Nullable String endpointProtocol,
-        @CustomType.Parameter("kerberosConfig") @Nullable MetastoreServiceHiveMetastoreConfigKerberosConfig kerberosConfig,
-        @CustomType.Parameter("version") String version) {
-        this.auxiliaryVersions = auxiliaryVersions;
-        this.configOverrides = configOverrides;
-        this.endpointProtocol = endpointProtocol;
-        this.kerberosConfig = kerberosConfig;
-        this.version = version;
-    }
-
+    private MetastoreServiceHiveMetastoreConfig() {}
     public List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersion> auxiliaryVersions() {
         return this.auxiliaryVersions == null ? List.of() : this.auxiliaryVersions;
     }
@@ -86,18 +73,14 @@ public final class MetastoreServiceHiveMetastoreConfig {
     public static Builder builder(MetastoreServiceHiveMetastoreConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersion> auxiliaryVersions;
         private @Nullable Map<String,String> configOverrides;
         private @Nullable String endpointProtocol;
         private @Nullable MetastoreServiceHiveMetastoreConfigKerberosConfig kerberosConfig;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MetastoreServiceHiveMetastoreConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.auxiliaryVersions = defaults.auxiliaryVersions;
@@ -107,6 +90,7 @@ public final class MetastoreServiceHiveMetastoreConfig {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder auxiliaryVersions(@Nullable List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersion> auxiliaryVersions) {
             this.auxiliaryVersions = auxiliaryVersions;
             return this;
@@ -114,23 +98,34 @@ public final class MetastoreServiceHiveMetastoreConfig {
         public Builder auxiliaryVersions(MetastoreServiceHiveMetastoreConfigAuxiliaryVersion... auxiliaryVersions) {
             return auxiliaryVersions(List.of(auxiliaryVersions));
         }
+        @CustomType.Setter
         public Builder configOverrides(@Nullable Map<String,String> configOverrides) {
             this.configOverrides = configOverrides;
             return this;
         }
+        @CustomType.Setter
         public Builder endpointProtocol(@Nullable String endpointProtocol) {
             this.endpointProtocol = endpointProtocol;
             return this;
         }
+        @CustomType.Setter
         public Builder kerberosConfig(@Nullable MetastoreServiceHiveMetastoreConfigKerberosConfig kerberosConfig) {
             this.kerberosConfig = kerberosConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public MetastoreServiceHiveMetastoreConfig build() {
-            return new MetastoreServiceHiveMetastoreConfig(auxiliaryVersions, configOverrides, endpointProtocol, kerberosConfig, version);
+        }
+        public MetastoreServiceHiveMetastoreConfig build() {
+            final var o = new MetastoreServiceHiveMetastoreConfig();
+            o.auxiliaryVersions = auxiliaryVersions;
+            o.configOverrides = configOverrides;
+            o.endpointProtocol = endpointProtocol;
+            o.kerberosConfig = kerberosConfig;
+            o.version = version;
+            return o;
         }
     }
 }

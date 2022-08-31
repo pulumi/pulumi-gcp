@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfigGvnic {
-    private final Boolean enabled;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private GetClusterNodePoolNodeConfigGvnic(@CustomType.Parameter("enabled") Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private GetClusterNodePoolNodeConfigGvnic() {}
     public Boolean enabled() {
         return this.enabled;
     }
@@ -27,24 +23,24 @@ public final class GetClusterNodePoolNodeConfigGvnic {
     public static Builder builder(GetClusterNodePoolNodeConfigGvnic defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterNodePoolNodeConfigGvnic defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public GetClusterNodePoolNodeConfigGvnic build() {
-            return new GetClusterNodePoolNodeConfigGvnic(enabled);
+        }
+        public GetClusterNodePoolNodeConfigGvnic build() {
+            final var o = new GetClusterNodePoolNodeConfigGvnic();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

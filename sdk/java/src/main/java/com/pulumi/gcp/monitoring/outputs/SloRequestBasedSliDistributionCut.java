@@ -17,7 +17,7 @@ public final class SloRequestBasedSliDistributionCut {
      * MetricKind = DELTA or MetricKind = CUMULATIVE.
      * 
      */
-    private final String distributionFilter;
+    private String distributionFilter;
     /**
      * @return Range of numerical values. The computed good_service
      * will be the count of values x in the Distribution such
@@ -28,16 +28,9 @@ public final class SloRequestBasedSliDistributionCut {
      * Structure is documented below.
      * 
      */
-    private final SloRequestBasedSliDistributionCutRange range;
+    private SloRequestBasedSliDistributionCutRange range;
 
-    @CustomType.Constructor
-    private SloRequestBasedSliDistributionCut(
-        @CustomType.Parameter("distributionFilter") String distributionFilter,
-        @CustomType.Parameter("range") SloRequestBasedSliDistributionCutRange range) {
-        this.distributionFilter = distributionFilter;
-        this.range = range;
-    }
-
+    private SloRequestBasedSliDistributionCut() {}
     /**
      * @return A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
      * aggregating values to quantify the good service provided.
@@ -69,30 +62,32 @@ public final class SloRequestBasedSliDistributionCut {
     public static Builder builder(SloRequestBasedSliDistributionCut defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String distributionFilter;
         private SloRequestBasedSliDistributionCutRange range;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloRequestBasedSliDistributionCut defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.distributionFilter = defaults.distributionFilter;
     	      this.range = defaults.range;
         }
 
+        @CustomType.Setter
         public Builder distributionFilter(String distributionFilter) {
             this.distributionFilter = Objects.requireNonNull(distributionFilter);
             return this;
         }
+        @CustomType.Setter
         public Builder range(SloRequestBasedSliDistributionCutRange range) {
             this.range = Objects.requireNonNull(range);
             return this;
-        }        public SloRequestBasedSliDistributionCut build() {
-            return new SloRequestBasedSliDistributionCut(distributionFilter, range);
+        }
+        public SloRequestBasedSliDistributionCut build() {
+            final var o = new SloRequestBasedSliDistributionCut();
+            o.distributionFilter = distributionFilter;
+            o.range = range;
+            return o;
         }
     }
 }

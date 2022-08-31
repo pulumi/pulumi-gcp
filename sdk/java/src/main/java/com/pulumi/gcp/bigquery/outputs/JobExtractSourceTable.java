@@ -15,29 +15,20 @@ public final class JobExtractSourceTable {
      * @return The ID of the dataset containing this model.
      * 
      */
-    private final @Nullable String datasetId;
+    private @Nullable String datasetId;
     /**
      * @return The ID of the project containing this model.
      * 
      */
-    private final @Nullable String projectId;
+    private @Nullable String projectId;
     /**
      * @return The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
      * or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
      * 
      */
-    private final String tableId;
+    private String tableId;
 
-    @CustomType.Constructor
-    private JobExtractSourceTable(
-        @CustomType.Parameter("datasetId") @Nullable String datasetId,
-        @CustomType.Parameter("projectId") @Nullable String projectId,
-        @CustomType.Parameter("tableId") String tableId) {
-        this.datasetId = datasetId;
-        this.projectId = projectId;
-        this.tableId = tableId;
-    }
-
+    private JobExtractSourceTable() {}
     /**
      * @return The ID of the dataset containing this model.
      * 
@@ -68,16 +59,12 @@ public final class JobExtractSourceTable {
     public static Builder builder(JobExtractSourceTable defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String datasetId;
         private @Nullable String projectId;
         private String tableId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobExtractSourceTable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datasetId = defaults.datasetId;
@@ -85,19 +72,27 @@ public final class JobExtractSourceTable {
     	      this.tableId = defaults.tableId;
         }
 
+        @CustomType.Setter
         public Builder datasetId(@Nullable String datasetId) {
             this.datasetId = datasetId;
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
             this.projectId = projectId;
             return this;
         }
+        @CustomType.Setter
         public Builder tableId(String tableId) {
             this.tableId = Objects.requireNonNull(tableId);
             return this;
-        }        public JobExtractSourceTable build() {
-            return new JobExtractSourceTable(datasetId, projectId, tableId);
+        }
+        public JobExtractSourceTable build() {
+            final var o = new JobExtractSourceTable();
+            o.datasetId = datasetId;
+            o.projectId = projectId;
+            o.tableId = tableId;
+            return o;
         }
     }
 }

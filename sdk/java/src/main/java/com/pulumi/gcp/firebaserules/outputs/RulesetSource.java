@@ -17,21 +17,14 @@ public final class RulesetSource {
      * @return `File` set constituting the `Source` bundle.
      * 
      */
-    private final List<RulesetSourceFile> files;
+    private List<RulesetSourceFile> files;
     /**
      * @return `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
      * 
      */
-    private final @Nullable String language;
+    private @Nullable String language;
 
-    @CustomType.Constructor
-    private RulesetSource(
-        @CustomType.Parameter("files") List<RulesetSourceFile> files,
-        @CustomType.Parameter("language") @Nullable String language) {
-        this.files = files;
-        this.language = language;
-    }
-
+    private RulesetSource() {}
     /**
      * @return `File` set constituting the `Source` bundle.
      * 
@@ -54,21 +47,18 @@ public final class RulesetSource {
     public static Builder builder(RulesetSource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<RulesetSourceFile> files;
         private @Nullable String language;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RulesetSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.files = defaults.files;
     	      this.language = defaults.language;
         }
 
+        @CustomType.Setter
         public Builder files(List<RulesetSourceFile> files) {
             this.files = Objects.requireNonNull(files);
             return this;
@@ -76,11 +66,16 @@ public final class RulesetSource {
         public Builder files(RulesetSourceFile... files) {
             return files(List.of(files));
         }
+        @CustomType.Setter
         public Builder language(@Nullable String language) {
             this.language = language;
             return this;
-        }        public RulesetSource build() {
-            return new RulesetSource(files, language);
+        }
+        public RulesetSource build() {
+            final var o = new RulesetSource();
+            o.files = files;
+            o.language = language;
+            return o;
         }
     }
 }

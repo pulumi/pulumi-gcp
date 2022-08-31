@@ -16,48 +16,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSecretResult {
-    private final String createTime;
-    private final String expireTime;
+    private String createTime;
+    private String expireTime;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final Map<String,String> labels;
-    private final String name;
-    private final @Nullable String project;
-    private final List<GetSecretReplication> replications;
-    private final List<GetSecretRotation> rotations;
-    private final String secretId;
-    private final List<GetSecretTopic> topics;
-    private final String ttl;
+    private String id;
+    private Map<String,String> labels;
+    private String name;
+    private @Nullable String project;
+    private List<GetSecretReplication> replications;
+    private List<GetSecretRotation> rotations;
+    private String secretId;
+    private List<GetSecretTopic> topics;
+    private String ttl;
 
-    @CustomType.Constructor
-    private GetSecretResult(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("expireTime") String expireTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("replications") List<GetSecretReplication> replications,
-        @CustomType.Parameter("rotations") List<GetSecretRotation> rotations,
-        @CustomType.Parameter("secretId") String secretId,
-        @CustomType.Parameter("topics") List<GetSecretTopic> topics,
-        @CustomType.Parameter("ttl") String ttl) {
-        this.createTime = createTime;
-        this.expireTime = expireTime;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.project = project;
-        this.replications = replications;
-        this.rotations = rotations;
-        this.secretId = secretId;
-        this.topics = topics;
-        this.ttl = ttl;
-    }
-
+    private GetSecretResult() {}
     public String createTime() {
         return this.createTime;
     }
@@ -103,7 +78,7 @@ public final class GetSecretResult {
     public static Builder builder(GetSecretResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String expireTime;
@@ -116,11 +91,7 @@ public final class GetSecretResult {
         private String secretId;
         private List<GetSecretTopic> topics;
         private String ttl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSecretResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -136,30 +107,37 @@ public final class GetSecretResult {
     	      this.ttl = defaults.ttl;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder replications(List<GetSecretReplication> replications) {
             this.replications = Objects.requireNonNull(replications);
             return this;
@@ -167,6 +145,7 @@ public final class GetSecretResult {
         public Builder replications(GetSecretReplication... replications) {
             return replications(List.of(replications));
         }
+        @CustomType.Setter
         public Builder rotations(List<GetSecretRotation> rotations) {
             this.rotations = Objects.requireNonNull(rotations);
             return this;
@@ -174,10 +153,12 @@ public final class GetSecretResult {
         public Builder rotations(GetSecretRotation... rotations) {
             return rotations(List.of(rotations));
         }
+        @CustomType.Setter
         public Builder secretId(String secretId) {
             this.secretId = Objects.requireNonNull(secretId);
             return this;
         }
+        @CustomType.Setter
         public Builder topics(List<GetSecretTopic> topics) {
             this.topics = Objects.requireNonNull(topics);
             return this;
@@ -185,11 +166,25 @@ public final class GetSecretResult {
         public Builder topics(GetSecretTopic... topics) {
             return topics(List.of(topics));
         }
+        @CustomType.Setter
         public Builder ttl(String ttl) {
             this.ttl = Objects.requireNonNull(ttl);
             return this;
-        }        public GetSecretResult build() {
-            return new GetSecretResult(createTime, expireTime, id, labels, name, project, replications, rotations, secretId, topics, ttl);
+        }
+        public GetSecretResult build() {
+            final var o = new GetSecretResult();
+            o.createTime = createTime;
+            o.expireTime = expireTime;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.project = project;
+            o.replications = replications;
+            o.rotations = rotations;
+            o.secretId = secretId;
+            o.topics = topics;
+            o.ttl = ttl;
+            return o;
         }
     }
 }

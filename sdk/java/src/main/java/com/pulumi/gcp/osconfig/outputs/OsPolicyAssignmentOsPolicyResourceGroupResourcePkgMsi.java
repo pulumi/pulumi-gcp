@@ -16,21 +16,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
      * @return Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
      * 
      */
-    private final @Nullable List<String> properties;
+    private @Nullable List<String> properties;
     /**
      * @return Required. An rpm package.
      * 
      */
-    private final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource source;
+    private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource source;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi(
-        @CustomType.Parameter("properties") @Nullable List<String> properties,
-        @CustomType.Parameter("source") OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource source) {
-        this.properties = properties;
-        this.source = source;
-    }
-
+    private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi() {}
     /**
      * @return Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
      * 
@@ -53,21 +46,18 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
     public static Builder builder(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> properties;
         private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource source;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.properties = defaults.properties;
     	      this.source = defaults.source;
         }
 
+        @CustomType.Setter
         public Builder properties(@Nullable List<String> properties) {
             this.properties = properties;
             return this;
@@ -75,11 +65,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
         public Builder properties(String... properties) {
             return properties(List.of(properties));
         }
+        @CustomType.Setter
         public Builder source(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource source) {
             this.source = Objects.requireNonNull(source);
             return this;
-        }        public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi build() {
-            return new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi(properties, source);
+        }
+        public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi build() {
+            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi();
+            o.properties = properties;
+            o.source = source;
+            return o;
         }
     }
 }

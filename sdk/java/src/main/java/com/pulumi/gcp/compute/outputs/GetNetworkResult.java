@@ -16,48 +16,31 @@ public final class GetNetworkResult {
      * @return Description of this network.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The IP address of the gateway.
      * 
      */
-    private final String gatewayIpv4;
+    private String gatewayIpv4;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
-    private final @Nullable String project;
+    private String id;
+    private String name;
+    private @Nullable String project;
     /**
      * @return The URI of the resource.
      * 
      */
-    private final String selfLink;
+    private String selfLink;
     /**
      * @return the list of subnetworks which belong to the network
      * 
      */
-    private final List<String> subnetworksSelfLinks;
+    private List<String> subnetworksSelfLinks;
 
-    @CustomType.Constructor
-    private GetNetworkResult(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("gatewayIpv4") String gatewayIpv4,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("selfLink") String selfLink,
-        @CustomType.Parameter("subnetworksSelfLinks") List<String> subnetworksSelfLinks) {
-        this.description = description;
-        this.gatewayIpv4 = gatewayIpv4;
-        this.id = id;
-        this.name = name;
-        this.project = project;
-        this.selfLink = selfLink;
-        this.subnetworksSelfLinks = subnetworksSelfLinks;
-    }
-
+    private GetNetworkResult() {}
     /**
      * @return Description of this network.
      * 
@@ -107,7 +90,7 @@ public final class GetNetworkResult {
     public static Builder builder(GetNetworkResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String gatewayIpv4;
@@ -116,11 +99,7 @@ public final class GetNetworkResult {
         private @Nullable String project;
         private String selfLink;
         private List<String> subnetworksSelfLinks;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNetworkResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -132,38 +111,54 @@ public final class GetNetworkResult {
     	      this.subnetworksSelfLinks = defaults.subnetworksSelfLinks;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayIpv4(String gatewayIpv4) {
             this.gatewayIpv4 = Objects.requireNonNull(gatewayIpv4);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder subnetworksSelfLinks(List<String> subnetworksSelfLinks) {
             this.subnetworksSelfLinks = Objects.requireNonNull(subnetworksSelfLinks);
             return this;
         }
         public Builder subnetworksSelfLinks(String... subnetworksSelfLinks) {
             return subnetworksSelfLinks(List.of(subnetworksSelfLinks));
-        }        public GetNetworkResult build() {
-            return new GetNetworkResult(description, gatewayIpv4, id, name, project, selfLink, subnetworksSelfLinks);
+        }
+        public GetNetworkResult build() {
+            final var o = new GetNetworkResult();
+            o.description = description;
+            o.gatewayIpv4 = gatewayIpv4;
+            o.id = id;
+            o.name = name;
+            o.project = project;
+            o.selfLink = selfLink;
+            o.subnetworksSelfLinks = subnetworksSelfLinks;
+            return o;
         }
     }
 }

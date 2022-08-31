@@ -14,21 +14,14 @@ public final class UptimeCheckConfigHttpCheckAuthInfo {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private final String password;
+    private String password;
     /**
      * @return The username to authenticate.
      * 
      */
-    private final String username;
+    private String username;
 
-    @CustomType.Constructor
-    private UptimeCheckConfigHttpCheckAuthInfo(
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("username") String username) {
-        this.password = password;
-        this.username = username;
-    }
-
+    private UptimeCheckConfigHttpCheckAuthInfo() {}
     /**
      * @return The password to authenticate.
      * **Note**: This property is sensitive and will not be displayed in the plan.
@@ -52,30 +45,32 @@ public final class UptimeCheckConfigHttpCheckAuthInfo {
     public static Builder builder(UptimeCheckConfigHttpCheckAuthInfo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String password;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(UptimeCheckConfigHttpCheckAuthInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.password = defaults.password;
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public UptimeCheckConfigHttpCheckAuthInfo build() {
-            return new UptimeCheckConfigHttpCheckAuthInfo(password, username);
+        }
+        public UptimeCheckConfigHttpCheckAuthInfo build() {
+            final var o = new UptimeCheckConfigHttpCheckAuthInfo();
+            o.password = password;
+            o.username = username;
+            return o;
         }
     }
 }

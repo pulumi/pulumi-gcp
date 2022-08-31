@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromMachineImageShieldedInstanceConfig {
-    private final @Nullable Boolean enableIntegrityMonitoring;
-    private final @Nullable Boolean enableSecureBoot;
-    private final @Nullable Boolean enableVtpm;
+    private @Nullable Boolean enableIntegrityMonitoring;
+    private @Nullable Boolean enableSecureBoot;
+    private @Nullable Boolean enableVtpm;
 
-    @CustomType.Constructor
-    private InstanceFromMachineImageShieldedInstanceConfig(
-        @CustomType.Parameter("enableIntegrityMonitoring") @Nullable Boolean enableIntegrityMonitoring,
-        @CustomType.Parameter("enableSecureBoot") @Nullable Boolean enableSecureBoot,
-        @CustomType.Parameter("enableVtpm") @Nullable Boolean enableVtpm) {
-        this.enableIntegrityMonitoring = enableIntegrityMonitoring;
-        this.enableSecureBoot = enableSecureBoot;
-        this.enableVtpm = enableVtpm;
-    }
-
+    private InstanceFromMachineImageShieldedInstanceConfig() {}
     public Optional<Boolean> enableIntegrityMonitoring() {
         return Optional.ofNullable(this.enableIntegrityMonitoring);
     }
@@ -42,16 +33,12 @@ public final class InstanceFromMachineImageShieldedInstanceConfig {
     public static Builder builder(InstanceFromMachineImageShieldedInstanceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableIntegrityMonitoring;
         private @Nullable Boolean enableSecureBoot;
         private @Nullable Boolean enableVtpm;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceFromMachineImageShieldedInstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableIntegrityMonitoring = defaults.enableIntegrityMonitoring;
@@ -59,19 +46,27 @@ public final class InstanceFromMachineImageShieldedInstanceConfig {
     	      this.enableVtpm = defaults.enableVtpm;
         }
 
+        @CustomType.Setter
         public Builder enableIntegrityMonitoring(@Nullable Boolean enableIntegrityMonitoring) {
             this.enableIntegrityMonitoring = enableIntegrityMonitoring;
             return this;
         }
+        @CustomType.Setter
         public Builder enableSecureBoot(@Nullable Boolean enableSecureBoot) {
             this.enableSecureBoot = enableSecureBoot;
             return this;
         }
+        @CustomType.Setter
         public Builder enableVtpm(@Nullable Boolean enableVtpm) {
             this.enableVtpm = enableVtpm;
             return this;
-        }        public InstanceFromMachineImageShieldedInstanceConfig build() {
-            return new InstanceFromMachineImageShieldedInstanceConfig(enableIntegrityMonitoring, enableSecureBoot, enableVtpm);
+        }
+        public InstanceFromMachineImageShieldedInstanceConfig build() {
+            final var o = new InstanceFromMachineImageShieldedInstanceConfig();
+            o.enableIntegrityMonitoring = enableIntegrityMonitoring;
+            o.enableSecureBoot = enableSecureBoot;
+            o.enableVtpm = enableVtpm;
+            return o;
         }
     }
 }

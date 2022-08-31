@@ -15,20 +15,11 @@ public final class GetServiceTemplateSpecContainerEnv {
      * @return The name of the Cloud Run Service.
      * 
      */
-    private final String name;
-    private final String value;
-    private final List<GetServiceTemplateSpecContainerEnvValueFrom> valueFroms;
+    private String name;
+    private String value;
+    private List<GetServiceTemplateSpecContainerEnvValueFrom> valueFroms;
 
-    @CustomType.Constructor
-    private GetServiceTemplateSpecContainerEnv(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("value") String value,
-        @CustomType.Parameter("valueFroms") List<GetServiceTemplateSpecContainerEnvValueFrom> valueFroms) {
-        this.name = name;
-        this.value = value;
-        this.valueFroms = valueFroms;
-    }
-
+    private GetServiceTemplateSpecContainerEnv() {}
     /**
      * @return The name of the Cloud Run Service.
      * 
@@ -50,16 +41,12 @@ public final class GetServiceTemplateSpecContainerEnv {
     public static Builder builder(GetServiceTemplateSpecContainerEnv defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private String value;
         private List<GetServiceTemplateSpecContainerEnvValueFrom> valueFroms;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceTemplateSpecContainerEnv defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
@@ -67,22 +54,30 @@ public final class GetServiceTemplateSpecContainerEnv {
     	      this.valueFroms = defaults.valueFroms;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
         }
+        @CustomType.Setter
         public Builder valueFroms(List<GetServiceTemplateSpecContainerEnvValueFrom> valueFroms) {
             this.valueFroms = Objects.requireNonNull(valueFroms);
             return this;
         }
         public Builder valueFroms(GetServiceTemplateSpecContainerEnvValueFrom... valueFroms) {
             return valueFroms(List.of(valueFroms));
-        }        public GetServiceTemplateSpecContainerEnv build() {
-            return new GetServiceTemplateSpecContainerEnv(name, value, valueFroms);
+        }
+        public GetServiceTemplateSpecContainerEnv build() {
+            final var o = new GetServiceTemplateSpecContainerEnv();
+            o.name = name;
+            o.value = value;
+            o.valueFroms = valueFroms;
+            return o;
         }
     }
 }

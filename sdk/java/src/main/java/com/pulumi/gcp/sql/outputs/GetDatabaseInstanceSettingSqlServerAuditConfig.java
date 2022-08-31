@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceSettingSqlServerAuditConfig {
-    private final String bucket;
-    private final String retentionInterval;
-    private final String uploadInterval;
+    private String bucket;
+    private String retentionInterval;
+    private String uploadInterval;
 
-    @CustomType.Constructor
-    private GetDatabaseInstanceSettingSqlServerAuditConfig(
-        @CustomType.Parameter("bucket") String bucket,
-        @CustomType.Parameter("retentionInterval") String retentionInterval,
-        @CustomType.Parameter("uploadInterval") String uploadInterval) {
-        this.bucket = bucket;
-        this.retentionInterval = retentionInterval;
-        this.uploadInterval = uploadInterval;
-    }
-
+    private GetDatabaseInstanceSettingSqlServerAuditConfig() {}
     public String bucket() {
         return this.bucket;
     }
@@ -40,16 +31,12 @@ public final class GetDatabaseInstanceSettingSqlServerAuditConfig {
     public static Builder builder(GetDatabaseInstanceSettingSqlServerAuditConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bucket;
         private String retentionInterval;
         private String uploadInterval;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseInstanceSettingSqlServerAuditConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
@@ -57,19 +44,27 @@ public final class GetDatabaseInstanceSettingSqlServerAuditConfig {
     	      this.uploadInterval = defaults.uploadInterval;
         }
 
+        @CustomType.Setter
         public Builder bucket(String bucket) {
             this.bucket = Objects.requireNonNull(bucket);
             return this;
         }
+        @CustomType.Setter
         public Builder retentionInterval(String retentionInterval) {
             this.retentionInterval = Objects.requireNonNull(retentionInterval);
             return this;
         }
+        @CustomType.Setter
         public Builder uploadInterval(String uploadInterval) {
             this.uploadInterval = Objects.requireNonNull(uploadInterval);
             return this;
-        }        public GetDatabaseInstanceSettingSqlServerAuditConfig build() {
-            return new GetDatabaseInstanceSettingSqlServerAuditConfig(bucket, retentionInterval, uploadInterval);
+        }
+        public GetDatabaseInstanceSettingSqlServerAuditConfig build() {
+            final var o = new GetDatabaseInstanceSettingSqlServerAuditConfig();
+            o.bucket = bucket;
+            o.retentionInterval = retentionInterval;
+            o.uploadInterval = uploadInterval;
+            return o;
         }
     }
 }

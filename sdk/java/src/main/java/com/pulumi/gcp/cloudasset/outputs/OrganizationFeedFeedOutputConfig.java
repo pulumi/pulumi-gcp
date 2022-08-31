@@ -14,13 +14,9 @@ public final class OrganizationFeedFeedOutputConfig {
      * Structure is documented below.
      * 
      */
-    private final OrganizationFeedFeedOutputConfigPubsubDestination pubsubDestination;
+    private OrganizationFeedFeedOutputConfigPubsubDestination pubsubDestination;
 
-    @CustomType.Constructor
-    private OrganizationFeedFeedOutputConfig(@CustomType.Parameter("pubsubDestination") OrganizationFeedFeedOutputConfigPubsubDestination pubsubDestination) {
-        this.pubsubDestination = pubsubDestination;
-    }
-
+    private OrganizationFeedFeedOutputConfig() {}
     /**
      * @return Destination on Cloud Pubsub.
      * Structure is documented below.
@@ -37,24 +33,24 @@ public final class OrganizationFeedFeedOutputConfig {
     public static Builder builder(OrganizationFeedFeedOutputConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private OrganizationFeedFeedOutputConfigPubsubDestination pubsubDestination;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OrganizationFeedFeedOutputConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pubsubDestination = defaults.pubsubDestination;
         }
 
+        @CustomType.Setter
         public Builder pubsubDestination(OrganizationFeedFeedOutputConfigPubsubDestination pubsubDestination) {
             this.pubsubDestination = Objects.requireNonNull(pubsubDestination);
             return this;
-        }        public OrganizationFeedFeedOutputConfig build() {
-            return new OrganizationFeedFeedOutputConfig(pubsubDestination);
+        }
+        public OrganizationFeedFeedOutputConfig build() {
+            final var o = new OrganizationFeedFeedOutputConfig();
+            o.pubsubDestination = pubsubDestination;
+            return o;
         }
     }
 }

@@ -13,13 +13,9 @@ public final class AzureNodePoolMaxPodsConstraint {
      * @return The maximum number of pods to schedule on a single node.
      * 
      */
-    private final Integer maxPodsPerNode;
+    private Integer maxPodsPerNode;
 
-    @CustomType.Constructor
-    private AzureNodePoolMaxPodsConstraint(@CustomType.Parameter("maxPodsPerNode") Integer maxPodsPerNode) {
-        this.maxPodsPerNode = maxPodsPerNode;
-    }
-
+    private AzureNodePoolMaxPodsConstraint() {}
     /**
      * @return The maximum number of pods to schedule on a single node.
      * 
@@ -35,24 +31,24 @@ public final class AzureNodePoolMaxPodsConstraint {
     public static Builder builder(AzureNodePoolMaxPodsConstraint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer maxPodsPerNode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AzureNodePoolMaxPodsConstraint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxPodsPerNode = defaults.maxPodsPerNode;
         }
 
+        @CustomType.Setter
         public Builder maxPodsPerNode(Integer maxPodsPerNode) {
             this.maxPodsPerNode = Objects.requireNonNull(maxPodsPerNode);
             return this;
-        }        public AzureNodePoolMaxPodsConstraint build() {
-            return new AzureNodePoolMaxPodsConstraint(maxPodsPerNode);
+        }
+        public AzureNodePoolMaxPodsConstraint build() {
+            final var o = new AzureNodePoolMaxPodsConstraint();
+            o.maxPodsPerNode = maxPodsPerNode;
+            return o;
         }
     }
 }

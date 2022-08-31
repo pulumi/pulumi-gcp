@@ -13,13 +13,9 @@ public final class GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObject
      * @return The name of the Cloud Run Service.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference(@CustomType.Parameter("name") String name) {
-        this.name = name;
-    }
-
+    private GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference() {}
     /**
      * @return The name of the Cloud Run Service.
      * 
@@ -35,24 +31,24 @@ public final class GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObject
     public static Builder builder(GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference build() {
-            return new GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference(name);
+        }
+        public GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference build() {
+            final var o = new GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference();
+            o.name = name;
+            return o;
         }
     }
 }

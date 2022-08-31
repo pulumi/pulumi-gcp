@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
-    private final List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek> dayOfWeeks;
+    private List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek> dayOfWeeks;
 
-    @CustomType.Constructor
-    private GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule(@CustomType.Parameter("dayOfWeeks") List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek> dayOfWeeks) {
-        this.dayOfWeeks = dayOfWeeks;
-    }
-
+    private GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule() {}
     public List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek> dayOfWeeks() {
         return this.dayOfWeeks;
     }
@@ -28,27 +24,27 @@ public final class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule
     public static Builder builder(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek> dayOfWeeks;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dayOfWeeks = defaults.dayOfWeeks;
         }
 
+        @CustomType.Setter
         public Builder dayOfWeeks(List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek> dayOfWeeks) {
             this.dayOfWeeks = Objects.requireNonNull(dayOfWeeks);
             return this;
         }
         public Builder dayOfWeeks(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek... dayOfWeeks) {
             return dayOfWeeks(List.of(dayOfWeeks));
-        }        public GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule build() {
-            return new GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule(dayOfWeeks);
+        }
+        public GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule build() {
+            final var o = new GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule();
+            o.dayOfWeeks = dayOfWeeks;
+            return o;
         }
     }
 }

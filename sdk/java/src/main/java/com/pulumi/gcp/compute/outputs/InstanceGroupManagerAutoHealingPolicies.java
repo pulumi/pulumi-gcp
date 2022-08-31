@@ -14,22 +14,15 @@ public final class InstanceGroupManagerAutoHealingPolicies {
      * @return The health check resource that signals autohealing.
      * 
      */
-    private final String healthCheck;
+    private String healthCheck;
     /**
      * @return The number of seconds that the managed instance group waits before
      * it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
      * 
      */
-    private final Integer initialDelaySec;
+    private Integer initialDelaySec;
 
-    @CustomType.Constructor
-    private InstanceGroupManagerAutoHealingPolicies(
-        @CustomType.Parameter("healthCheck") String healthCheck,
-        @CustomType.Parameter("initialDelaySec") Integer initialDelaySec) {
-        this.healthCheck = healthCheck;
-        this.initialDelaySec = initialDelaySec;
-    }
-
+    private InstanceGroupManagerAutoHealingPolicies() {}
     /**
      * @return The health check resource that signals autohealing.
      * 
@@ -53,30 +46,32 @@ public final class InstanceGroupManagerAutoHealingPolicies {
     public static Builder builder(InstanceGroupManagerAutoHealingPolicies defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String healthCheck;
         private Integer initialDelaySec;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceGroupManagerAutoHealingPolicies defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.healthCheck = defaults.healthCheck;
     	      this.initialDelaySec = defaults.initialDelaySec;
         }
 
+        @CustomType.Setter
         public Builder healthCheck(String healthCheck) {
             this.healthCheck = Objects.requireNonNull(healthCheck);
             return this;
         }
+        @CustomType.Setter
         public Builder initialDelaySec(Integer initialDelaySec) {
             this.initialDelaySec = Objects.requireNonNull(initialDelaySec);
             return this;
-        }        public InstanceGroupManagerAutoHealingPolicies build() {
-            return new InstanceGroupManagerAutoHealingPolicies(healthCheck, initialDelaySec);
+        }
+        public InstanceGroupManagerAutoHealingPolicies build() {
+            final var o = new InstanceGroupManagerAutoHealingPolicies();
+            o.healthCheck = healthCheck;
+            o.initialDelaySec = initialDelaySec;
+            return o;
         }
     }
 }

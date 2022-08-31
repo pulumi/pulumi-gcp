@@ -11,17 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecContainerEnvFromSecretRef {
-    private final List<GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference> localObjectReferences;
-    private final Boolean optional;
+    private List<GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference> localObjectReferences;
+    private Boolean optional;
 
-    @CustomType.Constructor
-    private GetServiceTemplateSpecContainerEnvFromSecretRef(
-        @CustomType.Parameter("localObjectReferences") List<GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference> localObjectReferences,
-        @CustomType.Parameter("optional") Boolean optional) {
-        this.localObjectReferences = localObjectReferences;
-        this.optional = optional;
-    }
-
+    private GetServiceTemplateSpecContainerEnvFromSecretRef() {}
     public List<GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference> localObjectReferences() {
         return this.localObjectReferences;
     }
@@ -36,21 +29,18 @@ public final class GetServiceTemplateSpecContainerEnvFromSecretRef {
     public static Builder builder(GetServiceTemplateSpecContainerEnvFromSecretRef defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference> localObjectReferences;
         private Boolean optional;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceTemplateSpecContainerEnvFromSecretRef defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.localObjectReferences = defaults.localObjectReferences;
     	      this.optional = defaults.optional;
         }
 
+        @CustomType.Setter
         public Builder localObjectReferences(List<GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference> localObjectReferences) {
             this.localObjectReferences = Objects.requireNonNull(localObjectReferences);
             return this;
@@ -58,11 +48,16 @@ public final class GetServiceTemplateSpecContainerEnvFromSecretRef {
         public Builder localObjectReferences(GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference... localObjectReferences) {
             return localObjectReferences(List.of(localObjectReferences));
         }
+        @CustomType.Setter
         public Builder optional(Boolean optional) {
             this.optional = Objects.requireNonNull(optional);
             return this;
-        }        public GetServiceTemplateSpecContainerEnvFromSecretRef build() {
-            return new GetServiceTemplateSpecContainerEnvFromSecretRef(localObjectReferences, optional);
+        }
+        public GetServiceTemplateSpecContainerEnvFromSecretRef build() {
+            final var o = new GetServiceTemplateSpecContainerEnvFromSecretRef();
+            o.localObjectReferences = localObjectReferences;
+            o.optional = optional;
+            return o;
         }
     }
 }

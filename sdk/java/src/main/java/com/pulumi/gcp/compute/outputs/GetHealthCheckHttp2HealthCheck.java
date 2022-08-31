@@ -10,32 +10,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHealthCheckHttp2HealthCheck {
-    private final String host;
-    private final Integer port;
-    private final String portName;
-    private final String portSpecification;
-    private final String proxyHeader;
-    private final String requestPath;
-    private final String response;
+    private String host;
+    private Integer port;
+    private String portName;
+    private String portSpecification;
+    private String proxyHeader;
+    private String requestPath;
+    private String response;
 
-    @CustomType.Constructor
-    private GetHealthCheckHttp2HealthCheck(
-        @CustomType.Parameter("host") String host,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("portName") String portName,
-        @CustomType.Parameter("portSpecification") String portSpecification,
-        @CustomType.Parameter("proxyHeader") String proxyHeader,
-        @CustomType.Parameter("requestPath") String requestPath,
-        @CustomType.Parameter("response") String response) {
-        this.host = host;
-        this.port = port;
-        this.portName = portName;
-        this.portSpecification = portSpecification;
-        this.proxyHeader = proxyHeader;
-        this.requestPath = requestPath;
-        this.response = response;
-    }
-
+    private GetHealthCheckHttp2HealthCheck() {}
     public String host() {
         return this.host;
     }
@@ -65,7 +48,7 @@ public final class GetHealthCheckHttp2HealthCheck {
     public static Builder builder(GetHealthCheckHttp2HealthCheck defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String host;
         private Integer port;
@@ -74,11 +57,7 @@ public final class GetHealthCheckHttp2HealthCheck {
         private String proxyHeader;
         private String requestPath;
         private String response;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHealthCheckHttp2HealthCheck defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.host = defaults.host;
@@ -90,35 +69,51 @@ public final class GetHealthCheckHttp2HealthCheck {
     	      this.response = defaults.response;
         }
 
+        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder portName(String portName) {
             this.portName = Objects.requireNonNull(portName);
             return this;
         }
+        @CustomType.Setter
         public Builder portSpecification(String portSpecification) {
             this.portSpecification = Objects.requireNonNull(portSpecification);
             return this;
         }
+        @CustomType.Setter
         public Builder proxyHeader(String proxyHeader) {
             this.proxyHeader = Objects.requireNonNull(proxyHeader);
             return this;
         }
+        @CustomType.Setter
         public Builder requestPath(String requestPath) {
             this.requestPath = Objects.requireNonNull(requestPath);
             return this;
         }
+        @CustomType.Setter
         public Builder response(String response) {
             this.response = Objects.requireNonNull(response);
             return this;
-        }        public GetHealthCheckHttp2HealthCheck build() {
-            return new GetHealthCheckHttp2HealthCheck(host, port, portName, portSpecification, proxyHeader, requestPath, response);
+        }
+        public GetHealthCheckHttp2HealthCheck build() {
+            final var o = new GetHealthCheckHttp2HealthCheck();
+            o.host = host;
+            o.port = port;
+            o.portName = portName;
+            o.portSpecification = portSpecification;
+            o.proxyHeader = proxyHeader;
+            o.requestPath = requestPath;
+            o.response = response;
+            return o;
         }
     }
 }

@@ -18,7 +18,7 @@ public final class InstanceMaintenanceSchedule {
      * resolution and up to nine fractional digits.
      * 
      */
-    private final @Nullable String endTime;
+    private @Nullable String endTime;
     /**
      * @return -
      * Output only. The deadline that the maintenance schedule start time
@@ -27,7 +27,7 @@ public final class InstanceMaintenanceSchedule {
      * resolution and up to nine fractional digits.
      * 
      */
-    private final @Nullable String scheduleDeadlineTime;
+    private @Nullable String scheduleDeadlineTime;
     /**
      * @return -
      * Output only. The start time of any upcoming scheduled maintenance for this instance.
@@ -35,18 +35,9 @@ public final class InstanceMaintenanceSchedule {
      * resolution and up to nine fractional digits.
      * 
      */
-    private final @Nullable String startTime;
+    private @Nullable String startTime;
 
-    @CustomType.Constructor
-    private InstanceMaintenanceSchedule(
-        @CustomType.Parameter("endTime") @Nullable String endTime,
-        @CustomType.Parameter("scheduleDeadlineTime") @Nullable String scheduleDeadlineTime,
-        @CustomType.Parameter("startTime") @Nullable String startTime) {
-        this.endTime = endTime;
-        this.scheduleDeadlineTime = scheduleDeadlineTime;
-        this.startTime = startTime;
-    }
-
+    private InstanceMaintenanceSchedule() {}
     /**
      * @return -
      * Output only. The end time of any upcoming scheduled maintenance for this instance.
@@ -86,16 +77,12 @@ public final class InstanceMaintenanceSchedule {
     public static Builder builder(InstanceMaintenanceSchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String endTime;
         private @Nullable String scheduleDeadlineTime;
         private @Nullable String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceMaintenanceSchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endTime = defaults.endTime;
@@ -103,19 +90,27 @@ public final class InstanceMaintenanceSchedule {
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder endTime(@Nullable String endTime) {
             this.endTime = endTime;
             return this;
         }
+        @CustomType.Setter
         public Builder scheduleDeadlineTime(@Nullable String scheduleDeadlineTime) {
             this.scheduleDeadlineTime = scheduleDeadlineTime;
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
             this.startTime = startTime;
             return this;
-        }        public InstanceMaintenanceSchedule build() {
-            return new InstanceMaintenanceSchedule(endTime, scheduleDeadlineTime, startTime);
+        }
+        public InstanceMaintenanceSchedule build() {
+            final var o = new InstanceMaintenanceSchedule();
+            o.endTime = endTime;
+            o.scheduleDeadlineTime = scheduleDeadlineTime;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

@@ -16,22 +16,15 @@ public final class DatasetAccessDataset {
      * Structure is documented below.
      * 
      */
-    private final DatasetAccessDatasetDataset dataset;
+    private DatasetAccessDatasetDataset dataset;
     /**
      * @return Which resources in the dataset this entry applies to. Currently, only views are supported,
      * but additional target types may be added in the future. Possible values: VIEWS
      * 
      */
-    private final List<String> targetTypes;
+    private List<String> targetTypes;
 
-    @CustomType.Constructor
-    private DatasetAccessDataset(
-        @CustomType.Parameter("dataset") DatasetAccessDatasetDataset dataset,
-        @CustomType.Parameter("targetTypes") List<String> targetTypes) {
-        this.dataset = dataset;
-        this.targetTypes = targetTypes;
-    }
-
+    private DatasetAccessDataset() {}
     /**
      * @return The dataset this entry applies to
      * Structure is documented below.
@@ -56,33 +49,35 @@ public final class DatasetAccessDataset {
     public static Builder builder(DatasetAccessDataset defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private DatasetAccessDatasetDataset dataset;
         private List<String> targetTypes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatasetAccessDataset defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dataset = defaults.dataset;
     	      this.targetTypes = defaults.targetTypes;
         }
 
+        @CustomType.Setter
         public Builder dataset(DatasetAccessDatasetDataset dataset) {
             this.dataset = Objects.requireNonNull(dataset);
             return this;
         }
+        @CustomType.Setter
         public Builder targetTypes(List<String> targetTypes) {
             this.targetTypes = Objects.requireNonNull(targetTypes);
             return this;
         }
         public Builder targetTypes(String... targetTypes) {
             return targetTypes(List.of(targetTypes));
-        }        public DatasetAccessDataset build() {
-            return new DatasetAccessDataset(dataset, targetTypes);
+        }
+        public DatasetAccessDataset build() {
+            final var o = new DatasetAccessDataset();
+            o.dataset = dataset;
+            o.targetTypes = targetTypes;
+            return o;
         }
     }
 }

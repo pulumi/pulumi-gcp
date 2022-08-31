@@ -18,7 +18,7 @@ public final class CxIntentTrainingPhrase {
      * @return The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
      * Note: The API does not automatically annotate training phrases like the Dialogflow Console does.
@@ -30,23 +30,14 @@ public final class CxIntentTrainingPhrase {
      * Structure is documented below.
      * 
      */
-    private final List<CxIntentTrainingPhrasePart> parts;
+    private List<CxIntentTrainingPhrasePart> parts;
     /**
      * @return Indicates how many times this example was added to the intent.
      * 
      */
-    private final @Nullable Integer repeatCount;
+    private @Nullable Integer repeatCount;
 
-    @CustomType.Constructor
-    private CxIntentTrainingPhrase(
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("parts") List<CxIntentTrainingPhrasePart> parts,
-        @CustomType.Parameter("repeatCount") @Nullable Integer repeatCount) {
-        this.id = id;
-        this.parts = parts;
-        this.repeatCount = repeatCount;
-    }
-
+    private CxIntentTrainingPhrase() {}
     /**
      * @return The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
      * 
@@ -83,16 +74,12 @@ public final class CxIntentTrainingPhrase {
     public static Builder builder(CxIntentTrainingPhrase defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String id;
         private List<CxIntentTrainingPhrasePart> parts;
         private @Nullable Integer repeatCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CxIntentTrainingPhrase defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -100,10 +87,12 @@ public final class CxIntentTrainingPhrase {
     	      this.repeatCount = defaults.repeatCount;
         }
 
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder parts(List<CxIntentTrainingPhrasePart> parts) {
             this.parts = Objects.requireNonNull(parts);
             return this;
@@ -111,11 +100,17 @@ public final class CxIntentTrainingPhrase {
         public Builder parts(CxIntentTrainingPhrasePart... parts) {
             return parts(List.of(parts));
         }
+        @CustomType.Setter
         public Builder repeatCount(@Nullable Integer repeatCount) {
             this.repeatCount = repeatCount;
             return this;
-        }        public CxIntentTrainingPhrase build() {
-            return new CxIntentTrainingPhrase(id, parts, repeatCount);
+        }
+        public CxIntentTrainingPhrase build() {
+            final var o = new CxIntentTrainingPhrase();
+            o.id = id;
+            o.parts = parts;
+            o.repeatCount = repeatCount;
+            return o;
         }
     }
 }

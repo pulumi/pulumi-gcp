@@ -14,22 +14,15 @@ public final class FhirStoreStreamConfigBigqueryDestination {
      * @return BigQuery URI to a dataset, up to 2000 characters long, in the format bq://projectId.bqDatasetId
      * 
      */
-    private final String datasetUri;
+    private String datasetUri;
     /**
      * @return The configuration for the exported BigQuery schema.
      * Structure is documented below.
      * 
      */
-    private final FhirStoreStreamConfigBigqueryDestinationSchemaConfig schemaConfig;
+    private FhirStoreStreamConfigBigqueryDestinationSchemaConfig schemaConfig;
 
-    @CustomType.Constructor
-    private FhirStoreStreamConfigBigqueryDestination(
-        @CustomType.Parameter("datasetUri") String datasetUri,
-        @CustomType.Parameter("schemaConfig") FhirStoreStreamConfigBigqueryDestinationSchemaConfig schemaConfig) {
-        this.datasetUri = datasetUri;
-        this.schemaConfig = schemaConfig;
-    }
-
+    private FhirStoreStreamConfigBigqueryDestination() {}
     /**
      * @return BigQuery URI to a dataset, up to 2000 characters long, in the format bq://projectId.bqDatasetId
      * 
@@ -53,30 +46,32 @@ public final class FhirStoreStreamConfigBigqueryDestination {
     public static Builder builder(FhirStoreStreamConfigBigqueryDestination defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String datasetUri;
         private FhirStoreStreamConfigBigqueryDestinationSchemaConfig schemaConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FhirStoreStreamConfigBigqueryDestination defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datasetUri = defaults.datasetUri;
     	      this.schemaConfig = defaults.schemaConfig;
         }
 
+        @CustomType.Setter
         public Builder datasetUri(String datasetUri) {
             this.datasetUri = Objects.requireNonNull(datasetUri);
             return this;
         }
+        @CustomType.Setter
         public Builder schemaConfig(FhirStoreStreamConfigBigqueryDestinationSchemaConfig schemaConfig) {
             this.schemaConfig = Objects.requireNonNull(schemaConfig);
             return this;
-        }        public FhirStoreStreamConfigBigqueryDestination build() {
-            return new FhirStoreStreamConfigBigqueryDestination(datasetUri, schemaConfig);
+        }
+        public FhirStoreStreamConfigBigqueryDestination build() {
+            final var o = new FhirStoreStreamConfigBigqueryDestination();
+            o.datasetUri = datasetUri;
+            o.schemaConfig = schemaConfig;
+            return o;
         }
     }
 }

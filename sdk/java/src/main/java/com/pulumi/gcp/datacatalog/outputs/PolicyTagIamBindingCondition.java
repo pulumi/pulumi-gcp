@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PolicyTagIamBindingCondition {
-    private final @Nullable String description;
-    private final String expression;
-    private final String title;
+    private @Nullable String description;
+    private String expression;
+    private String title;
 
-    @CustomType.Constructor
-    private PolicyTagIamBindingCondition(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("expression") String expression,
-        @CustomType.Parameter("title") String title) {
-        this.description = description;
-        this.expression = expression;
-        this.title = title;
-    }
-
+    private PolicyTagIamBindingCondition() {}
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -42,16 +33,12 @@ public final class PolicyTagIamBindingCondition {
     public static Builder builder(PolicyTagIamBindingCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private String expression;
         private String title;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PolicyTagIamBindingCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -59,19 +46,27 @@ public final class PolicyTagIamBindingCondition {
     	      this.title = defaults.title;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder expression(String expression) {
             this.expression = Objects.requireNonNull(expression);
             return this;
         }
+        @CustomType.Setter
         public Builder title(String title) {
             this.title = Objects.requireNonNull(title);
             return this;
-        }        public PolicyTagIamBindingCondition build() {
-            return new PolicyTagIamBindingCondition(description, expression, title);
+        }
+        public PolicyTagIamBindingCondition build() {
+            final var o = new PolicyTagIamBindingCondition();
+            o.description = description;
+            o.expression = expression;
+            o.title = title;
+            return o;
         }
     }
 }

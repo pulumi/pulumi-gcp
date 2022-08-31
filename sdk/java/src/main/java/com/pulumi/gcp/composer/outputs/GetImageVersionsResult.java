@@ -15,27 +15,16 @@ public final class GetImageVersionsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of composer image versions available in the given project and location. Each `image_version` contains:
      * 
      */
-    private final List<GetImageVersionsImageVersion> imageVersions;
-    private final String project;
-    private final String region;
+    private List<GetImageVersionsImageVersion> imageVersions;
+    private String project;
+    private String region;
 
-    @CustomType.Constructor
-    private GetImageVersionsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("imageVersions") List<GetImageVersionsImageVersion> imageVersions,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("region") String region) {
-        this.id = id;
-        this.imageVersions = imageVersions;
-        this.project = project;
-        this.region = region;
-    }
-
+    private GetImageVersionsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -64,17 +53,13 @@ public final class GetImageVersionsResult {
     public static Builder builder(GetImageVersionsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<GetImageVersionsImageVersion> imageVersions;
         private String project;
         private String region;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetImageVersionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -83,10 +68,12 @@ public final class GetImageVersionsResult {
     	      this.region = defaults.region;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder imageVersions(List<GetImageVersionsImageVersion> imageVersions) {
             this.imageVersions = Objects.requireNonNull(imageVersions);
             return this;
@@ -94,15 +81,23 @@ public final class GetImageVersionsResult {
         public Builder imageVersions(GetImageVersionsImageVersion... imageVersions) {
             return imageVersions(List.of(imageVersions));
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
-        }        public GetImageVersionsResult build() {
-            return new GetImageVersionsResult(id, imageVersions, project, region);
+        }
+        public GetImageVersionsResult build() {
+            final var o = new GetImageVersionsResult();
+            o.id = id;
+            o.imageVersions = imageVersions;
+            o.project = project;
+            o.region = region;
+            return o;
         }
     }
 }

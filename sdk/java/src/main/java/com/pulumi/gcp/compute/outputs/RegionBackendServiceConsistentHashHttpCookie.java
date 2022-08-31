@@ -16,29 +16,20 @@ public final class RegionBackendServiceConsistentHashHttpCookie {
      * @return Name of the cookie.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return Path to set for the cookie.
      * 
      */
-    private final @Nullable String path;
+    private @Nullable String path;
     /**
      * @return The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
      * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
      * 
      */
-    private final @Nullable RegionBackendServiceConsistentHashHttpCookieTtl ttl;
+    private @Nullable RegionBackendServiceConsistentHashHttpCookieTtl ttl;
 
-    @CustomType.Constructor
-    private RegionBackendServiceConsistentHashHttpCookie(
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("path") @Nullable String path,
-        @CustomType.Parameter("ttl") @Nullable RegionBackendServiceConsistentHashHttpCookieTtl ttl) {
-        this.name = name;
-        this.path = path;
-        this.ttl = ttl;
-    }
-
+    private RegionBackendServiceConsistentHashHttpCookie() {}
     /**
      * @return Name of the cookie.
      * 
@@ -69,16 +60,12 @@ public final class RegionBackendServiceConsistentHashHttpCookie {
     public static Builder builder(RegionBackendServiceConsistentHashHttpCookie defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
         private @Nullable String path;
         private @Nullable RegionBackendServiceConsistentHashHttpCookieTtl ttl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionBackendServiceConsistentHashHttpCookie defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
@@ -86,19 +73,27 @@ public final class RegionBackendServiceConsistentHashHttpCookie {
     	      this.ttl = defaults.ttl;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
         public Builder ttl(@Nullable RegionBackendServiceConsistentHashHttpCookieTtl ttl) {
             this.ttl = ttl;
             return this;
-        }        public RegionBackendServiceConsistentHashHttpCookie build() {
-            return new RegionBackendServiceConsistentHashHttpCookie(name, path, ttl);
+        }
+        public RegionBackendServiceConsistentHashHttpCookie build() {
+            final var o = new RegionBackendServiceConsistentHashHttpCookie();
+            o.name = name;
+            o.path = path;
+            o.ttl = ttl;
+            return o;
         }
     }
 }

@@ -16,22 +16,15 @@ public final class JobLoadDestinationEncryptionConfiguration {
      * The BigQuery Service Account associated with your project requires access to this encryption key.
      * 
      */
-    private final String kmsKeyName;
+    private String kmsKeyName;
     /**
      * @return -
      * Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
      * 
      */
-    private final @Nullable String kmsKeyVersion;
+    private @Nullable String kmsKeyVersion;
 
-    @CustomType.Constructor
-    private JobLoadDestinationEncryptionConfiguration(
-        @CustomType.Parameter("kmsKeyName") String kmsKeyName,
-        @CustomType.Parameter("kmsKeyVersion") @Nullable String kmsKeyVersion) {
-        this.kmsKeyName = kmsKeyName;
-        this.kmsKeyVersion = kmsKeyVersion;
-    }
-
+    private JobLoadDestinationEncryptionConfiguration() {}
     /**
      * @return Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
      * The BigQuery Service Account associated with your project requires access to this encryption key.
@@ -56,30 +49,32 @@ public final class JobLoadDestinationEncryptionConfiguration {
     public static Builder builder(JobLoadDestinationEncryptionConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String kmsKeyName;
         private @Nullable String kmsKeyVersion;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobLoadDestinationEncryptionConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeyName = defaults.kmsKeyName;
     	      this.kmsKeyVersion = defaults.kmsKeyVersion;
         }
 
+        @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
             this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKeyVersion(@Nullable String kmsKeyVersion) {
             this.kmsKeyVersion = kmsKeyVersion;
             return this;
-        }        public JobLoadDestinationEncryptionConfiguration build() {
-            return new JobLoadDestinationEncryptionConfiguration(kmsKeyName, kmsKeyVersion);
+        }
+        public JobLoadDestinationEncryptionConfiguration build() {
+            final var o = new JobLoadDestinationEncryptionConfiguration();
+            o.kmsKeyName = kmsKeyName;
+            o.kmsKeyVersion = kmsKeyVersion;
+            return o;
         }
     }
 }

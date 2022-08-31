@@ -23,7 +23,7 @@ public final class RegionBackendServiceFailoverPolicy {
      * The default is false.
      * 
      */
-    private final @Nullable Boolean disableConnectionDrainOnFailover;
+    private @Nullable Boolean disableConnectionDrainOnFailover;
     /**
      * @return This option is used only when no healthy VMs are detected in the primary
      * and backup instance groups. When set to true, traffic is dropped. When
@@ -31,7 +31,7 @@ public final class RegionBackendServiceFailoverPolicy {
      * The default is false.
      * 
      */
-    private final @Nullable Boolean dropTrafficIfUnhealthy;
+    private @Nullable Boolean dropTrafficIfUnhealthy;
     /**
      * @return The value of the field must be in [0, 1]. If the ratio of the healthy
      * VMs in the primary backend is at or below this number, traffic arriving
@@ -43,18 +43,9 @@ public final class RegionBackendServiceFailoverPolicy {
      * This field is only used with l4 load balancing.
      * 
      */
-    private final @Nullable Double failoverRatio;
+    private @Nullable Double failoverRatio;
 
-    @CustomType.Constructor
-    private RegionBackendServiceFailoverPolicy(
-        @CustomType.Parameter("disableConnectionDrainOnFailover") @Nullable Boolean disableConnectionDrainOnFailover,
-        @CustomType.Parameter("dropTrafficIfUnhealthy") @Nullable Boolean dropTrafficIfUnhealthy,
-        @CustomType.Parameter("failoverRatio") @Nullable Double failoverRatio) {
-        this.disableConnectionDrainOnFailover = disableConnectionDrainOnFailover;
-        this.dropTrafficIfUnhealthy = dropTrafficIfUnhealthy;
-        this.failoverRatio = failoverRatio;
-    }
-
+    private RegionBackendServiceFailoverPolicy() {}
     /**
      * @return On failover or failback, this field indicates whether connection drain
      * will be honored. Setting this to true has the following effect: connections
@@ -101,16 +92,12 @@ public final class RegionBackendServiceFailoverPolicy {
     public static Builder builder(RegionBackendServiceFailoverPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean disableConnectionDrainOnFailover;
         private @Nullable Boolean dropTrafficIfUnhealthy;
         private @Nullable Double failoverRatio;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionBackendServiceFailoverPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disableConnectionDrainOnFailover = defaults.disableConnectionDrainOnFailover;
@@ -118,19 +105,27 @@ public final class RegionBackendServiceFailoverPolicy {
     	      this.failoverRatio = defaults.failoverRatio;
         }
 
+        @CustomType.Setter
         public Builder disableConnectionDrainOnFailover(@Nullable Boolean disableConnectionDrainOnFailover) {
             this.disableConnectionDrainOnFailover = disableConnectionDrainOnFailover;
             return this;
         }
+        @CustomType.Setter
         public Builder dropTrafficIfUnhealthy(@Nullable Boolean dropTrafficIfUnhealthy) {
             this.dropTrafficIfUnhealthy = dropTrafficIfUnhealthy;
             return this;
         }
+        @CustomType.Setter
         public Builder failoverRatio(@Nullable Double failoverRatio) {
             this.failoverRatio = failoverRatio;
             return this;
-        }        public RegionBackendServiceFailoverPolicy build() {
-            return new RegionBackendServiceFailoverPolicy(disableConnectionDrainOnFailover, dropTrafficIfUnhealthy, failoverRatio);
+        }
+        public RegionBackendServiceFailoverPolicy build() {
+            final var o = new RegionBackendServiceFailoverPolicy();
+            o.disableConnectionDrainOnFailover = disableConnectionDrainOnFailover;
+            o.dropTrafficIfUnhealthy = dropTrafficIfUnhealthy;
+            o.failoverRatio = failoverRatio;
+            return o;
         }
     }
 }

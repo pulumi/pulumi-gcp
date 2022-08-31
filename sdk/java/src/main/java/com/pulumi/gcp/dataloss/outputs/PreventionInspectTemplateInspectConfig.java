@@ -22,71 +22,52 @@ public final class PreventionInspectTemplateInspectConfig {
      * Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
      * 
      */
-    private final @Nullable List<String> contentOptions;
+    private @Nullable List<String> contentOptions;
     /**
      * @return Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<PreventionInspectTemplateInspectConfigCustomInfoType> customInfoTypes;
+    private @Nullable List<PreventionInspectTemplateInspectConfigCustomInfoType> customInfoTypes;
     /**
      * @return Set of infoTypes for which findings would affect this rule.
      * Structure is documented below.
      * 
      */
-    private final @Nullable Boolean excludeInfoTypes;
+    private @Nullable Boolean excludeInfoTypes;
     /**
      * @return When true, a contextual quote from the data that triggered a finding is included in the response.
      * 
      */
-    private final @Nullable Boolean includeQuote;
+    private @Nullable Boolean includeQuote;
     /**
      * @return If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<PreventionInspectTemplateInspectConfigInfoType> infoTypes;
+    private @Nullable List<PreventionInspectTemplateInspectConfigInfoType> infoTypes;
     /**
      * @return Configuration to control the number of findings returned.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PreventionInspectTemplateInspectConfigLimits limits;
+    private @Nullable PreventionInspectTemplateInspectConfigLimits limits;
     /**
      * @return Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
      * Default value is `POSSIBLE`.
      * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
      * 
      */
-    private final @Nullable String minLikelihood;
+    private @Nullable String minLikelihood;
     /**
      * @return Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
      * other rules are executed in the order they are specified for each info type.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<PreventionInspectTemplateInspectConfigRuleSet> ruleSets;
+    private @Nullable List<PreventionInspectTemplateInspectConfigRuleSet> ruleSets;
 
-    @CustomType.Constructor
-    private PreventionInspectTemplateInspectConfig(
-        @CustomType.Parameter("contentOptions") @Nullable List<String> contentOptions,
-        @CustomType.Parameter("customInfoTypes") @Nullable List<PreventionInspectTemplateInspectConfigCustomInfoType> customInfoTypes,
-        @CustomType.Parameter("excludeInfoTypes") @Nullable Boolean excludeInfoTypes,
-        @CustomType.Parameter("includeQuote") @Nullable Boolean includeQuote,
-        @CustomType.Parameter("infoTypes") @Nullable List<PreventionInspectTemplateInspectConfigInfoType> infoTypes,
-        @CustomType.Parameter("limits") @Nullable PreventionInspectTemplateInspectConfigLimits limits,
-        @CustomType.Parameter("minLikelihood") @Nullable String minLikelihood,
-        @CustomType.Parameter("ruleSets") @Nullable List<PreventionInspectTemplateInspectConfigRuleSet> ruleSets) {
-        this.contentOptions = contentOptions;
-        this.customInfoTypes = customInfoTypes;
-        this.excludeInfoTypes = excludeInfoTypes;
-        this.includeQuote = includeQuote;
-        this.infoTypes = infoTypes;
-        this.limits = limits;
-        this.minLikelihood = minLikelihood;
-        this.ruleSets = ruleSets;
-    }
-
+    private PreventionInspectTemplateInspectConfig() {}
     /**
      * @return List of options defining data content to scan. If empty, text, images, and other content will be included.
      * Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
@@ -160,7 +141,7 @@ public final class PreventionInspectTemplateInspectConfig {
     public static Builder builder(PreventionInspectTemplateInspectConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> contentOptions;
         private @Nullable List<PreventionInspectTemplateInspectConfigCustomInfoType> customInfoTypes;
@@ -170,11 +151,7 @@ public final class PreventionInspectTemplateInspectConfig {
         private @Nullable PreventionInspectTemplateInspectConfigLimits limits;
         private @Nullable String minLikelihood;
         private @Nullable List<PreventionInspectTemplateInspectConfigRuleSet> ruleSets;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.contentOptions = defaults.contentOptions;
@@ -187,6 +164,7 @@ public final class PreventionInspectTemplateInspectConfig {
     	      this.ruleSets = defaults.ruleSets;
         }
 
+        @CustomType.Setter
         public Builder contentOptions(@Nullable List<String> contentOptions) {
             this.contentOptions = contentOptions;
             return this;
@@ -194,6 +172,7 @@ public final class PreventionInspectTemplateInspectConfig {
         public Builder contentOptions(String... contentOptions) {
             return contentOptions(List.of(contentOptions));
         }
+        @CustomType.Setter
         public Builder customInfoTypes(@Nullable List<PreventionInspectTemplateInspectConfigCustomInfoType> customInfoTypes) {
             this.customInfoTypes = customInfoTypes;
             return this;
@@ -201,14 +180,17 @@ public final class PreventionInspectTemplateInspectConfig {
         public Builder customInfoTypes(PreventionInspectTemplateInspectConfigCustomInfoType... customInfoTypes) {
             return customInfoTypes(List.of(customInfoTypes));
         }
+        @CustomType.Setter
         public Builder excludeInfoTypes(@Nullable Boolean excludeInfoTypes) {
             this.excludeInfoTypes = excludeInfoTypes;
             return this;
         }
+        @CustomType.Setter
         public Builder includeQuote(@Nullable Boolean includeQuote) {
             this.includeQuote = includeQuote;
             return this;
         }
+        @CustomType.Setter
         public Builder infoTypes(@Nullable List<PreventionInspectTemplateInspectConfigInfoType> infoTypes) {
             this.infoTypes = infoTypes;
             return this;
@@ -216,22 +198,35 @@ public final class PreventionInspectTemplateInspectConfig {
         public Builder infoTypes(PreventionInspectTemplateInspectConfigInfoType... infoTypes) {
             return infoTypes(List.of(infoTypes));
         }
+        @CustomType.Setter
         public Builder limits(@Nullable PreventionInspectTemplateInspectConfigLimits limits) {
             this.limits = limits;
             return this;
         }
+        @CustomType.Setter
         public Builder minLikelihood(@Nullable String minLikelihood) {
             this.minLikelihood = minLikelihood;
             return this;
         }
+        @CustomType.Setter
         public Builder ruleSets(@Nullable List<PreventionInspectTemplateInspectConfigRuleSet> ruleSets) {
             this.ruleSets = ruleSets;
             return this;
         }
         public Builder ruleSets(PreventionInspectTemplateInspectConfigRuleSet... ruleSets) {
             return ruleSets(List.of(ruleSets));
-        }        public PreventionInspectTemplateInspectConfig build() {
-            return new PreventionInspectTemplateInspectConfig(contentOptions, customInfoTypes, excludeInfoTypes, includeQuote, infoTypes, limits, minLikelihood, ruleSets);
+        }
+        public PreventionInspectTemplateInspectConfig build() {
+            final var o = new PreventionInspectTemplateInspectConfig();
+            o.contentOptions = contentOptions;
+            o.customInfoTypes = customInfoTypes;
+            o.excludeInfoTypes = excludeInfoTypes;
+            o.includeQuote = includeQuote;
+            o.infoTypes = infoTypes;
+            o.limits = limits;
+            o.minLikelihood = minLikelihood;
+            o.ruleSets = ruleSets;
+            return o;
         }
     }
 }

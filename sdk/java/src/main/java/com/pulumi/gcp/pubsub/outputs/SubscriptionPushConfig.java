@@ -34,32 +34,23 @@ public final class SubscriptionPushConfig {
      * - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
      * 
      */
-    private final @Nullable Map<String,String> attributes;
+    private @Nullable Map<String,String> attributes;
     /**
      * @return If specified, Pub/Sub will generate and attach an OIDC JWT token as
      * an Authorization header in the HTTP request for every pushed message.
      * Structure is documented below.
      * 
      */
-    private final @Nullable SubscriptionPushConfigOidcToken oidcToken;
+    private @Nullable SubscriptionPushConfigOidcToken oidcToken;
     /**
      * @return A URL locating the endpoint to which messages should be pushed.
      * For example, a Webhook endpoint might use
      * &#34;https://example.com/push&#34;.
      * 
      */
-    private final String pushEndpoint;
+    private String pushEndpoint;
 
-    @CustomType.Constructor
-    private SubscriptionPushConfig(
-        @CustomType.Parameter("attributes") @Nullable Map<String,String> attributes,
-        @CustomType.Parameter("oidcToken") @Nullable SubscriptionPushConfigOidcToken oidcToken,
-        @CustomType.Parameter("pushEndpoint") String pushEndpoint) {
-        this.attributes = attributes;
-        this.oidcToken = oidcToken;
-        this.pushEndpoint = pushEndpoint;
-    }
-
+    private SubscriptionPushConfig() {}
     /**
      * @return Endpoint configuration attributes.
      * Every endpoint has a set of API supported attributes that can
@@ -110,16 +101,12 @@ public final class SubscriptionPushConfig {
     public static Builder builder(SubscriptionPushConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> attributes;
         private @Nullable SubscriptionPushConfigOidcToken oidcToken;
         private String pushEndpoint;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SubscriptionPushConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attributes = defaults.attributes;
@@ -127,19 +114,27 @@ public final class SubscriptionPushConfig {
     	      this.pushEndpoint = defaults.pushEndpoint;
         }
 
+        @CustomType.Setter
         public Builder attributes(@Nullable Map<String,String> attributes) {
             this.attributes = attributes;
             return this;
         }
+        @CustomType.Setter
         public Builder oidcToken(@Nullable SubscriptionPushConfigOidcToken oidcToken) {
             this.oidcToken = oidcToken;
             return this;
         }
+        @CustomType.Setter
         public Builder pushEndpoint(String pushEndpoint) {
             this.pushEndpoint = Objects.requireNonNull(pushEndpoint);
             return this;
-        }        public SubscriptionPushConfig build() {
-            return new SubscriptionPushConfig(attributes, oidcToken, pushEndpoint);
+        }
+        public SubscriptionPushConfig build() {
+            final var o = new SubscriptionPushConfig();
+            o.attributes = attributes;
+            o.oidcToken = oidcToken;
+            o.pushEndpoint = pushEndpoint;
+            return o;
         }
     }
 }

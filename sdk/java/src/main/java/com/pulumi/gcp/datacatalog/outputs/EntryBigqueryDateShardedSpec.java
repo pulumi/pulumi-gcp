@@ -12,20 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EntryBigqueryDateShardedSpec {
-    private final @Nullable String dataset;
-    private final @Nullable Integer shardCount;
-    private final @Nullable String tablePrefix;
+    private @Nullable String dataset;
+    private @Nullable Integer shardCount;
+    private @Nullable String tablePrefix;
 
-    @CustomType.Constructor
-    private EntryBigqueryDateShardedSpec(
-        @CustomType.Parameter("dataset") @Nullable String dataset,
-        @CustomType.Parameter("shardCount") @Nullable Integer shardCount,
-        @CustomType.Parameter("tablePrefix") @Nullable String tablePrefix) {
-        this.dataset = dataset;
-        this.shardCount = shardCount;
-        this.tablePrefix = tablePrefix;
-    }
-
+    private EntryBigqueryDateShardedSpec() {}
     public Optional<String> dataset() {
         return Optional.ofNullable(this.dataset);
     }
@@ -43,16 +34,12 @@ public final class EntryBigqueryDateShardedSpec {
     public static Builder builder(EntryBigqueryDateShardedSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String dataset;
         private @Nullable Integer shardCount;
         private @Nullable String tablePrefix;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EntryBigqueryDateShardedSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dataset = defaults.dataset;
@@ -60,19 +47,27 @@ public final class EntryBigqueryDateShardedSpec {
     	      this.tablePrefix = defaults.tablePrefix;
         }
 
+        @CustomType.Setter
         public Builder dataset(@Nullable String dataset) {
             this.dataset = dataset;
             return this;
         }
+        @CustomType.Setter
         public Builder shardCount(@Nullable Integer shardCount) {
             this.shardCount = shardCount;
             return this;
         }
+        @CustomType.Setter
         public Builder tablePrefix(@Nullable String tablePrefix) {
             this.tablePrefix = tablePrefix;
             return this;
-        }        public EntryBigqueryDateShardedSpec build() {
-            return new EntryBigqueryDateShardedSpec(dataset, shardCount, tablePrefix);
+        }
+        public EntryBigqueryDateShardedSpec build() {
+            final var o = new EntryBigqueryDateShardedSpec();
+            o.dataset = dataset;
+            o.shardCount = shardCount;
+            o.tablePrefix = tablePrefix;
+            return o;
         }
     }
 }

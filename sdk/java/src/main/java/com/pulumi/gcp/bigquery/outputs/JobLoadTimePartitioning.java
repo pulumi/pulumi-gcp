@@ -15,31 +15,22 @@ public final class JobLoadTimePartitioning {
      * @return Number of milliseconds for which to keep the storage for a partition. A wrapper is used here because 0 is an invalid value.
      * 
      */
-    private final @Nullable String expirationMs;
+    private @Nullable String expirationMs;
     /**
      * @return If not set, the table is partitioned by pseudo column &#39;_PARTITIONTIME&#39;; if set, the table is partitioned by this field.
      * The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
      * A wrapper is used here because an empty string is an invalid value.
      * 
      */
-    private final @Nullable String field;
+    private @Nullable String field;
     /**
      * @return The only type supported is DAY, which will generate one partition per day. Providing an empty string used to cause an error,
      * but in OnePlatform the field will be treated as unset.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private JobLoadTimePartitioning(
-        @CustomType.Parameter("expirationMs") @Nullable String expirationMs,
-        @CustomType.Parameter("field") @Nullable String field,
-        @CustomType.Parameter("type") String type) {
-        this.expirationMs = expirationMs;
-        this.field = field;
-        this.type = type;
-    }
-
+    private JobLoadTimePartitioning() {}
     /**
      * @return Number of milliseconds for which to keep the storage for a partition. A wrapper is used here because 0 is an invalid value.
      * 
@@ -72,16 +63,12 @@ public final class JobLoadTimePartitioning {
     public static Builder builder(JobLoadTimePartitioning defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String expirationMs;
         private @Nullable String field;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobLoadTimePartitioning defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expirationMs = defaults.expirationMs;
@@ -89,19 +76,27 @@ public final class JobLoadTimePartitioning {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder expirationMs(@Nullable String expirationMs) {
             this.expirationMs = expirationMs;
             return this;
         }
+        @CustomType.Setter
         public Builder field(@Nullable String field) {
             this.field = field;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public JobLoadTimePartitioning build() {
-            return new JobLoadTimePartitioning(expirationMs, field, type);
+        }
+        public JobLoadTimePartitioning build() {
+            final var o = new JobLoadTimePartitioning();
+            o.expirationMs = expirationMs;
+            o.field = field;
+            o.type = type;
+            return o;
         }
     }
 }

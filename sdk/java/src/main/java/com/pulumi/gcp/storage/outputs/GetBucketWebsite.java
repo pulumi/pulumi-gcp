@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketWebsite {
-    private final String mainPageSuffix;
-    private final String notFoundPage;
+    private String mainPageSuffix;
+    private String notFoundPage;
 
-    @CustomType.Constructor
-    private GetBucketWebsite(
-        @CustomType.Parameter("mainPageSuffix") String mainPageSuffix,
-        @CustomType.Parameter("notFoundPage") String notFoundPage) {
-        this.mainPageSuffix = mainPageSuffix;
-        this.notFoundPage = notFoundPage;
-    }
-
+    private GetBucketWebsite() {}
     public String mainPageSuffix() {
         return this.mainPageSuffix;
     }
@@ -34,30 +27,32 @@ public final class GetBucketWebsite {
     public static Builder builder(GetBucketWebsite defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String mainPageSuffix;
         private String notFoundPage;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBucketWebsite defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mainPageSuffix = defaults.mainPageSuffix;
     	      this.notFoundPage = defaults.notFoundPage;
         }
 
+        @CustomType.Setter
         public Builder mainPageSuffix(String mainPageSuffix) {
             this.mainPageSuffix = Objects.requireNonNull(mainPageSuffix);
             return this;
         }
+        @CustomType.Setter
         public Builder notFoundPage(String notFoundPage) {
             this.notFoundPage = Objects.requireNonNull(notFoundPage);
             return this;
-        }        public GetBucketWebsite build() {
-            return new GetBucketWebsite(mainPageSuffix, notFoundPage);
+        }
+        public GetBucketWebsite build() {
+            final var o = new GetBucketWebsite();
+            o.mainPageSuffix = mainPageSuffix;
+            o.notFoundPage = notFoundPage;
+            return o;
         }
     }
 }

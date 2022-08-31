@@ -18,38 +18,27 @@ public final class PatchDeploymentPatchConfigPreStepLinuxExecStepConfig {
      * @return Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
      * 
      */
-    private final @Nullable List<Integer> allowedSuccessCodes;
+    private @Nullable List<Integer> allowedSuccessCodes;
     /**
      * @return A Cloud Storage object containing the executable.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject gcsObject;
+    private @Nullable PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject gcsObject;
     /**
      * @return The script interpreter to use to run the script. If no interpreter is specified the script will
      * be executed directly, which will likely only succeed for scripts with shebang lines.
      * Possible values are `SHELL` and `POWERSHELL`.
      * 
      */
-    private final @Nullable String interpreter;
+    private @Nullable String interpreter;
     /**
      * @return An absolute path to the executable on the VM.
      * 
      */
-    private final @Nullable String localPath;
+    private @Nullable String localPath;
 
-    @CustomType.Constructor
-    private PatchDeploymentPatchConfigPreStepLinuxExecStepConfig(
-        @CustomType.Parameter("allowedSuccessCodes") @Nullable List<Integer> allowedSuccessCodes,
-        @CustomType.Parameter("gcsObject") @Nullable PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject gcsObject,
-        @CustomType.Parameter("interpreter") @Nullable String interpreter,
-        @CustomType.Parameter("localPath") @Nullable String localPath) {
-        this.allowedSuccessCodes = allowedSuccessCodes;
-        this.gcsObject = gcsObject;
-        this.interpreter = interpreter;
-        this.localPath = localPath;
-    }
-
+    private PatchDeploymentPatchConfigPreStepLinuxExecStepConfig() {}
     /**
      * @return Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
      * 
@@ -89,17 +78,13 @@ public final class PatchDeploymentPatchConfigPreStepLinuxExecStepConfig {
     public static Builder builder(PatchDeploymentPatchConfigPreStepLinuxExecStepConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<Integer> allowedSuccessCodes;
         private @Nullable PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject gcsObject;
         private @Nullable String interpreter;
         private @Nullable String localPath;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PatchDeploymentPatchConfigPreStepLinuxExecStepConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedSuccessCodes = defaults.allowedSuccessCodes;
@@ -108,6 +93,7 @@ public final class PatchDeploymentPatchConfigPreStepLinuxExecStepConfig {
     	      this.localPath = defaults.localPath;
         }
 
+        @CustomType.Setter
         public Builder allowedSuccessCodes(@Nullable List<Integer> allowedSuccessCodes) {
             this.allowedSuccessCodes = allowedSuccessCodes;
             return this;
@@ -115,19 +101,28 @@ public final class PatchDeploymentPatchConfigPreStepLinuxExecStepConfig {
         public Builder allowedSuccessCodes(Integer... allowedSuccessCodes) {
             return allowedSuccessCodes(List.of(allowedSuccessCodes));
         }
+        @CustomType.Setter
         public Builder gcsObject(@Nullable PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject gcsObject) {
             this.gcsObject = gcsObject;
             return this;
         }
+        @CustomType.Setter
         public Builder interpreter(@Nullable String interpreter) {
             this.interpreter = interpreter;
             return this;
         }
+        @CustomType.Setter
         public Builder localPath(@Nullable String localPath) {
             this.localPath = localPath;
             return this;
-        }        public PatchDeploymentPatchConfigPreStepLinuxExecStepConfig build() {
-            return new PatchDeploymentPatchConfigPreStepLinuxExecStepConfig(allowedSuccessCodes, gcsObject, interpreter, localPath);
+        }
+        public PatchDeploymentPatchConfigPreStepLinuxExecStepConfig build() {
+            final var o = new PatchDeploymentPatchConfigPreStepLinuxExecStepConfig();
+            o.allowedSuccessCodes = allowedSuccessCodes;
+            o.gcsObject = gcsObject;
+            o.interpreter = interpreter;
+            o.localPath = localPath;
+            return o;
         }
     }
 }

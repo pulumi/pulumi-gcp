@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceShieldedInstanceConfig {
-    private final Boolean enableIntegrityMonitoring;
-    private final Boolean enableSecureBoot;
-    private final Boolean enableVtpm;
+    private Boolean enableIntegrityMonitoring;
+    private Boolean enableSecureBoot;
+    private Boolean enableVtpm;
 
-    @CustomType.Constructor
-    private GetInstanceShieldedInstanceConfig(
-        @CustomType.Parameter("enableIntegrityMonitoring") Boolean enableIntegrityMonitoring,
-        @CustomType.Parameter("enableSecureBoot") Boolean enableSecureBoot,
-        @CustomType.Parameter("enableVtpm") Boolean enableVtpm) {
-        this.enableIntegrityMonitoring = enableIntegrityMonitoring;
-        this.enableSecureBoot = enableSecureBoot;
-        this.enableVtpm = enableVtpm;
-    }
-
+    private GetInstanceShieldedInstanceConfig() {}
     public Boolean enableIntegrityMonitoring() {
         return this.enableIntegrityMonitoring;
     }
@@ -40,16 +31,12 @@ public final class GetInstanceShieldedInstanceConfig {
     public static Builder builder(GetInstanceShieldedInstanceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enableIntegrityMonitoring;
         private Boolean enableSecureBoot;
         private Boolean enableVtpm;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceShieldedInstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableIntegrityMonitoring = defaults.enableIntegrityMonitoring;
@@ -57,19 +44,27 @@ public final class GetInstanceShieldedInstanceConfig {
     	      this.enableVtpm = defaults.enableVtpm;
         }
 
+        @CustomType.Setter
         public Builder enableIntegrityMonitoring(Boolean enableIntegrityMonitoring) {
             this.enableIntegrityMonitoring = Objects.requireNonNull(enableIntegrityMonitoring);
             return this;
         }
+        @CustomType.Setter
         public Builder enableSecureBoot(Boolean enableSecureBoot) {
             this.enableSecureBoot = Objects.requireNonNull(enableSecureBoot);
             return this;
         }
+        @CustomType.Setter
         public Builder enableVtpm(Boolean enableVtpm) {
             this.enableVtpm = Objects.requireNonNull(enableVtpm);
             return this;
-        }        public GetInstanceShieldedInstanceConfig build() {
-            return new GetInstanceShieldedInstanceConfig(enableIntegrityMonitoring, enableSecureBoot, enableVtpm);
+        }
+        public GetInstanceShieldedInstanceConfig build() {
+            final var o = new GetInstanceShieldedInstanceConfig();
+            o.enableIntegrityMonitoring = enableIntegrityMonitoring;
+            o.enableSecureBoot = enableSecureBoot;
+            o.enableVtpm = enableVtpm;
+            return o;
         }
     }
 }

@@ -19,71 +19,44 @@ public final class GetInstanceNetworkInterface {
      * instance can be accessed via the Internet. Structure documented below.
      * 
      */
-    private final List<GetInstanceNetworkInterfaceAccessConfig> accessConfigs;
+    private List<GetInstanceNetworkInterfaceAccessConfig> accessConfigs;
     /**
      * @return An array of alias IP ranges for this network interface. Structure documented below.
      * 
      */
-    private final List<GetInstanceNetworkInterfaceAliasIpRange> aliasIpRanges;
-    private final List<GetInstanceNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
-    private final String ipv6AccessType;
+    private List<GetInstanceNetworkInterfaceAliasIpRange> aliasIpRanges;
+    private List<GetInstanceNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
+    private String ipv6AccessType;
     /**
      * @return The name of the instance. One of `name` or `self_link` must be provided.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The name or self_link of the network attached to this interface.
      * 
      */
-    private final String network;
+    private String network;
     /**
      * @return The private IP address assigned to the instance.
      * 
      */
-    private final String networkIp;
-    private final String nicType;
-    private final Integer queueCount;
-    private final String stackType;
+    private String networkIp;
+    private String nicType;
+    private Integer queueCount;
+    private String stackType;
     /**
      * @return The name or self_link of the subnetwork attached to this interface.
      * 
      */
-    private final String subnetwork;
+    private String subnetwork;
     /**
      * @return The project in which the subnetwork belongs.
      * 
      */
-    private final String subnetworkProject;
+    private String subnetworkProject;
 
-    @CustomType.Constructor
-    private GetInstanceNetworkInterface(
-        @CustomType.Parameter("accessConfigs") List<GetInstanceNetworkInterfaceAccessConfig> accessConfigs,
-        @CustomType.Parameter("aliasIpRanges") List<GetInstanceNetworkInterfaceAliasIpRange> aliasIpRanges,
-        @CustomType.Parameter("ipv6AccessConfigs") List<GetInstanceNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs,
-        @CustomType.Parameter("ipv6AccessType") String ipv6AccessType,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("network") String network,
-        @CustomType.Parameter("networkIp") String networkIp,
-        @CustomType.Parameter("nicType") String nicType,
-        @CustomType.Parameter("queueCount") Integer queueCount,
-        @CustomType.Parameter("stackType") String stackType,
-        @CustomType.Parameter("subnetwork") String subnetwork,
-        @CustomType.Parameter("subnetworkProject") String subnetworkProject) {
-        this.accessConfigs = accessConfigs;
-        this.aliasIpRanges = aliasIpRanges;
-        this.ipv6AccessConfigs = ipv6AccessConfigs;
-        this.ipv6AccessType = ipv6AccessType;
-        this.name = name;
-        this.network = network;
-        this.networkIp = networkIp;
-        this.nicType = nicType;
-        this.queueCount = queueCount;
-        this.stackType = stackType;
-        this.subnetwork = subnetwork;
-        this.subnetworkProject = subnetworkProject;
-    }
-
+    private GetInstanceNetworkInterface() {}
     /**
      * @return Access configurations, i.e. IPs via which this
      * instance can be accessed via the Internet. Structure documented below.
@@ -157,7 +130,7 @@ public final class GetInstanceNetworkInterface {
     public static Builder builder(GetInstanceNetworkInterface defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetInstanceNetworkInterfaceAccessConfig> accessConfigs;
         private List<GetInstanceNetworkInterfaceAliasIpRange> aliasIpRanges;
@@ -171,11 +144,7 @@ public final class GetInstanceNetworkInterface {
         private String stackType;
         private String subnetwork;
         private String subnetworkProject;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceNetworkInterface defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessConfigs = defaults.accessConfigs;
@@ -192,6 +161,7 @@ public final class GetInstanceNetworkInterface {
     	      this.subnetworkProject = defaults.subnetworkProject;
         }
 
+        @CustomType.Setter
         public Builder accessConfigs(List<GetInstanceNetworkInterfaceAccessConfig> accessConfigs) {
             this.accessConfigs = Objects.requireNonNull(accessConfigs);
             return this;
@@ -199,6 +169,7 @@ public final class GetInstanceNetworkInterface {
         public Builder accessConfigs(GetInstanceNetworkInterfaceAccessConfig... accessConfigs) {
             return accessConfigs(List.of(accessConfigs));
         }
+        @CustomType.Setter
         public Builder aliasIpRanges(List<GetInstanceNetworkInterfaceAliasIpRange> aliasIpRanges) {
             this.aliasIpRanges = Objects.requireNonNull(aliasIpRanges);
             return this;
@@ -206,6 +177,7 @@ public final class GetInstanceNetworkInterface {
         public Builder aliasIpRanges(GetInstanceNetworkInterfaceAliasIpRange... aliasIpRanges) {
             return aliasIpRanges(List.of(aliasIpRanges));
         }
+        @CustomType.Setter
         public Builder ipv6AccessConfigs(List<GetInstanceNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs) {
             this.ipv6AccessConfigs = Objects.requireNonNull(ipv6AccessConfigs);
             return this;
@@ -213,43 +185,66 @@ public final class GetInstanceNetworkInterface {
         public Builder ipv6AccessConfigs(GetInstanceNetworkInterfaceIpv6AccessConfig... ipv6AccessConfigs) {
             return ipv6AccessConfigs(List.of(ipv6AccessConfigs));
         }
+        @CustomType.Setter
         public Builder ipv6AccessType(String ipv6AccessType) {
             this.ipv6AccessType = Objects.requireNonNull(ipv6AccessType);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder network(String network) {
             this.network = Objects.requireNonNull(network);
             return this;
         }
+        @CustomType.Setter
         public Builder networkIp(String networkIp) {
             this.networkIp = Objects.requireNonNull(networkIp);
             return this;
         }
+        @CustomType.Setter
         public Builder nicType(String nicType) {
             this.nicType = Objects.requireNonNull(nicType);
             return this;
         }
+        @CustomType.Setter
         public Builder queueCount(Integer queueCount) {
             this.queueCount = Objects.requireNonNull(queueCount);
             return this;
         }
+        @CustomType.Setter
         public Builder stackType(String stackType) {
             this.stackType = Objects.requireNonNull(stackType);
             return this;
         }
+        @CustomType.Setter
         public Builder subnetwork(String subnetwork) {
             this.subnetwork = Objects.requireNonNull(subnetwork);
             return this;
         }
+        @CustomType.Setter
         public Builder subnetworkProject(String subnetworkProject) {
             this.subnetworkProject = Objects.requireNonNull(subnetworkProject);
             return this;
-        }        public GetInstanceNetworkInterface build() {
-            return new GetInstanceNetworkInterface(accessConfigs, aliasIpRanges, ipv6AccessConfigs, ipv6AccessType, name, network, networkIp, nicType, queueCount, stackType, subnetwork, subnetworkProject);
+        }
+        public GetInstanceNetworkInterface build() {
+            final var o = new GetInstanceNetworkInterface();
+            o.accessConfigs = accessConfigs;
+            o.aliasIpRanges = aliasIpRanges;
+            o.ipv6AccessConfigs = ipv6AccessConfigs;
+            o.ipv6AccessType = ipv6AccessType;
+            o.name = name;
+            o.network = network;
+            o.networkIp = networkIp;
+            o.nicType = nicType;
+            o.queueCount = queueCount;
+            o.stackType = stackType;
+            o.subnetwork = subnetwork;
+            o.subnetworkProject = subnetworkProject;
+            return o;
         }
     }
 }

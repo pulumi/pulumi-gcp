@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromTemplateNetworkInterfaceAccessConfig {
-    private final @Nullable String natIp;
-    private final @Nullable String networkTier;
-    private final @Nullable String publicPtrDomainName;
+    private @Nullable String natIp;
+    private @Nullable String networkTier;
+    private @Nullable String publicPtrDomainName;
 
-    @CustomType.Constructor
-    private InstanceFromTemplateNetworkInterfaceAccessConfig(
-        @CustomType.Parameter("natIp") @Nullable String natIp,
-        @CustomType.Parameter("networkTier") @Nullable String networkTier,
-        @CustomType.Parameter("publicPtrDomainName") @Nullable String publicPtrDomainName) {
-        this.natIp = natIp;
-        this.networkTier = networkTier;
-        this.publicPtrDomainName = publicPtrDomainName;
-    }
-
+    private InstanceFromTemplateNetworkInterfaceAccessConfig() {}
     public Optional<String> natIp() {
         return Optional.ofNullable(this.natIp);
     }
@@ -42,16 +33,12 @@ public final class InstanceFromTemplateNetworkInterfaceAccessConfig {
     public static Builder builder(InstanceFromTemplateNetworkInterfaceAccessConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String natIp;
         private @Nullable String networkTier;
         private @Nullable String publicPtrDomainName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceFromTemplateNetworkInterfaceAccessConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.natIp = defaults.natIp;
@@ -59,19 +46,27 @@ public final class InstanceFromTemplateNetworkInterfaceAccessConfig {
     	      this.publicPtrDomainName = defaults.publicPtrDomainName;
         }
 
+        @CustomType.Setter
         public Builder natIp(@Nullable String natIp) {
             this.natIp = natIp;
             return this;
         }
+        @CustomType.Setter
         public Builder networkTier(@Nullable String networkTier) {
             this.networkTier = networkTier;
             return this;
         }
+        @CustomType.Setter
         public Builder publicPtrDomainName(@Nullable String publicPtrDomainName) {
             this.publicPtrDomainName = publicPtrDomainName;
             return this;
-        }        public InstanceFromTemplateNetworkInterfaceAccessConfig build() {
-            return new InstanceFromTemplateNetworkInterfaceAccessConfig(natIp, networkTier, publicPtrDomainName);
+        }
+        public InstanceFromTemplateNetworkInterfaceAccessConfig build() {
+            final var o = new InstanceFromTemplateNetworkInterfaceAccessConfig();
+            o.natIp = natIp;
+            o.networkTier = networkTier;
+            o.publicPtrDomainName = publicPtrDomainName;
+            return o;
         }
     }
 }

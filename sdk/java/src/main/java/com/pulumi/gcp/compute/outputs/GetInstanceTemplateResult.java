@@ -25,75 +25,75 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceTemplateResult {
-    private final List<GetInstanceTemplateAdvancedMachineFeature> advancedMachineFeatures;
+    private List<GetInstanceTemplateAdvancedMachineFeature> advancedMachineFeatures;
     /**
      * @return Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs. This defaults to false.
      * 
      */
-    private final Boolean canIpForward;
+    private Boolean canIpForward;
     /**
      * @return Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
      * 
      */
-    private final List<GetInstanceTemplateConfidentialInstanceConfig> confidentialInstanceConfigs;
+    private List<GetInstanceTemplateConfidentialInstanceConfig> confidentialInstanceConfigs;
     /**
      * @return A brief description of this resource.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Disks to attach to instances created from this template.
      * This can be specified multiple times for multiple disks. Structure is
      * documented below.
      * 
      */
-    private final List<GetInstanceTemplateDisk> disks;
+    private List<GetInstanceTemplateDisk> disks;
     /**
      * @return Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
      * 
      */
-    private final Boolean enableDisplay;
-    private final @Nullable String filter;
+    private Boolean enableDisplay;
+    private @Nullable String filter;
     /**
      * @return List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * 
      */
-    private final List<GetInstanceTemplateGuestAccelerator> guestAccelerators;
+    private List<GetInstanceTemplateGuestAccelerator> guestAccelerators;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A brief description to use for instances
      * created from this template.
      * 
      */
-    private final String instanceDescription;
+    private String instanceDescription;
     /**
      * @return (Optional) A set of ket/value label pairs to assign to disk created from
      * this template
      * 
      */
-    private final Map<String,String> labels;
+    private Map<String,String> labels;
     /**
      * @return The machine type to create.
      * 
      */
-    private final String machineType;
+    private String machineType;
     /**
      * @return Metadata key/value pairs to make available from
      * within instances created from this template.
      * 
      */
-    private final Map<String,Object> metadata;
+    private Map<String,Object> metadata;
     /**
      * @return The unique fingerprint of the metadata.
      * 
      */
-    private final String metadataFingerprint;
+    private String metadataFingerprint;
     /**
      * @return An alternative to using the
      * startup-script metadata key, mostly to match the compute_instance resource.
@@ -101,45 +101,45 @@ public final class GetInstanceTemplateResult {
      * thus the two mechanisms are not allowed to be used simultaneously.
      * 
      */
-    private final String metadataStartupScript;
+    private String metadataStartupScript;
     /**
      * @return Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      * 
      */
-    private final String minCpuPlatform;
-    private final @Nullable Boolean mostRecent;
+    private String minCpuPlatform;
+    private @Nullable Boolean mostRecent;
     /**
      * @return The name of the instance template. If you leave
      * this blank, the provider will auto-generate a unique name.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return Creates a unique name beginning with the specified
      * prefix. Conflicts with `name`.
      * 
      */
-    private final String namePrefix;
+    private String namePrefix;
     /**
      * @return Networks to attach to instances created from
      * this template. This can be specified multiple times for multiple networks.
      * Structure is documented below.
      * 
      */
-    private final List<GetInstanceTemplateNetworkInterface> networkInterfaces;
+    private List<GetInstanceTemplateNetworkInterface> networkInterfaces;
     /**
      * @return The network performance configuration setting
      * for the instance, if set. Structure is documented below.
      * 
      */
-    private final List<GetInstanceTemplateNetworkPerformanceConfig> networkPerformanceConfigs;
+    private List<GetInstanceTemplateNetworkPerformanceConfig> networkPerformanceConfigs;
     /**
      * @return The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      * 
      */
-    private final @Nullable String project;
+    private @Nullable String project;
     /**
      * @return An instance template is a global resource that is not
      * bound to a zone or a region. However, you can still specify some regional
@@ -149,105 +149,42 @@ public final class GetInstanceTemplateResult {
      * Provider if no value is given.
      * 
      */
-    private final String region;
-    private final List<GetInstanceTemplateReservationAffinity> reservationAffinities;
+    private String region;
+    private List<GetInstanceTemplateReservationAffinity> reservationAffinities;
     /**
      * @return The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      * 
      */
-    private final List<GetInstanceTemplateScheduling> schedulings;
+    private List<GetInstanceTemplateScheduling> schedulings;
     /**
      * @return The URI of the created resource.
      * 
      */
-    private final String selfLink;
+    private String selfLink;
     /**
      * @return Service account to attach to the instance. Structure is documented below.
      * 
      */
-    private final List<GetInstanceTemplateServiceAccount> serviceAccounts;
+    private List<GetInstanceTemplateServiceAccount> serviceAccounts;
     /**
      * @return Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
      * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      * 
      */
-    private final List<GetInstanceTemplateShieldedInstanceConfig> shieldedInstanceConfigs;
+    private List<GetInstanceTemplateShieldedInstanceConfig> shieldedInstanceConfigs;
     /**
      * @return Tags to attach to the instance.
      * 
      */
-    private final List<String> tags;
+    private List<String> tags;
     /**
      * @return The unique fingerprint of the tags.
      * 
      */
-    private final String tagsFingerprint;
+    private String tagsFingerprint;
 
-    @CustomType.Constructor
-    private GetInstanceTemplateResult(
-        @CustomType.Parameter("advancedMachineFeatures") List<GetInstanceTemplateAdvancedMachineFeature> advancedMachineFeatures,
-        @CustomType.Parameter("canIpForward") Boolean canIpForward,
-        @CustomType.Parameter("confidentialInstanceConfigs") List<GetInstanceTemplateConfidentialInstanceConfig> confidentialInstanceConfigs,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("disks") List<GetInstanceTemplateDisk> disks,
-        @CustomType.Parameter("enableDisplay") Boolean enableDisplay,
-        @CustomType.Parameter("filter") @Nullable String filter,
-        @CustomType.Parameter("guestAccelerators") List<GetInstanceTemplateGuestAccelerator> guestAccelerators,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceDescription") String instanceDescription,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("machineType") String machineType,
-        @CustomType.Parameter("metadata") Map<String,Object> metadata,
-        @CustomType.Parameter("metadataFingerprint") String metadataFingerprint,
-        @CustomType.Parameter("metadataStartupScript") String metadataStartupScript,
-        @CustomType.Parameter("minCpuPlatform") String minCpuPlatform,
-        @CustomType.Parameter("mostRecent") @Nullable Boolean mostRecent,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("namePrefix") String namePrefix,
-        @CustomType.Parameter("networkInterfaces") List<GetInstanceTemplateNetworkInterface> networkInterfaces,
-        @CustomType.Parameter("networkPerformanceConfigs") List<GetInstanceTemplateNetworkPerformanceConfig> networkPerformanceConfigs,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("reservationAffinities") List<GetInstanceTemplateReservationAffinity> reservationAffinities,
-        @CustomType.Parameter("schedulings") List<GetInstanceTemplateScheduling> schedulings,
-        @CustomType.Parameter("selfLink") String selfLink,
-        @CustomType.Parameter("serviceAccounts") List<GetInstanceTemplateServiceAccount> serviceAccounts,
-        @CustomType.Parameter("shieldedInstanceConfigs") List<GetInstanceTemplateShieldedInstanceConfig> shieldedInstanceConfigs,
-        @CustomType.Parameter("tags") List<String> tags,
-        @CustomType.Parameter("tagsFingerprint") String tagsFingerprint) {
-        this.advancedMachineFeatures = advancedMachineFeatures;
-        this.canIpForward = canIpForward;
-        this.confidentialInstanceConfigs = confidentialInstanceConfigs;
-        this.description = description;
-        this.disks = disks;
-        this.enableDisplay = enableDisplay;
-        this.filter = filter;
-        this.guestAccelerators = guestAccelerators;
-        this.id = id;
-        this.instanceDescription = instanceDescription;
-        this.labels = labels;
-        this.machineType = machineType;
-        this.metadata = metadata;
-        this.metadataFingerprint = metadataFingerprint;
-        this.metadataStartupScript = metadataStartupScript;
-        this.minCpuPlatform = minCpuPlatform;
-        this.mostRecent = mostRecent;
-        this.name = name;
-        this.namePrefix = namePrefix;
-        this.networkInterfaces = networkInterfaces;
-        this.networkPerformanceConfigs = networkPerformanceConfigs;
-        this.project = project;
-        this.region = region;
-        this.reservationAffinities = reservationAffinities;
-        this.schedulings = schedulings;
-        this.selfLink = selfLink;
-        this.serviceAccounts = serviceAccounts;
-        this.shieldedInstanceConfigs = shieldedInstanceConfigs;
-        this.tags = tags;
-        this.tagsFingerprint = tagsFingerprint;
-    }
-
+    private GetInstanceTemplateResult() {}
     public List<GetInstanceTemplateAdvancedMachineFeature> advancedMachineFeatures() {
         return this.advancedMachineFeatures;
     }
@@ -474,7 +411,7 @@ public final class GetInstanceTemplateResult {
     public static Builder builder(GetInstanceTemplateResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetInstanceTemplateAdvancedMachineFeature> advancedMachineFeatures;
         private Boolean canIpForward;
@@ -506,11 +443,7 @@ public final class GetInstanceTemplateResult {
         private List<GetInstanceTemplateShieldedInstanceConfig> shieldedInstanceConfigs;
         private List<String> tags;
         private String tagsFingerprint;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTemplateResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
@@ -545,6 +478,7 @@ public final class GetInstanceTemplateResult {
     	      this.tagsFingerprint = defaults.tagsFingerprint;
         }
 
+        @CustomType.Setter
         public Builder advancedMachineFeatures(List<GetInstanceTemplateAdvancedMachineFeature> advancedMachineFeatures) {
             this.advancedMachineFeatures = Objects.requireNonNull(advancedMachineFeatures);
             return this;
@@ -552,10 +486,12 @@ public final class GetInstanceTemplateResult {
         public Builder advancedMachineFeatures(GetInstanceTemplateAdvancedMachineFeature... advancedMachineFeatures) {
             return advancedMachineFeatures(List.of(advancedMachineFeatures));
         }
+        @CustomType.Setter
         public Builder canIpForward(Boolean canIpForward) {
             this.canIpForward = Objects.requireNonNull(canIpForward);
             return this;
         }
+        @CustomType.Setter
         public Builder confidentialInstanceConfigs(List<GetInstanceTemplateConfidentialInstanceConfig> confidentialInstanceConfigs) {
             this.confidentialInstanceConfigs = Objects.requireNonNull(confidentialInstanceConfigs);
             return this;
@@ -563,10 +499,12 @@ public final class GetInstanceTemplateResult {
         public Builder confidentialInstanceConfigs(GetInstanceTemplateConfidentialInstanceConfig... confidentialInstanceConfigs) {
             return confidentialInstanceConfigs(List.of(confidentialInstanceConfigs));
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder disks(List<GetInstanceTemplateDisk> disks) {
             this.disks = Objects.requireNonNull(disks);
             return this;
@@ -574,14 +512,17 @@ public final class GetInstanceTemplateResult {
         public Builder disks(GetInstanceTemplateDisk... disks) {
             return disks(List.of(disks));
         }
+        @CustomType.Setter
         public Builder enableDisplay(Boolean enableDisplay) {
             this.enableDisplay = Objects.requireNonNull(enableDisplay);
             return this;
         }
+        @CustomType.Setter
         public Builder filter(@Nullable String filter) {
             this.filter = filter;
             return this;
         }
+        @CustomType.Setter
         public Builder guestAccelerators(List<GetInstanceTemplateGuestAccelerator> guestAccelerators) {
             this.guestAccelerators = Objects.requireNonNull(guestAccelerators);
             return this;
@@ -589,50 +530,62 @@ public final class GetInstanceTemplateResult {
         public Builder guestAccelerators(GetInstanceTemplateGuestAccelerator... guestAccelerators) {
             return guestAccelerators(List.of(guestAccelerators));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceDescription(String instanceDescription) {
             this.instanceDescription = Objects.requireNonNull(instanceDescription);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder machineType(String machineType) {
             this.machineType = Objects.requireNonNull(machineType);
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(Map<String,Object> metadata) {
             this.metadata = Objects.requireNonNull(metadata);
             return this;
         }
+        @CustomType.Setter
         public Builder metadataFingerprint(String metadataFingerprint) {
             this.metadataFingerprint = Objects.requireNonNull(metadataFingerprint);
             return this;
         }
+        @CustomType.Setter
         public Builder metadataStartupScript(String metadataStartupScript) {
             this.metadataStartupScript = Objects.requireNonNull(metadataStartupScript);
             return this;
         }
+        @CustomType.Setter
         public Builder minCpuPlatform(String minCpuPlatform) {
             this.minCpuPlatform = Objects.requireNonNull(minCpuPlatform);
             return this;
         }
+        @CustomType.Setter
         public Builder mostRecent(@Nullable Boolean mostRecent) {
             this.mostRecent = mostRecent;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder namePrefix(String namePrefix) {
             this.namePrefix = Objects.requireNonNull(namePrefix);
             return this;
         }
+        @CustomType.Setter
         public Builder networkInterfaces(List<GetInstanceTemplateNetworkInterface> networkInterfaces) {
             this.networkInterfaces = Objects.requireNonNull(networkInterfaces);
             return this;
@@ -640,6 +593,7 @@ public final class GetInstanceTemplateResult {
         public Builder networkInterfaces(GetInstanceTemplateNetworkInterface... networkInterfaces) {
             return networkInterfaces(List.of(networkInterfaces));
         }
+        @CustomType.Setter
         public Builder networkPerformanceConfigs(List<GetInstanceTemplateNetworkPerformanceConfig> networkPerformanceConfigs) {
             this.networkPerformanceConfigs = Objects.requireNonNull(networkPerformanceConfigs);
             return this;
@@ -647,14 +601,17 @@ public final class GetInstanceTemplateResult {
         public Builder networkPerformanceConfigs(GetInstanceTemplateNetworkPerformanceConfig... networkPerformanceConfigs) {
             return networkPerformanceConfigs(List.of(networkPerformanceConfigs));
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder reservationAffinities(List<GetInstanceTemplateReservationAffinity> reservationAffinities) {
             this.reservationAffinities = Objects.requireNonNull(reservationAffinities);
             return this;
@@ -662,6 +619,7 @@ public final class GetInstanceTemplateResult {
         public Builder reservationAffinities(GetInstanceTemplateReservationAffinity... reservationAffinities) {
             return reservationAffinities(List.of(reservationAffinities));
         }
+        @CustomType.Setter
         public Builder schedulings(List<GetInstanceTemplateScheduling> schedulings) {
             this.schedulings = Objects.requireNonNull(schedulings);
             return this;
@@ -669,10 +627,12 @@ public final class GetInstanceTemplateResult {
         public Builder schedulings(GetInstanceTemplateScheduling... schedulings) {
             return schedulings(List.of(schedulings));
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccounts(List<GetInstanceTemplateServiceAccount> serviceAccounts) {
             this.serviceAccounts = Objects.requireNonNull(serviceAccounts);
             return this;
@@ -680,6 +640,7 @@ public final class GetInstanceTemplateResult {
         public Builder serviceAccounts(GetInstanceTemplateServiceAccount... serviceAccounts) {
             return serviceAccounts(List.of(serviceAccounts));
         }
+        @CustomType.Setter
         public Builder shieldedInstanceConfigs(List<GetInstanceTemplateShieldedInstanceConfig> shieldedInstanceConfigs) {
             this.shieldedInstanceConfigs = Objects.requireNonNull(shieldedInstanceConfigs);
             return this;
@@ -687,6 +648,7 @@ public final class GetInstanceTemplateResult {
         public Builder shieldedInstanceConfigs(GetInstanceTemplateShieldedInstanceConfig... shieldedInstanceConfigs) {
             return shieldedInstanceConfigs(List.of(shieldedInstanceConfigs));
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -694,11 +656,44 @@ public final class GetInstanceTemplateResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder tagsFingerprint(String tagsFingerprint) {
             this.tagsFingerprint = Objects.requireNonNull(tagsFingerprint);
             return this;
-        }        public GetInstanceTemplateResult build() {
-            return new GetInstanceTemplateResult(advancedMachineFeatures, canIpForward, confidentialInstanceConfigs, description, disks, enableDisplay, filter, guestAccelerators, id, instanceDescription, labels, machineType, metadata, metadataFingerprint, metadataStartupScript, minCpuPlatform, mostRecent, name, namePrefix, networkInterfaces, networkPerformanceConfigs, project, region, reservationAffinities, schedulings, selfLink, serviceAccounts, shieldedInstanceConfigs, tags, tagsFingerprint);
+        }
+        public GetInstanceTemplateResult build() {
+            final var o = new GetInstanceTemplateResult();
+            o.advancedMachineFeatures = advancedMachineFeatures;
+            o.canIpForward = canIpForward;
+            o.confidentialInstanceConfigs = confidentialInstanceConfigs;
+            o.description = description;
+            o.disks = disks;
+            o.enableDisplay = enableDisplay;
+            o.filter = filter;
+            o.guestAccelerators = guestAccelerators;
+            o.id = id;
+            o.instanceDescription = instanceDescription;
+            o.labels = labels;
+            o.machineType = machineType;
+            o.metadata = metadata;
+            o.metadataFingerprint = metadataFingerprint;
+            o.metadataStartupScript = metadataStartupScript;
+            o.minCpuPlatform = minCpuPlatform;
+            o.mostRecent = mostRecent;
+            o.name = name;
+            o.namePrefix = namePrefix;
+            o.networkInterfaces = networkInterfaces;
+            o.networkPerformanceConfigs = networkPerformanceConfigs;
+            o.project = project;
+            o.region = region;
+            o.reservationAffinities = reservationAffinities;
+            o.schedulings = schedulings;
+            o.selfLink = selfLink;
+            o.serviceAccounts = serviceAccounts;
+            o.shieldedInstanceConfigs = shieldedInstanceConfigs;
+            o.tags = tags;
+            o.tagsFingerprint = tagsFingerprint;
+            return o;
         }
     }
 }

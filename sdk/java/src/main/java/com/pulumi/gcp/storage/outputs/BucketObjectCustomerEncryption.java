@@ -15,21 +15,14 @@ public final class BucketObjectCustomerEncryption {
      * @return Encryption algorithm. Default: AES256
      * 
      */
-    private final @Nullable String encryptionAlgorithm;
+    private @Nullable String encryptionAlgorithm;
     /**
      * @return Base64 encoded Customer-Supplied Encryption Key.
      * 
      */
-    private final String encryptionKey;
+    private String encryptionKey;
 
-    @CustomType.Constructor
-    private BucketObjectCustomerEncryption(
-        @CustomType.Parameter("encryptionAlgorithm") @Nullable String encryptionAlgorithm,
-        @CustomType.Parameter("encryptionKey") String encryptionKey) {
-        this.encryptionAlgorithm = encryptionAlgorithm;
-        this.encryptionKey = encryptionKey;
-    }
-
+    private BucketObjectCustomerEncryption() {}
     /**
      * @return Encryption algorithm. Default: AES256
      * 
@@ -52,30 +45,32 @@ public final class BucketObjectCustomerEncryption {
     public static Builder builder(BucketObjectCustomerEncryption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String encryptionAlgorithm;
         private String encryptionKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BucketObjectCustomerEncryption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.encryptionAlgorithm = defaults.encryptionAlgorithm;
     	      this.encryptionKey = defaults.encryptionKey;
         }
 
+        @CustomType.Setter
         public Builder encryptionAlgorithm(@Nullable String encryptionAlgorithm) {
             this.encryptionAlgorithm = encryptionAlgorithm;
             return this;
         }
+        @CustomType.Setter
         public Builder encryptionKey(String encryptionKey) {
             this.encryptionKey = Objects.requireNonNull(encryptionKey);
             return this;
-        }        public BucketObjectCustomerEncryption build() {
-            return new BucketObjectCustomerEncryption(encryptionAlgorithm, encryptionKey);
+        }
+        public BucketObjectCustomerEncryption build() {
+            final var o = new BucketObjectCustomerEncryption();
+            o.encryptionAlgorithm = encryptionAlgorithm;
+            o.encryptionKey = encryptionKey;
+            return o;
         }
     }
 }

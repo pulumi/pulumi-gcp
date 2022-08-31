@@ -18,21 +18,14 @@ public final class PerInstanceConfigPreservedState {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<PerInstanceConfigPreservedStateDisk> disks;
+    private @Nullable List<PerInstanceConfigPreservedStateDisk> disks;
     /**
      * @return Preserved metadata defined for this instance. This is a list of key-&gt;value pairs.
      * 
      */
-    private final @Nullable Map<String,String> metadata;
+    private @Nullable Map<String,String> metadata;
 
-    @CustomType.Constructor
-    private PerInstanceConfigPreservedState(
-        @CustomType.Parameter("disks") @Nullable List<PerInstanceConfigPreservedStateDisk> disks,
-        @CustomType.Parameter("metadata") @Nullable Map<String,String> metadata) {
-        this.disks = disks;
-        this.metadata = metadata;
-    }
-
+    private PerInstanceConfigPreservedState() {}
     /**
      * @return Stateful disks for the instance.
      * Structure is documented below.
@@ -56,21 +49,18 @@ public final class PerInstanceConfigPreservedState {
     public static Builder builder(PerInstanceConfigPreservedState defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<PerInstanceConfigPreservedStateDisk> disks;
         private @Nullable Map<String,String> metadata;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PerInstanceConfigPreservedState defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disks = defaults.disks;
     	      this.metadata = defaults.metadata;
         }
 
+        @CustomType.Setter
         public Builder disks(@Nullable List<PerInstanceConfigPreservedStateDisk> disks) {
             this.disks = disks;
             return this;
@@ -78,11 +68,16 @@ public final class PerInstanceConfigPreservedState {
         public Builder disks(PerInstanceConfigPreservedStateDisk... disks) {
             return disks(List.of(disks));
         }
+        @CustomType.Setter
         public Builder metadata(@Nullable Map<String,String> metadata) {
             this.metadata = metadata;
             return this;
-        }        public PerInstanceConfigPreservedState build() {
-            return new PerInstanceConfigPreservedState(disks, metadata);
+        }
+        public PerInstanceConfigPreservedState build() {
+            final var o = new PerInstanceConfigPreservedState();
+            o.disks = disks;
+            o.metadata = metadata;
+            return o;
         }
     }
 }

@@ -13,28 +13,19 @@ public final class ClusterNodeConfigTaint {
      * @return Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
      * 
      */
-    private final String effect;
+    private String effect;
     /**
-     * @return Key for taint.
+     * @return The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Value for taint.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private ClusterNodeConfigTaint(
-        @CustomType.Parameter("effect") String effect,
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.effect = effect;
-        this.key = key;
-        this.value = value;
-    }
-
+    private ClusterNodeConfigTaint() {}
     /**
      * @return Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
      * 
@@ -43,7 +34,7 @@ public final class ClusterNodeConfigTaint {
         return this.effect;
     }
     /**
-     * @return Key for taint.
+     * @return The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
      * 
      */
     public String key() {
@@ -64,16 +55,12 @@ public final class ClusterNodeConfigTaint {
     public static Builder builder(ClusterNodeConfigTaint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String effect;
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNodeConfigTaint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.effect = defaults.effect;
@@ -81,19 +68,27 @@ public final class ClusterNodeConfigTaint {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder effect(String effect) {
             this.effect = Objects.requireNonNull(effect);
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public ClusterNodeConfigTaint build() {
-            return new ClusterNodeConfigTaint(effect, key, value);
+        }
+        public ClusterNodeConfigTaint build() {
+            final var o = new ClusterNodeConfigTaint();
+            o.effect = effect;
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

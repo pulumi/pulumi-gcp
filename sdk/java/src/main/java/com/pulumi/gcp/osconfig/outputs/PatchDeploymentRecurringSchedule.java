@@ -20,73 +20,54 @@ public final class PatchDeploymentRecurringSchedule {
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    private final @Nullable String endTime;
+    private @Nullable String endTime;
     /**
      * @return -
      * The time the last patch job ran successfully.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    private final @Nullable String lastExecuteTime;
+    private @Nullable String lastExecuteTime;
     /**
      * @return Schedule with monthly executions.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PatchDeploymentRecurringScheduleMonthly monthly;
+    private @Nullable PatchDeploymentRecurringScheduleMonthly monthly;
     /**
      * @return -
      * The time the next patch job is scheduled to run.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    private final @Nullable String nextExecuteTime;
+    private @Nullable String nextExecuteTime;
     /**
      * @return The time that the recurring schedule becomes effective. Defaults to createTime of the patch deployment.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    private final @Nullable String startTime;
+    private @Nullable String startTime;
     /**
      * @return Time of the day to run a recurring deployment.
      * Structure is documented below.
      * 
      */
-    private final PatchDeploymentRecurringScheduleTimeOfDay timeOfDay;
+    private PatchDeploymentRecurringScheduleTimeOfDay timeOfDay;
     /**
      * @return Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
      * determined by the chosen time zone.
      * Structure is documented below.
      * 
      */
-    private final PatchDeploymentRecurringScheduleTimeZone timeZone;
+    private PatchDeploymentRecurringScheduleTimeZone timeZone;
     /**
      * @return Schedule with weekly executions.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PatchDeploymentRecurringScheduleWeekly weekly;
+    private @Nullable PatchDeploymentRecurringScheduleWeekly weekly;
 
-    @CustomType.Constructor
-    private PatchDeploymentRecurringSchedule(
-        @CustomType.Parameter("endTime") @Nullable String endTime,
-        @CustomType.Parameter("lastExecuteTime") @Nullable String lastExecuteTime,
-        @CustomType.Parameter("monthly") @Nullable PatchDeploymentRecurringScheduleMonthly monthly,
-        @CustomType.Parameter("nextExecuteTime") @Nullable String nextExecuteTime,
-        @CustomType.Parameter("startTime") @Nullable String startTime,
-        @CustomType.Parameter("timeOfDay") PatchDeploymentRecurringScheduleTimeOfDay timeOfDay,
-        @CustomType.Parameter("timeZone") PatchDeploymentRecurringScheduleTimeZone timeZone,
-        @CustomType.Parameter("weekly") @Nullable PatchDeploymentRecurringScheduleWeekly weekly) {
-        this.endTime = endTime;
-        this.lastExecuteTime = lastExecuteTime;
-        this.monthly = monthly;
-        this.nextExecuteTime = nextExecuteTime;
-        this.startTime = startTime;
-        this.timeOfDay = timeOfDay;
-        this.timeZone = timeZone;
-        this.weekly = weekly;
-    }
-
+    private PatchDeploymentRecurringSchedule() {}
     /**
      * @return The end time at which a recurring patch deployment schedule is no longer active.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
@@ -162,7 +143,7 @@ public final class PatchDeploymentRecurringSchedule {
     public static Builder builder(PatchDeploymentRecurringSchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String endTime;
         private @Nullable String lastExecuteTime;
@@ -172,11 +153,7 @@ public final class PatchDeploymentRecurringSchedule {
         private PatchDeploymentRecurringScheduleTimeOfDay timeOfDay;
         private PatchDeploymentRecurringScheduleTimeZone timeZone;
         private @Nullable PatchDeploymentRecurringScheduleWeekly weekly;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PatchDeploymentRecurringSchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endTime = defaults.endTime;
@@ -189,39 +166,57 @@ public final class PatchDeploymentRecurringSchedule {
     	      this.weekly = defaults.weekly;
         }
 
+        @CustomType.Setter
         public Builder endTime(@Nullable String endTime) {
             this.endTime = endTime;
             return this;
         }
+        @CustomType.Setter
         public Builder lastExecuteTime(@Nullable String lastExecuteTime) {
             this.lastExecuteTime = lastExecuteTime;
             return this;
         }
+        @CustomType.Setter
         public Builder monthly(@Nullable PatchDeploymentRecurringScheduleMonthly monthly) {
             this.monthly = monthly;
             return this;
         }
+        @CustomType.Setter
         public Builder nextExecuteTime(@Nullable String nextExecuteTime) {
             this.nextExecuteTime = nextExecuteTime;
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
             this.startTime = startTime;
             return this;
         }
+        @CustomType.Setter
         public Builder timeOfDay(PatchDeploymentRecurringScheduleTimeOfDay timeOfDay) {
             this.timeOfDay = Objects.requireNonNull(timeOfDay);
             return this;
         }
+        @CustomType.Setter
         public Builder timeZone(PatchDeploymentRecurringScheduleTimeZone timeZone) {
             this.timeZone = Objects.requireNonNull(timeZone);
             return this;
         }
+        @CustomType.Setter
         public Builder weekly(@Nullable PatchDeploymentRecurringScheduleWeekly weekly) {
             this.weekly = weekly;
             return this;
-        }        public PatchDeploymentRecurringSchedule build() {
-            return new PatchDeploymentRecurringSchedule(endTime, lastExecuteTime, monthly, nextExecuteTime, startTime, timeOfDay, timeZone, weekly);
+        }
+        public PatchDeploymentRecurringSchedule build() {
+            final var o = new PatchDeploymentRecurringSchedule();
+            o.endTime = endTime;
+            o.lastExecuteTime = lastExecuteTime;
+            o.monthly = monthly;
+            o.nextExecuteTime = nextExecuteTime;
+            o.startTime = startTime;
+            o.timeOfDay = timeOfDay;
+            o.timeZone = timeZone;
+            o.weekly = weekly;
+            return o;
         }
     }
 }

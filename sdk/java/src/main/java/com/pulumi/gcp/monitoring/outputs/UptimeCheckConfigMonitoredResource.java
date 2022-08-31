@@ -14,21 +14,14 @@ public final class UptimeCheckConfigMonitoredResource {
      * @return Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels &#34;project_id&#34;, &#34;instance_id&#34;, and &#34;zone&#34;.
      * 
      */
-    private final Map<String,String> labels;
+    private Map<String,String> labels;
     /**
      * @return The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private UptimeCheckConfigMonitoredResource(
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("type") String type) {
-        this.labels = labels;
-        this.type = type;
-    }
-
+    private UptimeCheckConfigMonitoredResource() {}
     /**
      * @return Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels &#34;project_id&#34;, &#34;instance_id&#34;, and &#34;zone&#34;.
      * 
@@ -51,30 +44,32 @@ public final class UptimeCheckConfigMonitoredResource {
     public static Builder builder(UptimeCheckConfigMonitoredResource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> labels;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(UptimeCheckConfigMonitoredResource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.labels = defaults.labels;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public UptimeCheckConfigMonitoredResource build() {
-            return new UptimeCheckConfigMonitoredResource(labels, type);
+        }
+        public UptimeCheckConfigMonitoredResource build() {
+            final var o = new UptimeCheckConfigMonitoredResource();
+            o.labels = labels;
+            o.type = type;
+            return o;
         }
     }
 }

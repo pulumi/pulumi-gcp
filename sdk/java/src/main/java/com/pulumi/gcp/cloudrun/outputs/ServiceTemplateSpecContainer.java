@@ -29,7 +29,7 @@ public final class ServiceTemplateSpecContainer {
      * https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
      * 
      */
-    private final @Nullable List<String> args;
+    private @Nullable List<String> args;
     /**
      * @return Entrypoint array. Not executed within a shell.
      * The docker image&#39;s ENTRYPOINT is used if this is not provided.
@@ -42,7 +42,7 @@ public final class ServiceTemplateSpecContainer {
      * https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
      * 
      */
-    private final @Nullable List<String> commands;
+    private @Nullable List<String> commands;
     /**
      * @return -
      * (Optional, Deprecated)
@@ -58,20 +58,20 @@ public final class ServiceTemplateSpecContainer {
      * 
      */
     @Deprecated /* Not supported by Cloud Run fully managed */
-    private final @Nullable List<ServiceTemplateSpecContainerEnvFrom> envFroms;
+    private @Nullable List<ServiceTemplateSpecContainerEnvFrom> envFroms;
     /**
      * @return List of environment variables to set in the container.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<ServiceTemplateSpecContainerEnv> envs;
+    private @Nullable List<ServiceTemplateSpecContainerEnv> envs;
     /**
      * @return Docker image name. This is most often a reference to a container located
      * in the container registry, such as gcr.io/cloudrun/hello
      * More info: https://kubernetes.io/docs/concepts/containers/images
      * 
      */
-    private final String image;
+    private String image;
     /**
      * @return List of open ports in the container.
      * More Info:
@@ -79,7 +79,7 @@ public final class ServiceTemplateSpecContainer {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<ServiceTemplateSpecContainerPort> ports;
+    private @Nullable List<ServiceTemplateSpecContainerPort> ports;
     /**
      * @return Compute Resources required by this container. Used to set values such as max memory
      * More info:
@@ -87,14 +87,14 @@ public final class ServiceTemplateSpecContainer {
      * Structure is documented below.
      * 
      */
-    private final @Nullable ServiceTemplateSpecContainerResources resources;
+    private @Nullable ServiceTemplateSpecContainerResources resources;
     /**
      * @return Volume to mount into the container&#39;s filesystem.
      * Only supports SecretVolumeSources.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<ServiceTemplateSpecContainerVolumeMount> volumeMounts;
+    private @Nullable List<ServiceTemplateSpecContainerVolumeMount> volumeMounts;
     /**
      * @return -
      * (Optional, Deprecated)
@@ -107,30 +107,9 @@ public final class ServiceTemplateSpecContainer {
      * 
      */
     @Deprecated /* Not supported by Cloud Run fully managed */
-    private final @Nullable String workingDir;
+    private @Nullable String workingDir;
 
-    @CustomType.Constructor
-    private ServiceTemplateSpecContainer(
-        @CustomType.Parameter("args") @Nullable List<String> args,
-        @CustomType.Parameter("commands") @Nullable List<String> commands,
-        @CustomType.Parameter("envFroms") @Nullable List<ServiceTemplateSpecContainerEnvFrom> envFroms,
-        @CustomType.Parameter("envs") @Nullable List<ServiceTemplateSpecContainerEnv> envs,
-        @CustomType.Parameter("image") String image,
-        @CustomType.Parameter("ports") @Nullable List<ServiceTemplateSpecContainerPort> ports,
-        @CustomType.Parameter("resources") @Nullable ServiceTemplateSpecContainerResources resources,
-        @CustomType.Parameter("volumeMounts") @Nullable List<ServiceTemplateSpecContainerVolumeMount> volumeMounts,
-        @CustomType.Parameter("workingDir") @Nullable String workingDir) {
-        this.args = args;
-        this.commands = commands;
-        this.envFroms = envFroms;
-        this.envs = envs;
-        this.image = image;
-        this.ports = ports;
-        this.resources = resources;
-        this.volumeMounts = volumeMounts;
-        this.workingDir = workingDir;
-    }
-
+    private ServiceTemplateSpecContainer() {}
     /**
      * @return Arguments to the entrypoint.
      * The docker image&#39;s CMD is used if this is not provided.
@@ -248,7 +227,7 @@ public final class ServiceTemplateSpecContainer {
     public static Builder builder(ServiceTemplateSpecContainer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> args;
         private @Nullable List<String> commands;
@@ -259,11 +238,7 @@ public final class ServiceTemplateSpecContainer {
         private @Nullable ServiceTemplateSpecContainerResources resources;
         private @Nullable List<ServiceTemplateSpecContainerVolumeMount> volumeMounts;
         private @Nullable String workingDir;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceTemplateSpecContainer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.args = defaults.args;
@@ -277,6 +252,7 @@ public final class ServiceTemplateSpecContainer {
     	      this.workingDir = defaults.workingDir;
         }
 
+        @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
             this.args = args;
             return this;
@@ -284,6 +260,7 @@ public final class ServiceTemplateSpecContainer {
         public Builder args(String... args) {
             return args(List.of(args));
         }
+        @CustomType.Setter
         public Builder commands(@Nullable List<String> commands) {
             this.commands = commands;
             return this;
@@ -291,6 +268,7 @@ public final class ServiceTemplateSpecContainer {
         public Builder commands(String... commands) {
             return commands(List.of(commands));
         }
+        @CustomType.Setter
         public Builder envFroms(@Nullable List<ServiceTemplateSpecContainerEnvFrom> envFroms) {
             this.envFroms = envFroms;
             return this;
@@ -298,6 +276,7 @@ public final class ServiceTemplateSpecContainer {
         public Builder envFroms(ServiceTemplateSpecContainerEnvFrom... envFroms) {
             return envFroms(List.of(envFroms));
         }
+        @CustomType.Setter
         public Builder envs(@Nullable List<ServiceTemplateSpecContainerEnv> envs) {
             this.envs = envs;
             return this;
@@ -305,10 +284,12 @@ public final class ServiceTemplateSpecContainer {
         public Builder envs(ServiceTemplateSpecContainerEnv... envs) {
             return envs(List.of(envs));
         }
+        @CustomType.Setter
         public Builder image(String image) {
             this.image = Objects.requireNonNull(image);
             return this;
         }
+        @CustomType.Setter
         public Builder ports(@Nullable List<ServiceTemplateSpecContainerPort> ports) {
             this.ports = ports;
             return this;
@@ -316,10 +297,12 @@ public final class ServiceTemplateSpecContainer {
         public Builder ports(ServiceTemplateSpecContainerPort... ports) {
             return ports(List.of(ports));
         }
+        @CustomType.Setter
         public Builder resources(@Nullable ServiceTemplateSpecContainerResources resources) {
             this.resources = resources;
             return this;
         }
+        @CustomType.Setter
         public Builder volumeMounts(@Nullable List<ServiceTemplateSpecContainerVolumeMount> volumeMounts) {
             this.volumeMounts = volumeMounts;
             return this;
@@ -327,11 +310,23 @@ public final class ServiceTemplateSpecContainer {
         public Builder volumeMounts(ServiceTemplateSpecContainerVolumeMount... volumeMounts) {
             return volumeMounts(List.of(volumeMounts));
         }
+        @CustomType.Setter
         public Builder workingDir(@Nullable String workingDir) {
             this.workingDir = workingDir;
             return this;
-        }        public ServiceTemplateSpecContainer build() {
-            return new ServiceTemplateSpecContainer(args, commands, envFroms, envs, image, ports, resources, volumeMounts, workingDir);
+        }
+        public ServiceTemplateSpecContainer build() {
+            final var o = new ServiceTemplateSpecContainer();
+            o.args = args;
+            o.commands = commands;
+            o.envFroms = envFroms;
+            o.envs = envs;
+            o.image = image;
+            o.ports = ports;
+            o.resources = resources;
+            o.volumeMounts = volumeMounts;
+            o.workingDir = workingDir;
+            return o;
         }
     }
 }

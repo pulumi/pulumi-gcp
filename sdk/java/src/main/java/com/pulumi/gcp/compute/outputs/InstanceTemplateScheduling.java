@@ -21,13 +21,13 @@ public final class InstanceTemplateScheduling {
      * terminated by a user). This defaults to true.
      * 
      */
-    private final @Nullable Boolean automaticRestart;
+    private @Nullable Boolean automaticRestart;
     /**
      * @return Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
      * 
      */
-    private final @Nullable String instanceTerminationAction;
-    private final @Nullable Integer minNodeCpus;
+    private @Nullable String instanceTerminationAction;
+    private @Nullable Integer minNodeCpus;
     /**
      * @return Specifies node affinities or anti-affinities
      * to determine which sole-tenant nodes your instances and managed instance
@@ -36,20 +36,20 @@ public final class InstanceTemplateScheduling {
      * Structure documented below.
      * 
      */
-    private final @Nullable List<InstanceTemplateSchedulingNodeAffinity> nodeAffinities;
+    private @Nullable List<InstanceTemplateSchedulingNodeAffinity> nodeAffinities;
     /**
      * @return Defines the maintenance behavior for this
      * instance.
      * 
      */
-    private final @Nullable String onHostMaintenance;
+    private @Nullable String onHostMaintenance;
     /**
      * @return Allows instance to be preempted. This defaults to
      * false. Read more on this
      * [here](https://cloud.google.com/compute/docs/instances/preemptible).
      * 
      */
-    private final @Nullable Boolean preemptible;
+    private @Nullable Boolean preemptible;
     /**
      * @return Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
      * `preemptible` should be `true` and `auto_restart` should be
@@ -57,26 +57,9 @@ public final class InstanceTemplateScheduling {
      * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
      * 
      */
-    private final @Nullable String provisioningModel;
+    private @Nullable String provisioningModel;
 
-    @CustomType.Constructor
-    private InstanceTemplateScheduling(
-        @CustomType.Parameter("automaticRestart") @Nullable Boolean automaticRestart,
-        @CustomType.Parameter("instanceTerminationAction") @Nullable String instanceTerminationAction,
-        @CustomType.Parameter("minNodeCpus") @Nullable Integer minNodeCpus,
-        @CustomType.Parameter("nodeAffinities") @Nullable List<InstanceTemplateSchedulingNodeAffinity> nodeAffinities,
-        @CustomType.Parameter("onHostMaintenance") @Nullable String onHostMaintenance,
-        @CustomType.Parameter("preemptible") @Nullable Boolean preemptible,
-        @CustomType.Parameter("provisioningModel") @Nullable String provisioningModel) {
-        this.automaticRestart = automaticRestart;
-        this.instanceTerminationAction = instanceTerminationAction;
-        this.minNodeCpus = minNodeCpus;
-        this.nodeAffinities = nodeAffinities;
-        this.onHostMaintenance = onHostMaintenance;
-        this.preemptible = preemptible;
-        this.provisioningModel = provisioningModel;
-    }
-
+    private InstanceTemplateScheduling() {}
     /**
      * @return Specifies whether the instance should be
      * automatically restarted if it is terminated by Compute Engine (not
@@ -142,7 +125,7 @@ public final class InstanceTemplateScheduling {
     public static Builder builder(InstanceTemplateScheduling defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean automaticRestart;
         private @Nullable String instanceTerminationAction;
@@ -151,11 +134,7 @@ public final class InstanceTemplateScheduling {
         private @Nullable String onHostMaintenance;
         private @Nullable Boolean preemptible;
         private @Nullable String provisioningModel;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceTemplateScheduling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
@@ -167,18 +146,22 @@ public final class InstanceTemplateScheduling {
     	      this.provisioningModel = defaults.provisioningModel;
         }
 
+        @CustomType.Setter
         public Builder automaticRestart(@Nullable Boolean automaticRestart) {
             this.automaticRestart = automaticRestart;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceTerminationAction(@Nullable String instanceTerminationAction) {
             this.instanceTerminationAction = instanceTerminationAction;
             return this;
         }
+        @CustomType.Setter
         public Builder minNodeCpus(@Nullable Integer minNodeCpus) {
             this.minNodeCpus = minNodeCpus;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeAffinities(@Nullable List<InstanceTemplateSchedulingNodeAffinity> nodeAffinities) {
             this.nodeAffinities = nodeAffinities;
             return this;
@@ -186,19 +169,31 @@ public final class InstanceTemplateScheduling {
         public Builder nodeAffinities(InstanceTemplateSchedulingNodeAffinity... nodeAffinities) {
             return nodeAffinities(List.of(nodeAffinities));
         }
+        @CustomType.Setter
         public Builder onHostMaintenance(@Nullable String onHostMaintenance) {
             this.onHostMaintenance = onHostMaintenance;
             return this;
         }
+        @CustomType.Setter
         public Builder preemptible(@Nullable Boolean preemptible) {
             this.preemptible = preemptible;
             return this;
         }
+        @CustomType.Setter
         public Builder provisioningModel(@Nullable String provisioningModel) {
             this.provisioningModel = provisioningModel;
             return this;
-        }        public InstanceTemplateScheduling build() {
-            return new InstanceTemplateScheduling(automaticRestart, instanceTerminationAction, minNodeCpus, nodeAffinities, onHostMaintenance, preemptible, provisioningModel);
+        }
+        public InstanceTemplateScheduling build() {
+            final var o = new InstanceTemplateScheduling();
+            o.automaticRestart = automaticRestart;
+            o.instanceTerminationAction = instanceTerminationAction;
+            o.minNodeCpus = minNodeCpus;
+            o.nodeAffinities = nodeAffinities;
+            o.onHostMaintenance = onHostMaintenance;
+            o.preemptible = preemptible;
+            o.provisioningModel = provisioningModel;
+            return o;
         }
     }
 }

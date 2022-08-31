@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class JobScheduling {
-    private final Integer maxFailuresPerHour;
-    private final Integer maxFailuresTotal;
+    private Integer maxFailuresPerHour;
+    private Integer maxFailuresTotal;
 
-    @CustomType.Constructor
-    private JobScheduling(
-        @CustomType.Parameter("maxFailuresPerHour") Integer maxFailuresPerHour,
-        @CustomType.Parameter("maxFailuresTotal") Integer maxFailuresTotal) {
-        this.maxFailuresPerHour = maxFailuresPerHour;
-        this.maxFailuresTotal = maxFailuresTotal;
-    }
-
+    private JobScheduling() {}
     public Integer maxFailuresPerHour() {
         return this.maxFailuresPerHour;
     }
@@ -34,30 +27,32 @@ public final class JobScheduling {
     public static Builder builder(JobScheduling defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer maxFailuresPerHour;
         private Integer maxFailuresTotal;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobScheduling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxFailuresPerHour = defaults.maxFailuresPerHour;
     	      this.maxFailuresTotal = defaults.maxFailuresTotal;
         }
 
+        @CustomType.Setter
         public Builder maxFailuresPerHour(Integer maxFailuresPerHour) {
             this.maxFailuresPerHour = Objects.requireNonNull(maxFailuresPerHour);
             return this;
         }
+        @CustomType.Setter
         public Builder maxFailuresTotal(Integer maxFailuresTotal) {
             this.maxFailuresTotal = Objects.requireNonNull(maxFailuresTotal);
             return this;
-        }        public JobScheduling build() {
-            return new JobScheduling(maxFailuresPerHour, maxFailuresTotal);
+        }
+        public JobScheduling build() {
+            final var o = new JobScheduling();
+            o.maxFailuresPerHour = maxFailuresPerHour;
+            o.maxFailuresTotal = maxFailuresTotal;
+            return o;
         }
     }
 }

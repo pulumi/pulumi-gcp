@@ -12,42 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAltName {
-    private final @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan> customSans;
+    private @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan> customSans;
     /**
      * @return Contains only valid, fully-qualified host names.
      * 
      */
-    private final @Nullable List<String> dnsNames;
+    private @Nullable List<String> dnsNames;
     /**
      * @return Contains only valid RFC 2822 E-mail addresses.
      * 
      */
-    private final @Nullable List<String> emailAddresses;
+    private @Nullable List<String> emailAddresses;
     /**
      * @return Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
      * 
      */
-    private final @Nullable List<String> ipAddresses;
+    private @Nullable List<String> ipAddresses;
     /**
      * @return Contains only valid RFC 3986 URIs.
      * 
      */
-    private final @Nullable List<String> uris;
+    private @Nullable List<String> uris;
 
-    @CustomType.Constructor
-    private CertificateCertificateDescriptionSubjectDescriptionSubjectAltName(
-        @CustomType.Parameter("customSans") @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan> customSans,
-        @CustomType.Parameter("dnsNames") @Nullable List<String> dnsNames,
-        @CustomType.Parameter("emailAddresses") @Nullable List<String> emailAddresses,
-        @CustomType.Parameter("ipAddresses") @Nullable List<String> ipAddresses,
-        @CustomType.Parameter("uris") @Nullable List<String> uris) {
-        this.customSans = customSans;
-        this.dnsNames = dnsNames;
-        this.emailAddresses = emailAddresses;
-        this.ipAddresses = ipAddresses;
-        this.uris = uris;
-    }
-
+    private CertificateCertificateDescriptionSubjectDescriptionSubjectAltName() {}
     public List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan> customSans() {
         return this.customSans == null ? List.of() : this.customSans;
     }
@@ -87,18 +74,14 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
     public static Builder builder(CertificateCertificateDescriptionSubjectDescriptionSubjectAltName defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan> customSans;
         private @Nullable List<String> dnsNames;
         private @Nullable List<String> emailAddresses;
         private @Nullable List<String> ipAddresses;
         private @Nullable List<String> uris;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateCertificateDescriptionSubjectDescriptionSubjectAltName defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customSans = defaults.customSans;
@@ -108,6 +91,7 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
     	      this.uris = defaults.uris;
         }
 
+        @CustomType.Setter
         public Builder customSans(@Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan> customSans) {
             this.customSans = customSans;
             return this;
@@ -115,6 +99,7 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         public Builder customSans(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan... customSans) {
             return customSans(List.of(customSans));
         }
+        @CustomType.Setter
         public Builder dnsNames(@Nullable List<String> dnsNames) {
             this.dnsNames = dnsNames;
             return this;
@@ -122,6 +107,7 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         public Builder dnsNames(String... dnsNames) {
             return dnsNames(List.of(dnsNames));
         }
+        @CustomType.Setter
         public Builder emailAddresses(@Nullable List<String> emailAddresses) {
             this.emailAddresses = emailAddresses;
             return this;
@@ -129,6 +115,7 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         public Builder emailAddresses(String... emailAddresses) {
             return emailAddresses(List.of(emailAddresses));
         }
+        @CustomType.Setter
         public Builder ipAddresses(@Nullable List<String> ipAddresses) {
             this.ipAddresses = ipAddresses;
             return this;
@@ -136,14 +123,22 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         public Builder ipAddresses(String... ipAddresses) {
             return ipAddresses(List.of(ipAddresses));
         }
+        @CustomType.Setter
         public Builder uris(@Nullable List<String> uris) {
             this.uris = uris;
             return this;
         }
         public Builder uris(String... uris) {
             return uris(List.of(uris));
-        }        public CertificateCertificateDescriptionSubjectDescriptionSubjectAltName build() {
-            return new CertificateCertificateDescriptionSubjectDescriptionSubjectAltName(customSans, dnsNames, emailAddresses, ipAddresses, uris);
+        }
+        public CertificateCertificateDescriptionSubjectDescriptionSubjectAltName build() {
+            final var o = new CertificateCertificateDescriptionSubjectDescriptionSubjectAltName();
+            o.customSans = customSans;
+            o.dnsNames = dnsNames;
+            o.emailAddresses = emailAddresses;
+            o.ipAddresses = ipAddresses;
+            o.uris = uris;
+            return o;
         }
     }
 }

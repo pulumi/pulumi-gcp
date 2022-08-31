@@ -13,13 +13,9 @@ public final class DataTransferConfigEmailPreferences {
      * @return If true, email notifications will be sent on transfer run failures.
      * 
      */
-    private final Boolean enableFailureEmail;
+    private Boolean enableFailureEmail;
 
-    @CustomType.Constructor
-    private DataTransferConfigEmailPreferences(@CustomType.Parameter("enableFailureEmail") Boolean enableFailureEmail) {
-        this.enableFailureEmail = enableFailureEmail;
-    }
-
+    private DataTransferConfigEmailPreferences() {}
     /**
      * @return If true, email notifications will be sent on transfer run failures.
      * 
@@ -35,24 +31,24 @@ public final class DataTransferConfigEmailPreferences {
     public static Builder builder(DataTransferConfigEmailPreferences defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enableFailureEmail;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DataTransferConfigEmailPreferences defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableFailureEmail = defaults.enableFailureEmail;
         }
 
+        @CustomType.Setter
         public Builder enableFailureEmail(Boolean enableFailureEmail) {
             this.enableFailureEmail = Objects.requireNonNull(enableFailureEmail);
             return this;
-        }        public DataTransferConfigEmailPreferences build() {
-            return new DataTransferConfigEmailPreferences(enableFailureEmail);
+        }
+        public DataTransferConfigEmailPreferences build() {
+            final var o = new DataTransferConfigEmailPreferences();
+            o.enableFailureEmail = enableFailureEmail;
+            return o;
         }
     }
 }

@@ -15,7 +15,7 @@ public final class CaPoolPublishingOptions {
      * X.509 extension will not be written in issued certificates.
      * 
      */
-    private final Boolean publishCaCert;
+    private Boolean publishCaCert;
     /**
      * @return When true, publishes each CertificateAuthority&#39;s CRL and includes its URL in the &#34;CRL Distribution Points&#34; X.509 extension
      * in all issued Certificates. If this is false, CRLs will not be published and the corresponding X.509 extension will not
@@ -23,16 +23,9 @@ public final class CaPoolPublishingOptions {
      * also rebuilt shortly after a certificate is revoked.
      * 
      */
-    private final Boolean publishCrl;
+    private Boolean publishCrl;
 
-    @CustomType.Constructor
-    private CaPoolPublishingOptions(
-        @CustomType.Parameter("publishCaCert") Boolean publishCaCert,
-        @CustomType.Parameter("publishCrl") Boolean publishCrl) {
-        this.publishCaCert = publishCaCert;
-        this.publishCrl = publishCrl;
-    }
-
+    private CaPoolPublishingOptions() {}
     /**
      * @return When true, publishes each CertificateAuthority&#39;s CA certificate and includes its URL in the &#34;Authority Information Access&#34;
      * X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding
@@ -60,30 +53,32 @@ public final class CaPoolPublishingOptions {
     public static Builder builder(CaPoolPublishingOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean publishCaCert;
         private Boolean publishCrl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CaPoolPublishingOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.publishCaCert = defaults.publishCaCert;
     	      this.publishCrl = defaults.publishCrl;
         }
 
+        @CustomType.Setter
         public Builder publishCaCert(Boolean publishCaCert) {
             this.publishCaCert = Objects.requireNonNull(publishCaCert);
             return this;
         }
+        @CustomType.Setter
         public Builder publishCrl(Boolean publishCrl) {
             this.publishCrl = Objects.requireNonNull(publishCrl);
             return this;
-        }        public CaPoolPublishingOptions build() {
-            return new CaPoolPublishingOptions(publishCaCert, publishCrl);
+        }
+        public CaPoolPublishingOptions build() {
+            final var o = new CaPoolPublishingOptions();
+            o.publishCaCert = publishCaCert;
+            o.publishCrl = publishCrl;
+            return o;
         }
     }
 }

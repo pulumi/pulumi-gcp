@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendServiceOutlierDetectionInterval {
-    private final Integer nanos;
-    private final Integer seconds;
+    private Integer nanos;
+    private Integer seconds;
 
-    @CustomType.Constructor
-    private GetBackendServiceOutlierDetectionInterval(
-        @CustomType.Parameter("nanos") Integer nanos,
-        @CustomType.Parameter("seconds") Integer seconds) {
-        this.nanos = nanos;
-        this.seconds = seconds;
-    }
-
+    private GetBackendServiceOutlierDetectionInterval() {}
     public Integer nanos() {
         return this.nanos;
     }
@@ -34,30 +27,32 @@ public final class GetBackendServiceOutlierDetectionInterval {
     public static Builder builder(GetBackendServiceOutlierDetectionInterval defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer nanos;
         private Integer seconds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackendServiceOutlierDetectionInterval defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.nanos = defaults.nanos;
     	      this.seconds = defaults.seconds;
         }
 
+        @CustomType.Setter
         public Builder nanos(Integer nanos) {
             this.nanos = Objects.requireNonNull(nanos);
             return this;
         }
+        @CustomType.Setter
         public Builder seconds(Integer seconds) {
             this.seconds = Objects.requireNonNull(seconds);
             return this;
-        }        public GetBackendServiceOutlierDetectionInterval build() {
-            return new GetBackendServiceOutlierDetectionInterval(nanos, seconds);
+        }
+        public GetBackendServiceOutlierDetectionInterval build() {
+            final var o = new GetBackendServiceOutlierDetectionInterval();
+            o.nanos = nanos;
+            o.seconds = seconds;
+            return o;
         }
     }
 }

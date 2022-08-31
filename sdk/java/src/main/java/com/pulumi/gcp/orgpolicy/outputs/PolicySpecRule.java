@@ -17,42 +17,29 @@ public final class PolicySpecRule {
      * @return Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
      * 
      */
-    private final @Nullable String allowAll;
+    private @Nullable String allowAll;
     /**
      * @return A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr&#39; must include from 1 to 10 subexpressions, joined by the &#34;||&#34; or &#34;&amp;&amp;&#34; operators. Each subexpression must be of the form &#34;resource.matchTag(&#39;/tag_key_short_name, &#39;tag_value_short_name&#39;)&#34;. or &#34;resource.matchTagId(&#39;tagKeys/key_id&#39;, &#39;tagValues/value_id&#39;)&#34;. where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: &#34;resource.matchTag(&#39;123456789/environment, &#39;prod&#39;)&#34;. or &#34;resource.matchTagId(&#39;tagKeys/123&#39;, &#39;tagValues/456&#39;)&#34;.
      * 
      */
-    private final @Nullable PolicySpecRuleCondition condition;
+    private @Nullable PolicySpecRuleCondition condition;
     /**
      * @return Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
      * 
      */
-    private final @Nullable String denyAll;
+    private @Nullable String denyAll;
     /**
      * @return If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
      * 
      */
-    private final @Nullable String enforce;
+    private @Nullable String enforce;
     /**
      * @return List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
      * 
      */
-    private final @Nullable PolicySpecRuleValues values;
+    private @Nullable PolicySpecRuleValues values;
 
-    @CustomType.Constructor
-    private PolicySpecRule(
-        @CustomType.Parameter("allowAll") @Nullable String allowAll,
-        @CustomType.Parameter("condition") @Nullable PolicySpecRuleCondition condition,
-        @CustomType.Parameter("denyAll") @Nullable String denyAll,
-        @CustomType.Parameter("enforce") @Nullable String enforce,
-        @CustomType.Parameter("values") @Nullable PolicySpecRuleValues values) {
-        this.allowAll = allowAll;
-        this.condition = condition;
-        this.denyAll = denyAll;
-        this.enforce = enforce;
-        this.values = values;
-    }
-
+    private PolicySpecRule() {}
     /**
      * @return Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
      * 
@@ -96,18 +83,14 @@ public final class PolicySpecRule {
     public static Builder builder(PolicySpecRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String allowAll;
         private @Nullable PolicySpecRuleCondition condition;
         private @Nullable String denyAll;
         private @Nullable String enforce;
         private @Nullable PolicySpecRuleValues values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PolicySpecRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowAll = defaults.allowAll;
@@ -117,27 +100,39 @@ public final class PolicySpecRule {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder allowAll(@Nullable String allowAll) {
             this.allowAll = allowAll;
             return this;
         }
+        @CustomType.Setter
         public Builder condition(@Nullable PolicySpecRuleCondition condition) {
             this.condition = condition;
             return this;
         }
+        @CustomType.Setter
         public Builder denyAll(@Nullable String denyAll) {
             this.denyAll = denyAll;
             return this;
         }
+        @CustomType.Setter
         public Builder enforce(@Nullable String enforce) {
             this.enforce = enforce;
             return this;
         }
+        @CustomType.Setter
         public Builder values(@Nullable PolicySpecRuleValues values) {
             this.values = values;
             return this;
-        }        public PolicySpecRule build() {
-            return new PolicySpecRule(allowAll, condition, denyAll, enforce, values);
+        }
+        public PolicySpecRule build() {
+            final var o = new PolicySpecRule();
+            o.allowAll = allowAll;
+            o.condition = condition;
+            o.denyAll = denyAll;
+            o.enforce = enforce;
+            o.values = values;
+            return o;
         }
     }
 }

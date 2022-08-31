@@ -14,13 +14,9 @@ public final class AwsClusterAuthorization {
      * @return Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
      * 
      */
-    private final List<AwsClusterAuthorizationAdminUser> adminUsers;
+    private List<AwsClusterAuthorizationAdminUser> adminUsers;
 
-    @CustomType.Constructor
-    private AwsClusterAuthorization(@CustomType.Parameter("adminUsers") List<AwsClusterAuthorizationAdminUser> adminUsers) {
-        this.adminUsers = adminUsers;
-    }
-
+    private AwsClusterAuthorization() {}
     /**
      * @return Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
      * 
@@ -36,27 +32,27 @@ public final class AwsClusterAuthorization {
     public static Builder builder(AwsClusterAuthorization defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<AwsClusterAuthorizationAdminUser> adminUsers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsClusterAuthorization defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adminUsers = defaults.adminUsers;
         }
 
+        @CustomType.Setter
         public Builder adminUsers(List<AwsClusterAuthorizationAdminUser> adminUsers) {
             this.adminUsers = Objects.requireNonNull(adminUsers);
             return this;
         }
         public Builder adminUsers(AwsClusterAuthorizationAdminUser... adminUsers) {
             return adminUsers(List.of(adminUsers));
-        }        public AwsClusterAuthorization build() {
-            return new AwsClusterAuthorization(adminUsers);
+        }
+        public AwsClusterAuthorization build() {
+            final var o = new AwsClusterAuthorization();
+            o.adminUsers = adminUsers;
+            return o;
         }
     }
 }

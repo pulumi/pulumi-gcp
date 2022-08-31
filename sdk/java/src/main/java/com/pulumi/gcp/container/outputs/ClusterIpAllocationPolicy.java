@@ -19,14 +19,14 @@ public final class ClusterIpAllocationPolicy {
      * pick a specific range to use.
      * 
      */
-    private final @Nullable String clusterIpv4CidrBlock;
+    private @Nullable String clusterIpv4CidrBlock;
     /**
      * @return The name of the existing secondary
      * range in the cluster&#39;s subnetwork to use for pod IP addresses. Alternatively,
      * `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
      * 
      */
-    private final @Nullable String clusterSecondaryRangeName;
+    private @Nullable String clusterSecondaryRangeName;
     /**
      * @return The IP address range of the services IPs in this cluster.
      * Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
@@ -35,7 +35,7 @@ public final class ClusterIpAllocationPolicy {
      * pick a specific range to use.
      * 
      */
-    private final @Nullable String servicesIpv4CidrBlock;
+    private @Nullable String servicesIpv4CidrBlock;
     /**
      * @return The name of the existing
      * secondary range in the cluster&#39;s subnetwork to use for service `ClusterIP`s.
@@ -43,20 +43,9 @@ public final class ClusterIpAllocationPolicy {
      * GKE-managed one.
      * 
      */
-    private final @Nullable String servicesSecondaryRangeName;
+    private @Nullable String servicesSecondaryRangeName;
 
-    @CustomType.Constructor
-    private ClusterIpAllocationPolicy(
-        @CustomType.Parameter("clusterIpv4CidrBlock") @Nullable String clusterIpv4CidrBlock,
-        @CustomType.Parameter("clusterSecondaryRangeName") @Nullable String clusterSecondaryRangeName,
-        @CustomType.Parameter("servicesIpv4CidrBlock") @Nullable String servicesIpv4CidrBlock,
-        @CustomType.Parameter("servicesSecondaryRangeName") @Nullable String servicesSecondaryRangeName) {
-        this.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
-        this.clusterSecondaryRangeName = clusterSecondaryRangeName;
-        this.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
-        this.servicesSecondaryRangeName = servicesSecondaryRangeName;
-    }
-
+    private ClusterIpAllocationPolicy() {}
     /**
      * @return The IP address range for the cluster pod IPs.
      * Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
@@ -106,17 +95,13 @@ public final class ClusterIpAllocationPolicy {
     public static Builder builder(ClusterIpAllocationPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String clusterIpv4CidrBlock;
         private @Nullable String clusterSecondaryRangeName;
         private @Nullable String servicesIpv4CidrBlock;
         private @Nullable String servicesSecondaryRangeName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterIpAllocationPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterIpv4CidrBlock = defaults.clusterIpv4CidrBlock;
@@ -125,23 +110,33 @@ public final class ClusterIpAllocationPolicy {
     	      this.servicesSecondaryRangeName = defaults.servicesSecondaryRangeName;
         }
 
+        @CustomType.Setter
         public Builder clusterIpv4CidrBlock(@Nullable String clusterIpv4CidrBlock) {
             this.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterSecondaryRangeName(@Nullable String clusterSecondaryRangeName) {
             this.clusterSecondaryRangeName = clusterSecondaryRangeName;
             return this;
         }
+        @CustomType.Setter
         public Builder servicesIpv4CidrBlock(@Nullable String servicesIpv4CidrBlock) {
             this.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
             return this;
         }
+        @CustomType.Setter
         public Builder servicesSecondaryRangeName(@Nullable String servicesSecondaryRangeName) {
             this.servicesSecondaryRangeName = servicesSecondaryRangeName;
             return this;
-        }        public ClusterIpAllocationPolicy build() {
-            return new ClusterIpAllocationPolicy(clusterIpv4CidrBlock, clusterSecondaryRangeName, servicesIpv4CidrBlock, servicesSecondaryRangeName);
+        }
+        public ClusterIpAllocationPolicy build() {
+            final var o = new ClusterIpAllocationPolicy();
+            o.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
+            o.clusterSecondaryRangeName = clusterSecondaryRangeName;
+            o.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
+            o.servicesSecondaryRangeName = servicesSecondaryRangeName;
+            return o;
         }
     }
 }

@@ -15,13 +15,9 @@ public final class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfi
      * @return Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
      * 
      */
-    private final @Nullable String policy;
+    private @Nullable String policy;
 
-    @CustomType.Constructor
-    private WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig(@CustomType.Parameter("policy") @Nullable String policy) {
-        this.policy = policy;
-    }
-
+    private WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig() {}
     /**
      * @return Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
      * 
@@ -37,24 +33,24 @@ public final class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfi
     public static Builder builder(WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String policy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.policy = defaults.policy;
         }
 
+        @CustomType.Setter
         public Builder policy(@Nullable String policy) {
             this.policy = policy;
             return this;
-        }        public WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig build() {
-            return new WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig(policy);
+        }
+        public WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig build() {
+            final var o = new WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig();
+            o.policy = policy;
+            return o;
         }
     }
 }

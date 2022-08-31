@@ -14,13 +14,9 @@ public final class FlexibleAppVersionDeploymentContainer {
      * Examples: &#34;gcr.io/my-project/image:tag&#34; or &#34;gcr.io/my-project/image@digest&#34;
      * 
      */
-    private final String image;
+    private String image;
 
-    @CustomType.Constructor
-    private FlexibleAppVersionDeploymentContainer(@CustomType.Parameter("image") String image) {
-        this.image = image;
-    }
-
+    private FlexibleAppVersionDeploymentContainer() {}
     /**
      * @return URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest.
      * Examples: &#34;gcr.io/my-project/image:tag&#34; or &#34;gcr.io/my-project/image@digest&#34;
@@ -37,24 +33,24 @@ public final class FlexibleAppVersionDeploymentContainer {
     public static Builder builder(FlexibleAppVersionDeploymentContainer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String image;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FlexibleAppVersionDeploymentContainer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.image = defaults.image;
         }
 
+        @CustomType.Setter
         public Builder image(String image) {
             this.image = Objects.requireNonNull(image);
             return this;
-        }        public FlexibleAppVersionDeploymentContainer build() {
-            return new FlexibleAppVersionDeploymentContainer(image);
+        }
+        public FlexibleAppVersionDeploymentContainer build() {
+            final var o = new FlexibleAppVersionDeploymentContainer();
+            o.image = image;
+            return o;
         }
     }
 }

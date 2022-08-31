@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOrganizationPolicyBooleanPolicy {
-    private final Boolean enforced;
+    private Boolean enforced;
 
-    @CustomType.Constructor
-    private GetOrganizationPolicyBooleanPolicy(@CustomType.Parameter("enforced") Boolean enforced) {
-        this.enforced = enforced;
-    }
-
+    private GetOrganizationPolicyBooleanPolicy() {}
     public Boolean enforced() {
         return this.enforced;
     }
@@ -27,24 +23,24 @@ public final class GetOrganizationPolicyBooleanPolicy {
     public static Builder builder(GetOrganizationPolicyBooleanPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enforced;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetOrganizationPolicyBooleanPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enforced = defaults.enforced;
         }
 
+        @CustomType.Setter
         public Builder enforced(Boolean enforced) {
             this.enforced = Objects.requireNonNull(enforced);
             return this;
-        }        public GetOrganizationPolicyBooleanPolicy build() {
-            return new GetOrganizationPolicyBooleanPolicy(enforced);
+        }
+        public GetOrganizationPolicyBooleanPolicy build() {
+            final var o = new GetOrganizationPolicyBooleanPolicy();
+            o.enforced = enforced;
+            return o;
         }
     }
 }

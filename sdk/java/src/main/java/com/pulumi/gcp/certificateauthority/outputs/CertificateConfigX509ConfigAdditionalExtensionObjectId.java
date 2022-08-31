@@ -14,13 +14,9 @@ public final class CertificateConfigX509ConfigAdditionalExtensionObjectId {
      * @return An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
      * 
      */
-    private final List<Integer> objectIdPaths;
+    private List<Integer> objectIdPaths;
 
-    @CustomType.Constructor
-    private CertificateConfigX509ConfigAdditionalExtensionObjectId(@CustomType.Parameter("objectIdPaths") List<Integer> objectIdPaths) {
-        this.objectIdPaths = objectIdPaths;
-    }
-
+    private CertificateConfigX509ConfigAdditionalExtensionObjectId() {}
     /**
      * @return An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
      * 
@@ -36,27 +32,27 @@ public final class CertificateConfigX509ConfigAdditionalExtensionObjectId {
     public static Builder builder(CertificateConfigX509ConfigAdditionalExtensionObjectId defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<Integer> objectIdPaths;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateConfigX509ConfigAdditionalExtensionObjectId defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.objectIdPaths = defaults.objectIdPaths;
         }
 
+        @CustomType.Setter
         public Builder objectIdPaths(List<Integer> objectIdPaths) {
             this.objectIdPaths = Objects.requireNonNull(objectIdPaths);
             return this;
         }
         public Builder objectIdPaths(Integer... objectIdPaths) {
             return objectIdPaths(List.of(objectIdPaths));
-        }        public CertificateConfigX509ConfigAdditionalExtensionObjectId build() {
-            return new CertificateConfigX509ConfigAdditionalExtensionObjectId(objectIdPaths);
+        }
+        public CertificateConfigX509ConfigAdditionalExtensionObjectId build() {
+            final var o = new CertificateConfigX509ConfigAdditionalExtensionObjectId();
+            o.objectIdPaths = objectIdPaths;
+            return o;
         }
     }
 }

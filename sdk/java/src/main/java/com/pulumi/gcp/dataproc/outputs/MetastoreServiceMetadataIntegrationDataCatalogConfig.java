@@ -13,13 +13,9 @@ public final class MetastoreServiceMetadataIntegrationDataCatalogConfig {
      * @return Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private MetastoreServiceMetadataIntegrationDataCatalogConfig(@CustomType.Parameter("enabled") Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private MetastoreServiceMetadataIntegrationDataCatalogConfig() {}
     /**
      * @return Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
      * 
@@ -35,24 +31,24 @@ public final class MetastoreServiceMetadataIntegrationDataCatalogConfig {
     public static Builder builder(MetastoreServiceMetadataIntegrationDataCatalogConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MetastoreServiceMetadataIntegrationDataCatalogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public MetastoreServiceMetadataIntegrationDataCatalogConfig build() {
-            return new MetastoreServiceMetadataIntegrationDataCatalogConfig(enabled);
+        }
+        public MetastoreServiceMetadataIntegrationDataCatalogConfig build() {
+            final var o = new MetastoreServiceMetadataIntegrationDataCatalogConfig();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

@@ -14,13 +14,9 @@ public final class ManagedZonePeeringConfig {
      * Structure is documented below.
      * 
      */
-    private final ManagedZonePeeringConfigTargetNetwork targetNetwork;
+    private ManagedZonePeeringConfigTargetNetwork targetNetwork;
 
-    @CustomType.Constructor
-    private ManagedZonePeeringConfig(@CustomType.Parameter("targetNetwork") ManagedZonePeeringConfigTargetNetwork targetNetwork) {
-        this.targetNetwork = targetNetwork;
-    }
-
+    private ManagedZonePeeringConfig() {}
     /**
      * @return The network with which to peer.
      * Structure is documented below.
@@ -37,24 +33,24 @@ public final class ManagedZonePeeringConfig {
     public static Builder builder(ManagedZonePeeringConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private ManagedZonePeeringConfigTargetNetwork targetNetwork;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ManagedZonePeeringConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.targetNetwork = defaults.targetNetwork;
         }
 
+        @CustomType.Setter
         public Builder targetNetwork(ManagedZonePeeringConfigTargetNetwork targetNetwork) {
             this.targetNetwork = Objects.requireNonNull(targetNetwork);
             return this;
-        }        public ManagedZonePeeringConfig build() {
-            return new ManagedZonePeeringConfig(targetNetwork);
+        }
+        public ManagedZonePeeringConfig build() {
+            final var o = new ManagedZonePeeringConfig();
+            o.targetNetwork = targetNetwork;
+            return o;
         }
     }
 }

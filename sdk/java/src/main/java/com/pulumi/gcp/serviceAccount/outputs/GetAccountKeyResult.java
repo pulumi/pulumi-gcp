@@ -15,33 +15,18 @@ public final class GetAccountKeyResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String keyAlgorithm;
-    private final String name;
-    private final @Nullable String project;
+    private String id;
+    private String keyAlgorithm;
+    private String name;
+    private @Nullable String project;
     /**
      * @return The public key, base64 encoded
      * 
      */
-    private final String publicKey;
-    private final @Nullable String publicKeyType;
+    private String publicKey;
+    private @Nullable String publicKeyType;
 
-    @CustomType.Constructor
-    private GetAccountKeyResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("keyAlgorithm") String keyAlgorithm,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("publicKey") String publicKey,
-        @CustomType.Parameter("publicKeyType") @Nullable String publicKeyType) {
-        this.id = id;
-        this.keyAlgorithm = keyAlgorithm;
-        this.name = name;
-        this.project = project;
-        this.publicKey = publicKey;
-        this.publicKeyType = publicKeyType;
-    }
-
+    private GetAccountKeyResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -76,7 +61,7 @@ public final class GetAccountKeyResult {
     public static Builder builder(GetAccountKeyResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String keyAlgorithm;
@@ -84,11 +69,7 @@ public final class GetAccountKeyResult {
         private @Nullable String project;
         private String publicKey;
         private @Nullable String publicKeyType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccountKeyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -99,31 +80,45 @@ public final class GetAccountKeyResult {
     	      this.publicKeyType = defaults.publicKeyType;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder keyAlgorithm(String keyAlgorithm) {
             this.keyAlgorithm = Objects.requireNonNull(keyAlgorithm);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder publicKey(String publicKey) {
             this.publicKey = Objects.requireNonNull(publicKey);
             return this;
         }
+        @CustomType.Setter
         public Builder publicKeyType(@Nullable String publicKeyType) {
             this.publicKeyType = publicKeyType;
             return this;
-        }        public GetAccountKeyResult build() {
-            return new GetAccountKeyResult(id, keyAlgorithm, name, project, publicKey, publicKeyType);
+        }
+        public GetAccountKeyResult build() {
+            final var o = new GetAccountKeyResult();
+            o.id = id;
+            o.keyAlgorithm = keyAlgorithm;
+            o.name = name;
+            o.project = project;
+            o.publicKey = publicKey;
+            o.publicKeyType = publicKeyType;
+            return o;
         }
     }
 }

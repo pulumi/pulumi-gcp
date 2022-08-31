@@ -16,13 +16,9 @@ public final class FeatureSpec {
      * The `multiclusteringress` block supports:
      * 
      */
-    private final @Nullable FeatureSpecMulticlusteringress multiclusteringress;
+    private @Nullable FeatureSpecMulticlusteringress multiclusteringress;
 
-    @CustomType.Constructor
-    private FeatureSpec(@CustomType.Parameter("multiclusteringress") @Nullable FeatureSpecMulticlusteringress multiclusteringress) {
-        this.multiclusteringress = multiclusteringress;
-    }
-
+    private FeatureSpec() {}
     /**
      * @return Multicluster Ingress-specific spec.
      * The `multiclusteringress` block supports:
@@ -39,24 +35,24 @@ public final class FeatureSpec {
     public static Builder builder(FeatureSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable FeatureSpecMulticlusteringress multiclusteringress;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FeatureSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.multiclusteringress = defaults.multiclusteringress;
         }
 
+        @CustomType.Setter
         public Builder multiclusteringress(@Nullable FeatureSpecMulticlusteringress multiclusteringress) {
             this.multiclusteringress = multiclusteringress;
             return this;
-        }        public FeatureSpec build() {
-            return new FeatureSpec(multiclusteringress);
+        }
+        public FeatureSpec build() {
+            final var o = new FeatureSpec();
+            o.multiclusteringress = multiclusteringress;
+            return o;
         }
     }
 }

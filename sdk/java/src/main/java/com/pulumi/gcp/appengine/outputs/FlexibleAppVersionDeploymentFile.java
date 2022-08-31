@@ -15,28 +15,19 @@ public final class FlexibleAppVersionDeploymentFile {
      * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return SHA1 checksum of the file
      * 
      */
-    private final @Nullable String sha1Sum;
+    private @Nullable String sha1Sum;
     /**
      * @return Source URL
      * 
      */
-    private final String sourceUrl;
+    private String sourceUrl;
 
-    @CustomType.Constructor
-    private FlexibleAppVersionDeploymentFile(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("sha1Sum") @Nullable String sha1Sum,
-        @CustomType.Parameter("sourceUrl") String sourceUrl) {
-        this.name = name;
-        this.sha1Sum = sha1Sum;
-        this.sourceUrl = sourceUrl;
-    }
-
+    private FlexibleAppVersionDeploymentFile() {}
     /**
      * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      * 
@@ -66,16 +57,12 @@ public final class FlexibleAppVersionDeploymentFile {
     public static Builder builder(FlexibleAppVersionDeploymentFile defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private @Nullable String sha1Sum;
         private String sourceUrl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FlexibleAppVersionDeploymentFile defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
@@ -83,19 +70,27 @@ public final class FlexibleAppVersionDeploymentFile {
     	      this.sourceUrl = defaults.sourceUrl;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder sha1Sum(@Nullable String sha1Sum) {
             this.sha1Sum = sha1Sum;
             return this;
         }
+        @CustomType.Setter
         public Builder sourceUrl(String sourceUrl) {
             this.sourceUrl = Objects.requireNonNull(sourceUrl);
             return this;
-        }        public FlexibleAppVersionDeploymentFile build() {
-            return new FlexibleAppVersionDeploymentFile(name, sha1Sum, sourceUrl);
+        }
+        public FlexibleAppVersionDeploymentFile build() {
+            final var o = new FlexibleAppVersionDeploymentFile();
+            o.name = name;
+            o.sha1Sum = sha1Sum;
+            o.sourceUrl = sourceUrl;
+            return o;
         }
     }
 }

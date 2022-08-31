@@ -35,6 +35,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := datafusion.NewInstance(ctx, "basicInstance", &datafusion.InstanceArgs{
+//				Options: pulumi.StringMap{
+//					"prober_test_run": pulumi.String("true"),
+//				},
 //				Region: pulumi.String("us-central1"),
 //				Type:   pulumi.String("BASIC"),
 //			})
@@ -81,6 +84,9 @@ import (
 //				},
 //				Version:                pulumi.String("6.3.0"),
 //				DataprocServiceAccount: pulumi.String(_default.Email),
+//				Options: pulumi.StringMap{
+//					"prober_test_run": pulumi.String("true"),
+//				},
 //			})
 //			if err != nil {
 //				return err

@@ -13,52 +13,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBackupRunResult {
-    private final Integer backupId;
+    private Integer backupId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String instance;
+    private String id;
+    private String instance;
     /**
      * @return Location of the backups.
      * 
      */
-    private final String location;
-    private final @Nullable Boolean mostRecent;
-    private final String project;
+    private String location;
+    private @Nullable Boolean mostRecent;
+    private String project;
     /**
      * @return The time the backup operation actually started in UTC timezone in RFC 3339 format, for
      * example 2012-11-15T16:19:00.094Z.
      * 
      */
-    private final String startTime;
+    private String startTime;
     /**
      * @return The status of this run. Refer to [API reference](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/backupRuns#SqlBackupRunStatus) for possible status values.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetBackupRunResult(
-        @CustomType.Parameter("backupId") Integer backupId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instance") String instance,
-        @CustomType.Parameter("location") String location,
-        @CustomType.Parameter("mostRecent") @Nullable Boolean mostRecent,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("startTime") String startTime,
-        @CustomType.Parameter("status") String status) {
-        this.backupId = backupId;
-        this.id = id;
-        this.instance = instance;
-        this.location = location;
-        this.mostRecent = mostRecent;
-        this.project = project;
-        this.startTime = startTime;
-        this.status = status;
-    }
-
+    private GetBackupRunResult() {}
     public Integer backupId() {
         return this.backupId;
     }
@@ -108,7 +89,7 @@ public final class GetBackupRunResult {
     public static Builder builder(GetBackupRunResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer backupId;
         private String id;
@@ -118,11 +99,7 @@ public final class GetBackupRunResult {
         private String project;
         private String startTime;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackupRunResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupId = defaults.backupId;
@@ -135,39 +112,57 @@ public final class GetBackupRunResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder backupId(Integer backupId) {
             this.backupId = Objects.requireNonNull(backupId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instance(String instance) {
             this.instance = Objects.requireNonNull(instance);
             return this;
         }
+        @CustomType.Setter
         public Builder location(String location) {
             this.location = Objects.requireNonNull(location);
             return this;
         }
+        @CustomType.Setter
         public Builder mostRecent(@Nullable Boolean mostRecent) {
             this.mostRecent = mostRecent;
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetBackupRunResult build() {
-            return new GetBackupRunResult(backupId, id, instance, location, mostRecent, project, startTime, status);
+        }
+        public GetBackupRunResult build() {
+            final var o = new GetBackupRunResult();
+            o.backupId = backupId;
+            o.id = id;
+            o.instance = instance;
+            o.location = location;
+            o.mostRecent = mostRecent;
+            o.project = project;
+            o.startTime = startTime;
+            o.status = status;
+            return o;
         }
     }
 }

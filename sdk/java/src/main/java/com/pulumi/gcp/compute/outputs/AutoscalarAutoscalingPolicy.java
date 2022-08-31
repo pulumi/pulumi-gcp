@@ -31,7 +31,7 @@ public final class AutoscalarAutoscalingPolicy {
      * and time the startup process.
      * 
      */
-    private final @Nullable Integer cooldownPeriod;
+    private @Nullable Integer cooldownPeriod;
     /**
      * @return Defines the CPU utilization policy that allows the autoscaler to
      * scale based on the average CPU utilization of a managed instance
@@ -39,13 +39,13 @@ public final class AutoscalarAutoscalingPolicy {
      * Structure is documented below.
      * 
      */
-    private final @Nullable AutoscalarAutoscalingPolicyCpuUtilization cpuUtilization;
+    private @Nullable AutoscalarAutoscalingPolicyCpuUtilization cpuUtilization;
     /**
      * @return Configuration parameters of autoscaling based on a load balancer.
      * Structure is documented below.
      * 
      */
-    private final @Nullable AutoscalarAutoscalingPolicyLoadBalancingUtilization loadBalancingUtilization;
+    private @Nullable AutoscalarAutoscalingPolicyLoadBalancingUtilization loadBalancingUtilization;
     /**
      * @return The maximum number of instances that the autoscaler can scale up
      * to. This is required when creating or updating an autoscaler. The
@@ -53,13 +53,13 @@ public final class AutoscalarAutoscalingPolicy {
      * of replicas.
      * 
      */
-    private final Integer maxReplicas;
+    private Integer maxReplicas;
     /**
      * @return Configuration parameters of autoscaling based on a custom metric.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<AutoscalarAutoscalingPolicyMetric> metrics;
+    private @Nullable List<AutoscalarAutoscalingPolicyMetric> metrics;
     /**
      * @return The minimum number of replicas that the autoscaler can scale down
      * to. This cannot be less than 0. If not provided, autoscaler will
@@ -67,59 +67,36 @@ public final class AutoscalarAutoscalingPolicy {
      * allowed.
      * 
      */
-    private final Integer minReplicas;
+    private Integer minReplicas;
     /**
      * @return Defines operating mode for this policy.
      * Default value is `ON`.
      * Possible values are `OFF`, `ONLY_UP`, and `ON`.
      * 
      */
-    private final @Nullable String mode;
+    private @Nullable String mode;
     /**
      * @return Defines scale down controls to reduce the risk of response latency
      * and outages due to abrupt scale-in events
      * Structure is documented below.
      * 
      */
-    private final @Nullable AutoscalarAutoscalingPolicyScaleDownControl scaleDownControl;
+    private @Nullable AutoscalarAutoscalingPolicyScaleDownControl scaleDownControl;
     /**
      * @return Defines scale in controls to reduce the risk of response latency
      * and outages due to abrupt scale-in events
      * Structure is documented below.
      * 
      */
-    private final @Nullable AutoscalarAutoscalingPolicyScaleInControl scaleInControl;
+    private @Nullable AutoscalarAutoscalingPolicyScaleInControl scaleInControl;
     /**
      * @return Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<AutoscalarAutoscalingPolicyScalingSchedule> scalingSchedules;
+    private @Nullable List<AutoscalarAutoscalingPolicyScalingSchedule> scalingSchedules;
 
-    @CustomType.Constructor
-    private AutoscalarAutoscalingPolicy(
-        @CustomType.Parameter("cooldownPeriod") @Nullable Integer cooldownPeriod,
-        @CustomType.Parameter("cpuUtilization") @Nullable AutoscalarAutoscalingPolicyCpuUtilization cpuUtilization,
-        @CustomType.Parameter("loadBalancingUtilization") @Nullable AutoscalarAutoscalingPolicyLoadBalancingUtilization loadBalancingUtilization,
-        @CustomType.Parameter("maxReplicas") Integer maxReplicas,
-        @CustomType.Parameter("metrics") @Nullable List<AutoscalarAutoscalingPolicyMetric> metrics,
-        @CustomType.Parameter("minReplicas") Integer minReplicas,
-        @CustomType.Parameter("mode") @Nullable String mode,
-        @CustomType.Parameter("scaleDownControl") @Nullable AutoscalarAutoscalingPolicyScaleDownControl scaleDownControl,
-        @CustomType.Parameter("scaleInControl") @Nullable AutoscalarAutoscalingPolicyScaleInControl scaleInControl,
-        @CustomType.Parameter("scalingSchedules") @Nullable List<AutoscalarAutoscalingPolicyScalingSchedule> scalingSchedules) {
-        this.cooldownPeriod = cooldownPeriod;
-        this.cpuUtilization = cpuUtilization;
-        this.loadBalancingUtilization = loadBalancingUtilization;
-        this.maxReplicas = maxReplicas;
-        this.metrics = metrics;
-        this.minReplicas = minReplicas;
-        this.mode = mode;
-        this.scaleDownControl = scaleDownControl;
-        this.scaleInControl = scaleInControl;
-        this.scalingSchedules = scalingSchedules;
-    }
-
+    private AutoscalarAutoscalingPolicy() {}
     /**
      * @return The number of seconds that the autoscaler should wait before it
      * starts collecting information from a new instance. This prevents
@@ -224,7 +201,7 @@ public final class AutoscalarAutoscalingPolicy {
     public static Builder builder(AutoscalarAutoscalingPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer cooldownPeriod;
         private @Nullable AutoscalarAutoscalingPolicyCpuUtilization cpuUtilization;
@@ -236,11 +213,7 @@ public final class AutoscalarAutoscalingPolicy {
         private @Nullable AutoscalarAutoscalingPolicyScaleDownControl scaleDownControl;
         private @Nullable AutoscalarAutoscalingPolicyScaleInControl scaleInControl;
         private @Nullable List<AutoscalarAutoscalingPolicyScalingSchedule> scalingSchedules;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AutoscalarAutoscalingPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cooldownPeriod = defaults.cooldownPeriod;
@@ -255,22 +228,27 @@ public final class AutoscalarAutoscalingPolicy {
     	      this.scalingSchedules = defaults.scalingSchedules;
         }
 
+        @CustomType.Setter
         public Builder cooldownPeriod(@Nullable Integer cooldownPeriod) {
             this.cooldownPeriod = cooldownPeriod;
             return this;
         }
+        @CustomType.Setter
         public Builder cpuUtilization(@Nullable AutoscalarAutoscalingPolicyCpuUtilization cpuUtilization) {
             this.cpuUtilization = cpuUtilization;
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancingUtilization(@Nullable AutoscalarAutoscalingPolicyLoadBalancingUtilization loadBalancingUtilization) {
             this.loadBalancingUtilization = loadBalancingUtilization;
             return this;
         }
+        @CustomType.Setter
         public Builder maxReplicas(Integer maxReplicas) {
             this.maxReplicas = Objects.requireNonNull(maxReplicas);
             return this;
         }
+        @CustomType.Setter
         public Builder metrics(@Nullable List<AutoscalarAutoscalingPolicyMetric> metrics) {
             this.metrics = metrics;
             return this;
@@ -278,30 +256,47 @@ public final class AutoscalarAutoscalingPolicy {
         public Builder metrics(AutoscalarAutoscalingPolicyMetric... metrics) {
             return metrics(List.of(metrics));
         }
+        @CustomType.Setter
         public Builder minReplicas(Integer minReplicas) {
             this.minReplicas = Objects.requireNonNull(minReplicas);
             return this;
         }
+        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
             this.mode = mode;
             return this;
         }
+        @CustomType.Setter
         public Builder scaleDownControl(@Nullable AutoscalarAutoscalingPolicyScaleDownControl scaleDownControl) {
             this.scaleDownControl = scaleDownControl;
             return this;
         }
+        @CustomType.Setter
         public Builder scaleInControl(@Nullable AutoscalarAutoscalingPolicyScaleInControl scaleInControl) {
             this.scaleInControl = scaleInControl;
             return this;
         }
+        @CustomType.Setter
         public Builder scalingSchedules(@Nullable List<AutoscalarAutoscalingPolicyScalingSchedule> scalingSchedules) {
             this.scalingSchedules = scalingSchedules;
             return this;
         }
         public Builder scalingSchedules(AutoscalarAutoscalingPolicyScalingSchedule... scalingSchedules) {
             return scalingSchedules(List.of(scalingSchedules));
-        }        public AutoscalarAutoscalingPolicy build() {
-            return new AutoscalarAutoscalingPolicy(cooldownPeriod, cpuUtilization, loadBalancingUtilization, maxReplicas, metrics, minReplicas, mode, scaleDownControl, scaleInControl, scalingSchedules);
+        }
+        public AutoscalarAutoscalingPolicy build() {
+            final var o = new AutoscalarAutoscalingPolicy();
+            o.cooldownPeriod = cooldownPeriod;
+            o.cpuUtilization = cpuUtilization;
+            o.loadBalancingUtilization = loadBalancingUtilization;
+            o.maxReplicas = maxReplicas;
+            o.metrics = metrics;
+            o.minReplicas = minReplicas;
+            o.mode = mode;
+            o.scaleDownControl = scaleDownControl;
+            o.scaleInControl = scaleInControl;
+            o.scalingSchedules = scalingSchedules;
+            return o;
         }
     }
 }

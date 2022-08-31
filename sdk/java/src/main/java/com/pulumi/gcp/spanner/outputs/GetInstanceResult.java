@@ -14,45 +14,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceResult {
-    private final @Nullable String config;
-    private final @Nullable String displayName;
-    private final Boolean forceDestroy;
+    private @Nullable String config;
+    private @Nullable String displayName;
+    private Boolean forceDestroy;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final Map<String,String> labels;
-    private final String name;
-    private final Integer numNodes;
-    private final Integer processingUnits;
-    private final @Nullable String project;
-    private final String state;
+    private String id;
+    private Map<String,String> labels;
+    private String name;
+    private Integer numNodes;
+    private Integer processingUnits;
+    private @Nullable String project;
+    private String state;
 
-    @CustomType.Constructor
-    private GetInstanceResult(
-        @CustomType.Parameter("config") @Nullable String config,
-        @CustomType.Parameter("displayName") @Nullable String displayName,
-        @CustomType.Parameter("forceDestroy") Boolean forceDestroy,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("numNodes") Integer numNodes,
-        @CustomType.Parameter("processingUnits") Integer processingUnits,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("state") String state) {
-        this.config = config;
-        this.displayName = displayName;
-        this.forceDestroy = forceDestroy;
-        this.id = id;
-        this.labels = labels;
-        this.name = name;
-        this.numNodes = numNodes;
-        this.processingUnits = processingUnits;
-        this.project = project;
-        this.state = state;
-    }
-
+    private GetInstanceResult() {}
     public Optional<String> config() {
         return Optional.ofNullable(this.config);
     }
@@ -95,7 +72,7 @@ public final class GetInstanceResult {
     public static Builder builder(GetInstanceResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String config;
         private @Nullable String displayName;
@@ -107,11 +84,7 @@ public final class GetInstanceResult {
         private Integer processingUnits;
         private @Nullable String project;
         private String state;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.config = defaults.config;
@@ -126,47 +99,69 @@ public final class GetInstanceResult {
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
         public Builder config(@Nullable String config) {
             this.config = config;
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
             this.displayName = displayName;
             return this;
         }
+        @CustomType.Setter
         public Builder forceDestroy(Boolean forceDestroy) {
             this.forceDestroy = Objects.requireNonNull(forceDestroy);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder numNodes(Integer numNodes) {
             this.numNodes = Objects.requireNonNull(numNodes);
             return this;
         }
+        @CustomType.Setter
         public Builder processingUnits(Integer processingUnits) {
             this.processingUnits = Objects.requireNonNull(processingUnits);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
-        }        public GetInstanceResult build() {
-            return new GetInstanceResult(config, displayName, forceDestroy, id, labels, name, numNodes, processingUnits, project, state);
+        }
+        public GetInstanceResult build() {
+            final var o = new GetInstanceResult();
+            o.config = config;
+            o.displayName = displayName;
+            o.forceDestroy = forceDestroy;
+            o.id = id;
+            o.labels = labels;
+            o.name = name;
+            o.numNodes = numNodes;
+            o.processingUnits = processingUnits;
+            o.project = project;
+            o.state = state;
+            return o;
         }
     }
 }

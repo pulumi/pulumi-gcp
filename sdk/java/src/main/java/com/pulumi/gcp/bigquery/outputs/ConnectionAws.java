@@ -14,13 +14,9 @@ public final class ConnectionAws {
      * Structure is documented below.
      * 
      */
-    private final ConnectionAwsAccessRole accessRole;
+    private ConnectionAwsAccessRole accessRole;
 
-    @CustomType.Constructor
-    private ConnectionAws(@CustomType.Parameter("accessRole") ConnectionAwsAccessRole accessRole) {
-        this.accessRole = accessRole;
-    }
-
+    private ConnectionAws() {}
     /**
      * @return Authentication using Google owned service account to assume into customer&#39;s AWS IAM Role.
      * Structure is documented below.
@@ -37,24 +33,24 @@ public final class ConnectionAws {
     public static Builder builder(ConnectionAws defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private ConnectionAwsAccessRole accessRole;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionAws defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessRole = defaults.accessRole;
         }
 
+        @CustomType.Setter
         public Builder accessRole(ConnectionAwsAccessRole accessRole) {
             this.accessRole = Objects.requireNonNull(accessRole);
             return this;
-        }        public ConnectionAws build() {
-            return new ConnectionAws(accessRole);
+        }
+        public ConnectionAws build() {
+            final var o = new ConnectionAws();
+            o.accessRole = accessRole;
+            return o;
         }
     }
 }

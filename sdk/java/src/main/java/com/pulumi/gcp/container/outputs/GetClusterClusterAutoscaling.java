@@ -13,23 +13,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterClusterAutoscaling {
-    private final List<GetClusterClusterAutoscalingAutoProvisioningDefault> autoProvisioningDefaults;
-    private final String autoscalingProfile;
-    private final Boolean enabled;
-    private final List<GetClusterClusterAutoscalingResourceLimit> resourceLimits;
+    private List<GetClusterClusterAutoscalingAutoProvisioningDefault> autoProvisioningDefaults;
+    private String autoscalingProfile;
+    private Boolean enabled;
+    private List<GetClusterClusterAutoscalingResourceLimit> resourceLimits;
 
-    @CustomType.Constructor
-    private GetClusterClusterAutoscaling(
-        @CustomType.Parameter("autoProvisioningDefaults") List<GetClusterClusterAutoscalingAutoProvisioningDefault> autoProvisioningDefaults,
-        @CustomType.Parameter("autoscalingProfile") String autoscalingProfile,
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("resourceLimits") List<GetClusterClusterAutoscalingResourceLimit> resourceLimits) {
-        this.autoProvisioningDefaults = autoProvisioningDefaults;
-        this.autoscalingProfile = autoscalingProfile;
-        this.enabled = enabled;
-        this.resourceLimits = resourceLimits;
-    }
-
+    private GetClusterClusterAutoscaling() {}
     public List<GetClusterClusterAutoscalingAutoProvisioningDefault> autoProvisioningDefaults() {
         return this.autoProvisioningDefaults;
     }
@@ -50,17 +39,13 @@ public final class GetClusterClusterAutoscaling {
     public static Builder builder(GetClusterClusterAutoscaling defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetClusterClusterAutoscalingAutoProvisioningDefault> autoProvisioningDefaults;
         private String autoscalingProfile;
         private Boolean enabled;
         private List<GetClusterClusterAutoscalingResourceLimit> resourceLimits;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterClusterAutoscaling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoProvisioningDefaults = defaults.autoProvisioningDefaults;
@@ -69,6 +54,7 @@ public final class GetClusterClusterAutoscaling {
     	      this.resourceLimits = defaults.resourceLimits;
         }
 
+        @CustomType.Setter
         public Builder autoProvisioningDefaults(List<GetClusterClusterAutoscalingAutoProvisioningDefault> autoProvisioningDefaults) {
             this.autoProvisioningDefaults = Objects.requireNonNull(autoProvisioningDefaults);
             return this;
@@ -76,22 +62,31 @@ public final class GetClusterClusterAutoscaling {
         public Builder autoProvisioningDefaults(GetClusterClusterAutoscalingAutoProvisioningDefault... autoProvisioningDefaults) {
             return autoProvisioningDefaults(List.of(autoProvisioningDefaults));
         }
+        @CustomType.Setter
         public Builder autoscalingProfile(String autoscalingProfile) {
             this.autoscalingProfile = Objects.requireNonNull(autoscalingProfile);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceLimits(List<GetClusterClusterAutoscalingResourceLimit> resourceLimits) {
             this.resourceLimits = Objects.requireNonNull(resourceLimits);
             return this;
         }
         public Builder resourceLimits(GetClusterClusterAutoscalingResourceLimit... resourceLimits) {
             return resourceLimits(List.of(resourceLimits));
-        }        public GetClusterClusterAutoscaling build() {
-            return new GetClusterClusterAutoscaling(autoProvisioningDefaults, autoscalingProfile, enabled, resourceLimits);
+        }
+        public GetClusterClusterAutoscaling build() {
+            final var o = new GetClusterClusterAutoscaling();
+            o.autoProvisioningDefaults = autoProvisioningDefaults;
+            o.autoscalingProfile = autoscalingProfile;
+            o.enabled = enabled;
+            o.resourceLimits = resourceLimits;
+            return o;
         }
     }
 }

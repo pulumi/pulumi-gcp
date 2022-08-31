@@ -63,6 +63,7 @@ import * as utilities from "../utilities";
  *     versionId: "v2",
  *     service: "myapp",
  *     runtime: "nodejs10",
+ *     appEngineApis: true,
  *     entrypoint: {
  *         shell: "node ./app.js",
  *     },
@@ -125,6 +126,10 @@ export class StandardAppVersion extends pulumi.CustomResource {
         return obj['__pulumiType'] === StandardAppVersion.__pulumiType;
     }
 
+    /**
+     * Allows App Engine second generation runtimes to access the legacy bundled services.
+     */
+    public readonly appEngineApis!: pulumi.Output<boolean | undefined>;
     /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics.
      * Structure is documented below.
@@ -235,6 +240,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StandardAppVersionState | undefined;
+            resourceInputs["appEngineApis"] = state ? state.appEngineApis : undefined;
             resourceInputs["automaticScaling"] = state ? state.automaticScaling : undefined;
             resourceInputs["basicScaling"] = state ? state.basicScaling : undefined;
             resourceInputs["deleteServiceOnDestroy"] = state ? state.deleteServiceOnDestroy : undefined;
@@ -269,6 +275,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
             if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
+            resourceInputs["appEngineApis"] = args ? args.appEngineApis : undefined;
             resourceInputs["automaticScaling"] = args ? args.automaticScaling : undefined;
             resourceInputs["basicScaling"] = args ? args.basicScaling : undefined;
             resourceInputs["deleteServiceOnDestroy"] = args ? args.deleteServiceOnDestroy : undefined;
@@ -299,6 +306,10 @@ export class StandardAppVersion extends pulumi.CustomResource {
  * Input properties used for looking up and filtering StandardAppVersion resources.
  */
 export interface StandardAppVersionState {
+    /**
+     * Allows App Engine second generation runtimes to access the legacy bundled services.
+     */
+    appEngineApis?: pulumi.Input<boolean>;
     /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics.
      * Structure is documented below.
@@ -401,6 +412,10 @@ export interface StandardAppVersionState {
  * The set of arguments for constructing a StandardAppVersion resource.
  */
 export interface StandardAppVersionArgs {
+    /**
+     * Allows App Engine second generation runtimes to access the legacy bundled services.
+     */
+    appEngineApis?: pulumi.Input<boolean>;
     /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics.
      * Structure is documented below.

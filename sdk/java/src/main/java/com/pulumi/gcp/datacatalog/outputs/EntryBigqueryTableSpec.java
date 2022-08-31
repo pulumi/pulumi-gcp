@@ -14,20 +14,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EntryBigqueryTableSpec {
-    private final @Nullable String tableSourceType;
-    private final @Nullable List<EntryBigqueryTableSpecTableSpec> tableSpecs;
-    private final @Nullable List<EntryBigqueryTableSpecViewSpec> viewSpecs;
+    private @Nullable String tableSourceType;
+    private @Nullable List<EntryBigqueryTableSpecTableSpec> tableSpecs;
+    private @Nullable List<EntryBigqueryTableSpecViewSpec> viewSpecs;
 
-    @CustomType.Constructor
-    private EntryBigqueryTableSpec(
-        @CustomType.Parameter("tableSourceType") @Nullable String tableSourceType,
-        @CustomType.Parameter("tableSpecs") @Nullable List<EntryBigqueryTableSpecTableSpec> tableSpecs,
-        @CustomType.Parameter("viewSpecs") @Nullable List<EntryBigqueryTableSpecViewSpec> viewSpecs) {
-        this.tableSourceType = tableSourceType;
-        this.tableSpecs = tableSpecs;
-        this.viewSpecs = viewSpecs;
-    }
-
+    private EntryBigqueryTableSpec() {}
     public Optional<String> tableSourceType() {
         return Optional.ofNullable(this.tableSourceType);
     }
@@ -45,16 +36,12 @@ public final class EntryBigqueryTableSpec {
     public static Builder builder(EntryBigqueryTableSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String tableSourceType;
         private @Nullable List<EntryBigqueryTableSpecTableSpec> tableSpecs;
         private @Nullable List<EntryBigqueryTableSpecViewSpec> viewSpecs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EntryBigqueryTableSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.tableSourceType = defaults.tableSourceType;
@@ -62,10 +49,12 @@ public final class EntryBigqueryTableSpec {
     	      this.viewSpecs = defaults.viewSpecs;
         }
 
+        @CustomType.Setter
         public Builder tableSourceType(@Nullable String tableSourceType) {
             this.tableSourceType = tableSourceType;
             return this;
         }
+        @CustomType.Setter
         public Builder tableSpecs(@Nullable List<EntryBigqueryTableSpecTableSpec> tableSpecs) {
             this.tableSpecs = tableSpecs;
             return this;
@@ -73,14 +62,20 @@ public final class EntryBigqueryTableSpec {
         public Builder tableSpecs(EntryBigqueryTableSpecTableSpec... tableSpecs) {
             return tableSpecs(List.of(tableSpecs));
         }
+        @CustomType.Setter
         public Builder viewSpecs(@Nullable List<EntryBigqueryTableSpecViewSpec> viewSpecs) {
             this.viewSpecs = viewSpecs;
             return this;
         }
         public Builder viewSpecs(EntryBigqueryTableSpecViewSpec... viewSpecs) {
             return viewSpecs(List.of(viewSpecs));
-        }        public EntryBigqueryTableSpec build() {
-            return new EntryBigqueryTableSpec(tableSourceType, tableSpecs, viewSpecs);
+        }
+        public EntryBigqueryTableSpec build() {
+            final var o = new EntryBigqueryTableSpec();
+            o.tableSourceType = tableSourceType;
+            o.tableSpecs = tableSpecs;
+            o.viewSpecs = viewSpecs;
+            return o;
         }
     }
 }

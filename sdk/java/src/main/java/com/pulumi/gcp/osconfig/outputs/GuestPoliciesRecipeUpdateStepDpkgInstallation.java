@@ -13,13 +13,9 @@ public final class GuestPoliciesRecipeUpdateStepDpkgInstallation {
      * @return The id of the relevant artifact in the recipe.
      * 
      */
-    private final String artifactId;
+    private String artifactId;
 
-    @CustomType.Constructor
-    private GuestPoliciesRecipeUpdateStepDpkgInstallation(@CustomType.Parameter("artifactId") String artifactId) {
-        this.artifactId = artifactId;
-    }
-
+    private GuestPoliciesRecipeUpdateStepDpkgInstallation() {}
     /**
      * @return The id of the relevant artifact in the recipe.
      * 
@@ -35,24 +31,24 @@ public final class GuestPoliciesRecipeUpdateStepDpkgInstallation {
     public static Builder builder(GuestPoliciesRecipeUpdateStepDpkgInstallation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String artifactId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesRecipeUpdateStepDpkgInstallation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.artifactId = defaults.artifactId;
         }
 
+        @CustomType.Setter
         public Builder artifactId(String artifactId) {
             this.artifactId = Objects.requireNonNull(artifactId);
             return this;
-        }        public GuestPoliciesRecipeUpdateStepDpkgInstallation build() {
-            return new GuestPoliciesRecipeUpdateStepDpkgInstallation(artifactId);
+        }
+        public GuestPoliciesRecipeUpdateStepDpkgInstallation build() {
+            final var o = new GuestPoliciesRecipeUpdateStepDpkgInstallation();
+            o.artifactId = artifactId;
+            return o;
         }
     }
 }

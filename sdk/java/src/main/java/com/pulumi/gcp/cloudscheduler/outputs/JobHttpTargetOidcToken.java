@@ -16,22 +16,15 @@ public final class JobHttpTargetOidcToken {
      * the URI specified in target will be used.
      * 
      */
-    private final @Nullable String audience;
+    private @Nullable String audience;
     /**
      * @return Service account email to be used for generating OAuth token.
      * The service account must be within the same project as the job.
      * 
      */
-    private final String serviceAccountEmail;
+    private String serviceAccountEmail;
 
-    @CustomType.Constructor
-    private JobHttpTargetOidcToken(
-        @CustomType.Parameter("audience") @Nullable String audience,
-        @CustomType.Parameter("serviceAccountEmail") String serviceAccountEmail) {
-        this.audience = audience;
-        this.serviceAccountEmail = serviceAccountEmail;
-    }
-
+    private JobHttpTargetOidcToken() {}
     /**
      * @return Audience to be used when generating OIDC token. If not specified,
      * the URI specified in target will be used.
@@ -56,30 +49,32 @@ public final class JobHttpTargetOidcToken {
     public static Builder builder(JobHttpTargetOidcToken defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String audience;
         private String serviceAccountEmail;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobHttpTargetOidcToken defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.audience = defaults.audience;
     	      this.serviceAccountEmail = defaults.serviceAccountEmail;
         }
 
+        @CustomType.Setter
         public Builder audience(@Nullable String audience) {
             this.audience = audience;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccountEmail(String serviceAccountEmail) {
             this.serviceAccountEmail = Objects.requireNonNull(serviceAccountEmail);
             return this;
-        }        public JobHttpTargetOidcToken build() {
-            return new JobHttpTargetOidcToken(audience, serviceAccountEmail);
+        }
+        public JobHttpTargetOidcToken build() {
+            final var o = new JobHttpTargetOidcToken();
+            o.audience = audience;
+            o.serviceAccountEmail = serviceAccountEmail;
+            return o;
         }
     }
 }

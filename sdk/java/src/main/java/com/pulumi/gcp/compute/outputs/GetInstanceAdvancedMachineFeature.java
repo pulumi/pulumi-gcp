@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceAdvancedMachineFeature {
-    private final Boolean enableNestedVirtualization;
-    private final Integer threadsPerCore;
+    private Boolean enableNestedVirtualization;
+    private Integer threadsPerCore;
 
-    @CustomType.Constructor
-    private GetInstanceAdvancedMachineFeature(
-        @CustomType.Parameter("enableNestedVirtualization") Boolean enableNestedVirtualization,
-        @CustomType.Parameter("threadsPerCore") Integer threadsPerCore) {
-        this.enableNestedVirtualization = enableNestedVirtualization;
-        this.threadsPerCore = threadsPerCore;
-    }
-
+    private GetInstanceAdvancedMachineFeature() {}
     public Boolean enableNestedVirtualization() {
         return this.enableNestedVirtualization;
     }
@@ -35,30 +28,32 @@ public final class GetInstanceAdvancedMachineFeature {
     public static Builder builder(GetInstanceAdvancedMachineFeature defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enableNestedVirtualization;
         private Integer threadsPerCore;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceAdvancedMachineFeature defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableNestedVirtualization = defaults.enableNestedVirtualization;
     	      this.threadsPerCore = defaults.threadsPerCore;
         }
 
+        @CustomType.Setter
         public Builder enableNestedVirtualization(Boolean enableNestedVirtualization) {
             this.enableNestedVirtualization = Objects.requireNonNull(enableNestedVirtualization);
             return this;
         }
+        @CustomType.Setter
         public Builder threadsPerCore(Integer threadsPerCore) {
             this.threadsPerCore = Objects.requireNonNull(threadsPerCore);
             return this;
-        }        public GetInstanceAdvancedMachineFeature build() {
-            return new GetInstanceAdvancedMachineFeature(enableNestedVirtualization, threadsPerCore);
+        }
+        public GetInstanceAdvancedMachineFeature build() {
+            final var o = new GetInstanceAdvancedMachineFeature();
+            o.enableNestedVirtualization = enableNestedVirtualization;
+            o.threadsPerCore = threadsPerCore;
+            return o;
         }
     }
 }

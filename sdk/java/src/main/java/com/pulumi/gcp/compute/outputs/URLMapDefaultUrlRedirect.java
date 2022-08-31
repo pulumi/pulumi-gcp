@@ -17,7 +17,7 @@ public final class URLMapDefaultUrlRedirect {
      * supplied in the request. The value must be between 1 and 255 characters.
      * 
      */
-    private final @Nullable String hostRedirect;
+    private @Nullable String hostRedirect;
     /**
      * @return If set to true, the URL scheme in the redirected request is set to https. If set to
      * false, the URL scheme of the redirected request will remain the same as that of the
@@ -25,7 +25,7 @@ public final class URLMapDefaultUrlRedirect {
      * true for TargetHttpsProxy is not permitted. The default is set to false.
      * 
      */
-    private final @Nullable Boolean httpsRedirect;
+    private @Nullable Boolean httpsRedirect;
     /**
      * @return The path that will be used in the redirect response instead of the one that was
      * supplied in the request. pathRedirect cannot be supplied together with
@@ -34,7 +34,7 @@ public final class URLMapDefaultUrlRedirect {
      * characters.
      * 
      */
-    private final @Nullable String pathRedirect;
+    private @Nullable String pathRedirect;
     /**
      * @return The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
      * retaining the remaining portion of the URL before redirecting the request.
@@ -43,7 +43,7 @@ public final class URLMapDefaultUrlRedirect {
      * the redirect. The value must be between 1 and 1024 characters.
      * 
      */
-    private final @Nullable String prefixRedirect;
+    private @Nullable String prefixRedirect;
     /**
      * @return The HTTP Status code to use for this RedirectAction. Supported values are:
      * * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
@@ -55,7 +55,7 @@ public final class URLMapDefaultUrlRedirect {
      *   the request method will be retained.
      * 
      */
-    private final @Nullable String redirectResponseCode;
+    private @Nullable String redirectResponseCode;
     /**
      * @return If set to true, any accompanying query portion of the original URL is removed prior
      * to redirecting the request. If set to false, the query portion of the original URL is
@@ -63,24 +63,9 @@ public final class URLMapDefaultUrlRedirect {
      * This field is required to ensure an empty block is not set. The normal default value is false.
      * 
      */
-    private final Boolean stripQuery;
+    private Boolean stripQuery;
 
-    @CustomType.Constructor
-    private URLMapDefaultUrlRedirect(
-        @CustomType.Parameter("hostRedirect") @Nullable String hostRedirect,
-        @CustomType.Parameter("httpsRedirect") @Nullable Boolean httpsRedirect,
-        @CustomType.Parameter("pathRedirect") @Nullable String pathRedirect,
-        @CustomType.Parameter("prefixRedirect") @Nullable String prefixRedirect,
-        @CustomType.Parameter("redirectResponseCode") @Nullable String redirectResponseCode,
-        @CustomType.Parameter("stripQuery") Boolean stripQuery) {
-        this.hostRedirect = hostRedirect;
-        this.httpsRedirect = httpsRedirect;
-        this.pathRedirect = pathRedirect;
-        this.prefixRedirect = prefixRedirect;
-        this.redirectResponseCode = redirectResponseCode;
-        this.stripQuery = stripQuery;
-    }
-
+    private URLMapDefaultUrlRedirect() {}
     /**
      * @return The host that will be used in the redirect response instead of the one that was
      * supplied in the request. The value must be between 1 and 255 characters.
@@ -153,7 +138,7 @@ public final class URLMapDefaultUrlRedirect {
     public static Builder builder(URLMapDefaultUrlRedirect defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String hostRedirect;
         private @Nullable Boolean httpsRedirect;
@@ -161,11 +146,7 @@ public final class URLMapDefaultUrlRedirect {
         private @Nullable String prefixRedirect;
         private @Nullable String redirectResponseCode;
         private Boolean stripQuery;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(URLMapDefaultUrlRedirect defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostRedirect = defaults.hostRedirect;
@@ -176,31 +157,45 @@ public final class URLMapDefaultUrlRedirect {
     	      this.stripQuery = defaults.stripQuery;
         }
 
+        @CustomType.Setter
         public Builder hostRedirect(@Nullable String hostRedirect) {
             this.hostRedirect = hostRedirect;
             return this;
         }
+        @CustomType.Setter
         public Builder httpsRedirect(@Nullable Boolean httpsRedirect) {
             this.httpsRedirect = httpsRedirect;
             return this;
         }
+        @CustomType.Setter
         public Builder pathRedirect(@Nullable String pathRedirect) {
             this.pathRedirect = pathRedirect;
             return this;
         }
+        @CustomType.Setter
         public Builder prefixRedirect(@Nullable String prefixRedirect) {
             this.prefixRedirect = prefixRedirect;
             return this;
         }
+        @CustomType.Setter
         public Builder redirectResponseCode(@Nullable String redirectResponseCode) {
             this.redirectResponseCode = redirectResponseCode;
             return this;
         }
+        @CustomType.Setter
         public Builder stripQuery(Boolean stripQuery) {
             this.stripQuery = Objects.requireNonNull(stripQuery);
             return this;
-        }        public URLMapDefaultUrlRedirect build() {
-            return new URLMapDefaultUrlRedirect(hostRedirect, httpsRedirect, pathRedirect, prefixRedirect, redirectResponseCode, stripQuery);
+        }
+        public URLMapDefaultUrlRedirect build() {
+            final var o = new URLMapDefaultUrlRedirect();
+            o.hostRedirect = hostRedirect;
+            o.httpsRedirect = httpsRedirect;
+            o.pathRedirect = pathRedirect;
+            o.prefixRedirect = prefixRedirect;
+            o.redirectResponseCode = redirectResponseCode;
+            o.stripQuery = stripQuery;
+            return o;
         }
     }
 }

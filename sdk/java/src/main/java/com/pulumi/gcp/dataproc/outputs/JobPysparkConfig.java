@@ -18,59 +18,40 @@ public final class JobPysparkConfig {
      * @return HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
      * 
      */
-    private final @Nullable List<String> archiveUris;
+    private @Nullable List<String> archiveUris;
     /**
      * @return The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
      * 
      */
-    private final @Nullable List<String> args;
+    private @Nullable List<String> args;
     /**
      * @return HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
      * 
      */
-    private final @Nullable List<String> fileUris;
+    private @Nullable List<String> fileUris;
     /**
      * @return HCFS URIs of jar files to be added to the Spark CLASSPATH.
      * 
      */
-    private final @Nullable List<String> jarFileUris;
-    private final @Nullable JobPysparkConfigLoggingConfig loggingConfig;
+    private @Nullable List<String> jarFileUris;
+    private @Nullable JobPysparkConfigLoggingConfig loggingConfig;
     /**
      * @return The HCFS URI of the main Python file to use as the driver. Must be a .py file.
      * 
      */
-    private final String mainPythonFileUri;
+    private String mainPythonFileUri;
     /**
      * @return A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
      * 
      */
-    private final @Nullable Map<String,String> properties;
+    private @Nullable Map<String,String> properties;
     /**
      * @return HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
      * 
      */
-    private final @Nullable List<String> pythonFileUris;
+    private @Nullable List<String> pythonFileUris;
 
-    @CustomType.Constructor
-    private JobPysparkConfig(
-        @CustomType.Parameter("archiveUris") @Nullable List<String> archiveUris,
-        @CustomType.Parameter("args") @Nullable List<String> args,
-        @CustomType.Parameter("fileUris") @Nullable List<String> fileUris,
-        @CustomType.Parameter("jarFileUris") @Nullable List<String> jarFileUris,
-        @CustomType.Parameter("loggingConfig") @Nullable JobPysparkConfigLoggingConfig loggingConfig,
-        @CustomType.Parameter("mainPythonFileUri") String mainPythonFileUri,
-        @CustomType.Parameter("properties") @Nullable Map<String,String> properties,
-        @CustomType.Parameter("pythonFileUris") @Nullable List<String> pythonFileUris) {
-        this.archiveUris = archiveUris;
-        this.args = args;
-        this.fileUris = fileUris;
-        this.jarFileUris = jarFileUris;
-        this.loggingConfig = loggingConfig;
-        this.mainPythonFileUri = mainPythonFileUri;
-        this.properties = properties;
-        this.pythonFileUris = pythonFileUris;
-    }
-
+    private JobPysparkConfig() {}
     /**
      * @return HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
      * 
@@ -131,7 +112,7 @@ public final class JobPysparkConfig {
     public static Builder builder(JobPysparkConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> archiveUris;
         private @Nullable List<String> args;
@@ -141,11 +122,7 @@ public final class JobPysparkConfig {
         private String mainPythonFileUri;
         private @Nullable Map<String,String> properties;
         private @Nullable List<String> pythonFileUris;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobPysparkConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.archiveUris = defaults.archiveUris;
@@ -158,6 +135,7 @@ public final class JobPysparkConfig {
     	      this.pythonFileUris = defaults.pythonFileUris;
         }
 
+        @CustomType.Setter
         public Builder archiveUris(@Nullable List<String> archiveUris) {
             this.archiveUris = archiveUris;
             return this;
@@ -165,6 +143,7 @@ public final class JobPysparkConfig {
         public Builder archiveUris(String... archiveUris) {
             return archiveUris(List.of(archiveUris));
         }
+        @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
             this.args = args;
             return this;
@@ -172,6 +151,7 @@ public final class JobPysparkConfig {
         public Builder args(String... args) {
             return args(List.of(args));
         }
+        @CustomType.Setter
         public Builder fileUris(@Nullable List<String> fileUris) {
             this.fileUris = fileUris;
             return this;
@@ -179,6 +159,7 @@ public final class JobPysparkConfig {
         public Builder fileUris(String... fileUris) {
             return fileUris(List.of(fileUris));
         }
+        @CustomType.Setter
         public Builder jarFileUris(@Nullable List<String> jarFileUris) {
             this.jarFileUris = jarFileUris;
             return this;
@@ -186,26 +167,40 @@ public final class JobPysparkConfig {
         public Builder jarFileUris(String... jarFileUris) {
             return jarFileUris(List.of(jarFileUris));
         }
+        @CustomType.Setter
         public Builder loggingConfig(@Nullable JobPysparkConfigLoggingConfig loggingConfig) {
             this.loggingConfig = loggingConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder mainPythonFileUri(String mainPythonFileUri) {
             this.mainPythonFileUri = Objects.requireNonNull(mainPythonFileUri);
             return this;
         }
+        @CustomType.Setter
         public Builder properties(@Nullable Map<String,String> properties) {
             this.properties = properties;
             return this;
         }
+        @CustomType.Setter
         public Builder pythonFileUris(@Nullable List<String> pythonFileUris) {
             this.pythonFileUris = pythonFileUris;
             return this;
         }
         public Builder pythonFileUris(String... pythonFileUris) {
             return pythonFileUris(List.of(pythonFileUris));
-        }        public JobPysparkConfig build() {
-            return new JobPysparkConfig(archiveUris, args, fileUris, jarFileUris, loggingConfig, mainPythonFileUri, properties, pythonFileUris);
+        }
+        public JobPysparkConfig build() {
+            final var o = new JobPysparkConfig();
+            o.archiveUris = archiveUris;
+            o.args = args;
+            o.fileUris = fileUris;
+            o.jarFileUris = jarFileUris;
+            o.loggingConfig = loggingConfig;
+            o.mainPythonFileUri = mainPythonFileUri;
+            o.properties = properties;
+            o.pythonFileUris = pythonFileUris;
+            return o;
         }
     }
 }

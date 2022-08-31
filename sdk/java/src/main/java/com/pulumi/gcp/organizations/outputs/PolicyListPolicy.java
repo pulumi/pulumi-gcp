@@ -18,32 +18,21 @@ public final class PolicyListPolicy {
      * @return or `deny` - (Optional) One or the other must be set.
      * 
      */
-    private final @Nullable PolicyListPolicyAllow allow;
-    private final @Nullable PolicyListPolicyDeny deny;
+    private @Nullable PolicyListPolicyAllow allow;
+    private @Nullable PolicyListPolicyDeny deny;
     /**
      * @return If set to true, the values from the effective Policy of the parent resource
      * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
      * 
      */
-    private final @Nullable Boolean inheritFromParent;
+    private @Nullable Boolean inheritFromParent;
     /**
      * @return The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
      * 
      */
-    private final @Nullable String suggestedValue;
+    private @Nullable String suggestedValue;
 
-    @CustomType.Constructor
-    private PolicyListPolicy(
-        @CustomType.Parameter("allow") @Nullable PolicyListPolicyAllow allow,
-        @CustomType.Parameter("deny") @Nullable PolicyListPolicyDeny deny,
-        @CustomType.Parameter("inheritFromParent") @Nullable Boolean inheritFromParent,
-        @CustomType.Parameter("suggestedValue") @Nullable String suggestedValue) {
-        this.allow = allow;
-        this.deny = deny;
-        this.inheritFromParent = inheritFromParent;
-        this.suggestedValue = suggestedValue;
-    }
-
+    private PolicyListPolicy() {}
     /**
      * @return or `deny` - (Optional) One or the other must be set.
      * 
@@ -77,17 +66,13 @@ public final class PolicyListPolicy {
     public static Builder builder(PolicyListPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable PolicyListPolicyAllow allow;
         private @Nullable PolicyListPolicyDeny deny;
         private @Nullable Boolean inheritFromParent;
         private @Nullable String suggestedValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PolicyListPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allow = defaults.allow;
@@ -96,23 +81,33 @@ public final class PolicyListPolicy {
     	      this.suggestedValue = defaults.suggestedValue;
         }
 
+        @CustomType.Setter
         public Builder allow(@Nullable PolicyListPolicyAllow allow) {
             this.allow = allow;
             return this;
         }
+        @CustomType.Setter
         public Builder deny(@Nullable PolicyListPolicyDeny deny) {
             this.deny = deny;
             return this;
         }
+        @CustomType.Setter
         public Builder inheritFromParent(@Nullable Boolean inheritFromParent) {
             this.inheritFromParent = inheritFromParent;
             return this;
         }
+        @CustomType.Setter
         public Builder suggestedValue(@Nullable String suggestedValue) {
             this.suggestedValue = suggestedValue;
             return this;
-        }        public PolicyListPolicy build() {
-            return new PolicyListPolicy(allow, deny, inheritFromParent, suggestedValue);
+        }
+        public PolicyListPolicy build() {
+            final var o = new PolicyListPolicy();
+            o.allow = allow;
+            o.deny = deny;
+            o.inheritFromParent = inheritFromParent;
+            o.suggestedValue = suggestedValue;
+            return o;
         }
     }
 }

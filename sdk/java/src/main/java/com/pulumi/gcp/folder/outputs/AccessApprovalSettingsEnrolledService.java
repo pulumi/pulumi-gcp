@@ -37,23 +37,16 @@ public final class AccessApprovalSettingsEnrolledService {
      * * storage.googleapis.com
      * 
      */
-    private final String cloudProduct;
+    private String cloudProduct;
     /**
      * @return The enrollment level of the service.
      * Default value is `BLOCK_ALL`.
      * Possible values are `BLOCK_ALL`.
      * 
      */
-    private final @Nullable String enrollmentLevel;
+    private @Nullable String enrollmentLevel;
 
-    @CustomType.Constructor
-    private AccessApprovalSettingsEnrolledService(
-        @CustomType.Parameter("cloudProduct") String cloudProduct,
-        @CustomType.Parameter("enrollmentLevel") @Nullable String enrollmentLevel) {
-        this.cloudProduct = cloudProduct;
-        this.enrollmentLevel = enrollmentLevel;
-    }
-
+    private AccessApprovalSettingsEnrolledService() {}
     /**
      * @return The product for which Access Approval will be enrolled. Allowed values are listed (case-sensitive):
      * * all
@@ -100,30 +93,32 @@ public final class AccessApprovalSettingsEnrolledService {
     public static Builder builder(AccessApprovalSettingsEnrolledService defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cloudProduct;
         private @Nullable String enrollmentLevel;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AccessApprovalSettingsEnrolledService defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cloudProduct = defaults.cloudProduct;
     	      this.enrollmentLevel = defaults.enrollmentLevel;
         }
 
+        @CustomType.Setter
         public Builder cloudProduct(String cloudProduct) {
             this.cloudProduct = Objects.requireNonNull(cloudProduct);
             return this;
         }
+        @CustomType.Setter
         public Builder enrollmentLevel(@Nullable String enrollmentLevel) {
             this.enrollmentLevel = enrollmentLevel;
             return this;
-        }        public AccessApprovalSettingsEnrolledService build() {
-            return new AccessApprovalSettingsEnrolledService(cloudProduct, enrollmentLevel);
+        }
+        public AccessApprovalSettingsEnrolledService build() {
+            final var o = new AccessApprovalSettingsEnrolledService();
+            o.cloudProduct = cloudProduct;
+            o.enrollmentLevel = enrollmentLevel;
+            return o;
         }
     }
 }

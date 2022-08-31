@@ -16,18 +16,18 @@ public final class GuestPoliciesRecipeUpdateStepFileCopy {
      * @return The id of the relevant artifact in the recipe.
      * 
      */
-    private final String artifactId;
+    private String artifactId;
     /**
      * @return Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
      * 
      */
-    private final String destination;
+    private String destination;
     /**
      * @return Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
      * is not overwritten and the step is considered a success. Defaults to false.
      * 
      */
-    private final @Nullable Boolean overwrite;
+    private @Nullable Boolean overwrite;
     /**
      * @return Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
      * for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
@@ -37,20 +37,9 @@ public final class GuestPoliciesRecipeUpdateStepFileCopy {
      * read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
      * 
      */
-    private final @Nullable String permissions;
+    private @Nullable String permissions;
 
-    @CustomType.Constructor
-    private GuestPoliciesRecipeUpdateStepFileCopy(
-        @CustomType.Parameter("artifactId") String artifactId,
-        @CustomType.Parameter("destination") String destination,
-        @CustomType.Parameter("overwrite") @Nullable Boolean overwrite,
-        @CustomType.Parameter("permissions") @Nullable String permissions) {
-        this.artifactId = artifactId;
-        this.destination = destination;
-        this.overwrite = overwrite;
-        this.permissions = permissions;
-    }
-
+    private GuestPoliciesRecipeUpdateStepFileCopy() {}
     /**
      * @return The id of the relevant artifact in the recipe.
      * 
@@ -93,17 +82,13 @@ public final class GuestPoliciesRecipeUpdateStepFileCopy {
     public static Builder builder(GuestPoliciesRecipeUpdateStepFileCopy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String artifactId;
         private String destination;
         private @Nullable Boolean overwrite;
         private @Nullable String permissions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesRecipeUpdateStepFileCopy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.artifactId = defaults.artifactId;
@@ -112,23 +97,33 @@ public final class GuestPoliciesRecipeUpdateStepFileCopy {
     	      this.permissions = defaults.permissions;
         }
 
+        @CustomType.Setter
         public Builder artifactId(String artifactId) {
             this.artifactId = Objects.requireNonNull(artifactId);
             return this;
         }
+        @CustomType.Setter
         public Builder destination(String destination) {
             this.destination = Objects.requireNonNull(destination);
             return this;
         }
+        @CustomType.Setter
         public Builder overwrite(@Nullable Boolean overwrite) {
             this.overwrite = overwrite;
             return this;
         }
+        @CustomType.Setter
         public Builder permissions(@Nullable String permissions) {
             this.permissions = permissions;
             return this;
-        }        public GuestPoliciesRecipeUpdateStepFileCopy build() {
-            return new GuestPoliciesRecipeUpdateStepFileCopy(artifactId, destination, overwrite, permissions);
+        }
+        public GuestPoliciesRecipeUpdateStepFileCopy build() {
+            final var o = new GuestPoliciesRecipeUpdateStepFileCopy();
+            o.artifactId = artifactId;
+            o.destination = destination;
+            o.overwrite = overwrite;
+            o.permissions = permissions;
+            return o;
         }
     }
 }

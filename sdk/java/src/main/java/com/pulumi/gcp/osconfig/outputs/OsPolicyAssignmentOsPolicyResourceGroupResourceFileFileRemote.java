@@ -15,21 +15,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote
      * @return SHA256 checksum of the remote file.
      * 
      */
-    private final @Nullable String sha256Checksum;
+    private @Nullable String sha256Checksum;
     /**
      * @return Required. URI for this repository.
      * 
      */
-    private final String uri;
+    private String uri;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote(
-        @CustomType.Parameter("sha256Checksum") @Nullable String sha256Checksum,
-        @CustomType.Parameter("uri") String uri) {
-        this.sha256Checksum = sha256Checksum;
-        this.uri = uri;
-    }
-
+    private OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote() {}
     /**
      * @return SHA256 checksum of the remote file.
      * 
@@ -52,30 +45,32 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote
     public static Builder builder(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String sha256Checksum;
         private String uri;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sha256Checksum = defaults.sha256Checksum;
     	      this.uri = defaults.uri;
         }
 
+        @CustomType.Setter
         public Builder sha256Checksum(@Nullable String sha256Checksum) {
             this.sha256Checksum = sha256Checksum;
             return this;
         }
+        @CustomType.Setter
         public Builder uri(String uri) {
             this.uri = Objects.requireNonNull(uri);
             return this;
-        }        public OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote build() {
-            return new OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote(sha256Checksum, uri);
+        }
+        public OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote build() {
+            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote();
+            o.sha256Checksum = sha256Checksum;
+            o.uri = uri;
+            return o;
         }
     }
 }

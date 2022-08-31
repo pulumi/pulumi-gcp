@@ -20,28 +20,19 @@ public final class ClusterMaintenancePolicy {
      * where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
      * 
      */
-    private final @Nullable ClusterMaintenancePolicyDailyMaintenanceWindow dailyMaintenanceWindow;
+    private @Nullable ClusterMaintenancePolicyDailyMaintenanceWindow dailyMaintenanceWindow;
     /**
      * @return Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
      * 
      */
-    private final @Nullable List<ClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions;
+    private @Nullable List<ClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions;
     /**
      * @return Time window for recurring maintenance operations.
      * 
      */
-    private final @Nullable ClusterMaintenancePolicyRecurringWindow recurringWindow;
+    private @Nullable ClusterMaintenancePolicyRecurringWindow recurringWindow;
 
-    @CustomType.Constructor
-    private ClusterMaintenancePolicy(
-        @CustomType.Parameter("dailyMaintenanceWindow") @Nullable ClusterMaintenancePolicyDailyMaintenanceWindow dailyMaintenanceWindow,
-        @CustomType.Parameter("maintenanceExclusions") @Nullable List<ClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions,
-        @CustomType.Parameter("recurringWindow") @Nullable ClusterMaintenancePolicyRecurringWindow recurringWindow) {
-        this.dailyMaintenanceWindow = dailyMaintenanceWindow;
-        this.maintenanceExclusions = maintenanceExclusions;
-        this.recurringWindow = recurringWindow;
-    }
-
+    private ClusterMaintenancePolicy() {}
     /**
      * @return Time window specified for daily maintenance operations.
      * Specify `start_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format &#34;HH:MM”,
@@ -73,16 +64,12 @@ public final class ClusterMaintenancePolicy {
     public static Builder builder(ClusterMaintenancePolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterMaintenancePolicyDailyMaintenanceWindow dailyMaintenanceWindow;
         private @Nullable List<ClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions;
         private @Nullable ClusterMaintenancePolicyRecurringWindow recurringWindow;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterMaintenancePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dailyMaintenanceWindow = defaults.dailyMaintenanceWindow;
@@ -90,10 +77,12 @@ public final class ClusterMaintenancePolicy {
     	      this.recurringWindow = defaults.recurringWindow;
         }
 
+        @CustomType.Setter
         public Builder dailyMaintenanceWindow(@Nullable ClusterMaintenancePolicyDailyMaintenanceWindow dailyMaintenanceWindow) {
             this.dailyMaintenanceWindow = dailyMaintenanceWindow;
             return this;
         }
+        @CustomType.Setter
         public Builder maintenanceExclusions(@Nullable List<ClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions) {
             this.maintenanceExclusions = maintenanceExclusions;
             return this;
@@ -101,11 +90,17 @@ public final class ClusterMaintenancePolicy {
         public Builder maintenanceExclusions(ClusterMaintenancePolicyMaintenanceExclusion... maintenanceExclusions) {
             return maintenanceExclusions(List.of(maintenanceExclusions));
         }
+        @CustomType.Setter
         public Builder recurringWindow(@Nullable ClusterMaintenancePolicyRecurringWindow recurringWindow) {
             this.recurringWindow = recurringWindow;
             return this;
-        }        public ClusterMaintenancePolicy build() {
-            return new ClusterMaintenancePolicy(dailyMaintenanceWindow, maintenanceExclusions, recurringWindow);
+        }
+        public ClusterMaintenancePolicy build() {
+            final var o = new ClusterMaintenancePolicy();
+            o.dailyMaintenanceWindow = dailyMaintenanceWindow;
+            o.maintenanceExclusions = maintenanceExclusions;
+            o.recurringWindow = recurringWindow;
+            return o;
         }
     }
 }

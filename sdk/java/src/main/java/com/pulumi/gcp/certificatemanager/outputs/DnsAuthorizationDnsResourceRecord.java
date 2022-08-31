@@ -11,26 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DnsAuthorizationDnsResourceRecord {
-    private final @Nullable String data;
+    private @Nullable String data;
     /**
      * @return Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
      * 
      */
-    private final @Nullable String name;
-    private final @Nullable String type;
+    private @Nullable String name;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private DnsAuthorizationDnsResourceRecord(
-        @CustomType.Parameter("data") @Nullable String data,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.data = data;
-        this.name = name;
-        this.type = type;
-    }
-
+    private DnsAuthorizationDnsResourceRecord() {}
     public Optional<String> data() {
         return Optional.ofNullable(this.data);
     }
@@ -54,16 +45,12 @@ public final class DnsAuthorizationDnsResourceRecord {
     public static Builder builder(DnsAuthorizationDnsResourceRecord defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String data;
         private @Nullable String name;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DnsAuthorizationDnsResourceRecord defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.data = defaults.data;
@@ -71,19 +58,27 @@ public final class DnsAuthorizationDnsResourceRecord {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder data(@Nullable String data) {
             this.data = data;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public DnsAuthorizationDnsResourceRecord build() {
-            return new DnsAuthorizationDnsResourceRecord(data, name, type);
+        }
+        public DnsAuthorizationDnsResourceRecord build() {
+            final var o = new DnsAuthorizationDnsResourceRecord();
+            o.data = data;
+            o.name = name;
+            o.type = type;
+            return o;
         }
     }
 }

@@ -15,17 +15,10 @@ public final class GetServiceTemplateSpecVolume {
      * @return The name of the Cloud Run Service.
      * 
      */
-    private final String name;
-    private final List<GetServiceTemplateSpecVolumeSecret> secrets;
+    private String name;
+    private List<GetServiceTemplateSpecVolumeSecret> secrets;
 
-    @CustomType.Constructor
-    private GetServiceTemplateSpecVolume(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("secrets") List<GetServiceTemplateSpecVolumeSecret> secrets) {
-        this.name = name;
-        this.secrets = secrets;
-    }
-
+    private GetServiceTemplateSpecVolume() {}
     /**
      * @return The name of the Cloud Run Service.
      * 
@@ -44,33 +37,35 @@ public final class GetServiceTemplateSpecVolume {
     public static Builder builder(GetServiceTemplateSpecVolume defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private List<GetServiceTemplateSpecVolumeSecret> secrets;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceTemplateSpecVolume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.secrets = defaults.secrets;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder secrets(List<GetServiceTemplateSpecVolumeSecret> secrets) {
             this.secrets = Objects.requireNonNull(secrets);
             return this;
         }
         public Builder secrets(GetServiceTemplateSpecVolumeSecret... secrets) {
             return secrets(List.of(secrets));
-        }        public GetServiceTemplateSpecVolume build() {
-            return new GetServiceTemplateSpecVolume(name, secrets);
+        }
+        public GetServiceTemplateSpecVolume build() {
+            final var o = new GetServiceTemplateSpecVolume();
+            o.name = name;
+            o.secrets = secrets;
+            return o;
         }
     }
 }

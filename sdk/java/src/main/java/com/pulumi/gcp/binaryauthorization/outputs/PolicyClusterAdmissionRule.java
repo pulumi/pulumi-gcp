@@ -15,19 +15,19 @@ public final class PolicyClusterAdmissionRule {
      * @return The identifier for this object. Format specified above.
      * 
      */
-    private final String cluster;
+    private String cluster;
     /**
      * @return The action when a pod creation is denied by the admission rule.
      * Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
      * 
      */
-    private final String enforcementMode;
+    private String enforcementMode;
     /**
      * @return How this admission rule will be evaluated.
      * Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
      * 
      */
-    private final String evaluationMode;
+    private String evaluationMode;
     /**
      * @return The resource names of the attestors that must attest to a
      * container image. If the attestor is in a different project from the
@@ -39,20 +39,9 @@ public final class PolicyClusterAdmissionRule {
      * specifies REQUIRE_ATTESTATION, otherwise it must be empty.
      * 
      */
-    private final @Nullable List<String> requireAttestationsBies;
+    private @Nullable List<String> requireAttestationsBies;
 
-    @CustomType.Constructor
-    private PolicyClusterAdmissionRule(
-        @CustomType.Parameter("cluster") String cluster,
-        @CustomType.Parameter("enforcementMode") String enforcementMode,
-        @CustomType.Parameter("evaluationMode") String evaluationMode,
-        @CustomType.Parameter("requireAttestationsBies") @Nullable List<String> requireAttestationsBies) {
-        this.cluster = cluster;
-        this.enforcementMode = enforcementMode;
-        this.evaluationMode = evaluationMode;
-        this.requireAttestationsBies = requireAttestationsBies;
-    }
-
+    private PolicyClusterAdmissionRule() {}
     /**
      * @return The identifier for this object. Format specified above.
      * 
@@ -98,17 +87,13 @@ public final class PolicyClusterAdmissionRule {
     public static Builder builder(PolicyClusterAdmissionRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cluster;
         private String enforcementMode;
         private String evaluationMode;
         private @Nullable List<String> requireAttestationsBies;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PolicyClusterAdmissionRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cluster = defaults.cluster;
@@ -117,26 +102,36 @@ public final class PolicyClusterAdmissionRule {
     	      this.requireAttestationsBies = defaults.requireAttestationsBies;
         }
 
+        @CustomType.Setter
         public Builder cluster(String cluster) {
             this.cluster = Objects.requireNonNull(cluster);
             return this;
         }
+        @CustomType.Setter
         public Builder enforcementMode(String enforcementMode) {
             this.enforcementMode = Objects.requireNonNull(enforcementMode);
             return this;
         }
+        @CustomType.Setter
         public Builder evaluationMode(String evaluationMode) {
             this.evaluationMode = Objects.requireNonNull(evaluationMode);
             return this;
         }
+        @CustomType.Setter
         public Builder requireAttestationsBies(@Nullable List<String> requireAttestationsBies) {
             this.requireAttestationsBies = requireAttestationsBies;
             return this;
         }
         public Builder requireAttestationsBies(String... requireAttestationsBies) {
             return requireAttestationsBies(List.of(requireAttestationsBies));
-        }        public PolicyClusterAdmissionRule build() {
-            return new PolicyClusterAdmissionRule(cluster, enforcementMode, evaluationMode, requireAttestationsBies);
+        }
+        public PolicyClusterAdmissionRule build() {
+            final var o = new PolicyClusterAdmissionRule();
+            o.cluster = cluster;
+            o.enforcementMode = enforcementMode;
+            o.evaluationMode = evaluationMode;
+            o.requireAttestationsBies = requireAttestationsBies;
+            return o;
         }
     }
 }

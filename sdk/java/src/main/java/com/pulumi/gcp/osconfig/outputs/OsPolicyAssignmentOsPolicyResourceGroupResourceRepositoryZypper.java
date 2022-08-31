@@ -16,35 +16,24 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypp
      * @return Required. The location of the repository directory.
      * 
      */
-    private final String baseUrl;
+    private String baseUrl;
     /**
      * @return The display name of the repository.
      * 
      */
-    private final @Nullable String displayName;
+    private @Nullable String displayName;
     /**
      * @return URIs of GPG keys.
      * 
      */
-    private final @Nullable List<String> gpgKeys;
+    private @Nullable List<String> gpgKeys;
     /**
      * @return Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
      * 
      */
-    private final String id;
+    private String id;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper(
-        @CustomType.Parameter("baseUrl") String baseUrl,
-        @CustomType.Parameter("displayName") @Nullable String displayName,
-        @CustomType.Parameter("gpgKeys") @Nullable List<String> gpgKeys,
-        @CustomType.Parameter("id") String id) {
-        this.baseUrl = baseUrl;
-        this.displayName = displayName;
-        this.gpgKeys = gpgKeys;
-        this.id = id;
-    }
-
+    private OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper() {}
     /**
      * @return Required. The location of the repository directory.
      * 
@@ -81,17 +70,13 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypp
     public static Builder builder(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String baseUrl;
         private @Nullable String displayName;
         private @Nullable List<String> gpgKeys;
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.baseUrl = defaults.baseUrl;
@@ -100,14 +85,17 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypp
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder baseUrl(String baseUrl) {
             this.baseUrl = Objects.requireNonNull(baseUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
             this.displayName = displayName;
             return this;
         }
+        @CustomType.Setter
         public Builder gpgKeys(@Nullable List<String> gpgKeys) {
             this.gpgKeys = gpgKeys;
             return this;
@@ -115,11 +103,18 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypp
         public Builder gpgKeys(String... gpgKeys) {
             return gpgKeys(List.of(gpgKeys));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper build() {
-            return new OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper(baseUrl, displayName, gpgKeys, id);
+        }
+        public OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper build() {
+            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper();
+            o.baseUrl = baseUrl;
+            o.displayName = displayName;
+            o.gpgKeys = gpgKeys;
+            o.id = id;
+            return o;
         }
     }
 }

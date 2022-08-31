@@ -26,218 +26,141 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceResult {
-    private final List<GetInstanceAdvancedMachineFeature> advancedMachineFeatures;
-    private final Boolean allowStoppingForUpdate;
+    private List<GetInstanceAdvancedMachineFeature> advancedMachineFeatures;
+    private Boolean allowStoppingForUpdate;
     /**
      * @return List of disks attached to the instance. Structure is documented below.
      * 
      */
-    private final List<GetInstanceAttachedDisk> attachedDisks;
+    private List<GetInstanceAttachedDisk> attachedDisks;
     /**
      * @return The boot disk for the instance. Structure is documented below.
      * 
      */
-    private final List<GetInstanceBootDisk> bootDisks;
+    private List<GetInstanceBootDisk> bootDisks;
     /**
      * @return Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
      * 
      */
-    private final Boolean canIpForward;
-    private final List<GetInstanceConfidentialInstanceConfig> confidentialInstanceConfigs;
+    private Boolean canIpForward;
+    private List<GetInstanceConfidentialInstanceConfig> confidentialInstanceConfigs;
     /**
      * @return The CPU platform used by this instance.
      * 
      */
-    private final String cpuPlatform;
-    private final String currentStatus;
+    private String cpuPlatform;
+    private String currentStatus;
     /**
      * @return Whether deletion protection is enabled on this instance.
      * 
      */
-    private final Boolean deletionProtection;
+    private Boolean deletionProtection;
     /**
      * @return A brief description of the resource.
      * 
      */
-    private final String description;
-    private final String desiredStatus;
-    private final Boolean enableDisplay;
+    private String description;
+    private String desiredStatus;
+    private Boolean enableDisplay;
     /**
      * @return List of the type and count of accelerator cards attached to the instance. Structure is documented below.
      * 
      */
-    private final List<GetInstanceGuestAccelerator> guestAccelerators;
-    private final String hostname;
+    private List<GetInstanceGuestAccelerator> guestAccelerators;
+    private String hostname;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The server-assigned unique identifier of this instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The unique fingerprint of the labels.
      * 
      */
-    private final String labelFingerprint;
+    private String labelFingerprint;
     /**
      * @return A set of key/value label pairs assigned to the disk.
      * 
      */
-    private final Map<String,String> labels;
+    private Map<String,String> labels;
     /**
      * @return The machine type to create.
      * 
      */
-    private final String machineType;
+    private String machineType;
     /**
      * @return Metadata key/value pairs made available within the instance.
      * 
      */
-    private final Map<String,String> metadata;
+    private Map<String,String> metadata;
     /**
      * @return The unique fingerprint of the metadata.
      * 
      */
-    private final String metadataFingerprint;
-    private final String metadataStartupScript;
+    private String metadataFingerprint;
+    private String metadataStartupScript;
     /**
      * @return The minimum CPU platform specified for the VM instance.
      * 
      */
-    private final String minCpuPlatform;
-    private final @Nullable String name;
+    private String minCpuPlatform;
+    private @Nullable String name;
     /**
      * @return The networks attached to the instance. Structure is documented below.
      * 
      */
-    private final List<GetInstanceNetworkInterface> networkInterfaces;
+    private List<GetInstanceNetworkInterface> networkInterfaces;
     /**
      * @return The network performance configuration setting for the instance, if set. Structure is documented below.
      * 
      */
-    private final List<GetInstanceNetworkPerformanceConfig> networkPerformanceConfigs;
-    private final @Nullable String project;
-    private final List<GetInstanceReservationAffinity> reservationAffinities;
-    private final List<String> resourcePolicies;
+    private List<GetInstanceNetworkPerformanceConfig> networkPerformanceConfigs;
+    private @Nullable String project;
+    private List<GetInstanceReservationAffinity> reservationAffinities;
+    private List<String> resourcePolicies;
     /**
      * @return The scheduling strategy being used by the instance. Structure is documented below
      * 
      */
-    private final List<GetInstanceScheduling> schedulings;
+    private List<GetInstanceScheduling> schedulings;
     /**
      * @return The scratch disks attached to the instance. Structure is documented below.
      * 
      */
-    private final List<GetInstanceScratchDisk> scratchDisks;
+    private List<GetInstanceScratchDisk> scratchDisks;
     /**
      * @return The URI of the created resource.
      * 
      */
-    private final @Nullable String selfLink;
+    private @Nullable String selfLink;
     /**
      * @return The service account to attach to the instance. Structure is documented below.
      * 
      */
-    private final List<GetInstanceServiceAccount> serviceAccounts;
+    private List<GetInstanceServiceAccount> serviceAccounts;
     /**
      * @return The shielded vm config being used by the instance. Structure is documented below.
      * 
      */
-    private final List<GetInstanceShieldedInstanceConfig> shieldedInstanceConfigs;
+    private List<GetInstanceShieldedInstanceConfig> shieldedInstanceConfigs;
     /**
      * @return The list of tags attached to the instance.
      * 
      */
-    private final List<String> tags;
+    private List<String> tags;
     /**
      * @return The unique fingerprint of the tags.
      * 
      */
-    private final String tagsFingerprint;
-    private final @Nullable String zone;
+    private String tagsFingerprint;
+    private @Nullable String zone;
 
-    @CustomType.Constructor
-    private GetInstanceResult(
-        @CustomType.Parameter("advancedMachineFeatures") List<GetInstanceAdvancedMachineFeature> advancedMachineFeatures,
-        @CustomType.Parameter("allowStoppingForUpdate") Boolean allowStoppingForUpdate,
-        @CustomType.Parameter("attachedDisks") List<GetInstanceAttachedDisk> attachedDisks,
-        @CustomType.Parameter("bootDisks") List<GetInstanceBootDisk> bootDisks,
-        @CustomType.Parameter("canIpForward") Boolean canIpForward,
-        @CustomType.Parameter("confidentialInstanceConfigs") List<GetInstanceConfidentialInstanceConfig> confidentialInstanceConfigs,
-        @CustomType.Parameter("cpuPlatform") String cpuPlatform,
-        @CustomType.Parameter("currentStatus") String currentStatus,
-        @CustomType.Parameter("deletionProtection") Boolean deletionProtection,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("desiredStatus") String desiredStatus,
-        @CustomType.Parameter("enableDisplay") Boolean enableDisplay,
-        @CustomType.Parameter("guestAccelerators") List<GetInstanceGuestAccelerator> guestAccelerators,
-        @CustomType.Parameter("hostname") String hostname,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("labelFingerprint") String labelFingerprint,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("machineType") String machineType,
-        @CustomType.Parameter("metadata") Map<String,String> metadata,
-        @CustomType.Parameter("metadataFingerprint") String metadataFingerprint,
-        @CustomType.Parameter("metadataStartupScript") String metadataStartupScript,
-        @CustomType.Parameter("minCpuPlatform") String minCpuPlatform,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("networkInterfaces") List<GetInstanceNetworkInterface> networkInterfaces,
-        @CustomType.Parameter("networkPerformanceConfigs") List<GetInstanceNetworkPerformanceConfig> networkPerformanceConfigs,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("reservationAffinities") List<GetInstanceReservationAffinity> reservationAffinities,
-        @CustomType.Parameter("resourcePolicies") List<String> resourcePolicies,
-        @CustomType.Parameter("schedulings") List<GetInstanceScheduling> schedulings,
-        @CustomType.Parameter("scratchDisks") List<GetInstanceScratchDisk> scratchDisks,
-        @CustomType.Parameter("selfLink") @Nullable String selfLink,
-        @CustomType.Parameter("serviceAccounts") List<GetInstanceServiceAccount> serviceAccounts,
-        @CustomType.Parameter("shieldedInstanceConfigs") List<GetInstanceShieldedInstanceConfig> shieldedInstanceConfigs,
-        @CustomType.Parameter("tags") List<String> tags,
-        @CustomType.Parameter("tagsFingerprint") String tagsFingerprint,
-        @CustomType.Parameter("zone") @Nullable String zone) {
-        this.advancedMachineFeatures = advancedMachineFeatures;
-        this.allowStoppingForUpdate = allowStoppingForUpdate;
-        this.attachedDisks = attachedDisks;
-        this.bootDisks = bootDisks;
-        this.canIpForward = canIpForward;
-        this.confidentialInstanceConfigs = confidentialInstanceConfigs;
-        this.cpuPlatform = cpuPlatform;
-        this.currentStatus = currentStatus;
-        this.deletionProtection = deletionProtection;
-        this.description = description;
-        this.desiredStatus = desiredStatus;
-        this.enableDisplay = enableDisplay;
-        this.guestAccelerators = guestAccelerators;
-        this.hostname = hostname;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.labelFingerprint = labelFingerprint;
-        this.labels = labels;
-        this.machineType = machineType;
-        this.metadata = metadata;
-        this.metadataFingerprint = metadataFingerprint;
-        this.metadataStartupScript = metadataStartupScript;
-        this.minCpuPlatform = minCpuPlatform;
-        this.name = name;
-        this.networkInterfaces = networkInterfaces;
-        this.networkPerformanceConfigs = networkPerformanceConfigs;
-        this.project = project;
-        this.reservationAffinities = reservationAffinities;
-        this.resourcePolicies = resourcePolicies;
-        this.schedulings = schedulings;
-        this.scratchDisks = scratchDisks;
-        this.selfLink = selfLink;
-        this.serviceAccounts = serviceAccounts;
-        this.shieldedInstanceConfigs = shieldedInstanceConfigs;
-        this.tags = tags;
-        this.tagsFingerprint = tagsFingerprint;
-        this.zone = zone;
-    }
-
+    private GetInstanceResult() {}
     public List<GetInstanceAdvancedMachineFeature> advancedMachineFeatures() {
         return this.advancedMachineFeatures;
     }
@@ -453,7 +376,7 @@ public final class GetInstanceResult {
     public static Builder builder(GetInstanceResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetInstanceAdvancedMachineFeature> advancedMachineFeatures;
         private Boolean allowStoppingForUpdate;
@@ -492,11 +415,7 @@ public final class GetInstanceResult {
         private List<String> tags;
         private String tagsFingerprint;
         private @Nullable String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
@@ -538,6 +457,7 @@ public final class GetInstanceResult {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder advancedMachineFeatures(List<GetInstanceAdvancedMachineFeature> advancedMachineFeatures) {
             this.advancedMachineFeatures = Objects.requireNonNull(advancedMachineFeatures);
             return this;
@@ -545,10 +465,12 @@ public final class GetInstanceResult {
         public Builder advancedMachineFeatures(GetInstanceAdvancedMachineFeature... advancedMachineFeatures) {
             return advancedMachineFeatures(List.of(advancedMachineFeatures));
         }
+        @CustomType.Setter
         public Builder allowStoppingForUpdate(Boolean allowStoppingForUpdate) {
             this.allowStoppingForUpdate = Objects.requireNonNull(allowStoppingForUpdate);
             return this;
         }
+        @CustomType.Setter
         public Builder attachedDisks(List<GetInstanceAttachedDisk> attachedDisks) {
             this.attachedDisks = Objects.requireNonNull(attachedDisks);
             return this;
@@ -556,6 +478,7 @@ public final class GetInstanceResult {
         public Builder attachedDisks(GetInstanceAttachedDisk... attachedDisks) {
             return attachedDisks(List.of(attachedDisks));
         }
+        @CustomType.Setter
         public Builder bootDisks(List<GetInstanceBootDisk> bootDisks) {
             this.bootDisks = Objects.requireNonNull(bootDisks);
             return this;
@@ -563,10 +486,12 @@ public final class GetInstanceResult {
         public Builder bootDisks(GetInstanceBootDisk... bootDisks) {
             return bootDisks(List.of(bootDisks));
         }
+        @CustomType.Setter
         public Builder canIpForward(Boolean canIpForward) {
             this.canIpForward = Objects.requireNonNull(canIpForward);
             return this;
         }
+        @CustomType.Setter
         public Builder confidentialInstanceConfigs(List<GetInstanceConfidentialInstanceConfig> confidentialInstanceConfigs) {
             this.confidentialInstanceConfigs = Objects.requireNonNull(confidentialInstanceConfigs);
             return this;
@@ -574,30 +499,37 @@ public final class GetInstanceResult {
         public Builder confidentialInstanceConfigs(GetInstanceConfidentialInstanceConfig... confidentialInstanceConfigs) {
             return confidentialInstanceConfigs(List.of(confidentialInstanceConfigs));
         }
+        @CustomType.Setter
         public Builder cpuPlatform(String cpuPlatform) {
             this.cpuPlatform = Objects.requireNonNull(cpuPlatform);
             return this;
         }
+        @CustomType.Setter
         public Builder currentStatus(String currentStatus) {
             this.currentStatus = Objects.requireNonNull(currentStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
             this.deletionProtection = Objects.requireNonNull(deletionProtection);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder desiredStatus(String desiredStatus) {
             this.desiredStatus = Objects.requireNonNull(desiredStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder enableDisplay(Boolean enableDisplay) {
             this.enableDisplay = Objects.requireNonNull(enableDisplay);
             return this;
         }
+        @CustomType.Setter
         public Builder guestAccelerators(List<GetInstanceGuestAccelerator> guestAccelerators) {
             this.guestAccelerators = Objects.requireNonNull(guestAccelerators);
             return this;
@@ -605,50 +537,62 @@ public final class GetInstanceResult {
         public Builder guestAccelerators(GetInstanceGuestAccelerator... guestAccelerators) {
             return guestAccelerators(List.of(guestAccelerators));
         }
+        @CustomType.Setter
         public Builder hostname(String hostname) {
             this.hostname = Objects.requireNonNull(hostname);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder labelFingerprint(String labelFingerprint) {
             this.labelFingerprint = Objects.requireNonNull(labelFingerprint);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder machineType(String machineType) {
             this.machineType = Objects.requireNonNull(machineType);
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(Map<String,String> metadata) {
             this.metadata = Objects.requireNonNull(metadata);
             return this;
         }
+        @CustomType.Setter
         public Builder metadataFingerprint(String metadataFingerprint) {
             this.metadataFingerprint = Objects.requireNonNull(metadataFingerprint);
             return this;
         }
+        @CustomType.Setter
         public Builder metadataStartupScript(String metadataStartupScript) {
             this.metadataStartupScript = Objects.requireNonNull(metadataStartupScript);
             return this;
         }
+        @CustomType.Setter
         public Builder minCpuPlatform(String minCpuPlatform) {
             this.minCpuPlatform = Objects.requireNonNull(minCpuPlatform);
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder networkInterfaces(List<GetInstanceNetworkInterface> networkInterfaces) {
             this.networkInterfaces = Objects.requireNonNull(networkInterfaces);
             return this;
@@ -656,6 +600,7 @@ public final class GetInstanceResult {
         public Builder networkInterfaces(GetInstanceNetworkInterface... networkInterfaces) {
             return networkInterfaces(List.of(networkInterfaces));
         }
+        @CustomType.Setter
         public Builder networkPerformanceConfigs(List<GetInstanceNetworkPerformanceConfig> networkPerformanceConfigs) {
             this.networkPerformanceConfigs = Objects.requireNonNull(networkPerformanceConfigs);
             return this;
@@ -663,10 +608,12 @@ public final class GetInstanceResult {
         public Builder networkPerformanceConfigs(GetInstanceNetworkPerformanceConfig... networkPerformanceConfigs) {
             return networkPerformanceConfigs(List.of(networkPerformanceConfigs));
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder reservationAffinities(List<GetInstanceReservationAffinity> reservationAffinities) {
             this.reservationAffinities = Objects.requireNonNull(reservationAffinities);
             return this;
@@ -674,6 +621,7 @@ public final class GetInstanceResult {
         public Builder reservationAffinities(GetInstanceReservationAffinity... reservationAffinities) {
             return reservationAffinities(List.of(reservationAffinities));
         }
+        @CustomType.Setter
         public Builder resourcePolicies(List<String> resourcePolicies) {
             this.resourcePolicies = Objects.requireNonNull(resourcePolicies);
             return this;
@@ -681,6 +629,7 @@ public final class GetInstanceResult {
         public Builder resourcePolicies(String... resourcePolicies) {
             return resourcePolicies(List.of(resourcePolicies));
         }
+        @CustomType.Setter
         public Builder schedulings(List<GetInstanceScheduling> schedulings) {
             this.schedulings = Objects.requireNonNull(schedulings);
             return this;
@@ -688,6 +637,7 @@ public final class GetInstanceResult {
         public Builder schedulings(GetInstanceScheduling... schedulings) {
             return schedulings(List.of(schedulings));
         }
+        @CustomType.Setter
         public Builder scratchDisks(List<GetInstanceScratchDisk> scratchDisks) {
             this.scratchDisks = Objects.requireNonNull(scratchDisks);
             return this;
@@ -695,10 +645,12 @@ public final class GetInstanceResult {
         public Builder scratchDisks(GetInstanceScratchDisk... scratchDisks) {
             return scratchDisks(List.of(scratchDisks));
         }
+        @CustomType.Setter
         public Builder selfLink(@Nullable String selfLink) {
             this.selfLink = selfLink;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccounts(List<GetInstanceServiceAccount> serviceAccounts) {
             this.serviceAccounts = Objects.requireNonNull(serviceAccounts);
             return this;
@@ -706,6 +658,7 @@ public final class GetInstanceResult {
         public Builder serviceAccounts(GetInstanceServiceAccount... serviceAccounts) {
             return serviceAccounts(List.of(serviceAccounts));
         }
+        @CustomType.Setter
         public Builder shieldedInstanceConfigs(List<GetInstanceShieldedInstanceConfig> shieldedInstanceConfigs) {
             this.shieldedInstanceConfigs = Objects.requireNonNull(shieldedInstanceConfigs);
             return this;
@@ -713,6 +666,7 @@ public final class GetInstanceResult {
         public Builder shieldedInstanceConfigs(GetInstanceShieldedInstanceConfig... shieldedInstanceConfigs) {
             return shieldedInstanceConfigs(List.of(shieldedInstanceConfigs));
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -720,15 +674,56 @@ public final class GetInstanceResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder tagsFingerprint(String tagsFingerprint) {
             this.tagsFingerprint = Objects.requireNonNull(tagsFingerprint);
             return this;
         }
+        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
             this.zone = zone;
             return this;
-        }        public GetInstanceResult build() {
-            return new GetInstanceResult(advancedMachineFeatures, allowStoppingForUpdate, attachedDisks, bootDisks, canIpForward, confidentialInstanceConfigs, cpuPlatform, currentStatus, deletionProtection, description, desiredStatus, enableDisplay, guestAccelerators, hostname, id, instanceId, labelFingerprint, labels, machineType, metadata, metadataFingerprint, metadataStartupScript, minCpuPlatform, name, networkInterfaces, networkPerformanceConfigs, project, reservationAffinities, resourcePolicies, schedulings, scratchDisks, selfLink, serviceAccounts, shieldedInstanceConfigs, tags, tagsFingerprint, zone);
+        }
+        public GetInstanceResult build() {
+            final var o = new GetInstanceResult();
+            o.advancedMachineFeatures = advancedMachineFeatures;
+            o.allowStoppingForUpdate = allowStoppingForUpdate;
+            o.attachedDisks = attachedDisks;
+            o.bootDisks = bootDisks;
+            o.canIpForward = canIpForward;
+            o.confidentialInstanceConfigs = confidentialInstanceConfigs;
+            o.cpuPlatform = cpuPlatform;
+            o.currentStatus = currentStatus;
+            o.deletionProtection = deletionProtection;
+            o.description = description;
+            o.desiredStatus = desiredStatus;
+            o.enableDisplay = enableDisplay;
+            o.guestAccelerators = guestAccelerators;
+            o.hostname = hostname;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.labelFingerprint = labelFingerprint;
+            o.labels = labels;
+            o.machineType = machineType;
+            o.metadata = metadata;
+            o.metadataFingerprint = metadataFingerprint;
+            o.metadataStartupScript = metadataStartupScript;
+            o.minCpuPlatform = minCpuPlatform;
+            o.name = name;
+            o.networkInterfaces = networkInterfaces;
+            o.networkPerformanceConfigs = networkPerformanceConfigs;
+            o.project = project;
+            o.reservationAffinities = reservationAffinities;
+            o.resourcePolicies = resourcePolicies;
+            o.schedulings = schedulings;
+            o.scratchDisks = scratchDisks;
+            o.selfLink = selfLink;
+            o.serviceAccounts = serviceAccounts;
+            o.shieldedInstanceConfigs = shieldedInstanceConfigs;
+            o.tags = tags;
+            o.tagsFingerprint = tagsFingerprint;
+            o.zone = zone;
+            return o;
         }
     }
 }

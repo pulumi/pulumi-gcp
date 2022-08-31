@@ -22,13 +22,13 @@ public final class TableExternalDataConfiguration {
      * and format of the table.
      * 
      */
-    private final Boolean autodetect;
+    private Boolean autodetect;
     /**
      * @return The compression type of the data source.
      * Valid values are &#34;NONE&#34; or &#34;GZIP&#34;.
      * 
      */
-    private final @Nullable String compression;
+    private @Nullable String compression;
     /**
      * @return The connection specifying the credentials to be used to read
      * external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
@@ -36,20 +36,20 @@ public final class TableExternalDataConfiguration {
      * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
      * 
      */
-    private final @Nullable String connectionId;
+    private @Nullable String connectionId;
     /**
      * @return Additional properties to set if
      * `source_format` is set to &#34;CSV&#34;. Structure is documented below.
      * 
      */
-    private final @Nullable TableExternalDataConfigurationCsvOptions csvOptions;
+    private @Nullable TableExternalDataConfigurationCsvOptions csvOptions;
     /**
      * @return Additional options if
      * `source_format` is set to &#34;GOOGLE_SHEETS&#34;. Structure is
      * documented below.
      * 
      */
-    private final @Nullable TableExternalDataConfigurationGoogleSheetsOptions googleSheetsOptions;
+    private @Nullable TableExternalDataConfigurationGoogleSheetsOptions googleSheetsOptions;
     /**
      * @return When set, configures hive partitioning
      * support. Not all storage formats support hive partitioning -- requesting hive
@@ -57,7 +57,7 @@ public final class TableExternalDataConfiguration {
      * an invalid specification. Structure is documented below.
      * 
      */
-    private final @Nullable TableExternalDataConfigurationHivePartitioningOptions hivePartitioningOptions;
+    private @Nullable TableExternalDataConfigurationHivePartitioningOptions hivePartitioningOptions;
     /**
      * @return Indicates if BigQuery should
      * allow extra values that are not represented in the table schema.
@@ -67,13 +67,13 @@ public final class TableExternalDataConfiguration {
      * The default value is false.
      * 
      */
-    private final @Nullable Boolean ignoreUnknownValues;
+    private @Nullable Boolean ignoreUnknownValues;
     /**
      * @return The maximum number of bad records that
      * BigQuery can ignore when reading data.
      * 
      */
-    private final @Nullable Integer maxBadRecords;
+    private @Nullable Integer maxBadRecords;
     /**
      * @return A JSON schema for the external table. Schema is required
      * for CSV and JSON formats if autodetect is not on. Schema is disallowed
@@ -88,7 +88,7 @@ public final class TableExternalDataConfiguration {
      * `google_bigquery_table.schema`
      * 
      */
-    private final @Nullable String schema;
+    private @Nullable String schema;
     /**
      * @return The data format. Supported values are:
      * &#34;CSV&#34;, &#34;GOOGLE_SHEETS&#34;, &#34;NEWLINE_DELIMITED_JSON&#34;, &#34;AVRO&#34;, &#34;PARQUET&#34;, &#34;ORC&#34;,
@@ -97,40 +97,15 @@ public final class TableExternalDataConfiguration {
      * &#34;https://www.googleapis.com/auth/drive.readonly&#34;.
      * 
      */
-    private final String sourceFormat;
+    private String sourceFormat;
     /**
      * @return A list of the fully-qualified URIs that point to
      * your data in Google Cloud.
      * 
      */
-    private final List<String> sourceUris;
+    private List<String> sourceUris;
 
-    @CustomType.Constructor
-    private TableExternalDataConfiguration(
-        @CustomType.Parameter("autodetect") Boolean autodetect,
-        @CustomType.Parameter("compression") @Nullable String compression,
-        @CustomType.Parameter("connectionId") @Nullable String connectionId,
-        @CustomType.Parameter("csvOptions") @Nullable TableExternalDataConfigurationCsvOptions csvOptions,
-        @CustomType.Parameter("googleSheetsOptions") @Nullable TableExternalDataConfigurationGoogleSheetsOptions googleSheetsOptions,
-        @CustomType.Parameter("hivePartitioningOptions") @Nullable TableExternalDataConfigurationHivePartitioningOptions hivePartitioningOptions,
-        @CustomType.Parameter("ignoreUnknownValues") @Nullable Boolean ignoreUnknownValues,
-        @CustomType.Parameter("maxBadRecords") @Nullable Integer maxBadRecords,
-        @CustomType.Parameter("schema") @Nullable String schema,
-        @CustomType.Parameter("sourceFormat") String sourceFormat,
-        @CustomType.Parameter("sourceUris") List<String> sourceUris) {
-        this.autodetect = autodetect;
-        this.compression = compression;
-        this.connectionId = connectionId;
-        this.csvOptions = csvOptions;
-        this.googleSheetsOptions = googleSheetsOptions;
-        this.hivePartitioningOptions = hivePartitioningOptions;
-        this.ignoreUnknownValues = ignoreUnknownValues;
-        this.maxBadRecords = maxBadRecords;
-        this.schema = schema;
-        this.sourceFormat = sourceFormat;
-        this.sourceUris = sourceUris;
-    }
-
+    private TableExternalDataConfiguration() {}
     /**
      * @return - Let BigQuery try to autodetect the schema
      * and format of the table.
@@ -248,7 +223,7 @@ public final class TableExternalDataConfiguration {
     public static Builder builder(TableExternalDataConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean autodetect;
         private @Nullable String compression;
@@ -261,11 +236,7 @@ public final class TableExternalDataConfiguration {
         private @Nullable String schema;
         private String sourceFormat;
         private List<String> sourceUris;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TableExternalDataConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autodetect = defaults.autodetect;
@@ -281,54 +252,78 @@ public final class TableExternalDataConfiguration {
     	      this.sourceUris = defaults.sourceUris;
         }
 
+        @CustomType.Setter
         public Builder autodetect(Boolean autodetect) {
             this.autodetect = Objects.requireNonNull(autodetect);
             return this;
         }
+        @CustomType.Setter
         public Builder compression(@Nullable String compression) {
             this.compression = compression;
             return this;
         }
+        @CustomType.Setter
         public Builder connectionId(@Nullable String connectionId) {
             this.connectionId = connectionId;
             return this;
         }
+        @CustomType.Setter
         public Builder csvOptions(@Nullable TableExternalDataConfigurationCsvOptions csvOptions) {
             this.csvOptions = csvOptions;
             return this;
         }
+        @CustomType.Setter
         public Builder googleSheetsOptions(@Nullable TableExternalDataConfigurationGoogleSheetsOptions googleSheetsOptions) {
             this.googleSheetsOptions = googleSheetsOptions;
             return this;
         }
+        @CustomType.Setter
         public Builder hivePartitioningOptions(@Nullable TableExternalDataConfigurationHivePartitioningOptions hivePartitioningOptions) {
             this.hivePartitioningOptions = hivePartitioningOptions;
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreUnknownValues(@Nullable Boolean ignoreUnknownValues) {
             this.ignoreUnknownValues = ignoreUnknownValues;
             return this;
         }
+        @CustomType.Setter
         public Builder maxBadRecords(@Nullable Integer maxBadRecords) {
             this.maxBadRecords = maxBadRecords;
             return this;
         }
+        @CustomType.Setter
         public Builder schema(@Nullable String schema) {
             this.schema = schema;
             return this;
         }
+        @CustomType.Setter
         public Builder sourceFormat(String sourceFormat) {
             this.sourceFormat = Objects.requireNonNull(sourceFormat);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceUris(List<String> sourceUris) {
             this.sourceUris = Objects.requireNonNull(sourceUris);
             return this;
         }
         public Builder sourceUris(String... sourceUris) {
             return sourceUris(List.of(sourceUris));
-        }        public TableExternalDataConfiguration build() {
-            return new TableExternalDataConfiguration(autodetect, compression, connectionId, csvOptions, googleSheetsOptions, hivePartitioningOptions, ignoreUnknownValues, maxBadRecords, schema, sourceFormat, sourceUris);
+        }
+        public TableExternalDataConfiguration build() {
+            final var o = new TableExternalDataConfiguration();
+            o.autodetect = autodetect;
+            o.compression = compression;
+            o.connectionId = connectionId;
+            o.csvOptions = csvOptions;
+            o.googleSheetsOptions = googleSheetsOptions;
+            o.hivePartitioningOptions = hivePartitioningOptions;
+            o.ignoreUnknownValues = ignoreUnknownValues;
+            o.maxBadRecords = maxBadRecords;
+            o.schema = schema;
+            o.sourceFormat = sourceFormat;
+            o.sourceUris = sourceUris;
+            return o;
         }
     }
 }

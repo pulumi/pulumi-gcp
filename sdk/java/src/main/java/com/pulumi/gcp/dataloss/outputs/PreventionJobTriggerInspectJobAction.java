@@ -14,13 +14,9 @@ public final class PreventionJobTriggerInspectJobAction {
      * Structure is documented below.
      * 
      */
-    private final PreventionJobTriggerInspectJobActionSaveFindings saveFindings;
+    private PreventionJobTriggerInspectJobActionSaveFindings saveFindings;
 
-    @CustomType.Constructor
-    private PreventionJobTriggerInspectJobAction(@CustomType.Parameter("saveFindings") PreventionJobTriggerInspectJobActionSaveFindings saveFindings) {
-        this.saveFindings = saveFindings;
-    }
-
+    private PreventionJobTriggerInspectJobAction() {}
     /**
      * @return Schedule for triggered jobs
      * Structure is documented below.
@@ -37,24 +33,24 @@ public final class PreventionJobTriggerInspectJobAction {
     public static Builder builder(PreventionJobTriggerInspectJobAction defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private PreventionJobTriggerInspectJobActionSaveFindings saveFindings;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionJobTriggerInspectJobAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.saveFindings = defaults.saveFindings;
         }
 
+        @CustomType.Setter
         public Builder saveFindings(PreventionJobTriggerInspectJobActionSaveFindings saveFindings) {
             this.saveFindings = Objects.requireNonNull(saveFindings);
             return this;
-        }        public PreventionJobTriggerInspectJobAction build() {
-            return new PreventionJobTriggerInspectJobAction(saveFindings);
+        }
+        public PreventionJobTriggerInspectJobAction build() {
+            final var o = new PreventionJobTriggerInspectJobAction();
+            o.saveFindings = saveFindings;
+            return o;
         }
     }
 }

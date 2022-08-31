@@ -19,42 +19,29 @@ public final class FeatureMembershipConfigmanagement {
      * @return Binauthz configuration for the cluster. Structure is documented below.
      * 
      */
-    private final @Nullable FeatureMembershipConfigmanagementBinauthz binauthz;
+    private @Nullable FeatureMembershipConfigmanagementBinauthz binauthz;
     /**
      * @return Config Sync configuration for the cluster. Structure is documented below.
      * 
      */
-    private final @Nullable FeatureMembershipConfigmanagementConfigSync configSync;
+    private @Nullable FeatureMembershipConfigmanagementConfigSync configSync;
     /**
      * @return Hierarchy Controller configuration for the cluster. Structure is documented below.
      * 
      */
-    private final @Nullable FeatureMembershipConfigmanagementHierarchyController hierarchyController;
+    private @Nullable FeatureMembershipConfigmanagementHierarchyController hierarchyController;
     /**
      * @return Policy Controller configuration for the cluster. Structure is documented below.
      * 
      */
-    private final @Nullable FeatureMembershipConfigmanagementPolicyController policyController;
+    private @Nullable FeatureMembershipConfigmanagementPolicyController policyController;
     /**
      * @return Version of ACM installed.
      * 
      */
-    private final @Nullable String version;
+    private @Nullable String version;
 
-    @CustomType.Constructor
-    private FeatureMembershipConfigmanagement(
-        @CustomType.Parameter("binauthz") @Nullable FeatureMembershipConfigmanagementBinauthz binauthz,
-        @CustomType.Parameter("configSync") @Nullable FeatureMembershipConfigmanagementConfigSync configSync,
-        @CustomType.Parameter("hierarchyController") @Nullable FeatureMembershipConfigmanagementHierarchyController hierarchyController,
-        @CustomType.Parameter("policyController") @Nullable FeatureMembershipConfigmanagementPolicyController policyController,
-        @CustomType.Parameter("version") @Nullable String version) {
-        this.binauthz = binauthz;
-        this.configSync = configSync;
-        this.hierarchyController = hierarchyController;
-        this.policyController = policyController;
-        this.version = version;
-    }
-
+    private FeatureMembershipConfigmanagement() {}
     /**
      * @return Binauthz configuration for the cluster. Structure is documented below.
      * 
@@ -98,18 +85,14 @@ public final class FeatureMembershipConfigmanagement {
     public static Builder builder(FeatureMembershipConfigmanagement defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable FeatureMembershipConfigmanagementBinauthz binauthz;
         private @Nullable FeatureMembershipConfigmanagementConfigSync configSync;
         private @Nullable FeatureMembershipConfigmanagementHierarchyController hierarchyController;
         private @Nullable FeatureMembershipConfigmanagementPolicyController policyController;
         private @Nullable String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FeatureMembershipConfigmanagement defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.binauthz = defaults.binauthz;
@@ -119,27 +102,39 @@ public final class FeatureMembershipConfigmanagement {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder binauthz(@Nullable FeatureMembershipConfigmanagementBinauthz binauthz) {
             this.binauthz = binauthz;
             return this;
         }
+        @CustomType.Setter
         public Builder configSync(@Nullable FeatureMembershipConfigmanagementConfigSync configSync) {
             this.configSync = configSync;
             return this;
         }
+        @CustomType.Setter
         public Builder hierarchyController(@Nullable FeatureMembershipConfigmanagementHierarchyController hierarchyController) {
             this.hierarchyController = hierarchyController;
             return this;
         }
+        @CustomType.Setter
         public Builder policyController(@Nullable FeatureMembershipConfigmanagementPolicyController policyController) {
             this.policyController = policyController;
             return this;
         }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
-        }        public FeatureMembershipConfigmanagement build() {
-            return new FeatureMembershipConfigmanagement(binauthz, configSync, hierarchyController, policyController, version);
+        }
+        public FeatureMembershipConfigmanagement build() {
+            final var o = new FeatureMembershipConfigmanagement();
+            o.binauthz = binauthz;
+            o.configSync = configSync;
+            o.hierarchyController = hierarchyController;
+            o.policyController = policyController;
+            o.version = version;
+            return o;
         }
     }
 }

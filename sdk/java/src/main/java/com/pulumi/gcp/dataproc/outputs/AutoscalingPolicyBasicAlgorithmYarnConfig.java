@@ -19,7 +19,7 @@ public final class AutoscalingPolicyBasicAlgorithmYarnConfig {
      * Bounds: [0s, 1d].
      * 
      */
-    private final String gracefulDecommissionTimeout;
+    private String gracefulDecommissionTimeout;
     /**
      * @return Fraction of average pending memory in the last cooldown period for which to
      * remove workers. A scale-down factor of 1 will result in scaling down so that there
@@ -29,7 +29,7 @@ public final class AutoscalingPolicyBasicAlgorithmYarnConfig {
      * Bounds: [0.0, 1.0].
      * 
      */
-    private final Double scaleDownFactor;
+    private Double scaleDownFactor;
     /**
      * @return Minimum scale-down threshold as a fraction of total cluster size before scaling occurs.
      * For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must
@@ -38,7 +38,7 @@ public final class AutoscalingPolicyBasicAlgorithmYarnConfig {
      * Bounds: [0.0, 1.0]. Default: 0.0.
      * 
      */
-    private final @Nullable Double scaleDownMinWorkerFraction;
+    private @Nullable Double scaleDownMinWorkerFraction;
     /**
      * @return Fraction of average pending memory in the last cooldown period for which to
      * add workers. A scale-up factor of 1.0 will result in scaling up so that there
@@ -48,7 +48,7 @@ public final class AutoscalingPolicyBasicAlgorithmYarnConfig {
      * Bounds: [0.0, 1.0].
      * 
      */
-    private final Double scaleUpFactor;
+    private Double scaleUpFactor;
     /**
      * @return Minimum scale-up threshold as a fraction of total cluster size before scaling
      * occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler
@@ -57,22 +57,9 @@ public final class AutoscalingPolicyBasicAlgorithmYarnConfig {
      * Bounds: [0.0, 1.0]. Default: 0.0.
      * 
      */
-    private final @Nullable Double scaleUpMinWorkerFraction;
+    private @Nullable Double scaleUpMinWorkerFraction;
 
-    @CustomType.Constructor
-    private AutoscalingPolicyBasicAlgorithmYarnConfig(
-        @CustomType.Parameter("gracefulDecommissionTimeout") String gracefulDecommissionTimeout,
-        @CustomType.Parameter("scaleDownFactor") Double scaleDownFactor,
-        @CustomType.Parameter("scaleDownMinWorkerFraction") @Nullable Double scaleDownMinWorkerFraction,
-        @CustomType.Parameter("scaleUpFactor") Double scaleUpFactor,
-        @CustomType.Parameter("scaleUpMinWorkerFraction") @Nullable Double scaleUpMinWorkerFraction) {
-        this.gracefulDecommissionTimeout = gracefulDecommissionTimeout;
-        this.scaleDownFactor = scaleDownFactor;
-        this.scaleDownMinWorkerFraction = scaleDownMinWorkerFraction;
-        this.scaleUpFactor = scaleUpFactor;
-        this.scaleUpMinWorkerFraction = scaleUpMinWorkerFraction;
-    }
-
+    private AutoscalingPolicyBasicAlgorithmYarnConfig() {}
     /**
      * @return Timeout for YARN graceful decommissioning of Node Managers. Specifies the
      * duration to wait for jobs to complete before forcefully removing workers
@@ -137,18 +124,14 @@ public final class AutoscalingPolicyBasicAlgorithmYarnConfig {
     public static Builder builder(AutoscalingPolicyBasicAlgorithmYarnConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String gracefulDecommissionTimeout;
         private Double scaleDownFactor;
         private @Nullable Double scaleDownMinWorkerFraction;
         private Double scaleUpFactor;
         private @Nullable Double scaleUpMinWorkerFraction;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AutoscalingPolicyBasicAlgorithmYarnConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gracefulDecommissionTimeout = defaults.gracefulDecommissionTimeout;
@@ -158,27 +141,39 @@ public final class AutoscalingPolicyBasicAlgorithmYarnConfig {
     	      this.scaleUpMinWorkerFraction = defaults.scaleUpMinWorkerFraction;
         }
 
+        @CustomType.Setter
         public Builder gracefulDecommissionTimeout(String gracefulDecommissionTimeout) {
             this.gracefulDecommissionTimeout = Objects.requireNonNull(gracefulDecommissionTimeout);
             return this;
         }
+        @CustomType.Setter
         public Builder scaleDownFactor(Double scaleDownFactor) {
             this.scaleDownFactor = Objects.requireNonNull(scaleDownFactor);
             return this;
         }
+        @CustomType.Setter
         public Builder scaleDownMinWorkerFraction(@Nullable Double scaleDownMinWorkerFraction) {
             this.scaleDownMinWorkerFraction = scaleDownMinWorkerFraction;
             return this;
         }
+        @CustomType.Setter
         public Builder scaleUpFactor(Double scaleUpFactor) {
             this.scaleUpFactor = Objects.requireNonNull(scaleUpFactor);
             return this;
         }
+        @CustomType.Setter
         public Builder scaleUpMinWorkerFraction(@Nullable Double scaleUpMinWorkerFraction) {
             this.scaleUpMinWorkerFraction = scaleUpMinWorkerFraction;
             return this;
-        }        public AutoscalingPolicyBasicAlgorithmYarnConfig build() {
-            return new AutoscalingPolicyBasicAlgorithmYarnConfig(gracefulDecommissionTimeout, scaleDownFactor, scaleDownMinWorkerFraction, scaleUpFactor, scaleUpMinWorkerFraction);
+        }
+        public AutoscalingPolicyBasicAlgorithmYarnConfig build() {
+            final var o = new AutoscalingPolicyBasicAlgorithmYarnConfig();
+            o.gracefulDecommissionTimeout = gracefulDecommissionTimeout;
+            o.scaleDownFactor = scaleDownFactor;
+            o.scaleDownMinWorkerFraction = scaleDownMinWorkerFraction;
+            o.scaleUpFactor = scaleUpFactor;
+            o.scaleUpMinWorkerFraction = scaleUpMinWorkerFraction;
+            return o;
         }
     }
 }

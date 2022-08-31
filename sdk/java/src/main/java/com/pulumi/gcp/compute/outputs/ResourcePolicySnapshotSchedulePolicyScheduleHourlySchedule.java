@@ -14,21 +14,14 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
      * @return The number of hours between snapshots.
      * 
      */
-    private final Integer hoursInCycle;
+    private Integer hoursInCycle;
     /**
      * @return The start time of the schedule. The timestamp is an RFC3339 string.
      * 
      */
-    private final String startTime;
+    private String startTime;
 
-    @CustomType.Constructor
-    private ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule(
-        @CustomType.Parameter("hoursInCycle") Integer hoursInCycle,
-        @CustomType.Parameter("startTime") String startTime) {
-        this.hoursInCycle = hoursInCycle;
-        this.startTime = startTime;
-    }
-
+    private ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule() {}
     /**
      * @return The number of hours between snapshots.
      * 
@@ -51,30 +44,32 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
     public static Builder builder(ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer hoursInCycle;
         private String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hoursInCycle = defaults.hoursInCycle;
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder hoursInCycle(Integer hoursInCycle) {
             this.hoursInCycle = Objects.requireNonNull(hoursInCycle);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
-        }        public ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule build() {
-            return new ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule(hoursInCycle, startTime);
+        }
+        public ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule build() {
+            final var o = new ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule();
+            o.hoursInCycle = hoursInCycle;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

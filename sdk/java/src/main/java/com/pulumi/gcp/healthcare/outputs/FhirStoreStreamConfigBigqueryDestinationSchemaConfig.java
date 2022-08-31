@@ -19,7 +19,7 @@ public final class FhirStoreStreamConfigBigqueryDestinationSchemaConfig {
      * value 2. The maximum depth allowed is 5.
      * 
      */
-    private final Integer recursiveStructureDepth;
+    private Integer recursiveStructureDepth;
     /**
      * @return Specifies the output schema type.
      * * ANALYTICS: Analytics schema defined by the FHIR community.
@@ -30,16 +30,9 @@ public final class FhirStoreStreamConfigBigqueryDestinationSchemaConfig {
      *   Possible values are `ANALYTICS`, `ANALYTICS_V2`, and `LOSSLESS`.
      * 
      */
-    private final @Nullable String schemaType;
+    private @Nullable String schemaType;
 
-    @CustomType.Constructor
-    private FhirStoreStreamConfigBigqueryDestinationSchemaConfig(
-        @CustomType.Parameter("recursiveStructureDepth") Integer recursiveStructureDepth,
-        @CustomType.Parameter("schemaType") @Nullable String schemaType) {
-        this.recursiveStructureDepth = recursiveStructureDepth;
-        this.schemaType = schemaType;
-    }
-
+    private FhirStoreStreamConfigBigqueryDestinationSchemaConfig() {}
     /**
      * @return The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
      * resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
@@ -71,30 +64,32 @@ public final class FhirStoreStreamConfigBigqueryDestinationSchemaConfig {
     public static Builder builder(FhirStoreStreamConfigBigqueryDestinationSchemaConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer recursiveStructureDepth;
         private @Nullable String schemaType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FhirStoreStreamConfigBigqueryDestinationSchemaConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.recursiveStructureDepth = defaults.recursiveStructureDepth;
     	      this.schemaType = defaults.schemaType;
         }
 
+        @CustomType.Setter
         public Builder recursiveStructureDepth(Integer recursiveStructureDepth) {
             this.recursiveStructureDepth = Objects.requireNonNull(recursiveStructureDepth);
             return this;
         }
+        @CustomType.Setter
         public Builder schemaType(@Nullable String schemaType) {
             this.schemaType = schemaType;
             return this;
-        }        public FhirStoreStreamConfigBigqueryDestinationSchemaConfig build() {
-            return new FhirStoreStreamConfigBigqueryDestinationSchemaConfig(recursiveStructureDepth, schemaType);
+        }
+        public FhirStoreStreamConfigBigqueryDestinationSchemaConfig build() {
+            final var o = new FhirStoreStreamConfigBigqueryDestinationSchemaConfig();
+            o.recursiveStructureDepth = recursiveStructureDepth;
+            o.schemaType = schemaType;
+            return o;
         }
     }
 }

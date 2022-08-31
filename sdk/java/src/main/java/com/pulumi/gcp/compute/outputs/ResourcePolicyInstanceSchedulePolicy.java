@@ -17,45 +17,32 @@ public final class ResourcePolicyInstanceSchedulePolicy {
      * @return The expiration time of the schedule. The timestamp is an RFC3339 string.
      * 
      */
-    private final @Nullable String expirationTime;
+    private @Nullable String expirationTime;
     /**
      * @return The start time of the schedule. The timestamp is an RFC3339 string.
      * 
      */
-    private final @Nullable String startTime;
+    private @Nullable String startTime;
     /**
      * @return Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
      * from the tz database: http://en.wikipedia.org/wiki/Tz_database.
      * 
      */
-    private final String timeZone;
+    private String timeZone;
     /**
      * @return Specifies the schedule for starting instances.
      * Structure is documented below.
      * 
      */
-    private final @Nullable ResourcePolicyInstanceSchedulePolicyVmStartSchedule vmStartSchedule;
+    private @Nullable ResourcePolicyInstanceSchedulePolicyVmStartSchedule vmStartSchedule;
     /**
      * @return Specifies the schedule for stopping instances.
      * Structure is documented below.
      * 
      */
-    private final @Nullable ResourcePolicyInstanceSchedulePolicyVmStopSchedule vmStopSchedule;
+    private @Nullable ResourcePolicyInstanceSchedulePolicyVmStopSchedule vmStopSchedule;
 
-    @CustomType.Constructor
-    private ResourcePolicyInstanceSchedulePolicy(
-        @CustomType.Parameter("expirationTime") @Nullable String expirationTime,
-        @CustomType.Parameter("startTime") @Nullable String startTime,
-        @CustomType.Parameter("timeZone") String timeZone,
-        @CustomType.Parameter("vmStartSchedule") @Nullable ResourcePolicyInstanceSchedulePolicyVmStartSchedule vmStartSchedule,
-        @CustomType.Parameter("vmStopSchedule") @Nullable ResourcePolicyInstanceSchedulePolicyVmStopSchedule vmStopSchedule) {
-        this.expirationTime = expirationTime;
-        this.startTime = startTime;
-        this.timeZone = timeZone;
-        this.vmStartSchedule = vmStartSchedule;
-        this.vmStopSchedule = vmStopSchedule;
-    }
-
+    private ResourcePolicyInstanceSchedulePolicy() {}
     /**
      * @return The expiration time of the schedule. The timestamp is an RFC3339 string.
      * 
@@ -102,18 +89,14 @@ public final class ResourcePolicyInstanceSchedulePolicy {
     public static Builder builder(ResourcePolicyInstanceSchedulePolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String expirationTime;
         private @Nullable String startTime;
         private String timeZone;
         private @Nullable ResourcePolicyInstanceSchedulePolicyVmStartSchedule vmStartSchedule;
         private @Nullable ResourcePolicyInstanceSchedulePolicyVmStopSchedule vmStopSchedule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ResourcePolicyInstanceSchedulePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expirationTime = defaults.expirationTime;
@@ -123,27 +106,39 @@ public final class ResourcePolicyInstanceSchedulePolicy {
     	      this.vmStopSchedule = defaults.vmStopSchedule;
         }
 
+        @CustomType.Setter
         public Builder expirationTime(@Nullable String expirationTime) {
             this.expirationTime = expirationTime;
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
             this.startTime = startTime;
             return this;
         }
+        @CustomType.Setter
         public Builder timeZone(String timeZone) {
             this.timeZone = Objects.requireNonNull(timeZone);
             return this;
         }
+        @CustomType.Setter
         public Builder vmStartSchedule(@Nullable ResourcePolicyInstanceSchedulePolicyVmStartSchedule vmStartSchedule) {
             this.vmStartSchedule = vmStartSchedule;
             return this;
         }
+        @CustomType.Setter
         public Builder vmStopSchedule(@Nullable ResourcePolicyInstanceSchedulePolicyVmStopSchedule vmStopSchedule) {
             this.vmStopSchedule = vmStopSchedule;
             return this;
-        }        public ResourcePolicyInstanceSchedulePolicy build() {
-            return new ResourcePolicyInstanceSchedulePolicy(expirationTime, startTime, timeZone, vmStartSchedule, vmStopSchedule);
+        }
+        public ResourcePolicyInstanceSchedulePolicy build() {
+            final var o = new ResourcePolicyInstanceSchedulePolicy();
+            o.expirationTime = expirationTime;
+            o.startTime = startTime;
+            o.timeZone = timeZone;
+            o.vmStartSchedule = vmStartSchedule;
+            o.vmStopSchedule = vmStopSchedule;
+            return o;
         }
     }
 }

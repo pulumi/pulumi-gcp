@@ -13,13 +13,9 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
      * @return A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
      * 
      */
-    private final String path;
+    private String path;
 
-    @CustomType.Constructor
-    private PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath(@CustomType.Parameter("path") String path) {
-        this.path = path;
-    }
-
+    private PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath() {}
     /**
      * @return A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
      * 
@@ -35,24 +31,24 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
     public static Builder builder(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
-        }        public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath build() {
-            return new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath(path);
+        }
+        public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath build() {
+            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath();
+            o.path = path;
+            return o;
         }
     }
 }

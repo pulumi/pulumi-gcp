@@ -16,29 +16,20 @@ public final class GetUptimeCheckIPsUptimeCheckIp {
      * IPv4 or IPv6 format.
      * 
      */
-    private final String ipAddress;
+    private String ipAddress;
     /**
      * @return A more specific location within the region that typically encodes a particular city/town/metro
      * (and its containing state/province or country) within the broader umbrella region category.
      * 
      */
-    private final String location;
+    private String location;
     /**
      * @return A broad region category in which the IP address is located.
      * 
      */
-    private final String region;
+    private String region;
 
-    @CustomType.Constructor
-    private GetUptimeCheckIPsUptimeCheckIp(
-        @CustomType.Parameter("ipAddress") String ipAddress,
-        @CustomType.Parameter("location") String location,
-        @CustomType.Parameter("region") String region) {
-        this.ipAddress = ipAddress;
-        this.location = location;
-        this.region = region;
-    }
-
+    private GetUptimeCheckIPsUptimeCheckIp() {}
     /**
      * @return The IP address from which the Uptime check originates. This is a fully specified IP address
      * (not an IP address range). Most IP addresses, as of this publication, are in IPv4 format; however, one should not
@@ -72,16 +63,12 @@ public final class GetUptimeCheckIPsUptimeCheckIp {
     public static Builder builder(GetUptimeCheckIPsUptimeCheckIp defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String ipAddress;
         private String location;
         private String region;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUptimeCheckIPsUptimeCheckIp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipAddress = defaults.ipAddress;
@@ -89,19 +76,27 @@ public final class GetUptimeCheckIPsUptimeCheckIp {
     	      this.region = defaults.region;
         }
 
+        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder location(String location) {
             this.location = Objects.requireNonNull(location);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
-        }        public GetUptimeCheckIPsUptimeCheckIp build() {
-            return new GetUptimeCheckIPsUptimeCheckIp(ipAddress, location, region);
+        }
+        public GetUptimeCheckIPsUptimeCheckIp build() {
+            final var o = new GetUptimeCheckIPsUptimeCheckIp();
+            o.ipAddress = ipAddress;
+            o.location = location;
+            o.region = region;
+            return o;
         }
     }
 }

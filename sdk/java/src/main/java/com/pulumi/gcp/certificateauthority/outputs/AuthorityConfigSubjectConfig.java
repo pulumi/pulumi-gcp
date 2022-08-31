@@ -17,22 +17,15 @@ public final class AuthorityConfigSubjectConfig {
      * Structure is documented below.
      * 
      */
-    private final AuthorityConfigSubjectConfigSubject subject;
+    private AuthorityConfigSubjectConfigSubject subject;
     /**
      * @return The subject alternative name fields.
      * Structure is documented below.
      * 
      */
-    private final @Nullable AuthorityConfigSubjectConfigSubjectAltName subjectAltName;
+    private @Nullable AuthorityConfigSubjectConfigSubjectAltName subjectAltName;
 
-    @CustomType.Constructor
-    private AuthorityConfigSubjectConfig(
-        @CustomType.Parameter("subject") AuthorityConfigSubjectConfigSubject subject,
-        @CustomType.Parameter("subjectAltName") @Nullable AuthorityConfigSubjectConfigSubjectAltName subjectAltName) {
-        this.subject = subject;
-        this.subjectAltName = subjectAltName;
-    }
-
+    private AuthorityConfigSubjectConfig() {}
     /**
      * @return Contains distinguished name fields such as the location and organization.
      * Structure is documented below.
@@ -57,30 +50,32 @@ public final class AuthorityConfigSubjectConfig {
     public static Builder builder(AuthorityConfigSubjectConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private AuthorityConfigSubjectConfigSubject subject;
         private @Nullable AuthorityConfigSubjectConfigSubjectAltName subjectAltName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AuthorityConfigSubjectConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.subject = defaults.subject;
     	      this.subjectAltName = defaults.subjectAltName;
         }
 
+        @CustomType.Setter
         public Builder subject(AuthorityConfigSubjectConfigSubject subject) {
             this.subject = Objects.requireNonNull(subject);
             return this;
         }
+        @CustomType.Setter
         public Builder subjectAltName(@Nullable AuthorityConfigSubjectConfigSubjectAltName subjectAltName) {
             this.subjectAltName = subjectAltName;
             return this;
-        }        public AuthorityConfigSubjectConfig build() {
-            return new AuthorityConfigSubjectConfig(subject, subjectAltName);
+        }
+        public AuthorityConfigSubjectConfig build() {
+            final var o = new AuthorityConfigSubjectConfig();
+            o.subject = subject;
+            o.subjectAltName = subjectAltName;
+            return o;
         }
     }
 }

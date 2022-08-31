@@ -9,21 +9,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFunctionSourceRepository {
-    private final String deployedUrl;
+    private String deployedUrl;
     /**
      * @return The URL pointing to the hosted repository where the function is defined.
      * 
      */
-    private final String url;
+    private String url;
 
-    @CustomType.Constructor
-    private GetFunctionSourceRepository(
-        @CustomType.Parameter("deployedUrl") String deployedUrl,
-        @CustomType.Parameter("url") String url) {
-        this.deployedUrl = deployedUrl;
-        this.url = url;
-    }
-
+    private GetFunctionSourceRepository() {}
     public String deployedUrl() {
         return this.deployedUrl;
     }
@@ -42,30 +35,32 @@ public final class GetFunctionSourceRepository {
     public static Builder builder(GetFunctionSourceRepository defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String deployedUrl;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFunctionSourceRepository defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deployedUrl = defaults.deployedUrl;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder deployedUrl(String deployedUrl) {
             this.deployedUrl = Objects.requireNonNull(deployedUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public GetFunctionSourceRepository build() {
-            return new GetFunctionSourceRepository(deployedUrl, url);
+        }
+        public GetFunctionSourceRepository build() {
+            final var o = new GetFunctionSourceRepository();
+            o.deployedUrl = deployedUrl;
+            o.url = url;
+            return o;
         }
     }
 }

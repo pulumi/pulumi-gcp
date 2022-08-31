@@ -12,45 +12,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCertificateResult {
-    private final String certificate;
-    private final Integer certificateId;
-    private final String creationTimestamp;
-    private final String description;
+    private String certificate;
+    private Integer certificateId;
+    private String creationTimestamp;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
-    private final String namePrefix;
-    private final String privateKey;
-    private final @Nullable String project;
-    private final String selfLink;
+    private String id;
+    private String name;
+    private String namePrefix;
+    private String privateKey;
+    private @Nullable String project;
+    private String selfLink;
 
-    @CustomType.Constructor
-    private GetCertificateResult(
-        @CustomType.Parameter("certificate") String certificate,
-        @CustomType.Parameter("certificateId") Integer certificateId,
-        @CustomType.Parameter("creationTimestamp") String creationTimestamp,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("namePrefix") String namePrefix,
-        @CustomType.Parameter("privateKey") String privateKey,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("selfLink") String selfLink) {
-        this.certificate = certificate;
-        this.certificateId = certificateId;
-        this.creationTimestamp = creationTimestamp;
-        this.description = description;
-        this.id = id;
-        this.name = name;
-        this.namePrefix = namePrefix;
-        this.privateKey = privateKey;
-        this.project = project;
-        this.selfLink = selfLink;
-    }
-
+    private GetCertificateResult() {}
     public String certificate() {
         return this.certificate;
     }
@@ -93,7 +70,7 @@ public final class GetCertificateResult {
     public static Builder builder(GetCertificateResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String certificate;
         private Integer certificateId;
@@ -105,11 +82,7 @@ public final class GetCertificateResult {
         private String privateKey;
         private @Nullable String project;
         private String selfLink;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCertificateResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificate = defaults.certificate;
@@ -124,47 +97,69 @@ public final class GetCertificateResult {
     	      this.selfLink = defaults.selfLink;
         }
 
+        @CustomType.Setter
         public Builder certificate(String certificate) {
             this.certificate = Objects.requireNonNull(certificate);
             return this;
         }
+        @CustomType.Setter
         public Builder certificateId(Integer certificateId) {
             this.certificateId = Objects.requireNonNull(certificateId);
             return this;
         }
+        @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
             this.creationTimestamp = Objects.requireNonNull(creationTimestamp);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder namePrefix(String namePrefix) {
             this.namePrefix = Objects.requireNonNull(namePrefix);
             return this;
         }
+        @CustomType.Setter
         public Builder privateKey(String privateKey) {
             this.privateKey = Objects.requireNonNull(privateKey);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
-        }        public GetCertificateResult build() {
-            return new GetCertificateResult(certificate, certificateId, creationTimestamp, description, id, name, namePrefix, privateKey, project, selfLink);
+        }
+        public GetCertificateResult build() {
+            final var o = new GetCertificateResult();
+            o.certificate = certificate;
+            o.certificateId = certificateId;
+            o.creationTimestamp = creationTimestamp;
+            o.description = description;
+            o.id = id;
+            o.name = name;
+            o.namePrefix = namePrefix;
+            o.privateKey = privateKey;
+            o.project = project;
+            o.selfLink = selfLink;
+            return o;
         }
     }
 }

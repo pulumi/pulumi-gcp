@@ -13,21 +13,14 @@ public final class GetClientOpenIdUserInfoResult {
      * @return The email of the account used by the provider to authenticate with GCP.
      * 
      */
-    private final String email;
+    private String email;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
 
-    @CustomType.Constructor
-    private GetClientOpenIdUserInfoResult(
-        @CustomType.Parameter("email") String email,
-        @CustomType.Parameter("id") String id) {
-        this.email = email;
-        this.id = id;
-    }
-
+    private GetClientOpenIdUserInfoResult() {}
     /**
      * @return The email of the account used by the provider to authenticate with GCP.
      * 
@@ -50,30 +43,32 @@ public final class GetClientOpenIdUserInfoResult {
     public static Builder builder(GetClientOpenIdUserInfoResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String email;
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClientOpenIdUserInfoResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.email = defaults.email;
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder email(String email) {
             this.email = Objects.requireNonNull(email);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public GetClientOpenIdUserInfoResult build() {
-            return new GetClientOpenIdUserInfoResult(email, id);
+        }
+        public GetClientOpenIdUserInfoResult build() {
+            final var o = new GetClientOpenIdUserInfoResult();
+            o.email = email;
+            o.id = id;
+            return o;
         }
     }
 }

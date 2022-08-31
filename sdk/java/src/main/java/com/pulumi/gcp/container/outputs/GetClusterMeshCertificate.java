@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterMeshCertificate {
-    private final Boolean enableCertificates;
+    private Boolean enableCertificates;
 
-    @CustomType.Constructor
-    private GetClusterMeshCertificate(@CustomType.Parameter("enableCertificates") Boolean enableCertificates) {
-        this.enableCertificates = enableCertificates;
-    }
-
+    private GetClusterMeshCertificate() {}
     public Boolean enableCertificates() {
         return this.enableCertificates;
     }
@@ -27,24 +23,24 @@ public final class GetClusterMeshCertificate {
     public static Builder builder(GetClusterMeshCertificate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enableCertificates;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterMeshCertificate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableCertificates = defaults.enableCertificates;
         }
 
+        @CustomType.Setter
         public Builder enableCertificates(Boolean enableCertificates) {
             this.enableCertificates = Objects.requireNonNull(enableCertificates);
             return this;
-        }        public GetClusterMeshCertificate build() {
-            return new GetClusterMeshCertificate(enableCertificates);
+        }
+        public GetClusterMeshCertificate build() {
+            final var o = new GetClusterMeshCertificate();
+            o.enableCertificates = enableCertificates;
+            return o;
         }
     }
 }

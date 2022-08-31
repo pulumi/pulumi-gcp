@@ -16,30 +16,21 @@ public final class MetricMetricDescriptorLabel {
      * description is 8000 characters.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return The label key.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return The type of data that can be assigned to the label.
      * Default value is `STRING`.
      * Possible values are `BOOL`, `INT64`, and `STRING`.
      * 
      */
-    private final @Nullable String valueType;
+    private @Nullable String valueType;
 
-    @CustomType.Constructor
-    private MetricMetricDescriptorLabel(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("valueType") @Nullable String valueType) {
-        this.description = description;
-        this.key = key;
-        this.valueType = valueType;
-    }
-
+    private MetricMetricDescriptorLabel() {}
     /**
      * @return A description of this metric, which is used in documentation. The maximum length of the
      * description is 8000 characters.
@@ -72,16 +63,12 @@ public final class MetricMetricDescriptorLabel {
     public static Builder builder(MetricMetricDescriptorLabel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private String key;
         private @Nullable String valueType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MetricMetricDescriptorLabel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -89,19 +76,27 @@ public final class MetricMetricDescriptorLabel {
     	      this.valueType = defaults.valueType;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder valueType(@Nullable String valueType) {
             this.valueType = valueType;
             return this;
-        }        public MetricMetricDescriptorLabel build() {
-            return new MetricMetricDescriptorLabel(description, key, valueType);
+        }
+        public MetricMetricDescriptorLabel build() {
+            final var o = new MetricMetricDescriptorLabel();
+            o.description = description;
+            o.key = key;
+            o.valueType = valueType;
+            return o;
         }
     }
 }

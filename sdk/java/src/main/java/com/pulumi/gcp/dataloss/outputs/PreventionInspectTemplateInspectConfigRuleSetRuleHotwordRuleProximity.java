@@ -15,21 +15,14 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleP
      * @return Number of characters after the finding to consider. Either this or window_before must be specified
      * 
      */
-    private final @Nullable Integer windowAfter;
+    private @Nullable Integer windowAfter;
     /**
      * @return Number of characters before the finding to consider. Either this or window_after must be specified
      * 
      */
-    private final @Nullable Integer windowBefore;
+    private @Nullable Integer windowBefore;
 
-    @CustomType.Constructor
-    private PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity(
-        @CustomType.Parameter("windowAfter") @Nullable Integer windowAfter,
-        @CustomType.Parameter("windowBefore") @Nullable Integer windowBefore) {
-        this.windowAfter = windowAfter;
-        this.windowBefore = windowBefore;
-    }
-
+    private PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity() {}
     /**
      * @return Number of characters after the finding to consider. Either this or window_before must be specified
      * 
@@ -52,30 +45,32 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleP
     public static Builder builder(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer windowAfter;
         private @Nullable Integer windowBefore;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.windowAfter = defaults.windowAfter;
     	      this.windowBefore = defaults.windowBefore;
         }
 
+        @CustomType.Setter
         public Builder windowAfter(@Nullable Integer windowAfter) {
             this.windowAfter = windowAfter;
             return this;
         }
+        @CustomType.Setter
         public Builder windowBefore(@Nullable Integer windowBefore) {
             this.windowBefore = windowBefore;
             return this;
-        }        public PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity build() {
-            return new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity(windowAfter, windowBefore);
+        }
+        public PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity build() {
+            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity();
+            o.windowAfter = windowAfter;
+            o.windowBefore = windowBefore;
+            return o;
         }
     }
 }

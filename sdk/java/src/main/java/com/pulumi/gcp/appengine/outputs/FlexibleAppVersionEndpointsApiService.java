@@ -21,37 +21,26 @@ public final class FlexibleAppVersionEndpointsApiService {
      * the configuration ID. In this case, configId must be omitted.
      * 
      */
-    private final @Nullable String configId;
+    private @Nullable String configId;
     /**
      * @return Enable or disable trace sampling. By default, this is set to false for enabled.
      * 
      */
-    private final @Nullable Boolean disableTraceSampling;
+    private @Nullable Boolean disableTraceSampling;
     /**
      * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
      * Default value is `FIXED`.
      * Possible values are `FIXED` and `MANAGED`.
      * 
      */
-    private final @Nullable String rolloutStrategy;
+    private @Nullable String rolloutStrategy;
 
-    @CustomType.Constructor
-    private FlexibleAppVersionEndpointsApiService(
-        @CustomType.Parameter("configId") @Nullable String configId,
-        @CustomType.Parameter("disableTraceSampling") @Nullable Boolean disableTraceSampling,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("rolloutStrategy") @Nullable String rolloutStrategy) {
-        this.configId = configId;
-        this.disableTraceSampling = disableTraceSampling;
-        this.name = name;
-        this.rolloutStrategy = rolloutStrategy;
-    }
-
+    private FlexibleAppVersionEndpointsApiService() {}
     /**
      * @return Endpoints service configuration ID as specified by the Service Management API. For example &#34;2016-09-19r1&#34;.
      * By default, the rollout strategy for Endpoints is &#34;FIXED&#34;. This means that Endpoints starts up with a particular configuration ID.
@@ -95,17 +84,13 @@ public final class FlexibleAppVersionEndpointsApiService {
     public static Builder builder(FlexibleAppVersionEndpointsApiService defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String configId;
         private @Nullable Boolean disableTraceSampling;
         private String name;
         private @Nullable String rolloutStrategy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FlexibleAppVersionEndpointsApiService defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configId = defaults.configId;
@@ -114,23 +99,33 @@ public final class FlexibleAppVersionEndpointsApiService {
     	      this.rolloutStrategy = defaults.rolloutStrategy;
         }
 
+        @CustomType.Setter
         public Builder configId(@Nullable String configId) {
             this.configId = configId;
             return this;
         }
+        @CustomType.Setter
         public Builder disableTraceSampling(@Nullable Boolean disableTraceSampling) {
             this.disableTraceSampling = disableTraceSampling;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder rolloutStrategy(@Nullable String rolloutStrategy) {
             this.rolloutStrategy = rolloutStrategy;
             return this;
-        }        public FlexibleAppVersionEndpointsApiService build() {
-            return new FlexibleAppVersionEndpointsApiService(configId, disableTraceSampling, name, rolloutStrategy);
+        }
+        public FlexibleAppVersionEndpointsApiService build() {
+            final var o = new FlexibleAppVersionEndpointsApiService();
+            o.configId = configId;
+            o.disableTraceSampling = disableTraceSampling;
+            o.name = name;
+            o.rolloutStrategy = rolloutStrategy;
+            return o;
         }
     }
 }

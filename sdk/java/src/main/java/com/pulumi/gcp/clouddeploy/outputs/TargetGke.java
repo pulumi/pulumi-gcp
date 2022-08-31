@@ -16,21 +16,14 @@ public final class TargetGke {
      * @return Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
      * 
      */
-    private final @Nullable String cluster;
+    private @Nullable String cluster;
     /**
      * @return Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
      * 
      */
-    private final @Nullable Boolean internalIp;
+    private @Nullable Boolean internalIp;
 
-    @CustomType.Constructor
-    private TargetGke(
-        @CustomType.Parameter("cluster") @Nullable String cluster,
-        @CustomType.Parameter("internalIp") @Nullable Boolean internalIp) {
-        this.cluster = cluster;
-        this.internalIp = internalIp;
-    }
-
+    private TargetGke() {}
     /**
      * @return Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
      * 
@@ -53,30 +46,32 @@ public final class TargetGke {
     public static Builder builder(TargetGke defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cluster;
         private @Nullable Boolean internalIp;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TargetGke defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cluster = defaults.cluster;
     	      this.internalIp = defaults.internalIp;
         }
 
+        @CustomType.Setter
         public Builder cluster(@Nullable String cluster) {
             this.cluster = cluster;
             return this;
         }
+        @CustomType.Setter
         public Builder internalIp(@Nullable Boolean internalIp) {
             this.internalIp = internalIp;
             return this;
-        }        public TargetGke build() {
-            return new TargetGke(cluster, internalIp);
+        }
+        public TargetGke build() {
+            final var o = new TargetGke();
+            o.cluster = cluster;
+            o.internalIp = internalIp;
+            return o;
         }
     }
 }

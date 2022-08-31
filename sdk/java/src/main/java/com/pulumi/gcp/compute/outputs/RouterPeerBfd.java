@@ -20,7 +20,7 @@ public final class RouterPeerBfd {
      * must be between 1000 and 30000.
      * 
      */
-    private final @Nullable Integer minReceiveInterval;
+    private @Nullable Integer minReceiveInterval;
     /**
      * @return The minimum interval, in milliseconds, between BFD control packets
      * transmitted to the peer router. The actual value is negotiated
@@ -29,14 +29,14 @@ public final class RouterPeerBfd {
      * this value must be between 1000 and 30000.
      * 
      */
-    private final @Nullable Integer minTransmitInterval;
+    private @Nullable Integer minTransmitInterval;
     /**
      * @return The number of consecutive BFD packets that must be missed before
      * BFD declares that a peer is unavailable. If set, the value must
      * be a value between 5 and 16.
      * 
      */
-    private final @Nullable Integer multiplier;
+    private @Nullable Integer multiplier;
     /**
      * @return The BFD session initialization mode for this BGP peer.
      * If set to `ACTIVE`, the Cloud Router will initiate the BFD session
@@ -46,20 +46,9 @@ public final class RouterPeerBfd {
      * Possible values are `ACTIVE`, `DISABLED`, and `PASSIVE`.
      * 
      */
-    private final String sessionInitializationMode;
+    private String sessionInitializationMode;
 
-    @CustomType.Constructor
-    private RouterPeerBfd(
-        @CustomType.Parameter("minReceiveInterval") @Nullable Integer minReceiveInterval,
-        @CustomType.Parameter("minTransmitInterval") @Nullable Integer minTransmitInterval,
-        @CustomType.Parameter("multiplier") @Nullable Integer multiplier,
-        @CustomType.Parameter("sessionInitializationMode") String sessionInitializationMode) {
-        this.minReceiveInterval = minReceiveInterval;
-        this.minTransmitInterval = minTransmitInterval;
-        this.multiplier = multiplier;
-        this.sessionInitializationMode = sessionInitializationMode;
-    }
-
+    private RouterPeerBfd() {}
     /**
      * @return The minimum interval, in milliseconds, between BFD control packets
      * received from the peer router. The actual value is negotiated
@@ -111,17 +100,13 @@ public final class RouterPeerBfd {
     public static Builder builder(RouterPeerBfd defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer minReceiveInterval;
         private @Nullable Integer minTransmitInterval;
         private @Nullable Integer multiplier;
         private String sessionInitializationMode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RouterPeerBfd defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.minReceiveInterval = defaults.minReceiveInterval;
@@ -130,23 +115,33 @@ public final class RouterPeerBfd {
     	      this.sessionInitializationMode = defaults.sessionInitializationMode;
         }
 
+        @CustomType.Setter
         public Builder minReceiveInterval(@Nullable Integer minReceiveInterval) {
             this.minReceiveInterval = minReceiveInterval;
             return this;
         }
+        @CustomType.Setter
         public Builder minTransmitInterval(@Nullable Integer minTransmitInterval) {
             this.minTransmitInterval = minTransmitInterval;
             return this;
         }
+        @CustomType.Setter
         public Builder multiplier(@Nullable Integer multiplier) {
             this.multiplier = multiplier;
             return this;
         }
+        @CustomType.Setter
         public Builder sessionInitializationMode(String sessionInitializationMode) {
             this.sessionInitializationMode = Objects.requireNonNull(sessionInitializationMode);
             return this;
-        }        public RouterPeerBfd build() {
-            return new RouterPeerBfd(minReceiveInterval, minTransmitInterval, multiplier, sessionInitializationMode);
+        }
+        public RouterPeerBfd build() {
+            final var o = new RouterPeerBfd();
+            o.minReceiveInterval = minReceiveInterval;
+            o.minTransmitInterval = minTransmitInterval;
+            o.multiplier = multiplier;
+            o.sessionInitializationMode = sessionInitializationMode;
+            return o;
         }
     }
 }

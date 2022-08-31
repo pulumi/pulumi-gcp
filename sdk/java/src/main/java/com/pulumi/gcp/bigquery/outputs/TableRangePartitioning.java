@@ -15,22 +15,15 @@ public final class TableRangePartitioning {
      * partition.
      * 
      */
-    private final String field;
+    private String field;
     /**
      * @return Information required to partition based on ranges.
      * Structure is documented below.
      * 
      */
-    private final TableRangePartitioningRange range;
+    private TableRangePartitioningRange range;
 
-    @CustomType.Constructor
-    private TableRangePartitioning(
-        @CustomType.Parameter("field") String field,
-        @CustomType.Parameter("range") TableRangePartitioningRange range) {
-        this.field = field;
-        this.range = range;
-    }
-
+    private TableRangePartitioning() {}
     /**
      * @return The field used to determine how to create a range-based
      * partition.
@@ -55,30 +48,32 @@ public final class TableRangePartitioning {
     public static Builder builder(TableRangePartitioning defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String field;
         private TableRangePartitioningRange range;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TableRangePartitioning defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.field = defaults.field;
     	      this.range = defaults.range;
         }
 
+        @CustomType.Setter
         public Builder field(String field) {
             this.field = Objects.requireNonNull(field);
             return this;
         }
+        @CustomType.Setter
         public Builder range(TableRangePartitioningRange range) {
             this.range = Objects.requireNonNull(range);
             return this;
-        }        public TableRangePartitioning build() {
-            return new TableRangePartitioning(field, range);
+        }
+        public TableRangePartitioning build() {
+            final var o = new TableRangePartitioning();
+            o.field = field;
+            o.range = range;
+            return o;
         }
     }
 }

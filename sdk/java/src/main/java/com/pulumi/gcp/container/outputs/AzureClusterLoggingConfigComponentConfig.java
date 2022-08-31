@@ -15,13 +15,9 @@ public final class AzureClusterLoggingConfigComponentConfig {
      * @return Components of the logging configuration to be enabled.
      * 
      */
-    private final @Nullable List<String> enableComponents;
+    private @Nullable List<String> enableComponents;
 
-    @CustomType.Constructor
-    private AzureClusterLoggingConfigComponentConfig(@CustomType.Parameter("enableComponents") @Nullable List<String> enableComponents) {
-        this.enableComponents = enableComponents;
-    }
-
+    private AzureClusterLoggingConfigComponentConfig() {}
     /**
      * @return Components of the logging configuration to be enabled.
      * 
@@ -37,27 +33,27 @@ public final class AzureClusterLoggingConfigComponentConfig {
     public static Builder builder(AzureClusterLoggingConfigComponentConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> enableComponents;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AzureClusterLoggingConfigComponentConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableComponents = defaults.enableComponents;
         }
 
+        @CustomType.Setter
         public Builder enableComponents(@Nullable List<String> enableComponents) {
             this.enableComponents = enableComponents;
             return this;
         }
         public Builder enableComponents(String... enableComponents) {
             return enableComponents(List.of(enableComponents));
-        }        public AzureClusterLoggingConfigComponentConfig build() {
-            return new AzureClusterLoggingConfigComponentConfig(enableComponents);
+        }
+        public AzureClusterLoggingConfigComponentConfig build() {
+            final var o = new AzureClusterLoggingConfigComponentConfig();
+            o.enableComponents = enableComponents;
+            return o;
         }
     }
 }

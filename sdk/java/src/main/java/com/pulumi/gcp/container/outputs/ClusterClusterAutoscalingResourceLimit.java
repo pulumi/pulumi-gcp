@@ -16,30 +16,21 @@ public final class ClusterClusterAutoscalingResourceLimit {
      * @return Maximum amount of the resource in the cluster.
      * 
      */
-    private final @Nullable Integer maximum;
+    private @Nullable Integer maximum;
     /**
      * @return Minimum amount of the resource in the cluster.
      * 
      */
-    private final @Nullable Integer minimum;
+    private @Nullable Integer minimum;
     /**
      * @return The type of the resource. For example, `cpu` and
      * `memory`.  See the [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
      * for a list of types.
      * 
      */
-    private final String resourceType;
+    private String resourceType;
 
-    @CustomType.Constructor
-    private ClusterClusterAutoscalingResourceLimit(
-        @CustomType.Parameter("maximum") @Nullable Integer maximum,
-        @CustomType.Parameter("minimum") @Nullable Integer minimum,
-        @CustomType.Parameter("resourceType") String resourceType) {
-        this.maximum = maximum;
-        this.minimum = minimum;
-        this.resourceType = resourceType;
-    }
-
+    private ClusterClusterAutoscalingResourceLimit() {}
     /**
      * @return Maximum amount of the resource in the cluster.
      * 
@@ -71,16 +62,12 @@ public final class ClusterClusterAutoscalingResourceLimit {
     public static Builder builder(ClusterClusterAutoscalingResourceLimit defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer maximum;
         private @Nullable Integer minimum;
         private String resourceType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterClusterAutoscalingResourceLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maximum = defaults.maximum;
@@ -88,19 +75,27 @@ public final class ClusterClusterAutoscalingResourceLimit {
     	      this.resourceType = defaults.resourceType;
         }
 
+        @CustomType.Setter
         public Builder maximum(@Nullable Integer maximum) {
             this.maximum = maximum;
             return this;
         }
+        @CustomType.Setter
         public Builder minimum(@Nullable Integer minimum) {
             this.minimum = minimum;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceType(String resourceType) {
             this.resourceType = Objects.requireNonNull(resourceType);
             return this;
-        }        public ClusterClusterAutoscalingResourceLimit build() {
-            return new ClusterClusterAutoscalingResourceLimit(maximum, minimum, resourceType);
+        }
+        public ClusterClusterAutoscalingResourceLimit build() {
+            final var o = new ClusterClusterAutoscalingResourceLimit();
+            o.maximum = maximum;
+            o.minimum = minimum;
+            o.resourceType = resourceType;
+            return o;
         }
     }
 }

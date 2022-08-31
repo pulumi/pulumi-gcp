@@ -16,13 +16,9 @@ public final class ConnectionCloudResource {
      * The account ID of the service created for the purpose of this connection.
      * 
      */
-    private final @Nullable String serviceAccountId;
+    private @Nullable String serviceAccountId;
 
-    @CustomType.Constructor
-    private ConnectionCloudResource(@CustomType.Parameter("serviceAccountId") @Nullable String serviceAccountId) {
-        this.serviceAccountId = serviceAccountId;
-    }
-
+    private ConnectionCloudResource() {}
     /**
      * @return -
      * The account ID of the service created for the purpose of this connection.
@@ -39,24 +35,24 @@ public final class ConnectionCloudResource {
     public static Builder builder(ConnectionCloudResource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String serviceAccountId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionCloudResource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.serviceAccountId = defaults.serviceAccountId;
         }
 
+        @CustomType.Setter
         public Builder serviceAccountId(@Nullable String serviceAccountId) {
             this.serviceAccountId = serviceAccountId;
             return this;
-        }        public ConnectionCloudResource build() {
-            return new ConnectionCloudResource(serviceAccountId);
+        }
+        public ConnectionCloudResource build() {
+            final var o = new ConnectionCloudResource();
+            o.serviceAccountId = serviceAccountId;
+            return o;
         }
     }
 }

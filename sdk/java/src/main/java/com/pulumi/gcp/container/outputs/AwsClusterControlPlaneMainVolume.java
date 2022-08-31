@@ -16,35 +16,24 @@ public final class AwsClusterControlPlaneMainVolume {
      * @return Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
      * 
      */
-    private final @Nullable Integer iops;
+    private @Nullable Integer iops;
     /**
      * @return Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
      * 
      */
-    private final @Nullable String kmsKeyArn;
+    private @Nullable String kmsKeyArn;
     /**
      * @return Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
      * 
      */
-    private final @Nullable Integer sizeGib;
+    private @Nullable Integer sizeGib;
     /**
      * @return Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
      * 
      */
-    private final @Nullable String volumeType;
+    private @Nullable String volumeType;
 
-    @CustomType.Constructor
-    private AwsClusterControlPlaneMainVolume(
-        @CustomType.Parameter("iops") @Nullable Integer iops,
-        @CustomType.Parameter("kmsKeyArn") @Nullable String kmsKeyArn,
-        @CustomType.Parameter("sizeGib") @Nullable Integer sizeGib,
-        @CustomType.Parameter("volumeType") @Nullable String volumeType) {
-        this.iops = iops;
-        this.kmsKeyArn = kmsKeyArn;
-        this.sizeGib = sizeGib;
-        this.volumeType = volumeType;
-    }
-
+    private AwsClusterControlPlaneMainVolume() {}
     /**
      * @return Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
      * 
@@ -81,17 +70,13 @@ public final class AwsClusterControlPlaneMainVolume {
     public static Builder builder(AwsClusterControlPlaneMainVolume defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer iops;
         private @Nullable String kmsKeyArn;
         private @Nullable Integer sizeGib;
         private @Nullable String volumeType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsClusterControlPlaneMainVolume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.iops = defaults.iops;
@@ -100,23 +85,33 @@ public final class AwsClusterControlPlaneMainVolume {
     	      this.volumeType = defaults.volumeType;
         }
 
+        @CustomType.Setter
         public Builder iops(@Nullable Integer iops) {
             this.iops = iops;
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKeyArn(@Nullable String kmsKeyArn) {
             this.kmsKeyArn = kmsKeyArn;
             return this;
         }
+        @CustomType.Setter
         public Builder sizeGib(@Nullable Integer sizeGib) {
             this.sizeGib = sizeGib;
             return this;
         }
+        @CustomType.Setter
         public Builder volumeType(@Nullable String volumeType) {
             this.volumeType = volumeType;
             return this;
-        }        public AwsClusterControlPlaneMainVolume build() {
-            return new AwsClusterControlPlaneMainVolume(iops, kmsKeyArn, sizeGib, volumeType);
+        }
+        public AwsClusterControlPlaneMainVolume build() {
+            final var o = new AwsClusterControlPlaneMainVolume();
+            o.iops = iops;
+            o.kmsKeyArn = kmsKeyArn;
+            o.sizeGib = sizeGib;
+            o.volumeType = volumeType;
+            return o;
         }
     }
 }

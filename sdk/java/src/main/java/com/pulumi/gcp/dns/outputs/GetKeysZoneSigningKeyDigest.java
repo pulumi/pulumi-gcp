@@ -15,21 +15,14 @@ public final class GetKeysZoneSigningKeyDigest {
      * @return The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
      * 
      */
-    private final @Nullable String digest;
+    private @Nullable String digest;
     /**
      * @return Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private GetKeysZoneSigningKeyDigest(
-        @CustomType.Parameter("digest") @Nullable String digest,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.digest = digest;
-        this.type = type;
-    }
-
+    private GetKeysZoneSigningKeyDigest() {}
     /**
      * @return The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
      * 
@@ -52,30 +45,32 @@ public final class GetKeysZoneSigningKeyDigest {
     public static Builder builder(GetKeysZoneSigningKeyDigest defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String digest;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKeysZoneSigningKeyDigest defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.digest = defaults.digest;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder digest(@Nullable String digest) {
             this.digest = digest;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public GetKeysZoneSigningKeyDigest build() {
-            return new GetKeysZoneSigningKeyDigest(digest, type);
+        }
+        public GetKeysZoneSigningKeyDigest build() {
+            final var o = new GetKeysZoneSigningKeyDigest();
+            o.digest = digest;
+            o.type = type;
+            return o;
         }
     }
 }

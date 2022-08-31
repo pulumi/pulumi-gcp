@@ -17,23 +17,16 @@ public final class RepositoryMavenConfig {
      * snapshot versions.
      * 
      */
-    private final @Nullable Boolean allowSnapshotOverwrites;
+    private @Nullable Boolean allowSnapshotOverwrites;
     /**
      * @return Version policy defines the versions that the registry will accept.
      * Default value is `VERSION_POLICY_UNSPECIFIED`.
      * Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
      * 
      */
-    private final @Nullable String versionPolicy;
+    private @Nullable String versionPolicy;
 
-    @CustomType.Constructor
-    private RepositoryMavenConfig(
-        @CustomType.Parameter("allowSnapshotOverwrites") @Nullable Boolean allowSnapshotOverwrites,
-        @CustomType.Parameter("versionPolicy") @Nullable String versionPolicy) {
-        this.allowSnapshotOverwrites = allowSnapshotOverwrites;
-        this.versionPolicy = versionPolicy;
-    }
-
+    private RepositoryMavenConfig() {}
     /**
      * @return The repository with this flag will allow publishing the same
      * snapshot versions.
@@ -59,30 +52,32 @@ public final class RepositoryMavenConfig {
     public static Builder builder(RepositoryMavenConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowSnapshotOverwrites;
         private @Nullable String versionPolicy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RepositoryMavenConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowSnapshotOverwrites = defaults.allowSnapshotOverwrites;
     	      this.versionPolicy = defaults.versionPolicy;
         }
 
+        @CustomType.Setter
         public Builder allowSnapshotOverwrites(@Nullable Boolean allowSnapshotOverwrites) {
             this.allowSnapshotOverwrites = allowSnapshotOverwrites;
             return this;
         }
+        @CustomType.Setter
         public Builder versionPolicy(@Nullable String versionPolicy) {
             this.versionPolicy = versionPolicy;
             return this;
-        }        public RepositoryMavenConfig build() {
-            return new RepositoryMavenConfig(allowSnapshotOverwrites, versionPolicy);
+        }
+        public RepositoryMavenConfig build() {
+            final var o = new RepositoryMavenConfig();
+            o.allowSnapshotOverwrites = allowSnapshotOverwrites;
+            o.versionPolicy = versionPolicy;
+            return o;
         }
     }
 }

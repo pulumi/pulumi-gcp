@@ -14,22 +14,15 @@ public final class RouterNatLogConfig {
      * @return Indicates whether or not to export logs.
      * 
      */
-    private final Boolean enable;
+    private Boolean enable;
     /**
      * @return Specifies the desired filtering of logs on this NAT.
      * Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
      * 
      */
-    private final String filter;
+    private String filter;
 
-    @CustomType.Constructor
-    private RouterNatLogConfig(
-        @CustomType.Parameter("enable") Boolean enable,
-        @CustomType.Parameter("filter") String filter) {
-        this.enable = enable;
-        this.filter = filter;
-    }
-
+    private RouterNatLogConfig() {}
     /**
      * @return Indicates whether or not to export logs.
      * 
@@ -53,30 +46,32 @@ public final class RouterNatLogConfig {
     public static Builder builder(RouterNatLogConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enable;
         private String filter;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RouterNatLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
     	      this.filter = defaults.filter;
         }
 
+        @CustomType.Setter
         public Builder enable(Boolean enable) {
             this.enable = Objects.requireNonNull(enable);
             return this;
         }
+        @CustomType.Setter
         public Builder filter(String filter) {
             this.filter = Objects.requireNonNull(filter);
             return this;
-        }        public RouterNatLogConfig build() {
-            return new RouterNatLogConfig(enable, filter);
+        }
+        public RouterNatLogConfig build() {
+            final var o = new RouterNatLogConfig();
+            o.enable = enable;
+            o.filter = filter;
+            return o;
         }
     }
 }

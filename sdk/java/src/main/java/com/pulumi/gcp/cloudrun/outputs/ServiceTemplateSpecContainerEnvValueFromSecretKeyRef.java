@@ -14,21 +14,14 @@ public final class ServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
      * Can be &#39;latest&#39; for the latest value or an integer for a specific version.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Volume&#39;s name.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private ServiceTemplateSpecContainerEnvValueFromSecretKeyRef(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("name") String name) {
-        this.key = key;
-        this.name = name;
-    }
-
+    private ServiceTemplateSpecContainerEnvValueFromSecretKeyRef() {}
     /**
      * @return The Cloud Secret Manager secret version.
      * Can be &#39;latest&#39; for the latest value or an integer for a specific version.
@@ -52,30 +45,32 @@ public final class ServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
     public static Builder builder(ServiceTemplateSpecContainerEnvValueFromSecretKeyRef defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceTemplateSpecContainerEnvValueFromSecretKeyRef defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public ServiceTemplateSpecContainerEnvValueFromSecretKeyRef build() {
-            return new ServiceTemplateSpecContainerEnvValueFromSecretKeyRef(key, name);
+        }
+        public ServiceTemplateSpecContainerEnvValueFromSecretKeyRef build() {
+            final var o = new ServiceTemplateSpecContainerEnvValueFromSecretKeyRef();
+            o.key = key;
+            o.name = name;
+            return o;
         }
     }
 }

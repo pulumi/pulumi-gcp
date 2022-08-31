@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobReference {
-    private final @Nullable String jobId;
+    private @Nullable String jobId;
 
-    @CustomType.Constructor
-    private JobReference(@CustomType.Parameter("jobId") @Nullable String jobId) {
-        this.jobId = jobId;
-    }
-
+    private JobReference() {}
     public Optional<String> jobId() {
         return Optional.ofNullable(this.jobId);
     }
@@ -29,24 +25,24 @@ public final class JobReference {
     public static Builder builder(JobReference defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String jobId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobReference defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.jobId = defaults.jobId;
         }
 
+        @CustomType.Setter
         public Builder jobId(@Nullable String jobId) {
             this.jobId = jobId;
             return this;
-        }        public JobReference build() {
-            return new JobReference(jobId);
+        }
+        public JobReference build() {
+            final var o = new JobReference();
+            o.jobId = jobId;
+            return o;
         }
     }
 }

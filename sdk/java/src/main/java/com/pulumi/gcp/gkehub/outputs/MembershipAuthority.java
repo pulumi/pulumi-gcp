@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class MembershipAuthority {
-    private final String issuer;
+    private String issuer;
 
-    @CustomType.Constructor
-    private MembershipAuthority(@CustomType.Parameter("issuer") String issuer) {
-        this.issuer = issuer;
-    }
-
+    private MembershipAuthority() {}
     public String issuer() {
         return this.issuer;
     }
@@ -27,24 +23,24 @@ public final class MembershipAuthority {
     public static Builder builder(MembershipAuthority defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String issuer;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MembershipAuthority defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.issuer = defaults.issuer;
         }
 
+        @CustomType.Setter
         public Builder issuer(String issuer) {
             this.issuer = Objects.requireNonNull(issuer);
             return this;
-        }        public MembershipAuthority build() {
-            return new MembershipAuthority(issuer);
+        }
+        public MembershipAuthority build() {
+            final var o = new MembershipAuthority();
+            o.issuer = issuer;
+            return o;
         }
     }
 }

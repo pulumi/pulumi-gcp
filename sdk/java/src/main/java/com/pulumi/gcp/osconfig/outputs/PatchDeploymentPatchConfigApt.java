@@ -16,31 +16,22 @@ public final class PatchDeploymentPatchConfigApt {
      * @return List of KBs to exclude from update.
      * 
      */
-    private final @Nullable List<String> excludes;
+    private @Nullable List<String> excludes;
     /**
      * @return An exclusive list of packages to be updated. These are the only packages that will be updated.
      * If these packages are not installed, they will be ignored. This field cannot be specified with
      * any other patch configuration fields.
      * 
      */
-    private final @Nullable List<String> exclusivePackages;
+    private @Nullable List<String> exclusivePackages;
     /**
      * @return By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
      * Possible values are `DIST` and `UPGRADE`.
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private PatchDeploymentPatchConfigApt(
-        @CustomType.Parameter("excludes") @Nullable List<String> excludes,
-        @CustomType.Parameter("exclusivePackages") @Nullable List<String> exclusivePackages,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.excludes = excludes;
-        this.exclusivePackages = exclusivePackages;
-        this.type = type;
-    }
-
+    private PatchDeploymentPatchConfigApt() {}
     /**
      * @return List of KBs to exclude from update.
      * 
@@ -73,16 +64,12 @@ public final class PatchDeploymentPatchConfigApt {
     public static Builder builder(PatchDeploymentPatchConfigApt defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> excludes;
         private @Nullable List<String> exclusivePackages;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PatchDeploymentPatchConfigApt defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.excludes = defaults.excludes;
@@ -90,6 +77,7 @@ public final class PatchDeploymentPatchConfigApt {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder excludes(@Nullable List<String> excludes) {
             this.excludes = excludes;
             return this;
@@ -97,6 +85,7 @@ public final class PatchDeploymentPatchConfigApt {
         public Builder excludes(String... excludes) {
             return excludes(List.of(excludes));
         }
+        @CustomType.Setter
         public Builder exclusivePackages(@Nullable List<String> exclusivePackages) {
             this.exclusivePackages = exclusivePackages;
             return this;
@@ -104,11 +93,17 @@ public final class PatchDeploymentPatchConfigApt {
         public Builder exclusivePackages(String... exclusivePackages) {
             return exclusivePackages(List.of(exclusivePackages));
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public PatchDeploymentPatchConfigApt build() {
-            return new PatchDeploymentPatchConfigApt(excludes, exclusivePackages, type);
+        }
+        public PatchDeploymentPatchConfigApt build() {
+            final var o = new PatchDeploymentPatchConfigApt();
+            o.excludes = excludes;
+            o.exclusivePackages = exclusivePackages;
+            o.type = type;
+            return o;
         }
     }
 }

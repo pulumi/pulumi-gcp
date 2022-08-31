@@ -15,35 +15,24 @@ public final class FlexibleAppVersionAutomaticScalingDiskUtilization {
      * @return Target bytes read per second.
      * 
      */
-    private final @Nullable Integer targetReadBytesPerSecond;
+    private @Nullable Integer targetReadBytesPerSecond;
     /**
      * @return Target ops read per seconds.
      * 
      */
-    private final @Nullable Integer targetReadOpsPerSecond;
+    private @Nullable Integer targetReadOpsPerSecond;
     /**
      * @return Target bytes written per second.
      * 
      */
-    private final @Nullable Integer targetWriteBytesPerSecond;
+    private @Nullable Integer targetWriteBytesPerSecond;
     /**
      * @return Target ops written per second.
      * 
      */
-    private final @Nullable Integer targetWriteOpsPerSecond;
+    private @Nullable Integer targetWriteOpsPerSecond;
 
-    @CustomType.Constructor
-    private FlexibleAppVersionAutomaticScalingDiskUtilization(
-        @CustomType.Parameter("targetReadBytesPerSecond") @Nullable Integer targetReadBytesPerSecond,
-        @CustomType.Parameter("targetReadOpsPerSecond") @Nullable Integer targetReadOpsPerSecond,
-        @CustomType.Parameter("targetWriteBytesPerSecond") @Nullable Integer targetWriteBytesPerSecond,
-        @CustomType.Parameter("targetWriteOpsPerSecond") @Nullable Integer targetWriteOpsPerSecond) {
-        this.targetReadBytesPerSecond = targetReadBytesPerSecond;
-        this.targetReadOpsPerSecond = targetReadOpsPerSecond;
-        this.targetWriteBytesPerSecond = targetWriteBytesPerSecond;
-        this.targetWriteOpsPerSecond = targetWriteOpsPerSecond;
-    }
-
+    private FlexibleAppVersionAutomaticScalingDiskUtilization() {}
     /**
      * @return Target bytes read per second.
      * 
@@ -80,17 +69,13 @@ public final class FlexibleAppVersionAutomaticScalingDiskUtilization {
     public static Builder builder(FlexibleAppVersionAutomaticScalingDiskUtilization defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer targetReadBytesPerSecond;
         private @Nullable Integer targetReadOpsPerSecond;
         private @Nullable Integer targetWriteBytesPerSecond;
         private @Nullable Integer targetWriteOpsPerSecond;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FlexibleAppVersionAutomaticScalingDiskUtilization defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.targetReadBytesPerSecond = defaults.targetReadBytesPerSecond;
@@ -99,23 +84,33 @@ public final class FlexibleAppVersionAutomaticScalingDiskUtilization {
     	      this.targetWriteOpsPerSecond = defaults.targetWriteOpsPerSecond;
         }
 
+        @CustomType.Setter
         public Builder targetReadBytesPerSecond(@Nullable Integer targetReadBytesPerSecond) {
             this.targetReadBytesPerSecond = targetReadBytesPerSecond;
             return this;
         }
+        @CustomType.Setter
         public Builder targetReadOpsPerSecond(@Nullable Integer targetReadOpsPerSecond) {
             this.targetReadOpsPerSecond = targetReadOpsPerSecond;
             return this;
         }
+        @CustomType.Setter
         public Builder targetWriteBytesPerSecond(@Nullable Integer targetWriteBytesPerSecond) {
             this.targetWriteBytesPerSecond = targetWriteBytesPerSecond;
             return this;
         }
+        @CustomType.Setter
         public Builder targetWriteOpsPerSecond(@Nullable Integer targetWriteOpsPerSecond) {
             this.targetWriteOpsPerSecond = targetWriteOpsPerSecond;
             return this;
-        }        public FlexibleAppVersionAutomaticScalingDiskUtilization build() {
-            return new FlexibleAppVersionAutomaticScalingDiskUtilization(targetReadBytesPerSecond, targetReadOpsPerSecond, targetWriteBytesPerSecond, targetWriteOpsPerSecond);
+        }
+        public FlexibleAppVersionAutomaticScalingDiskUtilization build() {
+            final var o = new FlexibleAppVersionAutomaticScalingDiskUtilization();
+            o.targetReadBytesPerSecond = targetReadBytesPerSecond;
+            o.targetReadOpsPerSecond = targetReadOpsPerSecond;
+            o.targetWriteBytesPerSecond = targetWriteBytesPerSecond;
+            o.targetWriteOpsPerSecond = targetWriteOpsPerSecond;
+            return o;
         }
     }
 }

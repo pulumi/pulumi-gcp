@@ -15,28 +15,19 @@ public final class TriggerDestinationCloudRunService {
      * @return Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: &#34;/route&#34;, &#34;route&#34;, &#34;route/subroute&#34;.
      * 
      */
-    private final @Nullable String path;
+    private @Nullable String path;
     /**
      * @return Required. The region the Cloud Run service is deployed in.
      * 
      */
-    private final @Nullable String region;
+    private @Nullable String region;
     /**
      * @return Required. Name of the GKE service.
      * 
      */
-    private final String service;
+    private String service;
 
-    @CustomType.Constructor
-    private TriggerDestinationCloudRunService(
-        @CustomType.Parameter("path") @Nullable String path,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("service") String service) {
-        this.path = path;
-        this.region = region;
-        this.service = service;
-    }
-
+    private TriggerDestinationCloudRunService() {}
     /**
      * @return Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: &#34;/route&#34;, &#34;route&#34;, &#34;route/subroute&#34;.
      * 
@@ -66,16 +57,12 @@ public final class TriggerDestinationCloudRunService {
     public static Builder builder(TriggerDestinationCloudRunService defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String path;
         private @Nullable String region;
         private String service;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerDestinationCloudRunService defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.path = defaults.path;
@@ -83,19 +70,27 @@ public final class TriggerDestinationCloudRunService {
     	      this.service = defaults.service;
         }
 
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder service(String service) {
             this.service = Objects.requireNonNull(service);
             return this;
-        }        public TriggerDestinationCloudRunService build() {
-            return new TriggerDestinationCloudRunService(path, region, service);
+        }
+        public TriggerDestinationCloudRunService build() {
+            final var o = new TriggerDestinationCloudRunService();
+            o.path = path;
+            o.region = region;
+            o.service = service;
+            return o;
         }
     }
 }

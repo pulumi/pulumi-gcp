@@ -90,6 +90,7 @@ namespace Pulumi.Gcp.AppEngine
     ///         VersionId = "v2",
     ///         Service = "myapp",
     ///         Runtime = "nodejs10",
+    ///         AppEngineApis = true,
     ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
     ///         {
     ///             Shell = "node ./app.js",
@@ -139,6 +140,12 @@ namespace Pulumi.Gcp.AppEngine
     [GcpResourceType("gcp:appengine/standardAppVersion:StandardAppVersion")]
     public partial class StandardAppVersion : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Allows App Engine second generation runtimes to access the legacy bundled services.
+        /// </summary>
+        [Output("appEngineApis")]
+        public Output<bool?> AppEngineApis { get; private set; } = null!;
+
         /// <summary>
         /// Automatic scaling is based on request rate, response latencies, and other application metrics.
         /// Structure is documented below.
@@ -322,6 +329,12 @@ namespace Pulumi.Gcp.AppEngine
     public sealed class StandardAppVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Allows App Engine second generation runtimes to access the legacy bundled services.
+        /// </summary>
+        [Input("appEngineApis")]
+        public Input<bool>? AppEngineApis { get; set; }
+
+        /// <summary>
         /// Automatic scaling is based on request rate, response latencies, and other application metrics.
         /// Structure is documented below.
         /// </summary>
@@ -483,6 +496,12 @@ namespace Pulumi.Gcp.AppEngine
 
     public sealed class StandardAppVersionState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Allows App Engine second generation runtimes to access the legacy bundled services.
+        /// </summary>
+        [Input("appEngineApis")]
+        public Input<bool>? AppEngineApis { get; set; }
+
         /// <summary>
         /// Automatic scaling is based on request rate, response latencies, and other application metrics.
         /// Structure is documented below.

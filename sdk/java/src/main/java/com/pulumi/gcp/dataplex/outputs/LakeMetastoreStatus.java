@@ -11,23 +11,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LakeMetastoreStatus {
-    private final @Nullable String endpoint;
-    private final @Nullable String message;
-    private final @Nullable String state;
-    private final @Nullable String updateTime;
+    private @Nullable String endpoint;
+    private @Nullable String message;
+    private @Nullable String state;
+    private @Nullable String updateTime;
 
-    @CustomType.Constructor
-    private LakeMetastoreStatus(
-        @CustomType.Parameter("endpoint") @Nullable String endpoint,
-        @CustomType.Parameter("message") @Nullable String message,
-        @CustomType.Parameter("state") @Nullable String state,
-        @CustomType.Parameter("updateTime") @Nullable String updateTime) {
-        this.endpoint = endpoint;
-        this.message = message;
-        this.state = state;
-        this.updateTime = updateTime;
-    }
-
+    private LakeMetastoreStatus() {}
     public Optional<String> endpoint() {
         return Optional.ofNullable(this.endpoint);
     }
@@ -48,17 +37,13 @@ public final class LakeMetastoreStatus {
     public static Builder builder(LakeMetastoreStatus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String endpoint;
         private @Nullable String message;
         private @Nullable String state;
         private @Nullable String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(LakeMetastoreStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endpoint = defaults.endpoint;
@@ -67,23 +52,33 @@ public final class LakeMetastoreStatus {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder endpoint(@Nullable String endpoint) {
             this.endpoint = endpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder message(@Nullable String message) {
             this.message = message;
             return this;
         }
+        @CustomType.Setter
         public Builder state(@Nullable String state) {
             this.state = state;
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
             this.updateTime = updateTime;
             return this;
-        }        public LakeMetastoreStatus build() {
-            return new LakeMetastoreStatus(endpoint, message, state, updateTime);
+        }
+        public LakeMetastoreStatus build() {
+            final var o = new LakeMetastoreStatus();
+            o.endpoint = endpoint;
+            o.message = message;
+            o.state = state;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

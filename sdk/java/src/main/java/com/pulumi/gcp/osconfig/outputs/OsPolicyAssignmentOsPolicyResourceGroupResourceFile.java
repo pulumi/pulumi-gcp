@@ -16,43 +16,30 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
      * @return A a file with this content. The size of the content is limited to 1024 characters.
      * 
      */
-    private final @Nullable String content;
+    private @Nullable String content;
     /**
      * @return A remote or local source.
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile file;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile file;
     /**
      * @return Required. The absolute path of the file within the VM.
      * 
      */
-    private final String path;
+    private String path;
     /**
      * @return -
      * Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
      * 
      */
-    private final @Nullable String permissions;
+    private @Nullable String permissions;
     /**
      * @return Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
      * 
      */
-    private final String state;
+    private String state;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentOsPolicyResourceGroupResourceFile(
-        @CustomType.Parameter("content") @Nullable String content,
-        @CustomType.Parameter("file") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile file,
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("permissions") @Nullable String permissions,
-        @CustomType.Parameter("state") String state) {
-        this.content = content;
-        this.file = file;
-        this.path = path;
-        this.permissions = permissions;
-        this.state = state;
-    }
-
+    private OsPolicyAssignmentOsPolicyResourceGroupResourceFile() {}
     /**
      * @return A a file with this content. The size of the content is limited to 1024 characters.
      * 
@@ -97,18 +84,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
     public static Builder builder(OsPolicyAssignmentOsPolicyResourceGroupResourceFile defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String content;
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile file;
         private String path;
         private @Nullable String permissions;
         private String state;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentOsPolicyResourceGroupResourceFile defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
@@ -118,27 +101,39 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
         public Builder content(@Nullable String content) {
             this.content = content;
             return this;
         }
+        @CustomType.Setter
         public Builder file(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile file) {
             this.file = file;
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder permissions(@Nullable String permissions) {
             this.permissions = permissions;
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
-        }        public OsPolicyAssignmentOsPolicyResourceGroupResourceFile build() {
-            return new OsPolicyAssignmentOsPolicyResourceGroupResourceFile(content, file, path, permissions, state);
+        }
+        public OsPolicyAssignmentOsPolicyResourceGroupResourceFile build() {
+            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceFile();
+            o.content = content;
+            o.file = file;
+            o.path = path;
+            o.permissions = permissions;
+            o.state = state;
+            return o;
         }
     }
 }

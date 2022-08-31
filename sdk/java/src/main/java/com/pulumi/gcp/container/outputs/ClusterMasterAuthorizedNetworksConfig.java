@@ -16,13 +16,9 @@ public final class ClusterMasterAuthorizedNetworksConfig {
      * Kubernetes cluster master through HTTPS.
      * 
      */
-    private final @Nullable List<ClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
+    private @Nullable List<ClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
 
-    @CustomType.Constructor
-    private ClusterMasterAuthorizedNetworksConfig(@CustomType.Parameter("cidrBlocks") @Nullable List<ClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks) {
-        this.cidrBlocks = cidrBlocks;
-    }
-
+    private ClusterMasterAuthorizedNetworksConfig() {}
     /**
      * @return External networks that can access the
      * Kubernetes cluster master through HTTPS.
@@ -39,27 +35,27 @@ public final class ClusterMasterAuthorizedNetworksConfig {
     public static Builder builder(ClusterMasterAuthorizedNetworksConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterMasterAuthorizedNetworksConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlocks = defaults.cidrBlocks;
         }
 
+        @CustomType.Setter
         public Builder cidrBlocks(@Nullable List<ClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks) {
             this.cidrBlocks = cidrBlocks;
             return this;
         }
         public Builder cidrBlocks(ClusterMasterAuthorizedNetworksConfigCidrBlock... cidrBlocks) {
             return cidrBlocks(List.of(cidrBlocks));
-        }        public ClusterMasterAuthorizedNetworksConfig build() {
-            return new ClusterMasterAuthorizedNetworksConfig(cidrBlocks);
+        }
+        public ClusterMasterAuthorizedNetworksConfig build() {
+            final var o = new ClusterMasterAuthorizedNetworksConfig();
+            o.cidrBlocks = cidrBlocks;
+            return o;
         }
     }
 }

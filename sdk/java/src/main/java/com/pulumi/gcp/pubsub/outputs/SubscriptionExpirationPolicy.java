@@ -17,13 +17,9 @@ public final class SubscriptionExpirationPolicy {
      * Example - &#34;3.5s&#34;.
      * 
      */
-    private final String ttl;
+    private String ttl;
 
-    @CustomType.Constructor
-    private SubscriptionExpirationPolicy(@CustomType.Parameter("ttl") String ttl) {
-        this.ttl = ttl;
-    }
-
+    private SubscriptionExpirationPolicy() {}
     /**
      * @return Specifies the &#34;time-to-live&#34; duration for an associated resource. The
      * resource expires if it is not active for a period of ttl.
@@ -43,24 +39,24 @@ public final class SubscriptionExpirationPolicy {
     public static Builder builder(SubscriptionExpirationPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String ttl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SubscriptionExpirationPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ttl = defaults.ttl;
         }
 
+        @CustomType.Setter
         public Builder ttl(String ttl) {
             this.ttl = Objects.requireNonNull(ttl);
             return this;
-        }        public SubscriptionExpirationPolicy build() {
-            return new SubscriptionExpirationPolicy(ttl);
+        }
+        public SubscriptionExpirationPolicy build() {
+            final var o = new SubscriptionExpirationPolicy();
+            o.ttl = ttl;
+            return o;
         }
     }
 }

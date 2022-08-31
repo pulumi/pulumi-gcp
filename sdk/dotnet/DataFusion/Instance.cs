@@ -30,6 +30,10 @@ namespace Pulumi.Gcp.DataFusion
     /// {
     ///     var basicInstance = new Gcp.DataFusion.Instance("basicInstance", new()
     ///     {
+    ///         Options = 
+    ///         {
+    ///             { "prober_test_run", "true" },
+    ///         },
     ///         Region = "us-central1",
     ///         Type = "BASIC",
     ///     });
@@ -66,6 +70,10 @@ namespace Pulumi.Gcp.DataFusion
     ///         },
     ///         Version = "6.3.0",
     ///         DataprocServiceAccount = @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult).Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
+    ///         Options = 
+    ///         {
+    ///             { "prober_test_run", "true" },
+    ///         },
     ///     });
     /// 
     /// });

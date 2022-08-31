@@ -18,21 +18,14 @@ public final class RegionPerInstanceConfigPreservedState {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<RegionPerInstanceConfigPreservedStateDisk> disks;
+    private @Nullable List<RegionPerInstanceConfigPreservedStateDisk> disks;
     /**
      * @return Preserved metadata defined for this instance. This is a list of key-&gt;value pairs.
      * 
      */
-    private final @Nullable Map<String,String> metadata;
+    private @Nullable Map<String,String> metadata;
 
-    @CustomType.Constructor
-    private RegionPerInstanceConfigPreservedState(
-        @CustomType.Parameter("disks") @Nullable List<RegionPerInstanceConfigPreservedStateDisk> disks,
-        @CustomType.Parameter("metadata") @Nullable Map<String,String> metadata) {
-        this.disks = disks;
-        this.metadata = metadata;
-    }
-
+    private RegionPerInstanceConfigPreservedState() {}
     /**
      * @return Stateful disks for the instance.
      * Structure is documented below.
@@ -56,21 +49,18 @@ public final class RegionPerInstanceConfigPreservedState {
     public static Builder builder(RegionPerInstanceConfigPreservedState defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<RegionPerInstanceConfigPreservedStateDisk> disks;
         private @Nullable Map<String,String> metadata;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionPerInstanceConfigPreservedState defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disks = defaults.disks;
     	      this.metadata = defaults.metadata;
         }
 
+        @CustomType.Setter
         public Builder disks(@Nullable List<RegionPerInstanceConfigPreservedStateDisk> disks) {
             this.disks = disks;
             return this;
@@ -78,11 +68,16 @@ public final class RegionPerInstanceConfigPreservedState {
         public Builder disks(RegionPerInstanceConfigPreservedStateDisk... disks) {
             return disks(List.of(disks));
         }
+        @CustomType.Setter
         public Builder metadata(@Nullable Map<String,String> metadata) {
             this.metadata = metadata;
             return this;
-        }        public RegionPerInstanceConfigPreservedState build() {
-            return new RegionPerInstanceConfigPreservedState(disks, metadata);
+        }
+        public RegionPerInstanceConfigPreservedState build() {
+            final var o = new RegionPerInstanceConfigPreservedState();
+            o.disks = disks;
+            o.metadata = metadata;
+            return o;
         }
     }
 }

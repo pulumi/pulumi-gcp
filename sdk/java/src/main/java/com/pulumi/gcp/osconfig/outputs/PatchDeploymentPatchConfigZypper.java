@@ -17,50 +17,35 @@ public final class PatchDeploymentPatchConfigZypper {
      * @return Install only patches with these categories. Common categories include security, recommended, and feature.
      * 
      */
-    private final @Nullable List<String> categories;
+    private @Nullable List<String> categories;
     /**
      * @return List of KBs to exclude from update.
      * 
      */
-    private final @Nullable List<String> excludes;
+    private @Nullable List<String> excludes;
     /**
      * @return An exclusive list of kbs to be updated. These are the only patches that will be updated.
      * This field must not be used with other patch configurations.
      * 
      */
-    private final @Nullable List<String> exclusivePatches;
+    private @Nullable List<String> exclusivePatches;
     /**
      * @return Install only patches with these severities. Common severities include critical, important, moderate, and low.
      * 
      */
-    private final @Nullable List<String> severities;
+    private @Nullable List<String> severities;
     /**
      * @return Adds the --with-optional flag to zypper patch.
      * 
      */
-    private final @Nullable Boolean withOptional;
+    private @Nullable Boolean withOptional;
     /**
      * @return Adds the --with-update flag, to zypper patch.
      * 
      */
-    private final @Nullable Boolean withUpdate;
+    private @Nullable Boolean withUpdate;
 
-    @CustomType.Constructor
-    private PatchDeploymentPatchConfigZypper(
-        @CustomType.Parameter("categories") @Nullable List<String> categories,
-        @CustomType.Parameter("excludes") @Nullable List<String> excludes,
-        @CustomType.Parameter("exclusivePatches") @Nullable List<String> exclusivePatches,
-        @CustomType.Parameter("severities") @Nullable List<String> severities,
-        @CustomType.Parameter("withOptional") @Nullable Boolean withOptional,
-        @CustomType.Parameter("withUpdate") @Nullable Boolean withUpdate) {
-        this.categories = categories;
-        this.excludes = excludes;
-        this.exclusivePatches = exclusivePatches;
-        this.severities = severities;
-        this.withOptional = withOptional;
-        this.withUpdate = withUpdate;
-    }
-
+    private PatchDeploymentPatchConfigZypper() {}
     /**
      * @return Install only patches with these categories. Common categories include security, recommended, and feature.
      * 
@@ -112,7 +97,7 @@ public final class PatchDeploymentPatchConfigZypper {
     public static Builder builder(PatchDeploymentPatchConfigZypper defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> categories;
         private @Nullable List<String> excludes;
@@ -120,11 +105,7 @@ public final class PatchDeploymentPatchConfigZypper {
         private @Nullable List<String> severities;
         private @Nullable Boolean withOptional;
         private @Nullable Boolean withUpdate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PatchDeploymentPatchConfigZypper defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.categories = defaults.categories;
@@ -135,6 +116,7 @@ public final class PatchDeploymentPatchConfigZypper {
     	      this.withUpdate = defaults.withUpdate;
         }
 
+        @CustomType.Setter
         public Builder categories(@Nullable List<String> categories) {
             this.categories = categories;
             return this;
@@ -142,6 +124,7 @@ public final class PatchDeploymentPatchConfigZypper {
         public Builder categories(String... categories) {
             return categories(List.of(categories));
         }
+        @CustomType.Setter
         public Builder excludes(@Nullable List<String> excludes) {
             this.excludes = excludes;
             return this;
@@ -149,6 +132,7 @@ public final class PatchDeploymentPatchConfigZypper {
         public Builder excludes(String... excludes) {
             return excludes(List.of(excludes));
         }
+        @CustomType.Setter
         public Builder exclusivePatches(@Nullable List<String> exclusivePatches) {
             this.exclusivePatches = exclusivePatches;
             return this;
@@ -156,6 +140,7 @@ public final class PatchDeploymentPatchConfigZypper {
         public Builder exclusivePatches(String... exclusivePatches) {
             return exclusivePatches(List.of(exclusivePatches));
         }
+        @CustomType.Setter
         public Builder severities(@Nullable List<String> severities) {
             this.severities = severities;
             return this;
@@ -163,15 +148,25 @@ public final class PatchDeploymentPatchConfigZypper {
         public Builder severities(String... severities) {
             return severities(List.of(severities));
         }
+        @CustomType.Setter
         public Builder withOptional(@Nullable Boolean withOptional) {
             this.withOptional = withOptional;
             return this;
         }
+        @CustomType.Setter
         public Builder withUpdate(@Nullable Boolean withUpdate) {
             this.withUpdate = withUpdate;
             return this;
-        }        public PatchDeploymentPatchConfigZypper build() {
-            return new PatchDeploymentPatchConfigZypper(categories, excludes, exclusivePatches, severities, withOptional, withUpdate);
+        }
+        public PatchDeploymentPatchConfigZypper build() {
+            final var o = new PatchDeploymentPatchConfigZypper();
+            o.categories = categories;
+            o.excludes = excludes;
+            o.exclusivePatches = exclusivePatches;
+            o.severities = severities;
+            o.withOptional = withOptional;
+            o.withUpdate = withUpdate;
+            return o;
         }
     }
 }

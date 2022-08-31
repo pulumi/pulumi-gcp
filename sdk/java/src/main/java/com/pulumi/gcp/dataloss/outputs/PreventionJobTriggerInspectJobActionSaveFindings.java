@@ -14,13 +14,9 @@ public final class PreventionJobTriggerInspectJobActionSaveFindings {
      * Structure is documented below.
      * 
      */
-    private final PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig outputConfig;
+    private PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig outputConfig;
 
-    @CustomType.Constructor
-    private PreventionJobTriggerInspectJobActionSaveFindings(@CustomType.Parameter("outputConfig") PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig outputConfig) {
-        this.outputConfig = outputConfig;
-    }
-
+    private PreventionJobTriggerInspectJobActionSaveFindings() {}
     /**
      * @return Information on where to store output
      * Structure is documented below.
@@ -37,24 +33,24 @@ public final class PreventionJobTriggerInspectJobActionSaveFindings {
     public static Builder builder(PreventionJobTriggerInspectJobActionSaveFindings defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig outputConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionJobTriggerInspectJobActionSaveFindings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.outputConfig = defaults.outputConfig;
         }
 
+        @CustomType.Setter
         public Builder outputConfig(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig outputConfig) {
             this.outputConfig = Objects.requireNonNull(outputConfig);
             return this;
-        }        public PreventionJobTriggerInspectJobActionSaveFindings build() {
-            return new PreventionJobTriggerInspectJobActionSaveFindings(outputConfig);
+        }
+        public PreventionJobTriggerInspectJobActionSaveFindings build() {
+            final var o = new PreventionJobTriggerInspectJobActionSaveFindings();
+            o.outputConfig = outputConfig;
+            return o;
         }
     }
 }

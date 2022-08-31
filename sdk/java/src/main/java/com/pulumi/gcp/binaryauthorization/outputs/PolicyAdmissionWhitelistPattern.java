@@ -16,13 +16,9 @@ public final class PolicyAdmissionWhitelistPattern {
      * part.
      * 
      */
-    private final String namePattern;
+    private String namePattern;
 
-    @CustomType.Constructor
-    private PolicyAdmissionWhitelistPattern(@CustomType.Parameter("namePattern") String namePattern) {
-        this.namePattern = namePattern;
-    }
-
+    private PolicyAdmissionWhitelistPattern() {}
     /**
      * @return An image name pattern to whitelist, in the form
      * `registry/path/to/image`. This supports a trailing * as a
@@ -41,24 +37,24 @@ public final class PolicyAdmissionWhitelistPattern {
     public static Builder builder(PolicyAdmissionWhitelistPattern defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String namePattern;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PolicyAdmissionWhitelistPattern defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.namePattern = defaults.namePattern;
         }
 
+        @CustomType.Setter
         public Builder namePattern(String namePattern) {
             this.namePattern = Objects.requireNonNull(namePattern);
             return this;
-        }        public PolicyAdmissionWhitelistPattern build() {
-            return new PolicyAdmissionWhitelistPattern(namePattern);
+        }
+        public PolicyAdmissionWhitelistPattern build() {
+            final var o = new PolicyAdmissionWhitelistPattern();
+            o.namePattern = namePattern;
+            return o;
         }
     }
 }

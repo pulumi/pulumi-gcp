@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromMachineImageReservationAffinity {
-    private final @Nullable InstanceFromMachineImageReservationAffinitySpecificReservation specificReservation;
-    private final String type;
+    private @Nullable InstanceFromMachineImageReservationAffinitySpecificReservation specificReservation;
+    private String type;
 
-    @CustomType.Constructor
-    private InstanceFromMachineImageReservationAffinity(
-        @CustomType.Parameter("specificReservation") @Nullable InstanceFromMachineImageReservationAffinitySpecificReservation specificReservation,
-        @CustomType.Parameter("type") String type) {
-        this.specificReservation = specificReservation;
-        this.type = type;
-    }
-
+    private InstanceFromMachineImageReservationAffinity() {}
     public Optional<InstanceFromMachineImageReservationAffinitySpecificReservation> specificReservation() {
         return Optional.ofNullable(this.specificReservation);
     }
@@ -37,30 +30,32 @@ public final class InstanceFromMachineImageReservationAffinity {
     public static Builder builder(InstanceFromMachineImageReservationAffinity defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable InstanceFromMachineImageReservationAffinitySpecificReservation specificReservation;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceFromMachineImageReservationAffinity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.specificReservation = defaults.specificReservation;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder specificReservation(@Nullable InstanceFromMachineImageReservationAffinitySpecificReservation specificReservation) {
             this.specificReservation = specificReservation;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public InstanceFromMachineImageReservationAffinity build() {
-            return new InstanceFromMachineImageReservationAffinity(specificReservation, type);
+        }
+        public InstanceFromMachineImageReservationAffinity build() {
+            final var o = new InstanceFromMachineImageReservationAffinity();
+            o.specificReservation = specificReservation;
+            o.type = type;
+            return o;
         }
     }
 }

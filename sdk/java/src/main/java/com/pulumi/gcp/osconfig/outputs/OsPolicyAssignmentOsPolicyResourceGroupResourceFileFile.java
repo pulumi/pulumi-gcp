@@ -18,35 +18,24 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
      * @return Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
      * 
      */
-    private final @Nullable Boolean allowInsecure;
+    private @Nullable Boolean allowInsecure;
     /**
      * @return A Cloud Storage object.
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs gcs;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs gcs;
     /**
      * @return A local path within the VM to use.
      * 
      */
-    private final @Nullable String localPath;
+    private @Nullable String localPath;
     /**
      * @return A generic remote file.
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote remote;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote remote;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile(
-        @CustomType.Parameter("allowInsecure") @Nullable Boolean allowInsecure,
-        @CustomType.Parameter("gcs") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs gcs,
-        @CustomType.Parameter("localPath") @Nullable String localPath,
-        @CustomType.Parameter("remote") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote remote) {
-        this.allowInsecure = allowInsecure;
-        this.gcs = gcs;
-        this.localPath = localPath;
-        this.remote = remote;
-    }
-
+    private OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile() {}
     /**
      * @return Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
      * 
@@ -83,17 +72,13 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
     public static Builder builder(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowInsecure;
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs gcs;
         private @Nullable String localPath;
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote remote;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowInsecure = defaults.allowInsecure;
@@ -102,23 +87,33 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
     	      this.remote = defaults.remote;
         }
 
+        @CustomType.Setter
         public Builder allowInsecure(@Nullable Boolean allowInsecure) {
             this.allowInsecure = allowInsecure;
             return this;
         }
+        @CustomType.Setter
         public Builder gcs(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs gcs) {
             this.gcs = gcs;
             return this;
         }
+        @CustomType.Setter
         public Builder localPath(@Nullable String localPath) {
             this.localPath = localPath;
             return this;
         }
+        @CustomType.Setter
         public Builder remote(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote remote) {
             this.remote = remote;
             return this;
-        }        public OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile build() {
-            return new OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile(allowInsecure, gcs, localPath, remote);
+        }
+        public OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile build() {
+            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile();
+            o.allowInsecure = allowInsecure;
+            o.gcs = gcs;
+            o.localPath = localPath;
+            o.remote = remote;
+            return o;
         }
     }
 }

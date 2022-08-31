@@ -15,13 +15,9 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
      * Structure is documented below.
      * 
      */
-    private final List<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType> infoTypes;
+    private List<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType> infoTypes;
 
-    @CustomType.Constructor
-    private PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes(@CustomType.Parameter("infoTypes") List<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType> infoTypes) {
-        this.infoTypes = infoTypes;
-    }
-
+    private PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes() {}
     /**
      * @return If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
      * Structure is documented below.
@@ -38,27 +34,27 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
     public static Builder builder(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType> infoTypes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.infoTypes = defaults.infoTypes;
         }
 
+        @CustomType.Setter
         public Builder infoTypes(List<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType> infoTypes) {
             this.infoTypes = Objects.requireNonNull(infoTypes);
             return this;
         }
         public Builder infoTypes(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType... infoTypes) {
             return infoTypes(List.of(infoTypes));
-        }        public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes build() {
-            return new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes(infoTypes);
+        }
+        public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes build() {
+            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes();
+            o.infoTypes = infoTypes;
+            return o;
         }
     }
 }

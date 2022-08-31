@@ -17,7 +17,7 @@ public final class GetIAMPolicyBinding {
      * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
      * 
      */
-    private final @Nullable GetIAMPolicyBindingCondition condition;
+    private @Nullable GetIAMPolicyBindingCondition condition;
     /**
      * @return An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      * Each entry can have one of the following values:
@@ -29,25 +29,16 @@ public final class GetIAMPolicyBinding {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    private final List<String> members;
+    private List<String> members;
     /**
      * @return The role/permission that will be granted to the members.
      * See the [IAM Roles](https://cloud.google.com/compute/docs/access/iam) documentation for a complete list of roles.
      * Note that custom roles must be of the format `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    private final String role;
+    private String role;
 
-    @CustomType.Constructor
-    private GetIAMPolicyBinding(
-        @CustomType.Parameter("condition") @Nullable GetIAMPolicyBindingCondition condition,
-        @CustomType.Parameter("members") List<String> members,
-        @CustomType.Parameter("role") String role) {
-        this.condition = condition;
-        this.members = members;
-        this.role = role;
-    }
-
+    private GetIAMPolicyBinding() {}
     /**
      * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
      * 
@@ -86,16 +77,12 @@ public final class GetIAMPolicyBinding {
     public static Builder builder(GetIAMPolicyBinding defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable GetIAMPolicyBindingCondition condition;
         private List<String> members;
         private String role;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetIAMPolicyBinding defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.condition = defaults.condition;
@@ -103,10 +90,12 @@ public final class GetIAMPolicyBinding {
     	      this.role = defaults.role;
         }
 
+        @CustomType.Setter
         public Builder condition(@Nullable GetIAMPolicyBindingCondition condition) {
             this.condition = condition;
             return this;
         }
+        @CustomType.Setter
         public Builder members(List<String> members) {
             this.members = Objects.requireNonNull(members);
             return this;
@@ -114,11 +103,17 @@ public final class GetIAMPolicyBinding {
         public Builder members(String... members) {
             return members(List.of(members));
         }
+        @CustomType.Setter
         public Builder role(String role) {
             this.role = Objects.requireNonNull(role);
             return this;
-        }        public GetIAMPolicyBinding build() {
-            return new GetIAMPolicyBinding(condition, members, role);
+        }
+        public GetIAMPolicyBinding build() {
+            final var o = new GetIAMPolicyBinding();
+            o.condition = condition;
+            o.members = members;
+            o.role = role;
+            return o;
         }
     }
 }

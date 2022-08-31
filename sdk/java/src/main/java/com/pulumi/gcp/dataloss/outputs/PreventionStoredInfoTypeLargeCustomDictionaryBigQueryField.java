@@ -15,22 +15,15 @@ public final class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField {
      * Structure is documented below.
      * 
      */
-    private final PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField field;
+    private PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField field;
     /**
      * @return Field in a BigQuery table where each cell represents a dictionary phrase.
      * Structure is documented below.
      * 
      */
-    private final PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable table;
+    private PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable table;
 
-    @CustomType.Constructor
-    private PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField(
-        @CustomType.Parameter("field") PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField field,
-        @CustomType.Parameter("table") PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable table) {
-        this.field = field;
-        this.table = table;
-    }
-
+    private PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField() {}
     /**
      * @return Designated field in the BigQuery table.
      * Structure is documented below.
@@ -55,30 +48,32 @@ public final class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField {
     public static Builder builder(PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField field;
         private PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable table;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.field = defaults.field;
     	      this.table = defaults.table;
         }
 
+        @CustomType.Setter
         public Builder field(PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField field) {
             this.field = Objects.requireNonNull(field);
             return this;
         }
+        @CustomType.Setter
         public Builder table(PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable table) {
             this.table = Objects.requireNonNull(table);
             return this;
-        }        public PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField build() {
-            return new PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField(field, table);
+        }
+        public PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField build() {
+            final var o = new PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField();
+            o.field = field;
+            o.table = table;
+            return o;
         }
     }
 }

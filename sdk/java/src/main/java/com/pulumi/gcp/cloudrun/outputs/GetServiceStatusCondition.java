@@ -9,23 +9,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceStatusCondition {
-    private final String message;
-    private final String reason;
-    private final String status;
-    private final String type;
+    private String message;
+    private String reason;
+    private String status;
+    private String type;
 
-    @CustomType.Constructor
-    private GetServiceStatusCondition(
-        @CustomType.Parameter("message") String message,
-        @CustomType.Parameter("reason") String reason,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("type") String type) {
-        this.message = message;
-        this.reason = reason;
-        this.status = status;
-        this.type = type;
-    }
-
+    private GetServiceStatusCondition() {}
     public String message() {
         return this.message;
     }
@@ -46,17 +35,13 @@ public final class GetServiceStatusCondition {
     public static Builder builder(GetServiceStatusCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String message;
         private String reason;
         private String status;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceStatusCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.message = defaults.message;
@@ -65,23 +50,33 @@ public final class GetServiceStatusCondition {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder message(String message) {
             this.message = Objects.requireNonNull(message);
             return this;
         }
+        @CustomType.Setter
         public Builder reason(String reason) {
             this.reason = Objects.requireNonNull(reason);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetServiceStatusCondition build() {
-            return new GetServiceStatusCondition(message, reason, status, type);
+        }
+        public GetServiceStatusCondition build() {
+            final var o = new GetServiceStatusCondition();
+            o.message = message;
+            o.reason = reason;
+            o.status = status;
+            o.type = type;
+            return o;
         }
     }
 }

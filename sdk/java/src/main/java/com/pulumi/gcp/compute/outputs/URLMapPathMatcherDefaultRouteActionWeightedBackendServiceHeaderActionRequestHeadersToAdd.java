@@ -16,29 +16,20 @@ public final class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHead
      * @return The name of the header to add.
      * 
      */
-    private final @Nullable String headerName;
+    private @Nullable String headerName;
     /**
      * @return The value of the header to add.
      * 
      */
-    private final @Nullable String headerValue;
+    private @Nullable String headerValue;
     /**
      * @return If false, headerValue is appended to any values that already exist for the header.
      * If true, headerValue is set for the header, discarding any values that were set for that header.
      * 
      */
-    private final @Nullable Boolean replace;
+    private @Nullable Boolean replace;
 
-    @CustomType.Constructor
-    private URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd(
-        @CustomType.Parameter("headerName") @Nullable String headerName,
-        @CustomType.Parameter("headerValue") @Nullable String headerValue,
-        @CustomType.Parameter("replace") @Nullable Boolean replace) {
-        this.headerName = headerName;
-        this.headerValue = headerValue;
-        this.replace = replace;
-    }
-
+    private URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd() {}
     /**
      * @return The name of the header to add.
      * 
@@ -69,16 +60,12 @@ public final class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHead
     public static Builder builder(URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String headerName;
         private @Nullable String headerValue;
         private @Nullable Boolean replace;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.headerName = defaults.headerName;
@@ -86,19 +73,27 @@ public final class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHead
     	      this.replace = defaults.replace;
         }
 
+        @CustomType.Setter
         public Builder headerName(@Nullable String headerName) {
             this.headerName = headerName;
             return this;
         }
+        @CustomType.Setter
         public Builder headerValue(@Nullable String headerValue) {
             this.headerValue = headerValue;
             return this;
         }
+        @CustomType.Setter
         public Builder replace(@Nullable Boolean replace) {
             this.replace = replace;
             return this;
-        }        public URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd build() {
-            return new URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd(headerName, headerValue, replace);
+        }
+        public URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd build() {
+            final var o = new URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd();
+            o.headerName = headerName;
+            o.headerValue = headerValue;
+            o.replace = replace;
+            return o;
         }
     }
 }

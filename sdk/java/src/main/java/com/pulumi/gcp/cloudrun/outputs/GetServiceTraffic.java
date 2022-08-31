@@ -11,26 +11,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTraffic {
-    private final Boolean latestRevision;
-    private final Integer percent;
-    private final String revisionName;
-    private final String tag;
-    private final String url;
+    private Boolean latestRevision;
+    private Integer percent;
+    private String revisionName;
+    private String tag;
+    private String url;
 
-    @CustomType.Constructor
-    private GetServiceTraffic(
-        @CustomType.Parameter("latestRevision") Boolean latestRevision,
-        @CustomType.Parameter("percent") Integer percent,
-        @CustomType.Parameter("revisionName") String revisionName,
-        @CustomType.Parameter("tag") String tag,
-        @CustomType.Parameter("url") String url) {
-        this.latestRevision = latestRevision;
-        this.percent = percent;
-        this.revisionName = revisionName;
-        this.tag = tag;
-        this.url = url;
-    }
-
+    private GetServiceTraffic() {}
     public Boolean latestRevision() {
         return this.latestRevision;
     }
@@ -54,18 +41,14 @@ public final class GetServiceTraffic {
     public static Builder builder(GetServiceTraffic defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean latestRevision;
         private Integer percent;
         private String revisionName;
         private String tag;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceTraffic defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.latestRevision = defaults.latestRevision;
@@ -75,27 +58,39 @@ public final class GetServiceTraffic {
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder latestRevision(Boolean latestRevision) {
             this.latestRevision = Objects.requireNonNull(latestRevision);
             return this;
         }
+        @CustomType.Setter
         public Builder percent(Integer percent) {
             this.percent = Objects.requireNonNull(percent);
             return this;
         }
+        @CustomType.Setter
         public Builder revisionName(String revisionName) {
             this.revisionName = Objects.requireNonNull(revisionName);
             return this;
         }
+        @CustomType.Setter
         public Builder tag(String tag) {
             this.tag = Objects.requireNonNull(tag);
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public GetServiceTraffic build() {
-            return new GetServiceTraffic(latestRevision, percent, revisionName, tag, url);
+        }
+        public GetServiceTraffic build() {
+            final var o = new GetServiceTraffic();
+            o.latestRevision = latestRevision;
+            o.percent = percent;
+            o.revisionName = revisionName;
+            o.tag = tag;
+            o.url = url;
+            return o;
         }
     }
 }

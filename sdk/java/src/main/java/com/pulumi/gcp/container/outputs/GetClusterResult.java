@@ -24,6 +24,7 @@ import com.pulumi.gcp.container.outputs.GetClusterMonitoringConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNetworkPolicy;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePool;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolAutoConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNotificationConfig;
 import com.pulumi.gcp.container.outputs.GetClusterPodSecurityPolicyConfig;
 import com.pulumi.gcp.container.outputs.GetClusterPrivateClusterConfig;
@@ -43,204 +44,76 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterResult {
-    private final List<GetClusterAddonsConfig> addonsConfigs;
-    private final List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs;
-    private final List<GetClusterBinaryAuthorization> binaryAuthorizations;
-    private final List<GetClusterClusterAutoscaling> clusterAutoscalings;
-    private final String clusterIpv4Cidr;
-    private final List<GetClusterClusterTelemetry> clusterTelemetries;
-    private final List<GetClusterConfidentialNode> confidentialNodes;
-    private final List<GetClusterDatabaseEncryption> databaseEncryptions;
-    private final String datapathProvider;
-    private final Integer defaultMaxPodsPerNode;
-    private final List<GetClusterDefaultSnatStatus> defaultSnatStatuses;
-    private final String description;
-    private final List<GetClusterDnsConfig> dnsConfigs;
-    private final Boolean enableAutopilot;
-    private final Boolean enableBinaryAuthorization;
-    private final Boolean enableIntranodeVisibility;
-    private final Boolean enableKubernetesAlpha;
-    private final Boolean enableL4IlbSubsetting;
-    private final Boolean enableLegacyAbac;
-    private final Boolean enableShieldedNodes;
-    private final Boolean enableTpu;
-    private final String endpoint;
+    private List<GetClusterAddonsConfig> addonsConfigs;
+    private List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs;
+    private List<GetClusterBinaryAuthorization> binaryAuthorizations;
+    private List<GetClusterClusterAutoscaling> clusterAutoscalings;
+    private String clusterIpv4Cidr;
+    private List<GetClusterClusterTelemetry> clusterTelemetries;
+    private List<GetClusterConfidentialNode> confidentialNodes;
+    private List<GetClusterDatabaseEncryption> databaseEncryptions;
+    private String datapathProvider;
+    private Integer defaultMaxPodsPerNode;
+    private List<GetClusterDefaultSnatStatus> defaultSnatStatuses;
+    private String description;
+    private List<GetClusterDnsConfig> dnsConfigs;
+    private Boolean enableAutopilot;
+    private Boolean enableBinaryAuthorization;
+    private Boolean enableIntranodeVisibility;
+    private Boolean enableKubernetesAlpha;
+    private Boolean enableL4IlbSubsetting;
+    private Boolean enableLegacyAbac;
+    private Boolean enableShieldedNodes;
+    private Boolean enableTpu;
+    private String endpoint;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<GetClusterIdentityServiceConfig> identityServiceConfigs;
-    private final Integer initialNodeCount;
-    private final List<GetClusterIpAllocationPolicy> ipAllocationPolicies;
-    private final String labelFingerprint;
-    private final @Nullable String location;
-    private final List<GetClusterLoggingConfig> loggingConfigs;
-    private final String loggingService;
-    private final List<GetClusterMaintenancePolicy> maintenancePolicies;
-    private final List<GetClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs;
-    private final List<GetClusterMasterAuth> masterAuths;
-    private final String masterVersion;
-    private final List<GetClusterMeshCertificate> meshCertificates;
-    private final String minMasterVersion;
-    private final List<GetClusterMonitoringConfig> monitoringConfigs;
-    private final String monitoringService;
-    private final String name;
-    private final String network;
-    private final List<GetClusterNetworkPolicy> networkPolicies;
-    private final String networkingMode;
-    private final List<GetClusterNodeConfig> nodeConfigs;
-    private final List<String> nodeLocations;
-    private final List<GetClusterNodePool> nodePools;
-    private final String nodeVersion;
-    private final List<GetClusterNotificationConfig> notificationConfigs;
-    private final String operation;
-    private final List<GetClusterPodSecurityPolicyConfig> podSecurityPolicyConfigs;
-    private final List<GetClusterPrivateClusterConfig> privateClusterConfigs;
-    private final String privateIpv6GoogleAccess;
-    private final @Nullable String project;
-    private final List<GetClusterReleaseChannel> releaseChannels;
-    private final Boolean removeDefaultNodePool;
-    private final Map<String,String> resourceLabels;
-    private final List<GetClusterResourceUsageExportConfig> resourceUsageExportConfigs;
-    private final String selfLink;
-    private final String servicesIpv4Cidr;
-    private final String subnetwork;
-    private final List<GetClusterTpuConfig> tpuConfigs;
-    private final String tpuIpv4CidrBlock;
-    private final List<GetClusterVerticalPodAutoscaling> verticalPodAutoscalings;
-    private final List<GetClusterWorkloadIdentityConfig> workloadIdentityConfigs;
+    private String id;
+    private List<GetClusterIdentityServiceConfig> identityServiceConfigs;
+    private Integer initialNodeCount;
+    private List<GetClusterIpAllocationPolicy> ipAllocationPolicies;
+    private String labelFingerprint;
+    private @Nullable String location;
+    private List<GetClusterLoggingConfig> loggingConfigs;
+    private String loggingService;
+    private List<GetClusterMaintenancePolicy> maintenancePolicies;
+    private List<GetClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs;
+    private List<GetClusterMasterAuth> masterAuths;
+    private String masterVersion;
+    private List<GetClusterMeshCertificate> meshCertificates;
+    private String minMasterVersion;
+    private List<GetClusterMonitoringConfig> monitoringConfigs;
+    private String monitoringService;
+    private String name;
+    private String network;
+    private List<GetClusterNetworkPolicy> networkPolicies;
+    private String networkingMode;
+    private List<GetClusterNodeConfig> nodeConfigs;
+    private List<String> nodeLocations;
+    private List<GetClusterNodePoolAutoConfig> nodePoolAutoConfigs;
+    private List<GetClusterNodePool> nodePools;
+    private String nodeVersion;
+    private List<GetClusterNotificationConfig> notificationConfigs;
+    private String operation;
+    private List<GetClusterPodSecurityPolicyConfig> podSecurityPolicyConfigs;
+    private List<GetClusterPrivateClusterConfig> privateClusterConfigs;
+    private String privateIpv6GoogleAccess;
+    private @Nullable String project;
+    private List<GetClusterReleaseChannel> releaseChannels;
+    private Boolean removeDefaultNodePool;
+    private Map<String,String> resourceLabels;
+    private List<GetClusterResourceUsageExportConfig> resourceUsageExportConfigs;
+    private String selfLink;
+    private String servicesIpv4Cidr;
+    private String subnetwork;
+    private List<GetClusterTpuConfig> tpuConfigs;
+    private String tpuIpv4CidrBlock;
+    private List<GetClusterVerticalPodAutoscaling> verticalPodAutoscalings;
+    private List<GetClusterWorkloadIdentityConfig> workloadIdentityConfigs;
 
-    @CustomType.Constructor
-    private GetClusterResult(
-        @CustomType.Parameter("addonsConfigs") List<GetClusterAddonsConfig> addonsConfigs,
-        @CustomType.Parameter("authenticatorGroupsConfigs") List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs,
-        @CustomType.Parameter("binaryAuthorizations") List<GetClusterBinaryAuthorization> binaryAuthorizations,
-        @CustomType.Parameter("clusterAutoscalings") List<GetClusterClusterAutoscaling> clusterAutoscalings,
-        @CustomType.Parameter("clusterIpv4Cidr") String clusterIpv4Cidr,
-        @CustomType.Parameter("clusterTelemetries") List<GetClusterClusterTelemetry> clusterTelemetries,
-        @CustomType.Parameter("confidentialNodes") List<GetClusterConfidentialNode> confidentialNodes,
-        @CustomType.Parameter("databaseEncryptions") List<GetClusterDatabaseEncryption> databaseEncryptions,
-        @CustomType.Parameter("datapathProvider") String datapathProvider,
-        @CustomType.Parameter("defaultMaxPodsPerNode") Integer defaultMaxPodsPerNode,
-        @CustomType.Parameter("defaultSnatStatuses") List<GetClusterDefaultSnatStatus> defaultSnatStatuses,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("dnsConfigs") List<GetClusterDnsConfig> dnsConfigs,
-        @CustomType.Parameter("enableAutopilot") Boolean enableAutopilot,
-        @CustomType.Parameter("enableBinaryAuthorization") Boolean enableBinaryAuthorization,
-        @CustomType.Parameter("enableIntranodeVisibility") Boolean enableIntranodeVisibility,
-        @CustomType.Parameter("enableKubernetesAlpha") Boolean enableKubernetesAlpha,
-        @CustomType.Parameter("enableL4IlbSubsetting") Boolean enableL4IlbSubsetting,
-        @CustomType.Parameter("enableLegacyAbac") Boolean enableLegacyAbac,
-        @CustomType.Parameter("enableShieldedNodes") Boolean enableShieldedNodes,
-        @CustomType.Parameter("enableTpu") Boolean enableTpu,
-        @CustomType.Parameter("endpoint") String endpoint,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("identityServiceConfigs") List<GetClusterIdentityServiceConfig> identityServiceConfigs,
-        @CustomType.Parameter("initialNodeCount") Integer initialNodeCount,
-        @CustomType.Parameter("ipAllocationPolicies") List<GetClusterIpAllocationPolicy> ipAllocationPolicies,
-        @CustomType.Parameter("labelFingerprint") String labelFingerprint,
-        @CustomType.Parameter("location") @Nullable String location,
-        @CustomType.Parameter("loggingConfigs") List<GetClusterLoggingConfig> loggingConfigs,
-        @CustomType.Parameter("loggingService") String loggingService,
-        @CustomType.Parameter("maintenancePolicies") List<GetClusterMaintenancePolicy> maintenancePolicies,
-        @CustomType.Parameter("masterAuthorizedNetworksConfigs") List<GetClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs,
-        @CustomType.Parameter("masterAuths") List<GetClusterMasterAuth> masterAuths,
-        @CustomType.Parameter("masterVersion") String masterVersion,
-        @CustomType.Parameter("meshCertificates") List<GetClusterMeshCertificate> meshCertificates,
-        @CustomType.Parameter("minMasterVersion") String minMasterVersion,
-        @CustomType.Parameter("monitoringConfigs") List<GetClusterMonitoringConfig> monitoringConfigs,
-        @CustomType.Parameter("monitoringService") String monitoringService,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("network") String network,
-        @CustomType.Parameter("networkPolicies") List<GetClusterNetworkPolicy> networkPolicies,
-        @CustomType.Parameter("networkingMode") String networkingMode,
-        @CustomType.Parameter("nodeConfigs") List<GetClusterNodeConfig> nodeConfigs,
-        @CustomType.Parameter("nodeLocations") List<String> nodeLocations,
-        @CustomType.Parameter("nodePools") List<GetClusterNodePool> nodePools,
-        @CustomType.Parameter("nodeVersion") String nodeVersion,
-        @CustomType.Parameter("notificationConfigs") List<GetClusterNotificationConfig> notificationConfigs,
-        @CustomType.Parameter("operation") String operation,
-        @CustomType.Parameter("podSecurityPolicyConfigs") List<GetClusterPodSecurityPolicyConfig> podSecurityPolicyConfigs,
-        @CustomType.Parameter("privateClusterConfigs") List<GetClusterPrivateClusterConfig> privateClusterConfigs,
-        @CustomType.Parameter("privateIpv6GoogleAccess") String privateIpv6GoogleAccess,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("releaseChannels") List<GetClusterReleaseChannel> releaseChannels,
-        @CustomType.Parameter("removeDefaultNodePool") Boolean removeDefaultNodePool,
-        @CustomType.Parameter("resourceLabels") Map<String,String> resourceLabels,
-        @CustomType.Parameter("resourceUsageExportConfigs") List<GetClusterResourceUsageExportConfig> resourceUsageExportConfigs,
-        @CustomType.Parameter("selfLink") String selfLink,
-        @CustomType.Parameter("servicesIpv4Cidr") String servicesIpv4Cidr,
-        @CustomType.Parameter("subnetwork") String subnetwork,
-        @CustomType.Parameter("tpuConfigs") List<GetClusterTpuConfig> tpuConfigs,
-        @CustomType.Parameter("tpuIpv4CidrBlock") String tpuIpv4CidrBlock,
-        @CustomType.Parameter("verticalPodAutoscalings") List<GetClusterVerticalPodAutoscaling> verticalPodAutoscalings,
-        @CustomType.Parameter("workloadIdentityConfigs") List<GetClusterWorkloadIdentityConfig> workloadIdentityConfigs) {
-        this.addonsConfigs = addonsConfigs;
-        this.authenticatorGroupsConfigs = authenticatorGroupsConfigs;
-        this.binaryAuthorizations = binaryAuthorizations;
-        this.clusterAutoscalings = clusterAutoscalings;
-        this.clusterIpv4Cidr = clusterIpv4Cidr;
-        this.clusterTelemetries = clusterTelemetries;
-        this.confidentialNodes = confidentialNodes;
-        this.databaseEncryptions = databaseEncryptions;
-        this.datapathProvider = datapathProvider;
-        this.defaultMaxPodsPerNode = defaultMaxPodsPerNode;
-        this.defaultSnatStatuses = defaultSnatStatuses;
-        this.description = description;
-        this.dnsConfigs = dnsConfigs;
-        this.enableAutopilot = enableAutopilot;
-        this.enableBinaryAuthorization = enableBinaryAuthorization;
-        this.enableIntranodeVisibility = enableIntranodeVisibility;
-        this.enableKubernetesAlpha = enableKubernetesAlpha;
-        this.enableL4IlbSubsetting = enableL4IlbSubsetting;
-        this.enableLegacyAbac = enableLegacyAbac;
-        this.enableShieldedNodes = enableShieldedNodes;
-        this.enableTpu = enableTpu;
-        this.endpoint = endpoint;
-        this.id = id;
-        this.identityServiceConfigs = identityServiceConfigs;
-        this.initialNodeCount = initialNodeCount;
-        this.ipAllocationPolicies = ipAllocationPolicies;
-        this.labelFingerprint = labelFingerprint;
-        this.location = location;
-        this.loggingConfigs = loggingConfigs;
-        this.loggingService = loggingService;
-        this.maintenancePolicies = maintenancePolicies;
-        this.masterAuthorizedNetworksConfigs = masterAuthorizedNetworksConfigs;
-        this.masterAuths = masterAuths;
-        this.masterVersion = masterVersion;
-        this.meshCertificates = meshCertificates;
-        this.minMasterVersion = minMasterVersion;
-        this.monitoringConfigs = monitoringConfigs;
-        this.monitoringService = monitoringService;
-        this.name = name;
-        this.network = network;
-        this.networkPolicies = networkPolicies;
-        this.networkingMode = networkingMode;
-        this.nodeConfigs = nodeConfigs;
-        this.nodeLocations = nodeLocations;
-        this.nodePools = nodePools;
-        this.nodeVersion = nodeVersion;
-        this.notificationConfigs = notificationConfigs;
-        this.operation = operation;
-        this.podSecurityPolicyConfigs = podSecurityPolicyConfigs;
-        this.privateClusterConfigs = privateClusterConfigs;
-        this.privateIpv6GoogleAccess = privateIpv6GoogleAccess;
-        this.project = project;
-        this.releaseChannels = releaseChannels;
-        this.removeDefaultNodePool = removeDefaultNodePool;
-        this.resourceLabels = resourceLabels;
-        this.resourceUsageExportConfigs = resourceUsageExportConfigs;
-        this.selfLink = selfLink;
-        this.servicesIpv4Cidr = servicesIpv4Cidr;
-        this.subnetwork = subnetwork;
-        this.tpuConfigs = tpuConfigs;
-        this.tpuIpv4CidrBlock = tpuIpv4CidrBlock;
-        this.verticalPodAutoscalings = verticalPodAutoscalings;
-        this.workloadIdentityConfigs = workloadIdentityConfigs;
-    }
-
+    private GetClusterResult() {}
     public List<GetClusterAddonsConfig> addonsConfigs() {
         return this.addonsConfigs;
     }
@@ -377,6 +250,9 @@ public final class GetClusterResult {
     public List<String> nodeLocations() {
         return this.nodeLocations;
     }
+    public List<GetClusterNodePoolAutoConfig> nodePoolAutoConfigs() {
+        return this.nodePoolAutoConfigs;
+    }
     public List<GetClusterNodePool> nodePools() {
         return this.nodePools;
     }
@@ -442,7 +318,7 @@ public final class GetClusterResult {
     public static Builder builder(GetClusterResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetClusterAddonsConfig> addonsConfigs;
         private List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs;
@@ -488,6 +364,7 @@ public final class GetClusterResult {
         private String networkingMode;
         private List<GetClusterNodeConfig> nodeConfigs;
         private List<String> nodeLocations;
+        private List<GetClusterNodePoolAutoConfig> nodePoolAutoConfigs;
         private List<GetClusterNodePool> nodePools;
         private String nodeVersion;
         private List<GetClusterNotificationConfig> notificationConfigs;
@@ -507,11 +384,7 @@ public final class GetClusterResult {
         private String tpuIpv4CidrBlock;
         private List<GetClusterVerticalPodAutoscaling> verticalPodAutoscalings;
         private List<GetClusterWorkloadIdentityConfig> workloadIdentityConfigs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addonsConfigs = defaults.addonsConfigs;
@@ -558,6 +431,7 @@ public final class GetClusterResult {
     	      this.networkingMode = defaults.networkingMode;
     	      this.nodeConfigs = defaults.nodeConfigs;
     	      this.nodeLocations = defaults.nodeLocations;
+    	      this.nodePoolAutoConfigs = defaults.nodePoolAutoConfigs;
     	      this.nodePools = defaults.nodePools;
     	      this.nodeVersion = defaults.nodeVersion;
     	      this.notificationConfigs = defaults.notificationConfigs;
@@ -579,6 +453,7 @@ public final class GetClusterResult {
     	      this.workloadIdentityConfigs = defaults.workloadIdentityConfigs;
         }
 
+        @CustomType.Setter
         public Builder addonsConfigs(List<GetClusterAddonsConfig> addonsConfigs) {
             this.addonsConfigs = Objects.requireNonNull(addonsConfigs);
             return this;
@@ -586,6 +461,7 @@ public final class GetClusterResult {
         public Builder addonsConfigs(GetClusterAddonsConfig... addonsConfigs) {
             return addonsConfigs(List.of(addonsConfigs));
         }
+        @CustomType.Setter
         public Builder authenticatorGroupsConfigs(List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs) {
             this.authenticatorGroupsConfigs = Objects.requireNonNull(authenticatorGroupsConfigs);
             return this;
@@ -593,6 +469,7 @@ public final class GetClusterResult {
         public Builder authenticatorGroupsConfigs(GetClusterAuthenticatorGroupsConfig... authenticatorGroupsConfigs) {
             return authenticatorGroupsConfigs(List.of(authenticatorGroupsConfigs));
         }
+        @CustomType.Setter
         public Builder binaryAuthorizations(List<GetClusterBinaryAuthorization> binaryAuthorizations) {
             this.binaryAuthorizations = Objects.requireNonNull(binaryAuthorizations);
             return this;
@@ -600,6 +477,7 @@ public final class GetClusterResult {
         public Builder binaryAuthorizations(GetClusterBinaryAuthorization... binaryAuthorizations) {
             return binaryAuthorizations(List.of(binaryAuthorizations));
         }
+        @CustomType.Setter
         public Builder clusterAutoscalings(List<GetClusterClusterAutoscaling> clusterAutoscalings) {
             this.clusterAutoscalings = Objects.requireNonNull(clusterAutoscalings);
             return this;
@@ -607,10 +485,12 @@ public final class GetClusterResult {
         public Builder clusterAutoscalings(GetClusterClusterAutoscaling... clusterAutoscalings) {
             return clusterAutoscalings(List.of(clusterAutoscalings));
         }
+        @CustomType.Setter
         public Builder clusterIpv4Cidr(String clusterIpv4Cidr) {
             this.clusterIpv4Cidr = Objects.requireNonNull(clusterIpv4Cidr);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterTelemetries(List<GetClusterClusterTelemetry> clusterTelemetries) {
             this.clusterTelemetries = Objects.requireNonNull(clusterTelemetries);
             return this;
@@ -618,6 +498,7 @@ public final class GetClusterResult {
         public Builder clusterTelemetries(GetClusterClusterTelemetry... clusterTelemetries) {
             return clusterTelemetries(List.of(clusterTelemetries));
         }
+        @CustomType.Setter
         public Builder confidentialNodes(List<GetClusterConfidentialNode> confidentialNodes) {
             this.confidentialNodes = Objects.requireNonNull(confidentialNodes);
             return this;
@@ -625,6 +506,7 @@ public final class GetClusterResult {
         public Builder confidentialNodes(GetClusterConfidentialNode... confidentialNodes) {
             return confidentialNodes(List.of(confidentialNodes));
         }
+        @CustomType.Setter
         public Builder databaseEncryptions(List<GetClusterDatabaseEncryption> databaseEncryptions) {
             this.databaseEncryptions = Objects.requireNonNull(databaseEncryptions);
             return this;
@@ -632,14 +514,17 @@ public final class GetClusterResult {
         public Builder databaseEncryptions(GetClusterDatabaseEncryption... databaseEncryptions) {
             return databaseEncryptions(List.of(databaseEncryptions));
         }
+        @CustomType.Setter
         public Builder datapathProvider(String datapathProvider) {
             this.datapathProvider = Objects.requireNonNull(datapathProvider);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultMaxPodsPerNode(Integer defaultMaxPodsPerNode) {
             this.defaultMaxPodsPerNode = Objects.requireNonNull(defaultMaxPodsPerNode);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultSnatStatuses(List<GetClusterDefaultSnatStatus> defaultSnatStatuses) {
             this.defaultSnatStatuses = Objects.requireNonNull(defaultSnatStatuses);
             return this;
@@ -647,10 +532,12 @@ public final class GetClusterResult {
         public Builder defaultSnatStatuses(GetClusterDefaultSnatStatus... defaultSnatStatuses) {
             return defaultSnatStatuses(List.of(defaultSnatStatuses));
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder dnsConfigs(List<GetClusterDnsConfig> dnsConfigs) {
             this.dnsConfigs = Objects.requireNonNull(dnsConfigs);
             return this;
@@ -658,46 +545,57 @@ public final class GetClusterResult {
         public Builder dnsConfigs(GetClusterDnsConfig... dnsConfigs) {
             return dnsConfigs(List.of(dnsConfigs));
         }
+        @CustomType.Setter
         public Builder enableAutopilot(Boolean enableAutopilot) {
             this.enableAutopilot = Objects.requireNonNull(enableAutopilot);
             return this;
         }
+        @CustomType.Setter
         public Builder enableBinaryAuthorization(Boolean enableBinaryAuthorization) {
             this.enableBinaryAuthorization = Objects.requireNonNull(enableBinaryAuthorization);
             return this;
         }
+        @CustomType.Setter
         public Builder enableIntranodeVisibility(Boolean enableIntranodeVisibility) {
             this.enableIntranodeVisibility = Objects.requireNonNull(enableIntranodeVisibility);
             return this;
         }
+        @CustomType.Setter
         public Builder enableKubernetesAlpha(Boolean enableKubernetesAlpha) {
             this.enableKubernetesAlpha = Objects.requireNonNull(enableKubernetesAlpha);
             return this;
         }
+        @CustomType.Setter
         public Builder enableL4IlbSubsetting(Boolean enableL4IlbSubsetting) {
             this.enableL4IlbSubsetting = Objects.requireNonNull(enableL4IlbSubsetting);
             return this;
         }
+        @CustomType.Setter
         public Builder enableLegacyAbac(Boolean enableLegacyAbac) {
             this.enableLegacyAbac = Objects.requireNonNull(enableLegacyAbac);
             return this;
         }
+        @CustomType.Setter
         public Builder enableShieldedNodes(Boolean enableShieldedNodes) {
             this.enableShieldedNodes = Objects.requireNonNull(enableShieldedNodes);
             return this;
         }
+        @CustomType.Setter
         public Builder enableTpu(Boolean enableTpu) {
             this.enableTpu = Objects.requireNonNull(enableTpu);
             return this;
         }
+        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder identityServiceConfigs(List<GetClusterIdentityServiceConfig> identityServiceConfigs) {
             this.identityServiceConfigs = Objects.requireNonNull(identityServiceConfigs);
             return this;
@@ -705,10 +603,12 @@ public final class GetClusterResult {
         public Builder identityServiceConfigs(GetClusterIdentityServiceConfig... identityServiceConfigs) {
             return identityServiceConfigs(List.of(identityServiceConfigs));
         }
+        @CustomType.Setter
         public Builder initialNodeCount(Integer initialNodeCount) {
             this.initialNodeCount = Objects.requireNonNull(initialNodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder ipAllocationPolicies(List<GetClusterIpAllocationPolicy> ipAllocationPolicies) {
             this.ipAllocationPolicies = Objects.requireNonNull(ipAllocationPolicies);
             return this;
@@ -716,14 +616,17 @@ public final class GetClusterResult {
         public Builder ipAllocationPolicies(GetClusterIpAllocationPolicy... ipAllocationPolicies) {
             return ipAllocationPolicies(List.of(ipAllocationPolicies));
         }
+        @CustomType.Setter
         public Builder labelFingerprint(String labelFingerprint) {
             this.labelFingerprint = Objects.requireNonNull(labelFingerprint);
             return this;
         }
+        @CustomType.Setter
         public Builder location(@Nullable String location) {
             this.location = location;
             return this;
         }
+        @CustomType.Setter
         public Builder loggingConfigs(List<GetClusterLoggingConfig> loggingConfigs) {
             this.loggingConfigs = Objects.requireNonNull(loggingConfigs);
             return this;
@@ -731,10 +634,12 @@ public final class GetClusterResult {
         public Builder loggingConfigs(GetClusterLoggingConfig... loggingConfigs) {
             return loggingConfigs(List.of(loggingConfigs));
         }
+        @CustomType.Setter
         public Builder loggingService(String loggingService) {
             this.loggingService = Objects.requireNonNull(loggingService);
             return this;
         }
+        @CustomType.Setter
         public Builder maintenancePolicies(List<GetClusterMaintenancePolicy> maintenancePolicies) {
             this.maintenancePolicies = Objects.requireNonNull(maintenancePolicies);
             return this;
@@ -742,6 +647,7 @@ public final class GetClusterResult {
         public Builder maintenancePolicies(GetClusterMaintenancePolicy... maintenancePolicies) {
             return maintenancePolicies(List.of(maintenancePolicies));
         }
+        @CustomType.Setter
         public Builder masterAuthorizedNetworksConfigs(List<GetClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs) {
             this.masterAuthorizedNetworksConfigs = Objects.requireNonNull(masterAuthorizedNetworksConfigs);
             return this;
@@ -749,6 +655,7 @@ public final class GetClusterResult {
         public Builder masterAuthorizedNetworksConfigs(GetClusterMasterAuthorizedNetworksConfig... masterAuthorizedNetworksConfigs) {
             return masterAuthorizedNetworksConfigs(List.of(masterAuthorizedNetworksConfigs));
         }
+        @CustomType.Setter
         public Builder masterAuths(List<GetClusterMasterAuth> masterAuths) {
             this.masterAuths = Objects.requireNonNull(masterAuths);
             return this;
@@ -756,10 +663,12 @@ public final class GetClusterResult {
         public Builder masterAuths(GetClusterMasterAuth... masterAuths) {
             return masterAuths(List.of(masterAuths));
         }
+        @CustomType.Setter
         public Builder masterVersion(String masterVersion) {
             this.masterVersion = Objects.requireNonNull(masterVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder meshCertificates(List<GetClusterMeshCertificate> meshCertificates) {
             this.meshCertificates = Objects.requireNonNull(meshCertificates);
             return this;
@@ -767,10 +676,12 @@ public final class GetClusterResult {
         public Builder meshCertificates(GetClusterMeshCertificate... meshCertificates) {
             return meshCertificates(List.of(meshCertificates));
         }
+        @CustomType.Setter
         public Builder minMasterVersion(String minMasterVersion) {
             this.minMasterVersion = Objects.requireNonNull(minMasterVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder monitoringConfigs(List<GetClusterMonitoringConfig> monitoringConfigs) {
             this.monitoringConfigs = Objects.requireNonNull(monitoringConfigs);
             return this;
@@ -778,18 +689,22 @@ public final class GetClusterResult {
         public Builder monitoringConfigs(GetClusterMonitoringConfig... monitoringConfigs) {
             return monitoringConfigs(List.of(monitoringConfigs));
         }
+        @CustomType.Setter
         public Builder monitoringService(String monitoringService) {
             this.monitoringService = Objects.requireNonNull(monitoringService);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder network(String network) {
             this.network = Objects.requireNonNull(network);
             return this;
         }
+        @CustomType.Setter
         public Builder networkPolicies(List<GetClusterNetworkPolicy> networkPolicies) {
             this.networkPolicies = Objects.requireNonNull(networkPolicies);
             return this;
@@ -797,10 +712,12 @@ public final class GetClusterResult {
         public Builder networkPolicies(GetClusterNetworkPolicy... networkPolicies) {
             return networkPolicies(List.of(networkPolicies));
         }
+        @CustomType.Setter
         public Builder networkingMode(String networkingMode) {
             this.networkingMode = Objects.requireNonNull(networkingMode);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeConfigs(List<GetClusterNodeConfig> nodeConfigs) {
             this.nodeConfigs = Objects.requireNonNull(nodeConfigs);
             return this;
@@ -808,6 +725,7 @@ public final class GetClusterResult {
         public Builder nodeConfigs(GetClusterNodeConfig... nodeConfigs) {
             return nodeConfigs(List.of(nodeConfigs));
         }
+        @CustomType.Setter
         public Builder nodeLocations(List<String> nodeLocations) {
             this.nodeLocations = Objects.requireNonNull(nodeLocations);
             return this;
@@ -815,6 +733,15 @@ public final class GetClusterResult {
         public Builder nodeLocations(String... nodeLocations) {
             return nodeLocations(List.of(nodeLocations));
         }
+        @CustomType.Setter
+        public Builder nodePoolAutoConfigs(List<GetClusterNodePoolAutoConfig> nodePoolAutoConfigs) {
+            this.nodePoolAutoConfigs = Objects.requireNonNull(nodePoolAutoConfigs);
+            return this;
+        }
+        public Builder nodePoolAutoConfigs(GetClusterNodePoolAutoConfig... nodePoolAutoConfigs) {
+            return nodePoolAutoConfigs(List.of(nodePoolAutoConfigs));
+        }
+        @CustomType.Setter
         public Builder nodePools(List<GetClusterNodePool> nodePools) {
             this.nodePools = Objects.requireNonNull(nodePools);
             return this;
@@ -822,10 +749,12 @@ public final class GetClusterResult {
         public Builder nodePools(GetClusterNodePool... nodePools) {
             return nodePools(List.of(nodePools));
         }
+        @CustomType.Setter
         public Builder nodeVersion(String nodeVersion) {
             this.nodeVersion = Objects.requireNonNull(nodeVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder notificationConfigs(List<GetClusterNotificationConfig> notificationConfigs) {
             this.notificationConfigs = Objects.requireNonNull(notificationConfigs);
             return this;
@@ -833,10 +762,12 @@ public final class GetClusterResult {
         public Builder notificationConfigs(GetClusterNotificationConfig... notificationConfigs) {
             return notificationConfigs(List.of(notificationConfigs));
         }
+        @CustomType.Setter
         public Builder operation(String operation) {
             this.operation = Objects.requireNonNull(operation);
             return this;
         }
+        @CustomType.Setter
         public Builder podSecurityPolicyConfigs(List<GetClusterPodSecurityPolicyConfig> podSecurityPolicyConfigs) {
             this.podSecurityPolicyConfigs = Objects.requireNonNull(podSecurityPolicyConfigs);
             return this;
@@ -844,6 +775,7 @@ public final class GetClusterResult {
         public Builder podSecurityPolicyConfigs(GetClusterPodSecurityPolicyConfig... podSecurityPolicyConfigs) {
             return podSecurityPolicyConfigs(List.of(podSecurityPolicyConfigs));
         }
+        @CustomType.Setter
         public Builder privateClusterConfigs(List<GetClusterPrivateClusterConfig> privateClusterConfigs) {
             this.privateClusterConfigs = Objects.requireNonNull(privateClusterConfigs);
             return this;
@@ -851,14 +783,17 @@ public final class GetClusterResult {
         public Builder privateClusterConfigs(GetClusterPrivateClusterConfig... privateClusterConfigs) {
             return privateClusterConfigs(List.of(privateClusterConfigs));
         }
+        @CustomType.Setter
         public Builder privateIpv6GoogleAccess(String privateIpv6GoogleAccess) {
             this.privateIpv6GoogleAccess = Objects.requireNonNull(privateIpv6GoogleAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder releaseChannels(List<GetClusterReleaseChannel> releaseChannels) {
             this.releaseChannels = Objects.requireNonNull(releaseChannels);
             return this;
@@ -866,14 +801,17 @@ public final class GetClusterResult {
         public Builder releaseChannels(GetClusterReleaseChannel... releaseChannels) {
             return releaseChannels(List.of(releaseChannels));
         }
+        @CustomType.Setter
         public Builder removeDefaultNodePool(Boolean removeDefaultNodePool) {
             this.removeDefaultNodePool = Objects.requireNonNull(removeDefaultNodePool);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceLabels(Map<String,String> resourceLabels) {
             this.resourceLabels = Objects.requireNonNull(resourceLabels);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceUsageExportConfigs(List<GetClusterResourceUsageExportConfig> resourceUsageExportConfigs) {
             this.resourceUsageExportConfigs = Objects.requireNonNull(resourceUsageExportConfigs);
             return this;
@@ -881,18 +819,22 @@ public final class GetClusterResult {
         public Builder resourceUsageExportConfigs(GetClusterResourceUsageExportConfig... resourceUsageExportConfigs) {
             return resourceUsageExportConfigs(List.of(resourceUsageExportConfigs));
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder servicesIpv4Cidr(String servicesIpv4Cidr) {
             this.servicesIpv4Cidr = Objects.requireNonNull(servicesIpv4Cidr);
             return this;
         }
+        @CustomType.Setter
         public Builder subnetwork(String subnetwork) {
             this.subnetwork = Objects.requireNonNull(subnetwork);
             return this;
         }
+        @CustomType.Setter
         public Builder tpuConfigs(List<GetClusterTpuConfig> tpuConfigs) {
             this.tpuConfigs = Objects.requireNonNull(tpuConfigs);
             return this;
@@ -900,10 +842,12 @@ public final class GetClusterResult {
         public Builder tpuConfigs(GetClusterTpuConfig... tpuConfigs) {
             return tpuConfigs(List.of(tpuConfigs));
         }
+        @CustomType.Setter
         public Builder tpuIpv4CidrBlock(String tpuIpv4CidrBlock) {
             this.tpuIpv4CidrBlock = Objects.requireNonNull(tpuIpv4CidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder verticalPodAutoscalings(List<GetClusterVerticalPodAutoscaling> verticalPodAutoscalings) {
             this.verticalPodAutoscalings = Objects.requireNonNull(verticalPodAutoscalings);
             return this;
@@ -911,14 +855,81 @@ public final class GetClusterResult {
         public Builder verticalPodAutoscalings(GetClusterVerticalPodAutoscaling... verticalPodAutoscalings) {
             return verticalPodAutoscalings(List.of(verticalPodAutoscalings));
         }
+        @CustomType.Setter
         public Builder workloadIdentityConfigs(List<GetClusterWorkloadIdentityConfig> workloadIdentityConfigs) {
             this.workloadIdentityConfigs = Objects.requireNonNull(workloadIdentityConfigs);
             return this;
         }
         public Builder workloadIdentityConfigs(GetClusterWorkloadIdentityConfig... workloadIdentityConfigs) {
             return workloadIdentityConfigs(List.of(workloadIdentityConfigs));
-        }        public GetClusterResult build() {
-            return new GetClusterResult(addonsConfigs, authenticatorGroupsConfigs, binaryAuthorizations, clusterAutoscalings, clusterIpv4Cidr, clusterTelemetries, confidentialNodes, databaseEncryptions, datapathProvider, defaultMaxPodsPerNode, defaultSnatStatuses, description, dnsConfigs, enableAutopilot, enableBinaryAuthorization, enableIntranodeVisibility, enableKubernetesAlpha, enableL4IlbSubsetting, enableLegacyAbac, enableShieldedNodes, enableTpu, endpoint, id, identityServiceConfigs, initialNodeCount, ipAllocationPolicies, labelFingerprint, location, loggingConfigs, loggingService, maintenancePolicies, masterAuthorizedNetworksConfigs, masterAuths, masterVersion, meshCertificates, minMasterVersion, monitoringConfigs, monitoringService, name, network, networkPolicies, networkingMode, nodeConfigs, nodeLocations, nodePools, nodeVersion, notificationConfigs, operation, podSecurityPolicyConfigs, privateClusterConfigs, privateIpv6GoogleAccess, project, releaseChannels, removeDefaultNodePool, resourceLabels, resourceUsageExportConfigs, selfLink, servicesIpv4Cidr, subnetwork, tpuConfigs, tpuIpv4CidrBlock, verticalPodAutoscalings, workloadIdentityConfigs);
+        }
+        public GetClusterResult build() {
+            final var o = new GetClusterResult();
+            o.addonsConfigs = addonsConfigs;
+            o.authenticatorGroupsConfigs = authenticatorGroupsConfigs;
+            o.binaryAuthorizations = binaryAuthorizations;
+            o.clusterAutoscalings = clusterAutoscalings;
+            o.clusterIpv4Cidr = clusterIpv4Cidr;
+            o.clusterTelemetries = clusterTelemetries;
+            o.confidentialNodes = confidentialNodes;
+            o.databaseEncryptions = databaseEncryptions;
+            o.datapathProvider = datapathProvider;
+            o.defaultMaxPodsPerNode = defaultMaxPodsPerNode;
+            o.defaultSnatStatuses = defaultSnatStatuses;
+            o.description = description;
+            o.dnsConfigs = dnsConfigs;
+            o.enableAutopilot = enableAutopilot;
+            o.enableBinaryAuthorization = enableBinaryAuthorization;
+            o.enableIntranodeVisibility = enableIntranodeVisibility;
+            o.enableKubernetesAlpha = enableKubernetesAlpha;
+            o.enableL4IlbSubsetting = enableL4IlbSubsetting;
+            o.enableLegacyAbac = enableLegacyAbac;
+            o.enableShieldedNodes = enableShieldedNodes;
+            o.enableTpu = enableTpu;
+            o.endpoint = endpoint;
+            o.id = id;
+            o.identityServiceConfigs = identityServiceConfigs;
+            o.initialNodeCount = initialNodeCount;
+            o.ipAllocationPolicies = ipAllocationPolicies;
+            o.labelFingerprint = labelFingerprint;
+            o.location = location;
+            o.loggingConfigs = loggingConfigs;
+            o.loggingService = loggingService;
+            o.maintenancePolicies = maintenancePolicies;
+            o.masterAuthorizedNetworksConfigs = masterAuthorizedNetworksConfigs;
+            o.masterAuths = masterAuths;
+            o.masterVersion = masterVersion;
+            o.meshCertificates = meshCertificates;
+            o.minMasterVersion = minMasterVersion;
+            o.monitoringConfigs = monitoringConfigs;
+            o.monitoringService = monitoringService;
+            o.name = name;
+            o.network = network;
+            o.networkPolicies = networkPolicies;
+            o.networkingMode = networkingMode;
+            o.nodeConfigs = nodeConfigs;
+            o.nodeLocations = nodeLocations;
+            o.nodePoolAutoConfigs = nodePoolAutoConfigs;
+            o.nodePools = nodePools;
+            o.nodeVersion = nodeVersion;
+            o.notificationConfigs = notificationConfigs;
+            o.operation = operation;
+            o.podSecurityPolicyConfigs = podSecurityPolicyConfigs;
+            o.privateClusterConfigs = privateClusterConfigs;
+            o.privateIpv6GoogleAccess = privateIpv6GoogleAccess;
+            o.project = project;
+            o.releaseChannels = releaseChannels;
+            o.removeDefaultNodePool = removeDefaultNodePool;
+            o.resourceLabels = resourceLabels;
+            o.resourceUsageExportConfigs = resourceUsageExportConfigs;
+            o.selfLink = selfLink;
+            o.servicesIpv4Cidr = servicesIpv4Cidr;
+            o.subnetwork = subnetwork;
+            o.tpuConfigs = tpuConfigs;
+            o.tpuIpv4CidrBlock = tpuIpv4CidrBlock;
+            o.verticalPodAutoscalings = verticalPodAutoscalings;
+            o.workloadIdentityConfigs = workloadIdentityConfigs;
+            return o;
         }
     }
 }

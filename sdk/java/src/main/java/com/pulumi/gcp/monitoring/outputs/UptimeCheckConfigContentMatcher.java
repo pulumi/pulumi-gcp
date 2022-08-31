@@ -16,31 +16,22 @@ public final class UptimeCheckConfigContentMatcher {
      * @return String or regex content to match (max 1024 bytes)
      * 
      */
-    private final String content;
+    private String content;
     /**
      * @return Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
      * Structure is documented below.
      * 
      */
-    private final @Nullable UptimeCheckConfigContentMatcherJsonPathMatcher jsonPathMatcher;
+    private @Nullable UptimeCheckConfigContentMatcherJsonPathMatcher jsonPathMatcher;
     /**
      * @return The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
      * Default value is `CONTAINS_STRING`.
      * Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, and `NOT_MATCHES_JSON_PATH`.
      * 
      */
-    private final @Nullable String matcher;
+    private @Nullable String matcher;
 
-    @CustomType.Constructor
-    private UptimeCheckConfigContentMatcher(
-        @CustomType.Parameter("content") String content,
-        @CustomType.Parameter("jsonPathMatcher") @Nullable UptimeCheckConfigContentMatcherJsonPathMatcher jsonPathMatcher,
-        @CustomType.Parameter("matcher") @Nullable String matcher) {
-        this.content = content;
-        this.jsonPathMatcher = jsonPathMatcher;
-        this.matcher = matcher;
-    }
-
+    private UptimeCheckConfigContentMatcher() {}
     /**
      * @return String or regex content to match (max 1024 bytes)
      * 
@@ -73,16 +64,12 @@ public final class UptimeCheckConfigContentMatcher {
     public static Builder builder(UptimeCheckConfigContentMatcher defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String content;
         private @Nullable UptimeCheckConfigContentMatcherJsonPathMatcher jsonPathMatcher;
         private @Nullable String matcher;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(UptimeCheckConfigContentMatcher defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
@@ -90,19 +77,27 @@ public final class UptimeCheckConfigContentMatcher {
     	      this.matcher = defaults.matcher;
         }
 
+        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
         }
+        @CustomType.Setter
         public Builder jsonPathMatcher(@Nullable UptimeCheckConfigContentMatcherJsonPathMatcher jsonPathMatcher) {
             this.jsonPathMatcher = jsonPathMatcher;
             return this;
         }
+        @CustomType.Setter
         public Builder matcher(@Nullable String matcher) {
             this.matcher = matcher;
             return this;
-        }        public UptimeCheckConfigContentMatcher build() {
-            return new UptimeCheckConfigContentMatcher(content, jsonPathMatcher, matcher);
+        }
+        public UptimeCheckConfigContentMatcher build() {
+            final var o = new UptimeCheckConfigContentMatcher();
+            o.content = content;
+            o.jsonPathMatcher = jsonPathMatcher;
+            o.matcher = matcher;
+            return o;
         }
     }
 }

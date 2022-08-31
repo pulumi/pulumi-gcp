@@ -14,13 +14,9 @@ public final class ClusterNodeConfigSandboxConfig {
      * Accepted values are:
      * 
      */
-    private final String sandboxType;
+    private String sandboxType;
 
-    @CustomType.Constructor
-    private ClusterNodeConfigSandboxConfig(@CustomType.Parameter("sandboxType") String sandboxType) {
-        this.sandboxType = sandboxType;
-    }
-
+    private ClusterNodeConfigSandboxConfig() {}
     /**
      * @return Which sandbox to use for pods in the node pool.
      * Accepted values are:
@@ -37,24 +33,24 @@ public final class ClusterNodeConfigSandboxConfig {
     public static Builder builder(ClusterNodeConfigSandboxConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String sandboxType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNodeConfigSandboxConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sandboxType = defaults.sandboxType;
         }
 
+        @CustomType.Setter
         public Builder sandboxType(String sandboxType) {
             this.sandboxType = Objects.requireNonNull(sandboxType);
             return this;
-        }        public ClusterNodeConfigSandboxConfig build() {
-            return new ClusterNodeConfigSandboxConfig(sandboxType);
+        }
+        public ClusterNodeConfigSandboxConfig build() {
+            final var o = new ClusterNodeConfigSandboxConfig();
+            o.sandboxType = sandboxType;
+            return o;
         }
     }
 }

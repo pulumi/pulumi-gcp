@@ -11,23 +11,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceMaintenancePolicy {
-    private final String createTime;
-    private final String description;
-    private final String updateTime;
-    private final List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows;
+    private String createTime;
+    private String description;
+    private String updateTime;
+    private List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows;
 
-    @CustomType.Constructor
-    private GetInstanceMaintenancePolicy(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("updateTime") String updateTime,
-        @CustomType.Parameter("weeklyMaintenanceWindows") List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows) {
-        this.createTime = createTime;
-        this.description = description;
-        this.updateTime = updateTime;
-        this.weeklyMaintenanceWindows = weeklyMaintenanceWindows;
-    }
-
+    private GetInstanceMaintenancePolicy() {}
     public String createTime() {
         return this.createTime;
     }
@@ -48,17 +37,13 @@ public final class GetInstanceMaintenancePolicy {
     public static Builder builder(GetInstanceMaintenancePolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String description;
         private String updateTime;
         private List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceMaintenancePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -67,26 +52,36 @@ public final class GetInstanceMaintenancePolicy {
     	      this.weeklyMaintenanceWindows = defaults.weeklyMaintenanceWindows;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
         }
+        @CustomType.Setter
         public Builder weeklyMaintenanceWindows(List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows) {
             this.weeklyMaintenanceWindows = Objects.requireNonNull(weeklyMaintenanceWindows);
             return this;
         }
         public Builder weeklyMaintenanceWindows(GetInstanceMaintenancePolicyWeeklyMaintenanceWindow... weeklyMaintenanceWindows) {
             return weeklyMaintenanceWindows(List.of(weeklyMaintenanceWindows));
-        }        public GetInstanceMaintenancePolicy build() {
-            return new GetInstanceMaintenancePolicy(createTime, description, updateTime, weeklyMaintenanceWindows);
+        }
+        public GetInstanceMaintenancePolicy build() {
+            final var o = new GetInstanceMaintenancePolicy();
+            o.createTime = createTime;
+            o.description = description;
+            o.updateTime = updateTime;
+            o.weeklyMaintenanceWindows = weeklyMaintenanceWindows;
+            return o;
         }
     }
 }

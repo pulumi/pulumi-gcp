@@ -42,12 +42,12 @@ public final class RegionAutoscalerAutoscalingPolicyMetric {
      * will sum their respective values to obtain its scaling value.
      * 
      */
-    private final @Nullable String filter;
+    private @Nullable String filter;
     /**
      * @return The identifier for this object. Format specified above.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return If scaling is based on a per-group metric value that represents the
      * total amount of work to be done or resource usage, set this value to
@@ -65,36 +65,23 @@ public final class RegionAutoscalerAutoscalingPolicyMetric {
      * instead.
      * 
      */
-    private final @Nullable Double singleInstanceAssignment;
+    private @Nullable Double singleInstanceAssignment;
     /**
      * @return Fraction of backend capacity utilization (set in HTTP(s) load
      * balancing configuration) that autoscaler should maintain. Must
      * be a positive float value. If not defined, the default is 0.8.
      * 
      */
-    private final @Nullable Double target;
+    private @Nullable Double target;
     /**
      * @return Defines how target utilization value is expressed for a
      * Stackdriver Monitoring metric.
      * Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private RegionAutoscalerAutoscalingPolicyMetric(
-        @CustomType.Parameter("filter") @Nullable String filter,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("singleInstanceAssignment") @Nullable Double singleInstanceAssignment,
-        @CustomType.Parameter("target") @Nullable Double target,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.filter = filter;
-        this.name = name;
-        this.singleInstanceAssignment = singleInstanceAssignment;
-        this.target = target;
-        this.type = type;
-    }
-
+    private RegionAutoscalerAutoscalingPolicyMetric() {}
     /**
      * @return A filter string to be used as the filter string for
      * a Stackdriver Monitoring TimeSeries.list API call.
@@ -181,18 +168,14 @@ public final class RegionAutoscalerAutoscalingPolicyMetric {
     public static Builder builder(RegionAutoscalerAutoscalingPolicyMetric defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String filter;
         private String name;
         private @Nullable Double singleInstanceAssignment;
         private @Nullable Double target;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionAutoscalerAutoscalingPolicyMetric defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filter = defaults.filter;
@@ -202,27 +185,39 @@ public final class RegionAutoscalerAutoscalingPolicyMetric {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder filter(@Nullable String filter) {
             this.filter = filter;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder singleInstanceAssignment(@Nullable Double singleInstanceAssignment) {
             this.singleInstanceAssignment = singleInstanceAssignment;
             return this;
         }
+        @CustomType.Setter
         public Builder target(@Nullable Double target) {
             this.target = target;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public RegionAutoscalerAutoscalingPolicyMetric build() {
-            return new RegionAutoscalerAutoscalingPolicyMetric(filter, name, singleInstanceAssignment, target, type);
+        }
+        public RegionAutoscalerAutoscalingPolicyMetric build() {
+            final var o = new RegionAutoscalerAutoscalingPolicyMetric();
+            o.filter = filter;
+            o.name = name;
+            o.singleInstanceAssignment = singleInstanceAssignment;
+            o.target = target;
+            o.type = type;
+            return o;
         }
     }
 }

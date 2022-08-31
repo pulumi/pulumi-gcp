@@ -11,21 +11,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceReservationAffinity {
-    private final List<GetInstanceReservationAffinitySpecificReservation> specificReservations;
+    private List<GetInstanceReservationAffinitySpecificReservation> specificReservations;
     /**
      * @return The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetInstanceReservationAffinity(
-        @CustomType.Parameter("specificReservations") List<GetInstanceReservationAffinitySpecificReservation> specificReservations,
-        @CustomType.Parameter("type") String type) {
-        this.specificReservations = specificReservations;
-        this.type = type;
-    }
-
+    private GetInstanceReservationAffinity() {}
     public List<GetInstanceReservationAffinitySpecificReservation> specificReservations() {
         return this.specificReservations;
     }
@@ -44,21 +37,18 @@ public final class GetInstanceReservationAffinity {
     public static Builder builder(GetInstanceReservationAffinity defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetInstanceReservationAffinitySpecificReservation> specificReservations;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceReservationAffinity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.specificReservations = defaults.specificReservations;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder specificReservations(List<GetInstanceReservationAffinitySpecificReservation> specificReservations) {
             this.specificReservations = Objects.requireNonNull(specificReservations);
             return this;
@@ -66,11 +56,16 @@ public final class GetInstanceReservationAffinity {
         public Builder specificReservations(GetInstanceReservationAffinitySpecificReservation... specificReservations) {
             return specificReservations(List.of(specificReservations));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetInstanceReservationAffinity build() {
-            return new GetInstanceReservationAffinity(specificReservations, type);
+        }
+        public GetInstanceReservationAffinity build() {
+            final var o = new GetInstanceReservationAffinity();
+            o.specificReservations = specificReservations;
+            o.type = type;
+            return o;
         }
     }
 }

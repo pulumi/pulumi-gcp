@@ -12,20 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LakeAssetStatus {
-    private final @Nullable Integer activeAssets;
-    private final @Nullable Integer securityPolicyApplyingAssets;
-    private final @Nullable String updateTime;
+    private @Nullable Integer activeAssets;
+    private @Nullable Integer securityPolicyApplyingAssets;
+    private @Nullable String updateTime;
 
-    @CustomType.Constructor
-    private LakeAssetStatus(
-        @CustomType.Parameter("activeAssets") @Nullable Integer activeAssets,
-        @CustomType.Parameter("securityPolicyApplyingAssets") @Nullable Integer securityPolicyApplyingAssets,
-        @CustomType.Parameter("updateTime") @Nullable String updateTime) {
-        this.activeAssets = activeAssets;
-        this.securityPolicyApplyingAssets = securityPolicyApplyingAssets;
-        this.updateTime = updateTime;
-    }
-
+    private LakeAssetStatus() {}
     public Optional<Integer> activeAssets() {
         return Optional.ofNullable(this.activeAssets);
     }
@@ -43,16 +34,12 @@ public final class LakeAssetStatus {
     public static Builder builder(LakeAssetStatus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer activeAssets;
         private @Nullable Integer securityPolicyApplyingAssets;
         private @Nullable String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(LakeAssetStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.activeAssets = defaults.activeAssets;
@@ -60,19 +47,27 @@ public final class LakeAssetStatus {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder activeAssets(@Nullable Integer activeAssets) {
             this.activeAssets = activeAssets;
             return this;
         }
+        @CustomType.Setter
         public Builder securityPolicyApplyingAssets(@Nullable Integer securityPolicyApplyingAssets) {
             this.securityPolicyApplyingAssets = securityPolicyApplyingAssets;
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
             this.updateTime = updateTime;
             return this;
-        }        public LakeAssetStatus build() {
-            return new LakeAssetStatus(activeAssets, securityPolicyApplyingAssets, updateTime);
+        }
+        public LakeAssetStatus build() {
+            final var o = new LakeAssetStatus();
+            o.activeAssets = activeAssets;
+            o.securityPolicyApplyingAssets = securityPolicyApplyingAssets;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

@@ -15,13 +15,9 @@ public final class SecurityPolicyAdaptiveProtectionConfig {
      * @return Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
      * 
      */
-    private final @Nullable SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig layer7DdosDefenseConfig;
+    private @Nullable SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig layer7DdosDefenseConfig;
 
-    @CustomType.Constructor
-    private SecurityPolicyAdaptiveProtectionConfig(@CustomType.Parameter("layer7DdosDefenseConfig") @Nullable SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig layer7DdosDefenseConfig) {
-        this.layer7DdosDefenseConfig = layer7DdosDefenseConfig;
-    }
-
+    private SecurityPolicyAdaptiveProtectionConfig() {}
     /**
      * @return Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
      * 
@@ -37,24 +33,24 @@ public final class SecurityPolicyAdaptiveProtectionConfig {
     public static Builder builder(SecurityPolicyAdaptiveProtectionConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig layer7DdosDefenseConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecurityPolicyAdaptiveProtectionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.layer7DdosDefenseConfig = defaults.layer7DdosDefenseConfig;
         }
 
+        @CustomType.Setter
         public Builder layer7DdosDefenseConfig(@Nullable SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig layer7DdosDefenseConfig) {
             this.layer7DdosDefenseConfig = layer7DdosDefenseConfig;
             return this;
-        }        public SecurityPolicyAdaptiveProtectionConfig build() {
-            return new SecurityPolicyAdaptiveProtectionConfig(layer7DdosDefenseConfig);
+        }
+        public SecurityPolicyAdaptiveProtectionConfig build() {
+            final var o = new SecurityPolicyAdaptiveProtectionConfig();
+            o.layer7DdosDefenseConfig = layer7DdosDefenseConfig;
+            return o;
         }
     }
 }

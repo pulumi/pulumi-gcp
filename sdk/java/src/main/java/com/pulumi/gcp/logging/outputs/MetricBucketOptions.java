@@ -18,32 +18,23 @@ public final class MetricBucketOptions {
      * Structure is documented below.
      * 
      */
-    private final @Nullable MetricBucketOptionsExplicitBuckets explicitBuckets;
+    private @Nullable MetricBucketOptionsExplicitBuckets explicitBuckets;
     /**
      * @return Specifies an exponential sequence of buckets that have a width that is proportional to the value of
      * the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.
      * Structure is documented below.
      * 
      */
-    private final @Nullable MetricBucketOptionsExponentialBuckets exponentialBuckets;
+    private @Nullable MetricBucketOptionsExponentialBuckets exponentialBuckets;
     /**
      * @return Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
      * Each bucket represents a constant absolute uncertainty on the specific value in the bucket.
      * Structure is documented below.
      * 
      */
-    private final @Nullable MetricBucketOptionsLinearBuckets linearBuckets;
+    private @Nullable MetricBucketOptionsLinearBuckets linearBuckets;
 
-    @CustomType.Constructor
-    private MetricBucketOptions(
-        @CustomType.Parameter("explicitBuckets") @Nullable MetricBucketOptionsExplicitBuckets explicitBuckets,
-        @CustomType.Parameter("exponentialBuckets") @Nullable MetricBucketOptionsExponentialBuckets exponentialBuckets,
-        @CustomType.Parameter("linearBuckets") @Nullable MetricBucketOptionsLinearBuckets linearBuckets) {
-        this.explicitBuckets = explicitBuckets;
-        this.exponentialBuckets = exponentialBuckets;
-        this.linearBuckets = linearBuckets;
-    }
-
+    private MetricBucketOptions() {}
     /**
      * @return Specifies a set of buckets with arbitrary widths.
      * Structure is documented below.
@@ -78,16 +69,12 @@ public final class MetricBucketOptions {
     public static Builder builder(MetricBucketOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable MetricBucketOptionsExplicitBuckets explicitBuckets;
         private @Nullable MetricBucketOptionsExponentialBuckets exponentialBuckets;
         private @Nullable MetricBucketOptionsLinearBuckets linearBuckets;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MetricBucketOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.explicitBuckets = defaults.explicitBuckets;
@@ -95,19 +82,27 @@ public final class MetricBucketOptions {
     	      this.linearBuckets = defaults.linearBuckets;
         }
 
+        @CustomType.Setter
         public Builder explicitBuckets(@Nullable MetricBucketOptionsExplicitBuckets explicitBuckets) {
             this.explicitBuckets = explicitBuckets;
             return this;
         }
+        @CustomType.Setter
         public Builder exponentialBuckets(@Nullable MetricBucketOptionsExponentialBuckets exponentialBuckets) {
             this.exponentialBuckets = exponentialBuckets;
             return this;
         }
+        @CustomType.Setter
         public Builder linearBuckets(@Nullable MetricBucketOptionsLinearBuckets linearBuckets) {
             this.linearBuckets = linearBuckets;
             return this;
-        }        public MetricBucketOptions build() {
-            return new MetricBucketOptions(explicitBuckets, exponentialBuckets, linearBuckets);
+        }
+        public MetricBucketOptions build() {
+            final var o = new MetricBucketOptions();
+            o.explicitBuckets = explicitBuckets;
+            o.exponentialBuckets = exponentialBuckets;
+            o.linearBuckets = linearBuckets;
+            return o;
         }
     }
 }

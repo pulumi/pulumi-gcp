@@ -20,22 +20,22 @@ public final class ServiceTraffic {
      * false when RevisionName is non-empty.
      * 
      */
-    private final @Nullable Boolean latestRevision;
+    private @Nullable Boolean latestRevision;
     /**
      * @return Percent specifies percent of the traffic to this Revision or Configuration.
      * 
      */
-    private final Integer percent;
+    private Integer percent;
     /**
      * @return RevisionName of a specific revision to which to send this portion of traffic.
      * 
      */
-    private final @Nullable String revisionName;
+    private @Nullable String revisionName;
     /**
      * @return Tag is optionally used to expose a dedicated url for referencing this target exclusively.
      * 
      */
-    private final @Nullable String tag;
+    private @Nullable String tag;
     /**
      * @return -
      * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
@@ -43,22 +43,9 @@ public final class ServiceTraffic {
      * but may not contain anything else (e.g. basic auth, url path, etc.)
      * 
      */
-    private final @Nullable String url;
+    private @Nullable String url;
 
-    @CustomType.Constructor
-    private ServiceTraffic(
-        @CustomType.Parameter("latestRevision") @Nullable Boolean latestRevision,
-        @CustomType.Parameter("percent") Integer percent,
-        @CustomType.Parameter("revisionName") @Nullable String revisionName,
-        @CustomType.Parameter("tag") @Nullable String tag,
-        @CustomType.Parameter("url") @Nullable String url) {
-        this.latestRevision = latestRevision;
-        this.percent = percent;
-        this.revisionName = revisionName;
-        this.tag = tag;
-        this.url = url;
-    }
-
+    private ServiceTraffic() {}
     /**
      * @return LatestRevision may be optionally provided to indicate that the latest ready
      * Revision of the Configuration should be used for this traffic target. When
@@ -108,18 +95,14 @@ public final class ServiceTraffic {
     public static Builder builder(ServiceTraffic defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean latestRevision;
         private Integer percent;
         private @Nullable String revisionName;
         private @Nullable String tag;
         private @Nullable String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceTraffic defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.latestRevision = defaults.latestRevision;
@@ -129,27 +112,39 @@ public final class ServiceTraffic {
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder latestRevision(@Nullable Boolean latestRevision) {
             this.latestRevision = latestRevision;
             return this;
         }
+        @CustomType.Setter
         public Builder percent(Integer percent) {
             this.percent = Objects.requireNonNull(percent);
             return this;
         }
+        @CustomType.Setter
         public Builder revisionName(@Nullable String revisionName) {
             this.revisionName = revisionName;
             return this;
         }
+        @CustomType.Setter
         public Builder tag(@Nullable String tag) {
             this.tag = tag;
             return this;
         }
+        @CustomType.Setter
         public Builder url(@Nullable String url) {
             this.url = url;
             return this;
-        }        public ServiceTraffic build() {
-            return new ServiceTraffic(latestRevision, percent, revisionName, tag, url);
+        }
+        public ServiceTraffic build() {
+            final var o = new ServiceTraffic();
+            o.latestRevision = latestRevision;
+            o.percent = percent;
+            o.revisionName = revisionName;
+            o.tag = tag;
+            o.url = url;
+            return o;
         }
     }
 }

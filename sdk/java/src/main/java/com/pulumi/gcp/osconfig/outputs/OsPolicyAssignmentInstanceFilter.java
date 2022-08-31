@@ -19,35 +19,24 @@ public final class OsPolicyAssignmentInstanceFilter {
      * @return Target all VMs in the project. If true, no other criteria is permitted.
      * 
      */
-    private final @Nullable Boolean all;
+    private @Nullable Boolean all;
     /**
      * @return List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
      * 
      */
-    private final @Nullable List<OsPolicyAssignmentInstanceFilterExclusionLabel> exclusionLabels;
+    private @Nullable List<OsPolicyAssignmentInstanceFilterExclusionLabel> exclusionLabels;
     /**
      * @return List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
      * 
      */
-    private final @Nullable List<OsPolicyAssignmentInstanceFilterInclusionLabel> inclusionLabels;
+    private @Nullable List<OsPolicyAssignmentInstanceFilterInclusionLabel> inclusionLabels;
     /**
      * @return List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
      * 
      */
-    private final @Nullable List<OsPolicyAssignmentInstanceFilterInventory> inventories;
+    private @Nullable List<OsPolicyAssignmentInstanceFilterInventory> inventories;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentInstanceFilter(
-        @CustomType.Parameter("all") @Nullable Boolean all,
-        @CustomType.Parameter("exclusionLabels") @Nullable List<OsPolicyAssignmentInstanceFilterExclusionLabel> exclusionLabels,
-        @CustomType.Parameter("inclusionLabels") @Nullable List<OsPolicyAssignmentInstanceFilterInclusionLabel> inclusionLabels,
-        @CustomType.Parameter("inventories") @Nullable List<OsPolicyAssignmentInstanceFilterInventory> inventories) {
-        this.all = all;
-        this.exclusionLabels = exclusionLabels;
-        this.inclusionLabels = inclusionLabels;
-        this.inventories = inventories;
-    }
-
+    private OsPolicyAssignmentInstanceFilter() {}
     /**
      * @return Target all VMs in the project. If true, no other criteria is permitted.
      * 
@@ -84,17 +73,13 @@ public final class OsPolicyAssignmentInstanceFilter {
     public static Builder builder(OsPolicyAssignmentInstanceFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean all;
         private @Nullable List<OsPolicyAssignmentInstanceFilterExclusionLabel> exclusionLabels;
         private @Nullable List<OsPolicyAssignmentInstanceFilterInclusionLabel> inclusionLabels;
         private @Nullable List<OsPolicyAssignmentInstanceFilterInventory> inventories;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentInstanceFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.all = defaults.all;
@@ -103,10 +88,12 @@ public final class OsPolicyAssignmentInstanceFilter {
     	      this.inventories = defaults.inventories;
         }
 
+        @CustomType.Setter
         public Builder all(@Nullable Boolean all) {
             this.all = all;
             return this;
         }
+        @CustomType.Setter
         public Builder exclusionLabels(@Nullable List<OsPolicyAssignmentInstanceFilterExclusionLabel> exclusionLabels) {
             this.exclusionLabels = exclusionLabels;
             return this;
@@ -114,6 +101,7 @@ public final class OsPolicyAssignmentInstanceFilter {
         public Builder exclusionLabels(OsPolicyAssignmentInstanceFilterExclusionLabel... exclusionLabels) {
             return exclusionLabels(List.of(exclusionLabels));
         }
+        @CustomType.Setter
         public Builder inclusionLabels(@Nullable List<OsPolicyAssignmentInstanceFilterInclusionLabel> inclusionLabels) {
             this.inclusionLabels = inclusionLabels;
             return this;
@@ -121,14 +109,21 @@ public final class OsPolicyAssignmentInstanceFilter {
         public Builder inclusionLabels(OsPolicyAssignmentInstanceFilterInclusionLabel... inclusionLabels) {
             return inclusionLabels(List.of(inclusionLabels));
         }
+        @CustomType.Setter
         public Builder inventories(@Nullable List<OsPolicyAssignmentInstanceFilterInventory> inventories) {
             this.inventories = inventories;
             return this;
         }
         public Builder inventories(OsPolicyAssignmentInstanceFilterInventory... inventories) {
             return inventories(List.of(inventories));
-        }        public OsPolicyAssignmentInstanceFilter build() {
-            return new OsPolicyAssignmentInstanceFilter(all, exclusionLabels, inclusionLabels, inventories);
+        }
+        public OsPolicyAssignmentInstanceFilter build() {
+            final var o = new OsPolicyAssignmentInstanceFilter();
+            o.all = all;
+            o.exclusionLabels = exclusionLabels;
+            o.inclusionLabels = inclusionLabels;
+            o.inventories = inventories;
+            return o;
         }
     }
 }

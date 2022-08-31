@@ -15,35 +15,24 @@ public final class FlexibleAppVersionAutomaticScalingNetworkUtilization {
      * @return Target bytes received per second.
      * 
      */
-    private final @Nullable Integer targetReceivedBytesPerSecond;
+    private @Nullable Integer targetReceivedBytesPerSecond;
     /**
      * @return Target packets received per second.
      * 
      */
-    private final @Nullable Integer targetReceivedPacketsPerSecond;
+    private @Nullable Integer targetReceivedPacketsPerSecond;
     /**
      * @return Target bytes sent per second.
      * 
      */
-    private final @Nullable Integer targetSentBytesPerSecond;
+    private @Nullable Integer targetSentBytesPerSecond;
     /**
      * @return Target packets sent per second.
      * 
      */
-    private final @Nullable Integer targetSentPacketsPerSecond;
+    private @Nullable Integer targetSentPacketsPerSecond;
 
-    @CustomType.Constructor
-    private FlexibleAppVersionAutomaticScalingNetworkUtilization(
-        @CustomType.Parameter("targetReceivedBytesPerSecond") @Nullable Integer targetReceivedBytesPerSecond,
-        @CustomType.Parameter("targetReceivedPacketsPerSecond") @Nullable Integer targetReceivedPacketsPerSecond,
-        @CustomType.Parameter("targetSentBytesPerSecond") @Nullable Integer targetSentBytesPerSecond,
-        @CustomType.Parameter("targetSentPacketsPerSecond") @Nullable Integer targetSentPacketsPerSecond) {
-        this.targetReceivedBytesPerSecond = targetReceivedBytesPerSecond;
-        this.targetReceivedPacketsPerSecond = targetReceivedPacketsPerSecond;
-        this.targetSentBytesPerSecond = targetSentBytesPerSecond;
-        this.targetSentPacketsPerSecond = targetSentPacketsPerSecond;
-    }
-
+    private FlexibleAppVersionAutomaticScalingNetworkUtilization() {}
     /**
      * @return Target bytes received per second.
      * 
@@ -80,17 +69,13 @@ public final class FlexibleAppVersionAutomaticScalingNetworkUtilization {
     public static Builder builder(FlexibleAppVersionAutomaticScalingNetworkUtilization defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer targetReceivedBytesPerSecond;
         private @Nullable Integer targetReceivedPacketsPerSecond;
         private @Nullable Integer targetSentBytesPerSecond;
         private @Nullable Integer targetSentPacketsPerSecond;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FlexibleAppVersionAutomaticScalingNetworkUtilization defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.targetReceivedBytesPerSecond = defaults.targetReceivedBytesPerSecond;
@@ -99,23 +84,33 @@ public final class FlexibleAppVersionAutomaticScalingNetworkUtilization {
     	      this.targetSentPacketsPerSecond = defaults.targetSentPacketsPerSecond;
         }
 
+        @CustomType.Setter
         public Builder targetReceivedBytesPerSecond(@Nullable Integer targetReceivedBytesPerSecond) {
             this.targetReceivedBytesPerSecond = targetReceivedBytesPerSecond;
             return this;
         }
+        @CustomType.Setter
         public Builder targetReceivedPacketsPerSecond(@Nullable Integer targetReceivedPacketsPerSecond) {
             this.targetReceivedPacketsPerSecond = targetReceivedPacketsPerSecond;
             return this;
         }
+        @CustomType.Setter
         public Builder targetSentBytesPerSecond(@Nullable Integer targetSentBytesPerSecond) {
             this.targetSentBytesPerSecond = targetSentBytesPerSecond;
             return this;
         }
+        @CustomType.Setter
         public Builder targetSentPacketsPerSecond(@Nullable Integer targetSentPacketsPerSecond) {
             this.targetSentPacketsPerSecond = targetSentPacketsPerSecond;
             return this;
-        }        public FlexibleAppVersionAutomaticScalingNetworkUtilization build() {
-            return new FlexibleAppVersionAutomaticScalingNetworkUtilization(targetReceivedBytesPerSecond, targetReceivedPacketsPerSecond, targetSentBytesPerSecond, targetSentPacketsPerSecond);
+        }
+        public FlexibleAppVersionAutomaticScalingNetworkUtilization build() {
+            final var o = new FlexibleAppVersionAutomaticScalingNetworkUtilization();
+            o.targetReceivedBytesPerSecond = targetReceivedBytesPerSecond;
+            o.targetReceivedPacketsPerSecond = targetReceivedPacketsPerSecond;
+            o.targetSentBytesPerSecond = targetSentBytesPerSecond;
+            o.targetSentPacketsPerSecond = targetSentPacketsPerSecond;
+            return o;
         }
     }
 }

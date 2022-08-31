@@ -17,7 +17,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleL
      * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
      * 
      */
-    private final @Nullable String fixedLikelihood;
+    private @Nullable String fixedLikelihood;
     /**
      * @return Increase or decrease the likelihood by the specified number of levels. For example,
      * if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
@@ -27,16 +27,9 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleL
      * will result in a final likelihood of LIKELY. Either this or fixed_likelihood can be set.
      * 
      */
-    private final @Nullable Integer relativeLikelihood;
+    private @Nullable Integer relativeLikelihood;
 
-    @CustomType.Constructor
-    private PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment(
-        @CustomType.Parameter("fixedLikelihood") @Nullable String fixedLikelihood,
-        @CustomType.Parameter("relativeLikelihood") @Nullable Integer relativeLikelihood) {
-        this.fixedLikelihood = fixedLikelihood;
-        this.relativeLikelihood = relativeLikelihood;
-    }
-
+    private PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment() {}
     /**
      * @return Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
      * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
@@ -65,30 +58,32 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleL
     public static Builder builder(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String fixedLikelihood;
         private @Nullable Integer relativeLikelihood;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fixedLikelihood = defaults.fixedLikelihood;
     	      this.relativeLikelihood = defaults.relativeLikelihood;
         }
 
+        @CustomType.Setter
         public Builder fixedLikelihood(@Nullable String fixedLikelihood) {
             this.fixedLikelihood = fixedLikelihood;
             return this;
         }
+        @CustomType.Setter
         public Builder relativeLikelihood(@Nullable Integer relativeLikelihood) {
             this.relativeLikelihood = relativeLikelihood;
             return this;
-        }        public PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment build() {
-            return new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment(fixedLikelihood, relativeLikelihood);
+        }
+        public PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment build() {
+            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment();
+            o.fixedLikelihood = fixedLikelihood;
+            o.relativeLikelihood = relativeLikelihood;
+            return o;
         }
     }
 }

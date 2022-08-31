@@ -15,13 +15,9 @@ public final class GameServerConfigScalingConfigSelector {
      * @return Set of labels to group by.
      * 
      */
-    private final @Nullable Map<String,String> labels;
+    private @Nullable Map<String,String> labels;
 
-    @CustomType.Constructor
-    private GameServerConfigScalingConfigSelector(@CustomType.Parameter("labels") @Nullable Map<String,String> labels) {
-        this.labels = labels;
-    }
-
+    private GameServerConfigScalingConfigSelector() {}
     /**
      * @return Set of labels to group by.
      * 
@@ -37,24 +33,24 @@ public final class GameServerConfigScalingConfigSelector {
     public static Builder builder(GameServerConfigScalingConfigSelector defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> labels;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GameServerConfigScalingConfigSelector defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.labels = defaults.labels;
         }
 
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
             this.labels = labels;
             return this;
-        }        public GameServerConfigScalingConfigSelector build() {
-            return new GameServerConfigScalingConfigSelector(labels);
+        }
+        public GameServerConfigScalingConfigSelector build() {
+            final var o = new GameServerConfigScalingConfigSelector();
+            o.labels = labels;
+            return o;
         }
     }
 }

@@ -18,23 +18,16 @@ public final class AlertPolicyConditionConditionAbsentTrigger {
      * condition to be triggered.
      * 
      */
-    private final @Nullable Integer count;
+    private @Nullable Integer count;
     /**
      * @return The percentage of time series that
      * must fail the predicate for the
      * condition to be triggered.
      * 
      */
-    private final @Nullable Double percent;
+    private @Nullable Double percent;
 
-    @CustomType.Constructor
-    private AlertPolicyConditionConditionAbsentTrigger(
-        @CustomType.Parameter("count") @Nullable Integer count,
-        @CustomType.Parameter("percent") @Nullable Double percent) {
-        this.count = count;
-        this.percent = percent;
-    }
-
+    private AlertPolicyConditionConditionAbsentTrigger() {}
     /**
      * @return The absolute number of time series
      * that must fail the predicate for the
@@ -61,30 +54,32 @@ public final class AlertPolicyConditionConditionAbsentTrigger {
     public static Builder builder(AlertPolicyConditionConditionAbsentTrigger defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer count;
         private @Nullable Double percent;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AlertPolicyConditionConditionAbsentTrigger defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
     	      this.percent = defaults.percent;
         }
 
+        @CustomType.Setter
         public Builder count(@Nullable Integer count) {
             this.count = count;
             return this;
         }
+        @CustomType.Setter
         public Builder percent(@Nullable Double percent) {
             this.percent = percent;
             return this;
-        }        public AlertPolicyConditionConditionAbsentTrigger build() {
-            return new AlertPolicyConditionConditionAbsentTrigger(count, percent);
+        }
+        public AlertPolicyConditionConditionAbsentTrigger build() {
+            final var o = new AlertPolicyConditionConditionAbsentTrigger();
+            o.count = count;
+            o.percent = percent;
+            return o;
         }
     }
 }

@@ -18,143 +18,100 @@ public final class GetImageResult {
      * @return The size of the image tar.gz archive stored in Google Cloud Storage in bytes.
      * 
      */
-    private final Integer archiveSizeBytes;
+    private Integer archiveSizeBytes;
     /**
      * @return The creation timestamp in RFC3339 text format.
      * 
      */
-    private final String creationTimestamp;
+    private String creationTimestamp;
     /**
      * @return An optional description of this image.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The size of the image when restored onto a persistent disk in gigabytes.
      * 
      */
-    private final Integer diskSizeGb;
+    private Integer diskSizeGb;
     /**
      * @return The family name of the image.
      * 
      */
-    private final String family;
-    private final @Nullable String filter;
+    private String family;
+    private @Nullable String filter;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
      * encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)
      * that protects this image.
      * 
      */
-    private final String imageEncryptionKeySha256;
+    private String imageEncryptionKeySha256;
     /**
      * @return The unique identifier for the image.
      * 
      */
-    private final String imageId;
+    private String imageId;
     /**
      * @return A fingerprint for the labels being applied to this image.
      * 
      */
-    private final String labelFingerprint;
+    private String labelFingerprint;
     /**
      * @return A map of labels applied to this image.
      * 
      */
-    private final Map<String,String> labels;
+    private Map<String,String> labels;
     /**
      * @return A list of applicable license URI.
      * 
      */
-    private final List<String> licenses;
+    private List<String> licenses;
     /**
      * @return The name of the image.
      * 
      */
-    private final String name;
-    private final String project;
+    private String name;
+    private String project;
     /**
      * @return The URI of the image.
      * 
      */
-    private final String selfLink;
+    private String selfLink;
     /**
      * @return The URL of the source disk used to create this image.
      * 
      */
-    private final String sourceDisk;
+    private String sourceDisk;
     /**
      * @return The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
      * encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)
      * that protects this image.
      * 
      */
-    private final String sourceDiskEncryptionKeySha256;
+    private String sourceDiskEncryptionKeySha256;
     /**
      * @return The ID value of the disk used to create this image.
      * 
      */
-    private final String sourceDiskId;
+    private String sourceDiskId;
     /**
      * @return The ID value of the image used to create this image.
      * 
      */
-    private final String sourceImageId;
+    private String sourceImageId;
     /**
      * @return The status of the image. Possible values are **FAILED**, **PENDING**, or **READY**.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetImageResult(
-        @CustomType.Parameter("archiveSizeBytes") Integer archiveSizeBytes,
-        @CustomType.Parameter("creationTimestamp") String creationTimestamp,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("diskSizeGb") Integer diskSizeGb,
-        @CustomType.Parameter("family") String family,
-        @CustomType.Parameter("filter") @Nullable String filter,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("imageEncryptionKeySha256") String imageEncryptionKeySha256,
-        @CustomType.Parameter("imageId") String imageId,
-        @CustomType.Parameter("labelFingerprint") String labelFingerprint,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("licenses") List<String> licenses,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("selfLink") String selfLink,
-        @CustomType.Parameter("sourceDisk") String sourceDisk,
-        @CustomType.Parameter("sourceDiskEncryptionKeySha256") String sourceDiskEncryptionKeySha256,
-        @CustomType.Parameter("sourceDiskId") String sourceDiskId,
-        @CustomType.Parameter("sourceImageId") String sourceImageId,
-        @CustomType.Parameter("status") String status) {
-        this.archiveSizeBytes = archiveSizeBytes;
-        this.creationTimestamp = creationTimestamp;
-        this.description = description;
-        this.diskSizeGb = diskSizeGb;
-        this.family = family;
-        this.filter = filter;
-        this.id = id;
-        this.imageEncryptionKeySha256 = imageEncryptionKeySha256;
-        this.imageId = imageId;
-        this.labelFingerprint = labelFingerprint;
-        this.labels = labels;
-        this.licenses = licenses;
-        this.name = name;
-        this.project = project;
-        this.selfLink = selfLink;
-        this.sourceDisk = sourceDisk;
-        this.sourceDiskEncryptionKeySha256 = sourceDiskEncryptionKeySha256;
-        this.sourceDiskId = sourceDiskId;
-        this.sourceImageId = sourceImageId;
-        this.status = status;
-    }
-
+    private GetImageResult() {}
     /**
      * @return The size of the image tar.gz archive stored in Google Cloud Storage in bytes.
      * 
@@ -299,7 +256,7 @@ public final class GetImageResult {
     public static Builder builder(GetImageResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer archiveSizeBytes;
         private String creationTimestamp;
@@ -321,11 +278,7 @@ public final class GetImageResult {
         private String sourceDiskId;
         private String sourceImageId;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetImageResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.archiveSizeBytes = defaults.archiveSizeBytes;
@@ -350,50 +303,62 @@ public final class GetImageResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder archiveSizeBytes(Integer archiveSizeBytes) {
             this.archiveSizeBytes = Objects.requireNonNull(archiveSizeBytes);
             return this;
         }
+        @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
             this.creationTimestamp = Objects.requireNonNull(creationTimestamp);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder diskSizeGb(Integer diskSizeGb) {
             this.diskSizeGb = Objects.requireNonNull(diskSizeGb);
             return this;
         }
+        @CustomType.Setter
         public Builder family(String family) {
             this.family = Objects.requireNonNull(family);
             return this;
         }
+        @CustomType.Setter
         public Builder filter(@Nullable String filter) {
             this.filter = filter;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder imageEncryptionKeySha256(String imageEncryptionKeySha256) {
             this.imageEncryptionKeySha256 = Objects.requireNonNull(imageEncryptionKeySha256);
             return this;
         }
+        @CustomType.Setter
         public Builder imageId(String imageId) {
             this.imageId = Objects.requireNonNull(imageId);
             return this;
         }
+        @CustomType.Setter
         public Builder labelFingerprint(String labelFingerprint) {
             this.labelFingerprint = Objects.requireNonNull(labelFingerprint);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder licenses(List<String> licenses) {
             this.licenses = Objects.requireNonNull(licenses);
             return this;
@@ -401,39 +366,69 @@ public final class GetImageResult {
         public Builder licenses(String... licenses) {
             return licenses(List.of(licenses));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceDisk(String sourceDisk) {
             this.sourceDisk = Objects.requireNonNull(sourceDisk);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceDiskEncryptionKeySha256(String sourceDiskEncryptionKeySha256) {
             this.sourceDiskEncryptionKeySha256 = Objects.requireNonNull(sourceDiskEncryptionKeySha256);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceDiskId(String sourceDiskId) {
             this.sourceDiskId = Objects.requireNonNull(sourceDiskId);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceImageId(String sourceImageId) {
             this.sourceImageId = Objects.requireNonNull(sourceImageId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetImageResult build() {
-            return new GetImageResult(archiveSizeBytes, creationTimestamp, description, diskSizeGb, family, filter, id, imageEncryptionKeySha256, imageId, labelFingerprint, labels, licenses, name, project, selfLink, sourceDisk, sourceDiskEncryptionKeySha256, sourceDiskId, sourceImageId, status);
+        }
+        public GetImageResult build() {
+            final var o = new GetImageResult();
+            o.archiveSizeBytes = archiveSizeBytes;
+            o.creationTimestamp = creationTimestamp;
+            o.description = description;
+            o.diskSizeGb = diskSizeGb;
+            o.family = family;
+            o.filter = filter;
+            o.id = id;
+            o.imageEncryptionKeySha256 = imageEncryptionKeySha256;
+            o.imageId = imageId;
+            o.labelFingerprint = labelFingerprint;
+            o.labels = labels;
+            o.licenses = licenses;
+            o.name = name;
+            o.project = project;
+            o.selfLink = selfLink;
+            o.sourceDisk = sourceDisk;
+            o.sourceDiskEncryptionKeySha256 = sourceDiskEncryptionKeySha256;
+            o.sourceDiskId = sourceDiskId;
+            o.sourceImageId = sourceImageId;
+            o.status = status;
+            return o;
         }
     }
 }

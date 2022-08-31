@@ -15,12 +15,12 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewr
      * @return Prior to forwarding the request to the selected origin, the request&#39;s host header is replaced with contents of hostRewrite.
      * 
      */
-    private final @Nullable String hostRewrite;
+    private @Nullable String hostRewrite;
     /**
      * @return Prior to forwarding the request to the selected origin, the matching portion of the request&#39;s path is replaced by pathPrefixRewrite.
      * 
      */
-    private final @Nullable String pathPrefixRewrite;
+    private @Nullable String pathPrefixRewrite;
     /**
      * @return Prior to forwarding the request to the selected origin, if the
      * request matched a pathTemplateMatch, the matching portion of the
@@ -35,18 +35,9 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewr
      * specified.
      * 
      */
-    private final @Nullable String pathTemplateRewrite;
+    private @Nullable String pathTemplateRewrite;
 
-    @CustomType.Constructor
-    private EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite(
-        @CustomType.Parameter("hostRewrite") @Nullable String hostRewrite,
-        @CustomType.Parameter("pathPrefixRewrite") @Nullable String pathPrefixRewrite,
-        @CustomType.Parameter("pathTemplateRewrite") @Nullable String pathTemplateRewrite) {
-        this.hostRewrite = hostRewrite;
-        this.pathPrefixRewrite = pathPrefixRewrite;
-        this.pathTemplateRewrite = pathTemplateRewrite;
-    }
-
+    private EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite() {}
     /**
      * @return Prior to forwarding the request to the selected origin, the request&#39;s host header is replaced with contents of hostRewrite.
      * 
@@ -86,16 +77,12 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewr
     public static Builder builder(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String hostRewrite;
         private @Nullable String pathPrefixRewrite;
         private @Nullable String pathTemplateRewrite;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostRewrite = defaults.hostRewrite;
@@ -103,19 +90,27 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewr
     	      this.pathTemplateRewrite = defaults.pathTemplateRewrite;
         }
 
+        @CustomType.Setter
         public Builder hostRewrite(@Nullable String hostRewrite) {
             this.hostRewrite = hostRewrite;
             return this;
         }
+        @CustomType.Setter
         public Builder pathPrefixRewrite(@Nullable String pathPrefixRewrite) {
             this.pathPrefixRewrite = pathPrefixRewrite;
             return this;
         }
+        @CustomType.Setter
         public Builder pathTemplateRewrite(@Nullable String pathTemplateRewrite) {
             this.pathTemplateRewrite = pathTemplateRewrite;
             return this;
-        }        public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite build() {
-            return new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite(hostRewrite, pathPrefixRewrite, pathTemplateRewrite);
+        }
+        public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite build() {
+            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite();
+            o.hostRewrite = hostRewrite;
+            o.pathPrefixRewrite = pathPrefixRewrite;
+            o.pathTemplateRewrite = pathTemplateRewrite;
+            return o;
         }
     }
 }

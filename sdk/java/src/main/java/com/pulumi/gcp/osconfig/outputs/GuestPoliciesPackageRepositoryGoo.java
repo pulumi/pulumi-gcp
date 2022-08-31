@@ -16,21 +16,14 @@ public final class GuestPoliciesPackageRepositoryGoo {
      * could potentially have conflicting assignments.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The url of the repository.
      * 
      */
-    private final String url;
+    private String url;
 
-    @CustomType.Constructor
-    private GuestPoliciesPackageRepositoryGoo(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("url") String url) {
-        this.name = name;
-        this.url = url;
-    }
-
+    private GuestPoliciesPackageRepositoryGoo() {}
     /**
      * @return Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
      * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
@@ -56,30 +49,32 @@ public final class GuestPoliciesPackageRepositoryGoo {
     public static Builder builder(GuestPoliciesPackageRepositoryGoo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesPackageRepositoryGoo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public GuestPoliciesPackageRepositoryGoo build() {
-            return new GuestPoliciesPackageRepositoryGoo(name, url);
+        }
+        public GuestPoliciesPackageRepositoryGoo build() {
+            final var o = new GuestPoliciesPackageRepositoryGoo();
+            o.name = name;
+            o.url = url;
+            return o;
         }
     }
 }

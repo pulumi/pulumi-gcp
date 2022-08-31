@@ -17,21 +17,14 @@ public final class ClusterNetworkPolicy {
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return The selected network policy provider. Defaults to PROVIDER_UNSPECIFIED.
      * 
      */
-    private final @Nullable String provider;
+    private @Nullable String provider;
 
-    @CustomType.Constructor
-    private ClusterNetworkPolicy(
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("provider") @Nullable String provider) {
-        this.enabled = enabled;
-        this.provider = provider;
-    }
-
+    private ClusterNetworkPolicy() {}
     /**
      * @return Enable the PodSecurityPolicy controller for this cluster.
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -55,30 +48,32 @@ public final class ClusterNetworkPolicy {
     public static Builder builder(ClusterNetworkPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
         private @Nullable String provider;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNetworkPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.provider = defaults.provider;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder provider(@Nullable String provider) {
             this.provider = provider;
             return this;
-        }        public ClusterNetworkPolicy build() {
-            return new ClusterNetworkPolicy(enabled, provider);
+        }
+        public ClusterNetworkPolicy build() {
+            final var o = new ClusterNetworkPolicy();
+            o.enabled = enabled;
+            o.provider = provider;
+            return o;
         }
     }
 }

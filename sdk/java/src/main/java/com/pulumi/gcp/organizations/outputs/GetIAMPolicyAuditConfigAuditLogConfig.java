@@ -15,21 +15,14 @@ public final class GetIAMPolicyAuditConfigAuditLogConfig {
      * @return Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
      * 
      */
-    private final @Nullable List<String> exemptedMembers;
+    private @Nullable List<String> exemptedMembers;
     /**
      * @return Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
      * 
      */
-    private final String logType;
+    private String logType;
 
-    @CustomType.Constructor
-    private GetIAMPolicyAuditConfigAuditLogConfig(
-        @CustomType.Parameter("exemptedMembers") @Nullable List<String> exemptedMembers,
-        @CustomType.Parameter("logType") String logType) {
-        this.exemptedMembers = exemptedMembers;
-        this.logType = logType;
-    }
-
+    private GetIAMPolicyAuditConfigAuditLogConfig() {}
     /**
      * @return Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
      * 
@@ -52,21 +45,18 @@ public final class GetIAMPolicyAuditConfigAuditLogConfig {
     public static Builder builder(GetIAMPolicyAuditConfigAuditLogConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> exemptedMembers;
         private String logType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetIAMPolicyAuditConfigAuditLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.exemptedMembers = defaults.exemptedMembers;
     	      this.logType = defaults.logType;
         }
 
+        @CustomType.Setter
         public Builder exemptedMembers(@Nullable List<String> exemptedMembers) {
             this.exemptedMembers = exemptedMembers;
             return this;
@@ -74,11 +64,16 @@ public final class GetIAMPolicyAuditConfigAuditLogConfig {
         public Builder exemptedMembers(String... exemptedMembers) {
             return exemptedMembers(List.of(exemptedMembers));
         }
+        @CustomType.Setter
         public Builder logType(String logType) {
             this.logType = Objects.requireNonNull(logType);
             return this;
-        }        public GetIAMPolicyAuditConfigAuditLogConfig build() {
-            return new GetIAMPolicyAuditConfigAuditLogConfig(exemptedMembers, logType);
+        }
+        public GetIAMPolicyAuditConfigAuditLogConfig build() {
+            final var o = new GetIAMPolicyAuditConfigAuditLogConfig();
+            o.exemptedMembers = exemptedMembers;
+            o.logType = logType;
+            return o;
         }
     }
 }

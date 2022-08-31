@@ -14,21 +14,14 @@ public final class InstanceReservationAffinitySpecificReservation {
      * @return Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Corresponds to the label values of a reservation resource.
      * 
      */
-    private final List<String> values;
+    private List<String> values;
 
-    @CustomType.Constructor
-    private InstanceReservationAffinitySpecificReservation(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("values") List<String> values) {
-        this.key = key;
-        this.values = values;
-    }
-
+    private InstanceReservationAffinitySpecificReservation() {}
     /**
      * @return Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
      * 
@@ -51,33 +44,35 @@ public final class InstanceReservationAffinitySpecificReservation {
     public static Builder builder(InstanceReservationAffinitySpecificReservation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceReservationAffinitySpecificReservation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public InstanceReservationAffinitySpecificReservation build() {
-            return new InstanceReservationAffinitySpecificReservation(key, values);
+        }
+        public InstanceReservationAffinitySpecificReservation build() {
+            final var o = new InstanceReservationAffinitySpecificReservation();
+            o.key = key;
+            o.values = values;
+            return o;
         }
     }
 }

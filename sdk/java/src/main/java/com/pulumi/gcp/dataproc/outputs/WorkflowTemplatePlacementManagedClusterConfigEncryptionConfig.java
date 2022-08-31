@@ -15,13 +15,9 @@ public final class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig
      * @return Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
      * 
      */
-    private final @Nullable String gcePdKmsKeyName;
+    private @Nullable String gcePdKmsKeyName;
 
-    @CustomType.Constructor
-    private WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig(@CustomType.Parameter("gcePdKmsKeyName") @Nullable String gcePdKmsKeyName) {
-        this.gcePdKmsKeyName = gcePdKmsKeyName;
-    }
-
+    private WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig() {}
     /**
      * @return Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
      * 
@@ -37,24 +33,24 @@ public final class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig
     public static Builder builder(WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String gcePdKmsKeyName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gcePdKmsKeyName = defaults.gcePdKmsKeyName;
         }
 
+        @CustomType.Setter
         public Builder gcePdKmsKeyName(@Nullable String gcePdKmsKeyName) {
             this.gcePdKmsKeyName = gcePdKmsKeyName;
             return this;
-        }        public WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig build() {
-            return new WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig(gcePdKmsKeyName);
+        }
+        public WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig build() {
+            final var o = new WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig();
+            o.gcePdKmsKeyName = gcePdKmsKeyName;
+            return o;
         }
     }
 }

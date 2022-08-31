@@ -21,7 +21,7 @@ public final class GuestPoliciesPackage {
      * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
      * 
      */
-    private final @Nullable String desiredState;
+    private @Nullable String desiredState;
     /**
      * @return Type of package manager that can be used to install this package. If a system does not have the package manager,
      * the package is not installed or removed no error message is returned. By default, or if you specify ANY,
@@ -32,7 +32,7 @@ public final class GuestPoliciesPackage {
      * Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
      * 
      */
-    private final @Nullable String manager;
+    private @Nullable String manager;
     /**
      * @return Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
      * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
@@ -40,18 +40,9 @@ public final class GuestPoliciesPackage {
      * could potentially have conflicting assignments.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private GuestPoliciesPackage(
-        @CustomType.Parameter("desiredState") @Nullable String desiredState,
-        @CustomType.Parameter("manager") @Nullable String manager,
-        @CustomType.Parameter("name") String name) {
-        this.desiredState = desiredState;
-        this.manager = manager;
-        this.name = name;
-    }
-
+    private GuestPoliciesPackage() {}
     /**
      * @return Default is INSTALLED. The desired state the agent should maintain for this recipe.
      * INSTALLED: The software recipe is installed on the instance but won&#39;t be updated to new versions.
@@ -96,16 +87,12 @@ public final class GuestPoliciesPackage {
     public static Builder builder(GuestPoliciesPackage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String desiredState;
         private @Nullable String manager;
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesPackage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.desiredState = defaults.desiredState;
@@ -113,19 +100,27 @@ public final class GuestPoliciesPackage {
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder desiredState(@Nullable String desiredState) {
             this.desiredState = desiredState;
             return this;
         }
+        @CustomType.Setter
         public Builder manager(@Nullable String manager) {
             this.manager = manager;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public GuestPoliciesPackage build() {
-            return new GuestPoliciesPackage(desiredState, manager, name);
+        }
+        public GuestPoliciesPackage build() {
+            final var o = new GuestPoliciesPackage();
+            o.desiredState = desiredState;
+            o.manager = manager;
+            o.name = name;
+            return o;
         }
     }
 }

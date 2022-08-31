@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceSettingLocationPreference {
-    private final String followGaeApplication;
-    private final String secondaryZone;
-    private final String zone;
+    private String followGaeApplication;
+    private String secondaryZone;
+    private String zone;
 
-    @CustomType.Constructor
-    private GetDatabaseInstanceSettingLocationPreference(
-        @CustomType.Parameter("followGaeApplication") String followGaeApplication,
-        @CustomType.Parameter("secondaryZone") String secondaryZone,
-        @CustomType.Parameter("zone") String zone) {
-        this.followGaeApplication = followGaeApplication;
-        this.secondaryZone = secondaryZone;
-        this.zone = zone;
-    }
-
+    private GetDatabaseInstanceSettingLocationPreference() {}
     public String followGaeApplication() {
         return this.followGaeApplication;
     }
@@ -40,16 +31,12 @@ public final class GetDatabaseInstanceSettingLocationPreference {
     public static Builder builder(GetDatabaseInstanceSettingLocationPreference defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String followGaeApplication;
         private String secondaryZone;
         private String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseInstanceSettingLocationPreference defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.followGaeApplication = defaults.followGaeApplication;
@@ -57,19 +44,27 @@ public final class GetDatabaseInstanceSettingLocationPreference {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder followGaeApplication(String followGaeApplication) {
             this.followGaeApplication = Objects.requireNonNull(followGaeApplication);
             return this;
         }
+        @CustomType.Setter
         public Builder secondaryZone(String secondaryZone) {
             this.secondaryZone = Objects.requireNonNull(secondaryZone);
             return this;
         }
+        @CustomType.Setter
         public Builder zone(String zone) {
             this.zone = Objects.requireNonNull(zone);
             return this;
-        }        public GetDatabaseInstanceSettingLocationPreference build() {
-            return new GetDatabaseInstanceSettingLocationPreference(followGaeApplication, secondaryZone, zone);
+        }
+        public GetDatabaseInstanceSettingLocationPreference build() {
+            final var o = new GetDatabaseInstanceSettingLocationPreference();
+            o.followGaeApplication = followGaeApplication;
+            o.secondaryZone = secondaryZone;
+            o.zone = zone;
+            return o;
         }
     }
 }

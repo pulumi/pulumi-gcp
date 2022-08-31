@@ -14,13 +14,9 @@ public final class NoteAttestationAuthorityHint {
      * example &#34;qa&#34;.
      * 
      */
-    private final String humanReadableName;
+    private String humanReadableName;
 
-    @CustomType.Constructor
-    private NoteAttestationAuthorityHint(@CustomType.Parameter("humanReadableName") String humanReadableName) {
-        this.humanReadableName = humanReadableName;
-    }
-
+    private NoteAttestationAuthorityHint() {}
     /**
      * @return The human readable name of this Attestation Authority, for
      * example &#34;qa&#34;.
@@ -37,24 +33,24 @@ public final class NoteAttestationAuthorityHint {
     public static Builder builder(NoteAttestationAuthorityHint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String humanReadableName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NoteAttestationAuthorityHint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.humanReadableName = defaults.humanReadableName;
         }
 
+        @CustomType.Setter
         public Builder humanReadableName(String humanReadableName) {
             this.humanReadableName = Objects.requireNonNull(humanReadableName);
             return this;
-        }        public NoteAttestationAuthorityHint build() {
-            return new NoteAttestationAuthorityHint(humanReadableName);
+        }
+        public NoteAttestationAuthorityHint build() {
+            final var o = new NoteAttestationAuthorityHint();
+            o.humanReadableName = humanReadableName;
+            return o;
         }
     }
 }

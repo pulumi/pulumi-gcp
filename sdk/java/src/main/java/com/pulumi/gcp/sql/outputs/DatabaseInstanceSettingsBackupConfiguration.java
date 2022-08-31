@@ -18,58 +18,41 @@ public final class DatabaseInstanceSettingsBackupConfiguration {
      * @return Backup retention settings. The configuration is detailed below.
      * 
      */
-    private final @Nullable DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings backupRetentionSettings;
+    private @Nullable DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings backupRetentionSettings;
     /**
      * @return True if binary logging is enabled.
      * Can only be used with MySQL.
      * 
      */
-    private final @Nullable Boolean binaryLogEnabled;
+    private @Nullable Boolean binaryLogEnabled;
     /**
      * @return True if backup configuration is enabled.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return The region where the backup will be stored
      * 
      */
-    private final @Nullable String location;
+    private @Nullable String location;
     /**
      * @return True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
      * 
      */
-    private final @Nullable Boolean pointInTimeRecoveryEnabled;
+    private @Nullable Boolean pointInTimeRecoveryEnabled;
     /**
      * @return `HH:MM` format time indicating when backup
      * configuration starts.
      * 
      */
-    private final @Nullable String startTime;
+    private @Nullable String startTime;
     /**
      * @return The number of days of transaction logs we retain for point in time restore, from 1-7.
      * 
      */
-    private final @Nullable Integer transactionLogRetentionDays;
+    private @Nullable Integer transactionLogRetentionDays;
 
-    @CustomType.Constructor
-    private DatabaseInstanceSettingsBackupConfiguration(
-        @CustomType.Parameter("backupRetentionSettings") @Nullable DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings backupRetentionSettings,
-        @CustomType.Parameter("binaryLogEnabled") @Nullable Boolean binaryLogEnabled,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("location") @Nullable String location,
-        @CustomType.Parameter("pointInTimeRecoveryEnabled") @Nullable Boolean pointInTimeRecoveryEnabled,
-        @CustomType.Parameter("startTime") @Nullable String startTime,
-        @CustomType.Parameter("transactionLogRetentionDays") @Nullable Integer transactionLogRetentionDays) {
-        this.backupRetentionSettings = backupRetentionSettings;
-        this.binaryLogEnabled = binaryLogEnabled;
-        this.enabled = enabled;
-        this.location = location;
-        this.pointInTimeRecoveryEnabled = pointInTimeRecoveryEnabled;
-        this.startTime = startTime;
-        this.transactionLogRetentionDays = transactionLogRetentionDays;
-    }
-
+    private DatabaseInstanceSettingsBackupConfiguration() {}
     /**
      * @return Backup retention settings. The configuration is detailed below.
      * 
@@ -129,7 +112,7 @@ public final class DatabaseInstanceSettingsBackupConfiguration {
     public static Builder builder(DatabaseInstanceSettingsBackupConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings backupRetentionSettings;
         private @Nullable Boolean binaryLogEnabled;
@@ -138,11 +121,7 @@ public final class DatabaseInstanceSettingsBackupConfiguration {
         private @Nullable Boolean pointInTimeRecoveryEnabled;
         private @Nullable String startTime;
         private @Nullable Integer transactionLogRetentionDays;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatabaseInstanceSettingsBackupConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupRetentionSettings = defaults.backupRetentionSettings;
@@ -154,35 +133,51 @@ public final class DatabaseInstanceSettingsBackupConfiguration {
     	      this.transactionLogRetentionDays = defaults.transactionLogRetentionDays;
         }
 
+        @CustomType.Setter
         public Builder backupRetentionSettings(@Nullable DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings backupRetentionSettings) {
             this.backupRetentionSettings = backupRetentionSettings;
             return this;
         }
+        @CustomType.Setter
         public Builder binaryLogEnabled(@Nullable Boolean binaryLogEnabled) {
             this.binaryLogEnabled = binaryLogEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder location(@Nullable String location) {
             this.location = location;
             return this;
         }
+        @CustomType.Setter
         public Builder pointInTimeRecoveryEnabled(@Nullable Boolean pointInTimeRecoveryEnabled) {
             this.pointInTimeRecoveryEnabled = pointInTimeRecoveryEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
             this.startTime = startTime;
             return this;
         }
+        @CustomType.Setter
         public Builder transactionLogRetentionDays(@Nullable Integer transactionLogRetentionDays) {
             this.transactionLogRetentionDays = transactionLogRetentionDays;
             return this;
-        }        public DatabaseInstanceSettingsBackupConfiguration build() {
-            return new DatabaseInstanceSettingsBackupConfiguration(backupRetentionSettings, binaryLogEnabled, enabled, location, pointInTimeRecoveryEnabled, startTime, transactionLogRetentionDays);
+        }
+        public DatabaseInstanceSettingsBackupConfiguration build() {
+            final var o = new DatabaseInstanceSettingsBackupConfiguration();
+            o.backupRetentionSettings = backupRetentionSettings;
+            o.binaryLogEnabled = binaryLogEnabled;
+            o.enabled = enabled;
+            o.location = location;
+            o.pointInTimeRecoveryEnabled = pointInTimeRecoveryEnabled;
+            o.startTime = startTime;
+            o.transactionLogRetentionDays = transactionLogRetentionDays;
+            return o;
         }
     }
 }

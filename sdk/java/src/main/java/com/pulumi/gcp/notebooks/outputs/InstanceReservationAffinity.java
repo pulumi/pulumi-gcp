@@ -17,28 +17,19 @@ public final class InstanceReservationAffinity {
      * Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
      * 
      */
-    private final String consumeReservationType;
+    private String consumeReservationType;
     /**
      * @return Corresponds to the label key of reservation resource.
      * 
      */
-    private final @Nullable String key;
+    private @Nullable String key;
     /**
      * @return Corresponds to the label values of reservation resource.
      * 
      */
-    private final @Nullable List<String> values;
+    private @Nullable List<String> values;
 
-    @CustomType.Constructor
-    private InstanceReservationAffinity(
-        @CustomType.Parameter("consumeReservationType") String consumeReservationType,
-        @CustomType.Parameter("key") @Nullable String key,
-        @CustomType.Parameter("values") @Nullable List<String> values) {
-        this.consumeReservationType = consumeReservationType;
-        this.key = key;
-        this.values = values;
-    }
-
+    private InstanceReservationAffinity() {}
     /**
      * @return The type of Compute Reservation.
      * Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
@@ -69,16 +60,12 @@ public final class InstanceReservationAffinity {
     public static Builder builder(InstanceReservationAffinity defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String consumeReservationType;
         private @Nullable String key;
         private @Nullable List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceReservationAffinity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.consumeReservationType = defaults.consumeReservationType;
@@ -86,22 +73,30 @@ public final class InstanceReservationAffinity {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder consumeReservationType(String consumeReservationType) {
             this.consumeReservationType = Objects.requireNonNull(consumeReservationType);
             return this;
         }
+        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
+        @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
             this.values = values;
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public InstanceReservationAffinity build() {
-            return new InstanceReservationAffinity(consumeReservationType, key, values);
+        }
+        public InstanceReservationAffinity build() {
+            final var o = new InstanceReservationAffinity();
+            o.consumeReservationType = consumeReservationType;
+            o.key = key;
+            o.values = values;
+            return o;
         }
     }
 }

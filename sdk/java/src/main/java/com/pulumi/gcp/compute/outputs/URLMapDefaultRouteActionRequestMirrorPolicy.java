@@ -13,13 +13,9 @@ public final class URLMapDefaultRouteActionRequestMirrorPolicy {
      * @return The full or partial URL to the BackendService resource being mirrored to.
      * 
      */
-    private final String backendService;
+    private String backendService;
 
-    @CustomType.Constructor
-    private URLMapDefaultRouteActionRequestMirrorPolicy(@CustomType.Parameter("backendService") String backendService) {
-        this.backendService = backendService;
-    }
-
+    private URLMapDefaultRouteActionRequestMirrorPolicy() {}
     /**
      * @return The full or partial URL to the BackendService resource being mirrored to.
      * 
@@ -35,24 +31,24 @@ public final class URLMapDefaultRouteActionRequestMirrorPolicy {
     public static Builder builder(URLMapDefaultRouteActionRequestMirrorPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String backendService;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(URLMapDefaultRouteActionRequestMirrorPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backendService = defaults.backendService;
         }
 
+        @CustomType.Setter
         public Builder backendService(String backendService) {
             this.backendService = Objects.requireNonNull(backendService);
             return this;
-        }        public URLMapDefaultRouteActionRequestMirrorPolicy build() {
-            return new URLMapDefaultRouteActionRequestMirrorPolicy(backendService);
+        }
+        public URLMapDefaultRouteActionRequestMirrorPolicy build() {
+            final var o = new URLMapDefaultRouteActionRequestMirrorPolicy();
+            o.backendService = backendService;
+            return o;
         }
     }
 }

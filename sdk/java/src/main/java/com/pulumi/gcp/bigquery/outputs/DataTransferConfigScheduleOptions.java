@@ -20,7 +20,7 @@ public final class DataTransferConfigScheduleOptions {
      * be ignored.
      * 
      */
-    private final @Nullable Boolean disableAutoScheduling;
+    private @Nullable Boolean disableAutoScheduling;
     /**
      * @return Defines time to stop scheduling transfer runs. A transfer run cannot be
      * scheduled at or after the end time. The end time can be changed at any
@@ -28,7 +28,7 @@ public final class DataTransferConfigScheduleOptions {
      * limited by this option.
      * 
      */
-    private final @Nullable String endTime;
+    private @Nullable String endTime;
     /**
      * @return Specifies time to start scheduling transfer runs. The first run will be
      * scheduled at or after the start time according to a recurrence pattern
@@ -37,18 +37,9 @@ public final class DataTransferConfigScheduleOptions {
      * limited by this option.
      * 
      */
-    private final @Nullable String startTime;
+    private @Nullable String startTime;
 
-    @CustomType.Constructor
-    private DataTransferConfigScheduleOptions(
-        @CustomType.Parameter("disableAutoScheduling") @Nullable Boolean disableAutoScheduling,
-        @CustomType.Parameter("endTime") @Nullable String endTime,
-        @CustomType.Parameter("startTime") @Nullable String startTime) {
-        this.disableAutoScheduling = disableAutoScheduling;
-        this.endTime = endTime;
-        this.startTime = startTime;
-    }
-
+    private DataTransferConfigScheduleOptions() {}
     /**
      * @return If true, automatic scheduling of data transfer runs for this
      * configuration will be disabled. The runs can be started on ad-hoc
@@ -89,16 +80,12 @@ public final class DataTransferConfigScheduleOptions {
     public static Builder builder(DataTransferConfigScheduleOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean disableAutoScheduling;
         private @Nullable String endTime;
         private @Nullable String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DataTransferConfigScheduleOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disableAutoScheduling = defaults.disableAutoScheduling;
@@ -106,19 +93,27 @@ public final class DataTransferConfigScheduleOptions {
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder disableAutoScheduling(@Nullable Boolean disableAutoScheduling) {
             this.disableAutoScheduling = disableAutoScheduling;
             return this;
         }
+        @CustomType.Setter
         public Builder endTime(@Nullable String endTime) {
             this.endTime = endTime;
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
             this.startTime = startTime;
             return this;
-        }        public DataTransferConfigScheduleOptions build() {
-            return new DataTransferConfigScheduleOptions(disableAutoScheduling, endTime, startTime);
+        }
+        public DataTransferConfigScheduleOptions build() {
+            final var o = new DataTransferConfigScheduleOptions();
+            o.disableAutoScheduling = disableAutoScheduling;
+            o.endTime = endTime;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

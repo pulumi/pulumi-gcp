@@ -20,7 +20,7 @@ public final class ServiceTemplateSpec {
      * requests per container of the Revision. Values are:
      * 
      */
-    private final @Nullable Integer containerConcurrency;
+    private @Nullable Integer containerConcurrency;
     /**
      * @return Container defines the unit of execution for this Revision.
      * In the context of a Revision, we disallow a number of the fields of
@@ -30,7 +30,7 @@ public final class ServiceTemplateSpec {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<ServiceTemplateSpecContainer> containers;
+    private @Nullable List<ServiceTemplateSpecContainer> containers;
     /**
      * @return Email address of the IAM service account associated with the revision of the
      * service. The service account represents the identity of the running revision,
@@ -38,7 +38,7 @@ public final class ServiceTemplateSpec {
      * will use the project&#39;s default service account.
      * 
      */
-    private final @Nullable String serviceAccountName;
+    private @Nullable String serviceAccountName;
     /**
      * @return -
      * (Deprecated)
@@ -52,35 +52,20 @@ public final class ServiceTemplateSpec {
      * 
      */
     @Deprecated /* Not supported by Cloud Run fully managed */
-    private final @Nullable String servingState;
+    private @Nullable String servingState;
     /**
      * @return TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
      * 
      */
-    private final @Nullable Integer timeoutSeconds;
+    private @Nullable Integer timeoutSeconds;
     /**
      * @return Volume represents a named volume in a container.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<ServiceTemplateSpecVolume> volumes;
+    private @Nullable List<ServiceTemplateSpecVolume> volumes;
 
-    @CustomType.Constructor
-    private ServiceTemplateSpec(
-        @CustomType.Parameter("containerConcurrency") @Nullable Integer containerConcurrency,
-        @CustomType.Parameter("containers") @Nullable List<ServiceTemplateSpecContainer> containers,
-        @CustomType.Parameter("serviceAccountName") @Nullable String serviceAccountName,
-        @CustomType.Parameter("servingState") @Nullable String servingState,
-        @CustomType.Parameter("timeoutSeconds") @Nullable Integer timeoutSeconds,
-        @CustomType.Parameter("volumes") @Nullable List<ServiceTemplateSpecVolume> volumes) {
-        this.containerConcurrency = containerConcurrency;
-        this.containers = containers;
-        this.serviceAccountName = serviceAccountName;
-        this.servingState = servingState;
-        this.timeoutSeconds = timeoutSeconds;
-        this.volumes = volumes;
-    }
-
+    private ServiceTemplateSpec() {}
     /**
      * @return ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
      * requests per container of the Revision. Values are:
@@ -150,7 +135,7 @@ public final class ServiceTemplateSpec {
     public static Builder builder(ServiceTemplateSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer containerConcurrency;
         private @Nullable List<ServiceTemplateSpecContainer> containers;
@@ -158,11 +143,7 @@ public final class ServiceTemplateSpec {
         private @Nullable String servingState;
         private @Nullable Integer timeoutSeconds;
         private @Nullable List<ServiceTemplateSpecVolume> volumes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceTemplateSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.containerConcurrency = defaults.containerConcurrency;
@@ -173,10 +154,12 @@ public final class ServiceTemplateSpec {
     	      this.volumes = defaults.volumes;
         }
 
+        @CustomType.Setter
         public Builder containerConcurrency(@Nullable Integer containerConcurrency) {
             this.containerConcurrency = containerConcurrency;
             return this;
         }
+        @CustomType.Setter
         public Builder containers(@Nullable List<ServiceTemplateSpecContainer> containers) {
             this.containers = containers;
             return this;
@@ -184,26 +167,38 @@ public final class ServiceTemplateSpec {
         public Builder containers(ServiceTemplateSpecContainer... containers) {
             return containers(List.of(containers));
         }
+        @CustomType.Setter
         public Builder serviceAccountName(@Nullable String serviceAccountName) {
             this.serviceAccountName = serviceAccountName;
             return this;
         }
+        @CustomType.Setter
         public Builder servingState(@Nullable String servingState) {
             this.servingState = servingState;
             return this;
         }
+        @CustomType.Setter
         public Builder timeoutSeconds(@Nullable Integer timeoutSeconds) {
             this.timeoutSeconds = timeoutSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder volumes(@Nullable List<ServiceTemplateSpecVolume> volumes) {
             this.volumes = volumes;
             return this;
         }
         public Builder volumes(ServiceTemplateSpecVolume... volumes) {
             return volumes(List.of(volumes));
-        }        public ServiceTemplateSpec build() {
-            return new ServiceTemplateSpec(containerConcurrency, containers, serviceAccountName, servingState, timeoutSeconds, volumes);
+        }
+        public ServiceTemplateSpec build() {
+            final var o = new ServiceTemplateSpec();
+            o.containerConcurrency = containerConcurrency;
+            o.containers = containers;
+            o.serviceAccountName = serviceAccountName;
+            o.servingState = servingState;
+            o.timeoutSeconds = timeoutSeconds;
+            o.volumes = volumes;
+            return o;
         }
     }
 }

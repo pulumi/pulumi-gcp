@@ -15,13 +15,9 @@ public final class LakeMetastore {
      * @return Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
      * 
      */
-    private final @Nullable String service;
+    private @Nullable String service;
 
-    @CustomType.Constructor
-    private LakeMetastore(@CustomType.Parameter("service") @Nullable String service) {
-        this.service = service;
-    }
-
+    private LakeMetastore() {}
     /**
      * @return Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
      * 
@@ -37,24 +33,24 @@ public final class LakeMetastore {
     public static Builder builder(LakeMetastore defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String service;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(LakeMetastore defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.service = defaults.service;
         }
 
+        @CustomType.Setter
         public Builder service(@Nullable String service) {
             this.service = service;
             return this;
-        }        public LakeMetastore build() {
-            return new LakeMetastore(service);
+        }
+        public LakeMetastore build() {
+            final var o = new LakeMetastore();
+            o.service = service;
+            return o;
         }
     }
 }

@@ -18,23 +18,16 @@ public final class RegionAutoscalerAutoscalingPolicyCpuUtilization {
      * - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
      * 
      */
-    private final @Nullable String predictiveMethod;
+    private @Nullable String predictiveMethod;
     /**
      * @return Fraction of backend capacity utilization (set in HTTP(s) load
      * balancing configuration) that autoscaler should maintain. Must
      * be a positive float value. If not defined, the default is 0.8.
      * 
      */
-    private final Double target;
+    private Double target;
 
-    @CustomType.Constructor
-    private RegionAutoscalerAutoscalingPolicyCpuUtilization(
-        @CustomType.Parameter("predictiveMethod") @Nullable String predictiveMethod,
-        @CustomType.Parameter("target") Double target) {
-        this.predictiveMethod = predictiveMethod;
-        this.target = target;
-    }
-
+    private RegionAutoscalerAutoscalingPolicyCpuUtilization() {}
     /**
      * @return Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
      * - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
@@ -61,30 +54,32 @@ public final class RegionAutoscalerAutoscalingPolicyCpuUtilization {
     public static Builder builder(RegionAutoscalerAutoscalingPolicyCpuUtilization defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String predictiveMethod;
         private Double target;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionAutoscalerAutoscalingPolicyCpuUtilization defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.predictiveMethod = defaults.predictiveMethod;
     	      this.target = defaults.target;
         }
 
+        @CustomType.Setter
         public Builder predictiveMethod(@Nullable String predictiveMethod) {
             this.predictiveMethod = predictiveMethod;
             return this;
         }
+        @CustomType.Setter
         public Builder target(Double target) {
             this.target = Objects.requireNonNull(target);
             return this;
-        }        public RegionAutoscalerAutoscalingPolicyCpuUtilization build() {
-            return new RegionAutoscalerAutoscalingPolicyCpuUtilization(predictiveMethod, target);
+        }
+        public RegionAutoscalerAutoscalingPolicyCpuUtilization build() {
+            final var o = new RegionAutoscalerAutoscalingPolicyCpuUtilization();
+            o.predictiveMethod = predictiveMethod;
+            o.target = target;
+            return o;
         }
     }
 }

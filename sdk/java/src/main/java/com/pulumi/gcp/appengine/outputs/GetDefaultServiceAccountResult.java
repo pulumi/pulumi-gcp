@@ -13,45 +13,30 @@ public final class GetDefaultServiceAccountResult {
      * @return The display name for the service account.
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return Email address of the default service account used by App Engine in this project.
      * 
      */
-    private final String email;
+    private String email;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The fully-qualified name of the service account.
      * 
      */
-    private final String name;
-    private final String project;
+    private String name;
+    private String project;
     /**
      * @return The unique id of the service account.
      * 
      */
-    private final String uniqueId;
+    private String uniqueId;
 
-    @CustomType.Constructor
-    private GetDefaultServiceAccountResult(
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("email") String email,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("uniqueId") String uniqueId) {
-        this.displayName = displayName;
-        this.email = email;
-        this.id = id;
-        this.name = name;
-        this.project = project;
-        this.uniqueId = uniqueId;
-    }
-
+    private GetDefaultServiceAccountResult() {}
     /**
      * @return The display name for the service account.
      * 
@@ -98,7 +83,7 @@ public final class GetDefaultServiceAccountResult {
     public static Builder builder(GetDefaultServiceAccountResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String displayName;
         private String email;
@@ -106,11 +91,7 @@ public final class GetDefaultServiceAccountResult {
         private String name;
         private String project;
         private String uniqueId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDefaultServiceAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.displayName = defaults.displayName;
@@ -121,31 +102,45 @@ public final class GetDefaultServiceAccountResult {
     	      this.uniqueId = defaults.uniqueId;
         }
 
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder email(String email) {
             this.email = Objects.requireNonNull(email);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder uniqueId(String uniqueId) {
             this.uniqueId = Objects.requireNonNull(uniqueId);
             return this;
-        }        public GetDefaultServiceAccountResult build() {
-            return new GetDefaultServiceAccountResult(displayName, email, id, name, project, uniqueId);
+        }
+        public GetDefaultServiceAccountResult build() {
+            final var o = new GetDefaultServiceAccountResult();
+            o.displayName = displayName;
+            o.email = email;
+            o.id = id;
+            o.name = name;
+            o.project = project;
+            o.uniqueId = uniqueId;
+            return o;
         }
     }
 }

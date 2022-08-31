@@ -16,23 +16,16 @@ public final class AlertPolicyAlertStrategy {
      * @return If an alert policy that was active has no data for this long, any open incidents will close.
      * 
      */
-    private final @Nullable String autoClose;
+    private @Nullable String autoClose;
     /**
      * @return Required for alert policies with a LogMatch condition.
      * This limit is not implemented for alert policies that are not log-based.
      * Structure is documented below.
      * 
      */
-    private final @Nullable AlertPolicyAlertStrategyNotificationRateLimit notificationRateLimit;
+    private @Nullable AlertPolicyAlertStrategyNotificationRateLimit notificationRateLimit;
 
-    @CustomType.Constructor
-    private AlertPolicyAlertStrategy(
-        @CustomType.Parameter("autoClose") @Nullable String autoClose,
-        @CustomType.Parameter("notificationRateLimit") @Nullable AlertPolicyAlertStrategyNotificationRateLimit notificationRateLimit) {
-        this.autoClose = autoClose;
-        this.notificationRateLimit = notificationRateLimit;
-    }
-
+    private AlertPolicyAlertStrategy() {}
     /**
      * @return If an alert policy that was active has no data for this long, any open incidents will close.
      * 
@@ -57,30 +50,32 @@ public final class AlertPolicyAlertStrategy {
     public static Builder builder(AlertPolicyAlertStrategy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String autoClose;
         private @Nullable AlertPolicyAlertStrategyNotificationRateLimit notificationRateLimit;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AlertPolicyAlertStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoClose = defaults.autoClose;
     	      this.notificationRateLimit = defaults.notificationRateLimit;
         }
 
+        @CustomType.Setter
         public Builder autoClose(@Nullable String autoClose) {
             this.autoClose = autoClose;
             return this;
         }
+        @CustomType.Setter
         public Builder notificationRateLimit(@Nullable AlertPolicyAlertStrategyNotificationRateLimit notificationRateLimit) {
             this.notificationRateLimit = notificationRateLimit;
             return this;
-        }        public AlertPolicyAlertStrategy build() {
-            return new AlertPolicyAlertStrategy(autoClose, notificationRateLimit);
+        }
+        public AlertPolicyAlertStrategy build() {
+            final var o = new AlertPolicyAlertStrategy();
+            o.autoClose = autoClose;
+            o.notificationRateLimit = notificationRateLimit;
+            return o;
         }
     }
 }

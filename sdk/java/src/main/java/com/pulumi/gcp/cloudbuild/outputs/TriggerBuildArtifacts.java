@@ -20,7 +20,7 @@ public final class TriggerBuildArtifacts {
      * If any of the images fail to be pushed, the build is marked FAILURE.
      * 
      */
-    private final @Nullable List<String> images;
+    private @Nullable List<String> images;
     /**
      * @return A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
      * Files in the workspace matching specified paths globs will be uploaded to the
@@ -30,16 +30,9 @@ public final class TriggerBuildArtifacts {
      * Structure is documented below.
      * 
      */
-    private final @Nullable TriggerBuildArtifactsObjects objects;
+    private @Nullable TriggerBuildArtifactsObjects objects;
 
-    @CustomType.Constructor
-    private TriggerBuildArtifacts(
-        @CustomType.Parameter("images") @Nullable List<String> images,
-        @CustomType.Parameter("objects") @Nullable TriggerBuildArtifactsObjects objects) {
-        this.images = images;
-        this.objects = objects;
-    }
-
+    private TriggerBuildArtifacts() {}
     /**
      * @return A list of images to be pushed upon the successful completion of all build steps.
      * The images will be pushed using the builder service account&#39;s credentials.
@@ -70,21 +63,18 @@ public final class TriggerBuildArtifacts {
     public static Builder builder(TriggerBuildArtifacts defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> images;
         private @Nullable TriggerBuildArtifactsObjects objects;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerBuildArtifacts defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.images = defaults.images;
     	      this.objects = defaults.objects;
         }
 
+        @CustomType.Setter
         public Builder images(@Nullable List<String> images) {
             this.images = images;
             return this;
@@ -92,11 +82,16 @@ public final class TriggerBuildArtifacts {
         public Builder images(String... images) {
             return images(List.of(images));
         }
+        @CustomType.Setter
         public Builder objects(@Nullable TriggerBuildArtifactsObjects objects) {
             this.objects = objects;
             return this;
-        }        public TriggerBuildArtifacts build() {
-            return new TriggerBuildArtifacts(images, objects);
+        }
+        public TriggerBuildArtifacts build() {
+            final var o = new TriggerBuildArtifacts();
+            o.images = images;
+            o.objects = objects;
+            return o;
         }
     }
 }

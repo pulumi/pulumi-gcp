@@ -17,23 +17,16 @@ public final class TableExternalDataConfigurationGoogleSheetsOptions {
      * Structure is documented below.
      * 
      */
-    private final @Nullable String range;
+    private @Nullable String range;
     /**
      * @return The number of rows at the top of the sheet
      * that BigQuery will skip when reading the data. At least one of `range` or
      * `skip_leading_rows` must be set.
      * 
      */
-    private final @Nullable Integer skipLeadingRows;
+    private @Nullable Integer skipLeadingRows;
 
-    @CustomType.Constructor
-    private TableExternalDataConfigurationGoogleSheetsOptions(
-        @CustomType.Parameter("range") @Nullable String range,
-        @CustomType.Parameter("skipLeadingRows") @Nullable Integer skipLeadingRows) {
-        this.range = range;
-        this.skipLeadingRows = skipLeadingRows;
-    }
-
+    private TableExternalDataConfigurationGoogleSheetsOptions() {}
     /**
      * @return Information required to partition based on ranges.
      * Structure is documented below.
@@ -59,30 +52,32 @@ public final class TableExternalDataConfigurationGoogleSheetsOptions {
     public static Builder builder(TableExternalDataConfigurationGoogleSheetsOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String range;
         private @Nullable Integer skipLeadingRows;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TableExternalDataConfigurationGoogleSheetsOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.range = defaults.range;
     	      this.skipLeadingRows = defaults.skipLeadingRows;
         }
 
+        @CustomType.Setter
         public Builder range(@Nullable String range) {
             this.range = range;
             return this;
         }
+        @CustomType.Setter
         public Builder skipLeadingRows(@Nullable Integer skipLeadingRows) {
             this.skipLeadingRows = skipLeadingRows;
             return this;
-        }        public TableExternalDataConfigurationGoogleSheetsOptions build() {
-            return new TableExternalDataConfigurationGoogleSheetsOptions(range, skipLeadingRows);
+        }
+        public TableExternalDataConfigurationGoogleSheetsOptions build() {
+            final var o = new TableExternalDataConfigurationGoogleSheetsOptions();
+            o.range = range;
+            o.skipLeadingRows = skipLeadingRows;
+            return o;
         }
     }
 }

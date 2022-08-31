@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateCertificateDescriptionSubjectKeyId {
-    private final @Nullable String keyId;
+    private @Nullable String keyId;
 
-    @CustomType.Constructor
-    private CertificateCertificateDescriptionSubjectKeyId(@CustomType.Parameter("keyId") @Nullable String keyId) {
-        this.keyId = keyId;
-    }
-
+    private CertificateCertificateDescriptionSubjectKeyId() {}
     public Optional<String> keyId() {
         return Optional.ofNullable(this.keyId);
     }
@@ -29,24 +25,24 @@ public final class CertificateCertificateDescriptionSubjectKeyId {
     public static Builder builder(CertificateCertificateDescriptionSubjectKeyId defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String keyId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateCertificateDescriptionSubjectKeyId defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.keyId = defaults.keyId;
         }
 
+        @CustomType.Setter
         public Builder keyId(@Nullable String keyId) {
             this.keyId = keyId;
             return this;
-        }        public CertificateCertificateDescriptionSubjectKeyId build() {
-            return new CertificateCertificateDescriptionSubjectKeyId(keyId);
+        }
+        public CertificateCertificateDescriptionSubjectKeyId build() {
+            final var o = new CertificateCertificateDescriptionSubjectKeyId();
+            o.keyId = keyId;
+            return o;
         }
     }
 }

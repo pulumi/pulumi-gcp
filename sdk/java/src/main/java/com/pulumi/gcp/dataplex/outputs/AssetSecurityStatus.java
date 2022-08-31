@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AssetSecurityStatus {
-    private final @Nullable String message;
-    private final @Nullable String state;
-    private final @Nullable String updateTime;
+    private @Nullable String message;
+    private @Nullable String state;
+    private @Nullable String updateTime;
 
-    @CustomType.Constructor
-    private AssetSecurityStatus(
-        @CustomType.Parameter("message") @Nullable String message,
-        @CustomType.Parameter("state") @Nullable String state,
-        @CustomType.Parameter("updateTime") @Nullable String updateTime) {
-        this.message = message;
-        this.state = state;
-        this.updateTime = updateTime;
-    }
-
+    private AssetSecurityStatus() {}
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
@@ -42,16 +33,12 @@ public final class AssetSecurityStatus {
     public static Builder builder(AssetSecurityStatus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String message;
         private @Nullable String state;
         private @Nullable String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AssetSecurityStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.message = defaults.message;
@@ -59,19 +46,27 @@ public final class AssetSecurityStatus {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder message(@Nullable String message) {
             this.message = message;
             return this;
         }
+        @CustomType.Setter
         public Builder state(@Nullable String state) {
             this.state = state;
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
             this.updateTime = updateTime;
             return this;
-        }        public AssetSecurityStatus build() {
-            return new AssetSecurityStatus(message, state, updateTime);
+        }
+        public AssetSecurityStatus build() {
+            final var o = new AssetSecurityStatus();
+            o.message = message;
+            o.state = state;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

@@ -14,13 +14,9 @@ public final class ManagedZoneServiceDirectoryConfig {
      * Structure is documented below.
      * 
      */
-    private final ManagedZoneServiceDirectoryConfigNamespace namespace;
+    private ManagedZoneServiceDirectoryConfigNamespace namespace;
 
-    @CustomType.Constructor
-    private ManagedZoneServiceDirectoryConfig(@CustomType.Parameter("namespace") ManagedZoneServiceDirectoryConfigNamespace namespace) {
-        this.namespace = namespace;
-    }
-
+    private ManagedZoneServiceDirectoryConfig() {}
     /**
      * @return The namespace associated with the zone.
      * Structure is documented below.
@@ -37,24 +33,24 @@ public final class ManagedZoneServiceDirectoryConfig {
     public static Builder builder(ManagedZoneServiceDirectoryConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private ManagedZoneServiceDirectoryConfigNamespace namespace;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ManagedZoneServiceDirectoryConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.namespace = defaults.namespace;
         }
 
+        @CustomType.Setter
         public Builder namespace(ManagedZoneServiceDirectoryConfigNamespace namespace) {
             this.namespace = Objects.requireNonNull(namespace);
             return this;
-        }        public ManagedZoneServiceDirectoryConfig build() {
-            return new ManagedZoneServiceDirectoryConfig(namespace);
+        }
+        public ManagedZoneServiceDirectoryConfig build() {
+            final var o = new ManagedZoneServiceDirectoryConfig();
+            o.namespace = namespace;
+            return o;
         }
     }
 }

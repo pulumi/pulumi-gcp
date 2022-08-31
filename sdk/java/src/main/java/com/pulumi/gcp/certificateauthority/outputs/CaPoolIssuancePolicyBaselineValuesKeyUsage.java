@@ -18,30 +18,21 @@ public final class CaPoolIssuancePolicyBaselineValuesKeyUsage {
      * Structure is documented below.
      * 
      */
-    private final CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage baseKeyUsage;
+    private CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage baseKeyUsage;
     /**
      * @return Describes high-level ways in which a key may be used.
      * Structure is documented below.
      * 
      */
-    private final CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage extendedKeyUsage;
+    private CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage extendedKeyUsage;
     /**
      * @return An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages;
+    private @Nullable List<CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages;
 
-    @CustomType.Constructor
-    private CaPoolIssuancePolicyBaselineValuesKeyUsage(
-        @CustomType.Parameter("baseKeyUsage") CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage baseKeyUsage,
-        @CustomType.Parameter("extendedKeyUsage") CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage extendedKeyUsage,
-        @CustomType.Parameter("unknownExtendedKeyUsages") @Nullable List<CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages) {
-        this.baseKeyUsage = baseKeyUsage;
-        this.extendedKeyUsage = extendedKeyUsage;
-        this.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
-    }
-
+    private CaPoolIssuancePolicyBaselineValuesKeyUsage() {}
     /**
      * @return Describes high-level ways in which a key may be used.
      * Structure is documented below.
@@ -74,16 +65,12 @@ public final class CaPoolIssuancePolicyBaselineValuesKeyUsage {
     public static Builder builder(CaPoolIssuancePolicyBaselineValuesKeyUsage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage baseKeyUsage;
         private CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage extendedKeyUsage;
         private @Nullable List<CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CaPoolIssuancePolicyBaselineValuesKeyUsage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.baseKeyUsage = defaults.baseKeyUsage;
@@ -91,22 +78,30 @@ public final class CaPoolIssuancePolicyBaselineValuesKeyUsage {
     	      this.unknownExtendedKeyUsages = defaults.unknownExtendedKeyUsages;
         }
 
+        @CustomType.Setter
         public Builder baseKeyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage baseKeyUsage) {
             this.baseKeyUsage = Objects.requireNonNull(baseKeyUsage);
             return this;
         }
+        @CustomType.Setter
         public Builder extendedKeyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage extendedKeyUsage) {
             this.extendedKeyUsage = Objects.requireNonNull(extendedKeyUsage);
             return this;
         }
+        @CustomType.Setter
         public Builder unknownExtendedKeyUsages(@Nullable List<CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages) {
             this.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
             return this;
         }
         public Builder unknownExtendedKeyUsages(CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage... unknownExtendedKeyUsages) {
             return unknownExtendedKeyUsages(List.of(unknownExtendedKeyUsages));
-        }        public CaPoolIssuancePolicyBaselineValuesKeyUsage build() {
-            return new CaPoolIssuancePolicyBaselineValuesKeyUsage(baseKeyUsage, extendedKeyUsage, unknownExtendedKeyUsages);
+        }
+        public CaPoolIssuancePolicyBaselineValuesKeyUsage build() {
+            final var o = new CaPoolIssuancePolicyBaselineValuesKeyUsage();
+            o.baseKeyUsage = baseKeyUsage;
+            o.extendedKeyUsage = extendedKeyUsage;
+            o.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
+            return o;
         }
     }
 }

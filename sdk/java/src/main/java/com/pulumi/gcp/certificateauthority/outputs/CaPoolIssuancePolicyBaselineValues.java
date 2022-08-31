@@ -20,46 +20,33 @@ public final class CaPoolIssuancePolicyBaselineValues {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<CaPoolIssuancePolicyBaselineValuesAdditionalExtension> additionalExtensions;
+    private @Nullable List<CaPoolIssuancePolicyBaselineValuesAdditionalExtension> additionalExtensions;
     /**
      * @return Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
      * &#34;Authority Information Access&#34; extension in the certificate.
      * 
      */
-    private final @Nullable List<String> aiaOcspServers;
+    private @Nullable List<String> aiaOcspServers;
     /**
      * @return Describes values that are relevant in a CA certificate.
      * Structure is documented below.
      * 
      */
-    private final CaPoolIssuancePolicyBaselineValuesCaOptions caOptions;
+    private CaPoolIssuancePolicyBaselineValuesCaOptions caOptions;
     /**
      * @return Indicates the intended use for keys that correspond to a certificate.
      * Structure is documented below.
      * 
      */
-    private final CaPoolIssuancePolicyBaselineValuesKeyUsage keyUsage;
+    private CaPoolIssuancePolicyBaselineValuesKeyUsage keyUsage;
     /**
      * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<CaPoolIssuancePolicyBaselineValuesPolicyId> policyIds;
+    private @Nullable List<CaPoolIssuancePolicyBaselineValuesPolicyId> policyIds;
 
-    @CustomType.Constructor
-    private CaPoolIssuancePolicyBaselineValues(
-        @CustomType.Parameter("additionalExtensions") @Nullable List<CaPoolIssuancePolicyBaselineValuesAdditionalExtension> additionalExtensions,
-        @CustomType.Parameter("aiaOcspServers") @Nullable List<String> aiaOcspServers,
-        @CustomType.Parameter("caOptions") CaPoolIssuancePolicyBaselineValuesCaOptions caOptions,
-        @CustomType.Parameter("keyUsage") CaPoolIssuancePolicyBaselineValuesKeyUsage keyUsage,
-        @CustomType.Parameter("policyIds") @Nullable List<CaPoolIssuancePolicyBaselineValuesPolicyId> policyIds) {
-        this.additionalExtensions = additionalExtensions;
-        this.aiaOcspServers = aiaOcspServers;
-        this.caOptions = caOptions;
-        this.keyUsage = keyUsage;
-        this.policyIds = policyIds;
-    }
-
+    private CaPoolIssuancePolicyBaselineValues() {}
     /**
      * @return Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
      * Structure is documented below.
@@ -108,18 +95,14 @@ public final class CaPoolIssuancePolicyBaselineValues {
     public static Builder builder(CaPoolIssuancePolicyBaselineValues defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<CaPoolIssuancePolicyBaselineValuesAdditionalExtension> additionalExtensions;
         private @Nullable List<String> aiaOcspServers;
         private CaPoolIssuancePolicyBaselineValuesCaOptions caOptions;
         private CaPoolIssuancePolicyBaselineValuesKeyUsage keyUsage;
         private @Nullable List<CaPoolIssuancePolicyBaselineValuesPolicyId> policyIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CaPoolIssuancePolicyBaselineValues defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalExtensions = defaults.additionalExtensions;
@@ -129,6 +112,7 @@ public final class CaPoolIssuancePolicyBaselineValues {
     	      this.policyIds = defaults.policyIds;
         }
 
+        @CustomType.Setter
         public Builder additionalExtensions(@Nullable List<CaPoolIssuancePolicyBaselineValuesAdditionalExtension> additionalExtensions) {
             this.additionalExtensions = additionalExtensions;
             return this;
@@ -136,6 +120,7 @@ public final class CaPoolIssuancePolicyBaselineValues {
         public Builder additionalExtensions(CaPoolIssuancePolicyBaselineValuesAdditionalExtension... additionalExtensions) {
             return additionalExtensions(List.of(additionalExtensions));
         }
+        @CustomType.Setter
         public Builder aiaOcspServers(@Nullable List<String> aiaOcspServers) {
             this.aiaOcspServers = aiaOcspServers;
             return this;
@@ -143,22 +128,32 @@ public final class CaPoolIssuancePolicyBaselineValues {
         public Builder aiaOcspServers(String... aiaOcspServers) {
             return aiaOcspServers(List.of(aiaOcspServers));
         }
+        @CustomType.Setter
         public Builder caOptions(CaPoolIssuancePolicyBaselineValuesCaOptions caOptions) {
             this.caOptions = Objects.requireNonNull(caOptions);
             return this;
         }
+        @CustomType.Setter
         public Builder keyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsage keyUsage) {
             this.keyUsage = Objects.requireNonNull(keyUsage);
             return this;
         }
+        @CustomType.Setter
         public Builder policyIds(@Nullable List<CaPoolIssuancePolicyBaselineValuesPolicyId> policyIds) {
             this.policyIds = policyIds;
             return this;
         }
         public Builder policyIds(CaPoolIssuancePolicyBaselineValuesPolicyId... policyIds) {
             return policyIds(List.of(policyIds));
-        }        public CaPoolIssuancePolicyBaselineValues build() {
-            return new CaPoolIssuancePolicyBaselineValues(additionalExtensions, aiaOcspServers, caOptions, keyUsage, policyIds);
+        }
+        public CaPoolIssuancePolicyBaselineValues build() {
+            final var o = new CaPoolIssuancePolicyBaselineValues();
+            o.additionalExtensions = additionalExtensions;
+            o.aiaOcspServers = aiaOcspServers;
+            o.caOptions = caOptions;
+            o.keyUsage = keyUsage;
+            o.policyIds = policyIds;
+            return o;
         }
     }
 }

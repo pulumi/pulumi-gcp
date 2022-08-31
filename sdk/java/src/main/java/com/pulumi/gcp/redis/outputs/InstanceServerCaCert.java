@@ -11,7 +11,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceServerCaCert {
-    private final @Nullable String cert;
+    private @Nullable String cert;
     /**
      * @return -
      * Output only. The time when the policy was created.
@@ -19,25 +19,12 @@ public final class InstanceServerCaCert {
      * resolution and up to nine fractional digits.
      * 
      */
-    private final @Nullable String createTime;
-    private final @Nullable String expireTime;
-    private final @Nullable String serialNumber;
-    private final @Nullable String sha1Fingerprint;
+    private @Nullable String createTime;
+    private @Nullable String expireTime;
+    private @Nullable String serialNumber;
+    private @Nullable String sha1Fingerprint;
 
-    @CustomType.Constructor
-    private InstanceServerCaCert(
-        @CustomType.Parameter("cert") @Nullable String cert,
-        @CustomType.Parameter("createTime") @Nullable String createTime,
-        @CustomType.Parameter("expireTime") @Nullable String expireTime,
-        @CustomType.Parameter("serialNumber") @Nullable String serialNumber,
-        @CustomType.Parameter("sha1Fingerprint") @Nullable String sha1Fingerprint) {
-        this.cert = cert;
-        this.createTime = createTime;
-        this.expireTime = expireTime;
-        this.serialNumber = serialNumber;
-        this.sha1Fingerprint = sha1Fingerprint;
-    }
-
+    private InstanceServerCaCert() {}
     public Optional<String> cert() {
         return Optional.ofNullable(this.cert);
     }
@@ -68,18 +55,14 @@ public final class InstanceServerCaCert {
     public static Builder builder(InstanceServerCaCert defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cert;
         private @Nullable String createTime;
         private @Nullable String expireTime;
         private @Nullable String serialNumber;
         private @Nullable String sha1Fingerprint;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceServerCaCert defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cert = defaults.cert;
@@ -89,27 +72,39 @@ public final class InstanceServerCaCert {
     	      this.sha1Fingerprint = defaults.sha1Fingerprint;
         }
 
+        @CustomType.Setter
         public Builder cert(@Nullable String cert) {
             this.cert = cert;
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(@Nullable String createTime) {
             this.createTime = createTime;
             return this;
         }
+        @CustomType.Setter
         public Builder expireTime(@Nullable String expireTime) {
             this.expireTime = expireTime;
             return this;
         }
+        @CustomType.Setter
         public Builder serialNumber(@Nullable String serialNumber) {
             this.serialNumber = serialNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder sha1Fingerprint(@Nullable String sha1Fingerprint) {
             this.sha1Fingerprint = sha1Fingerprint;
             return this;
-        }        public InstanceServerCaCert build() {
-            return new InstanceServerCaCert(cert, createTime, expireTime, serialNumber, sha1Fingerprint);
+        }
+        public InstanceServerCaCert build() {
+            final var o = new InstanceServerCaCert();
+            o.cert = cert;
+            o.createTime = createTime;
+            o.expireTime = expireTime;
+            o.serialNumber = serialNumber;
+            o.sha1Fingerprint = sha1Fingerprint;
+            return o;
         }
     }
 }

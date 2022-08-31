@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class InstanceFromMachineImageNetworkPerformanceConfig {
-    private final String totalEgressBandwidthTier;
+    private String totalEgressBandwidthTier;
 
-    @CustomType.Constructor
-    private InstanceFromMachineImageNetworkPerformanceConfig(@CustomType.Parameter("totalEgressBandwidthTier") String totalEgressBandwidthTier) {
-        this.totalEgressBandwidthTier = totalEgressBandwidthTier;
-    }
-
+    private InstanceFromMachineImageNetworkPerformanceConfig() {}
     public String totalEgressBandwidthTier() {
         return this.totalEgressBandwidthTier;
     }
@@ -27,24 +23,24 @@ public final class InstanceFromMachineImageNetworkPerformanceConfig {
     public static Builder builder(InstanceFromMachineImageNetworkPerformanceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String totalEgressBandwidthTier;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceFromMachineImageNetworkPerformanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.totalEgressBandwidthTier = defaults.totalEgressBandwidthTier;
         }
 
+        @CustomType.Setter
         public Builder totalEgressBandwidthTier(String totalEgressBandwidthTier) {
             this.totalEgressBandwidthTier = Objects.requireNonNull(totalEgressBandwidthTier);
             return this;
-        }        public InstanceFromMachineImageNetworkPerformanceConfig build() {
-            return new InstanceFromMachineImageNetworkPerformanceConfig(totalEgressBandwidthTier);
+        }
+        public InstanceFromMachineImageNetworkPerformanceConfig build() {
+            final var o = new InstanceFromMachineImageNetworkPerformanceConfig();
+            o.totalEgressBandwidthTier = totalEgressBandwidthTier;
+            return o;
         }
     }
 }

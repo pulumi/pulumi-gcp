@@ -16,21 +16,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
      * @return Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
      * 
      */
-    private final @Nullable Boolean pullDeps;
+    private @Nullable Boolean pullDeps;
     /**
      * @return Required. An rpm package.
      * 
      */
-    private final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource source;
+    private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource source;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm(
-        @CustomType.Parameter("pullDeps") @Nullable Boolean pullDeps,
-        @CustomType.Parameter("source") OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource source) {
-        this.pullDeps = pullDeps;
-        this.source = source;
-    }
-
+    private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm() {}
     /**
      * @return Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
      * 
@@ -53,30 +46,32 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
     public static Builder builder(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean pullDeps;
         private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource source;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pullDeps = defaults.pullDeps;
     	      this.source = defaults.source;
         }
 
+        @CustomType.Setter
         public Builder pullDeps(@Nullable Boolean pullDeps) {
             this.pullDeps = pullDeps;
             return this;
         }
+        @CustomType.Setter
         public Builder source(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource source) {
             this.source = Objects.requireNonNull(source);
             return this;
-        }        public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm build() {
-            return new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm(pullDeps, source);
+        }
+        public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm build() {
+            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm();
+            o.pullDeps = pullDeps;
+            o.source = source;
+            return o;
         }
     }
 }

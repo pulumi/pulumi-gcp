@@ -15,17 +15,10 @@ public final class InstanceNode {
      * @return an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
      * 
      */
-    private final @Nullable String id;
-    private final @Nullable String zone;
+    private @Nullable String id;
+    private @Nullable String zone;
 
-    @CustomType.Constructor
-    private InstanceNode(
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("zone") @Nullable String zone) {
-        this.id = id;
-        this.zone = zone;
-    }
-
+    private InstanceNode() {}
     /**
      * @return an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
      * 
@@ -44,30 +37,32 @@ public final class InstanceNode {
     public static Builder builder(InstanceNode defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String id;
         private @Nullable String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
             this.zone = zone;
             return this;
-        }        public InstanceNode build() {
-            return new InstanceNode(id, zone);
+        }
+        public InstanceNode build() {
+            final var o = new InstanceNode();
+            o.id = id;
+            o.zone = zone;
+            return o;
         }
     }
 }

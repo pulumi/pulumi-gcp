@@ -17,21 +17,14 @@ public final class UptimeCheckConfigHttpCheckAcceptedResponseStatusCode {
      * Possible values are `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, and `STATUS_CLASS_ANY`.
      * 
      */
-    private final @Nullable String statusClass;
+    private @Nullable String statusClass;
     /**
      * @return A status code to accept.
      * 
      */
-    private final @Nullable Integer statusValue;
+    private @Nullable Integer statusValue;
 
-    @CustomType.Constructor
-    private UptimeCheckConfigHttpCheckAcceptedResponseStatusCode(
-        @CustomType.Parameter("statusClass") @Nullable String statusClass,
-        @CustomType.Parameter("statusValue") @Nullable Integer statusValue) {
-        this.statusClass = statusClass;
-        this.statusValue = statusValue;
-    }
-
+    private UptimeCheckConfigHttpCheckAcceptedResponseStatusCode() {}
     /**
      * @return A class of status codes to accept.
      * Possible values are `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, and `STATUS_CLASS_ANY`.
@@ -55,30 +48,32 @@ public final class UptimeCheckConfigHttpCheckAcceptedResponseStatusCode {
     public static Builder builder(UptimeCheckConfigHttpCheckAcceptedResponseStatusCode defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String statusClass;
         private @Nullable Integer statusValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(UptimeCheckConfigHttpCheckAcceptedResponseStatusCode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.statusClass = defaults.statusClass;
     	      this.statusValue = defaults.statusValue;
         }
 
+        @CustomType.Setter
         public Builder statusClass(@Nullable String statusClass) {
             this.statusClass = statusClass;
             return this;
         }
+        @CustomType.Setter
         public Builder statusValue(@Nullable Integer statusValue) {
             this.statusValue = statusValue;
             return this;
-        }        public UptimeCheckConfigHttpCheckAcceptedResponseStatusCode build() {
-            return new UptimeCheckConfigHttpCheckAcceptedResponseStatusCode(statusClass, statusValue);
+        }
+        public UptimeCheckConfigHttpCheckAcceptedResponseStatusCode build() {
+            final var o = new UptimeCheckConfigHttpCheckAcceptedResponseStatusCode();
+            o.statusClass = statusClass;
+            o.statusValue = statusValue;
+            return o;
         }
     }
 }

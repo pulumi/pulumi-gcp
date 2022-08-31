@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterLoggingConfig {
-    private final List<String> enableComponents;
+    private List<String> enableComponents;
 
-    @CustomType.Constructor
-    private GetClusterLoggingConfig(@CustomType.Parameter("enableComponents") List<String> enableComponents) {
-        this.enableComponents = enableComponents;
-    }
-
+    private GetClusterLoggingConfig() {}
     public List<String> enableComponents() {
         return this.enableComponents;
     }
@@ -28,27 +24,27 @@ public final class GetClusterLoggingConfig {
     public static Builder builder(GetClusterLoggingConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> enableComponents;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterLoggingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableComponents = defaults.enableComponents;
         }
 
+        @CustomType.Setter
         public Builder enableComponents(List<String> enableComponents) {
             this.enableComponents = Objects.requireNonNull(enableComponents);
             return this;
         }
         public Builder enableComponents(String... enableComponents) {
             return enableComponents(List.of(enableComponents));
-        }        public GetClusterLoggingConfig build() {
-            return new GetClusterLoggingConfig(enableComponents);
+        }
+        public GetClusterLoggingConfig build() {
+            final var o = new GetClusterLoggingConfig();
+            o.enableComponents = enableComponents;
+            return o;
         }
     }
 }

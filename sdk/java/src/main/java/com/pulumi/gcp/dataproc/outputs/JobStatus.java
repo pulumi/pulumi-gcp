@@ -11,23 +11,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobStatus {
-    private final @Nullable String details;
-    private final @Nullable String state;
-    private final @Nullable String stateStartTime;
-    private final @Nullable String substate;
+    private @Nullable String details;
+    private @Nullable String state;
+    private @Nullable String stateStartTime;
+    private @Nullable String substate;
 
-    @CustomType.Constructor
-    private JobStatus(
-        @CustomType.Parameter("details") @Nullable String details,
-        @CustomType.Parameter("state") @Nullable String state,
-        @CustomType.Parameter("stateStartTime") @Nullable String stateStartTime,
-        @CustomType.Parameter("substate") @Nullable String substate) {
-        this.details = details;
-        this.state = state;
-        this.stateStartTime = stateStartTime;
-        this.substate = substate;
-    }
-
+    private JobStatus() {}
     public Optional<String> details() {
         return Optional.ofNullable(this.details);
     }
@@ -48,17 +37,13 @@ public final class JobStatus {
     public static Builder builder(JobStatus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String details;
         private @Nullable String state;
         private @Nullable String stateStartTime;
         private @Nullable String substate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.details = defaults.details;
@@ -67,23 +52,33 @@ public final class JobStatus {
     	      this.substate = defaults.substate;
         }
 
+        @CustomType.Setter
         public Builder details(@Nullable String details) {
             this.details = details;
             return this;
         }
+        @CustomType.Setter
         public Builder state(@Nullable String state) {
             this.state = state;
             return this;
         }
+        @CustomType.Setter
         public Builder stateStartTime(@Nullable String stateStartTime) {
             this.stateStartTime = stateStartTime;
             return this;
         }
+        @CustomType.Setter
         public Builder substate(@Nullable String substate) {
             this.substate = substate;
             return this;
-        }        public JobStatus build() {
-            return new JobStatus(details, state, stateStartTime, substate);
+        }
+        public JobStatus build() {
+            final var o = new JobStatus();
+            o.details = details;
+            o.state = state;
+            o.stateStartTime = stateStartTime;
+            o.substate = substate;
+            return o;
         }
     }
 }

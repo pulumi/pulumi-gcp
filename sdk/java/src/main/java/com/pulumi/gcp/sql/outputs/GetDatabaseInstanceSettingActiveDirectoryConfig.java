@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceSettingActiveDirectoryConfig {
-    private final String domain;
+    private String domain;
 
-    @CustomType.Constructor
-    private GetDatabaseInstanceSettingActiveDirectoryConfig(@CustomType.Parameter("domain") String domain) {
-        this.domain = domain;
-    }
-
+    private GetDatabaseInstanceSettingActiveDirectoryConfig() {}
     public String domain() {
         return this.domain;
     }
@@ -27,24 +23,24 @@ public final class GetDatabaseInstanceSettingActiveDirectoryConfig {
     public static Builder builder(GetDatabaseInstanceSettingActiveDirectoryConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String domain;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseInstanceSettingActiveDirectoryConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domain = defaults.domain;
         }
 
+        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
-        }        public GetDatabaseInstanceSettingActiveDirectoryConfig build() {
-            return new GetDatabaseInstanceSettingActiveDirectoryConfig(domain);
+        }
+        public GetDatabaseInstanceSettingActiveDirectoryConfig build() {
+            final var o = new GetDatabaseInstanceSettingActiveDirectoryConfig();
+            o.domain = domain;
+            return o;
         }
     }
 }

@@ -12,20 +12,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigX509ConfigKeyUsage {
-    private final List<GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage> baseKeyUsages;
-    private final List<GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage> extendedKeyUsages;
-    private final List<GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages;
+    private List<GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage> baseKeyUsages;
+    private List<GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage> extendedKeyUsages;
+    private List<GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages;
 
-    @CustomType.Constructor
-    private GetAuthorityConfigX509ConfigKeyUsage(
-        @CustomType.Parameter("baseKeyUsages") List<GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage> baseKeyUsages,
-        @CustomType.Parameter("extendedKeyUsages") List<GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage> extendedKeyUsages,
-        @CustomType.Parameter("unknownExtendedKeyUsages") List<GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages) {
-        this.baseKeyUsages = baseKeyUsages;
-        this.extendedKeyUsages = extendedKeyUsages;
-        this.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
-    }
-
+    private GetAuthorityConfigX509ConfigKeyUsage() {}
     public List<GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage> baseKeyUsages() {
         return this.baseKeyUsages;
     }
@@ -43,16 +34,12 @@ public final class GetAuthorityConfigX509ConfigKeyUsage {
     public static Builder builder(GetAuthorityConfigX509ConfigKeyUsage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage> baseKeyUsages;
         private List<GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage> extendedKeyUsages;
         private List<GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthorityConfigX509ConfigKeyUsage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.baseKeyUsages = defaults.baseKeyUsages;
@@ -60,6 +47,7 @@ public final class GetAuthorityConfigX509ConfigKeyUsage {
     	      this.unknownExtendedKeyUsages = defaults.unknownExtendedKeyUsages;
         }
 
+        @CustomType.Setter
         public Builder baseKeyUsages(List<GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage> baseKeyUsages) {
             this.baseKeyUsages = Objects.requireNonNull(baseKeyUsages);
             return this;
@@ -67,6 +55,7 @@ public final class GetAuthorityConfigX509ConfigKeyUsage {
         public Builder baseKeyUsages(GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage... baseKeyUsages) {
             return baseKeyUsages(List.of(baseKeyUsages));
         }
+        @CustomType.Setter
         public Builder extendedKeyUsages(List<GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage> extendedKeyUsages) {
             this.extendedKeyUsages = Objects.requireNonNull(extendedKeyUsages);
             return this;
@@ -74,14 +63,20 @@ public final class GetAuthorityConfigX509ConfigKeyUsage {
         public Builder extendedKeyUsages(GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage... extendedKeyUsages) {
             return extendedKeyUsages(List.of(extendedKeyUsages));
         }
+        @CustomType.Setter
         public Builder unknownExtendedKeyUsages(List<GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages) {
             this.unknownExtendedKeyUsages = Objects.requireNonNull(unknownExtendedKeyUsages);
             return this;
         }
         public Builder unknownExtendedKeyUsages(GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage... unknownExtendedKeyUsages) {
             return unknownExtendedKeyUsages(List.of(unknownExtendedKeyUsages));
-        }        public GetAuthorityConfigX509ConfigKeyUsage build() {
-            return new GetAuthorityConfigX509ConfigKeyUsage(baseKeyUsages, extendedKeyUsages, unknownExtendedKeyUsages);
+        }
+        public GetAuthorityConfigX509ConfigKeyUsage build() {
+            final var o = new GetAuthorityConfigX509ConfigKeyUsage();
+            o.baseKeyUsages = baseKeyUsages;
+            o.extendedKeyUsages = extendedKeyUsages;
+            o.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
+            return o;
         }
     }
 }

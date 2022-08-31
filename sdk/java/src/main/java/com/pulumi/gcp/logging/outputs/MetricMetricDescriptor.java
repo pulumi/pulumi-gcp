@@ -19,7 +19,7 @@ public final class MetricMetricDescriptor {
      * recommended to be set for any metrics associated with user-visible concepts, such as Quota.
      * 
      */
-    private final @Nullable String displayName;
+    private @Nullable String displayName;
     /**
      * @return The set of labels that can be used to describe a specific instance of this metric type. For
      * example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
@@ -28,7 +28,7 @@ public final class MetricMetricDescriptor {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<MetricMetricDescriptorLabel> labels;
+    private @Nullable List<MetricMetricDescriptorLabel> labels;
     /**
      * @return Whether the metric records instantaneous values, changes to a value, etc.
      * Some combinations of metricKind and valueType might not be supported.
@@ -36,36 +36,23 @@ public final class MetricMetricDescriptor {
      * Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
      * 
      */
-    private final String metricKind;
+    private String metricKind;
     /**
      * @return The unit in which the metric value is reported. It is only applicable if the valueType is
      * `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
      * [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
      * 
      */
-    private final @Nullable String unit;
+    private @Nullable String unit;
     /**
      * @return The type of data that can be assigned to the label.
      * Default value is `STRING`.
      * Possible values are `BOOL`, `INT64`, and `STRING`.
      * 
      */
-    private final String valueType;
+    private String valueType;
 
-    @CustomType.Constructor
-    private MetricMetricDescriptor(
-        @CustomType.Parameter("displayName") @Nullable String displayName,
-        @CustomType.Parameter("labels") @Nullable List<MetricMetricDescriptorLabel> labels,
-        @CustomType.Parameter("metricKind") String metricKind,
-        @CustomType.Parameter("unit") @Nullable String unit,
-        @CustomType.Parameter("valueType") String valueType) {
-        this.displayName = displayName;
-        this.labels = labels;
-        this.metricKind = metricKind;
-        this.unit = unit;
-        this.valueType = valueType;
-    }
-
+    private MetricMetricDescriptor() {}
     /**
      * @return A concise name for the metric, which can be displayed in user interfaces. Use sentence case
      * without an ending period, for example &#34;Request count&#34;. This field is optional but it is
@@ -122,18 +109,14 @@ public final class MetricMetricDescriptor {
     public static Builder builder(MetricMetricDescriptor defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String displayName;
         private @Nullable List<MetricMetricDescriptorLabel> labels;
         private String metricKind;
         private @Nullable String unit;
         private String valueType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MetricMetricDescriptor defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.displayName = defaults.displayName;
@@ -143,10 +126,12 @@ public final class MetricMetricDescriptor {
     	      this.valueType = defaults.valueType;
         }
 
+        @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
             this.displayName = displayName;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable List<MetricMetricDescriptorLabel> labels) {
             this.labels = labels;
             return this;
@@ -154,19 +139,29 @@ public final class MetricMetricDescriptor {
         public Builder labels(MetricMetricDescriptorLabel... labels) {
             return labels(List.of(labels));
         }
+        @CustomType.Setter
         public Builder metricKind(String metricKind) {
             this.metricKind = Objects.requireNonNull(metricKind);
             return this;
         }
+        @CustomType.Setter
         public Builder unit(@Nullable String unit) {
             this.unit = unit;
             return this;
         }
+        @CustomType.Setter
         public Builder valueType(String valueType) {
             this.valueType = Objects.requireNonNull(valueType);
             return this;
-        }        public MetricMetricDescriptor build() {
-            return new MetricMetricDescriptor(displayName, labels, metricKind, unit, valueType);
+        }
+        public MetricMetricDescriptor build() {
+            final var o = new MetricMetricDescriptor();
+            o.displayName = displayName;
+            o.labels = labels;
+            o.metricKind = metricKind;
+            o.unit = unit;
+            o.valueType = valueType;
+            return o;
         }
     }
 }

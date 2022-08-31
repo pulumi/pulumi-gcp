@@ -15,35 +15,24 @@ public final class URLMapTest {
      * @return Description of this test case.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return Host portion of the URL.
      * 
      */
-    private final String host;
+    private String host;
     /**
      * @return Path portion of the URL.
      * 
      */
-    private final String path;
+    private String path;
     /**
      * @return The backend service or backend bucket link that should be matched by this test.
      * 
      */
-    private final String service;
+    private String service;
 
-    @CustomType.Constructor
-    private URLMapTest(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("host") String host,
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("service") String service) {
-        this.description = description;
-        this.host = host;
-        this.path = path;
-        this.service = service;
-    }
-
+    private URLMapTest() {}
     /**
      * @return Description of this test case.
      * 
@@ -80,17 +69,13 @@ public final class URLMapTest {
     public static Builder builder(URLMapTest defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private String host;
         private String path;
         private String service;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(URLMapTest defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -99,23 +84,33 @@ public final class URLMapTest {
     	      this.service = defaults.service;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder service(String service) {
             this.service = Objects.requireNonNull(service);
             return this;
-        }        public URLMapTest build() {
-            return new URLMapTest(description, host, path, service);
+        }
+        public URLMapTest build() {
+            final var o = new URLMapTest();
+            o.description = description;
+            o.host = host;
+            o.path = path;
+            o.service = service;
+            return o;
         }
     }
 }

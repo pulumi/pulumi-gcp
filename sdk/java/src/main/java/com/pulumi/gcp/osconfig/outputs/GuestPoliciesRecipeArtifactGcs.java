@@ -17,30 +17,21 @@ public final class GuestPoliciesRecipeArtifactGcs {
      * this value would be my-bucket.
      * 
      */
-    private final @Nullable String bucket;
+    private @Nullable String bucket;
     /**
      * @return Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
      * https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
      * 
      */
-    private final @Nullable Integer generation;
+    private @Nullable Integer generation;
     /**
      * @return Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
      * this value would be foo/bar.
      * 
      */
-    private final @Nullable String object;
+    private @Nullable String object;
 
-    @CustomType.Constructor
-    private GuestPoliciesRecipeArtifactGcs(
-        @CustomType.Parameter("bucket") @Nullable String bucket,
-        @CustomType.Parameter("generation") @Nullable Integer generation,
-        @CustomType.Parameter("object") @Nullable String object) {
-        this.bucket = bucket;
-        this.generation = generation;
-        this.object = object;
-    }
-
+    private GuestPoliciesRecipeArtifactGcs() {}
     /**
      * @return Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
      * this value would be my-bucket.
@@ -73,16 +64,12 @@ public final class GuestPoliciesRecipeArtifactGcs {
     public static Builder builder(GuestPoliciesRecipeArtifactGcs defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String bucket;
         private @Nullable Integer generation;
         private @Nullable String object;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesRecipeArtifactGcs defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
@@ -90,19 +77,27 @@ public final class GuestPoliciesRecipeArtifactGcs {
     	      this.object = defaults.object;
         }
 
+        @CustomType.Setter
         public Builder bucket(@Nullable String bucket) {
             this.bucket = bucket;
             return this;
         }
+        @CustomType.Setter
         public Builder generation(@Nullable Integer generation) {
             this.generation = generation;
             return this;
         }
+        @CustomType.Setter
         public Builder object(@Nullable String object) {
             this.object = object;
             return this;
-        }        public GuestPoliciesRecipeArtifactGcs build() {
-            return new GuestPoliciesRecipeArtifactGcs(bucket, generation, object);
+        }
+        public GuestPoliciesRecipeArtifactGcs build() {
+            final var o = new GuestPoliciesRecipeArtifactGcs();
+            o.bucket = bucket;
+            o.generation = generation;
+            o.object = object;
+            return o;
         }
     }
 }

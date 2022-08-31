@@ -21,21 +21,14 @@ public final class GameServerConfigFleetConfig {
      *   `https://agones.dev/site/docs/reference/fleet/`.
      * 
      */
-    private final String fleetSpec;
+    private String fleetSpec;
     /**
      * @return The name of the ScalingConfig
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
 
-    @CustomType.Constructor
-    private GameServerConfigFleetConfig(
-        @CustomType.Parameter("fleetSpec") String fleetSpec,
-        @CustomType.Parameter("name") @Nullable String name) {
-        this.fleetSpec = fleetSpec;
-        this.name = name;
-    }
-
+    private GameServerConfigFleetConfig() {}
     /**
      * @return The fleet spec, which is sent to Agones to configure fleet.
      * The spec can be passed as inline json but it is recommended to use a file reference
@@ -64,30 +57,32 @@ public final class GameServerConfigFleetConfig {
     public static Builder builder(GameServerConfigFleetConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String fleetSpec;
         private @Nullable String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GameServerConfigFleetConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fleetSpec = defaults.fleetSpec;
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder fleetSpec(String fleetSpec) {
             this.fleetSpec = Objects.requireNonNull(fleetSpec);
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
-        }        public GameServerConfigFleetConfig build() {
-            return new GameServerConfigFleetConfig(fleetSpec, name);
+        }
+        public GameServerConfigFleetConfig build() {
+            final var o = new GameServerConfigFleetConfig();
+            o.fleetSpec = fleetSpec;
+            o.name = name;
+            return o;
         }
     }
 }

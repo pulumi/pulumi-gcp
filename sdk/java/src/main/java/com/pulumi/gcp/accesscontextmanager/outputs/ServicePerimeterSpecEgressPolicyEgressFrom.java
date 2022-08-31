@@ -18,7 +18,7 @@ public final class ServicePerimeterSpecEgressPolicyEgressFrom {
      * represent individual user or service account only.
      * 
      */
-    private final @Nullable List<String> identities;
+    private @Nullable List<String> identities;
     /**
      * @return Specifies the type of identities that are allowed access to outside the
      * perimeter. If left unspecified, then members of `identities` field will
@@ -26,16 +26,9 @@ public final class ServicePerimeterSpecEgressPolicyEgressFrom {
      * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
      * 
      */
-    private final @Nullable String identityType;
+    private @Nullable String identityType;
 
-    @CustomType.Constructor
-    private ServicePerimeterSpecEgressPolicyEgressFrom(
-        @CustomType.Parameter("identities") @Nullable List<String> identities,
-        @CustomType.Parameter("identityType") @Nullable String identityType) {
-        this.identities = identities;
-        this.identityType = identityType;
-    }
-
+    private ServicePerimeterSpecEgressPolicyEgressFrom() {}
     /**
      * @return A list of identities that are allowed access through this `EgressPolicy`.
      * Should be in the format of email address. The email address should
@@ -63,21 +56,18 @@ public final class ServicePerimeterSpecEgressPolicyEgressFrom {
     public static Builder builder(ServicePerimeterSpecEgressPolicyEgressFrom defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> identities;
         private @Nullable String identityType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServicePerimeterSpecEgressPolicyEgressFrom defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.identities = defaults.identities;
     	      this.identityType = defaults.identityType;
         }
 
+        @CustomType.Setter
         public Builder identities(@Nullable List<String> identities) {
             this.identities = identities;
             return this;
@@ -85,11 +75,16 @@ public final class ServicePerimeterSpecEgressPolicyEgressFrom {
         public Builder identities(String... identities) {
             return identities(List.of(identities));
         }
+        @CustomType.Setter
         public Builder identityType(@Nullable String identityType) {
             this.identityType = identityType;
             return this;
-        }        public ServicePerimeterSpecEgressPolicyEgressFrom build() {
-            return new ServicePerimeterSpecEgressPolicyEgressFrom(identities, identityType);
+        }
+        public ServicePerimeterSpecEgressPolicyEgressFrom build() {
+            final var o = new ServicePerimeterSpecEgressPolicyEgressFrom();
+            o.identities = identities;
+            o.identityType = identityType;
+            return o;
         }
     }
 }

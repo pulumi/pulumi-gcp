@@ -10,26 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigWorkloadsConfigWorker {
-    private final Double cpu;
-    private final Integer maxCount;
-    private final Double memoryGb;
-    private final Integer minCount;
-    private final Double storageGb;
+    private Double cpu;
+    private Integer maxCount;
+    private Double memoryGb;
+    private Integer minCount;
+    private Double storageGb;
 
-    @CustomType.Constructor
-    private GetEnvironmentConfigWorkloadsConfigWorker(
-        @CustomType.Parameter("cpu") Double cpu,
-        @CustomType.Parameter("maxCount") Integer maxCount,
-        @CustomType.Parameter("memoryGb") Double memoryGb,
-        @CustomType.Parameter("minCount") Integer minCount,
-        @CustomType.Parameter("storageGb") Double storageGb) {
-        this.cpu = cpu;
-        this.maxCount = maxCount;
-        this.memoryGb = memoryGb;
-        this.minCount = minCount;
-        this.storageGb = storageGb;
-    }
-
+    private GetEnvironmentConfigWorkloadsConfigWorker() {}
     public Double cpu() {
         return this.cpu;
     }
@@ -53,18 +40,14 @@ public final class GetEnvironmentConfigWorkloadsConfigWorker {
     public static Builder builder(GetEnvironmentConfigWorkloadsConfigWorker defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Double cpu;
         private Integer maxCount;
         private Double memoryGb;
         private Integer minCount;
         private Double storageGb;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEnvironmentConfigWorkloadsConfigWorker defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpu = defaults.cpu;
@@ -74,27 +57,39 @@ public final class GetEnvironmentConfigWorkloadsConfigWorker {
     	      this.storageGb = defaults.storageGb;
         }
 
+        @CustomType.Setter
         public Builder cpu(Double cpu) {
             this.cpu = Objects.requireNonNull(cpu);
             return this;
         }
+        @CustomType.Setter
         public Builder maxCount(Integer maxCount) {
             this.maxCount = Objects.requireNonNull(maxCount);
             return this;
         }
+        @CustomType.Setter
         public Builder memoryGb(Double memoryGb) {
             this.memoryGb = Objects.requireNonNull(memoryGb);
             return this;
         }
+        @CustomType.Setter
         public Builder minCount(Integer minCount) {
             this.minCount = Objects.requireNonNull(minCount);
             return this;
         }
+        @CustomType.Setter
         public Builder storageGb(Double storageGb) {
             this.storageGb = Objects.requireNonNull(storageGb);
             return this;
-        }        public GetEnvironmentConfigWorkloadsConfigWorker build() {
-            return new GetEnvironmentConfigWorkloadsConfigWorker(cpu, maxCount, memoryGb, minCount, storageGb);
+        }
+        public GetEnvironmentConfigWorkloadsConfigWorker build() {
+            final var o = new GetEnvironmentConfigWorkloadsConfigWorker();
+            o.cpu = cpu;
+            o.maxCount = maxCount;
+            o.memoryGb = memoryGb;
+            o.minCount = minCount;
+            o.storageGb = storageGb;
+            return o;
         }
     }
 }

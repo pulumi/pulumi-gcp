@@ -13,28 +13,19 @@ public final class TransferJobScheduleScheduleEndDate {
      * @return Day of month. Must be from 1 to 31 and valid for the year and month.
      * 
      */
-    private final Integer day;
+    private Integer day;
     /**
      * @return Month of year. Must be from 1 to 12.
      * 
      */
-    private final Integer month;
+    private Integer month;
     /**
      * @return Year of date. Must be from 1 to 9999.
      * 
      */
-    private final Integer year;
+    private Integer year;
 
-    @CustomType.Constructor
-    private TransferJobScheduleScheduleEndDate(
-        @CustomType.Parameter("day") Integer day,
-        @CustomType.Parameter("month") Integer month,
-        @CustomType.Parameter("year") Integer year) {
-        this.day = day;
-        this.month = month;
-        this.year = year;
-    }
-
+    private TransferJobScheduleScheduleEndDate() {}
     /**
      * @return Day of month. Must be from 1 to 31 and valid for the year and month.
      * 
@@ -64,16 +55,12 @@ public final class TransferJobScheduleScheduleEndDate {
     public static Builder builder(TransferJobScheduleScheduleEndDate defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer day;
         private Integer month;
         private Integer year;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TransferJobScheduleScheduleEndDate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.day = defaults.day;
@@ -81,19 +68,27 @@ public final class TransferJobScheduleScheduleEndDate {
     	      this.year = defaults.year;
         }
 
+        @CustomType.Setter
         public Builder day(Integer day) {
             this.day = Objects.requireNonNull(day);
             return this;
         }
+        @CustomType.Setter
         public Builder month(Integer month) {
             this.month = Objects.requireNonNull(month);
             return this;
         }
+        @CustomType.Setter
         public Builder year(Integer year) {
             this.year = Objects.requireNonNull(year);
             return this;
-        }        public TransferJobScheduleScheduleEndDate build() {
-            return new TransferJobScheduleScheduleEndDate(day, month, year);
+        }
+        public TransferJobScheduleScheduleEndDate build() {
+            final var o = new TransferJobScheduleScheduleEndDate();
+            o.day = day;
+            o.month = month;
+            o.year = year;
+            return o;
         }
     }
 }

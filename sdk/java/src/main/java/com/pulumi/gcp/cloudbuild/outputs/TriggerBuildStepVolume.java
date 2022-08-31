@@ -15,23 +15,16 @@ public final class TriggerBuildStepVolume {
      * Each named volume must be used by at least two build steps.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Path at which to mount the volume.
      * Paths must be absolute and cannot conflict with other volume paths on the same
      * build step or with certain reserved volume paths.
      * 
      */
-    private final String path;
+    private String path;
 
-    @CustomType.Constructor
-    private TriggerBuildStepVolume(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("path") String path) {
-        this.name = name;
-        this.path = path;
-    }
-
+    private TriggerBuildStepVolume() {}
     /**
      * @return Name of the volume to mount.
      * Volume names must be unique per build step and must be valid names for Docker volumes.
@@ -58,30 +51,32 @@ public final class TriggerBuildStepVolume {
     public static Builder builder(TriggerBuildStepVolume defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerBuildStepVolume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
-        }        public TriggerBuildStepVolume build() {
-            return new TriggerBuildStepVolume(name, path);
+        }
+        public TriggerBuildStepVolume build() {
+            final var o = new TriggerBuildStepVolume();
+            o.name = name;
+            o.path = path;
+            return o;
         }
     }
 }

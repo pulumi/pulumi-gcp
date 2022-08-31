@@ -25,6 +25,7 @@ import com.pulumi.gcp.container.inputs.ClusterMonitoringConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNetworkPolicyArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolAutoConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNotificationConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterPodSecurityPolicyConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterPrivateClusterConfigArgs;
@@ -820,6 +821,25 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * ) Node pool configs that apply to auto-provisioned node pools in
+     * [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+     * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+     * 
+     */
+    @Import(name="nodePoolAutoConfig")
+    private @Nullable Output<ClusterNodePoolAutoConfigArgs> nodePoolAutoConfig;
+
+    /**
+     * @return ) Node pool configs that apply to auto-provisioned node pools in
+     * [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+     * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodePoolAutoConfigArgs>> nodePoolAutoConfig() {
+        return Optional.ofNullable(this.nodePoolAutoConfig);
+    }
+
+    /**
      * List of node pools associated with this cluster.
      * See gcp.container.NodePool for schema.
      * **Warning:** node pools defined inside a cluster can&#39;t be changed (or added/removed) after
@@ -1153,6 +1173,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.networkingMode = $.networkingMode;
         this.nodeConfig = $.nodeConfig;
         this.nodeLocations = $.nodeLocations;
+        this.nodePoolAutoConfig = $.nodePoolAutoConfig;
         this.nodePools = $.nodePools;
         this.nodeVersion = $.nodeVersion;
         this.notificationConfig = $.notificationConfig;
@@ -2211,6 +2232,31 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nodeLocations(String... nodeLocations) {
             return nodeLocations(List.of(nodeLocations));
+        }
+
+        /**
+         * @param nodePoolAutoConfig ) Node pool configs that apply to auto-provisioned node pools in
+         * [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+         * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodePoolAutoConfig(@Nullable Output<ClusterNodePoolAutoConfigArgs> nodePoolAutoConfig) {
+            $.nodePoolAutoConfig = nodePoolAutoConfig;
+            return this;
+        }
+
+        /**
+         * @param nodePoolAutoConfig ) Node pool configs that apply to auto-provisioned node pools in
+         * [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+         * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodePoolAutoConfig(ClusterNodePoolAutoConfigArgs nodePoolAutoConfig) {
+            return nodePoolAutoConfig(Output.of(nodePoolAutoConfig));
         }
 
         /**

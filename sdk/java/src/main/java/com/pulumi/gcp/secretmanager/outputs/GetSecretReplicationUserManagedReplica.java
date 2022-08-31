@@ -11,17 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSecretReplicationUserManagedReplica {
-    private final List<GetSecretReplicationUserManagedReplicaCustomerManagedEncryption> customerManagedEncryptions;
-    private final String location;
+    private List<GetSecretReplicationUserManagedReplicaCustomerManagedEncryption> customerManagedEncryptions;
+    private String location;
 
-    @CustomType.Constructor
-    private GetSecretReplicationUserManagedReplica(
-        @CustomType.Parameter("customerManagedEncryptions") List<GetSecretReplicationUserManagedReplicaCustomerManagedEncryption> customerManagedEncryptions,
-        @CustomType.Parameter("location") String location) {
-        this.customerManagedEncryptions = customerManagedEncryptions;
-        this.location = location;
-    }
-
+    private GetSecretReplicationUserManagedReplica() {}
     public List<GetSecretReplicationUserManagedReplicaCustomerManagedEncryption> customerManagedEncryptions() {
         return this.customerManagedEncryptions;
     }
@@ -36,21 +29,18 @@ public final class GetSecretReplicationUserManagedReplica {
     public static Builder builder(GetSecretReplicationUserManagedReplica defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetSecretReplicationUserManagedReplicaCustomerManagedEncryption> customerManagedEncryptions;
         private String location;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSecretReplicationUserManagedReplica defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customerManagedEncryptions = defaults.customerManagedEncryptions;
     	      this.location = defaults.location;
         }
 
+        @CustomType.Setter
         public Builder customerManagedEncryptions(List<GetSecretReplicationUserManagedReplicaCustomerManagedEncryption> customerManagedEncryptions) {
             this.customerManagedEncryptions = Objects.requireNonNull(customerManagedEncryptions);
             return this;
@@ -58,11 +48,16 @@ public final class GetSecretReplicationUserManagedReplica {
         public Builder customerManagedEncryptions(GetSecretReplicationUserManagedReplicaCustomerManagedEncryption... customerManagedEncryptions) {
             return customerManagedEncryptions(List.of(customerManagedEncryptions));
         }
+        @CustomType.Setter
         public Builder location(String location) {
             this.location = Objects.requireNonNull(location);
             return this;
-        }        public GetSecretReplicationUserManagedReplica build() {
-            return new GetSecretReplicationUserManagedReplica(customerManagedEncryptions, location);
+        }
+        public GetSecretReplicationUserManagedReplica build() {
+            final var o = new GetSecretReplicationUserManagedReplica();
+            o.customerManagedEncryptions = customerManagedEncryptions;
+            o.location = location;
+            return o;
         }
     }
 }

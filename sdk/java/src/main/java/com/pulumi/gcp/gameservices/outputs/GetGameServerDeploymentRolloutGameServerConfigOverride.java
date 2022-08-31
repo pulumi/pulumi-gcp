@@ -11,17 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGameServerDeploymentRolloutGameServerConfigOverride {
-    private final String configVersion;
-    private final List<GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector> realmsSelectors;
+    private String configVersion;
+    private List<GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector> realmsSelectors;
 
-    @CustomType.Constructor
-    private GetGameServerDeploymentRolloutGameServerConfigOverride(
-        @CustomType.Parameter("configVersion") String configVersion,
-        @CustomType.Parameter("realmsSelectors") List<GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector> realmsSelectors) {
-        this.configVersion = configVersion;
-        this.realmsSelectors = realmsSelectors;
-    }
-
+    private GetGameServerDeploymentRolloutGameServerConfigOverride() {}
     public String configVersion() {
         return this.configVersion;
     }
@@ -36,33 +29,35 @@ public final class GetGameServerDeploymentRolloutGameServerConfigOverride {
     public static Builder builder(GetGameServerDeploymentRolloutGameServerConfigOverride defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String configVersion;
         private List<GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector> realmsSelectors;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGameServerDeploymentRolloutGameServerConfigOverride defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configVersion = defaults.configVersion;
     	      this.realmsSelectors = defaults.realmsSelectors;
         }
 
+        @CustomType.Setter
         public Builder configVersion(String configVersion) {
             this.configVersion = Objects.requireNonNull(configVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder realmsSelectors(List<GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector> realmsSelectors) {
             this.realmsSelectors = Objects.requireNonNull(realmsSelectors);
             return this;
         }
         public Builder realmsSelectors(GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector... realmsSelectors) {
             return realmsSelectors(List.of(realmsSelectors));
-        }        public GetGameServerDeploymentRolloutGameServerConfigOverride build() {
-            return new GetGameServerDeploymentRolloutGameServerConfigOverride(configVersion, realmsSelectors);
+        }
+        public GetGameServerDeploymentRolloutGameServerConfigOverride build() {
+            final var o = new GetGameServerDeploymentRolloutGameServerConfigOverride();
+            o.configVersion = configVersion;
+            o.realmsSelectors = realmsSelectors;
+            return o;
         }
     }
 }

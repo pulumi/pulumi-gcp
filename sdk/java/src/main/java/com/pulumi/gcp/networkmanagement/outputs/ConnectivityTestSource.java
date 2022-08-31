@@ -16,31 +16,31 @@ public final class ConnectivityTestSource {
      * @return A Compute Engine instance URI.
      * 
      */
-    private final @Nullable String instance;
+    private @Nullable String instance;
     /**
      * @return The IP address of the endpoint, which can be an external or
      * internal IP. An IPv6 address is only allowed when the test&#39;s
      * destination is a global load balancer VIP.
      * 
      */
-    private final @Nullable String ipAddress;
+    private @Nullable String ipAddress;
     /**
      * @return A Compute Engine network URI.
      * 
      */
-    private final @Nullable String network;
+    private @Nullable String network;
     /**
      * @return Type of the network where the endpoint is located.
      * Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
      * 
      */
-    private final @Nullable String networkType;
+    private @Nullable String networkType;
     /**
      * @return The IP protocol port of the endpoint. Only applicable when
      * protocol is TCP or UDP.
      * 
      */
-    private final @Nullable Integer port;
+    private @Nullable Integer port;
     /**
      * @return Project ID where the endpoint is located. The Project ID can be
      * derived from the URI if you provide a VM instance or network URI.
@@ -52,24 +52,9 @@ public final class ConnectivityTestSource {
      *    project.
      * 
      */
-    private final @Nullable String projectId;
+    private @Nullable String projectId;
 
-    @CustomType.Constructor
-    private ConnectivityTestSource(
-        @CustomType.Parameter("instance") @Nullable String instance,
-        @CustomType.Parameter("ipAddress") @Nullable String ipAddress,
-        @CustomType.Parameter("network") @Nullable String network,
-        @CustomType.Parameter("networkType") @Nullable String networkType,
-        @CustomType.Parameter("port") @Nullable Integer port,
-        @CustomType.Parameter("projectId") @Nullable String projectId) {
-        this.instance = instance;
-        this.ipAddress = ipAddress;
-        this.network = network;
-        this.networkType = networkType;
-        this.port = port;
-        this.projectId = projectId;
-    }
-
+    private ConnectivityTestSource() {}
     /**
      * @return A Compute Engine instance URI.
      * 
@@ -131,7 +116,7 @@ public final class ConnectivityTestSource {
     public static Builder builder(ConnectivityTestSource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String instance;
         private @Nullable String ipAddress;
@@ -139,11 +124,7 @@ public final class ConnectivityTestSource {
         private @Nullable String networkType;
         private @Nullable Integer port;
         private @Nullable String projectId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectivityTestSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instance = defaults.instance;
@@ -154,31 +135,45 @@ public final class ConnectivityTestSource {
     	      this.projectId = defaults.projectId;
         }
 
+        @CustomType.Setter
         public Builder instance(@Nullable String instance) {
             this.instance = instance;
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
             this.ipAddress = ipAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder network(@Nullable String network) {
             this.network = network;
             return this;
         }
+        @CustomType.Setter
         public Builder networkType(@Nullable String networkType) {
             this.networkType = networkType;
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
             this.projectId = projectId;
             return this;
-        }        public ConnectivityTestSource build() {
-            return new ConnectivityTestSource(instance, ipAddress, network, networkType, port, projectId);
+        }
+        public ConnectivityTestSource build() {
+            final var o = new ConnectivityTestSource();
+            o.instance = instance;
+            o.ipAddress = ipAddress;
+            o.network = network;
+            o.networkType = networkType;
+            o.port = port;
+            o.projectId = projectId;
+            return o;
         }
     }
 }

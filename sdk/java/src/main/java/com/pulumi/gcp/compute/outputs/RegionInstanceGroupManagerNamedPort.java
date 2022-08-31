@@ -14,22 +14,15 @@ public final class RegionInstanceGroupManagerNamedPort {
      * @return - Version name.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The port number.
      * ***
      * 
      */
-    private final Integer port;
+    private Integer port;
 
-    @CustomType.Constructor
-    private RegionInstanceGroupManagerNamedPort(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("port") Integer port) {
-        this.name = name;
-        this.port = port;
-    }
-
+    private RegionInstanceGroupManagerNamedPort() {}
     /**
      * @return - Version name.
      * 
@@ -53,30 +46,32 @@ public final class RegionInstanceGroupManagerNamedPort {
     public static Builder builder(RegionInstanceGroupManagerNamedPort defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private Integer port;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionInstanceGroupManagerNamedPort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.port = defaults.port;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
-        }        public RegionInstanceGroupManagerNamedPort build() {
-            return new RegionInstanceGroupManagerNamedPort(name, port);
+        }
+        public RegionInstanceGroupManagerNamedPort build() {
+            final var o = new RegionInstanceGroupManagerNamedPort();
+            o.name = name;
+            o.port = port;
+            return o;
         }
     }
 }

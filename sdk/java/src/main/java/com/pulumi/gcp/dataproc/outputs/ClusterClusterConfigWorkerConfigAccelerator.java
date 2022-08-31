@@ -14,21 +14,14 @@ public final class ClusterClusterConfigWorkerConfigAccelerator {
      * @return The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
      * 
      */
-    private final Integer acceleratorCount;
+    private Integer acceleratorCount;
     /**
      * @return The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
      * 
      */
-    private final String acceleratorType;
+    private String acceleratorType;
 
-    @CustomType.Constructor
-    private ClusterClusterConfigWorkerConfigAccelerator(
-        @CustomType.Parameter("acceleratorCount") Integer acceleratorCount,
-        @CustomType.Parameter("acceleratorType") String acceleratorType) {
-        this.acceleratorCount = acceleratorCount;
-        this.acceleratorType = acceleratorType;
-    }
-
+    private ClusterClusterConfigWorkerConfigAccelerator() {}
     /**
      * @return The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
      * 
@@ -51,30 +44,32 @@ public final class ClusterClusterConfigWorkerConfigAccelerator {
     public static Builder builder(ClusterClusterConfigWorkerConfigAccelerator defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer acceleratorCount;
         private String acceleratorType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterClusterConfigWorkerConfigAccelerator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorCount = defaults.acceleratorCount;
     	      this.acceleratorType = defaults.acceleratorType;
         }
 
+        @CustomType.Setter
         public Builder acceleratorCount(Integer acceleratorCount) {
             this.acceleratorCount = Objects.requireNonNull(acceleratorCount);
             return this;
         }
+        @CustomType.Setter
         public Builder acceleratorType(String acceleratorType) {
             this.acceleratorType = Objects.requireNonNull(acceleratorType);
             return this;
-        }        public ClusterClusterConfigWorkerConfigAccelerator build() {
-            return new ClusterClusterConfigWorkerConfigAccelerator(acceleratorCount, acceleratorType);
+        }
+        public ClusterClusterConfigWorkerConfigAccelerator build() {
+            final var o = new ClusterClusterConfigWorkerConfigAccelerator();
+            o.acceleratorCount = acceleratorCount;
+            o.acceleratorType = acceleratorType;
+            return o;
         }
     }
 }

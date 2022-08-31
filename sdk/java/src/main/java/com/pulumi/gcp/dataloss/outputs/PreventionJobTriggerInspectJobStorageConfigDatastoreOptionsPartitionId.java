@@ -15,21 +15,14 @@ public final class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPa
      * @return If not empty, the ID of the namespace to which the entities belong.
      * 
      */
-    private final @Nullable String namespaceId;
+    private @Nullable String namespaceId;
     /**
      * @return The Google Cloud Platform project ID of the project containing the table.
      * 
      */
-    private final String projectId;
+    private String projectId;
 
-    @CustomType.Constructor
-    private PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId(
-        @CustomType.Parameter("namespaceId") @Nullable String namespaceId,
-        @CustomType.Parameter("projectId") String projectId) {
-        this.namespaceId = namespaceId;
-        this.projectId = projectId;
-    }
-
+    private PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId() {}
     /**
      * @return If not empty, the ID of the namespace to which the entities belong.
      * 
@@ -52,30 +45,32 @@ public final class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPa
     public static Builder builder(PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String namespaceId;
         private String projectId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.namespaceId = defaults.namespaceId;
     	      this.projectId = defaults.projectId;
         }
 
+        @CustomType.Setter
         public Builder namespaceId(@Nullable String namespaceId) {
             this.namespaceId = namespaceId;
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
-        }        public PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId build() {
-            return new PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId(namespaceId, projectId);
+        }
+        public PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId build() {
+            final var o = new PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId();
+            o.namespaceId = namespaceId;
+            o.projectId = projectId;
+            return o;
         }
     }
 }

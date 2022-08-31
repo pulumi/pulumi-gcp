@@ -18,43 +18,30 @@ public final class GuestPoliciesPackageRepositoryApt {
      * Possible values are `DEB` and `DEB_SRC`.
      * 
      */
-    private final @Nullable String archiveType;
+    private @Nullable String archiveType;
     /**
      * @return List of components for this repository. Must contain at least one item.
      * 
      */
-    private final List<String> components;
+    private List<String> components;
     /**
      * @return Distribution of this repository.
      * 
      */
-    private final String distribution;
+    private String distribution;
     /**
      * @return URI of the key file for this repository. The agent maintains a keyring at
      * /etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg containing all the keys in any applied guest policy.
      * 
      */
-    private final @Nullable String gpgKey;
+    private @Nullable String gpgKey;
     /**
      * @return URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
      * 
      */
-    private final String uri;
+    private String uri;
 
-    @CustomType.Constructor
-    private GuestPoliciesPackageRepositoryApt(
-        @CustomType.Parameter("archiveType") @Nullable String archiveType,
-        @CustomType.Parameter("components") List<String> components,
-        @CustomType.Parameter("distribution") String distribution,
-        @CustomType.Parameter("gpgKey") @Nullable String gpgKey,
-        @CustomType.Parameter("uri") String uri) {
-        this.archiveType = archiveType;
-        this.components = components;
-        this.distribution = distribution;
-        this.gpgKey = gpgKey;
-        this.uri = uri;
-    }
-
+    private GuestPoliciesPackageRepositoryApt() {}
     /**
      * @return Type of archive files in this repository. The default behavior is DEB.
      * Default value is `DEB`.
@@ -101,18 +88,14 @@ public final class GuestPoliciesPackageRepositoryApt {
     public static Builder builder(GuestPoliciesPackageRepositoryApt defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String archiveType;
         private List<String> components;
         private String distribution;
         private @Nullable String gpgKey;
         private String uri;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesPackageRepositoryApt defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.archiveType = defaults.archiveType;
@@ -122,10 +105,12 @@ public final class GuestPoliciesPackageRepositoryApt {
     	      this.uri = defaults.uri;
         }
 
+        @CustomType.Setter
         public Builder archiveType(@Nullable String archiveType) {
             this.archiveType = archiveType;
             return this;
         }
+        @CustomType.Setter
         public Builder components(List<String> components) {
             this.components = Objects.requireNonNull(components);
             return this;
@@ -133,19 +118,29 @@ public final class GuestPoliciesPackageRepositoryApt {
         public Builder components(String... components) {
             return components(List.of(components));
         }
+        @CustomType.Setter
         public Builder distribution(String distribution) {
             this.distribution = Objects.requireNonNull(distribution);
             return this;
         }
+        @CustomType.Setter
         public Builder gpgKey(@Nullable String gpgKey) {
             this.gpgKey = gpgKey;
             return this;
         }
+        @CustomType.Setter
         public Builder uri(String uri) {
             this.uri = Objects.requireNonNull(uri);
             return this;
-        }        public GuestPoliciesPackageRepositoryApt build() {
-            return new GuestPoliciesPackageRepositoryApt(archiveType, components, distribution, gpgKey, uri);
+        }
+        public GuestPoliciesPackageRepositoryApt build() {
+            final var o = new GuestPoliciesPackageRepositoryApt();
+            o.archiveType = archiveType;
+            o.components = components;
+            o.distribution = distribution;
+            o.gpgKey = gpgKey;
+            o.uri = uri;
+            return o;
         }
     }
 }

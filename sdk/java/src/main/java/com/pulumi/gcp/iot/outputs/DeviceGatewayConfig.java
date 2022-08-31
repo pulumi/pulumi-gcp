@@ -16,39 +16,28 @@ public final class DeviceGatewayConfig {
      * Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
      * 
      */
-    private final @Nullable String gatewayAuthMethod;
+    private @Nullable String gatewayAuthMethod;
     /**
      * @return Indicates whether the device is a gateway.
      * Default value is `NON_GATEWAY`.
      * Possible values are `GATEWAY` and `NON_GATEWAY`.
      * 
      */
-    private final @Nullable String gatewayType;
+    private @Nullable String gatewayType;
     /**
      * @return -
      * The ID of the gateway the device accessed most recently.
      * 
      */
-    private final @Nullable String lastAccessedGatewayId;
+    private @Nullable String lastAccessedGatewayId;
     /**
      * @return -
      * The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
      * 
      */
-    private final @Nullable String lastAccessedGatewayTime;
+    private @Nullable String lastAccessedGatewayTime;
 
-    @CustomType.Constructor
-    private DeviceGatewayConfig(
-        @CustomType.Parameter("gatewayAuthMethod") @Nullable String gatewayAuthMethod,
-        @CustomType.Parameter("gatewayType") @Nullable String gatewayType,
-        @CustomType.Parameter("lastAccessedGatewayId") @Nullable String lastAccessedGatewayId,
-        @CustomType.Parameter("lastAccessedGatewayTime") @Nullable String lastAccessedGatewayTime) {
-        this.gatewayAuthMethod = gatewayAuthMethod;
-        this.gatewayType = gatewayType;
-        this.lastAccessedGatewayId = lastAccessedGatewayId;
-        this.lastAccessedGatewayTime = lastAccessedGatewayTime;
-    }
-
+    private DeviceGatewayConfig() {}
     /**
      * @return Indicates whether the device is a gateway.
      * Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
@@ -90,17 +79,13 @@ public final class DeviceGatewayConfig {
     public static Builder builder(DeviceGatewayConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String gatewayAuthMethod;
         private @Nullable String gatewayType;
         private @Nullable String lastAccessedGatewayId;
         private @Nullable String lastAccessedGatewayTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DeviceGatewayConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gatewayAuthMethod = defaults.gatewayAuthMethod;
@@ -109,23 +94,33 @@ public final class DeviceGatewayConfig {
     	      this.lastAccessedGatewayTime = defaults.lastAccessedGatewayTime;
         }
 
+        @CustomType.Setter
         public Builder gatewayAuthMethod(@Nullable String gatewayAuthMethod) {
             this.gatewayAuthMethod = gatewayAuthMethod;
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayType(@Nullable String gatewayType) {
             this.gatewayType = gatewayType;
             return this;
         }
+        @CustomType.Setter
         public Builder lastAccessedGatewayId(@Nullable String lastAccessedGatewayId) {
             this.lastAccessedGatewayId = lastAccessedGatewayId;
             return this;
         }
+        @CustomType.Setter
         public Builder lastAccessedGatewayTime(@Nullable String lastAccessedGatewayTime) {
             this.lastAccessedGatewayTime = lastAccessedGatewayTime;
             return this;
-        }        public DeviceGatewayConfig build() {
-            return new DeviceGatewayConfig(gatewayAuthMethod, gatewayType, lastAccessedGatewayId, lastAccessedGatewayTime);
+        }
+        public DeviceGatewayConfig build() {
+            final var o = new DeviceGatewayConfig();
+            o.gatewayAuthMethod = gatewayAuthMethod;
+            o.gatewayType = gatewayType;
+            o.lastAccessedGatewayId = lastAccessedGatewayId;
+            o.lastAccessedGatewayTime = lastAccessedGatewayTime;
+            return o;
         }
     }
 }

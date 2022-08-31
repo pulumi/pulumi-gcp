@@ -17,39 +17,28 @@ public final class GameServerConfigScalingConfigSchedule {
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    private final @Nullable String cronJobDuration;
+    private @Nullable String cronJobDuration;
     /**
      * @return The cron definition of the scheduled event. See
      * https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time as
      * defined by the realm.
      * 
      */
-    private final @Nullable String cronSpec;
+    private @Nullable String cronSpec;
     /**
      * @return The end time of the event.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    private final @Nullable String endTime;
+    private @Nullable String endTime;
     /**
      * @return The start time of the event.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    private final @Nullable String startTime;
+    private @Nullable String startTime;
 
-    @CustomType.Constructor
-    private GameServerConfigScalingConfigSchedule(
-        @CustomType.Parameter("cronJobDuration") @Nullable String cronJobDuration,
-        @CustomType.Parameter("cronSpec") @Nullable String cronSpec,
-        @CustomType.Parameter("endTime") @Nullable String endTime,
-        @CustomType.Parameter("startTime") @Nullable String startTime) {
-        this.cronJobDuration = cronJobDuration;
-        this.cronSpec = cronSpec;
-        this.endTime = endTime;
-        this.startTime = startTime;
-    }
-
+    private GameServerConfigScalingConfigSchedule() {}
     /**
      * @return The duration for the cron job event. The duration of the event is effective
      * after the cron job&#39;s start time.
@@ -92,17 +81,13 @@ public final class GameServerConfigScalingConfigSchedule {
     public static Builder builder(GameServerConfigScalingConfigSchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cronJobDuration;
         private @Nullable String cronSpec;
         private @Nullable String endTime;
         private @Nullable String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GameServerConfigScalingConfigSchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cronJobDuration = defaults.cronJobDuration;
@@ -111,23 +96,33 @@ public final class GameServerConfigScalingConfigSchedule {
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder cronJobDuration(@Nullable String cronJobDuration) {
             this.cronJobDuration = cronJobDuration;
             return this;
         }
+        @CustomType.Setter
         public Builder cronSpec(@Nullable String cronSpec) {
             this.cronSpec = cronSpec;
             return this;
         }
+        @CustomType.Setter
         public Builder endTime(@Nullable String endTime) {
             this.endTime = endTime;
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
             this.startTime = startTime;
             return this;
-        }        public GameServerConfigScalingConfigSchedule build() {
-            return new GameServerConfigScalingConfigSchedule(cronJobDuration, cronSpec, endTime, startTime);
+        }
+        public GameServerConfigScalingConfigSchedule build() {
+            final var o = new GameServerConfigScalingConfigSchedule();
+            o.cronJobDuration = cronJobDuration;
+            o.cronSpec = cronSpec;
+            o.endTime = endTime;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

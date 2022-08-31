@@ -12,26 +12,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceSettingIpConfiguration {
-    private final String allocatedIpRange;
-    private final List<GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork> authorizedNetworks;
-    private final Boolean ipv4Enabled;
-    private final String privateNetwork;
-    private final Boolean requireSsl;
+    private String allocatedIpRange;
+    private List<GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork> authorizedNetworks;
+    private Boolean ipv4Enabled;
+    private String privateNetwork;
+    private Boolean requireSsl;
 
-    @CustomType.Constructor
-    private GetDatabaseInstanceSettingIpConfiguration(
-        @CustomType.Parameter("allocatedIpRange") String allocatedIpRange,
-        @CustomType.Parameter("authorizedNetworks") List<GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork> authorizedNetworks,
-        @CustomType.Parameter("ipv4Enabled") Boolean ipv4Enabled,
-        @CustomType.Parameter("privateNetwork") String privateNetwork,
-        @CustomType.Parameter("requireSsl") Boolean requireSsl) {
-        this.allocatedIpRange = allocatedIpRange;
-        this.authorizedNetworks = authorizedNetworks;
-        this.ipv4Enabled = ipv4Enabled;
-        this.privateNetwork = privateNetwork;
-        this.requireSsl = requireSsl;
-    }
-
+    private GetDatabaseInstanceSettingIpConfiguration() {}
     public String allocatedIpRange() {
         return this.allocatedIpRange;
     }
@@ -55,18 +42,14 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
     public static Builder builder(GetDatabaseInstanceSettingIpConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String allocatedIpRange;
         private List<GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork> authorizedNetworks;
         private Boolean ipv4Enabled;
         private String privateNetwork;
         private Boolean requireSsl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseInstanceSettingIpConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allocatedIpRange = defaults.allocatedIpRange;
@@ -76,10 +59,12 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
     	      this.requireSsl = defaults.requireSsl;
         }
 
+        @CustomType.Setter
         public Builder allocatedIpRange(String allocatedIpRange) {
             this.allocatedIpRange = Objects.requireNonNull(allocatedIpRange);
             return this;
         }
+        @CustomType.Setter
         public Builder authorizedNetworks(List<GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork> authorizedNetworks) {
             this.authorizedNetworks = Objects.requireNonNull(authorizedNetworks);
             return this;
@@ -87,19 +72,29 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
         public Builder authorizedNetworks(GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork... authorizedNetworks) {
             return authorizedNetworks(List.of(authorizedNetworks));
         }
+        @CustomType.Setter
         public Builder ipv4Enabled(Boolean ipv4Enabled) {
             this.ipv4Enabled = Objects.requireNonNull(ipv4Enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder privateNetwork(String privateNetwork) {
             this.privateNetwork = Objects.requireNonNull(privateNetwork);
             return this;
         }
+        @CustomType.Setter
         public Builder requireSsl(Boolean requireSsl) {
             this.requireSsl = Objects.requireNonNull(requireSsl);
             return this;
-        }        public GetDatabaseInstanceSettingIpConfiguration build() {
-            return new GetDatabaseInstanceSettingIpConfiguration(allocatedIpRange, authorizedNetworks, ipv4Enabled, privateNetwork, requireSsl);
+        }
+        public GetDatabaseInstanceSettingIpConfiguration build() {
+            final var o = new GetDatabaseInstanceSettingIpConfiguration();
+            o.allocatedIpRange = allocatedIpRange;
+            o.authorizedNetworks = authorizedNetworks;
+            o.ipv4Enabled = ipv4Enabled;
+            o.privateNetwork = privateNetwork;
+            o.requireSsl = requireSsl;
+            return o;
         }
     }
 }

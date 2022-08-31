@@ -11,6 +11,7 @@ import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGuestAcceleratorArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGvnicArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigKubeletConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLinuxNodeConfigArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigReservationAffinityArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigSandboxConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigShieldedInstanceConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigTaintArgs;
@@ -155,6 +156,13 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.preemptible);
     }
 
+    @Import(name="reservationAffinity")
+    private @Nullable Output<NodePoolNodeConfigReservationAffinityArgs> reservationAffinity;
+
+    public Optional<Output<NodePoolNodeConfigReservationAffinityArgs>> reservationAffinity() {
+        return Optional.ofNullable(this.reservationAffinity);
+    }
+
     @Import(name="sandboxConfig")
     private @Nullable Output<NodePoolNodeConfigSandboxConfigArgs> sandboxConfig;
 
@@ -225,6 +233,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.nodeGroup = $.nodeGroup;
         this.oauthScopes = $.oauthScopes;
         this.preemptible = $.preemptible;
+        this.reservationAffinity = $.reservationAffinity;
         this.sandboxConfig = $.sandboxConfig;
         this.serviceAccount = $.serviceAccount;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
@@ -420,6 +429,15 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
 
         public Builder preemptible(Boolean preemptible) {
             return preemptible(Output.of(preemptible));
+        }
+
+        public Builder reservationAffinity(@Nullable Output<NodePoolNodeConfigReservationAffinityArgs> reservationAffinity) {
+            $.reservationAffinity = reservationAffinity;
+            return this;
+        }
+
+        public Builder reservationAffinity(NodePoolNodeConfigReservationAffinityArgs reservationAffinity) {
+            return reservationAffinity(Output.of(reservationAffinity));
         }
 
         public Builder sandboxConfig(@Nullable Output<NodePoolNodeConfigSandboxConfigArgs> sandboxConfig) {

@@ -15,28 +15,19 @@ public final class MetastoreServiceHiveMetastoreConfigKerberosConfig {
      * Structure is documented below.
      * 
      */
-    private final MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab keytab;
+    private MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab keytab;
     /**
      * @return A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
      * 
      */
-    private final String krb5ConfigGcsUri;
+    private String krb5ConfigGcsUri;
     /**
      * @return A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form &#34;primary/instance@REALM&#34;, but there is no exact format.
      * 
      */
-    private final String principal;
+    private String principal;
 
-    @CustomType.Constructor
-    private MetastoreServiceHiveMetastoreConfigKerberosConfig(
-        @CustomType.Parameter("keytab") MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab keytab,
-        @CustomType.Parameter("krb5ConfigGcsUri") String krb5ConfigGcsUri,
-        @CustomType.Parameter("principal") String principal) {
-        this.keytab = keytab;
-        this.krb5ConfigGcsUri = krb5ConfigGcsUri;
-        this.principal = principal;
-    }
-
+    private MetastoreServiceHiveMetastoreConfigKerberosConfig() {}
     /**
      * @return A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
      * Structure is documented below.
@@ -67,16 +58,12 @@ public final class MetastoreServiceHiveMetastoreConfigKerberosConfig {
     public static Builder builder(MetastoreServiceHiveMetastoreConfigKerberosConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab keytab;
         private String krb5ConfigGcsUri;
         private String principal;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MetastoreServiceHiveMetastoreConfigKerberosConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.keytab = defaults.keytab;
@@ -84,19 +71,27 @@ public final class MetastoreServiceHiveMetastoreConfigKerberosConfig {
     	      this.principal = defaults.principal;
         }
 
+        @CustomType.Setter
         public Builder keytab(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab keytab) {
             this.keytab = Objects.requireNonNull(keytab);
             return this;
         }
+        @CustomType.Setter
         public Builder krb5ConfigGcsUri(String krb5ConfigGcsUri) {
             this.krb5ConfigGcsUri = Objects.requireNonNull(krb5ConfigGcsUri);
             return this;
         }
+        @CustomType.Setter
         public Builder principal(String principal) {
             this.principal = Objects.requireNonNull(principal);
             return this;
-        }        public MetastoreServiceHiveMetastoreConfigKerberosConfig build() {
-            return new MetastoreServiceHiveMetastoreConfigKerberosConfig(keytab, krb5ConfigGcsUri, principal);
+        }
+        public MetastoreServiceHiveMetastoreConfigKerberosConfig build() {
+            final var o = new MetastoreServiceHiveMetastoreConfigKerberosConfig();
+            o.keytab = keytab;
+            o.krb5ConfigGcsUri = krb5ConfigGcsUri;
+            o.principal = principal;
+            return o;
         }
     }
 }

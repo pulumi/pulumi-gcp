@@ -9,29 +9,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
-    private final Boolean clientAuth;
-    private final Boolean codeSigning;
-    private final Boolean emailProtection;
-    private final Boolean ocspSigning;
-    private final Boolean serverAuth;
-    private final Boolean timeStamping;
+    private Boolean clientAuth;
+    private Boolean codeSigning;
+    private Boolean emailProtection;
+    private Boolean ocspSigning;
+    private Boolean serverAuth;
+    private Boolean timeStamping;
 
-    @CustomType.Constructor
-    private GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage(
-        @CustomType.Parameter("clientAuth") Boolean clientAuth,
-        @CustomType.Parameter("codeSigning") Boolean codeSigning,
-        @CustomType.Parameter("emailProtection") Boolean emailProtection,
-        @CustomType.Parameter("ocspSigning") Boolean ocspSigning,
-        @CustomType.Parameter("serverAuth") Boolean serverAuth,
-        @CustomType.Parameter("timeStamping") Boolean timeStamping) {
-        this.clientAuth = clientAuth;
-        this.codeSigning = codeSigning;
-        this.emailProtection = emailProtection;
-        this.ocspSigning = ocspSigning;
-        this.serverAuth = serverAuth;
-        this.timeStamping = timeStamping;
-    }
-
+    private GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage() {}
     public Boolean clientAuth() {
         return this.clientAuth;
     }
@@ -58,7 +43,7 @@ public final class GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
     public static Builder builder(GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean clientAuth;
         private Boolean codeSigning;
@@ -66,11 +51,7 @@ public final class GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
         private Boolean ocspSigning;
         private Boolean serverAuth;
         private Boolean timeStamping;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientAuth = defaults.clientAuth;
@@ -81,31 +62,45 @@ public final class GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
     	      this.timeStamping = defaults.timeStamping;
         }
 
+        @CustomType.Setter
         public Builder clientAuth(Boolean clientAuth) {
             this.clientAuth = Objects.requireNonNull(clientAuth);
             return this;
         }
+        @CustomType.Setter
         public Builder codeSigning(Boolean codeSigning) {
             this.codeSigning = Objects.requireNonNull(codeSigning);
             return this;
         }
+        @CustomType.Setter
         public Builder emailProtection(Boolean emailProtection) {
             this.emailProtection = Objects.requireNonNull(emailProtection);
             return this;
         }
+        @CustomType.Setter
         public Builder ocspSigning(Boolean ocspSigning) {
             this.ocspSigning = Objects.requireNonNull(ocspSigning);
             return this;
         }
+        @CustomType.Setter
         public Builder serverAuth(Boolean serverAuth) {
             this.serverAuth = Objects.requireNonNull(serverAuth);
             return this;
         }
+        @CustomType.Setter
         public Builder timeStamping(Boolean timeStamping) {
             this.timeStamping = Objects.requireNonNull(timeStamping);
             return this;
-        }        public GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage build() {
-            return new GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage(clientAuth, codeSigning, emailProtection, ocspSigning, serverAuth, timeStamping);
+        }
+        public GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage build() {
+            final var o = new GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage();
+            o.clientAuth = clientAuth;
+            o.codeSigning = codeSigning;
+            o.emailProtection = emailProtection;
+            o.ocspSigning = ocspSigning;
+            o.serverAuth = serverAuth;
+            o.timeStamping = timeStamping;
+            return o;
         }
     }
 }

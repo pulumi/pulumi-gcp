@@ -12,39 +12,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWorkloadIdentityPoolResult {
-    private final String description;
-    private final Boolean disabled;
-    private final String displayName;
+    private String description;
+    private Boolean disabled;
+    private String displayName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
-    private final @Nullable String project;
-    private final String state;
-    private final String workloadIdentityPoolId;
+    private String id;
+    private String name;
+    private @Nullable String project;
+    private String state;
+    private String workloadIdentityPoolId;
 
-    @CustomType.Constructor
-    private GetWorkloadIdentityPoolResult(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("disabled") Boolean disabled,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("state") String state,
-        @CustomType.Parameter("workloadIdentityPoolId") String workloadIdentityPoolId) {
-        this.description = description;
-        this.disabled = disabled;
-        this.displayName = displayName;
-        this.id = id;
-        this.name = name;
-        this.project = project;
-        this.state = state;
-        this.workloadIdentityPoolId = workloadIdentityPoolId;
-    }
-
+    private GetWorkloadIdentityPoolResult() {}
     public String description() {
         return this.description;
     }
@@ -81,7 +62,7 @@ public final class GetWorkloadIdentityPoolResult {
     public static Builder builder(GetWorkloadIdentityPoolResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private Boolean disabled;
@@ -91,11 +72,7 @@ public final class GetWorkloadIdentityPoolResult {
         private @Nullable String project;
         private String state;
         private String workloadIdentityPoolId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetWorkloadIdentityPoolResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -108,39 +85,57 @@ public final class GetWorkloadIdentityPoolResult {
     	      this.workloadIdentityPoolId = defaults.workloadIdentityPoolId;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder disabled(Boolean disabled) {
             this.disabled = Objects.requireNonNull(disabled);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
         }
+        @CustomType.Setter
         public Builder workloadIdentityPoolId(String workloadIdentityPoolId) {
             this.workloadIdentityPoolId = Objects.requireNonNull(workloadIdentityPoolId);
             return this;
-        }        public GetWorkloadIdentityPoolResult build() {
-            return new GetWorkloadIdentityPoolResult(description, disabled, displayName, id, name, project, state, workloadIdentityPoolId);
+        }
+        public GetWorkloadIdentityPoolResult build() {
+            final var o = new GetWorkloadIdentityPoolResult();
+            o.description = description;
+            o.disabled = disabled;
+            o.displayName = displayName;
+            o.id = id;
+            o.name = name;
+            o.project = project;
+            o.state = state;
+            o.workloadIdentityPoolId = workloadIdentityPoolId;
+            return o;
         }
     }
 }

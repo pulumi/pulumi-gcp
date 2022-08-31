@@ -452,6 +452,14 @@ namespace Pulumi.Gcp.Container
         public Output<ImmutableArray<string>> NodeLocations { get; private set; } = null!;
 
         /// <summary>
+        /// ) Node pool configs that apply to auto-provisioned node pools in
+        /// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+        /// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+        /// </summary>
+        [Output("nodePoolAutoConfig")]
+        public Output<Outputs.ClusterNodePoolAutoConfig?> NodePoolAutoConfig { get; private set; } = null!;
+
+        /// <summary>
         /// List of node pools associated with this cluster.
         /// See gcp.container.NodePool for schema.
         /// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -974,6 +982,14 @@ namespace Pulumi.Gcp.Container
             set => _nodeLocations = value;
         }
 
+        /// <summary>
+        /// ) Node pool configs that apply to auto-provisioned node pools in
+        /// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+        /// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+        /// </summary>
+        [Input("nodePoolAutoConfig")]
+        public Input<Inputs.ClusterNodePoolAutoConfigArgs>? NodePoolAutoConfig { get; set; }
+
         [Input("nodePools")]
         private InputList<Inputs.ClusterNodePoolArgs>? _nodePools;
 
@@ -1464,6 +1480,14 @@ namespace Pulumi.Gcp.Container
             get => _nodeLocations ?? (_nodeLocations = new InputList<string>());
             set => _nodeLocations = value;
         }
+
+        /// <summary>
+        /// ) Node pool configs that apply to auto-provisioned node pools in
+        /// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+        /// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+        /// </summary>
+        [Input("nodePoolAutoConfig")]
+        public Input<Inputs.ClusterNodePoolAutoConfigGetArgs>? NodePoolAutoConfig { get; set; }
 
         [Input("nodePools")]
         private InputList<Inputs.ClusterNodePoolGetArgs>? _nodePools;

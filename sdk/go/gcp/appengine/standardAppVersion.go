@@ -91,9 +91,10 @@ import (
 //				return err
 //			}
 //			_, err = appengine.NewStandardAppVersion(ctx, "myappV2", &appengine.StandardAppVersionArgs{
-//				VersionId: pulumi.String("v2"),
-//				Service:   pulumi.String("myapp"),
-//				Runtime:   pulumi.String("nodejs10"),
+//				VersionId:     pulumi.String("v2"),
+//				Service:       pulumi.String("myapp"),
+//				Runtime:       pulumi.String("nodejs10"),
+//				AppEngineApis: pulumi.Bool(true),
 //				Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
 //					Shell: pulumi.String("node ./app.js"),
 //				},
@@ -147,6 +148,8 @@ import (
 type StandardAppVersion struct {
 	pulumi.CustomResourceState
 
+	// Allows App Engine second generation runtimes to access the legacy bundled services.
+	AppEngineApis pulumi.BoolPtrOutput `pulumi:"appEngineApis"`
 	// Automatic scaling is based on request rate, response latencies, and other application metrics.
 	// Structure is documented below.
 	AutomaticScaling StandardAppVersionAutomaticScalingPtrOutput `pulumi:"automaticScaling"`
@@ -246,6 +249,8 @@ func GetStandardAppVersion(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering StandardAppVersion resources.
 type standardAppVersionState struct {
+	// Allows App Engine second generation runtimes to access the legacy bundled services.
+	AppEngineApis *bool `pulumi:"appEngineApis"`
 	// Automatic scaling is based on request rate, response latencies, and other application metrics.
 	// Structure is documented below.
 	AutomaticScaling *StandardAppVersionAutomaticScaling `pulumi:"automaticScaling"`
@@ -305,6 +310,8 @@ type standardAppVersionState struct {
 }
 
 type StandardAppVersionState struct {
+	// Allows App Engine second generation runtimes to access the legacy bundled services.
+	AppEngineApis pulumi.BoolPtrInput
 	// Automatic scaling is based on request rate, response latencies, and other application metrics.
 	// Structure is documented below.
 	AutomaticScaling StandardAppVersionAutomaticScalingPtrInput
@@ -368,6 +375,8 @@ func (StandardAppVersionState) ElementType() reflect.Type {
 }
 
 type standardAppVersionArgs struct {
+	// Allows App Engine second generation runtimes to access the legacy bundled services.
+	AppEngineApis *bool `pulumi:"appEngineApis"`
 	// Automatic scaling is based on request rate, response latencies, and other application metrics.
 	// Structure is documented below.
 	AutomaticScaling *StandardAppVersionAutomaticScaling `pulumi:"automaticScaling"`
@@ -426,6 +435,8 @@ type standardAppVersionArgs struct {
 
 // The set of arguments for constructing a StandardAppVersion resource.
 type StandardAppVersionArgs struct {
+	// Allows App Engine second generation runtimes to access the legacy bundled services.
+	AppEngineApis pulumi.BoolPtrInput
 	// Automatic scaling is based on request rate, response latencies, and other application metrics.
 	// Structure is documented below.
 	AutomaticScaling StandardAppVersionAutomaticScalingPtrInput
@@ -567,6 +578,11 @@ func (o StandardAppVersionOutput) ToStandardAppVersionOutput() StandardAppVersio
 
 func (o StandardAppVersionOutput) ToStandardAppVersionOutputWithContext(ctx context.Context) StandardAppVersionOutput {
 	return o
+}
+
+// Allows App Engine second generation runtimes to access the legacy bundled services.
+func (o StandardAppVersionOutput) AppEngineApis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersion) pulumi.BoolPtrOutput { return v.AppEngineApis }).(pulumi.BoolPtrOutput)
 }
 
 // Automatic scaling is based on request rate, response latencies, and other application metrics.

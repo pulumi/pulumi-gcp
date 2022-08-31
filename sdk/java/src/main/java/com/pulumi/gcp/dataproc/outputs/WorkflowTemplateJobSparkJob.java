@@ -18,63 +18,44 @@ public final class WorkflowTemplateJobSparkJob {
      * @return Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
      * 
      */
-    private final @Nullable List<String> archiveUris;
+    private @Nullable List<String> archiveUris;
     /**
      * @return Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
      * 
      */
-    private final @Nullable List<String> args;
+    private @Nullable List<String> args;
     /**
      * @return Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
      * 
      */
-    private final @Nullable List<String> fileUris;
+    private @Nullable List<String> fileUris;
     /**
      * @return Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
      * 
      */
-    private final @Nullable List<String> jarFileUris;
+    private @Nullable List<String> jarFileUris;
     /**
      * @return Optional. The runtime log config for job execution.
      * 
      */
-    private final @Nullable WorkflowTemplateJobSparkJobLoggingConfig loggingConfig;
+    private @Nullable WorkflowTemplateJobSparkJobLoggingConfig loggingConfig;
     /**
      * @return The name of the driver&#39;s main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
      * 
      */
-    private final @Nullable String mainClass;
+    private @Nullable String mainClass;
     /**
      * @return The HCFS URI of the jar file that contains the main class.
      * 
      */
-    private final @Nullable String mainJarFileUri;
+    private @Nullable String mainJarFileUri;
     /**
      * @return Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
      * 
      */
-    private final @Nullable Map<String,String> properties;
+    private @Nullable Map<String,String> properties;
 
-    @CustomType.Constructor
-    private WorkflowTemplateJobSparkJob(
-        @CustomType.Parameter("archiveUris") @Nullable List<String> archiveUris,
-        @CustomType.Parameter("args") @Nullable List<String> args,
-        @CustomType.Parameter("fileUris") @Nullable List<String> fileUris,
-        @CustomType.Parameter("jarFileUris") @Nullable List<String> jarFileUris,
-        @CustomType.Parameter("loggingConfig") @Nullable WorkflowTemplateJobSparkJobLoggingConfig loggingConfig,
-        @CustomType.Parameter("mainClass") @Nullable String mainClass,
-        @CustomType.Parameter("mainJarFileUri") @Nullable String mainJarFileUri,
-        @CustomType.Parameter("properties") @Nullable Map<String,String> properties) {
-        this.archiveUris = archiveUris;
-        this.args = args;
-        this.fileUris = fileUris;
-        this.jarFileUris = jarFileUris;
-        this.loggingConfig = loggingConfig;
-        this.mainClass = mainClass;
-        this.mainJarFileUri = mainJarFileUri;
-        this.properties = properties;
-    }
-
+    private WorkflowTemplateJobSparkJob() {}
     /**
      * @return Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
      * 
@@ -139,7 +120,7 @@ public final class WorkflowTemplateJobSparkJob {
     public static Builder builder(WorkflowTemplateJobSparkJob defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> archiveUris;
         private @Nullable List<String> args;
@@ -149,11 +130,7 @@ public final class WorkflowTemplateJobSparkJob {
         private @Nullable String mainClass;
         private @Nullable String mainJarFileUri;
         private @Nullable Map<String,String> properties;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkflowTemplateJobSparkJob defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.archiveUris = defaults.archiveUris;
@@ -166,6 +143,7 @@ public final class WorkflowTemplateJobSparkJob {
     	      this.properties = defaults.properties;
         }
 
+        @CustomType.Setter
         public Builder archiveUris(@Nullable List<String> archiveUris) {
             this.archiveUris = archiveUris;
             return this;
@@ -173,6 +151,7 @@ public final class WorkflowTemplateJobSparkJob {
         public Builder archiveUris(String... archiveUris) {
             return archiveUris(List.of(archiveUris));
         }
+        @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
             this.args = args;
             return this;
@@ -180,6 +159,7 @@ public final class WorkflowTemplateJobSparkJob {
         public Builder args(String... args) {
             return args(List.of(args));
         }
+        @CustomType.Setter
         public Builder fileUris(@Nullable List<String> fileUris) {
             this.fileUris = fileUris;
             return this;
@@ -187,6 +167,7 @@ public final class WorkflowTemplateJobSparkJob {
         public Builder fileUris(String... fileUris) {
             return fileUris(List.of(fileUris));
         }
+        @CustomType.Setter
         public Builder jarFileUris(@Nullable List<String> jarFileUris) {
             this.jarFileUris = jarFileUris;
             return this;
@@ -194,23 +175,37 @@ public final class WorkflowTemplateJobSparkJob {
         public Builder jarFileUris(String... jarFileUris) {
             return jarFileUris(List.of(jarFileUris));
         }
+        @CustomType.Setter
         public Builder loggingConfig(@Nullable WorkflowTemplateJobSparkJobLoggingConfig loggingConfig) {
             this.loggingConfig = loggingConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder mainClass(@Nullable String mainClass) {
             this.mainClass = mainClass;
             return this;
         }
+        @CustomType.Setter
         public Builder mainJarFileUri(@Nullable String mainJarFileUri) {
             this.mainJarFileUri = mainJarFileUri;
             return this;
         }
+        @CustomType.Setter
         public Builder properties(@Nullable Map<String,String> properties) {
             this.properties = properties;
             return this;
-        }        public WorkflowTemplateJobSparkJob build() {
-            return new WorkflowTemplateJobSparkJob(archiveUris, args, fileUris, jarFileUris, loggingConfig, mainClass, mainJarFileUri, properties);
+        }
+        public WorkflowTemplateJobSparkJob build() {
+            final var o = new WorkflowTemplateJobSparkJob();
+            o.archiveUris = archiveUris;
+            o.args = args;
+            o.fileUris = fileUris;
+            o.jarFileUris = jarFileUris;
+            o.loggingConfig = loggingConfig;
+            o.mainClass = mainClass;
+            o.mainJarFileUri = mainJarFileUri;
+            o.properties = properties;
+            return o;
         }
     }
 }

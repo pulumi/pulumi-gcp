@@ -15,20 +15,11 @@ public final class DomainMappingStatusResourceRecord {
      * @return Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
      * 
      */
-    private final @Nullable String name;
-    private final @Nullable String rrdata;
-    private final @Nullable String type;
+    private @Nullable String name;
+    private @Nullable String rrdata;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private DomainMappingStatusResourceRecord(
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("rrdata") @Nullable String rrdata,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.name = name;
-        this.rrdata = rrdata;
-        this.type = type;
-    }
-
+    private DomainMappingStatusResourceRecord() {}
     /**
      * @return Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
      * 
@@ -50,16 +41,12 @@ public final class DomainMappingStatusResourceRecord {
     public static Builder builder(DomainMappingStatusResourceRecord defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
         private @Nullable String rrdata;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DomainMappingStatusResourceRecord defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
@@ -67,19 +54,27 @@ public final class DomainMappingStatusResourceRecord {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder rrdata(@Nullable String rrdata) {
             this.rrdata = rrdata;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public DomainMappingStatusResourceRecord build() {
-            return new DomainMappingStatusResourceRecord(name, rrdata, type);
+        }
+        public DomainMappingStatusResourceRecord build() {
+            final var o = new DomainMappingStatusResourceRecord();
+            o.name = name;
+            o.rrdata = rrdata;
+            o.type = type;
+            return o;
         }
     }
 }

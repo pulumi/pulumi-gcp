@@ -16,13 +16,13 @@ public final class ClusterResourceUsageExportConfig {
      * @return Parameters for using BigQuery as the destination of resource usage export.
      * 
      */
-    private final ClusterResourceUsageExportConfigBigqueryDestination bigqueryDestination;
+    private ClusterResourceUsageExportConfigBigqueryDestination bigqueryDestination;
     /**
      * @return Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
      * in the cluster to meter network egress traffic.
      * 
      */
-    private final @Nullable Boolean enableNetworkEgressMetering;
+    private @Nullable Boolean enableNetworkEgressMetering;
     /**
      * @return Whether to enable resource
      * consumption metering on this cluster. When enabled, a table will be created in
@@ -31,18 +31,9 @@ public final class ClusterResourceUsageExportConfig {
      * billing export. Defaults to `true`.
      * 
      */
-    private final @Nullable Boolean enableResourceConsumptionMetering;
+    private @Nullable Boolean enableResourceConsumptionMetering;
 
-    @CustomType.Constructor
-    private ClusterResourceUsageExportConfig(
-        @CustomType.Parameter("bigqueryDestination") ClusterResourceUsageExportConfigBigqueryDestination bigqueryDestination,
-        @CustomType.Parameter("enableNetworkEgressMetering") @Nullable Boolean enableNetworkEgressMetering,
-        @CustomType.Parameter("enableResourceConsumptionMetering") @Nullable Boolean enableResourceConsumptionMetering) {
-        this.bigqueryDestination = bigqueryDestination;
-        this.enableNetworkEgressMetering = enableNetworkEgressMetering;
-        this.enableResourceConsumptionMetering = enableResourceConsumptionMetering;
-    }
-
+    private ClusterResourceUsageExportConfig() {}
     /**
      * @return Parameters for using BigQuery as the destination of resource usage export.
      * 
@@ -77,16 +68,12 @@ public final class ClusterResourceUsageExportConfig {
     public static Builder builder(ClusterResourceUsageExportConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private ClusterResourceUsageExportConfigBigqueryDestination bigqueryDestination;
         private @Nullable Boolean enableNetworkEgressMetering;
         private @Nullable Boolean enableResourceConsumptionMetering;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterResourceUsageExportConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bigqueryDestination = defaults.bigqueryDestination;
@@ -94,19 +81,27 @@ public final class ClusterResourceUsageExportConfig {
     	      this.enableResourceConsumptionMetering = defaults.enableResourceConsumptionMetering;
         }
 
+        @CustomType.Setter
         public Builder bigqueryDestination(ClusterResourceUsageExportConfigBigqueryDestination bigqueryDestination) {
             this.bigqueryDestination = Objects.requireNonNull(bigqueryDestination);
             return this;
         }
+        @CustomType.Setter
         public Builder enableNetworkEgressMetering(@Nullable Boolean enableNetworkEgressMetering) {
             this.enableNetworkEgressMetering = enableNetworkEgressMetering;
             return this;
         }
+        @CustomType.Setter
         public Builder enableResourceConsumptionMetering(@Nullable Boolean enableResourceConsumptionMetering) {
             this.enableResourceConsumptionMetering = enableResourceConsumptionMetering;
             return this;
-        }        public ClusterResourceUsageExportConfig build() {
-            return new ClusterResourceUsageExportConfig(bigqueryDestination, enableNetworkEgressMetering, enableResourceConsumptionMetering);
+        }
+        public ClusterResourceUsageExportConfig build() {
+            final var o = new ClusterResourceUsageExportConfig();
+            o.bigqueryDestination = bigqueryDestination;
+            o.enableNetworkEgressMetering = enableNetworkEgressMetering;
+            o.enableResourceConsumptionMetering = enableResourceConsumptionMetering;
+            return o;
         }
     }
 }

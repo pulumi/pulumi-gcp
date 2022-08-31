@@ -19,63 +19,46 @@ public final class FlexibleAppVersionHandler {
      * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
      * 
      */
-    private final @Nullable String authFailAction;
+    private @Nullable String authFailAction;
     /**
      * @return Level of login required to access this resource.
      * Default value is `LOGIN_OPTIONAL`.
      * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
      * 
      */
-    private final @Nullable String login;
+    private @Nullable String login;
     /**
      * @return 30x code to use when performing redirects for the secure field.
      * Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
      * 
      */
-    private final @Nullable String redirectHttpResponseCode;
+    private @Nullable String redirectHttpResponseCode;
     /**
      * @return Path to the script from the application root directory.
      * 
      */
-    private final @Nullable FlexibleAppVersionHandlerScript script;
+    private @Nullable FlexibleAppVersionHandlerScript script;
     /**
      * @return Security (HTTPS) enforcement for this URL.
      * Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
      * 
      */
-    private final @Nullable String securityLevel;
+    private @Nullable String securityLevel;
     /**
      * @return Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
      * Static file handlers describe which files in the application directory are static files, and which URLs serve them.
      * Structure is documented below.
      * 
      */
-    private final @Nullable FlexibleAppVersionHandlerStaticFiles staticFiles;
+    private @Nullable FlexibleAppVersionHandlerStaticFiles staticFiles;
     /**
      * @return URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
      * All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
      * 
      */
-    private final @Nullable String urlRegex;
+    private @Nullable String urlRegex;
 
-    @CustomType.Constructor
-    private FlexibleAppVersionHandler(
-        @CustomType.Parameter("authFailAction") @Nullable String authFailAction,
-        @CustomType.Parameter("login") @Nullable String login,
-        @CustomType.Parameter("redirectHttpResponseCode") @Nullable String redirectHttpResponseCode,
-        @CustomType.Parameter("script") @Nullable FlexibleAppVersionHandlerScript script,
-        @CustomType.Parameter("securityLevel") @Nullable String securityLevel,
-        @CustomType.Parameter("staticFiles") @Nullable FlexibleAppVersionHandlerStaticFiles staticFiles,
-        @CustomType.Parameter("urlRegex") @Nullable String urlRegex) {
-        this.authFailAction = authFailAction;
-        this.login = login;
-        this.redirectHttpResponseCode = redirectHttpResponseCode;
-        this.script = script;
-        this.securityLevel = securityLevel;
-        this.staticFiles = staticFiles;
-        this.urlRegex = urlRegex;
-    }
-
+    private FlexibleAppVersionHandler() {}
     /**
      * @return Action to take when users access resources that require authentication.
      * Default value is `AUTH_FAIL_ACTION_REDIRECT`.
@@ -142,7 +125,7 @@ public final class FlexibleAppVersionHandler {
     public static Builder builder(FlexibleAppVersionHandler defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String authFailAction;
         private @Nullable String login;
@@ -151,11 +134,7 @@ public final class FlexibleAppVersionHandler {
         private @Nullable String securityLevel;
         private @Nullable FlexibleAppVersionHandlerStaticFiles staticFiles;
         private @Nullable String urlRegex;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FlexibleAppVersionHandler defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authFailAction = defaults.authFailAction;
@@ -167,35 +146,51 @@ public final class FlexibleAppVersionHandler {
     	      this.urlRegex = defaults.urlRegex;
         }
 
+        @CustomType.Setter
         public Builder authFailAction(@Nullable String authFailAction) {
             this.authFailAction = authFailAction;
             return this;
         }
+        @CustomType.Setter
         public Builder login(@Nullable String login) {
             this.login = login;
             return this;
         }
+        @CustomType.Setter
         public Builder redirectHttpResponseCode(@Nullable String redirectHttpResponseCode) {
             this.redirectHttpResponseCode = redirectHttpResponseCode;
             return this;
         }
+        @CustomType.Setter
         public Builder script(@Nullable FlexibleAppVersionHandlerScript script) {
             this.script = script;
             return this;
         }
+        @CustomType.Setter
         public Builder securityLevel(@Nullable String securityLevel) {
             this.securityLevel = securityLevel;
             return this;
         }
+        @CustomType.Setter
         public Builder staticFiles(@Nullable FlexibleAppVersionHandlerStaticFiles staticFiles) {
             this.staticFiles = staticFiles;
             return this;
         }
+        @CustomType.Setter
         public Builder urlRegex(@Nullable String urlRegex) {
             this.urlRegex = urlRegex;
             return this;
-        }        public FlexibleAppVersionHandler build() {
-            return new FlexibleAppVersionHandler(authFailAction, login, redirectHttpResponseCode, script, securityLevel, staticFiles, urlRegex);
+        }
+        public FlexibleAppVersionHandler build() {
+            final var o = new FlexibleAppVersionHandler();
+            o.authFailAction = authFailAction;
+            o.login = login;
+            o.redirectHttpResponseCode = redirectHttpResponseCode;
+            o.script = script;
+            o.securityLevel = securityLevel;
+            o.staticFiles = staticFiles;
+            o.urlRegex = urlRegex;
+            return o;
         }
     }
 }

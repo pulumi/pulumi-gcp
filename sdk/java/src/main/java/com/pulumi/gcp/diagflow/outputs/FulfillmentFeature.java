@@ -15,13 +15,9 @@ public final class FulfillmentFeature {
      *   Possible values are `SMALLTALK`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private FulfillmentFeature(@CustomType.Parameter("type") String type) {
-        this.type = type;
-    }
-
+    private FulfillmentFeature() {}
     /**
      * @return The type of the feature that enabled for fulfillment.
      * * SMALLTALK: Fulfillment is enabled for SmallTalk.
@@ -39,24 +35,24 @@ public final class FulfillmentFeature {
     public static Builder builder(FulfillmentFeature defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FulfillmentFeature defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public FulfillmentFeature build() {
-            return new FulfillmentFeature(type);
+        }
+        public FulfillmentFeature build() {
+            final var o = new FulfillmentFeature();
+            o.type = type;
+            return o;
         }
     }
 }

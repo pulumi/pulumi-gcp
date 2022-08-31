@@ -18,22 +18,15 @@ public final class ReservationShareSettings {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<ReservationShareSettingsProjectMap> projectMaps;
+    private @Nullable List<ReservationShareSettingsProjectMap> projectMaps;
     /**
      * @return Type of sharing for this shared-reservation
      * Possible values are `LOCAL` and `SPECIFIC_PROJECTS`.
      * 
      */
-    private final @Nullable String shareType;
+    private @Nullable String shareType;
 
-    @CustomType.Constructor
-    private ReservationShareSettings(
-        @CustomType.Parameter("projectMaps") @Nullable List<ReservationShareSettingsProjectMap> projectMaps,
-        @CustomType.Parameter("shareType") @Nullable String shareType) {
-        this.projectMaps = projectMaps;
-        this.shareType = shareType;
-    }
-
+    private ReservationShareSettings() {}
     /**
      * @return A map of project number and project config. This is only valid when shareType&#39;s value is SPECIFIC_PROJECTS.
      * Structure is documented below.
@@ -58,21 +51,18 @@ public final class ReservationShareSettings {
     public static Builder builder(ReservationShareSettings defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ReservationShareSettingsProjectMap> projectMaps;
         private @Nullable String shareType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ReservationShareSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.projectMaps = defaults.projectMaps;
     	      this.shareType = defaults.shareType;
         }
 
+        @CustomType.Setter
         public Builder projectMaps(@Nullable List<ReservationShareSettingsProjectMap> projectMaps) {
             this.projectMaps = projectMaps;
             return this;
@@ -80,11 +70,16 @@ public final class ReservationShareSettings {
         public Builder projectMaps(ReservationShareSettingsProjectMap... projectMaps) {
             return projectMaps(List.of(projectMaps));
         }
+        @CustomType.Setter
         public Builder shareType(@Nullable String shareType) {
             this.shareType = shareType;
             return this;
-        }        public ReservationShareSettings build() {
-            return new ReservationShareSettings(projectMaps, shareType);
+        }
+        public ReservationShareSettings build() {
+            final var o = new ReservationShareSettings();
+            o.projectMaps = projectMaps;
+            o.shareType = shareType;
+            return o;
         }
     }
 }

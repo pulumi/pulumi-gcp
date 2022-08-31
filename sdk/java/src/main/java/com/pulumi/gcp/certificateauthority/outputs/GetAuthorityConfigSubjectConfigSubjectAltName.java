@@ -10,23 +10,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigSubjectConfigSubjectAltName {
-    private final List<String> dnsNames;
-    private final List<String> emailAddresses;
-    private final List<String> ipAddresses;
-    private final List<String> uris;
+    private List<String> dnsNames;
+    private List<String> emailAddresses;
+    private List<String> ipAddresses;
+    private List<String> uris;
 
-    @CustomType.Constructor
-    private GetAuthorityConfigSubjectConfigSubjectAltName(
-        @CustomType.Parameter("dnsNames") List<String> dnsNames,
-        @CustomType.Parameter("emailAddresses") List<String> emailAddresses,
-        @CustomType.Parameter("ipAddresses") List<String> ipAddresses,
-        @CustomType.Parameter("uris") List<String> uris) {
-        this.dnsNames = dnsNames;
-        this.emailAddresses = emailAddresses;
-        this.ipAddresses = ipAddresses;
-        this.uris = uris;
-    }
-
+    private GetAuthorityConfigSubjectConfigSubjectAltName() {}
     public List<String> dnsNames() {
         return this.dnsNames;
     }
@@ -47,17 +36,13 @@ public final class GetAuthorityConfigSubjectConfigSubjectAltName {
     public static Builder builder(GetAuthorityConfigSubjectConfigSubjectAltName defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> dnsNames;
         private List<String> emailAddresses;
         private List<String> ipAddresses;
         private List<String> uris;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthorityConfigSubjectConfigSubjectAltName defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dnsNames = defaults.dnsNames;
@@ -66,6 +51,7 @@ public final class GetAuthorityConfigSubjectConfigSubjectAltName {
     	      this.uris = defaults.uris;
         }
 
+        @CustomType.Setter
         public Builder dnsNames(List<String> dnsNames) {
             this.dnsNames = Objects.requireNonNull(dnsNames);
             return this;
@@ -73,6 +59,7 @@ public final class GetAuthorityConfigSubjectConfigSubjectAltName {
         public Builder dnsNames(String... dnsNames) {
             return dnsNames(List.of(dnsNames));
         }
+        @CustomType.Setter
         public Builder emailAddresses(List<String> emailAddresses) {
             this.emailAddresses = Objects.requireNonNull(emailAddresses);
             return this;
@@ -80,6 +67,7 @@ public final class GetAuthorityConfigSubjectConfigSubjectAltName {
         public Builder emailAddresses(String... emailAddresses) {
             return emailAddresses(List.of(emailAddresses));
         }
+        @CustomType.Setter
         public Builder ipAddresses(List<String> ipAddresses) {
             this.ipAddresses = Objects.requireNonNull(ipAddresses);
             return this;
@@ -87,14 +75,21 @@ public final class GetAuthorityConfigSubjectConfigSubjectAltName {
         public Builder ipAddresses(String... ipAddresses) {
             return ipAddresses(List.of(ipAddresses));
         }
+        @CustomType.Setter
         public Builder uris(List<String> uris) {
             this.uris = Objects.requireNonNull(uris);
             return this;
         }
         public Builder uris(String... uris) {
             return uris(List.of(uris));
-        }        public GetAuthorityConfigSubjectConfigSubjectAltName build() {
-            return new GetAuthorityConfigSubjectConfigSubjectAltName(dnsNames, emailAddresses, ipAddresses, uris);
+        }
+        public GetAuthorityConfigSubjectConfigSubjectAltName build() {
+            final var o = new GetAuthorityConfigSubjectConfigSubjectAltName();
+            o.dnsNames = dnsNames;
+            o.emailAddresses = emailAddresses;
+            o.ipAddresses = ipAddresses;
+            o.uris = uris;
+            return o;
         }
     }
 }

@@ -15,13 +15,9 @@ public final class QueueStackdriverLoggingConfig {
      * default and means that no operations are logged.
      * 
      */
-    private final Double samplingRatio;
+    private Double samplingRatio;
 
-    @CustomType.Constructor
-    private QueueStackdriverLoggingConfig(@CustomType.Parameter("samplingRatio") Double samplingRatio) {
-        this.samplingRatio = samplingRatio;
-    }
-
+    private QueueStackdriverLoggingConfig() {}
     /**
      * @return Specifies the fraction of operations to write to Stackdriver Logging.
      * This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the
@@ -39,24 +35,24 @@ public final class QueueStackdriverLoggingConfig {
     public static Builder builder(QueueStackdriverLoggingConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Double samplingRatio;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(QueueStackdriverLoggingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.samplingRatio = defaults.samplingRatio;
         }
 
+        @CustomType.Setter
         public Builder samplingRatio(Double samplingRatio) {
             this.samplingRatio = Objects.requireNonNull(samplingRatio);
             return this;
-        }        public QueueStackdriverLoggingConfig build() {
-            return new QueueStackdriverLoggingConfig(samplingRatio);
+        }
+        public QueueStackdriverLoggingConfig build() {
+            final var o = new QueueStackdriverLoggingConfig();
+            o.samplingRatio = samplingRatio;
+            return o;
         }
     }
 }

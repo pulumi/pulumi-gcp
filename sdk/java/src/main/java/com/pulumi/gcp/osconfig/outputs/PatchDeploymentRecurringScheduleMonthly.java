@@ -18,22 +18,15 @@ public final class PatchDeploymentRecurringScheduleMonthly {
      * will not run in February, April, June, etc.
      * 
      */
-    private final @Nullable Integer monthDay;
+    private @Nullable Integer monthDay;
     /**
      * @return Week day in a month.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth weekDayOfMonth;
+    private @Nullable PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth weekDayOfMonth;
 
-    @CustomType.Constructor
-    private PatchDeploymentRecurringScheduleMonthly(
-        @CustomType.Parameter("monthDay") @Nullable Integer monthDay,
-        @CustomType.Parameter("weekDayOfMonth") @Nullable PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth weekDayOfMonth) {
-        this.monthDay = monthDay;
-        this.weekDayOfMonth = weekDayOfMonth;
-    }
-
+    private PatchDeploymentRecurringScheduleMonthly() {}
     /**
      * @return One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
      * Months without the target day will be skipped. For example, a schedule to run &#34;every month on the 31st&#34;
@@ -59,30 +52,32 @@ public final class PatchDeploymentRecurringScheduleMonthly {
     public static Builder builder(PatchDeploymentRecurringScheduleMonthly defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer monthDay;
         private @Nullable PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth weekDayOfMonth;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PatchDeploymentRecurringScheduleMonthly defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.monthDay = defaults.monthDay;
     	      this.weekDayOfMonth = defaults.weekDayOfMonth;
         }
 
+        @CustomType.Setter
         public Builder monthDay(@Nullable Integer monthDay) {
             this.monthDay = monthDay;
             return this;
         }
+        @CustomType.Setter
         public Builder weekDayOfMonth(@Nullable PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth weekDayOfMonth) {
             this.weekDayOfMonth = weekDayOfMonth;
             return this;
-        }        public PatchDeploymentRecurringScheduleMonthly build() {
-            return new PatchDeploymentRecurringScheduleMonthly(monthDay, weekDayOfMonth);
+        }
+        public PatchDeploymentRecurringScheduleMonthly build() {
+            final var o = new PatchDeploymentRecurringScheduleMonthly();
+            o.monthDay = monthDay;
+            o.weekDayOfMonth = weekDayOfMonth;
+            return o;
         }
     }
 }

@@ -13,13 +13,9 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionar
      * @return A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
      * 
      */
-    private final String path;
+    private String path;
 
-    @CustomType.Constructor
-    private PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath(@CustomType.Parameter("path") String path) {
-        this.path = path;
-    }
-
+    private PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath() {}
     /**
      * @return A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
      * 
@@ -35,24 +31,24 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionar
     public static Builder builder(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
-        }        public PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath build() {
-            return new PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath(path);
+        }
+        public PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath build() {
+            final var o = new PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath();
+            o.path = path;
+            return o;
         }
     }
 }

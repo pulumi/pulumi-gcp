@@ -15,23 +15,12 @@ public final class GetRegistryRepositoryResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String project;
-    private final @Nullable String region;
-    private final String repositoryUrl;
+    private String id;
+    private String project;
+    private @Nullable String region;
+    private String repositoryUrl;
 
-    @CustomType.Constructor
-    private GetRegistryRepositoryResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("repositoryUrl") String repositoryUrl) {
-        this.id = id;
-        this.project = project;
-        this.region = region;
-        this.repositoryUrl = repositoryUrl;
-    }
-
+    private GetRegistryRepositoryResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -56,17 +45,13 @@ public final class GetRegistryRepositoryResult {
     public static Builder builder(GetRegistryRepositoryResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String project;
         private @Nullable String region;
         private String repositoryUrl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRegistryRepositoryResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -75,23 +60,33 @@ public final class GetRegistryRepositoryResult {
     	      this.repositoryUrl = defaults.repositoryUrl;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder repositoryUrl(String repositoryUrl) {
             this.repositoryUrl = Objects.requireNonNull(repositoryUrl);
             return this;
-        }        public GetRegistryRepositoryResult build() {
-            return new GetRegistryRepositoryResult(id, project, region, repositoryUrl);
+        }
+        public GetRegistryRepositoryResult build() {
+            final var o = new GetRegistryRepositoryResult();
+            o.id = id;
+            o.project = project;
+            o.region = region;
+            o.repositoryUrl = repositoryUrl;
+            return o;
         }
     }
 }

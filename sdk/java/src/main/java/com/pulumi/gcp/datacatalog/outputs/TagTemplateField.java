@@ -18,60 +18,43 @@ public final class TagTemplateField {
      * @return A description for this field.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return The display name for this template.
      * 
      */
-    private final @Nullable String displayName;
+    private @Nullable String displayName;
     /**
      * @return The identifier for this object. Format specified above.
      * 
      */
-    private final String fieldId;
+    private String fieldId;
     /**
      * @return Whether this is a required field. Defaults to false.
      * 
      */
-    private final @Nullable Boolean isRequired;
+    private @Nullable Boolean isRequired;
     /**
      * @return -
      * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return The order of this field with respect to other fields in this tag template.
      * A higher value indicates a more important field. The value can be negative.
      * Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
      * 
      */
-    private final @Nullable Integer order;
+    private @Nullable Integer order;
     /**
      * @return The type of value this tag field can contain.
      * Structure is documented below.
      * 
      */
-    private final TagTemplateFieldType type;
+    private TagTemplateFieldType type;
 
-    @CustomType.Constructor
-    private TagTemplateField(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("displayName") @Nullable String displayName,
-        @CustomType.Parameter("fieldId") String fieldId,
-        @CustomType.Parameter("isRequired") @Nullable Boolean isRequired,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("order") @Nullable Integer order,
-        @CustomType.Parameter("type") TagTemplateFieldType type) {
-        this.description = description;
-        this.displayName = displayName;
-        this.fieldId = fieldId;
-        this.isRequired = isRequired;
-        this.name = name;
-        this.order = order;
-        this.type = type;
-    }
-
+    private TagTemplateField() {}
     /**
      * @return A description for this field.
      * 
@@ -133,7 +116,7 @@ public final class TagTemplateField {
     public static Builder builder(TagTemplateField defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private @Nullable String displayName;
@@ -142,11 +125,7 @@ public final class TagTemplateField {
         private @Nullable String name;
         private @Nullable Integer order;
         private TagTemplateFieldType type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TagTemplateField defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -158,35 +137,51 @@ public final class TagTemplateField {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
             this.displayName = displayName;
             return this;
         }
+        @CustomType.Setter
         public Builder fieldId(String fieldId) {
             this.fieldId = Objects.requireNonNull(fieldId);
             return this;
         }
+        @CustomType.Setter
         public Builder isRequired(@Nullable Boolean isRequired) {
             this.isRequired = isRequired;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder order(@Nullable Integer order) {
             this.order = order;
             return this;
         }
+        @CustomType.Setter
         public Builder type(TagTemplateFieldType type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public TagTemplateField build() {
-            return new TagTemplateField(description, displayName, fieldId, isRequired, name, order, type);
+        }
+        public TagTemplateField build() {
+            final var o = new TagTemplateField();
+            o.description = description;
+            o.displayName = displayName;
+            o.fieldId = fieldId;
+            o.isRequired = isRequired;
+            o.name = name;
+            o.order = order;
+            o.type = type;
+            return o;
         }
     }
 }

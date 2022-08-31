@@ -17,7 +17,7 @@ public final class ResourcePolicyGroupPlacementPolicy {
      * availability domain, they will not be put in the same low latency network
      * 
      */
-    private final @Nullable Integer availabilityDomainCount;
+    private @Nullable Integer availabilityDomainCount;
     /**
      * @return Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
      * Specify `COLLOCATED` to enable collocation. Can only be specified with `vm_count`. If compute instances are created
@@ -26,25 +26,16 @@ public final class ResourcePolicyGroupPlacementPolicy {
      * Possible values are `COLLOCATED`.
      * 
      */
-    private final @Nullable String collocation;
+    private @Nullable String collocation;
     /**
      * @return Number of VMs in this placement group. Google does not recommend that you use this field
      * unless you use a compact policy and you want your policy to work only if it contains this
      * exact number of VMs.
      * 
      */
-    private final @Nullable Integer vmCount;
+    private @Nullable Integer vmCount;
 
-    @CustomType.Constructor
-    private ResourcePolicyGroupPlacementPolicy(
-        @CustomType.Parameter("availabilityDomainCount") @Nullable Integer availabilityDomainCount,
-        @CustomType.Parameter("collocation") @Nullable String collocation,
-        @CustomType.Parameter("vmCount") @Nullable Integer vmCount) {
-        this.availabilityDomainCount = availabilityDomainCount;
-        this.collocation = collocation;
-        this.vmCount = vmCount;
-    }
-
+    private ResourcePolicyGroupPlacementPolicy() {}
     /**
      * @return The number of availability domains instances will be spread across. If two instances are in different
      * availability domain, they will not be put in the same low latency network
@@ -81,16 +72,12 @@ public final class ResourcePolicyGroupPlacementPolicy {
     public static Builder builder(ResourcePolicyGroupPlacementPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer availabilityDomainCount;
         private @Nullable String collocation;
         private @Nullable Integer vmCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ResourcePolicyGroupPlacementPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityDomainCount = defaults.availabilityDomainCount;
@@ -98,19 +85,27 @@ public final class ResourcePolicyGroupPlacementPolicy {
     	      this.vmCount = defaults.vmCount;
         }
 
+        @CustomType.Setter
         public Builder availabilityDomainCount(@Nullable Integer availabilityDomainCount) {
             this.availabilityDomainCount = availabilityDomainCount;
             return this;
         }
+        @CustomType.Setter
         public Builder collocation(@Nullable String collocation) {
             this.collocation = collocation;
             return this;
         }
+        @CustomType.Setter
         public Builder vmCount(@Nullable Integer vmCount) {
             this.vmCount = vmCount;
             return this;
-        }        public ResourcePolicyGroupPlacementPolicy build() {
-            return new ResourcePolicyGroupPlacementPolicy(availabilityDomainCount, collocation, vmCount);
+        }
+        public ResourcePolicyGroupPlacementPolicy build() {
+            final var o = new ResourcePolicyGroupPlacementPolicy();
+            o.availabilityDomainCount = availabilityDomainCount;
+            o.collocation = collocation;
+            o.vmCount = vmCount;
+            return o;
         }
     }
 }

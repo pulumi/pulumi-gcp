@@ -20,68 +20,49 @@ public final class JobExtract {
      * The default value is NONE. DEFLATE and SNAPPY are only supported for Avro.
      * 
      */
-    private final @Nullable String compression;
+    private @Nullable String compression;
     /**
      * @return The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON and AVRO for tables and SAVED_MODEL for models.
      * The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV.
      * The default value for models is SAVED_MODEL.
      * 
      */
-    private final @Nullable String destinationFormat;
+    private @Nullable String destinationFormat;
     /**
      * @return A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written.
      * 
      */
-    private final List<String> destinationUris;
+    private List<String> destinationUris;
     /**
      * @return When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
      * Default is &#39;,&#39;
      * 
      */
-    private final @Nullable String fieldDelimiter;
+    private @Nullable String fieldDelimiter;
     /**
      * @return Whether to print out a header row in the results. Default is true.
      * 
      */
-    private final @Nullable Boolean printHeader;
+    private @Nullable Boolean printHeader;
     /**
      * @return A reference to the model being exported.
      * Structure is documented below.
      * 
      */
-    private final @Nullable JobExtractSourceModel sourceModel;
+    private @Nullable JobExtractSourceModel sourceModel;
     /**
      * @return A reference to the table being exported.
      * Structure is documented below.
      * 
      */
-    private final @Nullable JobExtractSourceTable sourceTable;
+    private @Nullable JobExtractSourceTable sourceTable;
     /**
      * @return Whether to use logical types when extracting to AVRO format.
      * 
      */
-    private final @Nullable Boolean useAvroLogicalTypes;
+    private @Nullable Boolean useAvroLogicalTypes;
 
-    @CustomType.Constructor
-    private JobExtract(
-        @CustomType.Parameter("compression") @Nullable String compression,
-        @CustomType.Parameter("destinationFormat") @Nullable String destinationFormat,
-        @CustomType.Parameter("destinationUris") List<String> destinationUris,
-        @CustomType.Parameter("fieldDelimiter") @Nullable String fieldDelimiter,
-        @CustomType.Parameter("printHeader") @Nullable Boolean printHeader,
-        @CustomType.Parameter("sourceModel") @Nullable JobExtractSourceModel sourceModel,
-        @CustomType.Parameter("sourceTable") @Nullable JobExtractSourceTable sourceTable,
-        @CustomType.Parameter("useAvroLogicalTypes") @Nullable Boolean useAvroLogicalTypes) {
-        this.compression = compression;
-        this.destinationFormat = destinationFormat;
-        this.destinationUris = destinationUris;
-        this.fieldDelimiter = fieldDelimiter;
-        this.printHeader = printHeader;
-        this.sourceModel = sourceModel;
-        this.sourceTable = sourceTable;
-        this.useAvroLogicalTypes = useAvroLogicalTypes;
-    }
-
+    private JobExtract() {}
     /**
      * @return The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE.
      * The default value is NONE. DEFLATE and SNAPPY are only supported for Avro.
@@ -152,7 +133,7 @@ public final class JobExtract {
     public static Builder builder(JobExtract defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String compression;
         private @Nullable String destinationFormat;
@@ -162,11 +143,7 @@ public final class JobExtract {
         private @Nullable JobExtractSourceModel sourceModel;
         private @Nullable JobExtractSourceTable sourceTable;
         private @Nullable Boolean useAvroLogicalTypes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobExtract defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.compression = defaults.compression;
@@ -179,14 +156,17 @@ public final class JobExtract {
     	      this.useAvroLogicalTypes = defaults.useAvroLogicalTypes;
         }
 
+        @CustomType.Setter
         public Builder compression(@Nullable String compression) {
             this.compression = compression;
             return this;
         }
+        @CustomType.Setter
         public Builder destinationFormat(@Nullable String destinationFormat) {
             this.destinationFormat = destinationFormat;
             return this;
         }
+        @CustomType.Setter
         public Builder destinationUris(List<String> destinationUris) {
             this.destinationUris = Objects.requireNonNull(destinationUris);
             return this;
@@ -194,27 +174,42 @@ public final class JobExtract {
         public Builder destinationUris(String... destinationUris) {
             return destinationUris(List.of(destinationUris));
         }
+        @CustomType.Setter
         public Builder fieldDelimiter(@Nullable String fieldDelimiter) {
             this.fieldDelimiter = fieldDelimiter;
             return this;
         }
+        @CustomType.Setter
         public Builder printHeader(@Nullable Boolean printHeader) {
             this.printHeader = printHeader;
             return this;
         }
+        @CustomType.Setter
         public Builder sourceModel(@Nullable JobExtractSourceModel sourceModel) {
             this.sourceModel = sourceModel;
             return this;
         }
+        @CustomType.Setter
         public Builder sourceTable(@Nullable JobExtractSourceTable sourceTable) {
             this.sourceTable = sourceTable;
             return this;
         }
+        @CustomType.Setter
         public Builder useAvroLogicalTypes(@Nullable Boolean useAvroLogicalTypes) {
             this.useAvroLogicalTypes = useAvroLogicalTypes;
             return this;
-        }        public JobExtract build() {
-            return new JobExtract(compression, destinationFormat, destinationUris, fieldDelimiter, printHeader, sourceModel, sourceTable, useAvroLogicalTypes);
+        }
+        public JobExtract build() {
+            final var o = new JobExtract();
+            o.compression = compression;
+            o.destinationFormat = destinationFormat;
+            o.destinationUris = destinationUris;
+            o.fieldDelimiter = fieldDelimiter;
+            o.printHeader = printHeader;
+            o.sourceModel = sourceModel;
+            o.sourceTable = sourceTable;
+            o.useAvroLogicalTypes = useAvroLogicalTypes;
+            return o;
         }
     }
 }

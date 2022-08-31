@@ -15,35 +15,24 @@ public final class PolicySpecRuleCondition {
      * @return Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return Textual representation of an expression in Common Expression Language syntax.
      * 
      */
-    private final @Nullable String expression;
+    private @Nullable String expression;
     /**
      * @return Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
      * 
      */
-    private final @Nullable String location;
+    private @Nullable String location;
     /**
      * @return Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
      * 
      */
-    private final @Nullable String title;
+    private @Nullable String title;
 
-    @CustomType.Constructor
-    private PolicySpecRuleCondition(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("expression") @Nullable String expression,
-        @CustomType.Parameter("location") @Nullable String location,
-        @CustomType.Parameter("title") @Nullable String title) {
-        this.description = description;
-        this.expression = expression;
-        this.location = location;
-        this.title = title;
-    }
-
+    private PolicySpecRuleCondition() {}
     /**
      * @return Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
@@ -80,17 +69,13 @@ public final class PolicySpecRuleCondition {
     public static Builder builder(PolicySpecRuleCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private @Nullable String expression;
         private @Nullable String location;
         private @Nullable String title;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PolicySpecRuleCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -99,23 +84,33 @@ public final class PolicySpecRuleCondition {
     	      this.title = defaults.title;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder expression(@Nullable String expression) {
             this.expression = expression;
             return this;
         }
+        @CustomType.Setter
         public Builder location(@Nullable String location) {
             this.location = location;
             return this;
         }
+        @CustomType.Setter
         public Builder title(@Nullable String title) {
             this.title = title;
             return this;
-        }        public PolicySpecRuleCondition build() {
-            return new PolicySpecRuleCondition(description, expression, location, title);
+        }
+        public PolicySpecRuleCondition build() {
+            final var o = new PolicySpecRuleCondition();
+            o.description = description;
+            o.expression = expression;
+            o.location = location;
+            o.title = title;
+            return o;
         }
     }
 }

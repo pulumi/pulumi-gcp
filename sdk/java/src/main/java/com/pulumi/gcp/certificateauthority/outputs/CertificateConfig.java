@@ -16,30 +16,21 @@ public final class CertificateConfig {
      * Structure is documented below.
      * 
      */
-    private final CertificateConfigPublicKey publicKey;
+    private CertificateConfigPublicKey publicKey;
     /**
      * @return Specifies some of the values in a certificate that are related to the subject.
      * Structure is documented below.
      * 
      */
-    private final CertificateConfigSubjectConfig subjectConfig;
+    private CertificateConfigSubjectConfig subjectConfig;
     /**
      * @return Describes how some of the technical X.509 fields in a certificate should be populated.
      * Structure is documented below.
      * 
      */
-    private final CertificateConfigX509Config x509Config;
+    private CertificateConfigX509Config x509Config;
 
-    @CustomType.Constructor
-    private CertificateConfig(
-        @CustomType.Parameter("publicKey") CertificateConfigPublicKey publicKey,
-        @CustomType.Parameter("subjectConfig") CertificateConfigSubjectConfig subjectConfig,
-        @CustomType.Parameter("x509Config") CertificateConfigX509Config x509Config) {
-        this.publicKey = publicKey;
-        this.subjectConfig = subjectConfig;
-        this.x509Config = x509Config;
-    }
-
+    private CertificateConfig() {}
     /**
      * @return A PublicKey describes a public key.
      * Structure is documented below.
@@ -72,16 +63,12 @@ public final class CertificateConfig {
     public static Builder builder(CertificateConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private CertificateConfigPublicKey publicKey;
         private CertificateConfigSubjectConfig subjectConfig;
         private CertificateConfigX509Config x509Config;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.publicKey = defaults.publicKey;
@@ -89,19 +76,27 @@ public final class CertificateConfig {
     	      this.x509Config = defaults.x509Config;
         }
 
+        @CustomType.Setter
         public Builder publicKey(CertificateConfigPublicKey publicKey) {
             this.publicKey = Objects.requireNonNull(publicKey);
             return this;
         }
+        @CustomType.Setter
         public Builder subjectConfig(CertificateConfigSubjectConfig subjectConfig) {
             this.subjectConfig = Objects.requireNonNull(subjectConfig);
             return this;
         }
+        @CustomType.Setter
         public Builder x509Config(CertificateConfigX509Config x509Config) {
             this.x509Config = Objects.requireNonNull(x509Config);
             return this;
-        }        public CertificateConfig build() {
-            return new CertificateConfig(publicKey, subjectConfig, x509Config);
+        }
+        public CertificateConfig build() {
+            final var o = new CertificateConfig();
+            o.publicKey = publicKey;
+            o.subjectConfig = subjectConfig;
+            o.x509Config = x509Config;
+            return o;
         }
     }
 }

@@ -13,13 +13,9 @@ public final class FlexibleAppVersionHandlerScript {
      * @return Path to the script from the application root directory.
      * 
      */
-    private final String scriptPath;
+    private String scriptPath;
 
-    @CustomType.Constructor
-    private FlexibleAppVersionHandlerScript(@CustomType.Parameter("scriptPath") String scriptPath) {
-        this.scriptPath = scriptPath;
-    }
-
+    private FlexibleAppVersionHandlerScript() {}
     /**
      * @return Path to the script from the application root directory.
      * 
@@ -35,24 +31,24 @@ public final class FlexibleAppVersionHandlerScript {
     public static Builder builder(FlexibleAppVersionHandlerScript defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String scriptPath;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FlexibleAppVersionHandlerScript defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.scriptPath = defaults.scriptPath;
         }
 
+        @CustomType.Setter
         public Builder scriptPath(String scriptPath) {
             this.scriptPath = Objects.requireNonNull(scriptPath);
             return this;
-        }        public FlexibleAppVersionHandlerScript build() {
-            return new FlexibleAppVersionHandlerScript(scriptPath);
+        }
+        public FlexibleAppVersionHandlerScript build() {
+            final var o = new FlexibleAppVersionHandlerScript();
+            o.scriptPath = scriptPath;
+            return o;
         }
     }
 }

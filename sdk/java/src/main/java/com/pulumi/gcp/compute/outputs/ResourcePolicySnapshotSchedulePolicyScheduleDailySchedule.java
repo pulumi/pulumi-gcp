@@ -14,21 +14,14 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
      * @return The number of days between snapshots.
      * 
      */
-    private final Integer daysInCycle;
+    private Integer daysInCycle;
     /**
      * @return The start time of the schedule. The timestamp is an RFC3339 string.
      * 
      */
-    private final String startTime;
+    private String startTime;
 
-    @CustomType.Constructor
-    private ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule(
-        @CustomType.Parameter("daysInCycle") Integer daysInCycle,
-        @CustomType.Parameter("startTime") String startTime) {
-        this.daysInCycle = daysInCycle;
-        this.startTime = startTime;
-    }
-
+    private ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule() {}
     /**
      * @return The number of days between snapshots.
      * 
@@ -51,30 +44,32 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
     public static Builder builder(ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer daysInCycle;
         private String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.daysInCycle = defaults.daysInCycle;
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder daysInCycle(Integer daysInCycle) {
             this.daysInCycle = Objects.requireNonNull(daysInCycle);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
-        }        public ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule build() {
-            return new ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule(daysInCycle, startTime);
+        }
+        public ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule build() {
+            final var o = new ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule();
+            o.daysInCycle = daysInCycle;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

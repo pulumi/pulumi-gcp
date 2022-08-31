@@ -21,13 +21,9 @@ public final class NoteAttestationAuthority {
      * Structure is documented below.
      * 
      */
-    private final NoteAttestationAuthorityHint hint;
+    private NoteAttestationAuthorityHint hint;
 
-    @CustomType.Constructor
-    private NoteAttestationAuthority(@CustomType.Parameter("hint") NoteAttestationAuthorityHint hint) {
-        this.hint = hint;
-    }
-
+    private NoteAttestationAuthority() {}
     /**
      * @return This submessage provides human-readable hints about the purpose of
      * the AttestationAuthority. Because the name of a Note acts as its
@@ -51,24 +47,24 @@ public final class NoteAttestationAuthority {
     public static Builder builder(NoteAttestationAuthority defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private NoteAttestationAuthorityHint hint;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NoteAttestationAuthority defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hint = defaults.hint;
         }
 
+        @CustomType.Setter
         public Builder hint(NoteAttestationAuthorityHint hint) {
             this.hint = Objects.requireNonNull(hint);
             return this;
-        }        public NoteAttestationAuthority build() {
-            return new NoteAttestationAuthority(hint);
+        }
+        public NoteAttestationAuthority build() {
+            final var o = new NoteAttestationAuthority();
+            o.hint = hint;
+            return o;
         }
     }
 }

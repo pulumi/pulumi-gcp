@@ -12,26 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigWorkloadsConfigWorker {
-    private final @Nullable Double cpu;
-    private final @Nullable Integer maxCount;
-    private final @Nullable Double memoryGb;
-    private final @Nullable Integer minCount;
-    private final @Nullable Double storageGb;
+    private @Nullable Double cpu;
+    private @Nullable Integer maxCount;
+    private @Nullable Double memoryGb;
+    private @Nullable Integer minCount;
+    private @Nullable Double storageGb;
 
-    @CustomType.Constructor
-    private EnvironmentConfigWorkloadsConfigWorker(
-        @CustomType.Parameter("cpu") @Nullable Double cpu,
-        @CustomType.Parameter("maxCount") @Nullable Integer maxCount,
-        @CustomType.Parameter("memoryGb") @Nullable Double memoryGb,
-        @CustomType.Parameter("minCount") @Nullable Integer minCount,
-        @CustomType.Parameter("storageGb") @Nullable Double storageGb) {
-        this.cpu = cpu;
-        this.maxCount = maxCount;
-        this.memoryGb = memoryGb;
-        this.minCount = minCount;
-        this.storageGb = storageGb;
-    }
-
+    private EnvironmentConfigWorkloadsConfigWorker() {}
     public Optional<Double> cpu() {
         return Optional.ofNullable(this.cpu);
     }
@@ -55,18 +42,14 @@ public final class EnvironmentConfigWorkloadsConfigWorker {
     public static Builder builder(EnvironmentConfigWorkloadsConfigWorker defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Double cpu;
         private @Nullable Integer maxCount;
         private @Nullable Double memoryGb;
         private @Nullable Integer minCount;
         private @Nullable Double storageGb;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EnvironmentConfigWorkloadsConfigWorker defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpu = defaults.cpu;
@@ -76,27 +59,39 @@ public final class EnvironmentConfigWorkloadsConfigWorker {
     	      this.storageGb = defaults.storageGb;
         }
 
+        @CustomType.Setter
         public Builder cpu(@Nullable Double cpu) {
             this.cpu = cpu;
             return this;
         }
+        @CustomType.Setter
         public Builder maxCount(@Nullable Integer maxCount) {
             this.maxCount = maxCount;
             return this;
         }
+        @CustomType.Setter
         public Builder memoryGb(@Nullable Double memoryGb) {
             this.memoryGb = memoryGb;
             return this;
         }
+        @CustomType.Setter
         public Builder minCount(@Nullable Integer minCount) {
             this.minCount = minCount;
             return this;
         }
+        @CustomType.Setter
         public Builder storageGb(@Nullable Double storageGb) {
             this.storageGb = storageGb;
             return this;
-        }        public EnvironmentConfigWorkloadsConfigWorker build() {
-            return new EnvironmentConfigWorkloadsConfigWorker(cpu, maxCount, memoryGb, minCount, storageGb);
+        }
+        public EnvironmentConfigWorkloadsConfigWorker build() {
+            final var o = new EnvironmentConfigWorkloadsConfigWorker();
+            o.cpu = cpu;
+            o.maxCount = maxCount;
+            o.memoryGb = memoryGb;
+            o.minCount = minCount;
+            o.storageGb = storageGb;
+            return o;
         }
     }
 }

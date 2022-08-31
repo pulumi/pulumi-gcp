@@ -17,21 +17,14 @@ public final class EnterpriseKeyAndroidSettings {
      * @return If set to true, it means allowed_package_names will not be enforced.
      * 
      */
-    private final @Nullable Boolean allowAllPackageNames;
+    private @Nullable Boolean allowAllPackageNames;
     /**
      * @return Android package names of apps allowed to use the key. Example: &#39;com.companyname.appname&#39;
      * 
      */
-    private final @Nullable List<String> allowedPackageNames;
+    private @Nullable List<String> allowedPackageNames;
 
-    @CustomType.Constructor
-    private EnterpriseKeyAndroidSettings(
-        @CustomType.Parameter("allowAllPackageNames") @Nullable Boolean allowAllPackageNames,
-        @CustomType.Parameter("allowedPackageNames") @Nullable List<String> allowedPackageNames) {
-        this.allowAllPackageNames = allowAllPackageNames;
-        this.allowedPackageNames = allowedPackageNames;
-    }
-
+    private EnterpriseKeyAndroidSettings() {}
     /**
      * @return If set to true, it means allowed_package_names will not be enforced.
      * 
@@ -54,33 +47,35 @@ public final class EnterpriseKeyAndroidSettings {
     public static Builder builder(EnterpriseKeyAndroidSettings defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowAllPackageNames;
         private @Nullable List<String> allowedPackageNames;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EnterpriseKeyAndroidSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowAllPackageNames = defaults.allowAllPackageNames;
     	      this.allowedPackageNames = defaults.allowedPackageNames;
         }
 
+        @CustomType.Setter
         public Builder allowAllPackageNames(@Nullable Boolean allowAllPackageNames) {
             this.allowAllPackageNames = allowAllPackageNames;
             return this;
         }
+        @CustomType.Setter
         public Builder allowedPackageNames(@Nullable List<String> allowedPackageNames) {
             this.allowedPackageNames = allowedPackageNames;
             return this;
         }
         public Builder allowedPackageNames(String... allowedPackageNames) {
             return allowedPackageNames(List.of(allowedPackageNames));
-        }        public EnterpriseKeyAndroidSettings build() {
-            return new EnterpriseKeyAndroidSettings(allowAllPackageNames, allowedPackageNames);
+        }
+        public EnterpriseKeyAndroidSettings build() {
+            final var o = new EnterpriseKeyAndroidSettings();
+            o.allowAllPackageNames = allowAllPackageNames;
+            o.allowedPackageNames = allowedPackageNames;
+            return o;
         }
     }
 }

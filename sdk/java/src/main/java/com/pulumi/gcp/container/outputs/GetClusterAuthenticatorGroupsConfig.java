@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterAuthenticatorGroupsConfig {
-    private final String securityGroup;
+    private String securityGroup;
 
-    @CustomType.Constructor
-    private GetClusterAuthenticatorGroupsConfig(@CustomType.Parameter("securityGroup") String securityGroup) {
-        this.securityGroup = securityGroup;
-    }
-
+    private GetClusterAuthenticatorGroupsConfig() {}
     public String securityGroup() {
         return this.securityGroup;
     }
@@ -27,24 +23,24 @@ public final class GetClusterAuthenticatorGroupsConfig {
     public static Builder builder(GetClusterAuthenticatorGroupsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String securityGroup;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterAuthenticatorGroupsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.securityGroup = defaults.securityGroup;
         }
 
+        @CustomType.Setter
         public Builder securityGroup(String securityGroup) {
             this.securityGroup = Objects.requireNonNull(securityGroup);
             return this;
-        }        public GetClusterAuthenticatorGroupsConfig build() {
-            return new GetClusterAuthenticatorGroupsConfig(securityGroup);
+        }
+        public GetClusterAuthenticatorGroupsConfig build() {
+            final var o = new GetClusterAuthenticatorGroupsConfig();
+            o.securityGroup = securityGroup;
+            return o;
         }
     }
 }

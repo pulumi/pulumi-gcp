@@ -20,28 +20,28 @@ public final class InstanceFileSharesNfsExportOption {
      * Possible values are `READ_ONLY` and `READ_WRITE`.
      * 
      */
-    private final @Nullable String accessMode;
+    private @Nullable String accessMode;
     /**
      * @return An integer representing the anonymous group id with a default value of 65534.
      * Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
      * if this field is specified for other squashMode settings.
      * 
      */
-    private final @Nullable Integer anonGid;
+    private @Nullable Integer anonGid;
     /**
      * @return An integer representing the anonymous user id with a default value of 65534.
      * Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
      * if this field is specified for other squashMode settings.
      * 
      */
-    private final @Nullable Integer anonUid;
+    private @Nullable Integer anonUid;
     /**
      * @return List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
      * Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
      * The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
      * 
      */
-    private final @Nullable List<String> ipRanges;
+    private @Nullable List<String> ipRanges;
     /**
      * @return Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
      * for not allowing root access. The default is NO_ROOT_SQUASH.
@@ -49,22 +49,9 @@ public final class InstanceFileSharesNfsExportOption {
      * Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
      * 
      */
-    private final @Nullable String squashMode;
+    private @Nullable String squashMode;
 
-    @CustomType.Constructor
-    private InstanceFileSharesNfsExportOption(
-        @CustomType.Parameter("accessMode") @Nullable String accessMode,
-        @CustomType.Parameter("anonGid") @Nullable Integer anonGid,
-        @CustomType.Parameter("anonUid") @Nullable Integer anonUid,
-        @CustomType.Parameter("ipRanges") @Nullable List<String> ipRanges,
-        @CustomType.Parameter("squashMode") @Nullable String squashMode) {
-        this.accessMode = accessMode;
-        this.anonGid = anonGid;
-        this.anonUid = anonUid;
-        this.ipRanges = ipRanges;
-        this.squashMode = squashMode;
-    }
-
+    private InstanceFileSharesNfsExportOption() {}
     /**
      * @return Either READ_ONLY, for allowing only read requests on the exported directory,
      * or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
@@ -120,18 +107,14 @@ public final class InstanceFileSharesNfsExportOption {
     public static Builder builder(InstanceFileSharesNfsExportOption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessMode;
         private @Nullable Integer anonGid;
         private @Nullable Integer anonUid;
         private @Nullable List<String> ipRanges;
         private @Nullable String squashMode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceFileSharesNfsExportOption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessMode = defaults.accessMode;
@@ -141,18 +124,22 @@ public final class InstanceFileSharesNfsExportOption {
     	      this.squashMode = defaults.squashMode;
         }
 
+        @CustomType.Setter
         public Builder accessMode(@Nullable String accessMode) {
             this.accessMode = accessMode;
             return this;
         }
+        @CustomType.Setter
         public Builder anonGid(@Nullable Integer anonGid) {
             this.anonGid = anonGid;
             return this;
         }
+        @CustomType.Setter
         public Builder anonUid(@Nullable Integer anonUid) {
             this.anonUid = anonUid;
             return this;
         }
+        @CustomType.Setter
         public Builder ipRanges(@Nullable List<String> ipRanges) {
             this.ipRanges = ipRanges;
             return this;
@@ -160,11 +147,19 @@ public final class InstanceFileSharesNfsExportOption {
         public Builder ipRanges(String... ipRanges) {
             return ipRanges(List.of(ipRanges));
         }
+        @CustomType.Setter
         public Builder squashMode(@Nullable String squashMode) {
             this.squashMode = squashMode;
             return this;
-        }        public InstanceFileSharesNfsExportOption build() {
-            return new InstanceFileSharesNfsExportOption(accessMode, anonGid, anonUid, ipRanges, squashMode);
+        }
+        public InstanceFileSharesNfsExportOption build() {
+            final var o = new InstanceFileSharesNfsExportOption();
+            o.accessMode = accessMode;
+            o.anonGid = anonGid;
+            o.anonUid = anonUid;
+            o.ipRanges = ipRanges;
+            o.squashMode = squashMode;
+            return o;
         }
     }
 }

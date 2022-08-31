@@ -15,32 +15,15 @@ public final class GetVariableResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
-    private final String parent;
-    private final @Nullable String project;
-    private final String text;
-    private final String updateTime;
-    private final String value;
+    private String id;
+    private String name;
+    private String parent;
+    private @Nullable String project;
+    private String text;
+    private String updateTime;
+    private String value;
 
-    @CustomType.Constructor
-    private GetVariableResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("parent") String parent,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("text") String text,
-        @CustomType.Parameter("updateTime") String updateTime,
-        @CustomType.Parameter("value") String value) {
-        this.id = id;
-        this.name = name;
-        this.parent = parent;
-        this.project = project;
-        this.text = text;
-        this.updateTime = updateTime;
-        this.value = value;
-    }
-
+    private GetVariableResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -74,7 +57,7 @@ public final class GetVariableResult {
     public static Builder builder(GetVariableResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String name;
@@ -83,11 +66,7 @@ public final class GetVariableResult {
         private String text;
         private String updateTime;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVariableResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -99,35 +78,51 @@ public final class GetVariableResult {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder parent(String parent) {
             this.parent = Objects.requireNonNull(parent);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder text(String text) {
             this.text = Objects.requireNonNull(text);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetVariableResult build() {
-            return new GetVariableResult(id, name, parent, project, text, updateTime, value);
+        }
+        public GetVariableResult build() {
+            final var o = new GetVariableResult();
+            o.id = id;
+            o.name = name;
+            o.parent = parent;
+            o.project = project;
+            o.text = text;
+            o.updateTime = updateTime;
+            o.value = value;
+            return o;
         }
     }
 }

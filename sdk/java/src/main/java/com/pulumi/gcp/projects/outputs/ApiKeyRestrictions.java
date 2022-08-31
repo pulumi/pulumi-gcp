@@ -20,42 +20,29 @@ public final class ApiKeyRestrictions {
      * @return The Android apps that are allowed to use the key.
      * 
      */
-    private final @Nullable ApiKeyRestrictionsAndroidKeyRestrictions androidKeyRestrictions;
+    private @Nullable ApiKeyRestrictionsAndroidKeyRestrictions androidKeyRestrictions;
     /**
      * @return A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
      * 
      */
-    private final @Nullable List<ApiKeyRestrictionsApiTarget> apiTargets;
+    private @Nullable List<ApiKeyRestrictionsApiTarget> apiTargets;
     /**
      * @return The HTTP referrers (websites) that are allowed to use the key.
      * 
      */
-    private final @Nullable ApiKeyRestrictionsBrowserKeyRestrictions browserKeyRestrictions;
+    private @Nullable ApiKeyRestrictionsBrowserKeyRestrictions browserKeyRestrictions;
     /**
      * @return The iOS apps that are allowed to use the key.
      * 
      */
-    private final @Nullable ApiKeyRestrictionsIosKeyRestrictions iosKeyRestrictions;
+    private @Nullable ApiKeyRestrictionsIosKeyRestrictions iosKeyRestrictions;
     /**
      * @return The IP addresses of callers that are allowed to use the key.
      * 
      */
-    private final @Nullable ApiKeyRestrictionsServerKeyRestrictions serverKeyRestrictions;
+    private @Nullable ApiKeyRestrictionsServerKeyRestrictions serverKeyRestrictions;
 
-    @CustomType.Constructor
-    private ApiKeyRestrictions(
-        @CustomType.Parameter("androidKeyRestrictions") @Nullable ApiKeyRestrictionsAndroidKeyRestrictions androidKeyRestrictions,
-        @CustomType.Parameter("apiTargets") @Nullable List<ApiKeyRestrictionsApiTarget> apiTargets,
-        @CustomType.Parameter("browserKeyRestrictions") @Nullable ApiKeyRestrictionsBrowserKeyRestrictions browserKeyRestrictions,
-        @CustomType.Parameter("iosKeyRestrictions") @Nullable ApiKeyRestrictionsIosKeyRestrictions iosKeyRestrictions,
-        @CustomType.Parameter("serverKeyRestrictions") @Nullable ApiKeyRestrictionsServerKeyRestrictions serverKeyRestrictions) {
-        this.androidKeyRestrictions = androidKeyRestrictions;
-        this.apiTargets = apiTargets;
-        this.browserKeyRestrictions = browserKeyRestrictions;
-        this.iosKeyRestrictions = iosKeyRestrictions;
-        this.serverKeyRestrictions = serverKeyRestrictions;
-    }
-
+    private ApiKeyRestrictions() {}
     /**
      * @return The Android apps that are allowed to use the key.
      * 
@@ -99,18 +86,14 @@ public final class ApiKeyRestrictions {
     public static Builder builder(ApiKeyRestrictions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ApiKeyRestrictionsAndroidKeyRestrictions androidKeyRestrictions;
         private @Nullable List<ApiKeyRestrictionsApiTarget> apiTargets;
         private @Nullable ApiKeyRestrictionsBrowserKeyRestrictions browserKeyRestrictions;
         private @Nullable ApiKeyRestrictionsIosKeyRestrictions iosKeyRestrictions;
         private @Nullable ApiKeyRestrictionsServerKeyRestrictions serverKeyRestrictions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApiKeyRestrictions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.androidKeyRestrictions = defaults.androidKeyRestrictions;
@@ -120,10 +103,12 @@ public final class ApiKeyRestrictions {
     	      this.serverKeyRestrictions = defaults.serverKeyRestrictions;
         }
 
+        @CustomType.Setter
         public Builder androidKeyRestrictions(@Nullable ApiKeyRestrictionsAndroidKeyRestrictions androidKeyRestrictions) {
             this.androidKeyRestrictions = androidKeyRestrictions;
             return this;
         }
+        @CustomType.Setter
         public Builder apiTargets(@Nullable List<ApiKeyRestrictionsApiTarget> apiTargets) {
             this.apiTargets = apiTargets;
             return this;
@@ -131,19 +116,29 @@ public final class ApiKeyRestrictions {
         public Builder apiTargets(ApiKeyRestrictionsApiTarget... apiTargets) {
             return apiTargets(List.of(apiTargets));
         }
+        @CustomType.Setter
         public Builder browserKeyRestrictions(@Nullable ApiKeyRestrictionsBrowserKeyRestrictions browserKeyRestrictions) {
             this.browserKeyRestrictions = browserKeyRestrictions;
             return this;
         }
+        @CustomType.Setter
         public Builder iosKeyRestrictions(@Nullable ApiKeyRestrictionsIosKeyRestrictions iosKeyRestrictions) {
             this.iosKeyRestrictions = iosKeyRestrictions;
             return this;
         }
+        @CustomType.Setter
         public Builder serverKeyRestrictions(@Nullable ApiKeyRestrictionsServerKeyRestrictions serverKeyRestrictions) {
             this.serverKeyRestrictions = serverKeyRestrictions;
             return this;
-        }        public ApiKeyRestrictions build() {
-            return new ApiKeyRestrictions(androidKeyRestrictions, apiTargets, browserKeyRestrictions, iosKeyRestrictions, serverKeyRestrictions);
+        }
+        public ApiKeyRestrictions build() {
+            final var o = new ApiKeyRestrictions();
+            o.androidKeyRestrictions = androidKeyRestrictions;
+            o.apiTargets = apiTargets;
+            o.browserKeyRestrictions = browserKeyRestrictions;
+            o.iosKeyRestrictions = iosKeyRestrictions;
+            o.serverKeyRestrictions = serverKeyRestrictions;
+            return o;
         }
     }
 }

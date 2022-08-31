@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption {
-    private final String scope;
+    private String scope;
 
-    @CustomType.Constructor
-    private GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption(@CustomType.Parameter("scope") String scope) {
-        this.scope = scope;
-    }
-
+    private GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption() {}
     public String scope() {
         return this.scope;
     }
@@ -27,24 +23,24 @@ public final class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptio
     public static Builder builder(GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String scope;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.scope = defaults.scope;
         }
 
+        @CustomType.Setter
         public Builder scope(String scope) {
             this.scope = Objects.requireNonNull(scope);
             return this;
-        }        public GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption build() {
-            return new GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption(scope);
+        }
+        public GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption build() {
+            final var o = new GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption();
+            o.scope = scope;
+            return o;
         }
     }
 }

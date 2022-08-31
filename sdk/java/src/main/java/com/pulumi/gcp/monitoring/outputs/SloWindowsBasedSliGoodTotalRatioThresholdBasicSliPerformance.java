@@ -19,13 +19,13 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance 
      * Structure is documented below.
      * 
      */
-    private final @Nullable SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability availability;
+    private @Nullable SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability availability;
     /**
      * @return Parameters for a latency threshold SLI.
      * Structure is documented below.
      * 
      */
-    private final @Nullable SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency latency;
+    private @Nullable SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency latency;
     /**
      * @return An optional set of locations to which this SLI is relevant.
      * Telemetry from other locations will not be used to calculate
@@ -35,7 +35,7 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance 
      * field will result in an error.
      * 
      */
-    private final @Nullable List<String> locations;
+    private @Nullable List<String> locations;
     /**
      * @return An optional set of RPCs to which this SLI is relevant.
      * Telemetry from other methods will not be used to calculate
@@ -45,7 +45,7 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance 
      * error.
      * 
      */
-    private final @Nullable List<String> methods;
+    private @Nullable List<String> methods;
     /**
      * @return The set of API versions to which this SLI is relevant.
      * Telemetry from other API versions will not be used to
@@ -55,22 +55,9 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance 
      * field will result in an error.
      * 
      */
-    private final @Nullable List<String> versions;
+    private @Nullable List<String> versions;
 
-    @CustomType.Constructor
-    private SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance(
-        @CustomType.Parameter("availability") @Nullable SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability availability,
-        @CustomType.Parameter("latency") @Nullable SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency latency,
-        @CustomType.Parameter("locations") @Nullable List<String> locations,
-        @CustomType.Parameter("methods") @Nullable List<String> methods,
-        @CustomType.Parameter("versions") @Nullable List<String> versions) {
-        this.availability = availability;
-        this.latency = latency;
-        this.locations = locations;
-        this.methods = methods;
-        this.versions = versions;
-    }
-
+    private SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance() {}
     /**
      * @return Availability based SLI, dervied from count of requests made to this service that return successfully.
      * Structure is documented below.
@@ -131,18 +118,14 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance 
     public static Builder builder(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability availability;
         private @Nullable SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency latency;
         private @Nullable List<String> locations;
         private @Nullable List<String> methods;
         private @Nullable List<String> versions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
@@ -152,14 +135,17 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance 
     	      this.versions = defaults.versions;
         }
 
+        @CustomType.Setter
         public Builder availability(@Nullable SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability availability) {
             this.availability = availability;
             return this;
         }
+        @CustomType.Setter
         public Builder latency(@Nullable SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency latency) {
             this.latency = latency;
             return this;
         }
+        @CustomType.Setter
         public Builder locations(@Nullable List<String> locations) {
             this.locations = locations;
             return this;
@@ -167,6 +153,7 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance 
         public Builder locations(String... locations) {
             return locations(List.of(locations));
         }
+        @CustomType.Setter
         public Builder methods(@Nullable List<String> methods) {
             this.methods = methods;
             return this;
@@ -174,14 +161,22 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance 
         public Builder methods(String... methods) {
             return methods(List.of(methods));
         }
+        @CustomType.Setter
         public Builder versions(@Nullable List<String> versions) {
             this.versions = versions;
             return this;
         }
         public Builder versions(String... versions) {
             return versions(List.of(versions));
-        }        public SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance build() {
-            return new SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance(availability, latency, locations, methods, versions);
+        }
+        public SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance build() {
+            final var o = new SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance();
+            o.availability = availability;
+            o.latency = latency;
+            o.locations = locations;
+            o.methods = methods;
+            o.versions = versions;
+            return o;
         }
     }
 }

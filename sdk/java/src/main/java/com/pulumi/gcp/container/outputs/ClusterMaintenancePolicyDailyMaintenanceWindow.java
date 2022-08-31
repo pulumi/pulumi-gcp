@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterMaintenancePolicyDailyMaintenanceWindow {
-    private final @Nullable String duration;
-    private final String startTime;
+    private @Nullable String duration;
+    private String startTime;
 
-    @CustomType.Constructor
-    private ClusterMaintenancePolicyDailyMaintenanceWindow(
-        @CustomType.Parameter("duration") @Nullable String duration,
-        @CustomType.Parameter("startTime") String startTime) {
-        this.duration = duration;
-        this.startTime = startTime;
-    }
-
+    private ClusterMaintenancePolicyDailyMaintenanceWindow() {}
     public Optional<String> duration() {
         return Optional.ofNullable(this.duration);
     }
@@ -36,30 +29,32 @@ public final class ClusterMaintenancePolicyDailyMaintenanceWindow {
     public static Builder builder(ClusterMaintenancePolicyDailyMaintenanceWindow defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String duration;
         private String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterMaintenancePolicyDailyMaintenanceWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.duration = defaults.duration;
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder duration(@Nullable String duration) {
             this.duration = duration;
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
-        }        public ClusterMaintenancePolicyDailyMaintenanceWindow build() {
-            return new ClusterMaintenancePolicyDailyMaintenanceWindow(duration, startTime);
+        }
+        public ClusterMaintenancePolicyDailyMaintenanceWindow build() {
+            final var o = new ClusterMaintenancePolicyDailyMaintenanceWindow();
+            o.duration = duration;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

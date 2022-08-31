@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMeshIstioServiceTelemetry {
-    private final String resourceName;
+    private String resourceName;
 
-    @CustomType.Constructor
-    private GetMeshIstioServiceTelemetry(@CustomType.Parameter("resourceName") String resourceName) {
-        this.resourceName = resourceName;
-    }
-
+    private GetMeshIstioServiceTelemetry() {}
     public String resourceName() {
         return this.resourceName;
     }
@@ -27,24 +23,24 @@ public final class GetMeshIstioServiceTelemetry {
     public static Builder builder(GetMeshIstioServiceTelemetry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String resourceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMeshIstioServiceTelemetry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.resourceName = defaults.resourceName;
         }
 
+        @CustomType.Setter
         public Builder resourceName(String resourceName) {
             this.resourceName = Objects.requireNonNull(resourceName);
             return this;
-        }        public GetMeshIstioServiceTelemetry build() {
-            return new GetMeshIstioServiceTelemetry(resourceName);
+        }
+        public GetMeshIstioServiceTelemetry build() {
+            final var o = new GetMeshIstioServiceTelemetry();
+            o.resourceName = resourceName;
+            return o;
         }
     }
 }

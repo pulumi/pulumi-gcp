@@ -15,21 +15,14 @@ public final class NoteRelatedUrl {
      * @return Label to describe usage of the URL
      * 
      */
-    private final @Nullable String label;
+    private @Nullable String label;
     /**
      * @return Specific URL associated with the resource.
      * 
      */
-    private final String url;
+    private String url;
 
-    @CustomType.Constructor
-    private NoteRelatedUrl(
-        @CustomType.Parameter("label") @Nullable String label,
-        @CustomType.Parameter("url") String url) {
-        this.label = label;
-        this.url = url;
-    }
-
+    private NoteRelatedUrl() {}
     /**
      * @return Label to describe usage of the URL
      * 
@@ -52,30 +45,32 @@ public final class NoteRelatedUrl {
     public static Builder builder(NoteRelatedUrl defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String label;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NoteRelatedUrl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.label = defaults.label;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder label(@Nullable String label) {
             this.label = label;
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public NoteRelatedUrl build() {
-            return new NoteRelatedUrl(label, url);
+        }
+        public NoteRelatedUrl build() {
+            final var o = new NoteRelatedUrl();
+            o.label = label;
+            o.url = url;
+            return o;
         }
     }
 }

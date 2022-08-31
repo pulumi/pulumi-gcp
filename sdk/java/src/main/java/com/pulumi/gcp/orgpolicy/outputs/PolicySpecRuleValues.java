@@ -15,21 +15,14 @@ public final class PolicySpecRuleValues {
      * @return List of values allowed at this resource.
      * 
      */
-    private final @Nullable List<String> allowedValues;
+    private @Nullable List<String> allowedValues;
     /**
      * @return List of values denied at this resource.
      * 
      */
-    private final @Nullable List<String> deniedValues;
+    private @Nullable List<String> deniedValues;
 
-    @CustomType.Constructor
-    private PolicySpecRuleValues(
-        @CustomType.Parameter("allowedValues") @Nullable List<String> allowedValues,
-        @CustomType.Parameter("deniedValues") @Nullable List<String> deniedValues) {
-        this.allowedValues = allowedValues;
-        this.deniedValues = deniedValues;
-    }
-
+    private PolicySpecRuleValues() {}
     /**
      * @return List of values allowed at this resource.
      * 
@@ -52,21 +45,18 @@ public final class PolicySpecRuleValues {
     public static Builder builder(PolicySpecRuleValues defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> allowedValues;
         private @Nullable List<String> deniedValues;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PolicySpecRuleValues defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedValues = defaults.allowedValues;
     	      this.deniedValues = defaults.deniedValues;
         }
 
+        @CustomType.Setter
         public Builder allowedValues(@Nullable List<String> allowedValues) {
             this.allowedValues = allowedValues;
             return this;
@@ -74,14 +64,19 @@ public final class PolicySpecRuleValues {
         public Builder allowedValues(String... allowedValues) {
             return allowedValues(List.of(allowedValues));
         }
+        @CustomType.Setter
         public Builder deniedValues(@Nullable List<String> deniedValues) {
             this.deniedValues = deniedValues;
             return this;
         }
         public Builder deniedValues(String... deniedValues) {
             return deniedValues(List.of(deniedValues));
-        }        public PolicySpecRuleValues build() {
-            return new PolicySpecRuleValues(allowedValues, deniedValues);
+        }
+        public PolicySpecRuleValues build() {
+            final var o = new PolicySpecRuleValues();
+            o.allowedValues = allowedValues;
+            o.deniedValues = deniedValues;
+            return o;
         }
     }
 }

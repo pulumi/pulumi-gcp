@@ -18,30 +18,21 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsage {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage> baseKeyUsages;
+    private @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage> baseKeyUsages;
     /**
      * @return Describes high-level ways in which a key may be used.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage> extendedKeyUsages;
+    private @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage> extendedKeyUsages;
     /**
      * @return An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages;
+    private @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages;
 
-    @CustomType.Constructor
-    private CertificateCertificateDescriptionConfigValueKeyUsage(
-        @CustomType.Parameter("baseKeyUsages") @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage> baseKeyUsages,
-        @CustomType.Parameter("extendedKeyUsages") @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage> extendedKeyUsages,
-        @CustomType.Parameter("unknownExtendedKeyUsages") @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages) {
-        this.baseKeyUsages = baseKeyUsages;
-        this.extendedKeyUsages = extendedKeyUsages;
-        this.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
-    }
-
+    private CertificateCertificateDescriptionConfigValueKeyUsage() {}
     /**
      * @return Describes high-level ways in which a key may be used.
      * Structure is documented below.
@@ -74,16 +65,12 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsage {
     public static Builder builder(CertificateCertificateDescriptionConfigValueKeyUsage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage> baseKeyUsages;
         private @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage> extendedKeyUsages;
         private @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateCertificateDescriptionConfigValueKeyUsage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.baseKeyUsages = defaults.baseKeyUsages;
@@ -91,6 +78,7 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsage {
     	      this.unknownExtendedKeyUsages = defaults.unknownExtendedKeyUsages;
         }
 
+        @CustomType.Setter
         public Builder baseKeyUsages(@Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage> baseKeyUsages) {
             this.baseKeyUsages = baseKeyUsages;
             return this;
@@ -98,6 +86,7 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsage {
         public Builder baseKeyUsages(CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage... baseKeyUsages) {
             return baseKeyUsages(List.of(baseKeyUsages));
         }
+        @CustomType.Setter
         public Builder extendedKeyUsages(@Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage> extendedKeyUsages) {
             this.extendedKeyUsages = extendedKeyUsages;
             return this;
@@ -105,14 +94,20 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsage {
         public Builder extendedKeyUsages(CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsage... extendedKeyUsages) {
             return extendedKeyUsages(List.of(extendedKeyUsages));
         }
+        @CustomType.Setter
         public Builder unknownExtendedKeyUsages(@Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages) {
             this.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
             return this;
         }
         public Builder unknownExtendedKeyUsages(CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage... unknownExtendedKeyUsages) {
             return unknownExtendedKeyUsages(List.of(unknownExtendedKeyUsages));
-        }        public CertificateCertificateDescriptionConfigValueKeyUsage build() {
-            return new CertificateCertificateDescriptionConfigValueKeyUsage(baseKeyUsages, extendedKeyUsages, unknownExtendedKeyUsages);
+        }
+        public CertificateCertificateDescriptionConfigValueKeyUsage build() {
+            final var o = new CertificateCertificateDescriptionConfigValueKeyUsage();
+            o.baseKeyUsages = baseKeyUsages;
+            o.extendedKeyUsages = extendedKeyUsages;
+            o.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
+            return o;
         }
     }
 }

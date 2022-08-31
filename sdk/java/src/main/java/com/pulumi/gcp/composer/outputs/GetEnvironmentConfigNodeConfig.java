@@ -13,44 +13,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigNodeConfig {
-    private final Integer diskSizeGb;
-    private final Boolean enableIpMasqAgent;
-    private final List<GetEnvironmentConfigNodeConfigIpAllocationPolicy> ipAllocationPolicies;
-    private final String machineType;
-    private final Integer maxPodsPerNode;
-    private final String network;
-    private final List<String> oauthScopes;
-    private final String serviceAccount;
-    private final String subnetwork;
-    private final List<String> tags;
-    private final String zone;
+    private Integer diskSizeGb;
+    private Boolean enableIpMasqAgent;
+    private List<GetEnvironmentConfigNodeConfigIpAllocationPolicy> ipAllocationPolicies;
+    private String machineType;
+    private Integer maxPodsPerNode;
+    private String network;
+    private List<String> oauthScopes;
+    private String serviceAccount;
+    private String subnetwork;
+    private List<String> tags;
+    private String zone;
 
-    @CustomType.Constructor
-    private GetEnvironmentConfigNodeConfig(
-        @CustomType.Parameter("diskSizeGb") Integer diskSizeGb,
-        @CustomType.Parameter("enableIpMasqAgent") Boolean enableIpMasqAgent,
-        @CustomType.Parameter("ipAllocationPolicies") List<GetEnvironmentConfigNodeConfigIpAllocationPolicy> ipAllocationPolicies,
-        @CustomType.Parameter("machineType") String machineType,
-        @CustomType.Parameter("maxPodsPerNode") Integer maxPodsPerNode,
-        @CustomType.Parameter("network") String network,
-        @CustomType.Parameter("oauthScopes") List<String> oauthScopes,
-        @CustomType.Parameter("serviceAccount") String serviceAccount,
-        @CustomType.Parameter("subnetwork") String subnetwork,
-        @CustomType.Parameter("tags") List<String> tags,
-        @CustomType.Parameter("zone") String zone) {
-        this.diskSizeGb = diskSizeGb;
-        this.enableIpMasqAgent = enableIpMasqAgent;
-        this.ipAllocationPolicies = ipAllocationPolicies;
-        this.machineType = machineType;
-        this.maxPodsPerNode = maxPodsPerNode;
-        this.network = network;
-        this.oauthScopes = oauthScopes;
-        this.serviceAccount = serviceAccount;
-        this.subnetwork = subnetwork;
-        this.tags = tags;
-        this.zone = zone;
-    }
-
+    private GetEnvironmentConfigNodeConfig() {}
     public Integer diskSizeGb() {
         return this.diskSizeGb;
     }
@@ -92,7 +67,7 @@ public final class GetEnvironmentConfigNodeConfig {
     public static Builder builder(GetEnvironmentConfigNodeConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer diskSizeGb;
         private Boolean enableIpMasqAgent;
@@ -105,11 +80,7 @@ public final class GetEnvironmentConfigNodeConfig {
         private String subnetwork;
         private List<String> tags;
         private String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEnvironmentConfigNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.diskSizeGb = defaults.diskSizeGb;
@@ -125,14 +96,17 @@ public final class GetEnvironmentConfigNodeConfig {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder diskSizeGb(Integer diskSizeGb) {
             this.diskSizeGb = Objects.requireNonNull(diskSizeGb);
             return this;
         }
+        @CustomType.Setter
         public Builder enableIpMasqAgent(Boolean enableIpMasqAgent) {
             this.enableIpMasqAgent = Objects.requireNonNull(enableIpMasqAgent);
             return this;
         }
+        @CustomType.Setter
         public Builder ipAllocationPolicies(List<GetEnvironmentConfigNodeConfigIpAllocationPolicy> ipAllocationPolicies) {
             this.ipAllocationPolicies = Objects.requireNonNull(ipAllocationPolicies);
             return this;
@@ -140,18 +114,22 @@ public final class GetEnvironmentConfigNodeConfig {
         public Builder ipAllocationPolicies(GetEnvironmentConfigNodeConfigIpAllocationPolicy... ipAllocationPolicies) {
             return ipAllocationPolicies(List.of(ipAllocationPolicies));
         }
+        @CustomType.Setter
         public Builder machineType(String machineType) {
             this.machineType = Objects.requireNonNull(machineType);
             return this;
         }
+        @CustomType.Setter
         public Builder maxPodsPerNode(Integer maxPodsPerNode) {
             this.maxPodsPerNode = Objects.requireNonNull(maxPodsPerNode);
             return this;
         }
+        @CustomType.Setter
         public Builder network(String network) {
             this.network = Objects.requireNonNull(network);
             return this;
         }
+        @CustomType.Setter
         public Builder oauthScopes(List<String> oauthScopes) {
             this.oauthScopes = Objects.requireNonNull(oauthScopes);
             return this;
@@ -159,14 +137,17 @@ public final class GetEnvironmentConfigNodeConfig {
         public Builder oauthScopes(String... oauthScopes) {
             return oauthScopes(List.of(oauthScopes));
         }
+        @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
             this.serviceAccount = Objects.requireNonNull(serviceAccount);
             return this;
         }
+        @CustomType.Setter
         public Builder subnetwork(String subnetwork) {
             this.subnetwork = Objects.requireNonNull(subnetwork);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -174,11 +155,25 @@ public final class GetEnvironmentConfigNodeConfig {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder zone(String zone) {
             this.zone = Objects.requireNonNull(zone);
             return this;
-        }        public GetEnvironmentConfigNodeConfig build() {
-            return new GetEnvironmentConfigNodeConfig(diskSizeGb, enableIpMasqAgent, ipAllocationPolicies, machineType, maxPodsPerNode, network, oauthScopes, serviceAccount, subnetwork, tags, zone);
+        }
+        public GetEnvironmentConfigNodeConfig build() {
+            final var o = new GetEnvironmentConfigNodeConfig();
+            o.diskSizeGb = diskSizeGb;
+            o.enableIpMasqAgent = enableIpMasqAgent;
+            o.ipAllocationPolicies = ipAllocationPolicies;
+            o.machineType = machineType;
+            o.maxPodsPerNode = maxPodsPerNode;
+            o.network = network;
+            o.oauthScopes = oauthScopes;
+            o.serviceAccount = serviceAccount;
+            o.subnetwork = subnetwork;
+            o.tags = tags;
+            o.zone = zone;
+            return o;
         }
     }
 }

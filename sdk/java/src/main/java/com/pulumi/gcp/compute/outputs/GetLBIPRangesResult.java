@@ -14,28 +14,19 @@ public final class GetLBIPRangesResult {
      * @return The IP ranges used for health checks when **HTTP(S), SSL proxy, TCP proxy, and Internal load balancing** is used
      * 
      */
-    private final List<String> httpSslTcpInternals;
+    private List<String> httpSslTcpInternals;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The IP ranges used for health checks when **Network load balancing** is used
      * 
      */
-    private final List<String> networks;
+    private List<String> networks;
 
-    @CustomType.Constructor
-    private GetLBIPRangesResult(
-        @CustomType.Parameter("httpSslTcpInternals") List<String> httpSslTcpInternals,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("networks") List<String> networks) {
-        this.httpSslTcpInternals = httpSslTcpInternals;
-        this.id = id;
-        this.networks = networks;
-    }
-
+    private GetLBIPRangesResult() {}
     /**
      * @return The IP ranges used for health checks when **HTTP(S), SSL proxy, TCP proxy, and Internal load balancing** is used
      * 
@@ -65,16 +56,12 @@ public final class GetLBIPRangesResult {
     public static Builder builder(GetLBIPRangesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> httpSslTcpInternals;
         private String id;
         private List<String> networks;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLBIPRangesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.httpSslTcpInternals = defaults.httpSslTcpInternals;
@@ -82,6 +69,7 @@ public final class GetLBIPRangesResult {
     	      this.networks = defaults.networks;
         }
 
+        @CustomType.Setter
         public Builder httpSslTcpInternals(List<String> httpSslTcpInternals) {
             this.httpSslTcpInternals = Objects.requireNonNull(httpSslTcpInternals);
             return this;
@@ -89,18 +77,25 @@ public final class GetLBIPRangesResult {
         public Builder httpSslTcpInternals(String... httpSslTcpInternals) {
             return httpSslTcpInternals(List.of(httpSslTcpInternals));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder networks(List<String> networks) {
             this.networks = Objects.requireNonNull(networks);
             return this;
         }
         public Builder networks(String... networks) {
             return networks(List.of(networks));
-        }        public GetLBIPRangesResult build() {
-            return new GetLBIPRangesResult(httpSslTcpInternals, id, networks);
+        }
+        public GetLBIPRangesResult build() {
+            final var o = new GetLBIPRangesResult();
+            o.httpSslTcpInternals = httpSslTcpInternals;
+            o.id = id;
+            o.networks = networks;
+            return o;
         }
     }
 }

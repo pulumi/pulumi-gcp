@@ -16,29 +16,20 @@ public final class CertificateConfigX509ConfigAdditionalExtension {
      * handle this extension, the client should consider this to be an error).
      * 
      */
-    private final Boolean critical;
+    private Boolean critical;
     /**
      * @return Describes values that are relevant in a CA certificate.
      * Structure is documented below.
      * 
      */
-    private final CertificateConfigX509ConfigAdditionalExtensionObjectId objectId;
+    private CertificateConfigX509ConfigAdditionalExtensionObjectId objectId;
     /**
      * @return The value of this X.509 extension. A base64-encoded string.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private CertificateConfigX509ConfigAdditionalExtension(
-        @CustomType.Parameter("critical") Boolean critical,
-        @CustomType.Parameter("objectId") CertificateConfigX509ConfigAdditionalExtensionObjectId objectId,
-        @CustomType.Parameter("value") String value) {
-        this.critical = critical;
-        this.objectId = objectId;
-        this.value = value;
-    }
-
+    private CertificateConfigX509ConfigAdditionalExtension() {}
     /**
      * @return Indicates whether or not this extension is critical (i.e., if the client does not know how to
      * handle this extension, the client should consider this to be an error).
@@ -70,16 +61,12 @@ public final class CertificateConfigX509ConfigAdditionalExtension {
     public static Builder builder(CertificateConfigX509ConfigAdditionalExtension defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean critical;
         private CertificateConfigX509ConfigAdditionalExtensionObjectId objectId;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateConfigX509ConfigAdditionalExtension defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.critical = defaults.critical;
@@ -87,19 +74,27 @@ public final class CertificateConfigX509ConfigAdditionalExtension {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder critical(Boolean critical) {
             this.critical = Objects.requireNonNull(critical);
             return this;
         }
+        @CustomType.Setter
         public Builder objectId(CertificateConfigX509ConfigAdditionalExtensionObjectId objectId) {
             this.objectId = Objects.requireNonNull(objectId);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public CertificateConfigX509ConfigAdditionalExtension build() {
-            return new CertificateConfigX509ConfigAdditionalExtension(critical, objectId, value);
+        }
+        public CertificateConfigX509ConfigAdditionalExtension build() {
+            final var o = new CertificateConfigX509ConfigAdditionalExtension();
+            o.critical = critical;
+            o.objectId = objectId;
+            o.value = value;
+            return o;
         }
     }
 }

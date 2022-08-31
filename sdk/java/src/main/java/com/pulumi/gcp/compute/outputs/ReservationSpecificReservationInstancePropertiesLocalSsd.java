@@ -16,23 +16,16 @@ public final class ReservationSpecificReservationInstancePropertiesLocalSsd {
      * @return The size of the disk in base-2 GB.
      * 
      */
-    private final Integer diskSizeGb;
+    private Integer diskSizeGb;
     /**
      * @return The disk interface to use for attaching this disk.
      * Default value is `SCSI`.
      * Possible values are `SCSI` and `NVME`.
      * 
      */
-    private final @Nullable String interface_;
+    private @Nullable String interface_;
 
-    @CustomType.Constructor
-    private ReservationSpecificReservationInstancePropertiesLocalSsd(
-        @CustomType.Parameter("diskSizeGb") Integer diskSizeGb,
-        @CustomType.Parameter("interface") @Nullable String interface_) {
-        this.diskSizeGb = diskSizeGb;
-        this.interface_ = interface_;
-    }
-
+    private ReservationSpecificReservationInstancePropertiesLocalSsd() {}
     /**
      * @return The size of the disk in base-2 GB.
      * 
@@ -57,30 +50,32 @@ public final class ReservationSpecificReservationInstancePropertiesLocalSsd {
     public static Builder builder(ReservationSpecificReservationInstancePropertiesLocalSsd defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer diskSizeGb;
         private @Nullable String interface_;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ReservationSpecificReservationInstancePropertiesLocalSsd defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.interface_ = defaults.interface_;
         }
 
+        @CustomType.Setter
         public Builder diskSizeGb(Integer diskSizeGb) {
             this.diskSizeGb = Objects.requireNonNull(diskSizeGb);
             return this;
         }
+        @CustomType.Setter("interface")
         public Builder interface_(@Nullable String interface_) {
             this.interface_ = interface_;
             return this;
-        }        public ReservationSpecificReservationInstancePropertiesLocalSsd build() {
-            return new ReservationSpecificReservationInstancePropertiesLocalSsd(diskSizeGb, interface_);
+        }
+        public ReservationSpecificReservationInstancePropertiesLocalSsd build() {
+            final var o = new ReservationSpecificReservationInstancePropertiesLocalSsd();
+            o.diskSizeGb = diskSizeGb;
+            o.interface_ = interface_;
+            return o;
         }
     }
 }

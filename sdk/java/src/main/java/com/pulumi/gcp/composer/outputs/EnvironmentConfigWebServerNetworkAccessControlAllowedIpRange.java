@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
-    private final @Nullable String description;
-    private final String value;
+    private @Nullable String description;
+    private String value;
 
-    @CustomType.Constructor
-    private EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("value") String value) {
-        this.description = description;
-        this.value = value;
-    }
-
+    private EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange() {}
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -36,30 +29,32 @@ public final class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange 
     public static Builder builder(EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange build() {
-            return new EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange(description, value);
+        }
+        public EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange build() {
+            final var o = new EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange();
+            o.description = description;
+            o.value = value;
+            return o;
         }
     }
 }

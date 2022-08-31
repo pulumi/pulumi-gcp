@@ -14,17 +14,10 @@ public final class GetInstanceGroupNamedPort {
      * @return The name of the instance group. Either `name` or `self_link` must be provided.
      * 
      */
-    private final String name;
-    private final Integer port;
+    private String name;
+    private Integer port;
 
-    @CustomType.Constructor
-    private GetInstanceGroupNamedPort(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("port") Integer port) {
-        this.name = name;
-        this.port = port;
-    }
-
+    private GetInstanceGroupNamedPort() {}
     /**
      * @return The name of the instance group. Either `name` or `self_link` must be provided.
      * 
@@ -43,30 +36,32 @@ public final class GetInstanceGroupNamedPort {
     public static Builder builder(GetInstanceGroupNamedPort defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private Integer port;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceGroupNamedPort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.port = defaults.port;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
-        }        public GetInstanceGroupNamedPort build() {
-            return new GetInstanceGroupNamedPort(name, port);
+        }
+        public GetInstanceGroupNamedPort build() {
+            final var o = new GetInstanceGroupNamedPort();
+            o.name = name;
+            o.port = port;
+            return o;
         }
     }
 }

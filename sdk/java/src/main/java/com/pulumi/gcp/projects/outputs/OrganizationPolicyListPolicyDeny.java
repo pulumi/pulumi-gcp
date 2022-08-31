@@ -17,21 +17,14 @@ public final class OrganizationPolicyListPolicyDeny {
      * @return The policy allows or denies all values.
      * 
      */
-    private final @Nullable Boolean all;
+    private @Nullable Boolean all;
     /**
      * @return The policy can define specific values that are allowed or denied.
      * 
      */
-    private final @Nullable List<String> values;
+    private @Nullable List<String> values;
 
-    @CustomType.Constructor
-    private OrganizationPolicyListPolicyDeny(
-        @CustomType.Parameter("all") @Nullable Boolean all,
-        @CustomType.Parameter("values") @Nullable List<String> values) {
-        this.all = all;
-        this.values = values;
-    }
-
+    private OrganizationPolicyListPolicyDeny() {}
     /**
      * @return The policy allows or denies all values.
      * 
@@ -54,33 +47,35 @@ public final class OrganizationPolicyListPolicyDeny {
     public static Builder builder(OrganizationPolicyListPolicyDeny defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean all;
         private @Nullable List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OrganizationPolicyListPolicyDeny defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.all = defaults.all;
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder all(@Nullable Boolean all) {
             this.all = all;
             return this;
         }
+        @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
             this.values = values;
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public OrganizationPolicyListPolicyDeny build() {
-            return new OrganizationPolicyListPolicyDeny(all, values);
+        }
+        public OrganizationPolicyListPolicyDeny build() {
+            final var o = new OrganizationPolicyListPolicyDeny();
+            o.all = all;
+            o.values = values;
+            return o;
         }
     }
 }

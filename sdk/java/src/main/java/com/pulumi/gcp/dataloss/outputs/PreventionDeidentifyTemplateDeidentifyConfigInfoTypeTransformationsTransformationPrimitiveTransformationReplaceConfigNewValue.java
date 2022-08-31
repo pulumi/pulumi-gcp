@@ -20,67 +20,48 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
      * @return A boolean value.
      * 
      */
-    private final @Nullable Boolean booleanValue;
+    private @Nullable Boolean booleanValue;
     /**
      * @return Represents a whole or partial calendar date.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue dateValue;
+    private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue dateValue;
     /**
      * @return Represents a day of the week.
      * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
      * 
      */
-    private final @Nullable String dayOfWeekValue;
+    private @Nullable String dayOfWeekValue;
     /**
      * @return A float value.
      * 
      */
-    private final @Nullable Double floatValue;
+    private @Nullable Double floatValue;
     /**
      * @return An integer value.
      * 
      */
-    private final @Nullable Integer integerValue;
+    private @Nullable Integer integerValue;
     /**
      * @return A string value.
      * 
      */
-    private final @Nullable String stringValue;
+    private @Nullable String stringValue;
     /**
      * @return Represents a time of day.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue timeValue;
+    private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue timeValue;
     /**
      * @return A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    private final @Nullable String timestampValue;
+    private @Nullable String timestampValue;
 
-    @CustomType.Constructor
-    private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue(
-        @CustomType.Parameter("booleanValue") @Nullable Boolean booleanValue,
-        @CustomType.Parameter("dateValue") @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue dateValue,
-        @CustomType.Parameter("dayOfWeekValue") @Nullable String dayOfWeekValue,
-        @CustomType.Parameter("floatValue") @Nullable Double floatValue,
-        @CustomType.Parameter("integerValue") @Nullable Integer integerValue,
-        @CustomType.Parameter("stringValue") @Nullable String stringValue,
-        @CustomType.Parameter("timeValue") @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue timeValue,
-        @CustomType.Parameter("timestampValue") @Nullable String timestampValue) {
-        this.booleanValue = booleanValue;
-        this.dateValue = dateValue;
-        this.dayOfWeekValue = dayOfWeekValue;
-        this.floatValue = floatValue;
-        this.integerValue = integerValue;
-        this.stringValue = stringValue;
-        this.timeValue = timeValue;
-        this.timestampValue = timestampValue;
-    }
-
+    private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue() {}
     /**
      * @return A boolean value.
      * 
@@ -149,7 +130,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     public static Builder builder(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean booleanValue;
         private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue dateValue;
@@ -159,11 +140,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         private @Nullable String stringValue;
         private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue timeValue;
         private @Nullable String timestampValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.booleanValue = defaults.booleanValue;
@@ -176,39 +153,57 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     	      this.timestampValue = defaults.timestampValue;
         }
 
+        @CustomType.Setter
         public Builder booleanValue(@Nullable Boolean booleanValue) {
             this.booleanValue = booleanValue;
             return this;
         }
+        @CustomType.Setter
         public Builder dateValue(@Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue dateValue) {
             this.dateValue = dateValue;
             return this;
         }
+        @CustomType.Setter
         public Builder dayOfWeekValue(@Nullable String dayOfWeekValue) {
             this.dayOfWeekValue = dayOfWeekValue;
             return this;
         }
+        @CustomType.Setter
         public Builder floatValue(@Nullable Double floatValue) {
             this.floatValue = floatValue;
             return this;
         }
+        @CustomType.Setter
         public Builder integerValue(@Nullable Integer integerValue) {
             this.integerValue = integerValue;
             return this;
         }
+        @CustomType.Setter
         public Builder stringValue(@Nullable String stringValue) {
             this.stringValue = stringValue;
             return this;
         }
+        @CustomType.Setter
         public Builder timeValue(@Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue timeValue) {
             this.timeValue = timeValue;
             return this;
         }
+        @CustomType.Setter
         public Builder timestampValue(@Nullable String timestampValue) {
             this.timestampValue = timestampValue;
             return this;
-        }        public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue build() {
-            return new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue(booleanValue, dateValue, dayOfWeekValue, floatValue, integerValue, stringValue, timeValue, timestampValue);
+        }
+        public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue build() {
+            final var o = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue();
+            o.booleanValue = booleanValue;
+            o.dateValue = dateValue;
+            o.dayOfWeekValue = dayOfWeekValue;
+            o.floatValue = floatValue;
+            o.integerValue = integerValue;
+            o.stringValue = stringValue;
+            o.timeValue = timeValue;
+            o.timestampValue = timestampValue;
+            return o;
         }
     }
 }

@@ -14,13 +14,9 @@ public final class ApplicationFeatureSettings {
      * and liveness checks.
      * 
      */
-    private final Boolean splitHealthChecks;
+    private Boolean splitHealthChecks;
 
-    @CustomType.Constructor
-    private ApplicationFeatureSettings(@CustomType.Parameter("splitHealthChecks") Boolean splitHealthChecks) {
-        this.splitHealthChecks = splitHealthChecks;
-    }
-
+    private ApplicationFeatureSettings() {}
     /**
      * @return Set to false to use the legacy health check instead of the readiness
      * and liveness checks.
@@ -37,24 +33,24 @@ public final class ApplicationFeatureSettings {
     public static Builder builder(ApplicationFeatureSettings defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean splitHealthChecks;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationFeatureSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.splitHealthChecks = defaults.splitHealthChecks;
         }
 
+        @CustomType.Setter
         public Builder splitHealthChecks(Boolean splitHealthChecks) {
             this.splitHealthChecks = Objects.requireNonNull(splitHealthChecks);
             return this;
-        }        public ApplicationFeatureSettings build() {
-            return new ApplicationFeatureSettings(splitHealthChecks);
+        }
+        public ApplicationFeatureSettings build() {
+            final var o = new ApplicationFeatureSettings();
+            o.splitHealthChecks = splitHealthChecks;
+            return o;
         }
     }
 }

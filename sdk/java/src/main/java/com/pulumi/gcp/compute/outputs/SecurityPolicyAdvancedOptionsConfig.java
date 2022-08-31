@@ -17,23 +17,16 @@ public final class SecurityPolicyAdvancedOptionsConfig {
      * * STANDARD - Parse JSON payloads in POST bodies.
      * 
      */
-    private final @Nullable String jsonParsing;
+    private @Nullable String jsonParsing;
     /**
      * @return Log level to use. Defaults to `NORMAL`.
      * * NORMAL - Normal log level.
      * * VERBOSE - Verbose log level.
      * 
      */
-    private final @Nullable String logLevel;
+    private @Nullable String logLevel;
 
-    @CustomType.Constructor
-    private SecurityPolicyAdvancedOptionsConfig(
-        @CustomType.Parameter("jsonParsing") @Nullable String jsonParsing,
-        @CustomType.Parameter("logLevel") @Nullable String logLevel) {
-        this.jsonParsing = jsonParsing;
-        this.logLevel = logLevel;
-    }
-
+    private SecurityPolicyAdvancedOptionsConfig() {}
     /**
      * @return Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
      * * DISABLED - Don&#39;t parse JSON payloads in POST bodies.
@@ -60,30 +53,32 @@ public final class SecurityPolicyAdvancedOptionsConfig {
     public static Builder builder(SecurityPolicyAdvancedOptionsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String jsonParsing;
         private @Nullable String logLevel;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecurityPolicyAdvancedOptionsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.jsonParsing = defaults.jsonParsing;
     	      this.logLevel = defaults.logLevel;
         }
 
+        @CustomType.Setter
         public Builder jsonParsing(@Nullable String jsonParsing) {
             this.jsonParsing = jsonParsing;
             return this;
         }
+        @CustomType.Setter
         public Builder logLevel(@Nullable String logLevel) {
             this.logLevel = logLevel;
             return this;
-        }        public SecurityPolicyAdvancedOptionsConfig build() {
-            return new SecurityPolicyAdvancedOptionsConfig(jsonParsing, logLevel);
+        }
+        public SecurityPolicyAdvancedOptionsConfig build() {
+            final var o = new SecurityPolicyAdvancedOptionsConfig();
+            o.jsonParsing = jsonParsing;
+            o.logLevel = logLevel;
+            return o;
         }
     }
 }

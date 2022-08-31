@@ -18,22 +18,15 @@ public final class CertificateManagedProvisioningIssue {
      * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
      * 
      */
-    private final @Nullable String details;
+    private @Nullable String details;
     /**
      * @return -
      * Reason for provisioning failures.
      * 
      */
-    private final @Nullable String reason;
+    private @Nullable String reason;
 
-    @CustomType.Constructor
-    private CertificateManagedProvisioningIssue(
-        @CustomType.Parameter("details") @Nullable String details,
-        @CustomType.Parameter("reason") @Nullable String reason) {
-        this.details = details;
-        this.reason = reason;
-    }
-
+    private CertificateManagedProvisioningIssue() {}
     /**
      * @return -
      * Human readable explanation for reaching the state. Provided to help
@@ -60,30 +53,32 @@ public final class CertificateManagedProvisioningIssue {
     public static Builder builder(CertificateManagedProvisioningIssue defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String details;
         private @Nullable String reason;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateManagedProvisioningIssue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.details = defaults.details;
     	      this.reason = defaults.reason;
         }
 
+        @CustomType.Setter
         public Builder details(@Nullable String details) {
             this.details = details;
             return this;
         }
+        @CustomType.Setter
         public Builder reason(@Nullable String reason) {
             this.reason = reason;
             return this;
-        }        public CertificateManagedProvisioningIssue build() {
-            return new CertificateManagedProvisioningIssue(details, reason);
+        }
+        public CertificateManagedProvisioningIssue build() {
+            final var o = new CertificateManagedProvisioningIssue();
+            o.details = details;
+            o.reason = reason;
+            return o;
         }
     }
 }

@@ -14,42 +14,29 @@ public final class GetTestablePermissionsPermission {
      * @return Whether the corresponding API has been enabled for the resource.
      * 
      */
-    private final Boolean apiDisabled;
+    private Boolean apiDisabled;
     /**
      * @return The level of support for custom roles. Can be one of `&#34;NOT_SUPPORTED&#34;`, `&#34;SUPPORTED&#34;`, `&#34;TESTING&#34;`. Default is `&#34;SUPPORTED&#34;`
      * 
      */
-    private final String customSupportLevel;
+    private String customSupportLevel;
     /**
      * @return Name of the permission.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Release stage of the permission.
      * 
      */
-    private final String stage;
+    private String stage;
     /**
      * @return Human readable title of the permission.
      * 
      */
-    private final String title;
+    private String title;
 
-    @CustomType.Constructor
-    private GetTestablePermissionsPermission(
-        @CustomType.Parameter("apiDisabled") Boolean apiDisabled,
-        @CustomType.Parameter("customSupportLevel") String customSupportLevel,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("stage") String stage,
-        @CustomType.Parameter("title") String title) {
-        this.apiDisabled = apiDisabled;
-        this.customSupportLevel = customSupportLevel;
-        this.name = name;
-        this.stage = stage;
-        this.title = title;
-    }
-
+    private GetTestablePermissionsPermission() {}
     /**
      * @return Whether the corresponding API has been enabled for the resource.
      * 
@@ -93,18 +80,14 @@ public final class GetTestablePermissionsPermission {
     public static Builder builder(GetTestablePermissionsPermission defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean apiDisabled;
         private String customSupportLevel;
         private String name;
         private String stage;
         private String title;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTestablePermissionsPermission defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiDisabled = defaults.apiDisabled;
@@ -114,27 +97,39 @@ public final class GetTestablePermissionsPermission {
     	      this.title = defaults.title;
         }
 
+        @CustomType.Setter
         public Builder apiDisabled(Boolean apiDisabled) {
             this.apiDisabled = Objects.requireNonNull(apiDisabled);
             return this;
         }
+        @CustomType.Setter
         public Builder customSupportLevel(String customSupportLevel) {
             this.customSupportLevel = Objects.requireNonNull(customSupportLevel);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder stage(String stage) {
             this.stage = Objects.requireNonNull(stage);
             return this;
         }
+        @CustomType.Setter
         public Builder title(String title) {
             this.title = Objects.requireNonNull(title);
             return this;
-        }        public GetTestablePermissionsPermission build() {
-            return new GetTestablePermissionsPermission(apiDisabled, customSupportLevel, name, stage, title);
+        }
+        public GetTestablePermissionsPermission build() {
+            final var o = new GetTestablePermissionsPermission();
+            o.apiDisabled = apiDisabled;
+            o.customSupportLevel = customSupportLevel;
+            o.name = name;
+            o.stage = stage;
+            o.title = title;
+            return o;
         }
     }
 }

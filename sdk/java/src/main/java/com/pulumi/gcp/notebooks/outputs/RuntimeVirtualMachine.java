@@ -17,30 +17,21 @@ public final class RuntimeVirtualMachine {
      * The unique identifier of the Managed Compute Engine instance.
      * 
      */
-    private final @Nullable String instanceId;
+    private @Nullable String instanceId;
     /**
      * @return -
      * The user-friendly name of the Managed Compute Engine instance.
      * 
      */
-    private final @Nullable String instanceName;
+    private @Nullable String instanceName;
     /**
      * @return Virtual Machine configuration settings.
      * Structure is documented below.
      * 
      */
-    private final @Nullable RuntimeVirtualMachineVirtualMachineConfig virtualMachineConfig;
+    private @Nullable RuntimeVirtualMachineVirtualMachineConfig virtualMachineConfig;
 
-    @CustomType.Constructor
-    private RuntimeVirtualMachine(
-        @CustomType.Parameter("instanceId") @Nullable String instanceId,
-        @CustomType.Parameter("instanceName") @Nullable String instanceName,
-        @CustomType.Parameter("virtualMachineConfig") @Nullable RuntimeVirtualMachineVirtualMachineConfig virtualMachineConfig) {
-        this.instanceId = instanceId;
-        this.instanceName = instanceName;
-        this.virtualMachineConfig = virtualMachineConfig;
-    }
-
+    private RuntimeVirtualMachine() {}
     /**
      * @return -
      * The unique identifier of the Managed Compute Engine instance.
@@ -73,16 +64,12 @@ public final class RuntimeVirtualMachine {
     public static Builder builder(RuntimeVirtualMachine defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String instanceId;
         private @Nullable String instanceName;
         private @Nullable RuntimeVirtualMachineVirtualMachineConfig virtualMachineConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuntimeVirtualMachine defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instanceId = defaults.instanceId;
@@ -90,19 +77,27 @@ public final class RuntimeVirtualMachine {
     	      this.virtualMachineConfig = defaults.virtualMachineConfig;
         }
 
+        @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
             this.instanceId = instanceId;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceName(@Nullable String instanceName) {
             this.instanceName = instanceName;
             return this;
         }
+        @CustomType.Setter
         public Builder virtualMachineConfig(@Nullable RuntimeVirtualMachineVirtualMachineConfig virtualMachineConfig) {
             this.virtualMachineConfig = virtualMachineConfig;
             return this;
-        }        public RuntimeVirtualMachine build() {
-            return new RuntimeVirtualMachine(instanceId, instanceName, virtualMachineConfig);
+        }
+        public RuntimeVirtualMachine build() {
+            final var o = new RuntimeVirtualMachine();
+            o.instanceId = instanceId;
+            o.instanceName = instanceName;
+            o.virtualMachineConfig = virtualMachineConfig;
+            return o;
         }
     }
 }

@@ -14,23 +14,16 @@ public final class InstanceNetworkConfig {
      * nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
      * 
      */
-    private final String ipAllocation;
+    private String ipAllocation;
     /**
      * @return Name of the network in the project with which the tenant project
      * will be peered for executing pipelines. In case of shared VPC where the network resides in another host
      * project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
      * 
      */
-    private final String network;
+    private String network;
 
-    @CustomType.Constructor
-    private InstanceNetworkConfig(
-        @CustomType.Parameter("ipAllocation") String ipAllocation,
-        @CustomType.Parameter("network") String network) {
-        this.ipAllocation = ipAllocation;
-        this.network = network;
-    }
-
+    private InstanceNetworkConfig() {}
     /**
      * @return The IP range in CIDR notation to use for the managed Data Fusion instance
      * nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
@@ -56,30 +49,32 @@ public final class InstanceNetworkConfig {
     public static Builder builder(InstanceNetworkConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String ipAllocation;
         private String network;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipAllocation = defaults.ipAllocation;
     	      this.network = defaults.network;
         }
 
+        @CustomType.Setter
         public Builder ipAllocation(String ipAllocation) {
             this.ipAllocation = Objects.requireNonNull(ipAllocation);
             return this;
         }
+        @CustomType.Setter
         public Builder network(String network) {
             this.network = Objects.requireNonNull(network);
             return this;
-        }        public InstanceNetworkConfig build() {
-            return new InstanceNetworkConfig(ipAllocation, network);
+        }
+        public InstanceNetworkConfig build() {
+            final var o = new InstanceNetworkConfig();
+            o.ipAllocation = ipAllocation;
+            o.network = network;
+            return o;
         }
     }
 }

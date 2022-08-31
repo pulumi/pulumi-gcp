@@ -17,28 +17,19 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtension {
      * @return Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
      * 
      */
-    private final @Nullable Boolean critical;
+    private @Nullable Boolean critical;
     /**
      * @return Required. The OID for this X.509 extension.
      * 
      */
-    private final CertificateTemplatePredefinedValuesAdditionalExtensionObjectId objectId;
+    private CertificateTemplatePredefinedValuesAdditionalExtensionObjectId objectId;
     /**
      * @return Required. The value of this X.509 extension.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private CertificateTemplatePredefinedValuesAdditionalExtension(
-        @CustomType.Parameter("critical") @Nullable Boolean critical,
-        @CustomType.Parameter("objectId") CertificateTemplatePredefinedValuesAdditionalExtensionObjectId objectId,
-        @CustomType.Parameter("value") String value) {
-        this.critical = critical;
-        this.objectId = objectId;
-        this.value = value;
-    }
-
+    private CertificateTemplatePredefinedValuesAdditionalExtension() {}
     /**
      * @return Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
      * 
@@ -68,16 +59,12 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtension {
     public static Builder builder(CertificateTemplatePredefinedValuesAdditionalExtension defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean critical;
         private CertificateTemplatePredefinedValuesAdditionalExtensionObjectId objectId;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateTemplatePredefinedValuesAdditionalExtension defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.critical = defaults.critical;
@@ -85,19 +72,27 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtension {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder critical(@Nullable Boolean critical) {
             this.critical = critical;
             return this;
         }
+        @CustomType.Setter
         public Builder objectId(CertificateTemplatePredefinedValuesAdditionalExtensionObjectId objectId) {
             this.objectId = Objects.requireNonNull(objectId);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public CertificateTemplatePredefinedValuesAdditionalExtension build() {
-            return new CertificateTemplatePredefinedValuesAdditionalExtension(critical, objectId, value);
+        }
+        public CertificateTemplatePredefinedValuesAdditionalExtension build() {
+            final var o = new CertificateTemplatePredefinedValuesAdditionalExtension();
+            o.critical = critical;
+            o.objectId = objectId;
+            o.value = value;
+            return o;
         }
     }
 }

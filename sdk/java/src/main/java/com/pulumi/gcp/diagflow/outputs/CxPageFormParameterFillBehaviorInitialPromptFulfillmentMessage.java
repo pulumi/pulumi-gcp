@@ -15,13 +15,9 @@ public final class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessag
      * @return A collection of text responses.
      * 
      */
-    private final @Nullable CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText text;
+    private @Nullable CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText text;
 
-    @CustomType.Constructor
-    private CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage(@CustomType.Parameter("text") @Nullable CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText text) {
-        this.text = text;
-    }
-
+    private CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage() {}
     /**
      * @return A collection of text responses.
      * 
@@ -37,24 +33,24 @@ public final class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessag
     public static Builder builder(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText text;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.text = defaults.text;
         }
 
+        @CustomType.Setter
         public Builder text(@Nullable CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText text) {
             this.text = text;
             return this;
-        }        public CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage build() {
-            return new CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage(text);
+        }
+        public CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage build() {
+            final var o = new CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage();
+            o.text = text;
+            return o;
         }
     }
 }

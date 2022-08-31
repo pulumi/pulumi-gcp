@@ -17,35 +17,24 @@ public final class GuestPoliciesRecipeUpdateStepFileExec {
      * @return Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
      * 
      */
-    private final @Nullable List<Integer> allowedExitCodes;
+    private @Nullable List<Integer> allowedExitCodes;
     /**
      * @return Arguments to be passed to the provided executable.
      * 
      */
-    private final @Nullable List<String> args;
+    private @Nullable List<String> args;
     /**
      * @return The id of the relevant artifact in the recipe.
      * 
      */
-    private final @Nullable String artifactId;
+    private @Nullable String artifactId;
     /**
      * @return The absolute path of the file on the local filesystem.
      * 
      */
-    private final @Nullable String localPath;
+    private @Nullable String localPath;
 
-    @CustomType.Constructor
-    private GuestPoliciesRecipeUpdateStepFileExec(
-        @CustomType.Parameter("allowedExitCodes") @Nullable List<Integer> allowedExitCodes,
-        @CustomType.Parameter("args") @Nullable List<String> args,
-        @CustomType.Parameter("artifactId") @Nullable String artifactId,
-        @CustomType.Parameter("localPath") @Nullable String localPath) {
-        this.allowedExitCodes = allowedExitCodes;
-        this.args = args;
-        this.artifactId = artifactId;
-        this.localPath = localPath;
-    }
-
+    private GuestPoliciesRecipeUpdateStepFileExec() {}
     /**
      * @return Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
      * 
@@ -82,17 +71,13 @@ public final class GuestPoliciesRecipeUpdateStepFileExec {
     public static Builder builder(GuestPoliciesRecipeUpdateStepFileExec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<Integer> allowedExitCodes;
         private @Nullable List<String> args;
         private @Nullable String artifactId;
         private @Nullable String localPath;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesRecipeUpdateStepFileExec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedExitCodes = defaults.allowedExitCodes;
@@ -101,6 +86,7 @@ public final class GuestPoliciesRecipeUpdateStepFileExec {
     	      this.localPath = defaults.localPath;
         }
 
+        @CustomType.Setter
         public Builder allowedExitCodes(@Nullable List<Integer> allowedExitCodes) {
             this.allowedExitCodes = allowedExitCodes;
             return this;
@@ -108,6 +94,7 @@ public final class GuestPoliciesRecipeUpdateStepFileExec {
         public Builder allowedExitCodes(Integer... allowedExitCodes) {
             return allowedExitCodes(List.of(allowedExitCodes));
         }
+        @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
             this.args = args;
             return this;
@@ -115,15 +102,23 @@ public final class GuestPoliciesRecipeUpdateStepFileExec {
         public Builder args(String... args) {
             return args(List.of(args));
         }
+        @CustomType.Setter
         public Builder artifactId(@Nullable String artifactId) {
             this.artifactId = artifactId;
             return this;
         }
+        @CustomType.Setter
         public Builder localPath(@Nullable String localPath) {
             this.localPath = localPath;
             return this;
-        }        public GuestPoliciesRecipeUpdateStepFileExec build() {
-            return new GuestPoliciesRecipeUpdateStepFileExec(allowedExitCodes, args, artifactId, localPath);
+        }
+        public GuestPoliciesRecipeUpdateStepFileExec build() {
+            final var o = new GuestPoliciesRecipeUpdateStepFileExec();
+            o.allowedExitCodes = allowedExitCodes;
+            o.args = args;
+            o.artifactId = artifactId;
+            o.localPath = localPath;
+            return o;
         }
     }
 }

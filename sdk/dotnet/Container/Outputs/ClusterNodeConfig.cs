@@ -116,6 +116,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// for more information. Defaults to false.
         /// </summary>
         public readonly bool? Preemptible;
+        /// <summary>
+        /// The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNodeConfigReservationAffinity? ReservationAffinity;
         public readonly Outputs.ClusterNodeConfigSandboxConfig? SandboxConfig;
         /// <summary>
         /// The service account to be used by the Node VMs.
@@ -133,8 +137,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly bool? Spot;
         /// <summary>
-        /// The list of instance tags applied to all nodes. Tags are used to identify
-        /// valid sources or targets for network firewalls.
+        /// ) - List of network tags applied to auto-provisioned node pools.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
@@ -192,6 +195,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             bool? preemptible,
 
+            Outputs.ClusterNodeConfigReservationAffinity? reservationAffinity,
+
             Outputs.ClusterNodeConfigSandboxConfig? sandboxConfig,
 
             string? serviceAccount,
@@ -224,6 +229,7 @@ namespace Pulumi.Gcp.Container.Outputs
             NodeGroup = nodeGroup;
             OauthScopes = oauthScopes;
             Preemptible = preemptible;
+            ReservationAffinity = reservationAffinity;
             SandboxConfig = sandboxConfig;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfig = shieldedInstanceConfig;

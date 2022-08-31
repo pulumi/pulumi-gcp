@@ -16,28 +16,19 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryPara
      * @return The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
      * 
      */
-    private final @Nullable String exactMatch;
+    private @Nullable String exactMatch;
     /**
      * @return The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
      * 
      */
-    private final @Nullable Boolean presentMatch;
+    private @Nullable Boolean presentMatch;
 
-    @CustomType.Constructor
-    private EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch(
-        @CustomType.Parameter("exactMatch") @Nullable String exactMatch,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("presentMatch") @Nullable Boolean presentMatch) {
-        this.exactMatch = exactMatch;
-        this.name = name;
-        this.presentMatch = presentMatch;
-    }
-
+    private EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch() {}
     /**
      * @return The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
      * 
@@ -67,16 +58,12 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryPara
     public static Builder builder(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String exactMatch;
         private String name;
         private @Nullable Boolean presentMatch;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.exactMatch = defaults.exactMatch;
@@ -84,19 +71,27 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryPara
     	      this.presentMatch = defaults.presentMatch;
         }
 
+        @CustomType.Setter
         public Builder exactMatch(@Nullable String exactMatch) {
             this.exactMatch = exactMatch;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder presentMatch(@Nullable Boolean presentMatch) {
             this.presentMatch = presentMatch;
             return this;
-        }        public EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch build() {
-            return new EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch(exactMatch, name, presentMatch);
+        }
+        public EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch build() {
+            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch();
+            o.exactMatch = exactMatch;
+            o.name = name;
+            o.presentMatch = presentMatch;
+            return o;
         }
     }
 }

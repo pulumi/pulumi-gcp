@@ -21,7 +21,7 @@ public final class URLMapPathMatcherPathRule {
      * allowed here.
      * 
      */
-    private final List<String> paths;
+    private List<String> paths;
     /**
      * @return In response to a matching matchRule, the load balancer performs advanced routing
      * actions like URL rewrites, header transformations, etc. prior to forwarding the
@@ -32,12 +32,12 @@ public final class URLMapPathMatcherPathRule {
      * Structure is documented below.
      * 
      */
-    private final @Nullable URLMapPathMatcherPathRuleRouteAction routeAction;
+    private @Nullable URLMapPathMatcherPathRuleRouteAction routeAction;
     /**
      * @return The backend service or backend bucket link that should be matched by this test.
      * 
      */
-    private final @Nullable String service;
+    private @Nullable String service;
     /**
      * @return When this rule is matched, the request is redirected to a URL specified by
      * urlRedirect. If urlRedirect is specified, service or routeAction must not be
@@ -45,20 +45,9 @@ public final class URLMapPathMatcherPathRule {
      * Structure is documented below.
      * 
      */
-    private final @Nullable URLMapPathMatcherPathRuleUrlRedirect urlRedirect;
+    private @Nullable URLMapPathMatcherPathRuleUrlRedirect urlRedirect;
 
-    @CustomType.Constructor
-    private URLMapPathMatcherPathRule(
-        @CustomType.Parameter("paths") List<String> paths,
-        @CustomType.Parameter("routeAction") @Nullable URLMapPathMatcherPathRuleRouteAction routeAction,
-        @CustomType.Parameter("service") @Nullable String service,
-        @CustomType.Parameter("urlRedirect") @Nullable URLMapPathMatcherPathRuleUrlRedirect urlRedirect) {
-        this.paths = paths;
-        this.routeAction = routeAction;
-        this.service = service;
-        this.urlRedirect = urlRedirect;
-    }
-
+    private URLMapPathMatcherPathRule() {}
     /**
      * @return The list of path patterns to match. Each must start with / and the only place a
      * \* is allowed is at the end following a /. The string fed to the path matcher
@@ -107,17 +96,13 @@ public final class URLMapPathMatcherPathRule {
     public static Builder builder(URLMapPathMatcherPathRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> paths;
         private @Nullable URLMapPathMatcherPathRuleRouteAction routeAction;
         private @Nullable String service;
         private @Nullable URLMapPathMatcherPathRuleUrlRedirect urlRedirect;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(URLMapPathMatcherPathRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.paths = defaults.paths;
@@ -126,6 +111,7 @@ public final class URLMapPathMatcherPathRule {
     	      this.urlRedirect = defaults.urlRedirect;
         }
 
+        @CustomType.Setter
         public Builder paths(List<String> paths) {
             this.paths = Objects.requireNonNull(paths);
             return this;
@@ -133,19 +119,28 @@ public final class URLMapPathMatcherPathRule {
         public Builder paths(String... paths) {
             return paths(List.of(paths));
         }
+        @CustomType.Setter
         public Builder routeAction(@Nullable URLMapPathMatcherPathRuleRouteAction routeAction) {
             this.routeAction = routeAction;
             return this;
         }
+        @CustomType.Setter
         public Builder service(@Nullable String service) {
             this.service = service;
             return this;
         }
+        @CustomType.Setter
         public Builder urlRedirect(@Nullable URLMapPathMatcherPathRuleUrlRedirect urlRedirect) {
             this.urlRedirect = urlRedirect;
             return this;
-        }        public URLMapPathMatcherPathRule build() {
-            return new URLMapPathMatcherPathRule(paths, routeAction, service, urlRedirect);
+        }
+        public URLMapPathMatcherPathRule build() {
+            final var o = new URLMapPathMatcherPathRule();
+            o.paths = paths;
+            o.routeAction = routeAction;
+            o.service = service;
+            o.urlRedirect = urlRedirect;
+            return o;
         }
     }
 }

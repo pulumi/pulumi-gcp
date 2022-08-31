@@ -14,21 +14,14 @@ public final class GetInstanceServiceAccount {
      * @return The service account e-mail address.
      * 
      */
-    private final String email;
+    private String email;
     /**
      * @return A list of service scopes.
      * 
      */
-    private final List<String> scopes;
+    private List<String> scopes;
 
-    @CustomType.Constructor
-    private GetInstanceServiceAccount(
-        @CustomType.Parameter("email") String email,
-        @CustomType.Parameter("scopes") List<String> scopes) {
-        this.email = email;
-        this.scopes = scopes;
-    }
-
+    private GetInstanceServiceAccount() {}
     /**
      * @return The service account e-mail address.
      * 
@@ -51,33 +44,35 @@ public final class GetInstanceServiceAccount {
     public static Builder builder(GetInstanceServiceAccount defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String email;
         private List<String> scopes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceServiceAccount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.email = defaults.email;
     	      this.scopes = defaults.scopes;
         }
 
+        @CustomType.Setter
         public Builder email(String email) {
             this.email = Objects.requireNonNull(email);
             return this;
         }
+        @CustomType.Setter
         public Builder scopes(List<String> scopes) {
             this.scopes = Objects.requireNonNull(scopes);
             return this;
         }
         public Builder scopes(String... scopes) {
             return scopes(List.of(scopes));
-        }        public GetInstanceServiceAccount build() {
-            return new GetInstanceServiceAccount(email, scopes);
+        }
+        public GetInstanceServiceAccount build() {
+            final var o = new GetInstanceServiceAccount();
+            o.email = email;
+            o.scopes = scopes;
+            return o;
         }
     }
 }

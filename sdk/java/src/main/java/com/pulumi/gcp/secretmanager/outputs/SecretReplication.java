@@ -16,22 +16,15 @@ public final class SecretReplication {
      * @return The Secret will automatically be replicated without any restrictions.
      * 
      */
-    private final @Nullable Boolean automatic;
+    private @Nullable Boolean automatic;
     /**
      * @return The Secret will automatically be replicated without any restrictions.
      * Structure is documented below.
      * 
      */
-    private final @Nullable SecretReplicationUserManaged userManaged;
+    private @Nullable SecretReplicationUserManaged userManaged;
 
-    @CustomType.Constructor
-    private SecretReplication(
-        @CustomType.Parameter("automatic") @Nullable Boolean automatic,
-        @CustomType.Parameter("userManaged") @Nullable SecretReplicationUserManaged userManaged) {
-        this.automatic = automatic;
-        this.userManaged = userManaged;
-    }
-
+    private SecretReplication() {}
     /**
      * @return The Secret will automatically be replicated without any restrictions.
      * 
@@ -55,30 +48,32 @@ public final class SecretReplication {
     public static Builder builder(SecretReplication defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean automatic;
         private @Nullable SecretReplicationUserManaged userManaged;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecretReplication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.automatic = defaults.automatic;
     	      this.userManaged = defaults.userManaged;
         }
 
+        @CustomType.Setter
         public Builder automatic(@Nullable Boolean automatic) {
             this.automatic = automatic;
             return this;
         }
+        @CustomType.Setter
         public Builder userManaged(@Nullable SecretReplicationUserManaged userManaged) {
             this.userManaged = userManaged;
             return this;
-        }        public SecretReplication build() {
-            return new SecretReplication(automatic, userManaged);
+        }
+        public SecretReplication build() {
+            final var o = new SecretReplication();
+            o.automatic = automatic;
+            o.userManaged = userManaged;
+            return o;
         }
     }
 }

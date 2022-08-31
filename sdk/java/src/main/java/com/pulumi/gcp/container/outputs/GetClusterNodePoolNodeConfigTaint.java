@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfigTaint {
-    private final String effect;
-    private final String key;
-    private final String value;
+    private String effect;
+    private String key;
+    private String value;
 
-    @CustomType.Constructor
-    private GetClusterNodePoolNodeConfigTaint(
-        @CustomType.Parameter("effect") String effect,
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.effect = effect;
-        this.key = key;
-        this.value = value;
-    }
-
+    private GetClusterNodePoolNodeConfigTaint() {}
     public String effect() {
         return this.effect;
     }
@@ -40,16 +31,12 @@ public final class GetClusterNodePoolNodeConfigTaint {
     public static Builder builder(GetClusterNodePoolNodeConfigTaint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String effect;
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterNodePoolNodeConfigTaint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.effect = defaults.effect;
@@ -57,19 +44,27 @@ public final class GetClusterNodePoolNodeConfigTaint {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder effect(String effect) {
             this.effect = Objects.requireNonNull(effect);
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetClusterNodePoolNodeConfigTaint build() {
-            return new GetClusterNodePoolNodeConfigTaint(effect, key, value);
+        }
+        public GetClusterNodePoolNodeConfigTaint build() {
+            final var o = new GetClusterNodePoolNodeConfigTaint();
+            o.effect = effect;
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

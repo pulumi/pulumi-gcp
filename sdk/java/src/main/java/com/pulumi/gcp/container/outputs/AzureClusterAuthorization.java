@@ -14,13 +14,9 @@ public final class AzureClusterAuthorization {
      * @return Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
      * 
      */
-    private final List<AzureClusterAuthorizationAdminUser> adminUsers;
+    private List<AzureClusterAuthorizationAdminUser> adminUsers;
 
-    @CustomType.Constructor
-    private AzureClusterAuthorization(@CustomType.Parameter("adminUsers") List<AzureClusterAuthorizationAdminUser> adminUsers) {
-        this.adminUsers = adminUsers;
-    }
-
+    private AzureClusterAuthorization() {}
     /**
      * @return Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
      * 
@@ -36,27 +32,27 @@ public final class AzureClusterAuthorization {
     public static Builder builder(AzureClusterAuthorization defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<AzureClusterAuthorizationAdminUser> adminUsers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AzureClusterAuthorization defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adminUsers = defaults.adminUsers;
         }
 
+        @CustomType.Setter
         public Builder adminUsers(List<AzureClusterAuthorizationAdminUser> adminUsers) {
             this.adminUsers = Objects.requireNonNull(adminUsers);
             return this;
         }
         public Builder adminUsers(AzureClusterAuthorizationAdminUser... adminUsers) {
             return adminUsers(List.of(adminUsers));
-        }        public AzureClusterAuthorization build() {
-            return new AzureClusterAuthorization(adminUsers);
+        }
+        public AzureClusterAuthorization build() {
+            final var o = new AzureClusterAuthorization();
+            o.adminUsers = adminUsers;
+            return o;
         }
     }
 }

@@ -17,84 +17,59 @@ public final class BucketLifecycleRuleCondition {
      * @return Minimum age of an object in days to satisfy this condition.
      * 
      */
-    private final @Nullable Integer age;
+    private @Nullable Integer age;
     /**
      * @return A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
      * 
      */
-    private final @Nullable String createdBefore;
+    private @Nullable String createdBefore;
     /**
      * @return A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
      * 
      */
-    private final @Nullable String customTimeBefore;
+    private @Nullable String customTimeBefore;
     /**
      * @return Days since the date set in the `customTime` metadata for the object. This condition is satisfied when the current date and time is at least the specified number of days after the `customTime`.
      * 
      */
-    private final @Nullable Integer daysSinceCustomTime;
+    private @Nullable Integer daysSinceCustomTime;
     /**
      * @return Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
      * 
      */
-    private final @Nullable Integer daysSinceNoncurrentTime;
+    private @Nullable Integer daysSinceNoncurrentTime;
     /**
      * @return One or more matching name prefixes to satisfy this condition.
      * 
      */
-    private final @Nullable List<String> matchesPrefixes;
+    private @Nullable List<String> matchesPrefixes;
     /**
      * @return [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
      * 
      */
-    private final @Nullable List<String> matchesStorageClasses;
+    private @Nullable List<String> matchesStorageClasses;
     /**
      * @return One or more matching name suffixes to satisfy this condition.
      * 
      */
-    private final @Nullable List<String> matchesSuffixes;
+    private @Nullable List<String> matchesSuffixes;
     /**
      * @return Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
      * 
      */
-    private final @Nullable String noncurrentTimeBefore;
+    private @Nullable String noncurrentTimeBefore;
     /**
      * @return Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
      * 
      */
-    private final @Nullable Integer numNewerVersions;
+    private @Nullable Integer numNewerVersions;
     /**
      * @return Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `&#34;LIVE&#34;`, `&#34;ARCHIVED&#34;`, `&#34;ANY&#34;`.
      * 
      */
-    private final @Nullable String withState;
+    private @Nullable String withState;
 
-    @CustomType.Constructor
-    private BucketLifecycleRuleCondition(
-        @CustomType.Parameter("age") @Nullable Integer age,
-        @CustomType.Parameter("createdBefore") @Nullable String createdBefore,
-        @CustomType.Parameter("customTimeBefore") @Nullable String customTimeBefore,
-        @CustomType.Parameter("daysSinceCustomTime") @Nullable Integer daysSinceCustomTime,
-        @CustomType.Parameter("daysSinceNoncurrentTime") @Nullable Integer daysSinceNoncurrentTime,
-        @CustomType.Parameter("matchesPrefixes") @Nullable List<String> matchesPrefixes,
-        @CustomType.Parameter("matchesStorageClasses") @Nullable List<String> matchesStorageClasses,
-        @CustomType.Parameter("matchesSuffixes") @Nullable List<String> matchesSuffixes,
-        @CustomType.Parameter("noncurrentTimeBefore") @Nullable String noncurrentTimeBefore,
-        @CustomType.Parameter("numNewerVersions") @Nullable Integer numNewerVersions,
-        @CustomType.Parameter("withState") @Nullable String withState) {
-        this.age = age;
-        this.createdBefore = createdBefore;
-        this.customTimeBefore = customTimeBefore;
-        this.daysSinceCustomTime = daysSinceCustomTime;
-        this.daysSinceNoncurrentTime = daysSinceNoncurrentTime;
-        this.matchesPrefixes = matchesPrefixes;
-        this.matchesStorageClasses = matchesStorageClasses;
-        this.matchesSuffixes = matchesSuffixes;
-        this.noncurrentTimeBefore = noncurrentTimeBefore;
-        this.numNewerVersions = numNewerVersions;
-        this.withState = withState;
-    }
-
+    private BucketLifecycleRuleCondition() {}
     /**
      * @return Minimum age of an object in days to satisfy this condition.
      * 
@@ -180,7 +155,7 @@ public final class BucketLifecycleRuleCondition {
     public static Builder builder(BucketLifecycleRuleCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer age;
         private @Nullable String createdBefore;
@@ -193,11 +168,7 @@ public final class BucketLifecycleRuleCondition {
         private @Nullable String noncurrentTimeBefore;
         private @Nullable Integer numNewerVersions;
         private @Nullable String withState;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BucketLifecycleRuleCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.age = defaults.age;
@@ -213,26 +184,32 @@ public final class BucketLifecycleRuleCondition {
     	      this.withState = defaults.withState;
         }
 
+        @CustomType.Setter
         public Builder age(@Nullable Integer age) {
             this.age = age;
             return this;
         }
+        @CustomType.Setter
         public Builder createdBefore(@Nullable String createdBefore) {
             this.createdBefore = createdBefore;
             return this;
         }
+        @CustomType.Setter
         public Builder customTimeBefore(@Nullable String customTimeBefore) {
             this.customTimeBefore = customTimeBefore;
             return this;
         }
+        @CustomType.Setter
         public Builder daysSinceCustomTime(@Nullable Integer daysSinceCustomTime) {
             this.daysSinceCustomTime = daysSinceCustomTime;
             return this;
         }
+        @CustomType.Setter
         public Builder daysSinceNoncurrentTime(@Nullable Integer daysSinceNoncurrentTime) {
             this.daysSinceNoncurrentTime = daysSinceNoncurrentTime;
             return this;
         }
+        @CustomType.Setter
         public Builder matchesPrefixes(@Nullable List<String> matchesPrefixes) {
             this.matchesPrefixes = matchesPrefixes;
             return this;
@@ -240,6 +217,7 @@ public final class BucketLifecycleRuleCondition {
         public Builder matchesPrefixes(String... matchesPrefixes) {
             return matchesPrefixes(List.of(matchesPrefixes));
         }
+        @CustomType.Setter
         public Builder matchesStorageClasses(@Nullable List<String> matchesStorageClasses) {
             this.matchesStorageClasses = matchesStorageClasses;
             return this;
@@ -247,6 +225,7 @@ public final class BucketLifecycleRuleCondition {
         public Builder matchesStorageClasses(String... matchesStorageClasses) {
             return matchesStorageClasses(List.of(matchesStorageClasses));
         }
+        @CustomType.Setter
         public Builder matchesSuffixes(@Nullable List<String> matchesSuffixes) {
             this.matchesSuffixes = matchesSuffixes;
             return this;
@@ -254,19 +233,35 @@ public final class BucketLifecycleRuleCondition {
         public Builder matchesSuffixes(String... matchesSuffixes) {
             return matchesSuffixes(List.of(matchesSuffixes));
         }
+        @CustomType.Setter
         public Builder noncurrentTimeBefore(@Nullable String noncurrentTimeBefore) {
             this.noncurrentTimeBefore = noncurrentTimeBefore;
             return this;
         }
+        @CustomType.Setter
         public Builder numNewerVersions(@Nullable Integer numNewerVersions) {
             this.numNewerVersions = numNewerVersions;
             return this;
         }
+        @CustomType.Setter
         public Builder withState(@Nullable String withState) {
             this.withState = withState;
             return this;
-        }        public BucketLifecycleRuleCondition build() {
-            return new BucketLifecycleRuleCondition(age, createdBefore, customTimeBefore, daysSinceCustomTime, daysSinceNoncurrentTime, matchesPrefixes, matchesStorageClasses, matchesSuffixes, noncurrentTimeBefore, numNewerVersions, withState);
+        }
+        public BucketLifecycleRuleCondition build() {
+            final var o = new BucketLifecycleRuleCondition();
+            o.age = age;
+            o.createdBefore = createdBefore;
+            o.customTimeBefore = customTimeBefore;
+            o.daysSinceCustomTime = daysSinceCustomTime;
+            o.daysSinceNoncurrentTime = daysSinceNoncurrentTime;
+            o.matchesPrefixes = matchesPrefixes;
+            o.matchesStorageClasses = matchesStorageClasses;
+            o.matchesSuffixes = matchesSuffixes;
+            o.noncurrentTimeBefore = noncurrentTimeBefore;
+            o.numNewerVersions = numNewerVersions;
+            o.withState = withState;
+            return o;
         }
     }
 }

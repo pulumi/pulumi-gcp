@@ -15,13 +15,9 @@ public final class AwsClusterLoggingConfigComponentConfig {
      * @return Components of the logging configuration to be enabled.
      * 
      */
-    private final @Nullable List<String> enableComponents;
+    private @Nullable List<String> enableComponents;
 
-    @CustomType.Constructor
-    private AwsClusterLoggingConfigComponentConfig(@CustomType.Parameter("enableComponents") @Nullable List<String> enableComponents) {
-        this.enableComponents = enableComponents;
-    }
-
+    private AwsClusterLoggingConfigComponentConfig() {}
     /**
      * @return Components of the logging configuration to be enabled.
      * 
@@ -37,27 +33,27 @@ public final class AwsClusterLoggingConfigComponentConfig {
     public static Builder builder(AwsClusterLoggingConfigComponentConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> enableComponents;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsClusterLoggingConfigComponentConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableComponents = defaults.enableComponents;
         }
 
+        @CustomType.Setter
         public Builder enableComponents(@Nullable List<String> enableComponents) {
             this.enableComponents = enableComponents;
             return this;
         }
         public Builder enableComponents(String... enableComponents) {
             return enableComponents(List.of(enableComponents));
-        }        public AwsClusterLoggingConfigComponentConfig build() {
-            return new AwsClusterLoggingConfigComponentConfig(enableComponents);
+        }
+        public AwsClusterLoggingConfigComponentConfig build() {
+            final var o = new AwsClusterLoggingConfigComponentConfig();
+            o.enableComponents = enableComponents;
+            return o;
         }
     }
 }

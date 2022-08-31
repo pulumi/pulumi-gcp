@@ -20,13 +20,13 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
      * Structure is documented below.
      * 
      */
-    private final @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary dictionary;
+    private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary dictionary;
     /**
      * @return If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
      * Possible values are `EXCLUSION_TYPE_EXCLUDE`.
      * 
      */
-    private final @Nullable String exclusionType;
+    private @Nullable String exclusionType;
     /**
      * @return CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
      * infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
@@ -35,7 +35,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
      * Structure is documented below.
      * 
      */
-    private final PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType infoType;
+    private PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType infoType;
     /**
      * @return Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
      * specified by the rule.
@@ -43,36 +43,21 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
      * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
      * 
      */
-    private final @Nullable String likelihood;
+    private @Nullable String likelihood;
     /**
      * @return Regular expression which defines the rule.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeRegex regex;
+    private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeRegex regex;
     /**
      * @return A reference to a StoredInfoType to use with scanning.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType storedType;
+    private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType storedType;
 
-    @CustomType.Constructor
-    private PreventionInspectTemplateInspectConfigCustomInfoType(
-        @CustomType.Parameter("dictionary") @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary dictionary,
-        @CustomType.Parameter("exclusionType") @Nullable String exclusionType,
-        @CustomType.Parameter("infoType") PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType infoType,
-        @CustomType.Parameter("likelihood") @Nullable String likelihood,
-        @CustomType.Parameter("regex") @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeRegex regex,
-        @CustomType.Parameter("storedType") @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType storedType) {
-        this.dictionary = dictionary;
-        this.exclusionType = exclusionType;
-        this.infoType = infoType;
-        this.likelihood = likelihood;
-        this.regex = regex;
-        this.storedType = storedType;
-    }
-
+    private PreventionInspectTemplateInspectConfigCustomInfoType() {}
     /**
      * @return Dictionary which defines the rule.
      * Structure is documented below.
@@ -134,7 +119,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
     public static Builder builder(PreventionInspectTemplateInspectConfigCustomInfoType defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary dictionary;
         private @Nullable String exclusionType;
@@ -142,11 +127,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
         private @Nullable String likelihood;
         private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeRegex regex;
         private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType storedType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfigCustomInfoType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dictionary = defaults.dictionary;
@@ -157,31 +138,45 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
     	      this.storedType = defaults.storedType;
         }
 
+        @CustomType.Setter
         public Builder dictionary(@Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary dictionary) {
             this.dictionary = dictionary;
             return this;
         }
+        @CustomType.Setter
         public Builder exclusionType(@Nullable String exclusionType) {
             this.exclusionType = exclusionType;
             return this;
         }
+        @CustomType.Setter
         public Builder infoType(PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType infoType) {
             this.infoType = Objects.requireNonNull(infoType);
             return this;
         }
+        @CustomType.Setter
         public Builder likelihood(@Nullable String likelihood) {
             this.likelihood = likelihood;
             return this;
         }
+        @CustomType.Setter
         public Builder regex(@Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeRegex regex) {
             this.regex = regex;
             return this;
         }
+        @CustomType.Setter
         public Builder storedType(@Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType storedType) {
             this.storedType = storedType;
             return this;
-        }        public PreventionInspectTemplateInspectConfigCustomInfoType build() {
-            return new PreventionInspectTemplateInspectConfigCustomInfoType(dictionary, exclusionType, infoType, likelihood, regex, storedType);
+        }
+        public PreventionInspectTemplateInspectConfigCustomInfoType build() {
+            final var o = new PreventionInspectTemplateInspectConfigCustomInfoType();
+            o.dictionary = dictionary;
+            o.exclusionType = exclusionType;
+            o.infoType = infoType;
+            o.likelihood = likelihood;
+            o.regex = regex;
+            o.storedType = storedType;
+            return o;
         }
     }
 }

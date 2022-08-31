@@ -17,7 +17,7 @@ public final class JobRetryConfig {
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;.
      * 
      */
-    private final @Nullable String maxBackoffDuration;
+    private @Nullable String maxBackoffDuration;
     /**
      * @return The time between retries will double maxDoublings times.
      * A job&#39;s retry interval starts at minBackoffDuration,
@@ -25,42 +25,29 @@ public final class JobRetryConfig {
      * and finally retries retries at intervals of maxBackoffDuration up to retryCount times.
      * 
      */
-    private final @Nullable Integer maxDoublings;
+    private @Nullable Integer maxDoublings;
     /**
      * @return The time limit for retrying a failed job, measured from time when an execution was first attempted.
      * If specified with retryCount, the job will be retried until both limits are reached.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;.
      * 
      */
-    private final @Nullable String maxRetryDuration;
+    private @Nullable String maxRetryDuration;
     /**
      * @return The minimum amount of time to wait before retrying a job after it fails.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;.
      * 
      */
-    private final @Nullable String minBackoffDuration;
+    private @Nullable String minBackoffDuration;
     /**
      * @return The number of attempts that the system will make to run a
      * job using the exponential backoff procedure described by maxDoublings.
      * Values greater than 5 and negative values are not allowed.
      * 
      */
-    private final @Nullable Integer retryCount;
+    private @Nullable Integer retryCount;
 
-    @CustomType.Constructor
-    private JobRetryConfig(
-        @CustomType.Parameter("maxBackoffDuration") @Nullable String maxBackoffDuration,
-        @CustomType.Parameter("maxDoublings") @Nullable Integer maxDoublings,
-        @CustomType.Parameter("maxRetryDuration") @Nullable String maxRetryDuration,
-        @CustomType.Parameter("minBackoffDuration") @Nullable String minBackoffDuration,
-        @CustomType.Parameter("retryCount") @Nullable Integer retryCount) {
-        this.maxBackoffDuration = maxBackoffDuration;
-        this.maxDoublings = maxDoublings;
-        this.maxRetryDuration = maxRetryDuration;
-        this.minBackoffDuration = minBackoffDuration;
-        this.retryCount = retryCount;
-    }
-
+    private JobRetryConfig() {}
     /**
      * @return The maximum amount of time to wait before retrying a job after it fails.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;.
@@ -113,18 +100,14 @@ public final class JobRetryConfig {
     public static Builder builder(JobRetryConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String maxBackoffDuration;
         private @Nullable Integer maxDoublings;
         private @Nullable String maxRetryDuration;
         private @Nullable String minBackoffDuration;
         private @Nullable Integer retryCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobRetryConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxBackoffDuration = defaults.maxBackoffDuration;
@@ -134,27 +117,39 @@ public final class JobRetryConfig {
     	      this.retryCount = defaults.retryCount;
         }
 
+        @CustomType.Setter
         public Builder maxBackoffDuration(@Nullable String maxBackoffDuration) {
             this.maxBackoffDuration = maxBackoffDuration;
             return this;
         }
+        @CustomType.Setter
         public Builder maxDoublings(@Nullable Integer maxDoublings) {
             this.maxDoublings = maxDoublings;
             return this;
         }
+        @CustomType.Setter
         public Builder maxRetryDuration(@Nullable String maxRetryDuration) {
             this.maxRetryDuration = maxRetryDuration;
             return this;
         }
+        @CustomType.Setter
         public Builder minBackoffDuration(@Nullable String minBackoffDuration) {
             this.minBackoffDuration = minBackoffDuration;
             return this;
         }
+        @CustomType.Setter
         public Builder retryCount(@Nullable Integer retryCount) {
             this.retryCount = retryCount;
             return this;
-        }        public JobRetryConfig build() {
-            return new JobRetryConfig(maxBackoffDuration, maxDoublings, maxRetryDuration, minBackoffDuration, retryCount);
+        }
+        public JobRetryConfig build() {
+            final var o = new JobRetryConfig();
+            o.maxBackoffDuration = maxBackoffDuration;
+            o.maxDoublings = maxDoublings;
+            o.maxRetryDuration = maxRetryDuration;
+            o.minBackoffDuration = minBackoffDuration;
+            o.retryCount = retryCount;
+            return o;
         }
     }
 }

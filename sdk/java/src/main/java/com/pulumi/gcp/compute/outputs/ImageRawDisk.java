@@ -20,31 +20,22 @@ public final class ImageRawDisk {
      * Possible values are `TAR`.
      * 
      */
-    private final @Nullable String containerType;
+    private @Nullable String containerType;
     /**
      * @return An optional SHA1 checksum of the disk image before unpackaging.
      * This is provided by the client when the disk image is created.
      * 
      */
-    private final @Nullable String sha1;
+    private @Nullable String sha1;
     /**
      * @return The full Google Cloud Storage URL where disk storage is stored
      * You must provide either this property or the sourceDisk property
      * but not both.
      * 
      */
-    private final String source;
+    private String source;
 
-    @CustomType.Constructor
-    private ImageRawDisk(
-        @CustomType.Parameter("containerType") @Nullable String containerType,
-        @CustomType.Parameter("sha1") @Nullable String sha1,
-        @CustomType.Parameter("source") String source) {
-        this.containerType = containerType;
-        this.sha1 = sha1;
-        this.source = source;
-    }
-
+    private ImageRawDisk() {}
     /**
      * @return The format used to encode and transmit the block device, which
      * should be TAR. This is just a container and transmission format
@@ -82,16 +73,12 @@ public final class ImageRawDisk {
     public static Builder builder(ImageRawDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String containerType;
         private @Nullable String sha1;
         private String source;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ImageRawDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.containerType = defaults.containerType;
@@ -99,19 +86,27 @@ public final class ImageRawDisk {
     	      this.source = defaults.source;
         }
 
+        @CustomType.Setter
         public Builder containerType(@Nullable String containerType) {
             this.containerType = containerType;
             return this;
         }
+        @CustomType.Setter
         public Builder sha1(@Nullable String sha1) {
             this.sha1 = sha1;
             return this;
         }
+        @CustomType.Setter
         public Builder source(String source) {
             this.source = Objects.requireNonNull(source);
             return this;
-        }        public ImageRawDisk build() {
-            return new ImageRawDisk(containerType, sha1, source);
+        }
+        public ImageRawDisk build() {
+            final var o = new ImageRawDisk();
+            o.containerType = containerType;
+            o.sha1 = sha1;
+            o.source = source;
+            return o;
         }
     }
 }

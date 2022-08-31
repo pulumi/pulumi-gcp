@@ -18,22 +18,15 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionTimeout {
      * `nanos` field. Must be from 0 to 999,999,999 inclusive.
      * 
      */
-    private final @Nullable Integer nanos;
+    private @Nullable Integer nanos;
     /**
      * @return Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
      * inclusive.
      * 
      */
-    private final String seconds;
+    private String seconds;
 
-    @CustomType.Constructor
-    private RegionUrlMapPathMatcherPathRuleRouteActionTimeout(
-        @CustomType.Parameter("nanos") @Nullable Integer nanos,
-        @CustomType.Parameter("seconds") String seconds) {
-        this.nanos = nanos;
-        this.seconds = seconds;
-    }
-
+    private RegionUrlMapPathMatcherPathRuleRouteActionTimeout() {}
     /**
      * @return Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations
      * less than one second are represented with a 0 `seconds` field and a positive
@@ -59,30 +52,32 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionTimeout {
     public static Builder builder(RegionUrlMapPathMatcherPathRuleRouteActionTimeout defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer nanos;
         private String seconds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionUrlMapPathMatcherPathRuleRouteActionTimeout defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.nanos = defaults.nanos;
     	      this.seconds = defaults.seconds;
         }
 
+        @CustomType.Setter
         public Builder nanos(@Nullable Integer nanos) {
             this.nanos = nanos;
             return this;
         }
+        @CustomType.Setter
         public Builder seconds(String seconds) {
             this.seconds = Objects.requireNonNull(seconds);
             return this;
-        }        public RegionUrlMapPathMatcherPathRuleRouteActionTimeout build() {
-            return new RegionUrlMapPathMatcherPathRuleRouteActionTimeout(nanos, seconds);
+        }
+        public RegionUrlMapPathMatcherPathRuleRouteActionTimeout build() {
+            final var o = new RegionUrlMapPathMatcherPathRuleRouteActionTimeout();
+            o.nanos = nanos;
+            o.seconds = seconds;
+            return o;
         }
     }
 }

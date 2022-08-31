@@ -16,13 +16,9 @@ public final class CxPageFormParameterFillBehavior {
      * Structure is documented below.
      * 
      */
-    private final @Nullable CxPageFormParameterFillBehaviorInitialPromptFulfillment initialPromptFulfillment;
+    private @Nullable CxPageFormParameterFillBehaviorInitialPromptFulfillment initialPromptFulfillment;
 
-    @CustomType.Constructor
-    private CxPageFormParameterFillBehavior(@CustomType.Parameter("initialPromptFulfillment") @Nullable CxPageFormParameterFillBehaviorInitialPromptFulfillment initialPromptFulfillment) {
-        this.initialPromptFulfillment = initialPromptFulfillment;
-    }
-
+    private CxPageFormParameterFillBehavior() {}
     /**
      * @return The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
      * Structure is documented below.
@@ -39,24 +35,24 @@ public final class CxPageFormParameterFillBehavior {
     public static Builder builder(CxPageFormParameterFillBehavior defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable CxPageFormParameterFillBehaviorInitialPromptFulfillment initialPromptFulfillment;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CxPageFormParameterFillBehavior defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.initialPromptFulfillment = defaults.initialPromptFulfillment;
         }
 
+        @CustomType.Setter
         public Builder initialPromptFulfillment(@Nullable CxPageFormParameterFillBehaviorInitialPromptFulfillment initialPromptFulfillment) {
             this.initialPromptFulfillment = initialPromptFulfillment;
             return this;
-        }        public CxPageFormParameterFillBehavior build() {
-            return new CxPageFormParameterFillBehavior(initialPromptFulfillment);
+        }
+        public CxPageFormParameterFillBehavior build() {
+            final var o = new CxPageFormParameterFillBehavior();
+            o.initialPromptFulfillment = initialPromptFulfillment;
+            return o;
         }
     }
 }

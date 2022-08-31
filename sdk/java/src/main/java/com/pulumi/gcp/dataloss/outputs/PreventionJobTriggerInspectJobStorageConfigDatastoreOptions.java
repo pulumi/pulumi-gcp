@@ -15,23 +15,16 @@ public final class PreventionJobTriggerInspectJobStorageConfigDatastoreOptions {
      * Structure is documented below.
      * 
      */
-    private final PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind kind;
+    private PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind kind;
     /**
      * @return Datastore partition ID. A partition ID identifies a grouping of entities. The grouping
      * is always by project and namespace, however the namespace ID may be empty.
      * Structure is documented below.
      * 
      */
-    private final PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId partitionId;
+    private PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId partitionId;
 
-    @CustomType.Constructor
-    private PreventionJobTriggerInspectJobStorageConfigDatastoreOptions(
-        @CustomType.Parameter("kind") PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind kind,
-        @CustomType.Parameter("partitionId") PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId partitionId) {
-        this.kind = kind;
-        this.partitionId = partitionId;
-    }
-
+    private PreventionJobTriggerInspectJobStorageConfigDatastoreOptions() {}
     /**
      * @return A representation of a Datastore kind.
      * Structure is documented below.
@@ -57,30 +50,32 @@ public final class PreventionJobTriggerInspectJobStorageConfigDatastoreOptions {
     public static Builder builder(PreventionJobTriggerInspectJobStorageConfigDatastoreOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind kind;
         private PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId partitionId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionJobTriggerInspectJobStorageConfigDatastoreOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kind = defaults.kind;
     	      this.partitionId = defaults.partitionId;
         }
 
+        @CustomType.Setter
         public Builder kind(PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind kind) {
             this.kind = Objects.requireNonNull(kind);
             return this;
         }
+        @CustomType.Setter
         public Builder partitionId(PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId partitionId) {
             this.partitionId = Objects.requireNonNull(partitionId);
             return this;
-        }        public PreventionJobTriggerInspectJobStorageConfigDatastoreOptions build() {
-            return new PreventionJobTriggerInspectJobStorageConfigDatastoreOptions(kind, partitionId);
+        }
+        public PreventionJobTriggerInspectJobStorageConfigDatastoreOptions build() {
+            final var o = new PreventionJobTriggerInspectJobStorageConfigDatastoreOptions();
+            o.kind = kind;
+            o.partitionId = partitionId;
+            return o;
         }
     }
 }

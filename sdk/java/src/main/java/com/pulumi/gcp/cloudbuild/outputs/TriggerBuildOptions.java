@@ -23,13 +23,13 @@ public final class TriggerBuildOptions {
      * is 1000GB; builds that request more than the maximum are rejected with an error.
      * 
      */
-    private final @Nullable Integer diskSizeGb;
+    private @Nullable Integer diskSizeGb;
     /**
      * @return Option to specify whether or not to apply bash style string operations to the substitutions.
      * NOTE this is always enabled for triggered builds and cannot be overridden in the build configuration file.
      * 
      */
-    private final @Nullable Boolean dynamicSubstitutions;
+    private @Nullable Boolean dynamicSubstitutions;
     /**
      * @return A list of global environment variable definitions that will exist for all build steps
      * in this build. If a variable is defined in both globally and in a build step,
@@ -37,44 +37,44 @@ public final class TriggerBuildOptions {
      * The elements are of the form &#34;KEY=VALUE&#34; for the environment variable &#34;KEY&#34; being given the value &#34;VALUE&#34;.
      * 
      */
-    private final @Nullable List<String> envs;
+    private @Nullable List<String> envs;
     /**
      * @return Option to define build log streaming behavior to Google Cloud Storage.
      * Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
      * 
      */
-    private final @Nullable String logStreamingOption;
+    private @Nullable String logStreamingOption;
     /**
      * @return Option to specify the logging mode, which determines if and where build logs are stored.
      * Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, and `NONE`.
      * 
      */
-    private final @Nullable String logging;
+    private @Nullable String logging;
     /**
      * @return Compute Engine machine type on which to run the build.
      * Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, and `E2_HIGHCPU_32`.
      * 
      */
-    private final @Nullable String machineType;
+    private @Nullable String machineType;
     /**
      * @return Requested verifiability options.
      * Possible values are `NOT_VERIFIED` and `VERIFIED`.
      * 
      */
-    private final @Nullable String requestedVerifyOption;
+    private @Nullable String requestedVerifyOption;
     /**
      * @return A list of global environment variables, which are encrypted using a Cloud Key Management
      * Service crypto key. These values must be specified in the build&#39;s Secret. These variables
      * will be available to all build steps in this build.
      * 
      */
-    private final @Nullable List<String> secretEnvs;
+    private @Nullable List<String> secretEnvs;
     /**
      * @return Requested hash for SourceProvenance.
      * Each value may be one of `NONE`, `SHA256`, and `MD5`.
      * 
      */
-    private final @Nullable List<String> sourceProvenanceHashes;
+    private @Nullable List<String> sourceProvenanceHashes;
     /**
      * @return Option to specify behavior when there is an error in the substitution checks.
      * NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
@@ -82,7 +82,7 @@ public final class TriggerBuildOptions {
      * Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
      * 
      */
-    private final @Nullable String substitutionOption;
+    private @Nullable String substitutionOption;
     /**
      * @return Global list of volumes to mount for ALL build steps
      * Each volume is created as an empty volume prior to starting the build process.
@@ -93,42 +93,15 @@ public final class TriggerBuildOptions {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<TriggerBuildOptionsVolume> volumes;
+    private @Nullable List<TriggerBuildOptionsVolume> volumes;
     /**
      * @return Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
      * This field is experimental.
      * 
      */
-    private final @Nullable String workerPool;
+    private @Nullable String workerPool;
 
-    @CustomType.Constructor
-    private TriggerBuildOptions(
-        @CustomType.Parameter("diskSizeGb") @Nullable Integer diskSizeGb,
-        @CustomType.Parameter("dynamicSubstitutions") @Nullable Boolean dynamicSubstitutions,
-        @CustomType.Parameter("envs") @Nullable List<String> envs,
-        @CustomType.Parameter("logStreamingOption") @Nullable String logStreamingOption,
-        @CustomType.Parameter("logging") @Nullable String logging,
-        @CustomType.Parameter("machineType") @Nullable String machineType,
-        @CustomType.Parameter("requestedVerifyOption") @Nullable String requestedVerifyOption,
-        @CustomType.Parameter("secretEnvs") @Nullable List<String> secretEnvs,
-        @CustomType.Parameter("sourceProvenanceHashes") @Nullable List<String> sourceProvenanceHashes,
-        @CustomType.Parameter("substitutionOption") @Nullable String substitutionOption,
-        @CustomType.Parameter("volumes") @Nullable List<TriggerBuildOptionsVolume> volumes,
-        @CustomType.Parameter("workerPool") @Nullable String workerPool) {
-        this.diskSizeGb = diskSizeGb;
-        this.dynamicSubstitutions = dynamicSubstitutions;
-        this.envs = envs;
-        this.logStreamingOption = logStreamingOption;
-        this.logging = logging;
-        this.machineType = machineType;
-        this.requestedVerifyOption = requestedVerifyOption;
-        this.secretEnvs = secretEnvs;
-        this.sourceProvenanceHashes = sourceProvenanceHashes;
-        this.substitutionOption = substitutionOption;
-        this.volumes = volumes;
-        this.workerPool = workerPool;
-    }
-
+    private TriggerBuildOptions() {}
     /**
      * @return Requested disk size for the VM that runs the build. Note that this is NOT &#34;disk free&#34;;
      * some of the space will be used by the operating system and build utilities.
@@ -246,7 +219,7 @@ public final class TriggerBuildOptions {
     public static Builder builder(TriggerBuildOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer diskSizeGb;
         private @Nullable Boolean dynamicSubstitutions;
@@ -260,11 +233,7 @@ public final class TriggerBuildOptions {
         private @Nullable String substitutionOption;
         private @Nullable List<TriggerBuildOptionsVolume> volumes;
         private @Nullable String workerPool;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerBuildOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.diskSizeGb = defaults.diskSizeGb;
@@ -281,14 +250,17 @@ public final class TriggerBuildOptions {
     	      this.workerPool = defaults.workerPool;
         }
 
+        @CustomType.Setter
         public Builder diskSizeGb(@Nullable Integer diskSizeGb) {
             this.diskSizeGb = diskSizeGb;
             return this;
         }
+        @CustomType.Setter
         public Builder dynamicSubstitutions(@Nullable Boolean dynamicSubstitutions) {
             this.dynamicSubstitutions = dynamicSubstitutions;
             return this;
         }
+        @CustomType.Setter
         public Builder envs(@Nullable List<String> envs) {
             this.envs = envs;
             return this;
@@ -296,22 +268,27 @@ public final class TriggerBuildOptions {
         public Builder envs(String... envs) {
             return envs(List.of(envs));
         }
+        @CustomType.Setter
         public Builder logStreamingOption(@Nullable String logStreamingOption) {
             this.logStreamingOption = logStreamingOption;
             return this;
         }
+        @CustomType.Setter
         public Builder logging(@Nullable String logging) {
             this.logging = logging;
             return this;
         }
+        @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
             this.machineType = machineType;
             return this;
         }
+        @CustomType.Setter
         public Builder requestedVerifyOption(@Nullable String requestedVerifyOption) {
             this.requestedVerifyOption = requestedVerifyOption;
             return this;
         }
+        @CustomType.Setter
         public Builder secretEnvs(@Nullable List<String> secretEnvs) {
             this.secretEnvs = secretEnvs;
             return this;
@@ -319,6 +296,7 @@ public final class TriggerBuildOptions {
         public Builder secretEnvs(String... secretEnvs) {
             return secretEnvs(List.of(secretEnvs));
         }
+        @CustomType.Setter
         public Builder sourceProvenanceHashes(@Nullable List<String> sourceProvenanceHashes) {
             this.sourceProvenanceHashes = sourceProvenanceHashes;
             return this;
@@ -326,10 +304,12 @@ public final class TriggerBuildOptions {
         public Builder sourceProvenanceHashes(String... sourceProvenanceHashes) {
             return sourceProvenanceHashes(List.of(sourceProvenanceHashes));
         }
+        @CustomType.Setter
         public Builder substitutionOption(@Nullable String substitutionOption) {
             this.substitutionOption = substitutionOption;
             return this;
         }
+        @CustomType.Setter
         public Builder volumes(@Nullable List<TriggerBuildOptionsVolume> volumes) {
             this.volumes = volumes;
             return this;
@@ -337,11 +317,26 @@ public final class TriggerBuildOptions {
         public Builder volumes(TriggerBuildOptionsVolume... volumes) {
             return volumes(List.of(volumes));
         }
+        @CustomType.Setter
         public Builder workerPool(@Nullable String workerPool) {
             this.workerPool = workerPool;
             return this;
-        }        public TriggerBuildOptions build() {
-            return new TriggerBuildOptions(diskSizeGb, dynamicSubstitutions, envs, logStreamingOption, logging, machineType, requestedVerifyOption, secretEnvs, sourceProvenanceHashes, substitutionOption, volumes, workerPool);
+        }
+        public TriggerBuildOptions build() {
+            final var o = new TriggerBuildOptions();
+            o.diskSizeGb = diskSizeGb;
+            o.dynamicSubstitutions = dynamicSubstitutions;
+            o.envs = envs;
+            o.logStreamingOption = logStreamingOption;
+            o.logging = logging;
+            o.machineType = machineType;
+            o.requestedVerifyOption = requestedVerifyOption;
+            o.secretEnvs = secretEnvs;
+            o.sourceProvenanceHashes = sourceProvenanceHashes;
+            o.substitutionOption = substitutionOption;
+            o.volumes = volumes;
+            o.workerPool = workerPool;
+            return o;
         }
     }
 }

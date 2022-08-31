@@ -16,29 +16,20 @@ public final class DatabaseInstanceSettingsLocationPreference {
      * in. Must be in the same region as this instance.
      * 
      */
-    private final @Nullable String followGaeApplication;
+    private @Nullable String followGaeApplication;
     /**
      * @return The preferred Compute Engine zone for the secondary/failover.
      * 
      */
-    private final @Nullable String secondaryZone;
+    private @Nullable String secondaryZone;
     /**
      * @return The preferred compute engine
      * [zone](https://cloud.google.com/compute/docs/zones?hl=en).
      * 
      */
-    private final @Nullable String zone;
+    private @Nullable String zone;
 
-    @CustomType.Constructor
-    private DatabaseInstanceSettingsLocationPreference(
-        @CustomType.Parameter("followGaeApplication") @Nullable String followGaeApplication,
-        @CustomType.Parameter("secondaryZone") @Nullable String secondaryZone,
-        @CustomType.Parameter("zone") @Nullable String zone) {
-        this.followGaeApplication = followGaeApplication;
-        this.secondaryZone = secondaryZone;
-        this.zone = zone;
-    }
-
+    private DatabaseInstanceSettingsLocationPreference() {}
     /**
      * @return A GAE application whose zone to remain
      * in. Must be in the same region as this instance.
@@ -70,16 +61,12 @@ public final class DatabaseInstanceSettingsLocationPreference {
     public static Builder builder(DatabaseInstanceSettingsLocationPreference defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String followGaeApplication;
         private @Nullable String secondaryZone;
         private @Nullable String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatabaseInstanceSettingsLocationPreference defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.followGaeApplication = defaults.followGaeApplication;
@@ -87,19 +74,27 @@ public final class DatabaseInstanceSettingsLocationPreference {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder followGaeApplication(@Nullable String followGaeApplication) {
             this.followGaeApplication = followGaeApplication;
             return this;
         }
+        @CustomType.Setter
         public Builder secondaryZone(@Nullable String secondaryZone) {
             this.secondaryZone = secondaryZone;
             return this;
         }
+        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
             this.zone = zone;
             return this;
-        }        public DatabaseInstanceSettingsLocationPreference build() {
-            return new DatabaseInstanceSettingsLocationPreference(followGaeApplication, secondaryZone, zone);
+        }
+        public DatabaseInstanceSettingsLocationPreference build() {
+            final var o = new DatabaseInstanceSettingsLocationPreference();
+            o.followGaeApplication = followGaeApplication;
+            o.secondaryZone = secondaryZone;
+            o.zone = zone;
+            return o;
         }
     }
 }

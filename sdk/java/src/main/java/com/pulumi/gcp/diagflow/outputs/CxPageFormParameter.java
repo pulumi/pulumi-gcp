@@ -17,53 +17,38 @@ public final class CxPageFormParameter {
      * @return The human-readable name of the parameter, unique within the form.
      * 
      */
-    private final @Nullable String displayName;
+    private @Nullable String displayName;
     /**
      * @return The entity type of the parameter.
      * Format: projects/-/locations/-/agents/-/entityTypes/&lt;System Entity Type ID&gt; for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/entityTypes/&lt;Entity Type ID&gt; for developer entity types.
      * 
      */
-    private final @Nullable String entityType;
+    private @Nullable String entityType;
     /**
      * @return Defines fill behavior for the parameter.
      * Structure is documented below.
      * 
      */
-    private final @Nullable CxPageFormParameterFillBehavior fillBehavior;
+    private @Nullable CxPageFormParameterFillBehavior fillBehavior;
     /**
      * @return Indicates whether the parameter represents a list of values.
      * 
      */
-    private final @Nullable Boolean isList;
+    private @Nullable Boolean isList;
     /**
      * @return Indicates whether the parameter content should be redacted in log.
      * If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
      * 
      */
-    private final @Nullable Boolean redact;
+    private @Nullable Boolean redact;
     /**
      * @return Indicates whether the parameter is required. Optional parameters will not trigger prompts; however, they are filled if the user specifies them.
      * Required parameters must be filled before form filling concludes.
      * 
      */
-    private final @Nullable Boolean required;
+    private @Nullable Boolean required;
 
-    @CustomType.Constructor
-    private CxPageFormParameter(
-        @CustomType.Parameter("displayName") @Nullable String displayName,
-        @CustomType.Parameter("entityType") @Nullable String entityType,
-        @CustomType.Parameter("fillBehavior") @Nullable CxPageFormParameterFillBehavior fillBehavior,
-        @CustomType.Parameter("isList") @Nullable Boolean isList,
-        @CustomType.Parameter("redact") @Nullable Boolean redact,
-        @CustomType.Parameter("required") @Nullable Boolean required) {
-        this.displayName = displayName;
-        this.entityType = entityType;
-        this.fillBehavior = fillBehavior;
-        this.isList = isList;
-        this.redact = redact;
-        this.required = required;
-    }
-
+    private CxPageFormParameter() {}
     /**
      * @return The human-readable name of the parameter, unique within the form.
      * 
@@ -118,7 +103,7 @@ public final class CxPageFormParameter {
     public static Builder builder(CxPageFormParameter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String displayName;
         private @Nullable String entityType;
@@ -126,11 +111,7 @@ public final class CxPageFormParameter {
         private @Nullable Boolean isList;
         private @Nullable Boolean redact;
         private @Nullable Boolean required;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CxPageFormParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.displayName = defaults.displayName;
@@ -141,31 +122,45 @@ public final class CxPageFormParameter {
     	      this.required = defaults.required;
         }
 
+        @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
             this.displayName = displayName;
             return this;
         }
+        @CustomType.Setter
         public Builder entityType(@Nullable String entityType) {
             this.entityType = entityType;
             return this;
         }
+        @CustomType.Setter
         public Builder fillBehavior(@Nullable CxPageFormParameterFillBehavior fillBehavior) {
             this.fillBehavior = fillBehavior;
             return this;
         }
+        @CustomType.Setter
         public Builder isList(@Nullable Boolean isList) {
             this.isList = isList;
             return this;
         }
+        @CustomType.Setter
         public Builder redact(@Nullable Boolean redact) {
             this.redact = redact;
             return this;
         }
+        @CustomType.Setter
         public Builder required(@Nullable Boolean required) {
             this.required = required;
             return this;
-        }        public CxPageFormParameter build() {
-            return new CxPageFormParameter(displayName, entityType, fillBehavior, isList, redact, required);
+        }
+        public CxPageFormParameter build() {
+            final var o = new CxPageFormParameter();
+            o.displayName = displayName;
+            o.entityType = entityType;
+            o.fillBehavior = fillBehavior;
+            o.isList = isList;
+            o.redact = redact;
+            o.required = required;
+            return o;
         }
     }
 }

@@ -18,23 +18,16 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
      * Structure is documented below.
      * 
      */
-    private final @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort abort;
+    private @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort abort;
     /**
      * @return The specification for how client requests are delayed as part of fault
      * injection, before being sent to a backend service.
      * Structure is documented below.
      * 
      */
-    private final @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay delay;
+    private @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay delay;
 
-    @CustomType.Constructor
-    private RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy(
-        @CustomType.Parameter("abort") @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort abort,
-        @CustomType.Parameter("delay") @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay delay) {
-        this.abort = abort;
-        this.delay = delay;
-    }
-
+    private RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy() {}
     /**
      * @return The specification for how client requests are aborted as part of fault
      * injection.
@@ -61,30 +54,32 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
     public static Builder builder(RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort abort;
         private @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay delay;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.abort = defaults.abort;
     	      this.delay = defaults.delay;
         }
 
+        @CustomType.Setter
         public Builder abort(@Nullable RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort abort) {
             this.abort = abort;
             return this;
         }
+        @CustomType.Setter
         public Builder delay(@Nullable RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay delay) {
             this.delay = delay;
             return this;
-        }        public RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy build() {
-            return new RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy(abort, delay);
+        }
+        public RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy build() {
+            final var o = new RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy();
+            o.abort = abort;
+            o.delay = delay;
+            return o;
         }
     }
 }

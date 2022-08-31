@@ -15,29 +15,20 @@ public final class NodeTemplateNodeTypeFlexibility {
      * @return Number of virtual CPUs to use.
      * 
      */
-    private final @Nullable String cpus;
+    private @Nullable String cpus;
     /**
      * @return -
      * Use local SSD
      * 
      */
-    private final @Nullable String localSsd;
+    private @Nullable String localSsd;
     /**
      * @return Physical memory available to the node, defined in MB.
      * 
      */
-    private final @Nullable String memory;
+    private @Nullable String memory;
 
-    @CustomType.Constructor
-    private NodeTemplateNodeTypeFlexibility(
-        @CustomType.Parameter("cpus") @Nullable String cpus,
-        @CustomType.Parameter("localSsd") @Nullable String localSsd,
-        @CustomType.Parameter("memory") @Nullable String memory) {
-        this.cpus = cpus;
-        this.localSsd = localSsd;
-        this.memory = memory;
-    }
-
+    private NodeTemplateNodeTypeFlexibility() {}
     /**
      * @return Number of virtual CPUs to use.
      * 
@@ -68,16 +59,12 @@ public final class NodeTemplateNodeTypeFlexibility {
     public static Builder builder(NodeTemplateNodeTypeFlexibility defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cpus;
         private @Nullable String localSsd;
         private @Nullable String memory;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodeTemplateNodeTypeFlexibility defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpus = defaults.cpus;
@@ -85,19 +72,27 @@ public final class NodeTemplateNodeTypeFlexibility {
     	      this.memory = defaults.memory;
         }
 
+        @CustomType.Setter
         public Builder cpus(@Nullable String cpus) {
             this.cpus = cpus;
             return this;
         }
+        @CustomType.Setter
         public Builder localSsd(@Nullable String localSsd) {
             this.localSsd = localSsd;
             return this;
         }
+        @CustomType.Setter
         public Builder memory(@Nullable String memory) {
             this.memory = memory;
             return this;
-        }        public NodeTemplateNodeTypeFlexibility build() {
-            return new NodeTemplateNodeTypeFlexibility(cpus, localSsd, memory);
+        }
+        public NodeTemplateNodeTypeFlexibility build() {
+            final var o = new NodeTemplateNodeTypeFlexibility();
+            o.cpus = cpus;
+            o.localSsd = localSsd;
+            o.memory = memory;
+            return o;
         }
     }
 }

@@ -19,7 +19,7 @@ public final class BudgetAmount {
      * use the `specified_amount` block.
      * 
      */
-    private final @Nullable Boolean lastPeriodAmount;
+    private @Nullable Boolean lastPeriodAmount;
     /**
      * @return A specified amount to use as the budget. currencyCode is
      * optional. If specified, it must match the currency of the
@@ -27,16 +27,9 @@ public final class BudgetAmount {
      * Structure is documented below.
      * 
      */
-    private final @Nullable BudgetAmountSpecifiedAmount specifiedAmount;
+    private @Nullable BudgetAmountSpecifiedAmount specifiedAmount;
 
-    @CustomType.Constructor
-    private BudgetAmount(
-        @CustomType.Parameter("lastPeriodAmount") @Nullable Boolean lastPeriodAmount,
-        @CustomType.Parameter("specifiedAmount") @Nullable BudgetAmountSpecifiedAmount specifiedAmount) {
-        this.lastPeriodAmount = lastPeriodAmount;
-        this.specifiedAmount = specifiedAmount;
-    }
-
+    private BudgetAmount() {}
     /**
      * @return Configures a budget amount that is automatically set to 100% of
      * last period&#39;s spend.
@@ -65,30 +58,32 @@ public final class BudgetAmount {
     public static Builder builder(BudgetAmount defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean lastPeriodAmount;
         private @Nullable BudgetAmountSpecifiedAmount specifiedAmount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BudgetAmount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.lastPeriodAmount = defaults.lastPeriodAmount;
     	      this.specifiedAmount = defaults.specifiedAmount;
         }
 
+        @CustomType.Setter
         public Builder lastPeriodAmount(@Nullable Boolean lastPeriodAmount) {
             this.lastPeriodAmount = lastPeriodAmount;
             return this;
         }
+        @CustomType.Setter
         public Builder specifiedAmount(@Nullable BudgetAmountSpecifiedAmount specifiedAmount) {
             this.specifiedAmount = specifiedAmount;
             return this;
-        }        public BudgetAmount build() {
-            return new BudgetAmount(lastPeriodAmount, specifiedAmount);
+        }
+        public BudgetAmount build() {
+            final var o = new BudgetAmount();
+            o.lastPeriodAmount = lastPeriodAmount;
+            o.specifiedAmount = specifiedAmount;
+            return o;
         }
     }
 }

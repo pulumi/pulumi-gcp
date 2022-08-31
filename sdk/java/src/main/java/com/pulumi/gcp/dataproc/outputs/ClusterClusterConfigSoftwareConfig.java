@@ -22,7 +22,7 @@ public final class ClusterClusterConfigSoftwareConfig {
      * [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
      * 
      */
-    private final @Nullable String imageVersion;
+    private @Nullable String imageVersion;
     /**
      * @return The set of optional components to activate on the cluster.
      * Accepted values are:
@@ -39,7 +39,7 @@ public final class ClusterClusterConfigSoftwareConfig {
      * * ZOOKEEPER
      * 
      */
-    private final @Nullable List<String> optionalComponents;
+    private @Nullable List<String> optionalComponents;
     /**
      * @return A list of override and additional properties (key/value pairs)
      * used to modify various aspects of the common configuration files used when creating
@@ -47,26 +47,15 @@ public final class ClusterClusterConfigSoftwareConfig {
      * [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties)
      * 
      */
-    private final @Nullable Map<String,String> overrideProperties;
+    private @Nullable Map<String,String> overrideProperties;
     /**
      * @return The properties to set on daemon config files. Property keys are specified in prefix:property format,
      * for example spark:spark.kubernetes.container.image.
      * 
      */
-    private final @Nullable Map<String,Object> properties;
+    private @Nullable Map<String,Object> properties;
 
-    @CustomType.Constructor
-    private ClusterClusterConfigSoftwareConfig(
-        @CustomType.Parameter("imageVersion") @Nullable String imageVersion,
-        @CustomType.Parameter("optionalComponents") @Nullable List<String> optionalComponents,
-        @CustomType.Parameter("overrideProperties") @Nullable Map<String,String> overrideProperties,
-        @CustomType.Parameter("properties") @Nullable Map<String,Object> properties) {
-        this.imageVersion = imageVersion;
-        this.optionalComponents = optionalComponents;
-        this.overrideProperties = overrideProperties;
-        this.properties = properties;
-    }
-
+    private ClusterClusterConfigSoftwareConfig() {}
     /**
      * @return The Cloud Dataproc image version to use
      * for the cluster - this controls the sets of software versions
@@ -123,17 +112,13 @@ public final class ClusterClusterConfigSoftwareConfig {
     public static Builder builder(ClusterClusterConfigSoftwareConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String imageVersion;
         private @Nullable List<String> optionalComponents;
         private @Nullable Map<String,String> overrideProperties;
         private @Nullable Map<String,Object> properties;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterClusterConfigSoftwareConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.imageVersion = defaults.imageVersion;
@@ -142,10 +127,12 @@ public final class ClusterClusterConfigSoftwareConfig {
     	      this.properties = defaults.properties;
         }
 
+        @CustomType.Setter
         public Builder imageVersion(@Nullable String imageVersion) {
             this.imageVersion = imageVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder optionalComponents(@Nullable List<String> optionalComponents) {
             this.optionalComponents = optionalComponents;
             return this;
@@ -153,15 +140,23 @@ public final class ClusterClusterConfigSoftwareConfig {
         public Builder optionalComponents(String... optionalComponents) {
             return optionalComponents(List.of(optionalComponents));
         }
+        @CustomType.Setter
         public Builder overrideProperties(@Nullable Map<String,String> overrideProperties) {
             this.overrideProperties = overrideProperties;
             return this;
         }
+        @CustomType.Setter
         public Builder properties(@Nullable Map<String,Object> properties) {
             this.properties = properties;
             return this;
-        }        public ClusterClusterConfigSoftwareConfig build() {
-            return new ClusterClusterConfigSoftwareConfig(imageVersion, optionalComponents, overrideProperties, properties);
+        }
+        public ClusterClusterConfigSoftwareConfig build() {
+            final var o = new ClusterClusterConfigSoftwareConfig();
+            o.imageVersion = imageVersion;
+            o.optionalComponents = optionalComponents;
+            o.overrideProperties = overrideProperties;
+            o.properties = properties;
+            return o;
         }
     }
 }

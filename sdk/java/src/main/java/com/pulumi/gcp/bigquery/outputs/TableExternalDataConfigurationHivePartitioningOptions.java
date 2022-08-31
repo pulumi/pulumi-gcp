@@ -23,14 +23,14 @@ public final class TableExternalDataConfigurationHivePartitioningOptions {
      * * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
      * 
      */
-    private final @Nullable String mode;
+    private @Nullable String mode;
     /**
      * @return If set to true, queries over this table
      * require a partition filter that can be used for partition elimination to be
      * specified.
      * 
      */
-    private final @Nullable Boolean requirePartitionFilter;
+    private @Nullable Boolean requirePartitionFilter;
     /**
      * @return When hive partition detection is requested,
      * a common for all source uris must be required. The prefix must end immediately
@@ -42,18 +42,9 @@ public final class TableExternalDataConfigurationHivePartitioningOptions {
      * Note that when `mode` is set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
      * 
      */
-    private final @Nullable String sourceUriPrefix;
+    private @Nullable String sourceUriPrefix;
 
-    @CustomType.Constructor
-    private TableExternalDataConfigurationHivePartitioningOptions(
-        @CustomType.Parameter("mode") @Nullable String mode,
-        @CustomType.Parameter("requirePartitionFilter") @Nullable Boolean requirePartitionFilter,
-        @CustomType.Parameter("sourceUriPrefix") @Nullable String sourceUriPrefix) {
-        this.mode = mode;
-        this.requirePartitionFilter = requirePartitionFilter;
-        this.sourceUriPrefix = sourceUriPrefix;
-    }
-
+    private TableExternalDataConfigurationHivePartitioningOptions() {}
     /**
      * @return When set, what mode of hive partitioning to use when
      * reading data. The following modes are supported.
@@ -99,16 +90,12 @@ public final class TableExternalDataConfigurationHivePartitioningOptions {
     public static Builder builder(TableExternalDataConfigurationHivePartitioningOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String mode;
         private @Nullable Boolean requirePartitionFilter;
         private @Nullable String sourceUriPrefix;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TableExternalDataConfigurationHivePartitioningOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mode = defaults.mode;
@@ -116,19 +103,27 @@ public final class TableExternalDataConfigurationHivePartitioningOptions {
     	      this.sourceUriPrefix = defaults.sourceUriPrefix;
         }
 
+        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
             this.mode = mode;
             return this;
         }
+        @CustomType.Setter
         public Builder requirePartitionFilter(@Nullable Boolean requirePartitionFilter) {
             this.requirePartitionFilter = requirePartitionFilter;
             return this;
         }
+        @CustomType.Setter
         public Builder sourceUriPrefix(@Nullable String sourceUriPrefix) {
             this.sourceUriPrefix = sourceUriPrefix;
             return this;
-        }        public TableExternalDataConfigurationHivePartitioningOptions build() {
-            return new TableExternalDataConfigurationHivePartitioningOptions(mode, requirePartitionFilter, sourceUriPrefix);
+        }
+        public TableExternalDataConfigurationHivePartitioningOptions build() {
+            final var o = new TableExternalDataConfigurationHivePartitioningOptions();
+            o.mode = mode;
+            o.requirePartitionFilter = requirePartitionFilter;
+            o.sourceUriPrefix = sourceUriPrefix;
+            return o;
         }
     }
 }

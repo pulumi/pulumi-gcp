@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceGroupManagerStatusAllInstancesConfig {
-    private final @Nullable Boolean effective;
+    private @Nullable Boolean effective;
 
-    @CustomType.Constructor
-    private InstanceGroupManagerStatusAllInstancesConfig(@CustomType.Parameter("effective") @Nullable Boolean effective) {
-        this.effective = effective;
-    }
-
+    private InstanceGroupManagerStatusAllInstancesConfig() {}
     public Optional<Boolean> effective() {
         return Optional.ofNullable(this.effective);
     }
@@ -29,24 +25,24 @@ public final class InstanceGroupManagerStatusAllInstancesConfig {
     public static Builder builder(InstanceGroupManagerStatusAllInstancesConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean effective;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceGroupManagerStatusAllInstancesConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.effective = defaults.effective;
         }
 
+        @CustomType.Setter
         public Builder effective(@Nullable Boolean effective) {
             this.effective = effective;
             return this;
-        }        public InstanceGroupManagerStatusAllInstancesConfig build() {
-            return new InstanceGroupManagerStatusAllInstancesConfig(effective);
+        }
+        public InstanceGroupManagerStatusAllInstancesConfig build() {
+            final var o = new InstanceGroupManagerStatusAllInstancesConfig();
+            o.effective = effective;
+            return o;
         }
     }
 }

@@ -15,22 +15,15 @@ public final class DeploymentTargetImport {
      * @return The full contents of the template that you want to import.
      * 
      */
-    private final @Nullable String content;
+    private @Nullable String content;
     /**
      * @return The name of the template to import, as declared in the YAML
      * configuration.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
 
-    @CustomType.Constructor
-    private DeploymentTargetImport(
-        @CustomType.Parameter("content") @Nullable String content,
-        @CustomType.Parameter("name") @Nullable String name) {
-        this.content = content;
-        this.name = name;
-    }
-
+    private DeploymentTargetImport() {}
     /**
      * @return The full contents of the template that you want to import.
      * 
@@ -54,30 +47,32 @@ public final class DeploymentTargetImport {
     public static Builder builder(DeploymentTargetImport defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String content;
         private @Nullable String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DeploymentTargetImport defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder content(@Nullable String content) {
             this.content = content;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
-        }        public DeploymentTargetImport build() {
-            return new DeploymentTargetImport(content, name);
+        }
+        public DeploymentTargetImport build() {
+            final var o = new DeploymentTargetImport();
+            o.content = content;
+            o.name = name;
+            return o;
         }
     }
 }

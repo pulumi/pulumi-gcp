@@ -13,13 +13,9 @@ public final class ClusterAuthenticatorGroupsConfig {
      * @return The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups@yourdomain.com`.
      * 
      */
-    private final String securityGroup;
+    private String securityGroup;
 
-    @CustomType.Constructor
-    private ClusterAuthenticatorGroupsConfig(@CustomType.Parameter("securityGroup") String securityGroup) {
-        this.securityGroup = securityGroup;
-    }
-
+    private ClusterAuthenticatorGroupsConfig() {}
     /**
      * @return The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format `gke-security-groups@yourdomain.com`.
      * 
@@ -35,24 +31,24 @@ public final class ClusterAuthenticatorGroupsConfig {
     public static Builder builder(ClusterAuthenticatorGroupsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String securityGroup;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterAuthenticatorGroupsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.securityGroup = defaults.securityGroup;
         }
 
+        @CustomType.Setter
         public Builder securityGroup(String securityGroup) {
             this.securityGroup = Objects.requireNonNull(securityGroup);
             return this;
-        }        public ClusterAuthenticatorGroupsConfig build() {
-            return new ClusterAuthenticatorGroupsConfig(securityGroup);
+        }
+        public ClusterAuthenticatorGroupsConfig build() {
+            final var o = new ClusterAuthenticatorGroupsConfig();
+            o.securityGroup = securityGroup;
+            return o;
         }
     }
 }

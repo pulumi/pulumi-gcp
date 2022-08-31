@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendBucketCdnPolicyBypassCacheOnRequestHeader {
-    private final String headerName;
+    private String headerName;
 
-    @CustomType.Constructor
-    private GetBackendBucketCdnPolicyBypassCacheOnRequestHeader(@CustomType.Parameter("headerName") String headerName) {
-        this.headerName = headerName;
-    }
-
+    private GetBackendBucketCdnPolicyBypassCacheOnRequestHeader() {}
     public String headerName() {
         return this.headerName;
     }
@@ -27,24 +23,24 @@ public final class GetBackendBucketCdnPolicyBypassCacheOnRequestHeader {
     public static Builder builder(GetBackendBucketCdnPolicyBypassCacheOnRequestHeader defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String headerName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackendBucketCdnPolicyBypassCacheOnRequestHeader defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.headerName = defaults.headerName;
         }
 
+        @CustomType.Setter
         public Builder headerName(String headerName) {
             this.headerName = Objects.requireNonNull(headerName);
             return this;
-        }        public GetBackendBucketCdnPolicyBypassCacheOnRequestHeader build() {
-            return new GetBackendBucketCdnPolicyBypassCacheOnRequestHeader(headerName);
+        }
+        public GetBackendBucketCdnPolicyBypassCacheOnRequestHeader build() {
+            final var o = new GetBackendBucketCdnPolicyBypassCacheOnRequestHeader();
+            o.headerName = headerName;
+            return o;
         }
     }
 }

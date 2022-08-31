@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertPolicyCreationRecord {
-    private final @Nullable String mutateTime;
-    private final @Nullable String mutatedBy;
+    private @Nullable String mutateTime;
+    private @Nullable String mutatedBy;
 
-    @CustomType.Constructor
-    private AlertPolicyCreationRecord(
-        @CustomType.Parameter("mutateTime") @Nullable String mutateTime,
-        @CustomType.Parameter("mutatedBy") @Nullable String mutatedBy) {
-        this.mutateTime = mutateTime;
-        this.mutatedBy = mutatedBy;
-    }
-
+    private AlertPolicyCreationRecord() {}
     public Optional<String> mutateTime() {
         return Optional.ofNullable(this.mutateTime);
     }
@@ -36,30 +29,32 @@ public final class AlertPolicyCreationRecord {
     public static Builder builder(AlertPolicyCreationRecord defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String mutateTime;
         private @Nullable String mutatedBy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AlertPolicyCreationRecord defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mutateTime = defaults.mutateTime;
     	      this.mutatedBy = defaults.mutatedBy;
         }
 
+        @CustomType.Setter
         public Builder mutateTime(@Nullable String mutateTime) {
             this.mutateTime = mutateTime;
             return this;
         }
+        @CustomType.Setter
         public Builder mutatedBy(@Nullable String mutatedBy) {
             this.mutatedBy = mutatedBy;
             return this;
-        }        public AlertPolicyCreationRecord build() {
-            return new AlertPolicyCreationRecord(mutateTime, mutatedBy);
+        }
+        public AlertPolicyCreationRecord build() {
+            final var o = new AlertPolicyCreationRecord();
+            o.mutateTime = mutateTime;
+            o.mutatedBy = mutatedBy;
+            return o;
         }
     }
 }

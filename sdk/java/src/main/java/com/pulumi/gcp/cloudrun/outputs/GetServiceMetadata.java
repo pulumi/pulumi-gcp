@@ -11,32 +11,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceMetadata {
-    private final Map<String,String> annotations;
-    private final Integer generation;
-    private final Map<String,String> labels;
-    private final String namespace;
-    private final String resourceVersion;
-    private final String selfLink;
-    private final String uid;
+    private Map<String,String> annotations;
+    private Integer generation;
+    private Map<String,String> labels;
+    private String namespace;
+    private String resourceVersion;
+    private String selfLink;
+    private String uid;
 
-    @CustomType.Constructor
-    private GetServiceMetadata(
-        @CustomType.Parameter("annotations") Map<String,String> annotations,
-        @CustomType.Parameter("generation") Integer generation,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("namespace") String namespace,
-        @CustomType.Parameter("resourceVersion") String resourceVersion,
-        @CustomType.Parameter("selfLink") String selfLink,
-        @CustomType.Parameter("uid") String uid) {
-        this.annotations = annotations;
-        this.generation = generation;
-        this.labels = labels;
-        this.namespace = namespace;
-        this.resourceVersion = resourceVersion;
-        this.selfLink = selfLink;
-        this.uid = uid;
-    }
-
+    private GetServiceMetadata() {}
     public Map<String,String> annotations() {
         return this.annotations;
     }
@@ -66,7 +49,7 @@ public final class GetServiceMetadata {
     public static Builder builder(GetServiceMetadata defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> annotations;
         private Integer generation;
@@ -75,11 +58,7 @@ public final class GetServiceMetadata {
         private String resourceVersion;
         private String selfLink;
         private String uid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceMetadata defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -91,35 +70,51 @@ public final class GetServiceMetadata {
     	      this.uid = defaults.uid;
         }
 
+        @CustomType.Setter
         public Builder annotations(Map<String,String> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
         }
+        @CustomType.Setter
         public Builder generation(Integer generation) {
             this.generation = Objects.requireNonNull(generation);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder namespace(String namespace) {
             this.namespace = Objects.requireNonNull(namespace);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceVersion(String resourceVersion) {
             this.resourceVersion = Objects.requireNonNull(resourceVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder uid(String uid) {
             this.uid = Objects.requireNonNull(uid);
             return this;
-        }        public GetServiceMetadata build() {
-            return new GetServiceMetadata(annotations, generation, labels, namespace, resourceVersion, selfLink, uid);
+        }
+        public GetServiceMetadata build() {
+            final var o = new GetServiceMetadata();
+            o.annotations = annotations;
+            o.generation = generation;
+            o.labels = labels;
+            o.namespace = namespace;
+            o.resourceVersion = resourceVersion;
+            o.selfLink = selfLink;
+            o.uid = uid;
+            return o;
         }
     }
 }

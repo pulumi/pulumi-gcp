@@ -15,21 +15,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRe
      * @return SHA256 checksum of the remote file.
      * 
      */
-    private final @Nullable String sha256Checksum;
+    private @Nullable String sha256Checksum;
     /**
      * @return Required. URI for this repository.
      * 
      */
-    private final String uri;
+    private String uri;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote(
-        @CustomType.Parameter("sha256Checksum") @Nullable String sha256Checksum,
-        @CustomType.Parameter("uri") String uri) {
-        this.sha256Checksum = sha256Checksum;
-        this.uri = uri;
-    }
-
+    private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote() {}
     /**
      * @return SHA256 checksum of the remote file.
      * 
@@ -52,30 +45,32 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRe
     public static Builder builder(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String sha256Checksum;
         private String uri;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sha256Checksum = defaults.sha256Checksum;
     	      this.uri = defaults.uri;
         }
 
+        @CustomType.Setter
         public Builder sha256Checksum(@Nullable String sha256Checksum) {
             this.sha256Checksum = sha256Checksum;
             return this;
         }
+        @CustomType.Setter
         public Builder uri(String uri) {
             this.uri = Objects.requireNonNull(uri);
             return this;
-        }        public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote build() {
-            return new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote(sha256Checksum, uri);
+        }
+        public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote build() {
+            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote();
+            o.sha256Checksum = sha256Checksum;
+            o.uri = uri;
+            return o;
         }
     }
 }

@@ -14,13 +14,9 @@ public final class PreventionInspectTemplateInspectConfigRuleSetInfoType {
      * or `projects/project-id/storedInfoTypes/432452342`.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private PreventionInspectTemplateInspectConfigRuleSetInfoType(@CustomType.Parameter("name") String name) {
-        this.name = name;
-    }
-
+    private PreventionInspectTemplateInspectConfigRuleSetInfoType() {}
     /**
      * @return Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
      * or `projects/project-id/storedInfoTypes/432452342`.
@@ -37,24 +33,24 @@ public final class PreventionInspectTemplateInspectConfigRuleSetInfoType {
     public static Builder builder(PreventionInspectTemplateInspectConfigRuleSetInfoType defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfigRuleSetInfoType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public PreventionInspectTemplateInspectConfigRuleSetInfoType build() {
-            return new PreventionInspectTemplateInspectConfigRuleSetInfoType(name);
+        }
+        public PreventionInspectTemplateInspectConfigRuleSetInfoType build() {
+            final var o = new PreventionInspectTemplateInspectConfigRuleSetInfoType();
+            o.name = name;
+            return o;
         }
     }
 }

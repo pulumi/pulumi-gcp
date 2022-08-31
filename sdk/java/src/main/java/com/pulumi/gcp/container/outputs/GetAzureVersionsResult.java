@@ -16,34 +16,21 @@ public final class GetAzureVersionsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String location;
-    private final @Nullable String project;
+    private String id;
+    private @Nullable String location;
+    private @Nullable String project;
     /**
      * @return A list of Azure regions that are available for use with this project and GCP location.
      * 
      */
-    private final List<String> supportedRegions;
+    private List<String> supportedRegions;
     /**
      * @return A list of versions available for use with this project and location.
      * 
      */
-    private final List<String> validVersions;
+    private List<String> validVersions;
 
-    @CustomType.Constructor
-    private GetAzureVersionsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("location") @Nullable String location,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("supportedRegions") List<String> supportedRegions,
-        @CustomType.Parameter("validVersions") List<String> validVersions) {
-        this.id = id;
-        this.location = location;
-        this.project = project;
-        this.supportedRegions = supportedRegions;
-        this.validVersions = validVersions;
-    }
-
+    private GetAzureVersionsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -79,18 +66,14 @@ public final class GetAzureVersionsResult {
     public static Builder builder(GetAzureVersionsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private @Nullable String location;
         private @Nullable String project;
         private List<String> supportedRegions;
         private List<String> validVersions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAzureVersionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -100,18 +83,22 @@ public final class GetAzureVersionsResult {
     	      this.validVersions = defaults.validVersions;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder location(@Nullable String location) {
             this.location = location;
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder supportedRegions(List<String> supportedRegions) {
             this.supportedRegions = Objects.requireNonNull(supportedRegions);
             return this;
@@ -119,14 +106,22 @@ public final class GetAzureVersionsResult {
         public Builder supportedRegions(String... supportedRegions) {
             return supportedRegions(List.of(supportedRegions));
         }
+        @CustomType.Setter
         public Builder validVersions(List<String> validVersions) {
             this.validVersions = Objects.requireNonNull(validVersions);
             return this;
         }
         public Builder validVersions(String... validVersions) {
             return validVersions(List.of(validVersions));
-        }        public GetAzureVersionsResult build() {
-            return new GetAzureVersionsResult(id, location, project, supportedRegions, validVersions);
+        }
+        public GetAzureVersionsResult build() {
+            final var o = new GetAzureVersionsResult();
+            o.id = id;
+            o.location = location;
+            o.project = project;
+            o.supportedRegions = supportedRegions;
+            o.validVersions = validVersions;
+            return o;
         }
     }
 }

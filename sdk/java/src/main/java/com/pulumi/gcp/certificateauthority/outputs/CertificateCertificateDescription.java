@@ -18,49 +18,28 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateCertificateDescription {
-    private final @Nullable List<String> aiaIssuingCertificateUrls;
-    private final @Nullable List<CertificateCertificateDescriptionAuthorityKeyId> authorityKeyIds;
-    private final @Nullable List<CertificateCertificateDescriptionCertFingerprint> certFingerprints;
+    private @Nullable List<String> aiaIssuingCertificateUrls;
+    private @Nullable List<CertificateCertificateDescriptionAuthorityKeyId> authorityKeyIds;
+    private @Nullable List<CertificateCertificateDescriptionCertFingerprint> certFingerprints;
     /**
      * @deprecated
      * Deprecated in favor of `x509_description`.
      * 
      */
     @Deprecated /* Deprecated in favor of `x509_description`. */
-    private final @Nullable List<CertificateCertificateDescriptionConfigValue> configValues;
-    private final @Nullable List<String> crlDistributionPoints;
+    private @Nullable List<CertificateCertificateDescriptionConfigValue> configValues;
+    private @Nullable List<String> crlDistributionPoints;
     /**
      * @return A PublicKey describes a public key.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<CertificateCertificateDescriptionPublicKey> publicKeys;
-    private final @Nullable List<CertificateCertificateDescriptionSubjectDescription> subjectDescriptions;
-    private final @Nullable List<CertificateCertificateDescriptionSubjectKeyId> subjectKeyIds;
-    private final @Nullable List<CertificateCertificateDescriptionX509Description> x509Descriptions;
+    private @Nullable List<CertificateCertificateDescriptionPublicKey> publicKeys;
+    private @Nullable List<CertificateCertificateDescriptionSubjectDescription> subjectDescriptions;
+    private @Nullable List<CertificateCertificateDescriptionSubjectKeyId> subjectKeyIds;
+    private @Nullable List<CertificateCertificateDescriptionX509Description> x509Descriptions;
 
-    @CustomType.Constructor
-    private CertificateCertificateDescription(
-        @CustomType.Parameter("aiaIssuingCertificateUrls") @Nullable List<String> aiaIssuingCertificateUrls,
-        @CustomType.Parameter("authorityKeyIds") @Nullable List<CertificateCertificateDescriptionAuthorityKeyId> authorityKeyIds,
-        @CustomType.Parameter("certFingerprints") @Nullable List<CertificateCertificateDescriptionCertFingerprint> certFingerprints,
-        @CustomType.Parameter("configValues") @Nullable List<CertificateCertificateDescriptionConfigValue> configValues,
-        @CustomType.Parameter("crlDistributionPoints") @Nullable List<String> crlDistributionPoints,
-        @CustomType.Parameter("publicKeys") @Nullable List<CertificateCertificateDescriptionPublicKey> publicKeys,
-        @CustomType.Parameter("subjectDescriptions") @Nullable List<CertificateCertificateDescriptionSubjectDescription> subjectDescriptions,
-        @CustomType.Parameter("subjectKeyIds") @Nullable List<CertificateCertificateDescriptionSubjectKeyId> subjectKeyIds,
-        @CustomType.Parameter("x509Descriptions") @Nullable List<CertificateCertificateDescriptionX509Description> x509Descriptions) {
-        this.aiaIssuingCertificateUrls = aiaIssuingCertificateUrls;
-        this.authorityKeyIds = authorityKeyIds;
-        this.certFingerprints = certFingerprints;
-        this.configValues = configValues;
-        this.crlDistributionPoints = crlDistributionPoints;
-        this.publicKeys = publicKeys;
-        this.subjectDescriptions = subjectDescriptions;
-        this.subjectKeyIds = subjectKeyIds;
-        this.x509Descriptions = x509Descriptions;
-    }
-
+    private CertificateCertificateDescription() {}
     public List<String> aiaIssuingCertificateUrls() {
         return this.aiaIssuingCertificateUrls == null ? List.of() : this.aiaIssuingCertificateUrls;
     }
@@ -107,7 +86,7 @@ public final class CertificateCertificateDescription {
     public static Builder builder(CertificateCertificateDescription defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> aiaIssuingCertificateUrls;
         private @Nullable List<CertificateCertificateDescriptionAuthorityKeyId> authorityKeyIds;
@@ -118,11 +97,7 @@ public final class CertificateCertificateDescription {
         private @Nullable List<CertificateCertificateDescriptionSubjectDescription> subjectDescriptions;
         private @Nullable List<CertificateCertificateDescriptionSubjectKeyId> subjectKeyIds;
         private @Nullable List<CertificateCertificateDescriptionX509Description> x509Descriptions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateCertificateDescription defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aiaIssuingCertificateUrls = defaults.aiaIssuingCertificateUrls;
@@ -136,6 +111,7 @@ public final class CertificateCertificateDescription {
     	      this.x509Descriptions = defaults.x509Descriptions;
         }
 
+        @CustomType.Setter
         public Builder aiaIssuingCertificateUrls(@Nullable List<String> aiaIssuingCertificateUrls) {
             this.aiaIssuingCertificateUrls = aiaIssuingCertificateUrls;
             return this;
@@ -143,6 +119,7 @@ public final class CertificateCertificateDescription {
         public Builder aiaIssuingCertificateUrls(String... aiaIssuingCertificateUrls) {
             return aiaIssuingCertificateUrls(List.of(aiaIssuingCertificateUrls));
         }
+        @CustomType.Setter
         public Builder authorityKeyIds(@Nullable List<CertificateCertificateDescriptionAuthorityKeyId> authorityKeyIds) {
             this.authorityKeyIds = authorityKeyIds;
             return this;
@@ -150,6 +127,7 @@ public final class CertificateCertificateDescription {
         public Builder authorityKeyIds(CertificateCertificateDescriptionAuthorityKeyId... authorityKeyIds) {
             return authorityKeyIds(List.of(authorityKeyIds));
         }
+        @CustomType.Setter
         public Builder certFingerprints(@Nullable List<CertificateCertificateDescriptionCertFingerprint> certFingerprints) {
             this.certFingerprints = certFingerprints;
             return this;
@@ -157,6 +135,7 @@ public final class CertificateCertificateDescription {
         public Builder certFingerprints(CertificateCertificateDescriptionCertFingerprint... certFingerprints) {
             return certFingerprints(List.of(certFingerprints));
         }
+        @CustomType.Setter
         public Builder configValues(@Nullable List<CertificateCertificateDescriptionConfigValue> configValues) {
             this.configValues = configValues;
             return this;
@@ -164,6 +143,7 @@ public final class CertificateCertificateDescription {
         public Builder configValues(CertificateCertificateDescriptionConfigValue... configValues) {
             return configValues(List.of(configValues));
         }
+        @CustomType.Setter
         public Builder crlDistributionPoints(@Nullable List<String> crlDistributionPoints) {
             this.crlDistributionPoints = crlDistributionPoints;
             return this;
@@ -171,6 +151,7 @@ public final class CertificateCertificateDescription {
         public Builder crlDistributionPoints(String... crlDistributionPoints) {
             return crlDistributionPoints(List.of(crlDistributionPoints));
         }
+        @CustomType.Setter
         public Builder publicKeys(@Nullable List<CertificateCertificateDescriptionPublicKey> publicKeys) {
             this.publicKeys = publicKeys;
             return this;
@@ -178,6 +159,7 @@ public final class CertificateCertificateDescription {
         public Builder publicKeys(CertificateCertificateDescriptionPublicKey... publicKeys) {
             return publicKeys(List.of(publicKeys));
         }
+        @CustomType.Setter
         public Builder subjectDescriptions(@Nullable List<CertificateCertificateDescriptionSubjectDescription> subjectDescriptions) {
             this.subjectDescriptions = subjectDescriptions;
             return this;
@@ -185,6 +167,7 @@ public final class CertificateCertificateDescription {
         public Builder subjectDescriptions(CertificateCertificateDescriptionSubjectDescription... subjectDescriptions) {
             return subjectDescriptions(List.of(subjectDescriptions));
         }
+        @CustomType.Setter
         public Builder subjectKeyIds(@Nullable List<CertificateCertificateDescriptionSubjectKeyId> subjectKeyIds) {
             this.subjectKeyIds = subjectKeyIds;
             return this;
@@ -192,14 +175,26 @@ public final class CertificateCertificateDescription {
         public Builder subjectKeyIds(CertificateCertificateDescriptionSubjectKeyId... subjectKeyIds) {
             return subjectKeyIds(List.of(subjectKeyIds));
         }
+        @CustomType.Setter
         public Builder x509Descriptions(@Nullable List<CertificateCertificateDescriptionX509Description> x509Descriptions) {
             this.x509Descriptions = x509Descriptions;
             return this;
         }
         public Builder x509Descriptions(CertificateCertificateDescriptionX509Description... x509Descriptions) {
             return x509Descriptions(List.of(x509Descriptions));
-        }        public CertificateCertificateDescription build() {
-            return new CertificateCertificateDescription(aiaIssuingCertificateUrls, authorityKeyIds, certFingerprints, configValues, crlDistributionPoints, publicKeys, subjectDescriptions, subjectKeyIds, x509Descriptions);
+        }
+        public CertificateCertificateDescription build() {
+            final var o = new CertificateCertificateDescription();
+            o.aiaIssuingCertificateUrls = aiaIssuingCertificateUrls;
+            o.authorityKeyIds = authorityKeyIds;
+            o.certFingerprints = certFingerprints;
+            o.configValues = configValues;
+            o.crlDistributionPoints = crlDistributionPoints;
+            o.publicKeys = publicKeys;
+            o.subjectDescriptions = subjectDescriptions;
+            o.subjectKeyIds = subjectKeyIds;
+            o.x509Descriptions = x509Descriptions;
+            return o;
         }
     }
 }

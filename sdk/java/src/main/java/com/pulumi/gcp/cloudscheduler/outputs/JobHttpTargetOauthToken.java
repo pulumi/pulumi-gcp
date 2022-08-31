@@ -16,22 +16,15 @@ public final class JobHttpTargetOauthToken {
      * &#34;https://www.googleapis.com/auth/cloud-platform&#34; will be used.
      * 
      */
-    private final @Nullable String scope;
+    private @Nullable String scope;
     /**
      * @return Service account email to be used for generating OAuth token.
      * The service account must be within the same project as the job.
      * 
      */
-    private final String serviceAccountEmail;
+    private String serviceAccountEmail;
 
-    @CustomType.Constructor
-    private JobHttpTargetOauthToken(
-        @CustomType.Parameter("scope") @Nullable String scope,
-        @CustomType.Parameter("serviceAccountEmail") String serviceAccountEmail) {
-        this.scope = scope;
-        this.serviceAccountEmail = serviceAccountEmail;
-    }
-
+    private JobHttpTargetOauthToken() {}
     /**
      * @return OAuth scope to be used for generating OAuth access token. If not specified,
      * &#34;https://www.googleapis.com/auth/cloud-platform&#34; will be used.
@@ -56,30 +49,32 @@ public final class JobHttpTargetOauthToken {
     public static Builder builder(JobHttpTargetOauthToken defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String scope;
         private String serviceAccountEmail;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobHttpTargetOauthToken defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.scope = defaults.scope;
     	      this.serviceAccountEmail = defaults.serviceAccountEmail;
         }
 
+        @CustomType.Setter
         public Builder scope(@Nullable String scope) {
             this.scope = scope;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccountEmail(String serviceAccountEmail) {
             this.serviceAccountEmail = Objects.requireNonNull(serviceAccountEmail);
             return this;
-        }        public JobHttpTargetOauthToken build() {
-            return new JobHttpTargetOauthToken(scope, serviceAccountEmail);
+        }
+        public JobHttpTargetOauthToken build() {
+            final var o = new JobHttpTargetOauthToken();
+            o.scope = scope;
+            o.serviceAccountEmail = serviceAccountEmail;
+            return o;
         }
     }
 }

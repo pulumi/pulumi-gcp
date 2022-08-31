@@ -22,71 +22,28 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceSetting {
-    private final String activationPolicy;
-    private final List<GetDatabaseInstanceSettingActiveDirectoryConfig> activeDirectoryConfigs;
-    private final String availabilityType;
-    private final List<GetDatabaseInstanceSettingBackupConfiguration> backupConfigurations;
-    private final String collation;
-    private final List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags;
-    private final Boolean diskAutoresize;
-    private final Integer diskAutoresizeLimit;
-    private final Integer diskSize;
-    private final String diskType;
-    private final List<GetDatabaseInstanceSettingInsightsConfig> insightsConfigs;
-    private final List<GetDatabaseInstanceSettingIpConfiguration> ipConfigurations;
-    private final List<GetDatabaseInstanceSettingLocationPreference> locationPreferences;
-    private final List<GetDatabaseInstanceSettingMaintenanceWindow> maintenanceWindows;
-    private final List<GetDatabaseInstanceSettingPasswordValidationPolicy> passwordValidationPolicies;
-    private final String pricingPlan;
-    private final List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs;
-    private final String tier;
-    private final Map<String,String> userLabels;
-    private final Integer version;
+    private String activationPolicy;
+    private List<GetDatabaseInstanceSettingActiveDirectoryConfig> activeDirectoryConfigs;
+    private String availabilityType;
+    private List<GetDatabaseInstanceSettingBackupConfiguration> backupConfigurations;
+    private String collation;
+    private List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags;
+    private Boolean diskAutoresize;
+    private Integer diskAutoresizeLimit;
+    private Integer diskSize;
+    private String diskType;
+    private List<GetDatabaseInstanceSettingInsightsConfig> insightsConfigs;
+    private List<GetDatabaseInstanceSettingIpConfiguration> ipConfigurations;
+    private List<GetDatabaseInstanceSettingLocationPreference> locationPreferences;
+    private List<GetDatabaseInstanceSettingMaintenanceWindow> maintenanceWindows;
+    private List<GetDatabaseInstanceSettingPasswordValidationPolicy> passwordValidationPolicies;
+    private String pricingPlan;
+    private List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs;
+    private String tier;
+    private Map<String,String> userLabels;
+    private Integer version;
 
-    @CustomType.Constructor
-    private GetDatabaseInstanceSetting(
-        @CustomType.Parameter("activationPolicy") String activationPolicy,
-        @CustomType.Parameter("activeDirectoryConfigs") List<GetDatabaseInstanceSettingActiveDirectoryConfig> activeDirectoryConfigs,
-        @CustomType.Parameter("availabilityType") String availabilityType,
-        @CustomType.Parameter("backupConfigurations") List<GetDatabaseInstanceSettingBackupConfiguration> backupConfigurations,
-        @CustomType.Parameter("collation") String collation,
-        @CustomType.Parameter("databaseFlags") List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags,
-        @CustomType.Parameter("diskAutoresize") Boolean diskAutoresize,
-        @CustomType.Parameter("diskAutoresizeLimit") Integer diskAutoresizeLimit,
-        @CustomType.Parameter("diskSize") Integer diskSize,
-        @CustomType.Parameter("diskType") String diskType,
-        @CustomType.Parameter("insightsConfigs") List<GetDatabaseInstanceSettingInsightsConfig> insightsConfigs,
-        @CustomType.Parameter("ipConfigurations") List<GetDatabaseInstanceSettingIpConfiguration> ipConfigurations,
-        @CustomType.Parameter("locationPreferences") List<GetDatabaseInstanceSettingLocationPreference> locationPreferences,
-        @CustomType.Parameter("maintenanceWindows") List<GetDatabaseInstanceSettingMaintenanceWindow> maintenanceWindows,
-        @CustomType.Parameter("passwordValidationPolicies") List<GetDatabaseInstanceSettingPasswordValidationPolicy> passwordValidationPolicies,
-        @CustomType.Parameter("pricingPlan") String pricingPlan,
-        @CustomType.Parameter("sqlServerAuditConfigs") List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs,
-        @CustomType.Parameter("tier") String tier,
-        @CustomType.Parameter("userLabels") Map<String,String> userLabels,
-        @CustomType.Parameter("version") Integer version) {
-        this.activationPolicy = activationPolicy;
-        this.activeDirectoryConfigs = activeDirectoryConfigs;
-        this.availabilityType = availabilityType;
-        this.backupConfigurations = backupConfigurations;
-        this.collation = collation;
-        this.databaseFlags = databaseFlags;
-        this.diskAutoresize = diskAutoresize;
-        this.diskAutoresizeLimit = diskAutoresizeLimit;
-        this.diskSize = diskSize;
-        this.diskType = diskType;
-        this.insightsConfigs = insightsConfigs;
-        this.ipConfigurations = ipConfigurations;
-        this.locationPreferences = locationPreferences;
-        this.maintenanceWindows = maintenanceWindows;
-        this.passwordValidationPolicies = passwordValidationPolicies;
-        this.pricingPlan = pricingPlan;
-        this.sqlServerAuditConfigs = sqlServerAuditConfigs;
-        this.tier = tier;
-        this.userLabels = userLabels;
-        this.version = version;
-    }
-
+    private GetDatabaseInstanceSetting() {}
     public String activationPolicy() {
         return this.activationPolicy;
     }
@@ -155,7 +112,7 @@ public final class GetDatabaseInstanceSetting {
     public static Builder builder(GetDatabaseInstanceSetting defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String activationPolicy;
         private List<GetDatabaseInstanceSettingActiveDirectoryConfig> activeDirectoryConfigs;
@@ -177,11 +134,7 @@ public final class GetDatabaseInstanceSetting {
         private String tier;
         private Map<String,String> userLabels;
         private Integer version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseInstanceSetting defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.activationPolicy = defaults.activationPolicy;
@@ -206,10 +159,12 @@ public final class GetDatabaseInstanceSetting {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder activationPolicy(String activationPolicy) {
             this.activationPolicy = Objects.requireNonNull(activationPolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder activeDirectoryConfigs(List<GetDatabaseInstanceSettingActiveDirectoryConfig> activeDirectoryConfigs) {
             this.activeDirectoryConfigs = Objects.requireNonNull(activeDirectoryConfigs);
             return this;
@@ -217,10 +172,12 @@ public final class GetDatabaseInstanceSetting {
         public Builder activeDirectoryConfigs(GetDatabaseInstanceSettingActiveDirectoryConfig... activeDirectoryConfigs) {
             return activeDirectoryConfigs(List.of(activeDirectoryConfigs));
         }
+        @CustomType.Setter
         public Builder availabilityType(String availabilityType) {
             this.availabilityType = Objects.requireNonNull(availabilityType);
             return this;
         }
+        @CustomType.Setter
         public Builder backupConfigurations(List<GetDatabaseInstanceSettingBackupConfiguration> backupConfigurations) {
             this.backupConfigurations = Objects.requireNonNull(backupConfigurations);
             return this;
@@ -228,10 +185,12 @@ public final class GetDatabaseInstanceSetting {
         public Builder backupConfigurations(GetDatabaseInstanceSettingBackupConfiguration... backupConfigurations) {
             return backupConfigurations(List.of(backupConfigurations));
         }
+        @CustomType.Setter
         public Builder collation(String collation) {
             this.collation = Objects.requireNonNull(collation);
             return this;
         }
+        @CustomType.Setter
         public Builder databaseFlags(List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags) {
             this.databaseFlags = Objects.requireNonNull(databaseFlags);
             return this;
@@ -239,22 +198,27 @@ public final class GetDatabaseInstanceSetting {
         public Builder databaseFlags(GetDatabaseInstanceSettingDatabaseFlag... databaseFlags) {
             return databaseFlags(List.of(databaseFlags));
         }
+        @CustomType.Setter
         public Builder diskAutoresize(Boolean diskAutoresize) {
             this.diskAutoresize = Objects.requireNonNull(diskAutoresize);
             return this;
         }
+        @CustomType.Setter
         public Builder diskAutoresizeLimit(Integer diskAutoresizeLimit) {
             this.diskAutoresizeLimit = Objects.requireNonNull(diskAutoresizeLimit);
             return this;
         }
+        @CustomType.Setter
         public Builder diskSize(Integer diskSize) {
             this.diskSize = Objects.requireNonNull(diskSize);
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(String diskType) {
             this.diskType = Objects.requireNonNull(diskType);
             return this;
         }
+        @CustomType.Setter
         public Builder insightsConfigs(List<GetDatabaseInstanceSettingInsightsConfig> insightsConfigs) {
             this.insightsConfigs = Objects.requireNonNull(insightsConfigs);
             return this;
@@ -262,6 +226,7 @@ public final class GetDatabaseInstanceSetting {
         public Builder insightsConfigs(GetDatabaseInstanceSettingInsightsConfig... insightsConfigs) {
             return insightsConfigs(List.of(insightsConfigs));
         }
+        @CustomType.Setter
         public Builder ipConfigurations(List<GetDatabaseInstanceSettingIpConfiguration> ipConfigurations) {
             this.ipConfigurations = Objects.requireNonNull(ipConfigurations);
             return this;
@@ -269,6 +234,7 @@ public final class GetDatabaseInstanceSetting {
         public Builder ipConfigurations(GetDatabaseInstanceSettingIpConfiguration... ipConfigurations) {
             return ipConfigurations(List.of(ipConfigurations));
         }
+        @CustomType.Setter
         public Builder locationPreferences(List<GetDatabaseInstanceSettingLocationPreference> locationPreferences) {
             this.locationPreferences = Objects.requireNonNull(locationPreferences);
             return this;
@@ -276,6 +242,7 @@ public final class GetDatabaseInstanceSetting {
         public Builder locationPreferences(GetDatabaseInstanceSettingLocationPreference... locationPreferences) {
             return locationPreferences(List.of(locationPreferences));
         }
+        @CustomType.Setter
         public Builder maintenanceWindows(List<GetDatabaseInstanceSettingMaintenanceWindow> maintenanceWindows) {
             this.maintenanceWindows = Objects.requireNonNull(maintenanceWindows);
             return this;
@@ -283,6 +250,7 @@ public final class GetDatabaseInstanceSetting {
         public Builder maintenanceWindows(GetDatabaseInstanceSettingMaintenanceWindow... maintenanceWindows) {
             return maintenanceWindows(List.of(maintenanceWindows));
         }
+        @CustomType.Setter
         public Builder passwordValidationPolicies(List<GetDatabaseInstanceSettingPasswordValidationPolicy> passwordValidationPolicies) {
             this.passwordValidationPolicies = Objects.requireNonNull(passwordValidationPolicies);
             return this;
@@ -290,10 +258,12 @@ public final class GetDatabaseInstanceSetting {
         public Builder passwordValidationPolicies(GetDatabaseInstanceSettingPasswordValidationPolicy... passwordValidationPolicies) {
             return passwordValidationPolicies(List.of(passwordValidationPolicies));
         }
+        @CustomType.Setter
         public Builder pricingPlan(String pricingPlan) {
             this.pricingPlan = Objects.requireNonNull(pricingPlan);
             return this;
         }
+        @CustomType.Setter
         public Builder sqlServerAuditConfigs(List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs) {
             this.sqlServerAuditConfigs = Objects.requireNonNull(sqlServerAuditConfigs);
             return this;
@@ -301,19 +271,44 @@ public final class GetDatabaseInstanceSetting {
         public Builder sqlServerAuditConfigs(GetDatabaseInstanceSettingSqlServerAuditConfig... sqlServerAuditConfigs) {
             return sqlServerAuditConfigs(List.of(sqlServerAuditConfigs));
         }
+        @CustomType.Setter
         public Builder tier(String tier) {
             this.tier = Objects.requireNonNull(tier);
             return this;
         }
+        @CustomType.Setter
         public Builder userLabels(Map<String,String> userLabels) {
             this.userLabels = Objects.requireNonNull(userLabels);
             return this;
         }
+        @CustomType.Setter
         public Builder version(Integer version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetDatabaseInstanceSetting build() {
-            return new GetDatabaseInstanceSetting(activationPolicy, activeDirectoryConfigs, availabilityType, backupConfigurations, collation, databaseFlags, diskAutoresize, diskAutoresizeLimit, diskSize, diskType, insightsConfigs, ipConfigurations, locationPreferences, maintenanceWindows, passwordValidationPolicies, pricingPlan, sqlServerAuditConfigs, tier, userLabels, version);
+        }
+        public GetDatabaseInstanceSetting build() {
+            final var o = new GetDatabaseInstanceSetting();
+            o.activationPolicy = activationPolicy;
+            o.activeDirectoryConfigs = activeDirectoryConfigs;
+            o.availabilityType = availabilityType;
+            o.backupConfigurations = backupConfigurations;
+            o.collation = collation;
+            o.databaseFlags = databaseFlags;
+            o.diskAutoresize = diskAutoresize;
+            o.diskAutoresizeLimit = diskAutoresizeLimit;
+            o.diskSize = diskSize;
+            o.diskType = diskType;
+            o.insightsConfigs = insightsConfigs;
+            o.ipConfigurations = ipConfigurations;
+            o.locationPreferences = locationPreferences;
+            o.maintenanceWindows = maintenanceWindows;
+            o.passwordValidationPolicies = passwordValidationPolicies;
+            o.pricingPlan = pricingPlan;
+            o.sqlServerAuditConfigs = sqlServerAuditConfigs;
+            o.tier = tier;
+            o.userLabels = userLabels;
+            o.version = version;
+            return o;
         }
     }
 }

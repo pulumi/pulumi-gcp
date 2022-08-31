@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceEndpoint {
-    private final @Nullable String address;
-    private final @Nullable String name;
+    private @Nullable String address;
+    private @Nullable String name;
 
-    @CustomType.Constructor
-    private ServiceEndpoint(
-        @CustomType.Parameter("address") @Nullable String address,
-        @CustomType.Parameter("name") @Nullable String name) {
-        this.address = address;
-        this.name = name;
-    }
-
+    private ServiceEndpoint() {}
     public Optional<String> address() {
         return Optional.ofNullable(this.address);
     }
@@ -36,30 +29,32 @@ public final class ServiceEndpoint {
     public static Builder builder(ServiceEndpoint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String address;
         private @Nullable String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceEndpoint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder address(@Nullable String address) {
             this.address = address;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
-        }        public ServiceEndpoint build() {
-            return new ServiceEndpoint(address, name);
+        }
+        public ServiceEndpoint build() {
+            final var o = new ServiceEndpoint();
+            o.address = address;
+            o.name = name;
+            return o;
         }
     }
 }

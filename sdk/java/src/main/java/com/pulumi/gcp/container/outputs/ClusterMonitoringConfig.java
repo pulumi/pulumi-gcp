@@ -17,21 +17,14 @@ public final class ClusterMonitoringConfig {
      * @return The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
      * 
      */
-    private final @Nullable List<String> enableComponents;
+    private @Nullable List<String> enableComponents;
     /**
      * @return Configuration for Managed Service for Prometheus. Structure is documented below.
      * 
      */
-    private final @Nullable ClusterMonitoringConfigManagedPrometheus managedPrometheus;
+    private @Nullable ClusterMonitoringConfigManagedPrometheus managedPrometheus;
 
-    @CustomType.Constructor
-    private ClusterMonitoringConfig(
-        @CustomType.Parameter("enableComponents") @Nullable List<String> enableComponents,
-        @CustomType.Parameter("managedPrometheus") @Nullable ClusterMonitoringConfigManagedPrometheus managedPrometheus) {
-        this.enableComponents = enableComponents;
-        this.managedPrometheus = managedPrometheus;
-    }
-
+    private ClusterMonitoringConfig() {}
     /**
      * @return The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
      * 
@@ -54,21 +47,18 @@ public final class ClusterMonitoringConfig {
     public static Builder builder(ClusterMonitoringConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> enableComponents;
         private @Nullable ClusterMonitoringConfigManagedPrometheus managedPrometheus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterMonitoringConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableComponents = defaults.enableComponents;
     	      this.managedPrometheus = defaults.managedPrometheus;
         }
 
+        @CustomType.Setter
         public Builder enableComponents(@Nullable List<String> enableComponents) {
             this.enableComponents = enableComponents;
             return this;
@@ -76,11 +66,16 @@ public final class ClusterMonitoringConfig {
         public Builder enableComponents(String... enableComponents) {
             return enableComponents(List.of(enableComponents));
         }
+        @CustomType.Setter
         public Builder managedPrometheus(@Nullable ClusterMonitoringConfigManagedPrometheus managedPrometheus) {
             this.managedPrometheus = managedPrometheus;
             return this;
-        }        public ClusterMonitoringConfig build() {
-            return new ClusterMonitoringConfig(enableComponents, managedPrometheus);
+        }
+        public ClusterMonitoringConfig build() {
+            final var o = new ClusterMonitoringConfig();
+            o.enableComponents = enableComponents;
+            o.managedPrometheus = managedPrometheus;
+            return o;
         }
     }
 }

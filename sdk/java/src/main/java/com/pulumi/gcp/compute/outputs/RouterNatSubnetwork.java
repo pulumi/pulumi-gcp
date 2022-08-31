@@ -15,7 +15,7 @@ public final class RouterNatSubnetwork {
      * @return Self-link of subnetwork to NAT
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return List of the secondary ranges of the subnetwork that are allowed
      * to use NAT. This can be populated only if
@@ -23,7 +23,7 @@ public final class RouterNatSubnetwork {
      * sourceIpRangesToNat
      * 
      */
-    private final @Nullable List<String> secondaryIpRangeNames;
+    private @Nullable List<String> secondaryIpRangeNames;
     /**
      * @return List of options for which source IPs in the subnetwork
      * should have NAT enabled. Supported values include:
@@ -31,18 +31,9 @@ public final class RouterNatSubnetwork {
      * `PRIMARY_IP_RANGE`.
      * 
      */
-    private final List<String> sourceIpRangesToNats;
+    private List<String> sourceIpRangesToNats;
 
-    @CustomType.Constructor
-    private RouterNatSubnetwork(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("secondaryIpRangeNames") @Nullable List<String> secondaryIpRangeNames,
-        @CustomType.Parameter("sourceIpRangesToNats") List<String> sourceIpRangesToNats) {
-        this.name = name;
-        this.secondaryIpRangeNames = secondaryIpRangeNames;
-        this.sourceIpRangesToNats = sourceIpRangesToNats;
-    }
-
+    private RouterNatSubnetwork() {}
     /**
      * @return Self-link of subnetwork to NAT
      * 
@@ -78,16 +69,12 @@ public final class RouterNatSubnetwork {
     public static Builder builder(RouterNatSubnetwork defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private @Nullable List<String> secondaryIpRangeNames;
         private List<String> sourceIpRangesToNats;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RouterNatSubnetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
@@ -95,10 +82,12 @@ public final class RouterNatSubnetwork {
     	      this.sourceIpRangesToNats = defaults.sourceIpRangesToNats;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder secondaryIpRangeNames(@Nullable List<String> secondaryIpRangeNames) {
             this.secondaryIpRangeNames = secondaryIpRangeNames;
             return this;
@@ -106,14 +95,20 @@ public final class RouterNatSubnetwork {
         public Builder secondaryIpRangeNames(String... secondaryIpRangeNames) {
             return secondaryIpRangeNames(List.of(secondaryIpRangeNames));
         }
+        @CustomType.Setter
         public Builder sourceIpRangesToNats(List<String> sourceIpRangesToNats) {
             this.sourceIpRangesToNats = Objects.requireNonNull(sourceIpRangesToNats);
             return this;
         }
         public Builder sourceIpRangesToNats(String... sourceIpRangesToNats) {
             return sourceIpRangesToNats(List.of(sourceIpRangesToNats));
-        }        public RouterNatSubnetwork build() {
-            return new RouterNatSubnetwork(name, secondaryIpRangeNames, sourceIpRangesToNats);
+        }
+        public RouterNatSubnetwork build() {
+            final var o = new RouterNatSubnetwork();
+            o.name = name;
+            o.secondaryIpRangeNames = secondaryIpRangeNames;
+            o.sourceIpRangesToNats = sourceIpRangesToNats;
+            return o;
         }
     }
 }

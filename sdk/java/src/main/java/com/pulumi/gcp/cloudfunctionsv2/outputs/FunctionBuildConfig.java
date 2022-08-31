@@ -19,12 +19,12 @@ public final class FunctionBuildConfig {
      * deployment of the function.
      * 
      */
-    private final @Nullable String build;
+    private @Nullable String build;
     /**
      * @return User managed repository created in Artifact Registry optionally with a customer managed encryption key.
      * 
      */
-    private final @Nullable String dockerRepository;
+    private @Nullable String dockerRepository;
     /**
      * @return The name of the function (as defined in source code) that will be executed.
      * Defaults to the resource name suffix, if not specified. For backward
@@ -33,48 +33,31 @@ public final class FunctionBuildConfig {
      * function exported by the module specified in source_location.
      * 
      */
-    private final @Nullable String entryPoint;
+    private @Nullable String entryPoint;
     /**
      * @return Environment variables that shall be available during function execution.
      * 
      */
-    private final @Nullable Map<String,String> environmentVariables;
+    private @Nullable Map<String,String> environmentVariables;
     /**
      * @return The runtime in which to run the function. Required when deploying a new
      * function, optional when updating an existing function.
      * 
      */
-    private final @Nullable String runtime;
+    private @Nullable String runtime;
     /**
      * @return The location of the function source code.
      * Structure is documented below.
      * 
      */
-    private final @Nullable FunctionBuildConfigSource source;
+    private @Nullable FunctionBuildConfigSource source;
     /**
      * @return Name of the Cloud Build Custom Worker Pool that should be used to build the function.
      * 
      */
-    private final @Nullable String workerPool;
+    private @Nullable String workerPool;
 
-    @CustomType.Constructor
-    private FunctionBuildConfig(
-        @CustomType.Parameter("build") @Nullable String build,
-        @CustomType.Parameter("dockerRepository") @Nullable String dockerRepository,
-        @CustomType.Parameter("entryPoint") @Nullable String entryPoint,
-        @CustomType.Parameter("environmentVariables") @Nullable Map<String,String> environmentVariables,
-        @CustomType.Parameter("runtime") @Nullable String runtime,
-        @CustomType.Parameter("source") @Nullable FunctionBuildConfigSource source,
-        @CustomType.Parameter("workerPool") @Nullable String workerPool) {
-        this.build = build;
-        this.dockerRepository = dockerRepository;
-        this.entryPoint = entryPoint;
-        this.environmentVariables = environmentVariables;
-        this.runtime = runtime;
-        this.source = source;
-        this.workerPool = workerPool;
-    }
-
+    private FunctionBuildConfig() {}
     /**
      * @return -
      * The Cloud Build name of the latest successful
@@ -140,7 +123,7 @@ public final class FunctionBuildConfig {
     public static Builder builder(FunctionBuildConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String build;
         private @Nullable String dockerRepository;
@@ -149,11 +132,7 @@ public final class FunctionBuildConfig {
         private @Nullable String runtime;
         private @Nullable FunctionBuildConfigSource source;
         private @Nullable String workerPool;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FunctionBuildConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.build = defaults.build;
@@ -165,35 +144,51 @@ public final class FunctionBuildConfig {
     	      this.workerPool = defaults.workerPool;
         }
 
+        @CustomType.Setter
         public Builder build(@Nullable String build) {
             this.build = build;
             return this;
         }
+        @CustomType.Setter
         public Builder dockerRepository(@Nullable String dockerRepository) {
             this.dockerRepository = dockerRepository;
             return this;
         }
+        @CustomType.Setter
         public Builder entryPoint(@Nullable String entryPoint) {
             this.entryPoint = entryPoint;
             return this;
         }
+        @CustomType.Setter
         public Builder environmentVariables(@Nullable Map<String,String> environmentVariables) {
             this.environmentVariables = environmentVariables;
             return this;
         }
+        @CustomType.Setter
         public Builder runtime(@Nullable String runtime) {
             this.runtime = runtime;
             return this;
         }
+        @CustomType.Setter
         public Builder source(@Nullable FunctionBuildConfigSource source) {
             this.source = source;
             return this;
         }
+        @CustomType.Setter
         public Builder workerPool(@Nullable String workerPool) {
             this.workerPool = workerPool;
             return this;
-        }        public FunctionBuildConfig build() {
-            return new FunctionBuildConfig(build, dockerRepository, entryPoint, environmentVariables, runtime, source, workerPool);
+        }
+        public FunctionBuildConfig build() {
+            final var o = new FunctionBuildConfig();
+            o.build = build;
+            o.dockerRepository = dockerRepository;
+            o.entryPoint = entryPoint;
+            o.environmentVariables = environmentVariables;
+            o.runtime = runtime;
+            o.source = source;
+            o.workerPool = workerPool;
+            return o;
         }
     }
 }

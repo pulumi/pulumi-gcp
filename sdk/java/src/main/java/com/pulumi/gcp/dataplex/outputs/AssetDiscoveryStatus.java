@@ -13,29 +13,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AssetDiscoveryStatus {
-    private final @Nullable String lastRunDuration;
-    private final @Nullable String lastRunTime;
-    private final @Nullable String message;
-    private final @Nullable String state;
-    private final @Nullable List<AssetDiscoveryStatusStat> stats;
-    private final @Nullable String updateTime;
+    private @Nullable String lastRunDuration;
+    private @Nullable String lastRunTime;
+    private @Nullable String message;
+    private @Nullable String state;
+    private @Nullable List<AssetDiscoveryStatusStat> stats;
+    private @Nullable String updateTime;
 
-    @CustomType.Constructor
-    private AssetDiscoveryStatus(
-        @CustomType.Parameter("lastRunDuration") @Nullable String lastRunDuration,
-        @CustomType.Parameter("lastRunTime") @Nullable String lastRunTime,
-        @CustomType.Parameter("message") @Nullable String message,
-        @CustomType.Parameter("state") @Nullable String state,
-        @CustomType.Parameter("stats") @Nullable List<AssetDiscoveryStatusStat> stats,
-        @CustomType.Parameter("updateTime") @Nullable String updateTime) {
-        this.lastRunDuration = lastRunDuration;
-        this.lastRunTime = lastRunTime;
-        this.message = message;
-        this.state = state;
-        this.stats = stats;
-        this.updateTime = updateTime;
-    }
-
+    private AssetDiscoveryStatus() {}
     public Optional<String> lastRunDuration() {
         return Optional.ofNullable(this.lastRunDuration);
     }
@@ -62,7 +47,7 @@ public final class AssetDiscoveryStatus {
     public static Builder builder(AssetDiscoveryStatus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String lastRunDuration;
         private @Nullable String lastRunTime;
@@ -70,11 +55,7 @@ public final class AssetDiscoveryStatus {
         private @Nullable String state;
         private @Nullable List<AssetDiscoveryStatusStat> stats;
         private @Nullable String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AssetDiscoveryStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.lastRunDuration = defaults.lastRunDuration;
@@ -85,22 +66,27 @@ public final class AssetDiscoveryStatus {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder lastRunDuration(@Nullable String lastRunDuration) {
             this.lastRunDuration = lastRunDuration;
             return this;
         }
+        @CustomType.Setter
         public Builder lastRunTime(@Nullable String lastRunTime) {
             this.lastRunTime = lastRunTime;
             return this;
         }
+        @CustomType.Setter
         public Builder message(@Nullable String message) {
             this.message = message;
             return this;
         }
+        @CustomType.Setter
         public Builder state(@Nullable String state) {
             this.state = state;
             return this;
         }
+        @CustomType.Setter
         public Builder stats(@Nullable List<AssetDiscoveryStatusStat> stats) {
             this.stats = stats;
             return this;
@@ -108,11 +94,20 @@ public final class AssetDiscoveryStatus {
         public Builder stats(AssetDiscoveryStatusStat... stats) {
             return stats(List.of(stats));
         }
+        @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
             this.updateTime = updateTime;
             return this;
-        }        public AssetDiscoveryStatus build() {
-            return new AssetDiscoveryStatus(lastRunDuration, lastRunTime, message, state, stats, updateTime);
+        }
+        public AssetDiscoveryStatus build() {
+            final var o = new AssetDiscoveryStatus();
+            o.lastRunDuration = lastRunDuration;
+            o.lastRunTime = lastRunTime;
+            o.message = message;
+            o.state = state;
+            o.stats = stats;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

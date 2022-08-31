@@ -16866,7 +16866,7 @@ export namespace container {
          */
         instanceType?: pulumi.Input<string>;
         /**
-         * Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         * Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -17771,6 +17771,10 @@ export namespace container {
          * for more information. Defaults to false.
          */
         preemptible?: pulumi.Input<boolean>;
+        /**
+         * The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+         */
+        reservationAffinity?: pulumi.Input<inputs.container.ClusterNodeConfigReservationAffinity>;
         sandboxConfig?: pulumi.Input<inputs.container.ClusterNodeConfigSandboxConfig>;
         /**
          * The service account to be used by the Node VMs.
@@ -17788,8 +17792,7 @@ export namespace container {
          */
         spot?: pulumi.Input<boolean>;
         /**
-         * The list of instance tags applied to all nodes. Tags are used to identify
-         * valid sources or targets for network firewalls.
+         * ) - List of network tags applied to auto-provisioned node pools.
          */
         tags?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -17878,6 +17881,22 @@ export namespace container {
         sysctls: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
+    export interface ClusterNodeConfigReservationAffinity {
+        /**
+         * The type of reservation consumption
+         * Accepted values are:
+         */
+        consumeReservationType: pulumi.Input<string>;
+        /**
+         * The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
+         */
+        values?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface ClusterNodeConfigSandboxConfig {
         /**
          * Which sandbox to use for pods in the node pool.
@@ -17903,7 +17922,7 @@ export namespace container {
          */
         effect: pulumi.Input<string>;
         /**
-         * Key for taint.
+         * The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
          */
         key: pulumi.Input<string>;
         /**
@@ -17968,6 +17987,20 @@ export namespace container {
         placementPolicy?: pulumi.Input<inputs.container.ClusterNodePoolPlacementPolicy>;
         upgradeSettings?: pulumi.Input<inputs.container.ClusterNodePoolUpgradeSettings>;
         version?: pulumi.Input<string>;
+    }
+
+    export interface ClusterNodePoolAutoConfig {
+        /**
+         * ) - The network tag config for the cluster's automatically provisioned node pools.
+         */
+        networkTags?: pulumi.Input<inputs.container.ClusterNodePoolAutoConfigNetworkTags>;
+    }
+
+    export interface ClusterNodePoolAutoConfigNetworkTags {
+        /**
+         * ) - List of network tags applied to auto-provisioned node pools.
+         */
+        tags?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ClusterNodePoolAutoscaling {
@@ -18099,6 +18132,10 @@ export namespace container {
          * for more information. Defaults to false.
          */
         preemptible?: pulumi.Input<boolean>;
+        /**
+         * The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+         */
+        reservationAffinity?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigReservationAffinity>;
         sandboxConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigSandboxConfig>;
         /**
          * The service account to be used by the Node VMs.
@@ -18116,8 +18153,7 @@ export namespace container {
          */
         spot?: pulumi.Input<boolean>;
         /**
-         * The list of instance tags applied to all nodes. Tags are used to identify
-         * valid sources or targets for network firewalls.
+         * ) - List of network tags applied to auto-provisioned node pools.
          */
         tags?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -18206,6 +18242,22 @@ export namespace container {
         sysctls: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
+    export interface ClusterNodePoolNodeConfigReservationAffinity {
+        /**
+         * The type of reservation consumption
+         * Accepted values are:
+         */
+        consumeReservationType: pulumi.Input<string>;
+        /**
+         * The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
+         */
+        values?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface ClusterNodePoolNodeConfigSandboxConfig {
         /**
          * Which sandbox to use for pods in the node pool.
@@ -18231,7 +18283,7 @@ export namespace container {
          */
         effect: pulumi.Input<string>;
         /**
-         * Key for taint.
+         * The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
          */
         key: pulumi.Input<string>;
         /**
@@ -18452,6 +18504,7 @@ export namespace container {
         nodeGroup?: pulumi.Input<string>;
         oauthScopes?: pulumi.Input<pulumi.Input<string>[]>;
         preemptible?: pulumi.Input<boolean>;
+        reservationAffinity?: pulumi.Input<inputs.container.NodePoolNodeConfigReservationAffinity>;
         sandboxConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigSandboxConfig>;
         serviceAccount?: pulumi.Input<string>;
         shieldedInstanceConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigShieldedInstanceConfig>;
@@ -18492,6 +18545,12 @@ export namespace container {
 
     export interface NodePoolNodeConfigLinuxNodeConfig {
         sysctls: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface NodePoolNodeConfigReservationAffinity {
+        consumeReservationType: pulumi.Input<string>;
+        key?: pulumi.Input<string>;
+        values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface NodePoolNodeConfigSandboxConfig {
@@ -24015,7 +24074,7 @@ export namespace iam {
          * User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
          * Structure is documented below.
          */
-        denialCondition: pulumi.Input<inputs.iam.DenyPolicyRuleDenyRuleDenialCondition>;
+        denialCondition?: pulumi.Input<inputs.iam.DenyPolicyRuleDenyRuleDenialCondition>;
         /**
          * The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
          * where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
@@ -29777,7 +29836,7 @@ export namespace pubsub {
          */
         dropUnknownFields?: pulumi.Input<boolean>;
         /**
-         * The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
+         * The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
          */
         table: pulumi.Input<string>;
         /**

@@ -24,7 +24,7 @@ public final class BackendServiceBackend {
      * Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
      * 
      */
-    private final @Nullable String balancingMode;
+    private @Nullable String balancingMode;
     /**
      * @return A multiplier applied to the group&#39;s maximum servicing capacity
      * (based on UTILIZATION, RATE or CONNECTION).
@@ -34,13 +34,13 @@ public final class BackendServiceBackend {
      * 0% of its available Capacity. Valid range is [0.0,1.0].
      * 
      */
-    private final @Nullable Double capacityScaler;
+    private @Nullable Double capacityScaler;
     /**
      * @return An optional description of this resource.
      * Provide this property when you create the resource.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return The fully-qualified URL of an Instance Group or Network Endpoint
      * Group resource. In case of instance group this defines the list
@@ -58,13 +58,13 @@ public final class BackendServiceBackend {
      * partial URL.
      * 
      */
-    private final String group;
+    private String group;
     /**
      * @return The maximum number of connections to the backend cluster.
      * Defaults to 1024.
      * 
      */
-    private final @Nullable Integer maxConnections;
+    private @Nullable Integer maxConnections;
     /**
      * @return The max number of simultaneous connections that a single backend
      * network endpoint can handle. This is used to calculate the
@@ -74,7 +74,7 @@ public final class BackendServiceBackend {
      * maxConnections or maxConnectionsPerEndpoint must be set.
      * 
      */
-    private final @Nullable Integer maxConnectionsPerEndpoint;
+    private @Nullable Integer maxConnectionsPerEndpoint;
     /**
      * @return The max number of simultaneous connections that a single
      * backend instance can handle. This is used to calculate the
@@ -84,7 +84,7 @@ public final class BackendServiceBackend {
      * maxConnectionsPerInstance must be set.
      * 
      */
-    private final @Nullable Integer maxConnectionsPerInstance;
+    private @Nullable Integer maxConnectionsPerInstance;
     /**
      * @return The max requests per second (RPS) of the group.
      * Can be used with either RATE or UTILIZATION balancing modes,
@@ -93,7 +93,7 @@ public final class BackendServiceBackend {
      * group type, must be set.
      * 
      */
-    private final @Nullable Integer maxRate;
+    private @Nullable Integer maxRate;
     /**
      * @return The max requests per second (RPS) that a single backend network
      * endpoint can handle. This is used to calculate the capacity of
@@ -101,7 +101,7 @@ public final class BackendServiceBackend {
      * either maxRate or maxRatePerEndpoint must be set.
      * 
      */
-    private final @Nullable Double maxRatePerEndpoint;
+    private @Nullable Double maxRatePerEndpoint;
     /**
      * @return The max requests per second (RPS) that a single backend
      * instance can handle. This is used to calculate the capacity of
@@ -109,40 +109,15 @@ public final class BackendServiceBackend {
      * either maxRate or maxRatePerInstance must be set.
      * 
      */
-    private final @Nullable Double maxRatePerInstance;
+    private @Nullable Double maxRatePerInstance;
     /**
      * @return Used when balancingMode is UTILIZATION. This ratio defines the
      * CPU utilization target for the group. Valid range is [0.0, 1.0].
      * 
      */
-    private final @Nullable Double maxUtilization;
+    private @Nullable Double maxUtilization;
 
-    @CustomType.Constructor
-    private BackendServiceBackend(
-        @CustomType.Parameter("balancingMode") @Nullable String balancingMode,
-        @CustomType.Parameter("capacityScaler") @Nullable Double capacityScaler,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("group") String group,
-        @CustomType.Parameter("maxConnections") @Nullable Integer maxConnections,
-        @CustomType.Parameter("maxConnectionsPerEndpoint") @Nullable Integer maxConnectionsPerEndpoint,
-        @CustomType.Parameter("maxConnectionsPerInstance") @Nullable Integer maxConnectionsPerInstance,
-        @CustomType.Parameter("maxRate") @Nullable Integer maxRate,
-        @CustomType.Parameter("maxRatePerEndpoint") @Nullable Double maxRatePerEndpoint,
-        @CustomType.Parameter("maxRatePerInstance") @Nullable Double maxRatePerInstance,
-        @CustomType.Parameter("maxUtilization") @Nullable Double maxUtilization) {
-        this.balancingMode = balancingMode;
-        this.capacityScaler = capacityScaler;
-        this.description = description;
-        this.group = group;
-        this.maxConnections = maxConnections;
-        this.maxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
-        this.maxConnectionsPerInstance = maxConnectionsPerInstance;
-        this.maxRate = maxRate;
-        this.maxRatePerEndpoint = maxRatePerEndpoint;
-        this.maxRatePerInstance = maxRatePerInstance;
-        this.maxUtilization = maxUtilization;
-    }
-
+    private BackendServiceBackend() {}
     /**
      * @return Specifies the balancing mode for this backend.
      * For global HTTP(S) or TCP/SSL load balancing, the default is
@@ -276,7 +251,7 @@ public final class BackendServiceBackend {
     public static Builder builder(BackendServiceBackend defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String balancingMode;
         private @Nullable Double capacityScaler;
@@ -289,11 +264,7 @@ public final class BackendServiceBackend {
         private @Nullable Double maxRatePerEndpoint;
         private @Nullable Double maxRatePerInstance;
         private @Nullable Double maxUtilization;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BackendServiceBackend defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.balancingMode = defaults.balancingMode;
@@ -309,51 +280,75 @@ public final class BackendServiceBackend {
     	      this.maxUtilization = defaults.maxUtilization;
         }
 
+        @CustomType.Setter
         public Builder balancingMode(@Nullable String balancingMode) {
             this.balancingMode = balancingMode;
             return this;
         }
+        @CustomType.Setter
         public Builder capacityScaler(@Nullable Double capacityScaler) {
             this.capacityScaler = capacityScaler;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder group(String group) {
             this.group = Objects.requireNonNull(group);
             return this;
         }
+        @CustomType.Setter
         public Builder maxConnections(@Nullable Integer maxConnections) {
             this.maxConnections = maxConnections;
             return this;
         }
+        @CustomType.Setter
         public Builder maxConnectionsPerEndpoint(@Nullable Integer maxConnectionsPerEndpoint) {
             this.maxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder maxConnectionsPerInstance(@Nullable Integer maxConnectionsPerInstance) {
             this.maxConnectionsPerInstance = maxConnectionsPerInstance;
             return this;
         }
+        @CustomType.Setter
         public Builder maxRate(@Nullable Integer maxRate) {
             this.maxRate = maxRate;
             return this;
         }
+        @CustomType.Setter
         public Builder maxRatePerEndpoint(@Nullable Double maxRatePerEndpoint) {
             this.maxRatePerEndpoint = maxRatePerEndpoint;
             return this;
         }
+        @CustomType.Setter
         public Builder maxRatePerInstance(@Nullable Double maxRatePerInstance) {
             this.maxRatePerInstance = maxRatePerInstance;
             return this;
         }
+        @CustomType.Setter
         public Builder maxUtilization(@Nullable Double maxUtilization) {
             this.maxUtilization = maxUtilization;
             return this;
-        }        public BackendServiceBackend build() {
-            return new BackendServiceBackend(balancingMode, capacityScaler, description, group, maxConnections, maxConnectionsPerEndpoint, maxConnectionsPerInstance, maxRate, maxRatePerEndpoint, maxRatePerInstance, maxUtilization);
+        }
+        public BackendServiceBackend build() {
+            final var o = new BackendServiceBackend();
+            o.balancingMode = balancingMode;
+            o.capacityScaler = capacityScaler;
+            o.description = description;
+            o.group = group;
+            o.maxConnections = maxConnections;
+            o.maxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
+            o.maxConnectionsPerInstance = maxConnectionsPerInstance;
+            o.maxRate = maxRate;
+            o.maxRatePerEndpoint = maxRatePerEndpoint;
+            o.maxRatePerInstance = maxRatePerInstance;
+            o.maxUtilization = maxUtilization;
+            return o;
         }
     }
 }

@@ -14,21 +14,14 @@ public final class ConnectionCloudSqlCredential {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private final String password;
+    private String password;
     /**
      * @return Username for database.
      * 
      */
-    private final String username;
+    private String username;
 
-    @CustomType.Constructor
-    private ConnectionCloudSqlCredential(
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("username") String username) {
-        this.password = password;
-        this.username = username;
-    }
-
+    private ConnectionCloudSqlCredential() {}
     /**
      * @return Password for database.
      * **Note**: This property is sensitive and will not be displayed in the plan.
@@ -52,30 +45,32 @@ public final class ConnectionCloudSqlCredential {
     public static Builder builder(ConnectionCloudSqlCredential defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String password;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionCloudSqlCredential defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.password = defaults.password;
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public ConnectionCloudSqlCredential build() {
-            return new ConnectionCloudSqlCredential(password, username);
+        }
+        public ConnectionCloudSqlCredential build() {
+            final var o = new ConnectionCloudSqlCredential();
+            o.password = password;
+            o.username = username;
+            return o;
         }
     }
 }

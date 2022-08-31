@@ -19,75 +19,32 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketResult {
-    private final List<GetBucketCor> cors;
-    private final Boolean defaultEventBasedHold;
-    private final List<GetBucketEncryption> encryptions;
-    private final Boolean forceDestroy;
+    private List<GetBucketCor> cors;
+    private Boolean defaultEventBasedHold;
+    private List<GetBucketEncryption> encryptions;
+    private Boolean forceDestroy;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final Map<String,String> labels;
-    private final List<GetBucketLifecycleRule> lifecycleRules;
-    private final String location;
-    private final List<GetBucketLogging> loggings;
-    private final String name;
-    private final String project;
-    private final String publicAccessPrevention;
-    private final Boolean requesterPays;
-    private final List<GetBucketRetentionPolicy> retentionPolicies;
-    private final String selfLink;
-    private final String storageClass;
-    private final Boolean uniformBucketLevelAccess;
-    private final String url;
-    private final List<GetBucketVersioning> versionings;
-    private final List<GetBucketWebsite> websites;
+    private String id;
+    private Map<String,String> labels;
+    private List<GetBucketLifecycleRule> lifecycleRules;
+    private String location;
+    private List<GetBucketLogging> loggings;
+    private String name;
+    private String project;
+    private String publicAccessPrevention;
+    private Boolean requesterPays;
+    private List<GetBucketRetentionPolicy> retentionPolicies;
+    private String selfLink;
+    private String storageClass;
+    private Boolean uniformBucketLevelAccess;
+    private String url;
+    private List<GetBucketVersioning> versionings;
+    private List<GetBucketWebsite> websites;
 
-    @CustomType.Constructor
-    private GetBucketResult(
-        @CustomType.Parameter("cors") List<GetBucketCor> cors,
-        @CustomType.Parameter("defaultEventBasedHold") Boolean defaultEventBasedHold,
-        @CustomType.Parameter("encryptions") List<GetBucketEncryption> encryptions,
-        @CustomType.Parameter("forceDestroy") Boolean forceDestroy,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("lifecycleRules") List<GetBucketLifecycleRule> lifecycleRules,
-        @CustomType.Parameter("location") String location,
-        @CustomType.Parameter("loggings") List<GetBucketLogging> loggings,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("publicAccessPrevention") String publicAccessPrevention,
-        @CustomType.Parameter("requesterPays") Boolean requesterPays,
-        @CustomType.Parameter("retentionPolicies") List<GetBucketRetentionPolicy> retentionPolicies,
-        @CustomType.Parameter("selfLink") String selfLink,
-        @CustomType.Parameter("storageClass") String storageClass,
-        @CustomType.Parameter("uniformBucketLevelAccess") Boolean uniformBucketLevelAccess,
-        @CustomType.Parameter("url") String url,
-        @CustomType.Parameter("versionings") List<GetBucketVersioning> versionings,
-        @CustomType.Parameter("websites") List<GetBucketWebsite> websites) {
-        this.cors = cors;
-        this.defaultEventBasedHold = defaultEventBasedHold;
-        this.encryptions = encryptions;
-        this.forceDestroy = forceDestroy;
-        this.id = id;
-        this.labels = labels;
-        this.lifecycleRules = lifecycleRules;
-        this.location = location;
-        this.loggings = loggings;
-        this.name = name;
-        this.project = project;
-        this.publicAccessPrevention = publicAccessPrevention;
-        this.requesterPays = requesterPays;
-        this.retentionPolicies = retentionPolicies;
-        this.selfLink = selfLink;
-        this.storageClass = storageClass;
-        this.uniformBucketLevelAccess = uniformBucketLevelAccess;
-        this.url = url;
-        this.versionings = versionings;
-        this.websites = websites;
-    }
-
+    private GetBucketResult() {}
     public List<GetBucketCor> cors() {
         return this.cors;
     }
@@ -160,7 +117,7 @@ public final class GetBucketResult {
     public static Builder builder(GetBucketResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetBucketCor> cors;
         private Boolean defaultEventBasedHold;
@@ -182,11 +139,7 @@ public final class GetBucketResult {
         private String url;
         private List<GetBucketVersioning> versionings;
         private List<GetBucketWebsite> websites;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBucketResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cors = defaults.cors;
@@ -211,6 +164,7 @@ public final class GetBucketResult {
     	      this.websites = defaults.websites;
         }
 
+        @CustomType.Setter
         public Builder cors(List<GetBucketCor> cors) {
             this.cors = Objects.requireNonNull(cors);
             return this;
@@ -218,10 +172,12 @@ public final class GetBucketResult {
         public Builder cors(GetBucketCor... cors) {
             return cors(List.of(cors));
         }
+        @CustomType.Setter
         public Builder defaultEventBasedHold(Boolean defaultEventBasedHold) {
             this.defaultEventBasedHold = Objects.requireNonNull(defaultEventBasedHold);
             return this;
         }
+        @CustomType.Setter
         public Builder encryptions(List<GetBucketEncryption> encryptions) {
             this.encryptions = Objects.requireNonNull(encryptions);
             return this;
@@ -229,18 +185,22 @@ public final class GetBucketResult {
         public Builder encryptions(GetBucketEncryption... encryptions) {
             return encryptions(List.of(encryptions));
         }
+        @CustomType.Setter
         public Builder forceDestroy(Boolean forceDestroy) {
             this.forceDestroy = Objects.requireNonNull(forceDestroy);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder lifecycleRules(List<GetBucketLifecycleRule> lifecycleRules) {
             this.lifecycleRules = Objects.requireNonNull(lifecycleRules);
             return this;
@@ -248,10 +208,12 @@ public final class GetBucketResult {
         public Builder lifecycleRules(GetBucketLifecycleRule... lifecycleRules) {
             return lifecycleRules(List.of(lifecycleRules));
         }
+        @CustomType.Setter
         public Builder location(String location) {
             this.location = Objects.requireNonNull(location);
             return this;
         }
+        @CustomType.Setter
         public Builder loggings(List<GetBucketLogging> loggings) {
             this.loggings = Objects.requireNonNull(loggings);
             return this;
@@ -259,22 +221,27 @@ public final class GetBucketResult {
         public Builder loggings(GetBucketLogging... loggings) {
             return loggings(List.of(loggings));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder publicAccessPrevention(String publicAccessPrevention) {
             this.publicAccessPrevention = Objects.requireNonNull(publicAccessPrevention);
             return this;
         }
+        @CustomType.Setter
         public Builder requesterPays(Boolean requesterPays) {
             this.requesterPays = Objects.requireNonNull(requesterPays);
             return this;
         }
+        @CustomType.Setter
         public Builder retentionPolicies(List<GetBucketRetentionPolicy> retentionPolicies) {
             this.retentionPolicies = Objects.requireNonNull(retentionPolicies);
             return this;
@@ -282,22 +249,27 @@ public final class GetBucketResult {
         public Builder retentionPolicies(GetBucketRetentionPolicy... retentionPolicies) {
             return retentionPolicies(List.of(retentionPolicies));
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder storageClass(String storageClass) {
             this.storageClass = Objects.requireNonNull(storageClass);
             return this;
         }
+        @CustomType.Setter
         public Builder uniformBucketLevelAccess(Boolean uniformBucketLevelAccess) {
             this.uniformBucketLevelAccess = Objects.requireNonNull(uniformBucketLevelAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
         }
+        @CustomType.Setter
         public Builder versionings(List<GetBucketVersioning> versionings) {
             this.versionings = Objects.requireNonNull(versionings);
             return this;
@@ -305,14 +277,37 @@ public final class GetBucketResult {
         public Builder versionings(GetBucketVersioning... versionings) {
             return versionings(List.of(versionings));
         }
+        @CustomType.Setter
         public Builder websites(List<GetBucketWebsite> websites) {
             this.websites = Objects.requireNonNull(websites);
             return this;
         }
         public Builder websites(GetBucketWebsite... websites) {
             return websites(List.of(websites));
-        }        public GetBucketResult build() {
-            return new GetBucketResult(cors, defaultEventBasedHold, encryptions, forceDestroy, id, labels, lifecycleRules, location, loggings, name, project, publicAccessPrevention, requesterPays, retentionPolicies, selfLink, storageClass, uniformBucketLevelAccess, url, versionings, websites);
+        }
+        public GetBucketResult build() {
+            final var o = new GetBucketResult();
+            o.cors = cors;
+            o.defaultEventBasedHold = defaultEventBasedHold;
+            o.encryptions = encryptions;
+            o.forceDestroy = forceDestroy;
+            o.id = id;
+            o.labels = labels;
+            o.lifecycleRules = lifecycleRules;
+            o.location = location;
+            o.loggings = loggings;
+            o.name = name;
+            o.project = project;
+            o.publicAccessPrevention = publicAccessPrevention;
+            o.requesterPays = requesterPays;
+            o.retentionPolicies = retentionPolicies;
+            o.selfLink = selfLink;
+            o.storageClass = storageClass;
+            o.uniformBucketLevelAccess = uniformBucketLevelAccess;
+            o.url = url;
+            o.versionings = versionings;
+            o.websites = websites;
+            return o;
         }
     }
 }

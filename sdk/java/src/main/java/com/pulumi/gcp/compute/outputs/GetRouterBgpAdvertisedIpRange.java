@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRouterBgpAdvertisedIpRange {
-    private final String description;
-    private final String range;
+    private String description;
+    private String range;
 
-    @CustomType.Constructor
-    private GetRouterBgpAdvertisedIpRange(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("range") String range) {
-        this.description = description;
-        this.range = range;
-    }
-
+    private GetRouterBgpAdvertisedIpRange() {}
     public String description() {
         return this.description;
     }
@@ -34,30 +27,32 @@ public final class GetRouterBgpAdvertisedIpRange {
     public static Builder builder(GetRouterBgpAdvertisedIpRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String range;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRouterBgpAdvertisedIpRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.range = defaults.range;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder range(String range) {
             this.range = Objects.requireNonNull(range);
             return this;
-        }        public GetRouterBgpAdvertisedIpRange build() {
-            return new GetRouterBgpAdvertisedIpRange(description, range);
+        }
+        public GetRouterBgpAdvertisedIpRange build() {
+            final var o = new GetRouterBgpAdvertisedIpRange();
+            o.description = description;
+            o.range = range;
+            return o;
         }
     }
 }

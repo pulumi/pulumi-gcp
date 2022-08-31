@@ -15,13 +15,9 @@ public final class OsPolicyAssignmentInstanceFilterInclusionLabel {
      * @return Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
      * 
      */
-    private final @Nullable Map<String,String> labels;
+    private @Nullable Map<String,String> labels;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentInstanceFilterInclusionLabel(@CustomType.Parameter("labels") @Nullable Map<String,String> labels) {
-        this.labels = labels;
-    }
-
+    private OsPolicyAssignmentInstanceFilterInclusionLabel() {}
     /**
      * @return Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
      * 
@@ -37,24 +33,24 @@ public final class OsPolicyAssignmentInstanceFilterInclusionLabel {
     public static Builder builder(OsPolicyAssignmentInstanceFilterInclusionLabel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> labels;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentInstanceFilterInclusionLabel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.labels = defaults.labels;
         }
 
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
             this.labels = labels;
             return this;
-        }        public OsPolicyAssignmentInstanceFilterInclusionLabel build() {
-            return new OsPolicyAssignmentInstanceFilterInclusionLabel(labels);
+        }
+        public OsPolicyAssignmentInstanceFilterInclusionLabel build() {
+            final var o = new OsPolicyAssignmentInstanceFilterInclusionLabel();
+            o.labels = labels;
+            return o;
         }
     }
 }

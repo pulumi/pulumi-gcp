@@ -15,28 +15,19 @@ public final class RegionBackendServiceIamMemberCondition {
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return Textual representation of an expression in Common Expression Language syntax.
      * 
      */
-    private final String expression;
+    private String expression;
     /**
      * @return A title for the expression, i.e. a short string describing its purpose.
      * 
      */
-    private final String title;
+    private String title;
 
-    @CustomType.Constructor
-    private RegionBackendServiceIamMemberCondition(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("expression") String expression,
-        @CustomType.Parameter("title") String title) {
-        this.description = description;
-        this.expression = expression;
-        this.title = title;
-    }
-
+    private RegionBackendServiceIamMemberCondition() {}
     /**
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
@@ -66,16 +57,12 @@ public final class RegionBackendServiceIamMemberCondition {
     public static Builder builder(RegionBackendServiceIamMemberCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private String expression;
         private String title;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionBackendServiceIamMemberCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -83,19 +70,27 @@ public final class RegionBackendServiceIamMemberCondition {
     	      this.title = defaults.title;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder expression(String expression) {
             this.expression = Objects.requireNonNull(expression);
             return this;
         }
+        @CustomType.Setter
         public Builder title(String title) {
             this.title = Objects.requireNonNull(title);
             return this;
-        }        public RegionBackendServiceIamMemberCondition build() {
-            return new RegionBackendServiceIamMemberCondition(description, expression, title);
+        }
+        public RegionBackendServiceIamMemberCondition build() {
+            final var o = new RegionBackendServiceIamMemberCondition();
+            o.description = description;
+            o.expression = expression;
+            o.title = title;
+            return o;
         }
     }
 }

@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterAddonsConfigCloudrunConfig {
-    private final Boolean disabled;
-    private final String loadBalancerType;
+    private Boolean disabled;
+    private String loadBalancerType;
 
-    @CustomType.Constructor
-    private GetClusterAddonsConfigCloudrunConfig(
-        @CustomType.Parameter("disabled") Boolean disabled,
-        @CustomType.Parameter("loadBalancerType") String loadBalancerType) {
-        this.disabled = disabled;
-        this.loadBalancerType = loadBalancerType;
-    }
-
+    private GetClusterAddonsConfigCloudrunConfig() {}
     public Boolean disabled() {
         return this.disabled;
     }
@@ -35,30 +28,32 @@ public final class GetClusterAddonsConfigCloudrunConfig {
     public static Builder builder(GetClusterAddonsConfigCloudrunConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean disabled;
         private String loadBalancerType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterAddonsConfigCloudrunConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disabled = defaults.disabled;
     	      this.loadBalancerType = defaults.loadBalancerType;
         }
 
+        @CustomType.Setter
         public Builder disabled(Boolean disabled) {
             this.disabled = Objects.requireNonNull(disabled);
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancerType(String loadBalancerType) {
             this.loadBalancerType = Objects.requireNonNull(loadBalancerType);
             return this;
-        }        public GetClusterAddonsConfigCloudrunConfig build() {
-            return new GetClusterAddonsConfigCloudrunConfig(disabled, loadBalancerType);
+        }
+        public GetClusterAddonsConfigCloudrunConfig build() {
+            final var o = new GetClusterAddonsConfigCloudrunConfig();
+            o.disabled = disabled;
+            o.loadBalancerType = loadBalancerType;
+            return o;
         }
     }
 }

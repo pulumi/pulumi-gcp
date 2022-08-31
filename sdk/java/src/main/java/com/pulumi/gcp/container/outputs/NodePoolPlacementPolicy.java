@@ -15,13 +15,9 @@ public final class NodePoolPlacementPolicy {
      * physical proximity in order to reduce network latency between nodes.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private NodePoolPlacementPolicy(@CustomType.Parameter("type") String type) {
-        this.type = type;
-    }
-
+    private NodePoolPlacementPolicy() {}
     /**
      * @return The type of the policy. Supports a single value: COMPACT.
      * Specifying COMPACT placement policy type places node pool&#39;s nodes in a closer
@@ -39,24 +35,24 @@ public final class NodePoolPlacementPolicy {
     public static Builder builder(NodePoolPlacementPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodePoolPlacementPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public NodePoolPlacementPolicy build() {
-            return new NodePoolPlacementPolicy(type);
+        }
+        public NodePoolPlacementPolicy build() {
+            final var o = new NodePoolPlacementPolicy();
+            o.type = type;
+            return o;
         }
     }
 }

@@ -14,21 +14,14 @@ public final class RecordSetRoutingPolicyGeo {
      * @return The location name defined in Google Cloud.
      * 
      */
-    private final String location;
+    private String location;
     /**
      * @return Same as `rrdatas` above.
      * 
      */
-    private final List<String> rrdatas;
+    private List<String> rrdatas;
 
-    @CustomType.Constructor
-    private RecordSetRoutingPolicyGeo(
-        @CustomType.Parameter("location") String location,
-        @CustomType.Parameter("rrdatas") List<String> rrdatas) {
-        this.location = location;
-        this.rrdatas = rrdatas;
-    }
-
+    private RecordSetRoutingPolicyGeo() {}
     /**
      * @return The location name defined in Google Cloud.
      * 
@@ -51,33 +44,35 @@ public final class RecordSetRoutingPolicyGeo {
     public static Builder builder(RecordSetRoutingPolicyGeo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String location;
         private List<String> rrdatas;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RecordSetRoutingPolicyGeo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.location = defaults.location;
     	      this.rrdatas = defaults.rrdatas;
         }
 
+        @CustomType.Setter
         public Builder location(String location) {
             this.location = Objects.requireNonNull(location);
             return this;
         }
+        @CustomType.Setter
         public Builder rrdatas(List<String> rrdatas) {
             this.rrdatas = Objects.requireNonNull(rrdatas);
             return this;
         }
         public Builder rrdatas(String... rrdatas) {
             return rrdatas(List.of(rrdatas));
-        }        public RecordSetRoutingPolicyGeo build() {
-            return new RecordSetRoutingPolicyGeo(location, rrdatas);
+        }
+        public RecordSetRoutingPolicyGeo build() {
+            final var o = new RecordSetRoutingPolicyGeo();
+            o.location = location;
+            o.rrdatas = rrdatas;
+            return o;
         }
     }
 }

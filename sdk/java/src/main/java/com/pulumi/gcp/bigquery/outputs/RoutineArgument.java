@@ -17,7 +17,7 @@ public final class RoutineArgument {
      * Possible values are `FIXED_TYPE` and `ANY_TYPE`.
      * 
      */
-    private final @Nullable String argumentKind;
+    private @Nullable String argumentKind;
     /**
      * @return A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
      * ~&gt;**NOTE**: Because this field expects a JSON string, any changes to the string
@@ -28,31 +28,20 @@ public final class RoutineArgument {
      * the schema as returned by the API.
      * 
      */
-    private final @Nullable String dataType;
+    private @Nullable String dataType;
     /**
      * @return Specifies whether the argument is input or output. Can be set for procedures only.
      * Possible values are `IN`, `OUT`, and `INOUT`.
      * 
      */
-    private final @Nullable String mode;
+    private @Nullable String mode;
     /**
      * @return The name of this argument. Can be absent for function return argument.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
 
-    @CustomType.Constructor
-    private RoutineArgument(
-        @CustomType.Parameter("argumentKind") @Nullable String argumentKind,
-        @CustomType.Parameter("dataType") @Nullable String dataType,
-        @CustomType.Parameter("mode") @Nullable String mode,
-        @CustomType.Parameter("name") @Nullable String name) {
-        this.argumentKind = argumentKind;
-        this.dataType = dataType;
-        this.mode = mode;
-        this.name = name;
-    }
-
+    private RoutineArgument() {}
     /**
      * @return Defaults to FIXED_TYPE.
      * Default value is `FIXED_TYPE`.
@@ -98,17 +87,13 @@ public final class RoutineArgument {
     public static Builder builder(RoutineArgument defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String argumentKind;
         private @Nullable String dataType;
         private @Nullable String mode;
         private @Nullable String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RoutineArgument defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.argumentKind = defaults.argumentKind;
@@ -117,23 +102,33 @@ public final class RoutineArgument {
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder argumentKind(@Nullable String argumentKind) {
             this.argumentKind = argumentKind;
             return this;
         }
+        @CustomType.Setter
         public Builder dataType(@Nullable String dataType) {
             this.dataType = dataType;
             return this;
         }
+        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
             this.mode = mode;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
-        }        public RoutineArgument build() {
-            return new RoutineArgument(argumentKind, dataType, mode, name);
+        }
+        public RoutineArgument build() {
+            final var o = new RoutineArgument();
+            o.argumentKind = argumentKind;
+            o.dataType = dataType;
+            o.mode = mode;
+            o.name = name;
+            return o;
         }
     }
 }

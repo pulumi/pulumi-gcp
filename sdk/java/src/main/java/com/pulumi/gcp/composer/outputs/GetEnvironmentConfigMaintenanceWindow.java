@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigMaintenanceWindow {
-    private final String endTime;
-    private final String recurrence;
-    private final String startTime;
+    private String endTime;
+    private String recurrence;
+    private String startTime;
 
-    @CustomType.Constructor
-    private GetEnvironmentConfigMaintenanceWindow(
-        @CustomType.Parameter("endTime") String endTime,
-        @CustomType.Parameter("recurrence") String recurrence,
-        @CustomType.Parameter("startTime") String startTime) {
-        this.endTime = endTime;
-        this.recurrence = recurrence;
-        this.startTime = startTime;
-    }
-
+    private GetEnvironmentConfigMaintenanceWindow() {}
     public String endTime() {
         return this.endTime;
     }
@@ -40,16 +31,12 @@ public final class GetEnvironmentConfigMaintenanceWindow {
     public static Builder builder(GetEnvironmentConfigMaintenanceWindow defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String endTime;
         private String recurrence;
         private String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEnvironmentConfigMaintenanceWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endTime = defaults.endTime;
@@ -57,19 +44,27 @@ public final class GetEnvironmentConfigMaintenanceWindow {
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder endTime(String endTime) {
             this.endTime = Objects.requireNonNull(endTime);
             return this;
         }
+        @CustomType.Setter
         public Builder recurrence(String recurrence) {
             this.recurrence = Objects.requireNonNull(recurrence);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
-        }        public GetEnvironmentConfigMaintenanceWindow build() {
-            return new GetEnvironmentConfigMaintenanceWindow(endTime, recurrence, startTime);
+        }
+        public GetEnvironmentConfigMaintenanceWindow build() {
+            final var o = new GetEnvironmentConfigMaintenanceWindow();
+            o.endTime = endTime;
+            o.recurrence = recurrence;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

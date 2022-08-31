@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.DenyPolicyRuleDenyRuleDenialCondition DenialCondition;
+        public readonly Outputs.DenyPolicyRuleDenyRuleDenialCondition? DenialCondition;
         /// <summary>
         /// The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
         /// where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Iam.Outputs
 
         [OutputConstructor]
         private DenyPolicyRuleDenyRule(
-            Outputs.DenyPolicyRuleDenyRuleDenialCondition denialCondition,
+            Outputs.DenyPolicyRuleDenyRuleDenialCondition? denialCondition,
 
             ImmutableArray<string> deniedPermissions,
 

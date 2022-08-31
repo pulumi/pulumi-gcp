@@ -50,16 +50,22 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  *     role: "roles/run.invoker",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
+ * }, {
+ *     dependsOn: [gcs_pubsub_publishing],
  * });
  * const event_receiving = new gcp.projects.IAMMember("event-receiving", {
  *     project: "my-project-name",
  *     role: "roles/eventarc.eventReceiver",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
+ * }, {
+ *     dependsOn: [invoking],
  * });
  * const artifactregistry_reader = new gcp.projects.IAMMember("artifactregistry-reader", {
  *     project: "my-project-name",
  *     role: "roles/artifactregistry.reader",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
+ * }, {
+ *     dependsOn: [event_receiving],
  * });
  * const _function = new gcp.cloudfunctionsv2.Function("function", {
  *     location: "us-central1",
@@ -147,11 +153,15 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  *     role: "roles/eventarc.eventReceiver",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
+ * }, {
+ *     dependsOn: [invoking],
  * });
  * const artifactregistry_reader = new gcp.projects.IAMMember("artifactregistry-reader", {
  *     project: "my-project-name",
  *     role: "roles/artifactregistry.reader",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
+ * }, {
+ *     dependsOn: [event_receiving],
  * });
  * const _function = new gcp.cloudfunctionsv2.Function("function", {
  *     location: "us-central1",

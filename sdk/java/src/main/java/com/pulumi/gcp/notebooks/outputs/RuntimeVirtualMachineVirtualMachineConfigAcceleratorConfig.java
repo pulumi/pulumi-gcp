@@ -16,23 +16,16 @@ public final class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig {
      * @return Count of cores of this accelerator.
      * 
      */
-    private final @Nullable Integer coreCount;
+    private @Nullable Integer coreCount;
     /**
      * @return Accelerator model. For valid values, see
      * `https://cloud.google.com/vertex-ai/docs/workbench/reference/
      * rest/v1/projects.locations.runtimes#AcceleratorType`
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig(
-        @CustomType.Parameter("coreCount") @Nullable Integer coreCount,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.coreCount = coreCount;
-        this.type = type;
-    }
-
+    private RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig() {}
     /**
      * @return Count of cores of this accelerator.
      * 
@@ -57,30 +50,32 @@ public final class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig {
     public static Builder builder(RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer coreCount;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.coreCount = defaults.coreCount;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder coreCount(@Nullable Integer coreCount) {
             this.coreCount = coreCount;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig build() {
-            return new RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig(coreCount, type);
+        }
+        public RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig build() {
+            final var o = new RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig();
+            o.coreCount = coreCount;
+            o.type = type;
+            return o;
         }
     }
 }

@@ -24,20 +24,20 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
      * be specified.
      * 
      */
-    private final @Nullable String fullPathMatch;
+    private @Nullable String fullPathMatch;
     /**
      * @return Specifies a list of header match criteria, all of which must match corresponding
      * headers in the request.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<URLMapPathMatcherRouteRuleMatchRuleHeaderMatch> headerMatches;
+    private @Nullable List<URLMapPathMatcherRouteRuleMatchRuleHeaderMatch> headerMatches;
     /**
      * @return Specifies that prefixMatch and fullPathMatch matches are case sensitive.
      * Defaults to false.
      * 
      */
-    private final @Nullable Boolean ignoreCase;
+    private @Nullable Boolean ignoreCase;
     /**
      * @return Opaque filter criteria used by Loadbalancer to restrict routing configuration to
      * a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
@@ -53,21 +53,21 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<URLMapPathMatcherRouteRuleMatchRuleMetadataFilter> metadataFilters;
+    private @Nullable List<URLMapPathMatcherRouteRuleMatchRuleMetadataFilter> metadataFilters;
     /**
      * @return The value of the header must start with the contents of prefixMatch. Only one of
      * exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
      * must be set.
      * 
      */
-    private final @Nullable String prefixMatch;
+    private @Nullable String prefixMatch;
     /**
      * @return Specifies a list of query parameter match criteria, all of which must match
      * corresponding query parameters in the request.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch> queryParameterMatches;
+    private @Nullable List<URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch> queryParameterMatches;
     /**
      * @return The queryParameterMatch matches if the value of the parameter matches the
      * regular expression specified by regexMatch. For the regular expression grammar,
@@ -75,26 +75,9 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
      * exactMatch and regexMatch must be set.
      * 
      */
-    private final @Nullable String regexMatch;
+    private @Nullable String regexMatch;
 
-    @CustomType.Constructor
-    private URLMapPathMatcherRouteRuleMatchRule(
-        @CustomType.Parameter("fullPathMatch") @Nullable String fullPathMatch,
-        @CustomType.Parameter("headerMatches") @Nullable List<URLMapPathMatcherRouteRuleMatchRuleHeaderMatch> headerMatches,
-        @CustomType.Parameter("ignoreCase") @Nullable Boolean ignoreCase,
-        @CustomType.Parameter("metadataFilters") @Nullable List<URLMapPathMatcherRouteRuleMatchRuleMetadataFilter> metadataFilters,
-        @CustomType.Parameter("prefixMatch") @Nullable String prefixMatch,
-        @CustomType.Parameter("queryParameterMatches") @Nullable List<URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch> queryParameterMatches,
-        @CustomType.Parameter("regexMatch") @Nullable String regexMatch) {
-        this.fullPathMatch = fullPathMatch;
-        this.headerMatches = headerMatches;
-        this.ignoreCase = ignoreCase;
-        this.metadataFilters = metadataFilters;
-        this.prefixMatch = prefixMatch;
-        this.queryParameterMatches = queryParameterMatches;
-        this.regexMatch = regexMatch;
-    }
-
+    private URLMapPathMatcherRouteRuleMatchRule() {}
     /**
      * @return For satisfying the matchRule condition, the path of the request must exactly
      * match the value specified in fullPathMatch after removing any query parameters
@@ -177,7 +160,7 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
     public static Builder builder(URLMapPathMatcherRouteRuleMatchRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String fullPathMatch;
         private @Nullable List<URLMapPathMatcherRouteRuleMatchRuleHeaderMatch> headerMatches;
@@ -186,11 +169,7 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
         private @Nullable String prefixMatch;
         private @Nullable List<URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch> queryParameterMatches;
         private @Nullable String regexMatch;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(URLMapPathMatcherRouteRuleMatchRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fullPathMatch = defaults.fullPathMatch;
@@ -202,10 +181,12 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
     	      this.regexMatch = defaults.regexMatch;
         }
 
+        @CustomType.Setter
         public Builder fullPathMatch(@Nullable String fullPathMatch) {
             this.fullPathMatch = fullPathMatch;
             return this;
         }
+        @CustomType.Setter
         public Builder headerMatches(@Nullable List<URLMapPathMatcherRouteRuleMatchRuleHeaderMatch> headerMatches) {
             this.headerMatches = headerMatches;
             return this;
@@ -213,10 +194,12 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
         public Builder headerMatches(URLMapPathMatcherRouteRuleMatchRuleHeaderMatch... headerMatches) {
             return headerMatches(List.of(headerMatches));
         }
+        @CustomType.Setter
         public Builder ignoreCase(@Nullable Boolean ignoreCase) {
             this.ignoreCase = ignoreCase;
             return this;
         }
+        @CustomType.Setter
         public Builder metadataFilters(@Nullable List<URLMapPathMatcherRouteRuleMatchRuleMetadataFilter> metadataFilters) {
             this.metadataFilters = metadataFilters;
             return this;
@@ -224,10 +207,12 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
         public Builder metadataFilters(URLMapPathMatcherRouteRuleMatchRuleMetadataFilter... metadataFilters) {
             return metadataFilters(List.of(metadataFilters));
         }
+        @CustomType.Setter
         public Builder prefixMatch(@Nullable String prefixMatch) {
             this.prefixMatch = prefixMatch;
             return this;
         }
+        @CustomType.Setter
         public Builder queryParameterMatches(@Nullable List<URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch> queryParameterMatches) {
             this.queryParameterMatches = queryParameterMatches;
             return this;
@@ -235,11 +220,21 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
         public Builder queryParameterMatches(URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch... queryParameterMatches) {
             return queryParameterMatches(List.of(queryParameterMatches));
         }
+        @CustomType.Setter
         public Builder regexMatch(@Nullable String regexMatch) {
             this.regexMatch = regexMatch;
             return this;
-        }        public URLMapPathMatcherRouteRuleMatchRule build() {
-            return new URLMapPathMatcherRouteRuleMatchRule(fullPathMatch, headerMatches, ignoreCase, metadataFilters, prefixMatch, queryParameterMatches, regexMatch);
+        }
+        public URLMapPathMatcherRouteRuleMatchRule build() {
+            final var o = new URLMapPathMatcherRouteRuleMatchRule();
+            o.fullPathMatch = fullPathMatch;
+            o.headerMatches = headerMatches;
+            o.ignoreCase = ignoreCase;
+            o.metadataFilters = metadataFilters;
+            o.prefixMatch = prefixMatch;
+            o.queryParameterMatches = queryParameterMatches;
+            o.regexMatch = regexMatch;
+            return o;
         }
     }
 }

@@ -16,21 +16,14 @@ public final class ConnectorSubnet {
      * https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}&#34;
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
      * 
      */
-    private final @Nullable String projectId;
+    private @Nullable String projectId;
 
-    @CustomType.Constructor
-    private ConnectorSubnet(
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("projectId") @Nullable String projectId) {
-        this.name = name;
-        this.projectId = projectId;
-    }
-
+    private ConnectorSubnet() {}
     /**
      * @return Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
      * https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}&#34;
@@ -54,30 +47,32 @@ public final class ConnectorSubnet {
     public static Builder builder(ConnectorSubnet defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
         private @Nullable String projectId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectorSubnet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.projectId = defaults.projectId;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
             this.projectId = projectId;
             return this;
-        }        public ConnectorSubnet build() {
-            return new ConnectorSubnet(name, projectId);
+        }
+        public ConnectorSubnet build() {
+            final var o = new ConnectorSubnet();
+            o.name = name;
+            o.projectId = projectId;
+            return o;
         }
     }
 }

@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterResourceUsageExportConfigBigqueryDestination {
-    private final String datasetId;
+    private String datasetId;
 
-    @CustomType.Constructor
-    private ClusterResourceUsageExportConfigBigqueryDestination(@CustomType.Parameter("datasetId") String datasetId) {
-        this.datasetId = datasetId;
-    }
-
+    private ClusterResourceUsageExportConfigBigqueryDestination() {}
     public String datasetId() {
         return this.datasetId;
     }
@@ -27,24 +23,24 @@ public final class ClusterResourceUsageExportConfigBigqueryDestination {
     public static Builder builder(ClusterResourceUsageExportConfigBigqueryDestination defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String datasetId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterResourceUsageExportConfigBigqueryDestination defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datasetId = defaults.datasetId;
         }
 
+        @CustomType.Setter
         public Builder datasetId(String datasetId) {
             this.datasetId = Objects.requireNonNull(datasetId);
             return this;
-        }        public ClusterResourceUsageExportConfigBigqueryDestination build() {
-            return new ClusterResourceUsageExportConfigBigqueryDestination(datasetId);
+        }
+        public ClusterResourceUsageExportConfigBigqueryDestination build() {
+            final var o = new ClusterResourceUsageExportConfigBigqueryDestination();
+            o.datasetId = datasetId;
+            return o;
         }
     }
 }

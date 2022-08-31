@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobPlacement {
-    private final String clusterName;
-    private final @Nullable String clusterUuid;
+    private String clusterName;
+    private @Nullable String clusterUuid;
 
-    @CustomType.Constructor
-    private JobPlacement(
-        @CustomType.Parameter("clusterName") String clusterName,
-        @CustomType.Parameter("clusterUuid") @Nullable String clusterUuid) {
-        this.clusterName = clusterName;
-        this.clusterUuid = clusterUuid;
-    }
-
+    private JobPlacement() {}
     public String clusterName() {
         return this.clusterName;
     }
@@ -36,30 +29,32 @@ public final class JobPlacement {
     public static Builder builder(JobPlacement defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterName;
         private @Nullable String clusterUuid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobPlacement defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterName = defaults.clusterName;
     	      this.clusterUuid = defaults.clusterUuid;
         }
 
+        @CustomType.Setter
         public Builder clusterName(String clusterName) {
             this.clusterName = Objects.requireNonNull(clusterName);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterUuid(@Nullable String clusterUuid) {
             this.clusterUuid = clusterUuid;
             return this;
-        }        public JobPlacement build() {
-            return new JobPlacement(clusterName, clusterUuid);
+        }
+        public JobPlacement build() {
+            final var o = new JobPlacement();
+            o.clusterName = clusterName;
+            o.clusterUuid = clusterUuid;
+            return o;
         }
     }
 }

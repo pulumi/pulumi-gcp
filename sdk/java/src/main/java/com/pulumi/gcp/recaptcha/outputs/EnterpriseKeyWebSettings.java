@@ -17,42 +17,29 @@ public final class EnterpriseKeyWebSettings {
      * @return If set to true, it means allowed_domains will not be enforced.
      * 
      */
-    private final @Nullable Boolean allowAllDomains;
+    private @Nullable Boolean allowAllDomains;
     /**
      * @return If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
      * 
      */
-    private final @Nullable Boolean allowAmpTraffic;
+    private @Nullable Boolean allowAmpTraffic;
     /**
      * @return Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: &#39;example.com&#39; or &#39;subdomain.example.com&#39;
      * 
      */
-    private final @Nullable List<String> allowedDomains;
+    private @Nullable List<String> allowedDomains;
     /**
      * @return Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE. Possible values: CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED, USABILITY, BALANCE, SECURITY
      * 
      */
-    private final @Nullable String challengeSecurityPreference;
+    private @Nullable String challengeSecurityPreference;
     /**
      * @return Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
      * 
      */
-    private final String integrationType;
+    private String integrationType;
 
-    @CustomType.Constructor
-    private EnterpriseKeyWebSettings(
-        @CustomType.Parameter("allowAllDomains") @Nullable Boolean allowAllDomains,
-        @CustomType.Parameter("allowAmpTraffic") @Nullable Boolean allowAmpTraffic,
-        @CustomType.Parameter("allowedDomains") @Nullable List<String> allowedDomains,
-        @CustomType.Parameter("challengeSecurityPreference") @Nullable String challengeSecurityPreference,
-        @CustomType.Parameter("integrationType") String integrationType) {
-        this.allowAllDomains = allowAllDomains;
-        this.allowAmpTraffic = allowAmpTraffic;
-        this.allowedDomains = allowedDomains;
-        this.challengeSecurityPreference = challengeSecurityPreference;
-        this.integrationType = integrationType;
-    }
-
+    private EnterpriseKeyWebSettings() {}
     /**
      * @return If set to true, it means allowed_domains will not be enforced.
      * 
@@ -96,18 +83,14 @@ public final class EnterpriseKeyWebSettings {
     public static Builder builder(EnterpriseKeyWebSettings defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowAllDomains;
         private @Nullable Boolean allowAmpTraffic;
         private @Nullable List<String> allowedDomains;
         private @Nullable String challengeSecurityPreference;
         private String integrationType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EnterpriseKeyWebSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowAllDomains = defaults.allowAllDomains;
@@ -117,14 +100,17 @@ public final class EnterpriseKeyWebSettings {
     	      this.integrationType = defaults.integrationType;
         }
 
+        @CustomType.Setter
         public Builder allowAllDomains(@Nullable Boolean allowAllDomains) {
             this.allowAllDomains = allowAllDomains;
             return this;
         }
+        @CustomType.Setter
         public Builder allowAmpTraffic(@Nullable Boolean allowAmpTraffic) {
             this.allowAmpTraffic = allowAmpTraffic;
             return this;
         }
+        @CustomType.Setter
         public Builder allowedDomains(@Nullable List<String> allowedDomains) {
             this.allowedDomains = allowedDomains;
             return this;
@@ -132,15 +118,24 @@ public final class EnterpriseKeyWebSettings {
         public Builder allowedDomains(String... allowedDomains) {
             return allowedDomains(List.of(allowedDomains));
         }
+        @CustomType.Setter
         public Builder challengeSecurityPreference(@Nullable String challengeSecurityPreference) {
             this.challengeSecurityPreference = challengeSecurityPreference;
             return this;
         }
+        @CustomType.Setter
         public Builder integrationType(String integrationType) {
             this.integrationType = Objects.requireNonNull(integrationType);
             return this;
-        }        public EnterpriseKeyWebSettings build() {
-            return new EnterpriseKeyWebSettings(allowAllDomains, allowAmpTraffic, allowedDomains, challengeSecurityPreference, integrationType);
+        }
+        public EnterpriseKeyWebSettings build() {
+            final var o = new EnterpriseKeyWebSettings();
+            o.allowAllDomains = allowAllDomains;
+            o.allowAmpTraffic = allowAmpTraffic;
+            o.allowedDomains = allowedDomains;
+            o.challengeSecurityPreference = challengeSecurityPreference;
+            o.integrationType = integrationType;
+            return o;
         }
     }
 }

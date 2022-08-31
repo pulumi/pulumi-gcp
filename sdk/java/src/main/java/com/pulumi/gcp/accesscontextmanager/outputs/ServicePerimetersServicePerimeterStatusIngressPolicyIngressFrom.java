@@ -19,7 +19,7 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFr
      * represent individual user or service account only.
      * 
      */
-    private final @Nullable List<String> identities;
+    private @Nullable List<String> identities;
     /**
      * @return Specifies the type of identities that are allowed access to outside the
      * perimeter. If left unspecified, then members of `identities` field will
@@ -27,24 +27,15 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFr
      * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
      * 
      */
-    private final @Nullable String identityType;
+    private @Nullable String identityType;
     /**
      * @return Sources that this `IngressPolicy` authorizes access from.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource> sources;
+    private @Nullable List<ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource> sources;
 
-    @CustomType.Constructor
-    private ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom(
-        @CustomType.Parameter("identities") @Nullable List<String> identities,
-        @CustomType.Parameter("identityType") @Nullable String identityType,
-        @CustomType.Parameter("sources") @Nullable List<ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource> sources) {
-        this.identities = identities;
-        this.identityType = identityType;
-        this.sources = sources;
-    }
-
+    private ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom() {}
     /**
      * @return A list of identities that are allowed access through this `EgressPolicy`.
      * Should be in the format of email address. The email address should
@@ -80,16 +71,12 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFr
     public static Builder builder(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> identities;
         private @Nullable String identityType;
         private @Nullable List<ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource> sources;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.identities = defaults.identities;
@@ -97,6 +84,7 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFr
     	      this.sources = defaults.sources;
         }
 
+        @CustomType.Setter
         public Builder identities(@Nullable List<String> identities) {
             this.identities = identities;
             return this;
@@ -104,18 +92,25 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFr
         public Builder identities(String... identities) {
             return identities(List.of(identities));
         }
+        @CustomType.Setter
         public Builder identityType(@Nullable String identityType) {
             this.identityType = identityType;
             return this;
         }
+        @CustomType.Setter
         public Builder sources(@Nullable List<ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource> sources) {
             this.sources = sources;
             return this;
         }
         public Builder sources(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource... sources) {
             return sources(List.of(sources));
-        }        public ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom build() {
-            return new ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom(identities, identityType, sources);
+        }
+        public ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom build() {
+            final var o = new ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom();
+            o.identities = identities;
+            o.identityType = identityType;
+            o.sources = sources;
+            return o;
         }
     }
 }

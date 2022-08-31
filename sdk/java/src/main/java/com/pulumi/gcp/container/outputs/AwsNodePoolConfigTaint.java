@@ -13,28 +13,19 @@ public final class AwsNodePoolConfigTaint {
      * @return The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
      * 
      */
-    private final String effect;
+    private String effect;
     /**
      * @return Key for the taint.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Value for the taint.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private AwsNodePoolConfigTaint(
-        @CustomType.Parameter("effect") String effect,
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.effect = effect;
-        this.key = key;
-        this.value = value;
-    }
-
+    private AwsNodePoolConfigTaint() {}
     /**
      * @return The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
      * 
@@ -64,16 +55,12 @@ public final class AwsNodePoolConfigTaint {
     public static Builder builder(AwsNodePoolConfigTaint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String effect;
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsNodePoolConfigTaint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.effect = defaults.effect;
@@ -81,19 +68,27 @@ public final class AwsNodePoolConfigTaint {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder effect(String effect) {
             this.effect = Objects.requireNonNull(effect);
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public AwsNodePoolConfigTaint build() {
-            return new AwsNodePoolConfigTaint(effect, key, value);
+        }
+        public AwsNodePoolConfigTaint build() {
+            final var o = new AwsNodePoolConfigTaint();
+            o.effect = effect;
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

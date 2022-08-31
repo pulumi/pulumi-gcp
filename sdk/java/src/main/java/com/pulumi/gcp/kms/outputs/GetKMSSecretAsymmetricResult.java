@@ -11,38 +11,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKMSSecretAsymmetricResult {
-    private final String ciphertext;
+    private String ciphertext;
     /**
      * @return Contains the crc32 checksum of the provided ciphertext.
      * 
      */
-    private final @Nullable String crc32;
-    private final String cryptoKeyVersion;
+    private @Nullable String crc32;
+    private String cryptoKeyVersion;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Contains the result of decrypting the provided ciphertext.
      * 
      */
-    private final String plaintext;
+    private String plaintext;
 
-    @CustomType.Constructor
-    private GetKMSSecretAsymmetricResult(
-        @CustomType.Parameter("ciphertext") String ciphertext,
-        @CustomType.Parameter("crc32") @Nullable String crc32,
-        @CustomType.Parameter("cryptoKeyVersion") String cryptoKeyVersion,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("plaintext") String plaintext) {
-        this.ciphertext = ciphertext;
-        this.crc32 = crc32;
-        this.cryptoKeyVersion = cryptoKeyVersion;
-        this.id = id;
-        this.plaintext = plaintext;
-    }
-
+    private GetKMSSecretAsymmetricResult() {}
     public String ciphertext() {
         return this.ciphertext;
     }
@@ -78,18 +65,14 @@ public final class GetKMSSecretAsymmetricResult {
     public static Builder builder(GetKMSSecretAsymmetricResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String ciphertext;
         private @Nullable String crc32;
         private String cryptoKeyVersion;
         private String id;
         private String plaintext;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKMSSecretAsymmetricResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ciphertext = defaults.ciphertext;
@@ -99,27 +82,39 @@ public final class GetKMSSecretAsymmetricResult {
     	      this.plaintext = defaults.plaintext;
         }
 
+        @CustomType.Setter
         public Builder ciphertext(String ciphertext) {
             this.ciphertext = Objects.requireNonNull(ciphertext);
             return this;
         }
+        @CustomType.Setter
         public Builder crc32(@Nullable String crc32) {
             this.crc32 = crc32;
             return this;
         }
+        @CustomType.Setter
         public Builder cryptoKeyVersion(String cryptoKeyVersion) {
             this.cryptoKeyVersion = Objects.requireNonNull(cryptoKeyVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder plaintext(String plaintext) {
             this.plaintext = Objects.requireNonNull(plaintext);
             return this;
-        }        public GetKMSSecretAsymmetricResult build() {
-            return new GetKMSSecretAsymmetricResult(ciphertext, crc32, cryptoKeyVersion, id, plaintext);
+        }
+        public GetKMSSecretAsymmetricResult build() {
+            final var o = new GetKMSSecretAsymmetricResult();
+            o.ciphertext = ciphertext;
+            o.crc32 = crc32;
+            o.cryptoKeyVersion = cryptoKeyVersion;
+            o.id = id;
+            o.plaintext = plaintext;
+            return o;
         }
     }
 }

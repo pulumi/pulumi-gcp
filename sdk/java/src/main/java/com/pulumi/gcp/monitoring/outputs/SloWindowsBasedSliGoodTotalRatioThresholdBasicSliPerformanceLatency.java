@@ -15,13 +15,9 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceL
      * this service that return in no more than threshold.
      * 
      */
-    private final String threshold;
+    private String threshold;
 
-    @CustomType.Constructor
-    private SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency(@CustomType.Parameter("threshold") String threshold) {
-        this.threshold = threshold;
-    }
-
+    private SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency() {}
     /**
      * @return A duration string, e.g. 10s.
      * Good service is defined to be the count of requests made to
@@ -39,24 +35,24 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceL
     public static Builder builder(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String threshold;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.threshold = defaults.threshold;
         }
 
+        @CustomType.Setter
         public Builder threshold(String threshold) {
             this.threshold = Objects.requireNonNull(threshold);
             return this;
-        }        public SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency build() {
-            return new SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency(threshold);
+        }
+        public SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency build() {
+            final var o = new SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency();
+            o.threshold = threshold;
+            return o;
         }
     }
 }

@@ -15,63 +15,44 @@ public final class FeatureMembershipConfigmanagementConfigSyncGit {
      * @return The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
      * 
      */
-    private final @Nullable String gcpServiceAccountEmail;
+    private @Nullable String gcpServiceAccountEmail;
     /**
      * @return URL for the HTTPS proxy to be used when communicating with the Git repo.
      * 
      */
-    private final @Nullable String httpsProxy;
+    private @Nullable String httpsProxy;
     /**
      * @return The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
      * 
      */
-    private final @Nullable String policyDir;
+    private @Nullable String policyDir;
     /**
      * @return Type of secret configured for access to the Git repo.
      * 
      */
-    private final @Nullable String secretType;
+    private @Nullable String secretType;
     /**
      * @return The branch of the repository to sync from. Default: master.
      * 
      */
-    private final @Nullable String syncBranch;
+    private @Nullable String syncBranch;
     /**
      * @return The URL of the Git repository to use as the source of truth.
      * 
      */
-    private final @Nullable String syncRepo;
+    private @Nullable String syncRepo;
     /**
      * @return Git revision (tag or hash) to check out. Default HEAD.
      * 
      */
-    private final @Nullable String syncRev;
+    private @Nullable String syncRev;
     /**
      * @return Period in seconds between consecutive syncs. Default: 15.
      * 
      */
-    private final @Nullable String syncWaitSecs;
+    private @Nullable String syncWaitSecs;
 
-    @CustomType.Constructor
-    private FeatureMembershipConfigmanagementConfigSyncGit(
-        @CustomType.Parameter("gcpServiceAccountEmail") @Nullable String gcpServiceAccountEmail,
-        @CustomType.Parameter("httpsProxy") @Nullable String httpsProxy,
-        @CustomType.Parameter("policyDir") @Nullable String policyDir,
-        @CustomType.Parameter("secretType") @Nullable String secretType,
-        @CustomType.Parameter("syncBranch") @Nullable String syncBranch,
-        @CustomType.Parameter("syncRepo") @Nullable String syncRepo,
-        @CustomType.Parameter("syncRev") @Nullable String syncRev,
-        @CustomType.Parameter("syncWaitSecs") @Nullable String syncWaitSecs) {
-        this.gcpServiceAccountEmail = gcpServiceAccountEmail;
-        this.httpsProxy = httpsProxy;
-        this.policyDir = policyDir;
-        this.secretType = secretType;
-        this.syncBranch = syncBranch;
-        this.syncRepo = syncRepo;
-        this.syncRev = syncRev;
-        this.syncWaitSecs = syncWaitSecs;
-    }
-
+    private FeatureMembershipConfigmanagementConfigSyncGit() {}
     /**
      * @return The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
      * 
@@ -136,7 +117,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncGit {
     public static Builder builder(FeatureMembershipConfigmanagementConfigSyncGit defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String gcpServiceAccountEmail;
         private @Nullable String httpsProxy;
@@ -146,11 +127,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncGit {
         private @Nullable String syncRepo;
         private @Nullable String syncRev;
         private @Nullable String syncWaitSecs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FeatureMembershipConfigmanagementConfigSyncGit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gcpServiceAccountEmail = defaults.gcpServiceAccountEmail;
@@ -163,39 +140,57 @@ public final class FeatureMembershipConfigmanagementConfigSyncGit {
     	      this.syncWaitSecs = defaults.syncWaitSecs;
         }
 
+        @CustomType.Setter
         public Builder gcpServiceAccountEmail(@Nullable String gcpServiceAccountEmail) {
             this.gcpServiceAccountEmail = gcpServiceAccountEmail;
             return this;
         }
+        @CustomType.Setter
         public Builder httpsProxy(@Nullable String httpsProxy) {
             this.httpsProxy = httpsProxy;
             return this;
         }
+        @CustomType.Setter
         public Builder policyDir(@Nullable String policyDir) {
             this.policyDir = policyDir;
             return this;
         }
+        @CustomType.Setter
         public Builder secretType(@Nullable String secretType) {
             this.secretType = secretType;
             return this;
         }
+        @CustomType.Setter
         public Builder syncBranch(@Nullable String syncBranch) {
             this.syncBranch = syncBranch;
             return this;
         }
+        @CustomType.Setter
         public Builder syncRepo(@Nullable String syncRepo) {
             this.syncRepo = syncRepo;
             return this;
         }
+        @CustomType.Setter
         public Builder syncRev(@Nullable String syncRev) {
             this.syncRev = syncRev;
             return this;
         }
+        @CustomType.Setter
         public Builder syncWaitSecs(@Nullable String syncWaitSecs) {
             this.syncWaitSecs = syncWaitSecs;
             return this;
-        }        public FeatureMembershipConfigmanagementConfigSyncGit build() {
-            return new FeatureMembershipConfigmanagementConfigSyncGit(gcpServiceAccountEmail, httpsProxy, policyDir, secretType, syncBranch, syncRepo, syncRev, syncWaitSecs);
+        }
+        public FeatureMembershipConfigmanagementConfigSyncGit build() {
+            final var o = new FeatureMembershipConfigmanagementConfigSyncGit();
+            o.gcpServiceAccountEmail = gcpServiceAccountEmail;
+            o.httpsProxy = httpsProxy;
+            o.policyDir = policyDir;
+            o.secretType = secretType;
+            o.syncBranch = syncBranch;
+            o.syncRepo = syncRepo;
+            o.syncRev = syncRev;
+            o.syncWaitSecs = syncWaitSecs;
+            return o;
         }
     }
 }

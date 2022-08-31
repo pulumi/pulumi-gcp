@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage {
-    private final @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption> keyUsageOptions;
+    private @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption> keyUsageOptions;
 
-    @CustomType.Constructor
-    private CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage(@CustomType.Parameter("keyUsageOptions") @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption> keyUsageOptions) {
-        this.keyUsageOptions = keyUsageOptions;
-    }
-
+    private CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage() {}
     public List<CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption> keyUsageOptions() {
         return this.keyUsageOptions == null ? List.of() : this.keyUsageOptions;
     }
@@ -29,27 +25,27 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUs
     public static Builder builder(CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption> keyUsageOptions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.keyUsageOptions = defaults.keyUsageOptions;
         }
 
+        @CustomType.Setter
         public Builder keyUsageOptions(@Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption> keyUsageOptions) {
             this.keyUsageOptions = keyUsageOptions;
             return this;
         }
         public Builder keyUsageOptions(CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption... keyUsageOptions) {
             return keyUsageOptions(List.of(keyUsageOptions));
-        }        public CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage build() {
-            return new CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage(keyUsageOptions);
+        }
+        public CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage build() {
+            final var o = new CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage();
+            o.keyUsageOptions = keyUsageOptions;
+            return o;
         }
     }
 }

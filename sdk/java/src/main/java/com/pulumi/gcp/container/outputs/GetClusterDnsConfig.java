@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterDnsConfig {
-    private final String clusterDns;
-    private final String clusterDnsDomain;
-    private final String clusterDnsScope;
+    private String clusterDns;
+    private String clusterDnsDomain;
+    private String clusterDnsScope;
 
-    @CustomType.Constructor
-    private GetClusterDnsConfig(
-        @CustomType.Parameter("clusterDns") String clusterDns,
-        @CustomType.Parameter("clusterDnsDomain") String clusterDnsDomain,
-        @CustomType.Parameter("clusterDnsScope") String clusterDnsScope) {
-        this.clusterDns = clusterDns;
-        this.clusterDnsDomain = clusterDnsDomain;
-        this.clusterDnsScope = clusterDnsScope;
-    }
-
+    private GetClusterDnsConfig() {}
     public String clusterDns() {
         return this.clusterDns;
     }
@@ -40,16 +31,12 @@ public final class GetClusterDnsConfig {
     public static Builder builder(GetClusterDnsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterDns;
         private String clusterDnsDomain;
         private String clusterDnsScope;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterDnsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterDns = defaults.clusterDns;
@@ -57,19 +44,27 @@ public final class GetClusterDnsConfig {
     	      this.clusterDnsScope = defaults.clusterDnsScope;
         }
 
+        @CustomType.Setter
         public Builder clusterDns(String clusterDns) {
             this.clusterDns = Objects.requireNonNull(clusterDns);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterDnsDomain(String clusterDnsDomain) {
             this.clusterDnsDomain = Objects.requireNonNull(clusterDnsDomain);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterDnsScope(String clusterDnsScope) {
             this.clusterDnsScope = Objects.requireNonNull(clusterDnsScope);
             return this;
-        }        public GetClusterDnsConfig build() {
-            return new GetClusterDnsConfig(clusterDns, clusterDnsDomain, clusterDnsScope);
+        }
+        public GetClusterDnsConfig build() {
+            final var o = new GetClusterDnsConfig();
+            o.clusterDns = clusterDns;
+            o.clusterDnsDomain = clusterDnsDomain;
+            o.clusterDnsScope = clusterDnsScope;
+            return o;
         }
     }
 }

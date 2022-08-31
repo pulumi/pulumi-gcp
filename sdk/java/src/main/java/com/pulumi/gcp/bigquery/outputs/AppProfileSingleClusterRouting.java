@@ -17,21 +17,14 @@ public final class AppProfileSingleClusterRouting {
      * It is unsafe to send these requests to the same table/row/column in multiple clusters.
      * 
      */
-    private final @Nullable Boolean allowTransactionalWrites;
+    private @Nullable Boolean allowTransactionalWrites;
     /**
      * @return The cluster to which read/write requests should be routed.
      * 
      */
-    private final String clusterId;
+    private String clusterId;
 
-    @CustomType.Constructor
-    private AppProfileSingleClusterRouting(
-        @CustomType.Parameter("allowTransactionalWrites") @Nullable Boolean allowTransactionalWrites,
-        @CustomType.Parameter("clusterId") String clusterId) {
-        this.allowTransactionalWrites = allowTransactionalWrites;
-        this.clusterId = clusterId;
-    }
-
+    private AppProfileSingleClusterRouting() {}
     /**
      * @return If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
      * It is unsafe to send these requests to the same table/row/column in multiple clusters.
@@ -55,30 +48,32 @@ public final class AppProfileSingleClusterRouting {
     public static Builder builder(AppProfileSingleClusterRouting defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowTransactionalWrites;
         private String clusterId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AppProfileSingleClusterRouting defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowTransactionalWrites = defaults.allowTransactionalWrites;
     	      this.clusterId = defaults.clusterId;
         }
 
+        @CustomType.Setter
         public Builder allowTransactionalWrites(@Nullable Boolean allowTransactionalWrites) {
             this.allowTransactionalWrites = allowTransactionalWrites;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
-        }        public AppProfileSingleClusterRouting build() {
-            return new AppProfileSingleClusterRouting(allowTransactionalWrites, clusterId);
+        }
+        public AppProfileSingleClusterRouting build() {
+            final var o = new AppProfileSingleClusterRouting();
+            o.allowTransactionalWrites = allowTransactionalWrites;
+            o.clusterId = clusterId;
+            return o;
         }
     }
 }

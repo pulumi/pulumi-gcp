@@ -13,13 +13,9 @@ public final class ClusterClusterConfigAutoscalingConfig {
      * @return The autoscaling policy used by the cluster.
      * 
      */
-    private final String policyUri;
+    private String policyUri;
 
-    @CustomType.Constructor
-    private ClusterClusterConfigAutoscalingConfig(@CustomType.Parameter("policyUri") String policyUri) {
-        this.policyUri = policyUri;
-    }
-
+    private ClusterClusterConfigAutoscalingConfig() {}
     /**
      * @return The autoscaling policy used by the cluster.
      * 
@@ -35,24 +31,24 @@ public final class ClusterClusterConfigAutoscalingConfig {
     public static Builder builder(ClusterClusterConfigAutoscalingConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String policyUri;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterClusterConfigAutoscalingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.policyUri = defaults.policyUri;
         }
 
+        @CustomType.Setter
         public Builder policyUri(String policyUri) {
             this.policyUri = Objects.requireNonNull(policyUri);
             return this;
-        }        public ClusterClusterConfigAutoscalingConfig build() {
-            return new ClusterClusterConfigAutoscalingConfig(policyUri);
+        }
+        public ClusterClusterConfigAutoscalingConfig build() {
+            final var o = new ClusterClusterConfigAutoscalingConfig();
+            o.policyUri = policyUri;
+            return o;
         }
     }
 }

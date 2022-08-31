@@ -16,13 +16,13 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule 
      * Structure is documented below.
      * 
      */
-    private final PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex hotwordRegex;
+    private PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex hotwordRegex;
     /**
      * @return Likelihood adjustment to apply to all matching findings.
      * Structure is documented below.
      * 
      */
-    private final PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment likelihoodAdjustment;
+    private PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment likelihoodAdjustment;
     /**
      * @return Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
      * exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
@@ -32,18 +32,9 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule 
      * Structure is documented below.
      * 
      */
-    private final PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity proximity;
+    private PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity proximity;
 
-    @CustomType.Constructor
-    private PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule(
-        @CustomType.Parameter("hotwordRegex") PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex hotwordRegex,
-        @CustomType.Parameter("likelihoodAdjustment") PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment likelihoodAdjustment,
-        @CustomType.Parameter("proximity") PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity proximity) {
-        this.hotwordRegex = hotwordRegex;
-        this.likelihoodAdjustment = likelihoodAdjustment;
-        this.proximity = proximity;
-    }
-
+    private PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule() {}
     /**
      * @return Regular expression pattern defining what qualifies as a hotword.
      * Structure is documented below.
@@ -80,16 +71,12 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule 
     public static Builder builder(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex hotwordRegex;
         private PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment likelihoodAdjustment;
         private PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity proximity;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hotwordRegex = defaults.hotwordRegex;
@@ -97,19 +84,27 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule 
     	      this.proximity = defaults.proximity;
         }
 
+        @CustomType.Setter
         public Builder hotwordRegex(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex hotwordRegex) {
             this.hotwordRegex = Objects.requireNonNull(hotwordRegex);
             return this;
         }
+        @CustomType.Setter
         public Builder likelihoodAdjustment(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment likelihoodAdjustment) {
             this.likelihoodAdjustment = Objects.requireNonNull(likelihoodAdjustment);
             return this;
         }
+        @CustomType.Setter
         public Builder proximity(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity proximity) {
             this.proximity = Objects.requireNonNull(proximity);
             return this;
-        }        public PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule build() {
-            return new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule(hotwordRegex, likelihoodAdjustment, proximity);
+        }
+        public PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule build() {
+            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule();
+            o.hotwordRegex = hotwordRegex;
+            o.likelihoodAdjustment = likelihoodAdjustment;
+            o.proximity = proximity;
+            return o;
         }
     }
 }

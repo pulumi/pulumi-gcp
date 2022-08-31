@@ -15,13 +15,9 @@ public final class ResponsePolicyNetwork {
      * `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
      * 
      */
-    private final String networkUrl;
+    private String networkUrl;
 
-    @CustomType.Constructor
-    private ResponsePolicyNetwork(@CustomType.Parameter("networkUrl") String networkUrl) {
-        this.networkUrl = networkUrl;
-    }
-
+    private ResponsePolicyNetwork() {}
     /**
      * @return The fully qualified URL of the VPC network to bind to.
      * This should be formatted like
@@ -39,24 +35,24 @@ public final class ResponsePolicyNetwork {
     public static Builder builder(ResponsePolicyNetwork defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String networkUrl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ResponsePolicyNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.networkUrl = defaults.networkUrl;
         }
 
+        @CustomType.Setter
         public Builder networkUrl(String networkUrl) {
             this.networkUrl = Objects.requireNonNull(networkUrl);
             return this;
-        }        public ResponsePolicyNetwork build() {
-            return new ResponsePolicyNetwork(networkUrl);
+        }
+        public ResponsePolicyNetwork build() {
+            final var o = new ResponsePolicyNetwork();
+            o.networkUrl = networkUrl;
+            return o;
         }
     }
 }

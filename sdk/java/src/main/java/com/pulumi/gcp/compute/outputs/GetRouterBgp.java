@@ -12,26 +12,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRouterBgp {
-    private final String advertiseMode;
-    private final List<String> advertisedGroups;
-    private final List<GetRouterBgpAdvertisedIpRange> advertisedIpRanges;
-    private final Integer asn;
-    private final Integer keepaliveInterval;
+    private String advertiseMode;
+    private List<String> advertisedGroups;
+    private List<GetRouterBgpAdvertisedIpRange> advertisedIpRanges;
+    private Integer asn;
+    private Integer keepaliveInterval;
 
-    @CustomType.Constructor
-    private GetRouterBgp(
-        @CustomType.Parameter("advertiseMode") String advertiseMode,
-        @CustomType.Parameter("advertisedGroups") List<String> advertisedGroups,
-        @CustomType.Parameter("advertisedIpRanges") List<GetRouterBgpAdvertisedIpRange> advertisedIpRanges,
-        @CustomType.Parameter("asn") Integer asn,
-        @CustomType.Parameter("keepaliveInterval") Integer keepaliveInterval) {
-        this.advertiseMode = advertiseMode;
-        this.advertisedGroups = advertisedGroups;
-        this.advertisedIpRanges = advertisedIpRanges;
-        this.asn = asn;
-        this.keepaliveInterval = keepaliveInterval;
-    }
-
+    private GetRouterBgp() {}
     public String advertiseMode() {
         return this.advertiseMode;
     }
@@ -55,18 +42,14 @@ public final class GetRouterBgp {
     public static Builder builder(GetRouterBgp defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String advertiseMode;
         private List<String> advertisedGroups;
         private List<GetRouterBgpAdvertisedIpRange> advertisedIpRanges;
         private Integer asn;
         private Integer keepaliveInterval;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRouterBgp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.advertiseMode = defaults.advertiseMode;
@@ -76,10 +59,12 @@ public final class GetRouterBgp {
     	      this.keepaliveInterval = defaults.keepaliveInterval;
         }
 
+        @CustomType.Setter
         public Builder advertiseMode(String advertiseMode) {
             this.advertiseMode = Objects.requireNonNull(advertiseMode);
             return this;
         }
+        @CustomType.Setter
         public Builder advertisedGroups(List<String> advertisedGroups) {
             this.advertisedGroups = Objects.requireNonNull(advertisedGroups);
             return this;
@@ -87,6 +72,7 @@ public final class GetRouterBgp {
         public Builder advertisedGroups(String... advertisedGroups) {
             return advertisedGroups(List.of(advertisedGroups));
         }
+        @CustomType.Setter
         public Builder advertisedIpRanges(List<GetRouterBgpAdvertisedIpRange> advertisedIpRanges) {
             this.advertisedIpRanges = Objects.requireNonNull(advertisedIpRanges);
             return this;
@@ -94,15 +80,24 @@ public final class GetRouterBgp {
         public Builder advertisedIpRanges(GetRouterBgpAdvertisedIpRange... advertisedIpRanges) {
             return advertisedIpRanges(List.of(advertisedIpRanges));
         }
+        @CustomType.Setter
         public Builder asn(Integer asn) {
             this.asn = Objects.requireNonNull(asn);
             return this;
         }
+        @CustomType.Setter
         public Builder keepaliveInterval(Integer keepaliveInterval) {
             this.keepaliveInterval = Objects.requireNonNull(keepaliveInterval);
             return this;
-        }        public GetRouterBgp build() {
-            return new GetRouterBgp(advertiseMode, advertisedGroups, advertisedIpRanges, asn, keepaliveInterval);
+        }
+        public GetRouterBgp build() {
+            final var o = new GetRouterBgp();
+            o.advertiseMode = advertiseMode;
+            o.advertisedGroups = advertisedGroups;
+            o.advertisedIpRanges = advertisedIpRanges;
+            o.asn = asn;
+            o.keepaliveInterval = keepaliveInterval;
+            return o;
         }
     }
 }

@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TaxonomyIamMemberCondition {
-    private final @Nullable String description;
-    private final String expression;
-    private final String title;
+    private @Nullable String description;
+    private String expression;
+    private String title;
 
-    @CustomType.Constructor
-    private TaxonomyIamMemberCondition(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("expression") String expression,
-        @CustomType.Parameter("title") String title) {
-        this.description = description;
-        this.expression = expression;
-        this.title = title;
-    }
-
+    private TaxonomyIamMemberCondition() {}
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -42,16 +33,12 @@ public final class TaxonomyIamMemberCondition {
     public static Builder builder(TaxonomyIamMemberCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private String expression;
         private String title;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TaxonomyIamMemberCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -59,19 +46,27 @@ public final class TaxonomyIamMemberCondition {
     	      this.title = defaults.title;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder expression(String expression) {
             this.expression = Objects.requireNonNull(expression);
             return this;
         }
+        @CustomType.Setter
         public Builder title(String title) {
             this.title = Objects.requireNonNull(title);
             return this;
-        }        public TaxonomyIamMemberCondition build() {
-            return new TaxonomyIamMemberCondition(description, expression, title);
+        }
+        public TaxonomyIamMemberCondition build() {
+            final var o = new TaxonomyIamMemberCondition();
+            o.description = description;
+            o.expression = expression;
+            o.title = title;
+            return o;
         }
     }
 }

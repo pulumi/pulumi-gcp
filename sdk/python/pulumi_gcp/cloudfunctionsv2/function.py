@@ -414,15 +414,18 @@ class Function(pulumi.CustomResource):
         invoking = gcp.projects.IAMMember("invoking",
             project="my-project-name",
             role="roles/run.invoker",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
+            opts=pulumi.ResourceOptions(depends_on=[gcs_pubsub_publishing]))
         event_receiving = gcp.projects.IAMMember("event-receiving",
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
+            opts=pulumi.ResourceOptions(depends_on=[invoking]))
         artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
+            opts=pulumi.ResourceOptions(depends_on=[event_receiving]))
         function = gcp.cloudfunctionsv2.Function("function",
             location="us-central1",
             description="a new function",
@@ -501,11 +504,13 @@ class Function(pulumi.CustomResource):
         event_receiving = gcp.projects.IAMMember("event-receiving",
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
+            opts=pulumi.ResourceOptions(depends_on=[invoking]))
         artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
+            opts=pulumi.ResourceOptions(depends_on=[event_receiving]))
         function = gcp.cloudfunctionsv2.Function("function",
             location="us-central1",
             description="a new function",
@@ -640,15 +645,18 @@ class Function(pulumi.CustomResource):
         invoking = gcp.projects.IAMMember("invoking",
             project="my-project-name",
             role="roles/run.invoker",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
+            opts=pulumi.ResourceOptions(depends_on=[gcs_pubsub_publishing]))
         event_receiving = gcp.projects.IAMMember("event-receiving",
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
+            opts=pulumi.ResourceOptions(depends_on=[invoking]))
         artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
+            opts=pulumi.ResourceOptions(depends_on=[event_receiving]))
         function = gcp.cloudfunctionsv2.Function("function",
             location="us-central1",
             description="a new function",
@@ -727,11 +735,13 @@ class Function(pulumi.CustomResource):
         event_receiving = gcp.projects.IAMMember("event-receiving",
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
+            opts=pulumi.ResourceOptions(depends_on=[invoking]))
         artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
-            member=account.email.apply(lambda email: f"serviceAccount:{email}"))
+            member=account.email.apply(lambda email: f"serviceAccount:{email}"),
+            opts=pulumi.ResourceOptions(depends_on=[event_receiving]))
         function = gcp.cloudfunctionsv2.Function("function",
             location="us-central1",
             description="a new function",

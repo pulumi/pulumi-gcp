@@ -15,28 +15,19 @@ public final class TriggerMatchingCriteria {
      * @return Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the &#39;type&#39; attribute.
      * 
      */
-    private final String attribute;
+    private String attribute;
     /**
      * @return Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
      * 
      */
-    private final @Nullable String operator;
+    private @Nullable String operator;
     /**
      * @return Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private TriggerMatchingCriteria(
-        @CustomType.Parameter("attribute") String attribute,
-        @CustomType.Parameter("operator") @Nullable String operator,
-        @CustomType.Parameter("value") String value) {
-        this.attribute = attribute;
-        this.operator = operator;
-        this.value = value;
-    }
-
+    private TriggerMatchingCriteria() {}
     /**
      * @return Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the &#39;type&#39; attribute.
      * 
@@ -66,16 +57,12 @@ public final class TriggerMatchingCriteria {
     public static Builder builder(TriggerMatchingCriteria defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String attribute;
         private @Nullable String operator;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerMatchingCriteria defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attribute = defaults.attribute;
@@ -83,19 +70,27 @@ public final class TriggerMatchingCriteria {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder attribute(String attribute) {
             this.attribute = Objects.requireNonNull(attribute);
             return this;
         }
+        @CustomType.Setter
         public Builder operator(@Nullable String operator) {
             this.operator = operator;
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public TriggerMatchingCriteria build() {
-            return new TriggerMatchingCriteria(attribute, operator, value);
+        }
+        public TriggerMatchingCriteria build() {
+            final var o = new TriggerMatchingCriteria();
+            o.attribute = attribute;
+            o.operator = operator;
+            o.value = value;
+            return o;
         }
     }
 }

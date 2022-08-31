@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSecretReplicationUserManagedReplicaCustomerManagedEncryption {
-    private final String kmsKeyName;
+    private String kmsKeyName;
 
-    @CustomType.Constructor
-    private GetSecretReplicationUserManagedReplicaCustomerManagedEncryption(@CustomType.Parameter("kmsKeyName") String kmsKeyName) {
-        this.kmsKeyName = kmsKeyName;
-    }
-
+    private GetSecretReplicationUserManagedReplicaCustomerManagedEncryption() {}
     public String kmsKeyName() {
         return this.kmsKeyName;
     }
@@ -27,24 +23,24 @@ public final class GetSecretReplicationUserManagedReplicaCustomerManagedEncrypti
     public static Builder builder(GetSecretReplicationUserManagedReplicaCustomerManagedEncryption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String kmsKeyName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSecretReplicationUserManagedReplicaCustomerManagedEncryption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeyName = defaults.kmsKeyName;
         }
 
+        @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
             this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
             return this;
-        }        public GetSecretReplicationUserManagedReplicaCustomerManagedEncryption build() {
-            return new GetSecretReplicationUserManagedReplicaCustomerManagedEncryption(kmsKeyName);
+        }
+        public GetSecretReplicationUserManagedReplicaCustomerManagedEncryption build() {
+            final var o = new GetSecretReplicationUserManagedReplicaCustomerManagedEncryption();
+            o.kmsKeyName = kmsKeyName;
+            return o;
         }
     }
 }

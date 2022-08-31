@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TagValueIamMemberCondition {
-    private final @Nullable String description;
-    private final String expression;
-    private final String title;
+    private @Nullable String description;
+    private String expression;
+    private String title;
 
-    @CustomType.Constructor
-    private TagValueIamMemberCondition(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("expression") String expression,
-        @CustomType.Parameter("title") String title) {
-        this.description = description;
-        this.expression = expression;
-        this.title = title;
-    }
-
+    private TagValueIamMemberCondition() {}
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -42,16 +33,12 @@ public final class TagValueIamMemberCondition {
     public static Builder builder(TagValueIamMemberCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private String expression;
         private String title;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TagValueIamMemberCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -59,19 +46,27 @@ public final class TagValueIamMemberCondition {
     	      this.title = defaults.title;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder expression(String expression) {
             this.expression = Objects.requireNonNull(expression);
             return this;
         }
+        @CustomType.Setter
         public Builder title(String title) {
             this.title = Objects.requireNonNull(title);
             return this;
-        }        public TagValueIamMemberCondition build() {
-            return new TagValueIamMemberCondition(description, expression, title);
+        }
+        public TagValueIamMemberCondition build() {
+            final var o = new TagValueIamMemberCondition();
+            o.description = description;
+            o.expression = expression;
+            o.title = title;
+            return o;
         }
     }
 }

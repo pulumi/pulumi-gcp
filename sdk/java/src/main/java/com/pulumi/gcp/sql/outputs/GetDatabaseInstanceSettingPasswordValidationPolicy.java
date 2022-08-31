@@ -11,29 +11,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceSettingPasswordValidationPolicy {
-    private final String complexity;
-    private final Boolean disallowUsernameSubstring;
-    private final Boolean enablePasswordPolicy;
-    private final Integer minLength;
-    private final String passwordChangeInterval;
-    private final Integer reuseInterval;
+    private String complexity;
+    private Boolean disallowUsernameSubstring;
+    private Boolean enablePasswordPolicy;
+    private Integer minLength;
+    private String passwordChangeInterval;
+    private Integer reuseInterval;
 
-    @CustomType.Constructor
-    private GetDatabaseInstanceSettingPasswordValidationPolicy(
-        @CustomType.Parameter("complexity") String complexity,
-        @CustomType.Parameter("disallowUsernameSubstring") Boolean disallowUsernameSubstring,
-        @CustomType.Parameter("enablePasswordPolicy") Boolean enablePasswordPolicy,
-        @CustomType.Parameter("minLength") Integer minLength,
-        @CustomType.Parameter("passwordChangeInterval") String passwordChangeInterval,
-        @CustomType.Parameter("reuseInterval") Integer reuseInterval) {
-        this.complexity = complexity;
-        this.disallowUsernameSubstring = disallowUsernameSubstring;
-        this.enablePasswordPolicy = enablePasswordPolicy;
-        this.minLength = minLength;
-        this.passwordChangeInterval = passwordChangeInterval;
-        this.reuseInterval = reuseInterval;
-    }
-
+    private GetDatabaseInstanceSettingPasswordValidationPolicy() {}
     public String complexity() {
         return this.complexity;
     }
@@ -60,7 +45,7 @@ public final class GetDatabaseInstanceSettingPasswordValidationPolicy {
     public static Builder builder(GetDatabaseInstanceSettingPasswordValidationPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String complexity;
         private Boolean disallowUsernameSubstring;
@@ -68,11 +53,7 @@ public final class GetDatabaseInstanceSettingPasswordValidationPolicy {
         private Integer minLength;
         private String passwordChangeInterval;
         private Integer reuseInterval;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseInstanceSettingPasswordValidationPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.complexity = defaults.complexity;
@@ -83,31 +64,45 @@ public final class GetDatabaseInstanceSettingPasswordValidationPolicy {
     	      this.reuseInterval = defaults.reuseInterval;
         }
 
+        @CustomType.Setter
         public Builder complexity(String complexity) {
             this.complexity = Objects.requireNonNull(complexity);
             return this;
         }
+        @CustomType.Setter
         public Builder disallowUsernameSubstring(Boolean disallowUsernameSubstring) {
             this.disallowUsernameSubstring = Objects.requireNonNull(disallowUsernameSubstring);
             return this;
         }
+        @CustomType.Setter
         public Builder enablePasswordPolicy(Boolean enablePasswordPolicy) {
             this.enablePasswordPolicy = Objects.requireNonNull(enablePasswordPolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder minLength(Integer minLength) {
             this.minLength = Objects.requireNonNull(minLength);
             return this;
         }
+        @CustomType.Setter
         public Builder passwordChangeInterval(String passwordChangeInterval) {
             this.passwordChangeInterval = Objects.requireNonNull(passwordChangeInterval);
             return this;
         }
+        @CustomType.Setter
         public Builder reuseInterval(Integer reuseInterval) {
             this.reuseInterval = Objects.requireNonNull(reuseInterval);
             return this;
-        }        public GetDatabaseInstanceSettingPasswordValidationPolicy build() {
-            return new GetDatabaseInstanceSettingPasswordValidationPolicy(complexity, disallowUsernameSubstring, enablePasswordPolicy, minLength, passwordChangeInterval, reuseInterval);
+        }
+        public GetDatabaseInstanceSettingPasswordValidationPolicy build() {
+            final var o = new GetDatabaseInstanceSettingPasswordValidationPolicy();
+            o.complexity = complexity;
+            o.disallowUsernameSubstring = disallowUsernameSubstring;
+            o.enablePasswordPolicy = enablePasswordPolicy;
+            o.minLength = minLength;
+            o.passwordChangeInterval = passwordChangeInterval;
+            o.reuseInterval = reuseInterval;
+            return o;
         }
     }
 }

@@ -11,27 +11,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConfigResult {
-    private final String description;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
-    private final @Nullable String project;
+    private String id;
+    private String name;
+    private @Nullable String project;
 
-    @CustomType.Constructor
-    private GetConfigResult(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") @Nullable String project) {
-        this.description = description;
-        this.id = id;
-        this.name = name;
-        this.project = project;
-    }
-
+    private GetConfigResult() {}
     public String description() {
         return this.description;
     }
@@ -56,17 +45,13 @@ public final class GetConfigResult {
     public static Builder builder(GetConfigResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String id;
         private String name;
         private @Nullable String project;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -75,23 +60,33 @@ public final class GetConfigResult {
     	      this.project = defaults.project;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
-        }        public GetConfigResult build() {
-            return new GetConfigResult(description, id, name, project);
+        }
+        public GetConfigResult build() {
+            final var o = new GetConfigResult();
+            o.description = description;
+            o.id = id;
+            o.name = name;
+            o.project = project;
+            return o;
         }
     }
 }

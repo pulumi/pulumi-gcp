@@ -20,7 +20,7 @@ public final class SloWindowsBasedSliMetricSumInRange {
      * Structure is documented below.
      * 
      */
-    private final SloWindowsBasedSliMetricSumInRangeRange range;
+    private SloWindowsBasedSliMetricSumInRangeRange range;
     /**
      * @return A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
      * specifying the TimeSeries to use for evaluating window
@@ -31,16 +31,9 @@ public final class SloWindowsBasedSliMetricSumInRange {
      * `range.min &lt;= X &lt;= range.max` for a good window.
      * 
      */
-    private final String timeSeries;
+    private String timeSeries;
 
-    @CustomType.Constructor
-    private SloWindowsBasedSliMetricSumInRange(
-        @CustomType.Parameter("range") SloWindowsBasedSliMetricSumInRangeRange range,
-        @CustomType.Parameter("timeSeries") String timeSeries) {
-        this.range = range;
-        this.timeSeries = timeSeries;
-    }
-
+    private SloWindowsBasedSliMetricSumInRange() {}
     /**
      * @return Range of numerical values. The computed good_service
      * will be the count of values x in the Distribution such
@@ -75,30 +68,32 @@ public final class SloWindowsBasedSliMetricSumInRange {
     public static Builder builder(SloWindowsBasedSliMetricSumInRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private SloWindowsBasedSliMetricSumInRangeRange range;
         private String timeSeries;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloWindowsBasedSliMetricSumInRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.range = defaults.range;
     	      this.timeSeries = defaults.timeSeries;
         }
 
+        @CustomType.Setter
         public Builder range(SloWindowsBasedSliMetricSumInRangeRange range) {
             this.range = Objects.requireNonNull(range);
             return this;
         }
+        @CustomType.Setter
         public Builder timeSeries(String timeSeries) {
             this.timeSeries = Objects.requireNonNull(timeSeries);
             return this;
-        }        public SloWindowsBasedSliMetricSumInRange build() {
-            return new SloWindowsBasedSliMetricSumInRange(range, timeSeries);
+        }
+        public SloWindowsBasedSliMetricSumInRange build() {
+            final var o = new SloWindowsBasedSliMetricSumInRange();
+            o.range = range;
+            o.timeSeries = timeSeries;
+            return o;
         }
     }
 }

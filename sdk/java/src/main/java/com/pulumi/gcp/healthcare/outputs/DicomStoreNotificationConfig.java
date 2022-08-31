@@ -18,13 +18,9 @@ public final class DicomStoreNotificationConfig {
      * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
      * 
      */
-    private final String pubsubTopic;
+    private String pubsubTopic;
 
-    @CustomType.Constructor
-    private DicomStoreNotificationConfig(@CustomType.Parameter("pubsubTopic") String pubsubTopic) {
-        this.pubsubTopic = pubsubTopic;
-    }
-
+    private DicomStoreNotificationConfig() {}
     /**
      * @return The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
      * PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
@@ -45,24 +41,24 @@ public final class DicomStoreNotificationConfig {
     public static Builder builder(DicomStoreNotificationConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String pubsubTopic;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DicomStoreNotificationConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pubsubTopic = defaults.pubsubTopic;
         }
 
+        @CustomType.Setter
         public Builder pubsubTopic(String pubsubTopic) {
             this.pubsubTopic = Objects.requireNonNull(pubsubTopic);
             return this;
-        }        public DicomStoreNotificationConfig build() {
-            return new DicomStoreNotificationConfig(pubsubTopic);
+        }
+        public DicomStoreNotificationConfig build() {
+            final var o = new DicomStoreNotificationConfig();
+            o.pubsubTopic = pubsubTopic;
+            return o;
         }
     }
 }

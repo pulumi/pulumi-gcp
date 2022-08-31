@@ -14,13 +14,9 @@ public final class ApiKeyRestrictionsServerKeyRestrictions {
      * @return A list of the caller IP addresses that are allowed to make API calls with this key.
      * 
      */
-    private final List<String> allowedIps;
+    private List<String> allowedIps;
 
-    @CustomType.Constructor
-    private ApiKeyRestrictionsServerKeyRestrictions(@CustomType.Parameter("allowedIps") List<String> allowedIps) {
-        this.allowedIps = allowedIps;
-    }
-
+    private ApiKeyRestrictionsServerKeyRestrictions() {}
     /**
      * @return A list of the caller IP addresses that are allowed to make API calls with this key.
      * 
@@ -36,27 +32,27 @@ public final class ApiKeyRestrictionsServerKeyRestrictions {
     public static Builder builder(ApiKeyRestrictionsServerKeyRestrictions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> allowedIps;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApiKeyRestrictionsServerKeyRestrictions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedIps = defaults.allowedIps;
         }
 
+        @CustomType.Setter
         public Builder allowedIps(List<String> allowedIps) {
             this.allowedIps = Objects.requireNonNull(allowedIps);
             return this;
         }
         public Builder allowedIps(String... allowedIps) {
             return allowedIps(List.of(allowedIps));
-        }        public ApiKeyRestrictionsServerKeyRestrictions build() {
-            return new ApiKeyRestrictionsServerKeyRestrictions(allowedIps);
+        }
+        public ApiKeyRestrictionsServerKeyRestrictions build() {
+            final var o = new ApiKeyRestrictionsServerKeyRestrictions();
+            o.allowedIps = allowedIps;
+            return o;
         }
     }
 }

@@ -18,29 +18,20 @@ public final class TableMaterializedView {
      * The default value is true.
      * 
      */
-    private final @Nullable Boolean enableRefresh;
+    private @Nullable Boolean enableRefresh;
     /**
      * @return A query whose result is persisted.
      * 
      */
-    private final String query;
+    private String query;
     /**
      * @return The maximum frequency at which this materialized view will be refreshed.
      * The default value is 1800000
      * 
      */
-    private final @Nullable Integer refreshIntervalMs;
+    private @Nullable Integer refreshIntervalMs;
 
-    @CustomType.Constructor
-    private TableMaterializedView(
-        @CustomType.Parameter("enableRefresh") @Nullable Boolean enableRefresh,
-        @CustomType.Parameter("query") String query,
-        @CustomType.Parameter("refreshIntervalMs") @Nullable Integer refreshIntervalMs) {
-        this.enableRefresh = enableRefresh;
-        this.query = query;
-        this.refreshIntervalMs = refreshIntervalMs;
-    }
-
+    private TableMaterializedView() {}
     /**
      * @return Specifies whether to use BigQuery&#39;s automatic refresh for this materialized view when the base table is updated.
      * The default value is true.
@@ -72,16 +63,12 @@ public final class TableMaterializedView {
     public static Builder builder(TableMaterializedView defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableRefresh;
         private String query;
         private @Nullable Integer refreshIntervalMs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TableMaterializedView defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableRefresh = defaults.enableRefresh;
@@ -89,19 +76,27 @@ public final class TableMaterializedView {
     	      this.refreshIntervalMs = defaults.refreshIntervalMs;
         }
 
+        @CustomType.Setter
         public Builder enableRefresh(@Nullable Boolean enableRefresh) {
             this.enableRefresh = enableRefresh;
             return this;
         }
+        @CustomType.Setter
         public Builder query(String query) {
             this.query = Objects.requireNonNull(query);
             return this;
         }
+        @CustomType.Setter
         public Builder refreshIntervalMs(@Nullable Integer refreshIntervalMs) {
             this.refreshIntervalMs = refreshIntervalMs;
             return this;
-        }        public TableMaterializedView build() {
-            return new TableMaterializedView(enableRefresh, query, refreshIntervalMs);
+        }
+        public TableMaterializedView build() {
+            final var o = new TableMaterializedView();
+            o.enableRefresh = enableRefresh;
+            o.query = query;
+            o.refreshIntervalMs = refreshIntervalMs;
+            return o;
         }
     }
 }

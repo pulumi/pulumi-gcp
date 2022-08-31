@@ -17,28 +17,19 @@ public final class JobQueryScriptOptions {
      * Possible values are `LAST` and `FIRST_SELECT`.
      * 
      */
-    private final @Nullable String keyResultStatement;
+    private @Nullable String keyResultStatement;
     /**
      * @return Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
      * 
      */
-    private final @Nullable String statementByteBudget;
+    private @Nullable String statementByteBudget;
     /**
      * @return Timeout period for each statement in a script.
      * 
      */
-    private final @Nullable String statementTimeoutMs;
+    private @Nullable String statementTimeoutMs;
 
-    @CustomType.Constructor
-    private JobQueryScriptOptions(
-        @CustomType.Parameter("keyResultStatement") @Nullable String keyResultStatement,
-        @CustomType.Parameter("statementByteBudget") @Nullable String statementByteBudget,
-        @CustomType.Parameter("statementTimeoutMs") @Nullable String statementTimeoutMs) {
-        this.keyResultStatement = keyResultStatement;
-        this.statementByteBudget = statementByteBudget;
-        this.statementTimeoutMs = statementTimeoutMs;
-    }
-
+    private JobQueryScriptOptions() {}
     /**
      * @return Determines which statement in the script represents the &#34;key result&#34;,
      * used to populate the schema and query results of the script job.
@@ -70,16 +61,12 @@ public final class JobQueryScriptOptions {
     public static Builder builder(JobQueryScriptOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String keyResultStatement;
         private @Nullable String statementByteBudget;
         private @Nullable String statementTimeoutMs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(JobQueryScriptOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.keyResultStatement = defaults.keyResultStatement;
@@ -87,19 +74,27 @@ public final class JobQueryScriptOptions {
     	      this.statementTimeoutMs = defaults.statementTimeoutMs;
         }
 
+        @CustomType.Setter
         public Builder keyResultStatement(@Nullable String keyResultStatement) {
             this.keyResultStatement = keyResultStatement;
             return this;
         }
+        @CustomType.Setter
         public Builder statementByteBudget(@Nullable String statementByteBudget) {
             this.statementByteBudget = statementByteBudget;
             return this;
         }
+        @CustomType.Setter
         public Builder statementTimeoutMs(@Nullable String statementTimeoutMs) {
             this.statementTimeoutMs = statementTimeoutMs;
             return this;
-        }        public JobQueryScriptOptions build() {
-            return new JobQueryScriptOptions(keyResultStatement, statementByteBudget, statementTimeoutMs);
+        }
+        public JobQueryScriptOptions build() {
+            final var o = new JobQueryScriptOptions();
+            o.keyResultStatement = keyResultStatement;
+            o.statementByteBudget = statementByteBudget;
+            o.statementTimeoutMs = statementTimeoutMs;
+            return o;
         }
     }
 }

@@ -16,13 +16,9 @@ public final class AccessLevelCustom {
      * Structure is documented below.
      * 
      */
-    private final AccessLevelCustomExpr expr;
+    private AccessLevelCustomExpr expr;
 
-    @CustomType.Constructor
-    private AccessLevelCustom(@CustomType.Parameter("expr") AccessLevelCustomExpr expr) {
-        this.expr = expr;
-    }
-
+    private AccessLevelCustom() {}
     /**
      * @return Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
      * This page details the objects and attributes that are used to the build the CEL expressions for
@@ -41,24 +37,24 @@ public final class AccessLevelCustom {
     public static Builder builder(AccessLevelCustom defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private AccessLevelCustomExpr expr;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AccessLevelCustom defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expr = defaults.expr;
         }
 
+        @CustomType.Setter
         public Builder expr(AccessLevelCustomExpr expr) {
             this.expr = Objects.requireNonNull(expr);
             return this;
-        }        public AccessLevelCustom build() {
-            return new AccessLevelCustom(expr);
+        }
+        public AccessLevelCustom build() {
+            final var o = new AccessLevelCustom();
+            o.expr = expr;
+            return o;
         }
     }
 }

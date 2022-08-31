@@ -13,13 +13,9 @@ public final class InstanceConfidentialInstanceConfig {
      * @return Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
      * 
      */
-    private final Boolean enableConfidentialCompute;
+    private Boolean enableConfidentialCompute;
 
-    @CustomType.Constructor
-    private InstanceConfidentialInstanceConfig(@CustomType.Parameter("enableConfidentialCompute") Boolean enableConfidentialCompute) {
-        this.enableConfidentialCompute = enableConfidentialCompute;
-    }
-
+    private InstanceConfidentialInstanceConfig() {}
     /**
      * @return Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
      * 
@@ -35,24 +31,24 @@ public final class InstanceConfidentialInstanceConfig {
     public static Builder builder(InstanceConfidentialInstanceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enableConfidentialCompute;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceConfidentialInstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableConfidentialCompute = defaults.enableConfidentialCompute;
         }
 
+        @CustomType.Setter
         public Builder enableConfidentialCompute(Boolean enableConfidentialCompute) {
             this.enableConfidentialCompute = Objects.requireNonNull(enableConfidentialCompute);
             return this;
-        }        public InstanceConfidentialInstanceConfig build() {
-            return new InstanceConfidentialInstanceConfig(enableConfidentialCompute);
+        }
+        public InstanceConfidentialInstanceConfig build() {
+            final var o = new InstanceConfidentialInstanceConfig();
+            o.enableConfidentialCompute = enableConfidentialCompute;
+            return o;
         }
     }
 }

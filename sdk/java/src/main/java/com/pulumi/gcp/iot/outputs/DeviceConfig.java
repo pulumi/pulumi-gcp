@@ -11,23 +11,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceConfig {
-    private final @Nullable String binaryData;
-    private final @Nullable String cloudUpdateTime;
-    private final @Nullable String deviceAckTime;
-    private final @Nullable String version;
+    private @Nullable String binaryData;
+    private @Nullable String cloudUpdateTime;
+    private @Nullable String deviceAckTime;
+    private @Nullable String version;
 
-    @CustomType.Constructor
-    private DeviceConfig(
-        @CustomType.Parameter("binaryData") @Nullable String binaryData,
-        @CustomType.Parameter("cloudUpdateTime") @Nullable String cloudUpdateTime,
-        @CustomType.Parameter("deviceAckTime") @Nullable String deviceAckTime,
-        @CustomType.Parameter("version") @Nullable String version) {
-        this.binaryData = binaryData;
-        this.cloudUpdateTime = cloudUpdateTime;
-        this.deviceAckTime = deviceAckTime;
-        this.version = version;
-    }
-
+    private DeviceConfig() {}
     public Optional<String> binaryData() {
         return Optional.ofNullable(this.binaryData);
     }
@@ -48,17 +37,13 @@ public final class DeviceConfig {
     public static Builder builder(DeviceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String binaryData;
         private @Nullable String cloudUpdateTime;
         private @Nullable String deviceAckTime;
         private @Nullable String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DeviceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.binaryData = defaults.binaryData;
@@ -67,23 +52,33 @@ public final class DeviceConfig {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder binaryData(@Nullable String binaryData) {
             this.binaryData = binaryData;
             return this;
         }
+        @CustomType.Setter
         public Builder cloudUpdateTime(@Nullable String cloudUpdateTime) {
             this.cloudUpdateTime = cloudUpdateTime;
             return this;
         }
+        @CustomType.Setter
         public Builder deviceAckTime(@Nullable String deviceAckTime) {
             this.deviceAckTime = deviceAckTime;
             return this;
         }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
-        }        public DeviceConfig build() {
-            return new DeviceConfig(binaryData, cloudUpdateTime, deviceAckTime, version);
+        }
+        public DeviceConfig build() {
+            final var o = new DeviceConfig();
+            o.binaryData = binaryData;
+            o.cloudUpdateTime = cloudUpdateTime;
+            o.deviceAckTime = deviceAckTime;
+            o.version = version;
+            return o;
         }
     }
 }

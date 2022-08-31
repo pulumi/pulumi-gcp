@@ -20,7 +20,7 @@ public final class SloWindowsBasedSliMetricMeanInRange {
      * Structure is documented below.
      * 
      */
-    private final SloWindowsBasedSliMetricMeanInRangeRange range;
+    private SloWindowsBasedSliMetricMeanInRangeRange range;
     /**
      * @return A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
      * specifying the TimeSeries to use for evaluating window
@@ -31,16 +31,9 @@ public final class SloWindowsBasedSliMetricMeanInRange {
      * `range.min &lt;= X &lt;= range.max` for a good window.
      * 
      */
-    private final String timeSeries;
+    private String timeSeries;
 
-    @CustomType.Constructor
-    private SloWindowsBasedSliMetricMeanInRange(
-        @CustomType.Parameter("range") SloWindowsBasedSliMetricMeanInRangeRange range,
-        @CustomType.Parameter("timeSeries") String timeSeries) {
-        this.range = range;
-        this.timeSeries = timeSeries;
-    }
-
+    private SloWindowsBasedSliMetricMeanInRange() {}
     /**
      * @return Range of numerical values. The computed good_service
      * will be the count of values x in the Distribution such
@@ -75,30 +68,32 @@ public final class SloWindowsBasedSliMetricMeanInRange {
     public static Builder builder(SloWindowsBasedSliMetricMeanInRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private SloWindowsBasedSliMetricMeanInRangeRange range;
         private String timeSeries;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloWindowsBasedSliMetricMeanInRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.range = defaults.range;
     	      this.timeSeries = defaults.timeSeries;
         }
 
+        @CustomType.Setter
         public Builder range(SloWindowsBasedSliMetricMeanInRangeRange range) {
             this.range = Objects.requireNonNull(range);
             return this;
         }
+        @CustomType.Setter
         public Builder timeSeries(String timeSeries) {
             this.timeSeries = Objects.requireNonNull(timeSeries);
             return this;
-        }        public SloWindowsBasedSliMetricMeanInRange build() {
-            return new SloWindowsBasedSliMetricMeanInRange(range, timeSeries);
+        }
+        public SloWindowsBasedSliMetricMeanInRange build() {
+            final var o = new SloWindowsBasedSliMetricMeanInRange();
+            o.range = range;
+            o.timeSeries = timeSeries;
+            return o;
         }
     }
 }

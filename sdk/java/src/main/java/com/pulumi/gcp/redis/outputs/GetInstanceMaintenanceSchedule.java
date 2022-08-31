@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceMaintenanceSchedule {
-    private final String endTime;
-    private final String scheduleDeadlineTime;
-    private final String startTime;
+    private String endTime;
+    private String scheduleDeadlineTime;
+    private String startTime;
 
-    @CustomType.Constructor
-    private GetInstanceMaintenanceSchedule(
-        @CustomType.Parameter("endTime") String endTime,
-        @CustomType.Parameter("scheduleDeadlineTime") String scheduleDeadlineTime,
-        @CustomType.Parameter("startTime") String startTime) {
-        this.endTime = endTime;
-        this.scheduleDeadlineTime = scheduleDeadlineTime;
-        this.startTime = startTime;
-    }
-
+    private GetInstanceMaintenanceSchedule() {}
     public String endTime() {
         return this.endTime;
     }
@@ -40,16 +31,12 @@ public final class GetInstanceMaintenanceSchedule {
     public static Builder builder(GetInstanceMaintenanceSchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String endTime;
         private String scheduleDeadlineTime;
         private String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceMaintenanceSchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endTime = defaults.endTime;
@@ -57,19 +44,27 @@ public final class GetInstanceMaintenanceSchedule {
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder endTime(String endTime) {
             this.endTime = Objects.requireNonNull(endTime);
             return this;
         }
+        @CustomType.Setter
         public Builder scheduleDeadlineTime(String scheduleDeadlineTime) {
             this.scheduleDeadlineTime = Objects.requireNonNull(scheduleDeadlineTime);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
-        }        public GetInstanceMaintenanceSchedule build() {
-            return new GetInstanceMaintenanceSchedule(endTime, scheduleDeadlineTime, startTime);
+        }
+        public GetInstanceMaintenanceSchedule build() {
+            final var o = new GetInstanceMaintenanceSchedule();
+            o.endTime = endTime;
+            o.scheduleDeadlineTime = scheduleDeadlineTime;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

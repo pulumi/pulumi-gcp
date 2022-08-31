@@ -17,22 +17,15 @@ public final class URLMapDefaultRouteActionFaultInjectionPolicyDelay {
      * Structure is documented below.
      * 
      */
-    private final @Nullable URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay fixedDelay;
+    private @Nullable URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay fixedDelay;
     /**
      * @return The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
      * The value must be between 0.0 and 100.0 inclusive.
      * 
      */
-    private final @Nullable Double percentage;
+    private @Nullable Double percentage;
 
-    @CustomType.Constructor
-    private URLMapDefaultRouteActionFaultInjectionPolicyDelay(
-        @CustomType.Parameter("fixedDelay") @Nullable URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay fixedDelay,
-        @CustomType.Parameter("percentage") @Nullable Double percentage) {
-        this.fixedDelay = fixedDelay;
-        this.percentage = percentage;
-    }
-
+    private URLMapDefaultRouteActionFaultInjectionPolicyDelay() {}
     /**
      * @return Specifies the value of the fixed delay interval.
      * Structure is documented below.
@@ -57,30 +50,32 @@ public final class URLMapDefaultRouteActionFaultInjectionPolicyDelay {
     public static Builder builder(URLMapDefaultRouteActionFaultInjectionPolicyDelay defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay fixedDelay;
         private @Nullable Double percentage;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(URLMapDefaultRouteActionFaultInjectionPolicyDelay defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fixedDelay = defaults.fixedDelay;
     	      this.percentage = defaults.percentage;
         }
 
+        @CustomType.Setter
         public Builder fixedDelay(@Nullable URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay fixedDelay) {
             this.fixedDelay = fixedDelay;
             return this;
         }
+        @CustomType.Setter
         public Builder percentage(@Nullable Double percentage) {
             this.percentage = percentage;
             return this;
-        }        public URLMapDefaultRouteActionFaultInjectionPolicyDelay build() {
-            return new URLMapDefaultRouteActionFaultInjectionPolicyDelay(fixedDelay, percentage);
+        }
+        public URLMapDefaultRouteActionFaultInjectionPolicyDelay build() {
+            final var o = new URLMapDefaultRouteActionFaultInjectionPolicyDelay();
+            o.fixedDelay = fixedDelay;
+            o.percentage = percentage;
+            return o;
         }
     }
 }

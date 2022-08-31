@@ -16,21 +16,14 @@ public final class WorkloadResource {
      * @return Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
      * 
      */
-    private final @Nullable Integer resourceId;
+    private @Nullable Integer resourceId;
     /**
      * @return Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
      * 
      */
-    private final @Nullable String resourceType;
+    private @Nullable String resourceType;
 
-    @CustomType.Constructor
-    private WorkloadResource(
-        @CustomType.Parameter("resourceId") @Nullable Integer resourceId,
-        @CustomType.Parameter("resourceType") @Nullable String resourceType) {
-        this.resourceId = resourceId;
-        this.resourceType = resourceType;
-    }
-
+    private WorkloadResource() {}
     /**
      * @return Resource identifier. For a project this represents project_number. If the project is already taken, the workload creation will fail.
      * 
@@ -53,30 +46,32 @@ public final class WorkloadResource {
     public static Builder builder(WorkloadResource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer resourceId;
         private @Nullable String resourceType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WorkloadResource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.resourceId = defaults.resourceId;
     	      this.resourceType = defaults.resourceType;
         }
 
+        @CustomType.Setter
         public Builder resourceId(@Nullable Integer resourceId) {
             this.resourceId = resourceId;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceType(@Nullable String resourceType) {
             this.resourceType = resourceType;
             return this;
-        }        public WorkloadResource build() {
-            return new WorkloadResource(resourceId, resourceType);
+        }
+        public WorkloadResource build() {
+            final var o = new WorkloadResource();
+            o.resourceId = resourceId;
+            o.resourceType = resourceType;
+            return o;
         }
     }
 }

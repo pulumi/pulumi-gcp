@@ -20,7 +20,7 @@ public final class BudgetAllUpdatesRule {
      * Account Users IAM roles for the target account.
      * 
      */
-    private final @Nullable Boolean disableDefaultIamRecipients;
+    private @Nullable Boolean disableDefaultIamRecipients;
     /**
      * @return The full resource name of a monitoring notification
      * channel in the form
@@ -28,7 +28,7 @@ public final class BudgetAllUpdatesRule {
      * A maximum of 5 channels are allowed.
      * 
      */
-    private final @Nullable List<String> monitoringNotificationChannels;
+    private @Nullable List<String> monitoringNotificationChannels;
     /**
      * @return The name of the Cloud Pub/Sub topic where budget related
      * messages will be published, in the form
@@ -36,27 +36,16 @@ public final class BudgetAllUpdatesRule {
      * at regular intervals to the topic.
      * 
      */
-    private final @Nullable String pubsubTopic;
+    private @Nullable String pubsubTopic;
     /**
      * @return The schema version of the notification. Only &#34;1.0&#34; is
      * accepted. It represents the JSON schema as defined in
      * https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
      * 
      */
-    private final @Nullable String schemaVersion;
+    private @Nullable String schemaVersion;
 
-    @CustomType.Constructor
-    private BudgetAllUpdatesRule(
-        @CustomType.Parameter("disableDefaultIamRecipients") @Nullable Boolean disableDefaultIamRecipients,
-        @CustomType.Parameter("monitoringNotificationChannels") @Nullable List<String> monitoringNotificationChannels,
-        @CustomType.Parameter("pubsubTopic") @Nullable String pubsubTopic,
-        @CustomType.Parameter("schemaVersion") @Nullable String schemaVersion) {
-        this.disableDefaultIamRecipients = disableDefaultIamRecipients;
-        this.monitoringNotificationChannels = monitoringNotificationChannels;
-        this.pubsubTopic = pubsubTopic;
-        this.schemaVersion = schemaVersion;
-    }
-
+    private BudgetAllUpdatesRule() {}
     /**
      * @return Boolean. When set to true, disables default notifications sent
      * when a threshold is exceeded. Default recipients are
@@ -104,17 +93,13 @@ public final class BudgetAllUpdatesRule {
     public static Builder builder(BudgetAllUpdatesRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean disableDefaultIamRecipients;
         private @Nullable List<String> monitoringNotificationChannels;
         private @Nullable String pubsubTopic;
         private @Nullable String schemaVersion;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BudgetAllUpdatesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disableDefaultIamRecipients = defaults.disableDefaultIamRecipients;
@@ -123,10 +108,12 @@ public final class BudgetAllUpdatesRule {
     	      this.schemaVersion = defaults.schemaVersion;
         }
 
+        @CustomType.Setter
         public Builder disableDefaultIamRecipients(@Nullable Boolean disableDefaultIamRecipients) {
             this.disableDefaultIamRecipients = disableDefaultIamRecipients;
             return this;
         }
+        @CustomType.Setter
         public Builder monitoringNotificationChannels(@Nullable List<String> monitoringNotificationChannels) {
             this.monitoringNotificationChannels = monitoringNotificationChannels;
             return this;
@@ -134,15 +121,23 @@ public final class BudgetAllUpdatesRule {
         public Builder monitoringNotificationChannels(String... monitoringNotificationChannels) {
             return monitoringNotificationChannels(List.of(monitoringNotificationChannels));
         }
+        @CustomType.Setter
         public Builder pubsubTopic(@Nullable String pubsubTopic) {
             this.pubsubTopic = pubsubTopic;
             return this;
         }
+        @CustomType.Setter
         public Builder schemaVersion(@Nullable String schemaVersion) {
             this.schemaVersion = schemaVersion;
             return this;
-        }        public BudgetAllUpdatesRule build() {
-            return new BudgetAllUpdatesRule(disableDefaultIamRecipients, monitoringNotificationChannels, pubsubTopic, schemaVersion);
+        }
+        public BudgetAllUpdatesRule build() {
+            final var o = new BudgetAllUpdatesRule();
+            o.disableDefaultIamRecipients = disableDefaultIamRecipients;
+            o.monitoringNotificationChannels = monitoringNotificationChannels;
+            o.pubsubTopic = pubsubTopic;
+            o.schemaVersion = schemaVersion;
+            return o;
         }
     }
 }

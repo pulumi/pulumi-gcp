@@ -13,63 +13,44 @@ public final class GetFoldersFolder {
      * @return The timestamp of when the folder was created
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The timestamp of when the folder was requested to be deleted (if applicable)
      * 
      */
-    private final String deleteTime;
+    private String deleteTime;
     /**
      * @return The display name of the folder
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return Entity tag identifier of the folder
      * 
      */
-    private final String etag;
+    private String etag;
     /**
      * @return The id of the folder
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The parent id of the folder
      * 
      */
-    private final String parent;
+    private String parent;
     /**
      * @return The lifecycle state of the folder
      * 
      */
-    private final String state;
+    private String state;
     /**
      * @return The timestamp of when the folder was last modified
      * 
      */
-    private final String updateTime;
+    private String updateTime;
 
-    @CustomType.Constructor
-    private GetFoldersFolder(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("deleteTime") String deleteTime,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("etag") String etag,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("parent") String parent,
-        @CustomType.Parameter("state") String state,
-        @CustomType.Parameter("updateTime") String updateTime) {
-        this.createTime = createTime;
-        this.deleteTime = deleteTime;
-        this.displayName = displayName;
-        this.etag = etag;
-        this.name = name;
-        this.parent = parent;
-        this.state = state;
-        this.updateTime = updateTime;
-    }
-
+    private GetFoldersFolder() {}
     /**
      * @return The timestamp of when the folder was created
      * 
@@ -134,7 +115,7 @@ public final class GetFoldersFolder {
     public static Builder builder(GetFoldersFolder defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String deleteTime;
@@ -144,11 +125,7 @@ public final class GetFoldersFolder {
         private String parent;
         private String state;
         private String updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFoldersFolder defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -161,39 +138,57 @@ public final class GetFoldersFolder {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder deleteTime(String deleteTime) {
             this.deleteTime = Objects.requireNonNull(deleteTime);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder etag(String etag) {
             this.etag = Objects.requireNonNull(etag);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder parent(String parent) {
             this.parent = Objects.requireNonNull(parent);
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
-        }        public GetFoldersFolder build() {
-            return new GetFoldersFolder(createTime, deleteTime, displayName, etag, name, parent, state, updateTime);
+        }
+        public GetFoldersFolder build() {
+            final var o = new GetFoldersFolder();
+            o.createTime = createTime;
+            o.deleteTime = deleteTime;
+            o.displayName = displayName;
+            o.etag = etag;
+            o.name = name;
+            o.parent = parent;
+            o.state = state;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

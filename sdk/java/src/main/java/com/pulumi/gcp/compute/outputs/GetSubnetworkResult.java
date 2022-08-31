@@ -18,73 +18,48 @@ public final class GetSubnetworkResult {
      * @return Description of this subnetwork.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The IP address of the gateway.
      * 
      */
-    private final String gatewayAddress;
+    private String gatewayAddress;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The range of IP addresses belonging to this subnetwork
      * secondary range.
      * 
      */
-    private final String ipCidrRange;
-    private final @Nullable String name;
+    private String ipCidrRange;
+    private @Nullable String name;
     /**
      * @return The network name or resource link to the parent
      * network of this subnetwork.
      * 
      */
-    private final String network;
+    private String network;
     /**
      * @return Whether the VMs in this subnet
      * can access Google services without assigned external IP
      * addresses.
      * 
      */
-    private final Boolean privateIpGoogleAccess;
-    private final String project;
-    private final String region;
+    private Boolean privateIpGoogleAccess;
+    private String project;
+    private String region;
     /**
      * @return An array of configurations for secondary IP ranges for
      * VM instances contained in this subnetwork. Structure is documented below.
      * 
      */
-    private final List<GetSubnetworkSecondaryIpRange> secondaryIpRanges;
-    private final String selfLink;
+    private List<GetSubnetworkSecondaryIpRange> secondaryIpRanges;
+    private String selfLink;
 
-    @CustomType.Constructor
-    private GetSubnetworkResult(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("gatewayAddress") String gatewayAddress,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ipCidrRange") String ipCidrRange,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("network") String network,
-        @CustomType.Parameter("privateIpGoogleAccess") Boolean privateIpGoogleAccess,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("secondaryIpRanges") List<GetSubnetworkSecondaryIpRange> secondaryIpRanges,
-        @CustomType.Parameter("selfLink") String selfLink) {
-        this.description = description;
-        this.gatewayAddress = gatewayAddress;
-        this.id = id;
-        this.ipCidrRange = ipCidrRange;
-        this.name = name;
-        this.network = network;
-        this.privateIpGoogleAccess = privateIpGoogleAccess;
-        this.project = project;
-        this.region = region;
-        this.secondaryIpRanges = secondaryIpRanges;
-        this.selfLink = selfLink;
-    }
-
+    private GetSubnetworkResult() {}
     /**
      * @return Description of this subnetwork.
      * 
@@ -159,7 +134,7 @@ public final class GetSubnetworkResult {
     public static Builder builder(GetSubnetworkResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String gatewayAddress;
@@ -172,11 +147,7 @@ public final class GetSubnetworkResult {
         private String region;
         private List<GetSubnetworkSecondaryIpRange> secondaryIpRanges;
         private String selfLink;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSubnetworkResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -192,42 +163,52 @@ public final class GetSubnetworkResult {
     	      this.selfLink = defaults.selfLink;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayAddress(String gatewayAddress) {
             this.gatewayAddress = Objects.requireNonNull(gatewayAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipCidrRange(String ipCidrRange) {
             this.ipCidrRange = Objects.requireNonNull(ipCidrRange);
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder network(String network) {
             this.network = Objects.requireNonNull(network);
             return this;
         }
+        @CustomType.Setter
         public Builder privateIpGoogleAccess(Boolean privateIpGoogleAccess) {
             this.privateIpGoogleAccess = Objects.requireNonNull(privateIpGoogleAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder secondaryIpRanges(List<GetSubnetworkSecondaryIpRange> secondaryIpRanges) {
             this.secondaryIpRanges = Objects.requireNonNull(secondaryIpRanges);
             return this;
@@ -235,11 +216,25 @@ public final class GetSubnetworkResult {
         public Builder secondaryIpRanges(GetSubnetworkSecondaryIpRange... secondaryIpRanges) {
             return secondaryIpRanges(List.of(secondaryIpRanges));
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
-        }        public GetSubnetworkResult build() {
-            return new GetSubnetworkResult(description, gatewayAddress, id, ipCidrRange, name, network, privateIpGoogleAccess, project, region, secondaryIpRanges, selfLink);
+        }
+        public GetSubnetworkResult build() {
+            final var o = new GetSubnetworkResult();
+            o.description = description;
+            o.gatewayAddress = gatewayAddress;
+            o.id = id;
+            o.ipCidrRange = ipCidrRange;
+            o.name = name;
+            o.network = network;
+            o.privateIpGoogleAccess = privateIpGoogleAccess;
+            o.project = project;
+            o.region = region;
+            o.secondaryIpRanges = secondaryIpRanges;
+            o.selfLink = selfLink;
+            return o;
         }
     }
 }

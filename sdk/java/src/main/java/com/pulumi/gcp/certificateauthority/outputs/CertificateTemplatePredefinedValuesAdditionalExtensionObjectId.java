@@ -14,13 +14,9 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtensionObjectI
      * @return Required. The parts of an OID path. The most significant parts of the path come first.
      * 
      */
-    private final List<Integer> objectIdPaths;
+    private List<Integer> objectIdPaths;
 
-    @CustomType.Constructor
-    private CertificateTemplatePredefinedValuesAdditionalExtensionObjectId(@CustomType.Parameter("objectIdPaths") List<Integer> objectIdPaths) {
-        this.objectIdPaths = objectIdPaths;
-    }
-
+    private CertificateTemplatePredefinedValuesAdditionalExtensionObjectId() {}
     /**
      * @return Required. The parts of an OID path. The most significant parts of the path come first.
      * 
@@ -36,27 +32,27 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtensionObjectI
     public static Builder builder(CertificateTemplatePredefinedValuesAdditionalExtensionObjectId defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<Integer> objectIdPaths;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateTemplatePredefinedValuesAdditionalExtensionObjectId defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.objectIdPaths = defaults.objectIdPaths;
         }
 
+        @CustomType.Setter
         public Builder objectIdPaths(List<Integer> objectIdPaths) {
             this.objectIdPaths = Objects.requireNonNull(objectIdPaths);
             return this;
         }
         public Builder objectIdPaths(Integer... objectIdPaths) {
             return objectIdPaths(List.of(objectIdPaths));
-        }        public CertificateTemplatePredefinedValuesAdditionalExtensionObjectId build() {
-            return new CertificateTemplatePredefinedValuesAdditionalExtensionObjectId(objectIdPaths);
+        }
+        public CertificateTemplatePredefinedValuesAdditionalExtensionObjectId build() {
+            final var o = new CertificateTemplatePredefinedValuesAdditionalExtensionObjectId();
+            o.objectIdPaths = objectIdPaths;
+            return o;
         }
     }
 }

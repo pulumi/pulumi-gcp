@@ -17,30 +17,21 @@ public final class RuntimeAccessConfig {
      * rest/v1/projects.locations.runtimes#RuntimeAccessType`.
      * 
      */
-    private final @Nullable String accessType;
+    private @Nullable String accessType;
     /**
      * @return -
      * The proxy endpoint that is used to access the runtime.
      * 
      */
-    private final @Nullable String proxyUri;
+    private @Nullable String proxyUri;
     /**
      * @return The owner of this runtime after creation. Format: `alias@example.com`.
      * Currently supports one owner only.
      * 
      */
-    private final @Nullable String runtimeOwner;
+    private @Nullable String runtimeOwner;
 
-    @CustomType.Constructor
-    private RuntimeAccessConfig(
-        @CustomType.Parameter("accessType") @Nullable String accessType,
-        @CustomType.Parameter("proxyUri") @Nullable String proxyUri,
-        @CustomType.Parameter("runtimeOwner") @Nullable String runtimeOwner) {
-        this.accessType = accessType;
-        this.proxyUri = proxyUri;
-        this.runtimeOwner = runtimeOwner;
-    }
-
+    private RuntimeAccessConfig() {}
     /**
      * @return The type of access mode this instance. For valid values, see
      * `https://cloud.google.com/vertex-ai/docs/workbench/reference/
@@ -74,16 +65,12 @@ public final class RuntimeAccessConfig {
     public static Builder builder(RuntimeAccessConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessType;
         private @Nullable String proxyUri;
         private @Nullable String runtimeOwner;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuntimeAccessConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessType = defaults.accessType;
@@ -91,19 +78,27 @@ public final class RuntimeAccessConfig {
     	      this.runtimeOwner = defaults.runtimeOwner;
         }
 
+        @CustomType.Setter
         public Builder accessType(@Nullable String accessType) {
             this.accessType = accessType;
             return this;
         }
+        @CustomType.Setter
         public Builder proxyUri(@Nullable String proxyUri) {
             this.proxyUri = proxyUri;
             return this;
         }
+        @CustomType.Setter
         public Builder runtimeOwner(@Nullable String runtimeOwner) {
             this.runtimeOwner = runtimeOwner;
             return this;
-        }        public RuntimeAccessConfig build() {
-            return new RuntimeAccessConfig(accessType, proxyUri, runtimeOwner);
+        }
+        public RuntimeAccessConfig build() {
+            final var o = new RuntimeAccessConfig();
+            o.accessType = accessType;
+            o.proxyUri = proxyUri;
+            o.runtimeOwner = runtimeOwner;
+            return o;
         }
     }
 }

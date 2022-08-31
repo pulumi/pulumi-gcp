@@ -18,13 +18,13 @@ public final class RegionHealthCheckSslHealthCheck {
      * or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
      * 
      */
-    private final @Nullable Integer port;
+    private @Nullable Integer port;
     /**
      * @return Port name as defined in InstanceGroup#NamedPort#name. If both port and
      * port_name are defined, port takes precedence.
      * 
      */
-    private final @Nullable String portName;
+    private @Nullable String portName;
     /**
      * @return Specifies how port is selected for health checking, can be one of the
      * following values:
@@ -39,7 +39,7 @@ public final class RegionHealthCheckSslHealthCheck {
      *   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
      * 
      */
-    private final @Nullable String portSpecification;
+    private @Nullable String portSpecification;
     /**
      * @return Specifies the type of proxy header to append before sending data to the
      * backend.
@@ -47,7 +47,7 @@ public final class RegionHealthCheckSslHealthCheck {
      * Possible values are `NONE` and `PROXY_V1`.
      * 
      */
-    private final @Nullable String proxyHeader;
+    private @Nullable String proxyHeader;
     /**
      * @return The application data to send once the SSL connection has been
      * established (default value is empty). If both request and response are
@@ -55,31 +55,16 @@ public final class RegionHealthCheckSslHealthCheck {
      * data can only be ASCII.
      * 
      */
-    private final @Nullable String request;
+    private @Nullable String request;
     /**
      * @return The bytes to match against the beginning of the response data. If left empty
      * (the default value), any response will indicate health. The response data
      * can only be ASCII.
      * 
      */
-    private final @Nullable String response;
+    private @Nullable String response;
 
-    @CustomType.Constructor
-    private RegionHealthCheckSslHealthCheck(
-        @CustomType.Parameter("port") @Nullable Integer port,
-        @CustomType.Parameter("portName") @Nullable String portName,
-        @CustomType.Parameter("portSpecification") @Nullable String portSpecification,
-        @CustomType.Parameter("proxyHeader") @Nullable String proxyHeader,
-        @CustomType.Parameter("request") @Nullable String request,
-        @CustomType.Parameter("response") @Nullable String response) {
-        this.port = port;
-        this.portName = portName;
-        this.portSpecification = portSpecification;
-        this.proxyHeader = proxyHeader;
-        this.request = request;
-        this.response = response;
-    }
-
+    private RegionHealthCheckSslHealthCheck() {}
     /**
      * @return The port number for the health check request.
      * Must be specified if portName and portSpecification are not set
@@ -151,7 +136,7 @@ public final class RegionHealthCheckSslHealthCheck {
     public static Builder builder(RegionHealthCheckSslHealthCheck defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer port;
         private @Nullable String portName;
@@ -159,11 +144,7 @@ public final class RegionHealthCheckSslHealthCheck {
         private @Nullable String proxyHeader;
         private @Nullable String request;
         private @Nullable String response;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionHealthCheckSslHealthCheck defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.port = defaults.port;
@@ -174,31 +155,45 @@ public final class RegionHealthCheckSslHealthCheck {
     	      this.response = defaults.response;
         }
 
+        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder portName(@Nullable String portName) {
             this.portName = portName;
             return this;
         }
+        @CustomType.Setter
         public Builder portSpecification(@Nullable String portSpecification) {
             this.portSpecification = portSpecification;
             return this;
         }
+        @CustomType.Setter
         public Builder proxyHeader(@Nullable String proxyHeader) {
             this.proxyHeader = proxyHeader;
             return this;
         }
+        @CustomType.Setter
         public Builder request(@Nullable String request) {
             this.request = request;
             return this;
         }
+        @CustomType.Setter
         public Builder response(@Nullable String response) {
             this.response = response;
             return this;
-        }        public RegionHealthCheckSslHealthCheck build() {
-            return new RegionHealthCheckSslHealthCheck(port, portName, portSpecification, proxyHeader, request, response);
+        }
+        public RegionHealthCheckSslHealthCheck build() {
+            final var o = new RegionHealthCheckSslHealthCheck();
+            o.port = port;
+            o.portName = portName;
+            o.portSpecification = portSpecification;
+            o.proxyHeader = proxyHeader;
+            o.request = request;
+            o.response = response;
+            return o;
         }
     }
 }

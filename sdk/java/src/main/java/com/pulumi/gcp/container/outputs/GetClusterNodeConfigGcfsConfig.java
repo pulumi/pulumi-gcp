@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodeConfigGcfsConfig {
-    private final Boolean enabled;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private GetClusterNodeConfigGcfsConfig(@CustomType.Parameter("enabled") Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private GetClusterNodeConfigGcfsConfig() {}
     public Boolean enabled() {
         return this.enabled;
     }
@@ -27,24 +23,24 @@ public final class GetClusterNodeConfigGcfsConfig {
     public static Builder builder(GetClusterNodeConfigGcfsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterNodeConfigGcfsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public GetClusterNodeConfigGcfsConfig build() {
-            return new GetClusterNodeConfigGcfsConfig(enabled);
+        }
+        public GetClusterNodeConfigGcfsConfig build() {
+            final var o = new GetClusterNodeConfigGcfsConfig();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

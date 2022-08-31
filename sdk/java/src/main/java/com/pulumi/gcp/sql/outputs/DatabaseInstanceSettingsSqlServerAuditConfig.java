@@ -15,28 +15,19 @@ public final class DatabaseInstanceSettingsSqlServerAuditConfig {
      * @return The name of the destination bucket (e.g., gs://mybucket).
      * 
      */
-    private final String bucket;
+    private String bucket;
     /**
      * @return How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    private final @Nullable String retentionInterval;
+    private @Nullable String retentionInterval;
     /**
      * @return How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    private final @Nullable String uploadInterval;
+    private @Nullable String uploadInterval;
 
-    @CustomType.Constructor
-    private DatabaseInstanceSettingsSqlServerAuditConfig(
-        @CustomType.Parameter("bucket") String bucket,
-        @CustomType.Parameter("retentionInterval") @Nullable String retentionInterval,
-        @CustomType.Parameter("uploadInterval") @Nullable String uploadInterval) {
-        this.bucket = bucket;
-        this.retentionInterval = retentionInterval;
-        this.uploadInterval = uploadInterval;
-    }
-
+    private DatabaseInstanceSettingsSqlServerAuditConfig() {}
     /**
      * @return The name of the destination bucket (e.g., gs://mybucket).
      * 
@@ -66,16 +57,12 @@ public final class DatabaseInstanceSettingsSqlServerAuditConfig {
     public static Builder builder(DatabaseInstanceSettingsSqlServerAuditConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bucket;
         private @Nullable String retentionInterval;
         private @Nullable String uploadInterval;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatabaseInstanceSettingsSqlServerAuditConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
@@ -83,19 +70,27 @@ public final class DatabaseInstanceSettingsSqlServerAuditConfig {
     	      this.uploadInterval = defaults.uploadInterval;
         }
 
+        @CustomType.Setter
         public Builder bucket(String bucket) {
             this.bucket = Objects.requireNonNull(bucket);
             return this;
         }
+        @CustomType.Setter
         public Builder retentionInterval(@Nullable String retentionInterval) {
             this.retentionInterval = retentionInterval;
             return this;
         }
+        @CustomType.Setter
         public Builder uploadInterval(@Nullable String uploadInterval) {
             this.uploadInterval = uploadInterval;
             return this;
-        }        public DatabaseInstanceSettingsSqlServerAuditConfig build() {
-            return new DatabaseInstanceSettingsSqlServerAuditConfig(bucket, retentionInterval, uploadInterval);
+        }
+        public DatabaseInstanceSettingsSqlServerAuditConfig build() {
+            final var o = new DatabaseInstanceSettingsSqlServerAuditConfig();
+            o.bucket = bucket;
+            o.retentionInterval = retentionInterval;
+            o.uploadInterval = uploadInterval;
+            return o;
         }
     }
 }

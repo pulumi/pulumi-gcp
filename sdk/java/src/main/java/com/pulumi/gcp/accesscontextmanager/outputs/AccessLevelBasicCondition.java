@@ -21,7 +21,7 @@ public final class AccessLevelBasicCondition {
      * Structure is documented below.
      * 
      */
-    private final @Nullable AccessLevelBasicConditionDevicePolicy devicePolicy;
+    private @Nullable AccessLevelBasicConditionDevicePolicy devicePolicy;
     /**
      * @return A list of CIDR block IP subnetwork specification. May be IPv4
      * or IPv6.
@@ -35,7 +35,7 @@ public final class AccessLevelBasicCondition {
      * If empty, all IP addresses are allowed.
      * 
      */
-    private final @Nullable List<String> ipSubnetworks;
+    private @Nullable List<String> ipSubnetworks;
     /**
      * @return An allowed list of members (users, service accounts).
      * Using groups is not supported yet.
@@ -46,21 +46,21 @@ public final class AccessLevelBasicCondition {
      * Formats: `user:{emailid}`, `serviceAccount:{emailid}`
      * 
      */
-    private final @Nullable List<String> members;
+    private @Nullable List<String> members;
     /**
      * @return Whether to negate the Condition. If true, the Condition becomes
      * a NAND over its non-empty fields, each field must be false for
      * the Condition overall to be satisfied. Defaults to false.
      * 
      */
-    private final @Nullable Boolean negate;
+    private @Nullable Boolean negate;
     /**
      * @return The request must originate from one of the provided
      * countries/regions.
      * Format: A valid ISO 3166-1 alpha-2 code.
      * 
      */
-    private final @Nullable List<String> regions;
+    private @Nullable List<String> regions;
     /**
      * @return A list of other access levels defined in the same Policy,
      * referenced by resource name. Referencing an AccessLevel which
@@ -69,24 +69,9 @@ public final class AccessLevelBasicCondition {
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      * 
      */
-    private final @Nullable List<String> requiredAccessLevels;
+    private @Nullable List<String> requiredAccessLevels;
 
-    @CustomType.Constructor
-    private AccessLevelBasicCondition(
-        @CustomType.Parameter("devicePolicy") @Nullable AccessLevelBasicConditionDevicePolicy devicePolicy,
-        @CustomType.Parameter("ipSubnetworks") @Nullable List<String> ipSubnetworks,
-        @CustomType.Parameter("members") @Nullable List<String> members,
-        @CustomType.Parameter("negate") @Nullable Boolean negate,
-        @CustomType.Parameter("regions") @Nullable List<String> regions,
-        @CustomType.Parameter("requiredAccessLevels") @Nullable List<String> requiredAccessLevels) {
-        this.devicePolicy = devicePolicy;
-        this.ipSubnetworks = ipSubnetworks;
-        this.members = members;
-        this.negate = negate;
-        this.regions = regions;
-        this.requiredAccessLevels = requiredAccessLevels;
-    }
-
+    private AccessLevelBasicCondition() {}
     /**
      * @return Device specific restrictions, all restrictions must hold for
      * the Condition to be true. If not specified, all devices are
@@ -163,7 +148,7 @@ public final class AccessLevelBasicCondition {
     public static Builder builder(AccessLevelBasicCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable AccessLevelBasicConditionDevicePolicy devicePolicy;
         private @Nullable List<String> ipSubnetworks;
@@ -171,11 +156,7 @@ public final class AccessLevelBasicCondition {
         private @Nullable Boolean negate;
         private @Nullable List<String> regions;
         private @Nullable List<String> requiredAccessLevels;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AccessLevelBasicCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.devicePolicy = defaults.devicePolicy;
@@ -186,10 +167,12 @@ public final class AccessLevelBasicCondition {
     	      this.requiredAccessLevels = defaults.requiredAccessLevels;
         }
 
+        @CustomType.Setter
         public Builder devicePolicy(@Nullable AccessLevelBasicConditionDevicePolicy devicePolicy) {
             this.devicePolicy = devicePolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder ipSubnetworks(@Nullable List<String> ipSubnetworks) {
             this.ipSubnetworks = ipSubnetworks;
             return this;
@@ -197,6 +180,7 @@ public final class AccessLevelBasicCondition {
         public Builder ipSubnetworks(String... ipSubnetworks) {
             return ipSubnetworks(List.of(ipSubnetworks));
         }
+        @CustomType.Setter
         public Builder members(@Nullable List<String> members) {
             this.members = members;
             return this;
@@ -204,10 +188,12 @@ public final class AccessLevelBasicCondition {
         public Builder members(String... members) {
             return members(List.of(members));
         }
+        @CustomType.Setter
         public Builder negate(@Nullable Boolean negate) {
             this.negate = negate;
             return this;
         }
+        @CustomType.Setter
         public Builder regions(@Nullable List<String> regions) {
             this.regions = regions;
             return this;
@@ -215,14 +201,23 @@ public final class AccessLevelBasicCondition {
         public Builder regions(String... regions) {
             return regions(List.of(regions));
         }
+        @CustomType.Setter
         public Builder requiredAccessLevels(@Nullable List<String> requiredAccessLevels) {
             this.requiredAccessLevels = requiredAccessLevels;
             return this;
         }
         public Builder requiredAccessLevels(String... requiredAccessLevels) {
             return requiredAccessLevels(List.of(requiredAccessLevels));
-        }        public AccessLevelBasicCondition build() {
-            return new AccessLevelBasicCondition(devicePolicy, ipSubnetworks, members, negate, regions, requiredAccessLevels);
+        }
+        public AccessLevelBasicCondition build() {
+            final var o = new AccessLevelBasicCondition();
+            o.devicePolicy = devicePolicy;
+            o.ipSubnetworks = ipSubnetworks;
+            o.members = members;
+            o.negate = negate;
+            o.regions = regions;
+            o.requiredAccessLevels = requiredAccessLevels;
+            return o;
         }
     }
 }

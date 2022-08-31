@@ -16,45 +16,32 @@ public final class ConnectionAzure {
      * The name of the Azure Active Directory Application.
      * 
      */
-    private final @Nullable String application;
+    private @Nullable String application;
     /**
      * @return -
      * The client id of the Azure Active Directory Application.
      * 
      */
-    private final @Nullable String clientId;
+    private @Nullable String clientId;
     /**
      * @return The id of customer&#39;s directory that host the data.
      * 
      */
-    private final String customerTenantId;
+    private String customerTenantId;
     /**
      * @return -
      * The object id of the Azure Active Directory Application.
      * 
      */
-    private final @Nullable String objectId;
+    private @Nullable String objectId;
     /**
      * @return -
      * The URL user will be redirected to after granting consent during connection setup.
      * 
      */
-    private final @Nullable String redirectUri;
+    private @Nullable String redirectUri;
 
-    @CustomType.Constructor
-    private ConnectionAzure(
-        @CustomType.Parameter("application") @Nullable String application,
-        @CustomType.Parameter("clientId") @Nullable String clientId,
-        @CustomType.Parameter("customerTenantId") String customerTenantId,
-        @CustomType.Parameter("objectId") @Nullable String objectId,
-        @CustomType.Parameter("redirectUri") @Nullable String redirectUri) {
-        this.application = application;
-        this.clientId = clientId;
-        this.customerTenantId = customerTenantId;
-        this.objectId = objectId;
-        this.redirectUri = redirectUri;
-    }
-
+    private ConnectionAzure() {}
     /**
      * @return -
      * The name of the Azure Active Directory Application.
@@ -102,18 +89,14 @@ public final class ConnectionAzure {
     public static Builder builder(ConnectionAzure defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String application;
         private @Nullable String clientId;
         private String customerTenantId;
         private @Nullable String objectId;
         private @Nullable String redirectUri;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionAzure defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.application = defaults.application;
@@ -123,27 +106,39 @@ public final class ConnectionAzure {
     	      this.redirectUri = defaults.redirectUri;
         }
 
+        @CustomType.Setter
         public Builder application(@Nullable String application) {
             this.application = application;
             return this;
         }
+        @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
             this.clientId = clientId;
             return this;
         }
+        @CustomType.Setter
         public Builder customerTenantId(String customerTenantId) {
             this.customerTenantId = Objects.requireNonNull(customerTenantId);
             return this;
         }
+        @CustomType.Setter
         public Builder objectId(@Nullable String objectId) {
             this.objectId = objectId;
             return this;
         }
+        @CustomType.Setter
         public Builder redirectUri(@Nullable String redirectUri) {
             this.redirectUri = redirectUri;
             return this;
-        }        public ConnectionAzure build() {
-            return new ConnectionAzure(application, clientId, customerTenantId, objectId, redirectUri);
+        }
+        public ConnectionAzure build() {
+            final var o = new ConnectionAzure();
+            o.application = application;
+            o.clientId = clientId;
+            o.customerTenantId = customerTenantId;
+            o.objectId = objectId;
+            o.redirectUri = redirectUri;
+            return o;
         }
     }
 }

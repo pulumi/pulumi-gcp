@@ -18,7 +18,7 @@ public final class GlobalForwardingRuleMetadataFilter {
      * Structure is documented below.
      * 
      */
-    private final List<GlobalForwardingRuleMetadataFilterFilterLabel> filterLabels;
+    private List<GlobalForwardingRuleMetadataFilterFilterLabel> filterLabels;
     /**
      * @return Specifies how individual filterLabel matches within the list of
      * filterLabels contribute towards the overall metadataFilter match.
@@ -29,16 +29,9 @@ public final class GlobalForwardingRuleMetadataFilter {
      * Possible values are `MATCH_ANY` and `MATCH_ALL`.
      * 
      */
-    private final String filterMatchCriteria;
+    private String filterMatchCriteria;
 
-    @CustomType.Constructor
-    private GlobalForwardingRuleMetadataFilter(
-        @CustomType.Parameter("filterLabels") List<GlobalForwardingRuleMetadataFilterFilterLabel> filterLabels,
-        @CustomType.Parameter("filterMatchCriteria") String filterMatchCriteria) {
-        this.filterLabels = filterLabels;
-        this.filterMatchCriteria = filterMatchCriteria;
-    }
-
+    private GlobalForwardingRuleMetadataFilter() {}
     /**
      * @return The list of label value pairs that must match labels in the
      * provided metadata based on filterMatchCriteria
@@ -70,21 +63,18 @@ public final class GlobalForwardingRuleMetadataFilter {
     public static Builder builder(GlobalForwardingRuleMetadataFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GlobalForwardingRuleMetadataFilterFilterLabel> filterLabels;
         private String filterMatchCriteria;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GlobalForwardingRuleMetadataFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filterLabels = defaults.filterLabels;
     	      this.filterMatchCriteria = defaults.filterMatchCriteria;
         }
 
+        @CustomType.Setter
         public Builder filterLabels(List<GlobalForwardingRuleMetadataFilterFilterLabel> filterLabels) {
             this.filterLabels = Objects.requireNonNull(filterLabels);
             return this;
@@ -92,11 +82,16 @@ public final class GlobalForwardingRuleMetadataFilter {
         public Builder filterLabels(GlobalForwardingRuleMetadataFilterFilterLabel... filterLabels) {
             return filterLabels(List.of(filterLabels));
         }
+        @CustomType.Setter
         public Builder filterMatchCriteria(String filterMatchCriteria) {
             this.filterMatchCriteria = Objects.requireNonNull(filterMatchCriteria);
             return this;
-        }        public GlobalForwardingRuleMetadataFilter build() {
-            return new GlobalForwardingRuleMetadataFilter(filterLabels, filterMatchCriteria);
+        }
+        public GlobalForwardingRuleMetadataFilter build() {
+            final var o = new GlobalForwardingRuleMetadataFilter();
+            o.filterLabels = filterLabels;
+            o.filterMatchCriteria = filterMatchCriteria;
+            return o;
         }
     }
 }

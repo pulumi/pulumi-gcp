@@ -17,35 +17,24 @@ public final class BucketCor {
      * @return The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
      * 
      */
-    private final @Nullable Integer maxAgeSeconds;
+    private @Nullable Integer maxAgeSeconds;
     /**
      * @return The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: &#34;*&#34; is permitted in the list of methods, and means &#34;any method&#34;.
      * 
      */
-    private final @Nullable List<String> methods;
+    private @Nullable List<String> methods;
     /**
      * @return The list of [Origins](https://tools.ietf.org/html/rfc6454) eligible to receive CORS response headers. Note: &#34;*&#34; is permitted in the list of origins, and means &#34;any Origin&#34;.
      * 
      */
-    private final @Nullable List<String> origins;
+    private @Nullable List<String> origins;
     /**
      * @return The list of HTTP headers other than the [simple response headers](https://www.w3.org/TR/cors/#simple-response-header) to give permission for the user-agent to share across domains.
      * 
      */
-    private final @Nullable List<String> responseHeaders;
+    private @Nullable List<String> responseHeaders;
 
-    @CustomType.Constructor
-    private BucketCor(
-        @CustomType.Parameter("maxAgeSeconds") @Nullable Integer maxAgeSeconds,
-        @CustomType.Parameter("methods") @Nullable List<String> methods,
-        @CustomType.Parameter("origins") @Nullable List<String> origins,
-        @CustomType.Parameter("responseHeaders") @Nullable List<String> responseHeaders) {
-        this.maxAgeSeconds = maxAgeSeconds;
-        this.methods = methods;
-        this.origins = origins;
-        this.responseHeaders = responseHeaders;
-    }
-
+    private BucketCor() {}
     /**
      * @return The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
      * 
@@ -82,17 +71,13 @@ public final class BucketCor {
     public static Builder builder(BucketCor defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer maxAgeSeconds;
         private @Nullable List<String> methods;
         private @Nullable List<String> origins;
         private @Nullable List<String> responseHeaders;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BucketCor defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxAgeSeconds = defaults.maxAgeSeconds;
@@ -101,10 +86,12 @@ public final class BucketCor {
     	      this.responseHeaders = defaults.responseHeaders;
         }
 
+        @CustomType.Setter
         public Builder maxAgeSeconds(@Nullable Integer maxAgeSeconds) {
             this.maxAgeSeconds = maxAgeSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder methods(@Nullable List<String> methods) {
             this.methods = methods;
             return this;
@@ -112,6 +99,7 @@ public final class BucketCor {
         public Builder methods(String... methods) {
             return methods(List.of(methods));
         }
+        @CustomType.Setter
         public Builder origins(@Nullable List<String> origins) {
             this.origins = origins;
             return this;
@@ -119,14 +107,21 @@ public final class BucketCor {
         public Builder origins(String... origins) {
             return origins(List.of(origins));
         }
+        @CustomType.Setter
         public Builder responseHeaders(@Nullable List<String> responseHeaders) {
             this.responseHeaders = responseHeaders;
             return this;
         }
         public Builder responseHeaders(String... responseHeaders) {
             return responseHeaders(List.of(responseHeaders));
-        }        public BucketCor build() {
-            return new BucketCor(maxAgeSeconds, methods, origins, responseHeaders);
+        }
+        public BucketCor build() {
+            final var o = new BucketCor();
+            o.maxAgeSeconds = maxAgeSeconds;
+            o.methods = methods;
+            o.origins = origins;
+            o.responseHeaders = responseHeaders;
+            return o;
         }
     }
 }

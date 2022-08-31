@@ -13,13 +13,9 @@ public final class AwsNodePoolMaxPodsConstraint {
      * @return The maximum number of pods to schedule on a single node.
      * 
      */
-    private final Integer maxPodsPerNode;
+    private Integer maxPodsPerNode;
 
-    @CustomType.Constructor
-    private AwsNodePoolMaxPodsConstraint(@CustomType.Parameter("maxPodsPerNode") Integer maxPodsPerNode) {
-        this.maxPodsPerNode = maxPodsPerNode;
-    }
-
+    private AwsNodePoolMaxPodsConstraint() {}
     /**
      * @return The maximum number of pods to schedule on a single node.
      * 
@@ -35,24 +31,24 @@ public final class AwsNodePoolMaxPodsConstraint {
     public static Builder builder(AwsNodePoolMaxPodsConstraint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer maxPodsPerNode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsNodePoolMaxPodsConstraint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxPodsPerNode = defaults.maxPodsPerNode;
         }
 
+        @CustomType.Setter
         public Builder maxPodsPerNode(Integer maxPodsPerNode) {
             this.maxPodsPerNode = Objects.requireNonNull(maxPodsPerNode);
             return this;
-        }        public AwsNodePoolMaxPodsConstraint build() {
-            return new AwsNodePoolMaxPodsConstraint(maxPodsPerNode);
+        }
+        public AwsNodePoolMaxPodsConstraint build() {
+            final var o = new AwsNodePoolMaxPodsConstraint();
+            o.maxPodsPerNode = maxPodsPerNode;
+            return o;
         }
     }
 }

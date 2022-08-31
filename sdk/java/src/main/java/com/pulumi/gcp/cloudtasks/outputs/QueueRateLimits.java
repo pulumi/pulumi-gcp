@@ -21,7 +21,7 @@ public final class QueueRateLimits {
      * resource usage when many tasks are enqueued in a short period of time.
      * 
      */
-    private final @Nullable Integer maxBurstSize;
+    private @Nullable Integer maxBurstSize;
     /**
      * @return The maximum number of concurrent tasks that Cloud Tasks allows to
      * be dispatched for this queue. After this threshold has been
@@ -29,24 +29,15 @@ public final class QueueRateLimits {
      * concurrent requests decreases.
      * 
      */
-    private final @Nullable Integer maxConcurrentDispatches;
+    private @Nullable Integer maxConcurrentDispatches;
     /**
      * @return The maximum rate at which tasks are dispatched from this queue.
      * If unspecified when the queue is created, Cloud Tasks will pick the default.
      * 
      */
-    private final @Nullable Double maxDispatchesPerSecond;
+    private @Nullable Double maxDispatchesPerSecond;
 
-    @CustomType.Constructor
-    private QueueRateLimits(
-        @CustomType.Parameter("maxBurstSize") @Nullable Integer maxBurstSize,
-        @CustomType.Parameter("maxConcurrentDispatches") @Nullable Integer maxConcurrentDispatches,
-        @CustomType.Parameter("maxDispatchesPerSecond") @Nullable Double maxDispatchesPerSecond) {
-        this.maxBurstSize = maxBurstSize;
-        this.maxConcurrentDispatches = maxConcurrentDispatches;
-        this.maxDispatchesPerSecond = maxDispatchesPerSecond;
-    }
-
+    private QueueRateLimits() {}
     /**
      * @return -
      * The max burst size.
@@ -85,16 +76,12 @@ public final class QueueRateLimits {
     public static Builder builder(QueueRateLimits defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer maxBurstSize;
         private @Nullable Integer maxConcurrentDispatches;
         private @Nullable Double maxDispatchesPerSecond;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(QueueRateLimits defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxBurstSize = defaults.maxBurstSize;
@@ -102,19 +89,27 @@ public final class QueueRateLimits {
     	      this.maxDispatchesPerSecond = defaults.maxDispatchesPerSecond;
         }
 
+        @CustomType.Setter
         public Builder maxBurstSize(@Nullable Integer maxBurstSize) {
             this.maxBurstSize = maxBurstSize;
             return this;
         }
+        @CustomType.Setter
         public Builder maxConcurrentDispatches(@Nullable Integer maxConcurrentDispatches) {
             this.maxConcurrentDispatches = maxConcurrentDispatches;
             return this;
         }
+        @CustomType.Setter
         public Builder maxDispatchesPerSecond(@Nullable Double maxDispatchesPerSecond) {
             this.maxDispatchesPerSecond = maxDispatchesPerSecond;
             return this;
-        }        public QueueRateLimits build() {
-            return new QueueRateLimits(maxBurstSize, maxConcurrentDispatches, maxDispatchesPerSecond);
+        }
+        public QueueRateLimits build() {
+            final var o = new QueueRateLimits();
+            o.maxBurstSize = maxBurstSize;
+            o.maxConcurrentDispatches = maxConcurrentDispatches;
+            o.maxDispatchesPerSecond = maxDispatchesPerSecond;
+            return o;
         }
     }
 }

@@ -16,7 +16,7 @@ public final class ServiceTemplateSpecContainerEnv {
      * @return Volume&#39;s name.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return Variable references $(VAR_NAME) are expanded
      * using the previous defined environment variables in the container and
@@ -28,24 +28,15 @@ public final class ServiceTemplateSpecContainerEnv {
      * Defaults to &#34;&#34;.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
     /**
      * @return Source for the environment variable&#39;s value. Only supports secret_key_ref.
      * Structure is documented below.
      * 
      */
-    private final @Nullable ServiceTemplateSpecContainerEnvValueFrom valueFrom;
+    private @Nullable ServiceTemplateSpecContainerEnvValueFrom valueFrom;
 
-    @CustomType.Constructor
-    private ServiceTemplateSpecContainerEnv(
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("value") @Nullable String value,
-        @CustomType.Parameter("valueFrom") @Nullable ServiceTemplateSpecContainerEnvValueFrom valueFrom) {
-        this.name = name;
-        this.value = value;
-        this.valueFrom = valueFrom;
-    }
-
+    private ServiceTemplateSpecContainerEnv() {}
     /**
      * @return Volume&#39;s name.
      * 
@@ -83,16 +74,12 @@ public final class ServiceTemplateSpecContainerEnv {
     public static Builder builder(ServiceTemplateSpecContainerEnv defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
         private @Nullable String value;
         private @Nullable ServiceTemplateSpecContainerEnvValueFrom valueFrom;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceTemplateSpecContainerEnv defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
@@ -100,19 +87,27 @@ public final class ServiceTemplateSpecContainerEnv {
     	      this.valueFrom = defaults.valueFrom;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
         }
+        @CustomType.Setter
         public Builder valueFrom(@Nullable ServiceTemplateSpecContainerEnvValueFrom valueFrom) {
             this.valueFrom = valueFrom;
             return this;
-        }        public ServiceTemplateSpecContainerEnv build() {
-            return new ServiceTemplateSpecContainerEnv(name, value, valueFrom);
+        }
+        public ServiceTemplateSpecContainerEnv build() {
+            final var o = new ServiceTemplateSpecContainerEnv();
+            o.name = name;
+            o.value = value;
+            o.valueFrom = valueFrom;
+            return o;
         }
     }
 }

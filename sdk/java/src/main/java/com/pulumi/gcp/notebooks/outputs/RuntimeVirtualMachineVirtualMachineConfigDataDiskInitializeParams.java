@@ -17,7 +17,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializePa
      * @return Provide this property when creating the disk.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return Specifies the disk name. If not specified, the default is
      * to use the name of the instance. If the disk with the
@@ -25,7 +25,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializePa
      * new name will be automatically generated.
      * 
      */
-    private final @Nullable String diskName;
+    private @Nullable String diskName;
     /**
      * @return Specifies the size of the disk in base-2 GB. If not
      * specified, the disk will be the same size as the image
@@ -33,7 +33,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializePa
      * or larger than 10GB. Default 100 GB.
      * 
      */
-    private final @Nullable Integer diskSizeGb;
+    private @Nullable Integer diskSizeGb;
     /**
      * @return The type of the boot disk attached to this runtime,
      * defaults to standard persistent disk. For valid values,
@@ -41,29 +41,16 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializePa
      * reference/rest/v1/projects.locations.runtimes#disktype`
      * 
      */
-    private final @Nullable String diskType;
+    private @Nullable String diskType;
     /**
      * @return Labels to apply to this disk. These can be later modified
      * by the disks.setLabels method. This field is only
      * applicable for persistent disks.
      * 
      */
-    private final @Nullable Map<String,String> labels;
+    private @Nullable Map<String,String> labels;
 
-    @CustomType.Constructor
-    private RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("diskName") @Nullable String diskName,
-        @CustomType.Parameter("diskSizeGb") @Nullable Integer diskSizeGb,
-        @CustomType.Parameter("diskType") @Nullable String diskType,
-        @CustomType.Parameter("labels") @Nullable Map<String,String> labels) {
-        this.description = description;
-        this.diskName = diskName;
-        this.diskSizeGb = diskSizeGb;
-        this.diskType = diskType;
-        this.labels = labels;
-    }
-
+    private RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams() {}
     /**
      * @return Provide this property when creating the disk.
      * 
@@ -118,18 +105,14 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializePa
     public static Builder builder(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private @Nullable String diskName;
         private @Nullable Integer diskSizeGb;
         private @Nullable String diskType;
         private @Nullable Map<String,String> labels;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -139,27 +122,39 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializePa
     	      this.labels = defaults.labels;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder diskName(@Nullable String diskName) {
             this.diskName = diskName;
             return this;
         }
+        @CustomType.Setter
         public Builder diskSizeGb(@Nullable Integer diskSizeGb) {
             this.diskSizeGb = diskSizeGb;
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
             this.diskType = diskType;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
             this.labels = labels;
             return this;
-        }        public RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams build() {
-            return new RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams(description, diskName, diskSizeGb, diskType, labels);
+        }
+        public RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams build() {
+            final var o = new RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams();
+            o.description = description;
+            o.diskName = diskName;
+            o.diskSizeGb = diskSizeGb;
+            o.diskType = diskType;
+            o.labels = labels;
+            return o;
         }
     }
 }

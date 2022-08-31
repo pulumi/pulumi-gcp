@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfigSandboxConfig {
-    private final String sandboxType;
+    private String sandboxType;
 
-    @CustomType.Constructor
-    private GetClusterNodePoolNodeConfigSandboxConfig(@CustomType.Parameter("sandboxType") String sandboxType) {
-        this.sandboxType = sandboxType;
-    }
-
+    private GetClusterNodePoolNodeConfigSandboxConfig() {}
     public String sandboxType() {
         return this.sandboxType;
     }
@@ -27,24 +23,24 @@ public final class GetClusterNodePoolNodeConfigSandboxConfig {
     public static Builder builder(GetClusterNodePoolNodeConfigSandboxConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String sandboxType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterNodePoolNodeConfigSandboxConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sandboxType = defaults.sandboxType;
         }
 
+        @CustomType.Setter
         public Builder sandboxType(String sandboxType) {
             this.sandboxType = Objects.requireNonNull(sandboxType);
             return this;
-        }        public GetClusterNodePoolNodeConfigSandboxConfig build() {
-            return new GetClusterNodePoolNodeConfigSandboxConfig(sandboxType);
+        }
+        public GetClusterNodePoolNodeConfigSandboxConfig build() {
+            final var o = new GetClusterNodePoolNodeConfigSandboxConfig();
+            o.sandboxType = sandboxType;
+            return o;
         }
     }
 }

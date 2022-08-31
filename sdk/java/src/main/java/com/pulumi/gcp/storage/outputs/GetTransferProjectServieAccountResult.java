@@ -13,31 +13,20 @@ public final class GetTransferProjectServieAccountResult {
      * @return Email address of the default service account used by Storage Transfer Jobs running in this project.
      * 
      */
-    private final String email;
+    private String email;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String project;
+    private String id;
+    private String project;
     /**
      * @return Unique identifier for the service account.
      * 
      */
-    private final String subjectId;
+    private String subjectId;
 
-    @CustomType.Constructor
-    private GetTransferProjectServieAccountResult(
-        @CustomType.Parameter("email") String email,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("subjectId") String subjectId) {
-        this.email = email;
-        this.id = id;
-        this.project = project;
-        this.subjectId = subjectId;
-    }
-
+    private GetTransferProjectServieAccountResult() {}
     /**
      * @return Email address of the default service account used by Storage Transfer Jobs running in this project.
      * 
@@ -70,17 +59,13 @@ public final class GetTransferProjectServieAccountResult {
     public static Builder builder(GetTransferProjectServieAccountResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String email;
         private String id;
         private String project;
         private String subjectId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransferProjectServieAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.email = defaults.email;
@@ -89,23 +74,33 @@ public final class GetTransferProjectServieAccountResult {
     	      this.subjectId = defaults.subjectId;
         }
 
+        @CustomType.Setter
         public Builder email(String email) {
             this.email = Objects.requireNonNull(email);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder subjectId(String subjectId) {
             this.subjectId = Objects.requireNonNull(subjectId);
             return this;
-        }        public GetTransferProjectServieAccountResult build() {
-            return new GetTransferProjectServieAccountResult(email, id, project, subjectId);
+        }
+        public GetTransferProjectServieAccountResult build() {
+            final var o = new GetTransferProjectServieAccountResult();
+            o.email = email;
+            o.id = id;
+            o.project = project;
+            o.subjectId = subjectId;
+            return o;
         }
     }
 }

@@ -19,7 +19,7 @@ public final class OrganizationSecurityPolicyRuleMatchConfigLayer4Config {
      * or the IP protocol number.
      * 
      */
-    private final String ipProtocol;
+    private String ipProtocol;
     /**
      * @return An optional list of ports to which this rule applies. This field
      * is only applicable for UDP or TCP protocol. Each entry must be
@@ -29,16 +29,9 @@ public final class OrganizationSecurityPolicyRuleMatchConfigLayer4Config {
      * [&#34;12345-12349&#34;].
      * 
      */
-    private final @Nullable List<String> ports;
+    private @Nullable List<String> ports;
 
-    @CustomType.Constructor
-    private OrganizationSecurityPolicyRuleMatchConfigLayer4Config(
-        @CustomType.Parameter("ipProtocol") String ipProtocol,
-        @CustomType.Parameter("ports") @Nullable List<String> ports) {
-        this.ipProtocol = ipProtocol;
-        this.ports = ports;
-    }
-
+    private OrganizationSecurityPolicyRuleMatchConfigLayer4Config() {}
     /**
      * @return The IP protocol to which this rule applies. The protocol
      * type is required when creating a firewall rule.
@@ -70,33 +63,35 @@ public final class OrganizationSecurityPolicyRuleMatchConfigLayer4Config {
     public static Builder builder(OrganizationSecurityPolicyRuleMatchConfigLayer4Config defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String ipProtocol;
         private @Nullable List<String> ports;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OrganizationSecurityPolicyRuleMatchConfigLayer4Config defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipProtocol = defaults.ipProtocol;
     	      this.ports = defaults.ports;
         }
 
+        @CustomType.Setter
         public Builder ipProtocol(String ipProtocol) {
             this.ipProtocol = Objects.requireNonNull(ipProtocol);
             return this;
         }
+        @CustomType.Setter
         public Builder ports(@Nullable List<String> ports) {
             this.ports = ports;
             return this;
         }
         public Builder ports(String... ports) {
             return ports(List.of(ports));
-        }        public OrganizationSecurityPolicyRuleMatchConfigLayer4Config build() {
-            return new OrganizationSecurityPolicyRuleMatchConfigLayer4Config(ipProtocol, ports);
+        }
+        public OrganizationSecurityPolicyRuleMatchConfigLayer4Config build() {
+            final var o = new OrganizationSecurityPolicyRuleMatchConfigLayer4Config();
+            o.ipProtocol = ipProtocol;
+            o.ports = ports;
+            return o;
         }
     }
 }

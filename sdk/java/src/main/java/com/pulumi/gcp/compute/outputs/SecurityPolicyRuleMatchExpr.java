@@ -14,13 +14,9 @@ public final class SecurityPolicyRuleMatchExpr {
      * The application context of the containing message determines which well-known feature set of CEL is supported.
      * 
      */
-    private final String expression;
+    private String expression;
 
-    @CustomType.Constructor
-    private SecurityPolicyRuleMatchExpr(@CustomType.Parameter("expression") String expression) {
-        this.expression = expression;
-    }
-
+    private SecurityPolicyRuleMatchExpr() {}
     /**
      * @return Textual representation of an expression in Common Expression Language syntax.
      * The application context of the containing message determines which well-known feature set of CEL is supported.
@@ -37,24 +33,24 @@ public final class SecurityPolicyRuleMatchExpr {
     public static Builder builder(SecurityPolicyRuleMatchExpr defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String expression;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecurityPolicyRuleMatchExpr defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expression = defaults.expression;
         }
 
+        @CustomType.Setter
         public Builder expression(String expression) {
             this.expression = Objects.requireNonNull(expression);
             return this;
-        }        public SecurityPolicyRuleMatchExpr build() {
-            return new SecurityPolicyRuleMatchExpr(expression);
+        }
+        public SecurityPolicyRuleMatchExpr build() {
+            final var o = new SecurityPolicyRuleMatchExpr();
+            o.expression = expression;
+            return o;
         }
     }
 }

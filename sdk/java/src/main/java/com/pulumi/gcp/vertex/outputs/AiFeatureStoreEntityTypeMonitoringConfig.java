@@ -16,13 +16,9 @@ public final class AiFeatureStoreEntityTypeMonitoringConfig {
      * Structure is documented below.
      * 
      */
-    private final @Nullable AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis snapshotAnalysis;
+    private @Nullable AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis snapshotAnalysis;
 
-    @CustomType.Constructor
-    private AiFeatureStoreEntityTypeMonitoringConfig(@CustomType.Parameter("snapshotAnalysis") @Nullable AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis snapshotAnalysis) {
-        this.snapshotAnalysis = snapshotAnalysis;
-    }
-
+    private AiFeatureStoreEntityTypeMonitoringConfig() {}
     /**
      * @return Configuration of how features in Featurestore are monitored.
      * Structure is documented below.
@@ -39,24 +35,24 @@ public final class AiFeatureStoreEntityTypeMonitoringConfig {
     public static Builder builder(AiFeatureStoreEntityTypeMonitoringConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis snapshotAnalysis;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AiFeatureStoreEntityTypeMonitoringConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.snapshotAnalysis = defaults.snapshotAnalysis;
         }
 
+        @CustomType.Setter
         public Builder snapshotAnalysis(@Nullable AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis snapshotAnalysis) {
             this.snapshotAnalysis = snapshotAnalysis;
             return this;
-        }        public AiFeatureStoreEntityTypeMonitoringConfig build() {
-            return new AiFeatureStoreEntityTypeMonitoringConfig(snapshotAnalysis);
+        }
+        public AiFeatureStoreEntityTypeMonitoringConfig build() {
+            final var o = new AiFeatureStoreEntityTypeMonitoringConfig();
+            o.snapshotAnalysis = snapshotAnalysis;
+            return o;
         }
     }
 }

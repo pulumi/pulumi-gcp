@@ -16,13 +16,9 @@ public final class PreventionJobTriggerTrigger {
      * Structure is documented below.
      * 
      */
-    private final @Nullable PreventionJobTriggerTriggerSchedule schedule;
+    private @Nullable PreventionJobTriggerTriggerSchedule schedule;
 
-    @CustomType.Constructor
-    private PreventionJobTriggerTrigger(@CustomType.Parameter("schedule") @Nullable PreventionJobTriggerTriggerSchedule schedule) {
-        this.schedule = schedule;
-    }
-
+    private PreventionJobTriggerTrigger() {}
     /**
      * @return Schedule for triggered jobs
      * Structure is documented below.
@@ -39,24 +35,24 @@ public final class PreventionJobTriggerTrigger {
     public static Builder builder(PreventionJobTriggerTrigger defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable PreventionJobTriggerTriggerSchedule schedule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionJobTriggerTrigger defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.schedule = defaults.schedule;
         }
 
+        @CustomType.Setter
         public Builder schedule(@Nullable PreventionJobTriggerTriggerSchedule schedule) {
             this.schedule = schedule;
             return this;
-        }        public PreventionJobTriggerTrigger build() {
-            return new PreventionJobTriggerTrigger(schedule);
+        }
+        public PreventionJobTriggerTrigger build() {
+            final var o = new PreventionJobTriggerTrigger();
+            o.schedule = schedule;
+            return o;
         }
     }
 }

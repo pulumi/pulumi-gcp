@@ -16,13 +16,9 @@ public final class MembershipEndpoint {
      * Structure is documented below.
      * 
      */
-    private final @Nullable MembershipEndpointGkeCluster gkeCluster;
+    private @Nullable MembershipEndpointGkeCluster gkeCluster;
 
-    @CustomType.Constructor
-    private MembershipEndpoint(@CustomType.Parameter("gkeCluster") @Nullable MembershipEndpointGkeCluster gkeCluster) {
-        this.gkeCluster = gkeCluster;
-    }
-
+    private MembershipEndpoint() {}
     /**
      * @return If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
      * Structure is documented below.
@@ -39,24 +35,24 @@ public final class MembershipEndpoint {
     public static Builder builder(MembershipEndpoint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable MembershipEndpointGkeCluster gkeCluster;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MembershipEndpoint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gkeCluster = defaults.gkeCluster;
         }
 
+        @CustomType.Setter
         public Builder gkeCluster(@Nullable MembershipEndpointGkeCluster gkeCluster) {
             this.gkeCluster = gkeCluster;
             return this;
-        }        public MembershipEndpoint build() {
-            return new MembershipEndpoint(gkeCluster);
+        }
+        public MembershipEndpoint build() {
+            final var o = new MembershipEndpoint();
+            o.gkeCluster = gkeCluster;
+            return o;
         }
     }
 }

@@ -14,38 +14,25 @@ public final class GetRuleResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return specifies the list of one or more permissions to include in the custom role, such as - `iam.roles.get`
      * 
      */
-    private final List<String> includedPermissions;
-    private final String name;
+    private List<String> includedPermissions;
+    private String name;
     /**
      * @return indicates the stage of a role in the launch lifecycle, such as `GA`, `BETA` or `ALPHA`.
      * 
      */
-    private final String stage;
+    private String stage;
     /**
      * @return is a friendly title for the role, such as &#34;Role Viewer&#34;
      * 
      */
-    private final String title;
+    private String title;
 
-    @CustomType.Constructor
-    private GetRuleResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("includedPermissions") List<String> includedPermissions,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("stage") String stage,
-        @CustomType.Parameter("title") String title) {
-        this.id = id;
-        this.includedPermissions = includedPermissions;
-        this.name = name;
-        this.stage = stage;
-        this.title = title;
-    }
-
+    private GetRuleResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -85,18 +72,14 @@ public final class GetRuleResult {
     public static Builder builder(GetRuleResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> includedPermissions;
         private String name;
         private String stage;
         private String title;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRuleResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -106,10 +89,12 @@ public final class GetRuleResult {
     	      this.title = defaults.title;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder includedPermissions(List<String> includedPermissions) {
             this.includedPermissions = Objects.requireNonNull(includedPermissions);
             return this;
@@ -117,19 +102,29 @@ public final class GetRuleResult {
         public Builder includedPermissions(String... includedPermissions) {
             return includedPermissions(List.of(includedPermissions));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder stage(String stage) {
             this.stage = Objects.requireNonNull(stage);
             return this;
         }
+        @CustomType.Setter
         public Builder title(String title) {
             this.title = Objects.requireNonNull(title);
             return this;
-        }        public GetRuleResult build() {
-            return new GetRuleResult(id, includedPermissions, name, stage, title);
+        }
+        public GetRuleResult build() {
+            final var o = new GetRuleResult();
+            o.id = id;
+            o.includedPermissions = includedPermissions;
+            o.name = name;
+            o.stage = stage;
+            o.title = title;
+            return o;
         }
     }
 }

@@ -16,22 +16,15 @@ public final class GameServerDeploymentRolloutGameServerConfigOverride {
      * @return Version of the configuration.
      * 
      */
-    private final @Nullable String configVersion;
+    private @Nullable String configVersion;
     /**
      * @return Selection by realms.
      * Structure is documented below.
      * 
      */
-    private final @Nullable GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector realmsSelector;
+    private @Nullable GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector realmsSelector;
 
-    @CustomType.Constructor
-    private GameServerDeploymentRolloutGameServerConfigOverride(
-        @CustomType.Parameter("configVersion") @Nullable String configVersion,
-        @CustomType.Parameter("realmsSelector") @Nullable GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector realmsSelector) {
-        this.configVersion = configVersion;
-        this.realmsSelector = realmsSelector;
-    }
-
+    private GameServerDeploymentRolloutGameServerConfigOverride() {}
     /**
      * @return Version of the configuration.
      * 
@@ -55,30 +48,32 @@ public final class GameServerDeploymentRolloutGameServerConfigOverride {
     public static Builder builder(GameServerDeploymentRolloutGameServerConfigOverride defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String configVersion;
         private @Nullable GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector realmsSelector;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GameServerDeploymentRolloutGameServerConfigOverride defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configVersion = defaults.configVersion;
     	      this.realmsSelector = defaults.realmsSelector;
         }
 
+        @CustomType.Setter
         public Builder configVersion(@Nullable String configVersion) {
             this.configVersion = configVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder realmsSelector(@Nullable GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector realmsSelector) {
             this.realmsSelector = realmsSelector;
             return this;
-        }        public GameServerDeploymentRolloutGameServerConfigOverride build() {
-            return new GameServerDeploymentRolloutGameServerConfigOverride(configVersion, realmsSelector);
+        }
+        public GameServerDeploymentRolloutGameServerConfigOverride build() {
+            final var o = new GameServerDeploymentRolloutGameServerConfigOverride();
+            o.configVersion = configVersion;
+            o.realmsSelector = realmsSelector;
+            return o;
         }
     }
 }

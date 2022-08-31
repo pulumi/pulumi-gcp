@@ -15,13 +15,9 @@ public final class TriggerTransport {
      * @return The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
      * 
      */
-    private final @Nullable List<TriggerTransportPubsub> pubsubs;
+    private @Nullable List<TriggerTransportPubsub> pubsubs;
 
-    @CustomType.Constructor
-    private TriggerTransport(@CustomType.Parameter("pubsubs") @Nullable List<TriggerTransportPubsub> pubsubs) {
-        this.pubsubs = pubsubs;
-    }
-
+    private TriggerTransport() {}
     /**
      * @return The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
      * 
@@ -37,27 +33,27 @@ public final class TriggerTransport {
     public static Builder builder(TriggerTransport defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<TriggerTransportPubsub> pubsubs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerTransport defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pubsubs = defaults.pubsubs;
         }
 
+        @CustomType.Setter
         public Builder pubsubs(@Nullable List<TriggerTransportPubsub> pubsubs) {
             this.pubsubs = pubsubs;
             return this;
         }
         public Builder pubsubs(TriggerTransportPubsub... pubsubs) {
             return pubsubs(List.of(pubsubs));
-        }        public TriggerTransport build() {
-            return new TriggerTransport(pubsubs);
+        }
+        public TriggerTransport build() {
+            final var o = new TriggerTransport();
+            o.pubsubs = pubsubs;
+            return o;
         }
     }
 }

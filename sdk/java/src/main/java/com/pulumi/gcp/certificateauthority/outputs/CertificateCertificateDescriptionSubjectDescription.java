@@ -14,45 +14,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateCertificateDescriptionSubjectDescription {
-    private final @Nullable String hexSerialNumber;
+    private @Nullable String hexSerialNumber;
     /**
      * @return The desired lifetime of the CA certificate. Used to create the &#34;notBeforeTime&#34; and
      * &#34;notAfterTime&#34; fields inside an X.509 certificate. A duration in seconds with up to nine
      * fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    private final @Nullable String lifetime;
-    private final @Nullable String notAfterTime;
-    private final @Nullable String notBeforeTime;
+    private @Nullable String lifetime;
+    private @Nullable String notAfterTime;
+    private @Nullable String notBeforeTime;
     /**
      * @return The subject alternative name fields.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltName> subjectAltNames;
+    private @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltName> subjectAltNames;
     /**
      * @return Contains distinguished name fields such as the location and organization.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubject> subjects;
+    private @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubject> subjects;
 
-    @CustomType.Constructor
-    private CertificateCertificateDescriptionSubjectDescription(
-        @CustomType.Parameter("hexSerialNumber") @Nullable String hexSerialNumber,
-        @CustomType.Parameter("lifetime") @Nullable String lifetime,
-        @CustomType.Parameter("notAfterTime") @Nullable String notAfterTime,
-        @CustomType.Parameter("notBeforeTime") @Nullable String notBeforeTime,
-        @CustomType.Parameter("subjectAltNames") @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltName> subjectAltNames,
-        @CustomType.Parameter("subjects") @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubject> subjects) {
-        this.hexSerialNumber = hexSerialNumber;
-        this.lifetime = lifetime;
-        this.notAfterTime = notAfterTime;
-        this.notBeforeTime = notBeforeTime;
-        this.subjectAltNames = subjectAltNames;
-        this.subjects = subjects;
-    }
-
+    private CertificateCertificateDescriptionSubjectDescription() {}
     public Optional<String> hexSerialNumber() {
         return Optional.ofNullable(this.hexSerialNumber);
     }
@@ -95,7 +80,7 @@ public final class CertificateCertificateDescriptionSubjectDescription {
     public static Builder builder(CertificateCertificateDescriptionSubjectDescription defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String hexSerialNumber;
         private @Nullable String lifetime;
@@ -103,11 +88,7 @@ public final class CertificateCertificateDescriptionSubjectDescription {
         private @Nullable String notBeforeTime;
         private @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltName> subjectAltNames;
         private @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubject> subjects;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateCertificateDescriptionSubjectDescription defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hexSerialNumber = defaults.hexSerialNumber;
@@ -118,22 +99,27 @@ public final class CertificateCertificateDescriptionSubjectDescription {
     	      this.subjects = defaults.subjects;
         }
 
+        @CustomType.Setter
         public Builder hexSerialNumber(@Nullable String hexSerialNumber) {
             this.hexSerialNumber = hexSerialNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder lifetime(@Nullable String lifetime) {
             this.lifetime = lifetime;
             return this;
         }
+        @CustomType.Setter
         public Builder notAfterTime(@Nullable String notAfterTime) {
             this.notAfterTime = notAfterTime;
             return this;
         }
+        @CustomType.Setter
         public Builder notBeforeTime(@Nullable String notBeforeTime) {
             this.notBeforeTime = notBeforeTime;
             return this;
         }
+        @CustomType.Setter
         public Builder subjectAltNames(@Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltName> subjectAltNames) {
             this.subjectAltNames = subjectAltNames;
             return this;
@@ -141,14 +127,23 @@ public final class CertificateCertificateDescriptionSubjectDescription {
         public Builder subjectAltNames(CertificateCertificateDescriptionSubjectDescriptionSubjectAltName... subjectAltNames) {
             return subjectAltNames(List.of(subjectAltNames));
         }
+        @CustomType.Setter
         public Builder subjects(@Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubject> subjects) {
             this.subjects = subjects;
             return this;
         }
         public Builder subjects(CertificateCertificateDescriptionSubjectDescriptionSubject... subjects) {
             return subjects(List.of(subjects));
-        }        public CertificateCertificateDescriptionSubjectDescription build() {
-            return new CertificateCertificateDescriptionSubjectDescription(hexSerialNumber, lifetime, notAfterTime, notBeforeTime, subjectAltNames, subjects);
+        }
+        public CertificateCertificateDescriptionSubjectDescription build() {
+            final var o = new CertificateCertificateDescriptionSubjectDescription();
+            o.hexSerialNumber = hexSerialNumber;
+            o.lifetime = lifetime;
+            o.notAfterTime = notAfterTime;
+            o.notBeforeTime = notBeforeTime;
+            o.subjectAltNames = subjectAltNames;
+            o.subjects = subjects;
+            return o;
         }
     }
 }

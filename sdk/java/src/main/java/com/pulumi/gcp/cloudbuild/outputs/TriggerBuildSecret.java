@@ -15,23 +15,16 @@ public final class TriggerBuildSecret {
      * @return Cloud KMS key name to use to decrypt these envs.
      * 
      */
-    private final String kmsKeyName;
+    private String kmsKeyName;
     /**
      * @return A list of global environment variables, which are encrypted using a Cloud Key Management
      * Service crypto key. These values must be specified in the build&#39;s Secret. These variables
      * will be available to all build steps in this build.
      * 
      */
-    private final @Nullable Map<String,String> secretEnv;
+    private @Nullable Map<String,String> secretEnv;
 
-    @CustomType.Constructor
-    private TriggerBuildSecret(
-        @CustomType.Parameter("kmsKeyName") String kmsKeyName,
-        @CustomType.Parameter("secretEnv") @Nullable Map<String,String> secretEnv) {
-        this.kmsKeyName = kmsKeyName;
-        this.secretEnv = secretEnv;
-    }
-
+    private TriggerBuildSecret() {}
     /**
      * @return Cloud KMS key name to use to decrypt these envs.
      * 
@@ -56,30 +49,32 @@ public final class TriggerBuildSecret {
     public static Builder builder(TriggerBuildSecret defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String kmsKeyName;
         private @Nullable Map<String,String> secretEnv;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerBuildSecret defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeyName = defaults.kmsKeyName;
     	      this.secretEnv = defaults.secretEnv;
         }
 
+        @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
             this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
             return this;
         }
+        @CustomType.Setter
         public Builder secretEnv(@Nullable Map<String,String> secretEnv) {
             this.secretEnv = secretEnv;
             return this;
-        }        public TriggerBuildSecret build() {
-            return new TriggerBuildSecret(kmsKeyName, secretEnv);
+        }
+        public TriggerBuildSecret build() {
+            final var o = new TriggerBuildSecret();
+            o.kmsKeyName = kmsKeyName;
+            o.secretEnv = secretEnv;
+            return o;
         }
     }
 }

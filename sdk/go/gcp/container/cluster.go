@@ -307,6 +307,10 @@ type Cluster struct {
 	// same region as their cluster's zone for zonal clusters. If this is specified for
 	// a zonal cluster, omit the cluster's zone.
 	NodeLocations pulumi.StringArrayOutput `pulumi:"nodeLocations"`
+	// ) Node pool configs that apply to auto-provisioned node pools in
+	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+	NodePoolAutoConfig ClusterNodePoolAutoConfigPtrOutput `pulumi:"nodePoolAutoConfig"`
 	// List of node pools associated with this cluster.
 	// See container.NodePool for schema.
 	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -585,6 +589,10 @@ type clusterState struct {
 	// same region as their cluster's zone for zonal clusters. If this is specified for
 	// a zonal cluster, omit the cluster's zone.
 	NodeLocations []string `pulumi:"nodeLocations"`
+	// ) Node pool configs that apply to auto-provisioned node pools in
+	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+	NodePoolAutoConfig *ClusterNodePoolAutoConfig `pulumi:"nodePoolAutoConfig"`
 	// List of node pools associated with this cluster.
 	// See container.NodePool for schema.
 	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -835,6 +843,10 @@ type ClusterState struct {
 	// same region as their cluster's zone for zonal clusters. If this is specified for
 	// a zonal cluster, omit the cluster's zone.
 	NodeLocations pulumi.StringArrayInput
+	// ) Node pool configs that apply to auto-provisioned node pools in
+	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+	NodePoolAutoConfig ClusterNodePoolAutoConfigPtrInput
 	// List of node pools associated with this cluster.
 	// See container.NodePool for schema.
 	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -1081,6 +1093,10 @@ type clusterArgs struct {
 	// same region as their cluster's zone for zonal clusters. If this is specified for
 	// a zonal cluster, omit the cluster's zone.
 	NodeLocations []string `pulumi:"nodeLocations"`
+	// ) Node pool configs that apply to auto-provisioned node pools in
+	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+	NodePoolAutoConfig *ClusterNodePoolAutoConfig `pulumi:"nodePoolAutoConfig"`
 	// List of node pools associated with this cluster.
 	// See container.NodePool for schema.
 	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -1312,6 +1328,10 @@ type ClusterArgs struct {
 	// same region as their cluster's zone for zonal clusters. If this is specified for
 	// a zonal cluster, omit the cluster's zone.
 	NodeLocations pulumi.StringArrayInput
+	// ) Node pool configs that apply to auto-provisioned node pools in
+	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+	NodePoolAutoConfig ClusterNodePoolAutoConfigPtrInput
 	// List of node pools associated with this cluster.
 	// See container.NodePool for schema.
 	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -1765,6 +1785,13 @@ func (o ClusterOutput) NodeConfig() ClusterNodeConfigOutput {
 // a zonal cluster, omit the cluster's zone.
 func (o ClusterOutput) NodeLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.NodeLocations }).(pulumi.StringArrayOutput)
+}
+
+// ) Node pool configs that apply to auto-provisioned node pools in
+// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
+// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+func (o ClusterOutput) NodePoolAutoConfig() ClusterNodePoolAutoConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterNodePoolAutoConfigPtrOutput { return v.NodePoolAutoConfig }).(ClusterNodePoolAutoConfigPtrOutput)
 }
 
 // List of node pools associated with this cluster.

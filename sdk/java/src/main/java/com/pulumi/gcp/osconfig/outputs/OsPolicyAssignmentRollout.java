@@ -14,21 +14,14 @@ public final class OsPolicyAssignmentRollout {
      * @return Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
      * 
      */
-    private final OsPolicyAssignmentRolloutDisruptionBudget disruptionBudget;
+    private OsPolicyAssignmentRolloutDisruptionBudget disruptionBudget;
     /**
      * @return Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruption_budget` at least until this duration of time has passed after configuration changes are applied.
      * 
      */
-    private final String minWaitDuration;
+    private String minWaitDuration;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentRollout(
-        @CustomType.Parameter("disruptionBudget") OsPolicyAssignmentRolloutDisruptionBudget disruptionBudget,
-        @CustomType.Parameter("minWaitDuration") String minWaitDuration) {
-        this.disruptionBudget = disruptionBudget;
-        this.minWaitDuration = minWaitDuration;
-    }
-
+    private OsPolicyAssignmentRollout() {}
     /**
      * @return Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
      * 
@@ -51,30 +44,32 @@ public final class OsPolicyAssignmentRollout {
     public static Builder builder(OsPolicyAssignmentRollout defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private OsPolicyAssignmentRolloutDisruptionBudget disruptionBudget;
         private String minWaitDuration;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentRollout defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disruptionBudget = defaults.disruptionBudget;
     	      this.minWaitDuration = defaults.minWaitDuration;
         }
 
+        @CustomType.Setter
         public Builder disruptionBudget(OsPolicyAssignmentRolloutDisruptionBudget disruptionBudget) {
             this.disruptionBudget = Objects.requireNonNull(disruptionBudget);
             return this;
         }
+        @CustomType.Setter
         public Builder minWaitDuration(String minWaitDuration) {
             this.minWaitDuration = Objects.requireNonNull(minWaitDuration);
             return this;
-        }        public OsPolicyAssignmentRollout build() {
-            return new OsPolicyAssignmentRollout(disruptionBudget, minWaitDuration);
+        }
+        public OsPolicyAssignmentRollout build() {
+            final var o = new OsPolicyAssignmentRollout();
+            o.disruptionBudget = disruptionBudget;
+            o.minWaitDuration = minWaitDuration;
+            return o;
         }
     }
 }

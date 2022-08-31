@@ -16,30 +16,21 @@ public final class TenantInboundSamlConfigSpConfig {
      * @return Callback URI where responses from IDP are handled. Must start with `https://`.
      * 
      */
-    private final String callbackUri;
+    private String callbackUri;
     /**
      * @return -
      * The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<TenantInboundSamlConfigSpConfigSpCertificate> spCertificates;
+    private @Nullable List<TenantInboundSamlConfigSpConfigSpCertificate> spCertificates;
     /**
      * @return Unique identifier for all SAML entities.
      * 
      */
-    private final String spEntityId;
+    private String spEntityId;
 
-    @CustomType.Constructor
-    private TenantInboundSamlConfigSpConfig(
-        @CustomType.Parameter("callbackUri") String callbackUri,
-        @CustomType.Parameter("spCertificates") @Nullable List<TenantInboundSamlConfigSpConfigSpCertificate> spCertificates,
-        @CustomType.Parameter("spEntityId") String spEntityId) {
-        this.callbackUri = callbackUri;
-        this.spCertificates = spCertificates;
-        this.spEntityId = spEntityId;
-    }
-
+    private TenantInboundSamlConfigSpConfig() {}
     /**
      * @return Callback URI where responses from IDP are handled. Must start with `https://`.
      * 
@@ -71,16 +62,12 @@ public final class TenantInboundSamlConfigSpConfig {
     public static Builder builder(TenantInboundSamlConfigSpConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String callbackUri;
         private @Nullable List<TenantInboundSamlConfigSpConfigSpCertificate> spCertificates;
         private String spEntityId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TenantInboundSamlConfigSpConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.callbackUri = defaults.callbackUri;
@@ -88,10 +75,12 @@ public final class TenantInboundSamlConfigSpConfig {
     	      this.spEntityId = defaults.spEntityId;
         }
 
+        @CustomType.Setter
         public Builder callbackUri(String callbackUri) {
             this.callbackUri = Objects.requireNonNull(callbackUri);
             return this;
         }
+        @CustomType.Setter
         public Builder spCertificates(@Nullable List<TenantInboundSamlConfigSpConfigSpCertificate> spCertificates) {
             this.spCertificates = spCertificates;
             return this;
@@ -99,11 +88,17 @@ public final class TenantInboundSamlConfigSpConfig {
         public Builder spCertificates(TenantInboundSamlConfigSpConfigSpCertificate... spCertificates) {
             return spCertificates(List.of(spCertificates));
         }
+        @CustomType.Setter
         public Builder spEntityId(String spEntityId) {
             this.spEntityId = Objects.requireNonNull(spEntityId);
             return this;
-        }        public TenantInboundSamlConfigSpConfig build() {
-            return new TenantInboundSamlConfigSpConfig(callbackUri, spCertificates, spEntityId);
+        }
+        public TenantInboundSamlConfigSpConfig build() {
+            final var o = new TenantInboundSamlConfigSpConfig();
+            o.callbackUri = callbackUri;
+            o.spCertificates = spCertificates;
+            o.spEntityId = spEntityId;
+            return o;
         }
     }
 }

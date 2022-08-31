@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterIstioServiceTelemetry {
-    private final String resourceName;
+    private String resourceName;
 
-    @CustomType.Constructor
-    private GetClusterIstioServiceTelemetry(@CustomType.Parameter("resourceName") String resourceName) {
-        this.resourceName = resourceName;
-    }
-
+    private GetClusterIstioServiceTelemetry() {}
     public String resourceName() {
         return this.resourceName;
     }
@@ -27,24 +23,24 @@ public final class GetClusterIstioServiceTelemetry {
     public static Builder builder(GetClusterIstioServiceTelemetry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String resourceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterIstioServiceTelemetry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.resourceName = defaults.resourceName;
         }
 
+        @CustomType.Setter
         public Builder resourceName(String resourceName) {
             this.resourceName = Objects.requireNonNull(resourceName);
             return this;
-        }        public GetClusterIstioServiceTelemetry build() {
-            return new GetClusterIstioServiceTelemetry(resourceName);
+        }
+        public GetClusterIstioServiceTelemetry build() {
+            final var o = new GetClusterIstioServiceTelemetry();
+            o.resourceName = resourceName;
+            return o;
         }
     }
 }

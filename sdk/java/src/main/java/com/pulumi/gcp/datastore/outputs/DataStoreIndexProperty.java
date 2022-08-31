@@ -14,21 +14,14 @@ public final class DataStoreIndexProperty {
      * Possible values are `ASCENDING` and `DESCENDING`.
      * 
      */
-    private final String direction;
+    private String direction;
     /**
      * @return The property name to index.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private DataStoreIndexProperty(
-        @CustomType.Parameter("direction") String direction,
-        @CustomType.Parameter("name") String name) {
-        this.direction = direction;
-        this.name = name;
-    }
-
+    private DataStoreIndexProperty() {}
     /**
      * @return The direction the index should optimize for sorting.
      * Possible values are `ASCENDING` and `DESCENDING`.
@@ -52,30 +45,32 @@ public final class DataStoreIndexProperty {
     public static Builder builder(DataStoreIndexProperty defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String direction;
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DataStoreIndexProperty defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.direction = defaults.direction;
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder direction(String direction) {
             this.direction = Objects.requireNonNull(direction);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public DataStoreIndexProperty build() {
-            return new DataStoreIndexProperty(direction, name);
+        }
+        public DataStoreIndexProperty build() {
+            final var o = new DataStoreIndexProperty();
+            o.direction = direction;
+            o.name = name;
+            return o;
         }
     }
 }

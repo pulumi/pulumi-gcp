@@ -14,13 +14,9 @@ public final class PatchDeploymentRecurringScheduleWeekly {
      * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
      * 
      */
-    private final String dayOfWeek;
+    private String dayOfWeek;
 
-    @CustomType.Constructor
-    private PatchDeploymentRecurringScheduleWeekly(@CustomType.Parameter("dayOfWeek") String dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
-    }
-
+    private PatchDeploymentRecurringScheduleWeekly() {}
     /**
      * @return A day of the week.
      * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
@@ -37,24 +33,24 @@ public final class PatchDeploymentRecurringScheduleWeekly {
     public static Builder builder(PatchDeploymentRecurringScheduleWeekly defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dayOfWeek;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PatchDeploymentRecurringScheduleWeekly defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dayOfWeek = defaults.dayOfWeek;
         }
 
+        @CustomType.Setter
         public Builder dayOfWeek(String dayOfWeek) {
             this.dayOfWeek = Objects.requireNonNull(dayOfWeek);
             return this;
-        }        public PatchDeploymentRecurringScheduleWeekly build() {
-            return new PatchDeploymentRecurringScheduleWeekly(dayOfWeek);
+        }
+        public PatchDeploymentRecurringScheduleWeekly build() {
+            final var o = new PatchDeploymentRecurringScheduleWeekly();
+            o.dayOfWeek = dayOfWeek;
+            return o;
         }
     }
 }

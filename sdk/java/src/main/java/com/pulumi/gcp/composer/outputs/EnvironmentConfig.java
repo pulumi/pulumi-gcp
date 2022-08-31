@@ -22,56 +22,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfig {
-    private final @Nullable String airflowUri;
-    private final @Nullable String dagGcsPrefix;
-    private final @Nullable EnvironmentConfigDatabaseConfig databaseConfig;
-    private final @Nullable EnvironmentConfigEncryptionConfig encryptionConfig;
-    private final @Nullable String environmentSize;
-    private final @Nullable String gkeCluster;
-    private final @Nullable EnvironmentConfigMaintenanceWindow maintenanceWindow;
-    private final @Nullable EnvironmentConfigMasterAuthorizedNetworksConfig masterAuthorizedNetworksConfig;
-    private final @Nullable EnvironmentConfigNodeConfig nodeConfig;
-    private final @Nullable Integer nodeCount;
-    private final @Nullable EnvironmentConfigPrivateEnvironmentConfig privateEnvironmentConfig;
-    private final @Nullable EnvironmentConfigSoftwareConfig softwareConfig;
-    private final @Nullable EnvironmentConfigWebServerConfig webServerConfig;
-    private final @Nullable EnvironmentConfigWebServerNetworkAccessControl webServerNetworkAccessControl;
-    private final @Nullable EnvironmentConfigWorkloadsConfig workloadsConfig;
+    private @Nullable String airflowUri;
+    private @Nullable String dagGcsPrefix;
+    private @Nullable EnvironmentConfigDatabaseConfig databaseConfig;
+    private @Nullable EnvironmentConfigEncryptionConfig encryptionConfig;
+    private @Nullable String environmentSize;
+    private @Nullable String gkeCluster;
+    private @Nullable EnvironmentConfigMaintenanceWindow maintenanceWindow;
+    private @Nullable EnvironmentConfigMasterAuthorizedNetworksConfig masterAuthorizedNetworksConfig;
+    private @Nullable EnvironmentConfigNodeConfig nodeConfig;
+    private @Nullable Integer nodeCount;
+    private @Nullable EnvironmentConfigPrivateEnvironmentConfig privateEnvironmentConfig;
+    private @Nullable EnvironmentConfigSoftwareConfig softwareConfig;
+    private @Nullable EnvironmentConfigWebServerConfig webServerConfig;
+    private @Nullable EnvironmentConfigWebServerNetworkAccessControl webServerNetworkAccessControl;
+    private @Nullable EnvironmentConfigWorkloadsConfig workloadsConfig;
 
-    @CustomType.Constructor
-    private EnvironmentConfig(
-        @CustomType.Parameter("airflowUri") @Nullable String airflowUri,
-        @CustomType.Parameter("dagGcsPrefix") @Nullable String dagGcsPrefix,
-        @CustomType.Parameter("databaseConfig") @Nullable EnvironmentConfigDatabaseConfig databaseConfig,
-        @CustomType.Parameter("encryptionConfig") @Nullable EnvironmentConfigEncryptionConfig encryptionConfig,
-        @CustomType.Parameter("environmentSize") @Nullable String environmentSize,
-        @CustomType.Parameter("gkeCluster") @Nullable String gkeCluster,
-        @CustomType.Parameter("maintenanceWindow") @Nullable EnvironmentConfigMaintenanceWindow maintenanceWindow,
-        @CustomType.Parameter("masterAuthorizedNetworksConfig") @Nullable EnvironmentConfigMasterAuthorizedNetworksConfig masterAuthorizedNetworksConfig,
-        @CustomType.Parameter("nodeConfig") @Nullable EnvironmentConfigNodeConfig nodeConfig,
-        @CustomType.Parameter("nodeCount") @Nullable Integer nodeCount,
-        @CustomType.Parameter("privateEnvironmentConfig") @Nullable EnvironmentConfigPrivateEnvironmentConfig privateEnvironmentConfig,
-        @CustomType.Parameter("softwareConfig") @Nullable EnvironmentConfigSoftwareConfig softwareConfig,
-        @CustomType.Parameter("webServerConfig") @Nullable EnvironmentConfigWebServerConfig webServerConfig,
-        @CustomType.Parameter("webServerNetworkAccessControl") @Nullable EnvironmentConfigWebServerNetworkAccessControl webServerNetworkAccessControl,
-        @CustomType.Parameter("workloadsConfig") @Nullable EnvironmentConfigWorkloadsConfig workloadsConfig) {
-        this.airflowUri = airflowUri;
-        this.dagGcsPrefix = dagGcsPrefix;
-        this.databaseConfig = databaseConfig;
-        this.encryptionConfig = encryptionConfig;
-        this.environmentSize = environmentSize;
-        this.gkeCluster = gkeCluster;
-        this.maintenanceWindow = maintenanceWindow;
-        this.masterAuthorizedNetworksConfig = masterAuthorizedNetworksConfig;
-        this.nodeConfig = nodeConfig;
-        this.nodeCount = nodeCount;
-        this.privateEnvironmentConfig = privateEnvironmentConfig;
-        this.softwareConfig = softwareConfig;
-        this.webServerConfig = webServerConfig;
-        this.webServerNetworkAccessControl = webServerNetworkAccessControl;
-        this.workloadsConfig = workloadsConfig;
-    }
-
+    private EnvironmentConfig() {}
     public Optional<String> airflowUri() {
         return Optional.ofNullable(this.airflowUri);
     }
@@ -125,7 +92,7 @@ public final class EnvironmentConfig {
     public static Builder builder(EnvironmentConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String airflowUri;
         private @Nullable String dagGcsPrefix;
@@ -142,11 +109,7 @@ public final class EnvironmentConfig {
         private @Nullable EnvironmentConfigWebServerConfig webServerConfig;
         private @Nullable EnvironmentConfigWebServerNetworkAccessControl webServerNetworkAccessControl;
         private @Nullable EnvironmentConfigWorkloadsConfig workloadsConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EnvironmentConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.airflowUri = defaults.airflowUri;
@@ -166,67 +129,99 @@ public final class EnvironmentConfig {
     	      this.workloadsConfig = defaults.workloadsConfig;
         }
 
+        @CustomType.Setter
         public Builder airflowUri(@Nullable String airflowUri) {
             this.airflowUri = airflowUri;
             return this;
         }
+        @CustomType.Setter
         public Builder dagGcsPrefix(@Nullable String dagGcsPrefix) {
             this.dagGcsPrefix = dagGcsPrefix;
             return this;
         }
+        @CustomType.Setter
         public Builder databaseConfig(@Nullable EnvironmentConfigDatabaseConfig databaseConfig) {
             this.databaseConfig = databaseConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder encryptionConfig(@Nullable EnvironmentConfigEncryptionConfig encryptionConfig) {
             this.encryptionConfig = encryptionConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder environmentSize(@Nullable String environmentSize) {
             this.environmentSize = environmentSize;
             return this;
         }
+        @CustomType.Setter
         public Builder gkeCluster(@Nullable String gkeCluster) {
             this.gkeCluster = gkeCluster;
             return this;
         }
+        @CustomType.Setter
         public Builder maintenanceWindow(@Nullable EnvironmentConfigMaintenanceWindow maintenanceWindow) {
             this.maintenanceWindow = maintenanceWindow;
             return this;
         }
+        @CustomType.Setter
         public Builder masterAuthorizedNetworksConfig(@Nullable EnvironmentConfigMasterAuthorizedNetworksConfig masterAuthorizedNetworksConfig) {
             this.masterAuthorizedNetworksConfig = masterAuthorizedNetworksConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeConfig(@Nullable EnvironmentConfigNodeConfig nodeConfig) {
             this.nodeConfig = nodeConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeCount(@Nullable Integer nodeCount) {
             this.nodeCount = nodeCount;
             return this;
         }
+        @CustomType.Setter
         public Builder privateEnvironmentConfig(@Nullable EnvironmentConfigPrivateEnvironmentConfig privateEnvironmentConfig) {
             this.privateEnvironmentConfig = privateEnvironmentConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder softwareConfig(@Nullable EnvironmentConfigSoftwareConfig softwareConfig) {
             this.softwareConfig = softwareConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder webServerConfig(@Nullable EnvironmentConfigWebServerConfig webServerConfig) {
             this.webServerConfig = webServerConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder webServerNetworkAccessControl(@Nullable EnvironmentConfigWebServerNetworkAccessControl webServerNetworkAccessControl) {
             this.webServerNetworkAccessControl = webServerNetworkAccessControl;
             return this;
         }
+        @CustomType.Setter
         public Builder workloadsConfig(@Nullable EnvironmentConfigWorkloadsConfig workloadsConfig) {
             this.workloadsConfig = workloadsConfig;
             return this;
-        }        public EnvironmentConfig build() {
-            return new EnvironmentConfig(airflowUri, dagGcsPrefix, databaseConfig, encryptionConfig, environmentSize, gkeCluster, maintenanceWindow, masterAuthorizedNetworksConfig, nodeConfig, nodeCount, privateEnvironmentConfig, softwareConfig, webServerConfig, webServerNetworkAccessControl, workloadsConfig);
+        }
+        public EnvironmentConfig build() {
+            final var o = new EnvironmentConfig();
+            o.airflowUri = airflowUri;
+            o.dagGcsPrefix = dagGcsPrefix;
+            o.databaseConfig = databaseConfig;
+            o.encryptionConfig = encryptionConfig;
+            o.environmentSize = environmentSize;
+            o.gkeCluster = gkeCluster;
+            o.maintenanceWindow = maintenanceWindow;
+            o.masterAuthorizedNetworksConfig = masterAuthorizedNetworksConfig;
+            o.nodeConfig = nodeConfig;
+            o.nodeCount = nodeCount;
+            o.privateEnvironmentConfig = privateEnvironmentConfig;
+            o.softwareConfig = softwareConfig;
+            o.webServerConfig = webServerConfig;
+            o.webServerNetworkAccessControl = webServerNetworkAccessControl;
+            o.workloadsConfig = workloadsConfig;
+            return o;
         }
     }
 }

@@ -10,20 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterClusterAutoscalingResourceLimit {
-    private final Integer maximum;
-    private final Integer minimum;
-    private final String resourceType;
+    private Integer maximum;
+    private Integer minimum;
+    private String resourceType;
 
-    @CustomType.Constructor
-    private GetClusterClusterAutoscalingResourceLimit(
-        @CustomType.Parameter("maximum") Integer maximum,
-        @CustomType.Parameter("minimum") Integer minimum,
-        @CustomType.Parameter("resourceType") String resourceType) {
-        this.maximum = maximum;
-        this.minimum = minimum;
-        this.resourceType = resourceType;
-    }
-
+    private GetClusterClusterAutoscalingResourceLimit() {}
     public Integer maximum() {
         return this.maximum;
     }
@@ -41,16 +32,12 @@ public final class GetClusterClusterAutoscalingResourceLimit {
     public static Builder builder(GetClusterClusterAutoscalingResourceLimit defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer maximum;
         private Integer minimum;
         private String resourceType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterClusterAutoscalingResourceLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maximum = defaults.maximum;
@@ -58,19 +45,27 @@ public final class GetClusterClusterAutoscalingResourceLimit {
     	      this.resourceType = defaults.resourceType;
         }
 
+        @CustomType.Setter
         public Builder maximum(Integer maximum) {
             this.maximum = Objects.requireNonNull(maximum);
             return this;
         }
+        @CustomType.Setter
         public Builder minimum(Integer minimum) {
             this.minimum = Objects.requireNonNull(minimum);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceType(String resourceType) {
             this.resourceType = Objects.requireNonNull(resourceType);
             return this;
-        }        public GetClusterClusterAutoscalingResourceLimit build() {
-            return new GetClusterClusterAutoscalingResourceLimit(maximum, minimum, resourceType);
+        }
+        public GetClusterClusterAutoscalingResourceLimit build() {
+            final var o = new GetClusterClusterAutoscalingResourceLimit();
+            o.maximum = maximum;
+            o.minimum = minimum;
+            o.resourceType = resourceType;
+            return o;
         }
     }
 }

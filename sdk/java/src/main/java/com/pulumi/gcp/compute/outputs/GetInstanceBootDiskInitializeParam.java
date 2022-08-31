@@ -16,35 +16,24 @@ public final class GetInstanceBootDiskInitializeParam {
      * @return The image from which this disk was initialised.
      * 
      */
-    private final String image;
+    private String image;
     /**
      * @return A set of key/value label pairs assigned to the disk.
      * 
      */
-    private final Map<String,Object> labels;
+    private Map<String,Object> labels;
     /**
      * @return The size of the image in gigabytes.
      * 
      */
-    private final Integer size;
+    private Integer size;
     /**
      * @return The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetInstanceBootDiskInitializeParam(
-        @CustomType.Parameter("image") String image,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("size") Integer size,
-        @CustomType.Parameter("type") String type) {
-        this.image = image;
-        this.labels = labels;
-        this.size = size;
-        this.type = type;
-    }
-
+    private GetInstanceBootDiskInitializeParam() {}
     /**
      * @return The image from which this disk was initialised.
      * 
@@ -81,17 +70,13 @@ public final class GetInstanceBootDiskInitializeParam {
     public static Builder builder(GetInstanceBootDiskInitializeParam defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String image;
         private Map<String,Object> labels;
         private Integer size;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceBootDiskInitializeParam defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.image = defaults.image;
@@ -100,23 +85,33 @@ public final class GetInstanceBootDiskInitializeParam {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder image(String image) {
             this.image = Objects.requireNonNull(image);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetInstanceBootDiskInitializeParam build() {
-            return new GetInstanceBootDiskInitializeParam(image, labels, size, type);
+        }
+        public GetInstanceBootDiskInitializeParam build() {
+            final var o = new GetInstanceBootDiskInitializeParam();
+            o.image = image;
+            o.labels = labels;
+            o.size = size;
+            o.type = type;
+            return o;
         }
     }
 }

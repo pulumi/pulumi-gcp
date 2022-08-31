@@ -17,14 +17,14 @@ public final class EdgeCacheOriginTimeout {
      * The connectTimeout capped by the deadline set by the request&#39;s maxAttemptsTimeout.  The last connection attempt may have a smaller connectTimeout in order to adhere to the overall maxAttemptsTimeout.
      * 
      */
-    private final @Nullable String connectTimeout;
+    private @Nullable String connectTimeout;
     /**
      * @return The maximum time across all connection attempts to the origin, including failover origins, before returning an error to the client. A HTTP 504 will be returned if the timeout is reached before a response is returned.
      * Defaults to 15 seconds. The timeout must be a value between 1s and 30s.
      * If a failoverOrigin is specified, the maxAttemptsTimeout of the first configured origin sets the deadline for all connection attempts across all failoverOrigins.
      * 
      */
-    private final @Nullable String maxAttemptsTimeout;
+    private @Nullable String maxAttemptsTimeout;
     /**
      * @return The maximum duration to wait between reads of a single HTTP connection/stream.
      * Defaults to 15 seconds.  The timeout must be a value between 1s and 30s.
@@ -32,7 +32,7 @@ public final class EdgeCacheOriginTimeout {
      * If the response headers have already been written to the connection, the response will be truncated and logged.
      * 
      */
-    private final @Nullable String readTimeout;
+    private @Nullable String readTimeout;
     /**
      * @return The maximum duration to wait for the last byte of a response to arrive when reading from the HTTP connection/stream.
      * Defaults to 30 seconds. The timeout must be a value between 1s and 120s.
@@ -41,20 +41,9 @@ public final class EdgeCacheOriginTimeout {
      * If the response headers have already been written to the connection, the response will be truncated and logged.
      * 
      */
-    private final @Nullable String responseTimeout;
+    private @Nullable String responseTimeout;
 
-    @CustomType.Constructor
-    private EdgeCacheOriginTimeout(
-        @CustomType.Parameter("connectTimeout") @Nullable String connectTimeout,
-        @CustomType.Parameter("maxAttemptsTimeout") @Nullable String maxAttemptsTimeout,
-        @CustomType.Parameter("readTimeout") @Nullable String readTimeout,
-        @CustomType.Parameter("responseTimeout") @Nullable String responseTimeout) {
-        this.connectTimeout = connectTimeout;
-        this.maxAttemptsTimeout = maxAttemptsTimeout;
-        this.readTimeout = readTimeout;
-        this.responseTimeout = responseTimeout;
-    }
-
+    private EdgeCacheOriginTimeout() {}
     /**
      * @return The maximum duration to wait for a single origin connection to be established, including DNS lookup, TLS handshake and TCP/QUIC connection establishment.
      * Defaults to 5 seconds. The timeout must be a value between 1s and 15s.
@@ -102,17 +91,13 @@ public final class EdgeCacheOriginTimeout {
     public static Builder builder(EdgeCacheOriginTimeout defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String connectTimeout;
         private @Nullable String maxAttemptsTimeout;
         private @Nullable String readTimeout;
         private @Nullable String responseTimeout;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EdgeCacheOriginTimeout defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectTimeout = defaults.connectTimeout;
@@ -121,23 +106,33 @@ public final class EdgeCacheOriginTimeout {
     	      this.responseTimeout = defaults.responseTimeout;
         }
 
+        @CustomType.Setter
         public Builder connectTimeout(@Nullable String connectTimeout) {
             this.connectTimeout = connectTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder maxAttemptsTimeout(@Nullable String maxAttemptsTimeout) {
             this.maxAttemptsTimeout = maxAttemptsTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder readTimeout(@Nullable String readTimeout) {
             this.readTimeout = readTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder responseTimeout(@Nullable String responseTimeout) {
             this.responseTimeout = responseTimeout;
             return this;
-        }        public EdgeCacheOriginTimeout build() {
-            return new EdgeCacheOriginTimeout(connectTimeout, maxAttemptsTimeout, readTimeout, responseTimeout);
+        }
+        public EdgeCacheOriginTimeout build() {
+            final var o = new EdgeCacheOriginTimeout();
+            o.connectTimeout = connectTimeout;
+            o.maxAttemptsTimeout = maxAttemptsTimeout;
+            o.readTimeout = readTimeout;
+            o.responseTimeout = responseTimeout;
+            return o;
         }
     }
 }

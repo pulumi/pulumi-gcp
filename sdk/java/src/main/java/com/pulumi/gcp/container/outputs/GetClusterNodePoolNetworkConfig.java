@@ -10,20 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNetworkConfig {
-    private final Boolean createPodRange;
-    private final String podIpv4CidrBlock;
-    private final String podRange;
+    private Boolean createPodRange;
+    private String podIpv4CidrBlock;
+    private String podRange;
 
-    @CustomType.Constructor
-    private GetClusterNodePoolNetworkConfig(
-        @CustomType.Parameter("createPodRange") Boolean createPodRange,
-        @CustomType.Parameter("podIpv4CidrBlock") String podIpv4CidrBlock,
-        @CustomType.Parameter("podRange") String podRange) {
-        this.createPodRange = createPodRange;
-        this.podIpv4CidrBlock = podIpv4CidrBlock;
-        this.podRange = podRange;
-    }
-
+    private GetClusterNodePoolNetworkConfig() {}
     public Boolean createPodRange() {
         return this.createPodRange;
     }
@@ -41,16 +32,12 @@ public final class GetClusterNodePoolNetworkConfig {
     public static Builder builder(GetClusterNodePoolNetworkConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean createPodRange;
         private String podIpv4CidrBlock;
         private String podRange;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterNodePoolNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createPodRange = defaults.createPodRange;
@@ -58,19 +45,27 @@ public final class GetClusterNodePoolNetworkConfig {
     	      this.podRange = defaults.podRange;
         }
 
+        @CustomType.Setter
         public Builder createPodRange(Boolean createPodRange) {
             this.createPodRange = Objects.requireNonNull(createPodRange);
             return this;
         }
+        @CustomType.Setter
         public Builder podIpv4CidrBlock(String podIpv4CidrBlock) {
             this.podIpv4CidrBlock = Objects.requireNonNull(podIpv4CidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder podRange(String podRange) {
             this.podRange = Objects.requireNonNull(podRange);
             return this;
-        }        public GetClusterNodePoolNetworkConfig build() {
-            return new GetClusterNodePoolNetworkConfig(createPodRange, podIpv4CidrBlock, podRange);
+        }
+        public GetClusterNodePoolNetworkConfig build() {
+            final var o = new GetClusterNodePoolNetworkConfig();
+            o.createPodRange = createPodRange;
+            o.podIpv4CidrBlock = podIpv4CidrBlock;
+            o.podRange = podRange;
+            return o;
         }
     }
 }

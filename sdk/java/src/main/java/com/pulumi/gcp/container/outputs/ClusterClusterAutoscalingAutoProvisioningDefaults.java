@@ -16,13 +16,13 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
      * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
      * 
      */
-    private final @Nullable String bootDiskKmsKey;
+    private @Nullable String bootDiskKmsKey;
     /**
      * @return The image type to use for this node. Note that changing the image type
      * will delete and recreate all nodes in the node pool.
      * 
      */
-    private final @Nullable String imageType;
+    private @Nullable String imageType;
     /**
      * @return Minimum CPU platform to be used by this instance.
      * The instance may be scheduled on the specified or newer CPU platform. Applicable
@@ -31,35 +31,22 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
      * for more information.
      * 
      */
-    private final @Nullable String minCpuPlatform;
+    private @Nullable String minCpuPlatform;
     /**
      * @return The set of Google API scopes to be made available
      * on all of the node VMs under the &#34;default&#34; service account.
      * Use the &#34;https://www.googleapis.com/auth/cloud-platform&#34; scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
      * 
      */
-    private final @Nullable List<String> oauthScopes;
+    private @Nullable List<String> oauthScopes;
     /**
      * @return The service account to be used by the Node VMs.
      * If not specified, the &#34;default&#34; service account is used.
      * 
      */
-    private final @Nullable String serviceAccount;
+    private @Nullable String serviceAccount;
 
-    @CustomType.Constructor
-    private ClusterClusterAutoscalingAutoProvisioningDefaults(
-        @CustomType.Parameter("bootDiskKmsKey") @Nullable String bootDiskKmsKey,
-        @CustomType.Parameter("imageType") @Nullable String imageType,
-        @CustomType.Parameter("minCpuPlatform") @Nullable String minCpuPlatform,
-        @CustomType.Parameter("oauthScopes") @Nullable List<String> oauthScopes,
-        @CustomType.Parameter("serviceAccount") @Nullable String serviceAccount) {
-        this.bootDiskKmsKey = bootDiskKmsKey;
-        this.imageType = imageType;
-        this.minCpuPlatform = minCpuPlatform;
-        this.oauthScopes = oauthScopes;
-        this.serviceAccount = serviceAccount;
-    }
-
+    private ClusterClusterAutoscalingAutoProvisioningDefaults() {}
     /**
      * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
      * 
@@ -111,18 +98,14 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
     public static Builder builder(ClusterClusterAutoscalingAutoProvisioningDefaults defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String bootDiskKmsKey;
         private @Nullable String imageType;
         private @Nullable String minCpuPlatform;
         private @Nullable List<String> oauthScopes;
         private @Nullable String serviceAccount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterClusterAutoscalingAutoProvisioningDefaults defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
@@ -132,18 +115,22 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
     	      this.serviceAccount = defaults.serviceAccount;
         }
 
+        @CustomType.Setter
         public Builder bootDiskKmsKey(@Nullable String bootDiskKmsKey) {
             this.bootDiskKmsKey = bootDiskKmsKey;
             return this;
         }
+        @CustomType.Setter
         public Builder imageType(@Nullable String imageType) {
             this.imageType = imageType;
             return this;
         }
+        @CustomType.Setter
         public Builder minCpuPlatform(@Nullable String minCpuPlatform) {
             this.minCpuPlatform = minCpuPlatform;
             return this;
         }
+        @CustomType.Setter
         public Builder oauthScopes(@Nullable List<String> oauthScopes) {
             this.oauthScopes = oauthScopes;
             return this;
@@ -151,11 +138,19 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
         public Builder oauthScopes(String... oauthScopes) {
             return oauthScopes(List.of(oauthScopes));
         }
+        @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
             this.serviceAccount = serviceAccount;
             return this;
-        }        public ClusterClusterAutoscalingAutoProvisioningDefaults build() {
-            return new ClusterClusterAutoscalingAutoProvisioningDefaults(bootDiskKmsKey, imageType, minCpuPlatform, oauthScopes, serviceAccount);
+        }
+        public ClusterClusterAutoscalingAutoProvisioningDefaults build() {
+            final var o = new ClusterClusterAutoscalingAutoProvisioningDefaults();
+            o.bootDiskKmsKey = bootDiskKmsKey;
+            o.imageType = imageType;
+            o.minCpuPlatform = minCpuPlatform;
+            o.oauthScopes = oauthScopes;
+            o.serviceAccount = serviceAccount;
+            return o;
         }
     }
 }

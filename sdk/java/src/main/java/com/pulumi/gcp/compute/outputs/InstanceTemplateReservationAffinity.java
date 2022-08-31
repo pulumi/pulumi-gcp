@@ -17,21 +17,14 @@ public final class InstanceTemplateReservationAffinity {
      * Structure is documented below.
      * 
      */
-    private final @Nullable InstanceTemplateReservationAffinitySpecificReservation specificReservation;
+    private @Nullable InstanceTemplateReservationAffinitySpecificReservation specificReservation;
     /**
      * @return The type of reservation from which this instance can consume resources.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private InstanceTemplateReservationAffinity(
-        @CustomType.Parameter("specificReservation") @Nullable InstanceTemplateReservationAffinitySpecificReservation specificReservation,
-        @CustomType.Parameter("type") String type) {
-        this.specificReservation = specificReservation;
-        this.type = type;
-    }
-
+    private InstanceTemplateReservationAffinity() {}
     /**
      * @return Specifies the label selector for the reservation to use..
      * Structure is documented below.
@@ -55,30 +48,32 @@ public final class InstanceTemplateReservationAffinity {
     public static Builder builder(InstanceTemplateReservationAffinity defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable InstanceTemplateReservationAffinitySpecificReservation specificReservation;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceTemplateReservationAffinity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.specificReservation = defaults.specificReservation;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder specificReservation(@Nullable InstanceTemplateReservationAffinitySpecificReservation specificReservation) {
             this.specificReservation = specificReservation;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public InstanceTemplateReservationAffinity build() {
-            return new InstanceTemplateReservationAffinity(specificReservation, type);
+        }
+        public InstanceTemplateReservationAffinity build() {
+            final var o = new InstanceTemplateReservationAffinity();
+            o.specificReservation = specificReservation;
+            o.type = type;
+            return o;
         }
     }
 }

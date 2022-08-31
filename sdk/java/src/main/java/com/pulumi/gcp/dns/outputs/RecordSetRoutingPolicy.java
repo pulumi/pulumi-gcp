@@ -17,22 +17,15 @@ public final class RecordSetRoutingPolicy {
      * Structure is document below.
      * 
      */
-    private final @Nullable List<RecordSetRoutingPolicyGeo> geos;
+    private @Nullable List<RecordSetRoutingPolicyGeo> geos;
     /**
      * @return The configuration for Weighted Round Robin based routing policy.
      * Structure is document below.
      * 
      */
-    private final @Nullable List<RecordSetRoutingPolicyWrr> wrrs;
+    private @Nullable List<RecordSetRoutingPolicyWrr> wrrs;
 
-    @CustomType.Constructor
-    private RecordSetRoutingPolicy(
-        @CustomType.Parameter("geos") @Nullable List<RecordSetRoutingPolicyGeo> geos,
-        @CustomType.Parameter("wrrs") @Nullable List<RecordSetRoutingPolicyWrr> wrrs) {
-        this.geos = geos;
-        this.wrrs = wrrs;
-    }
-
+    private RecordSetRoutingPolicy() {}
     /**
      * @return The configuration for Geolocation based routing policy.
      * Structure is document below.
@@ -57,21 +50,18 @@ public final class RecordSetRoutingPolicy {
     public static Builder builder(RecordSetRoutingPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<RecordSetRoutingPolicyGeo> geos;
         private @Nullable List<RecordSetRoutingPolicyWrr> wrrs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RecordSetRoutingPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.geos = defaults.geos;
     	      this.wrrs = defaults.wrrs;
         }
 
+        @CustomType.Setter
         public Builder geos(@Nullable List<RecordSetRoutingPolicyGeo> geos) {
             this.geos = geos;
             return this;
@@ -79,14 +69,19 @@ public final class RecordSetRoutingPolicy {
         public Builder geos(RecordSetRoutingPolicyGeo... geos) {
             return geos(List.of(geos));
         }
+        @CustomType.Setter
         public Builder wrrs(@Nullable List<RecordSetRoutingPolicyWrr> wrrs) {
             this.wrrs = wrrs;
             return this;
         }
         public Builder wrrs(RecordSetRoutingPolicyWrr... wrrs) {
             return wrrs(List.of(wrrs));
-        }        public RecordSetRoutingPolicy build() {
-            return new RecordSetRoutingPolicy(geos, wrrs);
+        }
+        public RecordSetRoutingPolicy build() {
+            final var o = new RecordSetRoutingPolicy();
+            o.geos = geos;
+            o.wrrs = wrrs;
+            return o;
         }
     }
 }

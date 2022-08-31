@@ -23,22 +23,15 @@ public final class AccessLevelBasic {
      * Possible values are `AND` and `OR`.
      * 
      */
-    private final @Nullable String combiningFunction;
+    private @Nullable String combiningFunction;
     /**
      * @return A set of requirements for the AccessLevel to be granted.
      * Structure is documented below.
      * 
      */
-    private final List<AccessLevelBasicCondition> conditions;
+    private List<AccessLevelBasicCondition> conditions;
 
-    @CustomType.Constructor
-    private AccessLevelBasic(
-        @CustomType.Parameter("combiningFunction") @Nullable String combiningFunction,
-        @CustomType.Parameter("conditions") List<AccessLevelBasicCondition> conditions) {
-        this.combiningFunction = combiningFunction;
-        this.conditions = conditions;
-    }
-
+    private AccessLevelBasic() {}
     /**
      * @return How the conditions list should be combined to determine if a request
      * is granted this AccessLevel. If AND is used, each Condition in
@@ -68,33 +61,35 @@ public final class AccessLevelBasic {
     public static Builder builder(AccessLevelBasic defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String combiningFunction;
         private List<AccessLevelBasicCondition> conditions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AccessLevelBasic defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.combiningFunction = defaults.combiningFunction;
     	      this.conditions = defaults.conditions;
         }
 
+        @CustomType.Setter
         public Builder combiningFunction(@Nullable String combiningFunction) {
             this.combiningFunction = combiningFunction;
             return this;
         }
+        @CustomType.Setter
         public Builder conditions(List<AccessLevelBasicCondition> conditions) {
             this.conditions = Objects.requireNonNull(conditions);
             return this;
         }
         public Builder conditions(AccessLevelBasicCondition... conditions) {
             return conditions(List.of(conditions));
-        }        public AccessLevelBasic build() {
-            return new AccessLevelBasic(combiningFunction, conditions);
+        }
+        public AccessLevelBasic build() {
+            final var o = new AccessLevelBasic();
+            o.combiningFunction = combiningFunction;
+            o.conditions = conditions;
+            return o;
         }
     }
 }

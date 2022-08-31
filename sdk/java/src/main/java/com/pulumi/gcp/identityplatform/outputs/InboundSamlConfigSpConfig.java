@@ -17,30 +17,21 @@ public final class InboundSamlConfigSpConfig {
      * @return Callback URI where responses from IDP are handled. Must start with `https://`.
      * 
      */
-    private final @Nullable String callbackUri;
+    private @Nullable String callbackUri;
     /**
      * @return -
      * The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<InboundSamlConfigSpConfigSpCertificate> spCertificates;
+    private @Nullable List<InboundSamlConfigSpConfigSpCertificate> spCertificates;
     /**
      * @return Unique identifier for all SAML entities.
      * 
      */
-    private final @Nullable String spEntityId;
+    private @Nullable String spEntityId;
 
-    @CustomType.Constructor
-    private InboundSamlConfigSpConfig(
-        @CustomType.Parameter("callbackUri") @Nullable String callbackUri,
-        @CustomType.Parameter("spCertificates") @Nullable List<InboundSamlConfigSpConfigSpCertificate> spCertificates,
-        @CustomType.Parameter("spEntityId") @Nullable String spEntityId) {
-        this.callbackUri = callbackUri;
-        this.spCertificates = spCertificates;
-        this.spEntityId = spEntityId;
-    }
-
+    private InboundSamlConfigSpConfig() {}
     /**
      * @return Callback URI where responses from IDP are handled. Must start with `https://`.
      * 
@@ -72,16 +63,12 @@ public final class InboundSamlConfigSpConfig {
     public static Builder builder(InboundSamlConfigSpConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String callbackUri;
         private @Nullable List<InboundSamlConfigSpConfigSpCertificate> spCertificates;
         private @Nullable String spEntityId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InboundSamlConfigSpConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.callbackUri = defaults.callbackUri;
@@ -89,10 +76,12 @@ public final class InboundSamlConfigSpConfig {
     	      this.spEntityId = defaults.spEntityId;
         }
 
+        @CustomType.Setter
         public Builder callbackUri(@Nullable String callbackUri) {
             this.callbackUri = callbackUri;
             return this;
         }
+        @CustomType.Setter
         public Builder spCertificates(@Nullable List<InboundSamlConfigSpConfigSpCertificate> spCertificates) {
             this.spCertificates = spCertificates;
             return this;
@@ -100,11 +89,17 @@ public final class InboundSamlConfigSpConfig {
         public Builder spCertificates(InboundSamlConfigSpConfigSpCertificate... spCertificates) {
             return spCertificates(List.of(spCertificates));
         }
+        @CustomType.Setter
         public Builder spEntityId(@Nullable String spEntityId) {
             this.spEntityId = spEntityId;
             return this;
-        }        public InboundSamlConfigSpConfig build() {
-            return new InboundSamlConfigSpConfig(callbackUri, spCertificates, spEntityId);
+        }
+        public InboundSamlConfigSpConfig build() {
+            final var o = new InboundSamlConfigSpConfig();
+            o.callbackUri = callbackUri;
+            o.spCertificates = spCertificates;
+            o.spEntityId = spEntityId;
+            return o;
         }
     }
 }

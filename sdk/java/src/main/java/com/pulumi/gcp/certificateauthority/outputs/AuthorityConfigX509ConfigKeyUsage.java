@@ -18,30 +18,21 @@ public final class AuthorityConfigX509ConfigKeyUsage {
      * Structure is documented below.
      * 
      */
-    private final AuthorityConfigX509ConfigKeyUsageBaseKeyUsage baseKeyUsage;
+    private AuthorityConfigX509ConfigKeyUsageBaseKeyUsage baseKeyUsage;
     /**
      * @return Describes high-level ways in which a key may be used.
      * Structure is documented below.
      * 
      */
-    private final AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage extendedKeyUsage;
+    private AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage extendedKeyUsage;
     /**
      * @return An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages;
+    private @Nullable List<AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages;
 
-    @CustomType.Constructor
-    private AuthorityConfigX509ConfigKeyUsage(
-        @CustomType.Parameter("baseKeyUsage") AuthorityConfigX509ConfigKeyUsageBaseKeyUsage baseKeyUsage,
-        @CustomType.Parameter("extendedKeyUsage") AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage extendedKeyUsage,
-        @CustomType.Parameter("unknownExtendedKeyUsages") @Nullable List<AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages) {
-        this.baseKeyUsage = baseKeyUsage;
-        this.extendedKeyUsage = extendedKeyUsage;
-        this.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
-    }
-
+    private AuthorityConfigX509ConfigKeyUsage() {}
     /**
      * @return Describes high-level ways in which a key may be used.
      * Structure is documented below.
@@ -74,16 +65,12 @@ public final class AuthorityConfigX509ConfigKeyUsage {
     public static Builder builder(AuthorityConfigX509ConfigKeyUsage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private AuthorityConfigX509ConfigKeyUsageBaseKeyUsage baseKeyUsage;
         private AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage extendedKeyUsage;
         private @Nullable List<AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AuthorityConfigX509ConfigKeyUsage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.baseKeyUsage = defaults.baseKeyUsage;
@@ -91,22 +78,30 @@ public final class AuthorityConfigX509ConfigKeyUsage {
     	      this.unknownExtendedKeyUsages = defaults.unknownExtendedKeyUsages;
         }
 
+        @CustomType.Setter
         public Builder baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsage baseKeyUsage) {
             this.baseKeyUsage = Objects.requireNonNull(baseKeyUsage);
             return this;
         }
+        @CustomType.Setter
         public Builder extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage extendedKeyUsage) {
             this.extendedKeyUsage = Objects.requireNonNull(extendedKeyUsage);
             return this;
         }
+        @CustomType.Setter
         public Builder unknownExtendedKeyUsages(@Nullable List<AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages) {
             this.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
             return this;
         }
         public Builder unknownExtendedKeyUsages(AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage... unknownExtendedKeyUsages) {
             return unknownExtendedKeyUsages(List.of(unknownExtendedKeyUsages));
-        }        public AuthorityConfigX509ConfigKeyUsage build() {
-            return new AuthorityConfigX509ConfigKeyUsage(baseKeyUsage, extendedKeyUsage, unknownExtendedKeyUsages);
+        }
+        public AuthorityConfigX509ConfigKeyUsage build() {
+            final var o = new AuthorityConfigX509ConfigKeyUsage();
+            o.baseKeyUsage = baseKeyUsage;
+            o.extendedKeyUsage = extendedKeyUsage;
+            o.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
+            return o;
         }
     }
 }

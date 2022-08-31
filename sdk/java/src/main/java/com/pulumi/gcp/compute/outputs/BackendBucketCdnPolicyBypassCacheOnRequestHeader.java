@@ -15,13 +15,9 @@ public final class BackendBucketCdnPolicyBypassCacheOnRequestHeader {
      * @return The header field name to match on when bypassing cache. Values are case-insensitive.
      * 
      */
-    private final @Nullable String headerName;
+    private @Nullable String headerName;
 
-    @CustomType.Constructor
-    private BackendBucketCdnPolicyBypassCacheOnRequestHeader(@CustomType.Parameter("headerName") @Nullable String headerName) {
-        this.headerName = headerName;
-    }
-
+    private BackendBucketCdnPolicyBypassCacheOnRequestHeader() {}
     /**
      * @return The header field name to match on when bypassing cache. Values are case-insensitive.
      * 
@@ -37,24 +33,24 @@ public final class BackendBucketCdnPolicyBypassCacheOnRequestHeader {
     public static Builder builder(BackendBucketCdnPolicyBypassCacheOnRequestHeader defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String headerName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BackendBucketCdnPolicyBypassCacheOnRequestHeader defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.headerName = defaults.headerName;
         }
 
+        @CustomType.Setter
         public Builder headerName(@Nullable String headerName) {
             this.headerName = headerName;
             return this;
-        }        public BackendBucketCdnPolicyBypassCacheOnRequestHeader build() {
-            return new BackendBucketCdnPolicyBypassCacheOnRequestHeader(headerName);
+        }
+        public BackendBucketCdnPolicyBypassCacheOnRequestHeader build() {
+            final var o = new BackendBucketCdnPolicyBypassCacheOnRequestHeader();
+            o.headerName = headerName;
+            return o;
         }
     }
 }

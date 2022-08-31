@@ -21,23 +21,16 @@ public final class ClusterBinaryAuthorization {
      * 
      */
     @Deprecated /* Deprecated in favor of evaluation_mode. */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
      * and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
      * deprecated `enable_binary_authorization` parameter being set to `true`.
      * 
      */
-    private final @Nullable String evaluationMode;
+    private @Nullable String evaluationMode;
 
-    @CustomType.Constructor
-    private ClusterBinaryAuthorization(
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("evaluationMode") @Nullable String evaluationMode) {
-        this.enabled = enabled;
-        this.evaluationMode = evaluationMode;
-    }
-
+    private ClusterBinaryAuthorization() {}
     /**
      * @return Enable the PodSecurityPolicy controller for this cluster.
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -67,30 +60,32 @@ public final class ClusterBinaryAuthorization {
     public static Builder builder(ClusterBinaryAuthorization defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
         private @Nullable String evaluationMode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterBinaryAuthorization defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.evaluationMode = defaults.evaluationMode;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder evaluationMode(@Nullable String evaluationMode) {
             this.evaluationMode = evaluationMode;
             return this;
-        }        public ClusterBinaryAuthorization build() {
-            return new ClusterBinaryAuthorization(enabled, evaluationMode);
+        }
+        public ClusterBinaryAuthorization build() {
+            final var o = new ClusterBinaryAuthorization();
+            o.enabled = enabled;
+            o.evaluationMode = evaluationMode;
+            return o;
         }
     }
 }

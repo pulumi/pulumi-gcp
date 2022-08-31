@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterAddonsConfigGcpFilestoreCsiDriverConfig {
-    private final Boolean enabled;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private GetClusterAddonsConfigGcpFilestoreCsiDriverConfig(@CustomType.Parameter("enabled") Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private GetClusterAddonsConfigGcpFilestoreCsiDriverConfig() {}
     public Boolean enabled() {
         return this.enabled;
     }
@@ -27,24 +23,24 @@ public final class GetClusterAddonsConfigGcpFilestoreCsiDriverConfig {
     public static Builder builder(GetClusterAddonsConfigGcpFilestoreCsiDriverConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterAddonsConfigGcpFilestoreCsiDriverConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public GetClusterAddonsConfigGcpFilestoreCsiDriverConfig build() {
-            return new GetClusterAddonsConfigGcpFilestoreCsiDriverConfig(enabled);
+        }
+        public GetClusterAddonsConfigGcpFilestoreCsiDriverConfig build() {
+            final var o = new GetClusterAddonsConfigGcpFilestoreCsiDriverConfig();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

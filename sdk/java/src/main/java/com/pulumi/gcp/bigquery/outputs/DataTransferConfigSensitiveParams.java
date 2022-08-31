@@ -14,13 +14,9 @@ public final class DataTransferConfigSensitiveParams {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private final String secretAccessKey;
+    private String secretAccessKey;
 
-    @CustomType.Constructor
-    private DataTransferConfigSensitiveParams(@CustomType.Parameter("secretAccessKey") String secretAccessKey) {
-        this.secretAccessKey = secretAccessKey;
-    }
-
+    private DataTransferConfigSensitiveParams() {}
     /**
      * @return The Secret Access Key of the AWS account transferring data from.
      * **Note**: This property is sensitive and will not be displayed in the plan.
@@ -37,24 +33,24 @@ public final class DataTransferConfigSensitiveParams {
     public static Builder builder(DataTransferConfigSensitiveParams defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String secretAccessKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DataTransferConfigSensitiveParams defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.secretAccessKey = defaults.secretAccessKey;
         }
 
+        @CustomType.Setter
         public Builder secretAccessKey(String secretAccessKey) {
             this.secretAccessKey = Objects.requireNonNull(secretAccessKey);
             return this;
-        }        public DataTransferConfigSensitiveParams build() {
-            return new DataTransferConfigSensitiveParams(secretAccessKey);
+        }
+        public DataTransferConfigSensitiveParams build() {
+            final var o = new DataTransferConfigSensitiveParams();
+            o.secretAccessKey = secretAccessKey;
+            return o;
         }
     }
 }

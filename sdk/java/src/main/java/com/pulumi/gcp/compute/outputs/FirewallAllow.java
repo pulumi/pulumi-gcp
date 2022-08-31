@@ -20,7 +20,7 @@ public final class FirewallAllow {
      * [&#34;12345-12349&#34;].
      * 
      */
-    private final @Nullable List<String> ports;
+    private @Nullable List<String> ports;
     /**
      * @return The IP protocol to which this rule applies. The protocol type is
      * required when creating a firewall rule. This value can either be
@@ -28,16 +28,9 @@ public final class FirewallAllow {
      * icmp, esp, ah, sctp, ipip, all), or the IP protocol number.
      * 
      */
-    private final String protocol;
+    private String protocol;
 
-    @CustomType.Constructor
-    private FirewallAllow(
-        @CustomType.Parameter("ports") @Nullable List<String> ports,
-        @CustomType.Parameter("protocol") String protocol) {
-        this.ports = ports;
-        this.protocol = protocol;
-    }
-
+    private FirewallAllow() {}
     /**
      * @return An optional list of ports to which this rule applies. This field
      * is only applicable for UDP or TCP protocol. Each entry must be
@@ -68,21 +61,18 @@ public final class FirewallAllow {
     public static Builder builder(FirewallAllow defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> ports;
         private String protocol;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FirewallAllow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ports = defaults.ports;
     	      this.protocol = defaults.protocol;
         }
 
+        @CustomType.Setter
         public Builder ports(@Nullable List<String> ports) {
             this.ports = ports;
             return this;
@@ -90,11 +80,16 @@ public final class FirewallAllow {
         public Builder ports(String... ports) {
             return ports(List.of(ports));
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
-        }        public FirewallAllow build() {
-            return new FirewallAllow(ports, protocol);
+        }
+        public FirewallAllow build() {
+            final var o = new FirewallAllow();
+            o.ports = ports;
+            o.protocol = protocol;
+            return o;
         }
     }
 }

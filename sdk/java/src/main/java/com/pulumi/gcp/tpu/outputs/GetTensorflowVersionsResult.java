@@ -14,27 +14,16 @@ public final class GetTensorflowVersionsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String project;
+    private String id;
+    private String project;
     /**
      * @return The list of TensorFlow versions available for the given project and zone.
      * 
      */
-    private final List<String> versions;
-    private final String zone;
+    private List<String> versions;
+    private String zone;
 
-    @CustomType.Constructor
-    private GetTensorflowVersionsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("versions") List<String> versions,
-        @CustomType.Parameter("zone") String zone) {
-        this.id = id;
-        this.project = project;
-        this.versions = versions;
-        this.zone = zone;
-    }
-
+    private GetTensorflowVersionsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -63,17 +52,13 @@ public final class GetTensorflowVersionsResult {
     public static Builder builder(GetTensorflowVersionsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String project;
         private List<String> versions;
         private String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTensorflowVersionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -82,14 +67,17 @@ public final class GetTensorflowVersionsResult {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder versions(List<String> versions) {
             this.versions = Objects.requireNonNull(versions);
             return this;
@@ -97,11 +85,18 @@ public final class GetTensorflowVersionsResult {
         public Builder versions(String... versions) {
             return versions(List.of(versions));
         }
+        @CustomType.Setter
         public Builder zone(String zone) {
             this.zone = Objects.requireNonNull(zone);
             return this;
-        }        public GetTensorflowVersionsResult build() {
-            return new GetTensorflowVersionsResult(id, project, versions, zone);
+        }
+        public GetTensorflowVersionsResult build() {
+            final var o = new GetTensorflowVersionsResult();
+            o.id = id;
+            o.project = project;
+            o.versions = versions;
+            o.zone = zone;
+            return o;
         }
     }
 }

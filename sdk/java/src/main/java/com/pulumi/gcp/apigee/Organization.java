@@ -307,6 +307,30 @@ public class Organization extends com.pulumi.resources.CustomResource {
         return this.projectId;
     }
     /**
+     * Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+     * is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+     * operation completes. During this period, the Organization may be restored to its last known state.
+     * After this period, the Organization will no longer be able to be restored.
+     * Default value is `DELETION_RETENTION_UNSPECIFIED`.
+     * Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+     * 
+     */
+    @Export(name="retention", type=String.class, parameters={})
+    private Output</* @Nullable */ String> retention;
+
+    /**
+     * @return Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
+     * is not EVALUATION). It controls how long Organization data will be retained after the initial delete
+     * operation completes. During this period, the Organization may be restored to its last known state.
+     * After this period, the Organization will no longer be able to be restored.
+     * Default value is `DELETION_RETENTION_UNSPECIFIED`.
+     * Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+     * 
+     */
+    public Output<Optional<String>> retention() {
+        return Codegen.optional(this.retention);
+    }
+    /**
      * Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
      * Update is not allowed after the organization is created.
      * If not specified, a Google-Managed encryption key will be used.

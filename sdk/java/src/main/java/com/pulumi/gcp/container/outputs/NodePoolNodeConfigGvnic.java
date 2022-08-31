@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class NodePoolNodeConfigGvnic {
-    private final Boolean enabled;
+    private Boolean enabled;
 
-    @CustomType.Constructor
-    private NodePoolNodeConfigGvnic(@CustomType.Parameter("enabled") Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private NodePoolNodeConfigGvnic() {}
     public Boolean enabled() {
         return this.enabled;
     }
@@ -27,24 +23,24 @@ public final class NodePoolNodeConfigGvnic {
     public static Builder builder(NodePoolNodeConfigGvnic defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodePoolNodeConfigGvnic defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }        public NodePoolNodeConfigGvnic build() {
-            return new NodePoolNodeConfigGvnic(enabled);
+        }
+        public NodePoolNodeConfigGvnic build() {
+            final var o = new NodePoolNodeConfigGvnic();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

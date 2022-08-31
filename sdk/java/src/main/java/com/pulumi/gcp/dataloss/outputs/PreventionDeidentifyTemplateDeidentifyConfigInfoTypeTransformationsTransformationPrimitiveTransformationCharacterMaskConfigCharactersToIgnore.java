@@ -15,22 +15,15 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
      * @return Characters to not transform when masking.
      * 
      */
-    private final @Nullable String charactersToSkip;
+    private @Nullable String charactersToSkip;
     /**
      * @return Common characters to not transform when masking. Useful to avoid removing punctuation.
      * Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
      * 
      */
-    private final @Nullable String commonCharactersToIgnore;
+    private @Nullable String commonCharactersToIgnore;
 
-    @CustomType.Constructor
-    private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore(
-        @CustomType.Parameter("charactersToSkip") @Nullable String charactersToSkip,
-        @CustomType.Parameter("commonCharactersToIgnore") @Nullable String commonCharactersToIgnore) {
-        this.charactersToSkip = charactersToSkip;
-        this.commonCharactersToIgnore = commonCharactersToIgnore;
-    }
-
+    private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore() {}
     /**
      * @return Characters to not transform when masking.
      * 
@@ -54,30 +47,32 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     public static Builder builder(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String charactersToSkip;
         private @Nullable String commonCharactersToIgnore;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.charactersToSkip = defaults.charactersToSkip;
     	      this.commonCharactersToIgnore = defaults.commonCharactersToIgnore;
         }
 
+        @CustomType.Setter
         public Builder charactersToSkip(@Nullable String charactersToSkip) {
             this.charactersToSkip = charactersToSkip;
             return this;
         }
+        @CustomType.Setter
         public Builder commonCharactersToIgnore(@Nullable String commonCharactersToIgnore) {
             this.commonCharactersToIgnore = commonCharactersToIgnore;
             return this;
-        }        public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore build() {
-            return new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore(charactersToSkip, commonCharactersToIgnore);
+        }
+        public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore build() {
+            final var o = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore();
+            o.charactersToSkip = charactersToSkip;
+            o.commonCharactersToIgnore = commonCharactersToIgnore;
+            return o;
         }
     }
 }

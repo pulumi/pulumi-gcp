@@ -13,23 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceApi {
-    private final @Nullable List<ServiceApiMethod> methods;
-    private final @Nullable String name;
-    private final @Nullable String syntax;
-    private final @Nullable String version;
+    private @Nullable List<ServiceApiMethod> methods;
+    private @Nullable String name;
+    private @Nullable String syntax;
+    private @Nullable String version;
 
-    @CustomType.Constructor
-    private ServiceApi(
-        @CustomType.Parameter("methods") @Nullable List<ServiceApiMethod> methods,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("syntax") @Nullable String syntax,
-        @CustomType.Parameter("version") @Nullable String version) {
-        this.methods = methods;
-        this.name = name;
-        this.syntax = syntax;
-        this.version = version;
-    }
-
+    private ServiceApi() {}
     public List<ServiceApiMethod> methods() {
         return this.methods == null ? List.of() : this.methods;
     }
@@ -50,17 +39,13 @@ public final class ServiceApi {
     public static Builder builder(ServiceApi defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ServiceApiMethod> methods;
         private @Nullable String name;
         private @Nullable String syntax;
         private @Nullable String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceApi defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.methods = defaults.methods;
@@ -69,6 +54,7 @@ public final class ServiceApi {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder methods(@Nullable List<ServiceApiMethod> methods) {
             this.methods = methods;
             return this;
@@ -76,19 +62,28 @@ public final class ServiceApi {
         public Builder methods(ServiceApiMethod... methods) {
             return methods(List.of(methods));
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder syntax(@Nullable String syntax) {
             this.syntax = syntax;
             return this;
         }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
-        }        public ServiceApi build() {
-            return new ServiceApi(methods, name, syntax, version);
+        }
+        public ServiceApi build() {
+            final var o = new ServiceApi();
+            o.methods = methods;
+            o.name = name;
+            o.syntax = syntax;
+            o.version = version;
+            return o;
         }
     }
 }

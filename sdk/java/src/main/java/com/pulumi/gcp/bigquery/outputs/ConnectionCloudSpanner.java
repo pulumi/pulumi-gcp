@@ -16,21 +16,14 @@ public final class ConnectionCloudSpanner {
      * @return Cloud Spanner database in the form `project/instance/database&#39;
      * 
      */
-    private final String database;
+    private String database;
     /**
      * @return If parallelism should be used when reading from Cloud Spanner
      * 
      */
-    private final @Nullable Boolean useParallelism;
+    private @Nullable Boolean useParallelism;
 
-    @CustomType.Constructor
-    private ConnectionCloudSpanner(
-        @CustomType.Parameter("database") String database,
-        @CustomType.Parameter("useParallelism") @Nullable Boolean useParallelism) {
-        this.database = database;
-        this.useParallelism = useParallelism;
-    }
-
+    private ConnectionCloudSpanner() {}
     /**
      * @return Cloud Spanner database in the form `project/instance/database&#39;
      * 
@@ -53,30 +46,32 @@ public final class ConnectionCloudSpanner {
     public static Builder builder(ConnectionCloudSpanner defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String database;
         private @Nullable Boolean useParallelism;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectionCloudSpanner defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.database = defaults.database;
     	      this.useParallelism = defaults.useParallelism;
         }
 
+        @CustomType.Setter
         public Builder database(String database) {
             this.database = Objects.requireNonNull(database);
             return this;
         }
+        @CustomType.Setter
         public Builder useParallelism(@Nullable Boolean useParallelism) {
             this.useParallelism = useParallelism;
             return this;
-        }        public ConnectionCloudSpanner build() {
-            return new ConnectionCloudSpanner(database, useParallelism);
+        }
+        public ConnectionCloudSpanner build() {
+            final var o = new ConnectionCloudSpanner();
+            o.database = database;
+            o.useParallelism = useParallelism;
+            return o;
         }
     }
 }

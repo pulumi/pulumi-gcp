@@ -17,34 +17,21 @@ public final class GetTestablePermissionsResult {
      * @return The the support level of this permission for custom roles.
      * 
      */
-    private final @Nullable String customSupportLevel;
-    private final String fullResourceName;
+    private @Nullable String customSupportLevel;
+    private String fullResourceName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of permissions matching the provided input. Structure is defined below.
      * 
      */
-    private final List<GetTestablePermissionsPermission> permissions;
-    private final @Nullable List<String> stages;
+    private List<GetTestablePermissionsPermission> permissions;
+    private @Nullable List<String> stages;
 
-    @CustomType.Constructor
-    private GetTestablePermissionsResult(
-        @CustomType.Parameter("customSupportLevel") @Nullable String customSupportLevel,
-        @CustomType.Parameter("fullResourceName") String fullResourceName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("permissions") List<GetTestablePermissionsPermission> permissions,
-        @CustomType.Parameter("stages") @Nullable List<String> stages) {
-        this.customSupportLevel = customSupportLevel;
-        this.fullResourceName = fullResourceName;
-        this.id = id;
-        this.permissions = permissions;
-        this.stages = stages;
-    }
-
+    private GetTestablePermissionsResult() {}
     /**
      * @return The the support level of this permission for custom roles.
      * 
@@ -80,18 +67,14 @@ public final class GetTestablePermissionsResult {
     public static Builder builder(GetTestablePermissionsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String customSupportLevel;
         private String fullResourceName;
         private String id;
         private List<GetTestablePermissionsPermission> permissions;
         private @Nullable List<String> stages;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTestablePermissionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customSupportLevel = defaults.customSupportLevel;
@@ -101,18 +84,22 @@ public final class GetTestablePermissionsResult {
     	      this.stages = defaults.stages;
         }
 
+        @CustomType.Setter
         public Builder customSupportLevel(@Nullable String customSupportLevel) {
             this.customSupportLevel = customSupportLevel;
             return this;
         }
+        @CustomType.Setter
         public Builder fullResourceName(String fullResourceName) {
             this.fullResourceName = Objects.requireNonNull(fullResourceName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder permissions(List<GetTestablePermissionsPermission> permissions) {
             this.permissions = Objects.requireNonNull(permissions);
             return this;
@@ -120,14 +107,22 @@ public final class GetTestablePermissionsResult {
         public Builder permissions(GetTestablePermissionsPermission... permissions) {
             return permissions(List.of(permissions));
         }
+        @CustomType.Setter
         public Builder stages(@Nullable List<String> stages) {
             this.stages = stages;
             return this;
         }
         public Builder stages(String... stages) {
             return stages(List.of(stages));
-        }        public GetTestablePermissionsResult build() {
-            return new GetTestablePermissionsResult(customSupportLevel, fullResourceName, id, permissions, stages);
+        }
+        public GetTestablePermissionsResult build() {
+            final var o = new GetTestablePermissionsResult();
+            o.customSupportLevel = customSupportLevel;
+            o.fullResourceName = fullResourceName;
+            o.id = id;
+            o.permissions = permissions;
+            o.stages = stages;
+            return o;
         }
     }
 }

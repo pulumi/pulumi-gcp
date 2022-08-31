@@ -9,35 +9,16 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigSubjectConfigSubject {
-    private final String commonName;
-    private final String countryCode;
-    private final String locality;
-    private final String organization;
-    private final String organizationalUnit;
-    private final String postalCode;
-    private final String province;
-    private final String streetAddress;
+    private String commonName;
+    private String countryCode;
+    private String locality;
+    private String organization;
+    private String organizationalUnit;
+    private String postalCode;
+    private String province;
+    private String streetAddress;
 
-    @CustomType.Constructor
-    private GetAuthorityConfigSubjectConfigSubject(
-        @CustomType.Parameter("commonName") String commonName,
-        @CustomType.Parameter("countryCode") String countryCode,
-        @CustomType.Parameter("locality") String locality,
-        @CustomType.Parameter("organization") String organization,
-        @CustomType.Parameter("organizationalUnit") String organizationalUnit,
-        @CustomType.Parameter("postalCode") String postalCode,
-        @CustomType.Parameter("province") String province,
-        @CustomType.Parameter("streetAddress") String streetAddress) {
-        this.commonName = commonName;
-        this.countryCode = countryCode;
-        this.locality = locality;
-        this.organization = organization;
-        this.organizationalUnit = organizationalUnit;
-        this.postalCode = postalCode;
-        this.province = province;
-        this.streetAddress = streetAddress;
-    }
-
+    private GetAuthorityConfigSubjectConfigSubject() {}
     public String commonName() {
         return this.commonName;
     }
@@ -70,7 +51,7 @@ public final class GetAuthorityConfigSubjectConfigSubject {
     public static Builder builder(GetAuthorityConfigSubjectConfigSubject defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String commonName;
         private String countryCode;
@@ -80,11 +61,7 @@ public final class GetAuthorityConfigSubjectConfigSubject {
         private String postalCode;
         private String province;
         private String streetAddress;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthorityConfigSubjectConfigSubject defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.commonName = defaults.commonName;
@@ -97,39 +74,57 @@ public final class GetAuthorityConfigSubjectConfigSubject {
     	      this.streetAddress = defaults.streetAddress;
         }
 
+        @CustomType.Setter
         public Builder commonName(String commonName) {
             this.commonName = Objects.requireNonNull(commonName);
             return this;
         }
+        @CustomType.Setter
         public Builder countryCode(String countryCode) {
             this.countryCode = Objects.requireNonNull(countryCode);
             return this;
         }
+        @CustomType.Setter
         public Builder locality(String locality) {
             this.locality = Objects.requireNonNull(locality);
             return this;
         }
+        @CustomType.Setter
         public Builder organization(String organization) {
             this.organization = Objects.requireNonNull(organization);
             return this;
         }
+        @CustomType.Setter
         public Builder organizationalUnit(String organizationalUnit) {
             this.organizationalUnit = Objects.requireNonNull(organizationalUnit);
             return this;
         }
+        @CustomType.Setter
         public Builder postalCode(String postalCode) {
             this.postalCode = Objects.requireNonNull(postalCode);
             return this;
         }
+        @CustomType.Setter
         public Builder province(String province) {
             this.province = Objects.requireNonNull(province);
             return this;
         }
+        @CustomType.Setter
         public Builder streetAddress(String streetAddress) {
             this.streetAddress = Objects.requireNonNull(streetAddress);
             return this;
-        }        public GetAuthorityConfigSubjectConfigSubject build() {
-            return new GetAuthorityConfigSubjectConfigSubject(commonName, countryCode, locality, organization, organizationalUnit, postalCode, province, streetAddress);
+        }
+        public GetAuthorityConfigSubjectConfigSubject build() {
+            final var o = new GetAuthorityConfigSubjectConfigSubject();
+            o.commonName = commonName;
+            o.countryCode = countryCode;
+            o.locality = locality;
+            o.organization = organization;
+            o.organizationalUnit = organizationalUnit;
+            o.postalCode = postalCode;
+            o.province = province;
+            o.streetAddress = streetAddress;
+            return o;
         }
     }
 }

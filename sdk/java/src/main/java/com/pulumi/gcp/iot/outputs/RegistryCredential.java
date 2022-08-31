@@ -15,13 +15,9 @@ public final class RegistryCredential {
      * @return A public key certificate format and data.
      * 
      */
-    private final Map<String,Object> publicKeyCertificate;
+    private Map<String,Object> publicKeyCertificate;
 
-    @CustomType.Constructor
-    private RegistryCredential(@CustomType.Parameter("publicKeyCertificate") Map<String,Object> publicKeyCertificate) {
-        this.publicKeyCertificate = publicKeyCertificate;
-    }
-
+    private RegistryCredential() {}
     /**
      * @return A public key certificate format and data.
      * 
@@ -37,24 +33,24 @@ public final class RegistryCredential {
     public static Builder builder(RegistryCredential defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,Object> publicKeyCertificate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegistryCredential defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.publicKeyCertificate = defaults.publicKeyCertificate;
         }
 
+        @CustomType.Setter
         public Builder publicKeyCertificate(Map<String,Object> publicKeyCertificate) {
             this.publicKeyCertificate = Objects.requireNonNull(publicKeyCertificate);
             return this;
-        }        public RegistryCredential build() {
-            return new RegistryCredential(publicKeyCertificate);
+        }
+        public RegistryCredential build() {
+            final var o = new RegistryCredential();
+            o.publicKeyCertificate = publicKeyCertificate;
+            return o;
         }
     }
 }

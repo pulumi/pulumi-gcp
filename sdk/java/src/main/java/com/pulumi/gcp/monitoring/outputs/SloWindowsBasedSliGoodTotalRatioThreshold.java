@@ -18,31 +18,22 @@ public final class SloWindowsBasedSliGoodTotalRatioThreshold {
      * Structure is documented below.
      * 
      */
-    private final @Nullable SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance basicSliPerformance;
+    private @Nullable SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance basicSliPerformance;
     /**
      * @return Request-based SLI to evaluate to judge window quality.
      * Structure is documented below.
      * 
      */
-    private final @Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformance performance;
+    private @Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformance performance;
     /**
      * @return A duration string, e.g. 10s.
      * Good service is defined to be the count of requests made to
      * this service that return in no more than threshold.
      * 
      */
-    private final @Nullable Double threshold;
+    private @Nullable Double threshold;
 
-    @CustomType.Constructor
-    private SloWindowsBasedSliGoodTotalRatioThreshold(
-        @CustomType.Parameter("basicSliPerformance") @Nullable SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance basicSliPerformance,
-        @CustomType.Parameter("performance") @Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformance performance,
-        @CustomType.Parameter("threshold") @Nullable Double threshold) {
-        this.basicSliPerformance = basicSliPerformance;
-        this.performance = performance;
-        this.threshold = threshold;
-    }
-
+    private SloWindowsBasedSliGoodTotalRatioThreshold() {}
     /**
      * @return Basic SLI to evaluate to judge window quality.
      * Structure is documented below.
@@ -76,16 +67,12 @@ public final class SloWindowsBasedSliGoodTotalRatioThreshold {
     public static Builder builder(SloWindowsBasedSliGoodTotalRatioThreshold defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance basicSliPerformance;
         private @Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformance performance;
         private @Nullable Double threshold;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SloWindowsBasedSliGoodTotalRatioThreshold defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.basicSliPerformance = defaults.basicSliPerformance;
@@ -93,19 +80,27 @@ public final class SloWindowsBasedSliGoodTotalRatioThreshold {
     	      this.threshold = defaults.threshold;
         }
 
+        @CustomType.Setter
         public Builder basicSliPerformance(@Nullable SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance basicSliPerformance) {
             this.basicSliPerformance = basicSliPerformance;
             return this;
         }
+        @CustomType.Setter
         public Builder performance(@Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformance performance) {
             this.performance = performance;
             return this;
         }
+        @CustomType.Setter
         public Builder threshold(@Nullable Double threshold) {
             this.threshold = threshold;
             return this;
-        }        public SloWindowsBasedSliGoodTotalRatioThreshold build() {
-            return new SloWindowsBasedSliGoodTotalRatioThreshold(basicSliPerformance, performance, threshold);
+        }
+        public SloWindowsBasedSliGoodTotalRatioThreshold build() {
+            final var o = new SloWindowsBasedSliGoodTotalRatioThreshold();
+            o.basicSliPerformance = basicSliPerformance;
+            o.performance = performance;
+            o.threshold = threshold;
+            return o;
         }
     }
 }

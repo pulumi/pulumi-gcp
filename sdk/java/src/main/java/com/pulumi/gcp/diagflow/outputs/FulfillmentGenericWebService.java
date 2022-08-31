@@ -16,35 +16,24 @@ public final class FulfillmentGenericWebService {
      * @return The password for HTTP Basic authentication.
      * 
      */
-    private final @Nullable String password;
+    private @Nullable String password;
     /**
      * @return The HTTP request headers to send together with fulfillment requests.
      * 
      */
-    private final @Nullable Map<String,String> requestHeaders;
+    private @Nullable Map<String,String> requestHeaders;
     /**
      * @return The fulfillment URI for receiving POST requests. It must use https protocol.
      * 
      */
-    private final String uri;
+    private String uri;
     /**
      * @return The user name for HTTP Basic authentication.
      * 
      */
-    private final @Nullable String username;
+    private @Nullable String username;
 
-    @CustomType.Constructor
-    private FulfillmentGenericWebService(
-        @CustomType.Parameter("password") @Nullable String password,
-        @CustomType.Parameter("requestHeaders") @Nullable Map<String,String> requestHeaders,
-        @CustomType.Parameter("uri") String uri,
-        @CustomType.Parameter("username") @Nullable String username) {
-        this.password = password;
-        this.requestHeaders = requestHeaders;
-        this.uri = uri;
-        this.username = username;
-    }
-
+    private FulfillmentGenericWebService() {}
     /**
      * @return The password for HTTP Basic authentication.
      * 
@@ -81,17 +70,13 @@ public final class FulfillmentGenericWebService {
     public static Builder builder(FulfillmentGenericWebService defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String password;
         private @Nullable Map<String,String> requestHeaders;
         private String uri;
         private @Nullable String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FulfillmentGenericWebService defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.password = defaults.password;
@@ -100,23 +85,33 @@ public final class FulfillmentGenericWebService {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
         }
+        @CustomType.Setter
         public Builder requestHeaders(@Nullable Map<String,String> requestHeaders) {
             this.requestHeaders = requestHeaders;
             return this;
         }
+        @CustomType.Setter
         public Builder uri(String uri) {
             this.uri = Objects.requireNonNull(uri);
             return this;
         }
+        @CustomType.Setter
         public Builder username(@Nullable String username) {
             this.username = username;
             return this;
-        }        public FulfillmentGenericWebService build() {
-            return new FulfillmentGenericWebService(password, requestHeaders, uri, username);
+        }
+        public FulfillmentGenericWebService build() {
+            final var o = new FulfillmentGenericWebService();
+            o.password = password;
+            o.requestHeaders = requestHeaders;
+            o.uri = uri;
+            o.username = username;
+            return o;
         }
     }
 }

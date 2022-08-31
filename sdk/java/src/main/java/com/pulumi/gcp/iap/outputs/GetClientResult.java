@@ -9,30 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientResult {
-    private final String brand;
-    private final String clientId;
-    private final String displayName;
+    private String brand;
+    private String clientId;
+    private String displayName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String secret;
+    private String id;
+    private String secret;
 
-    @CustomType.Constructor
-    private GetClientResult(
-        @CustomType.Parameter("brand") String brand,
-        @CustomType.Parameter("clientId") String clientId,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("secret") String secret) {
-        this.brand = brand;
-        this.clientId = clientId;
-        this.displayName = displayName;
-        this.id = id;
-        this.secret = secret;
-    }
-
+    private GetClientResult() {}
     public String brand() {
         return this.brand;
     }
@@ -60,18 +47,14 @@ public final class GetClientResult {
     public static Builder builder(GetClientResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String brand;
         private String clientId;
         private String displayName;
         private String id;
         private String secret;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClientResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.brand = defaults.brand;
@@ -81,27 +64,39 @@ public final class GetClientResult {
     	      this.secret = defaults.secret;
         }
 
+        @CustomType.Setter
         public Builder brand(String brand) {
             this.brand = Objects.requireNonNull(brand);
             return this;
         }
+        @CustomType.Setter
         public Builder clientId(String clientId) {
             this.clientId = Objects.requireNonNull(clientId);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder secret(String secret) {
             this.secret = Objects.requireNonNull(secret);
             return this;
-        }        public GetClientResult build() {
-            return new GetClientResult(brand, clientId, displayName, id, secret);
+        }
+        public GetClientResult build() {
+            final var o = new GetClientResult();
+            o.brand = brand;
+            o.clientId = clientId;
+            o.displayName = displayName;
+            o.id = id;
+            o.secret = secret;
+            return o;
         }
     }
 }

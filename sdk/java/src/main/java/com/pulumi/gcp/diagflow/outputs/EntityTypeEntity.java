@@ -17,7 +17,7 @@ public final class EntityTypeEntity {
      * * This collection must contain exactly one synonym equal to value.
      * 
      */
-    private final List<String> synonyms;
+    private List<String> synonyms;
     /**
      * @return The primary value associated with this entity entry. For example, if the entity type is vegetable, the value
      * could be scallions.
@@ -27,16 +27,9 @@ public final class EntityTypeEntity {
      * * A string that can contain references to other entity types (with or without aliases).
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private EntityTypeEntity(
-        @CustomType.Parameter("synonyms") List<String> synonyms,
-        @CustomType.Parameter("value") String value) {
-        this.synonyms = synonyms;
-        this.value = value;
-    }
-
+    private EntityTypeEntity() {}
     /**
      * @return A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
      * could be green onions.
@@ -67,21 +60,18 @@ public final class EntityTypeEntity {
     public static Builder builder(EntityTypeEntity defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> synonyms;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EntityTypeEntity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.synonyms = defaults.synonyms;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder synonyms(List<String> synonyms) {
             this.synonyms = Objects.requireNonNull(synonyms);
             return this;
@@ -89,11 +79,16 @@ public final class EntityTypeEntity {
         public Builder synonyms(String... synonyms) {
             return synonyms(List.of(synonyms));
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public EntityTypeEntity build() {
-            return new EntityTypeEntity(synonyms, value);
+        }
+        public EntityTypeEntity build() {
+            final var o = new EntityTypeEntity();
+            o.synonyms = synonyms;
+            o.value = value;
+            return o;
         }
     }
 }

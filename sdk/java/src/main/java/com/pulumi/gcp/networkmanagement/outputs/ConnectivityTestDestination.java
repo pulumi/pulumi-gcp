@@ -16,25 +16,25 @@ public final class ConnectivityTestDestination {
      * @return A Compute Engine instance URI.
      * 
      */
-    private final @Nullable String instance;
+    private @Nullable String instance;
     /**
      * @return The IP address of the endpoint, which can be an external or
      * internal IP. An IPv6 address is only allowed when the test&#39;s
      * destination is a global load balancer VIP.
      * 
      */
-    private final @Nullable String ipAddress;
+    private @Nullable String ipAddress;
     /**
      * @return A Compute Engine network URI.
      * 
      */
-    private final @Nullable String network;
+    private @Nullable String network;
     /**
      * @return The IP protocol port of the endpoint. Only applicable when
      * protocol is TCP or UDP.
      * 
      */
-    private final @Nullable Integer port;
+    private @Nullable Integer port;
     /**
      * @return Project ID where the endpoint is located. The Project ID can be
      * derived from the URI if you provide a VM instance or network URI.
@@ -46,22 +46,9 @@ public final class ConnectivityTestDestination {
      *    project.
      * 
      */
-    private final @Nullable String projectId;
+    private @Nullable String projectId;
 
-    @CustomType.Constructor
-    private ConnectivityTestDestination(
-        @CustomType.Parameter("instance") @Nullable String instance,
-        @CustomType.Parameter("ipAddress") @Nullable String ipAddress,
-        @CustomType.Parameter("network") @Nullable String network,
-        @CustomType.Parameter("port") @Nullable Integer port,
-        @CustomType.Parameter("projectId") @Nullable String projectId) {
-        this.instance = instance;
-        this.ipAddress = ipAddress;
-        this.network = network;
-        this.port = port;
-        this.projectId = projectId;
-    }
-
+    private ConnectivityTestDestination() {}
     /**
      * @return A Compute Engine instance URI.
      * 
@@ -115,18 +102,14 @@ public final class ConnectivityTestDestination {
     public static Builder builder(ConnectivityTestDestination defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String instance;
         private @Nullable String ipAddress;
         private @Nullable String network;
         private @Nullable Integer port;
         private @Nullable String projectId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConnectivityTestDestination defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instance = defaults.instance;
@@ -136,27 +119,39 @@ public final class ConnectivityTestDestination {
     	      this.projectId = defaults.projectId;
         }
 
+        @CustomType.Setter
         public Builder instance(@Nullable String instance) {
             this.instance = instance;
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
             this.ipAddress = ipAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder network(@Nullable String network) {
             this.network = network;
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
             this.projectId = projectId;
             return this;
-        }        public ConnectivityTestDestination build() {
-            return new ConnectivityTestDestination(instance, ipAddress, network, port, projectId);
+        }
+        public ConnectivityTestDestination build() {
+            final var o = new ConnectivityTestDestination();
+            o.instance = instance;
+            o.ipAddress = ipAddress;
+            o.network = network;
+            o.port = port;
+            o.projectId = projectId;
+            return o;
         }
     }
 }

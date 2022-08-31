@@ -10,6 +10,7 @@ import com.pulumi.gcp.container.outputs.NodePoolNodeConfigGuestAccelerator;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigGvnic;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigKubeletConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLinuxNodeConfig;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigReservationAffinity;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigSandboxConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigShieldedInstanceConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigTaint;
@@ -25,86 +26,34 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolNodeConfig {
-    private final @Nullable String bootDiskKmsKey;
-    private final @Nullable Integer diskSizeGb;
-    private final @Nullable String diskType;
-    private final @Nullable NodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
-    private final @Nullable NodePoolNodeConfigGcfsConfig gcfsConfig;
-    private final @Nullable List<NodePoolNodeConfigGuestAccelerator> guestAccelerators;
-    private final @Nullable NodePoolNodeConfigGvnic gvnic;
-    private final @Nullable String imageType;
-    private final @Nullable NodePoolNodeConfigKubeletConfig kubeletConfig;
-    private final @Nullable Map<String,String> labels;
-    private final @Nullable NodePoolNodeConfigLinuxNodeConfig linuxNodeConfig;
-    private final @Nullable Integer localSsdCount;
-    private final @Nullable String machineType;
-    private final @Nullable Map<String,String> metadata;
-    private final @Nullable String minCpuPlatform;
-    private final @Nullable String nodeGroup;
-    private final @Nullable List<String> oauthScopes;
-    private final @Nullable Boolean preemptible;
-    private final @Nullable NodePoolNodeConfigSandboxConfig sandboxConfig;
-    private final @Nullable String serviceAccount;
-    private final @Nullable NodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
-    private final @Nullable Boolean spot;
-    private final @Nullable List<String> tags;
-    private final @Nullable List<NodePoolNodeConfigTaint> taints;
-    private final @Nullable NodePoolNodeConfigWorkloadMetadataConfig workloadMetadataConfig;
+    private @Nullable String bootDiskKmsKey;
+    private @Nullable Integer diskSizeGb;
+    private @Nullable String diskType;
+    private @Nullable NodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
+    private @Nullable NodePoolNodeConfigGcfsConfig gcfsConfig;
+    private @Nullable List<NodePoolNodeConfigGuestAccelerator> guestAccelerators;
+    private @Nullable NodePoolNodeConfigGvnic gvnic;
+    private @Nullable String imageType;
+    private @Nullable NodePoolNodeConfigKubeletConfig kubeletConfig;
+    private @Nullable Map<String,String> labels;
+    private @Nullable NodePoolNodeConfigLinuxNodeConfig linuxNodeConfig;
+    private @Nullable Integer localSsdCount;
+    private @Nullable String machineType;
+    private @Nullable Map<String,String> metadata;
+    private @Nullable String minCpuPlatform;
+    private @Nullable String nodeGroup;
+    private @Nullable List<String> oauthScopes;
+    private @Nullable Boolean preemptible;
+    private @Nullable NodePoolNodeConfigReservationAffinity reservationAffinity;
+    private @Nullable NodePoolNodeConfigSandboxConfig sandboxConfig;
+    private @Nullable String serviceAccount;
+    private @Nullable NodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
+    private @Nullable Boolean spot;
+    private @Nullable List<String> tags;
+    private @Nullable List<NodePoolNodeConfigTaint> taints;
+    private @Nullable NodePoolNodeConfigWorkloadMetadataConfig workloadMetadataConfig;
 
-    @CustomType.Constructor
-    private NodePoolNodeConfig(
-        @CustomType.Parameter("bootDiskKmsKey") @Nullable String bootDiskKmsKey,
-        @CustomType.Parameter("diskSizeGb") @Nullable Integer diskSizeGb,
-        @CustomType.Parameter("diskType") @Nullable String diskType,
-        @CustomType.Parameter("ephemeralStorageConfig") @Nullable NodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig,
-        @CustomType.Parameter("gcfsConfig") @Nullable NodePoolNodeConfigGcfsConfig gcfsConfig,
-        @CustomType.Parameter("guestAccelerators") @Nullable List<NodePoolNodeConfigGuestAccelerator> guestAccelerators,
-        @CustomType.Parameter("gvnic") @Nullable NodePoolNodeConfigGvnic gvnic,
-        @CustomType.Parameter("imageType") @Nullable String imageType,
-        @CustomType.Parameter("kubeletConfig") @Nullable NodePoolNodeConfigKubeletConfig kubeletConfig,
-        @CustomType.Parameter("labels") @Nullable Map<String,String> labels,
-        @CustomType.Parameter("linuxNodeConfig") @Nullable NodePoolNodeConfigLinuxNodeConfig linuxNodeConfig,
-        @CustomType.Parameter("localSsdCount") @Nullable Integer localSsdCount,
-        @CustomType.Parameter("machineType") @Nullable String machineType,
-        @CustomType.Parameter("metadata") @Nullable Map<String,String> metadata,
-        @CustomType.Parameter("minCpuPlatform") @Nullable String minCpuPlatform,
-        @CustomType.Parameter("nodeGroup") @Nullable String nodeGroup,
-        @CustomType.Parameter("oauthScopes") @Nullable List<String> oauthScopes,
-        @CustomType.Parameter("preemptible") @Nullable Boolean preemptible,
-        @CustomType.Parameter("sandboxConfig") @Nullable NodePoolNodeConfigSandboxConfig sandboxConfig,
-        @CustomType.Parameter("serviceAccount") @Nullable String serviceAccount,
-        @CustomType.Parameter("shieldedInstanceConfig") @Nullable NodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig,
-        @CustomType.Parameter("spot") @Nullable Boolean spot,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("taints") @Nullable List<NodePoolNodeConfigTaint> taints,
-        @CustomType.Parameter("workloadMetadataConfig") @Nullable NodePoolNodeConfigWorkloadMetadataConfig workloadMetadataConfig) {
-        this.bootDiskKmsKey = bootDiskKmsKey;
-        this.diskSizeGb = diskSizeGb;
-        this.diskType = diskType;
-        this.ephemeralStorageConfig = ephemeralStorageConfig;
-        this.gcfsConfig = gcfsConfig;
-        this.guestAccelerators = guestAccelerators;
-        this.gvnic = gvnic;
-        this.imageType = imageType;
-        this.kubeletConfig = kubeletConfig;
-        this.labels = labels;
-        this.linuxNodeConfig = linuxNodeConfig;
-        this.localSsdCount = localSsdCount;
-        this.machineType = machineType;
-        this.metadata = metadata;
-        this.minCpuPlatform = minCpuPlatform;
-        this.nodeGroup = nodeGroup;
-        this.oauthScopes = oauthScopes;
-        this.preemptible = preemptible;
-        this.sandboxConfig = sandboxConfig;
-        this.serviceAccount = serviceAccount;
-        this.shieldedInstanceConfig = shieldedInstanceConfig;
-        this.spot = spot;
-        this.tags = tags;
-        this.taints = taints;
-        this.workloadMetadataConfig = workloadMetadataConfig;
-    }
-
+    private NodePoolNodeConfig() {}
     public Optional<String> bootDiskKmsKey() {
         return Optional.ofNullable(this.bootDiskKmsKey);
     }
@@ -159,6 +108,9 @@ public final class NodePoolNodeConfig {
     public Optional<Boolean> preemptible() {
         return Optional.ofNullable(this.preemptible);
     }
+    public Optional<NodePoolNodeConfigReservationAffinity> reservationAffinity() {
+        return Optional.ofNullable(this.reservationAffinity);
+    }
     public Optional<NodePoolNodeConfigSandboxConfig> sandboxConfig() {
         return Optional.ofNullable(this.sandboxConfig);
     }
@@ -188,7 +140,7 @@ public final class NodePoolNodeConfig {
     public static Builder builder(NodePoolNodeConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String bootDiskKmsKey;
         private @Nullable Integer diskSizeGb;
@@ -208,6 +160,7 @@ public final class NodePoolNodeConfig {
         private @Nullable String nodeGroup;
         private @Nullable List<String> oauthScopes;
         private @Nullable Boolean preemptible;
+        private @Nullable NodePoolNodeConfigReservationAffinity reservationAffinity;
         private @Nullable NodePoolNodeConfigSandboxConfig sandboxConfig;
         private @Nullable String serviceAccount;
         private @Nullable NodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
@@ -215,11 +168,7 @@ public final class NodePoolNodeConfig {
         private @Nullable List<String> tags;
         private @Nullable List<NodePoolNodeConfigTaint> taints;
         private @Nullable NodePoolNodeConfigWorkloadMetadataConfig workloadMetadataConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NodePoolNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
@@ -240,6 +189,7 @@ public final class NodePoolNodeConfig {
     	      this.nodeGroup = defaults.nodeGroup;
     	      this.oauthScopes = defaults.oauthScopes;
     	      this.preemptible = defaults.preemptible;
+    	      this.reservationAffinity = defaults.reservationAffinity;
     	      this.sandboxConfig = defaults.sandboxConfig;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
@@ -249,26 +199,32 @@ public final class NodePoolNodeConfig {
     	      this.workloadMetadataConfig = defaults.workloadMetadataConfig;
         }
 
+        @CustomType.Setter
         public Builder bootDiskKmsKey(@Nullable String bootDiskKmsKey) {
             this.bootDiskKmsKey = bootDiskKmsKey;
             return this;
         }
+        @CustomType.Setter
         public Builder diskSizeGb(@Nullable Integer diskSizeGb) {
             this.diskSizeGb = diskSizeGb;
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
             this.diskType = diskType;
             return this;
         }
+        @CustomType.Setter
         public Builder ephemeralStorageConfig(@Nullable NodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig) {
             this.ephemeralStorageConfig = ephemeralStorageConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder gcfsConfig(@Nullable NodePoolNodeConfigGcfsConfig gcfsConfig) {
             this.gcfsConfig = gcfsConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder guestAccelerators(@Nullable List<NodePoolNodeConfigGuestAccelerator> guestAccelerators) {
             this.guestAccelerators = guestAccelerators;
             return this;
@@ -276,46 +232,57 @@ public final class NodePoolNodeConfig {
         public Builder guestAccelerators(NodePoolNodeConfigGuestAccelerator... guestAccelerators) {
             return guestAccelerators(List.of(guestAccelerators));
         }
+        @CustomType.Setter
         public Builder gvnic(@Nullable NodePoolNodeConfigGvnic gvnic) {
             this.gvnic = gvnic;
             return this;
         }
+        @CustomType.Setter
         public Builder imageType(@Nullable String imageType) {
             this.imageType = imageType;
             return this;
         }
+        @CustomType.Setter
         public Builder kubeletConfig(@Nullable NodePoolNodeConfigKubeletConfig kubeletConfig) {
             this.kubeletConfig = kubeletConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder linuxNodeConfig(@Nullable NodePoolNodeConfigLinuxNodeConfig linuxNodeConfig) {
             this.linuxNodeConfig = linuxNodeConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder localSsdCount(@Nullable Integer localSsdCount) {
             this.localSsdCount = localSsdCount;
             return this;
         }
+        @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
             this.machineType = machineType;
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(@Nullable Map<String,String> metadata) {
             this.metadata = metadata;
             return this;
         }
+        @CustomType.Setter
         public Builder minCpuPlatform(@Nullable String minCpuPlatform) {
             this.minCpuPlatform = minCpuPlatform;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeGroup(@Nullable String nodeGroup) {
             this.nodeGroup = nodeGroup;
             return this;
         }
+        @CustomType.Setter
         public Builder oauthScopes(@Nullable List<String> oauthScopes) {
             this.oauthScopes = oauthScopes;
             return this;
@@ -323,26 +290,37 @@ public final class NodePoolNodeConfig {
         public Builder oauthScopes(String... oauthScopes) {
             return oauthScopes(List.of(oauthScopes));
         }
+        @CustomType.Setter
         public Builder preemptible(@Nullable Boolean preemptible) {
             this.preemptible = preemptible;
             return this;
         }
+        @CustomType.Setter
+        public Builder reservationAffinity(@Nullable NodePoolNodeConfigReservationAffinity reservationAffinity) {
+            this.reservationAffinity = reservationAffinity;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sandboxConfig(@Nullable NodePoolNodeConfigSandboxConfig sandboxConfig) {
             this.sandboxConfig = sandboxConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
             this.serviceAccount = serviceAccount;
             return this;
         }
+        @CustomType.Setter
         public Builder shieldedInstanceConfig(@Nullable NodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig) {
             this.shieldedInstanceConfig = shieldedInstanceConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder spot(@Nullable Boolean spot) {
             this.spot = spot;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -350,6 +328,7 @@ public final class NodePoolNodeConfig {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder taints(@Nullable List<NodePoolNodeConfigTaint> taints) {
             this.taints = taints;
             return this;
@@ -357,11 +336,40 @@ public final class NodePoolNodeConfig {
         public Builder taints(NodePoolNodeConfigTaint... taints) {
             return taints(List.of(taints));
         }
+        @CustomType.Setter
         public Builder workloadMetadataConfig(@Nullable NodePoolNodeConfigWorkloadMetadataConfig workloadMetadataConfig) {
             this.workloadMetadataConfig = workloadMetadataConfig;
             return this;
-        }        public NodePoolNodeConfig build() {
-            return new NodePoolNodeConfig(bootDiskKmsKey, diskSizeGb, diskType, ephemeralStorageConfig, gcfsConfig, guestAccelerators, gvnic, imageType, kubeletConfig, labels, linuxNodeConfig, localSsdCount, machineType, metadata, minCpuPlatform, nodeGroup, oauthScopes, preemptible, sandboxConfig, serviceAccount, shieldedInstanceConfig, spot, tags, taints, workloadMetadataConfig);
+        }
+        public NodePoolNodeConfig build() {
+            final var o = new NodePoolNodeConfig();
+            o.bootDiskKmsKey = bootDiskKmsKey;
+            o.diskSizeGb = diskSizeGb;
+            o.diskType = diskType;
+            o.ephemeralStorageConfig = ephemeralStorageConfig;
+            o.gcfsConfig = gcfsConfig;
+            o.guestAccelerators = guestAccelerators;
+            o.gvnic = gvnic;
+            o.imageType = imageType;
+            o.kubeletConfig = kubeletConfig;
+            o.labels = labels;
+            o.linuxNodeConfig = linuxNodeConfig;
+            o.localSsdCount = localSsdCount;
+            o.machineType = machineType;
+            o.metadata = metadata;
+            o.minCpuPlatform = minCpuPlatform;
+            o.nodeGroup = nodeGroup;
+            o.oauthScopes = oauthScopes;
+            o.preemptible = preemptible;
+            o.reservationAffinity = reservationAffinity;
+            o.sandboxConfig = sandboxConfig;
+            o.serviceAccount = serviceAccount;
+            o.shieldedInstanceConfig = shieldedInstanceConfig;
+            o.spot = spot;
+            o.tags = tags;
+            o.taints = taints;
+            o.workloadMetadataConfig = workloadMetadataConfig;
+            return o;
         }
     }
 }

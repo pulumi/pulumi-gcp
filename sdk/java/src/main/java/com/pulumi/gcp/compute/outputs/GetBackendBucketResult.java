@@ -14,48 +14,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBackendBucketResult {
-    private final String bucketName;
-    private final List<GetBackendBucketCdnPolicy> cdnPolicies;
-    private final String creationTimestamp;
-    private final List<String> customResponseHeaders;
-    private final String description;
-    private final String edgeSecurityPolicy;
-    private final Boolean enableCdn;
+    private String bucketName;
+    private List<GetBackendBucketCdnPolicy> cdnPolicies;
+    private String creationTimestamp;
+    private List<String> customResponseHeaders;
+    private String description;
+    private String edgeSecurityPolicy;
+    private Boolean enableCdn;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
-    private final @Nullable String project;
-    private final String selfLink;
+    private String id;
+    private String name;
+    private @Nullable String project;
+    private String selfLink;
 
-    @CustomType.Constructor
-    private GetBackendBucketResult(
-        @CustomType.Parameter("bucketName") String bucketName,
-        @CustomType.Parameter("cdnPolicies") List<GetBackendBucketCdnPolicy> cdnPolicies,
-        @CustomType.Parameter("creationTimestamp") String creationTimestamp,
-        @CustomType.Parameter("customResponseHeaders") List<String> customResponseHeaders,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("edgeSecurityPolicy") String edgeSecurityPolicy,
-        @CustomType.Parameter("enableCdn") Boolean enableCdn,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("selfLink") String selfLink) {
-        this.bucketName = bucketName;
-        this.cdnPolicies = cdnPolicies;
-        this.creationTimestamp = creationTimestamp;
-        this.customResponseHeaders = customResponseHeaders;
-        this.description = description;
-        this.edgeSecurityPolicy = edgeSecurityPolicy;
-        this.enableCdn = enableCdn;
-        this.id = id;
-        this.name = name;
-        this.project = project;
-        this.selfLink = selfLink;
-    }
-
+    private GetBackendBucketResult() {}
     public String bucketName() {
         return this.bucketName;
     }
@@ -101,7 +76,7 @@ public final class GetBackendBucketResult {
     public static Builder builder(GetBackendBucketResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bucketName;
         private List<GetBackendBucketCdnPolicy> cdnPolicies;
@@ -114,11 +89,7 @@ public final class GetBackendBucketResult {
         private String name;
         private @Nullable String project;
         private String selfLink;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackendBucketResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
@@ -134,10 +105,12 @@ public final class GetBackendBucketResult {
     	      this.selfLink = defaults.selfLink;
         }
 
+        @CustomType.Setter
         public Builder bucketName(String bucketName) {
             this.bucketName = Objects.requireNonNull(bucketName);
             return this;
         }
+        @CustomType.Setter
         public Builder cdnPolicies(List<GetBackendBucketCdnPolicy> cdnPolicies) {
             this.cdnPolicies = Objects.requireNonNull(cdnPolicies);
             return this;
@@ -145,10 +118,12 @@ public final class GetBackendBucketResult {
         public Builder cdnPolicies(GetBackendBucketCdnPolicy... cdnPolicies) {
             return cdnPolicies(List.of(cdnPolicies));
         }
+        @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
             this.creationTimestamp = Objects.requireNonNull(creationTimestamp);
             return this;
         }
+        @CustomType.Setter
         public Builder customResponseHeaders(List<String> customResponseHeaders) {
             this.customResponseHeaders = Objects.requireNonNull(customResponseHeaders);
             return this;
@@ -156,35 +131,55 @@ public final class GetBackendBucketResult {
         public Builder customResponseHeaders(String... customResponseHeaders) {
             return customResponseHeaders(List.of(customResponseHeaders));
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder edgeSecurityPolicy(String edgeSecurityPolicy) {
             this.edgeSecurityPolicy = Objects.requireNonNull(edgeSecurityPolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder enableCdn(Boolean enableCdn) {
             this.enableCdn = Objects.requireNonNull(enableCdn);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
-        }        public GetBackendBucketResult build() {
-            return new GetBackendBucketResult(bucketName, cdnPolicies, creationTimestamp, customResponseHeaders, description, edgeSecurityPolicy, enableCdn, id, name, project, selfLink);
+        }
+        public GetBackendBucketResult build() {
+            final var o = new GetBackendBucketResult();
+            o.bucketName = bucketName;
+            o.cdnPolicies = cdnPolicies;
+            o.creationTimestamp = creationTimestamp;
+            o.customResponseHeaders = customResponseHeaders;
+            o.description = description;
+            o.edgeSecurityPolicy = edgeSecurityPolicy;
+            o.enableCdn = enableCdn;
+            o.id = id;
+            o.name = name;
+            o.project = project;
+            o.selfLink = selfLink;
+            return o;
         }
     }
 }

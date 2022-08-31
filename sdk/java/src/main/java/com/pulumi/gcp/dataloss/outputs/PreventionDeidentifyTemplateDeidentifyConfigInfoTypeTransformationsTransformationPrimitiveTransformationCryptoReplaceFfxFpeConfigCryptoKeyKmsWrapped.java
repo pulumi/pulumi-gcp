@@ -13,22 +13,15 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
      * @return The resource name of the KMS CryptoKey to use for unwrapping.
      * 
      */
-    private final String cryptoKeyName;
+    private String cryptoKeyName;
     /**
      * @return The wrapped data crypto key.
      * A base64-encoded string.
      * 
      */
-    private final String wrappedKey;
+    private String wrappedKey;
 
-    @CustomType.Constructor
-    private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped(
-        @CustomType.Parameter("cryptoKeyName") String cryptoKeyName,
-        @CustomType.Parameter("wrappedKey") String wrappedKey) {
-        this.cryptoKeyName = cryptoKeyName;
-        this.wrappedKey = wrappedKey;
-    }
-
+    private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped() {}
     /**
      * @return The resource name of the KMS CryptoKey to use for unwrapping.
      * 
@@ -52,30 +45,32 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     public static Builder builder(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cryptoKeyName;
         private String wrappedKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cryptoKeyName = defaults.cryptoKeyName;
     	      this.wrappedKey = defaults.wrappedKey;
         }
 
+        @CustomType.Setter
         public Builder cryptoKeyName(String cryptoKeyName) {
             this.cryptoKeyName = Objects.requireNonNull(cryptoKeyName);
             return this;
         }
+        @CustomType.Setter
         public Builder wrappedKey(String wrappedKey) {
             this.wrappedKey = Objects.requireNonNull(wrappedKey);
             return this;
-        }        public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped build() {
-            return new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped(cryptoKeyName, wrappedKey);
+        }
+        public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped build() {
+            final var o = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped();
+            o.cryptoKeyName = cryptoKeyName;
+            o.wrappedKey = wrappedKey;
+            return o;
         }
     }
 }

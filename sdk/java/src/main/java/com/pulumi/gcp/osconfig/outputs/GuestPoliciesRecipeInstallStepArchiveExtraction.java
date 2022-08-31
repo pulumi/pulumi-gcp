@@ -15,29 +15,20 @@ public final class GuestPoliciesRecipeInstallStepArchiveExtraction {
      * @return The id of the relevant artifact in the recipe.
      * 
      */
-    private final String artifactId;
+    private String artifactId;
     /**
      * @return Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
      * 
      */
-    private final @Nullable String destination;
+    private @Nullable String destination;
     /**
      * @return The type of the archive to extract.
      * Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GuestPoliciesRecipeInstallStepArchiveExtraction(
-        @CustomType.Parameter("artifactId") String artifactId,
-        @CustomType.Parameter("destination") @Nullable String destination,
-        @CustomType.Parameter("type") String type) {
-        this.artifactId = artifactId;
-        this.destination = destination;
-        this.type = type;
-    }
-
+    private GuestPoliciesRecipeInstallStepArchiveExtraction() {}
     /**
      * @return The id of the relevant artifact in the recipe.
      * 
@@ -68,16 +59,12 @@ public final class GuestPoliciesRecipeInstallStepArchiveExtraction {
     public static Builder builder(GuestPoliciesRecipeInstallStepArchiveExtraction defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String artifactId;
         private @Nullable String destination;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesRecipeInstallStepArchiveExtraction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.artifactId = defaults.artifactId;
@@ -85,19 +72,27 @@ public final class GuestPoliciesRecipeInstallStepArchiveExtraction {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder artifactId(String artifactId) {
             this.artifactId = Objects.requireNonNull(artifactId);
             return this;
         }
+        @CustomType.Setter
         public Builder destination(@Nullable String destination) {
             this.destination = destination;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GuestPoliciesRecipeInstallStepArchiveExtraction build() {
-            return new GuestPoliciesRecipeInstallStepArchiveExtraction(artifactId, destination, type);
+        }
+        public GuestPoliciesRecipeInstallStepArchiveExtraction build() {
+            final var o = new GuestPoliciesRecipeInstallStepArchiveExtraction();
+            o.artifactId = artifactId;
+            o.destination = destination;
+            o.type = type;
+            return o;
         }
     }
 }

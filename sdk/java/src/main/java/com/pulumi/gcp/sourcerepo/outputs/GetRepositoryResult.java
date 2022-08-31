@@ -18,29 +18,14 @@ public final class GetRepositoryResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String name;
-    private final @Nullable String project;
-    private final List<GetRepositoryPubsubConfig> pubsubConfigs;
-    private final Integer size;
-    private final String url;
+    private String id;
+    private String name;
+    private @Nullable String project;
+    private List<GetRepositoryPubsubConfig> pubsubConfigs;
+    private Integer size;
+    private String url;
 
-    @CustomType.Constructor
-    private GetRepositoryResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("pubsubConfigs") List<GetRepositoryPubsubConfig> pubsubConfigs,
-        @CustomType.Parameter("size") Integer size,
-        @CustomType.Parameter("url") String url) {
-        this.id = id;
-        this.name = name;
-        this.project = project;
-        this.pubsubConfigs = pubsubConfigs;
-        this.size = size;
-        this.url = url;
-    }
-
+    private GetRepositoryResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -71,7 +56,7 @@ public final class GetRepositoryResult {
     public static Builder builder(GetRepositoryResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String name;
@@ -79,11 +64,7 @@ public final class GetRepositoryResult {
         private List<GetRepositoryPubsubConfig> pubsubConfigs;
         private Integer size;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRepositoryResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -94,18 +75,22 @@ public final class GetRepositoryResult {
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder pubsubConfigs(List<GetRepositoryPubsubConfig> pubsubConfigs) {
             this.pubsubConfigs = Objects.requireNonNull(pubsubConfigs);
             return this;
@@ -113,15 +98,25 @@ public final class GetRepositoryResult {
         public Builder pubsubConfigs(GetRepositoryPubsubConfig... pubsubConfigs) {
             return pubsubConfigs(List.of(pubsubConfigs));
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public GetRepositoryResult build() {
-            return new GetRepositoryResult(id, name, project, pubsubConfigs, size, url);
+        }
+        public GetRepositoryResult build() {
+            final var o = new GetRepositoryResult();
+            o.id = id;
+            o.name = name;
+            o.project = project;
+            o.pubsubConfigs = pubsubConfigs;
+            o.size = size;
+            o.url = url;
+            return o;
         }
     }
 }

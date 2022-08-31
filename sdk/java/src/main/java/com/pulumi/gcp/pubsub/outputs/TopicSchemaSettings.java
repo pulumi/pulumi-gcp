@@ -17,7 +17,7 @@ public final class TopicSchemaSettings {
      * Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
      * 
      */
-    private final @Nullable String encoding;
+    private @Nullable String encoding;
     /**
      * @return The name of the schema that messages published should be
      * validated against. Format is projects/{project}/schemas/{schema}.
@@ -25,16 +25,9 @@ public final class TopicSchemaSettings {
      * if the schema has been deleted.
      * 
      */
-    private final String schema;
+    private String schema;
 
-    @CustomType.Constructor
-    private TopicSchemaSettings(
-        @CustomType.Parameter("encoding") @Nullable String encoding,
-        @CustomType.Parameter("schema") String schema) {
-        this.encoding = encoding;
-        this.schema = schema;
-    }
-
+    private TopicSchemaSettings() {}
     /**
      * @return The encoding of messages validated against schema.
      * Default value is `ENCODING_UNSPECIFIED`.
@@ -62,30 +55,32 @@ public final class TopicSchemaSettings {
     public static Builder builder(TopicSchemaSettings defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String encoding;
         private String schema;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TopicSchemaSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.encoding = defaults.encoding;
     	      this.schema = defaults.schema;
         }
 
+        @CustomType.Setter
         public Builder encoding(@Nullable String encoding) {
             this.encoding = encoding;
             return this;
         }
+        @CustomType.Setter
         public Builder schema(String schema) {
             this.schema = Objects.requireNonNull(schema);
             return this;
-        }        public TopicSchemaSettings build() {
-            return new TopicSchemaSettings(encoding, schema);
+        }
+        public TopicSchemaSettings build() {
+            final var o = new TopicSchemaSettings();
+            o.encoding = encoding;
+            o.schema = schema;
+            return o;
         }
     }
 }

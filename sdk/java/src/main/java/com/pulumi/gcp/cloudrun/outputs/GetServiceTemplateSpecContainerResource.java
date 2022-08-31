@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecContainerResource {
-    private final Map<String,String> limits;
-    private final Map<String,String> requests;
+    private Map<String,String> limits;
+    private Map<String,String> requests;
 
-    @CustomType.Constructor
-    private GetServiceTemplateSpecContainerResource(
-        @CustomType.Parameter("limits") Map<String,String> limits,
-        @CustomType.Parameter("requests") Map<String,String> requests) {
-        this.limits = limits;
-        this.requests = requests;
-    }
-
+    private GetServiceTemplateSpecContainerResource() {}
     public Map<String,String> limits() {
         return this.limits;
     }
@@ -35,30 +28,32 @@ public final class GetServiceTemplateSpecContainerResource {
     public static Builder builder(GetServiceTemplateSpecContainerResource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> limits;
         private Map<String,String> requests;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceTemplateSpecContainerResource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.limits = defaults.limits;
     	      this.requests = defaults.requests;
         }
 
+        @CustomType.Setter
         public Builder limits(Map<String,String> limits) {
             this.limits = Objects.requireNonNull(limits);
             return this;
         }
+        @CustomType.Setter
         public Builder requests(Map<String,String> requests) {
             this.requests = Objects.requireNonNull(requests);
             return this;
-        }        public GetServiceTemplateSpecContainerResource build() {
-            return new GetServiceTemplateSpecContainerResource(limits, requests);
+        }
+        public GetServiceTemplateSpecContainerResource build() {
+            final var o = new GetServiceTemplateSpecContainerResource();
+            o.limits = limits;
+            o.requests = requests;
+            return o;
         }
     }
 }

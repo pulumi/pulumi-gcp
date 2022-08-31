@@ -14,13 +14,9 @@ public final class ClusterAddonsConfigHttpLoadBalancing {
      * cluster. It is disabled by default. Set `disabled = false` to enable.
      * 
      */
-    private final Boolean disabled;
+    private Boolean disabled;
 
-    @CustomType.Constructor
-    private ClusterAddonsConfigHttpLoadBalancing(@CustomType.Parameter("disabled") Boolean disabled) {
-        this.disabled = disabled;
-    }
-
+    private ClusterAddonsConfigHttpLoadBalancing() {}
     /**
      * @return The status of the Istio addon, which makes it easy to set up Istio for services in a
      * cluster. It is disabled by default. Set `disabled = false` to enable.
@@ -37,24 +33,24 @@ public final class ClusterAddonsConfigHttpLoadBalancing {
     public static Builder builder(ClusterAddonsConfigHttpLoadBalancing defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean disabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterAddonsConfigHttpLoadBalancing defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disabled = defaults.disabled;
         }
 
+        @CustomType.Setter
         public Builder disabled(Boolean disabled) {
             this.disabled = Objects.requireNonNull(disabled);
             return this;
-        }        public ClusterAddonsConfigHttpLoadBalancing build() {
-            return new ClusterAddonsConfigHttpLoadBalancing(disabled);
+        }
+        public ClusterAddonsConfigHttpLoadBalancing build() {
+            final var o = new ClusterAddonsConfigHttpLoadBalancing();
+            o.disabled = disabled;
+            return o;
         }
     }
 }

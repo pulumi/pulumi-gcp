@@ -193,7 +193,7 @@ type Topic struct {
 	// For instance, it allows any attached subscription to seek to a timestamp
 	// that is up to messageRetentionDuration in the past. If this field is not
 	// set, message retention is controlled by settings on individual subscriptions.
-	// Cannot be more than 7 days or less than 10 minutes.
+	// Cannot be more than 31 days or less than 10 minutes.
 	MessageRetentionDuration pulumi.StringPtrOutput `pulumi:"messageRetentionDuration"`
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
@@ -253,7 +253,7 @@ type topicState struct {
 	// For instance, it allows any attached subscription to seek to a timestamp
 	// that is up to messageRetentionDuration in the past. If this field is not
 	// set, message retention is controlled by settings on individual subscriptions.
-	// Cannot be more than 7 days or less than 10 minutes.
+	// Cannot be more than 31 days or less than 10 minutes.
 	MessageRetentionDuration *string `pulumi:"messageRetentionDuration"`
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
@@ -285,7 +285,7 @@ type TopicState struct {
 	// For instance, it allows any attached subscription to seek to a timestamp
 	// that is up to messageRetentionDuration in the past. If this field is not
 	// set, message retention is controlled by settings on individual subscriptions.
-	// Cannot be more than 7 days or less than 10 minutes.
+	// Cannot be more than 31 days or less than 10 minutes.
 	MessageRetentionDuration pulumi.StringPtrInput
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
@@ -321,7 +321,7 @@ type topicArgs struct {
 	// For instance, it allows any attached subscription to seek to a timestamp
 	// that is up to messageRetentionDuration in the past. If this field is not
 	// set, message retention is controlled by settings on individual subscriptions.
-	// Cannot be more than 7 days or less than 10 minutes.
+	// Cannot be more than 31 days or less than 10 minutes.
 	MessageRetentionDuration *string `pulumi:"messageRetentionDuration"`
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
@@ -354,7 +354,7 @@ type TopicArgs struct {
 	// For instance, it allows any attached subscription to seek to a timestamp
 	// that is up to messageRetentionDuration in the past. If this field is not
 	// set, message retention is controlled by settings on individual subscriptions.
-	// Cannot be more than 7 days or less than 10 minutes.
+	// Cannot be more than 31 days or less than 10 minutes.
 	MessageRetentionDuration pulumi.StringPtrInput
 	// Policy constraining the set of Google Cloud Platform regions where
 	// messages published to the topic may be stored. If not present, then no
@@ -478,7 +478,7 @@ func (o TopicOutput) Labels() pulumi.StringMapOutput {
 // For instance, it allows any attached subscription to seek to a timestamp
 // that is up to messageRetentionDuration in the past. If this field is not
 // set, message retention is controlled by settings on individual subscriptions.
-// Cannot be more than 7 days or less than 10 minutes.
+// Cannot be more than 31 days or less than 10 minutes.
 func (o TopicOutput) MessageRetentionDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringPtrOutput { return v.MessageRetentionDuration }).(pulumi.StringPtrOutput)
 }

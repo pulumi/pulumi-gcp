@@ -11,17 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigSubjectConfig {
-    private final List<GetAuthorityConfigSubjectConfigSubjectAltName> subjectAltNames;
-    private final List<GetAuthorityConfigSubjectConfigSubject> subjects;
+    private List<GetAuthorityConfigSubjectConfigSubjectAltName> subjectAltNames;
+    private List<GetAuthorityConfigSubjectConfigSubject> subjects;
 
-    @CustomType.Constructor
-    private GetAuthorityConfigSubjectConfig(
-        @CustomType.Parameter("subjectAltNames") List<GetAuthorityConfigSubjectConfigSubjectAltName> subjectAltNames,
-        @CustomType.Parameter("subjects") List<GetAuthorityConfigSubjectConfigSubject> subjects) {
-        this.subjectAltNames = subjectAltNames;
-        this.subjects = subjects;
-    }
-
+    private GetAuthorityConfigSubjectConfig() {}
     public List<GetAuthorityConfigSubjectConfigSubjectAltName> subjectAltNames() {
         return this.subjectAltNames;
     }
@@ -36,21 +29,18 @@ public final class GetAuthorityConfigSubjectConfig {
     public static Builder builder(GetAuthorityConfigSubjectConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetAuthorityConfigSubjectConfigSubjectAltName> subjectAltNames;
         private List<GetAuthorityConfigSubjectConfigSubject> subjects;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthorityConfigSubjectConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.subjectAltNames = defaults.subjectAltNames;
     	      this.subjects = defaults.subjects;
         }
 
+        @CustomType.Setter
         public Builder subjectAltNames(List<GetAuthorityConfigSubjectConfigSubjectAltName> subjectAltNames) {
             this.subjectAltNames = Objects.requireNonNull(subjectAltNames);
             return this;
@@ -58,14 +48,19 @@ public final class GetAuthorityConfigSubjectConfig {
         public Builder subjectAltNames(GetAuthorityConfigSubjectConfigSubjectAltName... subjectAltNames) {
             return subjectAltNames(List.of(subjectAltNames));
         }
+        @CustomType.Setter
         public Builder subjects(List<GetAuthorityConfigSubjectConfigSubject> subjects) {
             this.subjects = Objects.requireNonNull(subjects);
             return this;
         }
         public Builder subjects(GetAuthorityConfigSubjectConfigSubject... subjects) {
             return subjects(List.of(subjects));
-        }        public GetAuthorityConfigSubjectConfig build() {
-            return new GetAuthorityConfigSubjectConfig(subjectAltNames, subjects);
+        }
+        public GetAuthorityConfigSubjectConfig build() {
+            final var o = new GetAuthorityConfigSubjectConfig();
+            o.subjectAltNames = subjectAltNames;
+            o.subjects = subjects;
+            return o;
         }
     }
 }

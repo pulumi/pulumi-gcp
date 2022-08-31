@@ -19,42 +19,29 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResource {
      * @return Exec resource
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExec exec;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExec exec;
     /**
      * @return A remote or local source.
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFile file;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFile file;
     /**
      * @return Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Package resource
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkg pkg;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkg pkg;
     /**
      * @return Package repository resource
      * 
      */
-    private final @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepository repository;
+    private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepository repository;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentOsPolicyResourceGroupResource(
-        @CustomType.Parameter("exec") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExec exec,
-        @CustomType.Parameter("file") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFile file,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("pkg") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkg pkg,
-        @CustomType.Parameter("repository") @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepository repository) {
-        this.exec = exec;
-        this.file = file;
-        this.id = id;
-        this.pkg = pkg;
-        this.repository = repository;
-    }
-
+    private OsPolicyAssignmentOsPolicyResourceGroupResource() {}
     /**
      * @return Exec resource
      * 
@@ -98,18 +85,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResource {
     public static Builder builder(OsPolicyAssignmentOsPolicyResourceGroupResource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExec exec;
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFile file;
         private String id;
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkg pkg;
         private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepository repository;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentOsPolicyResourceGroupResource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.exec = defaults.exec;
@@ -119,27 +102,39 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResource {
     	      this.repository = defaults.repository;
         }
 
+        @CustomType.Setter
         public Builder exec(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExec exec) {
             this.exec = exec;
             return this;
         }
+        @CustomType.Setter
         public Builder file(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFile file) {
             this.file = file;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder pkg(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkg pkg) {
             this.pkg = pkg;
             return this;
         }
+        @CustomType.Setter
         public Builder repository(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepository repository) {
             this.repository = repository;
             return this;
-        }        public OsPolicyAssignmentOsPolicyResourceGroupResource build() {
-            return new OsPolicyAssignmentOsPolicyResourceGroupResource(exec, file, id, pkg, repository);
+        }
+        public OsPolicyAssignmentOsPolicyResourceGroupResource build() {
+            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResource();
+            o.exec = exec;
+            o.file = file;
+            o.id = id;
+            o.pkg = pkg;
+            o.repository = repository;
+            return o;
         }
     }
 }

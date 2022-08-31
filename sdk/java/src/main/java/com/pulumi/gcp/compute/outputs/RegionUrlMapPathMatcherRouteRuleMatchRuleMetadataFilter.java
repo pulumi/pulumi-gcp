@@ -18,7 +18,7 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter {
      * Structure is documented below.
      * 
      */
-    private final List<RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel> filterLabels;
+    private List<RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel> filterLabels;
     /**
      * @return Specifies how individual filterLabel matches within the list of filterLabels
      * contribute towards the overall metadataFilter match. Supported values are:
@@ -29,16 +29,9 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter {
      *   Possible values are `MATCH_ALL` and `MATCH_ANY`.
      * 
      */
-    private final String filterMatchCriteria;
+    private String filterMatchCriteria;
 
-    @CustomType.Constructor
-    private RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter(
-        @CustomType.Parameter("filterLabels") List<RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel> filterLabels,
-        @CustomType.Parameter("filterMatchCriteria") String filterMatchCriteria) {
-        this.filterLabels = filterLabels;
-        this.filterMatchCriteria = filterMatchCriteria;
-    }
-
+    private RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter() {}
     /**
      * @return The list of label value pairs that must match labels in the provided metadata
      * based on filterMatchCriteria  This list must not be empty and can have at the
@@ -70,21 +63,18 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter {
     public static Builder builder(RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel> filterLabels;
         private String filterMatchCriteria;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filterLabels = defaults.filterLabels;
     	      this.filterMatchCriteria = defaults.filterMatchCriteria;
         }
 
+        @CustomType.Setter
         public Builder filterLabels(List<RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel> filterLabels) {
             this.filterLabels = Objects.requireNonNull(filterLabels);
             return this;
@@ -92,11 +82,16 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter {
         public Builder filterLabels(RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel... filterLabels) {
             return filterLabels(List.of(filterLabels));
         }
+        @CustomType.Setter
         public Builder filterMatchCriteria(String filterMatchCriteria) {
             this.filterMatchCriteria = Objects.requireNonNull(filterMatchCriteria);
             return this;
-        }        public RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter build() {
-            return new RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter(filterLabels, filterMatchCriteria);
+        }
+        public RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter build() {
+            final var o = new RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter();
+            o.filterLabels = filterLabels;
+            o.filterMatchCriteria = filterMatchCriteria;
+            return o;
         }
     }
 }

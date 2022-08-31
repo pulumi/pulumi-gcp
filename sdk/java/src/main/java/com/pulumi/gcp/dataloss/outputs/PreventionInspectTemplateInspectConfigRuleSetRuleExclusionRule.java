@@ -19,38 +19,27 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
      * Structure is documented below.
      * 
      */
-    private final @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary dictionary;
+    private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary dictionary;
     /**
      * @return Set of infoTypes for which findings would affect this rule.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes excludeInfoTypes;
+    private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes excludeInfoTypes;
     /**
      * @return How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
      * Possible values are `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, and `MATCHING_TYPE_INVERSE_MATCH`.
      * 
      */
-    private final String matchingType;
+    private String matchingType;
     /**
      * @return Regular expression which defines the rule.
      * Structure is documented below.
      * 
      */
-    private final @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex regex;
+    private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex regex;
 
-    @CustomType.Constructor
-    private PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule(
-        @CustomType.Parameter("dictionary") @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary dictionary,
-        @CustomType.Parameter("excludeInfoTypes") @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes excludeInfoTypes,
-        @CustomType.Parameter("matchingType") String matchingType,
-        @CustomType.Parameter("regex") @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex regex) {
-        this.dictionary = dictionary;
-        this.excludeInfoTypes = excludeInfoTypes;
-        this.matchingType = matchingType;
-        this.regex = regex;
-    }
-
+    private PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule() {}
     /**
      * @return Dictionary which defines the rule.
      * Structure is documented below.
@@ -91,17 +80,13 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
     public static Builder builder(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary dictionary;
         private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes excludeInfoTypes;
         private String matchingType;
         private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex regex;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dictionary = defaults.dictionary;
@@ -110,23 +95,33 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
     	      this.regex = defaults.regex;
         }
 
+        @CustomType.Setter
         public Builder dictionary(@Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary dictionary) {
             this.dictionary = dictionary;
             return this;
         }
+        @CustomType.Setter
         public Builder excludeInfoTypes(@Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes excludeInfoTypes) {
             this.excludeInfoTypes = excludeInfoTypes;
             return this;
         }
+        @CustomType.Setter
         public Builder matchingType(String matchingType) {
             this.matchingType = Objects.requireNonNull(matchingType);
             return this;
         }
+        @CustomType.Setter
         public Builder regex(@Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex regex) {
             this.regex = regex;
             return this;
-        }        public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule build() {
-            return new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule(dictionary, excludeInfoTypes, matchingType, regex);
+        }
+        public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule build() {
+            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule();
+            o.dictionary = dictionary;
+            o.excludeInfoTypes = excludeInfoTypes;
+            o.matchingType = matchingType;
+            o.regex = regex;
+            return o;
         }
     }
 }

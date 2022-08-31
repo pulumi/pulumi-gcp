@@ -13,29 +13,20 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTab
      * @return Dataset ID of the table.
      * 
      */
-    private final String datasetId;
+    private String datasetId;
     /**
      * @return The Google Cloud Platform project ID of the project containing the table.
      * 
      */
-    private final String projectId;
+    private String projectId;
     /**
      * @return Name of the table. If is not set a new one will be generated for you with the following format:
      * `dlp_googleapis_yyyy_mm_dd_[dlp_job_id]`. Pacific timezone will be used for generating the date details.
      * 
      */
-    private final String tableId;
+    private String tableId;
 
-    @CustomType.Constructor
-    private PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference(
-        @CustomType.Parameter("datasetId") String datasetId,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("tableId") String tableId) {
-        this.datasetId = datasetId;
-        this.projectId = projectId;
-        this.tableId = tableId;
-    }
-
+    private PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference() {}
     /**
      * @return Dataset ID of the table.
      * 
@@ -66,16 +57,12 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTab
     public static Builder builder(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String datasetId;
         private String projectId;
         private String tableId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datasetId = defaults.datasetId;
@@ -83,19 +70,27 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTab
     	      this.tableId = defaults.tableId;
         }
 
+        @CustomType.Setter
         public Builder datasetId(String datasetId) {
             this.datasetId = Objects.requireNonNull(datasetId);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder tableId(String tableId) {
             this.tableId = Objects.requireNonNull(tableId);
             return this;
-        }        public PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference build() {
-            return new PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference(datasetId, projectId, tableId);
+        }
+        public PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference build() {
+            final var o = new PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference();
+            o.datasetId = datasetId;
+            o.projectId = projectId;
+            o.tableId = tableId;
+            return o;
         }
     }
 }

@@ -14,21 +14,14 @@ public final class GetImageVersionsImageVersion {
      * @return The string identifier of the image version, in the form: &#34;composer-x.y.z-airflow-a.b.c&#34;
      * 
      */
-    private final String imageVersionId;
+    private String imageVersionId;
     /**
      * @return Supported python versions for this image version
      * 
      */
-    private final List<String> supportedPythonVersions;
+    private List<String> supportedPythonVersions;
 
-    @CustomType.Constructor
-    private GetImageVersionsImageVersion(
-        @CustomType.Parameter("imageVersionId") String imageVersionId,
-        @CustomType.Parameter("supportedPythonVersions") List<String> supportedPythonVersions) {
-        this.imageVersionId = imageVersionId;
-        this.supportedPythonVersions = supportedPythonVersions;
-    }
-
+    private GetImageVersionsImageVersion() {}
     /**
      * @return The string identifier of the image version, in the form: &#34;composer-x.y.z-airflow-a.b.c&#34;
      * 
@@ -51,33 +44,35 @@ public final class GetImageVersionsImageVersion {
     public static Builder builder(GetImageVersionsImageVersion defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String imageVersionId;
         private List<String> supportedPythonVersions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetImageVersionsImageVersion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.imageVersionId = defaults.imageVersionId;
     	      this.supportedPythonVersions = defaults.supportedPythonVersions;
         }
 
+        @CustomType.Setter
         public Builder imageVersionId(String imageVersionId) {
             this.imageVersionId = Objects.requireNonNull(imageVersionId);
             return this;
         }
+        @CustomType.Setter
         public Builder supportedPythonVersions(List<String> supportedPythonVersions) {
             this.supportedPythonVersions = Objects.requireNonNull(supportedPythonVersions);
             return this;
         }
         public Builder supportedPythonVersions(String... supportedPythonVersions) {
             return supportedPythonVersions(List.of(supportedPythonVersions));
-        }        public GetImageVersionsImageVersion build() {
-            return new GetImageVersionsImageVersion(imageVersionId, supportedPythonVersions);
+        }
+        public GetImageVersionsImageVersion build() {
+            final var o = new GetImageVersionsImageVersion();
+            o.imageVersionId = imageVersionId;
+            o.supportedPythonVersions = supportedPythonVersions;
+            return o;
         }
     }
 }

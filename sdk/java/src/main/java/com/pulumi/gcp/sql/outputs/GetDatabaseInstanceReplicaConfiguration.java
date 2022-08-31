@@ -11,44 +11,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceReplicaConfiguration {
-    private final String caCertificate;
-    private final String clientCertificate;
-    private final String clientKey;
-    private final Integer connectRetryInterval;
-    private final String dumpFilePath;
-    private final Boolean failoverTarget;
-    private final Integer masterHeartbeatPeriod;
-    private final String password;
-    private final String sslCipher;
-    private final String username;
-    private final Boolean verifyServerCertificate;
+    private String caCertificate;
+    private String clientCertificate;
+    private String clientKey;
+    private Integer connectRetryInterval;
+    private String dumpFilePath;
+    private Boolean failoverTarget;
+    private Integer masterHeartbeatPeriod;
+    private String password;
+    private String sslCipher;
+    private String username;
+    private Boolean verifyServerCertificate;
 
-    @CustomType.Constructor
-    private GetDatabaseInstanceReplicaConfiguration(
-        @CustomType.Parameter("caCertificate") String caCertificate,
-        @CustomType.Parameter("clientCertificate") String clientCertificate,
-        @CustomType.Parameter("clientKey") String clientKey,
-        @CustomType.Parameter("connectRetryInterval") Integer connectRetryInterval,
-        @CustomType.Parameter("dumpFilePath") String dumpFilePath,
-        @CustomType.Parameter("failoverTarget") Boolean failoverTarget,
-        @CustomType.Parameter("masterHeartbeatPeriod") Integer masterHeartbeatPeriod,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("sslCipher") String sslCipher,
-        @CustomType.Parameter("username") String username,
-        @CustomType.Parameter("verifyServerCertificate") Boolean verifyServerCertificate) {
-        this.caCertificate = caCertificate;
-        this.clientCertificate = clientCertificate;
-        this.clientKey = clientKey;
-        this.connectRetryInterval = connectRetryInterval;
-        this.dumpFilePath = dumpFilePath;
-        this.failoverTarget = failoverTarget;
-        this.masterHeartbeatPeriod = masterHeartbeatPeriod;
-        this.password = password;
-        this.sslCipher = sslCipher;
-        this.username = username;
-        this.verifyServerCertificate = verifyServerCertificate;
-    }
-
+    private GetDatabaseInstanceReplicaConfiguration() {}
     public String caCertificate() {
         return this.caCertificate;
     }
@@ -90,7 +65,7 @@ public final class GetDatabaseInstanceReplicaConfiguration {
     public static Builder builder(GetDatabaseInstanceReplicaConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String caCertificate;
         private String clientCertificate;
@@ -103,11 +78,7 @@ public final class GetDatabaseInstanceReplicaConfiguration {
         private String sslCipher;
         private String username;
         private Boolean verifyServerCertificate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDatabaseInstanceReplicaConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.caCertificate = defaults.caCertificate;
@@ -123,51 +94,75 @@ public final class GetDatabaseInstanceReplicaConfiguration {
     	      this.verifyServerCertificate = defaults.verifyServerCertificate;
         }
 
+        @CustomType.Setter
         public Builder caCertificate(String caCertificate) {
             this.caCertificate = Objects.requireNonNull(caCertificate);
             return this;
         }
+        @CustomType.Setter
         public Builder clientCertificate(String clientCertificate) {
             this.clientCertificate = Objects.requireNonNull(clientCertificate);
             return this;
         }
+        @CustomType.Setter
         public Builder clientKey(String clientKey) {
             this.clientKey = Objects.requireNonNull(clientKey);
             return this;
         }
+        @CustomType.Setter
         public Builder connectRetryInterval(Integer connectRetryInterval) {
             this.connectRetryInterval = Objects.requireNonNull(connectRetryInterval);
             return this;
         }
+        @CustomType.Setter
         public Builder dumpFilePath(String dumpFilePath) {
             this.dumpFilePath = Objects.requireNonNull(dumpFilePath);
             return this;
         }
+        @CustomType.Setter
         public Builder failoverTarget(Boolean failoverTarget) {
             this.failoverTarget = Objects.requireNonNull(failoverTarget);
             return this;
         }
+        @CustomType.Setter
         public Builder masterHeartbeatPeriod(Integer masterHeartbeatPeriod) {
             this.masterHeartbeatPeriod = Objects.requireNonNull(masterHeartbeatPeriod);
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder sslCipher(String sslCipher) {
             this.sslCipher = Objects.requireNonNull(sslCipher);
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
         }
+        @CustomType.Setter
         public Builder verifyServerCertificate(Boolean verifyServerCertificate) {
             this.verifyServerCertificate = Objects.requireNonNull(verifyServerCertificate);
             return this;
-        }        public GetDatabaseInstanceReplicaConfiguration build() {
-            return new GetDatabaseInstanceReplicaConfiguration(caCertificate, clientCertificate, clientKey, connectRetryInterval, dumpFilePath, failoverTarget, masterHeartbeatPeriod, password, sslCipher, username, verifyServerCertificate);
+        }
+        public GetDatabaseInstanceReplicaConfiguration build() {
+            final var o = new GetDatabaseInstanceReplicaConfiguration();
+            o.caCertificate = caCertificate;
+            o.clientCertificate = clientCertificate;
+            o.clientKey = clientKey;
+            o.connectRetryInterval = connectRetryInterval;
+            o.dumpFilePath = dumpFilePath;
+            o.failoverTarget = failoverTarget;
+            o.masterHeartbeatPeriod = masterHeartbeatPeriod;
+            o.password = password;
+            o.sslCipher = sslCipher;
+            o.username = username;
+            o.verifyServerCertificate = verifyServerCertificate;
+            return o;
         }
     }
 }

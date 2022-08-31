@@ -17,21 +17,14 @@ public final class StandardAppVersionBasicScaling {
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;. Defaults to 900s.
      * 
      */
-    private final @Nullable String idleTimeout;
+    private @Nullable String idleTimeout;
     /**
      * @return Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
      * 
      */
-    private final Integer maxInstances;
+    private Integer maxInstances;
 
-    @CustomType.Constructor
-    private StandardAppVersionBasicScaling(
-        @CustomType.Parameter("idleTimeout") @Nullable String idleTimeout,
-        @CustomType.Parameter("maxInstances") Integer maxInstances) {
-        this.idleTimeout = idleTimeout;
-        this.maxInstances = maxInstances;
-    }
-
+    private StandardAppVersionBasicScaling() {}
     /**
      * @return Duration of time after the last request that an instance must wait before the instance is shut down.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;. Defaults to 900s.
@@ -55,30 +48,32 @@ public final class StandardAppVersionBasicScaling {
     public static Builder builder(StandardAppVersionBasicScaling defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String idleTimeout;
         private Integer maxInstances;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StandardAppVersionBasicScaling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.idleTimeout = defaults.idleTimeout;
     	      this.maxInstances = defaults.maxInstances;
         }
 
+        @CustomType.Setter
         public Builder idleTimeout(@Nullable String idleTimeout) {
             this.idleTimeout = idleTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder maxInstances(Integer maxInstances) {
             this.maxInstances = Objects.requireNonNull(maxInstances);
             return this;
-        }        public StandardAppVersionBasicScaling build() {
-            return new StandardAppVersionBasicScaling(idleTimeout, maxInstances);
+        }
+        public StandardAppVersionBasicScaling build() {
+            final var o = new StandardAppVersionBasicScaling();
+            o.idleTimeout = idleTimeout;
+            o.maxInstances = maxInstances;
+            return o;
         }
     }
 }

@@ -20,21 +20,14 @@ public final class GCPolicyMaxAge {
      * 
      */
     @Deprecated /* Deprecated in favor of duration */
-    private final @Nullable Integer days;
+    private @Nullable Integer days;
     /**
      * @return Duration before applying GC policy (ex. &#34;8h&#34;). This is required when `days` isn&#39;t set
      * 
      */
-    private final @Nullable String duration;
+    private @Nullable String duration;
 
-    @CustomType.Constructor
-    private GCPolicyMaxAge(
-        @CustomType.Parameter("days") @Nullable Integer days,
-        @CustomType.Parameter("duration") @Nullable String duration) {
-        this.days = days;
-        this.duration = duration;
-    }
-
+    private GCPolicyMaxAge() {}
     /**
      * @return Number of days before applying GC policy.
      * 
@@ -61,30 +54,32 @@ public final class GCPolicyMaxAge {
     public static Builder builder(GCPolicyMaxAge defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer days;
         private @Nullable String duration;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GCPolicyMaxAge defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.days = defaults.days;
     	      this.duration = defaults.duration;
         }
 
+        @CustomType.Setter
         public Builder days(@Nullable Integer days) {
             this.days = days;
             return this;
         }
+        @CustomType.Setter
         public Builder duration(@Nullable String duration) {
             this.duration = duration;
             return this;
-        }        public GCPolicyMaxAge build() {
-            return new GCPolicyMaxAge(days, duration);
+        }
+        public GCPolicyMaxAge build() {
+            final var o = new GCPolicyMaxAge();
+            o.days = days;
+            o.duration = duration;
+            return o;
         }
     }
 }

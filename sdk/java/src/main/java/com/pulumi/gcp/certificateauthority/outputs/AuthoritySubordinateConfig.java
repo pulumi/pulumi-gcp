@@ -19,23 +19,16 @@ public final class AuthoritySubordinateConfig {
      * `projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*`.
      * 
      */
-    private final @Nullable String certificateAuthority;
+    private @Nullable String certificateAuthority;
     /**
      * @return Contains the PEM certificate chain for the issuers of this CertificateAuthority,
      * but not pem certificate for this CA itself.
      * Structure is documented below.
      * 
      */
-    private final @Nullable AuthoritySubordinateConfigPemIssuerChain pemIssuerChain;
+    private @Nullable AuthoritySubordinateConfigPemIssuerChain pemIssuerChain;
 
-    @CustomType.Constructor
-    private AuthoritySubordinateConfig(
-        @CustomType.Parameter("certificateAuthority") @Nullable String certificateAuthority,
-        @CustomType.Parameter("pemIssuerChain") @Nullable AuthoritySubordinateConfigPemIssuerChain pemIssuerChain) {
-        this.certificateAuthority = certificateAuthority;
-        this.pemIssuerChain = pemIssuerChain;
-    }
-
+    private AuthoritySubordinateConfig() {}
     /**
      * @return This can refer to a CertificateAuthority that was used to create a
      * subordinate CertificateAuthority. This field is used for information
@@ -63,30 +56,32 @@ public final class AuthoritySubordinateConfig {
     public static Builder builder(AuthoritySubordinateConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String certificateAuthority;
         private @Nullable AuthoritySubordinateConfigPemIssuerChain pemIssuerChain;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AuthoritySubordinateConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificateAuthority = defaults.certificateAuthority;
     	      this.pemIssuerChain = defaults.pemIssuerChain;
         }
 
+        @CustomType.Setter
         public Builder certificateAuthority(@Nullable String certificateAuthority) {
             this.certificateAuthority = certificateAuthority;
             return this;
         }
+        @CustomType.Setter
         public Builder pemIssuerChain(@Nullable AuthoritySubordinateConfigPemIssuerChain pemIssuerChain) {
             this.pemIssuerChain = pemIssuerChain;
             return this;
-        }        public AuthoritySubordinateConfig build() {
-            return new AuthoritySubordinateConfig(certificateAuthority, pemIssuerChain);
+        }
+        public AuthoritySubordinateConfig build() {
+            final var o = new AuthoritySubordinateConfig();
+            o.certificateAuthority = certificateAuthority;
+            o.pemIssuerChain = pemIssuerChain;
+            return o;
         }
     }
 }

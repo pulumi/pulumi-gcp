@@ -15,13 +15,9 @@ public final class DatasetDefaultEncryptionConfiguration {
      * access to this encryption key.
      * 
      */
-    private final String kmsKeyName;
+    private String kmsKeyName;
 
-    @CustomType.Constructor
-    private DatasetDefaultEncryptionConfiguration(@CustomType.Parameter("kmsKeyName") String kmsKeyName) {
-        this.kmsKeyName = kmsKeyName;
-    }
-
+    private DatasetDefaultEncryptionConfiguration() {}
     /**
      * @return Describes the Cloud KMS encryption key that will be used to protect destination
      * BigQuery table. The BigQuery Service Account associated with your project requires
@@ -39,24 +35,24 @@ public final class DatasetDefaultEncryptionConfiguration {
     public static Builder builder(DatasetDefaultEncryptionConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String kmsKeyName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatasetDefaultEncryptionConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeyName = defaults.kmsKeyName;
         }
 
+        @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
             this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
             return this;
-        }        public DatasetDefaultEncryptionConfiguration build() {
-            return new DatasetDefaultEncryptionConfiguration(kmsKeyName);
+        }
+        public DatasetDefaultEncryptionConfiguration build() {
+            final var o = new DatasetDefaultEncryptionConfiguration();
+            o.kmsKeyName = kmsKeyName;
+            return o;
         }
     }
 }

@@ -9,23 +9,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDiskSourceImageEncryptionKey {
-    private final String kmsKeySelfLink;
-    private final String kmsKeyServiceAccount;
-    private final String rawKey;
-    private final String sha256;
+    private String kmsKeySelfLink;
+    private String kmsKeyServiceAccount;
+    private String rawKey;
+    private String sha256;
 
-    @CustomType.Constructor
-    private GetDiskSourceImageEncryptionKey(
-        @CustomType.Parameter("kmsKeySelfLink") String kmsKeySelfLink,
-        @CustomType.Parameter("kmsKeyServiceAccount") String kmsKeyServiceAccount,
-        @CustomType.Parameter("rawKey") String rawKey,
-        @CustomType.Parameter("sha256") String sha256) {
-        this.kmsKeySelfLink = kmsKeySelfLink;
-        this.kmsKeyServiceAccount = kmsKeyServiceAccount;
-        this.rawKey = rawKey;
-        this.sha256 = sha256;
-    }
-
+    private GetDiskSourceImageEncryptionKey() {}
     public String kmsKeySelfLink() {
         return this.kmsKeySelfLink;
     }
@@ -46,17 +35,13 @@ public final class GetDiskSourceImageEncryptionKey {
     public static Builder builder(GetDiskSourceImageEncryptionKey defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String kmsKeySelfLink;
         private String kmsKeyServiceAccount;
         private String rawKey;
         private String sha256;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDiskSourceImageEncryptionKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
@@ -65,23 +50,33 @@ public final class GetDiskSourceImageEncryptionKey {
     	      this.sha256 = defaults.sha256;
         }
 
+        @CustomType.Setter
         public Builder kmsKeySelfLink(String kmsKeySelfLink) {
             this.kmsKeySelfLink = Objects.requireNonNull(kmsKeySelfLink);
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKeyServiceAccount(String kmsKeyServiceAccount) {
             this.kmsKeyServiceAccount = Objects.requireNonNull(kmsKeyServiceAccount);
             return this;
         }
+        @CustomType.Setter
         public Builder rawKey(String rawKey) {
             this.rawKey = Objects.requireNonNull(rawKey);
             return this;
         }
+        @CustomType.Setter
         public Builder sha256(String sha256) {
             this.sha256 = Objects.requireNonNull(sha256);
             return this;
-        }        public GetDiskSourceImageEncryptionKey build() {
-            return new GetDiskSourceImageEncryptionKey(kmsKeySelfLink, kmsKeyServiceAccount, rawKey, sha256);
+        }
+        public GetDiskSourceImageEncryptionKey build() {
+            final var o = new GetDiskSourceImageEncryptionKey();
+            o.kmsKeySelfLink = kmsKeySelfLink;
+            o.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            o.rawKey = rawKey;
+            o.sha256 = sha256;
+            return o;
         }
     }
 }

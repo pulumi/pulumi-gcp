@@ -33,7 +33,7 @@ public final class AlertPolicyConditionConditionThreshold {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<AlertPolicyConditionConditionThresholdAggregation> aggregations;
+    private @Nullable List<AlertPolicyConditionConditionThresholdAggregation> aggregations;
     /**
      * @return The comparison to apply between the time
      * series (indicated by filter and aggregation)
@@ -46,7 +46,7 @@ public final class AlertPolicyConditionConditionThreshold {
      * Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
      * 
      */
-    private final String comparison;
+    private String comparison;
     /**
      * @return Specifies the alignment of data points in
      * individual time series selected by
@@ -67,7 +67,7 @@ public final class AlertPolicyConditionConditionThreshold {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<AlertPolicyConditionConditionThresholdDenominatorAggregation> denominatorAggregations;
+    private @Nullable List<AlertPolicyConditionConditionThresholdDenominatorAggregation> denominatorAggregations;
     /**
      * @return A filter that identifies a time series that
      * should be used as the denominator of a ratio
@@ -86,7 +86,7 @@ public final class AlertPolicyConditionConditionThreshold {
      * in length.
      * 
      */
-    private final @Nullable String denominatorFilter;
+    private @Nullable String denominatorFilter;
     /**
      * @return The amount of time that a time series must
      * violate the threshold to be considered
@@ -105,7 +105,7 @@ public final class AlertPolicyConditionConditionThreshold {
      * alerted on quickly.
      * 
      */
-    private final String duration;
+    private String duration;
     /**
      * @return A condition control that determines how
      * metric-threshold conditions are evaluated when
@@ -113,18 +113,18 @@ public final class AlertPolicyConditionConditionThreshold {
      * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
      * 
      */
-    private final @Nullable String evaluationMissingData;
+    private @Nullable String evaluationMissingData;
     /**
      * @return A logs-based filter.
      * 
      */
-    private final @Nullable String filter;
+    private @Nullable String filter;
     /**
      * @return A value against which to compare the time
      * series.
      * 
      */
-    private final @Nullable Double thresholdValue;
+    private @Nullable Double thresholdValue;
     /**
      * @return The number/percent of time series for which
      * the comparison must hold in order for the
@@ -137,30 +137,9 @@ public final class AlertPolicyConditionConditionThreshold {
      * Structure is documented below.
      * 
      */
-    private final @Nullable AlertPolicyConditionConditionThresholdTrigger trigger;
+    private @Nullable AlertPolicyConditionConditionThresholdTrigger trigger;
 
-    @CustomType.Constructor
-    private AlertPolicyConditionConditionThreshold(
-        @CustomType.Parameter("aggregations") @Nullable List<AlertPolicyConditionConditionThresholdAggregation> aggregations,
-        @CustomType.Parameter("comparison") String comparison,
-        @CustomType.Parameter("denominatorAggregations") @Nullable List<AlertPolicyConditionConditionThresholdDenominatorAggregation> denominatorAggregations,
-        @CustomType.Parameter("denominatorFilter") @Nullable String denominatorFilter,
-        @CustomType.Parameter("duration") String duration,
-        @CustomType.Parameter("evaluationMissingData") @Nullable String evaluationMissingData,
-        @CustomType.Parameter("filter") @Nullable String filter,
-        @CustomType.Parameter("thresholdValue") @Nullable Double thresholdValue,
-        @CustomType.Parameter("trigger") @Nullable AlertPolicyConditionConditionThresholdTrigger trigger) {
-        this.aggregations = aggregations;
-        this.comparison = comparison;
-        this.denominatorAggregations = denominatorAggregations;
-        this.denominatorFilter = denominatorFilter;
-        this.duration = duration;
-        this.evaluationMissingData = evaluationMissingData;
-        this.filter = filter;
-        this.thresholdValue = thresholdValue;
-        this.trigger = trigger;
-    }
-
+    private AlertPolicyConditionConditionThreshold() {}
     /**
      * @return Specifies the alignment of data points in
      * individual time series as well as how to
@@ -309,7 +288,7 @@ public final class AlertPolicyConditionConditionThreshold {
     public static Builder builder(AlertPolicyConditionConditionThreshold defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<AlertPolicyConditionConditionThresholdAggregation> aggregations;
         private String comparison;
@@ -320,11 +299,7 @@ public final class AlertPolicyConditionConditionThreshold {
         private @Nullable String filter;
         private @Nullable Double thresholdValue;
         private @Nullable AlertPolicyConditionConditionThresholdTrigger trigger;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AlertPolicyConditionConditionThreshold defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aggregations = defaults.aggregations;
@@ -338,6 +313,7 @@ public final class AlertPolicyConditionConditionThreshold {
     	      this.trigger = defaults.trigger;
         }
 
+        @CustomType.Setter
         public Builder aggregations(@Nullable List<AlertPolicyConditionConditionThresholdAggregation> aggregations) {
             this.aggregations = aggregations;
             return this;
@@ -345,10 +321,12 @@ public final class AlertPolicyConditionConditionThreshold {
         public Builder aggregations(AlertPolicyConditionConditionThresholdAggregation... aggregations) {
             return aggregations(List.of(aggregations));
         }
+        @CustomType.Setter
         public Builder comparison(String comparison) {
             this.comparison = Objects.requireNonNull(comparison);
             return this;
         }
+        @CustomType.Setter
         public Builder denominatorAggregations(@Nullable List<AlertPolicyConditionConditionThresholdDenominatorAggregation> denominatorAggregations) {
             this.denominatorAggregations = denominatorAggregations;
             return this;
@@ -356,31 +334,48 @@ public final class AlertPolicyConditionConditionThreshold {
         public Builder denominatorAggregations(AlertPolicyConditionConditionThresholdDenominatorAggregation... denominatorAggregations) {
             return denominatorAggregations(List.of(denominatorAggregations));
         }
+        @CustomType.Setter
         public Builder denominatorFilter(@Nullable String denominatorFilter) {
             this.denominatorFilter = denominatorFilter;
             return this;
         }
+        @CustomType.Setter
         public Builder duration(String duration) {
             this.duration = Objects.requireNonNull(duration);
             return this;
         }
+        @CustomType.Setter
         public Builder evaluationMissingData(@Nullable String evaluationMissingData) {
             this.evaluationMissingData = evaluationMissingData;
             return this;
         }
+        @CustomType.Setter
         public Builder filter(@Nullable String filter) {
             this.filter = filter;
             return this;
         }
+        @CustomType.Setter
         public Builder thresholdValue(@Nullable Double thresholdValue) {
             this.thresholdValue = thresholdValue;
             return this;
         }
+        @CustomType.Setter
         public Builder trigger(@Nullable AlertPolicyConditionConditionThresholdTrigger trigger) {
             this.trigger = trigger;
             return this;
-        }        public AlertPolicyConditionConditionThreshold build() {
-            return new AlertPolicyConditionConditionThreshold(aggregations, comparison, denominatorAggregations, denominatorFilter, duration, evaluationMissingData, filter, thresholdValue, trigger);
+        }
+        public AlertPolicyConditionConditionThreshold build() {
+            final var o = new AlertPolicyConditionConditionThreshold();
+            o.aggregations = aggregations;
+            o.comparison = comparison;
+            o.denominatorAggregations = denominatorAggregations;
+            o.denominatorFilter = denominatorFilter;
+            o.duration = duration;
+            o.evaluationMissingData = evaluationMissingData;
+            o.filter = filter;
+            o.thresholdValue = thresholdValue;
+            o.trigger = trigger;
+            return o;
         }
     }
 }

@@ -16,28 +16,19 @@ public final class TransferJobTransferSpecAwsS3DataSource {
      * @return AWS credentials block.
      * 
      */
-    private final @Nullable TransferJobTransferSpecAwsS3DataSourceAwsAccessKey awsAccessKey;
+    private @Nullable TransferJobTransferSpecAwsS3DataSourceAwsAccessKey awsAccessKey;
     /**
      * @return S3 Bucket name.
      * 
      */
-    private final String bucketName;
+    private String bucketName;
     /**
      * @return The Amazon Resource Name (ARN) of the role to support temporary credentials via &#39;AssumeRoleWithWebIdentity&#39;. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a &#39;AssumeRoleWithWebIdentity&#39; call for the provided role using the [GoogleServiceAccount][] for this project.
      * 
      */
-    private final @Nullable String roleArn;
+    private @Nullable String roleArn;
 
-    @CustomType.Constructor
-    private TransferJobTransferSpecAwsS3DataSource(
-        @CustomType.Parameter("awsAccessKey") @Nullable TransferJobTransferSpecAwsS3DataSourceAwsAccessKey awsAccessKey,
-        @CustomType.Parameter("bucketName") String bucketName,
-        @CustomType.Parameter("roleArn") @Nullable String roleArn) {
-        this.awsAccessKey = awsAccessKey;
-        this.bucketName = bucketName;
-        this.roleArn = roleArn;
-    }
-
+    private TransferJobTransferSpecAwsS3DataSource() {}
     /**
      * @return AWS credentials block.
      * 
@@ -67,16 +58,12 @@ public final class TransferJobTransferSpecAwsS3DataSource {
     public static Builder builder(TransferJobTransferSpecAwsS3DataSource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable TransferJobTransferSpecAwsS3DataSourceAwsAccessKey awsAccessKey;
         private String bucketName;
         private @Nullable String roleArn;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TransferJobTransferSpecAwsS3DataSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsAccessKey = defaults.awsAccessKey;
@@ -84,19 +71,27 @@ public final class TransferJobTransferSpecAwsS3DataSource {
     	      this.roleArn = defaults.roleArn;
         }
 
+        @CustomType.Setter
         public Builder awsAccessKey(@Nullable TransferJobTransferSpecAwsS3DataSourceAwsAccessKey awsAccessKey) {
             this.awsAccessKey = awsAccessKey;
             return this;
         }
+        @CustomType.Setter
         public Builder bucketName(String bucketName) {
             this.bucketName = Objects.requireNonNull(bucketName);
             return this;
         }
+        @CustomType.Setter
         public Builder roleArn(@Nullable String roleArn) {
             this.roleArn = roleArn;
             return this;
-        }        public TransferJobTransferSpecAwsS3DataSource build() {
-            return new TransferJobTransferSpecAwsS3DataSource(awsAccessKey, bucketName, roleArn);
+        }
+        public TransferJobTransferSpecAwsS3DataSource build() {
+            final var o = new TransferJobTransferSpecAwsS3DataSource();
+            o.awsAccessKey = awsAccessKey;
+            o.bucketName = bucketName;
+            o.roleArn = roleArn;
+            return o;
         }
     }
 }

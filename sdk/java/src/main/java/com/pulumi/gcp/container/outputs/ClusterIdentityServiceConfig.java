@@ -16,13 +16,9 @@ public final class ClusterIdentityServiceConfig {
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
 
-    @CustomType.Constructor
-    private ClusterIdentityServiceConfig(@CustomType.Parameter("enabled") @Nullable Boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    private ClusterIdentityServiceConfig() {}
     /**
      * @return Enable the PodSecurityPolicy controller for this cluster.
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -39,24 +35,24 @@ public final class ClusterIdentityServiceConfig {
     public static Builder builder(ClusterIdentityServiceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterIdentityServiceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
-        }        public ClusterIdentityServiceConfig build() {
-            return new ClusterIdentityServiceConfig(enabled);
+        }
+        public ClusterIdentityServiceConfig build() {
+            final var o = new ClusterIdentityServiceConfig();
+            o.enabled = enabled;
+            return o;
         }
     }
 }

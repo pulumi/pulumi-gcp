@@ -17,21 +17,14 @@ public final class GuestPoliciesRecipeArtifactRemote {
      * of the steps.
      * 
      */
-    private final @Nullable String checkSum;
+    private @Nullable String checkSum;
     /**
      * @return URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
      * 
      */
-    private final @Nullable String uri;
+    private @Nullable String uri;
 
-    @CustomType.Constructor
-    private GuestPoliciesRecipeArtifactRemote(
-        @CustomType.Parameter("checkSum") @Nullable String checkSum,
-        @CustomType.Parameter("uri") @Nullable String uri) {
-        this.checkSum = checkSum;
-        this.uri = uri;
-    }
-
+    private GuestPoliciesRecipeArtifactRemote() {}
     /**
      * @return Must be provided if allowInsecure is false. SHA256 checksum in hex format, to compare to the checksum of the artifact.
      * If the checksum is not empty and it doesn&#39;t match the artifact then the recipe installation fails before running any
@@ -56,30 +49,32 @@ public final class GuestPoliciesRecipeArtifactRemote {
     public static Builder builder(GuestPoliciesRecipeArtifactRemote defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String checkSum;
         private @Nullable String uri;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesRecipeArtifactRemote defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.checkSum = defaults.checkSum;
     	      this.uri = defaults.uri;
         }
 
+        @CustomType.Setter
         public Builder checkSum(@Nullable String checkSum) {
             this.checkSum = checkSum;
             return this;
         }
+        @CustomType.Setter
         public Builder uri(@Nullable String uri) {
             this.uri = uri;
             return this;
-        }        public GuestPoliciesRecipeArtifactRemote build() {
-            return new GuestPoliciesRecipeArtifactRemote(checkSum, uri);
+        }
+        public GuestPoliciesRecipeArtifactRemote build() {
+            final var o = new GuestPoliciesRecipeArtifactRemote();
+            o.checkSum = checkSum;
+            o.uri = uri;
+            return o;
         }
     }
 }

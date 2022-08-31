@@ -13,13 +13,9 @@ public final class ResourcePolicyInstanceSchedulePolicyVmStartSchedule {
      * @return Specifies the frequency for the operation, using the unix-cron format.
      * 
      */
-    private final String schedule;
+    private String schedule;
 
-    @CustomType.Constructor
-    private ResourcePolicyInstanceSchedulePolicyVmStartSchedule(@CustomType.Parameter("schedule") String schedule) {
-        this.schedule = schedule;
-    }
-
+    private ResourcePolicyInstanceSchedulePolicyVmStartSchedule() {}
     /**
      * @return Specifies the frequency for the operation, using the unix-cron format.
      * 
@@ -35,24 +31,24 @@ public final class ResourcePolicyInstanceSchedulePolicyVmStartSchedule {
     public static Builder builder(ResourcePolicyInstanceSchedulePolicyVmStartSchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String schedule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ResourcePolicyInstanceSchedulePolicyVmStartSchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.schedule = defaults.schedule;
         }
 
+        @CustomType.Setter
         public Builder schedule(String schedule) {
             this.schedule = Objects.requireNonNull(schedule);
             return this;
-        }        public ResourcePolicyInstanceSchedulePolicyVmStartSchedule build() {
-            return new ResourcePolicyInstanceSchedulePolicyVmStartSchedule(schedule);
+        }
+        public ResourcePolicyInstanceSchedulePolicyVmStartSchedule build() {
+            final var o = new ResourcePolicyInstanceSchedulePolicyVmStartSchedule();
+            o.schedule = schedule;
+            return o;
         }
     }
 }

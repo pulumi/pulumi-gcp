@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfigWorkloadMetadataConfig {
-    private final String mode;
+    private String mode;
 
-    @CustomType.Constructor
-    private GetClusterNodePoolNodeConfigWorkloadMetadataConfig(@CustomType.Parameter("mode") String mode) {
-        this.mode = mode;
-    }
-
+    private GetClusterNodePoolNodeConfigWorkloadMetadataConfig() {}
     public String mode() {
         return this.mode;
     }
@@ -27,24 +23,24 @@ public final class GetClusterNodePoolNodeConfigWorkloadMetadataConfig {
     public static Builder builder(GetClusterNodePoolNodeConfigWorkloadMetadataConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String mode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterNodePoolNodeConfigWorkloadMetadataConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mode = defaults.mode;
         }
 
+        @CustomType.Setter
         public Builder mode(String mode) {
             this.mode = Objects.requireNonNull(mode);
             return this;
-        }        public GetClusterNodePoolNodeConfigWorkloadMetadataConfig build() {
-            return new GetClusterNodePoolNodeConfigWorkloadMetadataConfig(mode);
+        }
+        public GetClusterNodePoolNodeConfigWorkloadMetadataConfig build() {
+            final var o = new GetClusterNodePoolNodeConfigWorkloadMetadataConfig();
+            o.mode = mode;
+            return o;
         }
     }
 }

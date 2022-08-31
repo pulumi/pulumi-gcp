@@ -15,13 +15,9 @@ public final class GameServerDeploymentRolloutGameServerConfigOverrideRealmsSele
      * @return List of realms to match against.
      * 
      */
-    private final @Nullable List<String> realms;
+    private @Nullable List<String> realms;
 
-    @CustomType.Constructor
-    private GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector(@CustomType.Parameter("realms") @Nullable List<String> realms) {
-        this.realms = realms;
-    }
-
+    private GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector() {}
     /**
      * @return List of realms to match against.
      * 
@@ -37,27 +33,27 @@ public final class GameServerDeploymentRolloutGameServerConfigOverrideRealmsSele
     public static Builder builder(GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> realms;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.realms = defaults.realms;
         }
 
+        @CustomType.Setter
         public Builder realms(@Nullable List<String> realms) {
             this.realms = realms;
             return this;
         }
         public Builder realms(String... realms) {
             return realms(List.of(realms));
-        }        public GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector build() {
-            return new GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector(realms);
+        }
+        public GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector build() {
+            final var o = new GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector();
+            o.realms = realms;
+            return o;
         }
     }
 }

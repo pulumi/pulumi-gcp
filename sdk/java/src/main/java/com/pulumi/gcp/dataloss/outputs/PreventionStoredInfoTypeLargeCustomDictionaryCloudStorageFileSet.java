@@ -13,13 +13,9 @@ public final class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFile
      * @return The url, in the format `gs://&lt;bucket&gt;/&lt;path&gt;`. Trailing wildcard in the path is allowed.
      * 
      */
-    private final String url;
+    private String url;
 
-    @CustomType.Constructor
-    private PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet(@CustomType.Parameter("url") String url) {
-        this.url = url;
-    }
-
+    private PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet() {}
     /**
      * @return The url, in the format `gs://&lt;bucket&gt;/&lt;path&gt;`. Trailing wildcard in the path is allowed.
      * 
@@ -35,24 +31,24 @@ public final class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFile
     public static Builder builder(PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet build() {
-            return new PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet(url);
+        }
+        public PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet build() {
+            final var o = new PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet();
+            o.url = url;
+            return o;
         }
     }
 }

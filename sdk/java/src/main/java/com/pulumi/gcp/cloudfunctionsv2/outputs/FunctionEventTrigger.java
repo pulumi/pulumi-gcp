@@ -18,36 +18,36 @@ public final class FunctionEventTrigger {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<FunctionEventTriggerEventFilter> eventFilters;
+    private @Nullable List<FunctionEventTriggerEventFilter> eventFilters;
     /**
      * @return Required. The type of event to observe.
      * 
      */
-    private final @Nullable String eventType;
+    private @Nullable String eventType;
     /**
      * @return The name of a Pub/Sub topic in the same project that will be used
      * as the transport topic for the event delivery.
      * 
      */
-    private final @Nullable String pubsubTopic;
+    private @Nullable String pubsubTopic;
     /**
      * @return Describes the retry policy in case of function&#39;s execution failure.
      * Retried execution is charged as any other execution.
      * Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
      * 
      */
-    private final @Nullable String retryPolicy;
+    private @Nullable String retryPolicy;
     /**
      * @return The email of the service account for this function.
      * 
      */
-    private final @Nullable String serviceAccountEmail;
+    private @Nullable String serviceAccountEmail;
     /**
      * @return -
      * The resource name of the Eventarc trigger.
      * 
      */
-    private final @Nullable String trigger;
+    private @Nullable String trigger;
     /**
      * @return The region that the trigger will be in. The trigger will only receive
      * events originating in this region. It can be the same
@@ -55,26 +55,9 @@ public final class FunctionEventTrigger {
      * region. If not provided, defaults to the same region as the function.
      * 
      */
-    private final @Nullable String triggerRegion;
+    private @Nullable String triggerRegion;
 
-    @CustomType.Constructor
-    private FunctionEventTrigger(
-        @CustomType.Parameter("eventFilters") @Nullable List<FunctionEventTriggerEventFilter> eventFilters,
-        @CustomType.Parameter("eventType") @Nullable String eventType,
-        @CustomType.Parameter("pubsubTopic") @Nullable String pubsubTopic,
-        @CustomType.Parameter("retryPolicy") @Nullable String retryPolicy,
-        @CustomType.Parameter("serviceAccountEmail") @Nullable String serviceAccountEmail,
-        @CustomType.Parameter("trigger") @Nullable String trigger,
-        @CustomType.Parameter("triggerRegion") @Nullable String triggerRegion) {
-        this.eventFilters = eventFilters;
-        this.eventType = eventType;
-        this.pubsubTopic = pubsubTopic;
-        this.retryPolicy = retryPolicy;
-        this.serviceAccountEmail = serviceAccountEmail;
-        this.trigger = trigger;
-        this.triggerRegion = triggerRegion;
-    }
-
+    private FunctionEventTrigger() {}
     /**
      * @return Criteria used to filter events.
      * Structure is documented below.
@@ -140,7 +123,7 @@ public final class FunctionEventTrigger {
     public static Builder builder(FunctionEventTrigger defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<FunctionEventTriggerEventFilter> eventFilters;
         private @Nullable String eventType;
@@ -149,11 +132,7 @@ public final class FunctionEventTrigger {
         private @Nullable String serviceAccountEmail;
         private @Nullable String trigger;
         private @Nullable String triggerRegion;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FunctionEventTrigger defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.eventFilters = defaults.eventFilters;
@@ -165,6 +144,7 @@ public final class FunctionEventTrigger {
     	      this.triggerRegion = defaults.triggerRegion;
         }
 
+        @CustomType.Setter
         public Builder eventFilters(@Nullable List<FunctionEventTriggerEventFilter> eventFilters) {
             this.eventFilters = eventFilters;
             return this;
@@ -172,31 +152,46 @@ public final class FunctionEventTrigger {
         public Builder eventFilters(FunctionEventTriggerEventFilter... eventFilters) {
             return eventFilters(List.of(eventFilters));
         }
+        @CustomType.Setter
         public Builder eventType(@Nullable String eventType) {
             this.eventType = eventType;
             return this;
         }
+        @CustomType.Setter
         public Builder pubsubTopic(@Nullable String pubsubTopic) {
             this.pubsubTopic = pubsubTopic;
             return this;
         }
+        @CustomType.Setter
         public Builder retryPolicy(@Nullable String retryPolicy) {
             this.retryPolicy = retryPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccountEmail(@Nullable String serviceAccountEmail) {
             this.serviceAccountEmail = serviceAccountEmail;
             return this;
         }
+        @CustomType.Setter
         public Builder trigger(@Nullable String trigger) {
             this.trigger = trigger;
             return this;
         }
+        @CustomType.Setter
         public Builder triggerRegion(@Nullable String triggerRegion) {
             this.triggerRegion = triggerRegion;
             return this;
-        }        public FunctionEventTrigger build() {
-            return new FunctionEventTrigger(eventFilters, eventType, pubsubTopic, retryPolicy, serviceAccountEmail, trigger, triggerRegion);
+        }
+        public FunctionEventTrigger build() {
+            final var o = new FunctionEventTrigger();
+            o.eventFilters = eventFilters;
+            o.eventType = eventType;
+            o.pubsubTopic = pubsubTopic;
+            o.retryPolicy = retryPolicy;
+            o.serviceAccountEmail = serviceAccountEmail;
+            o.trigger = trigger;
+            o.triggerRegion = triggerRegion;
+            return o;
         }
     }
 }

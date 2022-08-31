@@ -16,28 +16,19 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGc
      * @return Required. Bucket of the Cloud Storage object.
      * 
      */
-    private final String bucket;
+    private String bucket;
     /**
      * @return Generation number of the Cloud Storage object.
      * 
      */
-    private final @Nullable Integer generation;
+    private @Nullable Integer generation;
     /**
      * @return Required. Name of the Cloud Storage object.
      * 
      */
-    private final String object;
+    private String object;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs(
-        @CustomType.Parameter("bucket") String bucket,
-        @CustomType.Parameter("generation") @Nullable Integer generation,
-        @CustomType.Parameter("object") String object) {
-        this.bucket = bucket;
-        this.generation = generation;
-        this.object = object;
-    }
-
+    private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs() {}
     /**
      * @return Required. Bucket of the Cloud Storage object.
      * 
@@ -67,16 +58,12 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGc
     public static Builder builder(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bucket;
         private @Nullable Integer generation;
         private String object;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
@@ -84,19 +71,27 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGc
     	      this.object = defaults.object;
         }
 
+        @CustomType.Setter
         public Builder bucket(String bucket) {
             this.bucket = Objects.requireNonNull(bucket);
             return this;
         }
+        @CustomType.Setter
         public Builder generation(@Nullable Integer generation) {
             this.generation = generation;
             return this;
         }
+        @CustomType.Setter
         public Builder object(String object) {
             this.object = Objects.requireNonNull(object);
             return this;
-        }        public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs build() {
-            return new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs(bucket, generation, object);
+        }
+        public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs build() {
+            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs();
+            o.bucket = bucket;
+            o.generation = generation;
+            o.object = object;
+            return o;
         }
     }
 }

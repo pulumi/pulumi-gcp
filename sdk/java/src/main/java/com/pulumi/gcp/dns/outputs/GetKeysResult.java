@@ -16,34 +16,21 @@ public final class GetKeysResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of Key-signing key (KSK) records. Structure is documented below. Additionally, the DS record is provided:
      * 
      */
-    private final List<GetKeysKeySigningKey> keySigningKeys;
-    private final String managedZone;
-    private final String project;
+    private List<GetKeysKeySigningKey> keySigningKeys;
+    private String managedZone;
+    private String project;
     /**
      * @return A list of Zone-signing key (ZSK) records. Structure is documented below.
      * 
      */
-    private final List<GetKeysZoneSigningKey> zoneSigningKeys;
+    private List<GetKeysZoneSigningKey> zoneSigningKeys;
 
-    @CustomType.Constructor
-    private GetKeysResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("keySigningKeys") List<GetKeysKeySigningKey> keySigningKeys,
-        @CustomType.Parameter("managedZone") String managedZone,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("zoneSigningKeys") List<GetKeysZoneSigningKey> zoneSigningKeys) {
-        this.id = id;
-        this.keySigningKeys = keySigningKeys;
-        this.managedZone = managedZone;
-        this.project = project;
-        this.zoneSigningKeys = zoneSigningKeys;
-    }
-
+    private GetKeysResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -79,18 +66,14 @@ public final class GetKeysResult {
     public static Builder builder(GetKeysResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<GetKeysKeySigningKey> keySigningKeys;
         private String managedZone;
         private String project;
         private List<GetKeysZoneSigningKey> zoneSigningKeys;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKeysResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -100,10 +83,12 @@ public final class GetKeysResult {
     	      this.zoneSigningKeys = defaults.zoneSigningKeys;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder keySigningKeys(List<GetKeysKeySigningKey> keySigningKeys) {
             this.keySigningKeys = Objects.requireNonNull(keySigningKeys);
             return this;
@@ -111,22 +96,32 @@ public final class GetKeysResult {
         public Builder keySigningKeys(GetKeysKeySigningKey... keySigningKeys) {
             return keySigningKeys(List.of(keySigningKeys));
         }
+        @CustomType.Setter
         public Builder managedZone(String managedZone) {
             this.managedZone = Objects.requireNonNull(managedZone);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneSigningKeys(List<GetKeysZoneSigningKey> zoneSigningKeys) {
             this.zoneSigningKeys = Objects.requireNonNull(zoneSigningKeys);
             return this;
         }
         public Builder zoneSigningKeys(GetKeysZoneSigningKey... zoneSigningKeys) {
             return zoneSigningKeys(List.of(zoneSigningKeys));
-        }        public GetKeysResult build() {
-            return new GetKeysResult(id, keySigningKeys, managedZone, project, zoneSigningKeys);
+        }
+        public GetKeysResult build() {
+            final var o = new GetKeysResult();
+            o.id = id;
+            o.keySigningKeys = keySigningKeys;
+            o.managedZone = managedZone;
+            o.project = project;
+            o.zoneSigningKeys = zoneSigningKeys;
+            return o;
         }
     }
 }

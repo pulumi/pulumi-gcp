@@ -16,28 +16,19 @@ public final class TriggerGithubPush {
      * @return Regex of branches to match.  Specify only one of branch or tag.
      * 
      */
-    private final @Nullable String branch;
+    private @Nullable String branch;
     /**
      * @return Only trigger a build if the revision regex does NOT match the revision regex.
      * 
      */
-    private final @Nullable Boolean invertRegex;
+    private @Nullable Boolean invertRegex;
     /**
      * @return Regex of tags to match.  Specify only one of branch or tag.
      * 
      */
-    private final @Nullable String tag;
+    private @Nullable String tag;
 
-    @CustomType.Constructor
-    private TriggerGithubPush(
-        @CustomType.Parameter("branch") @Nullable String branch,
-        @CustomType.Parameter("invertRegex") @Nullable Boolean invertRegex,
-        @CustomType.Parameter("tag") @Nullable String tag) {
-        this.branch = branch;
-        this.invertRegex = invertRegex;
-        this.tag = tag;
-    }
-
+    private TriggerGithubPush() {}
     /**
      * @return Regex of branches to match.  Specify only one of branch or tag.
      * 
@@ -67,16 +58,12 @@ public final class TriggerGithubPush {
     public static Builder builder(TriggerGithubPush defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String branch;
         private @Nullable Boolean invertRegex;
         private @Nullable String tag;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerGithubPush defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.branch = defaults.branch;
@@ -84,19 +71,27 @@ public final class TriggerGithubPush {
     	      this.tag = defaults.tag;
         }
 
+        @CustomType.Setter
         public Builder branch(@Nullable String branch) {
             this.branch = branch;
             return this;
         }
+        @CustomType.Setter
         public Builder invertRegex(@Nullable Boolean invertRegex) {
             this.invertRegex = invertRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder tag(@Nullable String tag) {
             this.tag = tag;
             return this;
-        }        public TriggerGithubPush build() {
-            return new TriggerGithubPush(branch, invertRegex, tag);
+        }
+        public TriggerGithubPush build() {
+            final var o = new TriggerGithubPush();
+            o.branch = branch;
+            o.invertRegex = invertRegex;
+            o.tag = tag;
+            return o;
         }
     }
 }

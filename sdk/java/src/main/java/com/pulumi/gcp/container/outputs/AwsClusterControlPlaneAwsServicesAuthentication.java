@@ -15,21 +15,14 @@ public final class AwsClusterControlPlaneAwsServicesAuthentication {
      * @return The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
      * 
      */
-    private final String roleArn;
+    private String roleArn;
     /**
      * @return Optional. An identifier for the assumed role session. When unspecified, it defaults to `multicloud-service-agent`.
      * 
      */
-    private final @Nullable String roleSessionName;
+    private @Nullable String roleSessionName;
 
-    @CustomType.Constructor
-    private AwsClusterControlPlaneAwsServicesAuthentication(
-        @CustomType.Parameter("roleArn") String roleArn,
-        @CustomType.Parameter("roleSessionName") @Nullable String roleSessionName) {
-        this.roleArn = roleArn;
-        this.roleSessionName = roleSessionName;
-    }
-
+    private AwsClusterControlPlaneAwsServicesAuthentication() {}
     /**
      * @return The Amazon Resource Name (ARN) of the role that the Anthos Multi-Cloud API will assume when managing AWS resources on your account.
      * 
@@ -52,30 +45,32 @@ public final class AwsClusterControlPlaneAwsServicesAuthentication {
     public static Builder builder(AwsClusterControlPlaneAwsServicesAuthentication defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String roleArn;
         private @Nullable String roleSessionName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsClusterControlPlaneAwsServicesAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.roleArn = defaults.roleArn;
     	      this.roleSessionName = defaults.roleSessionName;
         }
 
+        @CustomType.Setter
         public Builder roleArn(String roleArn) {
             this.roleArn = Objects.requireNonNull(roleArn);
             return this;
         }
+        @CustomType.Setter
         public Builder roleSessionName(@Nullable String roleSessionName) {
             this.roleSessionName = roleSessionName;
             return this;
-        }        public AwsClusterControlPlaneAwsServicesAuthentication build() {
-            return new AwsClusterControlPlaneAwsServicesAuthentication(roleArn, roleSessionName);
+        }
+        public AwsClusterControlPlaneAwsServicesAuthentication build() {
+            final var o = new AwsClusterControlPlaneAwsServicesAuthentication();
+            o.roleArn = roleArn;
+            o.roleSessionName = roleSessionName;
+            return o;
         }
     }
 }

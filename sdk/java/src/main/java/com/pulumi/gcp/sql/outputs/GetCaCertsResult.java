@@ -15,34 +15,21 @@ public final class GetCaCertsResult {
      * @return SHA1 fingerprint of the currently active CA certificate.
      * 
      */
-    private final String activeVersion;
+    private String activeVersion;
     /**
      * @return A list of server CA certificates for the instance. Each contains:
      * 
      */
-    private final List<GetCaCertsCert> certs;
+    private List<GetCaCertsCert> certs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String instance;
-    private final String project;
+    private String id;
+    private String instance;
+    private String project;
 
-    @CustomType.Constructor
-    private GetCaCertsResult(
-        @CustomType.Parameter("activeVersion") String activeVersion,
-        @CustomType.Parameter("certs") List<GetCaCertsCert> certs,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instance") String instance,
-        @CustomType.Parameter("project") String project) {
-        this.activeVersion = activeVersion;
-        this.certs = certs;
-        this.id = id;
-        this.instance = instance;
-        this.project = project;
-    }
-
+    private GetCaCertsResult() {}
     /**
      * @return SHA1 fingerprint of the currently active CA certificate.
      * 
@@ -78,18 +65,14 @@ public final class GetCaCertsResult {
     public static Builder builder(GetCaCertsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String activeVersion;
         private List<GetCaCertsCert> certs;
         private String id;
         private String instance;
         private String project;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCaCertsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.activeVersion = defaults.activeVersion;
@@ -99,10 +82,12 @@ public final class GetCaCertsResult {
     	      this.project = defaults.project;
         }
 
+        @CustomType.Setter
         public Builder activeVersion(String activeVersion) {
             this.activeVersion = Objects.requireNonNull(activeVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder certs(List<GetCaCertsCert> certs) {
             this.certs = Objects.requireNonNull(certs);
             return this;
@@ -110,19 +95,29 @@ public final class GetCaCertsResult {
         public Builder certs(GetCaCertsCert... certs) {
             return certs(List.of(certs));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instance(String instance) {
             this.instance = Objects.requireNonNull(instance);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
-        }        public GetCaCertsResult build() {
-            return new GetCaCertsResult(activeVersion, certs, id, instance, project);
+        }
+        public GetCaCertsResult build() {
+            final var o = new GetCaCertsResult();
+            o.activeVersion = activeVersion;
+            o.certs = certs;
+            o.id = id;
+            o.instance = instance;
+            o.project = project;
+            return o;
         }
     }
 }

@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AwsClusterWorkloadIdentityConfig {
-    private final @Nullable String identityProvider;
-    private final @Nullable String issuerUri;
-    private final @Nullable String workloadPool;
+    private @Nullable String identityProvider;
+    private @Nullable String issuerUri;
+    private @Nullable String workloadPool;
 
-    @CustomType.Constructor
-    private AwsClusterWorkloadIdentityConfig(
-        @CustomType.Parameter("identityProvider") @Nullable String identityProvider,
-        @CustomType.Parameter("issuerUri") @Nullable String issuerUri,
-        @CustomType.Parameter("workloadPool") @Nullable String workloadPool) {
-        this.identityProvider = identityProvider;
-        this.issuerUri = issuerUri;
-        this.workloadPool = workloadPool;
-    }
-
+    private AwsClusterWorkloadIdentityConfig() {}
     public Optional<String> identityProvider() {
         return Optional.ofNullable(this.identityProvider);
     }
@@ -42,16 +33,12 @@ public final class AwsClusterWorkloadIdentityConfig {
     public static Builder builder(AwsClusterWorkloadIdentityConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String identityProvider;
         private @Nullable String issuerUri;
         private @Nullable String workloadPool;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsClusterWorkloadIdentityConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.identityProvider = defaults.identityProvider;
@@ -59,19 +46,27 @@ public final class AwsClusterWorkloadIdentityConfig {
     	      this.workloadPool = defaults.workloadPool;
         }
 
+        @CustomType.Setter
         public Builder identityProvider(@Nullable String identityProvider) {
             this.identityProvider = identityProvider;
             return this;
         }
+        @CustomType.Setter
         public Builder issuerUri(@Nullable String issuerUri) {
             this.issuerUri = issuerUri;
             return this;
         }
+        @CustomType.Setter
         public Builder workloadPool(@Nullable String workloadPool) {
             this.workloadPool = workloadPool;
             return this;
-        }        public AwsClusterWorkloadIdentityConfig build() {
-            return new AwsClusterWorkloadIdentityConfig(identityProvider, issuerUri, workloadPool);
+        }
+        public AwsClusterWorkloadIdentityConfig build() {
+            final var o = new AwsClusterWorkloadIdentityConfig();
+            o.identityProvider = identityProvider;
+            o.issuerUri = issuerUri;
+            o.workloadPool = workloadPool;
+            return o;
         }
     }
 }

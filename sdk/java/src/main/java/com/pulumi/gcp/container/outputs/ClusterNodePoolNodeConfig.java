@@ -10,6 +10,7 @@ import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigGuestAccelerato
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigGvnic;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigKubeletConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigLinuxNodeConfig;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigReservationAffinity;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigSandboxConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigShieldedInstanceConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigTaint;
@@ -29,24 +30,24 @@ public final class ClusterNodePoolNodeConfig {
      * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
      * 
      */
-    private final @Nullable String bootDiskKmsKey;
+    private @Nullable String bootDiskKmsKey;
     /**
      * @return Size of the disk attached to each node, specified
      * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
      * 
      */
-    private final @Nullable Integer diskSizeGb;
+    private @Nullable Integer diskSizeGb;
     /**
      * @return Type of the disk attached to each node
      * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-standard&#39;
      * 
      */
-    private final @Nullable String diskType;
+    private @Nullable String diskType;
     /**
      * @return Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
      * 
      */
-    private final @Nullable ClusterNodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
+    private @Nullable ClusterNodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
     /**
      * @return Parameters for the Google Container Filesystem (GCFS).
      * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version` from GKE versions 1.19 or later to use it.
@@ -56,13 +57,13 @@ public final class ClusterNodePoolNodeConfig {
      * Structure is documented below.
      * 
      */
-    private final @Nullable ClusterNodePoolNodeConfigGcfsConfig gcfsConfig;
+    private @Nullable ClusterNodePoolNodeConfigGcfsConfig gcfsConfig;
     /**
      * @return List of the type and count of accelerator cards attached to the instance.
      * Structure documented below.
      * 
      */
-    private final @Nullable List<ClusterNodePoolNodeConfigGuestAccelerator> guestAccelerators;
+    private @Nullable List<ClusterNodePoolNodeConfigGuestAccelerator> guestAccelerators;
     /**
      * @return Google Virtual NIC (gVNIC) is a virtual network interface.
      * Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
@@ -71,44 +72,44 @@ public final class ClusterNodePoolNodeConfig {
      * Structure is documented below.
      * 
      */
-    private final @Nullable ClusterNodePoolNodeConfigGvnic gvnic;
+    private @Nullable ClusterNodePoolNodeConfigGvnic gvnic;
     /**
      * @return The image type to use for this node. Note that changing the image type
      * will delete and recreate all nodes in the node pool.
      * 
      */
-    private final @Nullable String imageType;
+    private @Nullable String imageType;
     /**
      * @return Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
      * Structure is documented below.
      * 
      */
-    private final @Nullable ClusterNodePoolNodeConfigKubeletConfig kubeletConfig;
+    private @Nullable ClusterNodePoolNodeConfigKubeletConfig kubeletConfig;
     /**
      * @return The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
      * reserved by Kubernetes Core components and cannot be specified.
      * 
      */
-    private final @Nullable Map<String,String> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
      * Note that validations happen all server side. All attributes are optional.
      * Structure is documented below.
      * 
      */
-    private final @Nullable ClusterNodePoolNodeConfigLinuxNodeConfig linuxNodeConfig;
+    private @Nullable ClusterNodePoolNodeConfigLinuxNodeConfig linuxNodeConfig;
     /**
      * @return Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
      * 
      */
-    private final @Nullable Integer localSsdCount;
+    private @Nullable Integer localSsdCount;
     /**
      * @return The name of a Google Compute Engine machine type.
      * Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
      * [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
      * 
      */
-    private final @Nullable String machineType;
+    private @Nullable String machineType;
     /**
      * @return The metadata key/value pairs assigned to instances in
      * the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
@@ -117,7 +118,7 @@ public final class ClusterNodePoolNodeConfig {
      * value in your config.
      * 
      */
-    private final @Nullable Map<String,String> metadata;
+    private @Nullable Map<String,String> metadata;
     /**
      * @return Minimum CPU platform to be used by this instance.
      * The instance may be scheduled on the specified or newer CPU platform. Applicable
@@ -126,51 +127,55 @@ public final class ClusterNodePoolNodeConfig {
      * for more information.
      * 
      */
-    private final @Nullable String minCpuPlatform;
+    private @Nullable String minCpuPlatform;
     /**
      * @return Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
      * 
      */
-    private final @Nullable String nodeGroup;
+    private @Nullable String nodeGroup;
     /**
      * @return The set of Google API scopes to be made available
      * on all of the node VMs under the &#34;default&#34; service account.
      * Use the &#34;https://www.googleapis.com/auth/cloud-platform&#34; scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
      * 
      */
-    private final @Nullable List<String> oauthScopes;
+    private @Nullable List<String> oauthScopes;
     /**
      * @return A boolean that represents whether or not the underlying node VMs
      * are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
      * for more information. Defaults to false.
      * 
      */
-    private final @Nullable Boolean preemptible;
-    private final @Nullable ClusterNodePoolNodeConfigSandboxConfig sandboxConfig;
+    private @Nullable Boolean preemptible;
+    /**
+     * @return The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterNodePoolNodeConfigReservationAffinity reservationAffinity;
+    private @Nullable ClusterNodePoolNodeConfigSandboxConfig sandboxConfig;
     /**
      * @return The service account to be used by the Node VMs.
      * If not specified, the &#34;default&#34; service account is used.
      * 
      */
-    private final @Nullable String serviceAccount;
+    private @Nullable String serviceAccount;
     /**
      * @return Shielded Instance options. Structure is documented below.
      * 
      */
-    private final @Nullable ClusterNodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
+    private @Nullable ClusterNodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
     /**
      * @return A boolean that represents whether the underlying node VMs are spot.
      * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      * for more information. Defaults to false.
      * 
      */
-    private final @Nullable Boolean spot;
+    private @Nullable Boolean spot;
     /**
-     * @return The list of instance tags applied to all nodes. Tags are used to identify
-     * valid sources or targets for network firewalls.
+     * @return ) - List of network tags applied to auto-provisioned node pools.
      * 
      */
-    private final @Nullable List<String> tags;
+    private @Nullable List<String> tags;
     /**
      * @return A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
      * to apply to nodes. GKE&#39;s API can only set this field on cluster creation.
@@ -182,68 +187,15 @@ public final class ClusterNodePoolNodeConfig {
      * recommended. Structure is documented below.
      * 
      */
-    private final @Nullable List<ClusterNodePoolNodeConfigTaint> taints;
+    private @Nullable List<ClusterNodePoolNodeConfigTaint> taints;
     /**
      * @return Metadata configuration to expose to workloads on the node pool.
      * Structure is documented below.
      * 
      */
-    private final @Nullable ClusterNodePoolNodeConfigWorkloadMetadataConfig workloadMetadataConfig;
+    private @Nullable ClusterNodePoolNodeConfigWorkloadMetadataConfig workloadMetadataConfig;
 
-    @CustomType.Constructor
-    private ClusterNodePoolNodeConfig(
-        @CustomType.Parameter("bootDiskKmsKey") @Nullable String bootDiskKmsKey,
-        @CustomType.Parameter("diskSizeGb") @Nullable Integer diskSizeGb,
-        @CustomType.Parameter("diskType") @Nullable String diskType,
-        @CustomType.Parameter("ephemeralStorageConfig") @Nullable ClusterNodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig,
-        @CustomType.Parameter("gcfsConfig") @Nullable ClusterNodePoolNodeConfigGcfsConfig gcfsConfig,
-        @CustomType.Parameter("guestAccelerators") @Nullable List<ClusterNodePoolNodeConfigGuestAccelerator> guestAccelerators,
-        @CustomType.Parameter("gvnic") @Nullable ClusterNodePoolNodeConfigGvnic gvnic,
-        @CustomType.Parameter("imageType") @Nullable String imageType,
-        @CustomType.Parameter("kubeletConfig") @Nullable ClusterNodePoolNodeConfigKubeletConfig kubeletConfig,
-        @CustomType.Parameter("labels") @Nullable Map<String,String> labels,
-        @CustomType.Parameter("linuxNodeConfig") @Nullable ClusterNodePoolNodeConfigLinuxNodeConfig linuxNodeConfig,
-        @CustomType.Parameter("localSsdCount") @Nullable Integer localSsdCount,
-        @CustomType.Parameter("machineType") @Nullable String machineType,
-        @CustomType.Parameter("metadata") @Nullable Map<String,String> metadata,
-        @CustomType.Parameter("minCpuPlatform") @Nullable String minCpuPlatform,
-        @CustomType.Parameter("nodeGroup") @Nullable String nodeGroup,
-        @CustomType.Parameter("oauthScopes") @Nullable List<String> oauthScopes,
-        @CustomType.Parameter("preemptible") @Nullable Boolean preemptible,
-        @CustomType.Parameter("sandboxConfig") @Nullable ClusterNodePoolNodeConfigSandboxConfig sandboxConfig,
-        @CustomType.Parameter("serviceAccount") @Nullable String serviceAccount,
-        @CustomType.Parameter("shieldedInstanceConfig") @Nullable ClusterNodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig,
-        @CustomType.Parameter("spot") @Nullable Boolean spot,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("taints") @Nullable List<ClusterNodePoolNodeConfigTaint> taints,
-        @CustomType.Parameter("workloadMetadataConfig") @Nullable ClusterNodePoolNodeConfigWorkloadMetadataConfig workloadMetadataConfig) {
-        this.bootDiskKmsKey = bootDiskKmsKey;
-        this.diskSizeGb = diskSizeGb;
-        this.diskType = diskType;
-        this.ephemeralStorageConfig = ephemeralStorageConfig;
-        this.gcfsConfig = gcfsConfig;
-        this.guestAccelerators = guestAccelerators;
-        this.gvnic = gvnic;
-        this.imageType = imageType;
-        this.kubeletConfig = kubeletConfig;
-        this.labels = labels;
-        this.linuxNodeConfig = linuxNodeConfig;
-        this.localSsdCount = localSsdCount;
-        this.machineType = machineType;
-        this.metadata = metadata;
-        this.minCpuPlatform = minCpuPlatform;
-        this.nodeGroup = nodeGroup;
-        this.oauthScopes = oauthScopes;
-        this.preemptible = preemptible;
-        this.sandboxConfig = sandboxConfig;
-        this.serviceAccount = serviceAccount;
-        this.shieldedInstanceConfig = shieldedInstanceConfig;
-        this.spot = spot;
-        this.tags = tags;
-        this.taints = taints;
-        this.workloadMetadataConfig = workloadMetadataConfig;
-    }
-
+    private ClusterNodePoolNodeConfig() {}
     /**
      * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
      * 
@@ -401,6 +353,13 @@ public final class ClusterNodePoolNodeConfig {
     public Optional<Boolean> preemptible() {
         return Optional.ofNullable(this.preemptible);
     }
+    /**
+     * @return The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterNodePoolNodeConfigReservationAffinity> reservationAffinity() {
+        return Optional.ofNullable(this.reservationAffinity);
+    }
     public Optional<ClusterNodePoolNodeConfigSandboxConfig> sandboxConfig() {
         return Optional.ofNullable(this.sandboxConfig);
     }
@@ -429,8 +388,7 @@ public final class ClusterNodePoolNodeConfig {
         return Optional.ofNullable(this.spot);
     }
     /**
-     * @return The list of instance tags applied to all nodes. Tags are used to identify
-     * valid sources or targets for network firewalls.
+     * @return ) - List of network tags applied to auto-provisioned node pools.
      * 
      */
     public List<String> tags() {
@@ -466,7 +424,7 @@ public final class ClusterNodePoolNodeConfig {
     public static Builder builder(ClusterNodePoolNodeConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String bootDiskKmsKey;
         private @Nullable Integer diskSizeGb;
@@ -486,6 +444,7 @@ public final class ClusterNodePoolNodeConfig {
         private @Nullable String nodeGroup;
         private @Nullable List<String> oauthScopes;
         private @Nullable Boolean preemptible;
+        private @Nullable ClusterNodePoolNodeConfigReservationAffinity reservationAffinity;
         private @Nullable ClusterNodePoolNodeConfigSandboxConfig sandboxConfig;
         private @Nullable String serviceAccount;
         private @Nullable ClusterNodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
@@ -493,11 +452,7 @@ public final class ClusterNodePoolNodeConfig {
         private @Nullable List<String> tags;
         private @Nullable List<ClusterNodePoolNodeConfigTaint> taints;
         private @Nullable ClusterNodePoolNodeConfigWorkloadMetadataConfig workloadMetadataConfig;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNodePoolNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
@@ -518,6 +473,7 @@ public final class ClusterNodePoolNodeConfig {
     	      this.nodeGroup = defaults.nodeGroup;
     	      this.oauthScopes = defaults.oauthScopes;
     	      this.preemptible = defaults.preemptible;
+    	      this.reservationAffinity = defaults.reservationAffinity;
     	      this.sandboxConfig = defaults.sandboxConfig;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
@@ -527,26 +483,32 @@ public final class ClusterNodePoolNodeConfig {
     	      this.workloadMetadataConfig = defaults.workloadMetadataConfig;
         }
 
+        @CustomType.Setter
         public Builder bootDiskKmsKey(@Nullable String bootDiskKmsKey) {
             this.bootDiskKmsKey = bootDiskKmsKey;
             return this;
         }
+        @CustomType.Setter
         public Builder diskSizeGb(@Nullable Integer diskSizeGb) {
             this.diskSizeGb = diskSizeGb;
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
             this.diskType = diskType;
             return this;
         }
+        @CustomType.Setter
         public Builder ephemeralStorageConfig(@Nullable ClusterNodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig) {
             this.ephemeralStorageConfig = ephemeralStorageConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder gcfsConfig(@Nullable ClusterNodePoolNodeConfigGcfsConfig gcfsConfig) {
             this.gcfsConfig = gcfsConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder guestAccelerators(@Nullable List<ClusterNodePoolNodeConfigGuestAccelerator> guestAccelerators) {
             this.guestAccelerators = guestAccelerators;
             return this;
@@ -554,46 +516,57 @@ public final class ClusterNodePoolNodeConfig {
         public Builder guestAccelerators(ClusterNodePoolNodeConfigGuestAccelerator... guestAccelerators) {
             return guestAccelerators(List.of(guestAccelerators));
         }
+        @CustomType.Setter
         public Builder gvnic(@Nullable ClusterNodePoolNodeConfigGvnic gvnic) {
             this.gvnic = gvnic;
             return this;
         }
+        @CustomType.Setter
         public Builder imageType(@Nullable String imageType) {
             this.imageType = imageType;
             return this;
         }
+        @CustomType.Setter
         public Builder kubeletConfig(@Nullable ClusterNodePoolNodeConfigKubeletConfig kubeletConfig) {
             this.kubeletConfig = kubeletConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
             this.labels = labels;
             return this;
         }
+        @CustomType.Setter
         public Builder linuxNodeConfig(@Nullable ClusterNodePoolNodeConfigLinuxNodeConfig linuxNodeConfig) {
             this.linuxNodeConfig = linuxNodeConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder localSsdCount(@Nullable Integer localSsdCount) {
             this.localSsdCount = localSsdCount;
             return this;
         }
+        @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
             this.machineType = machineType;
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(@Nullable Map<String,String> metadata) {
             this.metadata = metadata;
             return this;
         }
+        @CustomType.Setter
         public Builder minCpuPlatform(@Nullable String minCpuPlatform) {
             this.minCpuPlatform = minCpuPlatform;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeGroup(@Nullable String nodeGroup) {
             this.nodeGroup = nodeGroup;
             return this;
         }
+        @CustomType.Setter
         public Builder oauthScopes(@Nullable List<String> oauthScopes) {
             this.oauthScopes = oauthScopes;
             return this;
@@ -601,26 +574,37 @@ public final class ClusterNodePoolNodeConfig {
         public Builder oauthScopes(String... oauthScopes) {
             return oauthScopes(List.of(oauthScopes));
         }
+        @CustomType.Setter
         public Builder preemptible(@Nullable Boolean preemptible) {
             this.preemptible = preemptible;
             return this;
         }
+        @CustomType.Setter
+        public Builder reservationAffinity(@Nullable ClusterNodePoolNodeConfigReservationAffinity reservationAffinity) {
+            this.reservationAffinity = reservationAffinity;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sandboxConfig(@Nullable ClusterNodePoolNodeConfigSandboxConfig sandboxConfig) {
             this.sandboxConfig = sandboxConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
             this.serviceAccount = serviceAccount;
             return this;
         }
+        @CustomType.Setter
         public Builder shieldedInstanceConfig(@Nullable ClusterNodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig) {
             this.shieldedInstanceConfig = shieldedInstanceConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder spot(@Nullable Boolean spot) {
             this.spot = spot;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -628,6 +612,7 @@ public final class ClusterNodePoolNodeConfig {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder taints(@Nullable List<ClusterNodePoolNodeConfigTaint> taints) {
             this.taints = taints;
             return this;
@@ -635,11 +620,40 @@ public final class ClusterNodePoolNodeConfig {
         public Builder taints(ClusterNodePoolNodeConfigTaint... taints) {
             return taints(List.of(taints));
         }
+        @CustomType.Setter
         public Builder workloadMetadataConfig(@Nullable ClusterNodePoolNodeConfigWorkloadMetadataConfig workloadMetadataConfig) {
             this.workloadMetadataConfig = workloadMetadataConfig;
             return this;
-        }        public ClusterNodePoolNodeConfig build() {
-            return new ClusterNodePoolNodeConfig(bootDiskKmsKey, diskSizeGb, diskType, ephemeralStorageConfig, gcfsConfig, guestAccelerators, gvnic, imageType, kubeletConfig, labels, linuxNodeConfig, localSsdCount, machineType, metadata, minCpuPlatform, nodeGroup, oauthScopes, preemptible, sandboxConfig, serviceAccount, shieldedInstanceConfig, spot, tags, taints, workloadMetadataConfig);
+        }
+        public ClusterNodePoolNodeConfig build() {
+            final var o = new ClusterNodePoolNodeConfig();
+            o.bootDiskKmsKey = bootDiskKmsKey;
+            o.diskSizeGb = diskSizeGb;
+            o.diskType = diskType;
+            o.ephemeralStorageConfig = ephemeralStorageConfig;
+            o.gcfsConfig = gcfsConfig;
+            o.guestAccelerators = guestAccelerators;
+            o.gvnic = gvnic;
+            o.imageType = imageType;
+            o.kubeletConfig = kubeletConfig;
+            o.labels = labels;
+            o.linuxNodeConfig = linuxNodeConfig;
+            o.localSsdCount = localSsdCount;
+            o.machineType = machineType;
+            o.metadata = metadata;
+            o.minCpuPlatform = minCpuPlatform;
+            o.nodeGroup = nodeGroup;
+            o.oauthScopes = oauthScopes;
+            o.preemptible = preemptible;
+            o.reservationAffinity = reservationAffinity;
+            o.sandboxConfig = sandboxConfig;
+            o.serviceAccount = serviceAccount;
+            o.shieldedInstanceConfig = shieldedInstanceConfig;
+            o.spot = spot;
+            o.tags = tags;
+            o.taints = taints;
+            o.workloadMetadataConfig = workloadMetadataConfig;
+            return o;
         }
     }
 }

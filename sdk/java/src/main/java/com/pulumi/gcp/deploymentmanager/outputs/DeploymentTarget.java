@@ -17,7 +17,7 @@ public final class DeploymentTarget {
      * Structure is documented below.
      * 
      */
-    private final DeploymentTargetConfig config;
+    private DeploymentTargetConfig config;
     /**
      * @return Specifies import files for this configuration. This can be
      * used to import templates or other files. For example, you might
@@ -25,16 +25,9 @@ public final class DeploymentTarget {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<DeploymentTargetImport> imports;
+    private @Nullable List<DeploymentTargetImport> imports;
 
-    @CustomType.Constructor
-    private DeploymentTarget(
-        @CustomType.Parameter("config") DeploymentTargetConfig config,
-        @CustomType.Parameter("imports") @Nullable List<DeploymentTargetImport> imports) {
-        this.config = config;
-        this.imports = imports;
-    }
-
+    private DeploymentTarget() {}
     /**
      * @return The root configuration file to use for this deployment.
      * Structure is documented below.
@@ -61,33 +54,35 @@ public final class DeploymentTarget {
     public static Builder builder(DeploymentTarget defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private DeploymentTargetConfig config;
         private @Nullable List<DeploymentTargetImport> imports;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DeploymentTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.config = defaults.config;
     	      this.imports = defaults.imports;
         }
 
+        @CustomType.Setter
         public Builder config(DeploymentTargetConfig config) {
             this.config = Objects.requireNonNull(config);
             return this;
         }
+        @CustomType.Setter
         public Builder imports(@Nullable List<DeploymentTargetImport> imports) {
             this.imports = imports;
             return this;
         }
         public Builder imports(DeploymentTargetImport... imports) {
             return imports(List.of(imports));
-        }        public DeploymentTarget build() {
-            return new DeploymentTarget(config, imports);
+        }
+        public DeploymentTarget build() {
+            final var o = new DeploymentTarget();
+            o.config = config;
+            o.imports = imports;
+            return o;
         }
     }
 }

@@ -14,39 +14,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppEngineServiceResult {
-    private final String displayName;
+    private String displayName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String moduleId;
-    private final String name;
-    private final @Nullable String project;
-    private final String serviceId;
-    private final List<GetAppEngineServiceTelemetry> telemetries;
-    private final Map<String,String> userLabels;
+    private String id;
+    private String moduleId;
+    private String name;
+    private @Nullable String project;
+    private String serviceId;
+    private List<GetAppEngineServiceTelemetry> telemetries;
+    private Map<String,String> userLabels;
 
-    @CustomType.Constructor
-    private GetAppEngineServiceResult(
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("moduleId") String moduleId,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("serviceId") String serviceId,
-        @CustomType.Parameter("telemetries") List<GetAppEngineServiceTelemetry> telemetries,
-        @CustomType.Parameter("userLabels") Map<String,String> userLabels) {
-        this.displayName = displayName;
-        this.id = id;
-        this.moduleId = moduleId;
-        this.name = name;
-        this.project = project;
-        this.serviceId = serviceId;
-        this.telemetries = telemetries;
-        this.userLabels = userLabels;
-    }
-
+    private GetAppEngineServiceResult() {}
     public String displayName() {
         return this.displayName;
     }
@@ -83,7 +64,7 @@ public final class GetAppEngineServiceResult {
     public static Builder builder(GetAppEngineServiceResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String displayName;
         private String id;
@@ -93,11 +74,7 @@ public final class GetAppEngineServiceResult {
         private String serviceId;
         private List<GetAppEngineServiceTelemetry> telemetries;
         private Map<String,String> userLabels;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAppEngineServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.displayName = defaults.displayName;
@@ -110,30 +87,37 @@ public final class GetAppEngineServiceResult {
     	      this.userLabels = defaults.userLabels;
         }
 
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder moduleId(String moduleId) {
             this.moduleId = Objects.requireNonNull(moduleId);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceId(String serviceId) {
             this.serviceId = Objects.requireNonNull(serviceId);
             return this;
         }
+        @CustomType.Setter
         public Builder telemetries(List<GetAppEngineServiceTelemetry> telemetries) {
             this.telemetries = Objects.requireNonNull(telemetries);
             return this;
@@ -141,11 +125,22 @@ public final class GetAppEngineServiceResult {
         public Builder telemetries(GetAppEngineServiceTelemetry... telemetries) {
             return telemetries(List.of(telemetries));
         }
+        @CustomType.Setter
         public Builder userLabels(Map<String,String> userLabels) {
             this.userLabels = Objects.requireNonNull(userLabels);
             return this;
-        }        public GetAppEngineServiceResult build() {
-            return new GetAppEngineServiceResult(displayName, id, moduleId, name, project, serviceId, telemetries, userLabels);
+        }
+        public GetAppEngineServiceResult build() {
+            final var o = new GetAppEngineServiceResult();
+            o.displayName = displayName;
+            o.id = id;
+            o.moduleId = moduleId;
+            o.name = name;
+            o.project = project;
+            o.serviceId = serviceId;
+            o.telemetries = telemetries;
+            o.userLabels = userLabels;
+            return o;
         }
     }
 }

@@ -13,13 +13,9 @@ public final class ClusterClusterTelemetry {
      * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private ClusterClusterTelemetry(@CustomType.Parameter("type") String type) {
-        this.type = type;
-    }
-
+    private ClusterClusterTelemetry() {}
     /**
      * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
@@ -35,24 +31,24 @@ public final class ClusterClusterTelemetry {
     public static Builder builder(ClusterClusterTelemetry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterClusterTelemetry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public ClusterClusterTelemetry build() {
-            return new ClusterClusterTelemetry(type);
+        }
+        public ClusterClusterTelemetry build() {
+            final var o = new ClusterClusterTelemetry();
+            o.type = type;
+            return o;
         }
     }
 }

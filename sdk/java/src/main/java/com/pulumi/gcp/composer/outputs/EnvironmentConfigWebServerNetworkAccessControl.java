@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigWebServerNetworkAccessControl {
-    private final @Nullable List<EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange> allowedIpRanges;
+    private @Nullable List<EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange> allowedIpRanges;
 
-    @CustomType.Constructor
-    private EnvironmentConfigWebServerNetworkAccessControl(@CustomType.Parameter("allowedIpRanges") @Nullable List<EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange> allowedIpRanges) {
-        this.allowedIpRanges = allowedIpRanges;
-    }
-
+    private EnvironmentConfigWebServerNetworkAccessControl() {}
     public List<EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange> allowedIpRanges() {
         return this.allowedIpRanges == null ? List.of() : this.allowedIpRanges;
     }
@@ -29,27 +25,27 @@ public final class EnvironmentConfigWebServerNetworkAccessControl {
     public static Builder builder(EnvironmentConfigWebServerNetworkAccessControl defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange> allowedIpRanges;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EnvironmentConfigWebServerNetworkAccessControl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedIpRanges = defaults.allowedIpRanges;
         }
 
+        @CustomType.Setter
         public Builder allowedIpRanges(@Nullable List<EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange> allowedIpRanges) {
             this.allowedIpRanges = allowedIpRanges;
             return this;
         }
         public Builder allowedIpRanges(EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange... allowedIpRanges) {
             return allowedIpRanges(List.of(allowedIpRanges));
-        }        public EnvironmentConfigWebServerNetworkAccessControl build() {
-            return new EnvironmentConfigWebServerNetworkAccessControl(allowedIpRanges);
+        }
+        public EnvironmentConfigWebServerNetworkAccessControl build() {
+            final var o = new EnvironmentConfigWebServerNetworkAccessControl();
+            o.allowedIpRanges = allowedIpRanges;
+            return o;
         }
     }
 }

@@ -13,13 +13,9 @@ public final class OrganizationPolicyRestorePolicy {
      * @return May only be set to true. If set, then the default Policy is restored.
      * 
      */
-    private final Boolean default_;
+    private Boolean default_;
 
-    @CustomType.Constructor
-    private OrganizationPolicyRestorePolicy(@CustomType.Parameter("default") Boolean default_) {
-        this.default_ = default_;
-    }
-
+    private OrganizationPolicyRestorePolicy() {}
     /**
      * @return May only be set to true. If set, then the default Policy is restored.
      * 
@@ -35,24 +31,24 @@ public final class OrganizationPolicyRestorePolicy {
     public static Builder builder(OrganizationPolicyRestorePolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean default_;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OrganizationPolicyRestorePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.default_ = defaults.default_;
         }
 
+        @CustomType.Setter("default")
         public Builder default_(Boolean default_) {
             this.default_ = Objects.requireNonNull(default_);
             return this;
-        }        public OrganizationPolicyRestorePolicy build() {
-            return new OrganizationPolicyRestorePolicy(default_);
+        }
+        public OrganizationPolicyRestorePolicy build() {
+            final var o = new OrganizationPolicyRestorePolicy();
+            o.default_ = default_;
+            return o;
         }
     }
 }

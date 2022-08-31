@@ -16,39 +16,28 @@ public final class CertificateConfigX509ConfigCaOptions {
      * @return When true, the &#34;CA&#34; in Basic Constraints extension will be set to true.
      * 
      */
-    private final @Nullable Boolean isCa;
+    private @Nullable Boolean isCa;
     /**
      * @return Refers to the &#34;path length constraint&#34; in Basic Constraints extension. For a CA certificate, this value describes the depth of
      * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
      * 
      */
-    private final @Nullable Integer maxIssuerPathLength;
+    private @Nullable Integer maxIssuerPathLength;
     /**
      * @return When true, the &#34;CA&#34; in Basic Constraints extension will be set to false.
      * If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
      * 
      */
-    private final @Nullable Boolean nonCa;
+    private @Nullable Boolean nonCa;
     /**
      * @return When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
      * if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
      * the max path length will be omitted from the CA certificate.
      * 
      */
-    private final @Nullable Boolean zeroMaxIssuerPathLength;
+    private @Nullable Boolean zeroMaxIssuerPathLength;
 
-    @CustomType.Constructor
-    private CertificateConfigX509ConfigCaOptions(
-        @CustomType.Parameter("isCa") @Nullable Boolean isCa,
-        @CustomType.Parameter("maxIssuerPathLength") @Nullable Integer maxIssuerPathLength,
-        @CustomType.Parameter("nonCa") @Nullable Boolean nonCa,
-        @CustomType.Parameter("zeroMaxIssuerPathLength") @Nullable Boolean zeroMaxIssuerPathLength) {
-        this.isCa = isCa;
-        this.maxIssuerPathLength = maxIssuerPathLength;
-        this.nonCa = nonCa;
-        this.zeroMaxIssuerPathLength = zeroMaxIssuerPathLength;
-    }
-
+    private CertificateConfigX509ConfigCaOptions() {}
     /**
      * @return When true, the &#34;CA&#34; in Basic Constraints extension will be set to true.
      * 
@@ -89,17 +78,13 @@ public final class CertificateConfigX509ConfigCaOptions {
     public static Builder builder(CertificateConfigX509ConfigCaOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean isCa;
         private @Nullable Integer maxIssuerPathLength;
         private @Nullable Boolean nonCa;
         private @Nullable Boolean zeroMaxIssuerPathLength;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateConfigX509ConfigCaOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.isCa = defaults.isCa;
@@ -108,23 +93,33 @@ public final class CertificateConfigX509ConfigCaOptions {
     	      this.zeroMaxIssuerPathLength = defaults.zeroMaxIssuerPathLength;
         }
 
+        @CustomType.Setter
         public Builder isCa(@Nullable Boolean isCa) {
             this.isCa = isCa;
             return this;
         }
+        @CustomType.Setter
         public Builder maxIssuerPathLength(@Nullable Integer maxIssuerPathLength) {
             this.maxIssuerPathLength = maxIssuerPathLength;
             return this;
         }
+        @CustomType.Setter
         public Builder nonCa(@Nullable Boolean nonCa) {
             this.nonCa = nonCa;
             return this;
         }
+        @CustomType.Setter
         public Builder zeroMaxIssuerPathLength(@Nullable Boolean zeroMaxIssuerPathLength) {
             this.zeroMaxIssuerPathLength = zeroMaxIssuerPathLength;
             return this;
-        }        public CertificateConfigX509ConfigCaOptions build() {
-            return new CertificateConfigX509ConfigCaOptions(isCa, maxIssuerPathLength, nonCa, zeroMaxIssuerPathLength);
+        }
+        public CertificateConfigX509ConfigCaOptions build() {
+            final var o = new CertificateConfigX509ConfigCaOptions();
+            o.isCa = isCa;
+            o.maxIssuerPathLength = maxIssuerPathLength;
+            o.nonCa = nonCa;
+            o.zeroMaxIssuerPathLength = zeroMaxIssuerPathLength;
+            return o;
         }
     }
 }

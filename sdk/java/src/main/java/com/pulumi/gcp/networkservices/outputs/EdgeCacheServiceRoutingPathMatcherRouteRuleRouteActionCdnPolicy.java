@@ -19,14 +19,14 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
      * Structure is documented below.
      * 
      */
-    private final @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy cacheKeyPolicy;
+    private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy cacheKeyPolicy;
     /**
      * @return Cache modes allow users to control the behaviour of the cache, what content it should cache automatically, whether to respect origin headers, or whether to unconditionally cache all responses.
      * For all cache modes, Cache-Control headers will be passed to the client. Use clientTtl to override what is sent to the client.
      * Possible values are `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `BYPASS_CACHE`.
      * 
      */
-    private final @Nullable String cacheMode;
+    private @Nullable String cacheMode;
     /**
      * @return Specifies a separate client (e.g. browser client) TTL, separate from the TTL used by the edge caches. Leaving this empty will use the same cache TTL for both the CDN and the client-facing response.
      * - The TTL must be &gt; 0 and &lt;= 86400s (1 day)
@@ -37,7 +37,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
      *   A duration in seconds terminated by &#39;s&#39;. Example: &#34;3s&#34;.
      * 
      */
-    private final @Nullable String clientTtl;
+    private @Nullable String clientTtl;
     /**
      * @return Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age).
      * Defaults to 3600s (1 hour).
@@ -51,7 +51,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
      *   A duration in seconds terminated by &#39;s&#39;. Example: &#34;3s&#34;.
      * 
      */
-    private final @Nullable String defaultTtl;
+    private @Nullable String defaultTtl;
     /**
      * @return Specifies the maximum allowed TTL for cached content served by this origin.
      * Defaults to 86400s (1 day).
@@ -64,7 +64,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
      *   A duration in seconds terminated by &#39;s&#39;. Example: &#34;3s&#34;.
      * 
      */
-    private final @Nullable String maxTtl;
+    private @Nullable String maxTtl;
     /**
      * @return Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency.
      * By default, the CDNPolicy will apply the following default TTLs to these status codes:
@@ -74,7 +74,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
      *   These defaults can be overridden in negativeCachingPolicy
      * 
      */
-    private final @Nullable Boolean negativeCaching;
+    private @Nullable Boolean negativeCaching;
     /**
      * @return Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
      * - Omitting the policy and leaving negativeCaching enabled will use the default TTLs for each status code, defined in negativeCaching.
@@ -82,12 +82,12 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
      *   Note that when specifying an explicit negativeCachingPolicy, you should take care to specify a cache TTL for all response codes that you wish to cache. The CDNPolicy will not apply any default negative caching when a policy exists.
      * 
      */
-    private final @Nullable Map<String,String> negativeCachingPolicy;
+    private @Nullable Map<String,String> negativeCachingPolicy;
     /**
      * @return The EdgeCacheKeyset containing the set of public keys used to validate signed requests at the edge.
      * 
      */
-    private final @Nullable String signedRequestKeyset;
+    private @Nullable String signedRequestKeyset;
     /**
      * @return Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
      * You must also set a signedRequestKeyset to enable signed requests.
@@ -95,30 +95,9 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
      * Possible values are `DISABLED` and `REQUIRE_SIGNATURES`.
      * 
      */
-    private final @Nullable String signedRequestMode;
+    private @Nullable String signedRequestMode;
 
-    @CustomType.Constructor
-    private EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy(
-        @CustomType.Parameter("cacheKeyPolicy") @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy cacheKeyPolicy,
-        @CustomType.Parameter("cacheMode") @Nullable String cacheMode,
-        @CustomType.Parameter("clientTtl") @Nullable String clientTtl,
-        @CustomType.Parameter("defaultTtl") @Nullable String defaultTtl,
-        @CustomType.Parameter("maxTtl") @Nullable String maxTtl,
-        @CustomType.Parameter("negativeCaching") @Nullable Boolean negativeCaching,
-        @CustomType.Parameter("negativeCachingPolicy") @Nullable Map<String,String> negativeCachingPolicy,
-        @CustomType.Parameter("signedRequestKeyset") @Nullable String signedRequestKeyset,
-        @CustomType.Parameter("signedRequestMode") @Nullable String signedRequestMode) {
-        this.cacheKeyPolicy = cacheKeyPolicy;
-        this.cacheMode = cacheMode;
-        this.clientTtl = clientTtl;
-        this.defaultTtl = defaultTtl;
-        this.maxTtl = maxTtl;
-        this.negativeCaching = negativeCaching;
-        this.negativeCachingPolicy = negativeCachingPolicy;
-        this.signedRequestKeyset = signedRequestKeyset;
-        this.signedRequestMode = signedRequestMode;
-    }
-
+    private EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy() {}
     /**
      * @return Defines the request parameters that contribute to the cache key.
      * Structure is documented below.
@@ -227,7 +206,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
     public static Builder builder(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy cacheKeyPolicy;
         private @Nullable String cacheMode;
@@ -238,11 +217,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
         private @Nullable Map<String,String> negativeCachingPolicy;
         private @Nullable String signedRequestKeyset;
         private @Nullable String signedRequestMode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cacheKeyPolicy = defaults.cacheKeyPolicy;
@@ -256,43 +231,63 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
     	      this.signedRequestMode = defaults.signedRequestMode;
         }
 
+        @CustomType.Setter
         public Builder cacheKeyPolicy(@Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy cacheKeyPolicy) {
             this.cacheKeyPolicy = cacheKeyPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder cacheMode(@Nullable String cacheMode) {
             this.cacheMode = cacheMode;
             return this;
         }
+        @CustomType.Setter
         public Builder clientTtl(@Nullable String clientTtl) {
             this.clientTtl = clientTtl;
             return this;
         }
+        @CustomType.Setter
         public Builder defaultTtl(@Nullable String defaultTtl) {
             this.defaultTtl = defaultTtl;
             return this;
         }
+        @CustomType.Setter
         public Builder maxTtl(@Nullable String maxTtl) {
             this.maxTtl = maxTtl;
             return this;
         }
+        @CustomType.Setter
         public Builder negativeCaching(@Nullable Boolean negativeCaching) {
             this.negativeCaching = negativeCaching;
             return this;
         }
+        @CustomType.Setter
         public Builder negativeCachingPolicy(@Nullable Map<String,String> negativeCachingPolicy) {
             this.negativeCachingPolicy = negativeCachingPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder signedRequestKeyset(@Nullable String signedRequestKeyset) {
             this.signedRequestKeyset = signedRequestKeyset;
             return this;
         }
+        @CustomType.Setter
         public Builder signedRequestMode(@Nullable String signedRequestMode) {
             this.signedRequestMode = signedRequestMode;
             return this;
-        }        public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy build() {
-            return new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy(cacheKeyPolicy, cacheMode, clientTtl, defaultTtl, maxTtl, negativeCaching, negativeCachingPolicy, signedRequestKeyset, signedRequestMode);
+        }
+        public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy build() {
+            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy();
+            o.cacheKeyPolicy = cacheKeyPolicy;
+            o.cacheMode = cacheMode;
+            o.clientTtl = clientTtl;
+            o.defaultTtl = defaultTtl;
+            o.maxTtl = maxTtl;
+            o.negativeCaching = negativeCaching;
+            o.negativeCachingPolicy = negativeCachingPolicy;
+            o.signedRequestKeyset = signedRequestKeyset;
+            o.signedRequestMode = signedRequestMode;
+            return o;
         }
     }
 }

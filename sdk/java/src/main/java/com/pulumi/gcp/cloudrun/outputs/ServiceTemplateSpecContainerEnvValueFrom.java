@@ -14,13 +14,9 @@ public final class ServiceTemplateSpecContainerEnvValueFrom {
      * Structure is documented below.
      * 
      */
-    private final ServiceTemplateSpecContainerEnvValueFromSecretKeyRef secretKeyRef;
+    private ServiceTemplateSpecContainerEnvValueFromSecretKeyRef secretKeyRef;
 
-    @CustomType.Constructor
-    private ServiceTemplateSpecContainerEnvValueFrom(@CustomType.Parameter("secretKeyRef") ServiceTemplateSpecContainerEnvValueFromSecretKeyRef secretKeyRef) {
-        this.secretKeyRef = secretKeyRef;
-    }
-
+    private ServiceTemplateSpecContainerEnvValueFrom() {}
     /**
      * @return Selects a key (version) of a secret in Secret Manager.
      * Structure is documented below.
@@ -37,24 +33,24 @@ public final class ServiceTemplateSpecContainerEnvValueFrom {
     public static Builder builder(ServiceTemplateSpecContainerEnvValueFrom defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private ServiceTemplateSpecContainerEnvValueFromSecretKeyRef secretKeyRef;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceTemplateSpecContainerEnvValueFrom defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.secretKeyRef = defaults.secretKeyRef;
         }
 
+        @CustomType.Setter
         public Builder secretKeyRef(ServiceTemplateSpecContainerEnvValueFromSecretKeyRef secretKeyRef) {
             this.secretKeyRef = Objects.requireNonNull(secretKeyRef);
             return this;
-        }        public ServiceTemplateSpecContainerEnvValueFrom build() {
-            return new ServiceTemplateSpecContainerEnvValueFrom(secretKeyRef);
+        }
+        public ServiceTemplateSpecContainerEnvValueFrom build() {
+            final var o = new ServiceTemplateSpecContainerEnvValueFrom();
+            o.secretKeyRef = secretKeyRef;
+            return o;
         }
     }
 }

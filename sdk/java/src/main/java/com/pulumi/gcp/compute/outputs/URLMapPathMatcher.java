@@ -26,12 +26,12 @@ public final class URLMapPathMatcher {
      * Structure is documented below.
      * 
      */
-    private final @Nullable URLMapPathMatcherDefaultRouteAction defaultRouteAction;
+    private @Nullable URLMapPathMatcherDefaultRouteAction defaultRouteAction;
     /**
      * @return The backend service or backend bucket to use when none of the given paths match.
      * 
      */
-    private final @Nullable String defaultService;
+    private @Nullable String defaultService;
     /**
      * @return When none of the specified hostRules match, the request is redirected to a URL specified
      * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
@@ -39,12 +39,12 @@ public final class URLMapPathMatcher {
      * Structure is documented below.
      * 
      */
-    private final @Nullable URLMapPathMatcherDefaultUrlRedirect defaultUrlRedirect;
+    private @Nullable URLMapPathMatcherDefaultUrlRedirect defaultUrlRedirect;
     /**
      * @return Description of this test case.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return Specifies changes to request and response headers that need to take effect for
      * the selected backendService.
@@ -53,13 +53,13 @@ public final class URLMapPathMatcher {
      * Structure is documented below.
      * 
      */
-    private final @Nullable URLMapPathMatcherHeaderAction headerAction;
+    private @Nullable URLMapPathMatcherHeaderAction headerAction;
     /**
      * @return The name of the query parameter to match. The query parameter must exist in the
      * request, in the absence of which the request match fails.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The list of path rules. Use this list instead of routeRules when routing based
      * on simple path matching is all that&#39;s required. The order by which path rules
@@ -70,7 +70,7 @@ public final class URLMapPathMatcher {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<URLMapPathMatcherPathRule> pathRules;
+    private @Nullable List<URLMapPathMatcherPathRule> pathRules;
     /**
      * @return The list of ordered HTTP route rules. Use this list instead of pathRules when
      * advanced route matching and routing actions are desired. The order of specifying
@@ -81,28 +81,9 @@ public final class URLMapPathMatcher {
      * Structure is documented below.
      * 
      */
-    private final @Nullable List<URLMapPathMatcherRouteRule> routeRules;
+    private @Nullable List<URLMapPathMatcherRouteRule> routeRules;
 
-    @CustomType.Constructor
-    private URLMapPathMatcher(
-        @CustomType.Parameter("defaultRouteAction") @Nullable URLMapPathMatcherDefaultRouteAction defaultRouteAction,
-        @CustomType.Parameter("defaultService") @Nullable String defaultService,
-        @CustomType.Parameter("defaultUrlRedirect") @Nullable URLMapPathMatcherDefaultUrlRedirect defaultUrlRedirect,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("headerAction") @Nullable URLMapPathMatcherHeaderAction headerAction,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("pathRules") @Nullable List<URLMapPathMatcherPathRule> pathRules,
-        @CustomType.Parameter("routeRules") @Nullable List<URLMapPathMatcherRouteRule> routeRules) {
-        this.defaultRouteAction = defaultRouteAction;
-        this.defaultService = defaultService;
-        this.defaultUrlRedirect = defaultUrlRedirect;
-        this.description = description;
-        this.headerAction = headerAction;
-        this.name = name;
-        this.pathRules = pathRules;
-        this.routeRules = routeRules;
-    }
-
+    private URLMapPathMatcher() {}
     /**
      * @return defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
      * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
@@ -192,7 +173,7 @@ public final class URLMapPathMatcher {
     public static Builder builder(URLMapPathMatcher defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable URLMapPathMatcherDefaultRouteAction defaultRouteAction;
         private @Nullable String defaultService;
@@ -202,11 +183,7 @@ public final class URLMapPathMatcher {
         private String name;
         private @Nullable List<URLMapPathMatcherPathRule> pathRules;
         private @Nullable List<URLMapPathMatcherRouteRule> routeRules;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(URLMapPathMatcher defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultRouteAction = defaults.defaultRouteAction;
@@ -219,30 +196,37 @@ public final class URLMapPathMatcher {
     	      this.routeRules = defaults.routeRules;
         }
 
+        @CustomType.Setter
         public Builder defaultRouteAction(@Nullable URLMapPathMatcherDefaultRouteAction defaultRouteAction) {
             this.defaultRouteAction = defaultRouteAction;
             return this;
         }
+        @CustomType.Setter
         public Builder defaultService(@Nullable String defaultService) {
             this.defaultService = defaultService;
             return this;
         }
+        @CustomType.Setter
         public Builder defaultUrlRedirect(@Nullable URLMapPathMatcherDefaultUrlRedirect defaultUrlRedirect) {
             this.defaultUrlRedirect = defaultUrlRedirect;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder headerAction(@Nullable URLMapPathMatcherHeaderAction headerAction) {
             this.headerAction = headerAction;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder pathRules(@Nullable List<URLMapPathMatcherPathRule> pathRules) {
             this.pathRules = pathRules;
             return this;
@@ -250,14 +234,25 @@ public final class URLMapPathMatcher {
         public Builder pathRules(URLMapPathMatcherPathRule... pathRules) {
             return pathRules(List.of(pathRules));
         }
+        @CustomType.Setter
         public Builder routeRules(@Nullable List<URLMapPathMatcherRouteRule> routeRules) {
             this.routeRules = routeRules;
             return this;
         }
         public Builder routeRules(URLMapPathMatcherRouteRule... routeRules) {
             return routeRules(List.of(routeRules));
-        }        public URLMapPathMatcher build() {
-            return new URLMapPathMatcher(defaultRouteAction, defaultService, defaultUrlRedirect, description, headerAction, name, pathRules, routeRules);
+        }
+        public URLMapPathMatcher build() {
+            final var o = new URLMapPathMatcher();
+            o.defaultRouteAction = defaultRouteAction;
+            o.defaultService = defaultService;
+            o.defaultUrlRedirect = defaultUrlRedirect;
+            o.description = description;
+            o.headerAction = headerAction;
+            o.name = name;
+            o.pathRules = pathRules;
+            o.routeRules = routeRules;
+            return o;
         }
     }
 }

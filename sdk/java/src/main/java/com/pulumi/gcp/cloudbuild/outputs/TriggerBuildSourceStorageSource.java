@@ -15,30 +15,21 @@ public final class TriggerBuildSourceStorageSource {
      * @return Google Cloud Storage bucket containing the source.
      * 
      */
-    private final String bucket;
+    private String bucket;
     /**
      * @return Google Cloud Storage generation for the object.
      * If the generation is omitted, the latest generation will be used
      * 
      */
-    private final @Nullable String generation;
+    private @Nullable String generation;
     /**
      * @return Google Cloud Storage object containing the source.
      * This object must be a gzipped archive file (.tar.gz) containing source to build.
      * 
      */
-    private final String object;
+    private String object;
 
-    @CustomType.Constructor
-    private TriggerBuildSourceStorageSource(
-        @CustomType.Parameter("bucket") String bucket,
-        @CustomType.Parameter("generation") @Nullable String generation,
-        @CustomType.Parameter("object") String object) {
-        this.bucket = bucket;
-        this.generation = generation;
-        this.object = object;
-    }
-
+    private TriggerBuildSourceStorageSource() {}
     /**
      * @return Google Cloud Storage bucket containing the source.
      * 
@@ -70,16 +61,12 @@ public final class TriggerBuildSourceStorageSource {
     public static Builder builder(TriggerBuildSourceStorageSource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bucket;
         private @Nullable String generation;
         private String object;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerBuildSourceStorageSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
@@ -87,19 +74,27 @@ public final class TriggerBuildSourceStorageSource {
     	      this.object = defaults.object;
         }
 
+        @CustomType.Setter
         public Builder bucket(String bucket) {
             this.bucket = Objects.requireNonNull(bucket);
             return this;
         }
+        @CustomType.Setter
         public Builder generation(@Nullable String generation) {
             this.generation = generation;
             return this;
         }
+        @CustomType.Setter
         public Builder object(String object) {
             this.object = Objects.requireNonNull(object);
             return this;
-        }        public TriggerBuildSourceStorageSource build() {
-            return new TriggerBuildSourceStorageSource(bucket, generation, object);
+        }
+        public TriggerBuildSourceStorageSource build() {
+            final var o = new TriggerBuildSourceStorageSource();
+            o.bucket = bucket;
+            o.generation = generation;
+            o.object = object;
+            return o;
         }
     }
 }

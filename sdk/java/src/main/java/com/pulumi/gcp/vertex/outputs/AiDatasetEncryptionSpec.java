@@ -16,13 +16,9 @@ public final class AiDatasetEncryptionSpec {
      * Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
      * 
      */
-    private final @Nullable String kmsKeyName;
+    private @Nullable String kmsKeyName;
 
-    @CustomType.Constructor
-    private AiDatasetEncryptionSpec(@CustomType.Parameter("kmsKeyName") @Nullable String kmsKeyName) {
-        this.kmsKeyName = kmsKeyName;
-    }
-
+    private AiDatasetEncryptionSpec() {}
     /**
      * @return Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
      * Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
@@ -39,24 +35,24 @@ public final class AiDatasetEncryptionSpec {
     public static Builder builder(AiDatasetEncryptionSpec defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String kmsKeyName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AiDatasetEncryptionSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeyName = defaults.kmsKeyName;
         }
 
+        @CustomType.Setter
         public Builder kmsKeyName(@Nullable String kmsKeyName) {
             this.kmsKeyName = kmsKeyName;
             return this;
-        }        public AiDatasetEncryptionSpec build() {
-            return new AiDatasetEncryptionSpec(kmsKeyName);
+        }
+        public AiDatasetEncryptionSpec build() {
+            final var o = new AiDatasetEncryptionSpec();
+            o.kmsKeyName = kmsKeyName;
+            return o;
         }
     }
 }

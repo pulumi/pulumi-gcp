@@ -14,13 +14,9 @@ public final class ImageGuestOsFeature {
      * Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, and `GVNIC`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private ImageGuestOsFeature(@CustomType.Parameter("type") String type) {
-        this.type = type;
-    }
-
+    private ImageGuestOsFeature() {}
     /**
      * @return The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
      * Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, and `GVNIC`.
@@ -37,24 +33,24 @@ public final class ImageGuestOsFeature {
     public static Builder builder(ImageGuestOsFeature defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ImageGuestOsFeature defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public ImageGuestOsFeature build() {
-            return new ImageGuestOsFeature(type);
+        }
+        public ImageGuestOsFeature build() {
+            final var o = new ImageGuestOsFeature();
+            o.type = type;
+            return o;
         }
     }
 }

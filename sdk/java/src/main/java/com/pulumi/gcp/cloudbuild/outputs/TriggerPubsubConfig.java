@@ -15,38 +15,27 @@ public final class TriggerPubsubConfig {
      * @return Service account that will make the push request.
      * 
      */
-    private final @Nullable String serviceAccountEmail;
+    private @Nullable String serviceAccountEmail;
     /**
      * @return -
      * Potential issues with the underlying Pub/Sub subscription configuration.
      * Only populated on get requests.
      * 
      */
-    private final @Nullable String state;
+    private @Nullable String state;
     /**
      * @return -
      * Output only. Name of the subscription.
      * 
      */
-    private final @Nullable String subscription;
+    private @Nullable String subscription;
     /**
      * @return The name of the topic from which this subscription is receiving messages.
      * 
      */
-    private final String topic;
+    private String topic;
 
-    @CustomType.Constructor
-    private TriggerPubsubConfig(
-        @CustomType.Parameter("serviceAccountEmail") @Nullable String serviceAccountEmail,
-        @CustomType.Parameter("state") @Nullable String state,
-        @CustomType.Parameter("subscription") @Nullable String subscription,
-        @CustomType.Parameter("topic") String topic) {
-        this.serviceAccountEmail = serviceAccountEmail;
-        this.state = state;
-        this.subscription = subscription;
-        this.topic = topic;
-    }
-
+    private TriggerPubsubConfig() {}
     /**
      * @return Service account that will make the push request.
      * 
@@ -86,17 +75,13 @@ public final class TriggerPubsubConfig {
     public static Builder builder(TriggerPubsubConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String serviceAccountEmail;
         private @Nullable String state;
         private @Nullable String subscription;
         private String topic;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerPubsubConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.serviceAccountEmail = defaults.serviceAccountEmail;
@@ -105,23 +90,33 @@ public final class TriggerPubsubConfig {
     	      this.topic = defaults.topic;
         }
 
+        @CustomType.Setter
         public Builder serviceAccountEmail(@Nullable String serviceAccountEmail) {
             this.serviceAccountEmail = serviceAccountEmail;
             return this;
         }
+        @CustomType.Setter
         public Builder state(@Nullable String state) {
             this.state = state;
             return this;
         }
+        @CustomType.Setter
         public Builder subscription(@Nullable String subscription) {
             this.subscription = subscription;
             return this;
         }
+        @CustomType.Setter
         public Builder topic(String topic) {
             this.topic = Objects.requireNonNull(topic);
             return this;
-        }        public TriggerPubsubConfig build() {
-            return new TriggerPubsubConfig(serviceAccountEmail, state, subscription, topic);
+        }
+        public TriggerPubsubConfig build() {
+            final var o = new TriggerPubsubConfig();
+            o.serviceAccountEmail = serviceAccountEmail;
+            o.state = state;
+            o.subscription = subscription;
+            o.topic = topic;
+            return o;
         }
     }
 }

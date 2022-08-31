@@ -11,23 +11,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AssetDiscoveryStatusStat {
-    private final @Nullable Integer dataItems;
-    private final @Nullable Integer dataSize;
-    private final @Nullable Integer filesets;
-    private final @Nullable Integer tables;
+    private @Nullable Integer dataItems;
+    private @Nullable Integer dataSize;
+    private @Nullable Integer filesets;
+    private @Nullable Integer tables;
 
-    @CustomType.Constructor
-    private AssetDiscoveryStatusStat(
-        @CustomType.Parameter("dataItems") @Nullable Integer dataItems,
-        @CustomType.Parameter("dataSize") @Nullable Integer dataSize,
-        @CustomType.Parameter("filesets") @Nullable Integer filesets,
-        @CustomType.Parameter("tables") @Nullable Integer tables) {
-        this.dataItems = dataItems;
-        this.dataSize = dataSize;
-        this.filesets = filesets;
-        this.tables = tables;
-    }
-
+    private AssetDiscoveryStatusStat() {}
     public Optional<Integer> dataItems() {
         return Optional.ofNullable(this.dataItems);
     }
@@ -48,17 +37,13 @@ public final class AssetDiscoveryStatusStat {
     public static Builder builder(AssetDiscoveryStatusStat defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer dataItems;
         private @Nullable Integer dataSize;
         private @Nullable Integer filesets;
         private @Nullable Integer tables;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AssetDiscoveryStatusStat defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dataItems = defaults.dataItems;
@@ -67,23 +52,33 @@ public final class AssetDiscoveryStatusStat {
     	      this.tables = defaults.tables;
         }
 
+        @CustomType.Setter
         public Builder dataItems(@Nullable Integer dataItems) {
             this.dataItems = dataItems;
             return this;
         }
+        @CustomType.Setter
         public Builder dataSize(@Nullable Integer dataSize) {
             this.dataSize = dataSize;
             return this;
         }
+        @CustomType.Setter
         public Builder filesets(@Nullable Integer filesets) {
             this.filesets = filesets;
             return this;
         }
+        @CustomType.Setter
         public Builder tables(@Nullable Integer tables) {
             this.tables = tables;
             return this;
-        }        public AssetDiscoveryStatusStat build() {
-            return new AssetDiscoveryStatusStat(dataItems, dataSize, filesets, tables);
+        }
+        public AssetDiscoveryStatusStat build() {
+            final var o = new AssetDiscoveryStatusStat();
+            o.dataItems = dataItems;
+            o.dataSize = dataSize;
+            o.filesets = filesets;
+            o.tables = tables;
+            return o;
         }
     }
 }

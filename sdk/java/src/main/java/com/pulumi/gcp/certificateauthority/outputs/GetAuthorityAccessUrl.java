@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityAccessUrl {
-    private final String caCertificateAccessUrl;
-    private final List<String> crlAccessUrls;
+    private String caCertificateAccessUrl;
+    private List<String> crlAccessUrls;
 
-    @CustomType.Constructor
-    private GetAuthorityAccessUrl(
-        @CustomType.Parameter("caCertificateAccessUrl") String caCertificateAccessUrl,
-        @CustomType.Parameter("crlAccessUrls") List<String> crlAccessUrls) {
-        this.caCertificateAccessUrl = caCertificateAccessUrl;
-        this.crlAccessUrls = crlAccessUrls;
-    }
-
+    private GetAuthorityAccessUrl() {}
     public String caCertificateAccessUrl() {
         return this.caCertificateAccessUrl;
     }
@@ -35,33 +28,35 @@ public final class GetAuthorityAccessUrl {
     public static Builder builder(GetAuthorityAccessUrl defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String caCertificateAccessUrl;
         private List<String> crlAccessUrls;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthorityAccessUrl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.caCertificateAccessUrl = defaults.caCertificateAccessUrl;
     	      this.crlAccessUrls = defaults.crlAccessUrls;
         }
 
+        @CustomType.Setter
         public Builder caCertificateAccessUrl(String caCertificateAccessUrl) {
             this.caCertificateAccessUrl = Objects.requireNonNull(caCertificateAccessUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder crlAccessUrls(List<String> crlAccessUrls) {
             this.crlAccessUrls = Objects.requireNonNull(crlAccessUrls);
             return this;
         }
         public Builder crlAccessUrls(String... crlAccessUrls) {
             return crlAccessUrls(List.of(crlAccessUrls));
-        }        public GetAuthorityAccessUrl build() {
-            return new GetAuthorityAccessUrl(caCertificateAccessUrl, crlAccessUrls);
+        }
+        public GetAuthorityAccessUrl build() {
+            final var o = new GetAuthorityAccessUrl();
+            o.caCertificateAccessUrl = caCertificateAccessUrl;
+            o.crlAccessUrls = crlAccessUrls;
+            return o;
         }
     }
 }

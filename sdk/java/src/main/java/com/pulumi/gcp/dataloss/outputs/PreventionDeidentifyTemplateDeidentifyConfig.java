@@ -14,13 +14,9 @@ public final class PreventionDeidentifyTemplateDeidentifyConfig {
      * Structure is documented below.
      * 
      */
-    private final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations infoTypeTransformations;
+    private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations infoTypeTransformations;
 
-    @CustomType.Constructor
-    private PreventionDeidentifyTemplateDeidentifyConfig(@CustomType.Parameter("infoTypeTransformations") PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations infoTypeTransformations) {
-        this.infoTypeTransformations = infoTypeTransformations;
-    }
-
+    private PreventionDeidentifyTemplateDeidentifyConfig() {}
     /**
      * @return Specifies free-text based transformations to be applied to the dataset.
      * Structure is documented below.
@@ -37,24 +33,24 @@ public final class PreventionDeidentifyTemplateDeidentifyConfig {
     public static Builder builder(PreventionDeidentifyTemplateDeidentifyConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations infoTypeTransformations;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionDeidentifyTemplateDeidentifyConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.infoTypeTransformations = defaults.infoTypeTransformations;
         }
 
+        @CustomType.Setter
         public Builder infoTypeTransformations(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations infoTypeTransformations) {
             this.infoTypeTransformations = Objects.requireNonNull(infoTypeTransformations);
             return this;
-        }        public PreventionDeidentifyTemplateDeidentifyConfig build() {
-            return new PreventionDeidentifyTemplateDeidentifyConfig(infoTypeTransformations);
+        }
+        public PreventionDeidentifyTemplateDeidentifyConfig build() {
+            final var o = new PreventionDeidentifyTemplateDeidentifyConfig();
+            o.infoTypeTransformations = infoTypeTransformations;
+            return o;
         }
     }
 }

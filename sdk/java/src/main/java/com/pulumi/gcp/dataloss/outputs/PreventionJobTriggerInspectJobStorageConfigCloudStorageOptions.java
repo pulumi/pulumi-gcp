@@ -19,19 +19,19 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
      * then the rest of the bytes are omitted.
      * 
      */
-    private final @Nullable Integer bytesLimitPerFile;
+    private @Nullable Integer bytesLimitPerFile;
     /**
      * @return Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down.
      * Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
      * 
      */
-    private final @Nullable Integer bytesLimitPerFilePercent;
+    private @Nullable Integer bytesLimitPerFilePercent;
     /**
      * @return Set of files to scan.
      * Structure is documented below.
      * 
      */
-    private final PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet fileSet;
+    private PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet fileSet;
     /**
      * @return List of file type groups to include in the scan. If empty, all files are scanned and available data
      * format processors are applied. In addition, the binary content of the selected files is always scanned as well.
@@ -39,37 +39,22 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
      * Each value may be one of `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, and `TSV`.
      * 
      */
-    private final @Nullable List<String> fileTypes;
+    private @Nullable List<String> fileTypes;
     /**
      * @return Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down.
      * Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
      * 
      */
-    private final @Nullable Integer filesLimitPercent;
+    private @Nullable Integer filesLimitPercent;
     /**
      * @return How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
      * If not specified, scanning would start from the top.
      * Possible values are `TOP` and `RANDOM_START`.
      * 
      */
-    private final @Nullable String sampleMethod;
+    private @Nullable String sampleMethod;
 
-    @CustomType.Constructor
-    private PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(
-        @CustomType.Parameter("bytesLimitPerFile") @Nullable Integer bytesLimitPerFile,
-        @CustomType.Parameter("bytesLimitPerFilePercent") @Nullable Integer bytesLimitPerFilePercent,
-        @CustomType.Parameter("fileSet") PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet fileSet,
-        @CustomType.Parameter("fileTypes") @Nullable List<String> fileTypes,
-        @CustomType.Parameter("filesLimitPercent") @Nullable Integer filesLimitPercent,
-        @CustomType.Parameter("sampleMethod") @Nullable String sampleMethod) {
-        this.bytesLimitPerFile = bytesLimitPerFile;
-        this.bytesLimitPerFilePercent = bytesLimitPerFilePercent;
-        this.fileSet = fileSet;
-        this.fileTypes = fileTypes;
-        this.filesLimitPercent = filesLimitPercent;
-        this.sampleMethod = sampleMethod;
-    }
-
+    private PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions() {}
     /**
      * @return Max number of bytes to scan from a file. If a scanned file&#39;s size is bigger than this value
      * then the rest of the bytes are omitted.
@@ -129,7 +114,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
     public static Builder builder(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer bytesLimitPerFile;
         private @Nullable Integer bytesLimitPerFilePercent;
@@ -137,11 +122,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
         private @Nullable List<String> fileTypes;
         private @Nullable Integer filesLimitPercent;
         private @Nullable String sampleMethod;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bytesLimitPerFile = defaults.bytesLimitPerFile;
@@ -152,18 +133,22 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
     	      this.sampleMethod = defaults.sampleMethod;
         }
 
+        @CustomType.Setter
         public Builder bytesLimitPerFile(@Nullable Integer bytesLimitPerFile) {
             this.bytesLimitPerFile = bytesLimitPerFile;
             return this;
         }
+        @CustomType.Setter
         public Builder bytesLimitPerFilePercent(@Nullable Integer bytesLimitPerFilePercent) {
             this.bytesLimitPerFilePercent = bytesLimitPerFilePercent;
             return this;
         }
+        @CustomType.Setter
         public Builder fileSet(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet fileSet) {
             this.fileSet = Objects.requireNonNull(fileSet);
             return this;
         }
+        @CustomType.Setter
         public Builder fileTypes(@Nullable List<String> fileTypes) {
             this.fileTypes = fileTypes;
             return this;
@@ -171,15 +156,25 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
         public Builder fileTypes(String... fileTypes) {
             return fileTypes(List.of(fileTypes));
         }
+        @CustomType.Setter
         public Builder filesLimitPercent(@Nullable Integer filesLimitPercent) {
             this.filesLimitPercent = filesLimitPercent;
             return this;
         }
+        @CustomType.Setter
         public Builder sampleMethod(@Nullable String sampleMethod) {
             this.sampleMethod = sampleMethod;
             return this;
-        }        public PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions build() {
-            return new PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(bytesLimitPerFile, bytesLimitPerFilePercent, fileSet, fileTypes, filesLimitPercent, sampleMethod);
+        }
+        public PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions build() {
+            final var o = new PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions();
+            o.bytesLimitPerFile = bytesLimitPerFile;
+            o.bytesLimitPerFilePercent = bytesLimitPerFilePercent;
+            o.fileSet = fileSet;
+            o.fileTypes = fileTypes;
+            o.filesLimitPercent = filesLimitPercent;
+            o.sampleMethod = sampleMethod;
+            return o;
         }
     }
 }

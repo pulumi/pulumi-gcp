@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage {
-    private final @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId> obectIds;
+    private @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId> obectIds;
 
-    @CustomType.Constructor
-    private CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage(@CustomType.Parameter("obectIds") @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId> obectIds) {
-        this.obectIds = obectIds;
-    }
-
+    private CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage() {}
     public List<CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId> obectIds() {
         return this.obectIds == null ? List.of() : this.obectIds;
     }
@@ -29,27 +25,27 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageUnknownEx
     public static Builder builder(CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId> obectIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.obectIds = defaults.obectIds;
         }
 
+        @CustomType.Setter
         public Builder obectIds(@Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId> obectIds) {
             this.obectIds = obectIds;
             return this;
         }
         public Builder obectIds(CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId... obectIds) {
             return obectIds(List.of(obectIds));
-        }        public CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage build() {
-            return new CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage(obectIds);
+        }
+        public CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage build() {
+            final var o = new CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage();
+            o.obectIds = obectIds;
+            return o;
         }
     }
 }

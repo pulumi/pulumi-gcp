@@ -17,22 +17,15 @@ public final class ServicePerimeterSpecIngressPolicyIngressToOperationMethodSele
      * then ALL methods and permissions are allowed.
      * 
      */
-    private final @Nullable String method;
+    private @Nullable String method;
     /**
      * @return Value for permission should be a valid Cloud IAM permission for the
      * corresponding `serviceName` in `ApiOperation`.
      * 
      */
-    private final @Nullable String permission;
+    private @Nullable String permission;
 
-    @CustomType.Constructor
-    private ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector(
-        @CustomType.Parameter("method") @Nullable String method,
-        @CustomType.Parameter("permission") @Nullable String permission) {
-        this.method = method;
-        this.permission = permission;
-    }
-
+    private ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector() {}
     /**
      * @return Value for `method` should be a valid method name for the corresponding
      * `serviceName` in `ApiOperation`. If `*` used as value for method,
@@ -58,30 +51,32 @@ public final class ServicePerimeterSpecIngressPolicyIngressToOperationMethodSele
     public static Builder builder(ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String method;
         private @Nullable String permission;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.method = defaults.method;
     	      this.permission = defaults.permission;
         }
 
+        @CustomType.Setter
         public Builder method(@Nullable String method) {
             this.method = method;
             return this;
         }
+        @CustomType.Setter
         public Builder permission(@Nullable String permission) {
             this.permission = permission;
             return this;
-        }        public ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector build() {
-            return new ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector(method, permission);
+        }
+        public ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector build() {
+            final var o = new ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector();
+            o.method = method;
+            o.permission = permission;
+            return o;
         }
     }
 }

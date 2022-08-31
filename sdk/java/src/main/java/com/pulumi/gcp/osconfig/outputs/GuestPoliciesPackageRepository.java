@@ -19,38 +19,27 @@ public final class GuestPoliciesPackageRepository {
      * Structure is documented below.
      * 
      */
-    private final @Nullable GuestPoliciesPackageRepositoryApt apt;
+    private @Nullable GuestPoliciesPackageRepositoryApt apt;
     /**
      * @return A Goo Repository.
      * Structure is documented below.
      * 
      */
-    private final @Nullable GuestPoliciesPackageRepositoryGoo goo;
+    private @Nullable GuestPoliciesPackageRepositoryGoo goo;
     /**
      * @return A Yum Repository.
      * Structure is documented below.
      * 
      */
-    private final @Nullable GuestPoliciesPackageRepositoryYum yum;
+    private @Nullable GuestPoliciesPackageRepositoryYum yum;
     /**
      * @return A Zypper Repository.
      * Structure is documented below.
      * 
      */
-    private final @Nullable GuestPoliciesPackageRepositoryZypper zypper;
+    private @Nullable GuestPoliciesPackageRepositoryZypper zypper;
 
-    @CustomType.Constructor
-    private GuestPoliciesPackageRepository(
-        @CustomType.Parameter("apt") @Nullable GuestPoliciesPackageRepositoryApt apt,
-        @CustomType.Parameter("goo") @Nullable GuestPoliciesPackageRepositoryGoo goo,
-        @CustomType.Parameter("yum") @Nullable GuestPoliciesPackageRepositoryYum yum,
-        @CustomType.Parameter("zypper") @Nullable GuestPoliciesPackageRepositoryZypper zypper) {
-        this.apt = apt;
-        this.goo = goo;
-        this.yum = yum;
-        this.zypper = zypper;
-    }
-
+    private GuestPoliciesPackageRepository() {}
     /**
      * @return An Apt Repository.
      * Structure is documented below.
@@ -91,17 +80,13 @@ public final class GuestPoliciesPackageRepository {
     public static Builder builder(GuestPoliciesPackageRepository defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable GuestPoliciesPackageRepositoryApt apt;
         private @Nullable GuestPoliciesPackageRepositoryGoo goo;
         private @Nullable GuestPoliciesPackageRepositoryYum yum;
         private @Nullable GuestPoliciesPackageRepositoryZypper zypper;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesPackageRepository defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apt = defaults.apt;
@@ -110,23 +95,33 @@ public final class GuestPoliciesPackageRepository {
     	      this.zypper = defaults.zypper;
         }
 
+        @CustomType.Setter
         public Builder apt(@Nullable GuestPoliciesPackageRepositoryApt apt) {
             this.apt = apt;
             return this;
         }
+        @CustomType.Setter
         public Builder goo(@Nullable GuestPoliciesPackageRepositoryGoo goo) {
             this.goo = goo;
             return this;
         }
+        @CustomType.Setter
         public Builder yum(@Nullable GuestPoliciesPackageRepositoryYum yum) {
             this.yum = yum;
             return this;
         }
+        @CustomType.Setter
         public Builder zypper(@Nullable GuestPoliciesPackageRepositoryZypper zypper) {
             this.zypper = zypper;
             return this;
-        }        public GuestPoliciesPackageRepository build() {
-            return new GuestPoliciesPackageRepository(apt, goo, yum, zypper);
+        }
+        public GuestPoliciesPackageRepository build() {
+            final var o = new GuestPoliciesPackageRepository();
+            o.apt = apt;
+            o.goo = goo;
+            o.yum = yum;
+            o.zypper = zypper;
+            return o;
         }
     }
 }

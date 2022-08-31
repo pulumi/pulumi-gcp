@@ -17,13 +17,9 @@ public final class ManagedZoneServiceDirectoryConfigNamespace {
      * Ignored for `public` visibility zones.
      * 
      */
-    private final String namespaceUrl;
+    private String namespaceUrl;
 
-    @CustomType.Constructor
-    private ManagedZoneServiceDirectoryConfigNamespace(@CustomType.Parameter("namespaceUrl") String namespaceUrl) {
-        this.namespaceUrl = namespaceUrl;
-    }
-
+    private ManagedZoneServiceDirectoryConfigNamespace() {}
     /**
      * @return The fully qualified or partial URL of the service directory namespace that should be
      * associated with the zone. This should be formatted like
@@ -43,24 +39,24 @@ public final class ManagedZoneServiceDirectoryConfigNamespace {
     public static Builder builder(ManagedZoneServiceDirectoryConfigNamespace defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String namespaceUrl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ManagedZoneServiceDirectoryConfigNamespace defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.namespaceUrl = defaults.namespaceUrl;
         }
 
+        @CustomType.Setter
         public Builder namespaceUrl(String namespaceUrl) {
             this.namespaceUrl = Objects.requireNonNull(namespaceUrl);
             return this;
-        }        public ManagedZoneServiceDirectoryConfigNamespace build() {
-            return new ManagedZoneServiceDirectoryConfigNamespace(namespaceUrl);
+        }
+        public ManagedZoneServiceDirectoryConfigNamespace build() {
+            final var o = new ManagedZoneServiceDirectoryConfigNamespace();
+            o.namespaceUrl = namespaceUrl;
+            return o;
         }
     }
 }

@@ -15,13 +15,9 @@ public final class AutoscalerAutoscalingPolicyLoadBalancingUtilization {
      * be a positive float value. If not defined, the default is 0.8.
      * 
      */
-    private final Double target;
+    private Double target;
 
-    @CustomType.Constructor
-    private AutoscalerAutoscalingPolicyLoadBalancingUtilization(@CustomType.Parameter("target") Double target) {
-        this.target = target;
-    }
-
+    private AutoscalerAutoscalingPolicyLoadBalancingUtilization() {}
     /**
      * @return Fraction of backend capacity utilization (set in HTTP(s) load
      * balancing configuration) that autoscaler should maintain. Must
@@ -39,24 +35,24 @@ public final class AutoscalerAutoscalingPolicyLoadBalancingUtilization {
     public static Builder builder(AutoscalerAutoscalingPolicyLoadBalancingUtilization defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Double target;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AutoscalerAutoscalingPolicyLoadBalancingUtilization defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.target = defaults.target;
         }
 
+        @CustomType.Setter
         public Builder target(Double target) {
             this.target = Objects.requireNonNull(target);
             return this;
-        }        public AutoscalerAutoscalingPolicyLoadBalancingUtilization build() {
-            return new AutoscalerAutoscalingPolicyLoadBalancingUtilization(target);
+        }
+        public AutoscalerAutoscalingPolicyLoadBalancingUtilization build() {
+            final var o = new AutoscalerAutoscalingPolicyLoadBalancingUtilization();
+            o.target = target;
+            return o;
         }
     }
 }

@@ -15,21 +15,14 @@ public final class ForwardingRuleServiceDirectoryRegistration {
      * @return Service Directory namespace to register the forwarding rule under.
      * 
      */
-    private final @Nullable String namespace;
+    private @Nullable String namespace;
     /**
      * @return Service Directory service to register the forwarding rule under.
      * 
      */
-    private final @Nullable String service;
+    private @Nullable String service;
 
-    @CustomType.Constructor
-    private ForwardingRuleServiceDirectoryRegistration(
-        @CustomType.Parameter("namespace") @Nullable String namespace,
-        @CustomType.Parameter("service") @Nullable String service) {
-        this.namespace = namespace;
-        this.service = service;
-    }
-
+    private ForwardingRuleServiceDirectoryRegistration() {}
     /**
      * @return Service Directory namespace to register the forwarding rule under.
      * 
@@ -52,30 +45,32 @@ public final class ForwardingRuleServiceDirectoryRegistration {
     public static Builder builder(ForwardingRuleServiceDirectoryRegistration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String namespace;
         private @Nullable String service;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ForwardingRuleServiceDirectoryRegistration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.namespace = defaults.namespace;
     	      this.service = defaults.service;
         }
 
+        @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
             this.namespace = namespace;
             return this;
         }
+        @CustomType.Setter
         public Builder service(@Nullable String service) {
             this.service = service;
             return this;
-        }        public ForwardingRuleServiceDirectoryRegistration build() {
-            return new ForwardingRuleServiceDirectoryRegistration(namespace, service);
+        }
+        public ForwardingRuleServiceDirectoryRegistration build() {
+            final var o = new ForwardingRuleServiceDirectoryRegistration();
+            o.namespace = namespace;
+            o.service = service;
+            return o;
         }
     }
 }

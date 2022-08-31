@@ -13,13 +13,9 @@ public final class AwsClusterControlPlaneConfigEncryption {
      * @return Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
      * 
      */
-    private final String kmsKeyArn;
+    private String kmsKeyArn;
 
-    @CustomType.Constructor
-    private AwsClusterControlPlaneConfigEncryption(@CustomType.Parameter("kmsKeyArn") String kmsKeyArn) {
-        this.kmsKeyArn = kmsKeyArn;
-    }
-
+    private AwsClusterControlPlaneConfigEncryption() {}
     /**
      * @return Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
      * 
@@ -35,24 +31,24 @@ public final class AwsClusterControlPlaneConfigEncryption {
     public static Builder builder(AwsClusterControlPlaneConfigEncryption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String kmsKeyArn;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AwsClusterControlPlaneConfigEncryption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeyArn = defaults.kmsKeyArn;
         }
 
+        @CustomType.Setter
         public Builder kmsKeyArn(String kmsKeyArn) {
             this.kmsKeyArn = Objects.requireNonNull(kmsKeyArn);
             return this;
-        }        public AwsClusterControlPlaneConfigEncryption build() {
-            return new AwsClusterControlPlaneConfigEncryption(kmsKeyArn);
+        }
+        public AwsClusterControlPlaneConfigEncryption build() {
+            final var o = new AwsClusterControlPlaneConfigEncryption();
+            o.kmsKeyArn = kmsKeyArn;
+            return o;
         }
     }
 }

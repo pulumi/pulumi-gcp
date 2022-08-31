@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeliveryPipelineCondition {
-    private final @Nullable List<DeliveryPipelineConditionPipelineReadyCondition> pipelineReadyConditions;
-    private final @Nullable List<DeliveryPipelineConditionTargetsPresentCondition> targetsPresentConditions;
+    private @Nullable List<DeliveryPipelineConditionPipelineReadyCondition> pipelineReadyConditions;
+    private @Nullable List<DeliveryPipelineConditionTargetsPresentCondition> targetsPresentConditions;
 
-    @CustomType.Constructor
-    private DeliveryPipelineCondition(
-        @CustomType.Parameter("pipelineReadyConditions") @Nullable List<DeliveryPipelineConditionPipelineReadyCondition> pipelineReadyConditions,
-        @CustomType.Parameter("targetsPresentConditions") @Nullable List<DeliveryPipelineConditionTargetsPresentCondition> targetsPresentConditions) {
-        this.pipelineReadyConditions = pipelineReadyConditions;
-        this.targetsPresentConditions = targetsPresentConditions;
-    }
-
+    private DeliveryPipelineCondition() {}
     public List<DeliveryPipelineConditionPipelineReadyCondition> pipelineReadyConditions() {
         return this.pipelineReadyConditions == null ? List.of() : this.pipelineReadyConditions;
     }
@@ -37,21 +30,18 @@ public final class DeliveryPipelineCondition {
     public static Builder builder(DeliveryPipelineCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<DeliveryPipelineConditionPipelineReadyCondition> pipelineReadyConditions;
         private @Nullable List<DeliveryPipelineConditionTargetsPresentCondition> targetsPresentConditions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DeliveryPipelineCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pipelineReadyConditions = defaults.pipelineReadyConditions;
     	      this.targetsPresentConditions = defaults.targetsPresentConditions;
         }
 
+        @CustomType.Setter
         public Builder pipelineReadyConditions(@Nullable List<DeliveryPipelineConditionPipelineReadyCondition> pipelineReadyConditions) {
             this.pipelineReadyConditions = pipelineReadyConditions;
             return this;
@@ -59,14 +49,19 @@ public final class DeliveryPipelineCondition {
         public Builder pipelineReadyConditions(DeliveryPipelineConditionPipelineReadyCondition... pipelineReadyConditions) {
             return pipelineReadyConditions(List.of(pipelineReadyConditions));
         }
+        @CustomType.Setter
         public Builder targetsPresentConditions(@Nullable List<DeliveryPipelineConditionTargetsPresentCondition> targetsPresentConditions) {
             this.targetsPresentConditions = targetsPresentConditions;
             return this;
         }
         public Builder targetsPresentConditions(DeliveryPipelineConditionTargetsPresentCondition... targetsPresentConditions) {
             return targetsPresentConditions(List.of(targetsPresentConditions));
-        }        public DeliveryPipelineCondition build() {
-            return new DeliveryPipelineCondition(pipelineReadyConditions, targetsPresentConditions);
+        }
+        public DeliveryPipelineCondition build() {
+            final var o = new DeliveryPipelineCondition();
+            o.pipelineReadyConditions = pipelineReadyConditions;
+            o.targetsPresentConditions = targetsPresentConditions;
+            return o;
         }
     }
 }

@@ -15,21 +15,14 @@ public final class OsPolicyAssignmentInstanceFilterInventory {
      * @return Required. The OS short name
      * 
      */
-    private final String osShortName;
+    private String osShortName;
     /**
      * @return The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
      * 
      */
-    private final @Nullable String osVersion;
+    private @Nullable String osVersion;
 
-    @CustomType.Constructor
-    private OsPolicyAssignmentInstanceFilterInventory(
-        @CustomType.Parameter("osShortName") String osShortName,
-        @CustomType.Parameter("osVersion") @Nullable String osVersion) {
-        this.osShortName = osShortName;
-        this.osVersion = osVersion;
-    }
-
+    private OsPolicyAssignmentInstanceFilterInventory() {}
     /**
      * @return Required. The OS short name
      * 
@@ -52,30 +45,32 @@ public final class OsPolicyAssignmentInstanceFilterInventory {
     public static Builder builder(OsPolicyAssignmentInstanceFilterInventory defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String osShortName;
         private @Nullable String osVersion;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OsPolicyAssignmentInstanceFilterInventory defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.osShortName = defaults.osShortName;
     	      this.osVersion = defaults.osVersion;
         }
 
+        @CustomType.Setter
         public Builder osShortName(String osShortName) {
             this.osShortName = Objects.requireNonNull(osShortName);
             return this;
         }
+        @CustomType.Setter
         public Builder osVersion(@Nullable String osVersion) {
             this.osVersion = osVersion;
             return this;
-        }        public OsPolicyAssignmentInstanceFilterInventory build() {
-            return new OsPolicyAssignmentInstanceFilterInventory(osShortName, osVersion);
+        }
+        public OsPolicyAssignmentInstanceFilterInventory build() {
+            final var o = new OsPolicyAssignmentInstanceFilterInventory();
+            o.osShortName = osShortName;
+            o.osVersion = osVersion;
+            return o;
         }
     }
 }

@@ -19,22 +19,15 @@ public final class BudgetThresholdRule {
      * Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
      * 
      */
-    private final @Nullable String spendBasis;
+    private @Nullable String spendBasis;
     /**
      * @return Send an alert when this threshold is exceeded. This is a
      * 1.0-based percentage, so 0.5 = 50%. Must be &gt;= 0.
      * 
      */
-    private final Double thresholdPercent;
+    private Double thresholdPercent;
 
-    @CustomType.Constructor
-    private BudgetThresholdRule(
-        @CustomType.Parameter("spendBasis") @Nullable String spendBasis,
-        @CustomType.Parameter("thresholdPercent") Double thresholdPercent) {
-        this.spendBasis = spendBasis;
-        this.thresholdPercent = thresholdPercent;
-    }
-
+    private BudgetThresholdRule() {}
     /**
      * @return The type of basis used to determine if spend has passed
      * the threshold.
@@ -61,30 +54,32 @@ public final class BudgetThresholdRule {
     public static Builder builder(BudgetThresholdRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String spendBasis;
         private Double thresholdPercent;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BudgetThresholdRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.spendBasis = defaults.spendBasis;
     	      this.thresholdPercent = defaults.thresholdPercent;
         }
 
+        @CustomType.Setter
         public Builder spendBasis(@Nullable String spendBasis) {
             this.spendBasis = spendBasis;
             return this;
         }
+        @CustomType.Setter
         public Builder thresholdPercent(Double thresholdPercent) {
             this.thresholdPercent = Objects.requireNonNull(thresholdPercent);
             return this;
-        }        public BudgetThresholdRule build() {
-            return new BudgetThresholdRule(spendBasis, thresholdPercent);
+        }
+        public BudgetThresholdRule build() {
+            final var o = new BudgetThresholdRule();
+            o.spendBasis = spendBasis;
+            o.thresholdPercent = thresholdPercent;
+            return o;
         }
     }
 }

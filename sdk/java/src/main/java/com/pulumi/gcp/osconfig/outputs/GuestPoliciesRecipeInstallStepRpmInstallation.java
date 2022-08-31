@@ -13,13 +13,9 @@ public final class GuestPoliciesRecipeInstallStepRpmInstallation {
      * @return The id of the relevant artifact in the recipe.
      * 
      */
-    private final String artifactId;
+    private String artifactId;
 
-    @CustomType.Constructor
-    private GuestPoliciesRecipeInstallStepRpmInstallation(@CustomType.Parameter("artifactId") String artifactId) {
-        this.artifactId = artifactId;
-    }
-
+    private GuestPoliciesRecipeInstallStepRpmInstallation() {}
     /**
      * @return The id of the relevant artifact in the recipe.
      * 
@@ -35,24 +31,24 @@ public final class GuestPoliciesRecipeInstallStepRpmInstallation {
     public static Builder builder(GuestPoliciesRecipeInstallStepRpmInstallation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String artifactId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GuestPoliciesRecipeInstallStepRpmInstallation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.artifactId = defaults.artifactId;
         }
 
+        @CustomType.Setter
         public Builder artifactId(String artifactId) {
             this.artifactId = Objects.requireNonNull(artifactId);
             return this;
-        }        public GuestPoliciesRecipeInstallStepRpmInstallation build() {
-            return new GuestPoliciesRecipeInstallStepRpmInstallation(artifactId);
+        }
+        public GuestPoliciesRecipeInstallStepRpmInstallation build() {
+            final var o = new GuestPoliciesRecipeInstallStepRpmInstallation();
+            o.artifactId = artifactId;
+            return o;
         }
     }
 }

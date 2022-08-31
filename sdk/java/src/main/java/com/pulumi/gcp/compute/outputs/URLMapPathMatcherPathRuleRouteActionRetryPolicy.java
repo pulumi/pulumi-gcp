@@ -18,7 +18,7 @@ public final class URLMapPathMatcherPathRuleRouteActionRetryPolicy {
      * @return Specifies the allowed number retries. This number must be &gt; 0. If not specified, defaults to 1.
      * 
      */
-    private final @Nullable Integer numRetries;
+    private @Nullable Integer numRetries;
     /**
      * @return Specifies a non-zero timeout per retry attempt.
      * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
@@ -26,7 +26,7 @@ public final class URLMapPathMatcherPathRuleRouteActionRetryPolicy {
      * Structure is documented below.
      * 
      */
-    private final @Nullable URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout perTryTimeout;
+    private @Nullable URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout perTryTimeout;
     /**
      * @return Specfies one or more conditions when this retry rule applies. Valid values are:
      * * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
@@ -45,18 +45,9 @@ public final class URLMapPathMatcherPathRuleRouteActionRetryPolicy {
      * * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
      * 
      */
-    private final @Nullable List<String> retryConditions;
+    private @Nullable List<String> retryConditions;
 
-    @CustomType.Constructor
-    private URLMapPathMatcherPathRuleRouteActionRetryPolicy(
-        @CustomType.Parameter("numRetries") @Nullable Integer numRetries,
-        @CustomType.Parameter("perTryTimeout") @Nullable URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout perTryTimeout,
-        @CustomType.Parameter("retryConditions") @Nullable List<String> retryConditions) {
-        this.numRetries = numRetries;
-        this.perTryTimeout = perTryTimeout;
-        this.retryConditions = retryConditions;
-    }
-
+    private URLMapPathMatcherPathRuleRouteActionRetryPolicy() {}
     /**
      * @return Specifies the allowed number retries. This number must be &gt; 0. If not specified, defaults to 1.
      * 
@@ -103,16 +94,12 @@ public final class URLMapPathMatcherPathRuleRouteActionRetryPolicy {
     public static Builder builder(URLMapPathMatcherPathRuleRouteActionRetryPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer numRetries;
         private @Nullable URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout perTryTimeout;
         private @Nullable List<String> retryConditions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(URLMapPathMatcherPathRuleRouteActionRetryPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.numRetries = defaults.numRetries;
@@ -120,22 +107,30 @@ public final class URLMapPathMatcherPathRuleRouteActionRetryPolicy {
     	      this.retryConditions = defaults.retryConditions;
         }
 
+        @CustomType.Setter
         public Builder numRetries(@Nullable Integer numRetries) {
             this.numRetries = numRetries;
             return this;
         }
+        @CustomType.Setter
         public Builder perTryTimeout(@Nullable URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout perTryTimeout) {
             this.perTryTimeout = perTryTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder retryConditions(@Nullable List<String> retryConditions) {
             this.retryConditions = retryConditions;
             return this;
         }
         public Builder retryConditions(String... retryConditions) {
             return retryConditions(List.of(retryConditions));
-        }        public URLMapPathMatcherPathRuleRouteActionRetryPolicy build() {
-            return new URLMapPathMatcherPathRuleRouteActionRetryPolicy(numRetries, perTryTimeout, retryConditions);
+        }
+        public URLMapPathMatcherPathRuleRouteActionRetryPolicy build() {
+            final var o = new URLMapPathMatcherPathRuleRouteActionRetryPolicy();
+            o.numRetries = numRetries;
+            o.perTryTimeout = perTryTimeout;
+            o.retryConditions = retryConditions;
+            return o;
         }
     }
 }

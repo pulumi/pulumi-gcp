@@ -13,13 +13,9 @@ public final class PolicyRestorePolicy {
      * @return May only be set to true. If set, then the default Policy is restored.
      * 
      */
-    private final Boolean default_;
+    private Boolean default_;
 
-    @CustomType.Constructor
-    private PolicyRestorePolicy(@CustomType.Parameter("default") Boolean default_) {
-        this.default_ = default_;
-    }
-
+    private PolicyRestorePolicy() {}
     /**
      * @return May only be set to true. If set, then the default Policy is restored.
      * 
@@ -35,24 +31,24 @@ public final class PolicyRestorePolicy {
     public static Builder builder(PolicyRestorePolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean default_;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PolicyRestorePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.default_ = defaults.default_;
         }
 
+        @CustomType.Setter("default")
         public Builder default_(Boolean default_) {
             this.default_ = Objects.requireNonNull(default_);
             return this;
-        }        public PolicyRestorePolicy build() {
-            return new PolicyRestorePolicy(default_);
+        }
+        public PolicyRestorePolicy build() {
+            final var o = new PolicyRestorePolicy();
+            o.default_ = default_;
+            return o;
         }
     }
 }

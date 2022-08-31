@@ -22,35 +22,24 @@ public final class RegionInstanceGroupManagerStatus {
      * apply the configuration.
      * 
      */
-    private final @Nullable List<RegionInstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs;
+    private @Nullable List<RegionInstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs;
     /**
      * @return A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
      * 
      */
-    private final @Nullable Boolean isStable;
+    private @Nullable Boolean isStable;
     /**
      * @return Stateful status of the given Instance Group Manager.
      * 
      */
-    private final @Nullable List<RegionInstanceGroupManagerStatusStateful> statefuls;
+    private @Nullable List<RegionInstanceGroupManagerStatusStateful> statefuls;
     /**
      * @return A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances&#39; target version are specified by version field on Instance Group Manager.
      * 
      */
-    private final @Nullable List<RegionInstanceGroupManagerStatusVersionTarget> versionTargets;
+    private @Nullable List<RegionInstanceGroupManagerStatusVersionTarget> versionTargets;
 
-    @CustomType.Constructor
-    private RegionInstanceGroupManagerStatus(
-        @CustomType.Parameter("allInstancesConfigs") @Nullable List<RegionInstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs,
-        @CustomType.Parameter("isStable") @Nullable Boolean isStable,
-        @CustomType.Parameter("statefuls") @Nullable List<RegionInstanceGroupManagerStatusStateful> statefuls,
-        @CustomType.Parameter("versionTargets") @Nullable List<RegionInstanceGroupManagerStatusVersionTarget> versionTargets) {
-        this.allInstancesConfigs = allInstancesConfigs;
-        this.isStable = isStable;
-        this.statefuls = statefuls;
-        this.versionTargets = versionTargets;
-    }
-
+    private RegionInstanceGroupManagerStatus() {}
     /**
      * @return )
      * Properties to set on all instances in the group. After setting
@@ -90,17 +79,13 @@ public final class RegionInstanceGroupManagerStatus {
     public static Builder builder(RegionInstanceGroupManagerStatus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<RegionInstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs;
         private @Nullable Boolean isStable;
         private @Nullable List<RegionInstanceGroupManagerStatusStateful> statefuls;
         private @Nullable List<RegionInstanceGroupManagerStatusVersionTarget> versionTargets;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RegionInstanceGroupManagerStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allInstancesConfigs = defaults.allInstancesConfigs;
@@ -109,6 +94,7 @@ public final class RegionInstanceGroupManagerStatus {
     	      this.versionTargets = defaults.versionTargets;
         }
 
+        @CustomType.Setter
         public Builder allInstancesConfigs(@Nullable List<RegionInstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs) {
             this.allInstancesConfigs = allInstancesConfigs;
             return this;
@@ -116,10 +102,12 @@ public final class RegionInstanceGroupManagerStatus {
         public Builder allInstancesConfigs(RegionInstanceGroupManagerStatusAllInstancesConfig... allInstancesConfigs) {
             return allInstancesConfigs(List.of(allInstancesConfigs));
         }
+        @CustomType.Setter
         public Builder isStable(@Nullable Boolean isStable) {
             this.isStable = isStable;
             return this;
         }
+        @CustomType.Setter
         public Builder statefuls(@Nullable List<RegionInstanceGroupManagerStatusStateful> statefuls) {
             this.statefuls = statefuls;
             return this;
@@ -127,14 +115,21 @@ public final class RegionInstanceGroupManagerStatus {
         public Builder statefuls(RegionInstanceGroupManagerStatusStateful... statefuls) {
             return statefuls(List.of(statefuls));
         }
+        @CustomType.Setter
         public Builder versionTargets(@Nullable List<RegionInstanceGroupManagerStatusVersionTarget> versionTargets) {
             this.versionTargets = versionTargets;
             return this;
         }
         public Builder versionTargets(RegionInstanceGroupManagerStatusVersionTarget... versionTargets) {
             return versionTargets(List.of(versionTargets));
-        }        public RegionInstanceGroupManagerStatus build() {
-            return new RegionInstanceGroupManagerStatus(allInstancesConfigs, isStable, statefuls, versionTargets);
+        }
+        public RegionInstanceGroupManagerStatus build() {
+            final var o = new RegionInstanceGroupManagerStatus();
+            o.allInstancesConfigs = allInstancesConfigs;
+            o.isStable = isStable;
+            o.statefuls = statefuls;
+            o.versionTargets = versionTargets;
+            return o;
         }
     }
 }

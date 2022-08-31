@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetMetadata {
-    private final @Nullable List<String> services;
+    private @Nullable List<String> services;
 
-    @CustomType.Constructor
-    private RulesetMetadata(@CustomType.Parameter("services") @Nullable List<String> services) {
-        this.services = services;
-    }
-
+    private RulesetMetadata() {}
     public List<String> services() {
         return this.services == null ? List.of() : this.services;
     }
@@ -29,27 +25,27 @@ public final class RulesetMetadata {
     public static Builder builder(RulesetMetadata defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> services;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RulesetMetadata defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.services = defaults.services;
         }
 
+        @CustomType.Setter
         public Builder services(@Nullable List<String> services) {
             this.services = services;
             return this;
         }
         public Builder services(String... services) {
             return services(List.of(services));
-        }        public RulesetMetadata build() {
-            return new RulesetMetadata(services);
+        }
+        public RulesetMetadata build() {
+            final var o = new RulesetMetadata();
+            o.services = services;
+            return o;
         }
     }
 }

@@ -16,30 +16,21 @@ public final class NotificationChannelSensitiveLabels {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private final @Nullable String authToken;
+    private @Nullable String authToken;
     /**
      * @return An password for a notification channel. Channel types that support this field include: webhook_basicauth
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private final @Nullable String password;
+    private @Nullable String password;
     /**
      * @return An servicekey token for a notification channel. Channel types that support this field include: pagerduty
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private final @Nullable String serviceKey;
+    private @Nullable String serviceKey;
 
-    @CustomType.Constructor
-    private NotificationChannelSensitiveLabels(
-        @CustomType.Parameter("authToken") @Nullable String authToken,
-        @CustomType.Parameter("password") @Nullable String password,
-        @CustomType.Parameter("serviceKey") @Nullable String serviceKey) {
-        this.authToken = authToken;
-        this.password = password;
-        this.serviceKey = serviceKey;
-    }
-
+    private NotificationChannelSensitiveLabels() {}
     /**
      * @return An authorization token for a notification channel. Channel types that support this field include: slack
      * **Note**: This property is sensitive and will not be displayed in the plan.
@@ -72,16 +63,12 @@ public final class NotificationChannelSensitiveLabels {
     public static Builder builder(NotificationChannelSensitiveLabels defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String authToken;
         private @Nullable String password;
         private @Nullable String serviceKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NotificationChannelSensitiveLabels defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authToken = defaults.authToken;
@@ -89,19 +76,27 @@ public final class NotificationChannelSensitiveLabels {
     	      this.serviceKey = defaults.serviceKey;
         }
 
+        @CustomType.Setter
         public Builder authToken(@Nullable String authToken) {
             this.authToken = authToken;
             return this;
         }
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceKey(@Nullable String serviceKey) {
             this.serviceKey = serviceKey;
             return this;
-        }        public NotificationChannelSensitiveLabels build() {
-            return new NotificationChannelSensitiveLabels(authToken, password, serviceKey);
+        }
+        public NotificationChannelSensitiveLabels build() {
+            final var o = new NotificationChannelSensitiveLabels();
+            o.authToken = authToken;
+            o.password = password;
+            o.serviceKey = serviceKey;
+            return o;
         }
     }
 }

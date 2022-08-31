@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InterconnectAttachmentPrivateInterconnectInfo {
-    private final @Nullable Integer tag8021q;
+    private @Nullable Integer tag8021q;
 
-    @CustomType.Constructor
-    private InterconnectAttachmentPrivateInterconnectInfo(@CustomType.Parameter("tag8021q") @Nullable Integer tag8021q) {
-        this.tag8021q = tag8021q;
-    }
-
+    private InterconnectAttachmentPrivateInterconnectInfo() {}
     public Optional<Integer> tag8021q() {
         return Optional.ofNullable(this.tag8021q);
     }
@@ -29,24 +25,24 @@ public final class InterconnectAttachmentPrivateInterconnectInfo {
     public static Builder builder(InterconnectAttachmentPrivateInterconnectInfo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer tag8021q;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InterconnectAttachmentPrivateInterconnectInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.tag8021q = defaults.tag8021q;
         }
 
+        @CustomType.Setter
         public Builder tag8021q(@Nullable Integer tag8021q) {
             this.tag8021q = tag8021q;
             return this;
-        }        public InterconnectAttachmentPrivateInterconnectInfo build() {
-            return new InterconnectAttachmentPrivateInterconnectInfo(tag8021q);
+        }
+        public InterconnectAttachmentPrivateInterconnectInfo build() {
+            final var o = new InterconnectAttachmentPrivateInterconnectInfo();
+            o.tag8021q = tag8021q;
+            return o;
         }
     }
 }

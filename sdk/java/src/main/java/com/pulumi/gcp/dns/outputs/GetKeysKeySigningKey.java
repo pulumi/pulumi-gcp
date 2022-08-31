@@ -17,77 +17,54 @@ public final class GetKeysKeySigningKey {
      * @return String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
      * 
      */
-    private final String algorithm;
+    private String algorithm;
     /**
      * @return The time that this resource was created in the control plane. This is in RFC3339 text format.
      * 
      */
-    private final String creationTime;
+    private String creationTime;
     /**
      * @return A mutable string of at most 1024 characters associated with this resource for the user&#39;s convenience.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
      * 
      */
-    private final List<GetKeysKeySigningKeyDigest> digests;
+    private List<GetKeysKeySigningKeyDigest> digests;
     /**
      * @return The DS record based on the KSK record. This is used when [delegating](https://cloud.google.com/dns/docs/dnssec-advanced#subdelegation) DNSSEC-signed subdomains.
      * 
      */
-    private final String dsRecord;
+    private String dsRecord;
     /**
      * @return Unique identifier for the resource; defined by the server.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
      * 
      */
-    private final Boolean isActive;
+    private Boolean isActive;
     /**
      * @return Length of the key in bits. Specified at creation time then immutable.
      * 
      */
-    private final Integer keyLength;
+    private Integer keyLength;
     /**
      * @return The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone&#39;s DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
      * 
      */
-    private final Integer keyTag;
+    private Integer keyTag;
     /**
      * @return Base64 encoded public half of this key.
      * 
      */
-    private final String publicKey;
+    private String publicKey;
 
-    @CustomType.Constructor
-    private GetKeysKeySigningKey(
-        @CustomType.Parameter("algorithm") String algorithm,
-        @CustomType.Parameter("creationTime") String creationTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("digests") List<GetKeysKeySigningKeyDigest> digests,
-        @CustomType.Parameter("dsRecord") String dsRecord,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("isActive") Boolean isActive,
-        @CustomType.Parameter("keyLength") Integer keyLength,
-        @CustomType.Parameter("keyTag") Integer keyTag,
-        @CustomType.Parameter("publicKey") String publicKey) {
-        this.algorithm = algorithm;
-        this.creationTime = creationTime;
-        this.description = description;
-        this.digests = digests;
-        this.dsRecord = dsRecord;
-        this.id = id;
-        this.isActive = isActive;
-        this.keyLength = keyLength;
-        this.keyTag = keyTag;
-        this.publicKey = publicKey;
-    }
-
+    private GetKeysKeySigningKey() {}
     /**
      * @return String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
      * 
@@ -166,7 +143,7 @@ public final class GetKeysKeySigningKey {
     public static Builder builder(GetKeysKeySigningKey defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String algorithm;
         private String creationTime;
@@ -178,11 +155,7 @@ public final class GetKeysKeySigningKey {
         private Integer keyLength;
         private Integer keyTag;
         private String publicKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKeysKeySigningKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.algorithm = defaults.algorithm;
@@ -197,18 +170,22 @@ public final class GetKeysKeySigningKey {
     	      this.publicKey = defaults.publicKey;
         }
 
+        @CustomType.Setter
         public Builder algorithm(String algorithm) {
             this.algorithm = Objects.requireNonNull(algorithm);
             return this;
         }
+        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder digests(List<GetKeysKeySigningKeyDigest> digests) {
             this.digests = Objects.requireNonNull(digests);
             return this;
@@ -216,31 +193,49 @@ public final class GetKeysKeySigningKey {
         public Builder digests(GetKeysKeySigningKeyDigest... digests) {
             return digests(List.of(digests));
         }
+        @CustomType.Setter
         public Builder dsRecord(String dsRecord) {
             this.dsRecord = Objects.requireNonNull(dsRecord);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder isActive(Boolean isActive) {
             this.isActive = Objects.requireNonNull(isActive);
             return this;
         }
+        @CustomType.Setter
         public Builder keyLength(Integer keyLength) {
             this.keyLength = Objects.requireNonNull(keyLength);
             return this;
         }
+        @CustomType.Setter
         public Builder keyTag(Integer keyTag) {
             this.keyTag = Objects.requireNonNull(keyTag);
             return this;
         }
+        @CustomType.Setter
         public Builder publicKey(String publicKey) {
             this.publicKey = Objects.requireNonNull(publicKey);
             return this;
-        }        public GetKeysKeySigningKey build() {
-            return new GetKeysKeySigningKey(algorithm, creationTime, description, digests, dsRecord, id, isActive, keyLength, keyTag, publicKey);
+        }
+        public GetKeysKeySigningKey build() {
+            final var o = new GetKeysKeySigningKey();
+            o.algorithm = algorithm;
+            o.creationTime = creationTime;
+            o.description = description;
+            o.digests = digests;
+            o.dsRecord = dsRecord;
+            o.id = id;
+            o.isActive = isActive;
+            o.keyLength = keyLength;
+            o.keyTag = keyTag;
+            o.publicKey = publicKey;
+            return o;
         }
     }
 }

@@ -22,35 +22,24 @@ public final class InstanceGroupManagerStatus {
      * apply the configuration.
      * 
      */
-    private final @Nullable List<InstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs;
+    private @Nullable List<InstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs;
     /**
      * @return A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
      * 
      */
-    private final @Nullable Boolean isStable;
+    private @Nullable Boolean isStable;
     /**
      * @return Stateful status of the given Instance Group Manager.
      * 
      */
-    private final @Nullable List<InstanceGroupManagerStatusStateful> statefuls;
+    private @Nullable List<InstanceGroupManagerStatusStateful> statefuls;
     /**
      * @return A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances&#39; target version are specified by version field on Instance Group Manager.
      * 
      */
-    private final @Nullable List<InstanceGroupManagerStatusVersionTarget> versionTargets;
+    private @Nullable List<InstanceGroupManagerStatusVersionTarget> versionTargets;
 
-    @CustomType.Constructor
-    private InstanceGroupManagerStatus(
-        @CustomType.Parameter("allInstancesConfigs") @Nullable List<InstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs,
-        @CustomType.Parameter("isStable") @Nullable Boolean isStable,
-        @CustomType.Parameter("statefuls") @Nullable List<InstanceGroupManagerStatusStateful> statefuls,
-        @CustomType.Parameter("versionTargets") @Nullable List<InstanceGroupManagerStatusVersionTarget> versionTargets) {
-        this.allInstancesConfigs = allInstancesConfigs;
-        this.isStable = isStable;
-        this.statefuls = statefuls;
-        this.versionTargets = versionTargets;
-    }
-
+    private InstanceGroupManagerStatus() {}
     /**
      * @return )
      * Properties to set on all instances in the group. After setting
@@ -90,17 +79,13 @@ public final class InstanceGroupManagerStatus {
     public static Builder builder(InstanceGroupManagerStatus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<InstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs;
         private @Nullable Boolean isStable;
         private @Nullable List<InstanceGroupManagerStatusStateful> statefuls;
         private @Nullable List<InstanceGroupManagerStatusVersionTarget> versionTargets;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceGroupManagerStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allInstancesConfigs = defaults.allInstancesConfigs;
@@ -109,6 +94,7 @@ public final class InstanceGroupManagerStatus {
     	      this.versionTargets = defaults.versionTargets;
         }
 
+        @CustomType.Setter
         public Builder allInstancesConfigs(@Nullable List<InstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs) {
             this.allInstancesConfigs = allInstancesConfigs;
             return this;
@@ -116,10 +102,12 @@ public final class InstanceGroupManagerStatus {
         public Builder allInstancesConfigs(InstanceGroupManagerStatusAllInstancesConfig... allInstancesConfigs) {
             return allInstancesConfigs(List.of(allInstancesConfigs));
         }
+        @CustomType.Setter
         public Builder isStable(@Nullable Boolean isStable) {
             this.isStable = isStable;
             return this;
         }
+        @CustomType.Setter
         public Builder statefuls(@Nullable List<InstanceGroupManagerStatusStateful> statefuls) {
             this.statefuls = statefuls;
             return this;
@@ -127,14 +115,21 @@ public final class InstanceGroupManagerStatus {
         public Builder statefuls(InstanceGroupManagerStatusStateful... statefuls) {
             return statefuls(List.of(statefuls));
         }
+        @CustomType.Setter
         public Builder versionTargets(@Nullable List<InstanceGroupManagerStatusVersionTarget> versionTargets) {
             this.versionTargets = versionTargets;
             return this;
         }
         public Builder versionTargets(InstanceGroupManagerStatusVersionTarget... versionTargets) {
             return versionTargets(List.of(versionTargets));
-        }        public InstanceGroupManagerStatus build() {
-            return new InstanceGroupManagerStatus(allInstancesConfigs, isStable, statefuls, versionTargets);
+        }
+        public InstanceGroupManagerStatus build() {
+            final var o = new InstanceGroupManagerStatus();
+            o.allInstancesConfigs = allInstancesConfigs;
+            o.isStable = isStable;
+            o.statefuls = statefuls;
+            o.versionTargets = versionTargets;
+            return o;
         }
     }
 }

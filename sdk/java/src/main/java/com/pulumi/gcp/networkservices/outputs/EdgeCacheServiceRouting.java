@@ -16,21 +16,14 @@ public final class EdgeCacheServiceRouting {
      * Structure is documented below.
      * 
      */
-    private final List<EdgeCacheServiceRoutingHostRule> hostRules;
+    private List<EdgeCacheServiceRoutingHostRule> hostRules;
     /**
      * @return The name of the pathMatcher associated with this hostRule.
      * 
      */
-    private final List<EdgeCacheServiceRoutingPathMatcher> pathMatchers;
+    private List<EdgeCacheServiceRoutingPathMatcher> pathMatchers;
 
-    @CustomType.Constructor
-    private EdgeCacheServiceRouting(
-        @CustomType.Parameter("hostRules") List<EdgeCacheServiceRoutingHostRule> hostRules,
-        @CustomType.Parameter("pathMatchers") List<EdgeCacheServiceRoutingPathMatcher> pathMatchers) {
-        this.hostRules = hostRules;
-        this.pathMatchers = pathMatchers;
-    }
-
+    private EdgeCacheServiceRouting() {}
     /**
      * @return The list of hostRules to match against. These rules define which hostnames the EdgeCacheService will match against, and which route configurations apply.
      * Structure is documented below.
@@ -54,21 +47,18 @@ public final class EdgeCacheServiceRouting {
     public static Builder builder(EdgeCacheServiceRouting defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<EdgeCacheServiceRoutingHostRule> hostRules;
         private List<EdgeCacheServiceRoutingPathMatcher> pathMatchers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EdgeCacheServiceRouting defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostRules = defaults.hostRules;
     	      this.pathMatchers = defaults.pathMatchers;
         }
 
+        @CustomType.Setter
         public Builder hostRules(List<EdgeCacheServiceRoutingHostRule> hostRules) {
             this.hostRules = Objects.requireNonNull(hostRules);
             return this;
@@ -76,14 +66,19 @@ public final class EdgeCacheServiceRouting {
         public Builder hostRules(EdgeCacheServiceRoutingHostRule... hostRules) {
             return hostRules(List.of(hostRules));
         }
+        @CustomType.Setter
         public Builder pathMatchers(List<EdgeCacheServiceRoutingPathMatcher> pathMatchers) {
             this.pathMatchers = Objects.requireNonNull(pathMatchers);
             return this;
         }
         public Builder pathMatchers(EdgeCacheServiceRoutingPathMatcher... pathMatchers) {
             return pathMatchers(List.of(pathMatchers));
-        }        public EdgeCacheServiceRouting build() {
-            return new EdgeCacheServiceRouting(hostRules, pathMatchers);
+        }
+        public EdgeCacheServiceRouting build() {
+            final var o = new EdgeCacheServiceRouting();
+            o.hostRules = hostRules;
+            o.pathMatchers = pathMatchers;
+            return o;
         }
     }
 }

@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigX509ConfigPolicyId {
-    private final List<Integer> objectIdPaths;
+    private List<Integer> objectIdPaths;
 
-    @CustomType.Constructor
-    private GetAuthorityConfigX509ConfigPolicyId(@CustomType.Parameter("objectIdPaths") List<Integer> objectIdPaths) {
-        this.objectIdPaths = objectIdPaths;
-    }
-
+    private GetAuthorityConfigX509ConfigPolicyId() {}
     public List<Integer> objectIdPaths() {
         return this.objectIdPaths;
     }
@@ -28,27 +24,27 @@ public final class GetAuthorityConfigX509ConfigPolicyId {
     public static Builder builder(GetAuthorityConfigX509ConfigPolicyId defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<Integer> objectIdPaths;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthorityConfigX509ConfigPolicyId defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.objectIdPaths = defaults.objectIdPaths;
         }
 
+        @CustomType.Setter
         public Builder objectIdPaths(List<Integer> objectIdPaths) {
             this.objectIdPaths = Objects.requireNonNull(objectIdPaths);
             return this;
         }
         public Builder objectIdPaths(Integer... objectIdPaths) {
             return objectIdPaths(List.of(objectIdPaths));
-        }        public GetAuthorityConfigX509ConfigPolicyId build() {
-            return new GetAuthorityConfigX509ConfigPolicyId(objectIdPaths);
+        }
+        public GetAuthorityConfigX509ConfigPolicyId build() {
+            final var o = new GetAuthorityConfigX509ConfigPolicyId();
+            o.objectIdPaths = objectIdPaths;
+            return o;
         }
     }
 }

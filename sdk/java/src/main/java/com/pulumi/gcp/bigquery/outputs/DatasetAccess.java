@@ -18,18 +18,18 @@ public final class DatasetAccess {
      * Structure is documented below.
      * 
      */
-    private final @Nullable DatasetAccessDataset dataset;
+    private @Nullable DatasetAccessDataset dataset;
     /**
      * @return A domain to grant access to. Any users signed in with the
      * domain specified will be granted the specified access
      * 
      */
-    private final @Nullable String domain;
+    private @Nullable String domain;
     /**
      * @return An email address of a Google Group to grant access to.
      * 
      */
-    private final @Nullable String groupByEmail;
+    private @Nullable String groupByEmail;
     /**
      * @return Describes the rights granted to the user specified by the other
      * member of the access object. Basic, predefined, and custom roles
@@ -38,18 +38,18 @@ public final class DatasetAccess {
      * [official docs](https://cloud.google.com/bigquery/docs/access-control).
      * 
      */
-    private final @Nullable String role;
+    private @Nullable String role;
     /**
      * @return A special group to grant access to. Possible values include:
      * 
      */
-    private final @Nullable String specialGroup;
+    private @Nullable String specialGroup;
     /**
      * @return An email address of a user to grant access to. For example:
      * fred@example.com
      * 
      */
-    private final @Nullable String userByEmail;
+    private @Nullable String userByEmail;
     /**
      * @return A view from a different dataset to grant access to. Queries
      * executed against that view will have read access to tables in
@@ -59,26 +59,9 @@ public final class DatasetAccess {
      * Structure is documented below.
      * 
      */
-    private final @Nullable DatasetAccessView view;
+    private @Nullable DatasetAccessView view;
 
-    @CustomType.Constructor
-    private DatasetAccess(
-        @CustomType.Parameter("dataset") @Nullable DatasetAccessDataset dataset,
-        @CustomType.Parameter("domain") @Nullable String domain,
-        @CustomType.Parameter("groupByEmail") @Nullable String groupByEmail,
-        @CustomType.Parameter("role") @Nullable String role,
-        @CustomType.Parameter("specialGroup") @Nullable String specialGroup,
-        @CustomType.Parameter("userByEmail") @Nullable String userByEmail,
-        @CustomType.Parameter("view") @Nullable DatasetAccessView view) {
-        this.dataset = dataset;
-        this.domain = domain;
-        this.groupByEmail = groupByEmail;
-        this.role = role;
-        this.specialGroup = specialGroup;
-        this.userByEmail = userByEmail;
-        this.view = view;
-    }
-
+    private DatasetAccess() {}
     /**
      * @return The dataset this entry applies to
      * Structure is documented below.
@@ -148,7 +131,7 @@ public final class DatasetAccess {
     public static Builder builder(DatasetAccess defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable DatasetAccessDataset dataset;
         private @Nullable String domain;
@@ -157,11 +140,7 @@ public final class DatasetAccess {
         private @Nullable String specialGroup;
         private @Nullable String userByEmail;
         private @Nullable DatasetAccessView view;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DatasetAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dataset = defaults.dataset;
@@ -173,35 +152,51 @@ public final class DatasetAccess {
     	      this.view = defaults.view;
         }
 
+        @CustomType.Setter
         public Builder dataset(@Nullable DatasetAccessDataset dataset) {
             this.dataset = dataset;
             return this;
         }
+        @CustomType.Setter
         public Builder domain(@Nullable String domain) {
             this.domain = domain;
             return this;
         }
+        @CustomType.Setter
         public Builder groupByEmail(@Nullable String groupByEmail) {
             this.groupByEmail = groupByEmail;
             return this;
         }
+        @CustomType.Setter
         public Builder role(@Nullable String role) {
             this.role = role;
             return this;
         }
+        @CustomType.Setter
         public Builder specialGroup(@Nullable String specialGroup) {
             this.specialGroup = specialGroup;
             return this;
         }
+        @CustomType.Setter
         public Builder userByEmail(@Nullable String userByEmail) {
             this.userByEmail = userByEmail;
             return this;
         }
+        @CustomType.Setter
         public Builder view(@Nullable DatasetAccessView view) {
             this.view = view;
             return this;
-        }        public DatasetAccess build() {
-            return new DatasetAccess(dataset, domain, groupByEmail, role, specialGroup, userByEmail, view);
+        }
+        public DatasetAccess build() {
+            final var o = new DatasetAccess();
+            o.dataset = dataset;
+            o.domain = domain;
+            o.groupByEmail = groupByEmail;
+            o.role = role;
+            o.specialGroup = specialGroup;
+            o.userByEmail = userByEmail;
+            o.view = view;
+            return o;
         }
     }
 }

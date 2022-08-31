@@ -20,7 +20,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConf
      * created. Enabled by default.
      * 
      */
-    private final @Nullable Boolean enableIntegrityMonitoring;
+    private @Nullable Boolean enableIntegrityMonitoring;
     /**
      * @return Defines whether the instance has Secure Boot enabled.Secure
      * Boot helps ensure that the system only runs authentic software
@@ -29,24 +29,15 @@ public final class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConf
      * Disabled by default.
      * 
      */
-    private final @Nullable Boolean enableSecureBoot;
+    private @Nullable Boolean enableSecureBoot;
     /**
      * @return Defines whether the instance has the vTPM enabled. Enabled by
      * default.
      * 
      */
-    private final @Nullable Boolean enableVtpm;
+    private @Nullable Boolean enableVtpm;
 
-    @CustomType.Constructor
-    private RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig(
-        @CustomType.Parameter("enableIntegrityMonitoring") @Nullable Boolean enableIntegrityMonitoring,
-        @CustomType.Parameter("enableSecureBoot") @Nullable Boolean enableSecureBoot,
-        @CustomType.Parameter("enableVtpm") @Nullable Boolean enableVtpm) {
-        this.enableIntegrityMonitoring = enableIntegrityMonitoring;
-        this.enableSecureBoot = enableSecureBoot;
-        this.enableVtpm = enableVtpm;
-    }
-
+    private RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig() {}
     /**
      * @return Defines whether the instance has integrity monitoring enabled.
      * Enables monitoring and attestation of the boot integrity of
@@ -86,16 +77,12 @@ public final class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConf
     public static Builder builder(RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableIntegrityMonitoring;
         private @Nullable Boolean enableSecureBoot;
         private @Nullable Boolean enableVtpm;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableIntegrityMonitoring = defaults.enableIntegrityMonitoring;
@@ -103,19 +90,27 @@ public final class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConf
     	      this.enableVtpm = defaults.enableVtpm;
         }
 
+        @CustomType.Setter
         public Builder enableIntegrityMonitoring(@Nullable Boolean enableIntegrityMonitoring) {
             this.enableIntegrityMonitoring = enableIntegrityMonitoring;
             return this;
         }
+        @CustomType.Setter
         public Builder enableSecureBoot(@Nullable Boolean enableSecureBoot) {
             this.enableSecureBoot = enableSecureBoot;
             return this;
         }
+        @CustomType.Setter
         public Builder enableVtpm(@Nullable Boolean enableVtpm) {
             this.enableVtpm = enableVtpm;
             return this;
-        }        public RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig build() {
-            return new RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig(enableIntegrityMonitoring, enableSecureBoot, enableVtpm);
+        }
+        public RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig build() {
+            final var o = new RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig();
+            o.enableIntegrityMonitoring = enableIntegrityMonitoring;
+            o.enableSecureBoot = enableSecureBoot;
+            o.enableVtpm = enableVtpm;
+            return o;
         }
     }
 }

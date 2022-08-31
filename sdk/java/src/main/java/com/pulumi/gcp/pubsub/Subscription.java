@@ -271,7 +271,7 @@ import javax.annotation.Nullable;
  *                     var project = values.t1;
  *                     var datasetId = values.t2;
  *                     var tableId = values.t3;
- *                     return String.format(&#34;%s.%s.%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult),datasetId,tableId);
+ *                     return String.format(&#34;%s:%s.%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult),datasetId,tableId);
  *                 }))
  *                 .build())
  *             .build(), CustomResourceOptions.builder()

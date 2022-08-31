@@ -18,28 +18,19 @@ public final class FeatureMembershipConfigmanagementConfigSync {
      * (Optional) Structure is documented below.
      * 
      */
-    private final @Nullable FeatureMembershipConfigmanagementConfigSyncGit git;
+    private @Nullable FeatureMembershipConfigmanagementConfigSyncGit git;
     /**
      * @return Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
      * 
      */
-    private final @Nullable Boolean preventDrift;
+    private @Nullable Boolean preventDrift;
     /**
      * @return Specifies whether the Config Sync Repo is in &#34;hierarchical&#34; or &#34;unstructured&#34; mode.
      * 
      */
-    private final @Nullable String sourceFormat;
+    private @Nullable String sourceFormat;
 
-    @CustomType.Constructor
-    private FeatureMembershipConfigmanagementConfigSync(
-        @CustomType.Parameter("git") @Nullable FeatureMembershipConfigmanagementConfigSyncGit git,
-        @CustomType.Parameter("preventDrift") @Nullable Boolean preventDrift,
-        @CustomType.Parameter("sourceFormat") @Nullable String sourceFormat) {
-        this.git = git;
-        this.preventDrift = preventDrift;
-        this.sourceFormat = sourceFormat;
-    }
-
+    private FeatureMembershipConfigmanagementConfigSync() {}
     /**
      * @return -
      * (Optional) Structure is documented below.
@@ -70,16 +61,12 @@ public final class FeatureMembershipConfigmanagementConfigSync {
     public static Builder builder(FeatureMembershipConfigmanagementConfigSync defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable FeatureMembershipConfigmanagementConfigSyncGit git;
         private @Nullable Boolean preventDrift;
         private @Nullable String sourceFormat;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FeatureMembershipConfigmanagementConfigSync defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.git = defaults.git;
@@ -87,19 +74,27 @@ public final class FeatureMembershipConfigmanagementConfigSync {
     	      this.sourceFormat = defaults.sourceFormat;
         }
 
+        @CustomType.Setter
         public Builder git(@Nullable FeatureMembershipConfigmanagementConfigSyncGit git) {
             this.git = git;
             return this;
         }
+        @CustomType.Setter
         public Builder preventDrift(@Nullable Boolean preventDrift) {
             this.preventDrift = preventDrift;
             return this;
         }
+        @CustomType.Setter
         public Builder sourceFormat(@Nullable String sourceFormat) {
             this.sourceFormat = sourceFormat;
             return this;
-        }        public FeatureMembershipConfigmanagementConfigSync build() {
-            return new FeatureMembershipConfigmanagementConfigSync(git, preventDrift, sourceFormat);
+        }
+        public FeatureMembershipConfigmanagementConfigSync build() {
+            final var o = new FeatureMembershipConfigmanagementConfigSync();
+            o.git = git;
+            o.preventDrift = preventDrift;
+            o.sourceFormat = sourceFormat;
+            return o;
         }
     }
 }

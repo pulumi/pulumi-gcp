@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DomainMappingResourceRecord {
-    private final @Nullable String name;
-    private final @Nullable String rrdata;
-    private final @Nullable String type;
+    private @Nullable String name;
+    private @Nullable String rrdata;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private DomainMappingResourceRecord(
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("rrdata") @Nullable String rrdata,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.name = name;
-        this.rrdata = rrdata;
-        this.type = type;
-    }
-
+    private DomainMappingResourceRecord() {}
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -42,16 +33,12 @@ public final class DomainMappingResourceRecord {
     public static Builder builder(DomainMappingResourceRecord defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
         private @Nullable String rrdata;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DomainMappingResourceRecord defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
@@ -59,19 +46,27 @@ public final class DomainMappingResourceRecord {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder rrdata(@Nullable String rrdata) {
             this.rrdata = rrdata;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public DomainMappingResourceRecord build() {
-            return new DomainMappingResourceRecord(name, rrdata, type);
+        }
+        public DomainMappingResourceRecord build() {
+            final var o = new DomainMappingResourceRecord();
+            o.name = name;
+            o.rrdata = rrdata;
+            o.type = type;
+            return o;
         }
     }
 }

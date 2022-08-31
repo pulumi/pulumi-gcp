@@ -29,7 +29,7 @@ public final class AlertPolicyConditionConditionThresholdDenominatorAggregation 
      * otherwise an error is returned.
      * 
      */
-    private final @Nullable String alignmentPeriod;
+    private @Nullable String alignmentPeriod;
     /**
      * @return The approach to be used to combine
      * time series. Not all reducer
@@ -51,7 +51,7 @@ public final class AlertPolicyConditionConditionThresholdDenominatorAggregation 
      * Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
      * 
      */
-    private final @Nullable String crossSeriesReducer;
+    private @Nullable String crossSeriesReducer;
     /**
      * @return The set of fields to preserve when
      * crossSeriesReducer is specified.
@@ -80,7 +80,7 @@ public final class AlertPolicyConditionConditionThresholdDenominatorAggregation 
      * ignored.
      * 
      */
-    private final @Nullable List<String> groupByFields;
+    private @Nullable List<String> groupByFields;
     /**
      * @return The approach to be used to align
      * individual time series. Not all
@@ -102,20 +102,9 @@ public final class AlertPolicyConditionConditionThresholdDenominatorAggregation 
      * Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
      * 
      */
-    private final @Nullable String perSeriesAligner;
+    private @Nullable String perSeriesAligner;
 
-    @CustomType.Constructor
-    private AlertPolicyConditionConditionThresholdDenominatorAggregation(
-        @CustomType.Parameter("alignmentPeriod") @Nullable String alignmentPeriod,
-        @CustomType.Parameter("crossSeriesReducer") @Nullable String crossSeriesReducer,
-        @CustomType.Parameter("groupByFields") @Nullable List<String> groupByFields,
-        @CustomType.Parameter("perSeriesAligner") @Nullable String perSeriesAligner) {
-        this.alignmentPeriod = alignmentPeriod;
-        this.crossSeriesReducer = crossSeriesReducer;
-        this.groupByFields = groupByFields;
-        this.perSeriesAligner = perSeriesAligner;
-    }
-
+    private AlertPolicyConditionConditionThresholdDenominatorAggregation() {}
     /**
      * @return The alignment period for per-time
      * series alignment. If present,
@@ -223,17 +212,13 @@ public final class AlertPolicyConditionConditionThresholdDenominatorAggregation 
     public static Builder builder(AlertPolicyConditionConditionThresholdDenominatorAggregation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String alignmentPeriod;
         private @Nullable String crossSeriesReducer;
         private @Nullable List<String> groupByFields;
         private @Nullable String perSeriesAligner;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AlertPolicyConditionConditionThresholdDenominatorAggregation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alignmentPeriod = defaults.alignmentPeriod;
@@ -242,14 +227,17 @@ public final class AlertPolicyConditionConditionThresholdDenominatorAggregation 
     	      this.perSeriesAligner = defaults.perSeriesAligner;
         }
 
+        @CustomType.Setter
         public Builder alignmentPeriod(@Nullable String alignmentPeriod) {
             this.alignmentPeriod = alignmentPeriod;
             return this;
         }
+        @CustomType.Setter
         public Builder crossSeriesReducer(@Nullable String crossSeriesReducer) {
             this.crossSeriesReducer = crossSeriesReducer;
             return this;
         }
+        @CustomType.Setter
         public Builder groupByFields(@Nullable List<String> groupByFields) {
             this.groupByFields = groupByFields;
             return this;
@@ -257,11 +245,18 @@ public final class AlertPolicyConditionConditionThresholdDenominatorAggregation 
         public Builder groupByFields(String... groupByFields) {
             return groupByFields(List.of(groupByFields));
         }
+        @CustomType.Setter
         public Builder perSeriesAligner(@Nullable String perSeriesAligner) {
             this.perSeriesAligner = perSeriesAligner;
             return this;
-        }        public AlertPolicyConditionConditionThresholdDenominatorAggregation build() {
-            return new AlertPolicyConditionConditionThresholdDenominatorAggregation(alignmentPeriod, crossSeriesReducer, groupByFields, perSeriesAligner);
+        }
+        public AlertPolicyConditionConditionThresholdDenominatorAggregation build() {
+            final var o = new AlertPolicyConditionConditionThresholdDenominatorAggregation();
+            o.alignmentPeriod = alignmentPeriod;
+            o.crossSeriesReducer = crossSeriesReducer;
+            o.groupByFields = groupByFields;
+            o.perSeriesAligner = perSeriesAligner;
+            return o;
         }
     }
 }

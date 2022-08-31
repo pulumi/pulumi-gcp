@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigWebServerNetworkAccessControl {
-    private final List<GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange> allowedIpRanges;
+    private List<GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange> allowedIpRanges;
 
-    @CustomType.Constructor
-    private GetEnvironmentConfigWebServerNetworkAccessControl(@CustomType.Parameter("allowedIpRanges") List<GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange> allowedIpRanges) {
-        this.allowedIpRanges = allowedIpRanges;
-    }
-
+    private GetEnvironmentConfigWebServerNetworkAccessControl() {}
     public List<GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange> allowedIpRanges() {
         return this.allowedIpRanges;
     }
@@ -28,27 +24,27 @@ public final class GetEnvironmentConfigWebServerNetworkAccessControl {
     public static Builder builder(GetEnvironmentConfigWebServerNetworkAccessControl defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange> allowedIpRanges;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEnvironmentConfigWebServerNetworkAccessControl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedIpRanges = defaults.allowedIpRanges;
         }
 
+        @CustomType.Setter
         public Builder allowedIpRanges(List<GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange> allowedIpRanges) {
             this.allowedIpRanges = Objects.requireNonNull(allowedIpRanges);
             return this;
         }
         public Builder allowedIpRanges(GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange... allowedIpRanges) {
             return allowedIpRanges(List.of(allowedIpRanges));
-        }        public GetEnvironmentConfigWebServerNetworkAccessControl build() {
-            return new GetEnvironmentConfigWebServerNetworkAccessControl(allowedIpRanges);
+        }
+        public GetEnvironmentConfigWebServerNetworkAccessControl build() {
+            final var o = new GetEnvironmentConfigWebServerNetworkAccessControl();
+            o.allowedIpRanges = allowedIpRanges;
+            return o;
         }
     }
 }

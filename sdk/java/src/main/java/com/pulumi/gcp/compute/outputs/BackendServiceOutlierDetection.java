@@ -20,55 +20,55 @@ public final class BackendServiceOutlierDetection {
      * Structure is documented below.
      * 
      */
-    private final @Nullable BackendServiceOutlierDetectionBaseEjectionTime baseEjectionTime;
+    private @Nullable BackendServiceOutlierDetectionBaseEjectionTime baseEjectionTime;
     /**
      * @return Number of errors before a host is ejected from the connection pool. When the
      * backend host is accessed over HTTP, a 5xx return code qualifies as an error.
      * Defaults to 5.
      * 
      */
-    private final @Nullable Integer consecutiveErrors;
+    private @Nullable Integer consecutiveErrors;
     /**
      * @return The number of consecutive gateway failures (502, 503, 504 status or connection
      * errors that are mapped to one of those status codes) before a consecutive
      * gateway failure ejection occurs. Defaults to 5.
      * 
      */
-    private final @Nullable Integer consecutiveGatewayFailure;
+    private @Nullable Integer consecutiveGatewayFailure;
     /**
      * @return The percentage chance that a host will be actually ejected when an outlier
      * status is detected through consecutive 5xx. This setting can be used to disable
      * ejection or to ramp it up slowly. Defaults to 100.
      * 
      */
-    private final @Nullable Integer enforcingConsecutiveErrors;
+    private @Nullable Integer enforcingConsecutiveErrors;
     /**
      * @return The percentage chance that a host will be actually ejected when an outlier
      * status is detected through consecutive gateway failures. This setting can be
      * used to disable ejection or to ramp it up slowly. Defaults to 0.
      * 
      */
-    private final @Nullable Integer enforcingConsecutiveGatewayFailure;
+    private @Nullable Integer enforcingConsecutiveGatewayFailure;
     /**
      * @return The percentage chance that a host will be actually ejected when an outlier
      * status is detected through success rate statistics. This setting can be used to
      * disable ejection or to ramp it up slowly. Defaults to 100.
      * 
      */
-    private final @Nullable Integer enforcingSuccessRate;
+    private @Nullable Integer enforcingSuccessRate;
     /**
      * @return Time interval between ejection sweep analysis. This can result in both new
      * ejections as well as hosts being returned to service. Defaults to 10 seconds.
      * Structure is documented below.
      * 
      */
-    private final @Nullable BackendServiceOutlierDetectionInterval interval;
+    private @Nullable BackendServiceOutlierDetectionInterval interval;
     /**
      * @return Maximum percentage of hosts in the load balancing pool for the backend service
      * that can be ejected. Defaults to 10%.
      * 
      */
-    private final @Nullable Integer maxEjectionPercent;
+    private @Nullable Integer maxEjectionPercent;
     /**
      * @return The number of hosts in a cluster that must have enough request volume to detect
      * success rate outliers. If the number of hosts is less than this setting, outlier
@@ -76,7 +76,7 @@ public final class BackendServiceOutlierDetection {
      * cluster. Defaults to 5.
      * 
      */
-    private final @Nullable Integer successRateMinimumHosts;
+    private @Nullable Integer successRateMinimumHosts;
     /**
      * @return The minimum number of total requests that must be collected in one interval (as
      * defined by the interval duration above) to include this host in success rate
@@ -85,7 +85,7 @@ public final class BackendServiceOutlierDetection {
      * to 100.
      * 
      */
-    private final @Nullable Integer successRateRequestVolume;
+    private @Nullable Integer successRateRequestVolume;
     /**
      * @return This factor is used to determine the ejection threshold for success rate outlier
      * ejection. The ejection threshold is the difference between the mean success
@@ -95,34 +95,9 @@ public final class BackendServiceOutlierDetection {
      * runtime value should be 1900. Defaults to 1900.
      * 
      */
-    private final @Nullable Integer successRateStdevFactor;
+    private @Nullable Integer successRateStdevFactor;
 
-    @CustomType.Constructor
-    private BackendServiceOutlierDetection(
-        @CustomType.Parameter("baseEjectionTime") @Nullable BackendServiceOutlierDetectionBaseEjectionTime baseEjectionTime,
-        @CustomType.Parameter("consecutiveErrors") @Nullable Integer consecutiveErrors,
-        @CustomType.Parameter("consecutiveGatewayFailure") @Nullable Integer consecutiveGatewayFailure,
-        @CustomType.Parameter("enforcingConsecutiveErrors") @Nullable Integer enforcingConsecutiveErrors,
-        @CustomType.Parameter("enforcingConsecutiveGatewayFailure") @Nullable Integer enforcingConsecutiveGatewayFailure,
-        @CustomType.Parameter("enforcingSuccessRate") @Nullable Integer enforcingSuccessRate,
-        @CustomType.Parameter("interval") @Nullable BackendServiceOutlierDetectionInterval interval,
-        @CustomType.Parameter("maxEjectionPercent") @Nullable Integer maxEjectionPercent,
-        @CustomType.Parameter("successRateMinimumHosts") @Nullable Integer successRateMinimumHosts,
-        @CustomType.Parameter("successRateRequestVolume") @Nullable Integer successRateRequestVolume,
-        @CustomType.Parameter("successRateStdevFactor") @Nullable Integer successRateStdevFactor) {
-        this.baseEjectionTime = baseEjectionTime;
-        this.consecutiveErrors = consecutiveErrors;
-        this.consecutiveGatewayFailure = consecutiveGatewayFailure;
-        this.enforcingConsecutiveErrors = enforcingConsecutiveErrors;
-        this.enforcingConsecutiveGatewayFailure = enforcingConsecutiveGatewayFailure;
-        this.enforcingSuccessRate = enforcingSuccessRate;
-        this.interval = interval;
-        this.maxEjectionPercent = maxEjectionPercent;
-        this.successRateMinimumHosts = successRateMinimumHosts;
-        this.successRateRequestVolume = successRateRequestVolume;
-        this.successRateStdevFactor = successRateStdevFactor;
-    }
-
+    private BackendServiceOutlierDetection() {}
     /**
      * @return The base time that a host is ejected for. The real time is equal to the base
      * time multiplied by the number of times the host has been ejected. Defaults to
@@ -236,7 +211,7 @@ public final class BackendServiceOutlierDetection {
     public static Builder builder(BackendServiceOutlierDetection defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable BackendServiceOutlierDetectionBaseEjectionTime baseEjectionTime;
         private @Nullable Integer consecutiveErrors;
@@ -249,11 +224,7 @@ public final class BackendServiceOutlierDetection {
         private @Nullable Integer successRateMinimumHosts;
         private @Nullable Integer successRateRequestVolume;
         private @Nullable Integer successRateStdevFactor;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BackendServiceOutlierDetection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.baseEjectionTime = defaults.baseEjectionTime;
@@ -269,51 +240,75 @@ public final class BackendServiceOutlierDetection {
     	      this.successRateStdevFactor = defaults.successRateStdevFactor;
         }
 
+        @CustomType.Setter
         public Builder baseEjectionTime(@Nullable BackendServiceOutlierDetectionBaseEjectionTime baseEjectionTime) {
             this.baseEjectionTime = baseEjectionTime;
             return this;
         }
+        @CustomType.Setter
         public Builder consecutiveErrors(@Nullable Integer consecutiveErrors) {
             this.consecutiveErrors = consecutiveErrors;
             return this;
         }
+        @CustomType.Setter
         public Builder consecutiveGatewayFailure(@Nullable Integer consecutiveGatewayFailure) {
             this.consecutiveGatewayFailure = consecutiveGatewayFailure;
             return this;
         }
+        @CustomType.Setter
         public Builder enforcingConsecutiveErrors(@Nullable Integer enforcingConsecutiveErrors) {
             this.enforcingConsecutiveErrors = enforcingConsecutiveErrors;
             return this;
         }
+        @CustomType.Setter
         public Builder enforcingConsecutiveGatewayFailure(@Nullable Integer enforcingConsecutiveGatewayFailure) {
             this.enforcingConsecutiveGatewayFailure = enforcingConsecutiveGatewayFailure;
             return this;
         }
+        @CustomType.Setter
         public Builder enforcingSuccessRate(@Nullable Integer enforcingSuccessRate) {
             this.enforcingSuccessRate = enforcingSuccessRate;
             return this;
         }
+        @CustomType.Setter
         public Builder interval(@Nullable BackendServiceOutlierDetectionInterval interval) {
             this.interval = interval;
             return this;
         }
+        @CustomType.Setter
         public Builder maxEjectionPercent(@Nullable Integer maxEjectionPercent) {
             this.maxEjectionPercent = maxEjectionPercent;
             return this;
         }
+        @CustomType.Setter
         public Builder successRateMinimumHosts(@Nullable Integer successRateMinimumHosts) {
             this.successRateMinimumHosts = successRateMinimumHosts;
             return this;
         }
+        @CustomType.Setter
         public Builder successRateRequestVolume(@Nullable Integer successRateRequestVolume) {
             this.successRateRequestVolume = successRateRequestVolume;
             return this;
         }
+        @CustomType.Setter
         public Builder successRateStdevFactor(@Nullable Integer successRateStdevFactor) {
             this.successRateStdevFactor = successRateStdevFactor;
             return this;
-        }        public BackendServiceOutlierDetection build() {
-            return new BackendServiceOutlierDetection(baseEjectionTime, consecutiveErrors, consecutiveGatewayFailure, enforcingConsecutiveErrors, enforcingConsecutiveGatewayFailure, enforcingSuccessRate, interval, maxEjectionPercent, successRateMinimumHosts, successRateRequestVolume, successRateStdevFactor);
+        }
+        public BackendServiceOutlierDetection build() {
+            final var o = new BackendServiceOutlierDetection();
+            o.baseEjectionTime = baseEjectionTime;
+            o.consecutiveErrors = consecutiveErrors;
+            o.consecutiveGatewayFailure = consecutiveGatewayFailure;
+            o.enforcingConsecutiveErrors = enforcingConsecutiveErrors;
+            o.enforcingConsecutiveGatewayFailure = enforcingConsecutiveGatewayFailure;
+            o.enforcingSuccessRate = enforcingSuccessRate;
+            o.interval = interval;
+            o.maxEjectionPercent = maxEjectionPercent;
+            o.successRateMinimumHosts = successRateMinimumHosts;
+            o.successRateRequestVolume = successRateRequestVolume;
+            o.successRateStdevFactor = successRateStdevFactor;
+            return o;
         }
     }
 }

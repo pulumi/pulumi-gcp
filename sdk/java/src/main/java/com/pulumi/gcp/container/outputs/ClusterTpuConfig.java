@@ -17,20 +17,11 @@ public final class ClusterTpuConfig {
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
      * 
      */
-    private final Boolean enabled;
-    private final @Nullable String ipv4CidrBlock;
-    private final @Nullable Boolean useServiceNetworking;
+    private Boolean enabled;
+    private @Nullable String ipv4CidrBlock;
+    private @Nullable Boolean useServiceNetworking;
 
-    @CustomType.Constructor
-    private ClusterTpuConfig(
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("ipv4CidrBlock") @Nullable String ipv4CidrBlock,
-        @CustomType.Parameter("useServiceNetworking") @Nullable Boolean useServiceNetworking) {
-        this.enabled = enabled;
-        this.ipv4CidrBlock = ipv4CidrBlock;
-        this.useServiceNetworking = useServiceNetworking;
-    }
-
+    private ClusterTpuConfig() {}
     /**
      * @return Enable the PodSecurityPolicy controller for this cluster.
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -53,16 +44,12 @@ public final class ClusterTpuConfig {
     public static Builder builder(ClusterTpuConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
         private @Nullable String ipv4CidrBlock;
         private @Nullable Boolean useServiceNetworking;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterTpuConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
@@ -70,19 +57,27 @@ public final class ClusterTpuConfig {
     	      this.useServiceNetworking = defaults.useServiceNetworking;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv4CidrBlock(@Nullable String ipv4CidrBlock) {
             this.ipv4CidrBlock = ipv4CidrBlock;
             return this;
         }
+        @CustomType.Setter
         public Builder useServiceNetworking(@Nullable Boolean useServiceNetworking) {
             this.useServiceNetworking = useServiceNetworking;
             return this;
-        }        public ClusterTpuConfig build() {
-            return new ClusterTpuConfig(enabled, ipv4CidrBlock, useServiceNetworking);
+        }
+        public ClusterTpuConfig build() {
+            final var o = new ClusterTpuConfig();
+            o.enabled = enabled;
+            o.ipv4CidrBlock = ipv4CidrBlock;
+            o.useServiceNetworking = useServiceNetworking;
+            return o;
         }
     }
 }

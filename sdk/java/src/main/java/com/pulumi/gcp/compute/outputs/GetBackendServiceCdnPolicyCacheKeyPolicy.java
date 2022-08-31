@@ -11,29 +11,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
-    private final Boolean includeHost;
-    private final List<String> includeNamedCookies;
-    private final Boolean includeProtocol;
-    private final Boolean includeQueryString;
-    private final List<String> queryStringBlacklists;
-    private final List<String> queryStringWhitelists;
+    private Boolean includeHost;
+    private List<String> includeNamedCookies;
+    private Boolean includeProtocol;
+    private Boolean includeQueryString;
+    private List<String> queryStringBlacklists;
+    private List<String> queryStringWhitelists;
 
-    @CustomType.Constructor
-    private GetBackendServiceCdnPolicyCacheKeyPolicy(
-        @CustomType.Parameter("includeHost") Boolean includeHost,
-        @CustomType.Parameter("includeNamedCookies") List<String> includeNamedCookies,
-        @CustomType.Parameter("includeProtocol") Boolean includeProtocol,
-        @CustomType.Parameter("includeQueryString") Boolean includeQueryString,
-        @CustomType.Parameter("queryStringBlacklists") List<String> queryStringBlacklists,
-        @CustomType.Parameter("queryStringWhitelists") List<String> queryStringWhitelists) {
-        this.includeHost = includeHost;
-        this.includeNamedCookies = includeNamedCookies;
-        this.includeProtocol = includeProtocol;
-        this.includeQueryString = includeQueryString;
-        this.queryStringBlacklists = queryStringBlacklists;
-        this.queryStringWhitelists = queryStringWhitelists;
-    }
-
+    private GetBackendServiceCdnPolicyCacheKeyPolicy() {}
     public Boolean includeHost() {
         return this.includeHost;
     }
@@ -60,7 +45,7 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
     public static Builder builder(GetBackendServiceCdnPolicyCacheKeyPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean includeHost;
         private List<String> includeNamedCookies;
@@ -68,11 +53,7 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
         private Boolean includeQueryString;
         private List<String> queryStringBlacklists;
         private List<String> queryStringWhitelists;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackendServiceCdnPolicyCacheKeyPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.includeHost = defaults.includeHost;
@@ -83,10 +64,12 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
     	      this.queryStringWhitelists = defaults.queryStringWhitelists;
         }
 
+        @CustomType.Setter
         public Builder includeHost(Boolean includeHost) {
             this.includeHost = Objects.requireNonNull(includeHost);
             return this;
         }
+        @CustomType.Setter
         public Builder includeNamedCookies(List<String> includeNamedCookies) {
             this.includeNamedCookies = Objects.requireNonNull(includeNamedCookies);
             return this;
@@ -94,14 +77,17 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
         public Builder includeNamedCookies(String... includeNamedCookies) {
             return includeNamedCookies(List.of(includeNamedCookies));
         }
+        @CustomType.Setter
         public Builder includeProtocol(Boolean includeProtocol) {
             this.includeProtocol = Objects.requireNonNull(includeProtocol);
             return this;
         }
+        @CustomType.Setter
         public Builder includeQueryString(Boolean includeQueryString) {
             this.includeQueryString = Objects.requireNonNull(includeQueryString);
             return this;
         }
+        @CustomType.Setter
         public Builder queryStringBlacklists(List<String> queryStringBlacklists) {
             this.queryStringBlacklists = Objects.requireNonNull(queryStringBlacklists);
             return this;
@@ -109,14 +95,23 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
         public Builder queryStringBlacklists(String... queryStringBlacklists) {
             return queryStringBlacklists(List.of(queryStringBlacklists));
         }
+        @CustomType.Setter
         public Builder queryStringWhitelists(List<String> queryStringWhitelists) {
             this.queryStringWhitelists = Objects.requireNonNull(queryStringWhitelists);
             return this;
         }
         public Builder queryStringWhitelists(String... queryStringWhitelists) {
             return queryStringWhitelists(List.of(queryStringWhitelists));
-        }        public GetBackendServiceCdnPolicyCacheKeyPolicy build() {
-            return new GetBackendServiceCdnPolicyCacheKeyPolicy(includeHost, includeNamedCookies, includeProtocol, includeQueryString, queryStringBlacklists, queryStringWhitelists);
+        }
+        public GetBackendServiceCdnPolicyCacheKeyPolicy build() {
+            final var o = new GetBackendServiceCdnPolicyCacheKeyPolicy();
+            o.includeHost = includeHost;
+            o.includeNamedCookies = includeNamedCookies;
+            o.includeProtocol = includeProtocol;
+            o.includeQueryString = includeQueryString;
+            o.queryStringBlacklists = queryStringBlacklists;
+            o.queryStringWhitelists = queryStringWhitelists;
+            return o;
         }
     }
 }

@@ -13,55 +13,32 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKMSCryptoKeyResult {
-    private final String destroyScheduledDuration;
+    private String destroyScheduledDuration;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final Boolean importOnly;
-    private final String keyRing;
-    private final Map<String,String> labels;
-    private final String name;
+    private String id;
+    private Boolean importOnly;
+    private String keyRing;
+    private Map<String,String> labels;
+    private String name;
     /**
      * @return Defines the cryptographic capabilities of the key.
      * 
      */
-    private final String purpose;
+    private String purpose;
     /**
      * @return Every time this period passes, generate a new CryptoKeyVersion and set it as
      * the primary. The first rotation will take place after the specified period. The rotation period has the format
      * of a decimal number with up to 9 fractional digits, followed by the letter s (seconds).
      * 
      */
-    private final String rotationPeriod;
-    private final Boolean skipInitialVersionCreation;
-    private final List<GetKMSCryptoKeyVersionTemplate> versionTemplates;
+    private String rotationPeriod;
+    private Boolean skipInitialVersionCreation;
+    private List<GetKMSCryptoKeyVersionTemplate> versionTemplates;
 
-    @CustomType.Constructor
-    private GetKMSCryptoKeyResult(
-        @CustomType.Parameter("destroyScheduledDuration") String destroyScheduledDuration,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("importOnly") Boolean importOnly,
-        @CustomType.Parameter("keyRing") String keyRing,
-        @CustomType.Parameter("labels") Map<String,String> labels,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("purpose") String purpose,
-        @CustomType.Parameter("rotationPeriod") String rotationPeriod,
-        @CustomType.Parameter("skipInitialVersionCreation") Boolean skipInitialVersionCreation,
-        @CustomType.Parameter("versionTemplates") List<GetKMSCryptoKeyVersionTemplate> versionTemplates) {
-        this.destroyScheduledDuration = destroyScheduledDuration;
-        this.id = id;
-        this.importOnly = importOnly;
-        this.keyRing = keyRing;
-        this.labels = labels;
-        this.name = name;
-        this.purpose = purpose;
-        this.rotationPeriod = rotationPeriod;
-        this.skipInitialVersionCreation = skipInitialVersionCreation;
-        this.versionTemplates = versionTemplates;
-    }
-
+    private GetKMSCryptoKeyResult() {}
     public String destroyScheduledDuration() {
         return this.destroyScheduledDuration;
     }
@@ -114,7 +91,7 @@ public final class GetKMSCryptoKeyResult {
     public static Builder builder(GetKMSCryptoKeyResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String destroyScheduledDuration;
         private String id;
@@ -126,11 +103,7 @@ public final class GetKMSCryptoKeyResult {
         private String rotationPeriod;
         private Boolean skipInitialVersionCreation;
         private List<GetKMSCryptoKeyVersionTemplate> versionTemplates;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKMSCryptoKeyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destroyScheduledDuration = defaults.destroyScheduledDuration;
@@ -145,50 +118,72 @@ public final class GetKMSCryptoKeyResult {
     	      this.versionTemplates = defaults.versionTemplates;
         }
 
+        @CustomType.Setter
         public Builder destroyScheduledDuration(String destroyScheduledDuration) {
             this.destroyScheduledDuration = Objects.requireNonNull(destroyScheduledDuration);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder importOnly(Boolean importOnly) {
             this.importOnly = Objects.requireNonNull(importOnly);
             return this;
         }
+        @CustomType.Setter
         public Builder keyRing(String keyRing) {
             this.keyRing = Objects.requireNonNull(keyRing);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder purpose(String purpose) {
             this.purpose = Objects.requireNonNull(purpose);
             return this;
         }
+        @CustomType.Setter
         public Builder rotationPeriod(String rotationPeriod) {
             this.rotationPeriod = Objects.requireNonNull(rotationPeriod);
             return this;
         }
+        @CustomType.Setter
         public Builder skipInitialVersionCreation(Boolean skipInitialVersionCreation) {
             this.skipInitialVersionCreation = Objects.requireNonNull(skipInitialVersionCreation);
             return this;
         }
+        @CustomType.Setter
         public Builder versionTemplates(List<GetKMSCryptoKeyVersionTemplate> versionTemplates) {
             this.versionTemplates = Objects.requireNonNull(versionTemplates);
             return this;
         }
         public Builder versionTemplates(GetKMSCryptoKeyVersionTemplate... versionTemplates) {
             return versionTemplates(List.of(versionTemplates));
-        }        public GetKMSCryptoKeyResult build() {
-            return new GetKMSCryptoKeyResult(destroyScheduledDuration, id, importOnly, keyRing, labels, name, purpose, rotationPeriod, skipInitialVersionCreation, versionTemplates);
+        }
+        public GetKMSCryptoKeyResult build() {
+            final var o = new GetKMSCryptoKeyResult();
+            o.destroyScheduledDuration = destroyScheduledDuration;
+            o.id = id;
+            o.importOnly = importOnly;
+            o.keyRing = keyRing;
+            o.labels = labels;
+            o.name = name;
+            o.purpose = purpose;
+            o.rotationPeriod = rotationPeriod;
+            o.skipInitialVersionCreation = skipInitialVersionCreation;
+            o.versionTemplates = versionTemplates;
+            return o;
         }
     }
 }

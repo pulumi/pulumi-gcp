@@ -17,30 +17,21 @@ public final class IndexField {
      * Possible values are `CONTAINS`.
      * 
      */
-    private final @Nullable String arrayConfig;
+    private @Nullable String arrayConfig;
     /**
      * @return Name of the field.
      * 
      */
-    private final @Nullable String fieldPath;
+    private @Nullable String fieldPath;
     /**
      * @return Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
      * Only one of `order` and `arrayConfig` can be specified.
      * Possible values are `ASCENDING` and `DESCENDING`.
      * 
      */
-    private final @Nullable String order;
+    private @Nullable String order;
 
-    @CustomType.Constructor
-    private IndexField(
-        @CustomType.Parameter("arrayConfig") @Nullable String arrayConfig,
-        @CustomType.Parameter("fieldPath") @Nullable String fieldPath,
-        @CustomType.Parameter("order") @Nullable String order) {
-        this.arrayConfig = arrayConfig;
-        this.fieldPath = fieldPath;
-        this.order = order;
-    }
-
+    private IndexField() {}
     /**
      * @return Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
      * be specified.
@@ -74,16 +65,12 @@ public final class IndexField {
     public static Builder builder(IndexField defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String arrayConfig;
         private @Nullable String fieldPath;
         private @Nullable String order;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(IndexField defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arrayConfig = defaults.arrayConfig;
@@ -91,19 +78,27 @@ public final class IndexField {
     	      this.order = defaults.order;
         }
 
+        @CustomType.Setter
         public Builder arrayConfig(@Nullable String arrayConfig) {
             this.arrayConfig = arrayConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder fieldPath(@Nullable String fieldPath) {
             this.fieldPath = fieldPath;
             return this;
         }
+        @CustomType.Setter
         public Builder order(@Nullable String order) {
             this.order = order;
             return this;
-        }        public IndexField build() {
-            return new IndexField(arrayConfig, fieldPath, order);
+        }
+        public IndexField build() {
+            final var o = new IndexField();
+            o.arrayConfig = arrayConfig;
+            o.fieldPath = fieldPath;
+            o.order = order;
+            return o;
         }
     }
 }

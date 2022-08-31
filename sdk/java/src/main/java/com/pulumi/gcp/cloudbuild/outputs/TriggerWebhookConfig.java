@@ -16,23 +16,16 @@ public final class TriggerWebhookConfig {
      * Structure is documented below.
      * 
      */
-    private final String secret;
+    private String secret;
     /**
      * @return -
      * Potential issues with the underlying Pub/Sub subscription configuration.
      * Only populated on get requests.
      * 
      */
-    private final @Nullable String state;
+    private @Nullable String state;
 
-    @CustomType.Constructor
-    private TriggerWebhookConfig(
-        @CustomType.Parameter("secret") String secret,
-        @CustomType.Parameter("state") @Nullable String state) {
-        this.secret = secret;
-        this.state = state;
-    }
-
+    private TriggerWebhookConfig() {}
     /**
      * @return Secrets to decrypt using Cloud Key Management Service.
      * Structure is documented below.
@@ -58,30 +51,32 @@ public final class TriggerWebhookConfig {
     public static Builder builder(TriggerWebhookConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String secret;
         private @Nullable String state;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TriggerWebhookConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.secret = defaults.secret;
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
         public Builder secret(String secret) {
             this.secret = Objects.requireNonNull(secret);
             return this;
         }
+        @CustomType.Setter
         public Builder state(@Nullable String state) {
             this.state = state;
             return this;
-        }        public TriggerWebhookConfig build() {
-            return new TriggerWebhookConfig(secret, state);
+        }
+        public TriggerWebhookConfig build() {
+            final var o = new TriggerWebhookConfig();
+            o.secret = secret;
+            o.state = state;
+            return o;
         }
     }
 }

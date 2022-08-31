@@ -11,22 +11,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class IntentFollowupIntentInfo {
-    private final @Nullable String followupIntentName;
+    private @Nullable String followupIntentName;
     /**
      * @return The unique identifier of the parent intent in the chain of followup intents.
      * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
      * 
      */
-    private final @Nullable String parentFollowupIntentName;
+    private @Nullable String parentFollowupIntentName;
 
-    @CustomType.Constructor
-    private IntentFollowupIntentInfo(
-        @CustomType.Parameter("followupIntentName") @Nullable String followupIntentName,
-        @CustomType.Parameter("parentFollowupIntentName") @Nullable String parentFollowupIntentName) {
-        this.followupIntentName = followupIntentName;
-        this.parentFollowupIntentName = parentFollowupIntentName;
-    }
-
+    private IntentFollowupIntentInfo() {}
     public Optional<String> followupIntentName() {
         return Optional.ofNullable(this.followupIntentName);
     }
@@ -46,30 +39,32 @@ public final class IntentFollowupIntentInfo {
     public static Builder builder(IntentFollowupIntentInfo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String followupIntentName;
         private @Nullable String parentFollowupIntentName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(IntentFollowupIntentInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.followupIntentName = defaults.followupIntentName;
     	      this.parentFollowupIntentName = defaults.parentFollowupIntentName;
         }
 
+        @CustomType.Setter
         public Builder followupIntentName(@Nullable String followupIntentName) {
             this.followupIntentName = followupIntentName;
             return this;
         }
+        @CustomType.Setter
         public Builder parentFollowupIntentName(@Nullable String parentFollowupIntentName) {
             this.parentFollowupIntentName = parentFollowupIntentName;
             return this;
-        }        public IntentFollowupIntentInfo build() {
-            return new IntentFollowupIntentInfo(followupIntentName, parentFollowupIntentName);
+        }
+        public IntentFollowupIntentInfo build() {
+            final var o = new IntentFollowupIntentInfo();
+            o.followupIntentName = followupIntentName;
+            o.parentFollowupIntentName = parentFollowupIntentName;
+            return o;
         }
     }
 }

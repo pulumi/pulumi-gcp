@@ -21,17 +21,17 @@ public final class InstanceScheduling {
      * Defaults to true.
      * 
      */
-    private final @Nullable Boolean automaticRestart;
+    private @Nullable Boolean automaticRestart;
     /**
      * @return Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
      * 
      */
-    private final @Nullable String instanceTerminationAction;
+    private @Nullable String instanceTerminationAction;
     /**
      * @return The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
      * 
      */
-    private final @Nullable Integer minNodeCpus;
+    private @Nullable Integer minNodeCpus;
     /**
      * @return Specifies node affinities or anti-affinities
      * to determine which sole-tenant nodes your instances and managed instance
@@ -40,21 +40,21 @@ public final class InstanceScheduling {
      * Structure documented below.
      * 
      */
-    private final @Nullable List<InstanceSchedulingNodeAffinity> nodeAffinities;
+    private @Nullable List<InstanceSchedulingNodeAffinity> nodeAffinities;
     /**
      * @return Describes maintenance behavior for the
      * instance. Can be MIGRATE or TERMINATE, for more info, read
      * [here](https://cloud.google.com/compute/docs/instances/setting-instance-scheduling-options).
      * 
      */
-    private final @Nullable String onHostMaintenance;
+    private @Nullable String onHostMaintenance;
     /**
      * @return Specifies if the instance is preemptible.
      * If this field is set to true, then `automatic_restart` must be
      * set to false.  Defaults to false.
      * 
      */
-    private final @Nullable Boolean preemptible;
+    private @Nullable Boolean preemptible;
     /**
      * @return Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
      * `preemptible` should be `true` and `auto_restart` should be
@@ -62,26 +62,9 @@ public final class InstanceScheduling {
      * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
      * 
      */
-    private final @Nullable String provisioningModel;
+    private @Nullable String provisioningModel;
 
-    @CustomType.Constructor
-    private InstanceScheduling(
-        @CustomType.Parameter("automaticRestart") @Nullable Boolean automaticRestart,
-        @CustomType.Parameter("instanceTerminationAction") @Nullable String instanceTerminationAction,
-        @CustomType.Parameter("minNodeCpus") @Nullable Integer minNodeCpus,
-        @CustomType.Parameter("nodeAffinities") @Nullable List<InstanceSchedulingNodeAffinity> nodeAffinities,
-        @CustomType.Parameter("onHostMaintenance") @Nullable String onHostMaintenance,
-        @CustomType.Parameter("preemptible") @Nullable Boolean preemptible,
-        @CustomType.Parameter("provisioningModel") @Nullable String provisioningModel) {
-        this.automaticRestart = automaticRestart;
-        this.instanceTerminationAction = instanceTerminationAction;
-        this.minNodeCpus = minNodeCpus;
-        this.nodeAffinities = nodeAffinities;
-        this.onHostMaintenance = onHostMaintenance;
-        this.preemptible = preemptible;
-        this.provisioningModel = provisioningModel;
-    }
-
+    private InstanceScheduling() {}
     /**
      * @return Specifies if the instance should be
      * restarted if it was terminated by Compute Engine (not a user).
@@ -152,7 +135,7 @@ public final class InstanceScheduling {
     public static Builder builder(InstanceScheduling defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean automaticRestart;
         private @Nullable String instanceTerminationAction;
@@ -161,11 +144,7 @@ public final class InstanceScheduling {
         private @Nullable String onHostMaintenance;
         private @Nullable Boolean preemptible;
         private @Nullable String provisioningModel;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceScheduling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
@@ -177,18 +156,22 @@ public final class InstanceScheduling {
     	      this.provisioningModel = defaults.provisioningModel;
         }
 
+        @CustomType.Setter
         public Builder automaticRestart(@Nullable Boolean automaticRestart) {
             this.automaticRestart = automaticRestart;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceTerminationAction(@Nullable String instanceTerminationAction) {
             this.instanceTerminationAction = instanceTerminationAction;
             return this;
         }
+        @CustomType.Setter
         public Builder minNodeCpus(@Nullable Integer minNodeCpus) {
             this.minNodeCpus = minNodeCpus;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeAffinities(@Nullable List<InstanceSchedulingNodeAffinity> nodeAffinities) {
             this.nodeAffinities = nodeAffinities;
             return this;
@@ -196,19 +179,31 @@ public final class InstanceScheduling {
         public Builder nodeAffinities(InstanceSchedulingNodeAffinity... nodeAffinities) {
             return nodeAffinities(List.of(nodeAffinities));
         }
+        @CustomType.Setter
         public Builder onHostMaintenance(@Nullable String onHostMaintenance) {
             this.onHostMaintenance = onHostMaintenance;
             return this;
         }
+        @CustomType.Setter
         public Builder preemptible(@Nullable Boolean preemptible) {
             this.preemptible = preemptible;
             return this;
         }
+        @CustomType.Setter
         public Builder provisioningModel(@Nullable String provisioningModel) {
             this.provisioningModel = provisioningModel;
             return this;
-        }        public InstanceScheduling build() {
-            return new InstanceScheduling(automaticRestart, instanceTerminationAction, minNodeCpus, nodeAffinities, onHostMaintenance, preemptible, provisioningModel);
+        }
+        public InstanceScheduling build() {
+            final var o = new InstanceScheduling();
+            o.automaticRestart = automaticRestart;
+            o.instanceTerminationAction = instanceTerminationAction;
+            o.minNodeCpus = minNodeCpus;
+            o.nodeAffinities = nodeAffinities;
+            o.onHostMaintenance = onHostMaintenance;
+            o.preemptible = preemptible;
+            o.provisioningModel = provisioningModel;
+            return o;
         }
     }
 }
