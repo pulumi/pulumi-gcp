@@ -176,20 +176,6 @@ func stringValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []st
 
 func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
 
-	// explicitly check to make sure that the user has a project available before we do
-	// anything with the provider
-	project := stringValue(vars, "project", []string{
-		"GOOGLE_PROJECT",
-		"GOOGLE_CLOUD_PROJECT",
-		"GCLOUD_PROJECT",
-		"CLOUDSDK_CORE_PROJECT",
-	})
-	if project == "" {
-		return fmt.Errorf("unable to find required configuration setting: GCP Project\n" +
-			"Set the GCP Project by using:\n" +
-			"\t`pulumi config set gcp:project <project>`")
-	}
-
 	config := google.Config{
 		AccessToken: stringValue(vars, "accessToken", []string{"GOOGLE_OAUTH_ACCESS_TOKEN"}),
 		Credentials: stringValue(vars, "credentials", []string{
@@ -198,7 +184,12 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 			"GCLOUD_KEYFILE_JSON",
 		}),
 		ImpersonateServiceAccount: stringValue(vars, "impersonateServiceAccount", []string{"GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"}),
-		Project:                   project,
+		Project: stringValue(vars, "project", []string{
+			"GOOGLE_PROJECT",
+			"GOOGLE_CLOUD_PROJECT",
+			"GCLOUD_PROJECT",
+			"CLOUDSDK_CORE_PROJECT",
+		}),
 		Region: stringValue(vars, "region", []string{
 			"GOOGLE_REGION",
 			"GCLOUD_REGION",
