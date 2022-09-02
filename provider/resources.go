@@ -5,6 +5,8 @@ package gcp
 import (
 	"context"
 	"fmt"
+	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 	"os"
 	"path/filepath"
 	"strings"
@@ -174,7 +176,24 @@ func stringValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []st
 	return ""
 }
 
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
+func preConfigureCallback(ctx context.Context, host provider.HostClient, vars resource.PropertyMap, c shim.ResourceConfig) error {
+
+	// explicitly check to make sure that the user has a project available before we do
+	// anything with the provider
+	project := stringValue(vars, "project", []string{
+		"GOOGLE_PROJECT",
+		"GOOGLE_CLOUD_PROJECT",
+		"GCLOUD_PROJECT",
+		"CLOUDSDK_CORE_PROJECT",
+	})
+	if project == "" {
+		host.Log(ctx, diag.Warning, "pulumi-gcp", "hi this is a warning")
+		//return fmt.Errorf("unable to find required configuration setting: GCP Project\n" +
+		//"Set the GCP Project by using:\n" +
+		//"\t`pulumi config set gcp:project <project>`")
+		//
+		return nil
+	}
 
 	config := google.Config{
 		AccessToken: stringValue(vars, "accessToken", []string{"GOOGLE_OAUTH_ACCESS_TOKEN"}),
