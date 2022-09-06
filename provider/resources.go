@@ -176,7 +176,7 @@ func stringValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []st
 	return ""
 }
 
-func preConfigureCallback(ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, c shim.ResourceConfig) error {
+func preConfigureCallbackWithLogger(ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, c shim.ResourceConfig) error {
 
 	project := stringValue(vars, "project", []string{
 		"GOOGLE_PROJECT",
@@ -283,7 +283,7 @@ func Provider() tfbridge.ProviderInfo {
 			// See: https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/data-sources/data_source_dataproc_metastore_service
 			"google_dataproc_metastore_service",
 		},
-		PreConfigureCallback: preConfigureCallback,
+		PreConfigureCallbackWithLogger: preConfigureCallbackWithLogger,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Access Context Manager
 			"google_access_context_manager_access_level": {
