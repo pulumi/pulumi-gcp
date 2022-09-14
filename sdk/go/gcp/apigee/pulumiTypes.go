@@ -336,13 +336,471 @@ func (o EnvironmentIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type EnvironmentNodeConfig struct {
+	// -
+	// The current total number of gateway nodes that each environment currently has across
+	// all instances.
+	CurrentAggregateNodeCount *string `pulumi:"currentAggregateNodeCount"`
+	// The maximum total number of gateway nodes that the is reserved for all instances that
+	// has the specified environment. If not specified, the default is determined by the
+	// recommended maximum number of nodes for that gateway.
+	MaxNodeCount *string `pulumi:"maxNodeCount"`
+	// The minimum total number of gateway nodes that the is reserved for all instances that
+	// has the specified environment. If not specified, the default is determined by the
+	// recommended minimum number of nodes for that gateway.
+	MinNodeCount *string `pulumi:"minNodeCount"`
+}
+
+// EnvironmentNodeConfigInput is an input type that accepts EnvironmentNodeConfigArgs and EnvironmentNodeConfigOutput values.
+// You can construct a concrete instance of `EnvironmentNodeConfigInput` via:
+//
+//	EnvironmentNodeConfigArgs{...}
+type EnvironmentNodeConfigInput interface {
+	pulumi.Input
+
+	ToEnvironmentNodeConfigOutput() EnvironmentNodeConfigOutput
+	ToEnvironmentNodeConfigOutputWithContext(context.Context) EnvironmentNodeConfigOutput
+}
+
+type EnvironmentNodeConfigArgs struct {
+	// -
+	// The current total number of gateway nodes that each environment currently has across
+	// all instances.
+	CurrentAggregateNodeCount pulumi.StringPtrInput `pulumi:"currentAggregateNodeCount"`
+	// The maximum total number of gateway nodes that the is reserved for all instances that
+	// has the specified environment. If not specified, the default is determined by the
+	// recommended maximum number of nodes for that gateway.
+	MaxNodeCount pulumi.StringPtrInput `pulumi:"maxNodeCount"`
+	// The minimum total number of gateway nodes that the is reserved for all instances that
+	// has the specified environment. If not specified, the default is determined by the
+	// recommended minimum number of nodes for that gateway.
+	MinNodeCount pulumi.StringPtrInput `pulumi:"minNodeCount"`
+}
+
+func (EnvironmentNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentNodeConfig)(nil)).Elem()
+}
+
+func (i EnvironmentNodeConfigArgs) ToEnvironmentNodeConfigOutput() EnvironmentNodeConfigOutput {
+	return i.ToEnvironmentNodeConfigOutputWithContext(context.Background())
+}
+
+func (i EnvironmentNodeConfigArgs) ToEnvironmentNodeConfigOutputWithContext(ctx context.Context) EnvironmentNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentNodeConfigOutput)
+}
+
+func (i EnvironmentNodeConfigArgs) ToEnvironmentNodeConfigPtrOutput() EnvironmentNodeConfigPtrOutput {
+	return i.ToEnvironmentNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentNodeConfigArgs) ToEnvironmentNodeConfigPtrOutputWithContext(ctx context.Context) EnvironmentNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentNodeConfigOutput).ToEnvironmentNodeConfigPtrOutputWithContext(ctx)
+}
+
+// EnvironmentNodeConfigPtrInput is an input type that accepts EnvironmentNodeConfigArgs, EnvironmentNodeConfigPtr and EnvironmentNodeConfigPtrOutput values.
+// You can construct a concrete instance of `EnvironmentNodeConfigPtrInput` via:
+//
+//	        EnvironmentNodeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnvironmentNodeConfigPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentNodeConfigPtrOutput() EnvironmentNodeConfigPtrOutput
+	ToEnvironmentNodeConfigPtrOutputWithContext(context.Context) EnvironmentNodeConfigPtrOutput
+}
+
+type environmentNodeConfigPtrType EnvironmentNodeConfigArgs
+
+func EnvironmentNodeConfigPtr(v *EnvironmentNodeConfigArgs) EnvironmentNodeConfigPtrInput {
+	return (*environmentNodeConfigPtrType)(v)
+}
+
+func (*environmentNodeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentNodeConfig)(nil)).Elem()
+}
+
+func (i *environmentNodeConfigPtrType) ToEnvironmentNodeConfigPtrOutput() EnvironmentNodeConfigPtrOutput {
+	return i.ToEnvironmentNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentNodeConfigPtrType) ToEnvironmentNodeConfigPtrOutputWithContext(ctx context.Context) EnvironmentNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentNodeConfigPtrOutput)
+}
+
+type EnvironmentNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentNodeConfig)(nil)).Elem()
+}
+
+func (o EnvironmentNodeConfigOutput) ToEnvironmentNodeConfigOutput() EnvironmentNodeConfigOutput {
+	return o
+}
+
+func (o EnvironmentNodeConfigOutput) ToEnvironmentNodeConfigOutputWithContext(ctx context.Context) EnvironmentNodeConfigOutput {
+	return o
+}
+
+func (o EnvironmentNodeConfigOutput) ToEnvironmentNodeConfigPtrOutput() EnvironmentNodeConfigPtrOutput {
+	return o.ToEnvironmentNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentNodeConfigOutput) ToEnvironmentNodeConfigPtrOutputWithContext(ctx context.Context) EnvironmentNodeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentNodeConfig) *EnvironmentNodeConfig {
+		return &v
+	}).(EnvironmentNodeConfigPtrOutput)
+}
+
+// -
+// The current total number of gateway nodes that each environment currently has across
+// all instances.
+func (o EnvironmentNodeConfigOutput) CurrentAggregateNodeCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentNodeConfig) *string { return v.CurrentAggregateNodeCount }).(pulumi.StringPtrOutput)
+}
+
+// The maximum total number of gateway nodes that the is reserved for all instances that
+// has the specified environment. If not specified, the default is determined by the
+// recommended maximum number of nodes for that gateway.
+func (o EnvironmentNodeConfigOutput) MaxNodeCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentNodeConfig) *string { return v.MaxNodeCount }).(pulumi.StringPtrOutput)
+}
+
+// The minimum total number of gateway nodes that the is reserved for all instances that
+// has the specified environment. If not specified, the default is determined by the
+// recommended minimum number of nodes for that gateway.
+func (o EnvironmentNodeConfigOutput) MinNodeCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentNodeConfig) *string { return v.MinNodeCount }).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentNodeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentNodeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentNodeConfig)(nil)).Elem()
+}
+
+func (o EnvironmentNodeConfigPtrOutput) ToEnvironmentNodeConfigPtrOutput() EnvironmentNodeConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentNodeConfigPtrOutput) ToEnvironmentNodeConfigPtrOutputWithContext(ctx context.Context) EnvironmentNodeConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentNodeConfigPtrOutput) Elem() EnvironmentNodeConfigOutput {
+	return o.ApplyT(func(v *EnvironmentNodeConfig) EnvironmentNodeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentNodeConfig
+		return ret
+	}).(EnvironmentNodeConfigOutput)
+}
+
+// -
+// The current total number of gateway nodes that each environment currently has across
+// all instances.
+func (o EnvironmentNodeConfigPtrOutput) CurrentAggregateNodeCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrentAggregateNodeCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum total number of gateway nodes that the is reserved for all instances that
+// has the specified environment. If not specified, the default is determined by the
+// recommended maximum number of nodes for that gateway.
+func (o EnvironmentNodeConfigPtrOutput) MaxNodeCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxNodeCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum total number of gateway nodes that the is reserved for all instances that
+// has the specified environment. If not specified, the default is determined by the
+// recommended minimum number of nodes for that gateway.
+func (o EnvironmentNodeConfigPtrOutput) MinNodeCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinNodeCount
+	}).(pulumi.StringPtrOutput)
+}
+
+type OrganizationProperties struct {
+	// List of all properties in the object.
+	// Structure is documented below.
+	Properties []OrganizationPropertiesProperty `pulumi:"properties"`
+}
+
+// OrganizationPropertiesInput is an input type that accepts OrganizationPropertiesArgs and OrganizationPropertiesOutput values.
+// You can construct a concrete instance of `OrganizationPropertiesInput` via:
+//
+//	OrganizationPropertiesArgs{...}
+type OrganizationPropertiesInput interface {
+	pulumi.Input
+
+	ToOrganizationPropertiesOutput() OrganizationPropertiesOutput
+	ToOrganizationPropertiesOutputWithContext(context.Context) OrganizationPropertiesOutput
+}
+
+type OrganizationPropertiesArgs struct {
+	// List of all properties in the object.
+	// Structure is documented below.
+	Properties OrganizationPropertiesPropertyArrayInput `pulumi:"properties"`
+}
+
+func (OrganizationPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationProperties)(nil)).Elem()
+}
+
+func (i OrganizationPropertiesArgs) ToOrganizationPropertiesOutput() OrganizationPropertiesOutput {
+	return i.ToOrganizationPropertiesOutputWithContext(context.Background())
+}
+
+func (i OrganizationPropertiesArgs) ToOrganizationPropertiesOutputWithContext(ctx context.Context) OrganizationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPropertiesOutput)
+}
+
+func (i OrganizationPropertiesArgs) ToOrganizationPropertiesPtrOutput() OrganizationPropertiesPtrOutput {
+	return i.ToOrganizationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i OrganizationPropertiesArgs) ToOrganizationPropertiesPtrOutputWithContext(ctx context.Context) OrganizationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPropertiesOutput).ToOrganizationPropertiesPtrOutputWithContext(ctx)
+}
+
+// OrganizationPropertiesPtrInput is an input type that accepts OrganizationPropertiesArgs, OrganizationPropertiesPtr and OrganizationPropertiesPtrOutput values.
+// You can construct a concrete instance of `OrganizationPropertiesPtrInput` via:
+//
+//	        OrganizationPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type OrganizationPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationPropertiesPtrOutput() OrganizationPropertiesPtrOutput
+	ToOrganizationPropertiesPtrOutputWithContext(context.Context) OrganizationPropertiesPtrOutput
+}
+
+type organizationPropertiesPtrType OrganizationPropertiesArgs
+
+func OrganizationPropertiesPtr(v *OrganizationPropertiesArgs) OrganizationPropertiesPtrInput {
+	return (*organizationPropertiesPtrType)(v)
+}
+
+func (*organizationPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationProperties)(nil)).Elem()
+}
+
+func (i *organizationPropertiesPtrType) ToOrganizationPropertiesPtrOutput() OrganizationPropertiesPtrOutput {
+	return i.ToOrganizationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *organizationPropertiesPtrType) ToOrganizationPropertiesPtrOutputWithContext(ctx context.Context) OrganizationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPropertiesPtrOutput)
+}
+
+type OrganizationPropertiesOutput struct{ *pulumi.OutputState }
+
+func (OrganizationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationProperties)(nil)).Elem()
+}
+
+func (o OrganizationPropertiesOutput) ToOrganizationPropertiesOutput() OrganizationPropertiesOutput {
+	return o
+}
+
+func (o OrganizationPropertiesOutput) ToOrganizationPropertiesOutputWithContext(ctx context.Context) OrganizationPropertiesOutput {
+	return o
+}
+
+func (o OrganizationPropertiesOutput) ToOrganizationPropertiesPtrOutput() OrganizationPropertiesPtrOutput {
+	return o.ToOrganizationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationPropertiesOutput) ToOrganizationPropertiesPtrOutputWithContext(ctx context.Context) OrganizationPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationProperties) *OrganizationProperties {
+		return &v
+	}).(OrganizationPropertiesPtrOutput)
+}
+
+// List of all properties in the object.
+// Structure is documented below.
+func (o OrganizationPropertiesOutput) Properties() OrganizationPropertiesPropertyArrayOutput {
+	return o.ApplyT(func(v OrganizationProperties) []OrganizationPropertiesProperty { return v.Properties }).(OrganizationPropertiesPropertyArrayOutput)
+}
+
+type OrganizationPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationProperties)(nil)).Elem()
+}
+
+func (o OrganizationPropertiesPtrOutput) ToOrganizationPropertiesPtrOutput() OrganizationPropertiesPtrOutput {
+	return o
+}
+
+func (o OrganizationPropertiesPtrOutput) ToOrganizationPropertiesPtrOutputWithContext(ctx context.Context) OrganizationPropertiesPtrOutput {
+	return o
+}
+
+func (o OrganizationPropertiesPtrOutput) Elem() OrganizationPropertiesOutput {
+	return o.ApplyT(func(v *OrganizationProperties) OrganizationProperties {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationProperties
+		return ret
+	}).(OrganizationPropertiesOutput)
+}
+
+// List of all properties in the object.
+// Structure is documented below.
+func (o OrganizationPropertiesPtrOutput) Properties() OrganizationPropertiesPropertyArrayOutput {
+	return o.ApplyT(func(v *OrganizationProperties) []OrganizationPropertiesProperty {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(OrganizationPropertiesPropertyArrayOutput)
+}
+
+type OrganizationPropertiesProperty struct {
+	// Name of the property.
+	Name *string `pulumi:"name"`
+	// Value of the property.
+	Value *string `pulumi:"value"`
+}
+
+// OrganizationPropertiesPropertyInput is an input type that accepts OrganizationPropertiesPropertyArgs and OrganizationPropertiesPropertyOutput values.
+// You can construct a concrete instance of `OrganizationPropertiesPropertyInput` via:
+//
+//	OrganizationPropertiesPropertyArgs{...}
+type OrganizationPropertiesPropertyInput interface {
+	pulumi.Input
+
+	ToOrganizationPropertiesPropertyOutput() OrganizationPropertiesPropertyOutput
+	ToOrganizationPropertiesPropertyOutputWithContext(context.Context) OrganizationPropertiesPropertyOutput
+}
+
+type OrganizationPropertiesPropertyArgs struct {
+	// Name of the property.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the property.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (OrganizationPropertiesPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationPropertiesProperty)(nil)).Elem()
+}
+
+func (i OrganizationPropertiesPropertyArgs) ToOrganizationPropertiesPropertyOutput() OrganizationPropertiesPropertyOutput {
+	return i.ToOrganizationPropertiesPropertyOutputWithContext(context.Background())
+}
+
+func (i OrganizationPropertiesPropertyArgs) ToOrganizationPropertiesPropertyOutputWithContext(ctx context.Context) OrganizationPropertiesPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPropertiesPropertyOutput)
+}
+
+// OrganizationPropertiesPropertyArrayInput is an input type that accepts OrganizationPropertiesPropertyArray and OrganizationPropertiesPropertyArrayOutput values.
+// You can construct a concrete instance of `OrganizationPropertiesPropertyArrayInput` via:
+//
+//	OrganizationPropertiesPropertyArray{ OrganizationPropertiesPropertyArgs{...} }
+type OrganizationPropertiesPropertyArrayInput interface {
+	pulumi.Input
+
+	ToOrganizationPropertiesPropertyArrayOutput() OrganizationPropertiesPropertyArrayOutput
+	ToOrganizationPropertiesPropertyArrayOutputWithContext(context.Context) OrganizationPropertiesPropertyArrayOutput
+}
+
+type OrganizationPropertiesPropertyArray []OrganizationPropertiesPropertyInput
+
+func (OrganizationPropertiesPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationPropertiesProperty)(nil)).Elem()
+}
+
+func (i OrganizationPropertiesPropertyArray) ToOrganizationPropertiesPropertyArrayOutput() OrganizationPropertiesPropertyArrayOutput {
+	return i.ToOrganizationPropertiesPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i OrganizationPropertiesPropertyArray) ToOrganizationPropertiesPropertyArrayOutputWithContext(ctx context.Context) OrganizationPropertiesPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPropertiesPropertyArrayOutput)
+}
+
+type OrganizationPropertiesPropertyOutput struct{ *pulumi.OutputState }
+
+func (OrganizationPropertiesPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationPropertiesProperty)(nil)).Elem()
+}
+
+func (o OrganizationPropertiesPropertyOutput) ToOrganizationPropertiesPropertyOutput() OrganizationPropertiesPropertyOutput {
+	return o
+}
+
+func (o OrganizationPropertiesPropertyOutput) ToOrganizationPropertiesPropertyOutputWithContext(ctx context.Context) OrganizationPropertiesPropertyOutput {
+	return o
+}
+
+// Name of the property.
+func (o OrganizationPropertiesPropertyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationPropertiesProperty) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Value of the property.
+func (o OrganizationPropertiesPropertyOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationPropertiesProperty) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type OrganizationPropertiesPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (OrganizationPropertiesPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationPropertiesProperty)(nil)).Elem()
+}
+
+func (o OrganizationPropertiesPropertyArrayOutput) ToOrganizationPropertiesPropertyArrayOutput() OrganizationPropertiesPropertyArrayOutput {
+	return o
+}
+
+func (o OrganizationPropertiesPropertyArrayOutput) ToOrganizationPropertiesPropertyArrayOutputWithContext(ctx context.Context) OrganizationPropertiesPropertyArrayOutput {
+	return o
+}
+
+func (o OrganizationPropertiesPropertyArrayOutput) Index(i pulumi.IntInput) OrganizationPropertiesPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationPropertiesProperty {
+		return vs[0].([]OrganizationPropertiesProperty)[vs[1].(int)]
+	}).(OrganizationPropertiesPropertyOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamBindingConditionInput)(nil)).Elem(), EnvironmentIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamBindingConditionPtrInput)(nil)).Elem(), EnvironmentIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamMemberConditionInput)(nil)).Elem(), EnvironmentIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamMemberConditionPtrInput)(nil)).Elem(), EnvironmentIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentNodeConfigInput)(nil)).Elem(), EnvironmentNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentNodeConfigPtrInput)(nil)).Elem(), EnvironmentNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesInput)(nil)).Elem(), OrganizationPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPtrInput)(nil)).Elem(), OrganizationPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPropertyInput)(nil)).Elem(), OrganizationPropertiesPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPropertyArrayInput)(nil)).Elem(), OrganizationPropertiesPropertyArray{})
 	pulumi.RegisterOutputType(EnvironmentIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(EnvironmentIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(EnvironmentIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentNodeConfigOutput{})
+	pulumi.RegisterOutputType(EnvironmentNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationPropertiesOutput{})
+	pulumi.RegisterOutputType(OrganizationPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationPropertiesPropertyOutput{})
+	pulumi.RegisterOutputType(OrganizationPropertiesPropertyArrayOutput{})
 }

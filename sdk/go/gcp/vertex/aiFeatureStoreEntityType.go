@@ -34,6 +34,9 @@ import (
 //				OnlineServingConfig: &vertex.AiFeatureStoreOnlineServingConfigArgs{
 //					FixedNodeCount: pulumi.Int(2),
 //				},
+//				EncryptionSpec: &vertex.AiFeatureStoreEncryptionSpecArgs{
+//					KmsKeyName: pulumi.String("kms-name"),
+//				},
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err

@@ -154,6 +154,52 @@ import (
 //	}
 //
 // ```
+// ### Resource Policy Snapshot Schedule Chain Name
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewResourcePolicy(ctx, "hourly", &compute.ResourcePolicyArgs{
+//				Description: pulumi.String("chain name snapshot"),
+//				Region:      pulumi.String("us-central1"),
+//				SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
+//					RetentionPolicy: &compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{
+//						MaxRetentionDays:   pulumi.Int(14),
+//						OnSourceDiskDelete: pulumi.String("KEEP_AUTO_SNAPSHOTS"),
+//					},
+//					Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
+//						HourlySchedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs{
+//							HoursInCycle: pulumi.Int(20),
+//							StartTime:    pulumi.String("23:00"),
+//						},
+//					},
+//					SnapshotProperties: &compute.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs{
+//						ChainName:  pulumi.String("test-schedule-chain-name"),
+//						GuestFlush: pulumi.Bool(true),
+//						Labels: pulumi.StringMap{
+//							"myLabel": pulumi.String("value"),
+//						},
+//						StorageLocations: pulumi.String("us"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

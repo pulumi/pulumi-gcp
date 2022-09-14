@@ -38,6 +38,7 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -68,11 +69,39 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			customServiceAccount, err := serviceAccount.NewAccount(ctx, "customServiceAccount", &serviceAccount.AccountArgs{
+//				Project:     service.Project,
+//				AccountId:   pulumi.String("my-account"),
+//				DisplayName: pulumi.String("Custom Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			gaeApi, err := projects.NewIAMMember(ctx, "gaeApi", &projects.IAMMemberArgs{
 //				Project: service.Project,
 //				Role:    pulumi.String("roles/compute.networkUser"),
-//				Member: myProject.Number.ApplyT(func(number string) (string, error) {
-//					return fmt.Sprintf("serviceAccount:service-%v@gae-api-prod.google.com.iam.gserviceaccount.com", number), nil
+//				Member: customServiceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMMember(ctx, "logsWriter", &projects.IAMMemberArgs{
+//				Project: service.Project,
+//				Role:    pulumi.String("roles/logging.logWriter"),
+//				Member: customServiceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMMember(ctx, "storageViewer", &projects.IAMMemberArgs{
+//				Project: service.Project,
+//				Role:    pulumi.String("roles/storage.objectViewer"),
+//				Member: customServiceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
 //				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
@@ -136,7 +165,8 @@ import (
 //						TargetUtilization: pulumi.Float64(0.5),
 //					},
 //				},
-//				NoopOnDestroy: pulumi.Bool(true),
+//				NoopOnDestroy:  pulumi.Bool(true),
+//				ServiceAccount: customServiceAccount.Email,
 //			})
 //			if err != nil {
 //				return err
@@ -243,6 +273,9 @@ type FlexibleAppVersion struct {
 	RuntimeMainExecutablePath pulumi.StringPtrOutput `pulumi:"runtimeMainExecutablePath"`
 	// AppEngine service resource. Can contain numbers, letters, and hyphens.
 	Service pulumi.StringOutput `pulumi:"service"`
+	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+	// default if this field is neither provided in app.yaml file nor through CLI flag.
+	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Default value is `SERVING`.
 	// Possible values are `SERVING` and `STOPPED`.
@@ -368,6 +401,9 @@ type flexibleAppVersionState struct {
 	RuntimeMainExecutablePath *string `pulumi:"runtimeMainExecutablePath"`
 	// AppEngine service resource. Can contain numbers, letters, and hyphens.
 	Service *string `pulumi:"service"`
+	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+	// default if this field is neither provided in app.yaml file nor through CLI flag.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Default value is `SERVING`.
 	// Possible values are `SERVING` and `STOPPED`.
@@ -453,6 +489,9 @@ type FlexibleAppVersionState struct {
 	RuntimeMainExecutablePath pulumi.StringPtrInput
 	// AppEngine service resource. Can contain numbers, letters, and hyphens.
 	Service pulumi.StringPtrInput
+	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+	// default if this field is neither provided in app.yaml file nor through CLI flag.
+	ServiceAccount pulumi.StringPtrInput
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Default value is `SERVING`.
 	// Possible values are `SERVING` and `STOPPED`.
@@ -540,6 +579,9 @@ type flexibleAppVersionArgs struct {
 	RuntimeMainExecutablePath *string `pulumi:"runtimeMainExecutablePath"`
 	// AppEngine service resource. Can contain numbers, letters, and hyphens.
 	Service string `pulumi:"service"`
+	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+	// default if this field is neither provided in app.yaml file nor through CLI flag.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Default value is `SERVING`.
 	// Possible values are `SERVING` and `STOPPED`.
@@ -624,6 +666,9 @@ type FlexibleAppVersionArgs struct {
 	RuntimeMainExecutablePath pulumi.StringPtrInput
 	// AppEngine service resource. Can contain numbers, letters, and hyphens.
 	Service pulumi.StringInput
+	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+	// default if this field is neither provided in app.yaml file nor through CLI flag.
+	ServiceAccount pulumi.StringPtrInput
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Default value is `SERVING`.
 	// Possible values are `SERVING` and `STOPPED`.
@@ -873,6 +918,12 @@ func (o FlexibleAppVersionOutput) RuntimeMainExecutablePath() pulumi.StringPtrOu
 // AppEngine service resource. Can contain numbers, letters, and hyphens.
 func (o FlexibleAppVersionOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlexibleAppVersion) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
+}
+
+// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+// default if this field is neither provided in app.yaml file nor through CLI flag.
+func (o FlexibleAppVersionOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersion) pulumi.StringPtrOutput { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
 // Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.

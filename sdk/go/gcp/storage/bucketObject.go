@@ -76,9 +76,7 @@ type BucketObject struct {
 	// Structure is documented below.
 	CustomerEncryption BucketObjectCustomerEncryptionPtrOutput `pulumi:"customerEncryption"`
 	DetectMd5hash      pulumi.StringPtrOutput                  `pulumi:"detectMd5hash"`
-	// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-	// signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
-	// will be subject to bucket-level retention (if any).
+	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold pulumi.BoolPtrOutput `pulumi:"eventBasedHold"`
 	// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
@@ -102,8 +100,7 @@ type BucketObject struct {
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
 	// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
 	StorageClass pulumi.StringOutput `pulumi:"storageClass"`
-	// Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-	// overwrites.
+	// Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
 	TemporaryHold pulumi.BoolPtrOutput `pulumi:"temporaryHold"`
 }
 
@@ -160,9 +157,7 @@ type bucketObjectState struct {
 	// Structure is documented below.
 	CustomerEncryption *BucketObjectCustomerEncryption `pulumi:"customerEncryption"`
 	DetectMd5hash      *string                         `pulumi:"detectMd5hash"`
-	// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-	// signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
-	// will be subject to bucket-level retention (if any).
+	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold *bool `pulumi:"eventBasedHold"`
 	// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
@@ -186,8 +181,7 @@ type bucketObjectState struct {
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
 	// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
 	StorageClass *string `pulumi:"storageClass"`
-	// Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-	// overwrites.
+	// Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
 	TemporaryHold *bool `pulumi:"temporaryHold"`
 }
 
@@ -213,9 +207,7 @@ type BucketObjectState struct {
 	// Structure is documented below.
 	CustomerEncryption BucketObjectCustomerEncryptionPtrInput
 	DetectMd5hash      pulumi.StringPtrInput
-	// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-	// signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
-	// will be subject to bucket-level retention (if any).
+	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold pulumi.BoolPtrInput
 	// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
 	KmsKeyName pulumi.StringPtrInput
@@ -239,8 +231,7 @@ type BucketObjectState struct {
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
 	// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
 	StorageClass pulumi.StringPtrInput
-	// Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-	// overwrites.
+	// Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
 	TemporaryHold pulumi.BoolPtrInput
 }
 
@@ -268,9 +259,7 @@ type bucketObjectArgs struct {
 	// Structure is documented below.
 	CustomerEncryption *BucketObjectCustomerEncryption `pulumi:"customerEncryption"`
 	DetectMd5hash      *string                         `pulumi:"detectMd5hash"`
-	// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-	// signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
-	// will be subject to bucket-level retention (if any).
+	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold *bool `pulumi:"eventBasedHold"`
 	// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
@@ -285,8 +274,7 @@ type bucketObjectArgs struct {
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
 	// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
 	StorageClass *string `pulumi:"storageClass"`
-	// Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-	// overwrites.
+	// Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
 	TemporaryHold *bool `pulumi:"temporaryHold"`
 }
 
@@ -311,9 +299,7 @@ type BucketObjectArgs struct {
 	// Structure is documented below.
 	CustomerEncryption BucketObjectCustomerEncryptionPtrInput
 	DetectMd5hash      pulumi.StringPtrInput
-	// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-	// signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
-	// will be subject to bucket-level retention (if any).
+	// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 	EventBasedHold pulumi.BoolPtrInput
 	// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
 	KmsKeyName pulumi.StringPtrInput
@@ -328,8 +314,7 @@ type BucketObjectArgs struct {
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
 	// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
 	StorageClass pulumi.StringPtrInput
-	// Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-	// overwrites.
+	// Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
 	TemporaryHold pulumi.BoolPtrInput
 }
 
@@ -471,9 +456,7 @@ func (o BucketObjectOutput) DetectMd5hash() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.DetectMd5hash }).(pulumi.StringPtrOutput)
 }
 
-// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-// signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
-// will be subject to bucket-level retention (if any).
+// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 func (o BucketObjectOutput) EventBasedHold() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.BoolPtrOutput { return v.EventBasedHold }).(pulumi.BoolPtrOutput)
 }
@@ -527,8 +510,7 @@ func (o BucketObjectOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.StorageClass }).(pulumi.StringOutput)
 }
 
-// Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-// overwrites.
+// Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
 func (o BucketObjectOutput) TemporaryHold() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.BoolPtrOutput { return v.TemporaryHold }).(pulumi.BoolPtrOutput)
 }

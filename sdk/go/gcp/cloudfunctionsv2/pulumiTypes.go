@@ -467,8 +467,7 @@ type FunctionBuildConfigSourceRepoSource struct {
 	// Only trigger a build if the revision regex does
 	// NOT match the revision regex.
 	InvertRegex *bool `pulumi:"invertRegex"`
-	// ID of the project that owns the Cloud Source Repository. If omitted, the
-	// project ID requesting the build is assumed.
+	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
 	ProjectId *string `pulumi:"projectId"`
 	// Name of the Cloud Source Repository.
 	RepoName *string `pulumi:"repoName"`
@@ -497,8 +496,7 @@ type FunctionBuildConfigSourceRepoSourceArgs struct {
 	// Only trigger a build if the revision regex does
 	// NOT match the revision regex.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
-	// ID of the project that owns the Cloud Source Repository. If omitted, the
-	// project ID requesting the build is assumed.
+	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// Name of the Cloud Source Repository.
 	RepoName pulumi.StringPtrInput `pulumi:"repoName"`
@@ -604,8 +602,7 @@ func (o FunctionBuildConfigSourceRepoSourceOutput) InvertRegex() pulumi.BoolPtrO
 	return o.ApplyT(func(v FunctionBuildConfigSourceRepoSource) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
 }
 
-// ID of the project that owns the Cloud Source Repository. If omitted, the
-// project ID requesting the build is assumed.
+// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
 func (o FunctionBuildConfigSourceRepoSourceOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionBuildConfigSourceRepoSource) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -685,8 +682,7 @@ func (o FunctionBuildConfigSourceRepoSourcePtrOutput) InvertRegex() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
-// ID of the project that owns the Cloud Source Repository. If omitted, the
-// project ID requesting the build is assumed.
+// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
 func (o FunctionBuildConfigSourceRepoSourcePtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionBuildConfigSourceRepoSource) *string {
 		if v == nil {
@@ -1662,6 +1658,12 @@ type FunctionServiceConfig struct {
 	// The limit on the minimum number of function instances that may coexist at a
 	// given time.
 	MinInstanceCount *int `pulumi:"minInstanceCount"`
+	// Secret environment variables configuration.
+	// Structure is documented below.
+	SecretEnvironmentVariables []FunctionServiceConfigSecretEnvironmentVariable `pulumi:"secretEnvironmentVariables"`
+	// Secret volumes configuration.
+	// Structure is documented below.
+	SecretVolumes []FunctionServiceConfigSecretVolume `pulumi:"secretVolumes"`
 	// Name of the service associated with a Function.
 	Service *string `pulumi:"service"`
 	// The email of the service account for this function.
@@ -1713,6 +1715,12 @@ type FunctionServiceConfigArgs struct {
 	// The limit on the minimum number of function instances that may coexist at a
 	// given time.
 	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
+	// Secret environment variables configuration.
+	// Structure is documented below.
+	SecretEnvironmentVariables FunctionServiceConfigSecretEnvironmentVariableArrayInput `pulumi:"secretEnvironmentVariables"`
+	// Secret volumes configuration.
+	// Structure is documented below.
+	SecretVolumes FunctionServiceConfigSecretVolumeArrayInput `pulumi:"secretVolumes"`
 	// Name of the service associated with a Function.
 	Service pulumi.StringPtrInput `pulumi:"service"`
 	// The email of the service account for this function.
@@ -1850,6 +1858,20 @@ func (o FunctionServiceConfigOutput) MinInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FunctionServiceConfig) *int { return v.MinInstanceCount }).(pulumi.IntPtrOutput)
 }
 
+// Secret environment variables configuration.
+// Structure is documented below.
+func (o FunctionServiceConfigOutput) SecretEnvironmentVariables() FunctionServiceConfigSecretEnvironmentVariableArrayOutput {
+	return o.ApplyT(func(v FunctionServiceConfig) []FunctionServiceConfigSecretEnvironmentVariable {
+		return v.SecretEnvironmentVariables
+	}).(FunctionServiceConfigSecretEnvironmentVariableArrayOutput)
+}
+
+// Secret volumes configuration.
+// Structure is documented below.
+func (o FunctionServiceConfigOutput) SecretVolumes() FunctionServiceConfigSecretVolumeArrayOutput {
+	return o.ApplyT(func(v FunctionServiceConfig) []FunctionServiceConfigSecretVolume { return v.SecretVolumes }).(FunctionServiceConfigSecretVolumeArrayOutput)
+}
+
 // Name of the service associated with a Function.
 func (o FunctionServiceConfigOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionServiceConfig) *string { return v.Service }).(pulumi.StringPtrOutput)
@@ -1985,6 +2007,28 @@ func (o FunctionServiceConfigPtrOutput) MinInstanceCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Secret environment variables configuration.
+// Structure is documented below.
+func (o FunctionServiceConfigPtrOutput) SecretEnvironmentVariables() FunctionServiceConfigSecretEnvironmentVariableArrayOutput {
+	return o.ApplyT(func(v *FunctionServiceConfig) []FunctionServiceConfigSecretEnvironmentVariable {
+		if v == nil {
+			return nil
+		}
+		return v.SecretEnvironmentVariables
+	}).(FunctionServiceConfigSecretEnvironmentVariableArrayOutput)
+}
+
+// Secret volumes configuration.
+// Structure is documented below.
+func (o FunctionServiceConfigPtrOutput) SecretVolumes() FunctionServiceConfigSecretVolumeArrayOutput {
+	return o.ApplyT(func(v *FunctionServiceConfig) []FunctionServiceConfigSecretVolume {
+		if v == nil {
+			return nil
+		}
+		return v.SecretVolumes
+	}).(FunctionServiceConfigSecretVolumeArrayOutput)
+}
+
 // Name of the service associated with a Function.
 func (o FunctionServiceConfigPtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionServiceConfig) *string {
@@ -2049,6 +2093,365 @@ func (o FunctionServiceConfigPtrOutput) VpcConnectorEgressSettings() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+type FunctionServiceConfigSecretEnvironmentVariable struct {
+	// Name of the environment variable.
+	Key string `pulumi:"key"`
+	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	ProjectId string `pulumi:"projectId"`
+	// Name of the secret in secret manager (not the full resource name).
+	Secret string `pulumi:"secret"`
+	// Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+	Version string `pulumi:"version"`
+}
+
+// FunctionServiceConfigSecretEnvironmentVariableInput is an input type that accepts FunctionServiceConfigSecretEnvironmentVariableArgs and FunctionServiceConfigSecretEnvironmentVariableOutput values.
+// You can construct a concrete instance of `FunctionServiceConfigSecretEnvironmentVariableInput` via:
+//
+//	FunctionServiceConfigSecretEnvironmentVariableArgs{...}
+type FunctionServiceConfigSecretEnvironmentVariableInput interface {
+	pulumi.Input
+
+	ToFunctionServiceConfigSecretEnvironmentVariableOutput() FunctionServiceConfigSecretEnvironmentVariableOutput
+	ToFunctionServiceConfigSecretEnvironmentVariableOutputWithContext(context.Context) FunctionServiceConfigSecretEnvironmentVariableOutput
+}
+
+type FunctionServiceConfigSecretEnvironmentVariableArgs struct {
+	// Name of the environment variable.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Name of the secret in secret manager (not the full resource name).
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (FunctionServiceConfigSecretEnvironmentVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionServiceConfigSecretEnvironmentVariable)(nil)).Elem()
+}
+
+func (i FunctionServiceConfigSecretEnvironmentVariableArgs) ToFunctionServiceConfigSecretEnvironmentVariableOutput() FunctionServiceConfigSecretEnvironmentVariableOutput {
+	return i.ToFunctionServiceConfigSecretEnvironmentVariableOutputWithContext(context.Background())
+}
+
+func (i FunctionServiceConfigSecretEnvironmentVariableArgs) ToFunctionServiceConfigSecretEnvironmentVariableOutputWithContext(ctx context.Context) FunctionServiceConfigSecretEnvironmentVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionServiceConfigSecretEnvironmentVariableOutput)
+}
+
+// FunctionServiceConfigSecretEnvironmentVariableArrayInput is an input type that accepts FunctionServiceConfigSecretEnvironmentVariableArray and FunctionServiceConfigSecretEnvironmentVariableArrayOutput values.
+// You can construct a concrete instance of `FunctionServiceConfigSecretEnvironmentVariableArrayInput` via:
+//
+//	FunctionServiceConfigSecretEnvironmentVariableArray{ FunctionServiceConfigSecretEnvironmentVariableArgs{...} }
+type FunctionServiceConfigSecretEnvironmentVariableArrayInput interface {
+	pulumi.Input
+
+	ToFunctionServiceConfigSecretEnvironmentVariableArrayOutput() FunctionServiceConfigSecretEnvironmentVariableArrayOutput
+	ToFunctionServiceConfigSecretEnvironmentVariableArrayOutputWithContext(context.Context) FunctionServiceConfigSecretEnvironmentVariableArrayOutput
+}
+
+type FunctionServiceConfigSecretEnvironmentVariableArray []FunctionServiceConfigSecretEnvironmentVariableInput
+
+func (FunctionServiceConfigSecretEnvironmentVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionServiceConfigSecretEnvironmentVariable)(nil)).Elem()
+}
+
+func (i FunctionServiceConfigSecretEnvironmentVariableArray) ToFunctionServiceConfigSecretEnvironmentVariableArrayOutput() FunctionServiceConfigSecretEnvironmentVariableArrayOutput {
+	return i.ToFunctionServiceConfigSecretEnvironmentVariableArrayOutputWithContext(context.Background())
+}
+
+func (i FunctionServiceConfigSecretEnvironmentVariableArray) ToFunctionServiceConfigSecretEnvironmentVariableArrayOutputWithContext(ctx context.Context) FunctionServiceConfigSecretEnvironmentVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionServiceConfigSecretEnvironmentVariableArrayOutput)
+}
+
+type FunctionServiceConfigSecretEnvironmentVariableOutput struct{ *pulumi.OutputState }
+
+func (FunctionServiceConfigSecretEnvironmentVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionServiceConfigSecretEnvironmentVariable)(nil)).Elem()
+}
+
+func (o FunctionServiceConfigSecretEnvironmentVariableOutput) ToFunctionServiceConfigSecretEnvironmentVariableOutput() FunctionServiceConfigSecretEnvironmentVariableOutput {
+	return o
+}
+
+func (o FunctionServiceConfigSecretEnvironmentVariableOutput) ToFunctionServiceConfigSecretEnvironmentVariableOutputWithContext(ctx context.Context) FunctionServiceConfigSecretEnvironmentVariableOutput {
+	return o
+}
+
+// Name of the environment variable.
+func (o FunctionServiceConfigSecretEnvironmentVariableOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionServiceConfigSecretEnvironmentVariable) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+func (o FunctionServiceConfigSecretEnvironmentVariableOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionServiceConfigSecretEnvironmentVariable) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Name of the secret in secret manager (not the full resource name).
+func (o FunctionServiceConfigSecretEnvironmentVariableOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionServiceConfigSecretEnvironmentVariable) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+func (o FunctionServiceConfigSecretEnvironmentVariableOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionServiceConfigSecretEnvironmentVariable) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type FunctionServiceConfigSecretEnvironmentVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (FunctionServiceConfigSecretEnvironmentVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionServiceConfigSecretEnvironmentVariable)(nil)).Elem()
+}
+
+func (o FunctionServiceConfigSecretEnvironmentVariableArrayOutput) ToFunctionServiceConfigSecretEnvironmentVariableArrayOutput() FunctionServiceConfigSecretEnvironmentVariableArrayOutput {
+	return o
+}
+
+func (o FunctionServiceConfigSecretEnvironmentVariableArrayOutput) ToFunctionServiceConfigSecretEnvironmentVariableArrayOutputWithContext(ctx context.Context) FunctionServiceConfigSecretEnvironmentVariableArrayOutput {
+	return o
+}
+
+func (o FunctionServiceConfigSecretEnvironmentVariableArrayOutput) Index(i pulumi.IntInput) FunctionServiceConfigSecretEnvironmentVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FunctionServiceConfigSecretEnvironmentVariable {
+		return vs[0].([]FunctionServiceConfigSecretEnvironmentVariable)[vs[1].(int)]
+	}).(FunctionServiceConfigSecretEnvironmentVariableOutput)
+}
+
+type FunctionServiceConfigSecretVolume struct {
+	// The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+	MountPath string `pulumi:"mountPath"`
+	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	ProjectId string `pulumi:"projectId"`
+	// Name of the secret in secret manager (not the full resource name).
+	Secret string `pulumi:"secret"`
+	// List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
+	// Structure is documented below.
+	Versions []FunctionServiceConfigSecretVolumeVersion `pulumi:"versions"`
+}
+
+// FunctionServiceConfigSecretVolumeInput is an input type that accepts FunctionServiceConfigSecretVolumeArgs and FunctionServiceConfigSecretVolumeOutput values.
+// You can construct a concrete instance of `FunctionServiceConfigSecretVolumeInput` via:
+//
+//	FunctionServiceConfigSecretVolumeArgs{...}
+type FunctionServiceConfigSecretVolumeInput interface {
+	pulumi.Input
+
+	ToFunctionServiceConfigSecretVolumeOutput() FunctionServiceConfigSecretVolumeOutput
+	ToFunctionServiceConfigSecretVolumeOutputWithContext(context.Context) FunctionServiceConfigSecretVolumeOutput
+}
+
+type FunctionServiceConfigSecretVolumeArgs struct {
+	// The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Name of the secret in secret manager (not the full resource name).
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
+	// Structure is documented below.
+	Versions FunctionServiceConfigSecretVolumeVersionArrayInput `pulumi:"versions"`
+}
+
+func (FunctionServiceConfigSecretVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionServiceConfigSecretVolume)(nil)).Elem()
+}
+
+func (i FunctionServiceConfigSecretVolumeArgs) ToFunctionServiceConfigSecretVolumeOutput() FunctionServiceConfigSecretVolumeOutput {
+	return i.ToFunctionServiceConfigSecretVolumeOutputWithContext(context.Background())
+}
+
+func (i FunctionServiceConfigSecretVolumeArgs) ToFunctionServiceConfigSecretVolumeOutputWithContext(ctx context.Context) FunctionServiceConfigSecretVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionServiceConfigSecretVolumeOutput)
+}
+
+// FunctionServiceConfigSecretVolumeArrayInput is an input type that accepts FunctionServiceConfigSecretVolumeArray and FunctionServiceConfigSecretVolumeArrayOutput values.
+// You can construct a concrete instance of `FunctionServiceConfigSecretVolumeArrayInput` via:
+//
+//	FunctionServiceConfigSecretVolumeArray{ FunctionServiceConfigSecretVolumeArgs{...} }
+type FunctionServiceConfigSecretVolumeArrayInput interface {
+	pulumi.Input
+
+	ToFunctionServiceConfigSecretVolumeArrayOutput() FunctionServiceConfigSecretVolumeArrayOutput
+	ToFunctionServiceConfigSecretVolumeArrayOutputWithContext(context.Context) FunctionServiceConfigSecretVolumeArrayOutput
+}
+
+type FunctionServiceConfigSecretVolumeArray []FunctionServiceConfigSecretVolumeInput
+
+func (FunctionServiceConfigSecretVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionServiceConfigSecretVolume)(nil)).Elem()
+}
+
+func (i FunctionServiceConfigSecretVolumeArray) ToFunctionServiceConfigSecretVolumeArrayOutput() FunctionServiceConfigSecretVolumeArrayOutput {
+	return i.ToFunctionServiceConfigSecretVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i FunctionServiceConfigSecretVolumeArray) ToFunctionServiceConfigSecretVolumeArrayOutputWithContext(ctx context.Context) FunctionServiceConfigSecretVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionServiceConfigSecretVolumeArrayOutput)
+}
+
+type FunctionServiceConfigSecretVolumeOutput struct{ *pulumi.OutputState }
+
+func (FunctionServiceConfigSecretVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionServiceConfigSecretVolume)(nil)).Elem()
+}
+
+func (o FunctionServiceConfigSecretVolumeOutput) ToFunctionServiceConfigSecretVolumeOutput() FunctionServiceConfigSecretVolumeOutput {
+	return o
+}
+
+func (o FunctionServiceConfigSecretVolumeOutput) ToFunctionServiceConfigSecretVolumeOutputWithContext(ctx context.Context) FunctionServiceConfigSecretVolumeOutput {
+	return o
+}
+
+// The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+func (o FunctionServiceConfigSecretVolumeOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionServiceConfigSecretVolume) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+func (o FunctionServiceConfigSecretVolumeOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionServiceConfigSecretVolume) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Name of the secret in secret manager (not the full resource name).
+func (o FunctionServiceConfigSecretVolumeOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionServiceConfigSecretVolume) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
+// Structure is documented below.
+func (o FunctionServiceConfigSecretVolumeOutput) Versions() FunctionServiceConfigSecretVolumeVersionArrayOutput {
+	return o.ApplyT(func(v FunctionServiceConfigSecretVolume) []FunctionServiceConfigSecretVolumeVersion {
+		return v.Versions
+	}).(FunctionServiceConfigSecretVolumeVersionArrayOutput)
+}
+
+type FunctionServiceConfigSecretVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (FunctionServiceConfigSecretVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionServiceConfigSecretVolume)(nil)).Elem()
+}
+
+func (o FunctionServiceConfigSecretVolumeArrayOutput) ToFunctionServiceConfigSecretVolumeArrayOutput() FunctionServiceConfigSecretVolumeArrayOutput {
+	return o
+}
+
+func (o FunctionServiceConfigSecretVolumeArrayOutput) ToFunctionServiceConfigSecretVolumeArrayOutputWithContext(ctx context.Context) FunctionServiceConfigSecretVolumeArrayOutput {
+	return o
+}
+
+func (o FunctionServiceConfigSecretVolumeArrayOutput) Index(i pulumi.IntInput) FunctionServiceConfigSecretVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FunctionServiceConfigSecretVolume {
+		return vs[0].([]FunctionServiceConfigSecretVolume)[vs[1].(int)]
+	}).(FunctionServiceConfigSecretVolumeOutput)
+}
+
+type FunctionServiceConfigSecretVolumeVersion struct {
+	// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as '/etc/secrets' and path as secretFoo would mount the secret value file at /etc/secrets/secret_foo.
+	Path string `pulumi:"path"`
+	// Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+	Version string `pulumi:"version"`
+}
+
+// FunctionServiceConfigSecretVolumeVersionInput is an input type that accepts FunctionServiceConfigSecretVolumeVersionArgs and FunctionServiceConfigSecretVolumeVersionOutput values.
+// You can construct a concrete instance of `FunctionServiceConfigSecretVolumeVersionInput` via:
+//
+//	FunctionServiceConfigSecretVolumeVersionArgs{...}
+type FunctionServiceConfigSecretVolumeVersionInput interface {
+	pulumi.Input
+
+	ToFunctionServiceConfigSecretVolumeVersionOutput() FunctionServiceConfigSecretVolumeVersionOutput
+	ToFunctionServiceConfigSecretVolumeVersionOutputWithContext(context.Context) FunctionServiceConfigSecretVolumeVersionOutput
+}
+
+type FunctionServiceConfigSecretVolumeVersionArgs struct {
+	// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as '/etc/secrets' and path as secretFoo would mount the secret value file at /etc/secrets/secret_foo.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (FunctionServiceConfigSecretVolumeVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionServiceConfigSecretVolumeVersion)(nil)).Elem()
+}
+
+func (i FunctionServiceConfigSecretVolumeVersionArgs) ToFunctionServiceConfigSecretVolumeVersionOutput() FunctionServiceConfigSecretVolumeVersionOutput {
+	return i.ToFunctionServiceConfigSecretVolumeVersionOutputWithContext(context.Background())
+}
+
+func (i FunctionServiceConfigSecretVolumeVersionArgs) ToFunctionServiceConfigSecretVolumeVersionOutputWithContext(ctx context.Context) FunctionServiceConfigSecretVolumeVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionServiceConfigSecretVolumeVersionOutput)
+}
+
+// FunctionServiceConfigSecretVolumeVersionArrayInput is an input type that accepts FunctionServiceConfigSecretVolumeVersionArray and FunctionServiceConfigSecretVolumeVersionArrayOutput values.
+// You can construct a concrete instance of `FunctionServiceConfigSecretVolumeVersionArrayInput` via:
+//
+//	FunctionServiceConfigSecretVolumeVersionArray{ FunctionServiceConfigSecretVolumeVersionArgs{...} }
+type FunctionServiceConfigSecretVolumeVersionArrayInput interface {
+	pulumi.Input
+
+	ToFunctionServiceConfigSecretVolumeVersionArrayOutput() FunctionServiceConfigSecretVolumeVersionArrayOutput
+	ToFunctionServiceConfigSecretVolumeVersionArrayOutputWithContext(context.Context) FunctionServiceConfigSecretVolumeVersionArrayOutput
+}
+
+type FunctionServiceConfigSecretVolumeVersionArray []FunctionServiceConfigSecretVolumeVersionInput
+
+func (FunctionServiceConfigSecretVolumeVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionServiceConfigSecretVolumeVersion)(nil)).Elem()
+}
+
+func (i FunctionServiceConfigSecretVolumeVersionArray) ToFunctionServiceConfigSecretVolumeVersionArrayOutput() FunctionServiceConfigSecretVolumeVersionArrayOutput {
+	return i.ToFunctionServiceConfigSecretVolumeVersionArrayOutputWithContext(context.Background())
+}
+
+func (i FunctionServiceConfigSecretVolumeVersionArray) ToFunctionServiceConfigSecretVolumeVersionArrayOutputWithContext(ctx context.Context) FunctionServiceConfigSecretVolumeVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionServiceConfigSecretVolumeVersionArrayOutput)
+}
+
+type FunctionServiceConfigSecretVolumeVersionOutput struct{ *pulumi.OutputState }
+
+func (FunctionServiceConfigSecretVolumeVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionServiceConfigSecretVolumeVersion)(nil)).Elem()
+}
+
+func (o FunctionServiceConfigSecretVolumeVersionOutput) ToFunctionServiceConfigSecretVolumeVersionOutput() FunctionServiceConfigSecretVolumeVersionOutput {
+	return o
+}
+
+func (o FunctionServiceConfigSecretVolumeVersionOutput) ToFunctionServiceConfigSecretVolumeVersionOutputWithContext(ctx context.Context) FunctionServiceConfigSecretVolumeVersionOutput {
+	return o
+}
+
+// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as '/etc/secrets' and path as secretFoo would mount the secret value file at /etc/secrets/secret_foo.
+func (o FunctionServiceConfigSecretVolumeVersionOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionServiceConfigSecretVolumeVersion) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+func (o FunctionServiceConfigSecretVolumeVersionOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionServiceConfigSecretVolumeVersion) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type FunctionServiceConfigSecretVolumeVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (FunctionServiceConfigSecretVolumeVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionServiceConfigSecretVolumeVersion)(nil)).Elem()
+}
+
+func (o FunctionServiceConfigSecretVolumeVersionArrayOutput) ToFunctionServiceConfigSecretVolumeVersionArrayOutput() FunctionServiceConfigSecretVolumeVersionArrayOutput {
+	return o
+}
+
+func (o FunctionServiceConfigSecretVolumeVersionArrayOutput) ToFunctionServiceConfigSecretVolumeVersionArrayOutputWithContext(ctx context.Context) FunctionServiceConfigSecretVolumeVersionArrayOutput {
+	return o
+}
+
+func (o FunctionServiceConfigSecretVolumeVersionArrayOutput) Index(i pulumi.IntInput) FunctionServiceConfigSecretVolumeVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FunctionServiceConfigSecretVolumeVersion {
+		return vs[0].([]FunctionServiceConfigSecretVolumeVersion)[vs[1].(int)]
+	}).(FunctionServiceConfigSecretVolumeVersionOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionBuildConfigInput)(nil)).Elem(), FunctionBuildConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionBuildConfigPtrInput)(nil)).Elem(), FunctionBuildConfigArgs{})
@@ -2068,6 +2471,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionIamMemberConditionPtrInput)(nil)).Elem(), FunctionIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionServiceConfigInput)(nil)).Elem(), FunctionServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionServiceConfigPtrInput)(nil)).Elem(), FunctionServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionServiceConfigSecretEnvironmentVariableInput)(nil)).Elem(), FunctionServiceConfigSecretEnvironmentVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionServiceConfigSecretEnvironmentVariableArrayInput)(nil)).Elem(), FunctionServiceConfigSecretEnvironmentVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionServiceConfigSecretVolumeInput)(nil)).Elem(), FunctionServiceConfigSecretVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionServiceConfigSecretVolumeArrayInput)(nil)).Elem(), FunctionServiceConfigSecretVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionServiceConfigSecretVolumeVersionInput)(nil)).Elem(), FunctionServiceConfigSecretVolumeVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionServiceConfigSecretVolumeVersionArrayInput)(nil)).Elem(), FunctionServiceConfigSecretVolumeVersionArray{})
 	pulumi.RegisterOutputType(FunctionBuildConfigOutput{})
 	pulumi.RegisterOutputType(FunctionBuildConfigPtrOutput{})
 	pulumi.RegisterOutputType(FunctionBuildConfigSourceOutput{})
@@ -2086,4 +2495,10 @@ func init() {
 	pulumi.RegisterOutputType(FunctionIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(FunctionServiceConfigOutput{})
 	pulumi.RegisterOutputType(FunctionServiceConfigPtrOutput{})
+	pulumi.RegisterOutputType(FunctionServiceConfigSecretEnvironmentVariableOutput{})
+	pulumi.RegisterOutputType(FunctionServiceConfigSecretEnvironmentVariableArrayOutput{})
+	pulumi.RegisterOutputType(FunctionServiceConfigSecretVolumeOutput{})
+	pulumi.RegisterOutputType(FunctionServiceConfigSecretVolumeArrayOutput{})
+	pulumi.RegisterOutputType(FunctionServiceConfigSecretVolumeVersionOutput{})
+	pulumi.RegisterOutputType(FunctionServiceConfigSecretVolumeVersionArrayOutput{})
 }

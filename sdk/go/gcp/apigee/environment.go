@@ -125,6 +125,9 @@ type Environment struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The resource ID of the environment.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// NodeConfig for setting the min/max number of nodes associated with the environment.
+	// Structure is documented below.
+	NodeConfig EnvironmentNodeConfigOutput `pulumi:"nodeConfig"`
 	// The Apigee Organization associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}`.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
@@ -181,6 +184,9 @@ type environmentState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The resource ID of the environment.
 	Name *string `pulumi:"name"`
+	// NodeConfig for setting the min/max number of nodes associated with the environment.
+	// Structure is documented below.
+	NodeConfig *EnvironmentNodeConfig `pulumi:"nodeConfig"`
 	// The Apigee Organization associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}`.
 	OrgId *string `pulumi:"orgId"`
@@ -206,6 +212,9 @@ type EnvironmentState struct {
 	DisplayName pulumi.StringPtrInput
 	// The resource ID of the environment.
 	Name pulumi.StringPtrInput
+	// NodeConfig for setting the min/max number of nodes associated with the environment.
+	// Structure is documented below.
+	NodeConfig EnvironmentNodeConfigPtrInput
 	// The Apigee Organization associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}`.
 	OrgId pulumi.StringPtrInput
@@ -235,6 +244,9 @@ type environmentArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The resource ID of the environment.
 	Name *string `pulumi:"name"`
+	// NodeConfig for setting the min/max number of nodes associated with the environment.
+	// Structure is documented below.
+	NodeConfig *EnvironmentNodeConfig `pulumi:"nodeConfig"`
 	// The Apigee Organization associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}`.
 	OrgId string `pulumi:"orgId"`
@@ -261,6 +273,9 @@ type EnvironmentArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// The resource ID of the environment.
 	Name pulumi.StringPtrInput
+	// NodeConfig for setting the min/max number of nodes associated with the environment.
+	// Structure is documented below.
+	NodeConfig EnvironmentNodeConfigPtrInput
 	// The Apigee Organization associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}`.
 	OrgId pulumi.StringInput
@@ -385,6 +400,12 @@ func (o EnvironmentOutput) DisplayName() pulumi.StringPtrOutput {
 // The resource ID of the environment.
 func (o EnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// NodeConfig for setting the min/max number of nodes associated with the environment.
+// Structure is documented below.
+func (o EnvironmentOutput) NodeConfig() EnvironmentNodeConfigOutput {
+	return o.ApplyT(func(v *Environment) EnvironmentNodeConfigOutput { return v.NodeConfig }).(EnvironmentNodeConfigOutput)
 }
 
 // The Apigee Organization associated with the Apigee environment,

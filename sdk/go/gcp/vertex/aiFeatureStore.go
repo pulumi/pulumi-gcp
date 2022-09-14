@@ -33,6 +33,9 @@ import (
 //				OnlineServingConfig: &vertex.AiFeatureStoreOnlineServingConfigArgs{
 //					FixedNodeCount: pulumi.Int(2),
 //				},
+//				EncryptionSpec: &vertex.AiFeatureStoreEncryptionSpecArgs{
+//					KmsKeyName: pulumi.String("kms-name"),
+//				},
 //				ForceDestroy: pulumi.Bool(true),
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
@@ -77,6 +80,9 @@ type AiFeatureStore struct {
 	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
 	// nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// If set, both of the online and offline data storage will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec AiFeatureStoreEncryptionSpecPtrOutput `pulumi:"encryptionSpec"`
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// If set to true, any EntityTypes and Features for this Featurestore will also be deleted
@@ -130,6 +136,9 @@ type aiFeatureStoreState struct {
 	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
 	// nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
+	// If set, both of the online and offline data storage will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec *AiFeatureStoreEncryptionSpec `pulumi:"encryptionSpec"`
 	// Used to perform consistent read-modify-write updates.
 	Etag *string `pulumi:"etag"`
 	// If set to true, any EntityTypes and Features for this Featurestore will also be deleted
@@ -155,6 +164,9 @@ type AiFeatureStoreState struct {
 	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
 	// nine fractional digits.
 	CreateTime pulumi.StringPtrInput
+	// If set, both of the online and offline data storage will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec AiFeatureStoreEncryptionSpecPtrInput
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringPtrInput
 	// If set to true, any EntityTypes and Features for this Featurestore will also be deleted
@@ -181,6 +193,9 @@ func (AiFeatureStoreState) ElementType() reflect.Type {
 }
 
 type aiFeatureStoreArgs struct {
+	// If set, both of the online and offline data storage will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec *AiFeatureStoreEncryptionSpec `pulumi:"encryptionSpec"`
 	// If set to true, any EntityTypes and Features for this Featurestore will also be deleted
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// A set of key/value label pairs to assign to this Featurestore.
@@ -199,6 +214,9 @@ type aiFeatureStoreArgs struct {
 
 // The set of arguments for constructing a AiFeatureStore resource.
 type AiFeatureStoreArgs struct {
+	// If set, both of the online and offline data storage will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec AiFeatureStoreEncryptionSpecPtrInput
 	// If set to true, any EntityTypes and Features for this Featurestore will also be deleted
 	ForceDestroy pulumi.BoolPtrInput
 	// A set of key/value label pairs to assign to this Featurestore.
@@ -306,6 +324,12 @@ func (o AiFeatureStoreOutput) ToAiFeatureStoreOutputWithContext(ctx context.Cont
 // nine fractional digits.
 func (o AiFeatureStoreOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStore) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// If set, both of the online and offline data storage will be secured by this key.
+// Structure is documented below.
+func (o AiFeatureStoreOutput) EncryptionSpec() AiFeatureStoreEncryptionSpecPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStore) AiFeatureStoreEncryptionSpecPtrOutput { return v.EncryptionSpec }).(AiFeatureStoreEncryptionSpecPtrOutput)
 }
 
 // Used to perform consistent read-modify-write updates.

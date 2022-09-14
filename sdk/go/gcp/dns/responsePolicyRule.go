@@ -103,6 +103,8 @@ import (
 type ResponsePolicyRule struct {
 	pulumi.CustomResourceState
 
+	// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+	Behavior pulumi.StringPtrOutput `pulumi:"behavior"`
 	// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
 	// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
@@ -156,6 +158,8 @@ func GetResponsePolicyRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResponsePolicyRule resources.
 type responsePolicyRuleState struct {
+	// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+	Behavior *string `pulumi:"behavior"`
 	// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
 	DnsName *string `pulumi:"dnsName"`
 	// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
@@ -172,6 +176,8 @@ type responsePolicyRuleState struct {
 }
 
 type ResponsePolicyRuleState struct {
+	// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+	Behavior pulumi.StringPtrInput
 	// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
 	DnsName pulumi.StringPtrInput
 	// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
@@ -192,6 +198,8 @@ func (ResponsePolicyRuleState) ElementType() reflect.Type {
 }
 
 type responsePolicyRuleArgs struct {
+	// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+	Behavior *string `pulumi:"behavior"`
 	// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
 	DnsName string `pulumi:"dnsName"`
 	// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
@@ -209,6 +217,8 @@ type responsePolicyRuleArgs struct {
 
 // The set of arguments for constructing a ResponsePolicyRule resource.
 type ResponsePolicyRuleArgs struct {
+	// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+	Behavior pulumi.StringPtrInput
 	// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
 	DnsName pulumi.StringInput
 	// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
@@ -309,6 +319,11 @@ func (o ResponsePolicyRuleOutput) ToResponsePolicyRuleOutput() ResponsePolicyRul
 
 func (o ResponsePolicyRuleOutput) ToResponsePolicyRuleOutputWithContext(ctx context.Context) ResponsePolicyRuleOutput {
 	return o
+}
+
+// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+func (o ResponsePolicyRuleOutput) Behavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResponsePolicyRule) pulumi.StringPtrOutput { return v.Behavior }).(pulumi.StringPtrOutput)
 }
 
 // The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.

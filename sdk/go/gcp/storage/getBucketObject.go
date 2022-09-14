@@ -79,7 +79,8 @@ type LookupBucketObjectResult struct {
 	Crc32c              string                              `pulumi:"crc32c"`
 	CustomerEncryptions []GetBucketObjectCustomerEncryption `pulumi:"customerEncryptions"`
 	DetectMd5hash       string                              `pulumi:"detectMd5hash"`
-	EventBasedHold      bool                                `pulumi:"eventBasedHold"`
+	// (Computed) Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
+	EventBasedHold bool `pulumi:"eventBasedHold"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string `pulumi:"id"`
 	KmsKeyName string `pulumi:"kmsKeyName"`
@@ -96,8 +97,9 @@ type LookupBucketObjectResult struct {
 	// (Computed) The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
 	// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
-	StorageClass  string `pulumi:"storageClass"`
-	TemporaryHold bool   `pulumi:"temporaryHold"`
+	StorageClass string `pulumi:"storageClass"`
+	// (Computed) Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
+	TemporaryHold bool `pulumi:"temporaryHold"`
 }
 
 func LookupBucketObjectOutput(ctx *pulumi.Context, args LookupBucketObjectOutputArgs, opts ...pulumi.InvokeOption) LookupBucketObjectResultOutput {
@@ -187,6 +189,7 @@ func (o LookupBucketObjectResultOutput) DetectMd5hash() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.DetectMd5hash }).(pulumi.StringOutput)
 }
 
+// (Computed) Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
 func (o LookupBucketObjectResultOutput) EventBasedHold() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) bool { return v.EventBasedHold }).(pulumi.BoolOutput)
 }
@@ -238,6 +241,7 @@ func (o LookupBucketObjectResultOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.StorageClass }).(pulumi.StringOutput)
 }
 
+// (Computed) Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
 func (o LookupBucketObjectResultOutput) TemporaryHold() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) bool { return v.TemporaryHold }).(pulumi.BoolOutput)
 }
