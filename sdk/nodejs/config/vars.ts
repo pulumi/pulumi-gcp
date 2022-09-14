@@ -104,6 +104,14 @@ Object.defineProperty(exports, "bigQueryCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const bigqueryAnalyticsHubCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "bigqueryAnalyticsHubCustomEndpoint", {
+    get() {
+        return __config.get("bigqueryAnalyticsHubCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const bigqueryConnectionCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "bigqueryConnectionCustomEndpoint", {
     get() {
@@ -388,6 +396,14 @@ export declare const datastoreCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "datastoreCustomEndpoint", {
     get() {
         return __config.get("datastoreCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const datastreamCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "datastreamCustomEndpoint", {
+    get() {
+        return __config.get("datastreamCustomEndpoint");
     },
     enumerable: true,
 });

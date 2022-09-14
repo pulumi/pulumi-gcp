@@ -21,6 +21,9 @@ import * as utilities from "../utilities";
  *     onlineServingConfig: {
  *         fixedNodeCount: 2,
  *     },
+ *     encryptionSpec: {
+ *         kmsKeyName: "kms-name",
+ *     },
  * }, {
  *     provider: google_beta,
  * });

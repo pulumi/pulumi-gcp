@@ -1632,6 +1632,46 @@ export namespace apigee {
         title: string;
     }
 
+    export interface EnvironmentNodeConfig {
+        /**
+         * -
+         * The current total number of gateway nodes that each environment currently has across
+         * all instances.
+         */
+        currentAggregateNodeCount: string;
+        /**
+         * The maximum total number of gateway nodes that the is reserved for all instances that
+         * has the specified environment. If not specified, the default is determined by the
+         * recommended maximum number of nodes for that gateway.
+         */
+        maxNodeCount?: string;
+        /**
+         * The minimum total number of gateway nodes that the is reserved for all instances that
+         * has the specified environment. If not specified, the default is determined by the
+         * recommended minimum number of nodes for that gateway.
+         */
+        minNodeCount?: string;
+    }
+
+    export interface OrganizationProperties {
+        /**
+         * List of all properties in the object.
+         * Structure is documented below.
+         */
+        properties?: outputs.apigee.OrganizationPropertiesProperty[];
+    }
+
+    export interface OrganizationPropertiesProperty {
+        /**
+         * Name of the property.
+         */
+        name?: string;
+        /**
+         * Value of the property.
+         */
+        value?: string;
+    }
+
 }
 
 export namespace appengine {
@@ -3646,6 +3686,21 @@ export namespace bigquery {
          * The default value is true. If set to false, the view will use BigQuery's standard SQL.
          */
         useLegacySql?: boolean;
+    }
+
+}
+
+export namespace bigqueryanalyticshub {
+    export interface DataExchanceIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface DataExchangeIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
 }
@@ -6932,8 +6987,7 @@ export namespace cloudfunctionsv2 {
          */
         invertRegex?: boolean;
         /**
-         * ID of the project that owns the Cloud Source Repository. If omitted, the
-         * project ID requesting the build is assumed.
+         * Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
          */
         projectId?: string;
         /**
@@ -7072,6 +7126,16 @@ export namespace cloudfunctionsv2 {
          */
         minInstanceCount?: number;
         /**
+         * Secret environment variables configuration.
+         * Structure is documented below.
+         */
+        secretEnvironmentVariables?: outputs.cloudfunctionsv2.FunctionServiceConfigSecretEnvironmentVariable[];
+        /**
+         * Secret volumes configuration.
+         * Structure is documented below.
+         */
+        secretVolumes?: outputs.cloudfunctionsv2.FunctionServiceConfigSecretVolume[];
+        /**
          * Name of the service associated with a Function.
          */
         service: string;
@@ -7099,6 +7163,56 @@ export namespace cloudfunctionsv2 {
          * Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
          */
         vpcConnectorEgressSettings?: string;
+    }
+
+    export interface FunctionServiceConfigSecretEnvironmentVariable {
+        /**
+         * Name of the environment variable.
+         */
+        key: string;
+        /**
+         * Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+         */
+        projectId: string;
+        /**
+         * Name of the secret in secret manager (not the full resource name).
+         */
+        secret: string;
+        /**
+         * Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+         */
+        version: string;
+    }
+
+    export interface FunctionServiceConfigSecretVolume {
+        /**
+         * The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+         */
+        mountPath: string;
+        /**
+         * Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+         */
+        projectId: string;
+        /**
+         * Name of the secret in secret manager (not the full resource name).
+         */
+        secret: string;
+        /**
+         * List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
+         * Structure is documented below.
+         */
+        versions: outputs.cloudfunctionsv2.FunctionServiceConfigSecretVolumeVersion[];
+    }
+
+    export interface FunctionServiceConfigSecretVolumeVersion {
+        /**
+         * Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as '/etc/secrets' and path as secretFoo would mount the secret value file at /etc/secrets/secret_foo.
+         */
+        path: string;
+        /**
+         * Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+         */
+        version: string;
     }
 
 }
@@ -10105,6 +10219,7 @@ export namespace compute {
     export interface GetInstanceAdvancedMachineFeature {
         enableNestedVirtualization: boolean;
         threadsPerCore: number;
+        visibleCoreCount: number;
     }
 
     export interface GetInstanceAttachedDisk {
@@ -10356,6 +10471,7 @@ export namespace compute {
     export interface GetInstanceTemplateAdvancedMachineFeature {
         enableNestedVirtualization: boolean;
         threadsPerCore: number;
+        visibleCoreCount: number;
     }
 
     export interface GetInstanceTemplateConfidentialInstanceConfig {
@@ -10728,6 +10844,7 @@ export namespace compute {
     }
 
     export interface GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
+        chainName: string;
         guestFlush: boolean;
         labels: {[key: string]: string};
         storageLocations: string[];
@@ -11237,6 +11354,10 @@ export namespace compute {
          * he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
          */
         threadsPerCore?: number;
+        /**
+         * ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+         */
+        visibleCoreCount?: number;
     }
 
     export interface InstanceAttachedDisk {
@@ -11354,6 +11475,7 @@ export namespace compute {
     export interface InstanceFromMachineImageAdvancedMachineFeatures {
         enableNestedVirtualization: boolean;
         threadsPerCore: number;
+        visibleCoreCount: number;
     }
 
     export interface InstanceFromMachineImageAttachedDisk {
@@ -11477,6 +11599,7 @@ export namespace compute {
     export interface InstanceFromTemplateAdvancedMachineFeatures {
         enableNestedVirtualization: boolean;
         threadsPerCore: number;
+        visibleCoreCount: number;
     }
 
     export interface InstanceFromTemplateAttachedDisk {
@@ -12072,9 +12195,13 @@ export namespace compute {
          */
         enableNestedVirtualization?: boolean;
         /**
-         * he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+         * The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
          */
         threadsPerCore?: number;
+        /**
+         * ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+         */
+        visibleCoreCount?: number;
     }
 
     export interface InstanceTemplateConfidentialInstanceConfig {
@@ -15647,6 +15774,12 @@ export namespace compute {
 
     export interface ResourcePolicySnapshotSchedulePolicySnapshotProperties {
         /**
+         * Creates the new snapshot in the snapshot chain labeled with the
+         * specified name. The chain name must be 1-63 characters long and comply
+         * with RFC1035.
+         */
+        chainName?: string;
+        /**
          * Whether to perform a 'guest aware' snapshot.
          */
         guestFlush?: boolean;
@@ -19045,6 +19178,14 @@ export namespace container {
         enabled: boolean;
     }
 
+    export interface ClusterCostManagementConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: boolean;
+    }
+
     export interface ClusterDatabaseEncryption {
         /**
          * the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
@@ -19263,12 +19404,7 @@ export namespace container {
          */
         ephemeralStorageConfig?: outputs.container.ClusterNodeConfigEphemeralStorageConfig;
         /**
-         * Parameters for the Google Container Filesystem (GCFS).
-         * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
-         * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-         * A `machineType` that has more than 16 GiB of memory is also recommended.
-         * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
-         * Structure is documented below.
+         * The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
          */
         gcfsConfig?: outputs.container.ClusterNodeConfigGcfsConfig;
         /**
@@ -19580,8 +19716,33 @@ export namespace container {
     }
 
     export interface ClusterNodePoolAutoscaling {
-        maxNodeCount: number;
-        minNodeCount: number;
+        locationPolicy?: string;
+        maxNodeCount?: number;
+        minNodeCount?: number;
+        totalMaxNodeCount?: number;
+        totalMinNodeCount?: number;
+    }
+
+    export interface ClusterNodePoolDefaults {
+        /**
+         * ) - Subset of NodeConfig message that has defaults.
+         */
+        nodeConfigDefaults?: outputs.container.ClusterNodePoolDefaultsNodeConfigDefaults;
+    }
+
+    export interface ClusterNodePoolDefaultsNodeConfigDefaults {
+        /**
+         * The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+         */
+        gcfsConfig?: outputs.container.ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig;
+    }
+
+    export interface ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: boolean;
     }
 
     export interface ClusterNodePoolManagement {
@@ -19624,12 +19785,7 @@ export namespace container {
          */
         ephemeralStorageConfig?: outputs.container.ClusterNodePoolNodeConfigEphemeralStorageConfig;
         /**
-         * Parameters for the Google Container Filesystem (GCFS).
-         * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
-         * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-         * A `machineType` that has more than 16 GiB of memory is also recommended.
-         * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
-         * Structure is documented below.
+         * The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
          */
         gcfsConfig?: outputs.container.ClusterNodePoolNodeConfigGcfsConfig;
         /**
@@ -20007,6 +20163,14 @@ export namespace container {
         datasetId: string;
     }
 
+    export interface ClusterServiceExternalIpsConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: boolean;
+    }
+
     export interface ClusterTpuConfig {
         /**
          * Enable the PodSecurityPolicy controller for this cluster.
@@ -20127,6 +20291,10 @@ export namespace container {
     }
 
     export interface GetClusterConfidentialNode {
+        enabled: boolean;
+    }
+
+    export interface GetClusterCostManagementConfig {
         enabled: boolean;
     }
 
@@ -20338,8 +20506,23 @@ export namespace container {
     }
 
     export interface GetClusterNodePoolAutoscaling {
+        locationPolicy: string;
         maxNodeCount: number;
         minNodeCount: number;
+        totalMaxNodeCount: number;
+        totalMinNodeCount: number;
+    }
+
+    export interface GetClusterNodePoolDefault {
+        nodeConfigDefaults: outputs.container.GetClusterNodePoolDefaultNodeConfigDefault[];
+    }
+
+    export interface GetClusterNodePoolDefaultNodeConfigDefault {
+        gcfsConfigs: outputs.container.GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig[];
+    }
+
+    export interface GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig {
+        enabled: boolean;
     }
 
     export interface GetClusterNodePoolManagement {
@@ -20485,6 +20668,10 @@ export namespace container {
         datasetId: string;
     }
 
+    export interface GetClusterServiceExternalIpsConfig {
+        enabled: boolean;
+    }
+
     export interface GetClusterTpuConfig {
         enabled: boolean;
         ipv4CidrBlock: string;
@@ -20501,14 +20688,32 @@ export namespace container {
 
     export interface NodePoolAutoscaling {
         /**
-         * Maximum number of nodes in the NodePool. Must be >= min_node_count.
+         * Location policy specifies the algorithm used when scaling-up the node pool. \
+         * "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones. \
+         * "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+         * and reduce preemption risk for Spot VMs.
          */
-        maxNodeCount: number;
+        locationPolicy?: string;
         /**
-         * Minimum number of nodes in the NodePool. Must be >=0 and
-         * <= `maxNodeCount`.
+         * Maximum number of nodes per zone in the NodePool.
+         * Must be >= min_node_count. Cannot be used with total limits.
          */
-        minNodeCount: number;
+        maxNodeCount?: number;
+        /**
+         * Minimum number of nodes per zone in the NodePool.
+         * Must be >=0 and <= `maxNodeCount`. Cannot be used with total limits.
+         */
+        minNodeCount?: number;
+        /**
+         * Total maximum number of nodes in the NodePool.
+         * Must be >= total_min_node_count. Cannot be used with per zone limits.
+         */
+        totalMaxNodeCount?: number;
+        /**
+         * Total minimum number of nodes in the NodePool.
+         * Must be >=0 and <= `totalMaxNodeCount`. Cannot be used with per zone limits.
+         */
+        totalMinNodeCount?: number;
     }
 
     export interface NodePoolManagement {
@@ -23901,6 +24106,10 @@ export namespace dataproc {
          */
         serviceAccountScopes?: string[];
         /**
+         * Optional. Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+         */
+        shieldedInstanceConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig;
+        /**
          * Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
          */
         subnetwork?: string;
@@ -23934,6 +24143,21 @@ export namespace dataproc {
          * Optional. Corresponds to the label values of reservation resource.
          */
         values?: string[];
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig {
+        /**
+         * Optional. Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+         */
+        enableIntegrityMonitoring?: boolean;
+        /**
+         * Optional. Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+         */
+        enableSecureBoot?: boolean;
+        /**
+         * Optional. Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+         */
+        enableVtpm?: boolean;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig {
@@ -24318,6 +24542,161 @@ export namespace datastore {
          * The property name to index.
          */
         name: string;
+    }
+
+}
+
+export namespace datastream {
+    export interface ConnectionProfileForwardSshConnectivity {
+        /**
+         * Hostname for the SSH tunnel.
+         */
+        hostname: string;
+        /**
+         * SSH password.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        password?: string;
+        /**
+         * Port for the SSH tunnel.
+         */
+        port?: number;
+        /**
+         * SSH private key.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        privateKey?: string;
+        /**
+         * Username for the SSH tunnel.
+         */
+        username: string;
+    }
+
+    export interface ConnectionProfileGcsProfile {
+        /**
+         * The Cloud Storage bucket name.
+         */
+        bucket: string;
+        /**
+         * The root path inside the Cloud Storage bucket.
+         */
+        rootPath?: string;
+    }
+
+    export interface ConnectionProfileMysqlProfile {
+        /**
+         * Hostname for the SSH tunnel.
+         */
+        hostname: string;
+        /**
+         * SSH password.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        password: string;
+        /**
+         * Port for the SSH tunnel.
+         */
+        port?: number;
+        /**
+         * SSL configuration for the MySQL connection.
+         * Structure is documented below.
+         */
+        sslConfig?: outputs.datastream.ConnectionProfileMysqlProfileSslConfig;
+        /**
+         * Username for the SSH tunnel.
+         */
+        username: string;
+    }
+
+    export interface ConnectionProfileMysqlProfileSslConfig {
+        /**
+         * PEM-encoded certificate of the CA that signed the source database
+         * server's certificate.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        caCertificate?: string;
+        /**
+         * -
+         * Indicates whether the clientKey field is set.
+         */
+        caCertificateSet: boolean;
+        /**
+         * PEM-encoded certificate that will be used by the replica to
+         * authenticate against the source database server. If this field
+         * is used then the 'clientKey' and the 'caCertificate' fields are
+         * mandatory.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientCertificate?: string;
+        /**
+         * -
+         * Indicates whether the clientCertificate field is set.
+         */
+        clientCertificateSet: boolean;
+        /**
+         * PEM-encoded private key associated with the Client Certificate.
+         * If this field is used then the 'client_certificate' and the
+         * 'ca_certificate' fields are mandatory.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientKey?: string;
+        /**
+         * -
+         * Indicates whether the clientKey field is set.
+         */
+        clientKeySet: boolean;
+    }
+
+    export interface ConnectionProfileOracleProfile {
+        /**
+         * Connection string attributes
+         */
+        connectionAttributes?: {[key: string]: string};
+        /**
+         * Database for the Oracle connection.
+         */
+        databaseService: string;
+        /**
+         * Hostname for the SSH tunnel.
+         */
+        hostname: string;
+        /**
+         * SSH password.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        password: string;
+        /**
+         * Port for the SSH tunnel.
+         */
+        port?: number;
+        /**
+         * Username for the SSH tunnel.
+         */
+        username: string;
+    }
+
+    export interface ConnectionProfilePostgresqlProfile {
+        /**
+         * Database for the PostgreSQL connection.
+         */
+        database: string;
+        /**
+         * Hostname for the SSH tunnel.
+         */
+        hostname: string;
+        /**
+         * SSH password.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        password: string;
+        /**
+         * Port for the SSH tunnel.
+         */
+        port?: number;
+        /**
+         * Username for the SSH tunnel.
+         */
+        username: string;
     }
 
 }
@@ -26957,7 +27336,7 @@ export namespace logging {
         /**
          * Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
          * By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
-         * tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+         * tables, the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
          * has to be used instead. In both cases, tables are sharded based on UTC timezone.
          */
         usePartitionedTables: boolean;
@@ -26987,7 +27366,7 @@ export namespace logging {
         /**
          * Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
          * By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
-         * tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+         * tables, the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
          * has to be used instead. In both cases, tables are sharded based on UTC timezone.
          */
         usePartitionedTables: boolean;
@@ -27157,7 +27536,7 @@ export namespace logging {
     export interface ProjectSinkBigqueryOptions {
         /**
          * Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-         * By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
+         * By default, Logging creates dated tables based on the log entries' timestamps, e.g. `syslog20170523`. With partitioned
          * tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
          * has to be used instead. In both cases, tables are sharded based on UTC timezone.
          */
@@ -33934,6 +34313,13 @@ export namespace vertex {
          * Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
          */
         kmsKeyName?: string;
+    }
+
+    export interface AiFeatureStoreEncryptionSpec {
+        /**
+         * The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
+         */
+        kmsKeyName: string;
     }
 
     export interface AiFeatureStoreEntityTypeMonitoringConfig {

@@ -99,9 +99,7 @@ export class BucketObject extends pulumi.CustomResource {
     public readonly customerEncryption!: pulumi.Output<outputs.storage.BucketObjectCustomerEncryption | undefined>;
     public readonly detectMd5hash!: pulumi.Output<string | undefined>;
     /**
-     * Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-     * signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
-     * will be subject to bucket-level retention (if any).
+     * Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
      */
     public readonly eventBasedHold!: pulumi.Output<boolean | undefined>;
     /**
@@ -145,8 +143,7 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public readonly storageClass!: pulumi.Output<string>;
     /**
-     * Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-     * overwrites.
+     * Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
      */
     public readonly temporaryHold!: pulumi.Output<boolean | undefined>;
 
@@ -260,9 +257,7 @@ export interface BucketObjectState {
     customerEncryption?: pulumi.Input<inputs.storage.BucketObjectCustomerEncryption>;
     detectMd5hash?: pulumi.Input<string>;
     /**
-     * Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-     * signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
-     * will be subject to bucket-level retention (if any).
+     * Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
      */
     eventBasedHold?: pulumi.Input<boolean>;
     /**
@@ -306,8 +301,7 @@ export interface BucketObjectState {
      */
     storageClass?: pulumi.Input<string>;
     /**
-     * Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-     * overwrites.
+     * Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
      */
     temporaryHold?: pulumi.Input<boolean>;
 }
@@ -352,9 +346,7 @@ export interface BucketObjectArgs {
     customerEncryption?: pulumi.Input<inputs.storage.BucketObjectCustomerEncryption>;
     detectMd5hash?: pulumi.Input<string>;
     /**
-     * Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-     * signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
-     * will be subject to bucket-level retention (if any).
+     * Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
      */
     eventBasedHold?: pulumi.Input<boolean>;
     /**
@@ -381,8 +373,7 @@ export interface BucketObjectArgs {
      */
     storageClass?: pulumi.Input<string>;
     /**
-     * Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-     * overwrites.
+     * Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
      */
     temporaryHold?: pulumi.Input<boolean>;
 }

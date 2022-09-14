@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -117,6 +118,11 @@ export class Environment extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * NodeConfig for setting the min/max number of nodes associated with the environment.
+     * Structure is documented below.
+     */
+    public readonly nodeConfig!: pulumi.Output<outputs.apigee.EnvironmentNodeConfig>;
+    /**
      * The Apigee Organization associated with the Apigee environment,
      * in the format `organizations/{{org_name}}`.
      */
@@ -140,6 +146,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nodeConfig"] = state ? state.nodeConfig : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
         } else {
             const args = argsOrState as EnvironmentArgs | undefined;
@@ -151,6 +158,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -192,6 +200,11 @@ export interface EnvironmentState {
      */
     name?: pulumi.Input<string>;
     /**
+     * NodeConfig for setting the min/max number of nodes associated with the environment.
+     * Structure is documented below.
+     */
+    nodeConfig?: pulumi.Input<inputs.apigee.EnvironmentNodeConfig>;
+    /**
      * The Apigee Organization associated with the Apigee environment,
      * in the format `organizations/{{org_name}}`.
      */
@@ -231,6 +244,11 @@ export interface EnvironmentArgs {
      * The resource ID of the environment.
      */
     name?: pulumi.Input<string>;
+    /**
+     * NodeConfig for setting the min/max number of nodes associated with the environment.
+     * Structure is documented below.
+     */
+    nodeConfig?: pulumi.Input<inputs.apigee.EnvironmentNodeConfig>;
     /**
      * The Apigee Organization associated with the Apigee environment,
      * in the format `organizations/{{org_name}}`.

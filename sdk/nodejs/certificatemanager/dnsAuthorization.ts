@@ -8,8 +8,6 @@ import * as utilities from "../utilities";
 /**
  * DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
  *
- * > **Warning:** These resources require allow-listing to use, and are not openly available to all Cloud customers. Engage with your Cloud account team to discuss how to onboard.
- *
  * ## Example Usage
  * ### Certificate Manager Dns Authorization Basic
  *

@@ -18,6 +18,7 @@ import * as appengine from "./appengine";
 import * as artifactregistry from "./artifactregistry";
 import * as assuredworkloads from "./assuredworkloads";
 import * as bigquery from "./bigquery";
+import * as bigqueryanalyticshub from "./bigqueryanalyticshub";
 import * as bigtable from "./bigtable";
 import * as billing from "./billing";
 import * as binaryauthorization from "./binaryauthorization";
@@ -44,6 +45,7 @@ import * as dataloss from "./dataloss";
 import * as dataplex from "./dataplex";
 import * as dataproc from "./dataproc";
 import * as datastore from "./datastore";
+import * as datastream from "./datastream";
 import * as deploymentmanager from "./deploymentmanager";
 import * as diagflow from "./diagflow";
 import * as dns from "./dns";
@@ -108,6 +110,7 @@ export {
     artifactregistry,
     assuredworkloads,
     bigquery,
+    bigqueryanalyticshub,
     bigtable,
     billing,
     binaryauthorization,
@@ -134,6 +137,7 @@ export {
     dataplex,
     dataproc,
     datastore,
+    datastream,
     deploymentmanager,
     diagflow,
     dns,

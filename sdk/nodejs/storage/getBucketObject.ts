@@ -85,6 +85,9 @@ export interface GetBucketObjectResult {
     readonly crc32c: string;
     readonly customerEncryptions: outputs.storage.GetBucketObjectCustomerEncryption[];
     readonly detectMd5hash: string;
+    /**
+     * (Computed) Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
+     */
     readonly eventBasedHold: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -113,6 +116,9 @@ export interface GetBucketObjectResult {
      * storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
      */
     readonly storageClass: string;
+    /**
+     * (Computed) Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
+     */
     readonly temporaryHold: boolean;
 }
 

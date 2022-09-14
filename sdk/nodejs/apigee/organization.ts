@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -156,13 +157,18 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * Output only. Name of the Apigee organization.
+     * Name of the property.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The project ID associated with the Apigee organization.
      */
     public readonly projectId!: pulumi.Output<string>;
+    /**
+     * Properties defined in the Apigee organization profile.
+     * Structure is documented below.
+     */
+    public readonly properties!: pulumi.Output<outputs.apigee.OrganizationProperties>;
     /**
      * Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
      * is not EVALUATION). It controls how long Organization data will be retained after the initial delete
@@ -212,6 +218,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["properties"] = state ? state.properties : undefined;
             resourceInputs["retention"] = state ? state.retention : undefined;
             resourceInputs["runtimeDatabaseEncryptionKeyName"] = state ? state.runtimeDatabaseEncryptionKeyName : undefined;
             resourceInputs["runtimeType"] = state ? state.runtimeType : undefined;
@@ -227,6 +234,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["retention"] = args ? args.retention : undefined;
             resourceInputs["runtimeDatabaseEncryptionKeyName"] = args ? args.runtimeDatabaseEncryptionKeyName : undefined;
             resourceInputs["runtimeType"] = args ? args.runtimeType : undefined;
@@ -271,13 +279,18 @@ export interface OrganizationState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Output only. Name of the Apigee organization.
+     * Name of the property.
      */
     name?: pulumi.Input<string>;
     /**
      * The project ID associated with the Apigee organization.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * Properties defined in the Apigee organization profile.
+     * Structure is documented below.
+     */
+    properties?: pulumi.Input<inputs.apigee.OrganizationProperties>;
     /**
      * Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
      * is not EVALUATION). It controls how long Organization data will be retained after the initial delete
@@ -337,6 +350,11 @@ export interface OrganizationArgs {
      * The project ID associated with the Apigee organization.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * Properties defined in the Apigee organization profile.
+     * Structure is documented below.
+     */
+    properties?: pulumi.Input<inputs.apigee.OrganizationProperties>;
     /**
      * Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
      * is not EVALUATION). It controls how long Organization data will be retained after the initial delete

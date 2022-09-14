@@ -21,6 +21,9 @@ import * as utilities from "../utilities";
  *     onlineServingConfig: {
  *         fixedNodeCount: 2,
  *     },
+ *     encryptionSpec: {
+ *         kmsKeyName: "kms-name",
+ *     },
  *     forceDestroy: true,
  * }, {
  *     provider: google_beta,
@@ -81,6 +84,11 @@ export class AiFeatureStore extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * If set, both of the online and offline data storage will be secured by this key.
+     * Structure is documented below.
+     */
+    public readonly encryptionSpec!: pulumi.Output<outputs.vertex.AiFeatureStoreEncryptionSpec | undefined>;
+    /**
      * Used to perform consistent read-modify-write updates.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
@@ -130,6 +138,7 @@ export class AiFeatureStore extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AiFeatureStoreState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["encryptionSpec"] = state ? state.encryptionSpec : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -140,6 +149,7 @@ export class AiFeatureStore extends pulumi.CustomResource {
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AiFeatureStoreArgs | undefined;
+            resourceInputs["encryptionSpec"] = args ? args.encryptionSpec : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -164,6 +174,11 @@ export interface AiFeatureStoreState {
      * nine fractional digits.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * If set, both of the online and offline data storage will be secured by this key.
+     * Structure is documented below.
+     */
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiFeatureStoreEncryptionSpec>;
     /**
      * Used to perform consistent read-modify-write updates.
      */
@@ -205,6 +220,11 @@ export interface AiFeatureStoreState {
  * The set of arguments for constructing a AiFeatureStore resource.
  */
 export interface AiFeatureStoreArgs {
+    /**
+     * If set, both of the online and offline data storage will be secured by this key.
+     * Structure is documented below.
+     */
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiFeatureStoreEncryptionSpec>;
     /**
      * If set to true, any EntityTypes and Features for this Featurestore will also be deleted
      */

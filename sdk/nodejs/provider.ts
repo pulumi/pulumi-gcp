@@ -37,6 +37,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly artifactRegistryCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly assuredWorkloadsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly bigQueryCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly bigqueryAnalyticsHubCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly bigqueryConnectionCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly bigqueryDataTransferCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly bigqueryReservationCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -73,6 +74,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly dataprocCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataprocMetastoreCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly datastoreCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly datastreamCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly deploymentManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dialogflowCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dialogflowCxCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -163,6 +165,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["assuredWorkloadsCustomEndpoint"] = args ? args.assuredWorkloadsCustomEndpoint : undefined;
             resourceInputs["batching"] = pulumi.output(args ? args.batching : undefined).apply(JSON.stringify);
             resourceInputs["bigQueryCustomEndpoint"] = args ? args.bigQueryCustomEndpoint : undefined;
+            resourceInputs["bigqueryAnalyticsHubCustomEndpoint"] = args ? args.bigqueryAnalyticsHubCustomEndpoint : undefined;
             resourceInputs["bigqueryConnectionCustomEndpoint"] = args ? args.bigqueryConnectionCustomEndpoint : undefined;
             resourceInputs["bigqueryDataTransferCustomEndpoint"] = args ? args.bigqueryDataTransferCustomEndpoint : undefined;
             resourceInputs["bigqueryReservationCustomEndpoint"] = args ? args.bigqueryReservationCustomEndpoint : undefined;
@@ -199,6 +202,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["dataprocCustomEndpoint"] = args ? args.dataprocCustomEndpoint : undefined;
             resourceInputs["dataprocMetastoreCustomEndpoint"] = args ? args.dataprocMetastoreCustomEndpoint : undefined;
             resourceInputs["datastoreCustomEndpoint"] = args ? args.datastoreCustomEndpoint : undefined;
+            resourceInputs["datastreamCustomEndpoint"] = args ? args.datastreamCustomEndpoint : undefined;
             resourceInputs["deploymentManagerCustomEndpoint"] = args ? args.deploymentManagerCustomEndpoint : undefined;
             resourceInputs["dialogflowCustomEndpoint"] = args ? args.dialogflowCustomEndpoint : undefined;
             resourceInputs["dialogflowCxCustomEndpoint"] = args ? args.dialogflowCxCustomEndpoint : undefined;
@@ -291,6 +295,7 @@ export interface ProviderArgs {
     assuredWorkloadsCustomEndpoint?: pulumi.Input<string>;
     batching?: pulumi.Input<inputs.ProviderBatching>;
     bigQueryCustomEndpoint?: pulumi.Input<string>;
+    bigqueryAnalyticsHubCustomEndpoint?: pulumi.Input<string>;
     bigqueryConnectionCustomEndpoint?: pulumi.Input<string>;
     bigqueryDataTransferCustomEndpoint?: pulumi.Input<string>;
     bigqueryReservationCustomEndpoint?: pulumi.Input<string>;
@@ -327,6 +332,7 @@ export interface ProviderArgs {
     dataprocCustomEndpoint?: pulumi.Input<string>;
     dataprocMetastoreCustomEndpoint?: pulumi.Input<string>;
     datastoreCustomEndpoint?: pulumi.Input<string>;
+    datastreamCustomEndpoint?: pulumi.Input<string>;
     deploymentManagerCustomEndpoint?: pulumi.Input<string>;
     dialogflowCustomEndpoint?: pulumi.Input<string>;
     dialogflowCxCustomEndpoint?: pulumi.Input<string>;
