@@ -5,19 +5,32 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolAutoscaling {
+    private String locationPolicy;
     private Integer maxNodeCount;
     private Integer minNodeCount;
+    private Integer totalMaxNodeCount;
+    private Integer totalMinNodeCount;
 
     private GetClusterNodePoolAutoscaling() {}
+    public String locationPolicy() {
+        return this.locationPolicy;
+    }
     public Integer maxNodeCount() {
         return this.maxNodeCount;
     }
     public Integer minNodeCount() {
         return this.minNodeCount;
+    }
+    public Integer totalMaxNodeCount() {
+        return this.totalMaxNodeCount;
+    }
+    public Integer totalMinNodeCount() {
+        return this.totalMinNodeCount;
     }
 
     public static Builder builder() {
@@ -29,15 +42,26 @@ public final class GetClusterNodePoolAutoscaling {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String locationPolicy;
         private Integer maxNodeCount;
         private Integer minNodeCount;
+        private Integer totalMaxNodeCount;
+        private Integer totalMinNodeCount;
         public Builder() {}
         public Builder(GetClusterNodePoolAutoscaling defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.locationPolicy = defaults.locationPolicy;
     	      this.maxNodeCount = defaults.maxNodeCount;
     	      this.minNodeCount = defaults.minNodeCount;
+    	      this.totalMaxNodeCount = defaults.totalMaxNodeCount;
+    	      this.totalMinNodeCount = defaults.totalMinNodeCount;
         }
 
+        @CustomType.Setter
+        public Builder locationPolicy(String locationPolicy) {
+            this.locationPolicy = Objects.requireNonNull(locationPolicy);
+            return this;
+        }
         @CustomType.Setter
         public Builder maxNodeCount(Integer maxNodeCount) {
             this.maxNodeCount = Objects.requireNonNull(maxNodeCount);
@@ -48,10 +72,23 @@ public final class GetClusterNodePoolAutoscaling {
             this.minNodeCount = Objects.requireNonNull(minNodeCount);
             return this;
         }
+        @CustomType.Setter
+        public Builder totalMaxNodeCount(Integer totalMaxNodeCount) {
+            this.totalMaxNodeCount = Objects.requireNonNull(totalMaxNodeCount);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder totalMinNodeCount(Integer totalMinNodeCount) {
+            this.totalMinNodeCount = Objects.requireNonNull(totalMinNodeCount);
+            return this;
+        }
         public GetClusterNodePoolAutoscaling build() {
             final var o = new GetClusterNodePoolAutoscaling();
+            o.locationPolicy = locationPolicy;
             o.maxNodeCount = maxNodeCount;
             o.minNodeCount = minNodeCount;
+            o.totalMaxNodeCount = totalMaxNodeCount;
+            o.totalMinNodeCount = totalMinNodeCount;
             return o;
         }
     }

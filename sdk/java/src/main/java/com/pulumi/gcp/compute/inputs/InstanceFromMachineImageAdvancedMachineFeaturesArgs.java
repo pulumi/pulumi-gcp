@@ -30,11 +30,19 @@ public final class InstanceFromMachineImageAdvancedMachineFeaturesArgs extends c
         return Optional.ofNullable(this.threadsPerCore);
     }
 
+    @Import(name="visibleCoreCount")
+    private @Nullable Output<Integer> visibleCoreCount;
+
+    public Optional<Output<Integer>> visibleCoreCount() {
+        return Optional.ofNullable(this.visibleCoreCount);
+    }
+
     private InstanceFromMachineImageAdvancedMachineFeaturesArgs() {}
 
     private InstanceFromMachineImageAdvancedMachineFeaturesArgs(InstanceFromMachineImageAdvancedMachineFeaturesArgs $) {
         this.enableNestedVirtualization = $.enableNestedVirtualization;
         this.threadsPerCore = $.threadsPerCore;
+        this.visibleCoreCount = $.visibleCoreCount;
     }
 
     public static Builder builder() {
@@ -71,6 +79,15 @@ public final class InstanceFromMachineImageAdvancedMachineFeaturesArgs extends c
 
         public Builder threadsPerCore(Integer threadsPerCore) {
             return threadsPerCore(Output.of(threadsPerCore));
+        }
+
+        public Builder visibleCoreCount(@Nullable Output<Integer> visibleCoreCount) {
+            $.visibleCoreCount = visibleCoreCount;
+            return this;
+        }
+
+        public Builder visibleCoreCount(Integer visibleCoreCount) {
+            return visibleCoreCount(Output.of(visibleCoreCount));
         }
 
         public InstanceFromMachineImageAdvancedMachineFeaturesArgs build() {

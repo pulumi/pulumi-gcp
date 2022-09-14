@@ -19,150 +19,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.logging.ProjectSink;
- * import com.pulumi.gcp.logging.ProjectSinkArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var my_sink = new ProjectSink(&#34;my-sink&#34;, ProjectSinkArgs.builder()        
- *             .destination(&#34;pubsub.googleapis.com/projects/my-project/topics/instance-activity&#34;)
- *             .filter(&#34;resource.type = gce_instance AND severity &gt;= WARNING&#34;)
- *             .uniqueWriterIdentity(true)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * A more complete example follows: this creates a compute instance, as well as a log sink that logs all activity to a
- * cloud storage bucket. Because we are using `unique_writer_identity`, we must grant it access to the bucket. Note that
- * this grant requires the &#34;Project IAM Admin&#34; IAM role (`roles/resourcemanager.projectIamAdmin`) granted to the credentials
- * used with this provider.
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.Instance;
- * import com.pulumi.gcp.compute.InstanceArgs;
- * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
- * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
- * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
- * import com.pulumi.gcp.storage.Bucket;
- * import com.pulumi.gcp.storage.BucketArgs;
- * import com.pulumi.gcp.logging.ProjectSink;
- * import com.pulumi.gcp.logging.ProjectSinkArgs;
- * import com.pulumi.gcp.projects.IAMBinding;
- * import com.pulumi.gcp.projects.IAMBindingArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var my_logged_instance = new Instance(&#34;my-logged-instance&#34;, InstanceArgs.builder()        
- *             .machineType(&#34;e2-medium&#34;)
- *             .zone(&#34;us-central1-a&#34;)
- *             .bootDisk(InstanceBootDiskArgs.builder()
- *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
- *                     .image(&#34;debian-cloud/debian-11&#34;)
- *                     .build())
- *                 .build())
- *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
- *                 .network(&#34;default&#34;)
- *                 .accessConfigs()
- *                 .build())
- *             .build());
- * 
- *         var log_bucket = new Bucket(&#34;log-bucket&#34;, BucketArgs.builder()        
- *             .location(&#34;US&#34;)
- *             .build());
- * 
- *         var instance_sink = new ProjectSink(&#34;instance-sink&#34;, ProjectSinkArgs.builder()        
- *             .description(&#34;some explanation on what this is&#34;)
- *             .destination(log_bucket.name().applyValue(name -&gt; String.format(&#34;storage.googleapis.com/%s&#34;, name)))
- *             .filter(my_logged_instance.instanceId().applyValue(instanceId -&gt; String.format(&#34;resource.type = gce_instance AND resource.labels.instance_id = \&#34;%s\&#34;&#34;, instanceId)))
- *             .uniqueWriterIdentity(true)
- *             .build());
- * 
- *         var log_writer = new IAMBinding(&#34;log-writer&#34;, IAMBindingArgs.builder()        
- *             .project(&#34;your-project-id&#34;)
- *             .role(&#34;roles/storage.objectCreator&#34;)
- *             .members(instance_sink.writerIdentity())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * The following example uses `exclusions` to filter logs that will not be exported. In this example logs are exported to a [log bucket](https://cloud.google.com/logging/docs/buckets) and there are 2 exclusions configured
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.logging.ProjectSink;
- * import com.pulumi.gcp.logging.ProjectSinkArgs;
- * import com.pulumi.gcp.logging.inputs.ProjectSinkExclusionArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var log_bucket = new ProjectSink(&#34;log-bucket&#34;, ProjectSinkArgs.builder()        
- *             .destination(&#34;logging.googleapis.com/projects/my-project/locations/global/buckets/_Default&#34;)
- *             .exclusions(            
- *                 ProjectSinkExclusionArgs.builder()
- *                     .description(&#34;Exclude logs from namespace-1 in k8s&#34;)
- *                     .filter(&#34;resource.type = k8s_container resource.labels.namespace_name=\&#34;namespace-1\&#34; &#34;)
- *                     .name(&#34;nsexcllusion1&#34;)
- *                     .build(),
- *                 ProjectSinkExclusionArgs.builder()
- *                     .description(&#34;Exclude logs from namespace-2 in k8s&#34;)
- *                     .filter(&#34;resource.type = k8s_container resource.labels.namespace_name=\&#34;namespace-2\&#34; &#34;)
- *                     .name(&#34;nsexcllusion2&#34;)
- *                     .build())
- *             .uniqueWriterIdentity(true)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * Project-level logging sinks can be imported using their URI, e.g.
@@ -205,29 +61,6 @@ public class ProjectSink extends com.pulumi.resources.CustomResource {
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
-     * The writer associated with the sink must have access to write to the above resource.
      * 
      */
     @Export(name="destination", type=String.class, parameters={})
@@ -236,29 +69,6 @@ public class ProjectSink extends com.pulumi.resources.CustomResource {
     /**
      * @return The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
-     * The writer associated with the sink must have access to write to the above resource.
      * 
      */
     public Output<String> destination() {
@@ -279,14 +89,14 @@ public class ProjectSink extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.disabled);
     }
     /**
-     * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+     * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
      * 
      */
     @Export(name="exclusions", type=List.class, parameters={ProjectSinkExclusion.class})
     private Output</* @Nullable */ List<ProjectSinkExclusion>> exclusions;
 
     /**
-     * @return Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+     * @return Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
      * 
      */
     public Output<Optional<List<ProjectSinkExclusion>>> exclusions() {

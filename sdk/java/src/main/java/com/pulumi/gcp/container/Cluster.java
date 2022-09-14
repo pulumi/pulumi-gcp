@@ -16,6 +16,7 @@ import com.pulumi.gcp.container.outputs.ClusterBinaryAuthorization;
 import com.pulumi.gcp.container.outputs.ClusterClusterAutoscaling;
 import com.pulumi.gcp.container.outputs.ClusterClusterTelemetry;
 import com.pulumi.gcp.container.outputs.ClusterConfidentialNodes;
+import com.pulumi.gcp.container.outputs.ClusterCostManagementConfig;
 import com.pulumi.gcp.container.outputs.ClusterDatabaseEncryption;
 import com.pulumi.gcp.container.outputs.ClusterDefaultSnatStatus;
 import com.pulumi.gcp.container.outputs.ClusterDnsConfig;
@@ -31,11 +32,13 @@ import com.pulumi.gcp.container.outputs.ClusterNetworkPolicy;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePool;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolAutoConfig;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolDefaults;
 import com.pulumi.gcp.container.outputs.ClusterNotificationConfig;
 import com.pulumi.gcp.container.outputs.ClusterPodSecurityPolicyConfig;
 import com.pulumi.gcp.container.outputs.ClusterPrivateClusterConfig;
 import com.pulumi.gcp.container.outputs.ClusterReleaseChannel;
 import com.pulumi.gcp.container.outputs.ClusterResourceUsageExportConfig;
+import com.pulumi.gcp.container.outputs.ClusterServiceExternalIpsConfig;
 import com.pulumi.gcp.container.outputs.ClusterTpuConfig;
 import com.pulumi.gcp.container.outputs.ClusterVerticalPodAutoscaling;
 import com.pulumi.gcp.container.outputs.ClusterWorkloadIdentityConfig;
@@ -344,6 +347,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<ClusterConfidentialNodes> confidentialNodes() {
         return this.confidentialNodes;
+    }
+    /**
+     * Cost management configuration for the cluster.
+     * 
+     */
+    @Export(name="costManagementConfig", type=ClusterCostManagementConfig.class, parameters={})
+    private Output<ClusterCostManagementConfig> costManagementConfig;
+
+    /**
+     * @return Cost management configuration for the cluster.
+     * 
+     */
+    public Output<ClusterCostManagementConfig> costManagementConfig() {
+        return this.costManagementConfig;
     }
     /**
      * Structure is documented below.
@@ -1014,6 +1031,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.nodePoolAutoConfig);
     }
     /**
+     * ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+     * 
+     */
+    @Export(name="nodePoolDefaults", type=ClusterNodePoolDefaults.class, parameters={})
+    private Output</* @Nullable */ ClusterNodePoolDefaults> nodePoolDefaults;
+
+    /**
+     * @return ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterNodePoolDefaults>> nodePoolDefaults() {
+        return Codegen.optional(this.nodePoolDefaults);
+    }
+    /**
      * List of node pools associated with this cluster.
      * See gcp.container.NodePool for schema.
      * **Warning:** node pools defined inside a cluster can&#39;t be changed (or added/removed) after
@@ -1244,6 +1275,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> selfLink() {
         return this.selfLink;
+    }
+    /**
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="serviceExternalIpsConfig", type=ClusterServiceExternalIpsConfig.class, parameters={})
+    private Output<ClusterServiceExternalIpsConfig> serviceExternalIpsConfig;
+
+    /**
+     * @return Structure is documented below.
+     * 
+     */
+    public Output<ClusterServiceExternalIpsConfig> serviceExternalIpsConfig() {
+        return this.serviceExternalIpsConfig;
     }
     /**
      * The IP address range of the Kubernetes services in this

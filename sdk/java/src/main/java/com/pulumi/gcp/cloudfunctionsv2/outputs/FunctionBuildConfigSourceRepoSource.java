@@ -34,8 +34,7 @@ public final class FunctionBuildConfigSourceRepoSource {
      */
     private @Nullable Boolean invertRegex;
     /**
-     * @return ID of the project that owns the Cloud Source Repository. If omitted, the
-     * project ID requesting the build is assumed.
+     * @return Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
      * 
      */
     private @Nullable String projectId;
@@ -81,8 +80,7 @@ public final class FunctionBuildConfigSourceRepoSource {
         return Optional.ofNullable(this.invertRegex);
     }
     /**
-     * @return ID of the project that owns the Cloud Source Repository. If omitted, the
-     * project ID requesting the build is assumed.
+     * @return Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
      * 
      */
     public Optional<String> projectId() {

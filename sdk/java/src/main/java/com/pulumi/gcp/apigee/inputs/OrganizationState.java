@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.apigee.inputs.OrganizationPropertiesArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -112,14 +113,14 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Name of the Apigee organization.
+     * Name of the property.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Output only. Name of the Apigee organization.
+     * @return Name of the property.
      * 
      */
     public Optional<Output<String>> name() {
@@ -139,6 +140,23 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> projectId() {
         return Optional.ofNullable(this.projectId);
+    }
+
+    /**
+     * Properties defined in the Apigee organization profile.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="properties")
+    private @Nullable Output<OrganizationPropertiesArgs> properties;
+
+    /**
+     * @return Properties defined in the Apigee organization profile.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<OrganizationPropertiesArgs>> properties() {
+        return Optional.ofNullable(this.properties);
     }
 
     /**
@@ -234,6 +252,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         this.displayName = $.displayName;
         this.name = $.name;
         this.projectId = $.projectId;
+        this.properties = $.properties;
         this.retention = $.retention;
         this.runtimeDatabaseEncryptionKeyName = $.runtimeDatabaseEncryptionKeyName;
         this.runtimeType = $.runtimeType;
@@ -391,7 +410,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Output only. Name of the Apigee organization.
+         * @param name Name of the property.
          * 
          * @return builder
          * 
@@ -402,7 +421,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Output only. Name of the Apigee organization.
+         * @param name Name of the property.
          * 
          * @return builder
          * 
@@ -430,6 +449,29 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        /**
+         * @param properties Properties defined in the Apigee organization profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder properties(@Nullable Output<OrganizationPropertiesArgs> properties) {
+            $.properties = properties;
+            return this;
+        }
+
+        /**
+         * @param properties Properties defined in the Apigee organization profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder properties(OrganizationPropertiesArgs properties) {
+            return properties(Output.of(properties));
         }
 
         /**

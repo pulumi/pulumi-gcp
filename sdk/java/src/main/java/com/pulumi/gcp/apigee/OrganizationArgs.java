@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.apigee.inputs.OrganizationPropertiesArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -110,6 +111,23 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Properties defined in the Apigee organization profile.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="properties")
+    private @Nullable Output<OrganizationPropertiesArgs> properties;
+
+    /**
+     * @return Properties defined in the Apigee organization profile.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<OrganizationPropertiesArgs>> properties() {
+        return Optional.ofNullable(this.properties);
+    }
+
+    /**
      * Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
      * is not EVALUATION). It controls how long Organization data will be retained after the initial delete
      * operation completes. During this period, the Organization may be restored to its last known state.
@@ -183,6 +201,7 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.displayName = $.displayName;
         this.projectId = $.projectId;
+        this.properties = $.properties;
         this.retention = $.retention;
         this.runtimeDatabaseEncryptionKeyName = $.runtimeDatabaseEncryptionKeyName;
         this.runtimeType = $.runtimeType;
@@ -334,6 +353,29 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        /**
+         * @param properties Properties defined in the Apigee organization profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder properties(@Nullable Output<OrganizationPropertiesArgs> properties) {
+            $.properties = properties;
+            return this;
+        }
+
+        /**
+         * @param properties Properties defined in the Apigee organization profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder properties(OrganizationPropertiesArgs properties) {
+            return properties(Output.of(properties));
         }
 
         /**

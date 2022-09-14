@@ -64,6 +64,29 @@ public final class NotificationChannelState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * If true, the notification channel will be deleted regardless
+     * of its use in alert policies (the policies will be updated
+     * to remove the channel). If false, channels that are still
+     * referenced by an existing alerting policy will fail to be
+     * deleted in a delete operation.
+     * 
+     */
+    @Import(name="forceDelete")
+    private @Nullable Output<Boolean> forceDelete;
+
+    /**
+     * @return If true, the notification channel will be deleted regardless
+     * of its use in alert policies (the policies will be updated
+     * to remove the channel). If false, channels that are still
+     * referenced by an existing alerting policy will fail to be
+     * deleted in a delete operation.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDelete() {
+        return Optional.ofNullable(this.forceDelete);
+    }
+
+    /**
      * Configuration fields that define the channel and its behavior. The
      * permissible and required labels are specified in the
      * NotificationChannelDescriptor corresponding to the type field.
@@ -212,6 +235,7 @@ public final class NotificationChannelState extends com.pulumi.resources.Resourc
         this.description = $.description;
         this.displayName = $.displayName;
         this.enabled = $.enabled;
+        this.forceDelete = $.forceDelete;
         this.labels = $.labels;
         this.name = $.name;
         this.project = $.project;
@@ -300,6 +324,35 @@ public final class NotificationChannelState extends com.pulumi.resources.Resourc
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param forceDelete If true, the notification channel will be deleted regardless
+         * of its use in alert policies (the policies will be updated
+         * to remove the channel). If false, channels that are still
+         * referenced by an existing alerting policy will fail to be
+         * deleted in a delete operation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
+            $.forceDelete = forceDelete;
+            return this;
+        }
+
+        /**
+         * @param forceDelete If true, the notification channel will be deleted regardless
+         * of its use in alert policies (the policies will be updated
+         * to remove the channel). If false, channels that are still
+         * referenced by an existing alerting policy will fail to be
+         * deleted in a delete operation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(Boolean forceDelete) {
+            return forceDelete(Output.of(forceDelete));
         }
 
         /**

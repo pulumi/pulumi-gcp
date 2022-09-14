@@ -49,12 +49,7 @@ public final class ClusterNodeConfig {
      */
     private @Nullable ClusterNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
     /**
-     * @return Parameters for the Google Container Filesystem (GCFS).
-     * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version` from GKE versions 1.19 or later to use it.
-     * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-     * A `machine_type` that has more than 16 GiB of memory is also recommended.
-     * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
-     * Structure is documented below.
+     * @return The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodeConfigGcfsConfig gcfsConfig;
@@ -227,12 +222,7 @@ public final class ClusterNodeConfig {
         return Optional.ofNullable(this.ephemeralStorageConfig);
     }
     /**
-     * @return Parameters for the Google Container Filesystem (GCFS).
-     * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version` from GKE versions 1.19 or later to use it.
-     * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-     * A `machine_type` that has more than 16 GiB of memory is also recommended.
-     * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
-     * Structure is documented below.
+     * @return The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
      * 
      */
     public Optional<ClusterNodeConfigGcfsConfig> gcfsConfig() {

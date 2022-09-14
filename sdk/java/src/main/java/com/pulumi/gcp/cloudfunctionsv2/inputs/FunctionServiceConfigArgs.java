@@ -5,9 +5,12 @@ package com.pulumi.gcp.cloudfunctionsv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigSecretEnvironmentVariableArgs;
+import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigSecretVolumeArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -138,6 +141,40 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Secret environment variables configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="secretEnvironmentVariables")
+    private @Nullable Output<List<FunctionServiceConfigSecretEnvironmentVariableArgs>> secretEnvironmentVariables;
+
+    /**
+     * @return Secret environment variables configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<FunctionServiceConfigSecretEnvironmentVariableArgs>>> secretEnvironmentVariables() {
+        return Optional.ofNullable(this.secretEnvironmentVariables);
+    }
+
+    /**
+     * Secret volumes configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="secretVolumes")
+    private @Nullable Output<List<FunctionServiceConfigSecretVolumeArgs>> secretVolumes;
+
+    /**
+     * @return Secret volumes configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<FunctionServiceConfigSecretVolumeArgs>>> secretVolumes() {
+        return Optional.ofNullable(this.secretVolumes);
+    }
+
+    /**
      * Name of the service associated with a Function.
      * 
      */
@@ -245,6 +282,8 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         this.ingressSettings = $.ingressSettings;
         this.maxInstanceCount = $.maxInstanceCount;
         this.minInstanceCount = $.minInstanceCount;
+        this.secretEnvironmentVariables = $.secretEnvironmentVariables;
+        this.secretVolumes = $.secretVolumes;
         this.service = $.service;
         this.serviceAccountEmail = $.serviceAccountEmail;
         this.timeoutSeconds = $.timeoutSeconds;
@@ -430,6 +469,74 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
          */
         public Builder minInstanceCount(Integer minInstanceCount) {
             return minInstanceCount(Output.of(minInstanceCount));
+        }
+
+        /**
+         * @param secretEnvironmentVariables Secret environment variables configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretEnvironmentVariables(@Nullable Output<List<FunctionServiceConfigSecretEnvironmentVariableArgs>> secretEnvironmentVariables) {
+            $.secretEnvironmentVariables = secretEnvironmentVariables;
+            return this;
+        }
+
+        /**
+         * @param secretEnvironmentVariables Secret environment variables configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretEnvironmentVariables(List<FunctionServiceConfigSecretEnvironmentVariableArgs> secretEnvironmentVariables) {
+            return secretEnvironmentVariables(Output.of(secretEnvironmentVariables));
+        }
+
+        /**
+         * @param secretEnvironmentVariables Secret environment variables configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretEnvironmentVariables(FunctionServiceConfigSecretEnvironmentVariableArgs... secretEnvironmentVariables) {
+            return secretEnvironmentVariables(List.of(secretEnvironmentVariables));
+        }
+
+        /**
+         * @param secretVolumes Secret volumes configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretVolumes(@Nullable Output<List<FunctionServiceConfigSecretVolumeArgs>> secretVolumes) {
+            $.secretVolumes = secretVolumes;
+            return this;
+        }
+
+        /**
+         * @param secretVolumes Secret volumes configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretVolumes(List<FunctionServiceConfigSecretVolumeArgs> secretVolumes) {
+            return secretVolumes(Output.of(secretVolumes));
+        }
+
+        /**
+         * @param secretVolumes Secret volumes configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretVolumes(FunctionServiceConfigSecretVolumeArgs... secretVolumes) {
+            return secretVolumes(List.of(secretVolumes));
         }
 
         /**

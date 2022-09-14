@@ -50,6 +50,9 @@ public final class Config {
     public Optional<String> bigQueryCustomEndpoint() {
         return Codegen.stringProp("bigQueryCustomEndpoint").config(config).get();
     }
+    public Optional<String> bigqueryAnalyticsHubCustomEndpoint() {
+        return Codegen.stringProp("bigqueryAnalyticsHubCustomEndpoint").config(config).get();
+    }
     public Optional<String> bigqueryConnectionCustomEndpoint() {
         return Codegen.stringProp("bigqueryConnectionCustomEndpoint").config(config).get();
     }
@@ -157,6 +160,9 @@ public final class Config {
     }
     public Optional<String> datastoreCustomEndpoint() {
         return Codegen.stringProp("datastoreCustomEndpoint").config(config).get();
+    }
+    public Optional<String> datastreamCustomEndpoint() {
+        return Codegen.stringProp("datastreamCustomEndpoint").config(config).get();
     }
     public Optional<String> deploymentManagerCustomEndpoint() {
         return Codegen.stringProp("deploymentManagerCustomEndpoint").config(config).get();

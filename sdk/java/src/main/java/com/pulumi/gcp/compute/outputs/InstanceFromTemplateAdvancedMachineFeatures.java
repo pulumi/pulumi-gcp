@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 public final class InstanceFromTemplateAdvancedMachineFeatures {
     private @Nullable Boolean enableNestedVirtualization;
     private @Nullable Integer threadsPerCore;
+    private @Nullable Integer visibleCoreCount;
 
     private InstanceFromTemplateAdvancedMachineFeatures() {}
     public Optional<Boolean> enableNestedVirtualization() {
@@ -21,6 +22,9 @@ public final class InstanceFromTemplateAdvancedMachineFeatures {
     }
     public Optional<Integer> threadsPerCore() {
         return Optional.ofNullable(this.threadsPerCore);
+    }
+    public Optional<Integer> visibleCoreCount() {
+        return Optional.ofNullable(this.visibleCoreCount);
     }
 
     public static Builder builder() {
@@ -34,11 +38,13 @@ public final class InstanceFromTemplateAdvancedMachineFeatures {
     public static final class Builder {
         private @Nullable Boolean enableNestedVirtualization;
         private @Nullable Integer threadsPerCore;
+        private @Nullable Integer visibleCoreCount;
         public Builder() {}
         public Builder(InstanceFromTemplateAdvancedMachineFeatures defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableNestedVirtualization = defaults.enableNestedVirtualization;
     	      this.threadsPerCore = defaults.threadsPerCore;
+    	      this.visibleCoreCount = defaults.visibleCoreCount;
         }
 
         @CustomType.Setter
@@ -51,10 +57,16 @@ public final class InstanceFromTemplateAdvancedMachineFeatures {
             this.threadsPerCore = threadsPerCore;
             return this;
         }
+        @CustomType.Setter
+        public Builder visibleCoreCount(@Nullable Integer visibleCoreCount) {
+            this.visibleCoreCount = visibleCoreCount;
+            return this;
+        }
         public InstanceFromTemplateAdvancedMachineFeatures build() {
             final var o = new InstanceFromTemplateAdvancedMachineFeatures();
             o.enableNestedVirtualization = enableNestedVirtualization;
             o.threadsPerCore = threadsPerCore;
+            o.visibleCoreCount = visibleCoreCount;
             return o;
         }
     }

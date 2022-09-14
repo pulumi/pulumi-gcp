@@ -70,6 +70,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var basic = new NotificationChannel(&#34;basic&#34;, NotificationChannelArgs.builder()        
  *             .displayName(&#34;Test Notification Channel&#34;)
+ *             .forceDelete(false)
  *             .labels(Map.of(&#34;email_address&#34;, &#34;fake_email@blahblah.com&#34;))
  *             .type(&#34;email&#34;)
  *             .build());
@@ -165,6 +166,28 @@ public class NotificationChannel extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
+    }
+    /**
+     * If true, the notification channel will be deleted regardless
+     * of its use in alert policies (the policies will be updated
+     * to remove the channel). If false, channels that are still
+     * referenced by an existing alerting policy will fail to be
+     * deleted in a delete operation.
+     * 
+     */
+    @Export(name="forceDelete", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> forceDelete;
+
+    /**
+     * @return If true, the notification channel will be deleted regardless
+     * of its use in alert policies (the policies will be updated
+     * to remove the channel). If false, channels that are still
+     * referenced by an existing alerting policy will fail to be
+     * deleted in a delete operation.
+     * 
+     */
+    public Output<Optional<Boolean>> forceDelete() {
+        return Codegen.optional(this.forceDelete);
     }
     /**
      * Configuration fields that define the channel and its behavior. The

@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataproc.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity;
+import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -56,6 +57,11 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
      * 
      */
     private @Nullable List<String> serviceAccountScopes;
+    /**
+     * @return Optional. Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+     * 
+     */
+    private @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig shieldedInstanceConfig;
     /**
      * @return Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
      * 
@@ -130,6 +136,13 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         return this.serviceAccountScopes == null ? List.of() : this.serviceAccountScopes;
     }
     /**
+     * @return Optional. Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+     * 
+     */
+    public Optional<WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig> shieldedInstanceConfig() {
+        return Optional.ofNullable(this.shieldedInstanceConfig);
+    }
+    /**
      * @return Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
      * 
      */
@@ -168,6 +181,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         private @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity reservationAffinity;
         private @Nullable String serviceAccount;
         private @Nullable List<String> serviceAccountScopes;
+        private @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig shieldedInstanceConfig;
         private @Nullable String subnetwork;
         private @Nullable List<String> tags;
         private @Nullable String zone;
@@ -182,6 +196,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     	      this.reservationAffinity = defaults.reservationAffinity;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.serviceAccountScopes = defaults.serviceAccountScopes;
+    	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
     	      this.subnetwork = defaults.subnetwork;
     	      this.tags = defaults.tags;
     	      this.zone = defaults.zone;
@@ -231,6 +246,11 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
             return serviceAccountScopes(List.of(serviceAccountScopes));
         }
         @CustomType.Setter
+        public Builder shieldedInstanceConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig shieldedInstanceConfig) {
+            this.shieldedInstanceConfig = shieldedInstanceConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder subnetwork(@Nullable String subnetwork) {
             this.subnetwork = subnetwork;
             return this;
@@ -258,6 +278,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
             o.reservationAffinity = reservationAffinity;
             o.serviceAccount = serviceAccount;
             o.serviceAccountScopes = serviceAccountScopes;
+            o.shieldedInstanceConfig = shieldedInstanceConfig;
             o.subnetwork = subnetwork;
             o.tags = tags;
             o.zone = zone;

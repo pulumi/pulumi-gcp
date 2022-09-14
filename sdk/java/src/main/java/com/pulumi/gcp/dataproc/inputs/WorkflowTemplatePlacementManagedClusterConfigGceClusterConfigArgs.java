@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs;
+import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -141,6 +142,21 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     }
 
     /**
+     * Optional. Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+     * 
+     */
+    @Import(name="shieldedInstanceConfig")
+    private @Nullable Output<WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs> shieldedInstanceConfig;
+
+    /**
+     * @return Optional. Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+     * 
+     */
+    public Optional<Output<WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs>> shieldedInstanceConfig() {
+        return Optional.ofNullable(this.shieldedInstanceConfig);
+    }
+
+    /**
      * Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
      * 
      */
@@ -196,6 +212,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         this.reservationAffinity = $.reservationAffinity;
         this.serviceAccount = $.serviceAccount;
         this.serviceAccountScopes = $.serviceAccountScopes;
+        this.shieldedInstanceConfig = $.shieldedInstanceConfig;
         this.subnetwork = $.subnetwork;
         this.tags = $.tags;
         this.zone = $.zone;
@@ -395,6 +412,27 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
          */
         public Builder serviceAccountScopes(String... serviceAccountScopes) {
             return serviceAccountScopes(List.of(serviceAccountScopes));
+        }
+
+        /**
+         * @param shieldedInstanceConfig Optional. Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shieldedInstanceConfig(@Nullable Output<WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs> shieldedInstanceConfig) {
+            $.shieldedInstanceConfig = shieldedInstanceConfig;
+            return this;
+        }
+
+        /**
+         * @param shieldedInstanceConfig Optional. Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shieldedInstanceConfig(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs shieldedInstanceConfig) {
+            return shieldedInstanceConfig(Output.of(shieldedInstanceConfig));
         }
 
         /**

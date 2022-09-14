@@ -103,6 +103,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.bigQueryCustomEndpoint);
     }
 
+    @Import(name="bigqueryAnalyticsHubCustomEndpoint")
+    private @Nullable Output<String> bigqueryAnalyticsHubCustomEndpoint;
+
+    public Optional<Output<String>> bigqueryAnalyticsHubCustomEndpoint() {
+        return Optional.ofNullable(this.bigqueryAnalyticsHubCustomEndpoint);
+    }
+
     @Import(name="bigqueryConnectionCustomEndpoint")
     private @Nullable Output<String> bigqueryConnectionCustomEndpoint;
 
@@ -353,6 +360,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> datastoreCustomEndpoint() {
         return Optional.ofNullable(this.datastoreCustomEndpoint);
+    }
+
+    @Import(name="datastreamCustomEndpoint")
+    private @Nullable Output<String> datastreamCustomEndpoint;
+
+    public Optional<Output<String>> datastreamCustomEndpoint() {
+        return Optional.ofNullable(this.datastreamCustomEndpoint);
     }
 
     @Import(name="deploymentManagerCustomEndpoint")
@@ -860,6 +874,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.assuredWorkloadsCustomEndpoint = $.assuredWorkloadsCustomEndpoint;
         this.batching = $.batching;
         this.bigQueryCustomEndpoint = $.bigQueryCustomEndpoint;
+        this.bigqueryAnalyticsHubCustomEndpoint = $.bigqueryAnalyticsHubCustomEndpoint;
         this.bigqueryConnectionCustomEndpoint = $.bigqueryConnectionCustomEndpoint;
         this.bigqueryDataTransferCustomEndpoint = $.bigqueryDataTransferCustomEndpoint;
         this.bigqueryReservationCustomEndpoint = $.bigqueryReservationCustomEndpoint;
@@ -896,6 +911,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.dataprocCustomEndpoint = $.dataprocCustomEndpoint;
         this.dataprocMetastoreCustomEndpoint = $.dataprocMetastoreCustomEndpoint;
         this.datastoreCustomEndpoint = $.datastoreCustomEndpoint;
+        this.datastreamCustomEndpoint = $.datastreamCustomEndpoint;
         this.deploymentManagerCustomEndpoint = $.deploymentManagerCustomEndpoint;
         this.dialogflowCustomEndpoint = $.dialogflowCustomEndpoint;
         this.dialogflowCxCustomEndpoint = $.dialogflowCxCustomEndpoint;
@@ -1092,6 +1108,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder bigQueryCustomEndpoint(String bigQueryCustomEndpoint) {
             return bigQueryCustomEndpoint(Output.of(bigQueryCustomEndpoint));
+        }
+
+        public Builder bigqueryAnalyticsHubCustomEndpoint(@Nullable Output<String> bigqueryAnalyticsHubCustomEndpoint) {
+            $.bigqueryAnalyticsHubCustomEndpoint = bigqueryAnalyticsHubCustomEndpoint;
+            return this;
+        }
+
+        public Builder bigqueryAnalyticsHubCustomEndpoint(String bigqueryAnalyticsHubCustomEndpoint) {
+            return bigqueryAnalyticsHubCustomEndpoint(Output.of(bigqueryAnalyticsHubCustomEndpoint));
         }
 
         public Builder bigqueryConnectionCustomEndpoint(@Nullable Output<String> bigqueryConnectionCustomEndpoint) {
@@ -1416,6 +1441,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder datastoreCustomEndpoint(String datastoreCustomEndpoint) {
             return datastoreCustomEndpoint(Output.of(datastoreCustomEndpoint));
+        }
+
+        public Builder datastreamCustomEndpoint(@Nullable Output<String> datastreamCustomEndpoint) {
+            $.datastreamCustomEndpoint = datastreamCustomEndpoint;
+            return this;
+        }
+
+        public Builder datastreamCustomEndpoint(String datastreamCustomEndpoint) {
+            return datastreamCustomEndpoint(Output.of(datastreamCustomEndpoint));
         }
 
         public Builder deploymentManagerCustomEndpoint(@Nullable Output<String> deploymentManagerCustomEndpoint) {

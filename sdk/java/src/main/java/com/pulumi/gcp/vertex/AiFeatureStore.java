@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vertex.AiFeatureStoreArgs;
 import com.pulumi.gcp.vertex.inputs.AiFeatureStoreState;
+import com.pulumi.gcp.vertex.outputs.AiFeatureStoreEncryptionSpec;
 import com.pulumi.gcp.vertex.outputs.AiFeatureStoreOnlineServingConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -29,6 +30,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.AiFeatureStore;
  * import com.pulumi.gcp.vertex.AiFeatureStoreArgs;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreOnlineServingConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEncryptionSpecArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -48,6 +50,9 @@ import javax.annotation.Nullable;
  *             .region(&#34;us-central1&#34;)
  *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
  *                 .fixedNodeCount(2)
+ *                 .build())
+ *             .encryptionSpec(AiFeatureStoreEncryptionSpecArgs.builder()
+ *                 .kmsKeyName(&#34;kms-name&#34;)
  *                 .build())
  *             .forceDestroy(true)
  *             .build(), CustomResourceOptions.builder()
@@ -96,6 +101,22 @@ public class AiFeatureStore extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * If set, both of the online and offline data storage will be secured by this key.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="encryptionSpec", type=AiFeatureStoreEncryptionSpec.class, parameters={})
+    private Output</* @Nullable */ AiFeatureStoreEncryptionSpec> encryptionSpec;
+
+    /**
+     * @return If set, both of the online and offline data storage will be secured by this key.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AiFeatureStoreEncryptionSpec>> encryptionSpec() {
+        return Codegen.optional(this.encryptionSpec);
     }
     /**
      * Used to perform consistent read-modify-write updates.

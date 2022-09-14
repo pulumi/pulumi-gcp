@@ -18,6 +18,7 @@ public final class GetNotificationChannelResult {
     private String description;
     private @Nullable String displayName;
     private Boolean enabled;
+    private Boolean forceDelete;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -40,6 +41,9 @@ public final class GetNotificationChannelResult {
     }
     public Boolean enabled() {
         return this.enabled;
+    }
+    public Boolean forceDelete() {
+        return this.forceDelete;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -82,6 +86,7 @@ public final class GetNotificationChannelResult {
         private String description;
         private @Nullable String displayName;
         private Boolean enabled;
+        private Boolean forceDelete;
         private String id;
         private @Nullable Map<String,String> labels;
         private String name;
@@ -96,6 +101,7 @@ public final class GetNotificationChannelResult {
     	      this.description = defaults.description;
     	      this.displayName = defaults.displayName;
     	      this.enabled = defaults.enabled;
+    	      this.forceDelete = defaults.forceDelete;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
@@ -119,6 +125,11 @@ public final class GetNotificationChannelResult {
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder forceDelete(Boolean forceDelete) {
+            this.forceDelete = Objects.requireNonNull(forceDelete);
             return this;
         }
         @CustomType.Setter
@@ -169,6 +180,7 @@ public final class GetNotificationChannelResult {
             o.description = description;
             o.displayName = displayName;
             o.enabled = enabled;
+            o.forceDelete = forceDelete;
             o.id = id;
             o.labels = labels;
             o.name = name;

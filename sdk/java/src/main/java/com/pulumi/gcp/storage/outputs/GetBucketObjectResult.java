@@ -50,6 +50,10 @@ public final class GetBucketObjectResult {
     private String crc32c;
     private List<GetBucketObjectCustomerEncryption> customerEncryptions;
     private String detectMd5hash;
+    /**
+     * @return (Computed) Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold&#39;s release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
+     * 
+     */
     private Boolean eventBasedHold;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -83,6 +87,10 @@ public final class GetBucketObjectResult {
      * 
      */
     private String storageClass;
+    /**
+     * @return (Computed) Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
+     * 
+     */
     private Boolean temporaryHold;
 
     private GetBucketObjectResult() {}
@@ -141,6 +149,10 @@ public final class GetBucketObjectResult {
     public String detectMd5hash() {
         return this.detectMd5hash;
     }
+    /**
+     * @return (Computed) Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold&#39;s release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
+     * 
+     */
     public Boolean eventBasedHold() {
         return this.eventBasedHold;
     }
@@ -196,6 +208,10 @@ public final class GetBucketObjectResult {
     public String storageClass() {
         return this.storageClass;
     }
+    /**
+     * @return (Computed) Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
+     * 
+     */
     public Boolean temporaryHold() {
         return this.temporaryHold;
     }

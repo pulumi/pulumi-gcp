@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEncryptionSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiFeatureStoreOnlineServingConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -17,6 +18,23 @@ import javax.annotation.Nullable;
 public final class AiFeatureStoreArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiFeatureStoreArgs Empty = new AiFeatureStoreArgs();
+
+    /**
+     * If set, both of the online and offline data storage will be secured by this key.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="encryptionSpec")
+    private @Nullable Output<AiFeatureStoreEncryptionSpecArgs> encryptionSpec;
+
+    /**
+     * @return If set, both of the online and offline data storage will be secured by this key.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiFeatureStoreEncryptionSpecArgs>> encryptionSpec() {
+        return Optional.ofNullable(this.encryptionSpec);
+    }
 
     /**
      * If set to true, any EntityTypes and Features for this Featurestore will also be deleted
@@ -115,6 +133,7 @@ public final class AiFeatureStoreArgs extends com.pulumi.resources.ResourceArgs 
     private AiFeatureStoreArgs() {}
 
     private AiFeatureStoreArgs(AiFeatureStoreArgs $) {
+        this.encryptionSpec = $.encryptionSpec;
         this.forceDestroy = $.forceDestroy;
         this.labels = $.labels;
         this.name = $.name;
@@ -139,6 +158,29 @@ public final class AiFeatureStoreArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder(AiFeatureStoreArgs defaults) {
             $ = new AiFeatureStoreArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param encryptionSpec If set, both of the online and offline data storage will be secured by this key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(@Nullable Output<AiFeatureStoreEncryptionSpecArgs> encryptionSpec) {
+            $.encryptionSpec = encryptionSpec;
+            return this;
+        }
+
+        /**
+         * @param encryptionSpec If set, both of the online and offline data storage will be secured by this key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(AiFeatureStoreEncryptionSpecArgs encryptionSpec) {
+            return encryptionSpec(Output.of(encryptionSpec));
         }
 
         /**

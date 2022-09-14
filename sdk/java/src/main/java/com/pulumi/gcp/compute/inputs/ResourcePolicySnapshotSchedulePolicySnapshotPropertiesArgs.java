@@ -18,6 +18,25 @@ public final class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs ex
     public static final ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs Empty = new ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs();
 
     /**
+     * Creates the new snapshot in the snapshot chain labeled with the
+     * specified name. The chain name must be 1-63 characters long and comply
+     * with RFC1035.
+     * 
+     */
+    @Import(name="chainName")
+    private @Nullable Output<String> chainName;
+
+    /**
+     * @return Creates the new snapshot in the snapshot chain labeled with the
+     * specified name. The chain name must be 1-63 characters long and comply
+     * with RFC1035.
+     * 
+     */
+    public Optional<Output<String>> chainName() {
+        return Optional.ofNullable(this.chainName);
+    }
+
+    /**
      * Whether to perform a &#39;guest aware&#39; snapshot.
      * 
      */
@@ -67,6 +86,7 @@ public final class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs ex
     private ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs() {}
 
     private ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs(ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs $) {
+        this.chainName = $.chainName;
         this.guestFlush = $.guestFlush;
         this.labels = $.labels;
         this.storageLocations = $.storageLocations;
@@ -88,6 +108,31 @@ public final class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs ex
 
         public Builder(ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs defaults) {
             $ = new ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param chainName Creates the new snapshot in the snapshot chain labeled with the
+         * specified name. The chain name must be 1-63 characters long and comply
+         * with RFC1035.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder chainName(@Nullable Output<String> chainName) {
+            $.chainName = chainName;
+            return this;
+        }
+
+        /**
+         * @param chainName Creates the new snapshot in the snapshot chain labeled with the
+         * specified name. The chain name must be 1-63 characters long and comply
+         * with RFC1035.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder chainName(String chainName) {
+            return chainName(Output.of(chainName));
         }
 
         /**

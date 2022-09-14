@@ -46,11 +46,27 @@ public final class InstanceAdvancedMachineFeaturesArgs extends com.pulumi.resour
         return Optional.ofNullable(this.threadsPerCore);
     }
 
+    /**
+     * ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+     * 
+     */
+    @Import(name="visibleCoreCount")
+    private @Nullable Output<Integer> visibleCoreCount;
+
+    /**
+     * @return ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+     * 
+     */
+    public Optional<Output<Integer>> visibleCoreCount() {
+        return Optional.ofNullable(this.visibleCoreCount);
+    }
+
     private InstanceAdvancedMachineFeaturesArgs() {}
 
     private InstanceAdvancedMachineFeaturesArgs(InstanceAdvancedMachineFeaturesArgs $) {
         this.enableNestedVirtualization = $.enableNestedVirtualization;
         this.threadsPerCore = $.threadsPerCore;
+        this.visibleCoreCount = $.visibleCoreCount;
     }
 
     public static Builder builder() {
@@ -111,6 +127,27 @@ public final class InstanceAdvancedMachineFeaturesArgs extends com.pulumi.resour
          */
         public Builder threadsPerCore(Integer threadsPerCore) {
             return threadsPerCore(Output.of(threadsPerCore));
+        }
+
+        /**
+         * @param visibleCoreCount ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder visibleCoreCount(@Nullable Output<Integer> visibleCoreCount) {
+            $.visibleCoreCount = visibleCoreCount;
+            return this;
+        }
+
+        /**
+         * @param visibleCoreCount ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder visibleCoreCount(Integer visibleCoreCount) {
+            return visibleCoreCount(Output.of(visibleCoreCount));
         }
 
         public InstanceAdvancedMachineFeaturesArgs build() {

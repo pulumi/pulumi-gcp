@@ -22,6 +22,11 @@ public final class InstanceAdvancedMachineFeatures {
      * 
      */
     private @Nullable Integer threadsPerCore;
+    /**
+     * @return ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+     * 
+     */
+    private @Nullable Integer visibleCoreCount;
 
     private InstanceAdvancedMachineFeatures() {}
     /**
@@ -38,6 +43,13 @@ public final class InstanceAdvancedMachineFeatures {
     public Optional<Integer> threadsPerCore() {
         return Optional.ofNullable(this.threadsPerCore);
     }
+    /**
+     * @return ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+     * 
+     */
+    public Optional<Integer> visibleCoreCount() {
+        return Optional.ofNullable(this.visibleCoreCount);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -50,11 +62,13 @@ public final class InstanceAdvancedMachineFeatures {
     public static final class Builder {
         private @Nullable Boolean enableNestedVirtualization;
         private @Nullable Integer threadsPerCore;
+        private @Nullable Integer visibleCoreCount;
         public Builder() {}
         public Builder(InstanceAdvancedMachineFeatures defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableNestedVirtualization = defaults.enableNestedVirtualization;
     	      this.threadsPerCore = defaults.threadsPerCore;
+    	      this.visibleCoreCount = defaults.visibleCoreCount;
         }
 
         @CustomType.Setter
@@ -67,10 +81,16 @@ public final class InstanceAdvancedMachineFeatures {
             this.threadsPerCore = threadsPerCore;
             return this;
         }
+        @CustomType.Setter
+        public Builder visibleCoreCount(@Nullable Integer visibleCoreCount) {
+            this.visibleCoreCount = visibleCoreCount;
+            return this;
+        }
         public InstanceAdvancedMachineFeatures build() {
             final var o = new InstanceAdvancedMachineFeatures();
             o.enableNestedVirtualization = enableNestedVirtualization;
             o.threadsPerCore = threadsPerCore;
+            o.visibleCoreCount = visibleCoreCount;
             return o;
         }
     }
