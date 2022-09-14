@@ -13,6 +13,14 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Creates the new snapshot in the snapshot chain labeled with the
+        /// specified name. The chain name must be 1-63 characters long and comply
+        /// with RFC1035.
+        /// </summary>
+        [Input("chainName")]
+        public Input<string>? ChainName { get; set; }
+
+        /// <summary>
         /// Whether to perform a 'guest aware' snapshot.
         /// </summary>
         [Input("guestFlush")]

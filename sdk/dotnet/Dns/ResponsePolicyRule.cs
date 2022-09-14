@@ -104,6 +104,12 @@ namespace Pulumi.Gcp.Dns
     public partial class ResponsePolicyRule : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+        /// </summary>
+        [Output("behavior")]
+        public Output<string?> Behavior { get; private set; } = null!;
+
+        /// <summary>
         /// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
         /// </summary>
         [Output("dnsName")]
@@ -183,6 +189,12 @@ namespace Pulumi.Gcp.Dns
     public sealed class ResponsePolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+        /// </summary>
+        [Input("behavior")]
+        public Input<string>? Behavior { get; set; }
+
+        /// <summary>
         /// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
         /// </summary>
         [Input("dnsName", required: true)]
@@ -223,6 +235,12 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class ResponsePolicyRuleState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+        /// </summary>
+        [Input("behavior")]
+        public Input<string>? Behavior { get; set; }
+
         /// <summary>
         /// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
         /// </summary>

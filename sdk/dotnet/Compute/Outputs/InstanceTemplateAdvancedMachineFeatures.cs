@@ -18,18 +18,25 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool? EnableNestedVirtualization;
         /// <summary>
-        /// he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        /// The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
         /// </summary>
         public readonly int? ThreadsPerCore;
+        /// <summary>
+        /// ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+        /// </summary>
+        public readonly int? VisibleCoreCount;
 
         [OutputConstructor]
         private InstanceTemplateAdvancedMachineFeatures(
             bool? enableNestedVirtualization,
 
-            int? threadsPerCore)
+            int? threadsPerCore,
+
+            int? visibleCoreCount)
         {
             EnableNestedVirtualization = enableNestedVirtualization;
             ThreadsPerCore = threadsPerCore;
+            VisibleCoreCount = visibleCoreCount;
         }
     }
 }

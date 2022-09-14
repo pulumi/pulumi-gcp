@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("threadsPerCore")]
         public Input<int>? ThreadsPerCore { get; set; }
 
+        [Input("visibleCoreCount")]
+        public Input<int>? VisibleCoreCount { get; set; }
+
         public InstanceFromMachineImageAdvancedMachineFeaturesArgs()
         {
         }

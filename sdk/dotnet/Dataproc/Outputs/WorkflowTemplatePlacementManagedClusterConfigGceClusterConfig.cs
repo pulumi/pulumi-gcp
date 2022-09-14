@@ -46,6 +46,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ServiceAccountScopes;
         /// <summary>
+        /// Optional. Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+        /// </summary>
+        public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig? ShieldedInstanceConfig;
+        /// <summary>
         /// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
         /// </summary>
         public readonly string? Subnetwork;
@@ -76,6 +80,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             ImmutableArray<string> serviceAccountScopes,
 
+            Outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig? shieldedInstanceConfig,
+
             string? subnetwork,
 
             ImmutableArray<string> tags,
@@ -90,6 +96,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             ReservationAffinity = reservationAffinity;
             ServiceAccount = serviceAccount;
             ServiceAccountScopes = serviceAccountScopes;
+            ShieldedInstanceConfig = shieldedInstanceConfig;
             Subnetwork = subnetwork;
             Tags = tags;
             Zone = zone;

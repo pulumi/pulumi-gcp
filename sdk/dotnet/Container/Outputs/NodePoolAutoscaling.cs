@@ -14,23 +14,50 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class NodePoolAutoscaling
     {
         /// <summary>
-        /// Maximum number of nodes in the NodePool. Must be &gt;= min_node_count.
+        /// Location policy specifies the algorithm used when scaling-up the node pool. \
+        /// "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones. \
+        /// "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+        /// and reduce preemption risk for Spot VMs.
         /// </summary>
-        public readonly int MaxNodeCount;
+        public readonly string? LocationPolicy;
         /// <summary>
-        /// Minimum number of nodes in the NodePool. Must be &gt;=0 and
-        /// &lt;= `max_node_count`.
+        /// Maximum number of nodes per zone in the NodePool.
+        /// Must be &gt;= min_node_count. Cannot be used with total limits.
         /// </summary>
-        public readonly int MinNodeCount;
+        public readonly int? MaxNodeCount;
+        /// <summary>
+        /// Minimum number of nodes per zone in the NodePool.
+        /// Must be &gt;=0 and &lt;= `max_node_count`. Cannot be used with total limits.
+        /// </summary>
+        public readonly int? MinNodeCount;
+        /// <summary>
+        /// Total maximum number of nodes in the NodePool.
+        /// Must be &gt;= total_min_node_count. Cannot be used with per zone limits.
+        /// </summary>
+        public readonly int? TotalMaxNodeCount;
+        /// <summary>
+        /// Total minimum number of nodes in the NodePool.
+        /// Must be &gt;=0 and &lt;= `total_max_node_count`. Cannot be used with per zone limits.
+        /// </summary>
+        public readonly int? TotalMinNodeCount;
 
         [OutputConstructor]
         private NodePoolAutoscaling(
-            int maxNodeCount,
+            string? locationPolicy,
 
-            int minNodeCount)
+            int? maxNodeCount,
+
+            int? minNodeCount,
+
+            int? totalMaxNodeCount,
+
+            int? totalMinNodeCount)
         {
+            LocationPolicy = locationPolicy;
             MaxNodeCount = maxNodeCount;
             MinNodeCount = minNodeCount;
+            TotalMaxNodeCount = totalMaxNodeCount;
+            TotalMinNodeCount = totalMinNodeCount;
         }
     }
 }

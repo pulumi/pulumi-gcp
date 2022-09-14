@@ -104,9 +104,7 @@ namespace Pulumi.Gcp.Storage
         public Output<string?> DetectMd5hash { get; private set; } = null!;
 
         /// <summary>
-        /// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-        /// signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
-        /// will be subject to bucket-level retention (if any).
+        /// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         /// </summary>
         [Output("eventBasedHold")]
         public Output<bool?> EventBasedHold { get; private set; } = null!;
@@ -170,8 +168,7 @@ namespace Pulumi.Gcp.Storage
         public Output<string> StorageClass { get; private set; } = null!;
 
         /// <summary>
-        /// Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-        /// overwrites.
+        /// Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
         /// </summary>
         [Output("temporaryHold")]
         public Output<bool?> TemporaryHold { get; private set; } = null!;
@@ -276,9 +273,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? DetectMd5hash { get; set; }
 
         /// <summary>
-        /// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-        /// signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
-        /// will be subject to bucket-level retention (if any).
+        /// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         /// </summary>
         [Input("eventBasedHold")]
         public Input<bool>? EventBasedHold { get; set; }
@@ -323,8 +318,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? StorageClass { get; set; }
 
         /// <summary>
-        /// Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-        /// overwrites.
+        /// Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
         /// </summary>
         [Input("temporaryHold")]
         public Input<bool>? TemporaryHold { get; set; }
@@ -397,9 +391,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? DetectMd5hash { get; set; }
 
         /// <summary>
-        /// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-        /// signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
-        /// will be subject to bucket-level retention (if any).
+        /// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         /// </summary>
         [Input("eventBasedHold")]
         public Input<bool>? EventBasedHold { get; set; }
@@ -469,8 +461,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? StorageClass { get; set; }
 
         /// <summary>
-        /// Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-        /// overwrites.
+        /// Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
         /// </summary>
         [Input("temporaryHold")]
         public Input<bool>? TemporaryHold { get; set; }

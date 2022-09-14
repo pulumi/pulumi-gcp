@@ -54,11 +54,32 @@ namespace Pulumi.Gcp.AppEngine
     ///         DisableDependentServices = false,
     ///     });
     /// 
+    ///     var customServiceAccount = new Gcp.ServiceAccount.Account("customServiceAccount", new()
+    ///     {
+    ///         Project = service.Project,
+    ///         AccountId = "my-account",
+    ///         DisplayName = "Custom Service Account",
+    ///     });
+    /// 
     ///     var gaeApi = new Gcp.Projects.IAMMember("gaeApi", new()
     ///     {
     ///         Project = service.Project,
     ///         Role = "roles/compute.networkUser",
-    ///         Member = myProject.Number.Apply(number =&gt; $"serviceAccount:service-{number}@gae-api-prod.google.com.iam.gserviceaccount.com"),
+    ///         Member = customServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var logsWriter = new Gcp.Projects.IAMMember("logsWriter", new()
+    ///     {
+    ///         Project = service.Project,
+    ///         Role = "roles/logging.logWriter",
+    ///         Member = customServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var storageViewer = new Gcp.Projects.IAMMember("storageViewer", new()
+    ///     {
+    ///         Project = service.Project,
+    ///         Role = "roles/storage.objectViewer",
+    ///         Member = customServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
@@ -131,6 +152,7 @@ namespace Pulumi.Gcp.AppEngine
     ///             },
     ///         },
     ///         NoopOnDestroy = true,
+    ///         ServiceAccount = customServiceAccount.Email,
     ///     });
     /// 
     /// });
@@ -330,6 +352,13 @@ namespace Pulumi.Gcp.AppEngine
         /// </summary>
         [Output("service")]
         public Output<string> Service { get; private set; } = null!;
+
+        /// <summary>
+        /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+        /// default if this field is neither provided in app.yaml file nor through CLI flag.
+        /// </summary>
+        [Output("serviceAccount")]
+        public Output<string?> ServiceAccount { get; private set; } = null!;
 
         /// <summary>
         /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
@@ -594,6 +623,13 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string> Service { get; set; } = null!;
 
         /// <summary>
+        /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+        /// default if this field is neither provided in app.yaml file nor through CLI flag.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
         /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
         /// Default value is `SERVING`.
         /// Possible values are `SERVING` and `STOPPED`.
@@ -822,6 +858,13 @@ namespace Pulumi.Gcp.AppEngine
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
+
+        /// <summary>
+        /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+        /// default if this field is neither provided in app.yaml file nor through CLI flag.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
         /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.

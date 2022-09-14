@@ -268,6 +268,7 @@ namespace Pulumi.Gcp.Monitoring
         public readonly string Description;
         public readonly string? DisplayName;
         public readonly bool Enabled;
+        public readonly bool ForceDelete;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -288,6 +289,8 @@ namespace Pulumi.Gcp.Monitoring
 
             bool enabled,
 
+            bool forceDelete,
+
             string id,
 
             ImmutableDictionary<string, string>? labels,
@@ -307,6 +310,7 @@ namespace Pulumi.Gcp.Monitoring
             Description = description;
             DisplayName = displayName;
             Enabled = enabled;
+            ForceDelete = forceDelete;
             Id = id;
             Labels = labels;
             Name = name;

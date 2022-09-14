@@ -165,6 +165,12 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterConfidentialNodes> ConfidentialNodes { get; private set; } = null!;
 
         /// <summary>
+        /// Cost management configuration for the cluster.
+        /// </summary>
+        [Output("costManagementConfig")]
+        public Output<Outputs.ClusterCostManagementConfig> CostManagementConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Structure is documented below.
         /// </summary>
         [Output("databaseEncryption")]
@@ -460,6 +466,12 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterNodePoolAutoConfig?> NodePoolAutoConfig { get; private set; } = null!;
 
         /// <summary>
+        /// ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+        /// </summary>
+        [Output("nodePoolDefaults")]
+        public Output<Outputs.ClusterNodePoolDefaults?> NodePoolDefaults { get; private set; } = null!;
+
+        /// <summary>
         /// List of node pools associated with this cluster.
         /// See gcp.container.NodePool for schema.
         /// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -562,6 +574,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// Structure is documented below.
+        /// </summary>
+        [Output("serviceExternalIpsConfig")]
+        public Output<Outputs.ClusterServiceExternalIpsConfig> ServiceExternalIpsConfig { get; private set; } = null!;
 
         /// <summary>
         /// The IP address range of the Kubernetes services in this
@@ -708,6 +726,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("confidentialNodes")]
         public Input<Inputs.ClusterConfidentialNodesArgs>? ConfidentialNodes { get; set; }
+
+        /// <summary>
+        /// Cost management configuration for the cluster.
+        /// </summary>
+        [Input("costManagementConfig")]
+        public Input<Inputs.ClusterCostManagementConfigArgs>? CostManagementConfig { get; set; }
 
         /// <summary>
         /// Structure is documented below.
@@ -990,6 +1014,12 @@ namespace Pulumi.Gcp.Container
         [Input("nodePoolAutoConfig")]
         public Input<Inputs.ClusterNodePoolAutoConfigArgs>? NodePoolAutoConfig { get; set; }
 
+        /// <summary>
+        /// ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+        /// </summary>
+        [Input("nodePoolDefaults")]
+        public Input<Inputs.ClusterNodePoolDefaultsArgs>? NodePoolDefaults { get; set; }
+
         [Input("nodePools")]
         private InputList<Inputs.ClusterNodePoolArgs>? _nodePools;
 
@@ -1098,6 +1128,12 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterResourceUsageExportConfigArgs>? ResourceUsageExportConfig { get; set; }
 
         /// <summary>
+        /// Structure is documented below.
+        /// </summary>
+        [Input("serviceExternalIpsConfig")]
+        public Input<Inputs.ClusterServiceExternalIpsConfigArgs>? ServiceExternalIpsConfig { get; set; }
+
+        /// <summary>
         /// The name or self_link of the Google Compute Engine
         /// subnetwork in which the cluster's instances are launched.
         /// </summary>
@@ -1187,6 +1223,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("confidentialNodes")]
         public Input<Inputs.ClusterConfidentialNodesGetArgs>? ConfidentialNodes { get; set; }
+
+        /// <summary>
+        /// Cost management configuration for the cluster.
+        /// </summary>
+        [Input("costManagementConfig")]
+        public Input<Inputs.ClusterCostManagementConfigGetArgs>? CostManagementConfig { get; set; }
 
         /// <summary>
         /// Structure is documented below.
@@ -1489,6 +1531,12 @@ namespace Pulumi.Gcp.Container
         [Input("nodePoolAutoConfig")]
         public Input<Inputs.ClusterNodePoolAutoConfigGetArgs>? NodePoolAutoConfig { get; set; }
 
+        /// <summary>
+        /// ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+        /// </summary>
+        [Input("nodePoolDefaults")]
+        public Input<Inputs.ClusterNodePoolDefaultsGetArgs>? NodePoolDefaults { get; set; }
+
         [Input("nodePools")]
         private InputList<Inputs.ClusterNodePoolGetArgs>? _nodePools;
 
@@ -1604,6 +1652,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// Structure is documented below.
+        /// </summary>
+        [Input("serviceExternalIpsConfig")]
+        public Input<Inputs.ClusterServiceExternalIpsConfigGetArgs>? ServiceExternalIpsConfig { get; set; }
 
         /// <summary>
         /// The IP address range of the Kubernetes services in this

@@ -31,6 +31,10 @@ namespace Pulumi.Gcp.Vertex
     ///         {
     ///             FixedNodeCount = 2,
     ///         },
+    ///         EncryptionSpec = new Gcp.Vertex.Inputs.AiFeatureStoreEncryptionSpecArgs
+    ///         {
+    ///             KmsKeyName = "kms-name",
+    ///         },
     ///         ForceDestroy = true,
     ///     }, new CustomResourceOptions
     ///     {
@@ -69,6 +73,13 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// If set, both of the online and offline data storage will be secured by this key.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("encryptionSpec")]
+        public Output<Outputs.AiFeatureStoreEncryptionSpec?> EncryptionSpec { get; private set; } = null!;
 
         /// <summary>
         /// Used to perform consistent read-modify-write updates.
@@ -168,6 +179,13 @@ namespace Pulumi.Gcp.Vertex
     public sealed class AiFeatureStoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If set, both of the online and offline data storage will be secured by this key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionSpec")]
+        public Input<Inputs.AiFeatureStoreEncryptionSpecArgs>? EncryptionSpec { get; set; }
+
+        /// <summary>
         /// If set to true, any EntityTypes and Features for this Featurestore will also be deleted
         /// </summary>
         [Input("forceDestroy")]
@@ -225,6 +243,13 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// If set, both of the online and offline data storage will be secured by this key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionSpec")]
+        public Input<Inputs.AiFeatureStoreEncryptionSpecGetArgs>? EncryptionSpec { get; set; }
 
         /// <summary>
         /// Used to perform consistent read-modify-write updates.

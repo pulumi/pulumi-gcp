@@ -200,7 +200,7 @@ namespace Pulumi.Gcp.Apigee
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Name of the Apigee organization.
+        /// Name of the property.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -210,6 +210,13 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// Properties defined in the Apigee organization profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("properties")]
+        public Output<Outputs.OrganizationProperties> Properties { get; private set; } = null!;
 
         /// <summary>
         /// Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
@@ -331,6 +338,13 @@ namespace Pulumi.Gcp.Apigee
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
+        /// Properties defined in the Apigee organization profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("properties")]
+        public Input<Inputs.OrganizationPropertiesArgs>? Properties { get; set; }
+
+        /// <summary>
         /// Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
         /// is not EVALUATION). It controls how long Organization data will be retained after the initial delete
         /// operation completes. During this period, the Organization may be restored to its last known state.
@@ -406,7 +420,7 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Output only. Name of the Apigee organization.
+        /// Name of the property.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -416,6 +430,13 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// Properties defined in the Apigee organization profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("properties")]
+        public Input<Inputs.OrganizationPropertiesGetArgs>? Properties { get; set; }
 
         /// <summary>
         /// Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType

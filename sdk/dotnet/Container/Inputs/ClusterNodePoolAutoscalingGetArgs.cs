@@ -12,11 +12,20 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterNodePoolAutoscalingGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("maxNodeCount", required: true)]
-        public Input<int> MaxNodeCount { get; set; } = null!;
+        [Input("locationPolicy")]
+        public Input<string>? LocationPolicy { get; set; }
 
-        [Input("minNodeCount", required: true)]
-        public Input<int> MinNodeCount { get; set; } = null!;
+        [Input("maxNodeCount")]
+        public Input<int>? MaxNodeCount { get; set; }
+
+        [Input("minNodeCount")]
+        public Input<int>? MinNodeCount { get; set; }
+
+        [Input("totalMaxNodeCount")]
+        public Input<int>? TotalMaxNodeCount { get; set; }
+
+        [Input("totalMinNodeCount")]
+        public Input<int>? TotalMinNodeCount { get; set; }
 
         public ClusterNodePoolAutoscalingGetArgs()
         {

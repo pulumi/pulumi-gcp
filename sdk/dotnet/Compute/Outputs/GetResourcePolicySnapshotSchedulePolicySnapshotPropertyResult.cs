@@ -13,18 +13,22 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetResourcePolicySnapshotSchedulePolicySnapshotPropertyResult
     {
+        public readonly string ChainName;
         public readonly bool GuestFlush;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly ImmutableArray<string> StorageLocations;
 
         [OutputConstructor]
         private GetResourcePolicySnapshotSchedulePolicySnapshotPropertyResult(
+            string chainName,
+
             bool guestFlush,
 
             ImmutableDictionary<string, string> labels,
 
             ImmutableArray<string> storageLocations)
         {
+            ChainName = chainName;
             GuestFlush = guestFlush;
             Labels = labels;
             StorageLocations = storageLocations;

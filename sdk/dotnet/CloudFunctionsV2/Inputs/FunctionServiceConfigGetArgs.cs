@@ -67,6 +67,32 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         [Input("minInstanceCount")]
         public Input<int>? MinInstanceCount { get; set; }
 
+        [Input("secretEnvironmentVariables")]
+        private InputList<Inputs.FunctionServiceConfigSecretEnvironmentVariableGetArgs>? _secretEnvironmentVariables;
+
+        /// <summary>
+        /// Secret environment variables configuration.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.FunctionServiceConfigSecretEnvironmentVariableGetArgs> SecretEnvironmentVariables
+        {
+            get => _secretEnvironmentVariables ?? (_secretEnvironmentVariables = new InputList<Inputs.FunctionServiceConfigSecretEnvironmentVariableGetArgs>());
+            set => _secretEnvironmentVariables = value;
+        }
+
+        [Input("secretVolumes")]
+        private InputList<Inputs.FunctionServiceConfigSecretVolumeGetArgs>? _secretVolumes;
+
+        /// <summary>
+        /// Secret volumes configuration.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.FunctionServiceConfigSecretVolumeGetArgs> SecretVolumes
+        {
+            get => _secretVolumes ?? (_secretVolumes = new InputList<Inputs.FunctionServiceConfigSecretVolumeGetArgs>());
+            set => _secretVolumes = value;
+        }
+
         /// <summary>
         /// Name of the service associated with a Function.
         /// </summary>

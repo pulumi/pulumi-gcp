@@ -72,6 +72,46 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Snapshot Chainname
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var debian = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var persistent = new Gcp.Compute.Disk("persistent", new()
+    ///     {
+    ///         Image = debian.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///         Size = 10,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var snapshot = new Gcp.Compute.Snapshot("snapshot", new()
+    ///     {
+    ///         SourceDisk = persistent.Id,
+    ///         Zone = "us-central1-a",
+    ///         ChainName = "snapshot-chain",
+    ///         Labels = 
+    ///         {
+    ///             { "my_label", "value" },
+    ///         },
+    ///         StorageLocations = new[]
+    ///         {
+    ///             "us-central1",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -92,6 +132,17 @@ namespace Pulumi.Gcp.Compute
     [GcpResourceType("gcp:compute/snapshot:Snapshot")]
     public partial class Snapshot : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Creates the new snapshot in the snapshot chain labeled with the
+        /// specified name. The chain name must be 1-63 characters long and
+        /// comply with RFC1035. This is an uncommon option only for advanced
+        /// service owners who needs to create separate snapshot chains, for
+        /// example, for chargeback tracking.  When you describe your snapshot
+        /// resource, this field is visible only if it has a non-empty value.
+        /// </summary>
+        [Output("chainName")]
+        public Output<string?> ChainName { get; private set; } = null!;
+
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
@@ -250,6 +301,17 @@ namespace Pulumi.Gcp.Compute
     public sealed class SnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Creates the new snapshot in the snapshot chain labeled with the
+        /// specified name. The chain name must be 1-63 characters long and
+        /// comply with RFC1035. This is an uncommon option only for advanced
+        /// service owners who needs to create separate snapshot chains, for
+        /// example, for chargeback tracking.  When you describe your snapshot
+        /// resource, this field is visible only if it has a non-empty value.
+        /// </summary>
+        [Input("chainName")]
+        public Input<string>? ChainName { get; set; }
+
+        /// <summary>
         /// An optional description of this resource.
         /// </summary>
         [Input("description")]
@@ -335,6 +397,17 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SnapshotState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Creates the new snapshot in the snapshot chain labeled with the
+        /// specified name. The chain name must be 1-63 characters long and
+        /// comply with RFC1035. This is an uncommon option only for advanced
+        /// service owners who needs to create separate snapshot chains, for
+        /// example, for chargeback tracking.  When you describe your snapshot
+        /// resource, this field is visible only if it has a non-empty value.
+        /// </summary>
+        [Input("chainName")]
+        public Input<string>? ChainName { get; set; }
+
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>

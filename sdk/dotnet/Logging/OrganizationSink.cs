@@ -73,15 +73,6 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
         [Output("destination")]
         public Output<string> Destination { get; private set; } = null!;
@@ -93,7 +84,7 @@ namespace Pulumi.Gcp.Logging
         public Output<bool?> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         /// </summary>
         [Output("exclusions")]
         public Output<ImmutableArray<Outputs.OrganizationSinkExclusion>> Exclusions { get; private set; } = null!;
@@ -192,15 +183,6 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
         [Input("destination", required: true)]
         public Input<string> Destination { get; set; } = null!;
@@ -215,7 +197,7 @@ namespace Pulumi.Gcp.Logging
         private InputList<Inputs.OrganizationSinkExclusionArgs>? _exclusions;
 
         /// <summary>
-        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         /// </summary>
         public InputList<Inputs.OrganizationSinkExclusionArgs> Exclusions
         {
@@ -272,15 +254,6 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
         [Input("destination")]
         public Input<string>? Destination { get; set; }
@@ -295,7 +268,7 @@ namespace Pulumi.Gcp.Logging
         private InputList<Inputs.OrganizationSinkExclusionGetArgs>? _exclusions;
 
         /// <summary>
-        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         /// </summary>
         public InputList<Inputs.OrganizationSinkExclusionGetArgs> Exclusions
         {
