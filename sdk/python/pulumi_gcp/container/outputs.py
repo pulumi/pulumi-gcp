@@ -75,6 +75,7 @@ __all__ = [
     'ClusterClusterAutoscalingResourceLimit',
     'ClusterClusterTelemetry',
     'ClusterConfidentialNodes',
+    'ClusterCostManagementConfig',
     'ClusterDatabaseEncryption',
     'ClusterDefaultSnatStatus',
     'ClusterDnsConfig',
@@ -110,6 +111,9 @@ __all__ = [
     'ClusterNodePoolAutoConfig',
     'ClusterNodePoolAutoConfigNetworkTags',
     'ClusterNodePoolAutoscaling',
+    'ClusterNodePoolDefaults',
+    'ClusterNodePoolDefaultsNodeConfigDefaults',
+    'ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig',
     'ClusterNodePoolManagement',
     'ClusterNodePoolNetworkConfig',
     'ClusterNodePoolNodeConfig',
@@ -134,6 +138,7 @@ __all__ = [
     'ClusterReleaseChannel',
     'ClusterResourceUsageExportConfig',
     'ClusterResourceUsageExportConfigBigqueryDestination',
+    'ClusterServiceExternalIpsConfig',
     'ClusterTpuConfig',
     'ClusterVerticalPodAutoscaling',
     'ClusterWorkloadIdentityConfig',
@@ -173,6 +178,7 @@ __all__ = [
     'GetClusterClusterAutoscalingResourceLimitResult',
     'GetClusterClusterTelemetryResult',
     'GetClusterConfidentialNodeResult',
+    'GetClusterCostManagementConfigResult',
     'GetClusterDatabaseEncryptionResult',
     'GetClusterDefaultSnatStatusResult',
     'GetClusterDnsConfigResult',
@@ -208,6 +214,9 @@ __all__ = [
     'GetClusterNodePoolAutoConfigResult',
     'GetClusterNodePoolAutoConfigNetworkTagResult',
     'GetClusterNodePoolAutoscalingResult',
+    'GetClusterNodePoolDefaultResult',
+    'GetClusterNodePoolDefaultNodeConfigDefaultResult',
+    'GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult',
     'GetClusterNodePoolManagementResult',
     'GetClusterNodePoolNetworkConfigResult',
     'GetClusterNodePoolNodeConfigResult',
@@ -232,6 +241,7 @@ __all__ = [
     'GetClusterReleaseChannelResult',
     'GetClusterResourceUsageExportConfigResult',
     'GetClusterResourceUsageExportConfigBigqueryDestinationResult',
+    'GetClusterServiceExternalIpsConfigResult',
     'GetClusterTpuConfigResult',
     'GetClusterVerticalPodAutoscalingResult',
     'GetClusterWorkloadIdentityConfigResult',
@@ -3441,6 +3451,26 @@ class ClusterConfidentialNodes(dict):
 
 
 @pulumi.output_type
+class ClusterCostManagementConfig(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class ClusterDatabaseEncryption(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4371,12 +4401,7 @@ class ClusterNodeConfig(dict):
         :param str disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         :param 'ClusterNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-        :param 'ClusterNodeConfigGcfsConfigArgs' gcfs_config: Parameters for the Google Container Filesystem (GCFS).
-               If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
-               For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-               A `machine_type` that has more than 16 GiB of memory is also recommended.
-               GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
-               Structure is documented below.
+        :param 'ClusterNodeConfigGcfsConfigArgs' gcfs_config: The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
         :param Sequence['ClusterNodeConfigGuestAcceleratorArgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
         :param 'ClusterNodeConfigGvnicArgs' gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
@@ -4524,12 +4549,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="gcfsConfig")
     def gcfs_config(self) -> Optional['outputs.ClusterNodeConfigGcfsConfig']:
         """
-        Parameters for the Google Container Filesystem (GCFS).
-        If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
-        For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-        A `machine_type` that has more than 16 GiB of memory is also recommended.
-        GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
-        Structure is documented below.
+        The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
         """
         return pulumi.get(self, "gcfs_config")
 
@@ -5450,10 +5470,16 @@ class ClusterNodePoolAutoscaling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "maxNodeCount":
+        if key == "locationPolicy":
+            suggest = "location_policy"
+        elif key == "maxNodeCount":
             suggest = "max_node_count"
         elif key == "minNodeCount":
             suggest = "min_node_count"
+        elif key == "totalMaxNodeCount":
+            suggest = "total_max_node_count"
+        elif key == "totalMinNodeCount":
+            suggest = "total_min_node_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolAutoscaling. Access the value via the '{suggest}' property getter instead.")
@@ -5467,20 +5493,138 @@ class ClusterNodePoolAutoscaling(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 max_node_count: int,
-                 min_node_count: int):
-        pulumi.set(__self__, "max_node_count", max_node_count)
-        pulumi.set(__self__, "min_node_count", min_node_count)
+                 location_policy: Optional[str] = None,
+                 max_node_count: Optional[int] = None,
+                 min_node_count: Optional[int] = None,
+                 total_max_node_count: Optional[int] = None,
+                 total_min_node_count: Optional[int] = None):
+        if location_policy is not None:
+            pulumi.set(__self__, "location_policy", location_policy)
+        if max_node_count is not None:
+            pulumi.set(__self__, "max_node_count", max_node_count)
+        if min_node_count is not None:
+            pulumi.set(__self__, "min_node_count", min_node_count)
+        if total_max_node_count is not None:
+            pulumi.set(__self__, "total_max_node_count", total_max_node_count)
+        if total_min_node_count is not None:
+            pulumi.set(__self__, "total_min_node_count", total_min_node_count)
+
+    @property
+    @pulumi.getter(name="locationPolicy")
+    def location_policy(self) -> Optional[str]:
+        return pulumi.get(self, "location_policy")
 
     @property
     @pulumi.getter(name="maxNodeCount")
-    def max_node_count(self) -> int:
+    def max_node_count(self) -> Optional[int]:
         return pulumi.get(self, "max_node_count")
 
     @property
     @pulumi.getter(name="minNodeCount")
-    def min_node_count(self) -> int:
+    def min_node_count(self) -> Optional[int]:
         return pulumi.get(self, "min_node_count")
+
+    @property
+    @pulumi.getter(name="totalMaxNodeCount")
+    def total_max_node_count(self) -> Optional[int]:
+        return pulumi.get(self, "total_max_node_count")
+
+    @property
+    @pulumi.getter(name="totalMinNodeCount")
+    def total_min_node_count(self) -> Optional[int]:
+        return pulumi.get(self, "total_min_node_count")
+
+
+@pulumi.output_type
+class ClusterNodePoolDefaults(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeConfigDefaults":
+            suggest = "node_config_defaults"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolDefaults. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolDefaults.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolDefaults.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_config_defaults: Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaults'] = None):
+        """
+        :param 'ClusterNodePoolDefaultsNodeConfigDefaultsArgs' node_config_defaults: ) - Subset of NodeConfig message that has defaults.
+        """
+        if node_config_defaults is not None:
+            pulumi.set(__self__, "node_config_defaults", node_config_defaults)
+
+    @property
+    @pulumi.getter(name="nodeConfigDefaults")
+    def node_config_defaults(self) -> Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaults']:
+        """
+        ) - Subset of NodeConfig message that has defaults.
+        """
+        return pulumi.get(self, "node_config_defaults")
+
+
+@pulumi.output_type
+class ClusterNodePoolDefaultsNodeConfigDefaults(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcfsConfig":
+            suggest = "gcfs_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolDefaultsNodeConfigDefaults. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolDefaultsNodeConfigDefaults.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolDefaultsNodeConfigDefaults.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcfs_config: Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig'] = None):
+        """
+        :param 'ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs' gcfs_config: The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+        """
+        if gcfs_config is not None:
+            pulumi.set(__self__, "gcfs_config", gcfs_config)
+
+    @property
+    @pulumi.getter(name="gcfsConfig")
+    def gcfs_config(self) -> Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig']:
+        """
+        The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+        """
+        return pulumi.get(self, "gcfs_config")
+
+
+@pulumi.output_type
+class ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -5675,12 +5819,7 @@ class ClusterNodePoolNodeConfig(dict):
         :param str disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         :param 'ClusterNodePoolNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-        :param 'ClusterNodePoolNodeConfigGcfsConfigArgs' gcfs_config: Parameters for the Google Container Filesystem (GCFS).
-               If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
-               For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-               A `machine_type` that has more than 16 GiB of memory is also recommended.
-               GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
-               Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigGcfsConfigArgs' gcfs_config: The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
         :param Sequence['ClusterNodePoolNodeConfigGuestAcceleratorArgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
         :param 'ClusterNodePoolNodeConfigGvnicArgs' gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
@@ -5828,12 +5967,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="gcfsConfig")
     def gcfs_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigGcfsConfig']:
         """
-        Parameters for the Google Container Filesystem (GCFS).
-        If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
-        For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-        A `machine_type` that has more than 16 GiB of memory is also recommended.
-        GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
-        Structure is documented below.
+        The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
         """
         return pulumi.get(self, "gcfs_config")
 
@@ -6906,6 +7040,26 @@ class ClusterResourceUsageExportConfigBigqueryDestination(dict):
 
 
 @pulumi.output_type
+class ClusterServiceExternalIpsConfig(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable the PodSecurityPolicy controller for this cluster.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class ClusterTpuConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7021,10 +7175,16 @@ class NodePoolAutoscaling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "maxNodeCount":
+        if key == "locationPolicy":
+            suggest = "location_policy"
+        elif key == "maxNodeCount":
             suggest = "max_node_count"
         elif key == "minNodeCount":
             suggest = "min_node_count"
+        elif key == "totalMaxNodeCount":
+            suggest = "total_max_node_count"
+        elif key == "totalMinNodeCount":
+            suggest = "total_min_node_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NodePoolAutoscaling. Access the value via the '{suggest}' property getter instead.")
@@ -7038,32 +7198,82 @@ class NodePoolAutoscaling(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 max_node_count: int,
-                 min_node_count: int):
+                 location_policy: Optional[str] = None,
+                 max_node_count: Optional[int] = None,
+                 min_node_count: Optional[int] = None,
+                 total_max_node_count: Optional[int] = None,
+                 total_min_node_count: Optional[int] = None):
         """
-        :param int max_node_count: Maximum number of nodes in the NodePool. Must be >= min_node_count.
-        :param int min_node_count: Minimum number of nodes in the NodePool. Must be >=0 and
-               <= `max_node_count`.
+        :param str location_policy: Location policy specifies the algorithm used when scaling-up the node pool. \\
+               "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones. \\
+               "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+               and reduce preemption risk for Spot VMs.
+        :param int max_node_count: Maximum number of nodes per zone in the NodePool.
+               Must be >= min_node_count. Cannot be used with total limits.
+        :param int min_node_count: Minimum number of nodes per zone in the NodePool.
+               Must be >=0 and <= `max_node_count`. Cannot be used with total limits.
+        :param int total_max_node_count: Total maximum number of nodes in the NodePool.
+               Must be >= total_min_node_count. Cannot be used with per zone limits.
+        :param int total_min_node_count: Total minimum number of nodes in the NodePool.
+               Must be >=0 and <= `total_max_node_count`. Cannot be used with per zone limits.
         """
-        pulumi.set(__self__, "max_node_count", max_node_count)
-        pulumi.set(__self__, "min_node_count", min_node_count)
+        if location_policy is not None:
+            pulumi.set(__self__, "location_policy", location_policy)
+        if max_node_count is not None:
+            pulumi.set(__self__, "max_node_count", max_node_count)
+        if min_node_count is not None:
+            pulumi.set(__self__, "min_node_count", min_node_count)
+        if total_max_node_count is not None:
+            pulumi.set(__self__, "total_max_node_count", total_max_node_count)
+        if total_min_node_count is not None:
+            pulumi.set(__self__, "total_min_node_count", total_min_node_count)
+
+    @property
+    @pulumi.getter(name="locationPolicy")
+    def location_policy(self) -> Optional[str]:
+        """
+        Location policy specifies the algorithm used when scaling-up the node pool. \\
+        "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones. \\
+        "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+        and reduce preemption risk for Spot VMs.
+        """
+        return pulumi.get(self, "location_policy")
 
     @property
     @pulumi.getter(name="maxNodeCount")
-    def max_node_count(self) -> int:
+    def max_node_count(self) -> Optional[int]:
         """
-        Maximum number of nodes in the NodePool. Must be >= min_node_count.
+        Maximum number of nodes per zone in the NodePool.
+        Must be >= min_node_count. Cannot be used with total limits.
         """
         return pulumi.get(self, "max_node_count")
 
     @property
     @pulumi.getter(name="minNodeCount")
-    def min_node_count(self) -> int:
+    def min_node_count(self) -> Optional[int]:
         """
-        Minimum number of nodes in the NodePool. Must be >=0 and
-        <= `max_node_count`.
+        Minimum number of nodes per zone in the NodePool.
+        Must be >=0 and <= `max_node_count`. Cannot be used with total limits.
         """
         return pulumi.get(self, "min_node_count")
+
+    @property
+    @pulumi.getter(name="totalMaxNodeCount")
+    def total_max_node_count(self) -> Optional[int]:
+        """
+        Total maximum number of nodes in the NodePool.
+        Must be >= total_min_node_count. Cannot be used with per zone limits.
+        """
+        return pulumi.get(self, "total_max_node_count")
+
+    @property
+    @pulumi.getter(name="totalMinNodeCount")
+    def total_min_node_count(self) -> Optional[int]:
+        """
+        Total minimum number of nodes in the NodePool.
+        Must be >=0 and <= `total_max_node_count`. Cannot be used with per zone limits.
+        """
+        return pulumi.get(self, "total_min_node_count")
 
 
 @pulumi.output_type
@@ -8212,6 +8422,18 @@ class GetClusterConfidentialNodeResult(dict):
 
 
 @pulumi.output_type
+class GetClusterCostManagementConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class GetClusterDatabaseEncryptionResult(dict):
     def __init__(__self__, *,
                  key_name: str,
@@ -9104,10 +9326,21 @@ class GetClusterNodePoolAutoConfigNetworkTagResult(dict):
 @pulumi.output_type
 class GetClusterNodePoolAutoscalingResult(dict):
     def __init__(__self__, *,
+                 location_policy: str,
                  max_node_count: int,
-                 min_node_count: int):
+                 min_node_count: int,
+                 total_max_node_count: int,
+                 total_min_node_count: int):
+        pulumi.set(__self__, "location_policy", location_policy)
         pulumi.set(__self__, "max_node_count", max_node_count)
         pulumi.set(__self__, "min_node_count", min_node_count)
+        pulumi.set(__self__, "total_max_node_count", total_max_node_count)
+        pulumi.set(__self__, "total_min_node_count", total_min_node_count)
+
+    @property
+    @pulumi.getter(name="locationPolicy")
+    def location_policy(self) -> str:
+        return pulumi.get(self, "location_policy")
 
     @property
     @pulumi.getter(name="maxNodeCount")
@@ -9118,6 +9351,52 @@ class GetClusterNodePoolAutoscalingResult(dict):
     @pulumi.getter(name="minNodeCount")
     def min_node_count(self) -> int:
         return pulumi.get(self, "min_node_count")
+
+    @property
+    @pulumi.getter(name="totalMaxNodeCount")
+    def total_max_node_count(self) -> int:
+        return pulumi.get(self, "total_max_node_count")
+
+    @property
+    @pulumi.getter(name="totalMinNodeCount")
+    def total_min_node_count(self) -> int:
+        return pulumi.get(self, "total_min_node_count")
+
+
+@pulumi.output_type
+class GetClusterNodePoolDefaultResult(dict):
+    def __init__(__self__, *,
+                 node_config_defaults: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultResult']):
+        pulumi.set(__self__, "node_config_defaults", node_config_defaults)
+
+    @property
+    @pulumi.getter(name="nodeConfigDefaults")
+    def node_config_defaults(self) -> Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultResult']:
+        return pulumi.get(self, "node_config_defaults")
+
+
+@pulumi.output_type
+class GetClusterNodePoolDefaultNodeConfigDefaultResult(dict):
+    def __init__(__self__, *,
+                 gcfs_configs: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult']):
+        pulumi.set(__self__, "gcfs_configs", gcfs_configs)
+
+    @property
+    @pulumi.getter(name="gcfsConfigs")
+    def gcfs_configs(self) -> Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult']:
+        return pulumi.get(self, "gcfs_configs")
+
+
+@pulumi.output_type
+class GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -9735,6 +10014,18 @@ class GetClusterResourceUsageExportConfigBigqueryDestinationResult(dict):
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> str:
         return pulumi.get(self, "dataset_id")
+
+
+@pulumi.output_type
+class GetClusterServiceExternalIpsConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

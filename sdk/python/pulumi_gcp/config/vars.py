@@ -65,6 +65,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('bigQueryCustomEndpoint')
 
     @property
+    def bigquery_analytics_hub_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('bigqueryAnalyticsHubCustomEndpoint')
+
+    @property
     def bigquery_connection_custom_endpoint(self) -> Optional[str]:
         return __config__.get('bigqueryConnectionCustomEndpoint')
 
@@ -207,6 +211,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def datastore_custom_endpoint(self) -> Optional[str]:
         return __config__.get('datastoreCustomEndpoint')
+
+    @property
+    def datastream_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('datastreamCustomEndpoint')
 
     @property
     def deployment_manager_custom_endpoint(self) -> Optional[str]:

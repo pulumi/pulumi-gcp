@@ -16,6 +16,7 @@ __all__ = ['AiFeatureStoreArgs', 'AiFeatureStore']
 @pulumi.input_type
 class AiFeatureStoreArgs:
     def __init__(__self__, *,
+                 encryption_spec: Optional[pulumi.Input['AiFeatureStoreEncryptionSpecArgs']] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -24,6 +25,8 @@ class AiFeatureStoreArgs:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AiFeatureStore resource.
+        :param pulumi.Input['AiFeatureStoreEncryptionSpecArgs'] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
+               Structure is documented below.
         :param pulumi.Input[bool] force_destroy: If set to true, any EntityTypes and Features for this Featurestore will also be deleted
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Featurestore.
         :param pulumi.Input[str] name: The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
@@ -33,6 +36,8 @@ class AiFeatureStoreArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the dataset. eg us-central1
         """
+        if encryption_spec is not None:
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if labels is not None:
@@ -45,6 +50,19 @@ class AiFeatureStoreArgs:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> Optional[pulumi.Input['AiFeatureStoreEncryptionSpecArgs']]:
+        """
+        If set, both of the online and offline data storage will be secured by this key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
+
+    @encryption_spec.setter
+    def encryption_spec(self, value: Optional[pulumi.Input['AiFeatureStoreEncryptionSpecArgs']]):
+        pulumi.set(self, "encryption_spec", value)
 
     @property
     @pulumi.getter(name="forceDestroy")
@@ -125,6 +143,7 @@ class AiFeatureStoreArgs:
 class _AiFeatureStoreState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 encryption_spec: Optional[pulumi.Input['AiFeatureStoreEncryptionSpecArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -137,6 +156,8 @@ class _AiFeatureStoreState:
         Input properties used for looking up and filtering AiFeatureStore resources.
         :param pulumi.Input[str] create_time: The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
                nine fractional digits.
+        :param pulumi.Input['AiFeatureStoreEncryptionSpecArgs'] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
+               Structure is documented below.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[bool] force_destroy: If set to true, any EntityTypes and Features for this Featurestore will also be deleted
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Featurestore.
@@ -151,6 +172,8 @@ class _AiFeatureStoreState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if encryption_spec is not None:
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if force_destroy is not None:
@@ -180,6 +203,19 @@ class _AiFeatureStoreState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> Optional[pulumi.Input['AiFeatureStoreEncryptionSpecArgs']]:
+        """
+        If set, both of the online and offline data storage will be secured by this key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
+
+    @encryption_spec.setter
+    def encryption_spec(self, value: Optional[pulumi.Input['AiFeatureStoreEncryptionSpecArgs']]):
+        pulumi.set(self, "encryption_spec", value)
 
     @property
     @pulumi.getter
@@ -286,6 +322,7 @@ class AiFeatureStore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEncryptionSpecArgs']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -308,6 +345,9 @@ class AiFeatureStore(pulumi.CustomResource):
             region="us-central1",
             online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
                 fixed_node_count=2,
+            ),
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
             ),
             force_destroy=True,
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -335,6 +375,8 @@ class AiFeatureStore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['AiFeatureStoreEncryptionSpecArgs']] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
+               Structure is documented below.
         :param pulumi.Input[bool] force_destroy: If set to true, any EntityTypes and Features for this Featurestore will also be deleted
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Featurestore.
         :param pulumi.Input[str] name: The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
@@ -365,6 +407,9 @@ class AiFeatureStore(pulumi.CustomResource):
             region="us-central1",
             online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
                 fixed_node_count=2,
+            ),
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
             ),
             force_destroy=True,
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -405,6 +450,7 @@ class AiFeatureStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEncryptionSpecArgs']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -420,6 +466,7 @@ class AiFeatureStore(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AiFeatureStoreArgs.__new__(AiFeatureStoreArgs)
 
+            __props__.__dict__["encryption_spec"] = encryption_spec
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
@@ -440,6 +487,7 @@ class AiFeatureStore(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEncryptionSpecArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -457,6 +505,8 @@ class AiFeatureStore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
                nine fractional digits.
+        :param pulumi.Input[pulumi.InputType['AiFeatureStoreEncryptionSpecArgs']] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
+               Structure is documented below.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[bool] force_destroy: If set to true, any EntityTypes and Features for this Featurestore will also be deleted
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Featurestore.
@@ -474,6 +524,7 @@ class AiFeatureStore(pulumi.CustomResource):
         __props__ = _AiFeatureStoreState.__new__(_AiFeatureStoreState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["encryption_spec"] = encryption_spec
         __props__.__dict__["etag"] = etag
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["labels"] = labels
@@ -492,6 +543,15 @@ class AiFeatureStore(pulumi.CustomResource):
         nine fractional digits.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> pulumi.Output[Optional['outputs.AiFeatureStoreEncryptionSpec']]:
+        """
+        If set, both of the online and offline data storage will be secured by this key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
 
     @property
     @pulumi.getter

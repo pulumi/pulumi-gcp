@@ -8,10 +8,14 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'EnvironmentIamBindingCondition',
     'EnvironmentIamMemberCondition',
+    'EnvironmentNodeConfig',
+    'OrganizationProperties',
+    'OrganizationPropertiesProperty',
 ]
 
 @pulumi.output_type
@@ -66,5 +70,133 @@ class EnvironmentIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class EnvironmentNodeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "currentAggregateNodeCount":
+            suggest = "current_aggregate_node_count"
+        elif key == "maxNodeCount":
+            suggest = "max_node_count"
+        elif key == "minNodeCount":
+            suggest = "min_node_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentNodeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentNodeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentNodeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 current_aggregate_node_count: Optional[str] = None,
+                 max_node_count: Optional[str] = None,
+                 min_node_count: Optional[str] = None):
+        """
+        :param str current_aggregate_node_count: -
+               The current total number of gateway nodes that each environment currently has across
+               all instances.
+        :param str max_node_count: The maximum total number of gateway nodes that the is reserved for all instances that
+               has the specified environment. If not specified, the default is determined by the
+               recommended maximum number of nodes for that gateway.
+        :param str min_node_count: The minimum total number of gateway nodes that the is reserved for all instances that
+               has the specified environment. If not specified, the default is determined by the
+               recommended minimum number of nodes for that gateway.
+        """
+        if current_aggregate_node_count is not None:
+            pulumi.set(__self__, "current_aggregate_node_count", current_aggregate_node_count)
+        if max_node_count is not None:
+            pulumi.set(__self__, "max_node_count", max_node_count)
+        if min_node_count is not None:
+            pulumi.set(__self__, "min_node_count", min_node_count)
+
+    @property
+    @pulumi.getter(name="currentAggregateNodeCount")
+    def current_aggregate_node_count(self) -> Optional[str]:
+        """
+        -
+        The current total number of gateway nodes that each environment currently has across
+        all instances.
+        """
+        return pulumi.get(self, "current_aggregate_node_count")
+
+    @property
+    @pulumi.getter(name="maxNodeCount")
+    def max_node_count(self) -> Optional[str]:
+        """
+        The maximum total number of gateway nodes that the is reserved for all instances that
+        has the specified environment. If not specified, the default is determined by the
+        recommended maximum number of nodes for that gateway.
+        """
+        return pulumi.get(self, "max_node_count")
+
+    @property
+    @pulumi.getter(name="minNodeCount")
+    def min_node_count(self) -> Optional[str]:
+        """
+        The minimum total number of gateway nodes that the is reserved for all instances that
+        has the specified environment. If not specified, the default is determined by the
+        recommended minimum number of nodes for that gateway.
+        """
+        return pulumi.get(self, "min_node_count")
+
+
+@pulumi.output_type
+class OrganizationProperties(dict):
+    def __init__(__self__, *,
+                 properties: Optional[Sequence['outputs.OrganizationPropertiesProperty']] = None):
+        """
+        :param Sequence['OrganizationPropertiesPropertyArgs'] properties: List of all properties in the object.
+               Structure is documented below.
+        """
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[Sequence['outputs.OrganizationPropertiesProperty']]:
+        """
+        List of all properties in the object.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "properties")
+
+
+@pulumi.output_type
+class OrganizationPropertiesProperty(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: Name of the property.
+        :param str value: Value of the property.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the property.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Value of the property.
+        """
+        return pulumi.get(self, "value")
 
 

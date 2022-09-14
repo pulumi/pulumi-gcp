@@ -5761,6 +5761,8 @@ class InstanceAdvancedMachineFeatures(dict):
             suggest = "enable_nested_virtualization"
         elif key == "threadsPerCore":
             suggest = "threads_per_core"
+        elif key == "visibleCoreCount":
+            suggest = "visible_core_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceAdvancedMachineFeatures. Access the value via the '{suggest}' property getter instead.")
@@ -5775,15 +5777,19 @@ class InstanceAdvancedMachineFeatures(dict):
 
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[bool] = None,
-                 threads_per_core: Optional[int] = None):
+                 threads_per_core: Optional[int] = None,
+                 visible_core_count: Optional[int] = None):
         """
         :param bool enable_nested_virtualization: Defines whether the instance should have nested virtualization  enabled. Defaults to false.
         :param int threads_per_core: he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        :param int visible_core_count: ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
         """
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if threads_per_core is not None:
             pulumi.set(__self__, "threads_per_core", threads_per_core)
+        if visible_core_count is not None:
+            pulumi.set(__self__, "visible_core_count", visible_core_count)
 
     @property
     @pulumi.getter(name="enableNestedVirtualization")
@@ -5800,6 +5806,14 @@ class InstanceAdvancedMachineFeatures(dict):
         he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
         """
         return pulumi.get(self, "threads_per_core")
+
+    @property
+    @pulumi.getter(name="visibleCoreCount")
+    def visible_core_count(self) -> Optional[int]:
+        """
+        ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+        """
+        return pulumi.get(self, "visible_core_count")
 
 
 @pulumi.output_type
@@ -6184,6 +6198,8 @@ class InstanceFromMachineImageAdvancedMachineFeatures(dict):
             suggest = "enable_nested_virtualization"
         elif key == "threadsPerCore":
             suggest = "threads_per_core"
+        elif key == "visibleCoreCount":
+            suggest = "visible_core_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceFromMachineImageAdvancedMachineFeatures. Access the value via the '{suggest}' property getter instead.")
@@ -6198,11 +6214,14 @@ class InstanceFromMachineImageAdvancedMachineFeatures(dict):
 
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[bool] = None,
-                 threads_per_core: Optional[int] = None):
+                 threads_per_core: Optional[int] = None,
+                 visible_core_count: Optional[int] = None):
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if threads_per_core is not None:
             pulumi.set(__self__, "threads_per_core", threads_per_core)
+        if visible_core_count is not None:
+            pulumi.set(__self__, "visible_core_count", visible_core_count)
 
     @property
     @pulumi.getter(name="enableNestedVirtualization")
@@ -6213,6 +6232,11 @@ class InstanceFromMachineImageAdvancedMachineFeatures(dict):
     @pulumi.getter(name="threadsPerCore")
     def threads_per_core(self) -> Optional[int]:
         return pulumi.get(self, "threads_per_core")
+
+    @property
+    @pulumi.getter(name="visibleCoreCount")
+    def visible_core_count(self) -> Optional[int]:
+        return pulumi.get(self, "visible_core_count")
 
 
 @pulumi.output_type
@@ -7051,6 +7075,8 @@ class InstanceFromTemplateAdvancedMachineFeatures(dict):
             suggest = "enable_nested_virtualization"
         elif key == "threadsPerCore":
             suggest = "threads_per_core"
+        elif key == "visibleCoreCount":
+            suggest = "visible_core_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceFromTemplateAdvancedMachineFeatures. Access the value via the '{suggest}' property getter instead.")
@@ -7065,11 +7091,14 @@ class InstanceFromTemplateAdvancedMachineFeatures(dict):
 
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[bool] = None,
-                 threads_per_core: Optional[int] = None):
+                 threads_per_core: Optional[int] = None,
+                 visible_core_count: Optional[int] = None):
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if threads_per_core is not None:
             pulumi.set(__self__, "threads_per_core", threads_per_core)
+        if visible_core_count is not None:
+            pulumi.set(__self__, "visible_core_count", visible_core_count)
 
     @property
     @pulumi.getter(name="enableNestedVirtualization")
@@ -7080,6 +7109,11 @@ class InstanceFromTemplateAdvancedMachineFeatures(dict):
     @pulumi.getter(name="threadsPerCore")
     def threads_per_core(self) -> Optional[int]:
         return pulumi.get(self, "threads_per_core")
+
+    @property
+    @pulumi.getter(name="visibleCoreCount")
+    def visible_core_count(self) -> Optional[int]:
+        return pulumi.get(self, "visible_core_count")
 
 
 @pulumi.output_type
@@ -9533,6 +9567,8 @@ class InstanceTemplateAdvancedMachineFeatures(dict):
             suggest = "enable_nested_virtualization"
         elif key == "threadsPerCore":
             suggest = "threads_per_core"
+        elif key == "visibleCoreCount":
+            suggest = "visible_core_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceTemplateAdvancedMachineFeatures. Access the value via the '{suggest}' property getter instead.")
@@ -9547,15 +9583,19 @@ class InstanceTemplateAdvancedMachineFeatures(dict):
 
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[bool] = None,
-                 threads_per_core: Optional[int] = None):
+                 threads_per_core: Optional[int] = None,
+                 visible_core_count: Optional[int] = None):
         """
         :param bool enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
-        :param int threads_per_core: he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        :param int threads_per_core: The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        :param int visible_core_count: ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
         """
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if threads_per_core is not None:
             pulumi.set(__self__, "threads_per_core", threads_per_core)
+        if visible_core_count is not None:
+            pulumi.set(__self__, "visible_core_count", visible_core_count)
 
     @property
     @pulumi.getter(name="enableNestedVirtualization")
@@ -9569,9 +9609,17 @@ class InstanceTemplateAdvancedMachineFeatures(dict):
     @pulumi.getter(name="threadsPerCore")
     def threads_per_core(self) -> Optional[int]:
         """
-        he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
         """
         return pulumi.get(self, "threads_per_core")
+
+    @property
+    @pulumi.getter(name="visibleCoreCount")
+    def visible_core_count(self) -> Optional[int]:
+        """
+        ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+        """
+        return pulumi.get(self, "visible_core_count")
 
 
 @pulumi.output_type
@@ -21192,7 +21240,9 @@ class ResourcePolicySnapshotSchedulePolicySnapshotProperties(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "guestFlush":
+        if key == "chainName":
+            suggest = "chain_name"
+        elif key == "guestFlush":
             suggest = "guest_flush"
         elif key == "storageLocations":
             suggest = "storage_locations"
@@ -21209,21 +21259,37 @@ class ResourcePolicySnapshotSchedulePolicySnapshotProperties(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 chain_name: Optional[str] = None,
                  guest_flush: Optional[bool] = None,
                  labels: Optional[Mapping[str, str]] = None,
                  storage_locations: Optional[str] = None):
         """
+        :param str chain_name: Creates the new snapshot in the snapshot chain labeled with the
+               specified name. The chain name must be 1-63 characters long and comply
+               with RFC1035.
         :param bool guest_flush: Whether to perform a 'guest aware' snapshot.
         :param Mapping[str, str] labels: A set of key-value pairs.
         :param str storage_locations: Cloud Storage bucket location to store the auto snapshot
                (regional or multi-regional)
         """
+        if chain_name is not None:
+            pulumi.set(__self__, "chain_name", chain_name)
         if guest_flush is not None:
             pulumi.set(__self__, "guest_flush", guest_flush)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if storage_locations is not None:
             pulumi.set(__self__, "storage_locations", storage_locations)
+
+    @property
+    @pulumi.getter(name="chainName")
+    def chain_name(self) -> Optional[str]:
+        """
+        Creates the new snapshot in the snapshot chain labeled with the
+        specified name. The chain name must be 1-63 characters long and comply
+        with RFC1035.
+        """
+        return pulumi.get(self, "chain_name")
 
     @property
     @pulumi.getter(name="guestFlush")
@@ -30944,9 +31010,11 @@ class GetHealthCheckTcpHealthCheckResult(dict):
 class GetInstanceAdvancedMachineFeatureResult(dict):
     def __init__(__self__, *,
                  enable_nested_virtualization: bool,
-                 threads_per_core: int):
+                 threads_per_core: int,
+                 visible_core_count: int):
         pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         pulumi.set(__self__, "threads_per_core", threads_per_core)
+        pulumi.set(__self__, "visible_core_count", visible_core_count)
 
     @property
     @pulumi.getter(name="enableNestedVirtualization")
@@ -30957,6 +31025,11 @@ class GetInstanceAdvancedMachineFeatureResult(dict):
     @pulumi.getter(name="threadsPerCore")
     def threads_per_core(self) -> int:
         return pulumi.get(self, "threads_per_core")
+
+    @property
+    @pulumi.getter(name="visibleCoreCount")
+    def visible_core_count(self) -> int:
+        return pulumi.get(self, "visible_core_count")
 
 
 @pulumi.output_type
@@ -31712,9 +31785,11 @@ class GetInstanceShieldedInstanceConfigResult(dict):
 class GetInstanceTemplateAdvancedMachineFeatureResult(dict):
     def __init__(__self__, *,
                  enable_nested_virtualization: bool,
-                 threads_per_core: int):
+                 threads_per_core: int,
+                 visible_core_count: int):
         pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         pulumi.set(__self__, "threads_per_core", threads_per_core)
+        pulumi.set(__self__, "visible_core_count", visible_core_count)
 
     @property
     @pulumi.getter(name="enableNestedVirtualization")
@@ -31725,6 +31800,11 @@ class GetInstanceTemplateAdvancedMachineFeatureResult(dict):
     @pulumi.getter(name="threadsPerCore")
     def threads_per_core(self) -> int:
         return pulumi.get(self, "threads_per_core")
+
+    @property
+    @pulumi.getter(name="visibleCoreCount")
+    def visible_core_count(self) -> int:
+        return pulumi.get(self, "visible_core_count")
 
 
 @pulumi.output_type
@@ -32823,12 +32903,19 @@ class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekResu
 @pulumi.output_type
 class GetResourcePolicySnapshotSchedulePolicySnapshotPropertyResult(dict):
     def __init__(__self__, *,
+                 chain_name: str,
                  guest_flush: bool,
                  labels: Mapping[str, str],
                  storage_locations: Sequence[str]):
+        pulumi.set(__self__, "chain_name", chain_name)
         pulumi.set(__self__, "guest_flush", guest_flush)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "storage_locations", storage_locations)
+
+    @property
+    @pulumi.getter(name="chainName")
+    def chain_name(self) -> str:
+        return pulumi.get(self, "chain_name")
 
     @property
     @pulumi.getter(name="guestFlush")

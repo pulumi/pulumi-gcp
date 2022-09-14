@@ -403,6 +403,36 @@ class ResourcePolicy(pulumi.CustomResource):
             ),
             region="us-central1")
         ```
+        ### Resource Policy Snapshot Schedule Chain Name
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hourly = gcp.compute.ResourcePolicy("hourly",
+            description="chain name snapshot",
+            region="us-central1",
+            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
+                retention_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs(
+                    max_retention_days=14,
+                    on_source_disk_delete="KEEP_AUTO_SNAPSHOTS",
+                ),
+                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
+                    hourly_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs(
+                        hours_in_cycle=20,
+                        start_time="23:00",
+                    ),
+                ),
+                snapshot_properties=gcp.compute.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs(
+                    chain_name="test-schedule-chain-name",
+                    guest_flush=True,
+                    labels={
+                        "myLabel": "value",
+                    },
+                    storage_locations="us",
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -530,6 +560,36 @@ class ResourcePolicy(pulumi.CustomResource):
                 ),
             ),
             region="us-central1")
+        ```
+        ### Resource Policy Snapshot Schedule Chain Name
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hourly = gcp.compute.ResourcePolicy("hourly",
+            description="chain name snapshot",
+            region="us-central1",
+            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
+                retention_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs(
+                    max_retention_days=14,
+                    on_source_disk_delete="KEEP_AUTO_SNAPSHOTS",
+                ),
+                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
+                    hourly_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs(
+                        hours_in_cycle=20,
+                        start_time="23:00",
+                    ),
+                ),
+                snapshot_properties=gcp.compute.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs(
+                    chain_name="test-schedule-chain-name",
+                    guest_flush=True,
+                    labels={
+                        "myLabel": "value",
+                    },
+                    storage_locations="us",
+                ),
+            ))
         ```
 
         ## Import

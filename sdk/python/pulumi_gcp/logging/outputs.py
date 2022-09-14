@@ -51,7 +51,7 @@ class BillingAccountSinkBigqueryOptions(dict):
         """
         :param bool use_partitioned_tables: Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
                By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
-               tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+               tables, the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
                has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """
         pulumi.set(__self__, "use_partitioned_tables", use_partitioned_tables)
@@ -62,7 +62,7 @@ class BillingAccountSinkBigqueryOptions(dict):
         """
         Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
         By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
-        tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+        tables, the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
         has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """
         return pulumi.get(self, "use_partitioned_tables")
@@ -147,7 +147,7 @@ class FolderSinkBigqueryOptions(dict):
         """
         :param bool use_partitioned_tables: Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
                By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
-               tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+               tables, the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
                has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """
         pulumi.set(__self__, "use_partitioned_tables", use_partitioned_tables)
@@ -158,7 +158,7 @@ class FolderSinkBigqueryOptions(dict):
         """
         Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
         By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
-        tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+        tables, the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
         has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """
         return pulumi.get(self, "use_partitioned_tables")
@@ -729,7 +729,7 @@ class ProjectSinkBigqueryOptions(dict):
                  use_partitioned_tables: bool):
         """
         :param bool use_partitioned_tables: Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-               By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
+               By default, Logging creates dated tables based on the log entries' timestamps, e.g. `syslog_20170523`. With partitioned
                tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
                has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """
@@ -740,7 +740,7 @@ class ProjectSinkBigqueryOptions(dict):
     def use_partitioned_tables(self) -> bool:
         """
         Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-        By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
+        By default, Logging creates dated tables based on the log entries' timestamps, e.g. `syslog_20170523`. With partitioned
         tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
         has to be used instead. In both cases, tables are sharded based on UTC timezone.
         """

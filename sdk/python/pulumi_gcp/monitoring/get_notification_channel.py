@@ -22,7 +22,7 @@ class GetNotificationChannelResult:
     """
     A collection of values returned by getNotificationChannel.
     """
-    def __init__(__self__, description=None, display_name=None, enabled=None, id=None, labels=None, name=None, project=None, sensitive_labels=None, type=None, user_labels=None, verification_status=None):
+    def __init__(__self__, description=None, display_name=None, enabled=None, force_delete=None, id=None, labels=None, name=None, project=None, sensitive_labels=None, type=None, user_labels=None, verification_status=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -32,6 +32,9 @@ class GetNotificationChannelResult:
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
+        if force_delete and not isinstance(force_delete, bool):
+            raise TypeError("Expected argument 'force_delete' to be a bool")
+        pulumi.set(__self__, "force_delete", force_delete)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -71,6 +74,11 @@ class GetNotificationChannelResult:
     @pulumi.getter
     def enabled(self) -> bool:
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> bool:
+        return pulumi.get(self, "force_delete")
 
     @property
     @pulumi.getter
@@ -125,6 +133,7 @@ class AwaitableGetNotificationChannelResult(GetNotificationChannelResult):
             description=self.description,
             display_name=self.display_name,
             enabled=self.enabled,
+            force_delete=self.force_delete,
             id=self.id,
             labels=self.labels,
             name=self.name,
@@ -202,6 +211,7 @@ def get_notification_channel(display_name: Optional[str] = None,
         description=__ret__.description,
         display_name=__ret__.display_name,
         enabled=__ret__.enabled,
+        force_delete=__ret__.force_delete,
         id=__ret__.id,
         labels=__ret__.labels,
         name=__ret__.name,

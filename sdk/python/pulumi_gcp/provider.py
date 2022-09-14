@@ -27,6 +27,7 @@ class ProviderArgs:
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  batching: Optional[pulumi.Input['ProviderBatchingArgs']] = None,
                  big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 bigquery_analytics_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_connection_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_data_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_reservation_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -63,6 +64,7 @@ class ProviderArgs:
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 datastream_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_cx_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -160,6 +162,8 @@ class ProviderArgs:
             pulumi.set(__self__, "batching", batching)
         if big_query_custom_endpoint is not None:
             pulumi.set(__self__, "big_query_custom_endpoint", big_query_custom_endpoint)
+        if bigquery_analytics_hub_custom_endpoint is not None:
+            pulumi.set(__self__, "bigquery_analytics_hub_custom_endpoint", bigquery_analytics_hub_custom_endpoint)
         if bigquery_connection_custom_endpoint is not None:
             pulumi.set(__self__, "bigquery_connection_custom_endpoint", bigquery_connection_custom_endpoint)
         if bigquery_data_transfer_custom_endpoint is not None:
@@ -232,6 +236,8 @@ class ProviderArgs:
             pulumi.set(__self__, "dataproc_metastore_custom_endpoint", dataproc_metastore_custom_endpoint)
         if datastore_custom_endpoint is not None:
             pulumi.set(__self__, "datastore_custom_endpoint", datastore_custom_endpoint)
+        if datastream_custom_endpoint is not None:
+            pulumi.set(__self__, "datastream_custom_endpoint", datastream_custom_endpoint)
         if deployment_manager_custom_endpoint is not None:
             pulumi.set(__self__, "deployment_manager_custom_endpoint", deployment_manager_custom_endpoint)
         if dialogflow_custom_endpoint is not None:
@@ -486,6 +492,15 @@ class ProviderArgs:
     @big_query_custom_endpoint.setter
     def big_query_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "big_query_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="bigqueryAnalyticsHubCustomEndpoint")
+    def bigquery_analytics_hub_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "bigquery_analytics_hub_custom_endpoint")
+
+    @bigquery_analytics_hub_custom_endpoint.setter
+    def bigquery_analytics_hub_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bigquery_analytics_hub_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="bigqueryConnectionCustomEndpoint")
@@ -810,6 +825,15 @@ class ProviderArgs:
     @datastore_custom_endpoint.setter
     def datastore_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "datastore_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="datastreamCustomEndpoint")
+    def datastream_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "datastream_custom_endpoint")
+
+    @datastream_custom_endpoint.setter
+    def datastream_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datastream_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="deploymentManagerCustomEndpoint")
@@ -1459,6 +1483,7 @@ class Provider(pulumi.ProviderResource):
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  batching: Optional[pulumi.Input[pulumi.InputType['ProviderBatchingArgs']]] = None,
                  big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 bigquery_analytics_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_connection_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_data_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_reservation_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1495,6 +1520,7 @@ class Provider(pulumi.ProviderResource):
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 datastream_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_cx_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1614,6 +1640,7 @@ class Provider(pulumi.ProviderResource):
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  batching: Optional[pulumi.Input[pulumi.InputType['ProviderBatchingArgs']]] = None,
                  big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 bigquery_analytics_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_connection_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_data_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_reservation_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1650,6 +1677,7 @@ class Provider(pulumi.ProviderResource):
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 datastream_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_cx_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1741,6 +1769,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["assured_workloads_custom_endpoint"] = assured_workloads_custom_endpoint
             __props__.__dict__["batching"] = pulumi.Output.from_input(batching).apply(pulumi.runtime.to_json) if batching is not None else None
             __props__.__dict__["big_query_custom_endpoint"] = big_query_custom_endpoint
+            __props__.__dict__["bigquery_analytics_hub_custom_endpoint"] = bigquery_analytics_hub_custom_endpoint
             __props__.__dict__["bigquery_connection_custom_endpoint"] = bigquery_connection_custom_endpoint
             __props__.__dict__["bigquery_data_transfer_custom_endpoint"] = bigquery_data_transfer_custom_endpoint
             __props__.__dict__["bigquery_reservation_custom_endpoint"] = bigquery_reservation_custom_endpoint
@@ -1777,6 +1806,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["dataproc_custom_endpoint"] = dataproc_custom_endpoint
             __props__.__dict__["dataproc_metastore_custom_endpoint"] = dataproc_metastore_custom_endpoint
             __props__.__dict__["datastore_custom_endpoint"] = datastore_custom_endpoint
+            __props__.__dict__["datastream_custom_endpoint"] = datastream_custom_endpoint
             __props__.__dict__["deployment_manager_custom_endpoint"] = deployment_manager_custom_endpoint
             __props__.__dict__["dialogflow_custom_endpoint"] = dialogflow_custom_endpoint
             __props__.__dict__["dialogflow_cx_custom_endpoint"] = dialogflow_cx_custom_endpoint
@@ -1913,6 +1943,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="bigQueryCustomEndpoint")
     def big_query_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "big_query_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="bigqueryAnalyticsHubCustomEndpoint")
+    def bigquery_analytics_hub_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "bigquery_analytics_hub_custom_endpoint")
 
     @property
     @pulumi.getter(name="bigqueryConnectionCustomEndpoint")
@@ -2093,6 +2128,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="datastoreCustomEndpoint")
     def datastore_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "datastore_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="datastreamCustomEndpoint")
+    def datastream_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "datastream_custom_endpoint")
 
     @property
     @pulumi.getter(name="deploymentManagerCustomEndpoint")

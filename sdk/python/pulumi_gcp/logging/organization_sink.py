@@ -29,15 +29,11 @@ class OrganizationSinkArgs:
         The set of arguments for constructing a OrganizationSink resource.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
-               ```python
-               import pulumi
-               ```
-               The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[str] org_id: The numeric ID of the organization to be exported to the sink.
         :param pulumi.Input['OrganizationSinkBigqueryOptionsArgs'] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] description: A description of this exclusion.
         :param pulumi.Input[bool] disabled: If set to True, then this exclusion is disabled and it does not exclude any log entries.
-        :param pulumi.Input[Sequence[pulumi.Input['OrganizationSinkExclusionArgs']]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['OrganizationSinkExclusionArgs']]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         :param pulumi.Input[str] filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
         :param pulumi.Input[bool] include_children: Whether or not to include children organizations in the sink export. If true, logs
@@ -67,10 +63,6 @@ class OrganizationSinkArgs:
         """
         The destination of the sink (or, in other words, where logs are written to). Can be a
         Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
-        ```python
-        import pulumi
-        ```
-        The writer associated with the sink must have access to write to the above resource.
         """
         return pulumi.get(self, "destination")
 
@@ -130,7 +122,7 @@ class OrganizationSinkArgs:
     @pulumi.getter
     def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationSinkExclusionArgs']]]]:
         """
-        Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         """
         return pulumi.get(self, "exclusions")
 
@@ -196,12 +188,8 @@ class _OrganizationSinkState:
         :param pulumi.Input[str] description: A description of this exclusion.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
-               ```python
-               import pulumi
-               ```
-               The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[bool] disabled: If set to True, then this exclusion is disabled and it does not exclude any log entries.
-        :param pulumi.Input[Sequence[pulumi.Input['OrganizationSinkExclusionArgs']]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['OrganizationSinkExclusionArgs']]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         :param pulumi.Input[str] filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
         :param pulumi.Input[bool] include_children: Whether or not to include children organizations in the sink export. If true, logs
@@ -262,10 +250,6 @@ class _OrganizationSinkState:
         """
         The destination of the sink (or, in other words, where logs are written to). Can be a
         Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
-        ```python
-        import pulumi
-        ```
-        The writer associated with the sink must have access to write to the above resource.
         """
         return pulumi.get(self, "destination")
 
@@ -289,7 +273,7 @@ class _OrganizationSinkState:
     @pulumi.getter
     def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationSinkExclusionArgs']]]]:
         """
-        Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         """
         return pulumi.get(self, "exclusions")
 
@@ -414,12 +398,8 @@ class OrganizationSink(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of this exclusion.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
-               ```python
-               import pulumi
-               ```
-               The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[bool] disabled: If set to True, then this exclusion is disabled and it does not exclude any log entries.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         :param pulumi.Input[str] filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
         :param pulumi.Input[bool] include_children: Whether or not to include children organizations in the sink export. If true, logs
@@ -543,12 +523,8 @@ class OrganizationSink(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of this exclusion.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
-               ```python
-               import pulumi
-               ```
-               The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[bool] disabled: If set to True, then this exclusion is disabled and it does not exclude any log entries.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         :param pulumi.Input[str] filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
         :param pulumi.Input[bool] include_children: Whether or not to include children organizations in the sink export. If true, logs
@@ -596,10 +572,6 @@ class OrganizationSink(pulumi.CustomResource):
         """
         The destination of the sink (or, in other words, where logs are written to). Can be a
         Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
-        ```python
-        import pulumi
-        ```
-        The writer associated with the sink must have access to write to the above resource.
         """
         return pulumi.get(self, "destination")
 
@@ -615,7 +587,7 @@ class OrganizationSink(pulumi.CustomResource):
     @pulumi.getter
     def exclusions(self) -> pulumi.Output[Optional[Sequence['outputs.OrganizationSinkExclusion']]]:
         """
-        Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         """
         return pulumi.get(self, "exclusions")
 

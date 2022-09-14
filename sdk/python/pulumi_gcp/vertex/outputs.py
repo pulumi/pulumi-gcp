@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'AiDatasetEncryptionSpec',
+    'AiFeatureStoreEncryptionSpec',
     'AiFeatureStoreEntityTypeMonitoringConfig',
     'AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis',
     'AiFeatureStoreOnlineServingConfig',
@@ -53,6 +54,41 @@ class AiDatasetEncryptionSpec(dict):
         """
         Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
         Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class AiFeatureStoreEncryptionSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiFeatureStoreEncryptionSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiFeatureStoreEncryptionSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiFeatureStoreEncryptionSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        """
+        :param str kms_key_name: The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
         """
         return pulumi.get(self, "kms_key_name")
 

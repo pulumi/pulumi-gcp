@@ -20,6 +20,7 @@ class NotificationChannelArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  sensitive_labels: Optional[pulumi.Input['NotificationChannelSensitiveLabelsArgs']] = None,
@@ -30,6 +31,11 @@ class NotificationChannelArgs:
         :param pulumi.Input[str] description: An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
         :param pulumi.Input[str] display_name: An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters.
         :param pulumi.Input[bool] enabled: Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
+        :param pulumi.Input[bool] force_delete: If true, the notification channel will be deleted regardless
+               of its use in alert policies (the policies will be updated
+               to remove the channel). If false, channels that are still
+               referenced by an existing alerting policy will fail to be
+               deleted in a delete operation.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Configuration fields that define the channel and its behavior. The
                permissible and required labels are specified in the
                NotificationChannelDescriptor corresponding to the type field.
@@ -54,6 +60,8 @@ class NotificationChannelArgs:
             pulumi.set(__self__, "display_name", display_name)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -110,6 +118,22 @@ class NotificationChannelArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the notification channel will be deleted regardless
+        of its use in alert policies (the policies will be updated
+        to remove the channel). If false, channels that are still
+        referenced by an existing alerting policy will fail to be
+        deleted in a delete operation.
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete", value)
 
     @property
     @pulumi.getter
@@ -178,6 +202,7 @@ class _NotificationChannelState:
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -190,6 +215,11 @@ class _NotificationChannelState:
         :param pulumi.Input[str] description: An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
         :param pulumi.Input[str] display_name: An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters.
         :param pulumi.Input[bool] enabled: Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
+        :param pulumi.Input[bool] force_delete: If true, the notification channel will be deleted regardless
+               of its use in alert policies (the policies will be updated
+               to remove the channel). If false, channels that are still
+               referenced by an existing alerting policy will fail to be
+               deleted in a delete operation.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Configuration fields that define the channel and its behavior. The
                permissible and required labels are specified in the
                NotificationChannelDescriptor corresponding to the type field.
@@ -223,6 +253,8 @@ class _NotificationChannelState:
             pulumi.set(__self__, "display_name", display_name)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -273,6 +305,22 @@ class _NotificationChannelState:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the notification channel will be deleted regardless
+        of its use in alert policies (the policies will be updated
+        to remove the channel). If false, channels that are still
+        referenced by an existing alerting policy will fail to be
+        deleted in a delete operation.
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete", value)
 
     @property
     @pulumi.getter
@@ -386,6 +434,7 @@ class NotificationChannel(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  sensitive_labels: Optional[pulumi.Input[pulumi.InputType['NotificationChannelSensitiveLabelsArgs']]] = None,
@@ -429,6 +478,7 @@ class NotificationChannel(pulumi.CustomResource):
 
         basic = gcp.monitoring.NotificationChannel("basic",
             display_name="Test Notification Channel",
+            force_delete=False,
             labels={
                 "email_address": "fake_email@blahblah.com",
             },
@@ -464,6 +514,11 @@ class NotificationChannel(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
         :param pulumi.Input[str] display_name: An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters.
         :param pulumi.Input[bool] enabled: Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
+        :param pulumi.Input[bool] force_delete: If true, the notification channel will be deleted regardless
+               of its use in alert policies (the policies will be updated
+               to remove the channel). If false, channels that are still
+               referenced by an existing alerting policy will fail to be
+               deleted in a delete operation.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Configuration fields that define the channel and its behavior. The
                permissible and required labels are specified in the
                NotificationChannelDescriptor corresponding to the type field.
@@ -525,6 +580,7 @@ class NotificationChannel(pulumi.CustomResource):
 
         basic = gcp.monitoring.NotificationChannel("basic",
             display_name="Test Notification Channel",
+            force_delete=False,
             labels={
                 "email_address": "fake_email@blahblah.com",
             },
@@ -573,6 +629,7 @@ class NotificationChannel(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  sensitive_labels: Optional[pulumi.Input[pulumi.InputType['NotificationChannelSensitiveLabelsArgs']]] = None,
@@ -590,6 +647,7 @@ class NotificationChannel(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project
             __props__.__dict__["sensitive_labels"] = sensitive_labels
@@ -612,6 +670,7 @@ class NotificationChannel(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
+            force_delete: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -629,6 +688,11 @@ class NotificationChannel(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
         :param pulumi.Input[str] display_name: An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters.
         :param pulumi.Input[bool] enabled: Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
+        :param pulumi.Input[bool] force_delete: If true, the notification channel will be deleted regardless
+               of its use in alert policies (the policies will be updated
+               to remove the channel). If false, channels that are still
+               referenced by an existing alerting policy will fail to be
+               deleted in a delete operation.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Configuration fields that define the channel and its behavior. The
                permissible and required labels are specified in the
                NotificationChannelDescriptor corresponding to the type field.
@@ -663,6 +727,7 @@ class NotificationChannel(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -695,6 +760,18 @@ class NotificationChannel(pulumi.CustomResource):
         Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, the notification channel will be deleted regardless
+        of its use in alert policies (the policies will be updated
+        to remove the channel). If false, channels that are still
+        referenced by an existing alerting policy will fail to be
+        deleted in a delete operation.
+        """
+        return pulumi.get(self, "force_delete")
 
     @property
     @pulumi.getter

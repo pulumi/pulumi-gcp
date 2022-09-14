@@ -12,6 +12,9 @@ from .. import _utilities
 __all__ = [
     'EnvironmentIamBindingConditionArgs',
     'EnvironmentIamMemberConditionArgs',
+    'EnvironmentNodeConfigArgs',
+    'OrganizationPropertiesArgs',
+    'OrganizationPropertiesPropertyArgs',
 ]
 
 @pulumi.input_type
@@ -90,5 +93,136 @@ class EnvironmentIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class EnvironmentNodeConfigArgs:
+    def __init__(__self__, *,
+                 current_aggregate_node_count: Optional[pulumi.Input[str]] = None,
+                 max_node_count: Optional[pulumi.Input[str]] = None,
+                 min_node_count: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] current_aggregate_node_count: -
+               The current total number of gateway nodes that each environment currently has across
+               all instances.
+        :param pulumi.Input[str] max_node_count: The maximum total number of gateway nodes that the is reserved for all instances that
+               has the specified environment. If not specified, the default is determined by the
+               recommended maximum number of nodes for that gateway.
+        :param pulumi.Input[str] min_node_count: The minimum total number of gateway nodes that the is reserved for all instances that
+               has the specified environment. If not specified, the default is determined by the
+               recommended minimum number of nodes for that gateway.
+        """
+        if current_aggregate_node_count is not None:
+            pulumi.set(__self__, "current_aggregate_node_count", current_aggregate_node_count)
+        if max_node_count is not None:
+            pulumi.set(__self__, "max_node_count", max_node_count)
+        if min_node_count is not None:
+            pulumi.set(__self__, "min_node_count", min_node_count)
+
+    @property
+    @pulumi.getter(name="currentAggregateNodeCount")
+    def current_aggregate_node_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        The current total number of gateway nodes that each environment currently has across
+        all instances.
+        """
+        return pulumi.get(self, "current_aggregate_node_count")
+
+    @current_aggregate_node_count.setter
+    def current_aggregate_node_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "current_aggregate_node_count", value)
+
+    @property
+    @pulumi.getter(name="maxNodeCount")
+    def max_node_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum total number of gateway nodes that the is reserved for all instances that
+        has the specified environment. If not specified, the default is determined by the
+        recommended maximum number of nodes for that gateway.
+        """
+        return pulumi.get(self, "max_node_count")
+
+    @max_node_count.setter
+    def max_node_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_node_count", value)
+
+    @property
+    @pulumi.getter(name="minNodeCount")
+    def min_node_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum total number of gateway nodes that the is reserved for all instances that
+        has the specified environment. If not specified, the default is determined by the
+        recommended minimum number of nodes for that gateway.
+        """
+        return pulumi.get(self, "min_node_count")
+
+    @min_node_count.setter
+    def min_node_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_node_count", value)
+
+
+@pulumi.input_type
+class OrganizationPropertiesArgs:
+    def __init__(__self__, *,
+                 properties: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationPropertiesPropertyArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['OrganizationPropertiesPropertyArgs']]] properties: List of all properties in the object.
+               Structure is documented below.
+        """
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationPropertiesPropertyArgs']]]]:
+        """
+        List of all properties in the object.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationPropertiesPropertyArgs']]]]):
+        pulumi.set(self, "properties", value)
+
+
+@pulumi.input_type
+class OrganizationPropertiesPropertyArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the property.
+        :param pulumi.Input[str] value: Value of the property.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the property.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value of the property.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 

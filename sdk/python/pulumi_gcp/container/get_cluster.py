@@ -22,7 +22,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, addons_configs=None, authenticator_groups_configs=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, dns_configs=None, enable_autopilot=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, identity_service_configs=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, mesh_certificates=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pool_auto_configs=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, services_ipv4_cidr=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None):
+    def __init__(__self__, addons_configs=None, authenticator_groups_configs=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, cost_management_configs=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, dns_configs=None, enable_autopilot=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, identity_service_configs=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, mesh_certificates=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pool_auto_configs=None, node_pool_defaults=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, service_external_ips_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None):
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError("Expected argument 'addons_configs' to be a list")
         pulumi.set(__self__, "addons_configs", addons_configs)
@@ -44,6 +44,9 @@ class GetClusterResult:
         if confidential_nodes and not isinstance(confidential_nodes, list):
             raise TypeError("Expected argument 'confidential_nodes' to be a list")
         pulumi.set(__self__, "confidential_nodes", confidential_nodes)
+        if cost_management_configs and not isinstance(cost_management_configs, list):
+            raise TypeError("Expected argument 'cost_management_configs' to be a list")
+        pulumi.set(__self__, "cost_management_configs", cost_management_configs)
         if database_encryptions and not isinstance(database_encryptions, list):
             raise TypeError("Expected argument 'database_encryptions' to be a list")
         pulumi.set(__self__, "database_encryptions", database_encryptions)
@@ -158,6 +161,9 @@ class GetClusterResult:
         if node_pool_auto_configs and not isinstance(node_pool_auto_configs, list):
             raise TypeError("Expected argument 'node_pool_auto_configs' to be a list")
         pulumi.set(__self__, "node_pool_auto_configs", node_pool_auto_configs)
+        if node_pool_defaults and not isinstance(node_pool_defaults, list):
+            raise TypeError("Expected argument 'node_pool_defaults' to be a list")
+        pulumi.set(__self__, "node_pool_defaults", node_pool_defaults)
         if node_pools and not isinstance(node_pools, list):
             raise TypeError("Expected argument 'node_pools' to be a list")
         pulumi.set(__self__, "node_pools", node_pools)
@@ -197,6 +203,9 @@ class GetClusterResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if service_external_ips_configs and not isinstance(service_external_ips_configs, list):
+            raise TypeError("Expected argument 'service_external_ips_configs' to be a list")
+        pulumi.set(__self__, "service_external_ips_configs", service_external_ips_configs)
         if services_ipv4_cidr and not isinstance(services_ipv4_cidr, str):
             raise TypeError("Expected argument 'services_ipv4_cidr' to be a str")
         pulumi.set(__self__, "services_ipv4_cidr", services_ipv4_cidr)
@@ -250,6 +259,11 @@ class GetClusterResult:
     @pulumi.getter(name="confidentialNodes")
     def confidential_nodes(self) -> Sequence['outputs.GetClusterConfidentialNodeResult']:
         return pulumi.get(self, "confidential_nodes")
+
+    @property
+    @pulumi.getter(name="costManagementConfigs")
+    def cost_management_configs(self) -> Sequence['outputs.GetClusterCostManagementConfigResult']:
+        return pulumi.get(self, "cost_management_configs")
 
     @property
     @pulumi.getter(name="databaseEncryptions")
@@ -445,6 +459,11 @@ class GetClusterResult:
         return pulumi.get(self, "node_pool_auto_configs")
 
     @property
+    @pulumi.getter(name="nodePoolDefaults")
+    def node_pool_defaults(self) -> Sequence['outputs.GetClusterNodePoolDefaultResult']:
+        return pulumi.get(self, "node_pool_defaults")
+
+    @property
     @pulumi.getter(name="nodePools")
     def node_pools(self) -> Sequence['outputs.GetClusterNodePoolResult']:
         return pulumi.get(self, "node_pools")
@@ -510,6 +529,11 @@ class GetClusterResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="serviceExternalIpsConfigs")
+    def service_external_ips_configs(self) -> Sequence['outputs.GetClusterServiceExternalIpsConfigResult']:
+        return pulumi.get(self, "service_external_ips_configs")
+
+    @property
     @pulumi.getter(name="servicesIpv4Cidr")
     def services_ipv4_cidr(self) -> str:
         return pulumi.get(self, "services_ipv4_cidr")
@@ -553,6 +577,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             cluster_ipv4_cidr=self.cluster_ipv4_cidr,
             cluster_telemetries=self.cluster_telemetries,
             confidential_nodes=self.confidential_nodes,
+            cost_management_configs=self.cost_management_configs,
             database_encryptions=self.database_encryptions,
             datapath_provider=self.datapath_provider,
             default_max_pods_per_node=self.default_max_pods_per_node,
@@ -591,6 +616,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             node_configs=self.node_configs,
             node_locations=self.node_locations,
             node_pool_auto_configs=self.node_pool_auto_configs,
+            node_pool_defaults=self.node_pool_defaults,
             node_pools=self.node_pools,
             node_version=self.node_version,
             notification_configs=self.notification_configs,
@@ -604,6 +630,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             resource_labels=self.resource_labels,
             resource_usage_export_configs=self.resource_usage_export_configs,
             self_link=self.self_link,
+            service_external_ips_configs=self.service_external_ips_configs,
             services_ipv4_cidr=self.services_ipv4_cidr,
             subnetwork=self.subnetwork,
             tpu_configs=self.tpu_configs,
@@ -656,6 +683,7 @@ def get_cluster(location: Optional[str] = None,
         cluster_ipv4_cidr=__ret__.cluster_ipv4_cidr,
         cluster_telemetries=__ret__.cluster_telemetries,
         confidential_nodes=__ret__.confidential_nodes,
+        cost_management_configs=__ret__.cost_management_configs,
         database_encryptions=__ret__.database_encryptions,
         datapath_provider=__ret__.datapath_provider,
         default_max_pods_per_node=__ret__.default_max_pods_per_node,
@@ -694,6 +722,7 @@ def get_cluster(location: Optional[str] = None,
         node_configs=__ret__.node_configs,
         node_locations=__ret__.node_locations,
         node_pool_auto_configs=__ret__.node_pool_auto_configs,
+        node_pool_defaults=__ret__.node_pool_defaults,
         node_pools=__ret__.node_pools,
         node_version=__ret__.node_version,
         notification_configs=__ret__.notification_configs,
@@ -707,6 +736,7 @@ def get_cluster(location: Optional[str] = None,
         resource_labels=__ret__.resource_labels,
         resource_usage_export_configs=__ret__.resource_usage_export_configs,
         self_link=__ret__.self_link,
+        service_external_ips_configs=__ret__.service_external_ips_configs,
         services_ipv4_cidr=__ret__.services_ipv4_cidr,
         subnetwork=__ret__.subnetwork,
         tpu_configs=__ret__.tpu_configs,
