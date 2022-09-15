@@ -3691,13 +3691,13 @@ export namespace bigquery {
 }
 
 export namespace bigqueryanalyticshub {
-    export interface DataExchanceIamMemberCondition {
+    export interface DataExchangeIamBindingCondition {
         description?: string;
         expression: string;
         title: string;
     }
 
-    export interface DataExchangeIamBindingCondition {
+    export interface DataExchangeIamMemberCondition {
         description?: string;
         expression: string;
         title: string;

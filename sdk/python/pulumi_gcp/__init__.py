@@ -828,14 +828,6 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "bigqueryanalyticshub/dataExchanceIamMember",
-  "fqn": "pulumi_gcp.bigqueryanalyticshub",
-  "classes": {
-   "gcp:bigqueryanalyticshub/dataExchanceIamMember:DataExchanceIamMember": "DataExchanceIamMember"
-  }
- },
- {
-  "pkg": "gcp",
   "mod": "bigqueryanalyticshub/dataExchange",
   "fqn": "pulumi_gcp.bigqueryanalyticshub",
   "classes": {
@@ -848,6 +840,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.bigqueryanalyticshub",
   "classes": {
    "gcp:bigqueryanalyticshub/dataExchangeIamBinding:DataExchangeIamBinding": "DataExchangeIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigqueryanalyticshub/dataExchangeIamMember",
+  "fqn": "pulumi_gcp.bigqueryanalyticshub",
+  "classes": {
+   "gcp:bigqueryanalyticshub/dataExchangeIamMember:DataExchangeIamMember": "DataExchangeIamMember"
   }
  },
  {

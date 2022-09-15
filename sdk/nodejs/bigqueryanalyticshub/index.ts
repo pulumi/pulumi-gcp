@@ -5,27 +5,27 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./dataExchanceIamMember";
 export * from "./dataExchange";
 export * from "./dataExchangeIamBinding";
+export * from "./dataExchangeIamMember";
 export * from "./dataExchangeIamPolicy";
 
 // Import resources to register:
-import { DataExchanceIamMember } from "./dataExchanceIamMember";
 import { DataExchange } from "./dataExchange";
 import { DataExchangeIamBinding } from "./dataExchangeIamBinding";
+import { DataExchangeIamMember } from "./dataExchangeIamMember";
 import { DataExchangeIamPolicy } from "./dataExchangeIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp:bigqueryanalyticshub/dataExchanceIamMember:DataExchanceIamMember":
-                return new DataExchanceIamMember(name, <any>undefined, { urn })
             case "gcp:bigqueryanalyticshub/dataExchange:DataExchange":
                 return new DataExchange(name, <any>undefined, { urn })
             case "gcp:bigqueryanalyticshub/dataExchangeIamBinding:DataExchangeIamBinding":
                 return new DataExchangeIamBinding(name, <any>undefined, { urn })
+            case "gcp:bigqueryanalyticshub/dataExchangeIamMember:DataExchangeIamMember":
+                return new DataExchangeIamMember(name, <any>undefined, { urn })
             case "gcp:bigqueryanalyticshub/dataExchangeIamPolicy:DataExchangeIamPolicy":
                 return new DataExchangeIamPolicy(name, <any>undefined, { urn })
             default:
@@ -33,7 +33,7 @@ const _module = {
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/dataExchanceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/dataExchange", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/dataExchangeIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/dataExchangeIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/dataExchangeIamPolicy", _module)

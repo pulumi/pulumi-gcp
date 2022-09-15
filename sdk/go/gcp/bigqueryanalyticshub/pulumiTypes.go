@@ -10,169 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type DataExchanceIamMemberCondition struct {
-	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
-}
-
-// DataExchanceIamMemberConditionInput is an input type that accepts DataExchanceIamMemberConditionArgs and DataExchanceIamMemberConditionOutput values.
-// You can construct a concrete instance of `DataExchanceIamMemberConditionInput` via:
-//
-//	DataExchanceIamMemberConditionArgs{...}
-type DataExchanceIamMemberConditionInput interface {
-	pulumi.Input
-
-	ToDataExchanceIamMemberConditionOutput() DataExchanceIamMemberConditionOutput
-	ToDataExchanceIamMemberConditionOutputWithContext(context.Context) DataExchanceIamMemberConditionOutput
-}
-
-type DataExchanceIamMemberConditionArgs struct {
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
-}
-
-func (DataExchanceIamMemberConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataExchanceIamMemberCondition)(nil)).Elem()
-}
-
-func (i DataExchanceIamMemberConditionArgs) ToDataExchanceIamMemberConditionOutput() DataExchanceIamMemberConditionOutput {
-	return i.ToDataExchanceIamMemberConditionOutputWithContext(context.Background())
-}
-
-func (i DataExchanceIamMemberConditionArgs) ToDataExchanceIamMemberConditionOutputWithContext(ctx context.Context) DataExchanceIamMemberConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataExchanceIamMemberConditionOutput)
-}
-
-func (i DataExchanceIamMemberConditionArgs) ToDataExchanceIamMemberConditionPtrOutput() DataExchanceIamMemberConditionPtrOutput {
-	return i.ToDataExchanceIamMemberConditionPtrOutputWithContext(context.Background())
-}
-
-func (i DataExchanceIamMemberConditionArgs) ToDataExchanceIamMemberConditionPtrOutputWithContext(ctx context.Context) DataExchanceIamMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataExchanceIamMemberConditionOutput).ToDataExchanceIamMemberConditionPtrOutputWithContext(ctx)
-}
-
-// DataExchanceIamMemberConditionPtrInput is an input type that accepts DataExchanceIamMemberConditionArgs, DataExchanceIamMemberConditionPtr and DataExchanceIamMemberConditionPtrOutput values.
-// You can construct a concrete instance of `DataExchanceIamMemberConditionPtrInput` via:
-//
-//	        DataExchanceIamMemberConditionArgs{...}
-//
-//	or:
-//
-//	        nil
-type DataExchanceIamMemberConditionPtrInput interface {
-	pulumi.Input
-
-	ToDataExchanceIamMemberConditionPtrOutput() DataExchanceIamMemberConditionPtrOutput
-	ToDataExchanceIamMemberConditionPtrOutputWithContext(context.Context) DataExchanceIamMemberConditionPtrOutput
-}
-
-type dataExchanceIamMemberConditionPtrType DataExchanceIamMemberConditionArgs
-
-func DataExchanceIamMemberConditionPtr(v *DataExchanceIamMemberConditionArgs) DataExchanceIamMemberConditionPtrInput {
-	return (*dataExchanceIamMemberConditionPtrType)(v)
-}
-
-func (*dataExchanceIamMemberConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataExchanceIamMemberCondition)(nil)).Elem()
-}
-
-func (i *dataExchanceIamMemberConditionPtrType) ToDataExchanceIamMemberConditionPtrOutput() DataExchanceIamMemberConditionPtrOutput {
-	return i.ToDataExchanceIamMemberConditionPtrOutputWithContext(context.Background())
-}
-
-func (i *dataExchanceIamMemberConditionPtrType) ToDataExchanceIamMemberConditionPtrOutputWithContext(ctx context.Context) DataExchanceIamMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataExchanceIamMemberConditionPtrOutput)
-}
-
-type DataExchanceIamMemberConditionOutput struct{ *pulumi.OutputState }
-
-func (DataExchanceIamMemberConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataExchanceIamMemberCondition)(nil)).Elem()
-}
-
-func (o DataExchanceIamMemberConditionOutput) ToDataExchanceIamMemberConditionOutput() DataExchanceIamMemberConditionOutput {
-	return o
-}
-
-func (o DataExchanceIamMemberConditionOutput) ToDataExchanceIamMemberConditionOutputWithContext(ctx context.Context) DataExchanceIamMemberConditionOutput {
-	return o
-}
-
-func (o DataExchanceIamMemberConditionOutput) ToDataExchanceIamMemberConditionPtrOutput() DataExchanceIamMemberConditionPtrOutput {
-	return o.ToDataExchanceIamMemberConditionPtrOutputWithContext(context.Background())
-}
-
-func (o DataExchanceIamMemberConditionOutput) ToDataExchanceIamMemberConditionPtrOutputWithContext(ctx context.Context) DataExchanceIamMemberConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataExchanceIamMemberCondition) *DataExchanceIamMemberCondition {
-		return &v
-	}).(DataExchanceIamMemberConditionPtrOutput)
-}
-
-func (o DataExchanceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataExchanceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-func (o DataExchanceIamMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v DataExchanceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
-}
-
-func (o DataExchanceIamMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v DataExchanceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
-}
-
-type DataExchanceIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
-
-func (DataExchanceIamMemberConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataExchanceIamMemberCondition)(nil)).Elem()
-}
-
-func (o DataExchanceIamMemberConditionPtrOutput) ToDataExchanceIamMemberConditionPtrOutput() DataExchanceIamMemberConditionPtrOutput {
-	return o
-}
-
-func (o DataExchanceIamMemberConditionPtrOutput) ToDataExchanceIamMemberConditionPtrOutputWithContext(ctx context.Context) DataExchanceIamMemberConditionPtrOutput {
-	return o
-}
-
-func (o DataExchanceIamMemberConditionPtrOutput) Elem() DataExchanceIamMemberConditionOutput {
-	return o.ApplyT(func(v *DataExchanceIamMemberCondition) DataExchanceIamMemberCondition {
-		if v != nil {
-			return *v
-		}
-		var ret DataExchanceIamMemberCondition
-		return ret
-	}).(DataExchanceIamMemberConditionOutput)
-}
-
-func (o DataExchanceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataExchanceIamMemberCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o DataExchanceIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataExchanceIamMemberCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Expression
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o DataExchanceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataExchanceIamMemberCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Title
-	}).(pulumi.StringPtrOutput)
-}
-
 type DataExchangeIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -336,13 +173,176 @@ func (o DataExchangeIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type DataExchangeIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// DataExchangeIamMemberConditionInput is an input type that accepts DataExchangeIamMemberConditionArgs and DataExchangeIamMemberConditionOutput values.
+// You can construct a concrete instance of `DataExchangeIamMemberConditionInput` via:
+//
+//	DataExchangeIamMemberConditionArgs{...}
+type DataExchangeIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToDataExchangeIamMemberConditionOutput() DataExchangeIamMemberConditionOutput
+	ToDataExchangeIamMemberConditionOutputWithContext(context.Context) DataExchangeIamMemberConditionOutput
+}
+
+type DataExchangeIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (DataExchangeIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataExchangeIamMemberCondition)(nil)).Elem()
+}
+
+func (i DataExchangeIamMemberConditionArgs) ToDataExchangeIamMemberConditionOutput() DataExchangeIamMemberConditionOutput {
+	return i.ToDataExchangeIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i DataExchangeIamMemberConditionArgs) ToDataExchangeIamMemberConditionOutputWithContext(ctx context.Context) DataExchangeIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeIamMemberConditionOutput)
+}
+
+func (i DataExchangeIamMemberConditionArgs) ToDataExchangeIamMemberConditionPtrOutput() DataExchangeIamMemberConditionPtrOutput {
+	return i.ToDataExchangeIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i DataExchangeIamMemberConditionArgs) ToDataExchangeIamMemberConditionPtrOutputWithContext(ctx context.Context) DataExchangeIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeIamMemberConditionOutput).ToDataExchangeIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// DataExchangeIamMemberConditionPtrInput is an input type that accepts DataExchangeIamMemberConditionArgs, DataExchangeIamMemberConditionPtr and DataExchangeIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `DataExchangeIamMemberConditionPtrInput` via:
+//
+//	        DataExchangeIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataExchangeIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToDataExchangeIamMemberConditionPtrOutput() DataExchangeIamMemberConditionPtrOutput
+	ToDataExchangeIamMemberConditionPtrOutputWithContext(context.Context) DataExchangeIamMemberConditionPtrOutput
+}
+
+type dataExchangeIamMemberConditionPtrType DataExchangeIamMemberConditionArgs
+
+func DataExchangeIamMemberConditionPtr(v *DataExchangeIamMemberConditionArgs) DataExchangeIamMemberConditionPtrInput {
+	return (*dataExchangeIamMemberConditionPtrType)(v)
+}
+
+func (*dataExchangeIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataExchangeIamMemberCondition)(nil)).Elem()
+}
+
+func (i *dataExchangeIamMemberConditionPtrType) ToDataExchangeIamMemberConditionPtrOutput() DataExchangeIamMemberConditionPtrOutput {
+	return i.ToDataExchangeIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *dataExchangeIamMemberConditionPtrType) ToDataExchangeIamMemberConditionPtrOutputWithContext(ctx context.Context) DataExchangeIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeIamMemberConditionPtrOutput)
+}
+
+type DataExchangeIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (DataExchangeIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataExchangeIamMemberCondition)(nil)).Elem()
+}
+
+func (o DataExchangeIamMemberConditionOutput) ToDataExchangeIamMemberConditionOutput() DataExchangeIamMemberConditionOutput {
+	return o
+}
+
+func (o DataExchangeIamMemberConditionOutput) ToDataExchangeIamMemberConditionOutputWithContext(ctx context.Context) DataExchangeIamMemberConditionOutput {
+	return o
+}
+
+func (o DataExchangeIamMemberConditionOutput) ToDataExchangeIamMemberConditionPtrOutput() DataExchangeIamMemberConditionPtrOutput {
+	return o.ToDataExchangeIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o DataExchangeIamMemberConditionOutput) ToDataExchangeIamMemberConditionPtrOutputWithContext(ctx context.Context) DataExchangeIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataExchangeIamMemberCondition) *DataExchangeIamMemberCondition {
+		return &v
+	}).(DataExchangeIamMemberConditionPtrOutput)
+}
+
+func (o DataExchangeIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataExchangeIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o DataExchangeIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v DataExchangeIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o DataExchangeIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v DataExchangeIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type DataExchangeIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (DataExchangeIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataExchangeIamMemberCondition)(nil)).Elem()
+}
+
+func (o DataExchangeIamMemberConditionPtrOutput) ToDataExchangeIamMemberConditionPtrOutput() DataExchangeIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o DataExchangeIamMemberConditionPtrOutput) ToDataExchangeIamMemberConditionPtrOutputWithContext(ctx context.Context) DataExchangeIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o DataExchangeIamMemberConditionPtrOutput) Elem() DataExchangeIamMemberConditionOutput {
+	return o.ApplyT(func(v *DataExchangeIamMemberCondition) DataExchangeIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret DataExchangeIamMemberCondition
+		return ret
+	}).(DataExchangeIamMemberConditionOutput)
+}
+
+func (o DataExchangeIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataExchangeIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DataExchangeIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataExchangeIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DataExchangeIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataExchangeIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*DataExchanceIamMemberConditionInput)(nil)).Elem(), DataExchanceIamMemberConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DataExchanceIamMemberConditionPtrInput)(nil)).Elem(), DataExchanceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeIamBindingConditionInput)(nil)).Elem(), DataExchangeIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeIamBindingConditionPtrInput)(nil)).Elem(), DataExchangeIamBindingConditionArgs{})
-	pulumi.RegisterOutputType(DataExchanceIamMemberConditionOutput{})
-	pulumi.RegisterOutputType(DataExchanceIamMemberConditionPtrOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeIamMemberConditionInput)(nil)).Elem(), DataExchangeIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeIamMemberConditionPtrInput)(nil)).Elem(), DataExchangeIamMemberConditionArgs{})
 	pulumi.RegisterOutputType(DataExchangeIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(DataExchangeIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(DataExchangeIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(DataExchangeIamMemberConditionPtrOutput{})
 }

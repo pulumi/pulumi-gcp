@@ -10,12 +10,12 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'DataExchanceIamMemberCondition',
     'DataExchangeIamBindingCondition',
+    'DataExchangeIamMemberCondition',
 ]
 
 @pulumi.output_type
-class DataExchanceIamMemberCondition(dict):
+class DataExchangeIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -42,7 +42,7 @@ class DataExchanceIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class DataExchangeIamBindingCondition(dict):
+class DataExchangeIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
