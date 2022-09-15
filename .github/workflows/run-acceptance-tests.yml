@@ -1,10 +1,6 @@
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  GOOGLE_CI_SERVICE_ACCOUNT_EMAIL: pulumi-ci@pulumi-ci-gcp-provider.iam.gserviceaccount.com
-  GOOGLE_CI_WORKLOAD_IDENTITY_POOL: pulumi-ci
-  GOOGLE_CI_WORKLOAD_IDENTITY_PROVIDER: pulumi-ci
   GOOGLE_PROJECT: pulumi-ci-gcp-provider
-  GOOGLE_PROJECT_NUMBER: 895284651812
   GOOGLE_REGION: us-central1
   GOOGLE_ZONE: us-central1-a
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -34,11 +30,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
       with:
         ref: ${{ env.PR_COMMIT_SHA }}
     - name: Checkout Scripts Repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
       with:
         path: ci-scripts
         repository: pulumi/scripts
@@ -151,11 +147,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
       with:
         ref: ${{ env.PR_COMMIT_SHA }}
     - name: Checkout Scripts Repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
       with:
         path: ci-scripts
         repository: pulumi/scripts
@@ -237,17 +233,14 @@ jobs:
       github.event.pull_request.head.repo.full_name == github.repository
     name: test
     needs: build_sdk
-    permissions:
-      contents: read
-      id-token: write
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
       with:
         ref: ${{ env.PR_COMMIT_SHA }}
     - name: Checkout Scripts Repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
       with:
         path: ci-scripts
         repository: pulumi/scripts
@@ -308,18 +301,14 @@ jobs:
       run: |-
         pip3 install virtualenv==20.0.23
         pip3 install pipenv
-    - name: Authenticate to Google Cloud
-      uses: google-github-actions/auth@v0
-      with:
-        service_account: ${{ env.GOOGLE_CI_SERVICE_ACCOUNT_EMAIL }}
-        workload_identity_provider: projects/${{ env.GOOGLE_PROJECT_NUMBER
-          }}/locations/global/workloadIdentityPools/${{
-          env.GOOGLE_CI_WORKLOAD_IDENTITY_POOL }}/providers/${{
-          env.GOOGLE_CI_WORKLOAD_IDENTITY_PROVIDER }}
-    - name: Setup gcloud auth
+    - name: Configure GCP credentials
       uses: google-github-actions/setup-gcloud@v0
       with:
-        install_components: gke-gcloud-auth-plugin
+        export_default_credentials: true
+        project_id: ${{ env.GOOGLE_PROJECT }}
+        service_account_email: ${{ secrets.GCP_SA_EMAIL }}
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
+        version: 285.0.0
     - name: Install dependencies
       run: make install_${{ matrix.language}}_sdk
     - name: Install gotestfmt
