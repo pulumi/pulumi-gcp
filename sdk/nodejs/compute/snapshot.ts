@@ -54,6 +54,32 @@ import * as utilities from "../utilities";
  *     storageLocations: ["us-central1"],
  * });
  * ```
+ * ### Snapshot Chainname
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const debian = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const persistent = new gcp.compute.Disk("persistent", {
+ *     image: debian.then(debian => debian.selfLink),
+ *     size: 10,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * const snapshot = new gcp.compute.Snapshot("snapshot", {
+ *     sourceDisk: persistent.id,
+ *     zone: "us-central1-a",
+ *     chainName: "snapshot-chain",
+ *     labels: {
+ *         my_label: "value",
+ *     },
+ *     storageLocations: ["us-central1"],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -99,6 +125,15 @@ export class Snapshot extends pulumi.CustomResource {
         return obj['__pulumiType'] === Snapshot.__pulumiType;
     }
 
+    /**
+     * Creates the new snapshot in the snapshot chain labeled with the
+     * specified name. The chain name must be 1-63 characters long and
+     * comply with RFC1035. This is an uncommon option only for advanced
+     * service owners who needs to create separate snapshot chains, for
+     * example, for chargeback tracking.  When you describe your snapshot
+     * resource, this field is visible only if it has a non-empty value.
+     */
+    public readonly chainName!: pulumi.Output<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -192,6 +227,7 @@ export class Snapshot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnapshotState | undefined;
+            resourceInputs["chainName"] = state ? state.chainName : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diskSizeGb"] = state ? state.diskSizeGb : undefined;
@@ -213,6 +249,7 @@ export class Snapshot extends pulumi.CustomResource {
             if ((!args || args.sourceDisk === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceDisk'");
             }
+            resourceInputs["chainName"] = args ? args.chainName : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -239,6 +276,15 @@ export class Snapshot extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Snapshot resources.
  */
 export interface SnapshotState {
+    /**
+     * Creates the new snapshot in the snapshot chain labeled with the
+     * specified name. The chain name must be 1-63 characters long and
+     * comply with RFC1035. This is an uncommon option only for advanced
+     * service owners who needs to create separate snapshot chains, for
+     * example, for chargeback tracking.  When you describe your snapshot
+     * resource, this field is visible only if it has a non-empty value.
+     */
+    chainName?: pulumi.Input<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -324,6 +370,15 @@ export interface SnapshotState {
  * The set of arguments for constructing a Snapshot resource.
  */
 export interface SnapshotArgs {
+    /**
+     * Creates the new snapshot in the snapshot chain labeled with the
+     * specified name. The chain name must be 1-63 characters long and
+     * comply with RFC1035. This is an uncommon option only for advanced
+     * service owners who needs to create separate snapshot chains, for
+     * example, for chargeback tracking.  When you describe your snapshot
+     * resource, this field is visible only if it has a non-empty value.
+     */
+    chainName?: pulumi.Input<string>;
     /**
      * An optional description of this resource.
      */

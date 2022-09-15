@@ -12,6 +12,7 @@ import java.util.Objects;
 public final class GetInstanceAdvancedMachineFeature {
     private Boolean enableNestedVirtualization;
     private Integer threadsPerCore;
+    private Integer visibleCoreCount;
 
     private GetInstanceAdvancedMachineFeature() {}
     public Boolean enableNestedVirtualization() {
@@ -19,6 +20,9 @@ public final class GetInstanceAdvancedMachineFeature {
     }
     public Integer threadsPerCore() {
         return this.threadsPerCore;
+    }
+    public Integer visibleCoreCount() {
+        return this.visibleCoreCount;
     }
 
     public static Builder builder() {
@@ -32,11 +36,13 @@ public final class GetInstanceAdvancedMachineFeature {
     public static final class Builder {
         private Boolean enableNestedVirtualization;
         private Integer threadsPerCore;
+        private Integer visibleCoreCount;
         public Builder() {}
         public Builder(GetInstanceAdvancedMachineFeature defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableNestedVirtualization = defaults.enableNestedVirtualization;
     	      this.threadsPerCore = defaults.threadsPerCore;
+    	      this.visibleCoreCount = defaults.visibleCoreCount;
         }
 
         @CustomType.Setter
@@ -49,10 +55,16 @@ public final class GetInstanceAdvancedMachineFeature {
             this.threadsPerCore = Objects.requireNonNull(threadsPerCore);
             return this;
         }
+        @CustomType.Setter
+        public Builder visibleCoreCount(Integer visibleCoreCount) {
+            this.visibleCoreCount = Objects.requireNonNull(visibleCoreCount);
+            return this;
+        }
         public GetInstanceAdvancedMachineFeature build() {
             final var o = new GetInstanceAdvancedMachineFeature();
             o.enableNestedVirtualization = enableNestedVirtualization;
             o.threadsPerCore = threadsPerCore;
+            o.visibleCoreCount = visibleCoreCount;
             return o;
         }
     }

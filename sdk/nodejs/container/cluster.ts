@@ -153,6 +153,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly confidentialNodes!: pulumi.Output<outputs.container.ClusterConfidentialNodes>;
     /**
+     * Cost management configuration for the cluster.
+     */
+    public readonly costManagementConfig!: pulumi.Output<outputs.container.ClusterCostManagementConfig>;
+    /**
      * Structure is documented below.
      */
     public readonly databaseEncryption!: pulumi.Output<outputs.container.ClusterDatabaseEncryption>;
@@ -376,6 +380,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly nodePoolAutoConfig!: pulumi.Output<outputs.container.ClusterNodePoolAutoConfig | undefined>;
     /**
+     * ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+     */
+    public readonly nodePoolDefaults!: pulumi.Output<outputs.container.ClusterNodePoolDefaults | undefined>;
+    /**
      * List of node pools associated with this cluster.
      * See gcp.container.NodePool for schema.
      * **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -454,6 +462,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * Structure is documented below.
+     */
+    public readonly serviceExternalIpsConfig!: pulumi.Output<outputs.container.ClusterServiceExternalIpsConfig>;
+    /**
      * The IP address range of the Kubernetes services in this
      * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
      * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
@@ -507,6 +519,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterIpv4Cidr"] = state ? state.clusterIpv4Cidr : undefined;
             resourceInputs["clusterTelemetry"] = state ? state.clusterTelemetry : undefined;
             resourceInputs["confidentialNodes"] = state ? state.confidentialNodes : undefined;
+            resourceInputs["costManagementConfig"] = state ? state.costManagementConfig : undefined;
             resourceInputs["databaseEncryption"] = state ? state.databaseEncryption : undefined;
             resourceInputs["datapathProvider"] = state ? state.datapathProvider : undefined;
             resourceInputs["defaultMaxPodsPerNode"] = state ? state.defaultMaxPodsPerNode : undefined;
@@ -544,6 +557,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["nodeConfig"] = state ? state.nodeConfig : undefined;
             resourceInputs["nodeLocations"] = state ? state.nodeLocations : undefined;
             resourceInputs["nodePoolAutoConfig"] = state ? state.nodePoolAutoConfig : undefined;
+            resourceInputs["nodePoolDefaults"] = state ? state.nodePoolDefaults : undefined;
             resourceInputs["nodePools"] = state ? state.nodePools : undefined;
             resourceInputs["nodeVersion"] = state ? state.nodeVersion : undefined;
             resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
@@ -557,6 +571,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["resourceLabels"] = state ? state.resourceLabels : undefined;
             resourceInputs["resourceUsageExportConfig"] = state ? state.resourceUsageExportConfig : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["serviceExternalIpsConfig"] = state ? state.serviceExternalIpsConfig : undefined;
             resourceInputs["servicesIpv4Cidr"] = state ? state.servicesIpv4Cidr : undefined;
             resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
             resourceInputs["tpuConfig"] = state ? state.tpuConfig : undefined;
@@ -572,6 +587,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterIpv4Cidr"] = args ? args.clusterIpv4Cidr : undefined;
             resourceInputs["clusterTelemetry"] = args ? args.clusterTelemetry : undefined;
             resourceInputs["confidentialNodes"] = args ? args.confidentialNodes : undefined;
+            resourceInputs["costManagementConfig"] = args ? args.costManagementConfig : undefined;
             resourceInputs["databaseEncryption"] = args ? args.databaseEncryption : undefined;
             resourceInputs["datapathProvider"] = args ? args.datapathProvider : undefined;
             resourceInputs["defaultMaxPodsPerNode"] = args ? args.defaultMaxPodsPerNode : undefined;
@@ -606,6 +622,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             resourceInputs["nodeLocations"] = args ? args.nodeLocations : undefined;
             resourceInputs["nodePoolAutoConfig"] = args ? args.nodePoolAutoConfig : undefined;
+            resourceInputs["nodePoolDefaults"] = args ? args.nodePoolDefaults : undefined;
             resourceInputs["nodePools"] = args ? args.nodePools : undefined;
             resourceInputs["nodeVersion"] = args ? args.nodeVersion : undefined;
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
@@ -617,6 +634,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["removeDefaultNodePool"] = args ? args.removeDefaultNodePool : undefined;
             resourceInputs["resourceLabels"] = args ? args.resourceLabels : undefined;
             resourceInputs["resourceUsageExportConfig"] = args ? args.resourceUsageExportConfig : undefined;
+            resourceInputs["serviceExternalIpsConfig"] = args ? args.serviceExternalIpsConfig : undefined;
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["tpuConfig"] = args ? args.tpuConfig : undefined;
             resourceInputs["verticalPodAutoscaling"] = args ? args.verticalPodAutoscaling : undefined;
@@ -679,6 +697,10 @@ export interface ClusterState {
      * Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
      */
     confidentialNodes?: pulumi.Input<inputs.container.ClusterConfidentialNodes>;
+    /**
+     * Cost management configuration for the cluster.
+     */
+    costManagementConfig?: pulumi.Input<inputs.container.ClusterCostManagementConfig>;
     /**
      * Structure is documented below.
      */
@@ -903,6 +925,10 @@ export interface ClusterState {
      */
     nodePoolAutoConfig?: pulumi.Input<inputs.container.ClusterNodePoolAutoConfig>;
     /**
+     * ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+     */
+    nodePoolDefaults?: pulumi.Input<inputs.container.ClusterNodePoolDefaults>;
+    /**
      * List of node pools associated with this cluster.
      * See gcp.container.NodePool for schema.
      * **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -980,6 +1006,10 @@ export interface ClusterState {
      * The server-defined URL for the resource.
      */
     selfLink?: pulumi.Input<string>;
+    /**
+     * Structure is documented below.
+     */
+    serviceExternalIpsConfig?: pulumi.Input<inputs.container.ClusterServiceExternalIpsConfig>;
     /**
      * The IP address range of the Kubernetes services in this
      * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
@@ -1060,6 +1090,10 @@ export interface ClusterArgs {
      * Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
      */
     confidentialNodes?: pulumi.Input<inputs.container.ClusterConfidentialNodes>;
+    /**
+     * Cost management configuration for the cluster.
+     */
+    costManagementConfig?: pulumi.Input<inputs.container.ClusterCostManagementConfig>;
     /**
      * Structure is documented below.
      */
@@ -1270,6 +1304,10 @@ export interface ClusterArgs {
      */
     nodePoolAutoConfig?: pulumi.Input<inputs.container.ClusterNodePoolAutoConfig>;
     /**
+     * ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+     */
+    nodePoolDefaults?: pulumi.Input<inputs.container.ClusterNodePoolDefaults>;
+    /**
      * List of node pools associated with this cluster.
      * See gcp.container.NodePool for schema.
      * **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -1342,6 +1380,10 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     resourceUsageExportConfig?: pulumi.Input<inputs.container.ClusterResourceUsageExportConfig>;
+    /**
+     * Structure is documented below.
+     */
+    serviceExternalIpsConfig?: pulumi.Input<inputs.container.ClusterServiceExternalIpsConfig>;
     /**
      * The name or selfLink of the Google Compute Engine
      * subnetwork in which the cluster's instances are launched.

@@ -41,10 +41,25 @@ import * as utilities from "../utilities";
  *     service: "appengineflex.googleapis.com",
  *     disableDependentServices: false,
  * });
+ * const customServiceAccount = new gcp.serviceaccount.Account("customServiceAccount", {
+ *     project: service.project,
+ *     accountId: "my-account",
+ *     displayName: "Custom Service Account",
+ * });
  * const gaeApi = new gcp.projects.IAMMember("gaeApi", {
  *     project: service.project,
  *     role: "roles/compute.networkUser",
- *     member: pulumi.interpolate`serviceAccount:service-${myProject.number}@gae-api-prod.google.com.iam.gserviceaccount.com`,
+ *     member: pulumi.interpolate`serviceAccount:${customServiceAccount.email}`,
+ * });
+ * const logsWriter = new gcp.projects.IAMMember("logsWriter", {
+ *     project: service.project,
+ *     role: "roles/logging.logWriter",
+ *     member: pulumi.interpolate`serviceAccount:${customServiceAccount.email}`,
+ * });
+ * const storageViewer = new gcp.projects.IAMMember("storageViewer", {
+ *     project: service.project,
+ *     role: "roles/storage.objectViewer",
+ *     member: pulumi.interpolate`serviceAccount:${customServiceAccount.email}`,
  * });
  * const bucket = new gcp.storage.Bucket("bucket", {
  *     project: myProject.projectId,
@@ -93,6 +108,7 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     noopOnDestroy: true,
+ *     serviceAccount: customServiceAccount.email,
  * });
  * ```
  *
@@ -265,6 +281,11 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
      */
     public readonly service!: pulumi.Output<string>;
     /**
+     * The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+     * default if this field is neither provided in app.yaml file nor through CLI flag.
+     */
+    public readonly serviceAccount!: pulumi.Output<string | undefined>;
+    /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
      * Default value is `SERVING`.
      * Possible values are `SERVING` and `STOPPED`.
@@ -320,6 +341,7 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
             resourceInputs["runtimeChannel"] = state ? state.runtimeChannel : undefined;
             resourceInputs["runtimeMainExecutablePath"] = state ? state.runtimeMainExecutablePath : undefined;
             resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             resourceInputs["servingStatus"] = state ? state.servingStatus : undefined;
             resourceInputs["versionId"] = state ? state.versionId : undefined;
             resourceInputs["vpcAccessConnector"] = state ? state.vpcAccessConnector : undefined;
@@ -362,6 +384,7 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
             resourceInputs["runtimeChannel"] = args ? args.runtimeChannel : undefined;
             resourceInputs["runtimeMainExecutablePath"] = args ? args.runtimeMainExecutablePath : undefined;
             resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["servingStatus"] = args ? args.servingStatus : undefined;
             resourceInputs["versionId"] = args ? args.versionId : undefined;
             resourceInputs["vpcAccessConnector"] = args ? args.vpcAccessConnector : undefined;
@@ -500,6 +523,11 @@ export interface FlexibleAppVersionState {
      * AppEngine service resource. Can contain numbers, letters, and hyphens.
      */
     service?: pulumi.Input<string>;
+    /**
+     * The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+     * default if this field is neither provided in app.yaml file nor through CLI flag.
+     */
+    serviceAccount?: pulumi.Input<string>;
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
      * Default value is `SERVING`.
@@ -642,6 +670,11 @@ export interface FlexibleAppVersionArgs {
      * AppEngine service resource. Can contain numbers, letters, and hyphens.
      */
     service: pulumi.Input<string>;
+    /**
+     * The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+     * default if this field is neither provided in app.yaml file nor through CLI flag.
+     */
+    serviceAccount?: pulumi.Input<string>;
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
      * Default value is `SERVING`.

@@ -11,6 +11,7 @@ from .. import _utilities
 
 __all__ = [
     'AiDatasetEncryptionSpecArgs',
+    'AiFeatureStoreEncryptionSpecArgs',
     'AiFeatureStoreEntityTypeMonitoringConfigArgs',
     'AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs',
     'AiFeatureStoreOnlineServingConfigArgs',
@@ -40,6 +41,28 @@ class AiDatasetEncryptionSpecArgs:
 
     @kms_key_name.setter
     def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+
+@pulumi.input_type
+class AiFeatureStoreEncryptionSpecArgs:
+    def __init__(__self__, *,
+                 kms_key_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] kms_key_name: The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Input[str]:
+        """
+        The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_name", value)
 
 

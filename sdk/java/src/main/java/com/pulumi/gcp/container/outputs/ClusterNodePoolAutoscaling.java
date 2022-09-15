@@ -5,19 +5,34 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodePoolAutoscaling {
-    private Integer maxNodeCount;
-    private Integer minNodeCount;
+    private @Nullable String locationPolicy;
+    private @Nullable Integer maxNodeCount;
+    private @Nullable Integer minNodeCount;
+    private @Nullable Integer totalMaxNodeCount;
+    private @Nullable Integer totalMinNodeCount;
 
     private ClusterNodePoolAutoscaling() {}
-    public Integer maxNodeCount() {
-        return this.maxNodeCount;
+    public Optional<String> locationPolicy() {
+        return Optional.ofNullable(this.locationPolicy);
     }
-    public Integer minNodeCount() {
-        return this.minNodeCount;
+    public Optional<Integer> maxNodeCount() {
+        return Optional.ofNullable(this.maxNodeCount);
+    }
+    public Optional<Integer> minNodeCount() {
+        return Optional.ofNullable(this.minNodeCount);
+    }
+    public Optional<Integer> totalMaxNodeCount() {
+        return Optional.ofNullable(this.totalMaxNodeCount);
+    }
+    public Optional<Integer> totalMinNodeCount() {
+        return Optional.ofNullable(this.totalMinNodeCount);
     }
 
     public static Builder builder() {
@@ -29,29 +44,53 @@ public final class ClusterNodePoolAutoscaling {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer maxNodeCount;
-        private Integer minNodeCount;
+        private @Nullable String locationPolicy;
+        private @Nullable Integer maxNodeCount;
+        private @Nullable Integer minNodeCount;
+        private @Nullable Integer totalMaxNodeCount;
+        private @Nullable Integer totalMinNodeCount;
         public Builder() {}
         public Builder(ClusterNodePoolAutoscaling defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.locationPolicy = defaults.locationPolicy;
     	      this.maxNodeCount = defaults.maxNodeCount;
     	      this.minNodeCount = defaults.minNodeCount;
+    	      this.totalMaxNodeCount = defaults.totalMaxNodeCount;
+    	      this.totalMinNodeCount = defaults.totalMinNodeCount;
         }
 
         @CustomType.Setter
-        public Builder maxNodeCount(Integer maxNodeCount) {
-            this.maxNodeCount = Objects.requireNonNull(maxNodeCount);
+        public Builder locationPolicy(@Nullable String locationPolicy) {
+            this.locationPolicy = locationPolicy;
             return this;
         }
         @CustomType.Setter
-        public Builder minNodeCount(Integer minNodeCount) {
-            this.minNodeCount = Objects.requireNonNull(minNodeCount);
+        public Builder maxNodeCount(@Nullable Integer maxNodeCount) {
+            this.maxNodeCount = maxNodeCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder minNodeCount(@Nullable Integer minNodeCount) {
+            this.minNodeCount = minNodeCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder totalMaxNodeCount(@Nullable Integer totalMaxNodeCount) {
+            this.totalMaxNodeCount = totalMaxNodeCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder totalMinNodeCount(@Nullable Integer totalMinNodeCount) {
+            this.totalMinNodeCount = totalMinNodeCount;
             return this;
         }
         public ClusterNodePoolAutoscaling build() {
             final var o = new ClusterNodePoolAutoscaling();
+            o.locationPolicy = locationPolicy;
             o.maxNodeCount = maxNodeCount;
             o.minNodeCount = minNodeCount;
+            o.totalMaxNodeCount = totalMaxNodeCount;
+            o.totalMinNodeCount = totalMinNodeCount;
             return o;
         }
     }

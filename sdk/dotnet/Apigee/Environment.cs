@@ -128,6 +128,13 @@ namespace Pulumi.Gcp.Apigee
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// NodeConfig for setting the min/max number of nodes associated with the environment.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("nodeConfig")]
+        public Output<Outputs.EnvironmentNodeConfig> NodeConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The Apigee Organization associated with the Apigee environment,
         /// in the format `organizations/{{org_name}}`.
         /// </summary>
@@ -220,6 +227,13 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// NodeConfig for setting the min/max number of nodes associated with the environment.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("nodeConfig")]
+        public Input<Inputs.EnvironmentNodeConfigArgs>? NodeConfig { get; set; }
+
+        /// <summary>
         /// The Apigee Organization associated with the Apigee environment,
         /// in the format `organizations/{{org_name}}`.
         /// </summary>
@@ -272,6 +286,13 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// NodeConfig for setting the min/max number of nodes associated with the environment.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("nodeConfig")]
+        public Input<Inputs.EnvironmentNodeConfigGetArgs>? NodeConfig { get; set; }
 
         /// <summary>
         /// The Apigee Organization associated with the Apigee environment,

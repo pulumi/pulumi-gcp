@@ -55,6 +55,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := monitoring.NewNotificationChannel(ctx, "basic", &monitoring.NotificationChannelArgs{
 //				DisplayName: pulumi.String("Test Notification Channel"),
+//				ForceDelete: pulumi.Bool(false),
 //				Labels: pulumi.StringMap{
 //					"email_address": pulumi.String("fake_email@blahblah.com"),
 //				},
@@ -119,6 +120,12 @@ type NotificationChannel struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// If true, the notification channel will be deleted regardless
+	// of its use in alert policies (the policies will be updated
+	// to remove the channel). If false, channels that are still
+	// referenced by an existing alerting policy will fail to be
+	// deleted in a delete operation.
+	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
 	// Configuration fields that define the channel and its behavior. The
 	// permissible and required labels are specified in the
 	// NotificationChannelDescriptor corresponding to the type field.
@@ -192,6 +199,12 @@ type notificationChannelState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
 	Enabled *bool `pulumi:"enabled"`
+	// If true, the notification channel will be deleted regardless
+	// of its use in alert policies (the policies will be updated
+	// to remove the channel). If false, channels that are still
+	// referenced by an existing alerting policy will fail to be
+	// deleted in a delete operation.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Configuration fields that define the channel and its behavior. The
 	// permissible and required labels are specified in the
 	// NotificationChannelDescriptor corresponding to the type field.
@@ -234,6 +247,12 @@ type NotificationChannelState struct {
 	DisplayName pulumi.StringPtrInput
 	// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
 	Enabled pulumi.BoolPtrInput
+	// If true, the notification channel will be deleted regardless
+	// of its use in alert policies (the policies will be updated
+	// to remove the channel). If false, channels that are still
+	// referenced by an existing alerting policy will fail to be
+	// deleted in a delete operation.
+	ForceDelete pulumi.BoolPtrInput
 	// Configuration fields that define the channel and its behavior. The
 	// permissible and required labels are specified in the
 	// NotificationChannelDescriptor corresponding to the type field.
@@ -280,6 +299,12 @@ type notificationChannelArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
 	Enabled *bool `pulumi:"enabled"`
+	// If true, the notification channel will be deleted regardless
+	// of its use in alert policies (the policies will be updated
+	// to remove the channel). If false, channels that are still
+	// referenced by an existing alerting policy will fail to be
+	// deleted in a delete operation.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Configuration fields that define the channel and its behavior. The
 	// permissible and required labels are specified in the
 	// NotificationChannelDescriptor corresponding to the type field.
@@ -312,6 +337,12 @@ type NotificationChannelArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
 	Enabled pulumi.BoolPtrInput
+	// If true, the notification channel will be deleted regardless
+	// of its use in alert policies (the policies will be updated
+	// to remove the channel). If false, channels that are still
+	// referenced by an existing alerting policy will fail to be
+	// deleted in a delete operation.
+	ForceDelete pulumi.BoolPtrInput
 	// Configuration fields that define the channel and its behavior. The
 	// permissible and required labels are specified in the
 	// NotificationChannelDescriptor corresponding to the type field.
@@ -436,6 +467,15 @@ func (o NotificationChannelOutput) DisplayName() pulumi.StringPtrOutput {
 // Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
 func (o NotificationChannelOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NotificationChannel) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// If true, the notification channel will be deleted regardless
+// of its use in alert policies (the policies will be updated
+// to remove the channel). If false, channels that are still
+// referenced by an existing alerting policy will fail to be
+// deleted in a delete operation.
+func (o NotificationChannelOutput) ForceDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NotificationChannel) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
 }
 
 // Configuration fields that define the channel and its behavior. The

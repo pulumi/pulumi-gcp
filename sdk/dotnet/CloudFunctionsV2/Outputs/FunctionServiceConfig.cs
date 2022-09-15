@@ -49,6 +49,16 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         /// </summary>
         public readonly int? MinInstanceCount;
         /// <summary>
+        /// Secret environment variables configuration.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.FunctionServiceConfigSecretEnvironmentVariable> SecretEnvironmentVariables;
+        /// <summary>
+        /// Secret volumes configuration.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.FunctionServiceConfigSecretVolume> SecretVolumes;
+        /// <summary>
         /// Name of the service associated with a Function.
         /// </summary>
         public readonly string? Service;
@@ -93,6 +103,10 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
 
             int? minInstanceCount,
 
+            ImmutableArray<Outputs.FunctionServiceConfigSecretEnvironmentVariable> secretEnvironmentVariables,
+
+            ImmutableArray<Outputs.FunctionServiceConfigSecretVolume> secretVolumes,
+
             string? service,
 
             string? serviceAccountEmail,
@@ -112,6 +126,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
             IngressSettings = ingressSettings;
             MaxInstanceCount = maxInstanceCount;
             MinInstanceCount = minInstanceCount;
+            SecretEnvironmentVariables = secretEnvironmentVariables;
+            SecretVolumes = secretVolumes;
             Service = service;
             ServiceAccountEmail = serviceAccountEmail;
             TimeoutSeconds = timeoutSeconds;

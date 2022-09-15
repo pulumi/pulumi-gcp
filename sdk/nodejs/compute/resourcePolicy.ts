@@ -90,6 +90,37 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
+ * ### Resource Policy Snapshot Schedule Chain Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const hourly = new gcp.compute.ResourcePolicy("hourly", {
+ *     description: "chain name snapshot",
+ *     region: "us-central1",
+ *     snapshotSchedulePolicy: {
+ *         retentionPolicy: {
+ *             maxRetentionDays: 14,
+ *             onSourceDiskDelete: "KEEP_AUTO_SNAPSHOTS",
+ *         },
+ *         schedule: {
+ *             hourlySchedule: {
+ *                 hoursInCycle: 20,
+ *                 startTime: "23:00",
+ *             },
+ *         },
+ *         snapshotProperties: {
+ *             chainName: "test-schedule-chain-name",
+ *             guestFlush: true,
+ *             labels: {
+ *                 my_label: "value",
+ *             },
+ *             storageLocations: "us",
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

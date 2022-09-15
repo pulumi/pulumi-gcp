@@ -34,6 +34,8 @@ batching: Optional[str]
 
 bigQueryCustomEndpoint: Optional[str]
 
+bigqueryAnalyticsHubCustomEndpoint: Optional[str]
+
 bigqueryConnectionCustomEndpoint: Optional[str]
 
 bigqueryDataTransferCustomEndpoint: Optional[str]
@@ -105,6 +107,8 @@ dataprocCustomEndpoint: Optional[str]
 dataprocMetastoreCustomEndpoint: Optional[str]
 
 datastoreCustomEndpoint: Optional[str]
+
+datastreamCustomEndpoint: Optional[str]
 
 deploymentManagerCustomEndpoint: Optional[str]
 

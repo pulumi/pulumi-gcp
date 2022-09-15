@@ -5,37 +5,88 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolAutoscaling {
     /**
-     * @return Maximum number of nodes in the NodePool. Must be &gt;= min_node_count.
+     * @return Location policy specifies the algorithm used when scaling-up the node pool.\
+     * &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones.\
+     * &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+     * and reduce preemption risk for Spot VMs.
      * 
      */
-    private Integer maxNodeCount;
+    private @Nullable String locationPolicy;
     /**
-     * @return Minimum number of nodes in the NodePool. Must be &gt;=0 and
-     * &lt;= `max_node_count`.
+     * @return Maximum number of nodes per zone in the NodePool.
+     * Must be &gt;= min_node_count. Cannot be used with total limits.
      * 
      */
-    private Integer minNodeCount;
+    private @Nullable Integer maxNodeCount;
+    /**
+     * @return Minimum number of nodes per zone in the NodePool.
+     * Must be &gt;=0 and &lt;= `max_node_count`. Cannot be used with total limits.
+     * 
+     */
+    private @Nullable Integer minNodeCount;
+    /**
+     * @return Total maximum number of nodes in the NodePool.
+     * Must be &gt;= total_min_node_count. Cannot be used with per zone limits.
+     * 
+     */
+    private @Nullable Integer totalMaxNodeCount;
+    /**
+     * @return Total minimum number of nodes in the NodePool.
+     * Must be &gt;=0 and &lt;= `total_max_node_count`. Cannot be used with per zone limits.
+     * 
+     */
+    private @Nullable Integer totalMinNodeCount;
 
     private NodePoolAutoscaling() {}
     /**
-     * @return Maximum number of nodes in the NodePool. Must be &gt;= min_node_count.
+     * @return Location policy specifies the algorithm used when scaling-up the node pool.\
+     * &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones.\
+     * &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+     * and reduce preemption risk for Spot VMs.
      * 
      */
-    public Integer maxNodeCount() {
-        return this.maxNodeCount;
+    public Optional<String> locationPolicy() {
+        return Optional.ofNullable(this.locationPolicy);
     }
     /**
-     * @return Minimum number of nodes in the NodePool. Must be &gt;=0 and
-     * &lt;= `max_node_count`.
+     * @return Maximum number of nodes per zone in the NodePool.
+     * Must be &gt;= min_node_count. Cannot be used with total limits.
      * 
      */
-    public Integer minNodeCount() {
-        return this.minNodeCount;
+    public Optional<Integer> maxNodeCount() {
+        return Optional.ofNullable(this.maxNodeCount);
+    }
+    /**
+     * @return Minimum number of nodes per zone in the NodePool.
+     * Must be &gt;=0 and &lt;= `max_node_count`. Cannot be used with total limits.
+     * 
+     */
+    public Optional<Integer> minNodeCount() {
+        return Optional.ofNullable(this.minNodeCount);
+    }
+    /**
+     * @return Total maximum number of nodes in the NodePool.
+     * Must be &gt;= total_min_node_count. Cannot be used with per zone limits.
+     * 
+     */
+    public Optional<Integer> totalMaxNodeCount() {
+        return Optional.ofNullable(this.totalMaxNodeCount);
+    }
+    /**
+     * @return Total minimum number of nodes in the NodePool.
+     * Must be &gt;=0 and &lt;= `total_max_node_count`. Cannot be used with per zone limits.
+     * 
+     */
+    public Optional<Integer> totalMinNodeCount() {
+        return Optional.ofNullable(this.totalMinNodeCount);
     }
 
     public static Builder builder() {
@@ -47,29 +98,53 @@ public final class NodePoolAutoscaling {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer maxNodeCount;
-        private Integer minNodeCount;
+        private @Nullable String locationPolicy;
+        private @Nullable Integer maxNodeCount;
+        private @Nullable Integer minNodeCount;
+        private @Nullable Integer totalMaxNodeCount;
+        private @Nullable Integer totalMinNodeCount;
         public Builder() {}
         public Builder(NodePoolAutoscaling defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.locationPolicy = defaults.locationPolicy;
     	      this.maxNodeCount = defaults.maxNodeCount;
     	      this.minNodeCount = defaults.minNodeCount;
+    	      this.totalMaxNodeCount = defaults.totalMaxNodeCount;
+    	      this.totalMinNodeCount = defaults.totalMinNodeCount;
         }
 
         @CustomType.Setter
-        public Builder maxNodeCount(Integer maxNodeCount) {
-            this.maxNodeCount = Objects.requireNonNull(maxNodeCount);
+        public Builder locationPolicy(@Nullable String locationPolicy) {
+            this.locationPolicy = locationPolicy;
             return this;
         }
         @CustomType.Setter
-        public Builder minNodeCount(Integer minNodeCount) {
-            this.minNodeCount = Objects.requireNonNull(minNodeCount);
+        public Builder maxNodeCount(@Nullable Integer maxNodeCount) {
+            this.maxNodeCount = maxNodeCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder minNodeCount(@Nullable Integer minNodeCount) {
+            this.minNodeCount = minNodeCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder totalMaxNodeCount(@Nullable Integer totalMaxNodeCount) {
+            this.totalMaxNodeCount = totalMaxNodeCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder totalMinNodeCount(@Nullable Integer totalMinNodeCount) {
+            this.totalMinNodeCount = totalMinNodeCount;
             return this;
         }
         public NodePoolAutoscaling build() {
             final var o = new NodePoolAutoscaling();
+            o.locationPolicy = locationPolicy;
             o.maxNodeCount = maxNodeCount;
             o.minNodeCount = minNodeCount;
+            o.totalMaxNodeCount = totalMaxNodeCount;
+            o.totalMinNodeCount = totalMinNodeCount;
             return o;
         }
     }

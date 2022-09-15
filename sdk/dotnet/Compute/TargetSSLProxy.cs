@@ -48,6 +48,14 @@ namespace Pulumi.Gcp.Compute
         public Output<string> BackendService { get; private set; } = null!;
 
         /// <summary>
+        /// A reference to the CertificateMap resource uri that identifies a certificate map
+        /// associated with the given target proxy. This field can only be set for global target proxies.
+        /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+        /// </summary>
+        [Output("certificateMap")]
+        public Output<string?> CertificateMap { get; private set; } = null!;
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
@@ -168,6 +176,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string> BackendService { get; set; } = null!;
 
         /// <summary>
+        /// A reference to the CertificateMap resource uri that identifies a certificate map
+        /// associated with the given target proxy. This field can only be set for global target proxies.
+        /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+        /// </summary>
+        [Input("certificateMap")]
+        public Input<string>? CertificateMap { get; set; }
+
+        /// <summary>
         /// An optional description of this resource.
         /// </summary>
         [Input("description")]
@@ -201,7 +217,7 @@ namespace Pulumi.Gcp.Compute
         [Input("proxyHeader")]
         public Input<string>? ProxyHeader { get; set; }
 
-        [Input("sslCertificates", required: true)]
+        [Input("sslCertificates")]
         private InputList<string>? _sslCertificates;
 
         /// <summary>
@@ -236,6 +252,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("backendService")]
         public Input<string>? BackendService { get; set; }
+
+        /// <summary>
+        /// A reference to the CertificateMap resource uri that identifies a certificate map
+        /// associated with the given target proxy. This field can only be set for global target proxies.
+        /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+        /// </summary>
+        [Input("certificateMap")]
+        public Input<string>? CertificateMap { get; set; }
 
         /// <summary>
         /// Creation timestamp in RFC3339 text format.

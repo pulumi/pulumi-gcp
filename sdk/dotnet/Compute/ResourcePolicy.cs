@@ -131,6 +131,49 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Resource Policy Snapshot Schedule Chain Name
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var hourly = new Gcp.Compute.ResourcePolicy("hourly", new()
+    ///     {
+    ///         Description = "chain name snapshot",
+    ///         Region = "us-central1",
+    ///         SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
+    ///         {
+    ///             RetentionPolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs
+    ///             {
+    ///                 MaxRetentionDays = 14,
+    ///                 OnSourceDiskDelete = "KEEP_AUTO_SNAPSHOTS",
+    ///             },
+    ///             Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
+    ///             {
+    ///                 HourlySchedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs
+    ///                 {
+    ///                     HoursInCycle = 20,
+    ///                     StartTime = "23:00",
+    ///                 },
+    ///             },
+    ///             SnapshotProperties = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs
+    ///             {
+    ///                 ChainName = "test-schedule-chain-name",
+    ///                 GuestFlush = true,
+    ///                 Labels = 
+    ///                 {
+    ///                     { "myLabel", "value" },
+    ///                 },
+    ///                 StorageLocations = "us",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

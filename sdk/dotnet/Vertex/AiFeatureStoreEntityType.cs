@@ -31,6 +31,10 @@ namespace Pulumi.Gcp.Vertex
     ///         {
     ///             FixedNodeCount = 2,
     ///         },
+    ///         EncryptionSpec = new Gcp.Vertex.Inputs.AiFeatureStoreEncryptionSpecArgs
+    ///         {
+    ///             KmsKeyName = "kms-name",
+    ///         },
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,

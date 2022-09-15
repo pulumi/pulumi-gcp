@@ -33,6 +33,7 @@ namespace Pulumi.Gcp.CloudBuild
     ///     var filename_trigger = new Gcp.CloudBuild.Trigger("filename-trigger", new()
     ///     {
     ///         Filename = "cloudbuild.yaml",
+    ///         Location = "us-central1",
     ///         Substitutions = 
     ///         {
     ///             { "_BAZ", "qux" },
@@ -119,6 +120,7 @@ namespace Pulumi.Gcp.CloudBuild
     ///             },
     ///         },
     ///         IncludeBuildLogs = "INCLUDE_BUILD_LOGS_WITH_STATUS",
+    ///         Location = "us-central1",
     ///     });
     /// 
     /// });
@@ -136,6 +138,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     ///     var pubsub_config_trigger = new Gcp.CloudBuild.Trigger("pubsub-config-trigger", new()
     ///     {
+    ///         Location = "us-central1",
     ///         Description = "acceptance test example pubsub build trigger",
     ///         PubsubConfig = new Gcp.CloudBuild.Inputs.TriggerPubsubConfigArgs
     ///         {
@@ -282,6 +285,10 @@ namespace Pulumi.Gcp.CloudBuild
     /// Trigger can be imported using any of these accepted formats
     /// 
     /// ```sh
+    ///  $ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/locations/{{location}}/triggers/{{trigger_id}}
+    /// ```
+    /// 
+    /// ```sh
     ///  $ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/triggers/{{trigger_id}}
     /// ```
     /// 
@@ -393,6 +400,14 @@ namespace Pulumi.Gcp.CloudBuild
         /// </summary>
         [Output("includedFiles")]
         public Output<ImmutableArray<string>> IncludedFiles { get; private set; } = null!;
+
+        /// <summary>
+        /// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+        /// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+        /// this location as a prefix.
+        /// </summary>
+        [Output("location")]
+        public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
         /// Name of the volume to mount.
@@ -628,6 +643,14 @@ namespace Pulumi.Gcp.CloudBuild
         }
 
         /// <summary>
+        /// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+        /// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+        /// this location as a prefix.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
+
+        /// <summary>
         /// Name of the volume to mount.
         /// Volume names must be unique per build step and must be valid names for Docker volumes.
         /// Each named volume must be used by at least two build steps.
@@ -833,6 +856,14 @@ namespace Pulumi.Gcp.CloudBuild
             get => _includedFiles ?? (_includedFiles = new InputList<string>());
             set => _includedFiles = value;
         }
+
+        /// <summary>
+        /// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+        /// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+        /// this location as a prefix.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Name of the volume to mount.

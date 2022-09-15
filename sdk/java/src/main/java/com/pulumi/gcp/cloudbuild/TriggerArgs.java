@@ -244,6 +244,25 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Cloud Storage bucket and optional object path, in the form &#34;gs://bucket/path/to/somewhere/&#34;.
+     * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+     * this location as a prefix.
+     * 
+     */
+    @Import(name="location")
+    private @Nullable Output<String> location;
+
+    /**
+     * @return Cloud Storage bucket and optional object path, in the form &#34;gs://bucket/path/to/somewhere/&#34;.
+     * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+     * this location as a prefix.
+     * 
+     */
+    public Optional<Output<String>> location() {
+        return Optional.ofNullable(this.location);
+    }
+
+    /**
      * Name of the volume to mount.
      * Volume names must be unique per build step and must be valid names for Docker volumes.
      * Each named volume must be used by at least two build steps.
@@ -438,6 +457,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         this.ignoredFiles = $.ignoredFiles;
         this.includeBuildLogs = $.includeBuildLogs;
         this.includedFiles = $.includedFiles;
+        this.location = $.location;
         this.name = $.name;
         this.project = $.project;
         this.pubsubConfig = $.pubsubConfig;
@@ -782,6 +802,31 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder includedFiles(String... includedFiles) {
             return includedFiles(List.of(includedFiles));
+        }
+
+        /**
+         * @param location Cloud Storage bucket and optional object path, in the form &#34;gs://bucket/path/to/somewhere/&#34;.
+         * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+         * this location as a prefix.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder location(@Nullable Output<String> location) {
+            $.location = location;
+            return this;
+        }
+
+        /**
+         * @param location Cloud Storage bucket and optional object path, in the form &#34;gs://bucket/path/to/somewhere/&#34;.
+         * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+         * this location as a prefix.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder location(String location) {
+            return location(Output.of(location));
         }
 
         /**

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.apigee.EnvironmentArgs;
 import com.pulumi.gcp.apigee.inputs.EnvironmentState;
+import com.pulumi.gcp.apigee.outputs.EnvironmentNodeConfig;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -192,6 +193,22 @@ public class Environment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * NodeConfig for setting the min/max number of nodes associated with the environment.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="nodeConfig", type=EnvironmentNodeConfig.class, parameters={})
+    private Output<EnvironmentNodeConfig> nodeConfig;
+
+    /**
+     * @return NodeConfig for setting the min/max number of nodes associated with the environment.
+     * Structure is documented below.
+     * 
+     */
+    public Output<EnvironmentNodeConfig> nodeConfig() {
+        return this.nodeConfig;
     }
     /**
      * The Apigee Organization associated with the Apigee environment,

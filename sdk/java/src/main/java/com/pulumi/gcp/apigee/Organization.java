@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.apigee.OrganizationArgs;
 import com.pulumi.gcp.apigee.inputs.OrganizationState;
+import com.pulumi.gcp.apigee.outputs.OrganizationProperties;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -279,14 +280,14 @@ public class Organization extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
-     * Output only. Name of the Apigee organization.
+     * Name of the property.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Output only. Name of the Apigee organization.
+     * @return Name of the property.
      * 
      */
     public Output<String> name() {
@@ -305,6 +306,22 @@ public class Organization extends com.pulumi.resources.CustomResource {
      */
     public Output<String> projectId() {
         return this.projectId;
+    }
+    /**
+     * Properties defined in the Apigee organization profile.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="properties", type=OrganizationProperties.class, parameters={})
+    private Output<OrganizationProperties> properties;
+
+    /**
+     * @return Properties defined in the Apigee organization profile.
+     * Structure is documented below.
+     * 
+     */
+    public Output<OrganizationProperties> properties() {
+        return this.properties;
     }
     /**
      * Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType

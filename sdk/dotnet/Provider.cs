@@ -51,6 +51,9 @@ namespace Pulumi.Gcp
         [Output("bigQueryCustomEndpoint")]
         public Output<string?> BigQueryCustomEndpoint { get; private set; } = null!;
 
+        [Output("bigqueryAnalyticsHubCustomEndpoint")]
+        public Output<string?> BigqueryAnalyticsHubCustomEndpoint { get; private set; } = null!;
+
         [Output("bigqueryConnectionCustomEndpoint")]
         public Output<string?> BigqueryConnectionCustomEndpoint { get; private set; } = null!;
 
@@ -158,6 +161,9 @@ namespace Pulumi.Gcp
 
         [Output("datastoreCustomEndpoint")]
         public Output<string?> DatastoreCustomEndpoint { get; private set; } = null!;
+
+        [Output("datastreamCustomEndpoint")]
+        public Output<string?> DatastreamCustomEndpoint { get; private set; } = null!;
 
         [Output("deploymentManagerCustomEndpoint")]
         public Output<string?> DeploymentManagerCustomEndpoint { get; private set; } = null!;
@@ -421,6 +427,9 @@ namespace Pulumi.Gcp
         [Input("bigQueryCustomEndpoint")]
         public Input<string>? BigQueryCustomEndpoint { get; set; }
 
+        [Input("bigqueryAnalyticsHubCustomEndpoint")]
+        public Input<string>? BigqueryAnalyticsHubCustomEndpoint { get; set; }
+
         [Input("bigqueryConnectionCustomEndpoint")]
         public Input<string>? BigqueryConnectionCustomEndpoint { get; set; }
 
@@ -528,6 +537,9 @@ namespace Pulumi.Gcp
 
         [Input("datastoreCustomEndpoint")]
         public Input<string>? DatastoreCustomEndpoint { get; set; }
+
+        [Input("datastreamCustomEndpoint")]
+        public Input<string>? DatastreamCustomEndpoint { get; set; }
 
         [Input("deploymentManagerCustomEndpoint")]
         public Input<string>? DeploymentManagerCustomEndpoint { get; set; }

@@ -152,6 +152,7 @@ namespace Pulumi.Gcp.Container
         public readonly string ClusterIpv4Cidr;
         public readonly ImmutableArray<Outputs.GetClusterClusterTelemetryResult> ClusterTelemetries;
         public readonly ImmutableArray<Outputs.GetClusterConfidentialNodeResult> ConfidentialNodes;
+        public readonly ImmutableArray<Outputs.GetClusterCostManagementConfigResult> CostManagementConfigs;
         public readonly ImmutableArray<Outputs.GetClusterDatabaseEncryptionResult> DatabaseEncryptions;
         public readonly string DatapathProvider;
         public readonly int DefaultMaxPodsPerNode;
@@ -193,6 +194,7 @@ namespace Pulumi.Gcp.Container
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigResult> NodeConfigs;
         public readonly ImmutableArray<string> NodeLocations;
         public readonly ImmutableArray<Outputs.GetClusterNodePoolAutoConfigResult> NodePoolAutoConfigs;
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolDefaultResult> NodePoolDefaults;
         public readonly ImmutableArray<Outputs.GetClusterNodePoolResult> NodePools;
         public readonly string NodeVersion;
         public readonly ImmutableArray<Outputs.GetClusterNotificationConfigResult> NotificationConfigs;
@@ -206,6 +208,7 @@ namespace Pulumi.Gcp.Container
         public readonly ImmutableDictionary<string, string> ResourceLabels;
         public readonly ImmutableArray<Outputs.GetClusterResourceUsageExportConfigResult> ResourceUsageExportConfigs;
         public readonly string SelfLink;
+        public readonly ImmutableArray<Outputs.GetClusterServiceExternalIpsConfigResult> ServiceExternalIpsConfigs;
         public readonly string ServicesIpv4Cidr;
         public readonly string Subnetwork;
         public readonly ImmutableArray<Outputs.GetClusterTpuConfigResult> TpuConfigs;
@@ -228,6 +231,8 @@ namespace Pulumi.Gcp.Container
             ImmutableArray<Outputs.GetClusterClusterTelemetryResult> clusterTelemetries,
 
             ImmutableArray<Outputs.GetClusterConfidentialNodeResult> confidentialNodes,
+
+            ImmutableArray<Outputs.GetClusterCostManagementConfigResult> costManagementConfigs,
 
             ImmutableArray<Outputs.GetClusterDatabaseEncryptionResult> databaseEncryptions,
 
@@ -305,6 +310,8 @@ namespace Pulumi.Gcp.Container
 
             ImmutableArray<Outputs.GetClusterNodePoolAutoConfigResult> nodePoolAutoConfigs,
 
+            ImmutableArray<Outputs.GetClusterNodePoolDefaultResult> nodePoolDefaults,
+
             ImmutableArray<Outputs.GetClusterNodePoolResult> nodePools,
 
             string nodeVersion,
@@ -331,6 +338,8 @@ namespace Pulumi.Gcp.Container
 
             string selfLink,
 
+            ImmutableArray<Outputs.GetClusterServiceExternalIpsConfigResult> serviceExternalIpsConfigs,
+
             string servicesIpv4Cidr,
 
             string subnetwork,
@@ -350,6 +359,7 @@ namespace Pulumi.Gcp.Container
             ClusterIpv4Cidr = clusterIpv4Cidr;
             ClusterTelemetries = clusterTelemetries;
             ConfidentialNodes = confidentialNodes;
+            CostManagementConfigs = costManagementConfigs;
             DatabaseEncryptions = databaseEncryptions;
             DatapathProvider = datapathProvider;
             DefaultMaxPodsPerNode = defaultMaxPodsPerNode;
@@ -388,6 +398,7 @@ namespace Pulumi.Gcp.Container
             NodeConfigs = nodeConfigs;
             NodeLocations = nodeLocations;
             NodePoolAutoConfigs = nodePoolAutoConfigs;
+            NodePoolDefaults = nodePoolDefaults;
             NodePools = nodePools;
             NodeVersion = nodeVersion;
             NotificationConfigs = notificationConfigs;
@@ -401,6 +412,7 @@ namespace Pulumi.Gcp.Container
             ResourceLabels = resourceLabels;
             ResourceUsageExportConfigs = resourceUsageExportConfigs;
             SelfLink = selfLink;
+            ServiceExternalIpsConfigs = serviceExternalIpsConfigs;
             ServicesIpv4Cidr = servicesIpv4Cidr;
             Subnetwork = subnetwork;
             TpuConfigs = tpuConfigs;

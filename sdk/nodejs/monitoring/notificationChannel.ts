@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  *
  * const basic = new gcp.monitoring.NotificationChannel("basic", {
  *     displayName: "Test Notification Channel",
+ *     forceDelete: false,
  *     labels: {
  *         email_address: "fake_email@blahblah.com",
  *     },
@@ -115,6 +116,14 @@ export class NotificationChannel extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
+     * If true, the notification channel will be deleted regardless
+     * of its use in alert policies (the policies will be updated
+     * to remove the channel). If false, channels that are still
+     * referenced by an existing alerting policy will fail to be
+     * deleted in a delete operation.
+     */
+    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
+    /**
      * Configuration fields that define the channel and its behavior. The
      * permissible and required labels are specified in the
      * NotificationChannelDescriptor corresponding to the type field.
@@ -178,6 +187,7 @@ export class NotificationChannel extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -193,6 +203,7 @@ export class NotificationChannel extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["sensitiveLabels"] = args ? args.sensitiveLabels : undefined;
@@ -222,6 +233,14 @@ export interface NotificationChannelState {
      * Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * If true, the notification channel will be deleted regardless
+     * of its use in alert policies (the policies will be updated
+     * to remove the channel). If false, channels that are still
+     * referenced by an existing alerting policy will fail to be
+     * deleted in a delete operation.
+     */
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Configuration fields that define the channel and its behavior. The
      * permissible and required labels are specified in the
@@ -287,6 +306,14 @@ export interface NotificationChannelArgs {
      * Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * If true, the notification channel will be deleted regardless
+     * of its use in alert policies (the policies will be updated
+     * to remove the channel). If false, channels that are still
+     * referenced by an existing alerting policy will fail to be
+     * deleted in a delete operation.
+     */
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Configuration fields that define the channel and its behavior. The
      * permissible and required labels are specified in the

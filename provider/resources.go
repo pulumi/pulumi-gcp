@@ -36,6 +36,7 @@ const (
 	gcpAppEngine            = "AppEngine"            // AppEngine resources
 	gcpArtifactRegistry     = "ArtifactRegistry"     // ArtifactRegistry resources
 	gcpAssuredWorkloads     = "AssuredWorkloads"     // AssuredWorkloads resources
+	gcpBigQueryAnalyticsHub = "BigQueryAnalyticsHub" // BigQuery Analytics Hub resources
 	gcpBigQuery             = "BigQuery"             // BigQuery resources
 	gcpBigTable             = "BigTable"             // BitTable resources
 	gcpBilling              = "Billing"              // Billing resources
@@ -62,6 +63,7 @@ const (
 	gcpDataPlex             = "DataPlex"             // DataPlex
 	gcpDataProc             = "Dataproc"             // DataProc resources
 	gcpDatastore            = "Datastore"            // Datastore resources
+	gcpDatastream           = "Datastream"           // Datastream resources
 	gcpDeploymentManager    = "DeploymentManager"    // DeploymentManager resources
 	gcpDiagflow             = "Diagflow"             // Diagflow resources
 	gcpEndPoints            = "Endpoints"            // End Point resources
@@ -359,6 +361,27 @@ func Provider() tfbridge.ProviderInfo {
 			// AssuredWorkloads
 			"google_assured_workloads_workload": {Tok: gcpResource(gcpAssuredWorkloads, "Workload")},
 
+			// BigQuery Analytics Hub
+			"google_bigquery_analytics_hub_data_exchange": {Tok: gcpResource(gcpBigQueryAnalyticsHub, "DataExchange")},
+			"google_bigquery_analytics_hub_data_exchange_iam_binding": {
+				Tok: gcpResource(gcpBigQueryAnalyticsHub, "DataExchangeIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigquery_analytics_hub_data_exchange_iam.html.markdown",
+				},
+			},
+			"google_bigquery_analytics_hub_data_exchange_iam_member": {
+				Tok: gcpResource(gcpBigQueryAnalyticsHub, "DataExchanceIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigquery_analytics_hub_data_exchange_iam.html.markdown",
+				},
+			},
+			"google_bigquery_analytics_hub_data_exchange_iam_policy": {
+				Tok: gcpResource(gcpBigQueryAnalyticsHub, "DataExchangeIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigquery_analytics_hub_data_exchange_iam.html.markdown",
+				},
+			},
+
 			// BigQuery
 			"google_bigquery_dataset":              {Tok: gcpResource(gcpBigQuery, "Dataset")},
 			"google_bigquery_table":                {Tok: gcpResource(gcpBigQuery, "Table")},
@@ -597,6 +620,11 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "cloudfunctions2_function_iam.html.markdown",
 				},
+			},
+
+			// Data Stream
+			"google_datastream_connection_profile": {
+				Tok: gcpResource(gcpDatastream, "ConnectionProfile"),
 			},
 
 			// Cloud Scheduler

@@ -98,6 +98,7 @@ export interface GetNotificationChannelResult {
     readonly description: string;
     readonly displayName?: string;
     readonly enabled: boolean;
+    readonly forceDelete: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

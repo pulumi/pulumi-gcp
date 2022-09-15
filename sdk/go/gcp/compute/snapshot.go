@@ -82,6 +82,55 @@ import (
 //	}
 //
 // ```
+// ### Snapshot Chainname
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			debian, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-11"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			persistent, err := compute.NewDisk(ctx, "persistent", &compute.DiskArgs{
+//				Image: pulumi.String(debian.SelfLink),
+//				Size:  pulumi.Int(10),
+//				Type:  pulumi.String("pd-ssd"),
+//				Zone:  pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
+//				SourceDisk: persistent.ID(),
+//				Zone:       pulumi.String("us-central1-a"),
+//				ChainName:  pulumi.String("snapshot-chain"),
+//				Labels: pulumi.StringMap{
+//					"my_label": pulumi.String("value"),
+//				},
+//				StorageLocations: pulumi.StringArray{
+//					pulumi.String("us-central1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -107,6 +156,13 @@ import (
 type Snapshot struct {
 	pulumi.CustomResourceState
 
+	// Creates the new snapshot in the snapshot chain labeled with the
+	// specified name. The chain name must be 1-63 characters long and
+	// comply with RFC1035. This is an uncommon option only for advanced
+	// service owners who needs to create separate snapshot chains, for
+	// example, for chargeback tracking.  When you describe your snapshot
+	// resource, this field is visible only if it has a non-empty value.
+	ChainName pulumi.StringPtrOutput `pulumi:"chainName"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
@@ -188,6 +244,13 @@ func GetSnapshot(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Snapshot resources.
 type snapshotState struct {
+	// Creates the new snapshot in the snapshot chain labeled with the
+	// specified name. The chain name must be 1-63 characters long and
+	// comply with RFC1035. This is an uncommon option only for advanced
+	// service owners who needs to create separate snapshot chains, for
+	// example, for chargeback tracking.  When you describe your snapshot
+	// resource, this field is visible only if it has a non-empty value.
+	ChainName *string `pulumi:"chainName"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
@@ -238,6 +301,13 @@ type snapshotState struct {
 }
 
 type SnapshotState struct {
+	// Creates the new snapshot in the snapshot chain labeled with the
+	// specified name. The chain name must be 1-63 characters long and
+	// comply with RFC1035. This is an uncommon option only for advanced
+	// service owners who needs to create separate snapshot chains, for
+	// example, for chargeback tracking.  When you describe your snapshot
+	// resource, this field is visible only if it has a non-empty value.
+	ChainName pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
@@ -292,6 +362,13 @@ func (SnapshotState) ElementType() reflect.Type {
 }
 
 type snapshotArgs struct {
+	// Creates the new snapshot in the snapshot chain labeled with the
+	// specified name. The chain name must be 1-63 characters long and
+	// comply with RFC1035. This is an uncommon option only for advanced
+	// service owners who needs to create separate snapshot chains, for
+	// example, for chargeback tracking.  When you describe your snapshot
+	// resource, this field is visible only if it has a non-empty value.
+	ChainName *string `pulumi:"chainName"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Labels to apply to this Snapshot.
@@ -326,6 +403,13 @@ type snapshotArgs struct {
 
 // The set of arguments for constructing a Snapshot resource.
 type SnapshotArgs struct {
+	// Creates the new snapshot in the snapshot chain labeled with the
+	// specified name. The chain name must be 1-63 characters long and
+	// comply with RFC1035. This is an uncommon option only for advanced
+	// service owners who needs to create separate snapshot chains, for
+	// example, for chargeback tracking.  When you describe your snapshot
+	// resource, this field is visible only if it has a non-empty value.
+	ChainName pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Labels to apply to this Snapshot.
@@ -443,6 +527,16 @@ func (o SnapshotOutput) ToSnapshotOutput() SnapshotOutput {
 
 func (o SnapshotOutput) ToSnapshotOutputWithContext(ctx context.Context) SnapshotOutput {
 	return o
+}
+
+// Creates the new snapshot in the snapshot chain labeled with the
+// specified name. The chain name must be 1-63 characters long and
+// comply with RFC1035. This is an uncommon option only for advanced
+// service owners who needs to create separate snapshot chains, for
+// example, for chargeback tracking.  When you describe your snapshot
+// resource, this field is visible only if it has a non-empty value.
+func (o SnapshotOutput) ChainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.ChainName }).(pulumi.StringPtrOutput)
 }
 
 // Creation timestamp in RFC3339 text format.

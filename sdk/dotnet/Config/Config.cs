@@ -116,6 +116,13 @@ namespace Pulumi.Gcp
             set => _bigQueryCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _bigqueryAnalyticsHubCustomEndpoint = new __Value<string?>(() => __config.Get("bigqueryAnalyticsHubCustomEndpoint"));
+        public static string? BigqueryAnalyticsHubCustomEndpoint
+        {
+            get => _bigqueryAnalyticsHubCustomEndpoint.Get();
+            set => _bigqueryAnalyticsHubCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _bigqueryConnectionCustomEndpoint = new __Value<string?>(() => __config.Get("bigqueryConnectionCustomEndpoint"));
         public static string? BigqueryConnectionCustomEndpoint
         {
@@ -366,6 +373,13 @@ namespace Pulumi.Gcp
         {
             get => _datastoreCustomEndpoint.Get();
             set => _datastoreCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _datastreamCustomEndpoint = new __Value<string?>(() => __config.Get("datastreamCustomEndpoint"));
+        public static string? DatastreamCustomEndpoint
+        {
+            get => _datastreamCustomEndpoint.Get();
+            set => _datastreamCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _deploymentManagerCustomEndpoint = new __Value<string?>(() => __config.Get("deploymentManagerCustomEndpoint"));

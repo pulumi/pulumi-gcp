@@ -204,18 +204,14 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.detectMd5hash);
     }
     /**
-     * Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-     * signified by the hold&#39;s release (i.e. this value is set to false). After being released (set to false), such objects
-     * will be subject to bucket-level retention (if any).
+     * Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold&#39;s release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
      * 
      */
     @Export(name="eventBasedHold", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> eventBasedHold;
 
     /**
-     * @return Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-     * signified by the hold&#39;s release (i.e. this value is set to false). After being released (set to false), such objects
-     * will be subject to bucket-level retention (if any).
+     * @return Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold&#39;s release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
      * 
      */
     public Output<Optional<Boolean>> eventBasedHold() {
@@ -356,16 +352,14 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
         return this.storageClass;
     }
     /**
-     * Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-     * overwrites.
+     * Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
      * 
      */
     @Export(name="temporaryHold", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> temporaryHold;
 
     /**
-     * @return Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-     * overwrites.
+     * @return Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
      * 
      */
     public Output<Optional<Boolean>> temporaryHold() {

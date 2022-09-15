@@ -73,6 +73,12 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
+        /// Optional. Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+        /// </summary>
+        [Input("shieldedInstanceConfig")]
+        public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }
+
+        /// <summary>
         /// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
         /// </summary>
         [Input("subnetwork")]

@@ -10325,6 +10325,147 @@ func (o ClusterConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ClusterCostManagementConfig struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterCostManagementConfigInput is an input type that accepts ClusterCostManagementConfigArgs and ClusterCostManagementConfigOutput values.
+// You can construct a concrete instance of `ClusterCostManagementConfigInput` via:
+//
+//	ClusterCostManagementConfigArgs{...}
+type ClusterCostManagementConfigInput interface {
+	pulumi.Input
+
+	ToClusterCostManagementConfigOutput() ClusterCostManagementConfigOutput
+	ToClusterCostManagementConfigOutputWithContext(context.Context) ClusterCostManagementConfigOutput
+}
+
+type ClusterCostManagementConfigArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterCostManagementConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCostManagementConfig)(nil)).Elem()
+}
+
+func (i ClusterCostManagementConfigArgs) ToClusterCostManagementConfigOutput() ClusterCostManagementConfigOutput {
+	return i.ToClusterCostManagementConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterCostManagementConfigArgs) ToClusterCostManagementConfigOutputWithContext(ctx context.Context) ClusterCostManagementConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCostManagementConfigOutput)
+}
+
+func (i ClusterCostManagementConfigArgs) ToClusterCostManagementConfigPtrOutput() ClusterCostManagementConfigPtrOutput {
+	return i.ToClusterCostManagementConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterCostManagementConfigArgs) ToClusterCostManagementConfigPtrOutputWithContext(ctx context.Context) ClusterCostManagementConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCostManagementConfigOutput).ToClusterCostManagementConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterCostManagementConfigPtrInput is an input type that accepts ClusterCostManagementConfigArgs, ClusterCostManagementConfigPtr and ClusterCostManagementConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterCostManagementConfigPtrInput` via:
+//
+//	        ClusterCostManagementConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterCostManagementConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterCostManagementConfigPtrOutput() ClusterCostManagementConfigPtrOutput
+	ToClusterCostManagementConfigPtrOutputWithContext(context.Context) ClusterCostManagementConfigPtrOutput
+}
+
+type clusterCostManagementConfigPtrType ClusterCostManagementConfigArgs
+
+func ClusterCostManagementConfigPtr(v *ClusterCostManagementConfigArgs) ClusterCostManagementConfigPtrInput {
+	return (*clusterCostManagementConfigPtrType)(v)
+}
+
+func (*clusterCostManagementConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterCostManagementConfig)(nil)).Elem()
+}
+
+func (i *clusterCostManagementConfigPtrType) ToClusterCostManagementConfigPtrOutput() ClusterCostManagementConfigPtrOutput {
+	return i.ToClusterCostManagementConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterCostManagementConfigPtrType) ToClusterCostManagementConfigPtrOutputWithContext(ctx context.Context) ClusterCostManagementConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCostManagementConfigPtrOutput)
+}
+
+type ClusterCostManagementConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterCostManagementConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCostManagementConfig)(nil)).Elem()
+}
+
+func (o ClusterCostManagementConfigOutput) ToClusterCostManagementConfigOutput() ClusterCostManagementConfigOutput {
+	return o
+}
+
+func (o ClusterCostManagementConfigOutput) ToClusterCostManagementConfigOutputWithContext(ctx context.Context) ClusterCostManagementConfigOutput {
+	return o
+}
+
+func (o ClusterCostManagementConfigOutput) ToClusterCostManagementConfigPtrOutput() ClusterCostManagementConfigPtrOutput {
+	return o.ToClusterCostManagementConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterCostManagementConfigOutput) ToClusterCostManagementConfigPtrOutputWithContext(ctx context.Context) ClusterCostManagementConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterCostManagementConfig) *ClusterCostManagementConfig {
+		return &v
+	}).(ClusterCostManagementConfigPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterCostManagementConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterCostManagementConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterCostManagementConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterCostManagementConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterCostManagementConfig)(nil)).Elem()
+}
+
+func (o ClusterCostManagementConfigPtrOutput) ToClusterCostManagementConfigPtrOutput() ClusterCostManagementConfigPtrOutput {
+	return o
+}
+
+func (o ClusterCostManagementConfigPtrOutput) ToClusterCostManagementConfigPtrOutputWithContext(ctx context.Context) ClusterCostManagementConfigPtrOutput {
+	return o
+}
+
+func (o ClusterCostManagementConfigPtrOutput) Elem() ClusterCostManagementConfigOutput {
+	return o.ApplyT(func(v *ClusterCostManagementConfig) ClusterCostManagementConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterCostManagementConfig
+		return ret
+	}).(ClusterCostManagementConfigOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterCostManagementConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterCostManagementConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ClusterDatabaseEncryption struct {
 	// the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
 	KeyName *string `pulumi:"keyName"`
@@ -13245,12 +13386,7 @@ type ClusterNodeConfig struct {
 	DiskType *string `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	EphemeralStorageConfig *ClusterNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfig"`
-	// Parameters for the Google Container Filesystem (GCFS).
-	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
-	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-	// A `machineType` that has more than 16 GiB of memory is also recommended.
-	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
-	// Structure is documented below.
+	// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 	GcfsConfig *ClusterNodeConfigGcfsConfig `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
@@ -13352,12 +13488,7 @@ type ClusterNodeConfigArgs struct {
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	EphemeralStorageConfig ClusterNodeConfigEphemeralStorageConfigPtrInput `pulumi:"ephemeralStorageConfig"`
-	// Parameters for the Google Container Filesystem (GCFS).
-	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
-	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-	// A `machineType` that has more than 16 GiB of memory is also recommended.
-	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
-	// Structure is documented below.
+	// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 	GcfsConfig ClusterNodeConfigGcfsConfigPtrInput `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
@@ -13536,12 +13667,7 @@ func (o ClusterNodeConfigOutput) EphemeralStorageConfig() ClusterNodeConfigEphem
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigEphemeralStorageConfig { return v.EphemeralStorageConfig }).(ClusterNodeConfigEphemeralStorageConfigPtrOutput)
 }
 
-// Parameters for the Google Container Filesystem (GCFS).
-// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
-// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-// A `machineType` that has more than 16 GiB of memory is also recommended.
-// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
-// Structure is documented below.
+// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 func (o ClusterNodeConfigOutput) GcfsConfig() ClusterNodeConfigGcfsConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigGcfsConfig { return v.GcfsConfig }).(ClusterNodeConfigGcfsConfigPtrOutput)
 }
@@ -13751,12 +13877,7 @@ func (o ClusterNodeConfigPtrOutput) EphemeralStorageConfig() ClusterNodeConfigEp
 	}).(ClusterNodeConfigEphemeralStorageConfigPtrOutput)
 }
 
-// Parameters for the Google Container Filesystem (GCFS).
-// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
-// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-// A `machineType` that has more than 16 GiB of memory is also recommended.
-// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
-// Structure is documented below.
+// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 func (o ClusterNodeConfigPtrOutput) GcfsConfig() ClusterNodeConfigGcfsConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigGcfsConfig {
 		if v == nil {
@@ -16142,8 +16263,11 @@ func (o ClusterNodePoolAutoConfigNetworkTagsPtrOutput) Tags() pulumi.StringArray
 }
 
 type ClusterNodePoolAutoscaling struct {
-	MaxNodeCount int `pulumi:"maxNodeCount"`
-	MinNodeCount int `pulumi:"minNodeCount"`
+	LocationPolicy    *string `pulumi:"locationPolicy"`
+	MaxNodeCount      *int    `pulumi:"maxNodeCount"`
+	MinNodeCount      *int    `pulumi:"minNodeCount"`
+	TotalMaxNodeCount *int    `pulumi:"totalMaxNodeCount"`
+	TotalMinNodeCount *int    `pulumi:"totalMinNodeCount"`
 }
 
 // ClusterNodePoolAutoscalingInput is an input type that accepts ClusterNodePoolAutoscalingArgs and ClusterNodePoolAutoscalingOutput values.
@@ -16158,8 +16282,11 @@ type ClusterNodePoolAutoscalingInput interface {
 }
 
 type ClusterNodePoolAutoscalingArgs struct {
-	MaxNodeCount pulumi.IntInput `pulumi:"maxNodeCount"`
-	MinNodeCount pulumi.IntInput `pulumi:"minNodeCount"`
+	LocationPolicy    pulumi.StringPtrInput `pulumi:"locationPolicy"`
+	MaxNodeCount      pulumi.IntPtrInput    `pulumi:"maxNodeCount"`
+	MinNodeCount      pulumi.IntPtrInput    `pulumi:"minNodeCount"`
+	TotalMaxNodeCount pulumi.IntPtrInput    `pulumi:"totalMaxNodeCount"`
+	TotalMinNodeCount pulumi.IntPtrInput    `pulumi:"totalMinNodeCount"`
 }
 
 func (ClusterNodePoolAutoscalingArgs) ElementType() reflect.Type {
@@ -16239,12 +16366,24 @@ func (o ClusterNodePoolAutoscalingOutput) ToClusterNodePoolAutoscalingPtrOutputW
 	}).(ClusterNodePoolAutoscalingPtrOutput)
 }
 
-func (o ClusterNodePoolAutoscalingOutput) MaxNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func(v ClusterNodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
+func (o ClusterNodePoolAutoscalingOutput) LocationPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolAutoscaling) *string { return v.LocationPolicy }).(pulumi.StringPtrOutput)
 }
 
-func (o ClusterNodePoolAutoscalingOutput) MinNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func(v ClusterNodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
+func (o ClusterNodePoolAutoscalingOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolAutoscaling) *int { return v.MaxNodeCount }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterNodePoolAutoscalingOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolAutoscaling) *int { return v.MinNodeCount }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterNodePoolAutoscalingOutput) TotalMaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolAutoscaling) *int { return v.TotalMaxNodeCount }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterNodePoolAutoscalingOutput) TotalMinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolAutoscaling) *int { return v.TotalMinNodeCount }).(pulumi.IntPtrOutput)
 }
 
 type ClusterNodePoolAutoscalingPtrOutput struct{ *pulumi.OutputState }
@@ -16271,12 +16410,21 @@ func (o ClusterNodePoolAutoscalingPtrOutput) Elem() ClusterNodePoolAutoscalingOu
 	}).(ClusterNodePoolAutoscalingOutput)
 }
 
+func (o ClusterNodePoolAutoscalingPtrOutput) LocationPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolAutoscaling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocationPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ClusterNodePoolAutoscalingPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolAutoscaling) *int {
 		if v == nil {
 			return nil
 		}
-		return &v.MaxNodeCount
+		return v.MaxNodeCount
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -16285,8 +16433,445 @@ func (o ClusterNodePoolAutoscalingPtrOutput) MinNodeCount() pulumi.IntPtrOutput 
 		if v == nil {
 			return nil
 		}
-		return &v.MinNodeCount
+		return v.MinNodeCount
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterNodePoolAutoscalingPtrOutput) TotalMaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TotalMaxNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterNodePoolAutoscalingPtrOutput) TotalMinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TotalMinNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterNodePoolDefaults struct {
+	// ) - Subset of NodeConfig message that has defaults.
+	NodeConfigDefaults *ClusterNodePoolDefaultsNodeConfigDefaults `pulumi:"nodeConfigDefaults"`
+}
+
+// ClusterNodePoolDefaultsInput is an input type that accepts ClusterNodePoolDefaultsArgs and ClusterNodePoolDefaultsOutput values.
+// You can construct a concrete instance of `ClusterNodePoolDefaultsInput` via:
+//
+//	ClusterNodePoolDefaultsArgs{...}
+type ClusterNodePoolDefaultsInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolDefaultsOutput() ClusterNodePoolDefaultsOutput
+	ToClusterNodePoolDefaultsOutputWithContext(context.Context) ClusterNodePoolDefaultsOutput
+}
+
+type ClusterNodePoolDefaultsArgs struct {
+	// ) - Subset of NodeConfig message that has defaults.
+	NodeConfigDefaults ClusterNodePoolDefaultsNodeConfigDefaultsPtrInput `pulumi:"nodeConfigDefaults"`
+}
+
+func (ClusterNodePoolDefaultsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolDefaults)(nil)).Elem()
+}
+
+func (i ClusterNodePoolDefaultsArgs) ToClusterNodePoolDefaultsOutput() ClusterNodePoolDefaultsOutput {
+	return i.ToClusterNodePoolDefaultsOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolDefaultsArgs) ToClusterNodePoolDefaultsOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolDefaultsOutput)
+}
+
+func (i ClusterNodePoolDefaultsArgs) ToClusterNodePoolDefaultsPtrOutput() ClusterNodePoolDefaultsPtrOutput {
+	return i.ToClusterNodePoolDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolDefaultsArgs) ToClusterNodePoolDefaultsPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolDefaultsOutput).ToClusterNodePoolDefaultsPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolDefaultsPtrInput is an input type that accepts ClusterNodePoolDefaultsArgs, ClusterNodePoolDefaultsPtr and ClusterNodePoolDefaultsPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolDefaultsPtrInput` via:
+//
+//	        ClusterNodePoolDefaultsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolDefaultsPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolDefaultsPtrOutput() ClusterNodePoolDefaultsPtrOutput
+	ToClusterNodePoolDefaultsPtrOutputWithContext(context.Context) ClusterNodePoolDefaultsPtrOutput
+}
+
+type clusterNodePoolDefaultsPtrType ClusterNodePoolDefaultsArgs
+
+func ClusterNodePoolDefaultsPtr(v *ClusterNodePoolDefaultsArgs) ClusterNodePoolDefaultsPtrInput {
+	return (*clusterNodePoolDefaultsPtrType)(v)
+}
+
+func (*clusterNodePoolDefaultsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolDefaults)(nil)).Elem()
+}
+
+func (i *clusterNodePoolDefaultsPtrType) ToClusterNodePoolDefaultsPtrOutput() ClusterNodePoolDefaultsPtrOutput {
+	return i.ToClusterNodePoolDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolDefaultsPtrType) ToClusterNodePoolDefaultsPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolDefaultsPtrOutput)
+}
+
+type ClusterNodePoolDefaultsOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolDefaultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolDefaults)(nil)).Elem()
+}
+
+func (o ClusterNodePoolDefaultsOutput) ToClusterNodePoolDefaultsOutput() ClusterNodePoolDefaultsOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsOutput) ToClusterNodePoolDefaultsOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsOutput) ToClusterNodePoolDefaultsPtrOutput() ClusterNodePoolDefaultsPtrOutput {
+	return o.ToClusterNodePoolDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolDefaultsOutput) ToClusterNodePoolDefaultsPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolDefaults) *ClusterNodePoolDefaults {
+		return &v
+	}).(ClusterNodePoolDefaultsPtrOutput)
+}
+
+// ) - Subset of NodeConfig message that has defaults.
+func (o ClusterNodePoolDefaultsOutput) NodeConfigDefaults() ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolDefaults) *ClusterNodePoolDefaultsNodeConfigDefaults {
+		return v.NodeConfigDefaults
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput)
+}
+
+type ClusterNodePoolDefaultsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolDefaultsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolDefaults)(nil)).Elem()
+}
+
+func (o ClusterNodePoolDefaultsPtrOutput) ToClusterNodePoolDefaultsPtrOutput() ClusterNodePoolDefaultsPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsPtrOutput) ToClusterNodePoolDefaultsPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsPtrOutput) Elem() ClusterNodePoolDefaultsOutput {
+	return o.ApplyT(func(v *ClusterNodePoolDefaults) ClusterNodePoolDefaults {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolDefaults
+		return ret
+	}).(ClusterNodePoolDefaultsOutput)
+}
+
+// ) - Subset of NodeConfig message that has defaults.
+func (o ClusterNodePoolDefaultsPtrOutput) NodeConfigDefaults() ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolDefaults) *ClusterNodePoolDefaultsNodeConfigDefaults {
+		if v == nil {
+			return nil
+		}
+		return v.NodeConfigDefaults
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput)
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaults struct {
+	// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+	GcfsConfig *ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig `pulumi:"gcfsConfig"`
+}
+
+// ClusterNodePoolDefaultsNodeConfigDefaultsInput is an input type that accepts ClusterNodePoolDefaultsNodeConfigDefaultsArgs and ClusterNodePoolDefaultsNodeConfigDefaultsOutput values.
+// You can construct a concrete instance of `ClusterNodePoolDefaultsNodeConfigDefaultsInput` via:
+//
+//	ClusterNodePoolDefaultsNodeConfigDefaultsArgs{...}
+type ClusterNodePoolDefaultsNodeConfigDefaultsInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolDefaultsNodeConfigDefaultsOutput() ClusterNodePoolDefaultsNodeConfigDefaultsOutput
+	ToClusterNodePoolDefaultsNodeConfigDefaultsOutputWithContext(context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsOutput
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsArgs struct {
+	// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+	GcfsConfig ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrInput `pulumi:"gcfsConfig"`
+}
+
+func (ClusterNodePoolDefaultsNodeConfigDefaultsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaults)(nil)).Elem()
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsOutput() ClusterNodePoolDefaultsNodeConfigDefaultsOutput {
+	return i.ToClusterNodePoolDefaultsNodeConfigDefaultsOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolDefaultsNodeConfigDefaultsOutput)
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput {
+	return i.ToClusterNodePoolDefaultsNodeConfigDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolDefaultsNodeConfigDefaultsOutput).ToClusterNodePoolDefaultsNodeConfigDefaultsPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolDefaultsNodeConfigDefaultsPtrInput is an input type that accepts ClusterNodePoolDefaultsNodeConfigDefaultsArgs, ClusterNodePoolDefaultsNodeConfigDefaultsPtr and ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolDefaultsNodeConfigDefaultsPtrInput` via:
+//
+//	        ClusterNodePoolDefaultsNodeConfigDefaultsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolDefaultsNodeConfigDefaultsPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput
+	ToClusterNodePoolDefaultsNodeConfigDefaultsPtrOutputWithContext(context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput
+}
+
+type clusterNodePoolDefaultsNodeConfigDefaultsPtrType ClusterNodePoolDefaultsNodeConfigDefaultsArgs
+
+func ClusterNodePoolDefaultsNodeConfigDefaultsPtr(v *ClusterNodePoolDefaultsNodeConfigDefaultsArgs) ClusterNodePoolDefaultsNodeConfigDefaultsPtrInput {
+	return (*clusterNodePoolDefaultsNodeConfigDefaultsPtrType)(v)
+}
+
+func (*clusterNodePoolDefaultsNodeConfigDefaultsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolDefaultsNodeConfigDefaults)(nil)).Elem()
+}
+
+func (i *clusterNodePoolDefaultsNodeConfigDefaultsPtrType) ToClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput {
+	return i.ToClusterNodePoolDefaultsNodeConfigDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolDefaultsNodeConfigDefaultsPtrType) ToClusterNodePoolDefaultsNodeConfigDefaultsPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput)
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolDefaultsNodeConfigDefaultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaults)(nil)).Elem()
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsOutput() ClusterNodePoolDefaultsNodeConfigDefaultsOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput {
+	return o.ToClusterNodePoolDefaultsNodeConfigDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolDefaultsNodeConfigDefaults) *ClusterNodePoolDefaultsNodeConfigDefaults {
+		return &v
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput)
+}
+
+// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsOutput) GcfsConfig() ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaults) *ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig {
+		return v.GcfsConfig
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput)
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolDefaultsNodeConfigDefaults)(nil)).Elem()
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput) Elem() ClusterNodePoolDefaultsNodeConfigDefaultsOutput {
+	return o.ApplyT(func(v *ClusterNodePoolDefaultsNodeConfigDefaults) ClusterNodePoolDefaultsNodeConfigDefaults {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolDefaultsNodeConfigDefaults
+		return ret
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsOutput)
+}
+
+// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput) GcfsConfig() ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolDefaultsNodeConfigDefaults) *ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GcfsConfig
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput)
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigInput is an input type that accepts ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs and ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigInput` via:
+//
+//	ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs{...}
+type ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput() ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput
+	ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutputWithContext(context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput() ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput {
+	return i.ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput)
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput {
+	return i.ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs) ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput).ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrInput is an input type that accepts ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs, ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtr and ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrInput` via:
+//
+//	        ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput
+	ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutputWithContext(context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput
+}
+
+type clusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrType ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs
+
+func ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtr(v *ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs) ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrInput {
+	return (*clusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrType)(v)
+}
+
+func (*clusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrType) ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput {
+	return i.ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrType) ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput)
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput() ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput {
+	return o.ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig) *ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig {
+		return &v
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput() ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput) ToClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput) Elem() ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig) ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig
+		return ret
+	}).(ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodePoolManagement struct {
@@ -16623,12 +17208,7 @@ type ClusterNodePoolNodeConfig struct {
 	DiskType *string `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	EphemeralStorageConfig *ClusterNodePoolNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfig"`
-	// Parameters for the Google Container Filesystem (GCFS).
-	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
-	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-	// A `machineType` that has more than 16 GiB of memory is also recommended.
-	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
-	// Structure is documented below.
+	// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 	GcfsConfig *ClusterNodePoolNodeConfigGcfsConfig `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
@@ -16730,12 +17310,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	EphemeralStorageConfig ClusterNodePoolNodeConfigEphemeralStorageConfigPtrInput `pulumi:"ephemeralStorageConfig"`
-	// Parameters for the Google Container Filesystem (GCFS).
-	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
-	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-	// A `machineType` that has more than 16 GiB of memory is also recommended.
-	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
-	// Structure is documented below.
+	// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 	GcfsConfig ClusterNodePoolNodeConfigGcfsConfigPtrInput `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
@@ -16916,12 +17491,7 @@ func (o ClusterNodePoolNodeConfigOutput) EphemeralStorageConfig() ClusterNodePoo
 	}).(ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput)
 }
 
-// Parameters for the Google Container Filesystem (GCFS).
-// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
-// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-// A `machineType` that has more than 16 GiB of memory is also recommended.
-// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
-// Structure is documented below.
+// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) GcfsConfig() ClusterNodePoolNodeConfigGcfsConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigGcfsConfig { return v.GcfsConfig }).(ClusterNodePoolNodeConfigGcfsConfigPtrOutput)
 }
@@ -17139,12 +17709,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) EphemeralStorageConfig() ClusterNode
 	}).(ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput)
 }
 
-// Parameters for the Google Container Filesystem (GCFS).
-// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
-// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-// A `machineType` that has more than 16 GiB of memory is also recommended.
-// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
-// Structure is documented below.
+// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 func (o ClusterNodePoolNodeConfigPtrOutput) GcfsConfig() ClusterNodePoolNodeConfigGcfsConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigGcfsConfig {
 		if v == nil {
@@ -20680,6 +21245,147 @@ func (o ClusterResourceUsageExportConfigBigqueryDestinationPtrOutput) DatasetId(
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterServiceExternalIpsConfig struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterServiceExternalIpsConfigInput is an input type that accepts ClusterServiceExternalIpsConfigArgs and ClusterServiceExternalIpsConfigOutput values.
+// You can construct a concrete instance of `ClusterServiceExternalIpsConfigInput` via:
+//
+//	ClusterServiceExternalIpsConfigArgs{...}
+type ClusterServiceExternalIpsConfigInput interface {
+	pulumi.Input
+
+	ToClusterServiceExternalIpsConfigOutput() ClusterServiceExternalIpsConfigOutput
+	ToClusterServiceExternalIpsConfigOutputWithContext(context.Context) ClusterServiceExternalIpsConfigOutput
+}
+
+type ClusterServiceExternalIpsConfigArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterServiceExternalIpsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterServiceExternalIpsConfig)(nil)).Elem()
+}
+
+func (i ClusterServiceExternalIpsConfigArgs) ToClusterServiceExternalIpsConfigOutput() ClusterServiceExternalIpsConfigOutput {
+	return i.ToClusterServiceExternalIpsConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterServiceExternalIpsConfigArgs) ToClusterServiceExternalIpsConfigOutputWithContext(ctx context.Context) ClusterServiceExternalIpsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterServiceExternalIpsConfigOutput)
+}
+
+func (i ClusterServiceExternalIpsConfigArgs) ToClusterServiceExternalIpsConfigPtrOutput() ClusterServiceExternalIpsConfigPtrOutput {
+	return i.ToClusterServiceExternalIpsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterServiceExternalIpsConfigArgs) ToClusterServiceExternalIpsConfigPtrOutputWithContext(ctx context.Context) ClusterServiceExternalIpsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterServiceExternalIpsConfigOutput).ToClusterServiceExternalIpsConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterServiceExternalIpsConfigPtrInput is an input type that accepts ClusterServiceExternalIpsConfigArgs, ClusterServiceExternalIpsConfigPtr and ClusterServiceExternalIpsConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterServiceExternalIpsConfigPtrInput` via:
+//
+//	        ClusterServiceExternalIpsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterServiceExternalIpsConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterServiceExternalIpsConfigPtrOutput() ClusterServiceExternalIpsConfigPtrOutput
+	ToClusterServiceExternalIpsConfigPtrOutputWithContext(context.Context) ClusterServiceExternalIpsConfigPtrOutput
+}
+
+type clusterServiceExternalIpsConfigPtrType ClusterServiceExternalIpsConfigArgs
+
+func ClusterServiceExternalIpsConfigPtr(v *ClusterServiceExternalIpsConfigArgs) ClusterServiceExternalIpsConfigPtrInput {
+	return (*clusterServiceExternalIpsConfigPtrType)(v)
+}
+
+func (*clusterServiceExternalIpsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterServiceExternalIpsConfig)(nil)).Elem()
+}
+
+func (i *clusterServiceExternalIpsConfigPtrType) ToClusterServiceExternalIpsConfigPtrOutput() ClusterServiceExternalIpsConfigPtrOutput {
+	return i.ToClusterServiceExternalIpsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterServiceExternalIpsConfigPtrType) ToClusterServiceExternalIpsConfigPtrOutputWithContext(ctx context.Context) ClusterServiceExternalIpsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterServiceExternalIpsConfigPtrOutput)
+}
+
+type ClusterServiceExternalIpsConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterServiceExternalIpsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterServiceExternalIpsConfig)(nil)).Elem()
+}
+
+func (o ClusterServiceExternalIpsConfigOutput) ToClusterServiceExternalIpsConfigOutput() ClusterServiceExternalIpsConfigOutput {
+	return o
+}
+
+func (o ClusterServiceExternalIpsConfigOutput) ToClusterServiceExternalIpsConfigOutputWithContext(ctx context.Context) ClusterServiceExternalIpsConfigOutput {
+	return o
+}
+
+func (o ClusterServiceExternalIpsConfigOutput) ToClusterServiceExternalIpsConfigPtrOutput() ClusterServiceExternalIpsConfigPtrOutput {
+	return o.ToClusterServiceExternalIpsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterServiceExternalIpsConfigOutput) ToClusterServiceExternalIpsConfigPtrOutputWithContext(ctx context.Context) ClusterServiceExternalIpsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterServiceExternalIpsConfig) *ClusterServiceExternalIpsConfig {
+		return &v
+	}).(ClusterServiceExternalIpsConfigPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterServiceExternalIpsConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterServiceExternalIpsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterServiceExternalIpsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterServiceExternalIpsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterServiceExternalIpsConfig)(nil)).Elem()
+}
+
+func (o ClusterServiceExternalIpsConfigPtrOutput) ToClusterServiceExternalIpsConfigPtrOutput() ClusterServiceExternalIpsConfigPtrOutput {
+	return o
+}
+
+func (o ClusterServiceExternalIpsConfigPtrOutput) ToClusterServiceExternalIpsConfigPtrOutputWithContext(ctx context.Context) ClusterServiceExternalIpsConfigPtrOutput {
+	return o
+}
+
+func (o ClusterServiceExternalIpsConfigPtrOutput) Elem() ClusterServiceExternalIpsConfigOutput {
+	return o.ApplyT(func(v *ClusterServiceExternalIpsConfig) ClusterServiceExternalIpsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterServiceExternalIpsConfig
+		return ret
+	}).(ClusterServiceExternalIpsConfigOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterServiceExternalIpsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterServiceExternalIpsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ClusterTpuConfig struct {
 	// Enable the PodSecurityPolicy controller for this cluster.
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -21130,11 +21836,23 @@ func (o ClusterWorkloadIdentityConfigPtrOutput) WorkloadPool() pulumi.StringPtrO
 }
 
 type NodePoolAutoscaling struct {
-	// Maximum number of nodes in the NodePool. Must be >= min_node_count.
-	MaxNodeCount int `pulumi:"maxNodeCount"`
-	// Minimum number of nodes in the NodePool. Must be >=0 and
-	// <= `maxNodeCount`.
-	MinNodeCount int `pulumi:"minNodeCount"`
+	// Location policy specifies the algorithm used when scaling-up the node pool.\
+	// "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.\
+	// "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+	// and reduce preemption risk for Spot VMs.
+	LocationPolicy *string `pulumi:"locationPolicy"`
+	// Maximum number of nodes per zone in the NodePool.
+	// Must be >= min_node_count. Cannot be used with total limits.
+	MaxNodeCount *int `pulumi:"maxNodeCount"`
+	// Minimum number of nodes per zone in the NodePool.
+	// Must be >=0 and <= `maxNodeCount`. Cannot be used with total limits.
+	MinNodeCount *int `pulumi:"minNodeCount"`
+	// Total maximum number of nodes in the NodePool.
+	// Must be >= total_min_node_count. Cannot be used with per zone limits.
+	TotalMaxNodeCount *int `pulumi:"totalMaxNodeCount"`
+	// Total minimum number of nodes in the NodePool.
+	// Must be >=0 and <= `totalMaxNodeCount`. Cannot be used with per zone limits.
+	TotalMinNodeCount *int `pulumi:"totalMinNodeCount"`
 }
 
 // NodePoolAutoscalingInput is an input type that accepts NodePoolAutoscalingArgs and NodePoolAutoscalingOutput values.
@@ -21149,11 +21867,23 @@ type NodePoolAutoscalingInput interface {
 }
 
 type NodePoolAutoscalingArgs struct {
-	// Maximum number of nodes in the NodePool. Must be >= min_node_count.
-	MaxNodeCount pulumi.IntInput `pulumi:"maxNodeCount"`
-	// Minimum number of nodes in the NodePool. Must be >=0 and
-	// <= `maxNodeCount`.
-	MinNodeCount pulumi.IntInput `pulumi:"minNodeCount"`
+	// Location policy specifies the algorithm used when scaling-up the node pool.\
+	// "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.\
+	// "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+	// and reduce preemption risk for Spot VMs.
+	LocationPolicy pulumi.StringPtrInput `pulumi:"locationPolicy"`
+	// Maximum number of nodes per zone in the NodePool.
+	// Must be >= min_node_count. Cannot be used with total limits.
+	MaxNodeCount pulumi.IntPtrInput `pulumi:"maxNodeCount"`
+	// Minimum number of nodes per zone in the NodePool.
+	// Must be >=0 and <= `maxNodeCount`. Cannot be used with total limits.
+	MinNodeCount pulumi.IntPtrInput `pulumi:"minNodeCount"`
+	// Total maximum number of nodes in the NodePool.
+	// Must be >= total_min_node_count. Cannot be used with per zone limits.
+	TotalMaxNodeCount pulumi.IntPtrInput `pulumi:"totalMaxNodeCount"`
+	// Total minimum number of nodes in the NodePool.
+	// Must be >=0 and <= `totalMaxNodeCount`. Cannot be used with per zone limits.
+	TotalMinNodeCount pulumi.IntPtrInput `pulumi:"totalMinNodeCount"`
 }
 
 func (NodePoolAutoscalingArgs) ElementType() reflect.Type {
@@ -21233,15 +21963,36 @@ func (o NodePoolAutoscalingOutput) ToNodePoolAutoscalingPtrOutputWithContext(ctx
 	}).(NodePoolAutoscalingPtrOutput)
 }
 
-// Maximum number of nodes in the NodePool. Must be >= min_node_count.
-func (o NodePoolAutoscalingOutput) MaxNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func(v NodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
+// Location policy specifies the algorithm used when scaling-up the node pool.\
+// "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.\
+// "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+// and reduce preemption risk for Spot VMs.
+func (o NodePoolAutoscalingOutput) LocationPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolAutoscaling) *string { return v.LocationPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Minimum number of nodes in the NodePool. Must be >=0 and
-// <= `maxNodeCount`.
-func (o NodePoolAutoscalingOutput) MinNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func(v NodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
+// Maximum number of nodes per zone in the NodePool.
+// Must be >= min_node_count. Cannot be used with total limits.
+func (o NodePoolAutoscalingOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolAutoscaling) *int { return v.MaxNodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of nodes per zone in the NodePool.
+// Must be >=0 and <= `maxNodeCount`. Cannot be used with total limits.
+func (o NodePoolAutoscalingOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolAutoscaling) *int { return v.MinNodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Total maximum number of nodes in the NodePool.
+// Must be >= total_min_node_count. Cannot be used with per zone limits.
+func (o NodePoolAutoscalingOutput) TotalMaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolAutoscaling) *int { return v.TotalMaxNodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Total minimum number of nodes in the NodePool.
+// Must be >=0 and <= `totalMaxNodeCount`. Cannot be used with per zone limits.
+func (o NodePoolAutoscalingOutput) TotalMinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolAutoscaling) *int { return v.TotalMinNodeCount }).(pulumi.IntPtrOutput)
 }
 
 type NodePoolAutoscalingPtrOutput struct{ *pulumi.OutputState }
@@ -21268,24 +22019,60 @@ func (o NodePoolAutoscalingPtrOutput) Elem() NodePoolAutoscalingOutput {
 	}).(NodePoolAutoscalingOutput)
 }
 
-// Maximum number of nodes in the NodePool. Must be >= min_node_count.
+// Location policy specifies the algorithm used when scaling-up the node pool.\
+// "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.\
+// "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+// and reduce preemption risk for Spot VMs.
+func (o NodePoolAutoscalingPtrOutput) LocationPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolAutoscaling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocationPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of nodes per zone in the NodePool.
+// Must be >= min_node_count. Cannot be used with total limits.
 func (o NodePoolAutoscalingPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolAutoscaling) *int {
 		if v == nil {
 			return nil
 		}
-		return &v.MaxNodeCount
+		return v.MaxNodeCount
 	}).(pulumi.IntPtrOutput)
 }
 
-// Minimum number of nodes in the NodePool. Must be >=0 and
-// <= `maxNodeCount`.
+// Minimum number of nodes per zone in the NodePool.
+// Must be >=0 and <= `maxNodeCount`. Cannot be used with total limits.
 func (o NodePoolAutoscalingPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolAutoscaling) *int {
 		if v == nil {
 			return nil
 		}
-		return &v.MinNodeCount
+		return v.MinNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Total maximum number of nodes in the NodePool.
+// Must be >= total_min_node_count. Cannot be used with per zone limits.
+func (o NodePoolAutoscalingPtrOutput) TotalMaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TotalMaxNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Total minimum number of nodes in the NodePool.
+// Must be >=0 and <= `totalMaxNodeCount`. Cannot be used with per zone limits.
+func (o NodePoolAutoscalingPtrOutput) TotalMinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TotalMinNodeCount
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -25860,6 +26647,100 @@ func (o GetClusterConfidentialNodeArrayOutput) Index(i pulumi.IntInput) GetClust
 	}).(GetClusterConfidentialNodeOutput)
 }
 
+type GetClusterCostManagementConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterCostManagementConfigInput is an input type that accepts GetClusterCostManagementConfigArgs and GetClusterCostManagementConfigOutput values.
+// You can construct a concrete instance of `GetClusterCostManagementConfigInput` via:
+//
+//	GetClusterCostManagementConfigArgs{...}
+type GetClusterCostManagementConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterCostManagementConfigOutput() GetClusterCostManagementConfigOutput
+	ToGetClusterCostManagementConfigOutputWithContext(context.Context) GetClusterCostManagementConfigOutput
+}
+
+type GetClusterCostManagementConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterCostManagementConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterCostManagementConfig)(nil)).Elem()
+}
+
+func (i GetClusterCostManagementConfigArgs) ToGetClusterCostManagementConfigOutput() GetClusterCostManagementConfigOutput {
+	return i.ToGetClusterCostManagementConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterCostManagementConfigArgs) ToGetClusterCostManagementConfigOutputWithContext(ctx context.Context) GetClusterCostManagementConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterCostManagementConfigOutput)
+}
+
+// GetClusterCostManagementConfigArrayInput is an input type that accepts GetClusterCostManagementConfigArray and GetClusterCostManagementConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterCostManagementConfigArrayInput` via:
+//
+//	GetClusterCostManagementConfigArray{ GetClusterCostManagementConfigArgs{...} }
+type GetClusterCostManagementConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterCostManagementConfigArrayOutput() GetClusterCostManagementConfigArrayOutput
+	ToGetClusterCostManagementConfigArrayOutputWithContext(context.Context) GetClusterCostManagementConfigArrayOutput
+}
+
+type GetClusterCostManagementConfigArray []GetClusterCostManagementConfigInput
+
+func (GetClusterCostManagementConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterCostManagementConfig)(nil)).Elem()
+}
+
+func (i GetClusterCostManagementConfigArray) ToGetClusterCostManagementConfigArrayOutput() GetClusterCostManagementConfigArrayOutput {
+	return i.ToGetClusterCostManagementConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterCostManagementConfigArray) ToGetClusterCostManagementConfigArrayOutputWithContext(ctx context.Context) GetClusterCostManagementConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterCostManagementConfigArrayOutput)
+}
+
+type GetClusterCostManagementConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterCostManagementConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterCostManagementConfig)(nil)).Elem()
+}
+
+func (o GetClusterCostManagementConfigOutput) ToGetClusterCostManagementConfigOutput() GetClusterCostManagementConfigOutput {
+	return o
+}
+
+func (o GetClusterCostManagementConfigOutput) ToGetClusterCostManagementConfigOutputWithContext(ctx context.Context) GetClusterCostManagementConfigOutput {
+	return o
+}
+
+func (o GetClusterCostManagementConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterCostManagementConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterCostManagementConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterCostManagementConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterCostManagementConfig)(nil)).Elem()
+}
+
+func (o GetClusterCostManagementConfigArrayOutput) ToGetClusterCostManagementConfigArrayOutput() GetClusterCostManagementConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterCostManagementConfigArrayOutput) ToGetClusterCostManagementConfigArrayOutputWithContext(ctx context.Context) GetClusterCostManagementConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterCostManagementConfigArrayOutput) Index(i pulumi.IntInput) GetClusterCostManagementConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterCostManagementConfig {
+		return vs[0].([]GetClusterCostManagementConfig)[vs[1].(int)]
+	}).(GetClusterCostManagementConfigOutput)
+}
+
 type GetClusterDatabaseEncryption struct {
 	KeyName string `pulumi:"keyName"`
 	State   string `pulumi:"state"`
@@ -29488,8 +30369,11 @@ func (o GetClusterNodePoolAutoConfigNetworkTagArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetClusterNodePoolAutoscaling struct {
-	MaxNodeCount int `pulumi:"maxNodeCount"`
-	MinNodeCount int `pulumi:"minNodeCount"`
+	LocationPolicy    string `pulumi:"locationPolicy"`
+	MaxNodeCount      int    `pulumi:"maxNodeCount"`
+	MinNodeCount      int    `pulumi:"minNodeCount"`
+	TotalMaxNodeCount int    `pulumi:"totalMaxNodeCount"`
+	TotalMinNodeCount int    `pulumi:"totalMinNodeCount"`
 }
 
 // GetClusterNodePoolAutoscalingInput is an input type that accepts GetClusterNodePoolAutoscalingArgs and GetClusterNodePoolAutoscalingOutput values.
@@ -29504,8 +30388,11 @@ type GetClusterNodePoolAutoscalingInput interface {
 }
 
 type GetClusterNodePoolAutoscalingArgs struct {
-	MaxNodeCount pulumi.IntInput `pulumi:"maxNodeCount"`
-	MinNodeCount pulumi.IntInput `pulumi:"minNodeCount"`
+	LocationPolicy    pulumi.StringInput `pulumi:"locationPolicy"`
+	MaxNodeCount      pulumi.IntInput    `pulumi:"maxNodeCount"`
+	MinNodeCount      pulumi.IntInput    `pulumi:"minNodeCount"`
+	TotalMaxNodeCount pulumi.IntInput    `pulumi:"totalMaxNodeCount"`
+	TotalMinNodeCount pulumi.IntInput    `pulumi:"totalMinNodeCount"`
 }
 
 func (GetClusterNodePoolAutoscalingArgs) ElementType() reflect.Type {
@@ -29559,12 +30446,24 @@ func (o GetClusterNodePoolAutoscalingOutput) ToGetClusterNodePoolAutoscalingOutp
 	return o
 }
 
+func (o GetClusterNodePoolAutoscalingOutput) LocationPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolAutoscaling) string { return v.LocationPolicy }).(pulumi.StringOutput)
+}
+
 func (o GetClusterNodePoolAutoscalingOutput) MaxNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClusterNodePoolAutoscaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
 }
 
 func (o GetClusterNodePoolAutoscalingOutput) MinNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClusterNodePoolAutoscaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
+}
+
+func (o GetClusterNodePoolAutoscalingOutput) TotalMaxNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolAutoscaling) int { return v.TotalMaxNodeCount }).(pulumi.IntOutput)
+}
+
+func (o GetClusterNodePoolAutoscalingOutput) TotalMinNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolAutoscaling) int { return v.TotalMinNodeCount }).(pulumi.IntOutput)
 }
 
 type GetClusterNodePoolAutoscalingArrayOutput struct{ *pulumi.OutputState }
@@ -29585,6 +30484,292 @@ func (o GetClusterNodePoolAutoscalingArrayOutput) Index(i pulumi.IntInput) GetCl
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolAutoscaling {
 		return vs[0].([]GetClusterNodePoolAutoscaling)[vs[1].(int)]
 	}).(GetClusterNodePoolAutoscalingOutput)
+}
+
+type GetClusterNodePoolDefault struct {
+	NodeConfigDefaults []GetClusterNodePoolDefaultNodeConfigDefault `pulumi:"nodeConfigDefaults"`
+}
+
+// GetClusterNodePoolDefaultInput is an input type that accepts GetClusterNodePoolDefaultArgs and GetClusterNodePoolDefaultOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultInput` via:
+//
+//	GetClusterNodePoolDefaultArgs{...}
+type GetClusterNodePoolDefaultInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultOutput() GetClusterNodePoolDefaultOutput
+	ToGetClusterNodePoolDefaultOutputWithContext(context.Context) GetClusterNodePoolDefaultOutput
+}
+
+type GetClusterNodePoolDefaultArgs struct {
+	NodeConfigDefaults GetClusterNodePoolDefaultNodeConfigDefaultArrayInput `pulumi:"nodeConfigDefaults"`
+}
+
+func (GetClusterNodePoolDefaultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefault)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultArgs) ToGetClusterNodePoolDefaultOutput() GetClusterNodePoolDefaultOutput {
+	return i.ToGetClusterNodePoolDefaultOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultArgs) ToGetClusterNodePoolDefaultOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultOutput)
+}
+
+// GetClusterNodePoolDefaultArrayInput is an input type that accepts GetClusterNodePoolDefaultArray and GetClusterNodePoolDefaultArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultArrayInput` via:
+//
+//	GetClusterNodePoolDefaultArray{ GetClusterNodePoolDefaultArgs{...} }
+type GetClusterNodePoolDefaultArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultArrayOutput() GetClusterNodePoolDefaultArrayOutput
+	ToGetClusterNodePoolDefaultArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultArrayOutput
+}
+
+type GetClusterNodePoolDefaultArray []GetClusterNodePoolDefaultInput
+
+func (GetClusterNodePoolDefaultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefault)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultArray) ToGetClusterNodePoolDefaultArrayOutput() GetClusterNodePoolDefaultArrayOutput {
+	return i.ToGetClusterNodePoolDefaultArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultArray) ToGetClusterNodePoolDefaultArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultArrayOutput)
+}
+
+type GetClusterNodePoolDefaultOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefault)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultOutput) ToGetClusterNodePoolDefaultOutput() GetClusterNodePoolDefaultOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultOutput) ToGetClusterNodePoolDefaultOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultOutput) NodeConfigDefaults() GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefault) []GetClusterNodePoolDefaultNodeConfigDefault {
+		return v.NodeConfigDefaults
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput)
+}
+
+type GetClusterNodePoolDefaultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefault)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultArrayOutput) ToGetClusterNodePoolDefaultArrayOutput() GetClusterNodePoolDefaultArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultArrayOutput) ToGetClusterNodePoolDefaultArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefault {
+		return vs[0].([]GetClusterNodePoolDefault)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefault struct {
+	GcfsConfigs []GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig `pulumi:"gcfsConfigs"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultArgs and GetClusterNodePoolDefaultNodeConfigDefaultOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultOutput() GetClusterNodePoolDefaultNodeConfigDefaultOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultArgs struct {
+	GcfsConfigs GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayInput `pulumi:"gcfsConfigs"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefault)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultOutput() GetClusterNodePoolDefaultNodeConfigDefaultOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultArray and GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultArray{ GetClusterNodePoolDefaultNodeConfigDefaultArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultArray []GetClusterNodePoolDefaultNodeConfigDefaultInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefault)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultArray) ToGetClusterNodePoolDefaultNodeConfigDefaultArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultArray) ToGetClusterNodePoolDefaultNodeConfigDefaultArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefault)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultOutput() GetClusterNodePoolDefaultNodeConfigDefaultOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultOutput) GcfsConfigs() GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefault) []GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig {
+		return v.GcfsConfigs
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefault)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefault {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefault)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArgs and GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArgs{...}
+type GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArgs) ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput)
+}
+
+// GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayInput is an input type that accepts GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArray and GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayInput` via:
+//
+//	GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArray{ GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArgs{...} }
+type GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput
+	ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutputWithContext(context.Context) GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArray []GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigInput
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput {
+	return i.ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArray) ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput() GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput() GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput) ToGetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig {
+		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput)
 }
 
 type GetClusterNodePoolManagement struct {
@@ -32145,6 +33330,100 @@ func (o GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput) Index
 	}).(GetClusterResourceUsageExportConfigBigqueryDestinationOutput)
 }
 
+type GetClusterServiceExternalIpsConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterServiceExternalIpsConfigInput is an input type that accepts GetClusterServiceExternalIpsConfigArgs and GetClusterServiceExternalIpsConfigOutput values.
+// You can construct a concrete instance of `GetClusterServiceExternalIpsConfigInput` via:
+//
+//	GetClusterServiceExternalIpsConfigArgs{...}
+type GetClusterServiceExternalIpsConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterServiceExternalIpsConfigOutput() GetClusterServiceExternalIpsConfigOutput
+	ToGetClusterServiceExternalIpsConfigOutputWithContext(context.Context) GetClusterServiceExternalIpsConfigOutput
+}
+
+type GetClusterServiceExternalIpsConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterServiceExternalIpsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterServiceExternalIpsConfig)(nil)).Elem()
+}
+
+func (i GetClusterServiceExternalIpsConfigArgs) ToGetClusterServiceExternalIpsConfigOutput() GetClusterServiceExternalIpsConfigOutput {
+	return i.ToGetClusterServiceExternalIpsConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterServiceExternalIpsConfigArgs) ToGetClusterServiceExternalIpsConfigOutputWithContext(ctx context.Context) GetClusterServiceExternalIpsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterServiceExternalIpsConfigOutput)
+}
+
+// GetClusterServiceExternalIpsConfigArrayInput is an input type that accepts GetClusterServiceExternalIpsConfigArray and GetClusterServiceExternalIpsConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterServiceExternalIpsConfigArrayInput` via:
+//
+//	GetClusterServiceExternalIpsConfigArray{ GetClusterServiceExternalIpsConfigArgs{...} }
+type GetClusterServiceExternalIpsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterServiceExternalIpsConfigArrayOutput() GetClusterServiceExternalIpsConfigArrayOutput
+	ToGetClusterServiceExternalIpsConfigArrayOutputWithContext(context.Context) GetClusterServiceExternalIpsConfigArrayOutput
+}
+
+type GetClusterServiceExternalIpsConfigArray []GetClusterServiceExternalIpsConfigInput
+
+func (GetClusterServiceExternalIpsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterServiceExternalIpsConfig)(nil)).Elem()
+}
+
+func (i GetClusterServiceExternalIpsConfigArray) ToGetClusterServiceExternalIpsConfigArrayOutput() GetClusterServiceExternalIpsConfigArrayOutput {
+	return i.ToGetClusterServiceExternalIpsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterServiceExternalIpsConfigArray) ToGetClusterServiceExternalIpsConfigArrayOutputWithContext(ctx context.Context) GetClusterServiceExternalIpsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterServiceExternalIpsConfigArrayOutput)
+}
+
+type GetClusterServiceExternalIpsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterServiceExternalIpsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterServiceExternalIpsConfig)(nil)).Elem()
+}
+
+func (o GetClusterServiceExternalIpsConfigOutput) ToGetClusterServiceExternalIpsConfigOutput() GetClusterServiceExternalIpsConfigOutput {
+	return o
+}
+
+func (o GetClusterServiceExternalIpsConfigOutput) ToGetClusterServiceExternalIpsConfigOutputWithContext(ctx context.Context) GetClusterServiceExternalIpsConfigOutput {
+	return o
+}
+
+func (o GetClusterServiceExternalIpsConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterServiceExternalIpsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterServiceExternalIpsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterServiceExternalIpsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterServiceExternalIpsConfig)(nil)).Elem()
+}
+
+func (o GetClusterServiceExternalIpsConfigArrayOutput) ToGetClusterServiceExternalIpsConfigArrayOutput() GetClusterServiceExternalIpsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterServiceExternalIpsConfigArrayOutput) ToGetClusterServiceExternalIpsConfigArrayOutputWithContext(ctx context.Context) GetClusterServiceExternalIpsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterServiceExternalIpsConfigArrayOutput) Index(i pulumi.IntInput) GetClusterServiceExternalIpsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterServiceExternalIpsConfig {
+		return vs[0].([]GetClusterServiceExternalIpsConfig)[vs[1].(int)]
+	}).(GetClusterServiceExternalIpsConfigOutput)
+}
+
 type GetClusterTpuConfig struct {
 	Enabled              bool   `pulumi:"enabled"`
 	Ipv4CidrBlock        string `pulumi:"ipv4CidrBlock"`
@@ -32568,6 +33847,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterTelemetryPtrInput)(nil)).Elem(), ClusterClusterTelemetryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterConfidentialNodesInput)(nil)).Elem(), ClusterConfidentialNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterConfidentialNodesPtrInput)(nil)).Elem(), ClusterConfidentialNodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCostManagementConfigInput)(nil)).Elem(), ClusterCostManagementConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCostManagementConfigPtrInput)(nil)).Elem(), ClusterCostManagementConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDatabaseEncryptionInput)(nil)).Elem(), ClusterDatabaseEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDatabaseEncryptionPtrInput)(nil)).Elem(), ClusterDatabaseEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDefaultSnatStatusInput)(nil)).Elem(), ClusterDefaultSnatStatusArgs{})
@@ -32638,6 +33919,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoConfigNetworkTagsPtrInput)(nil)).Elem(), ClusterNodePoolAutoConfigNetworkTagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoscalingInput)(nil)).Elem(), ClusterNodePoolAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoscalingPtrInput)(nil)).Elem(), ClusterNodePoolAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsInput)(nil)).Elem(), ClusterNodePoolDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsPtrInput)(nil)).Elem(), ClusterNodePoolDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsInput)(nil)).Elem(), ClusterNodePoolDefaultsNodeConfigDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsPtrInput)(nil)).Elem(), ClusterNodePoolDefaultsNodeConfigDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigInput)(nil)).Elem(), ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrInput)(nil)).Elem(), ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolManagementInput)(nil)).Elem(), ClusterNodePoolManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolManagementPtrInput)(nil)).Elem(), ClusterNodePoolManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigInput)(nil)).Elem(), ClusterNodePoolNetworkConfigArgs{})
@@ -32686,6 +33973,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterResourceUsageExportConfigPtrInput)(nil)).Elem(), ClusterResourceUsageExportConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterResourceUsageExportConfigBigqueryDestinationInput)(nil)).Elem(), ClusterResourceUsageExportConfigBigqueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterResourceUsageExportConfigBigqueryDestinationPtrInput)(nil)).Elem(), ClusterResourceUsageExportConfigBigqueryDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterServiceExternalIpsConfigInput)(nil)).Elem(), ClusterServiceExternalIpsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterServiceExternalIpsConfigPtrInput)(nil)).Elem(), ClusterServiceExternalIpsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTpuConfigInput)(nil)).Elem(), ClusterTpuConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTpuConfigPtrInput)(nil)).Elem(), ClusterTpuConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVerticalPodAutoscalingInput)(nil)).Elem(), ClusterVerticalPodAutoscalingArgs{})
@@ -32764,6 +34053,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterTelemetryArrayInput)(nil)).Elem(), GetClusterClusterTelemetryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterConfidentialNodeInput)(nil)).Elem(), GetClusterConfidentialNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterConfidentialNodeArrayInput)(nil)).Elem(), GetClusterConfidentialNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterCostManagementConfigInput)(nil)).Elem(), GetClusterCostManagementConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterCostManagementConfigArrayInput)(nil)).Elem(), GetClusterCostManagementConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDatabaseEncryptionInput)(nil)).Elem(), GetClusterDatabaseEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDatabaseEncryptionArrayInput)(nil)).Elem(), GetClusterDatabaseEncryptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDefaultSnatStatusInput)(nil)).Elem(), GetClusterDefaultSnatStatusArgs{})
@@ -32834,6 +34125,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigNetworkTagArrayInput)(nil)).Elem(), GetClusterNodePoolAutoConfigNetworkTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoscalingInput)(nil)).Elem(), GetClusterNodePoolAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoscalingArrayInput)(nil)).Elem(), GetClusterNodePoolAutoscalingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultInput)(nil)).Elem(), GetClusterNodePoolDefaultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolManagementInput)(nil)).Elem(), GetClusterNodePoolManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolManagementArrayInput)(nil)).Elem(), GetClusterNodePoolManagementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigArgs{})
@@ -32882,6 +34179,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigArrayInput)(nil)).Elem(), GetClusterResourceUsageExportConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigBigqueryDestinationInput)(nil)).Elem(), GetClusterResourceUsageExportConfigBigqueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigBigqueryDestinationArrayInput)(nil)).Elem(), GetClusterResourceUsageExportConfigBigqueryDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterServiceExternalIpsConfigInput)(nil)).Elem(), GetClusterServiceExternalIpsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterServiceExternalIpsConfigArrayInput)(nil)).Elem(), GetClusterServiceExternalIpsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterTpuConfigInput)(nil)).Elem(), GetClusterTpuConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterTpuConfigArrayInput)(nil)).Elem(), GetClusterTpuConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterVerticalPodAutoscalingInput)(nil)).Elem(), GetClusterVerticalPodAutoscalingArgs{})
@@ -33016,6 +34315,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterTelemetryPtrOutput{})
 	pulumi.RegisterOutputType(ClusterConfidentialNodesOutput{})
 	pulumi.RegisterOutputType(ClusterConfidentialNodesPtrOutput{})
+	pulumi.RegisterOutputType(ClusterCostManagementConfigOutput{})
+	pulumi.RegisterOutputType(ClusterCostManagementConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterDatabaseEncryptionOutput{})
 	pulumi.RegisterOutputType(ClusterDatabaseEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(ClusterDefaultSnatStatusOutput{})
@@ -33086,6 +34387,12 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolAutoConfigNetworkTagsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolAutoscalingOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolAutoscalingPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolDefaultsOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolDefaultsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolDefaultsNodeConfigDefaultsOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolManagementOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolManagementPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigOutput{})
@@ -33134,6 +34441,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterResourceUsageExportConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterResourceUsageExportConfigBigqueryDestinationOutput{})
 	pulumi.RegisterOutputType(ClusterResourceUsageExportConfigBigqueryDestinationPtrOutput{})
+	pulumi.RegisterOutputType(ClusterServiceExternalIpsConfigOutput{})
+	pulumi.RegisterOutputType(ClusterServiceExternalIpsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterTpuConfigOutput{})
 	pulumi.RegisterOutputType(ClusterTpuConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterVerticalPodAutoscalingOutput{})
@@ -33212,6 +34521,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterClusterTelemetryArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterConfidentialNodeOutput{})
 	pulumi.RegisterOutputType(GetClusterConfidentialNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterCostManagementConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterCostManagementConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterDatabaseEncryptionOutput{})
 	pulumi.RegisterOutputType(GetClusterDatabaseEncryptionArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterDefaultSnatStatusOutput{})
@@ -33282,6 +34593,12 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigNetworkTagArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolAutoscalingOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolAutoscalingArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolManagementOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolManagementArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigOutput{})
@@ -33330,6 +34647,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigBigqueryDestinationOutput{})
 	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterServiceExternalIpsConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterServiceExternalIpsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterTpuConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterTpuConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterVerticalPodAutoscalingOutput{})

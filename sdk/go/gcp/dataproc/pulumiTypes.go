@@ -17217,6 +17217,8 @@ type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
 	ServiceAccountScopes []string `pulumi:"serviceAccountScopes"`
+	// Optional. Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+	ShieldedInstanceConfig *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
 	Subnetwork *string `pulumi:"subnetwork"`
 	// The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
@@ -17253,6 +17255,8 @@ type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs struct {
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
 	ServiceAccountScopes pulumi.StringArrayInput `pulumi:"serviceAccountScopes"`
+	// Optional. Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+	ShieldedInstanceConfig WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 	// The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
@@ -17388,6 +17392,13 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) Ser
 	}).(pulumi.StringArrayOutput)
 }
 
+// Optional. Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) ShieldedInstanceConfig() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig {
+		return v.ShieldedInstanceConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput)
+}
+
 // Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
 func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
@@ -17505,6 +17516,16 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) 
 		}
 		return v.ServiceAccountScopes
 	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigPtrOutput) ShieldedInstanceConfig() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ShieldedInstanceConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput)
 }
 
 // Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
@@ -17855,6 +17876,187 @@ func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservation
 		}
 		return v.Values
 	}).(pulumi.StringArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig struct {
+	// Optional. Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
+	// Optional. Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+	// Optional. Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+	EnableVtpm *bool `pulumi:"enableVtpm"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs and WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs struct {
+	// Optional. Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
+	// Optional. Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+	// Optional. Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+	EnableVtpm pulumi.BoolPtrInput `pulumi:"enableVtpm"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs, WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtr and WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrInput` via:
+//
+//	        WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrType WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig) *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput)
+}
+
+// Optional. Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig) *bool {
+		return v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig) *bool {
+		return v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig) *bool {
+		return v.EnableVtpm
+	}).(pulumi.BoolPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig) WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig
+		return ret
+	}).(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput)
+}
+
+// Optional. Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+func (o WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableVtpm
+	}).(pulumi.BoolPtrOutput)
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig struct {
@@ -21714,6 +21916,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs{})
@@ -21944,6 +22148,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetOutput{})

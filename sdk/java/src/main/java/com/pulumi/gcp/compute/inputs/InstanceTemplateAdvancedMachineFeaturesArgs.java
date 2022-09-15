@@ -32,18 +32,33 @@ public final class InstanceTemplateAdvancedMachineFeaturesArgs extends com.pulum
     }
 
     /**
-     * he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+     * The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
      * 
      */
     @Import(name="threadsPerCore")
     private @Nullable Output<Integer> threadsPerCore;
 
     /**
-     * @return he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+     * @return The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
      * 
      */
     public Optional<Output<Integer>> threadsPerCore() {
         return Optional.ofNullable(this.threadsPerCore);
+    }
+
+    /**
+     * ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+     * 
+     */
+    @Import(name="visibleCoreCount")
+    private @Nullable Output<Integer> visibleCoreCount;
+
+    /**
+     * @return ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+     * 
+     */
+    public Optional<Output<Integer>> visibleCoreCount() {
+        return Optional.ofNullable(this.visibleCoreCount);
     }
 
     private InstanceTemplateAdvancedMachineFeaturesArgs() {}
@@ -51,6 +66,7 @@ public final class InstanceTemplateAdvancedMachineFeaturesArgs extends com.pulum
     private InstanceTemplateAdvancedMachineFeaturesArgs(InstanceTemplateAdvancedMachineFeaturesArgs $) {
         this.enableNestedVirtualization = $.enableNestedVirtualization;
         this.threadsPerCore = $.threadsPerCore;
+        this.visibleCoreCount = $.visibleCoreCount;
     }
 
     public static Builder builder() {
@@ -93,7 +109,7 @@ public final class InstanceTemplateAdvancedMachineFeaturesArgs extends com.pulum
         }
 
         /**
-         * @param threadsPerCore he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+         * @param threadsPerCore The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
          * 
          * @return builder
          * 
@@ -104,13 +120,34 @@ public final class InstanceTemplateAdvancedMachineFeaturesArgs extends com.pulum
         }
 
         /**
-         * @param threadsPerCore he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+         * @param threadsPerCore The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
          * 
          * @return builder
          * 
          */
         public Builder threadsPerCore(Integer threadsPerCore) {
             return threadsPerCore(Output.of(threadsPerCore));
+        }
+
+        /**
+         * @param visibleCoreCount ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder visibleCoreCount(@Nullable Output<Integer> visibleCoreCount) {
+            $.visibleCoreCount = visibleCoreCount;
+            return this;
+        }
+
+        /**
+         * @param visibleCoreCount ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder visibleCoreCount(Integer visibleCoreCount) {
+            return visibleCoreCount(Output.of(visibleCoreCount));
         }
 
         public InstanceTemplateAdvancedMachineFeaturesArgs build() {

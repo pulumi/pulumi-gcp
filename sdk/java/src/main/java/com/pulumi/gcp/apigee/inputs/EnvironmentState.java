@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.apigee.inputs.EnvironmentNodeConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -109,6 +110,23 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * NodeConfig for setting the min/max number of nodes associated with the environment.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="nodeConfig")
+    private @Nullable Output<EnvironmentNodeConfigArgs> nodeConfig;
+
+    /**
+     * @return NodeConfig for setting the min/max number of nodes associated with the environment.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<EnvironmentNodeConfigArgs>> nodeConfig() {
+        return Optional.ofNullable(this.nodeConfig);
+    }
+
+    /**
      * The Apigee Organization associated with the Apigee environment,
      * in the format `organizations/{{org_name}}`.
      * 
@@ -133,6 +151,7 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.displayName = $.displayName;
         this.name = $.name;
+        this.nodeConfig = $.nodeConfig;
         this.orgId = $.orgId;
     }
 
@@ -275,6 +294,29 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param nodeConfig NodeConfig for setting the min/max number of nodes associated with the environment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeConfig(@Nullable Output<EnvironmentNodeConfigArgs> nodeConfig) {
+            $.nodeConfig = nodeConfig;
+            return this;
+        }
+
+        /**
+         * @param nodeConfig NodeConfig for setting the min/max number of nodes associated with the environment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeConfig(EnvironmentNodeConfigArgs nodeConfig) {
+            return nodeConfig(Output.of(nodeConfig));
         }
 
         /**

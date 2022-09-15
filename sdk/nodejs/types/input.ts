@@ -1633,6 +1633,46 @@ export namespace apigee {
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
     }
+
+    export interface EnvironmentNodeConfig {
+        /**
+         * -
+         * The current total number of gateway nodes that each environment currently has across
+         * all instances.
+         */
+        currentAggregateNodeCount?: pulumi.Input<string>;
+        /**
+         * The maximum total number of gateway nodes that the is reserved for all instances that
+         * has the specified environment. If not specified, the default is determined by the
+         * recommended maximum number of nodes for that gateway.
+         */
+        maxNodeCount?: pulumi.Input<string>;
+        /**
+         * The minimum total number of gateway nodes that the is reserved for all instances that
+         * has the specified environment. If not specified, the default is determined by the
+         * recommended minimum number of nodes for that gateway.
+         */
+        minNodeCount?: pulumi.Input<string>;
+    }
+
+    export interface OrganizationProperties {
+        /**
+         * List of all properties in the object.
+         * Structure is documented below.
+         */
+        properties?: pulumi.Input<pulumi.Input<inputs.apigee.OrganizationPropertiesProperty>[]>;
+    }
+
+    export interface OrganizationPropertiesProperty {
+        /**
+         * Name of the property.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Value of the property.
+         */
+        value?: pulumi.Input<string>;
+    }
 }
 
 export namespace appengine {
@@ -3644,6 +3684,20 @@ export namespace bigquery {
          * The default value is true. If set to false, the view will use BigQuery's standard SQL.
          */
         useLegacySql?: pulumi.Input<boolean>;
+    }
+}
+
+export namespace bigqueryanalyticshub {
+    export interface DataExchanceIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface DataExchangeIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 }
 
@@ -6764,8 +6818,7 @@ export namespace cloudfunctionsv2 {
          */
         invertRegex?: pulumi.Input<boolean>;
         /**
-         * ID of the project that owns the Cloud Source Repository. If omitted, the
-         * project ID requesting the build is assumed.
+         * Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
          */
         projectId?: pulumi.Input<string>;
         /**
@@ -6904,6 +6957,16 @@ export namespace cloudfunctionsv2 {
          */
         minInstanceCount?: pulumi.Input<number>;
         /**
+         * Secret environment variables configuration.
+         * Structure is documented below.
+         */
+        secretEnvironmentVariables?: pulumi.Input<pulumi.Input<inputs.cloudfunctionsv2.FunctionServiceConfigSecretEnvironmentVariable>[]>;
+        /**
+         * Secret volumes configuration.
+         * Structure is documented below.
+         */
+        secretVolumes?: pulumi.Input<pulumi.Input<inputs.cloudfunctionsv2.FunctionServiceConfigSecretVolume>[]>;
+        /**
          * Name of the service associated with a Function.
          */
         service?: pulumi.Input<string>;
@@ -6931,6 +6994,56 @@ export namespace cloudfunctionsv2 {
          * Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
          */
         vpcConnectorEgressSettings?: pulumi.Input<string>;
+    }
+
+    export interface FunctionServiceConfigSecretEnvironmentVariable {
+        /**
+         * Name of the environment variable.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+         */
+        projectId: pulumi.Input<string>;
+        /**
+         * Name of the secret in secret manager (not the full resource name).
+         */
+        secret: pulumi.Input<string>;
+        /**
+         * Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+         */
+        version: pulumi.Input<string>;
+    }
+
+    export interface FunctionServiceConfigSecretVolume {
+        /**
+         * The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+         */
+        mountPath: pulumi.Input<string>;
+        /**
+         * Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+         */
+        projectId: pulumi.Input<string>;
+        /**
+         * Name of the secret in secret manager (not the full resource name).
+         */
+        secret: pulumi.Input<string>;
+        /**
+         * List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
+         * Structure is documented below.
+         */
+        versions?: pulumi.Input<pulumi.Input<inputs.cloudfunctionsv2.FunctionServiceConfigSecretVolumeVersion>[]>;
+    }
+
+    export interface FunctionServiceConfigSecretVolumeVersion {
+        /**
+         * Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as '/etc/secrets' and path as secretFoo would mount the secret value file at /etc/secrets/secret_foo.
+         */
+        path: pulumi.Input<string>;
+        /**
+         * Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+         */
+        version: pulumi.Input<string>;
     }
 }
 
@@ -9725,6 +9838,10 @@ export namespace compute {
          * he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
          */
         threadsPerCore?: pulumi.Input<number>;
+        /**
+         * ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+         */
+        visibleCoreCount?: pulumi.Input<number>;
     }
 
     export interface InstanceAttachedDisk {
@@ -9842,6 +9959,7 @@ export namespace compute {
     export interface InstanceFromMachineImageAdvancedMachineFeatures {
         enableNestedVirtualization?: pulumi.Input<boolean>;
         threadsPerCore?: pulumi.Input<number>;
+        visibleCoreCount?: pulumi.Input<number>;
     }
 
     export interface InstanceFromMachineImageAttachedDisk {
@@ -9965,6 +10083,7 @@ export namespace compute {
     export interface InstanceFromTemplateAdvancedMachineFeatures {
         enableNestedVirtualization?: pulumi.Input<boolean>;
         threadsPerCore?: pulumi.Input<number>;
+        visibleCoreCount?: pulumi.Input<number>;
     }
 
     export interface InstanceFromTemplateAttachedDisk {
@@ -10560,9 +10679,13 @@ export namespace compute {
          */
         enableNestedVirtualization?: pulumi.Input<boolean>;
         /**
-         * he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+         * The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
          */
         threadsPerCore?: pulumi.Input<number>;
+        /**
+         * ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+         */
+        visibleCoreCount?: pulumi.Input<number>;
     }
 
     export interface InstanceTemplateConfidentialInstanceConfig {
@@ -14135,6 +14258,12 @@ export namespace compute {
 
     export interface ResourcePolicySnapshotSchedulePolicySnapshotProperties {
         /**
+         * Creates the new snapshot in the snapshot chain labeled with the
+         * specified name. The chain name must be 1-63 characters long and comply
+         * with RFC1035.
+         */
+        chainName?: pulumi.Input<string>;
+        /**
          * Whether to perform a 'guest aware' snapshot.
          */
         guestFlush?: pulumi.Input<boolean>;
@@ -17469,6 +17598,14 @@ export namespace container {
         enabled: pulumi.Input<boolean>;
     }
 
+    export interface ClusterCostManagementConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: pulumi.Input<boolean>;
+    }
+
     export interface ClusterDatabaseEncryption {
         /**
          * the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
@@ -17687,12 +17824,7 @@ export namespace container {
          */
         ephemeralStorageConfig?: pulumi.Input<inputs.container.ClusterNodeConfigEphemeralStorageConfig>;
         /**
-         * Parameters for the Google Container Filesystem (GCFS).
-         * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
-         * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-         * A `machineType` that has more than 16 GiB of memory is also recommended.
-         * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
-         * Structure is documented below.
+         * The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
          */
         gcfsConfig?: pulumi.Input<inputs.container.ClusterNodeConfigGcfsConfig>;
         /**
@@ -18004,8 +18136,33 @@ export namespace container {
     }
 
     export interface ClusterNodePoolAutoscaling {
-        maxNodeCount: pulumi.Input<number>;
-        minNodeCount: pulumi.Input<number>;
+        locationPolicy?: pulumi.Input<string>;
+        maxNodeCount?: pulumi.Input<number>;
+        minNodeCount?: pulumi.Input<number>;
+        totalMaxNodeCount?: pulumi.Input<number>;
+        totalMinNodeCount?: pulumi.Input<number>;
+    }
+
+    export interface ClusterNodePoolDefaults {
+        /**
+         * ) - Subset of NodeConfig message that has defaults.
+         */
+        nodeConfigDefaults?: pulumi.Input<inputs.container.ClusterNodePoolDefaultsNodeConfigDefaults>;
+    }
+
+    export interface ClusterNodePoolDefaultsNodeConfigDefaults {
+        /**
+         * The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+         */
+        gcfsConfig?: pulumi.Input<inputs.container.ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig>;
+    }
+
+    export interface ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface ClusterNodePoolManagement {
@@ -18048,12 +18205,7 @@ export namespace container {
          */
         ephemeralStorageConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigEphemeralStorageConfig>;
         /**
-         * Parameters for the Google Container Filesystem (GCFS).
-         * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
-         * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-         * A `machineType` that has more than 16 GiB of memory is also recommended.
-         * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
-         * Structure is documented below.
+         * The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
          */
         gcfsConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigGcfsConfig>;
         /**
@@ -18431,6 +18583,14 @@ export namespace container {
         datasetId: pulumi.Input<string>;
     }
 
+    export interface ClusterServiceExternalIpsConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: pulumi.Input<boolean>;
+    }
+
     export interface ClusterTpuConfig {
         /**
          * Enable the PodSecurityPolicy controller for this cluster.
@@ -18458,14 +18618,32 @@ export namespace container {
 
     export interface NodePoolAutoscaling {
         /**
-         * Maximum number of nodes in the NodePool. Must be >= min_node_count.
+         * Location policy specifies the algorithm used when scaling-up the node pool. \
+         * "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones. \
+         * "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+         * and reduce preemption risk for Spot VMs.
          */
-        maxNodeCount: pulumi.Input<number>;
+        locationPolicy?: pulumi.Input<string>;
         /**
-         * Minimum number of nodes in the NodePool. Must be >=0 and
-         * <= `maxNodeCount`.
+         * Maximum number of nodes per zone in the NodePool.
+         * Must be >= min_node_count. Cannot be used with total limits.
          */
-        minNodeCount: pulumi.Input<number>;
+        maxNodeCount?: pulumi.Input<number>;
+        /**
+         * Minimum number of nodes per zone in the NodePool.
+         * Must be >=0 and <= `maxNodeCount`. Cannot be used with total limits.
+         */
+        minNodeCount?: pulumi.Input<number>;
+        /**
+         * Total maximum number of nodes in the NodePool.
+         * Must be >= total_min_node_count. Cannot be used with per zone limits.
+         */
+        totalMaxNodeCount?: pulumi.Input<number>;
+        /**
+         * Total minimum number of nodes in the NodePool.
+         * Must be >=0 and <= `totalMaxNodeCount`. Cannot be used with per zone limits.
+         */
+        totalMinNodeCount?: pulumi.Input<number>;
     }
 
     export interface NodePoolManagement {
@@ -21852,6 +22030,10 @@ export namespace dataproc {
          */
         serviceAccountScopes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * Optional. Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+         */
+        shieldedInstanceConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig>;
+        /**
          * Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
          */
         subnetwork?: pulumi.Input<string>;
@@ -21885,6 +22067,21 @@ export namespace dataproc {
          * Optional. Corresponds to the label values of reservation resource.
          */
         values?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig {
+        /**
+         * Optional. Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+         */
+        enableIntegrityMonitoring?: pulumi.Input<boolean>;
+        /**
+         * Optional. Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+         */
+        enableSecureBoot?: pulumi.Input<boolean>;
+        /**
+         * Optional. Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+         */
+        enableVtpm?: pulumi.Input<boolean>;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig {
@@ -22268,6 +22465,160 @@ export namespace datastore {
          * The property name to index.
          */
         name: pulumi.Input<string>;
+    }
+}
+
+export namespace datastream {
+    export interface ConnectionProfileForwardSshConnectivity {
+        /**
+         * Hostname for the SSH tunnel.
+         */
+        hostname: pulumi.Input<string>;
+        /**
+         * SSH password.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        password?: pulumi.Input<string>;
+        /**
+         * Port for the SSH tunnel.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * SSH private key.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        privateKey?: pulumi.Input<string>;
+        /**
+         * Username for the SSH tunnel.
+         */
+        username: pulumi.Input<string>;
+    }
+
+    export interface ConnectionProfileGcsProfile {
+        /**
+         * The Cloud Storage bucket name.
+         */
+        bucket: pulumi.Input<string>;
+        /**
+         * The root path inside the Cloud Storage bucket.
+         */
+        rootPath?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionProfileMysqlProfile {
+        /**
+         * Hostname for the SSH tunnel.
+         */
+        hostname: pulumi.Input<string>;
+        /**
+         * SSH password.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        password: pulumi.Input<string>;
+        /**
+         * Port for the SSH tunnel.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * SSL configuration for the MySQL connection.
+         * Structure is documented below.
+         */
+        sslConfig?: pulumi.Input<inputs.datastream.ConnectionProfileMysqlProfileSslConfig>;
+        /**
+         * Username for the SSH tunnel.
+         */
+        username: pulumi.Input<string>;
+    }
+
+    export interface ConnectionProfileMysqlProfileSslConfig {
+        /**
+         * PEM-encoded certificate of the CA that signed the source database
+         * server's certificate.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        caCertificate?: pulumi.Input<string>;
+        /**
+         * -
+         * Indicates whether the clientKey field is set.
+         */
+        caCertificateSet?: pulumi.Input<boolean>;
+        /**
+         * PEM-encoded certificate that will be used by the replica to
+         * authenticate against the source database server. If this field
+         * is used then the 'clientKey' and the 'caCertificate' fields are
+         * mandatory.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientCertificate?: pulumi.Input<string>;
+        /**
+         * -
+         * Indicates whether the clientCertificate field is set.
+         */
+        clientCertificateSet?: pulumi.Input<boolean>;
+        /**
+         * PEM-encoded private key associated with the Client Certificate.
+         * If this field is used then the 'client_certificate' and the
+         * 'ca_certificate' fields are mandatory.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientKey?: pulumi.Input<string>;
+        /**
+         * -
+         * Indicates whether the clientKey field is set.
+         */
+        clientKeySet?: pulumi.Input<boolean>;
+    }
+
+    export interface ConnectionProfileOracleProfile {
+        /**
+         * Connection string attributes
+         */
+        connectionAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Database for the Oracle connection.
+         */
+        databaseService: pulumi.Input<string>;
+        /**
+         * Hostname for the SSH tunnel.
+         */
+        hostname: pulumi.Input<string>;
+        /**
+         * SSH password.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        password: pulumi.Input<string>;
+        /**
+         * Port for the SSH tunnel.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * Username for the SSH tunnel.
+         */
+        username: pulumi.Input<string>;
+    }
+
+    export interface ConnectionProfilePostgresqlProfile {
+        /**
+         * Database for the PostgreSQL connection.
+         */
+        database: pulumi.Input<string>;
+        /**
+         * Hostname for the SSH tunnel.
+         */
+        hostname: pulumi.Input<string>;
+        /**
+         * SSH password.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        password: pulumi.Input<string>;
+        /**
+         * Port for the SSH tunnel.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * Username for the SSH tunnel.
+         */
+        username: pulumi.Input<string>;
     }
 }
 
@@ -24710,7 +25061,7 @@ export namespace logging {
         /**
          * Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
          * By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
-         * tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+         * tables, the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
          * has to be used instead. In both cases, tables are sharded based on UTC timezone.
          */
         usePartitionedTables: pulumi.Input<boolean>;
@@ -24740,7 +25091,7 @@ export namespace logging {
         /**
          * Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
          * By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
-         * tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+         * tables, the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
          * has to be used instead. In both cases, tables are sharded based on UTC timezone.
          */
         usePartitionedTables: pulumi.Input<boolean>;
@@ -24910,7 +25261,7 @@ export namespace logging {
     export interface ProjectSinkBigqueryOptions {
         /**
          * Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-         * By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
+         * By default, Logging creates dated tables based on the log entries' timestamps, e.g. `syslog20170523`. With partitioned
          * tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
          * has to be used instead. In both cases, tables are sharded based on UTC timezone.
          */
@@ -31290,6 +31641,13 @@ export namespace vertex {
          * Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
          */
         kmsKeyName?: pulumi.Input<string>;
+    }
+
+    export interface AiFeatureStoreEncryptionSpec {
+        /**
+         * The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
+         */
+        kmsKeyName: pulumi.Input<string>;
     }
 
     export interface AiFeatureStoreEntityTypeMonitoringConfig {

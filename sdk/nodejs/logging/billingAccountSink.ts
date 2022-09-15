@@ -85,10 +85,6 @@ export class BillingAccountSink extends pulumi.CustomResource {
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
-     * The writer associated with the sink must have access to write to the above resource.
      */
     public readonly destination!: pulumi.Output<string>;
     /**
@@ -96,7 +92,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+     * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
      */
     public readonly exclusions!: pulumi.Output<outputs.logging.BillingAccountSinkExclusion[] | undefined>;
     /**
@@ -178,10 +174,6 @@ export interface BillingAccountSinkState {
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
-     * The writer associated with the sink must have access to write to the above resource.
      */
     destination?: pulumi.Input<string>;
     /**
@@ -189,7 +181,7 @@ export interface BillingAccountSinkState {
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+     * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
      */
     exclusions?: pulumi.Input<pulumi.Input<inputs.logging.BillingAccountSinkExclusion>[]>;
     /**
@@ -227,10 +219,6 @@ export interface BillingAccountSinkArgs {
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
-     * The writer associated with the sink must have access to write to the above resource.
      */
     destination: pulumi.Input<string>;
     /**
@@ -238,7 +226,7 @@ export interface BillingAccountSinkArgs {
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+     * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
      */
     exclusions?: pulumi.Input<pulumi.Input<inputs.logging.BillingAccountSinkExclusion>[]>;
     /**

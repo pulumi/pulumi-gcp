@@ -21,6 +21,31 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
     public static final SnapshotState Empty = new SnapshotState();
 
     /**
+     * Creates the new snapshot in the snapshot chain labeled with the
+     * specified name. The chain name must be 1-63 characters long and
+     * comply with RFC1035. This is an uncommon option only for advanced
+     * service owners who needs to create separate snapshot chains, for
+     * example, for chargeback tracking.  When you describe your snapshot
+     * resource, this field is visible only if it has a non-empty value.
+     * 
+     */
+    @Import(name="chainName")
+    private @Nullable Output<String> chainName;
+
+    /**
+     * @return Creates the new snapshot in the snapshot chain labeled with the
+     * specified name. The chain name must be 1-63 characters long and
+     * comply with RFC1035. This is an uncommon option only for advanced
+     * service owners who needs to create separate snapshot chains, for
+     * example, for chargeback tracking.  When you describe your snapshot
+     * resource, this field is visible only if it has a non-empty value.
+     * 
+     */
+    public Optional<Output<String>> chainName() {
+        return Optional.ofNullable(this.chainName);
+    }
+
+    /**
      * Creation timestamp in RFC3339 text format.
      * 
      */
@@ -293,6 +318,7 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
     private SnapshotState() {}
 
     private SnapshotState(SnapshotState $) {
+        this.chainName = $.chainName;
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
         this.diskSizeGb = $.diskSizeGb;
@@ -327,6 +353,37 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(SnapshotState defaults) {
             $ = new SnapshotState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param chainName Creates the new snapshot in the snapshot chain labeled with the
+         * specified name. The chain name must be 1-63 characters long and
+         * comply with RFC1035. This is an uncommon option only for advanced
+         * service owners who needs to create separate snapshot chains, for
+         * example, for chargeback tracking.  When you describe your snapshot
+         * resource, this field is visible only if it has a non-empty value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder chainName(@Nullable Output<String> chainName) {
+            $.chainName = chainName;
+            return this;
+        }
+
+        /**
+         * @param chainName Creates the new snapshot in the snapshot chain labeled with the
+         * specified name. The chain name must be 1-63 characters long and
+         * comply with RFC1035. This is an uncommon option only for advanced
+         * service owners who needs to create separate snapshot chains, for
+         * example, for chargeback tracking.  When you describe your snapshot
+         * resource, this field is visible only if it has a non-empty value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder chainName(String chainName) {
+            return chainName(Output.of(chainName));
         }
 
         /**

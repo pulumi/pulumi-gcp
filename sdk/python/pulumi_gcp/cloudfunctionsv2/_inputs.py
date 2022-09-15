@@ -19,6 +19,9 @@ __all__ = [
     'FunctionIamBindingConditionArgs',
     'FunctionIamMemberConditionArgs',
     'FunctionServiceConfigArgs',
+    'FunctionServiceConfigSecretEnvironmentVariableArgs',
+    'FunctionServiceConfigSecretVolumeArgs',
+    'FunctionServiceConfigSecretVolumeVersionArgs',
 ]
 
 @pulumi.input_type
@@ -215,8 +218,7 @@ class FunctionBuildConfigSourceRepoSourceArgs:
         :param pulumi.Input[str] dir: Directory, relative to the source root, in which to run the build.
         :param pulumi.Input[bool] invert_regex: Only trigger a build if the revision regex does
                NOT match the revision regex.
-        :param pulumi.Input[str] project_id: ID of the project that owns the Cloud Source Repository. If omitted, the
-               project ID requesting the build is assumed.
+        :param pulumi.Input[str] project_id: Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
         :param pulumi.Input[str] repo_name: Name of the Cloud Source Repository.
         :param pulumi.Input[str] tag_name: Regex matching tags to build.
         """
@@ -288,8 +290,7 @@ class FunctionBuildConfigSourceRepoSourceArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the project that owns the Cloud Source Repository. If omitted, the
-        project ID requesting the build is assumed.
+        Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
         """
         return pulumi.get(self, "project_id")
 
@@ -669,6 +670,8 @@ class FunctionServiceConfigArgs:
                  ingress_settings: Optional[pulumi.Input[str]] = None,
                  max_instance_count: Optional[pulumi.Input[int]] = None,
                  min_instance_count: Optional[pulumi.Input[int]] = None,
+                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgs']]]] = None,
+                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgs']]]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
@@ -690,6 +693,10 @@ class FunctionServiceConfigArgs:
                given time.
         :param pulumi.Input[int] min_instance_count: The limit on the minimum number of function instances that may coexist at a
                given time.
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgs']]] secret_environment_variables: Secret environment variables configuration.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgs']]] secret_volumes: Secret volumes configuration.
+               Structure is documented below.
         :param pulumi.Input[str] service: Name of the service associated with a Function.
         :param pulumi.Input[str] service_account_email: The email of the service account for this function.
         :param pulumi.Input[int] timeout_seconds: The function execution timeout. Execution is considered failed and
@@ -715,6 +722,10 @@ class FunctionServiceConfigArgs:
             pulumi.set(__self__, "max_instance_count", max_instance_count)
         if min_instance_count is not None:
             pulumi.set(__self__, "min_instance_count", min_instance_count)
+        if secret_environment_variables is not None:
+            pulumi.set(__self__, "secret_environment_variables", secret_environment_variables)
+        if secret_volumes is not None:
+            pulumi.set(__self__, "secret_volumes", secret_volumes)
         if service is not None:
             pulumi.set(__self__, "service", service)
         if service_account_email is not None:
@@ -820,6 +831,32 @@ class FunctionServiceConfigArgs:
         pulumi.set(self, "min_instance_count", value)
 
     @property
+    @pulumi.getter(name="secretEnvironmentVariables")
+    def secret_environment_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgs']]]]:
+        """
+        Secret environment variables configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secret_environment_variables")
+
+    @secret_environment_variables.setter
+    def secret_environment_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgs']]]]):
+        pulumi.set(self, "secret_environment_variables", value)
+
+    @property
+    @pulumi.getter(name="secretVolumes")
+    def secret_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgs']]]]:
+        """
+        Secret volumes configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secret_volumes")
+
+    @secret_volumes.setter
+    def secret_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgs']]]]):
+        pulumi.set(self, "secret_volumes", value)
+
+    @property
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[str]]:
         """
@@ -894,5 +931,179 @@ class FunctionServiceConfigArgs:
     @vpc_connector_egress_settings.setter
     def vpc_connector_egress_settings(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vpc_connector_egress_settings", value)
+
+
+@pulumi.input_type
+class FunctionServiceConfigSecretEnvironmentVariableArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 project_id: pulumi.Input[str],
+                 secret: pulumi.Input[str],
+                 version: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key: Name of the environment variable.
+        :param pulumi.Input[str] project_id: Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        :param pulumi.Input[str] secret: Name of the secret in secret manager (not the full resource name).
+        :param pulumi.Input[str] version: Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        Name of the environment variable.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        """
+        Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> pulumi.Input[str]:
+        """
+        Name of the secret in secret manager (not the full resource name).
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[str]:
+        """
+        Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class FunctionServiceConfigSecretVolumeArgs:
+    def __init__(__self__, *,
+                 mount_path: pulumi.Input[str],
+                 project_id: pulumi.Input[str],
+                 secret: pulumi.Input[str],
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgs']]]] = None):
+        """
+        :param pulumi.Input[str] mount_path: The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+        :param pulumi.Input[str] project_id: Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        :param pulumi.Input[str] secret: Name of the secret in secret manager (not the full resource name).
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgs']]] versions: List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "secret", secret)
+        if versions is not None:
+            pulumi.set(__self__, "versions", versions)
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> pulumi.Input[str]:
+        """
+        The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+        """
+        return pulumi.get(self, "mount_path")
+
+    @mount_path.setter
+    def mount_path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mount_path", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        """
+        Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> pulumi.Input[str]:
+        """
+        Name of the secret in secret manager (not the full resource name).
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret", value)
+
+    @property
+    @pulumi.getter
+    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgs']]]]:
+        """
+        List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
+        Structure is documented below.
+        """
+        return pulumi.get(self, "versions")
+
+    @versions.setter
+    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgs']]]]):
+        pulumi.set(self, "versions", value)
+
+
+@pulumi.input_type
+class FunctionServiceConfigSecretVolumeVersionArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[str],
+                 version: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] path: Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as '/etc/secrets' and path as secret_foo would mount the secret value file at /etc/secrets/secret_foo.
+        :param pulumi.Input[str] version: Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        """
+        Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as '/etc/secrets' and path as secret_foo would mount the secret value file at /etc/secrets/secret_foo.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[str]:
+        """
+        Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "version", value)
 
 

@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class ResourcePolicySnapshotSchedulePolicySnapshotProperties
     {
         /// <summary>
+        /// Creates the new snapshot in the snapshot chain labeled with the
+        /// specified name. The chain name must be 1-63 characters long and comply
+        /// with RFC1035.
+        /// </summary>
+        public readonly string? ChainName;
+        /// <summary>
         /// Whether to perform a 'guest aware' snapshot.
         /// </summary>
         public readonly bool? GuestFlush;
@@ -29,12 +35,15 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private ResourcePolicySnapshotSchedulePolicySnapshotProperties(
+            string? chainName,
+
             bool? guestFlush,
 
             ImmutableDictionary<string, string>? labels,
 
             string? storageLocations)
         {
+            ChainName = chainName;
             GuestFlush = guestFlush;
             Labels = labels;
             StorageLocations = storageLocations;

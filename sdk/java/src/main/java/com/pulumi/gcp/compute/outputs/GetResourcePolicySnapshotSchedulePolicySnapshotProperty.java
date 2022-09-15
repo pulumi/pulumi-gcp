@@ -12,11 +12,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
+    private String chainName;
     private Boolean guestFlush;
     private Map<String,String> labels;
     private List<String> storageLocations;
 
     private GetResourcePolicySnapshotSchedulePolicySnapshotProperty() {}
+    public String chainName() {
+        return this.chainName;
+    }
     public Boolean guestFlush() {
         return this.guestFlush;
     }
@@ -36,17 +40,24 @@ public final class GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String chainName;
         private Boolean guestFlush;
         private Map<String,String> labels;
         private List<String> storageLocations;
         public Builder() {}
         public Builder(GetResourcePolicySnapshotSchedulePolicySnapshotProperty defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.chainName = defaults.chainName;
     	      this.guestFlush = defaults.guestFlush;
     	      this.labels = defaults.labels;
     	      this.storageLocations = defaults.storageLocations;
         }
 
+        @CustomType.Setter
+        public Builder chainName(String chainName) {
+            this.chainName = Objects.requireNonNull(chainName);
+            return this;
+        }
         @CustomType.Setter
         public Builder guestFlush(Boolean guestFlush) {
             this.guestFlush = Objects.requireNonNull(guestFlush);
@@ -67,6 +78,7 @@ public final class GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
         }
         public GetResourcePolicySnapshotSchedulePolicySnapshotProperty build() {
             final var o = new GetResourcePolicySnapshotSchedulePolicySnapshotProperty();
+            o.chainName = chainName;
             o.guestFlush = guestFlush;
             o.labels = labels;
             o.storageLocations = storageLocations;

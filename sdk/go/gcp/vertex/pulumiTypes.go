@@ -151,6 +151,143 @@ func (o AiDatasetEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AiFeatureStoreEncryptionSpec struct {
+	// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// AiFeatureStoreEncryptionSpecInput is an input type that accepts AiFeatureStoreEncryptionSpecArgs and AiFeatureStoreEncryptionSpecOutput values.
+// You can construct a concrete instance of `AiFeatureStoreEncryptionSpecInput` via:
+//
+//	AiFeatureStoreEncryptionSpecArgs{...}
+type AiFeatureStoreEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreEncryptionSpecOutput() AiFeatureStoreEncryptionSpecOutput
+	ToAiFeatureStoreEncryptionSpecOutputWithContext(context.Context) AiFeatureStoreEncryptionSpecOutput
+}
+
+type AiFeatureStoreEncryptionSpecArgs struct {
+	// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (AiFeatureStoreEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreEncryptionSpec)(nil)).Elem()
+}
+
+func (i AiFeatureStoreEncryptionSpecArgs) ToAiFeatureStoreEncryptionSpecOutput() AiFeatureStoreEncryptionSpecOutput {
+	return i.ToAiFeatureStoreEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreEncryptionSpecArgs) ToAiFeatureStoreEncryptionSpecOutputWithContext(ctx context.Context) AiFeatureStoreEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEncryptionSpecOutput)
+}
+
+func (i AiFeatureStoreEncryptionSpecArgs) ToAiFeatureStoreEncryptionSpecPtrOutput() AiFeatureStoreEncryptionSpecPtrOutput {
+	return i.ToAiFeatureStoreEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreEncryptionSpecArgs) ToAiFeatureStoreEncryptionSpecPtrOutputWithContext(ctx context.Context) AiFeatureStoreEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEncryptionSpecOutput).ToAiFeatureStoreEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// AiFeatureStoreEncryptionSpecPtrInput is an input type that accepts AiFeatureStoreEncryptionSpecArgs, AiFeatureStoreEncryptionSpecPtr and AiFeatureStoreEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `AiFeatureStoreEncryptionSpecPtrInput` via:
+//
+//	        AiFeatureStoreEncryptionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureStoreEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreEncryptionSpecPtrOutput() AiFeatureStoreEncryptionSpecPtrOutput
+	ToAiFeatureStoreEncryptionSpecPtrOutputWithContext(context.Context) AiFeatureStoreEncryptionSpecPtrOutput
+}
+
+type aiFeatureStoreEncryptionSpecPtrType AiFeatureStoreEncryptionSpecArgs
+
+func AiFeatureStoreEncryptionSpecPtr(v *AiFeatureStoreEncryptionSpecArgs) AiFeatureStoreEncryptionSpecPtrInput {
+	return (*aiFeatureStoreEncryptionSpecPtrType)(v)
+}
+
+func (*aiFeatureStoreEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreEncryptionSpec)(nil)).Elem()
+}
+
+func (i *aiFeatureStoreEncryptionSpecPtrType) ToAiFeatureStoreEncryptionSpecPtrOutput() AiFeatureStoreEncryptionSpecPtrOutput {
+	return i.ToAiFeatureStoreEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureStoreEncryptionSpecPtrType) ToAiFeatureStoreEncryptionSpecPtrOutputWithContext(ctx context.Context) AiFeatureStoreEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEncryptionSpecPtrOutput)
+}
+
+type AiFeatureStoreEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiFeatureStoreEncryptionSpecOutput) ToAiFeatureStoreEncryptionSpecOutput() AiFeatureStoreEncryptionSpecOutput {
+	return o
+}
+
+func (o AiFeatureStoreEncryptionSpecOutput) ToAiFeatureStoreEncryptionSpecOutputWithContext(ctx context.Context) AiFeatureStoreEncryptionSpecOutput {
+	return o
+}
+
+func (o AiFeatureStoreEncryptionSpecOutput) ToAiFeatureStoreEncryptionSpecPtrOutput() AiFeatureStoreEncryptionSpecPtrOutput {
+	return o.ToAiFeatureStoreEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureStoreEncryptionSpecOutput) ToAiFeatureStoreEncryptionSpecPtrOutputWithContext(ctx context.Context) AiFeatureStoreEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreEncryptionSpec) *AiFeatureStoreEncryptionSpec {
+		return &v
+	}).(AiFeatureStoreEncryptionSpecPtrOutput)
+}
+
+// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
+func (o AiFeatureStoreEncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureStoreEncryptionSpec) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type AiFeatureStoreEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiFeatureStoreEncryptionSpecPtrOutput) ToAiFeatureStoreEncryptionSpecPtrOutput() AiFeatureStoreEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreEncryptionSpecPtrOutput) ToAiFeatureStoreEncryptionSpecPtrOutputWithContext(ctx context.Context) AiFeatureStoreEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreEncryptionSpecPtrOutput) Elem() AiFeatureStoreEncryptionSpecOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEncryptionSpec) AiFeatureStoreEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureStoreEncryptionSpec
+		return ret
+	}).(AiFeatureStoreEncryptionSpecOutput)
+}
+
+// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
+func (o AiFeatureStoreEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
 type AiFeatureStoreEntityTypeMonitoringConfig struct {
 	// Configuration of how features in Featurestore are monitored.
 	// Structure is documented below.
@@ -829,6 +966,8 @@ func (o AiMetadataStoreStateTypeArrayOutput) Index(i pulumi.IntInput) AiMetadata
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetEncryptionSpecInput)(nil)).Elem(), AiDatasetEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetEncryptionSpecPtrInput)(nil)).Elem(), AiDatasetEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEncryptionSpecInput)(nil)).Elem(), AiFeatureStoreEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEncryptionSpecPtrInput)(nil)).Elem(), AiFeatureStoreEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigPtrInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{})
@@ -841,6 +980,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreStateTypeArrayInput)(nil)).Elem(), AiMetadataStoreStateTypeArray{})
 	pulumi.RegisterOutputType(AiDatasetEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiDatasetEncryptionSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput{})

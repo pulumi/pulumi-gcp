@@ -104,6 +104,7 @@ type LookupNotificationChannelResult struct {
 	Description string  `pulumi:"description"`
 	DisplayName *string `pulumi:"displayName"`
 	Enabled     bool    `pulumi:"enabled"`
+	ForceDelete bool    `pulumi:"forceDelete"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                 string                                 `pulumi:"id"`
 	Labels             map[string]string                      `pulumi:"labels"`
@@ -173,6 +174,10 @@ func (o LookupNotificationChannelResultOutput) DisplayName() pulumi.StringPtrOut
 
 func (o LookupNotificationChannelResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o LookupNotificationChannelResultOutput) ForceDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupNotificationChannelResult) bool { return v.ForceDelete }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

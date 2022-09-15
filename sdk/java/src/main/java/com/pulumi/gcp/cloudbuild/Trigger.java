@@ -62,6 +62,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var filename_trigger = new Trigger(&#34;filename-trigger&#34;, TriggerArgs.builder()        
  *             .filename(&#34;cloudbuild.yaml&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .substitutions(Map.ofEntries(
  *                 Map.entry(&#34;_BAZ&#34;, &#34;qux&#34;),
  *                 Map.entry(&#34;_FOO&#34;, &#34;bar&#34;)
@@ -163,6 +164,7 @@ import javax.annotation.Nullable;
  *                     &#34;build&#34;,
  *                     &#34;newFeature&#34;)
  *                 .build())
+ *             .location(&#34;global&#34;)
  *             .triggerTemplate(TriggerTriggerTemplateArgs.builder()
  *                 .branchName(&#34;main&#34;)
  *                 .repoName(&#34;my-repo&#34;)
@@ -270,6 +272,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .includeBuildLogs(&#34;INCLUDE_BUILD_LOGS_WITH_STATUS&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
  *     }
@@ -304,6 +307,7 @@ import javax.annotation.Nullable;
  *         var mytopic = new Topic(&#34;mytopic&#34;);
  * 
  *         var pubsub_config_trigger = new Trigger(&#34;pubsub-config-trigger&#34;, TriggerArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
  *             .description(&#34;acceptance test example pubsub build trigger&#34;)
  *             .pubsubConfig(TriggerPubsubConfigArgs.builder()
  *                 .topic(mytopic.id())
@@ -463,6 +467,10 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * Trigger can be imported using any of these accepted formats
+ * 
+ * ```sh
+ *  $ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/locations/{{location}}/triggers/{{trigger_id}}
+ * ```
  * 
  * ```sh
  *  $ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/triggers/{{trigger_id}}
@@ -698,6 +706,24 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> includedFiles() {
         return Codegen.optional(this.includedFiles);
+    }
+    /**
+     * Cloud Storage bucket and optional object path, in the form &#34;gs://bucket/path/to/somewhere/&#34;.
+     * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+     * this location as a prefix.
+     * 
+     */
+    @Export(name="location", type=String.class, parameters={})
+    private Output</* @Nullable */ String> location;
+
+    /**
+     * @return Cloud Storage bucket and optional object path, in the form &#34;gs://bucket/path/to/somewhere/&#34;.
+     * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+     * this location as a prefix.
+     * 
+     */
+    public Output<Optional<String>> location() {
+        return Codegen.optional(this.location);
     }
     /**
      * Name of the volume to mount.

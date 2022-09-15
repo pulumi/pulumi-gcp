@@ -37,6 +37,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudbuild.NewTrigger(ctx, "filename-trigger", &cloudbuild.TriggerArgs{
 //				Filename: pulumi.String("cloudbuild.yaml"),
+//				Location: pulumi.String("us-central1"),
 //				Substitutions: pulumi.StringMap{
 //					"_BAZ": pulumi.String("qux"),
 //					"_FOO": pulumi.String("bar"),
@@ -148,6 +149,7 @@ import (
 //					},
 //				},
 //				IncludeBuildLogs: pulumi.String("INCLUDE_BUILD_LOGS_WITH_STATUS"),
+//				Location:         pulumi.String("us-central1"),
 //			})
 //			if err != nil {
 //				return err
@@ -179,6 +181,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudbuild.NewTrigger(ctx, "pubsub-config-trigger", &cloudbuild.TriggerArgs{
+//				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("acceptance test example pubsub build trigger"),
 //				PubsubConfig: &cloudbuild.TriggerPubsubConfigArgs{
 //					Topic: mytopic.ID(),
@@ -342,6 +345,12 @@ import (
 //
 // ```sh
 //
+//	$ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/locations/{{location}}/triggers/{{trigger_id}}
+//
+// ```
+//
+// ```sh
+//
 //	$ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/triggers/{{trigger_id}}
 //
 // ```
@@ -410,6 +419,10 @@ type Trigger struct {
 	// those files matches a includedFiles glob. If not, then we do not trigger
 	// a build.
 	IncludedFiles pulumi.StringArrayOutput `pulumi:"includedFiles"`
+	// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+	// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+	// this location as a prefix.
+	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Name of the volume to mount.
 	// Volume names must be unique per build step and must be valid names for Docker volumes.
 	// Each named volume must be used by at least two build steps.
@@ -534,6 +547,10 @@ type triggerState struct {
 	// those files matches a includedFiles glob. If not, then we do not trigger
 	// a build.
 	IncludedFiles []string `pulumi:"includedFiles"`
+	// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+	// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+	// this location as a prefix.
+	Location *string `pulumi:"location"`
 	// Name of the volume to mount.
 	// Volume names must be unique per build step and must be valid names for Docker volumes.
 	// Each named volume must be used by at least two build steps.
@@ -630,6 +647,10 @@ type TriggerState struct {
 	// those files matches a includedFiles glob. If not, then we do not trigger
 	// a build.
 	IncludedFiles pulumi.StringArrayInput
+	// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+	// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+	// this location as a prefix.
+	Location pulumi.StringPtrInput
 	// Name of the volume to mount.
 	// Volume names must be unique per build step and must be valid names for Docker volumes.
 	// Each named volume must be used by at least two build steps.
@@ -728,6 +749,10 @@ type triggerArgs struct {
 	// those files matches a includedFiles glob. If not, then we do not trigger
 	// a build.
 	IncludedFiles []string `pulumi:"includedFiles"`
+	// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+	// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+	// this location as a prefix.
+	Location *string `pulumi:"location"`
 	// Name of the volume to mount.
 	// Volume names must be unique per build step and must be valid names for Docker volumes.
 	// Each named volume must be used by at least two build steps.
@@ -821,6 +846,10 @@ type TriggerArgs struct {
 	// those files matches a includedFiles glob. If not, then we do not trigger
 	// a build.
 	IncludedFiles pulumi.StringArrayInput
+	// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+	// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+	// this location as a prefix.
+	Location pulumi.StringPtrInput
 	// Name of the volume to mount.
 	// Volume names must be unique per build step and must be valid names for Docker volumes.
 	// Each named volume must be used by at least two build steps.
@@ -1035,6 +1064,13 @@ func (o TriggerOutput) IncludeBuildLogs() pulumi.StringPtrOutput {
 // a build.
 func (o TriggerOutput) IncludedFiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringArrayOutput { return v.IncludedFiles }).(pulumi.StringArrayOutput)
+}
+
+// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+// this location as a prefix.
+func (o TriggerOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // Name of the volume to mount.

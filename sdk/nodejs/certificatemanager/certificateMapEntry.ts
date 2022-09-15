@@ -8,8 +8,6 @@ import * as utilities from "../utilities";
  * CertificateMapEntry is a list of certificate configurations,
  * that have been issued for a particular hostname
  *
- * > **Warning:** These resources require allow-listing to use, and are not openly available to all Cloud customers. Engage with your Cloud account team to discuss how to onboard.
- *
  * ## Example Usage
  * ### Certificate Manager Certificate Map Entry Full
  *

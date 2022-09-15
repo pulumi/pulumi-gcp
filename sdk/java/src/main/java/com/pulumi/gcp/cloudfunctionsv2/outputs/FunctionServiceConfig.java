@@ -4,9 +4,12 @@
 package com.pulumi.gcp.cloudfunctionsv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.cloudfunctionsv2.outputs.FunctionServiceConfigSecretEnvironmentVariable;
+import com.pulumi.gcp.cloudfunctionsv2.outputs.FunctionServiceConfigSecretVolume;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -56,6 +59,18 @@ public final class FunctionServiceConfig {
      * 
      */
     private @Nullable Integer minInstanceCount;
+    /**
+     * @return Secret environment variables configuration.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<FunctionServiceConfigSecretEnvironmentVariable> secretEnvironmentVariables;
+    /**
+     * @return Secret volumes configuration.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<FunctionServiceConfigSecretVolume> secretVolumes;
     /**
      * @return Name of the service associated with a Function.
      * 
@@ -149,6 +164,22 @@ public final class FunctionServiceConfig {
         return Optional.ofNullable(this.minInstanceCount);
     }
     /**
+     * @return Secret environment variables configuration.
+     * Structure is documented below.
+     * 
+     */
+    public List<FunctionServiceConfigSecretEnvironmentVariable> secretEnvironmentVariables() {
+        return this.secretEnvironmentVariables == null ? List.of() : this.secretEnvironmentVariables;
+    }
+    /**
+     * @return Secret volumes configuration.
+     * Structure is documented below.
+     * 
+     */
+    public List<FunctionServiceConfigSecretVolume> secretVolumes() {
+        return this.secretVolumes == null ? List.of() : this.secretVolumes;
+    }
+    /**
      * @return Name of the service associated with a Function.
      * 
      */
@@ -211,6 +242,8 @@ public final class FunctionServiceConfig {
         private @Nullable String ingressSettings;
         private @Nullable Integer maxInstanceCount;
         private @Nullable Integer minInstanceCount;
+        private @Nullable List<FunctionServiceConfigSecretEnvironmentVariable> secretEnvironmentVariables;
+        private @Nullable List<FunctionServiceConfigSecretVolume> secretVolumes;
         private @Nullable String service;
         private @Nullable String serviceAccountEmail;
         private @Nullable Integer timeoutSeconds;
@@ -227,6 +260,8 @@ public final class FunctionServiceConfig {
     	      this.ingressSettings = defaults.ingressSettings;
     	      this.maxInstanceCount = defaults.maxInstanceCount;
     	      this.minInstanceCount = defaults.minInstanceCount;
+    	      this.secretEnvironmentVariables = defaults.secretEnvironmentVariables;
+    	      this.secretVolumes = defaults.secretVolumes;
     	      this.service = defaults.service;
     	      this.serviceAccountEmail = defaults.serviceAccountEmail;
     	      this.timeoutSeconds = defaults.timeoutSeconds;
@@ -271,6 +306,22 @@ public final class FunctionServiceConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder secretEnvironmentVariables(@Nullable List<FunctionServiceConfigSecretEnvironmentVariable> secretEnvironmentVariables) {
+            this.secretEnvironmentVariables = secretEnvironmentVariables;
+            return this;
+        }
+        public Builder secretEnvironmentVariables(FunctionServiceConfigSecretEnvironmentVariable... secretEnvironmentVariables) {
+            return secretEnvironmentVariables(List.of(secretEnvironmentVariables));
+        }
+        @CustomType.Setter
+        public Builder secretVolumes(@Nullable List<FunctionServiceConfigSecretVolume> secretVolumes) {
+            this.secretVolumes = secretVolumes;
+            return this;
+        }
+        public Builder secretVolumes(FunctionServiceConfigSecretVolume... secretVolumes) {
+            return secretVolumes(List.of(secretVolumes));
+        }
+        @CustomType.Setter
         public Builder service(@Nullable String service) {
             this.service = service;
             return this;
@@ -309,6 +360,8 @@ public final class FunctionServiceConfig {
             o.ingressSettings = ingressSettings;
             o.maxInstanceCount = maxInstanceCount;
             o.minInstanceCount = minInstanceCount;
+            o.secretEnvironmentVariables = secretEnvironmentVariables;
+            o.secretVolumes = secretVolumes;
             o.service = service;
             o.serviceAccountEmail = serviceAccountEmail;
             o.timeoutSeconds = timeoutSeconds;

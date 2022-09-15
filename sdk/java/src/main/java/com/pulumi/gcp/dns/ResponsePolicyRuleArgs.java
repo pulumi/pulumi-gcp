@@ -17,6 +17,21 @@ public final class ResponsePolicyRuleArgs extends com.pulumi.resources.ResourceA
     public static final ResponsePolicyRuleArgs Empty = new ResponsePolicyRuleArgs();
 
     /**
+     * Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
+     * 
+     */
+    @Import(name="behavior")
+    private @Nullable Output<String> behavior;
+
+    /**
+     * @return Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
+     * 
+     */
+    public Optional<Output<String>> behavior() {
+        return Optional.ofNullable(this.behavior);
+    }
+
+    /**
      * The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
      * 
      */
@@ -100,6 +115,7 @@ public final class ResponsePolicyRuleArgs extends com.pulumi.resources.ResourceA
     private ResponsePolicyRuleArgs() {}
 
     private ResponsePolicyRuleArgs(ResponsePolicyRuleArgs $) {
+        this.behavior = $.behavior;
         this.dnsName = $.dnsName;
         this.localData = $.localData;
         this.project = $.project;
@@ -123,6 +139,27 @@ public final class ResponsePolicyRuleArgs extends com.pulumi.resources.ResourceA
 
         public Builder(ResponsePolicyRuleArgs defaults) {
             $ = new ResponsePolicyRuleArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param behavior Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder behavior(@Nullable Output<String> behavior) {
+            $.behavior = behavior;
+            return this;
+        }
+
+        /**
+         * @param behavior Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder behavior(String behavior) {
+            return behavior(Output.of(behavior));
         }
 
         /**

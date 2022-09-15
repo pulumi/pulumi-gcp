@@ -18,10 +18,15 @@ public final class InstanceTemplateAdvancedMachineFeatures {
      */
     private @Nullable Boolean enableNestedVirtualization;
     /**
-     * @return he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+     * @return The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
      * 
      */
     private @Nullable Integer threadsPerCore;
+    /**
+     * @return ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+     * 
+     */
+    private @Nullable Integer visibleCoreCount;
 
     private InstanceTemplateAdvancedMachineFeatures() {}
     /**
@@ -32,11 +37,18 @@ public final class InstanceTemplateAdvancedMachineFeatures {
         return Optional.ofNullable(this.enableNestedVirtualization);
     }
     /**
-     * @return he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+     * @return The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
      * 
      */
     public Optional<Integer> threadsPerCore() {
         return Optional.ofNullable(this.threadsPerCore);
+    }
+    /**
+     * @return ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+     * 
+     */
+    public Optional<Integer> visibleCoreCount() {
+        return Optional.ofNullable(this.visibleCoreCount);
     }
 
     public static Builder builder() {
@@ -50,11 +62,13 @@ public final class InstanceTemplateAdvancedMachineFeatures {
     public static final class Builder {
         private @Nullable Boolean enableNestedVirtualization;
         private @Nullable Integer threadsPerCore;
+        private @Nullable Integer visibleCoreCount;
         public Builder() {}
         public Builder(InstanceTemplateAdvancedMachineFeatures defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableNestedVirtualization = defaults.enableNestedVirtualization;
     	      this.threadsPerCore = defaults.threadsPerCore;
+    	      this.visibleCoreCount = defaults.visibleCoreCount;
         }
 
         @CustomType.Setter
@@ -67,10 +81,16 @@ public final class InstanceTemplateAdvancedMachineFeatures {
             this.threadsPerCore = threadsPerCore;
             return this;
         }
+        @CustomType.Setter
+        public Builder visibleCoreCount(@Nullable Integer visibleCoreCount) {
+            this.visibleCoreCount = visibleCoreCount;
+            return this;
+        }
         public InstanceTemplateAdvancedMachineFeatures build() {
             final var o = new InstanceTemplateAdvancedMachineFeatures();
             o.enableNestedVirtualization = enableNestedVirtualization;
             o.threadsPerCore = threadsPerCore;
+            o.visibleCoreCount = visibleCoreCount;
             return o;
         }
     }

@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *
  * const filename_trigger = new gcp.cloudbuild.Trigger("filename-trigger", {
  *     filename: "cloudbuild.yaml",
+ *     location: "us-central1",
  *     substitutions: {
  *         _BAZ: "qux",
  *         _FOO: "bar",
@@ -106,6 +107,7 @@ import * as utilities from "../utilities";
  *             "newFeature",
  *         ],
  *     },
+ *     location: "global",
  *     triggerTemplate: {
  *         branchName: "main",
  *         repoName: "my-repo",
@@ -160,6 +162,7 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     includeBuildLogs: "INCLUDE_BUILD_LOGS_WITH_STATUS",
+ *     location: "us-central1",
  * });
  * ```
  * ### Cloudbuild Trigger Pubsub Config
@@ -170,6 +173,7 @@ import * as utilities from "../utilities";
  *
  * const mytopic = new gcp.pubsub.Topic("mytopic", {});
  * const pubsub_config_trigger = new gcp.cloudbuild.Trigger("pubsub-config-trigger", {
+ *     location: "us-central1",
  *     description: "acceptance test example pubsub build trigger",
  *     pubsubConfig: {
  *         topic: mytopic.id,
@@ -270,6 +274,10 @@ import * as utilities from "../utilities";
  * ## Import
  *
  * Trigger can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/locations/{{location}}/triggers/{{trigger_id}}
+ * ```
  *
  * ```sh
  *  $ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/triggers/{{trigger_id}}
@@ -386,6 +394,12 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly includedFiles!: pulumi.Output<string[] | undefined>;
     /**
+     * Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+     * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+     * this location as a prefix.
+     */
+    public readonly location!: pulumi.Output<string | undefined>;
+    /**
      * Name of the volume to mount.
      * Volume names must be unique per build step and must be valid names for Docker volumes.
      * Each named volume must be used by at least two build steps.
@@ -474,6 +488,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["ignoredFiles"] = state ? state.ignoredFiles : undefined;
             resourceInputs["includeBuildLogs"] = state ? state.includeBuildLogs : undefined;
             resourceInputs["includedFiles"] = state ? state.includedFiles : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pubsubConfig"] = state ? state.pubsubConfig : undefined;
@@ -497,6 +512,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["ignoredFiles"] = args ? args.ignoredFiles : undefined;
             resourceInputs["includeBuildLogs"] = args ? args.includeBuildLogs : undefined;
             resourceInputs["includedFiles"] = args ? args.includedFiles : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["pubsubConfig"] = args ? args.pubsubConfig : undefined;
@@ -592,6 +608,12 @@ export interface TriggerState {
      * a build.
      */
     includedFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+     * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+     * this location as a prefix.
+     */
+    location?: pulumi.Input<string>;
     /**
      * Name of the volume to mount.
      * Volume names must be unique per build step and must be valid names for Docker volumes.
@@ -731,6 +753,12 @@ export interface TriggerArgs {
      * a build.
      */
     includedFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+     * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+     * this location as a prefix.
+     */
+    location?: pulumi.Input<string>;
     /**
      * Name of the volume to mount.
      * Volume names must be unique per build step and must be valid names for Docker volumes.

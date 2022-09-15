@@ -13,17 +13,29 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolAutoscalingResult
     {
+        public readonly string LocationPolicy;
         public readonly int MaxNodeCount;
         public readonly int MinNodeCount;
+        public readonly int TotalMaxNodeCount;
+        public readonly int TotalMinNodeCount;
 
         [OutputConstructor]
         private GetClusterNodePoolAutoscalingResult(
+            string locationPolicy,
+
             int maxNodeCount,
 
-            int minNodeCount)
+            int minNodeCount,
+
+            int totalMaxNodeCount,
+
+            int totalMinNodeCount)
         {
+            LocationPolicy = locationPolicy;
             MaxNodeCount = maxNodeCount;
             MinNodeCount = minNodeCount;
+            TotalMaxNodeCount = totalMaxNodeCount;
+            TotalMinNodeCount = totalMinNodeCount;
         }
     }
 }

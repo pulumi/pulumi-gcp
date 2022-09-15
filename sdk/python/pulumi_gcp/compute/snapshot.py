@@ -17,6 +17,7 @@ __all__ = ['SnapshotArgs', 'Snapshot']
 class SnapshotArgs:
     def __init__(__self__, *,
                  source_disk: pulumi.Input[str],
+                 chain_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -28,6 +29,12 @@ class SnapshotArgs:
         """
         The set of arguments for constructing a Snapshot resource.
         :param pulumi.Input[str] source_disk: A reference to the disk used to create this snapshot.
+        :param pulumi.Input[str] chain_name: Creates the new snapshot in the snapshot chain labeled with the
+               specified name. The chain name must be 1-63 characters long and
+               comply with RFC1035. This is an uncommon option only for advanced
+               service owners who needs to create separate snapshot chains, for
+               example, for chargeback tracking.  When you describe your snapshot
+               resource, this field is visible only if it has a non-empty value.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Snapshot.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
@@ -50,6 +57,8 @@ class SnapshotArgs:
         :param pulumi.Input[str] zone: A reference to the zone where the disk is hosted.
         """
         pulumi.set(__self__, "source_disk", source_disk)
+        if chain_name is not None:
+            pulumi.set(__self__, "chain_name", chain_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
@@ -78,6 +87,23 @@ class SnapshotArgs:
     @source_disk.setter
     def source_disk(self, value: pulumi.Input[str]):
         pulumi.set(self, "source_disk", value)
+
+    @property
+    @pulumi.getter(name="chainName")
+    def chain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creates the new snapshot in the snapshot chain labeled with the
+        specified name. The chain name must be 1-63 characters long and
+        comply with RFC1035. This is an uncommon option only for advanced
+        service owners who needs to create separate snapshot chains, for
+        example, for chargeback tracking.  When you describe your snapshot
+        resource, this field is visible only if it has a non-empty value.
+        """
+        return pulumi.get(self, "chain_name")
+
+    @chain_name.setter
+    def chain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "chain_name", value)
 
     @property
     @pulumi.getter
@@ -191,6 +217,7 @@ class SnapshotArgs:
 @pulumi.input_type
 class _SnapshotState:
     def __init__(__self__, *,
+                 chain_name: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
@@ -209,6 +236,12 @@ class _SnapshotState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
+        :param pulumi.Input[str] chain_name: Creates the new snapshot in the snapshot chain labeled with the
+               specified name. The chain name must be 1-63 characters long and
+               comply with RFC1035. This is an uncommon option only for advanced
+               service owners who needs to create separate snapshot chains, for
+               example, for chargeback tracking.  When you describe your snapshot
+               resource, this field is visible only if it has a non-empty value.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[int] disk_size_gb: Size of the snapshot, specified in GB.
@@ -241,6 +274,8 @@ class _SnapshotState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         :param pulumi.Input[str] zone: A reference to the zone where the disk is hosted.
         """
+        if chain_name is not None:
+            pulumi.set(__self__, "chain_name", chain_name)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
@@ -273,6 +308,23 @@ class _SnapshotState:
             pulumi.set(__self__, "storage_locations", storage_locations)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="chainName")
+    def chain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creates the new snapshot in the snapshot chain labeled with the
+        specified name. The chain name must be 1-63 characters long and
+        comply with RFC1035. This is an uncommon option only for advanced
+        service owners who needs to create separate snapshot chains, for
+        example, for chargeback tracking.  When you describe your snapshot
+        resource, this field is visible only if it has a non-empty value.
+        """
+        return pulumi.get(self, "chain_name")
+
+    @chain_name.setter
+    def chain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "chain_name", value)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -487,6 +539,7 @@ class Snapshot(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 chain_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -542,6 +595,28 @@ class Snapshot(pulumi.CustomResource):
             },
             storage_locations=["us-central1"])
         ```
+        ### Snapshot Chainname
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        persistent = gcp.compute.Disk("persistent",
+            image=debian.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
+        snapshot = gcp.compute.Snapshot("snapshot",
+            source_disk=persistent.id,
+            zone="us-central1-a",
+            chain_name="snapshot-chain",
+            labels={
+                "my_label": "value",
+            },
+            storage_locations=["us-central1"])
+        ```
 
         ## Import
 
@@ -561,6 +636,12 @@ class Snapshot(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] chain_name: Creates the new snapshot in the snapshot chain labeled with the
+               specified name. The chain name must be 1-63 characters long and
+               comply with RFC1035. This is an uncommon option only for advanced
+               service owners who needs to create separate snapshot chains, for
+               example, for chargeback tracking.  When you describe your snapshot
+               resource, this field is visible only if it has a non-empty value.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Snapshot.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
@@ -634,6 +715,28 @@ class Snapshot(pulumi.CustomResource):
             },
             storage_locations=["us-central1"])
         ```
+        ### Snapshot Chainname
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        persistent = gcp.compute.Disk("persistent",
+            image=debian.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
+        snapshot = gcp.compute.Snapshot("snapshot",
+            source_disk=persistent.id,
+            zone="us-central1-a",
+            chain_name="snapshot-chain",
+            labels={
+                "my_label": "value",
+            },
+            storage_locations=["us-central1"])
+        ```
 
         ## Import
 
@@ -666,6 +769,7 @@ class Snapshot(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 chain_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -684,6 +788,7 @@ class Snapshot(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SnapshotArgs.__new__(SnapshotArgs)
 
+            __props__.__dict__["chain_name"] = chain_name
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
@@ -712,6 +817,7 @@ class Snapshot(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            chain_name: Optional[pulumi.Input[str]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk_size_gb: Optional[pulumi.Input[int]] = None,
@@ -735,6 +841,12 @@ class Snapshot(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] chain_name: Creates the new snapshot in the snapshot chain labeled with the
+               specified name. The chain name must be 1-63 characters long and
+               comply with RFC1035. This is an uncommon option only for advanced
+               service owners who needs to create separate snapshot chains, for
+               example, for chargeback tracking.  When you describe your snapshot
+               resource, this field is visible only if it has a non-empty value.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[int] disk_size_gb: Size of the snapshot, specified in GB.
@@ -771,6 +883,7 @@ class Snapshot(pulumi.CustomResource):
 
         __props__ = _SnapshotState.__new__(_SnapshotState)
 
+        __props__.__dict__["chain_name"] = chain_name
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_size_gb"] = disk_size_gb
@@ -788,6 +901,19 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["storage_locations"] = storage_locations
         __props__.__dict__["zone"] = zone
         return Snapshot(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="chainName")
+    def chain_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        Creates the new snapshot in the snapshot chain labeled with the
+        specified name. The chain name must be 1-63 characters long and
+        comply with RFC1035. This is an uncommon option only for advanced
+        service owners who needs to create separate snapshot chains, for
+        example, for chargeback tracking.  When you describe your snapshot
+        resource, this field is visible only if it has a non-empty value.
+        """
+        return pulumi.get(self, "chain_name")
 
     @property
     @pulumi.getter(name="creationTimestamp")

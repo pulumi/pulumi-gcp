@@ -41,6 +41,7 @@ class FlexibleAppVersionArgs:
                  runtime_api_version: Optional[pulumi.Input[str]] = None,
                  runtime_channel: Optional[pulumi.Input[str]] = None,
                  runtime_main_executable_path: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input[str]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
                  vpc_access_connector: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']] = None):
@@ -91,6 +92,8 @@ class FlexibleAppVersionArgs:
                Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
         :param pulumi.Input[str] runtime_channel: The channel of the runtime to use. Only available for some runtimes.
         :param pulumi.Input[str] runtime_main_executable_path: The path or name of the app's main executable.
+        :param pulumi.Input[str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+               default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[str] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
                Default value is `SERVING`.
                Possible values are `SERVING` and `STOPPED`.
@@ -145,6 +148,8 @@ class FlexibleAppVersionArgs:
             pulumi.set(__self__, "runtime_channel", runtime_channel)
         if runtime_main_executable_path is not None:
             pulumi.set(__self__, "runtime_main_executable_path", runtime_main_executable_path)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if serving_status is not None:
             pulumi.set(__self__, "serving_status", serving_status)
         if version_id is not None:
@@ -473,6 +478,19 @@ class FlexibleAppVersionArgs:
         pulumi.set(self, "runtime_main_executable_path", value)
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+        default if this field is neither provided in app.yaml file nor through CLI flag.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
     @pulumi.getter(name="servingStatus")
     def serving_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -542,6 +560,7 @@ class _FlexibleAppVersionState:
                  runtime_channel: Optional[pulumi.Input[str]] = None,
                  runtime_main_executable_path: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input[str]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
                  vpc_access_connector: Optional[pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs']] = None):
@@ -593,6 +612,8 @@ class _FlexibleAppVersionState:
         :param pulumi.Input[str] runtime_channel: The channel of the runtime to use. Only available for some runtimes.
         :param pulumi.Input[str] runtime_main_executable_path: The path or name of the app's main executable.
         :param pulumi.Input[str] service: AppEngine service resource. Can contain numbers, letters, and hyphens.
+        :param pulumi.Input[str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+               default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[str] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
                Default value is `SERVING`.
                Possible values are `SERVING` and `STOPPED`.
@@ -653,6 +674,8 @@ class _FlexibleAppVersionState:
             pulumi.set(__self__, "runtime_main_executable_path", runtime_main_executable_path)
         if service is not None:
             pulumi.set(__self__, "service", service)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if serving_status is not None:
             pulumi.set(__self__, "serving_status", serving_status)
         if version_id is not None:
@@ -993,6 +1016,19 @@ class _FlexibleAppVersionState:
         pulumi.set(self, "service", value)
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+        default if this field is neither provided in app.yaml file nor through CLI flag.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
     @pulumi.getter(name="servingStatus")
     def serving_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1063,6 +1099,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                  runtime_channel: Optional[pulumi.Input[str]] = None,
                  runtime_main_executable_path: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input[str]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
                  vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionVpcAccessConnectorArgs']]] = None,
@@ -1100,10 +1137,22 @@ class FlexibleAppVersion(pulumi.CustomResource):
             project=my_project.project_id,
             service="appengineflex.googleapis.com",
             disable_dependent_services=False)
+        custom_service_account = gcp.service_account.Account("customServiceAccount",
+            project=service.project,
+            account_id="my-account",
+            display_name="Custom Service Account")
         gae_api = gcp.projects.IAMMember("gaeApi",
             project=service.project,
             role="roles/compute.networkUser",
-            member=my_project.number.apply(lambda number: f"serviceAccount:service-{number}@gae-api-prod.google.com.iam.gserviceaccount.com"))
+            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        logs_writer = gcp.projects.IAMMember("logsWriter",
+            project=service.project,
+            role="roles/logging.logWriter",
+            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        storage_viewer = gcp.projects.IAMMember("storageViewer",
+            project=service.project,
+            role="roles/storage.objectViewer",
+            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         bucket = gcp.storage.Bucket("bucket",
             project=my_project.project_id,
             location="US")
@@ -1148,7 +1197,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
                     target_utilization=0.5,
                 ),
             ),
-            noop_on_destroy=True)
+            noop_on_destroy=True,
+            service_account=custom_service_account.email)
         ```
 
         ## Import
@@ -1214,6 +1264,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
         :param pulumi.Input[str] runtime_channel: The channel of the runtime to use. Only available for some runtimes.
         :param pulumi.Input[str] runtime_main_executable_path: The path or name of the app's main executable.
         :param pulumi.Input[str] service: AppEngine service resource. Can contain numbers, letters, and hyphens.
+        :param pulumi.Input[str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+               default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[str] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
                Default value is `SERVING`.
                Possible values are `SERVING` and `STOPPED`.
@@ -1261,10 +1313,22 @@ class FlexibleAppVersion(pulumi.CustomResource):
             project=my_project.project_id,
             service="appengineflex.googleapis.com",
             disable_dependent_services=False)
+        custom_service_account = gcp.service_account.Account("customServiceAccount",
+            project=service.project,
+            account_id="my-account",
+            display_name="Custom Service Account")
         gae_api = gcp.projects.IAMMember("gaeApi",
             project=service.project,
             role="roles/compute.networkUser",
-            member=my_project.number.apply(lambda number: f"serviceAccount:service-{number}@gae-api-prod.google.com.iam.gserviceaccount.com"))
+            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        logs_writer = gcp.projects.IAMMember("logsWriter",
+            project=service.project,
+            role="roles/logging.logWriter",
+            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        storage_viewer = gcp.projects.IAMMember("storageViewer",
+            project=service.project,
+            role="roles/storage.objectViewer",
+            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         bucket = gcp.storage.Bucket("bucket",
             project=my_project.project_id,
             location="US")
@@ -1309,7 +1373,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
                     target_utilization=0.5,
                 ),
             ),
-            noop_on_destroy=True)
+            noop_on_destroy=True,
+            service_account=custom_service_account.email)
         ```
 
         ## Import
@@ -1368,6 +1433,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                  runtime_channel: Optional[pulumi.Input[str]] = None,
                  runtime_main_executable_path: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input[str]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
                  vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionVpcAccessConnectorArgs']]] = None,
@@ -1413,6 +1479,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__.__dict__["service"] = service
+            __props__.__dict__["service_account"] = service_account
             __props__.__dict__["serving_status"] = serving_status
             __props__.__dict__["version_id"] = version_id
             __props__.__dict__["vpc_access_connector"] = vpc_access_connector
@@ -1453,6 +1520,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             runtime_channel: Optional[pulumi.Input[str]] = None,
             runtime_main_executable_path: Optional[pulumi.Input[str]] = None,
             service: Optional[pulumi.Input[str]] = None,
+            service_account: Optional[pulumi.Input[str]] = None,
             serving_status: Optional[pulumi.Input[str]] = None,
             version_id: Optional[pulumi.Input[str]] = None,
             vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['FlexibleAppVersionVpcAccessConnectorArgs']]] = None) -> 'FlexibleAppVersion':
@@ -1509,6 +1577,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
         :param pulumi.Input[str] runtime_channel: The channel of the runtime to use. Only available for some runtimes.
         :param pulumi.Input[str] runtime_main_executable_path: The path or name of the app's main executable.
         :param pulumi.Input[str] service: AppEngine service resource. Can contain numbers, letters, and hyphens.
+        :param pulumi.Input[str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+               default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[str] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
                Default value is `SERVING`.
                Possible values are `SERVING` and `STOPPED`.
@@ -1547,6 +1617,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
         __props__.__dict__["runtime_channel"] = runtime_channel
         __props__.__dict__["runtime_main_executable_path"] = runtime_main_executable_path
         __props__.__dict__["service"] = service
+        __props__.__dict__["service_account"] = service_account
         __props__.__dict__["serving_status"] = serving_status
         __props__.__dict__["version_id"] = version_id
         __props__.__dict__["vpc_access_connector"] = vpc_access_connector
@@ -1779,6 +1850,15 @@ class FlexibleAppVersion(pulumi.CustomResource):
         AppEngine service resource. Can contain numbers, letters, and hyphens.
         """
         return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Output[Optional[str]]:
+        """
+        The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+        default if this field is neither provided in app.yaml file nor through CLI flag.
+        """
+        return pulumi.get(self, "service_account")
 
     @property
     @pulumi.getter(name="servingStatus")

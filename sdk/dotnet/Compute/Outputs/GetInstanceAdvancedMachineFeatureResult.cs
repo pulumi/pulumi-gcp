@@ -15,15 +15,19 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         public readonly bool EnableNestedVirtualization;
         public readonly int ThreadsPerCore;
+        public readonly int VisibleCoreCount;
 
         [OutputConstructor]
         private GetInstanceAdvancedMachineFeatureResult(
             bool enableNestedVirtualization,
 
-            int threadsPerCore)
+            int threadsPerCore,
+
+            int visibleCoreCount)
         {
             EnableNestedVirtualization = enableNestedVirtualization;
             ThreadsPerCore = threadsPerCore;
+            VisibleCoreCount = visibleCoreCount;
         }
     }
 }

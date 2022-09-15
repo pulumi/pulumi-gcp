@@ -11,6 +11,7 @@ import com.pulumi.gcp.container.inputs.ClusterBinaryAuthorizationArgs;
 import com.pulumi.gcp.container.inputs.ClusterClusterAutoscalingArgs;
 import com.pulumi.gcp.container.inputs.ClusterClusterTelemetryArgs;
 import com.pulumi.gcp.container.inputs.ClusterConfidentialNodesArgs;
+import com.pulumi.gcp.container.inputs.ClusterCostManagementConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterDatabaseEncryptionArgs;
 import com.pulumi.gcp.container.inputs.ClusterDefaultSnatStatusArgs;
 import com.pulumi.gcp.container.inputs.ClusterDnsConfigArgs;
@@ -26,11 +27,13 @@ import com.pulumi.gcp.container.inputs.ClusterNetworkPolicyArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolAutoConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolDefaultsArgs;
 import com.pulumi.gcp.container.inputs.ClusterNotificationConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterPodSecurityPolicyConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterPrivateClusterConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterReleaseChannelArgs;
 import com.pulumi.gcp.container.inputs.ClusterResourceUsageExportConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterServiceExternalIpsConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterTpuConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterVerticalPodAutoscalingArgs;
 import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
@@ -177,6 +180,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ClusterConfidentialNodesArgs>> confidentialNodes() {
         return Optional.ofNullable(this.confidentialNodes);
+    }
+
+    /**
+     * Cost management configuration for the cluster.
+     * 
+     */
+    @Import(name="costManagementConfig")
+    private @Nullable Output<ClusterCostManagementConfigArgs> costManagementConfig;
+
+    /**
+     * @return Cost management configuration for the cluster.
+     * 
+     */
+    public Optional<Output<ClusterCostManagementConfigArgs>> costManagementConfig() {
+        return Optional.ofNullable(this.costManagementConfig);
     }
 
     /**
@@ -889,6 +907,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+     * 
+     */
+    @Import(name="nodePoolDefaults")
+    private @Nullable Output<ClusterNodePoolDefaultsArgs> nodePoolDefaults;
+
+    /**
+     * @return ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodePoolDefaultsArgs>> nodePoolDefaults() {
+        return Optional.ofNullable(this.nodePoolDefaults);
+    }
+
+    /**
      * List of node pools associated with this cluster.
      * See gcp.container.NodePool for schema.
      * **Warning:** node pools defined inside a cluster can&#39;t be changed (or added/removed) after
@@ -1134,6 +1167,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="serviceExternalIpsConfig")
+    private @Nullable Output<ClusterServiceExternalIpsConfigArgs> serviceExternalIpsConfig;
+
+    /**
+     * @return Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterServiceExternalIpsConfigArgs>> serviceExternalIpsConfig() {
+        return Optional.ofNullable(this.serviceExternalIpsConfig);
+    }
+
+    /**
      * The IP address range of the Kubernetes services in this
      * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
      * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
@@ -1251,6 +1299,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.clusterIpv4Cidr = $.clusterIpv4Cidr;
         this.clusterTelemetry = $.clusterTelemetry;
         this.confidentialNodes = $.confidentialNodes;
+        this.costManagementConfig = $.costManagementConfig;
         this.databaseEncryption = $.databaseEncryption;
         this.datapathProvider = $.datapathProvider;
         this.defaultMaxPodsPerNode = $.defaultMaxPodsPerNode;
@@ -1288,6 +1337,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.nodeConfig = $.nodeConfig;
         this.nodeLocations = $.nodeLocations;
         this.nodePoolAutoConfig = $.nodePoolAutoConfig;
+        this.nodePoolDefaults = $.nodePoolDefaults;
         this.nodePools = $.nodePools;
         this.nodeVersion = $.nodeVersion;
         this.notificationConfig = $.notificationConfig;
@@ -1301,6 +1351,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.resourceLabels = $.resourceLabels;
         this.resourceUsageExportConfig = $.resourceUsageExportConfig;
         this.selfLink = $.selfLink;
+        this.serviceExternalIpsConfig = $.serviceExternalIpsConfig;
         this.servicesIpv4Cidr = $.servicesIpv4Cidr;
         this.subnetwork = $.subnetwork;
         this.tpuConfig = $.tpuConfig;
@@ -1498,6 +1549,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder confidentialNodes(ClusterConfidentialNodesArgs confidentialNodes) {
             return confidentialNodes(Output.of(confidentialNodes));
+        }
+
+        /**
+         * @param costManagementConfig Cost management configuration for the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder costManagementConfig(@Nullable Output<ClusterCostManagementConfigArgs> costManagementConfig) {
+            $.costManagementConfig = costManagementConfig;
+            return this;
+        }
+
+        /**
+         * @param costManagementConfig Cost management configuration for the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder costManagementConfig(ClusterCostManagementConfigArgs costManagementConfig) {
+            return costManagementConfig(Output.of(costManagementConfig));
         }
 
         /**
@@ -2445,6 +2517,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param nodePoolDefaults ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodePoolDefaults(@Nullable Output<ClusterNodePoolDefaultsArgs> nodePoolDefaults) {
+            $.nodePoolDefaults = nodePoolDefaults;
+            return this;
+        }
+
+        /**
+         * @param nodePoolDefaults ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodePoolDefaults(ClusterNodePoolDefaultsArgs nodePoolDefaults) {
+            return nodePoolDefaults(Output.of(nodePoolDefaults));
+        }
+
+        /**
          * @param nodePools List of node pools associated with this cluster.
          * See gcp.container.NodePool for schema.
          * **Warning:** node pools defined inside a cluster can&#39;t be changed (or added/removed) after
@@ -2776,6 +2869,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder selfLink(String selfLink) {
             return selfLink(Output.of(selfLink));
+        }
+
+        /**
+         * @param serviceExternalIpsConfig Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceExternalIpsConfig(@Nullable Output<ClusterServiceExternalIpsConfigArgs> serviceExternalIpsConfig) {
+            $.serviceExternalIpsConfig = serviceExternalIpsConfig;
+            return this;
+        }
+
+        /**
+         * @param serviceExternalIpsConfig Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceExternalIpsConfig(ClusterServiceExternalIpsConfigArgs serviceExternalIpsConfig) {
+            return serviceExternalIpsConfig(Output.of(serviceExternalIpsConfig));
         }
 
         /**

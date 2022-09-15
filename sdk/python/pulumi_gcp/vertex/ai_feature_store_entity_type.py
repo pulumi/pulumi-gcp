@@ -242,6 +242,9 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
                 fixed_node_count=2,
             ),
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
             labels={
@@ -295,6 +298,9 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             region="us-central1",
             online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
                 fixed_node_count=2,
+            ),
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",

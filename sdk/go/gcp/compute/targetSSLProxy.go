@@ -49,6 +49,10 @@ type TargetSSLProxy struct {
 
 	// A reference to the BackendService resource.
 	BackendService pulumi.StringOutput `pulumi:"backendService"`
+	// A reference to the CertificateMap resource uri that identifies a certificate map
+	// associated with the given target proxy. This field can only be set for global target proxies.
+	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+	CertificateMap pulumi.StringPtrOutput `pulumi:"certificateMap"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
@@ -93,9 +97,6 @@ func NewTargetSSLProxy(ctx *pulumi.Context,
 	if args.BackendService == nil {
 		return nil, errors.New("invalid value for required argument 'BackendService'")
 	}
-	if args.SslCertificates == nil {
-		return nil, errors.New("invalid value for required argument 'SslCertificates'")
-	}
 	var resource TargetSSLProxy
 	err := ctx.RegisterResource("gcp:compute/targetSSLProxy:TargetSSLProxy", name, args, &resource, opts...)
 	if err != nil {
@@ -120,6 +121,10 @@ func GetTargetSSLProxy(ctx *pulumi.Context,
 type targetSSLProxyState struct {
 	// A reference to the BackendService resource.
 	BackendService *string `pulumi:"backendService"`
+	// A reference to the CertificateMap resource uri that identifies a certificate map
+	// associated with the given target proxy. This field can only be set for global target proxies.
+	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+	CertificateMap *string `pulumi:"certificateMap"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
@@ -157,6 +162,10 @@ type targetSSLProxyState struct {
 type TargetSSLProxyState struct {
 	// A reference to the BackendService resource.
 	BackendService pulumi.StringPtrInput
+	// A reference to the CertificateMap resource uri that identifies a certificate map
+	// associated with the given target proxy. This field can only be set for global target proxies.
+	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+	CertificateMap pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
@@ -198,6 +207,10 @@ func (TargetSSLProxyState) ElementType() reflect.Type {
 type targetSSLProxyArgs struct {
 	// A reference to the BackendService resource.
 	BackendService string `pulumi:"backendService"`
+	// A reference to the CertificateMap resource uri that identifies a certificate map
+	// associated with the given target proxy. This field can only be set for global target proxies.
+	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+	CertificateMap *string `pulumi:"certificateMap"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Name of the resource. Provided by the client when the resource is
@@ -230,6 +243,10 @@ type targetSSLProxyArgs struct {
 type TargetSSLProxyArgs struct {
 	// A reference to the BackendService resource.
 	BackendService pulumi.StringInput
+	// A reference to the CertificateMap resource uri that identifies a certificate map
+	// associated with the given target proxy. This field can only be set for global target proxies.
+	// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+	CertificateMap pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
@@ -348,6 +365,13 @@ func (o TargetSSLProxyOutput) ToTargetSSLProxyOutputWithContext(ctx context.Cont
 // A reference to the BackendService resource.
 func (o TargetSSLProxyOutput) BackendService() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetSSLProxy) pulumi.StringOutput { return v.BackendService }).(pulumi.StringOutput)
+}
+
+// A reference to the CertificateMap resource uri that identifies a certificate map
+// associated with the given target proxy. This field can only be set for global target proxies.
+// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+func (o TargetSSLProxyOutput) CertificateMap() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetSSLProxy) pulumi.StringPtrOutput { return v.CertificateMap }).(pulumi.StringPtrOutput)
 }
 
 // Creation timestamp in RFC3339 text format.

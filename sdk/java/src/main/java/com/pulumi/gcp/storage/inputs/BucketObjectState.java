@@ -166,18 +166,14 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-     * signified by the hold&#39;s release (i.e. this value is set to false). After being released (set to false), such objects
-     * will be subject to bucket-level retention (if any).
+     * Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold&#39;s release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
      * 
      */
     @Import(name="eventBasedHold")
     private @Nullable Output<Boolean> eventBasedHold;
 
     /**
-     * @return Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-     * signified by the hold&#39;s release (i.e. this value is set to false). After being released (set to false), such objects
-     * will be subject to bucket-level retention (if any).
+     * @return Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold&#39;s release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
      * 
      */
     public Optional<Output<Boolean>> eventBasedHold() {
@@ -328,16 +324,14 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-     * overwrites.
+     * Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
      * 
      */
     @Import(name="temporaryHold")
     private @Nullable Output<Boolean> temporaryHold;
 
     /**
-     * @return Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-     * overwrites.
+     * @return Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
      * 
      */
     public Optional<Output<Boolean>> temporaryHold() {
@@ -591,9 +585,7 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventBasedHold Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-         * signified by the hold&#39;s release (i.e. this value is set to false). After being released (set to false), such objects
-         * will be subject to bucket-level retention (if any).
+         * @param eventBasedHold Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold&#39;s release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
          * 
          * @return builder
          * 
@@ -604,9 +596,7 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventBasedHold Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-         * signified by the hold&#39;s release (i.e. this value is set to false). After being released (set to false), such objects
-         * will be subject to bucket-level retention (if any).
+         * @param eventBasedHold Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold&#39;s release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
          * 
          * @return builder
          * 
@@ -813,8 +803,7 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param temporaryHold Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-         * overwrites.
+         * @param temporaryHold Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
          * 
          * @return builder
          * 
@@ -825,8 +814,7 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param temporaryHold Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-         * overwrites.
+         * @param temporaryHold Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
          * 
          * @return builder
          * 

@@ -28,6 +28,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.AiFeatureStore;
  * import com.pulumi.gcp.vertex.AiFeatureStoreArgs;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreOnlineServingConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEncryptionSpecArgs;
  * import com.pulumi.gcp.vertex.AiFeatureStoreEntityType;
  * import com.pulumi.gcp.vertex.AiFeatureStoreEntityTypeArgs;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigArgs;
@@ -51,6 +52,9 @@ import javax.annotation.Nullable;
  *             .region(&#34;us-central1&#34;)
  *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
  *                 .fixedNodeCount(2)
+ *                 .build())
+ *             .encryptionSpec(AiFeatureStoreEncryptionSpecArgs.builder()
+ *                 .kmsKeyName(&#34;kms-name&#34;)
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)

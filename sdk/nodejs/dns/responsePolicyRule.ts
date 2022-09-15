@@ -94,6 +94,10 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
     }
 
     /**
+     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+     */
+    public readonly behavior!: pulumi.Output<string | undefined>;
+    /**
      * The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
      */
     public readonly dnsName!: pulumi.Output<string>;
@@ -130,6 +134,7 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResponsePolicyRuleState | undefined;
+            resourceInputs["behavior"] = state ? state.behavior : undefined;
             resourceInputs["dnsName"] = state ? state.dnsName : undefined;
             resourceInputs["localData"] = state ? state.localData : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -146,6 +151,7 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
             if ((!args || args.ruleName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ruleName'");
             }
+            resourceInputs["behavior"] = args ? args.behavior : undefined;
             resourceInputs["dnsName"] = args ? args.dnsName : undefined;
             resourceInputs["localData"] = args ? args.localData : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -161,6 +167,10 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ResponsePolicyRule resources.
  */
 export interface ResponsePolicyRuleState {
+    /**
+     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+     */
+    behavior?: pulumi.Input<string>;
     /**
      * The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
      */
@@ -190,6 +200,10 @@ export interface ResponsePolicyRuleState {
  * The set of arguments for constructing a ResponsePolicyRule resource.
  */
 export interface ResponsePolicyRuleArgs {
+    /**
+     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+     */
+    behavior?: pulumi.Input<string>;
     /**
      * The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
      */

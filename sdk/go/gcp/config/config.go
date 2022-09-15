@@ -44,6 +44,9 @@ func GetBatching(ctx *pulumi.Context) string {
 func GetBigQueryCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:bigQueryCustomEndpoint")
 }
+func GetBigqueryAnalyticsHubCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:bigqueryAnalyticsHubCustomEndpoint")
+}
 func GetBigqueryConnectionCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:bigqueryConnectionCustomEndpoint")
 }
@@ -151,6 +154,9 @@ func GetDataprocMetastoreCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetDatastoreCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:datastoreCustomEndpoint")
+}
+func GetDatastreamCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:datastreamCustomEndpoint")
 }
 func GetDeploymentManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:deploymentManagerCustomEndpoint")

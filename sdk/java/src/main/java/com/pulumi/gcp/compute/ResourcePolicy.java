@@ -188,6 +188,59 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Resource Policy Snapshot Schedule Chain Name
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ResourcePolicy;
+ * import com.pulumi.gcp.compute.ResourcePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var hourly = new ResourcePolicy(&#34;hourly&#34;, ResourcePolicyArgs.builder()        
+ *             .description(&#34;chain name snapshot&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
+ *                 .retentionPolicy(ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs.builder()
+ *                     .maxRetentionDays(14)
+ *                     .onSourceDiskDelete(&#34;KEEP_AUTO_SNAPSHOTS&#34;)
+ *                     .build())
+ *                 .schedule(ResourcePolicySnapshotSchedulePolicyScheduleArgs.builder()
+ *                     .hourlySchedule(ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs.builder()
+ *                         .hoursInCycle(20)
+ *                         .startTime(&#34;23:00&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .snapshotProperties(ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs.builder()
+ *                     .chainName(&#34;test-schedule-chain-name&#34;)
+ *                     .guestFlush(true)
+ *                     .labels(Map.of(&#34;myLabel&#34;, &#34;value&#34;))
+ *                     .storageLocations(&#34;us&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

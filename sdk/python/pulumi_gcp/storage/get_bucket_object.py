@@ -162,6 +162,9 @@ class GetBucketObjectResult:
     @property
     @pulumi.getter(name="eventBasedHold")
     def event_based_hold(self) -> bool:
+        """
+        (Computed) Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
+        """
         return pulumi.get(self, "event_based_hold")
 
     @property
@@ -234,6 +237,9 @@ class GetBucketObjectResult:
     @property
     @pulumi.getter(name="temporaryHold")
     def temporary_hold(self) -> bool:
+        """
+        (Computed) Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
+        """
         return pulumi.get(self, "temporary_hold")
 
 

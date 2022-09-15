@@ -32,6 +32,25 @@ public final class TargetSSLProxyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * A reference to the CertificateMap resource uri that identifies a certificate map
+     * associated with the given target proxy. This field can only be set for global target proxies.
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+     * 
+     */
+    @Import(name="certificateMap")
+    private @Nullable Output<String> certificateMap;
+
+    /**
+     * @return A reference to the CertificateMap resource uri that identifies a certificate map
+     * associated with the given target proxy. This field can only be set for global target proxies.
+     * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+     * 
+     */
+    public Optional<Output<String>> certificateMap() {
+        return Optional.ofNullable(this.certificateMap);
+    }
+
+    /**
      * An optional description of this resource.
      * 
      */
@@ -117,8 +136,8 @@ public final class TargetSSLProxyArgs extends com.pulumi.resources.ResourceArgs 
      * SSL certificate must be specified.
      * 
      */
-    @Import(name="sslCertificates", required=true)
-    private Output<List<String>> sslCertificates;
+    @Import(name="sslCertificates")
+    private @Nullable Output<List<String>> sslCertificates;
 
     /**
      * @return A list of SslCertificate resources that are used to authenticate
@@ -126,8 +145,8 @@ public final class TargetSSLProxyArgs extends com.pulumi.resources.ResourceArgs 
      * SSL certificate must be specified.
      * 
      */
-    public Output<List<String>> sslCertificates() {
-        return this.sslCertificates;
+    public Optional<Output<List<String>>> sslCertificates() {
+        return Optional.ofNullable(this.sslCertificates);
     }
 
     /**
@@ -153,6 +172,7 @@ public final class TargetSSLProxyArgs extends com.pulumi.resources.ResourceArgs 
 
     private TargetSSLProxyArgs(TargetSSLProxyArgs $) {
         this.backendService = $.backendService;
+        this.certificateMap = $.certificateMap;
         this.description = $.description;
         this.name = $.name;
         this.project = $.project;
@@ -198,6 +218,31 @@ public final class TargetSSLProxyArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder backendService(String backendService) {
             return backendService(Output.of(backendService));
+        }
+
+        /**
+         * @param certificateMap A reference to the CertificateMap resource uri that identifies a certificate map
+         * associated with the given target proxy. This field can only be set for global target proxies.
+         * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateMap(@Nullable Output<String> certificateMap) {
+            $.certificateMap = certificateMap;
+            return this;
+        }
+
+        /**
+         * @param certificateMap A reference to the CertificateMap resource uri that identifies a certificate map
+         * associated with the given target proxy. This field can only be set for global target proxies.
+         * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateMap(String certificateMap) {
+            return certificateMap(Output.of(certificateMap));
         }
 
         /**
@@ -312,7 +357,7 @@ public final class TargetSSLProxyArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder sslCertificates(Output<List<String>> sslCertificates) {
+        public Builder sslCertificates(@Nullable Output<List<String>> sslCertificates) {
             $.sslCertificates = sslCertificates;
             return this;
         }
@@ -368,7 +413,6 @@ public final class TargetSSLProxyArgs extends com.pulumi.resources.ResourceArgs 
 
         public TargetSSLProxyArgs build() {
             $.backendService = Objects.requireNonNull($.backendService, "expected parameter 'backendService' to be non-null");
-            $.sslCertificates = Objects.requireNonNull($.sslCertificates, "expected parameter 'sslCertificates' to be non-null");
             return $;
         }
     }

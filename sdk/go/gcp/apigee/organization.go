@@ -211,10 +211,13 @@ type Organization struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the Apigee organization.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Output only. Name of the Apigee organization.
+	// Name of the property.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project ID associated with the Apigee organization.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// Properties defined in the Apigee organization profile.
+	// Structure is documented below.
+	Properties OrganizationPropertiesOutput `pulumi:"properties"`
 	// Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
 	// is not EVALUATION). It controls how long Organization data will be retained after the initial delete
 	// operation completes. During this period, the Organization may be restored to its last known state.
@@ -283,10 +286,13 @@ type organizationState struct {
 	Description *string `pulumi:"description"`
 	// The display name of the Apigee organization.
 	DisplayName *string `pulumi:"displayName"`
-	// Output only. Name of the Apigee organization.
+	// Name of the property.
 	Name *string `pulumi:"name"`
 	// The project ID associated with the Apigee organization.
 	ProjectId *string `pulumi:"projectId"`
+	// Properties defined in the Apigee organization profile.
+	// Structure is documented below.
+	Properties *OrganizationProperties `pulumi:"properties"`
 	// Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
 	// is not EVALUATION). It controls how long Organization data will be retained after the initial delete
 	// operation completes. During this period, the Organization may be restored to its last known state.
@@ -324,10 +330,13 @@ type OrganizationState struct {
 	Description pulumi.StringPtrInput
 	// The display name of the Apigee organization.
 	DisplayName pulumi.StringPtrInput
-	// Output only. Name of the Apigee organization.
+	// Name of the property.
 	Name pulumi.StringPtrInput
 	// The project ID associated with the Apigee organization.
 	ProjectId pulumi.StringPtrInput
+	// Properties defined in the Apigee organization profile.
+	// Structure is documented below.
+	Properties OrganizationPropertiesPtrInput
 	// Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
 	// is not EVALUATION). It controls how long Organization data will be retained after the initial delete
 	// operation completes. During this period, the Organization may be restored to its last known state.
@@ -368,6 +377,9 @@ type organizationArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The project ID associated with the Apigee organization.
 	ProjectId string `pulumi:"projectId"`
+	// Properties defined in the Apigee organization profile.
+	// Structure is documented below.
+	Properties *OrganizationProperties `pulumi:"properties"`
 	// Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
 	// is not EVALUATION). It controls how long Organization data will be retained after the initial delete
 	// operation completes. During this period, the Organization may be restored to its last known state.
@@ -402,6 +414,9 @@ type OrganizationArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// The project ID associated with the Apigee organization.
 	ProjectId pulumi.StringInput
+	// Properties defined in the Apigee organization profile.
+	// Structure is documented below.
+	Properties OrganizationPropertiesPtrInput
 	// Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
 	// is not EVALUATION). It controls how long Organization data will be retained after the initial delete
 	// operation completes. During this period, the Organization may be restored to its last known state.
@@ -540,7 +555,7 @@ func (o OrganizationOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Output only. Name of the Apigee organization.
+// Name of the property.
 func (o OrganizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -548,6 +563,12 @@ func (o OrganizationOutput) Name() pulumi.StringOutput {
 // The project ID associated with the Apigee organization.
 func (o OrganizationOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Properties defined in the Apigee organization profile.
+// Structure is documented below.
+func (o OrganizationOutput) Properties() OrganizationPropertiesOutput {
+	return o.ApplyT(func(v *Organization) OrganizationPropertiesOutput { return v.Properties }).(OrganizationPropertiesOutput)
 }
 
 // Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType

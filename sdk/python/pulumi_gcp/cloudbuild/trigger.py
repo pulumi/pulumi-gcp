@@ -27,6 +27,7 @@ class TriggerArgs:
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_build_logs: Optional[pulumi.Input[str]] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_config: Optional[pulumi.Input['TriggerPubsubConfigArgs']] = None,
@@ -75,6 +76,9 @@ class TriggerArgs:
                and includedFiles is not empty, then we make sure that at least one of
                those files matches a includedFiles glob. If not, then we do not trigger
                a build.
+        :param pulumi.Input[str] location: Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+               Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+               this location as a prefix.
         :param pulumi.Input[str] name: Name of the volume to mount.
                Volume names must be unique per build step and must be valid names for Docker volumes.
                Each named volume must be used by at least two build steps.
@@ -130,6 +134,8 @@ class TriggerArgs:
             pulumi.set(__self__, "include_build_logs", include_build_logs)
         if included_files is not None:
             pulumi.set(__self__, "included_files", included_files)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -309,6 +315,20 @@ class TriggerArgs:
 
     @property
     @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+        Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+        this location as a prefix.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the volume to mount.
@@ -454,6 +474,7 @@ class _TriggerState:
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_build_logs: Optional[pulumi.Input[str]] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_config: Optional[pulumi.Input['TriggerPubsubConfigArgs']] = None,
@@ -504,6 +525,9 @@ class _TriggerState:
                and includedFiles is not empty, then we make sure that at least one of
                those files matches a includedFiles glob. If not, then we do not trigger
                a build.
+        :param pulumi.Input[str] location: Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+               Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+               this location as a prefix.
         :param pulumi.Input[str] name: Name of the volume to mount.
                Volume names must be unique per build step and must be valid names for Docker volumes.
                Each named volume must be used by at least two build steps.
@@ -562,6 +586,8 @@ class _TriggerState:
             pulumi.set(__self__, "include_build_logs", include_build_logs)
         if included_files is not None:
             pulumi.set(__self__, "included_files", included_files)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -755,6 +781,20 @@ class _TriggerState:
 
     @property
     @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+        Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+        this location as a prefix.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the volume to mount.
@@ -913,6 +953,7 @@ class Trigger(pulumi.CustomResource):
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_build_logs: Optional[pulumi.Input[str]] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_config: Optional[pulumi.Input[pulumi.InputType['TriggerPubsubConfigArgs']]] = None,
@@ -943,6 +984,7 @@ class Trigger(pulumi.CustomResource):
 
         filename_trigger = gcp.cloudbuild.Trigger("filename-trigger",
             filename="cloudbuild.yaml",
+            location="us-central1",
             substitutions={
                 "_BAZ": "qux",
                 "_FOO": "bar",
@@ -995,7 +1037,8 @@ class Trigger(pulumi.CustomResource):
                     branch="^main$",
                 ),
             ),
-            include_build_logs="INCLUDE_BUILD_LOGS_WITH_STATUS")
+            include_build_logs="INCLUDE_BUILD_LOGS_WITH_STATUS",
+            location="us-central1")
         ```
         ### Cloudbuild Trigger Pubsub Config
 
@@ -1005,6 +1048,7 @@ class Trigger(pulumi.CustomResource):
 
         mytopic = gcp.pubsub.Topic("mytopic")
         pubsub_config_trigger = gcp.cloudbuild.Trigger("pubsub-config-trigger",
+            location="us-central1",
             description="acceptance test example pubsub build trigger",
             pubsub_config=gcp.cloudbuild.TriggerPubsubConfigArgs(
                 topic=mytopic.id,
@@ -1097,6 +1141,10 @@ class Trigger(pulumi.CustomResource):
         Trigger can be imported using any of these accepted formats
 
         ```sh
+         $ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/locations/{{location}}/triggers/{{trigger_id}}
+        ```
+
+        ```sh
          $ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/triggers/{{trigger_id}}
         ```
 
@@ -1147,6 +1195,9 @@ class Trigger(pulumi.CustomResource):
                and includedFiles is not empty, then we make sure that at least one of
                those files matches a includedFiles glob. If not, then we do not trigger
                a build.
+        :param pulumi.Input[str] location: Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+               Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+               this location as a prefix.
         :param pulumi.Input[str] name: Name of the volume to mount.
                Volume names must be unique per build step and must be valid names for Docker volumes.
                Each named volume must be used by at least two build steps.
@@ -1206,6 +1257,7 @@ class Trigger(pulumi.CustomResource):
 
         filename_trigger = gcp.cloudbuild.Trigger("filename-trigger",
             filename="cloudbuild.yaml",
+            location="us-central1",
             substitutions={
                 "_BAZ": "qux",
                 "_FOO": "bar",
@@ -1258,7 +1310,8 @@ class Trigger(pulumi.CustomResource):
                     branch="^main$",
                 ),
             ),
-            include_build_logs="INCLUDE_BUILD_LOGS_WITH_STATUS")
+            include_build_logs="INCLUDE_BUILD_LOGS_WITH_STATUS",
+            location="us-central1")
         ```
         ### Cloudbuild Trigger Pubsub Config
 
@@ -1268,6 +1321,7 @@ class Trigger(pulumi.CustomResource):
 
         mytopic = gcp.pubsub.Topic("mytopic")
         pubsub_config_trigger = gcp.cloudbuild.Trigger("pubsub-config-trigger",
+            location="us-central1",
             description="acceptance test example pubsub build trigger",
             pubsub_config=gcp.cloudbuild.TriggerPubsubConfigArgs(
                 topic=mytopic.id,
@@ -1360,6 +1414,10 @@ class Trigger(pulumi.CustomResource):
         Trigger can be imported using any of these accepted formats
 
         ```sh
+         $ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/locations/{{location}}/triggers/{{trigger_id}}
+        ```
+
+        ```sh
          $ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/triggers/{{trigger_id}}
         ```
 
@@ -1397,6 +1455,7 @@ class Trigger(pulumi.CustomResource):
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_build_logs: Optional[pulumi.Input[str]] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_config: Optional[pulumi.Input[pulumi.InputType['TriggerPubsubConfigArgs']]] = None,
@@ -1426,6 +1485,7 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["ignored_files"] = ignored_files
             __props__.__dict__["include_build_logs"] = include_build_logs
             __props__.__dict__["included_files"] = included_files
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["pubsub_config"] = pubsub_config
@@ -1459,6 +1519,7 @@ class Trigger(pulumi.CustomResource):
             ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             include_build_logs: Optional[pulumi.Input[str]] = None,
             included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pubsub_config: Optional[pulumi.Input[pulumi.InputType['TriggerPubsubConfigArgs']]] = None,
@@ -1514,6 +1575,9 @@ class Trigger(pulumi.CustomResource):
                and includedFiles is not empty, then we make sure that at least one of
                those files matches a includedFiles glob. If not, then we do not trigger
                a build.
+        :param pulumi.Input[str] location: Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+               Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+               this location as a prefix.
         :param pulumi.Input[str] name: Name of the volume to mount.
                Volume names must be unique per build step and must be valid names for Docker volumes.
                Each named volume must be used by at least two build steps.
@@ -1564,6 +1628,7 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["ignored_files"] = ignored_files
         __props__.__dict__["include_build_logs"] = include_build_logs
         __props__.__dict__["included_files"] = included_files
+        __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pubsub_config"] = pubsub_config
@@ -1697,6 +1762,16 @@ class Trigger(pulumi.CustomResource):
         a build.
         """
         return pulumi.get(self, "included_files")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[Optional[str]]:
+        """
+        Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
+        Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
+        this location as a prefix.
+        """
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter

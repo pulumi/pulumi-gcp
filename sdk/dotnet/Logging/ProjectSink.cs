@@ -10,124 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Logging
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var my_sink = new Gcp.Logging.ProjectSink("my-sink", new()
-    ///     {
-    ///         Destination = "pubsub.googleapis.com/projects/my-project/topics/instance-activity",
-    ///         Filter = "resource.type = gce_instance AND severity &gt;= WARNING",
-    ///         UniqueWriterIdentity = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// A more complete example follows: this creates a compute instance, as well as a log sink that logs all activity to a
-    /// cloud storage bucket. Because we are using `unique_writer_identity`, we must grant it access to the bucket. Note that
-    /// this grant requires the "Project IAM Admin" IAM role (`roles/resourcemanager.projectIamAdmin`) granted to the credentials
-    /// used with this provider.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Our logged compute instance
-    ///     var my_logged_instance = new Gcp.Compute.Instance("my-logged-instance", new()
-    ///     {
-    ///         MachineType = "e2-medium",
-    ///         Zone = "us-central1-a",
-    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
-    ///         {
-    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
-    ///             {
-    ///                 Image = "debian-cloud/debian-11",
-    ///             },
-    ///         },
-    ///         NetworkInterfaces = new[]
-    ///         {
-    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-    ///             {
-    ///                 Network = "default",
-    ///                 AccessConfigs = new[]
-    ///                 {
-    ///                     ,
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     // A bucket to store logs in
-    ///     var log_bucket = new Gcp.Storage.Bucket("log-bucket", new()
-    ///     {
-    ///         Location = "US",
-    ///     });
-    /// 
-    ///     // Our sink; this logs all activity related to our "my-logged-instance" instance
-    ///     var instance_sink = new Gcp.Logging.ProjectSink("instance-sink", new()
-    ///     {
-    ///         Description = "some explanation on what this is",
-    ///         Destination = log_bucket.Name.Apply(name =&gt; $"storage.googleapis.com/{name}"),
-    ///         Filter = my_logged_instance.InstanceId.Apply(instanceId =&gt; $"resource.type = gce_instance AND resource.labels.instance_id = \"{instanceId}\""),
-    ///         UniqueWriterIdentity = true,
-    ///     });
-    /// 
-    ///     // Because our sink uses a unique_writer, we must grant that writer access to the bucket.
-    ///     var log_writer = new Gcp.Projects.IAMBinding("log-writer", new()
-    ///     {
-    ///         Project = "your-project-id",
-    ///         Role = "roles/storage.objectCreator",
-    ///         Members = new[]
-    ///         {
-    ///             instance_sink.WriterIdentity,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// The following example uses `exclusions` to filter logs that will not be exported. In this example logs are exported to a [log bucket](https://cloud.google.com/logging/docs/buckets) and there are 2 exclusions configured
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var log_bucket = new Gcp.Logging.ProjectSink("log-bucket", new()
-    ///     {
-    ///         Destination = "logging.googleapis.com/projects/my-project/locations/global/buckets/_Default",
-    ///         Exclusions = new[]
-    ///         {
-    ///             new Gcp.Logging.Inputs.ProjectSinkExclusionArgs
-    ///             {
-    ///                 Description = "Exclude logs from namespace-1 in k8s",
-    ///                 Filter = "resource.type = k8s_container resource.labels.namespace_name=\"namespace-1\" ",
-    ///                 Name = "nsexcllusion1",
-    ///             },
-    ///             new Gcp.Logging.Inputs.ProjectSinkExclusionArgs
-    ///             {
-    ///                 Description = "Exclude logs from namespace-2 in k8s",
-    ///                 Filter = "resource.type = k8s_container resource.labels.namespace_name=\"namespace-2\" ",
-    ///                 Name = "nsexcllusion2",
-    ///             },
-    ///         },
-    ///         UniqueWriterIdentity = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Project-level logging sinks can be imported using their URI, e.g.
@@ -154,15 +36,6 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
         [Output("destination")]
         public Output<string> Destination { get; private set; } = null!;
@@ -174,7 +47,7 @@ namespace Pulumi.Gcp.Logging
         public Output<bool?> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         /// </summary>
         [Output("exclusions")]
         public Output<ImmutableArray<Outputs.ProjectSinkExclusion>> Exclusions { get; private set; } = null!;
@@ -276,15 +149,6 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
         [Input("destination", required: true)]
         public Input<string> Destination { get; set; } = null!;
@@ -299,7 +163,7 @@ namespace Pulumi.Gcp.Logging
         private InputList<Inputs.ProjectSinkExclusionArgs>? _exclusions;
 
         /// <summary>
-        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         /// </summary>
         public InputList<Inputs.ProjectSinkExclusionArgs> Exclusions
         {
@@ -359,15 +223,6 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
         [Input("destination")]
         public Input<string>? Destination { get; set; }
@@ -382,7 +237,7 @@ namespace Pulumi.Gcp.Logging
         private InputList<Inputs.ProjectSinkExclusionGetArgs>? _exclusions;
 
         /// <summary>
-        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         /// </summary>
         public InputList<Inputs.ProjectSinkExclusionGetArgs> Exclusions
         {

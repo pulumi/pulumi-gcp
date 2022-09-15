@@ -44,9 +44,7 @@ class BucketObjectArgs:
         :param pulumi.Input[str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
         :param pulumi.Input['BucketObjectCustomerEncryptionArgs'] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
                Structure is documented below.
-        :param pulumi.Input[bool] event_based_hold: Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-               signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
-               will be subject to bucket-level retention (if any).
+        :param pulumi.Input[bool] event_based_hold: Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: User-provided metadata, in key/value pairs.
         :param pulumi.Input[str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
@@ -55,8 +53,7 @@ class BucketObjectArgs:
         :param pulumi.Input[str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
-        :param pulumi.Input[bool] temporary_hold: Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-               overwrites.
+        :param pulumi.Input[bool] temporary_hold: Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
         """
         pulumi.set(__self__, "bucket", bucket)
         if cache_control is not None:
@@ -201,9 +198,7 @@ class BucketObjectArgs:
     @pulumi.getter(name="eventBasedHold")
     def event_based_hold(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-        signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
-        will be subject to bucket-level retention (if any).
+        Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         """
         return pulumi.get(self, "event_based_hold")
 
@@ -278,8 +273,7 @@ class BucketObjectArgs:
     @pulumi.getter(name="temporaryHold")
     def temporary_hold(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-        overwrites.
+        Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
         """
         return pulumi.get(self, "temporary_hold")
 
@@ -325,9 +319,7 @@ class _BucketObjectState:
         :param pulumi.Input[str] crc32c: (Computed) Base 64 CRC32 hash of the uploaded data.
         :param pulumi.Input['BucketObjectCustomerEncryptionArgs'] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
                Structure is documented below.
-        :param pulumi.Input[bool] event_based_hold: Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-               signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
-               will be subject to bucket-level retention (if any).
+        :param pulumi.Input[bool] event_based_hold: Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
         :param pulumi.Input[str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data.
         :param pulumi.Input[str] media_link: (Computed) A url reference to download this object.
@@ -341,8 +333,7 @@ class _BucketObjectState:
         :param pulumi.Input[str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
-        :param pulumi.Input[bool] temporary_hold: Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-               overwrites.
+        :param pulumi.Input[bool] temporary_hold: Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
         """
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
@@ -510,9 +501,7 @@ class _BucketObjectState:
     @pulumi.getter(name="eventBasedHold")
     def event_based_hold(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-        signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
-        will be subject to bucket-level retention (if any).
+        Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         """
         return pulumi.get(self, "event_based_hold")
 
@@ -636,8 +625,7 @@ class _BucketObjectState:
     @pulumi.getter(name="temporaryHold")
     def temporary_hold(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-        overwrites.
+        Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
         """
         return pulumi.get(self, "temporary_hold")
 
@@ -705,9 +693,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
         :param pulumi.Input[pulumi.InputType['BucketObjectCustomerEncryptionArgs']] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
                Structure is documented below.
-        :param pulumi.Input[bool] event_based_hold: Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-               signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
-               will be subject to bucket-level retention (if any).
+        :param pulumi.Input[bool] event_based_hold: Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: User-provided metadata, in key/value pairs.
         :param pulumi.Input[str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
@@ -716,8 +702,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
-        :param pulumi.Input[bool] temporary_hold: Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-               overwrites.
+        :param pulumi.Input[bool] temporary_hold: Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
         """
         ...
     @overload
@@ -862,9 +847,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] crc32c: (Computed) Base 64 CRC32 hash of the uploaded data.
         :param pulumi.Input[pulumi.InputType['BucketObjectCustomerEncryptionArgs']] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
                Structure is documented below.
-        :param pulumi.Input[bool] event_based_hold: Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-               signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
-               will be subject to bucket-level retention (if any).
+        :param pulumi.Input[bool] event_based_hold: Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
         :param pulumi.Input[str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data.
         :param pulumi.Input[str] media_link: (Computed) A url reference to download this object.
@@ -878,8 +861,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
-        :param pulumi.Input[bool] temporary_hold: Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-               overwrites.
+        :param pulumi.Input[bool] temporary_hold: Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -991,9 +973,7 @@ class BucketObject(pulumi.CustomResource):
     @pulumi.getter(name="eventBasedHold")
     def event_based_hold(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is
-        signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects
-        will be subject to bucket-level retention (if any).
+        Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         """
         return pulumi.get(self, "event_based_hold")
 
@@ -1077,8 +1057,7 @@ class BucketObject(pulumi.CustomResource):
     @pulumi.getter(name="temporaryHold")
     def temporary_hold(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and
-        overwrites.
+        Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
         """
         return pulumi.get(self, "temporary_hold")
 

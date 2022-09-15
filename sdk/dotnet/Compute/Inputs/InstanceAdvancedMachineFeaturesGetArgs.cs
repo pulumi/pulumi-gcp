@@ -24,6 +24,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("threadsPerCore")]
         public Input<int>? ThreadsPerCore { get; set; }
 
+        /// <summary>
+        /// ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+        /// </summary>
+        [Input("visibleCoreCount")]
+        public Input<int>? VisibleCoreCount { get; set; }
+
         public InstanceAdvancedMachineFeaturesGetArgs()
         {
         }

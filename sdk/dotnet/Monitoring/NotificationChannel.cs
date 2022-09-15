@@ -50,6 +50,7 @@ namespace Pulumi.Gcp.Monitoring
     ///     var basic = new Gcp.Monitoring.NotificationChannel("basic", new()
     ///     {
     ///         DisplayName = "Test Notification Channel",
+    ///         ForceDelete = false,
     ///         Labels = 
     ///         {
     ///             { "email_address", "fake_email@blahblah.com" },
@@ -113,6 +114,16 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, the notification channel will be deleted regardless
+        /// of its use in alert policies (the policies will be updated
+        /// to remove the channel). If false, channels that are still
+        /// referenced by an existing alerting policy will fail to be
+        /// deleted in a delete operation.
+        /// </summary>
+        [Output("forceDelete")]
+        public Output<bool?> ForceDelete { get; private set; } = null!;
 
         /// <summary>
         /// Configuration fields that define the channel and its behavior. The
@@ -239,6 +250,16 @@ namespace Pulumi.Gcp.Monitoring
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// If true, the notification channel will be deleted regardless
+        /// of its use in alert policies (the policies will be updated
+        /// to remove the channel). If false, channels that are still
+        /// referenced by an existing alerting policy will fail to be
+        /// deleted in a delete operation.
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -318,6 +339,16 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// If true, the notification channel will be deleted regardless
+        /// of its use in alert policies (the policies will be updated
+        /// to remove the channel). If false, channels that are still
+        /// referenced by an existing alerting policy will fail to be
+        /// deleted in a delete operation.
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

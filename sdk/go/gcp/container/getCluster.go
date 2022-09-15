@@ -73,6 +73,7 @@ type LookupClusterResult struct {
 	ClusterIpv4Cidr            string                                `pulumi:"clusterIpv4Cidr"`
 	ClusterTelemetries         []GetClusterClusterTelemetry          `pulumi:"clusterTelemetries"`
 	ConfidentialNodes          []GetClusterConfidentialNode          `pulumi:"confidentialNodes"`
+	CostManagementConfigs      []GetClusterCostManagementConfig      `pulumi:"costManagementConfigs"`
 	DatabaseEncryptions        []GetClusterDatabaseEncryption        `pulumi:"databaseEncryptions"`
 	DatapathProvider           string                                `pulumi:"datapathProvider"`
 	DefaultMaxPodsPerNode      int                                   `pulumi:"defaultMaxPodsPerNode"`
@@ -112,6 +113,7 @@ type LookupClusterResult struct {
 	NodeConfigs                     []GetClusterNodeConfig                     `pulumi:"nodeConfigs"`
 	NodeLocations                   []string                                   `pulumi:"nodeLocations"`
 	NodePoolAutoConfigs             []GetClusterNodePoolAutoConfig             `pulumi:"nodePoolAutoConfigs"`
+	NodePoolDefaults                []GetClusterNodePoolDefault                `pulumi:"nodePoolDefaults"`
 	NodePools                       []GetClusterNodePool                       `pulumi:"nodePools"`
 	NodeVersion                     string                                     `pulumi:"nodeVersion"`
 	NotificationConfigs             []GetClusterNotificationConfig             `pulumi:"notificationConfigs"`
@@ -125,6 +127,7 @@ type LookupClusterResult struct {
 	ResourceLabels                  map[string]string                          `pulumi:"resourceLabels"`
 	ResourceUsageExportConfigs      []GetClusterResourceUsageExportConfig      `pulumi:"resourceUsageExportConfigs"`
 	SelfLink                        string                                     `pulumi:"selfLink"`
+	ServiceExternalIpsConfigs       []GetClusterServiceExternalIpsConfig       `pulumi:"serviceExternalIpsConfigs"`
 	ServicesIpv4Cidr                string                                     `pulumi:"servicesIpv4Cidr"`
 	Subnetwork                      string                                     `pulumi:"subnetwork"`
 	TpuConfigs                      []GetClusterTpuConfig                      `pulumi:"tpuConfigs"`
@@ -204,6 +207,10 @@ func (o LookupClusterResultOutput) ClusterTelemetries() GetClusterClusterTelemet
 
 func (o LookupClusterResultOutput) ConfidentialNodes() GetClusterConfidentialNodeArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterConfidentialNode { return v.ConfidentialNodes }).(GetClusterConfidentialNodeArrayOutput)
+}
+
+func (o LookupClusterResultOutput) CostManagementConfigs() GetClusterCostManagementConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterCostManagementConfig { return v.CostManagementConfigs }).(GetClusterCostManagementConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) DatabaseEncryptions() GetClusterDatabaseEncryptionArrayOutput {
@@ -361,6 +368,10 @@ func (o LookupClusterResultOutput) NodePoolAutoConfigs() GetClusterNodePoolAutoC
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterNodePoolAutoConfig { return v.NodePoolAutoConfigs }).(GetClusterNodePoolAutoConfigArrayOutput)
 }
 
+func (o LookupClusterResultOutput) NodePoolDefaults() GetClusterNodePoolDefaultArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterNodePoolDefault { return v.NodePoolDefaults }).(GetClusterNodePoolDefaultArrayOutput)
+}
+
 func (o LookupClusterResultOutput) NodePools() GetClusterNodePoolArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterNodePool { return v.NodePools }).(GetClusterNodePoolArrayOutput)
 }
@@ -411,6 +422,10 @@ func (o LookupClusterResultOutput) ResourceUsageExportConfigs() GetClusterResour
 
 func (o LookupClusterResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) ServiceExternalIpsConfigs() GetClusterServiceExternalIpsConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterServiceExternalIpsConfig { return v.ServiceExternalIpsConfigs }).(GetClusterServiceExternalIpsConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) ServicesIpv4Cidr() pulumi.StringOutput {

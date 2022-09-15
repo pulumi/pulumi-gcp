@@ -93,29 +93,15 @@ type FolderSink struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringOutput `pulumi:"destination"`
 	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions FolderSinkExclusionArrayOutput `pulumi:"exclusions"`
 	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrOutput `pulumi:"filter"`
-	// The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
+	// The folder to be exported to the sink. Note that either `[FOLDER_ID]` or `folders/[FOLDER_ID]` is
 	// accepted.
 	Folder pulumi.StringOutput `pulumi:"folder"`
 	// Whether or not to include children folders in the sink export. If true, logs
@@ -169,29 +155,15 @@ type folderSinkState struct {
 	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// The writer associated with the sink must have access to write to the above resource.
 	Destination *string `pulumi:"destination"`
 	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled *bool `pulumi:"disabled"`
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions []FolderSinkExclusion `pulumi:"exclusions"`
 	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter *string `pulumi:"filter"`
-	// The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
+	// The folder to be exported to the sink. Note that either `[FOLDER_ID]` or `folders/[FOLDER_ID]` is
 	// accepted.
 	Folder *string `pulumi:"folder"`
 	// Whether or not to include children folders in the sink export. If true, logs
@@ -211,29 +183,15 @@ type FolderSinkState struct {
 	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringPtrInput
 	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled pulumi.BoolPtrInput
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions FolderSinkExclusionArrayInput
 	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrInput
-	// The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
+	// The folder to be exported to the sink. Note that either `[FOLDER_ID]` or `folders/[FOLDER_ID]` is
 	// accepted.
 	Folder pulumi.StringPtrInput
 	// Whether or not to include children folders in the sink export. If true, logs
@@ -257,29 +215,15 @@ type folderSinkArgs struct {
 	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// The writer associated with the sink must have access to write to the above resource.
 	Destination string `pulumi:"destination"`
 	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled *bool `pulumi:"disabled"`
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions []FolderSinkExclusion `pulumi:"exclusions"`
 	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter *string `pulumi:"filter"`
-	// The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
+	// The folder to be exported to the sink. Note that either `[FOLDER_ID]` or `folders/[FOLDER_ID]` is
 	// accepted.
 	Folder string `pulumi:"folder"`
 	// Whether or not to include children folders in the sink export. If true, logs
@@ -297,29 +241,15 @@ type FolderSinkArgs struct {
 	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringInput
 	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled pulumi.BoolPtrInput
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions FolderSinkExclusionArrayInput
 	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrInput
-	// The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
+	// The folder to be exported to the sink. Note that either `[FOLDER_ID]` or `folders/[FOLDER_ID]` is
 	// accepted.
 	Folder pulumi.StringInput
 	// Whether or not to include children folders in the sink export. If true, logs
@@ -428,23 +358,6 @@ func (o FolderSinkOutput) Description() pulumi.StringPtrOutput {
 
 // The destination of the sink (or, in other words, where logs are written to). Can be a
 // Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// The writer associated with the sink must have access to write to the above resource.
 func (o FolderSinkOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderSink) pulumi.StringOutput { return v.Destination }).(pulumi.StringOutput)
 }
@@ -454,7 +367,7 @@ func (o FolderSinkOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FolderSink) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 func (o FolderSinkOutput) Exclusions() FolderSinkExclusionArrayOutput {
 	return o.ApplyT(func(v *FolderSink) FolderSinkExclusionArrayOutput { return v.Exclusions }).(FolderSinkExclusionArrayOutput)
 }
@@ -465,7 +378,7 @@ func (o FolderSinkOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FolderSink) pulumi.StringPtrOutput { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
-// The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
+// The folder to be exported to the sink. Note that either `[FOLDER_ID]` or `folders/[FOLDER_ID]` is
 // accepted.
 func (o FolderSinkOutput) Folder() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderSink) pulumi.StringOutput { return v.Folder }).(pulumi.StringOutput)

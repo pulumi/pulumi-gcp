@@ -28,6 +28,8 @@ if typing.TYPE_CHECKING:
     assuredworkloads = __assuredworkloads
     import pulumi_gcp.bigquery as __bigquery
     bigquery = __bigquery
+    import pulumi_gcp.bigqueryanalyticshub as __bigqueryanalyticshub
+    bigqueryanalyticshub = __bigqueryanalyticshub
     import pulumi_gcp.bigtable as __bigtable
     bigtable = __bigtable
     import pulumi_gcp.billing as __billing
@@ -80,6 +82,8 @@ if typing.TYPE_CHECKING:
     dataproc = __dataproc
     import pulumi_gcp.datastore as __datastore
     datastore = __datastore
+    import pulumi_gcp.datastream as __datastream
+    datastream = __datastream
     import pulumi_gcp.deploymentmanager as __deploymentmanager
     deploymentmanager = __deploymentmanager
     import pulumi_gcp.diagflow as __diagflow
@@ -194,6 +198,7 @@ else:
     artifactregistry = _utilities.lazy_import('pulumi_gcp.artifactregistry')
     assuredworkloads = _utilities.lazy_import('pulumi_gcp.assuredworkloads')
     bigquery = _utilities.lazy_import('pulumi_gcp.bigquery')
+    bigqueryanalyticshub = _utilities.lazy_import('pulumi_gcp.bigqueryanalyticshub')
     bigtable = _utilities.lazy_import('pulumi_gcp.bigtable')
     billing = _utilities.lazy_import('pulumi_gcp.billing')
     binaryauthorization = _utilities.lazy_import('pulumi_gcp.binaryauthorization')
@@ -220,6 +225,7 @@ else:
     dataplex = _utilities.lazy_import('pulumi_gcp.dataplex')
     dataproc = _utilities.lazy_import('pulumi_gcp.dataproc')
     datastore = _utilities.lazy_import('pulumi_gcp.datastore')
+    datastream = _utilities.lazy_import('pulumi_gcp.datastream')
     deploymentmanager = _utilities.lazy_import('pulumi_gcp.deploymentmanager')
     diagflow = _utilities.lazy_import('pulumi_gcp.diagflow')
     dns = _utilities.lazy_import('pulumi_gcp.dns')
@@ -818,6 +824,38 @@ _utilities.register(
   "fqn": "pulumi_gcp.bigquery",
   "classes": {
    "gcp:bigquery/table:Table": "Table"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigqueryanalyticshub/dataExchanceIamMember",
+  "fqn": "pulumi_gcp.bigqueryanalyticshub",
+  "classes": {
+   "gcp:bigqueryanalyticshub/dataExchanceIamMember:DataExchanceIamMember": "DataExchanceIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigqueryanalyticshub/dataExchange",
+  "fqn": "pulumi_gcp.bigqueryanalyticshub",
+  "classes": {
+   "gcp:bigqueryanalyticshub/dataExchange:DataExchange": "DataExchange"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigqueryanalyticshub/dataExchangeIamBinding",
+  "fqn": "pulumi_gcp.bigqueryanalyticshub",
+  "classes": {
+   "gcp:bigqueryanalyticshub/dataExchangeIamBinding:DataExchangeIamBinding": "DataExchangeIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigqueryanalyticshub/dataExchangeIamPolicy",
+  "fqn": "pulumi_gcp.bigqueryanalyticshub",
+  "classes": {
+   "gcp:bigqueryanalyticshub/dataExchangeIamPolicy:DataExchangeIamPolicy": "DataExchangeIamPolicy"
   }
  },
  {
@@ -2746,6 +2784,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.datastore",
   "classes": {
    "gcp:datastore/dataStoreIndex:DataStoreIndex": "DataStoreIndex"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "datastream/connectionProfile",
+  "fqn": "pulumi_gcp.datastream",
+  "classes": {
+   "gcp:datastream/connectionProfile:ConnectionProfile": "ConnectionProfile"
   }
  },
  {

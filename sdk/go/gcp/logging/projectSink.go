@@ -11,150 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := logging.NewProjectSink(ctx, "my-sink", &logging.ProjectSinkArgs{
-//				Destination:          pulumi.String("pubsub.googleapis.com/projects/my-project/topics/instance-activity"),
-//				Filter:               pulumi.String("resource.type = gce_instance AND severity >= WARNING"),
-//				UniqueWriterIdentity: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// A more complete example follows: this creates a compute instance, as well as a log sink that logs all activity to a
-// cloud storage bucket. Because we are using `uniqueWriterIdentity`, we must grant it access to the bucket. Note that
-// this grant requires the "Project IAM Admin" IAM role (`roles/resourcemanager.projectIamAdmin`) granted to the credentials
-// used with this provider.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewInstance(ctx, "my-logged-instance", &compute.InstanceArgs{
-//				MachineType: pulumi.String("e2-medium"),
-//				Zone:        pulumi.String("us-central1-a"),
-//				BootDisk: &compute.InstanceBootDiskArgs{
-//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: pulumi.String("debian-cloud/debian-11"),
-//					},
-//				},
-//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-//					&compute.InstanceNetworkInterfaceArgs{
-//						Network: pulumi.String("default"),
-//						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
-//							nil,
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = storage.NewBucket(ctx, "log-bucket", &storage.BucketArgs{
-//				Location: pulumi.String("US"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = logging.NewProjectSink(ctx, "instance-sink", &logging.ProjectSinkArgs{
-//				Description: pulumi.String("some explanation on what this is"),
-//				Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("storage.googleapis.com/%v", name), nil
-//				}).(pulumi.StringOutput),
-//				Filter: my_logged_instance.InstanceId.ApplyT(func(instanceId string) (string, error) {
-//					return fmt.Sprintf("resource.type = gce_instance AND resource.labels.instance_id = \"%v\"", instanceId), nil
-//				}).(pulumi.StringOutput),
-//				UniqueWriterIdentity: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = projects.NewIAMBinding(ctx, "log-writer", &projects.IAMBindingArgs{
-//				Project: pulumi.String("your-project-id"),
-//				Role:    pulumi.String("roles/storage.objectCreator"),
-//				Members: pulumi.StringArray{
-//					instance_sink.WriterIdentity,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// The following example uses `exclusions` to filter logs that will not be exported. In this example logs are exported to a [log bucket](https://cloud.google.com/logging/docs/buckets) and there are 2 exclusions configured
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := logging.NewProjectSink(ctx, "log-bucket", &logging.ProjectSinkArgs{
-//				Destination: pulumi.String("logging.googleapis.com/projects/my-project/locations/global/buckets/_Default"),
-//				Exclusions: logging.ProjectSinkExclusionArray{
-//					&logging.ProjectSinkExclusionArgs{
-//						Description: pulumi.String("Exclude logs from namespace-1 in k8s"),
-//						Filter:      pulumi.String("resource.type = k8s_container resource.labels.namespace_name=\"namespace-1\" "),
-//						Name:        pulumi.String("nsexcllusion1"),
-//					},
-//					&logging.ProjectSinkExclusionArgs{
-//						Description: pulumi.String("Exclude logs from namespace-2 in k8s"),
-//						Filter:      pulumi.String("resource.type = k8s_container resource.labels.namespace_name=\"namespace-2\" "),
-//						Name:        pulumi.String("nsexcllusion2"),
-//					},
-//				},
-//				UniqueWriterIdentity: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Project-level logging sinks can be imported using their URI, e.g.
@@ -173,24 +29,10 @@ type ProjectSink struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringOutput `pulumi:"destination"`
 	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions ProjectSinkExclusionArrayOutput `pulumi:"exclusions"`
 	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
@@ -248,24 +90,10 @@ type projectSinkState struct {
 	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// The writer associated with the sink must have access to write to the above resource.
 	Destination *string `pulumi:"destination"`
 	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled *bool `pulumi:"disabled"`
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions []ProjectSinkExclusion `pulumi:"exclusions"`
 	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
@@ -292,24 +120,10 @@ type ProjectSinkState struct {
 	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringPtrInput
 	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled pulumi.BoolPtrInput
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions ProjectSinkExclusionArrayInput
 	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
@@ -340,24 +154,10 @@ type projectSinkArgs struct {
 	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// The writer associated with the sink must have access to write to the above resource.
 	Destination string `pulumi:"destination"`
 	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled *bool `pulumi:"disabled"`
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions []ProjectSinkExclusion `pulumi:"exclusions"`
 	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
@@ -382,24 +182,10 @@ type ProjectSinkArgs struct {
 	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringInput
 	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled pulumi.BoolPtrInput
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions ProjectSinkExclusionArrayInput
 	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
@@ -515,23 +301,6 @@ func (o ProjectSinkOutput) Description() pulumi.StringPtrOutput {
 
 // The destination of the sink (or, in other words, where logs are written to). Can be a
 // Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// The writer associated with the sink must have access to write to the above resource.
 func (o ProjectSinkOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectSink) pulumi.StringOutput { return v.Destination }).(pulumi.StringOutput)
 }
@@ -541,7 +310,7 @@ func (o ProjectSinkOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectSink) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 func (o ProjectSinkOutput) Exclusions() ProjectSinkExclusionArrayOutput {
 	return o.ApplyT(func(v *ProjectSink) ProjectSinkExclusionArrayOutput { return v.Exclusions }).(ProjectSinkExclusionArrayOutput)
 }

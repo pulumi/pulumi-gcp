@@ -58,6 +58,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.appengine.ApplicationArgs;
  * import com.pulumi.gcp.projects.Service;
  * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
  * import com.pulumi.gcp.projects.IAMMember;
  * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.storage.Bucket;
@@ -106,10 +108,28 @@ import javax.annotation.Nullable;
  *             .disableDependentServices(false)
  *             .build());
  * 
+ *         var customServiceAccount = new Account(&#34;customServiceAccount&#34;, AccountArgs.builder()        
+ *             .project(service.project())
+ *             .accountId(&#34;my-account&#34;)
+ *             .displayName(&#34;Custom Service Account&#34;)
+ *             .build());
+ * 
  *         var gaeApi = new IAMMember(&#34;gaeApi&#34;, IAMMemberArgs.builder()        
  *             .project(service.project())
  *             .role(&#34;roles/compute.networkUser&#34;)
- *             .member(myProject.number().applyValue(number -&gt; String.format(&#34;serviceAccount:service-%s@gae-api-prod.google.com.iam.gserviceaccount.com&#34;, number)))
+ *             .member(customServiceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build());
+ * 
+ *         var logsWriter = new IAMMember(&#34;logsWriter&#34;, IAMMemberArgs.builder()        
+ *             .project(service.project())
+ *             .role(&#34;roles/logging.logWriter&#34;)
+ *             .member(customServiceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build());
+ * 
+ *         var storageViewer = new IAMMember(&#34;storageViewer&#34;, IAMMemberArgs.builder()        
+ *             .project(service.project())
+ *             .role(&#34;roles/storage.objectViewer&#34;)
+ *             .member(customServiceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
  *             .build());
  * 
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
@@ -163,6 +183,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .noopOnDestroy(true)
+ *             .serviceAccount(customServiceAccount.email())
  *             .build());
  * 
  *     }
@@ -591,6 +612,22 @@ public class FlexibleAppVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<String> service() {
         return this.service;
+    }
+    /**
+     * The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+     * default if this field is neither provided in app.yaml file nor through CLI flag.
+     * 
+     */
+    @Export(name="serviceAccount", type=String.class, parameters={})
+    private Output</* @Nullable */ String> serviceAccount;
+
+    /**
+     * @return The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+     * default if this field is neither provided in app.yaml file nor through CLI flag.
+     * 
+     */
+    public Output<Optional<String>> serviceAccount() {
+        return Codegen.optional(this.serviceAccount);
     }
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.

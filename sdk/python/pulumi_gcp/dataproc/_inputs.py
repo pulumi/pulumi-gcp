@@ -105,6 +105,7 @@ __all__ = [
     'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs',
     'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs',
     'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs',
     'WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs',
     'WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs',
     'WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs',
@@ -6108,6 +6109,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs:
                  reservation_affinity: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 shielded_instance_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -6120,6 +6122,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs:
         :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs'] reservation_affinity: Optional. Reservation Affinity for consuming Zonal reservation.
         :param pulumi.Input[str] service_account: Optional. The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_account_scopes: Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs'] shielded_instance_config: Optional. Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
         :param pulumi.Input[str] subnetwork: Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
         :param pulumi.Input[str] zone: Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
@@ -6140,6 +6143,8 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs:
             pulumi.set(__self__, "service_account", service_account)
         if service_account_scopes is not None:
             pulumi.set(__self__, "service_account_scopes", service_account_scopes)
+        if shielded_instance_config is not None:
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if tags is not None:
@@ -6242,6 +6247,18 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs:
     @service_account_scopes.setter
     def service_account_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "service_account_scopes", value)
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs']]:
+        """
+        Optional. Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+        """
+        return pulumi.get(self, "shielded_instance_config")
+
+    @shielded_instance_config.setter
+    def shielded_instance_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs']]):
+        pulumi.set(self, "shielded_instance_config", value)
 
     @property
     @pulumi.getter
@@ -6355,6 +6372,61 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAf
     @values.setter
     def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs:
+    def __init__(__self__, *,
+                 enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
+                 enable_secure_boot: Optional[pulumi.Input[bool]] = None,
+                 enable_vtpm: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enable_integrity_monitoring: Optional. Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+        :param pulumi.Input[bool] enable_secure_boot: Optional. Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+        :param pulumi.Input[bool] enable_vtpm: Optional. Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+        """
+        if enable_integrity_monitoring is not None:
+            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+        if enable_secure_boot is not None:
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+        if enable_vtpm is not None:
+            pulumi.set(__self__, "enable_vtpm", enable_vtpm)
+
+    @property
+    @pulumi.getter(name="enableIntegrityMonitoring")
+    def enable_integrity_monitoring(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+        """
+        return pulumi.get(self, "enable_integrity_monitoring")
+
+    @enable_integrity_monitoring.setter
+    def enable_integrity_monitoring(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_integrity_monitoring", value)
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+        """
+        return pulumi.get(self, "enable_secure_boot")
+
+    @enable_secure_boot.setter
+    def enable_secure_boot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_secure_boot", value)
+
+    @property
+    @pulumi.getter(name="enableVtpm")
+    def enable_vtpm(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+        """
+        return pulumi.get(self, "enable_vtpm")
+
+    @enable_vtpm.setter
+    def enable_vtpm(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_vtpm", value)
 
 
 @pulumi.input_type

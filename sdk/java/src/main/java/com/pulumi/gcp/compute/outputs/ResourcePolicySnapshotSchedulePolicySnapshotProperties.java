@@ -14,6 +14,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
     /**
+     * @return Creates the new snapshot in the snapshot chain labeled with the
+     * specified name. The chain name must be 1-63 characters long and comply
+     * with RFC1035.
+     * 
+     */
+    private @Nullable String chainName;
+    /**
      * @return Whether to perform a &#39;guest aware&#39; snapshot.
      * 
      */
@@ -31,6 +38,15 @@ public final class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
     private @Nullable String storageLocations;
 
     private ResourcePolicySnapshotSchedulePolicySnapshotProperties() {}
+    /**
+     * @return Creates the new snapshot in the snapshot chain labeled with the
+     * specified name. The chain name must be 1-63 characters long and comply
+     * with RFC1035.
+     * 
+     */
+    public Optional<String> chainName() {
+        return Optional.ofNullable(this.chainName);
+    }
     /**
      * @return Whether to perform a &#39;guest aware&#39; snapshot.
      * 
@@ -63,17 +79,24 @@ public final class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String chainName;
         private @Nullable Boolean guestFlush;
         private @Nullable Map<String,String> labels;
         private @Nullable String storageLocations;
         public Builder() {}
         public Builder(ResourcePolicySnapshotSchedulePolicySnapshotProperties defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.chainName = defaults.chainName;
     	      this.guestFlush = defaults.guestFlush;
     	      this.labels = defaults.labels;
     	      this.storageLocations = defaults.storageLocations;
         }
 
+        @CustomType.Setter
+        public Builder chainName(@Nullable String chainName) {
+            this.chainName = chainName;
+            return this;
+        }
         @CustomType.Setter
         public Builder guestFlush(@Nullable Boolean guestFlush) {
             this.guestFlush = guestFlush;
@@ -91,6 +114,7 @@ public final class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
         }
         public ResourcePolicySnapshotSchedulePolicySnapshotProperties build() {
             final var o = new ResourcePolicySnapshotSchedulePolicySnapshotProperties();
+            o.chainName = chainName;
             o.guestFlush = guestFlush;
             o.labels = labels;
             o.storageLocations = storageLocations;

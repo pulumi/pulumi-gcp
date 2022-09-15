@@ -91,6 +91,55 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Snapshot Chainname
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.Disk;
+ * import com.pulumi.gcp.compute.DiskArgs;
+ * import com.pulumi.gcp.compute.Snapshot;
+ * import com.pulumi.gcp.compute.SnapshotArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var debian = ComputeFunctions.getImage(GetImageArgs.builder()
+ *             .family(&#34;debian-11&#34;)
+ *             .project(&#34;debian-cloud&#34;)
+ *             .build());
+ * 
+ *         var persistent = new Disk(&#34;persistent&#34;, DiskArgs.builder()        
+ *             .image(debian.applyValue(getImageResult -&gt; getImageResult.selfLink()))
+ *             .size(10)
+ *             .type(&#34;pd-ssd&#34;)
+ *             .zone(&#34;us-central1-a&#34;)
+ *             .build());
+ * 
+ *         var snapshot = new Snapshot(&#34;snapshot&#34;, SnapshotArgs.builder()        
+ *             .sourceDisk(persistent.id())
+ *             .zone(&#34;us-central1-a&#34;)
+ *             .chainName(&#34;snapshot-chain&#34;)
+ *             .labels(Map.of(&#34;my_label&#34;, &#34;value&#34;))
+ *             .storageLocations(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -111,6 +160,30 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:compute/snapshot:Snapshot")
 public class Snapshot extends com.pulumi.resources.CustomResource {
+    /**
+     * Creates the new snapshot in the snapshot chain labeled with the
+     * specified name. The chain name must be 1-63 characters long and
+     * comply with RFC1035. This is an uncommon option only for advanced
+     * service owners who needs to create separate snapshot chains, for
+     * example, for chargeback tracking.  When you describe your snapshot
+     * resource, this field is visible only if it has a non-empty value.
+     * 
+     */
+    @Export(name="chainName", type=String.class, parameters={})
+    private Output</* @Nullable */ String> chainName;
+
+    /**
+     * @return Creates the new snapshot in the snapshot chain labeled with the
+     * specified name. The chain name must be 1-63 characters long and
+     * comply with RFC1035. This is an uncommon option only for advanced
+     * service owners who needs to create separate snapshot chains, for
+     * example, for chargeback tracking.  When you describe your snapshot
+     * resource, this field is visible only if it has a non-empty value.
+     * 
+     */
+    public Output<Optional<String>> chainName() {
+        return Codegen.optional(this.chainName);
+    }
     /**
      * Creation timestamp in RFC3339 text format.
      * 

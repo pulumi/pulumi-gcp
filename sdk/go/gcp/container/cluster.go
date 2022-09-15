@@ -162,6 +162,8 @@ type Cluster struct {
 	ClusterTelemetry ClusterClusterTelemetryOutput `pulumi:"clusterTelemetry"`
 	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes ClusterConfidentialNodesOutput `pulumi:"confidentialNodes"`
+	// Cost management configuration for the cluster.
+	CostManagementConfig ClusterCostManagementConfigOutput `pulumi:"costManagementConfig"`
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionOutput `pulumi:"databaseEncryption"`
 	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
@@ -311,6 +313,8 @@ type Cluster struct {
 	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
 	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
 	NodePoolAutoConfig ClusterNodePoolAutoConfigPtrOutput `pulumi:"nodePoolAutoConfig"`
+	// ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+	NodePoolDefaults ClusterNodePoolDefaultsPtrOutput `pulumi:"nodePoolDefaults"`
 	// List of node pools associated with this cluster.
 	// See container.NodePool for schema.
 	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -365,6 +369,8 @@ type Cluster struct {
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrOutput `pulumi:"resourceUsageExportConfig"`
 	// The server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// Structure is documented below.
+	ServiceExternalIpsConfig ClusterServiceExternalIpsConfigOutput `pulumi:"serviceExternalIpsConfig"`
 	// The IP address range of the Kubernetes services in this
 	// cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
@@ -444,6 +450,8 @@ type clusterState struct {
 	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
 	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes *ClusterConfidentialNodes `pulumi:"confidentialNodes"`
+	// Cost management configuration for the cluster.
+	CostManagementConfig *ClusterCostManagementConfig `pulumi:"costManagementConfig"`
 	// Structure is documented below.
 	DatabaseEncryption *ClusterDatabaseEncryption `pulumi:"databaseEncryption"`
 	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
@@ -593,6 +601,8 @@ type clusterState struct {
 	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
 	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
 	NodePoolAutoConfig *ClusterNodePoolAutoConfig `pulumi:"nodePoolAutoConfig"`
+	// ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+	NodePoolDefaults *ClusterNodePoolDefaults `pulumi:"nodePoolDefaults"`
 	// List of node pools associated with this cluster.
 	// See container.NodePool for schema.
 	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -647,6 +657,8 @@ type clusterState struct {
 	ResourceUsageExportConfig *ClusterResourceUsageExportConfig `pulumi:"resourceUsageExportConfig"`
 	// The server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// Structure is documented below.
+	ServiceExternalIpsConfig *ClusterServiceExternalIpsConfig `pulumi:"serviceExternalIpsConfig"`
 	// The IP address range of the Kubernetes services in this
 	// cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
@@ -698,6 +710,8 @@ type ClusterState struct {
 	ClusterTelemetry ClusterClusterTelemetryPtrInput
 	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes ClusterConfidentialNodesPtrInput
+	// Cost management configuration for the cluster.
+	CostManagementConfig ClusterCostManagementConfigPtrInput
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionPtrInput
 	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
@@ -847,6 +861,8 @@ type ClusterState struct {
 	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
 	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
 	NodePoolAutoConfig ClusterNodePoolAutoConfigPtrInput
+	// ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+	NodePoolDefaults ClusterNodePoolDefaultsPtrInput
 	// List of node pools associated with this cluster.
 	// See container.NodePool for schema.
 	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -901,6 +917,8 @@ type ClusterState struct {
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrInput
 	// The server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
+	// Structure is documented below.
+	ServiceExternalIpsConfig ClusterServiceExternalIpsConfigPtrInput
 	// The IP address range of the Kubernetes services in this
 	// cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
@@ -956,6 +974,8 @@ type clusterArgs struct {
 	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
 	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes *ClusterConfidentialNodes `pulumi:"confidentialNodes"`
+	// Cost management configuration for the cluster.
+	CostManagementConfig *ClusterCostManagementConfig `pulumi:"costManagementConfig"`
 	// Structure is documented below.
 	DatabaseEncryption *ClusterDatabaseEncryption `pulumi:"databaseEncryption"`
 	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
@@ -1097,6 +1117,8 @@ type clusterArgs struct {
 	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
 	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
 	NodePoolAutoConfig *ClusterNodePoolAutoConfig `pulumi:"nodePoolAutoConfig"`
+	// ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+	NodePoolDefaults *ClusterNodePoolDefaults `pulumi:"nodePoolDefaults"`
 	// List of node pools associated with this cluster.
 	// See container.NodePool for schema.
 	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -1148,6 +1170,8 @@ type clusterArgs struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig *ClusterResourceUsageExportConfig `pulumi:"resourceUsageExportConfig"`
+	// Structure is documented below.
+	ServiceExternalIpsConfig *ClusterServiceExternalIpsConfig `pulumi:"serviceExternalIpsConfig"`
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork *string `pulumi:"subnetwork"`
@@ -1191,6 +1215,8 @@ type ClusterArgs struct {
 	ClusterTelemetry ClusterClusterTelemetryPtrInput
 	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes ClusterConfidentialNodesPtrInput
+	// Cost management configuration for the cluster.
+	CostManagementConfig ClusterCostManagementConfigPtrInput
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionPtrInput
 	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
@@ -1332,6 +1358,8 @@ type ClusterArgs struct {
 	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
 	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
 	NodePoolAutoConfig ClusterNodePoolAutoConfigPtrInput
+	// ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+	NodePoolDefaults ClusterNodePoolDefaultsPtrInput
 	// List of node pools associated with this cluster.
 	// See container.NodePool for schema.
 	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -1383,6 +1411,8 @@ type ClusterArgs struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrInput
+	// Structure is documented below.
+	ServiceExternalIpsConfig ClusterServiceExternalIpsConfigPtrInput
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork pulumi.StringPtrInput
@@ -1530,6 +1560,11 @@ func (o ClusterOutput) ClusterTelemetry() ClusterClusterTelemetryOutput {
 // Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 func (o ClusterOutput) ConfidentialNodes() ClusterConfidentialNodesOutput {
 	return o.ApplyT(func(v *Cluster) ClusterConfidentialNodesOutput { return v.ConfidentialNodes }).(ClusterConfidentialNodesOutput)
+}
+
+// Cost management configuration for the cluster.
+func (o ClusterOutput) CostManagementConfig() ClusterCostManagementConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterCostManagementConfigOutput { return v.CostManagementConfig }).(ClusterCostManagementConfigOutput)
 }
 
 // Structure is documented below.
@@ -1794,6 +1829,11 @@ func (o ClusterOutput) NodePoolAutoConfig() ClusterNodePoolAutoConfigPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterNodePoolAutoConfigPtrOutput { return v.NodePoolAutoConfig }).(ClusterNodePoolAutoConfigPtrOutput)
 }
 
+// ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+func (o ClusterOutput) NodePoolDefaults() ClusterNodePoolDefaultsPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterNodePoolDefaultsPtrOutput { return v.NodePoolDefaults }).(ClusterNodePoolDefaultsPtrOutput)
+}
+
 // List of node pools associated with this cluster.
 // See container.NodePool for schema.
 // **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -1885,6 +1925,11 @@ func (o ClusterOutput) ResourceUsageExportConfig() ClusterResourceUsageExportCon
 // The server-defined URL for the resource.
 func (o ClusterOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Structure is documented below.
+func (o ClusterOutput) ServiceExternalIpsConfig() ClusterServiceExternalIpsConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterServiceExternalIpsConfigOutput { return v.ServiceExternalIpsConfig }).(ClusterServiceExternalIpsConfigOutput)
 }
 
 // The IP address range of the Kubernetes services in this

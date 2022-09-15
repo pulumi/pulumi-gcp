@@ -23,6 +23,7 @@ class ClusterArgs:
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  cluster_telemetry: Optional[pulumi.Input['ClusterClusterTelemetryArgs']] = None,
                  confidential_nodes: Optional[pulumi.Input['ClusterConfidentialNodesArgs']] = None,
+                 cost_management_config: Optional[pulumi.Input['ClusterCostManagementConfigArgs']] = None,
                  database_encryption: Optional[pulumi.Input['ClusterDatabaseEncryptionArgs']] = None,
                  datapath_provider: Optional[pulumi.Input[str]] = None,
                  default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -57,6 +58,7 @@ class ClusterArgs:
                  node_config: Optional[pulumi.Input['ClusterNodeConfigArgs']] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  node_pool_auto_config: Optional[pulumi.Input['ClusterNodePoolAutoConfigArgs']] = None,
+                 node_pool_defaults: Optional[pulumi.Input['ClusterNodePoolDefaultsArgs']] = None,
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]]] = None,
                  node_version: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['ClusterNotificationConfigArgs']] = None,
@@ -68,6 +70,7 @@ class ClusterArgs:
                  remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input['ClusterResourceUsageExportConfigArgs']] = None,
+                 service_external_ips_config: Optional[pulumi.Input['ClusterServiceExternalIpsConfigArgs']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input['ClusterTpuConfigArgs']] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']] = None,
@@ -94,6 +97,7 @@ class ClusterArgs:
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input['ClusterConfidentialNodesArgs'] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        :param pulumi.Input['ClusterCostManagementConfigArgs'] cost_management_config: Cost management configuration for the cluster.
         :param pulumi.Input['ClusterDatabaseEncryptionArgs'] database_encryption: Structure is documented below.
         :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
@@ -199,6 +203,7 @@ class ClusterArgs:
         :param pulumi.Input['ClusterNodePoolAutoConfigArgs'] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolDefaultsArgs'] node_pool_defaults: ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]] node_pools: List of node pools associated with this cluster.
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -239,6 +244,7 @@ class ClusterArgs:
         :param pulumi.Input['ClusterResourceUsageExportConfigArgs'] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
+        :param pulumi.Input['ClusterServiceExternalIpsConfigArgs'] service_external_ips_config: Structure is documented below.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
         :param pulumi.Input['ClusterTpuConfigArgs'] tpu_config: TPU configuration for the cluster.
@@ -262,6 +268,8 @@ class ClusterArgs:
             pulumi.set(__self__, "cluster_telemetry", cluster_telemetry)
         if confidential_nodes is not None:
             pulumi.set(__self__, "confidential_nodes", confidential_nodes)
+        if cost_management_config is not None:
+            pulumi.set(__self__, "cost_management_config", cost_management_config)
         if database_encryption is not None:
             pulumi.set(__self__, "database_encryption", database_encryption)
         if datapath_provider is not None:
@@ -333,6 +341,8 @@ class ClusterArgs:
             pulumi.set(__self__, "node_locations", node_locations)
         if node_pool_auto_config is not None:
             pulumi.set(__self__, "node_pool_auto_config", node_pool_auto_config)
+        if node_pool_defaults is not None:
+            pulumi.set(__self__, "node_pool_defaults", node_pool_defaults)
         if node_pools is not None:
             pulumi.set(__self__, "node_pools", node_pools)
         if node_version is not None:
@@ -355,6 +365,8 @@ class ClusterArgs:
             pulumi.set(__self__, "resource_labels", resource_labels)
         if resource_usage_export_config is not None:
             pulumi.set(__self__, "resource_usage_export_config", resource_usage_export_config)
+        if service_external_ips_config is not None:
+            pulumi.set(__self__, "service_external_ips_config", service_external_ips_config)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if tpu_config is not None:
@@ -460,6 +472,18 @@ class ClusterArgs:
     @confidential_nodes.setter
     def confidential_nodes(self, value: Optional[pulumi.Input['ClusterConfidentialNodesArgs']]):
         pulumi.set(self, "confidential_nodes", value)
+
+    @property
+    @pulumi.getter(name="costManagementConfig")
+    def cost_management_config(self) -> Optional[pulumi.Input['ClusterCostManagementConfigArgs']]:
+        """
+        Cost management configuration for the cluster.
+        """
+        return pulumi.get(self, "cost_management_config")
+
+    @cost_management_config.setter
+    def cost_management_config(self, value: Optional[pulumi.Input['ClusterCostManagementConfigArgs']]):
+        pulumi.set(self, "cost_management_config", value)
 
     @property
     @pulumi.getter(name="databaseEncryption")
@@ -941,6 +965,18 @@ class ClusterArgs:
         pulumi.set(self, "node_pool_auto_config", value)
 
     @property
+    @pulumi.getter(name="nodePoolDefaults")
+    def node_pool_defaults(self) -> Optional[pulumi.Input['ClusterNodePoolDefaultsArgs']]:
+        """
+        ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+        """
+        return pulumi.get(self, "node_pool_defaults")
+
+    @node_pool_defaults.setter
+    def node_pool_defaults(self, value: Optional[pulumi.Input['ClusterNodePoolDefaultsArgs']]):
+        pulumi.set(self, "node_pool_defaults", value)
+
+    @property
     @pulumi.getter(name="nodePools")
     def node_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]]]:
         """
@@ -1102,6 +1138,18 @@ class ClusterArgs:
         pulumi.set(self, "resource_usage_export_config", value)
 
     @property
+    @pulumi.getter(name="serviceExternalIpsConfig")
+    def service_external_ips_config(self) -> Optional[pulumi.Input['ClusterServiceExternalIpsConfigArgs']]:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_external_ips_config")
+
+    @service_external_ips_config.setter
+    def service_external_ips_config(self, value: Optional[pulumi.Input['ClusterServiceExternalIpsConfigArgs']]):
+        pulumi.set(self, "service_external_ips_config", value)
+
+    @property
     @pulumi.getter
     def subnetwork(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1164,6 +1212,7 @@ class _ClusterState:
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  cluster_telemetry: Optional[pulumi.Input['ClusterClusterTelemetryArgs']] = None,
                  confidential_nodes: Optional[pulumi.Input['ClusterConfidentialNodesArgs']] = None,
+                 cost_management_config: Optional[pulumi.Input['ClusterCostManagementConfigArgs']] = None,
                  database_encryption: Optional[pulumi.Input['ClusterDatabaseEncryptionArgs']] = None,
                  datapath_provider: Optional[pulumi.Input[str]] = None,
                  default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -1201,6 +1250,7 @@ class _ClusterState:
                  node_config: Optional[pulumi.Input['ClusterNodeConfigArgs']] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  node_pool_auto_config: Optional[pulumi.Input['ClusterNodePoolAutoConfigArgs']] = None,
+                 node_pool_defaults: Optional[pulumi.Input['ClusterNodePoolDefaultsArgs']] = None,
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]]] = None,
                  node_version: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['ClusterNotificationConfigArgs']] = None,
@@ -1214,6 +1264,7 @@ class _ClusterState:
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input['ClusterResourceUsageExportConfigArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 service_external_ips_config: Optional[pulumi.Input['ClusterServiceExternalIpsConfigArgs']] = None,
                  services_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input['ClusterTpuConfigArgs']] = None,
@@ -1242,6 +1293,7 @@ class _ClusterState:
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input['ClusterConfidentialNodesArgs'] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        :param pulumi.Input['ClusterCostManagementConfigArgs'] cost_management_config: Cost management configuration for the cluster.
         :param pulumi.Input['ClusterDatabaseEncryptionArgs'] database_encryption: Structure is documented below.
         :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
@@ -1352,6 +1404,7 @@ class _ClusterState:
         :param pulumi.Input['ClusterNodePoolAutoConfigArgs'] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolDefaultsArgs'] node_pool_defaults: ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]] node_pools: List of node pools associated with this cluster.
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -1393,6 +1446,7 @@ class _ClusterState:
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
         :param pulumi.Input[str] self_link: The server-defined URL for the resource.
+        :param pulumi.Input['ClusterServiceExternalIpsConfigArgs'] service_external_ips_config: Structure is documented below.
         :param pulumi.Input[str] services_ipv4_cidr: The IP address range of the Kubernetes services in this
                cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
                notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
@@ -1423,6 +1477,8 @@ class _ClusterState:
             pulumi.set(__self__, "cluster_telemetry", cluster_telemetry)
         if confidential_nodes is not None:
             pulumi.set(__self__, "confidential_nodes", confidential_nodes)
+        if cost_management_config is not None:
+            pulumi.set(__self__, "cost_management_config", cost_management_config)
         if database_encryption is not None:
             pulumi.set(__self__, "database_encryption", database_encryption)
         if datapath_provider is not None:
@@ -1500,6 +1556,8 @@ class _ClusterState:
             pulumi.set(__self__, "node_locations", node_locations)
         if node_pool_auto_config is not None:
             pulumi.set(__self__, "node_pool_auto_config", node_pool_auto_config)
+        if node_pool_defaults is not None:
+            pulumi.set(__self__, "node_pool_defaults", node_pool_defaults)
         if node_pools is not None:
             pulumi.set(__self__, "node_pools", node_pools)
         if node_version is not None:
@@ -1526,6 +1584,8 @@ class _ClusterState:
             pulumi.set(__self__, "resource_usage_export_config", resource_usage_export_config)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if service_external_ips_config is not None:
+            pulumi.set(__self__, "service_external_ips_config", service_external_ips_config)
         if services_ipv4_cidr is not None:
             pulumi.set(__self__, "services_ipv4_cidr", services_ipv4_cidr)
         if subnetwork is not None:
@@ -1635,6 +1695,18 @@ class _ClusterState:
     @confidential_nodes.setter
     def confidential_nodes(self, value: Optional[pulumi.Input['ClusterConfidentialNodesArgs']]):
         pulumi.set(self, "confidential_nodes", value)
+
+    @property
+    @pulumi.getter(name="costManagementConfig")
+    def cost_management_config(self) -> Optional[pulumi.Input['ClusterCostManagementConfigArgs']]:
+        """
+        Cost management configuration for the cluster.
+        """
+        return pulumi.get(self, "cost_management_config")
+
+    @cost_management_config.setter
+    def cost_management_config(self, value: Optional[pulumi.Input['ClusterCostManagementConfigArgs']]):
+        pulumi.set(self, "cost_management_config", value)
 
     @property
     @pulumi.getter(name="databaseEncryption")
@@ -2154,6 +2226,18 @@ class _ClusterState:
         pulumi.set(self, "node_pool_auto_config", value)
 
     @property
+    @pulumi.getter(name="nodePoolDefaults")
+    def node_pool_defaults(self) -> Optional[pulumi.Input['ClusterNodePoolDefaultsArgs']]:
+        """
+        ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+        """
+        return pulumi.get(self, "node_pool_defaults")
+
+    @node_pool_defaults.setter
+    def node_pool_defaults(self, value: Optional[pulumi.Input['ClusterNodePoolDefaultsArgs']]):
+        pulumi.set(self, "node_pool_defaults", value)
+
+    @property
     @pulumi.getter(name="nodePools")
     def node_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]]]:
         """
@@ -2336,6 +2420,18 @@ class _ClusterState:
         pulumi.set(self, "self_link", value)
 
     @property
+    @pulumi.getter(name="serviceExternalIpsConfig")
+    def service_external_ips_config(self) -> Optional[pulumi.Input['ClusterServiceExternalIpsConfigArgs']]:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_external_ips_config")
+
+    @service_external_ips_config.setter
+    def service_external_ips_config(self, value: Optional[pulumi.Input['ClusterServiceExternalIpsConfigArgs']]):
+        pulumi.set(self, "service_external_ips_config", value)
+
+    @property
     @pulumi.getter(name="servicesIpv4Cidr")
     def services_ipv4_cidr(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2429,6 +2525,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  cluster_telemetry: Optional[pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']]] = None,
                  confidential_nodes: Optional[pulumi.Input[pulumi.InputType['ClusterConfidentialNodesArgs']]] = None,
+                 cost_management_config: Optional[pulumi.Input[pulumi.InputType['ClusterCostManagementConfigArgs']]] = None,
                  database_encryption: Optional[pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']]] = None,
                  datapath_provider: Optional[pulumi.Input[str]] = None,
                  default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -2463,6 +2560,7 @@ class Cluster(pulumi.CustomResource):
                  node_config: Optional[pulumi.Input[pulumi.InputType['ClusterNodeConfigArgs']]] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  node_pool_auto_config: Optional[pulumi.Input[pulumi.InputType['ClusterNodePoolAutoConfigArgs']]] = None,
+                 node_pool_defaults: Optional[pulumi.Input[pulumi.InputType['ClusterNodePoolDefaultsArgs']]] = None,
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodePoolArgs']]]]] = None,
                  node_version: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']]] = None,
@@ -2474,6 +2572,7 @@ class Cluster(pulumi.CustomResource):
                  remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']]] = None,
+                 service_external_ips_config: Optional[pulumi.Input[pulumi.InputType['ClusterServiceExternalIpsConfigArgs']]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input[pulumi.InputType['ClusterTpuConfigArgs']]] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterVerticalPodAutoscalingArgs']]] = None,
@@ -2571,6 +2670,7 @@ class Cluster(pulumi.CustomResource):
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterConfidentialNodesArgs']] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterCostManagementConfigArgs']] cost_management_config: Cost management configuration for the cluster.
         :param pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']] database_encryption: Structure is documented below.
         :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
@@ -2676,6 +2776,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterNodePoolAutoConfigArgs']] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterNodePoolDefaultsArgs']] node_pool_defaults: ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodePoolArgs']]]] node_pools: List of node pools associated with this cluster.
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -2716,6 +2817,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterServiceExternalIpsConfigArgs']] service_external_ips_config: Structure is documented below.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
         :param pulumi.Input[pulumi.InputType['ClusterTpuConfigArgs']] tpu_config: TPU configuration for the cluster.
@@ -2823,6 +2925,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  cluster_telemetry: Optional[pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']]] = None,
                  confidential_nodes: Optional[pulumi.Input[pulumi.InputType['ClusterConfidentialNodesArgs']]] = None,
+                 cost_management_config: Optional[pulumi.Input[pulumi.InputType['ClusterCostManagementConfigArgs']]] = None,
                  database_encryption: Optional[pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']]] = None,
                  datapath_provider: Optional[pulumi.Input[str]] = None,
                  default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -2857,6 +2960,7 @@ class Cluster(pulumi.CustomResource):
                  node_config: Optional[pulumi.Input[pulumi.InputType['ClusterNodeConfigArgs']]] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  node_pool_auto_config: Optional[pulumi.Input[pulumi.InputType['ClusterNodePoolAutoConfigArgs']]] = None,
+                 node_pool_defaults: Optional[pulumi.Input[pulumi.InputType['ClusterNodePoolDefaultsArgs']]] = None,
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodePoolArgs']]]]] = None,
                  node_version: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']]] = None,
@@ -2868,6 +2972,7 @@ class Cluster(pulumi.CustomResource):
                  remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']]] = None,
+                 service_external_ips_config: Optional[pulumi.Input[pulumi.InputType['ClusterServiceExternalIpsConfigArgs']]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input[pulumi.InputType['ClusterTpuConfigArgs']]] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterVerticalPodAutoscalingArgs']]] = None,
@@ -2888,6 +2993,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["cluster_ipv4_cidr"] = cluster_ipv4_cidr
             __props__.__dict__["cluster_telemetry"] = cluster_telemetry
             __props__.__dict__["confidential_nodes"] = confidential_nodes
+            __props__.__dict__["cost_management_config"] = cost_management_config
             __props__.__dict__["database_encryption"] = database_encryption
             __props__.__dict__["datapath_provider"] = datapath_provider
             __props__.__dict__["default_max_pods_per_node"] = default_max_pods_per_node
@@ -2925,6 +3031,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["node_config"] = node_config
             __props__.__dict__["node_locations"] = node_locations
             __props__.__dict__["node_pool_auto_config"] = node_pool_auto_config
+            __props__.__dict__["node_pool_defaults"] = node_pool_defaults
             __props__.__dict__["node_pools"] = node_pools
             __props__.__dict__["node_version"] = node_version
             __props__.__dict__["notification_config"] = notification_config
@@ -2936,6 +3043,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["remove_default_node_pool"] = remove_default_node_pool
             __props__.__dict__["resource_labels"] = resource_labels
             __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config
+            __props__.__dict__["service_external_ips_config"] = service_external_ips_config
             __props__.__dict__["subnetwork"] = subnetwork
             __props__.__dict__["tpu_config"] = tpu_config
             __props__.__dict__["vertical_pod_autoscaling"] = vertical_pod_autoscaling
@@ -2964,6 +3072,7 @@ class Cluster(pulumi.CustomResource):
             cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
             cluster_telemetry: Optional[pulumi.Input[pulumi.InputType['ClusterClusterTelemetryArgs']]] = None,
             confidential_nodes: Optional[pulumi.Input[pulumi.InputType['ClusterConfidentialNodesArgs']]] = None,
+            cost_management_config: Optional[pulumi.Input[pulumi.InputType['ClusterCostManagementConfigArgs']]] = None,
             database_encryption: Optional[pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']]] = None,
             datapath_provider: Optional[pulumi.Input[str]] = None,
             default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -3001,6 +3110,7 @@ class Cluster(pulumi.CustomResource):
             node_config: Optional[pulumi.Input[pulumi.InputType['ClusterNodeConfigArgs']]] = None,
             node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             node_pool_auto_config: Optional[pulumi.Input[pulumi.InputType['ClusterNodePoolAutoConfigArgs']]] = None,
+            node_pool_defaults: Optional[pulumi.Input[pulumi.InputType['ClusterNodePoolDefaultsArgs']]] = None,
             node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodePoolArgs']]]]] = None,
             node_version: Optional[pulumi.Input[str]] = None,
             notification_config: Optional[pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']]] = None,
@@ -3014,6 +3124,7 @@ class Cluster(pulumi.CustomResource):
             resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            service_external_ips_config: Optional[pulumi.Input[pulumi.InputType['ClusterServiceExternalIpsConfigArgs']]] = None,
             services_ipv4_cidr: Optional[pulumi.Input[str]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
             tpu_config: Optional[pulumi.Input[pulumi.InputType['ClusterTpuConfigArgs']]] = None,
@@ -3047,6 +3158,7 @@ class Cluster(pulumi.CustomResource):
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterConfidentialNodesArgs']] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterCostManagementConfigArgs']] cost_management_config: Cost management configuration for the cluster.
         :param pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']] database_encryption: Structure is documented below.
         :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
@@ -3157,6 +3269,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterNodePoolAutoConfigArgs']] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterNodePoolDefaultsArgs']] node_pool_defaults: ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodePoolArgs']]]] node_pools: List of node pools associated with this cluster.
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -3198,6 +3311,7 @@ class Cluster(pulumi.CustomResource):
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
         :param pulumi.Input[str] self_link: The server-defined URL for the resource.
+        :param pulumi.Input[pulumi.InputType['ClusterServiceExternalIpsConfigArgs']] service_external_ips_config: Structure is documented below.
         :param pulumi.Input[str] services_ipv4_cidr: The IP address range of the Kubernetes services in this
                cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
                notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
@@ -3225,6 +3339,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["cluster_ipv4_cidr"] = cluster_ipv4_cidr
         __props__.__dict__["cluster_telemetry"] = cluster_telemetry
         __props__.__dict__["confidential_nodes"] = confidential_nodes
+        __props__.__dict__["cost_management_config"] = cost_management_config
         __props__.__dict__["database_encryption"] = database_encryption
         __props__.__dict__["datapath_provider"] = datapath_provider
         __props__.__dict__["default_max_pods_per_node"] = default_max_pods_per_node
@@ -3262,6 +3377,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["node_config"] = node_config
         __props__.__dict__["node_locations"] = node_locations
         __props__.__dict__["node_pool_auto_config"] = node_pool_auto_config
+        __props__.__dict__["node_pool_defaults"] = node_pool_defaults
         __props__.__dict__["node_pools"] = node_pools
         __props__.__dict__["node_version"] = node_version
         __props__.__dict__["notification_config"] = notification_config
@@ -3275,6 +3391,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["resource_labels"] = resource_labels
         __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["service_external_ips_config"] = service_external_ips_config
         __props__.__dict__["services_ipv4_cidr"] = services_ipv4_cidr
         __props__.__dict__["subnetwork"] = subnetwork
         __props__.__dict__["tpu_config"] = tpu_config
@@ -3351,6 +3468,14 @@ class Cluster(pulumi.CustomResource):
         Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         """
         return pulumi.get(self, "confidential_nodes")
+
+    @property
+    @pulumi.getter(name="costManagementConfig")
+    def cost_management_config(self) -> pulumi.Output['outputs.ClusterCostManagementConfig']:
+        """
+        Cost management configuration for the cluster.
+        """
+        return pulumi.get(self, "cost_management_config")
 
     @property
     @pulumi.getter(name="databaseEncryption")
@@ -3722,6 +3847,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "node_pool_auto_config")
 
     @property
+    @pulumi.getter(name="nodePoolDefaults")
+    def node_pool_defaults(self) -> pulumi.Output[Optional['outputs.ClusterNodePoolDefaults']]:
+        """
+        ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+        """
+        return pulumi.get(self, "node_pool_defaults")
+
+    @property
     @pulumi.getter(name="nodePools")
     def node_pools(self) -> pulumi.Output[Sequence['outputs.ClusterNodePool']]:
         """
@@ -3850,6 +3983,14 @@ class Cluster(pulumi.CustomResource):
         The server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="serviceExternalIpsConfig")
+    def service_external_ips_config(self) -> pulumi.Output['outputs.ClusterServiceExternalIpsConfig']:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_external_ips_config")
 
     @property
     @pulumi.getter(name="servicesIpv4Cidr")

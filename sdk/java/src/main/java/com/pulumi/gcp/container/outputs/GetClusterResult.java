@@ -10,6 +10,7 @@ import com.pulumi.gcp.container.outputs.GetClusterBinaryAuthorization;
 import com.pulumi.gcp.container.outputs.GetClusterClusterAutoscaling;
 import com.pulumi.gcp.container.outputs.GetClusterClusterTelemetry;
 import com.pulumi.gcp.container.outputs.GetClusterConfidentialNode;
+import com.pulumi.gcp.container.outputs.GetClusterCostManagementConfig;
 import com.pulumi.gcp.container.outputs.GetClusterDatabaseEncryption;
 import com.pulumi.gcp.container.outputs.GetClusterDefaultSnatStatus;
 import com.pulumi.gcp.container.outputs.GetClusterDnsConfig;
@@ -25,11 +26,13 @@ import com.pulumi.gcp.container.outputs.GetClusterNetworkPolicy;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePool;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolAutoConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolDefault;
 import com.pulumi.gcp.container.outputs.GetClusterNotificationConfig;
 import com.pulumi.gcp.container.outputs.GetClusterPodSecurityPolicyConfig;
 import com.pulumi.gcp.container.outputs.GetClusterPrivateClusterConfig;
 import com.pulumi.gcp.container.outputs.GetClusterReleaseChannel;
 import com.pulumi.gcp.container.outputs.GetClusterResourceUsageExportConfig;
+import com.pulumi.gcp.container.outputs.GetClusterServiceExternalIpsConfig;
 import com.pulumi.gcp.container.outputs.GetClusterTpuConfig;
 import com.pulumi.gcp.container.outputs.GetClusterVerticalPodAutoscaling;
 import com.pulumi.gcp.container.outputs.GetClusterWorkloadIdentityConfig;
@@ -51,6 +54,7 @@ public final class GetClusterResult {
     private String clusterIpv4Cidr;
     private List<GetClusterClusterTelemetry> clusterTelemetries;
     private List<GetClusterConfidentialNode> confidentialNodes;
+    private List<GetClusterCostManagementConfig> costManagementConfigs;
     private List<GetClusterDatabaseEncryption> databaseEncryptions;
     private String datapathProvider;
     private Integer defaultMaxPodsPerNode;
@@ -93,6 +97,7 @@ public final class GetClusterResult {
     private List<GetClusterNodeConfig> nodeConfigs;
     private List<String> nodeLocations;
     private List<GetClusterNodePoolAutoConfig> nodePoolAutoConfigs;
+    private List<GetClusterNodePoolDefault> nodePoolDefaults;
     private List<GetClusterNodePool> nodePools;
     private String nodeVersion;
     private List<GetClusterNotificationConfig> notificationConfigs;
@@ -106,6 +111,7 @@ public final class GetClusterResult {
     private Map<String,String> resourceLabels;
     private List<GetClusterResourceUsageExportConfig> resourceUsageExportConfigs;
     private String selfLink;
+    private List<GetClusterServiceExternalIpsConfig> serviceExternalIpsConfigs;
     private String servicesIpv4Cidr;
     private String subnetwork;
     private List<GetClusterTpuConfig> tpuConfigs;
@@ -134,6 +140,9 @@ public final class GetClusterResult {
     }
     public List<GetClusterConfidentialNode> confidentialNodes() {
         return this.confidentialNodes;
+    }
+    public List<GetClusterCostManagementConfig> costManagementConfigs() {
+        return this.costManagementConfigs;
     }
     public List<GetClusterDatabaseEncryption> databaseEncryptions() {
         return this.databaseEncryptions;
@@ -253,6 +262,9 @@ public final class GetClusterResult {
     public List<GetClusterNodePoolAutoConfig> nodePoolAutoConfigs() {
         return this.nodePoolAutoConfigs;
     }
+    public List<GetClusterNodePoolDefault> nodePoolDefaults() {
+        return this.nodePoolDefaults;
+    }
     public List<GetClusterNodePool> nodePools() {
         return this.nodePools;
     }
@@ -292,6 +304,9 @@ public final class GetClusterResult {
     public String selfLink() {
         return this.selfLink;
     }
+    public List<GetClusterServiceExternalIpsConfig> serviceExternalIpsConfigs() {
+        return this.serviceExternalIpsConfigs;
+    }
     public String servicesIpv4Cidr() {
         return this.servicesIpv4Cidr;
     }
@@ -327,6 +342,7 @@ public final class GetClusterResult {
         private String clusterIpv4Cidr;
         private List<GetClusterClusterTelemetry> clusterTelemetries;
         private List<GetClusterConfidentialNode> confidentialNodes;
+        private List<GetClusterCostManagementConfig> costManagementConfigs;
         private List<GetClusterDatabaseEncryption> databaseEncryptions;
         private String datapathProvider;
         private Integer defaultMaxPodsPerNode;
@@ -365,6 +381,7 @@ public final class GetClusterResult {
         private List<GetClusterNodeConfig> nodeConfigs;
         private List<String> nodeLocations;
         private List<GetClusterNodePoolAutoConfig> nodePoolAutoConfigs;
+        private List<GetClusterNodePoolDefault> nodePoolDefaults;
         private List<GetClusterNodePool> nodePools;
         private String nodeVersion;
         private List<GetClusterNotificationConfig> notificationConfigs;
@@ -378,6 +395,7 @@ public final class GetClusterResult {
         private Map<String,String> resourceLabels;
         private List<GetClusterResourceUsageExportConfig> resourceUsageExportConfigs;
         private String selfLink;
+        private List<GetClusterServiceExternalIpsConfig> serviceExternalIpsConfigs;
         private String servicesIpv4Cidr;
         private String subnetwork;
         private List<GetClusterTpuConfig> tpuConfigs;
@@ -394,6 +412,7 @@ public final class GetClusterResult {
     	      this.clusterIpv4Cidr = defaults.clusterIpv4Cidr;
     	      this.clusterTelemetries = defaults.clusterTelemetries;
     	      this.confidentialNodes = defaults.confidentialNodes;
+    	      this.costManagementConfigs = defaults.costManagementConfigs;
     	      this.databaseEncryptions = defaults.databaseEncryptions;
     	      this.datapathProvider = defaults.datapathProvider;
     	      this.defaultMaxPodsPerNode = defaults.defaultMaxPodsPerNode;
@@ -432,6 +451,7 @@ public final class GetClusterResult {
     	      this.nodeConfigs = defaults.nodeConfigs;
     	      this.nodeLocations = defaults.nodeLocations;
     	      this.nodePoolAutoConfigs = defaults.nodePoolAutoConfigs;
+    	      this.nodePoolDefaults = defaults.nodePoolDefaults;
     	      this.nodePools = defaults.nodePools;
     	      this.nodeVersion = defaults.nodeVersion;
     	      this.notificationConfigs = defaults.notificationConfigs;
@@ -445,6 +465,7 @@ public final class GetClusterResult {
     	      this.resourceLabels = defaults.resourceLabels;
     	      this.resourceUsageExportConfigs = defaults.resourceUsageExportConfigs;
     	      this.selfLink = defaults.selfLink;
+    	      this.serviceExternalIpsConfigs = defaults.serviceExternalIpsConfigs;
     	      this.servicesIpv4Cidr = defaults.servicesIpv4Cidr;
     	      this.subnetwork = defaults.subnetwork;
     	      this.tpuConfigs = defaults.tpuConfigs;
@@ -505,6 +526,14 @@ public final class GetClusterResult {
         }
         public Builder confidentialNodes(GetClusterConfidentialNode... confidentialNodes) {
             return confidentialNodes(List.of(confidentialNodes));
+        }
+        @CustomType.Setter
+        public Builder costManagementConfigs(List<GetClusterCostManagementConfig> costManagementConfigs) {
+            this.costManagementConfigs = Objects.requireNonNull(costManagementConfigs);
+            return this;
+        }
+        public Builder costManagementConfigs(GetClusterCostManagementConfig... costManagementConfigs) {
+            return costManagementConfigs(List.of(costManagementConfigs));
         }
         @CustomType.Setter
         public Builder databaseEncryptions(List<GetClusterDatabaseEncryption> databaseEncryptions) {
@@ -742,6 +771,14 @@ public final class GetClusterResult {
             return nodePoolAutoConfigs(List.of(nodePoolAutoConfigs));
         }
         @CustomType.Setter
+        public Builder nodePoolDefaults(List<GetClusterNodePoolDefault> nodePoolDefaults) {
+            this.nodePoolDefaults = Objects.requireNonNull(nodePoolDefaults);
+            return this;
+        }
+        public Builder nodePoolDefaults(GetClusterNodePoolDefault... nodePoolDefaults) {
+            return nodePoolDefaults(List.of(nodePoolDefaults));
+        }
+        @CustomType.Setter
         public Builder nodePools(List<GetClusterNodePool> nodePools) {
             this.nodePools = Objects.requireNonNull(nodePools);
             return this;
@@ -825,6 +862,14 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceExternalIpsConfigs(List<GetClusterServiceExternalIpsConfig> serviceExternalIpsConfigs) {
+            this.serviceExternalIpsConfigs = Objects.requireNonNull(serviceExternalIpsConfigs);
+            return this;
+        }
+        public Builder serviceExternalIpsConfigs(GetClusterServiceExternalIpsConfig... serviceExternalIpsConfigs) {
+            return serviceExternalIpsConfigs(List.of(serviceExternalIpsConfigs));
+        }
+        @CustomType.Setter
         public Builder servicesIpv4Cidr(String servicesIpv4Cidr) {
             this.servicesIpv4Cidr = Objects.requireNonNull(servicesIpv4Cidr);
             return this;
@@ -872,6 +917,7 @@ public final class GetClusterResult {
             o.clusterIpv4Cidr = clusterIpv4Cidr;
             o.clusterTelemetries = clusterTelemetries;
             o.confidentialNodes = confidentialNodes;
+            o.costManagementConfigs = costManagementConfigs;
             o.databaseEncryptions = databaseEncryptions;
             o.datapathProvider = datapathProvider;
             o.defaultMaxPodsPerNode = defaultMaxPodsPerNode;
@@ -910,6 +956,7 @@ public final class GetClusterResult {
             o.nodeConfigs = nodeConfigs;
             o.nodeLocations = nodeLocations;
             o.nodePoolAutoConfigs = nodePoolAutoConfigs;
+            o.nodePoolDefaults = nodePoolDefaults;
             o.nodePools = nodePools;
             o.nodeVersion = nodeVersion;
             o.notificationConfigs = notificationConfigs;
@@ -923,6 +970,7 @@ public final class GetClusterResult {
             o.resourceLabels = resourceLabels;
             o.resourceUsageExportConfigs = resourceUsageExportConfigs;
             o.selfLink = selfLink;
+            o.serviceExternalIpsConfigs = serviceExternalIpsConfigs;
             o.servicesIpv4Cidr = servicesIpv4Cidr;
             o.subnetwork = subnetwork;
             o.tpuConfigs = tpuConfigs;
