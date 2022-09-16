@@ -1,6 +1,10 @@
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GOOGLE_CI_SERVICE_ACCOUNT_EMAIL: pulumi-ci@pulumi-ci-gcp-provider.iam.gserviceaccount.com
+  GOOGLE_CI_WORKLOAD_IDENTITY_POOL: pulumi-ci
+  GOOGLE_CI_WORKLOAD_IDENTITY_PROVIDER: pulumi-ci
   GOOGLE_PROJECT: pulumi-ci-gcp-provider
+  GOOGLE_PROJECT_NUMBER: 895284651812
   GOOGLE_REGION: us-central1
   GOOGLE_ZONE: us-central1-a
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -27,9 +31,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Checkout Scripts Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         path: ci-scripts
         repository: pulumi/scripts
@@ -128,7 +132,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -136,7 +140,7 @@ jobs:
         aws-region: us-west-2
         aws-secret-access-key: ${{ secrets.AWS_CORP_S3_UPLOAD_SECRET_ACCESS_KEY }}
     - name: Checkout Scripts Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         path: ci-scripts
         repository: pulumi/scripts
@@ -180,9 +184,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Checkout Scripts Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         path: ci-scripts
         repository: pulumi/scripts
@@ -255,7 +259,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
@@ -311,9 +315,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Checkout Scripts Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         path: ci-scripts
         repository: pulumi/scripts
@@ -417,12 +421,15 @@ jobs:
   test:
     name: test
     needs: build_sdk
+    permissions:
+      contents: read
+      id-token: write
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Checkout Scripts Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         path: ci-scripts
         repository: pulumi/scripts
@@ -483,14 +490,18 @@ jobs:
       run: |-
         pip3 install virtualenv==20.0.23
         pip3 install pipenv
-    - name: Configure GCP credentials
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v0
+      with:
+        service_account: ${{ env.GOOGLE_CI_SERVICE_ACCOUNT_EMAIL }}
+        workload_identity_provider: projects/${{ env.GOOGLE_PROJECT_NUMBER
+          }}/locations/global/workloadIdentityPools/${{
+          env.GOOGLE_CI_WORKLOAD_IDENTITY_POOL }}/providers/${{
+          env.GOOGLE_CI_WORKLOAD_IDENTITY_PROVIDER }}
+    - name: Setup gcloud auth
       uses: google-github-actions/setup-gcloud@v0
       with:
-        export_default_credentials: true
-        project_id: ${{ env.GOOGLE_PROJECT }}
-        service_account_email: ${{ secrets.GCP_SA_EMAIL }}
-        service_account_key: ${{ secrets.GCP_SA_KEY }}
-        version: 285.0.0
+        install_components: gke-gcloud-auth-plugin
     - name: Install dependencies
       run: make install_${{ matrix.language}}_sdk
     - name: Install gotestfmt
