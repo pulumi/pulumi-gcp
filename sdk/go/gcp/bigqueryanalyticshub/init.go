@@ -21,12 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "gcp:bigqueryanalyticshub/dataExchanceIamMember:DataExchanceIamMember":
-		r = &DataExchanceIamMember{}
 	case "gcp:bigqueryanalyticshub/dataExchange:DataExchange":
 		r = &DataExchange{}
 	case "gcp:bigqueryanalyticshub/dataExchangeIamBinding:DataExchangeIamBinding":
 		r = &DataExchangeIamBinding{}
+	case "gcp:bigqueryanalyticshub/dataExchangeIamMember:DataExchangeIamMember":
+		r = &DataExchangeIamMember{}
 	case "gcp:bigqueryanalyticshub/dataExchangeIamPolicy:DataExchangeIamPolicy":
 		r = &DataExchangeIamPolicy{}
 	default:
@@ -44,17 +44,17 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"bigqueryanalyticshub/dataExchanceIamMember",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gcp",
 		"bigqueryanalyticshub/dataExchange",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"bigqueryanalyticshub/dataExchangeIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"bigqueryanalyticshub/dataExchangeIamMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -3688,13 +3688,13 @@ export namespace bigquery {
 }
 
 export namespace bigqueryanalyticshub {
-    export interface DataExchanceIamMemberCondition {
+    export interface DataExchangeIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
     }
 
-    export interface DataExchangeIamBindingCondition {
+    export interface DataExchangeIamMemberCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;

@@ -370,7 +370,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_bigquery_analytics_hub_data_exchange_iam_member": {
-				Tok: gcpResource(gcpBigQueryAnalyticsHub, "DataExchanceIamMember"),
+				Tok: gcpResource(gcpBigQueryAnalyticsHub, "DataExchangeIamMember"),
 				Docs: &tfbridge.DocInfo{
 					Source: "bigquery_analytics_hub_data_exchange_iam.html.markdown",
 				},
