@@ -16,6 +16,21 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
     public static final EndpointAttachmentState Empty = new EndpointAttachmentState();
 
     /**
+     * State of the endpoint attachment connection to the service attachment.
+     * 
+     */
+    @Import(name="connectionState")
+    private @Nullable Output<String> connectionState;
+
+    /**
+     * @return State of the endpoint attachment connection to the service attachment.
+     * 
+     */
+    public Optional<Output<String>> connectionState() {
+        return Optional.ofNullable(this.connectionState);
+    }
+
+    /**
      * ID of the endpoint attachment.
      * 
      */
@@ -112,6 +127,7 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
     private EndpointAttachmentState() {}
 
     private EndpointAttachmentState(EndpointAttachmentState $) {
+        this.connectionState = $.connectionState;
         this.endpointAttachmentId = $.endpointAttachmentId;
         this.host = $.host;
         this.location = $.location;
@@ -136,6 +152,27 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
 
         public Builder(EndpointAttachmentState defaults) {
             $ = new EndpointAttachmentState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param connectionState State of the endpoint attachment connection to the service attachment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionState(@Nullable Output<String> connectionState) {
+            $.connectionState = connectionState;
+            return this;
+        }
+
+        /**
+         * @param connectionState State of the endpoint attachment connection to the service attachment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionState(String connectionState) {
+            return connectionState(Output.of(connectionState));
         }
 
         /**

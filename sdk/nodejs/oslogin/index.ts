@@ -5,10 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./sshPublicKey";
+export { SshPublicKeyArgs, SshPublicKeyState } from "./sshPublicKey";
+export type SshPublicKey = import("./sshPublicKey").SshPublicKey;
+export const SshPublicKey: typeof import("./sshPublicKey").SshPublicKey = null as any;
 
-// Import resources to register:
-import { SshPublicKey } from "./sshPublicKey";
+utilities.lazyLoad(exports, ["SshPublicKey"], () => require("./sshPublicKey"));
 
 const _module = {
     version: utilities.getVersion(),

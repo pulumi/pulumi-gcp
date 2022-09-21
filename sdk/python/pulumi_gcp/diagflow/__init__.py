@@ -13,6 +13,7 @@ from .cx_flow import *
 from .cx_intent import *
 from .cx_page import *
 from .cx_version import *
+from .cx_webhook import *
 from .entity_type import *
 from .fulfillment import *
 from .intent import *

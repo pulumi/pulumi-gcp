@@ -14,6 +14,7 @@ from .environment_iam_member import *
 from .environment_iam_policy import *
 from .instance import *
 from .instance_attachment import *
+from .nat_address import *
 from .organization import *
 from ._inputs import *
 from . import outputs

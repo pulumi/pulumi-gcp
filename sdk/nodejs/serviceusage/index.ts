@@ -5,10 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./consumerQuotaOverride";
+export { ConsumerQuotaOverrideArgs, ConsumerQuotaOverrideState } from "./consumerQuotaOverride";
+export type ConsumerQuotaOverride = import("./consumerQuotaOverride").ConsumerQuotaOverride;
+export const ConsumerQuotaOverride: typeof import("./consumerQuotaOverride").ConsumerQuotaOverride = null as any;
 
-// Import resources to register:
-import { ConsumerQuotaOverride } from "./consumerQuotaOverride";
+utilities.lazyLoad(exports, ["ConsumerQuotaOverride"], () => require("./consumerQuotaOverride"));
 
 const _module = {
     version: utilities.getVersion(),

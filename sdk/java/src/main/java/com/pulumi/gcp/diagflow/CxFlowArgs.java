@@ -156,6 +156,11 @@ public final class CxFlowArgs extends com.pulumi.resources.ResourceArgs {
      * A flow&#39;s transition routes serve two purposes:
      * They are responsible for matching the user&#39;s first utterances in the flow.
      * They are inherited by every page&#39;s [transition routes][Page.transition_routes] and can support use cases such as the user saying &#34;help&#34; or &#34;can I talk to a human?&#34;, which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow.
+     * TransitionRoutes are evalauted in the following order:
+     * TransitionRoutes with intent specified.
+     * TransitionRoutes with only condition specified.
+     * TransitionRoutes with intent specified are inherited by pages in the flow.
+     * Structure is documented below.
      * 
      */
     @Import(name="transitionRoutes")
@@ -165,6 +170,11 @@ public final class CxFlowArgs extends com.pulumi.resources.ResourceArgs {
      * @return A flow&#39;s transition routes serve two purposes:
      * They are responsible for matching the user&#39;s first utterances in the flow.
      * They are inherited by every page&#39;s [transition routes][Page.transition_routes] and can support use cases such as the user saying &#34;help&#34; or &#34;can I talk to a human?&#34;, which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow.
+     * TransitionRoutes are evalauted in the following order:
+     * TransitionRoutes with intent specified.
+     * TransitionRoutes with only condition specified.
+     * TransitionRoutes with intent specified are inherited by pages in the flow.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<CxFlowTransitionRouteArgs>>> transitionRoutes() {
@@ -408,6 +418,11 @@ public final class CxFlowArgs extends com.pulumi.resources.ResourceArgs {
          * @param transitionRoutes A flow&#39;s transition routes serve two purposes:
          * They are responsible for matching the user&#39;s first utterances in the flow.
          * They are inherited by every page&#39;s [transition routes][Page.transition_routes] and can support use cases such as the user saying &#34;help&#34; or &#34;can I talk to a human?&#34;, which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow.
+         * TransitionRoutes are evalauted in the following order:
+         * TransitionRoutes with intent specified.
+         * TransitionRoutes with only condition specified.
+         * TransitionRoutes with intent specified are inherited by pages in the flow.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -421,6 +436,11 @@ public final class CxFlowArgs extends com.pulumi.resources.ResourceArgs {
          * @param transitionRoutes A flow&#39;s transition routes serve two purposes:
          * They are responsible for matching the user&#39;s first utterances in the flow.
          * They are inherited by every page&#39;s [transition routes][Page.transition_routes] and can support use cases such as the user saying &#34;help&#34; or &#34;can I talk to a human?&#34;, which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow.
+         * TransitionRoutes are evalauted in the following order:
+         * TransitionRoutes with intent specified.
+         * TransitionRoutes with only condition specified.
+         * TransitionRoutes with intent specified are inherited by pages in the flow.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -433,6 +453,11 @@ public final class CxFlowArgs extends com.pulumi.resources.ResourceArgs {
          * @param transitionRoutes A flow&#39;s transition routes serve two purposes:
          * They are responsible for matching the user&#39;s first utterances in the flow.
          * They are inherited by every page&#39;s [transition routes][Page.transition_routes] and can support use cases such as the user saying &#34;help&#34; or &#34;can I talk to a human?&#34;, which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow.
+         * TransitionRoutes are evalauted in the following order:
+         * TransitionRoutes with intent specified.
+         * TransitionRoutes with only condition specified.
+         * TransitionRoutes with intent specified are inherited by pages in the flow.
+         * Structure is documented below.
          * 
          * @return builder
          * 

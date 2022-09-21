@@ -3087,8 +3087,8 @@ type TriggerGitFileSource struct {
 	// build step or with certain reserved volume paths.
 	Path string `pulumi:"path"`
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
-	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
+	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
 	RepoType string `pulumi:"repoType"`
 	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
 	// filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
@@ -3115,8 +3115,8 @@ type TriggerGitFileSourceArgs struct {
 	// build step or with certain reserved volume paths.
 	Path pulumi.StringInput `pulumi:"path"`
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
-	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
+	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
 	RepoType pulumi.StringInput `pulumi:"repoType"`
 	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
 	// filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
@@ -3211,8 +3211,8 @@ func (o TriggerGitFileSourceOutput) Path() pulumi.StringOutput {
 }
 
 // The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
-// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
+// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
 func (o TriggerGitFileSourceOutput) RepoType() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerGitFileSource) string { return v.RepoType }).(pulumi.StringOutput)
 }
@@ -3266,8 +3266,8 @@ func (o TriggerGitFileSourcePtrOutput) Path() pulumi.StringPtrOutput {
 }
 
 // The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
-// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
+// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
 func (o TriggerGitFileSourcePtrOutput) RepoType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerGitFileSource) *string {
 		if v == nil {
@@ -4077,8 +4077,8 @@ type TriggerSourceToBuild struct {
 	// The branch or tag to use. Must start with "refs/" (required).
 	Ref string `pulumi:"ref"`
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
-	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
+	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
 	RepoType string `pulumi:"repoType"`
 	// The URI of the repo (required).
 	Uri string `pulumi:"uri"`
@@ -4099,8 +4099,8 @@ type TriggerSourceToBuildArgs struct {
 	// The branch or tag to use. Must start with "refs/" (required).
 	Ref pulumi.StringInput `pulumi:"ref"`
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
-	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
+	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
 	RepoType pulumi.StringInput `pulumi:"repoType"`
 	// The URI of the repo (required).
 	Uri pulumi.StringInput `pulumi:"uri"`
@@ -4189,8 +4189,8 @@ func (o TriggerSourceToBuildOutput) Ref() pulumi.StringOutput {
 }
 
 // The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
-// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
+// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
 func (o TriggerSourceToBuildOutput) RepoType() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerSourceToBuild) string { return v.RepoType }).(pulumi.StringOutput)
 }
@@ -4235,8 +4235,8 @@ func (o TriggerSourceToBuildPtrOutput) Ref() pulumi.StringPtrOutput {
 }
 
 // The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
-// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
+// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
 func (o TriggerSourceToBuildPtrOutput) RepoType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerSourceToBuild) *string {
 		if v == nil {

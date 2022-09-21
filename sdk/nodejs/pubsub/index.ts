@@ -5,34 +5,72 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getTopic";
-export * from "./liteReservation";
-export * from "./liteSubscription";
-export * from "./liteTopic";
-export * from "./schema";
-export * from "./subscription";
-export * from "./subscriptionIAMBinding";
-export * from "./subscriptionIAMMember";
-export * from "./subscriptionIAMPolicy";
-export * from "./topic";
-export * from "./topicIAMBinding";
-export * from "./topicIAMMember";
-export * from "./topicIAMPolicy";
-export * from "./zMixins";
+export { GetTopicArgs, GetTopicResult, GetTopicOutputArgs } from "./getTopic";
+export const getTopic: typeof import("./getTopic").getTopic = null as any;
+export const getTopicOutput: typeof import("./getTopic").getTopicOutput = null as any;
 
-// Import resources to register:
-import { LiteReservation } from "./liteReservation";
-import { LiteSubscription } from "./liteSubscription";
-import { LiteTopic } from "./liteTopic";
-import { Schema } from "./schema";
-import { Subscription } from "./subscription";
-import { SubscriptionIAMBinding } from "./subscriptionIAMBinding";
-import { SubscriptionIAMMember } from "./subscriptionIAMMember";
-import { SubscriptionIAMPolicy } from "./subscriptionIAMPolicy";
-import { Topic } from "./topic";
-import { TopicIAMBinding } from "./topicIAMBinding";
-import { TopicIAMMember } from "./topicIAMMember";
-import { TopicIAMPolicy } from "./topicIAMPolicy";
+export { LiteReservationArgs, LiteReservationState } from "./liteReservation";
+export type LiteReservation = import("./liteReservation").LiteReservation;
+export const LiteReservation: typeof import("./liteReservation").LiteReservation = null as any;
+
+export { LiteSubscriptionArgs, LiteSubscriptionState } from "./liteSubscription";
+export type LiteSubscription = import("./liteSubscription").LiteSubscription;
+export const LiteSubscription: typeof import("./liteSubscription").LiteSubscription = null as any;
+
+export { LiteTopicArgs, LiteTopicState } from "./liteTopic";
+export type LiteTopic = import("./liteTopic").LiteTopic;
+export const LiteTopic: typeof import("./liteTopic").LiteTopic = null as any;
+
+export { SchemaArgs, SchemaState } from "./schema";
+export type Schema = import("./schema").Schema;
+export const Schema: typeof import("./schema").Schema = null as any;
+
+export { SubscriptionArgs, SubscriptionState } from "./subscription";
+export type Subscription = import("./subscription").Subscription;
+export const Subscription: typeof import("./subscription").Subscription = null as any;
+
+export { SubscriptionIAMBindingArgs, SubscriptionIAMBindingState } from "./subscriptionIAMBinding";
+export type SubscriptionIAMBinding = import("./subscriptionIAMBinding").SubscriptionIAMBinding;
+export const SubscriptionIAMBinding: typeof import("./subscriptionIAMBinding").SubscriptionIAMBinding = null as any;
+
+export { SubscriptionIAMMemberArgs, SubscriptionIAMMemberState } from "./subscriptionIAMMember";
+export type SubscriptionIAMMember = import("./subscriptionIAMMember").SubscriptionIAMMember;
+export const SubscriptionIAMMember: typeof import("./subscriptionIAMMember").SubscriptionIAMMember = null as any;
+
+export { SubscriptionIAMPolicyArgs, SubscriptionIAMPolicyState } from "./subscriptionIAMPolicy";
+export type SubscriptionIAMPolicy = import("./subscriptionIAMPolicy").SubscriptionIAMPolicy;
+export const SubscriptionIAMPolicy: typeof import("./subscriptionIAMPolicy").SubscriptionIAMPolicy = null as any;
+
+export { TopicArgs, TopicState } from "./topic";
+export type Topic = import("./topic").Topic;
+export const Topic: typeof import("./topic").Topic = null as any;
+
+export { TopicIAMBindingArgs, TopicIAMBindingState } from "./topicIAMBinding";
+export type TopicIAMBinding = import("./topicIAMBinding").TopicIAMBinding;
+export const TopicIAMBinding: typeof import("./topicIAMBinding").TopicIAMBinding = null as any;
+
+export { TopicIAMMemberArgs, TopicIAMMemberState } from "./topicIAMMember";
+export type TopicIAMMember = import("./topicIAMMember").TopicIAMMember;
+export const TopicIAMMember: typeof import("./topicIAMMember").TopicIAMMember = null as any;
+
+export { TopicIAMPolicyArgs, TopicIAMPolicyState } from "./topicIAMPolicy";
+export type TopicIAMPolicy = import("./topicIAMPolicy").TopicIAMPolicy;
+export const TopicIAMPolicy: typeof import("./topicIAMPolicy").TopicIAMPolicy = null as any;
+
+export * from "./zMixins";
+utilities.lazyLoad(exports, ["getTopic","getTopicOutput"], () => require("./getTopic"));
+utilities.lazyLoad(exports, ["LiteReservation"], () => require("./liteReservation"));
+utilities.lazyLoad(exports, ["LiteSubscription"], () => require("./liteSubscription"));
+utilities.lazyLoad(exports, ["LiteTopic"], () => require("./liteTopic"));
+utilities.lazyLoad(exports, ["Schema"], () => require("./schema"));
+utilities.lazyLoad(exports, ["Subscription"], () => require("./subscription"));
+utilities.lazyLoad(exports, ["SubscriptionIAMBinding"], () => require("./subscriptionIAMBinding"));
+utilities.lazyLoad(exports, ["SubscriptionIAMMember"], () => require("./subscriptionIAMMember"));
+utilities.lazyLoad(exports, ["SubscriptionIAMPolicy"], () => require("./subscriptionIAMPolicy"));
+utilities.lazyLoad(exports, ["Topic"], () => require("./topic"));
+utilities.lazyLoad(exports, ["TopicIAMBinding"], () => require("./topicIAMBinding"));
+utilities.lazyLoad(exports, ["TopicIAMMember"], () => require("./topicIAMMember"));
+utilities.lazyLoad(exports, ["TopicIAMPolicy"], () => require("./topicIAMPolicy"));
 
 const _module = {
     version: utilities.getVersion(),

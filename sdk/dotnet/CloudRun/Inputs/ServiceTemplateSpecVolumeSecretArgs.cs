@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// is assumed to be in the same project.
         /// If the secret is in another project, you must define an alias.
         /// An alias definition has the form:
-        /// &lt;alias&gt;:projects/&lt;project-id|project-number&gt;/secrets/&lt;secret-name&gt;.
+        /// {alias}:projects/{project-id|project-number}/secrets/{secret-name}.
         /// If multiple alias definitions are needed, they must be separated by
         /// commas.
         /// The alias definitions must be set on the run.googleapis.com/secrets

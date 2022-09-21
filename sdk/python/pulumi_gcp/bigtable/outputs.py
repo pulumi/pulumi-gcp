@@ -107,7 +107,7 @@ class InstanceCluster(dict):
                  zone: Optional[str] = None):
         """
         :param str cluster_id: The ID of the Cloud Bigtable cluster.
-        :param 'InstanceClusterAutoscalingConfigArgs' autoscaling_config: Autoscaling config for the cluster, contains the following arguments:
+        :param 'InstanceClusterAutoscalingConfigArgs' autoscaling_config: [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
         :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
         :param int num_nodes: The number of nodes in your Cloud Bigtable cluster.
                Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
@@ -142,7 +142,7 @@ class InstanceCluster(dict):
     @pulumi.getter(name="autoscalingConfig")
     def autoscaling_config(self) -> Optional['outputs.InstanceClusterAutoscalingConfig']:
         """
-        Autoscaling config for the cluster, contains the following arguments:
+        [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
         """
         return pulumi.get(self, "autoscaling_config")
 
@@ -195,6 +195,8 @@ class InstanceClusterAutoscalingConfig(dict):
             suggest = "max_nodes"
         elif key == "minNodes":
             suggest = "min_nodes"
+        elif key == "storageTarget":
+            suggest = "storage_target"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceClusterAutoscalingConfig. Access the value via the '{suggest}' property getter instead.")
@@ -210,21 +212,25 @@ class InstanceClusterAutoscalingConfig(dict):
     def __init__(__self__, *,
                  cpu_target: int,
                  max_nodes: int,
-                 min_nodes: int):
+                 min_nodes: int,
+                 storage_target: Optional[int] = None):
         """
-        :param int cpu_target: The CPU utilization target in percentage. Must be between 10 and 80.
+        :param int cpu_target: The target CPU utilization for autoscaling, in percentage. Must be between 10 and 80.
         :param int max_nodes: The maximum number of nodes for autoscaling.
         :param int min_nodes: The minimum number of nodes for autoscaling.
+        :param int storage_target: The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
         """
         pulumi.set(__self__, "cpu_target", cpu_target)
         pulumi.set(__self__, "max_nodes", max_nodes)
         pulumi.set(__self__, "min_nodes", min_nodes)
+        if storage_target is not None:
+            pulumi.set(__self__, "storage_target", storage_target)
 
     @property
     @pulumi.getter(name="cpuTarget")
     def cpu_target(self) -> int:
         """
-        The CPU utilization target in percentage. Must be between 10 and 80.
+        The target CPU utilization for autoscaling, in percentage. Must be between 10 and 80.
         """
         return pulumi.get(self, "cpu_target")
 
@@ -243,6 +249,14 @@ class InstanceClusterAutoscalingConfig(dict):
         The minimum number of nodes for autoscaling.
         """
         return pulumi.get(self, "min_nodes")
+
+    @property
+    @pulumi.getter(name="storageTarget")
+    def storage_target(self) -> Optional[int]:
+        """
+        The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+        """
+        return pulumi.get(self, "storage_target")
 
 
 @pulumi.output_type

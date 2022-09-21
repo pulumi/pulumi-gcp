@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHealthCheckResult> InvokeAsync(GetHealthCheckArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHealthCheckResult>("gcp:compute/getHealthCheck:getHealthCheck", args ?? new GetHealthCheckArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHealthCheckResult>("gcp:compute/getHealthCheck:getHealthCheck", args ?? new GetHealthCheckArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get information about a HealthCheck.
@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHealthCheckResult> Invoke(GetHealthCheckInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHealthCheckResult>("gcp:compute/getHealthCheck:getHealthCheck", args ?? new GetHealthCheckInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHealthCheckResult>("gcp:compute/getHealthCheck:getHealthCheck", args ?? new GetHealthCheckInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class CertificateauthorityFunctions {
     /**
-     * Get info about a Google Cloud IAP Client.
+     * Get info about a Google CAS Certificate Authority.
      * 
      * ## Example Usage
      * ```java
@@ -55,7 +55,7 @@ public final class CertificateauthorityFunctions {
         return getAuthority(GetAuthorityArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Get info about a Google Cloud IAP Client.
+     * Get info about a Google CAS Certificate Authority.
      * 
      * ## Example Usage
      * ```java
@@ -95,7 +95,7 @@ public final class CertificateauthorityFunctions {
         return getAuthorityPlain(GetAuthorityPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Get info about a Google Cloud IAP Client.
+     * Get info about a Google CAS Certificate Authority.
      * 
      * ## Example Usage
      * ```java
@@ -135,7 +135,7 @@ public final class CertificateauthorityFunctions {
         return getAuthority(args, InvokeOptions.Empty);
     }
     /**
-     * Get info about a Google Cloud IAP Client.
+     * Get info about a Google CAS Certificate Authority.
      * 
      * ## Example Usage
      * ```java
@@ -175,7 +175,7 @@ public final class CertificateauthorityFunctions {
         return getAuthorityPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get info about a Google Cloud IAP Client.
+     * Get info about a Google CAS Certificate Authority.
      * 
      * ## Example Usage
      * ```java
@@ -215,7 +215,7 @@ public final class CertificateauthorityFunctions {
         return Deployment.getInstance().invoke("gcp:certificateauthority/getAuthority:getAuthority", TypeShape.of(GetAuthorityResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get info about a Google Cloud IAP Client.
+     * Get info about a Google CAS Certificate Authority.
      * 
      * ## Example Usage
      * ```java

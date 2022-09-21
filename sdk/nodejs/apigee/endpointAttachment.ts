@@ -89,6 +89,10 @@ export class EndpointAttachment extends pulumi.CustomResource {
     }
 
     /**
+     * State of the endpoint attachment connection to the service attachment.
+     */
+    public /*out*/ readonly connectionState!: pulumi.Output<string>;
+    /**
      * ID of the endpoint attachment.
      */
     public readonly endpointAttachmentId!: pulumi.Output<string>;
@@ -128,6 +132,7 @@ export class EndpointAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointAttachmentState | undefined;
+            resourceInputs["connectionState"] = state ? state.connectionState : undefined;
             resourceInputs["endpointAttachmentId"] = state ? state.endpointAttachmentId : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -152,6 +157,7 @@ export class EndpointAttachment extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["serviceAttachment"] = args ? args.serviceAttachment : undefined;
+            resourceInputs["connectionState"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
@@ -164,6 +170,10 @@ export class EndpointAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EndpointAttachment resources.
  */
 export interface EndpointAttachmentState {
+    /**
+     * State of the endpoint attachment connection to the service attachment.
+     */
+    connectionState?: pulumi.Input<string>;
     /**
      * ID of the endpoint attachment.
      */

@@ -113,10 +113,18 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * BigQuery tables can be imported using the `project`, `dataset_id`, and `table_id`, e.g.
+ * BigQuery tables imported using any of these accepted formats
  * 
  * ```sh
- *  $ pulumi import gcp:bigquery/table:Table default gcp-project/foo/bar
+ *  $ pulumi import gcp:bigquery/table:Table default projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:bigquery/table:Table default {{project}}/{{dataset_id}}/{{table_id}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:bigquery/table:Table default {{dataset_id}}/{{table_id}}
  * ```
  * 
  */

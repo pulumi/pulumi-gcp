@@ -5,10 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./enterpriseKey";
+export { EnterpriseKeyArgs, EnterpriseKeyState } from "./enterpriseKey";
+export type EnterpriseKey = import("./enterpriseKey").EnterpriseKey;
+export const EnterpriseKey: typeof import("./enterpriseKey").EnterpriseKey = null as any;
 
-// Import resources to register:
-import { EnterpriseKey } from "./enterpriseKey";
+utilities.lazyLoad(exports, ["EnterpriseKey"], () => require("./enterpriseKey"));
 
 const _module = {
     version: utilities.getVersion(),

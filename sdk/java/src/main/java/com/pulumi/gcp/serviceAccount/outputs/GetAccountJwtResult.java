@@ -4,14 +4,17 @@
 package com.pulumi.gcp.serviceAccount.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountJwtResult {
     private @Nullable List<String> delegates;
+    private @Nullable Integer expiresIn;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -28,6 +31,9 @@ public final class GetAccountJwtResult {
     private GetAccountJwtResult() {}
     public List<String> delegates() {
         return this.delegates == null ? List.of() : this.delegates;
+    }
+    public Optional<Integer> expiresIn() {
+        return Optional.ofNullable(this.expiresIn);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -60,6 +66,7 @@ public final class GetAccountJwtResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> delegates;
+        private @Nullable Integer expiresIn;
         private String id;
         private String jwt;
         private String payload;
@@ -68,6 +75,7 @@ public final class GetAccountJwtResult {
         public Builder(GetAccountJwtResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.delegates = defaults.delegates;
+    	      this.expiresIn = defaults.expiresIn;
     	      this.id = defaults.id;
     	      this.jwt = defaults.jwt;
     	      this.payload = defaults.payload;
@@ -81,6 +89,11 @@ public final class GetAccountJwtResult {
         }
         public Builder delegates(String... delegates) {
             return delegates(List.of(delegates));
+        }
+        @CustomType.Setter
+        public Builder expiresIn(@Nullable Integer expiresIn) {
+            this.expiresIn = expiresIn;
+            return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -105,6 +118,7 @@ public final class GetAccountJwtResult {
         public GetAccountJwtResult build() {
             final var o = new GetAccountJwtResult();
             o.delegates = delegates;
+            o.expiresIn = expiresIn;
             o.id = id;
             o.jwt = jwt;
             o.payload = payload;

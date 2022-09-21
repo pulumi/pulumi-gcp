@@ -12,10 +12,10 @@ namespace Pulumi.Gcp.ServiceNetworking
     public static class GetPeeredDnsDomain
     {
         public static Task<GetPeeredDnsDomainResult> InvokeAsync(GetPeeredDnsDomainArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPeeredDnsDomainResult>("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", args ?? new GetPeeredDnsDomainArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPeeredDnsDomainResult>("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", args ?? new GetPeeredDnsDomainArgs(), options.WithDefaults());
 
         public static Output<GetPeeredDnsDomainResult> Invoke(GetPeeredDnsDomainInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPeeredDnsDomainResult>("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", args ?? new GetPeeredDnsDomainInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPeeredDnsDomainResult>("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", args ?? new GetPeeredDnsDomainInvokeArgs(), options.WithDefaults());
     }
 
 

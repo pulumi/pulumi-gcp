@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Kms
         /// data outside of resource definitions.
         /// </summary>
         public static Task<GetKMSSecretResult> InvokeAsync(GetKMSSecretArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSSecretResult>("gcp:kms/getKMSSecret:getKMSSecret", args ?? new GetKMSSecretArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKMSSecretResult>("gcp:kms/getKMSSecret:getKMSSecret", args ?? new GetKMSSecretArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source allows you to use data encrypted with Google Cloud KMS
@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Kms
         /// data outside of resource definitions.
         /// </summary>
         public static Output<GetKMSSecretResult> Invoke(GetKMSSecretInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKMSSecretResult>("gcp:kms/getKMSSecret:getKMSSecret", args ?? new GetKMSSecretInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKMSSecretResult>("gcp:kms/getKMSSecret:getKMSSecret", args ?? new GetKMSSecretInvokeArgs(), options.WithDefaults());
     }
 
 

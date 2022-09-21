@@ -18,14 +18,14 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
     public static final InstanceClusterArgs Empty = new InstanceClusterArgs();
 
     /**
-     * Autoscaling config for the cluster, contains the following arguments:
+     * [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
      * 
      */
     @Import(name="autoscalingConfig")
     private @Nullable Output<InstanceClusterAutoscalingConfigArgs> autoscalingConfig;
 
     /**
-     * @return Autoscaling config for the cluster, contains the following arguments:
+     * @return [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
      * 
      */
     public Optional<Output<InstanceClusterAutoscalingConfigArgs>> autoscalingConfig() {
@@ -147,7 +147,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param autoscalingConfig Autoscaling config for the cluster, contains the following arguments:
+         * @param autoscalingConfig [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param autoscalingConfig Autoscaling config for the cluster, contains the following arguments:
+         * @param autoscalingConfig [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
          * 
          * @return builder
          * 

@@ -5,12 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./deliveryPipeline";
-export * from "./target";
+export { DeliveryPipelineArgs, DeliveryPipelineState } from "./deliveryPipeline";
+export type DeliveryPipeline = import("./deliveryPipeline").DeliveryPipeline;
+export const DeliveryPipeline: typeof import("./deliveryPipeline").DeliveryPipeline = null as any;
 
-// Import resources to register:
-import { DeliveryPipeline } from "./deliveryPipeline";
-import { Target } from "./target";
+export { TargetArgs, TargetState } from "./target";
+export type Target = import("./target").Target;
+export const Target: typeof import("./target").Target = null as any;
+
+utilities.lazyLoad(exports, ["DeliveryPipeline"], () => require("./deliveryPipeline"));
+utilities.lazyLoad(exports, ["Target"], () => require("./target"));
 
 const _module = {
     version: utilities.getVersion(),

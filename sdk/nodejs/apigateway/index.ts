@@ -5,32 +5,66 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./api";
-export * from "./apiConfig";
-export * from "./apiConfigIamBinding";
-export * from "./apiConfigIamMember";
-export * from "./apiConfigIamPolicy";
-export * from "./apiIamBinding";
-export * from "./apiIamMember";
-export * from "./apiIamPolicy";
-export * from "./gateway";
-export * from "./gatewayIamBinding";
-export * from "./gatewayIamMember";
-export * from "./gatewayIamPolicy";
+export { ApiArgs, ApiState } from "./api";
+export type Api = import("./api").Api;
+export const Api: typeof import("./api").Api = null as any;
 
-// Import resources to register:
-import { Api } from "./api";
-import { ApiConfig } from "./apiConfig";
-import { ApiConfigIamBinding } from "./apiConfigIamBinding";
-import { ApiConfigIamMember } from "./apiConfigIamMember";
-import { ApiConfigIamPolicy } from "./apiConfigIamPolicy";
-import { ApiIamBinding } from "./apiIamBinding";
-import { ApiIamMember } from "./apiIamMember";
-import { ApiIamPolicy } from "./apiIamPolicy";
-import { Gateway } from "./gateway";
-import { GatewayIamBinding } from "./gatewayIamBinding";
-import { GatewayIamMember } from "./gatewayIamMember";
-import { GatewayIamPolicy } from "./gatewayIamPolicy";
+export { ApiConfigArgs, ApiConfigState } from "./apiConfig";
+export type ApiConfig = import("./apiConfig").ApiConfig;
+export const ApiConfig: typeof import("./apiConfig").ApiConfig = null as any;
+
+export { ApiConfigIamBindingArgs, ApiConfigIamBindingState } from "./apiConfigIamBinding";
+export type ApiConfigIamBinding = import("./apiConfigIamBinding").ApiConfigIamBinding;
+export const ApiConfigIamBinding: typeof import("./apiConfigIamBinding").ApiConfigIamBinding = null as any;
+
+export { ApiConfigIamMemberArgs, ApiConfigIamMemberState } from "./apiConfigIamMember";
+export type ApiConfigIamMember = import("./apiConfigIamMember").ApiConfigIamMember;
+export const ApiConfigIamMember: typeof import("./apiConfigIamMember").ApiConfigIamMember = null as any;
+
+export { ApiConfigIamPolicyArgs, ApiConfigIamPolicyState } from "./apiConfigIamPolicy";
+export type ApiConfigIamPolicy = import("./apiConfigIamPolicy").ApiConfigIamPolicy;
+export const ApiConfigIamPolicy: typeof import("./apiConfigIamPolicy").ApiConfigIamPolicy = null as any;
+
+export { ApiIamBindingArgs, ApiIamBindingState } from "./apiIamBinding";
+export type ApiIamBinding = import("./apiIamBinding").ApiIamBinding;
+export const ApiIamBinding: typeof import("./apiIamBinding").ApiIamBinding = null as any;
+
+export { ApiIamMemberArgs, ApiIamMemberState } from "./apiIamMember";
+export type ApiIamMember = import("./apiIamMember").ApiIamMember;
+export const ApiIamMember: typeof import("./apiIamMember").ApiIamMember = null as any;
+
+export { ApiIamPolicyArgs, ApiIamPolicyState } from "./apiIamPolicy";
+export type ApiIamPolicy = import("./apiIamPolicy").ApiIamPolicy;
+export const ApiIamPolicy: typeof import("./apiIamPolicy").ApiIamPolicy = null as any;
+
+export { GatewayArgs, GatewayState } from "./gateway";
+export type Gateway = import("./gateway").Gateway;
+export const Gateway: typeof import("./gateway").Gateway = null as any;
+
+export { GatewayIamBindingArgs, GatewayIamBindingState } from "./gatewayIamBinding";
+export type GatewayIamBinding = import("./gatewayIamBinding").GatewayIamBinding;
+export const GatewayIamBinding: typeof import("./gatewayIamBinding").GatewayIamBinding = null as any;
+
+export { GatewayIamMemberArgs, GatewayIamMemberState } from "./gatewayIamMember";
+export type GatewayIamMember = import("./gatewayIamMember").GatewayIamMember;
+export const GatewayIamMember: typeof import("./gatewayIamMember").GatewayIamMember = null as any;
+
+export { GatewayIamPolicyArgs, GatewayIamPolicyState } from "./gatewayIamPolicy";
+export type GatewayIamPolicy = import("./gatewayIamPolicy").GatewayIamPolicy;
+export const GatewayIamPolicy: typeof import("./gatewayIamPolicy").GatewayIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["Api"], () => require("./api"));
+utilities.lazyLoad(exports, ["ApiConfig"], () => require("./apiConfig"));
+utilities.lazyLoad(exports, ["ApiConfigIamBinding"], () => require("./apiConfigIamBinding"));
+utilities.lazyLoad(exports, ["ApiConfigIamMember"], () => require("./apiConfigIamMember"));
+utilities.lazyLoad(exports, ["ApiConfigIamPolicy"], () => require("./apiConfigIamPolicy"));
+utilities.lazyLoad(exports, ["ApiIamBinding"], () => require("./apiIamBinding"));
+utilities.lazyLoad(exports, ["ApiIamMember"], () => require("./apiIamMember"));
+utilities.lazyLoad(exports, ["ApiIamPolicy"], () => require("./apiIamPolicy"));
+utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
+utilities.lazyLoad(exports, ["GatewayIamBinding"], () => require("./gatewayIamBinding"));
+utilities.lazyLoad(exports, ["GatewayIamMember"], () => require("./gatewayIamMember"));
+utilities.lazyLoad(exports, ["GatewayIamPolicy"], () => require("./gatewayIamPolicy"));
 
 const _module = {
     version: utilities.getVersion(),

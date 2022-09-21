@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     public static class GetAuthority
     {
         /// <summary>
-        /// Get info about a Google Cloud IAP Client.
+        /// Get info about a Google CAS Certificate Authority.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -42,10 +42,10 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAuthorityResult> InvokeAsync(GetAuthorityArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAuthorityResult>("gcp:certificateauthority/getAuthority:getAuthority", args ?? new GetAuthorityArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAuthorityResult>("gcp:certificateauthority/getAuthority:getAuthority", args ?? new GetAuthorityArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get info about a Google Cloud IAP Client.
+        /// Get info about a Google CAS Certificate Authority.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAuthorityResult> Invoke(GetAuthorityInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAuthorityResult>("gcp:certificateauthority/getAuthority:getAuthority", args ?? new GetAuthorityInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAuthorityResult>("gcp:certificateauthority/getAuthority:getAuthority", args ?? new GetAuthorityInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -169,7 +169,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public readonly string PemCaCertificate;
         public readonly ImmutableArray<string> PemCaCertificates;
         /// <summary>
-        /// The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities.
+        /// The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities that are awaiting user activation.
         /// </summary>
         public readonly string PemCsr;
         public readonly string? Pool;

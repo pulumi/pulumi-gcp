@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class InstanceClusterAutoscalingConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -14,14 +16,14 @@ public final class InstanceClusterAutoscalingConfigArgs extends com.pulumi.resou
     public static final InstanceClusterAutoscalingConfigArgs Empty = new InstanceClusterAutoscalingConfigArgs();
 
     /**
-     * The CPU utilization target in percentage. Must be between 10 and 80.
+     * The target CPU utilization for autoscaling, in percentage. Must be between 10 and 80.
      * 
      */
     @Import(name="cpuTarget", required=true)
     private Output<Integer> cpuTarget;
 
     /**
-     * @return The CPU utilization target in percentage. Must be between 10 and 80.
+     * @return The target CPU utilization for autoscaling, in percentage. Must be between 10 and 80.
      * 
      */
     public Output<Integer> cpuTarget() {
@@ -58,12 +60,28 @@ public final class InstanceClusterAutoscalingConfigArgs extends com.pulumi.resou
         return this.minNodes;
     }
 
+    /**
+     * The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+     * 
+     */
+    @Import(name="storageTarget")
+    private @Nullable Output<Integer> storageTarget;
+
+    /**
+     * @return The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+     * 
+     */
+    public Optional<Output<Integer>> storageTarget() {
+        return Optional.ofNullable(this.storageTarget);
+    }
+
     private InstanceClusterAutoscalingConfigArgs() {}
 
     private InstanceClusterAutoscalingConfigArgs(InstanceClusterAutoscalingConfigArgs $) {
         this.cpuTarget = $.cpuTarget;
         this.maxNodes = $.maxNodes;
         this.minNodes = $.minNodes;
+        this.storageTarget = $.storageTarget;
     }
 
     public static Builder builder() {
@@ -85,7 +103,7 @@ public final class InstanceClusterAutoscalingConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param cpuTarget The CPU utilization target in percentage. Must be between 10 and 80.
+         * @param cpuTarget The target CPU utilization for autoscaling, in percentage. Must be between 10 and 80.
          * 
          * @return builder
          * 
@@ -96,7 +114,7 @@ public final class InstanceClusterAutoscalingConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param cpuTarget The CPU utilization target in percentage. Must be between 10 and 80.
+         * @param cpuTarget The target CPU utilization for autoscaling, in percentage. Must be between 10 and 80.
          * 
          * @return builder
          * 
@@ -145,6 +163,27 @@ public final class InstanceClusterAutoscalingConfigArgs extends com.pulumi.resou
          */
         public Builder minNodes(Integer minNodes) {
             return minNodes(Output.of(minNodes));
+        }
+
+        /**
+         * @param storageTarget The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageTarget(@Nullable Output<Integer> storageTarget) {
+            $.storageTarget = storageTarget;
+            return this;
+        }
+
+        /**
+         * @param storageTarget The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageTarget(Integer storageTarget) {
+            return storageTarget(Output.of(storageTarget));
         }
 
         public InstanceClusterAutoscalingConfigArgs build() {

@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Tags
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTagValueResult> InvokeAsync(GetTagValueArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTagValueResult>("gcp:tags/getTagValue:getTagValue", args ?? new GetTagValueArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagValueResult>("gcp:tags/getTagValue:getTagValue", args ?? new GetTagValueArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a tag value by `parent` key and `short_name`.
@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.Tags
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTagValueResult> Invoke(GetTagValueInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTagValueResult>("gcp:tags/getTagValue:getTagValue", args ?? new GetTagValueInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTagValueResult>("gcp:tags/getTagValue:getTagValue", args ?? new GetTagValueInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -2,11 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Get info about a Google Cloud IAP Client.
+ * Get info about a Google CAS Certificate Authority.
  *
  * ## Example Usage
  *
@@ -84,7 +85,7 @@ export interface GetAuthorityResult {
     readonly pemCaCertificate: string;
     readonly pemCaCertificates: string[];
     /**
-     * The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities.
+     * The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities that are awaiting user activation.
      */
     readonly pemCsr: string;
     readonly pool?: string;

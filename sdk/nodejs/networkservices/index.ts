@@ -5,14 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./edgeCacheKeyset";
-export * from "./edgeCacheOrigin";
-export * from "./edgeCacheService";
+export { EdgeCacheKeysetArgs, EdgeCacheKeysetState } from "./edgeCacheKeyset";
+export type EdgeCacheKeyset = import("./edgeCacheKeyset").EdgeCacheKeyset;
+export const EdgeCacheKeyset: typeof import("./edgeCacheKeyset").EdgeCacheKeyset = null as any;
 
-// Import resources to register:
-import { EdgeCacheKeyset } from "./edgeCacheKeyset";
-import { EdgeCacheOrigin } from "./edgeCacheOrigin";
-import { EdgeCacheService } from "./edgeCacheService";
+export { EdgeCacheOriginArgs, EdgeCacheOriginState } from "./edgeCacheOrigin";
+export type EdgeCacheOrigin = import("./edgeCacheOrigin").EdgeCacheOrigin;
+export const EdgeCacheOrigin: typeof import("./edgeCacheOrigin").EdgeCacheOrigin = null as any;
+
+export { EdgeCacheServiceArgs, EdgeCacheServiceState } from "./edgeCacheService";
+export type EdgeCacheService = import("./edgeCacheService").EdgeCacheService;
+export const EdgeCacheService: typeof import("./edgeCacheService").EdgeCacheService = null as any;
+
+utilities.lazyLoad(exports, ["EdgeCacheKeyset"], () => require("./edgeCacheKeyset"));
+utilities.lazyLoad(exports, ["EdgeCacheOrigin"], () => require("./edgeCacheOrigin"));
+utilities.lazyLoad(exports, ["EdgeCacheService"], () => require("./edgeCacheService"));
 
 const _module = {
     version: utilities.getVersion(),

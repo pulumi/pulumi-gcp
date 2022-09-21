@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Instance{}
 	case "gcp:apigee/instanceAttachment:InstanceAttachment":
 		r = &InstanceAttachment{}
+	case "gcp:apigee/natAddress:NatAddress":
+		r = &NatAddress{}
 	case "gcp:apigee/organization:Organization":
 		r = &Organization{}
 	default:
@@ -97,6 +99,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/instanceAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/natAddress",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

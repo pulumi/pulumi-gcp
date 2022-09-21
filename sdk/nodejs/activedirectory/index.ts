@@ -5,14 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./domain";
-export * from "./domainTrust";
-export * from "./peering";
+export { DomainArgs, DomainState } from "./domain";
+export type Domain = import("./domain").Domain;
+export const Domain: typeof import("./domain").Domain = null as any;
 
-// Import resources to register:
-import { Domain } from "./domain";
-import { DomainTrust } from "./domainTrust";
-import { Peering } from "./peering";
+export { DomainTrustArgs, DomainTrustState } from "./domainTrust";
+export type DomainTrust = import("./domainTrust").DomainTrust;
+export const DomainTrust: typeof import("./domainTrust").DomainTrust = null as any;
+
+export { PeeringArgs, PeeringState } from "./peering";
+export type Peering = import("./peering").Peering;
+export const Peering: typeof import("./peering").Peering = null as any;
+
+utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
+utilities.lazyLoad(exports, ["DomainTrust"], () => require("./domainTrust"));
+utilities.lazyLoad(exports, ["Peering"], () => require("./peering"));
 
 const _module = {
     version: utilities.getVersion(),

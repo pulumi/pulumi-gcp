@@ -169,7 +169,7 @@ type Bucket struct {
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
-	Versioning BucketVersioningPtrOutput `pulumi:"versioning"`
+	Versioning BucketVersioningOutput `pulumi:"versioning"`
 	// Configuration if the bucket acts as a website. Structure is documented below.
 	Website BucketWebsitePtrOutput `pulumi:"website"`
 }
@@ -554,8 +554,8 @@ func (o BucketOutput) Url() pulumi.StringOutput {
 }
 
 // The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
-func (o BucketOutput) Versioning() BucketVersioningPtrOutput {
-	return o.ApplyT(func(v *Bucket) BucketVersioningPtrOutput { return v.Versioning }).(BucketVersioningPtrOutput)
+func (o BucketOutput) Versioning() BucketVersioningOutput {
+	return o.ApplyT(func(v *Bucket) BucketVersioningOutput { return v.Versioning }).(BucketVersioningOutput)
 }
 
 // Configuration if the bucket acts as a website. Structure is documented below.

@@ -5,12 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./document";
-export * from "./index_";
+export { DocumentArgs, DocumentState } from "./document";
+export type Document = import("./document").Document;
+export const Document: typeof import("./document").Document = null as any;
 
-// Import resources to register:
-import { Document } from "./document";
-import { Index } from "./index_";
+export { IndexArgs, IndexState } from "./index_";
+export type Index = import("./index_").Index;
+export const Index: typeof import("./index_").Index = null as any;
+
+utilities.lazyLoad(exports, ["Document"], () => require("./document"));
+utilities.lazyLoad(exports, ["Index"], () => require("./index_"));
 
 const _module = {
     version: utilities.getVersion(),

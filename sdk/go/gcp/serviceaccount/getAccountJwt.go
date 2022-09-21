@@ -41,6 +41,7 @@ import (
 //			foo, err := serviceAccount.GetAccountJwt(ctx, &serviceaccount.GetAccountJwtArgs{
 //				TargetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
 //				Payload:              json0,
+//				ExpiresIn:            pulumi.IntRef(60),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -64,6 +65,8 @@ func GetAccountJwt(ctx *pulumi.Context, args *GetAccountJwtArgs, opts ...pulumi.
 type GetAccountJwtArgs struct {
 	// Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.
 	Delegates []string `pulumi:"delegates"`
+	// Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expiresIn seconds.
+	ExpiresIn *int `pulumi:"expiresIn"`
 	// The JSON-encoded JWT claims set to include in the self-signed JWT.
 	Payload string `pulumi:"payload"`
 	// The email of the service account that will sign the JWT.
@@ -73,6 +76,7 @@ type GetAccountJwtArgs struct {
 // A collection of values returned by getAccountJwt.
 type GetAccountJwtResult struct {
 	Delegates []string `pulumi:"delegates"`
+	ExpiresIn *int     `pulumi:"expiresIn"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The signed JWT containing the JWT Claims Set from the `payload`.
@@ -98,6 +102,8 @@ func GetAccountJwtOutput(ctx *pulumi.Context, args GetAccountJwtOutputArgs, opts
 type GetAccountJwtOutputArgs struct {
 	// Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.
 	Delegates pulumi.StringArrayInput `pulumi:"delegates"`
+	// Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expiresIn seconds.
+	ExpiresIn pulumi.IntPtrInput `pulumi:"expiresIn"`
 	// The JSON-encoded JWT claims set to include in the self-signed JWT.
 	Payload pulumi.StringInput `pulumi:"payload"`
 	// The email of the service account that will sign the JWT.
@@ -125,6 +131,10 @@ func (o GetAccountJwtResultOutput) ToGetAccountJwtResultOutputWithContext(ctx co
 
 func (o GetAccountJwtResultOutput) Delegates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAccountJwtResult) []string { return v.Delegates }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAccountJwtResultOutput) ExpiresIn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAccountJwtResult) *int { return v.ExpiresIn }).(pulumi.IntPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

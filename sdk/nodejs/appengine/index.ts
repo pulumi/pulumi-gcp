@@ -5,25 +5,51 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./application";
-export * from "./applicationUrlDispatchRules";
-export * from "./domainMapping";
-export * from "./engineSplitTraffic";
-export * from "./firewallRule";
-export * from "./flexibleAppVersion";
-export * from "./getDefaultServiceAccount";
-export * from "./serviceNetworkSettings";
-export * from "./standardAppVersion";
+export { ApplicationArgs, ApplicationState } from "./application";
+export type Application = import("./application").Application;
+export const Application: typeof import("./application").Application = null as any;
 
-// Import resources to register:
-import { Application } from "./application";
-import { ApplicationUrlDispatchRules } from "./applicationUrlDispatchRules";
-import { DomainMapping } from "./domainMapping";
-import { EngineSplitTraffic } from "./engineSplitTraffic";
-import { FirewallRule } from "./firewallRule";
-import { FlexibleAppVersion } from "./flexibleAppVersion";
-import { ServiceNetworkSettings } from "./serviceNetworkSettings";
-import { StandardAppVersion } from "./standardAppVersion";
+export { ApplicationUrlDispatchRulesArgs, ApplicationUrlDispatchRulesState } from "./applicationUrlDispatchRules";
+export type ApplicationUrlDispatchRules = import("./applicationUrlDispatchRules").ApplicationUrlDispatchRules;
+export const ApplicationUrlDispatchRules: typeof import("./applicationUrlDispatchRules").ApplicationUrlDispatchRules = null as any;
+
+export { DomainMappingArgs, DomainMappingState } from "./domainMapping";
+export type DomainMapping = import("./domainMapping").DomainMapping;
+export const DomainMapping: typeof import("./domainMapping").DomainMapping = null as any;
+
+export { EngineSplitTrafficArgs, EngineSplitTrafficState } from "./engineSplitTraffic";
+export type EngineSplitTraffic = import("./engineSplitTraffic").EngineSplitTraffic;
+export const EngineSplitTraffic: typeof import("./engineSplitTraffic").EngineSplitTraffic = null as any;
+
+export { FirewallRuleArgs, FirewallRuleState } from "./firewallRule";
+export type FirewallRule = import("./firewallRule").FirewallRule;
+export const FirewallRule: typeof import("./firewallRule").FirewallRule = null as any;
+
+export { FlexibleAppVersionArgs, FlexibleAppVersionState } from "./flexibleAppVersion";
+export type FlexibleAppVersion = import("./flexibleAppVersion").FlexibleAppVersion;
+export const FlexibleAppVersion: typeof import("./flexibleAppVersion").FlexibleAppVersion = null as any;
+
+export { GetDefaultServiceAccountArgs, GetDefaultServiceAccountResult, GetDefaultServiceAccountOutputArgs } from "./getDefaultServiceAccount";
+export const getDefaultServiceAccount: typeof import("./getDefaultServiceAccount").getDefaultServiceAccount = null as any;
+export const getDefaultServiceAccountOutput: typeof import("./getDefaultServiceAccount").getDefaultServiceAccountOutput = null as any;
+
+export { ServiceNetworkSettingsArgs, ServiceNetworkSettingsState } from "./serviceNetworkSettings";
+export type ServiceNetworkSettings = import("./serviceNetworkSettings").ServiceNetworkSettings;
+export const ServiceNetworkSettings: typeof import("./serviceNetworkSettings").ServiceNetworkSettings = null as any;
+
+export { StandardAppVersionArgs, StandardAppVersionState } from "./standardAppVersion";
+export type StandardAppVersion = import("./standardAppVersion").StandardAppVersion;
+export const StandardAppVersion: typeof import("./standardAppVersion").StandardAppVersion = null as any;
+
+utilities.lazyLoad(exports, ["Application"], () => require("./application"));
+utilities.lazyLoad(exports, ["ApplicationUrlDispatchRules"], () => require("./applicationUrlDispatchRules"));
+utilities.lazyLoad(exports, ["DomainMapping"], () => require("./domainMapping"));
+utilities.lazyLoad(exports, ["EngineSplitTraffic"], () => require("./engineSplitTraffic"));
+utilities.lazyLoad(exports, ["FirewallRule"], () => require("./firewallRule"));
+utilities.lazyLoad(exports, ["FlexibleAppVersion"], () => require("./flexibleAppVersion"));
+utilities.lazyLoad(exports, ["getDefaultServiceAccount","getDefaultServiceAccountOutput"], () => require("./getDefaultServiceAccount"));
+utilities.lazyLoad(exports, ["ServiceNetworkSettings"], () => require("./serviceNetworkSettings"));
+utilities.lazyLoad(exports, ["StandardAppVersion"], () => require("./standardAppVersion"));
 
 const _module = {
     version: utilities.getVersion(),

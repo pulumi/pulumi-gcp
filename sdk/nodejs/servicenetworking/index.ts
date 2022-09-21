@@ -5,13 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./connection";
-export * from "./getPeeredDnsDomain";
-export * from "./peeredDnsDomain";
+export { ConnectionArgs, ConnectionState } from "./connection";
+export type Connection = import("./connection").Connection;
+export const Connection: typeof import("./connection").Connection = null as any;
 
-// Import resources to register:
-import { Connection } from "./connection";
-import { PeeredDnsDomain } from "./peeredDnsDomain";
+export { GetPeeredDnsDomainArgs, GetPeeredDnsDomainResult, GetPeeredDnsDomainOutputArgs } from "./getPeeredDnsDomain";
+export const getPeeredDnsDomain: typeof import("./getPeeredDnsDomain").getPeeredDnsDomain = null as any;
+export const getPeeredDnsDomainOutput: typeof import("./getPeeredDnsDomain").getPeeredDnsDomainOutput = null as any;
+
+export { PeeredDnsDomainArgs, PeeredDnsDomainState } from "./peeredDnsDomain";
+export type PeeredDnsDomain = import("./peeredDnsDomain").PeeredDnsDomain;
+export const PeeredDnsDomain: typeof import("./peeredDnsDomain").PeeredDnsDomain = null as any;
+
+utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
+utilities.lazyLoad(exports, ["getPeeredDnsDomain","getPeeredDnsDomainOutput"], () => require("./getPeeredDnsDomain"));
+utilities.lazyLoad(exports, ["PeeredDnsDomain"], () => require("./peeredDnsDomain"));
 
 const _module = {
     version: utilities.getVersion(),

@@ -107,6 +107,8 @@ import (
 type EndpointAttachment struct {
 	pulumi.CustomResourceState
 
+	// State of the endpoint attachment connection to the service attachment.
+	ConnectionState pulumi.StringOutput `pulumi:"connectionState"`
 	// ID of the endpoint attachment.
 	EndpointAttachmentId pulumi.StringOutput `pulumi:"endpointAttachmentId"`
 	// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
@@ -164,6 +166,8 @@ func GetEndpointAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EndpointAttachment resources.
 type endpointAttachmentState struct {
+	// State of the endpoint attachment connection to the service attachment.
+	ConnectionState *string `pulumi:"connectionState"`
 	// ID of the endpoint attachment.
 	EndpointAttachmentId *string `pulumi:"endpointAttachmentId"`
 	// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
@@ -181,6 +185,8 @@ type endpointAttachmentState struct {
 }
 
 type EndpointAttachmentState struct {
+	// State of the endpoint attachment connection to the service attachment.
+	ConnectionState pulumi.StringPtrInput
 	// ID of the endpoint attachment.
 	EndpointAttachmentId pulumi.StringPtrInput
 	// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
@@ -311,6 +317,11 @@ func (o EndpointAttachmentOutput) ToEndpointAttachmentOutput() EndpointAttachmen
 
 func (o EndpointAttachmentOutput) ToEndpointAttachmentOutputWithContext(ctx context.Context) EndpointAttachmentOutput {
 	return o
+}
+
+// State of the endpoint attachment connection to the service attachment.
+func (o EndpointAttachmentOutput) ConnectionState() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.ConnectionState }).(pulumi.StringOutput)
 }
 
 // ID of the endpoint attachment.

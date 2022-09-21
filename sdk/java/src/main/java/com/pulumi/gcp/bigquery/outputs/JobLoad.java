@@ -141,11 +141,11 @@ public final class JobLoad {
     private @Nullable String sourceFormat;
     /**
      * @return The fully-qualified URIs that point to your data in Google Cloud.
-     * For Google Cloud Storage URIs: Each URI can contain one &#39;*&#39; wildcard character
+     * For Google Cloud Storage URIs: Each URI can contain one &#39;\*&#39; wildcard character
      * and it must come after the &#39;bucket&#39; name. Size limits related to load jobs apply
      * to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
      * specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
-     * For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the &#39;*&#39; wildcard character is not allowed.
+     * For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the &#39;\*&#39; wildcard character is not allowed.
      * 
      */
     private List<String> sourceUris;
@@ -325,11 +325,11 @@ public final class JobLoad {
     }
     /**
      * @return The fully-qualified URIs that point to your data in Google Cloud.
-     * For Google Cloud Storage URIs: Each URI can contain one &#39;*&#39; wildcard character
+     * For Google Cloud Storage URIs: Each URI can contain one &#39;\*&#39; wildcard character
      * and it must come after the &#39;bucket&#39; name. Size limits related to load jobs apply
      * to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
      * specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
-     * For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the &#39;*&#39; wildcard character is not allowed.
+     * For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the &#39;\*&#39; wildcard character is not allowed.
      * 
      */
     public List<String> sourceUris() {

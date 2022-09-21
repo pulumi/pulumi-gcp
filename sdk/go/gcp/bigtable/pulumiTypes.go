@@ -272,7 +272,7 @@ func (o GCPolicyMaxVersionArrayOutput) Index(i pulumi.IntInput) GCPolicyMaxVersi
 }
 
 type InstanceCluster struct {
-	// Autoscaling config for the cluster, contains the following arguments:
+	// [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
 	AutoscalingConfig *InstanceClusterAutoscalingConfig `pulumi:"autoscalingConfig"`
 	// The ID of the Cloud Bigtable cluster.
 	ClusterId string `pulumi:"clusterId"`
@@ -303,7 +303,7 @@ type InstanceClusterInput interface {
 }
 
 type InstanceClusterArgs struct {
-	// Autoscaling config for the cluster, contains the following arguments:
+	// [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
 	AutoscalingConfig InstanceClusterAutoscalingConfigPtrInput `pulumi:"autoscalingConfig"`
 	// The ID of the Cloud Bigtable cluster.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
@@ -373,7 +373,7 @@ func (o InstanceClusterOutput) ToInstanceClusterOutputWithContext(ctx context.Co
 	return o
 }
 
-// Autoscaling config for the cluster, contains the following arguments:
+// [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
 func (o InstanceClusterOutput) AutoscalingConfig() InstanceClusterAutoscalingConfigPtrOutput {
 	return o.ApplyT(func(v InstanceCluster) *InstanceClusterAutoscalingConfig { return v.AutoscalingConfig }).(InstanceClusterAutoscalingConfigPtrOutput)
 }
@@ -429,12 +429,14 @@ func (o InstanceClusterArrayOutput) Index(i pulumi.IntInput) InstanceClusterOutp
 }
 
 type InstanceClusterAutoscalingConfig struct {
-	// The CPU utilization target in percentage. Must be between 10 and 80.
+	// The target CPU utilization for autoscaling, in percentage. Must be between 10 and 80.
 	CpuTarget int `pulumi:"cpuTarget"`
 	// The maximum number of nodes for autoscaling.
 	MaxNodes int `pulumi:"maxNodes"`
 	// The minimum number of nodes for autoscaling.
 	MinNodes int `pulumi:"minNodes"`
+	// The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+	StorageTarget *int `pulumi:"storageTarget"`
 }
 
 // InstanceClusterAutoscalingConfigInput is an input type that accepts InstanceClusterAutoscalingConfigArgs and InstanceClusterAutoscalingConfigOutput values.
@@ -449,12 +451,14 @@ type InstanceClusterAutoscalingConfigInput interface {
 }
 
 type InstanceClusterAutoscalingConfigArgs struct {
-	// The CPU utilization target in percentage. Must be between 10 and 80.
+	// The target CPU utilization for autoscaling, in percentage. Must be between 10 and 80.
 	CpuTarget pulumi.IntInput `pulumi:"cpuTarget"`
 	// The maximum number of nodes for autoscaling.
 	MaxNodes pulumi.IntInput `pulumi:"maxNodes"`
 	// The minimum number of nodes for autoscaling.
 	MinNodes pulumi.IntInput `pulumi:"minNodes"`
+	// The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+	StorageTarget pulumi.IntPtrInput `pulumi:"storageTarget"`
 }
 
 func (InstanceClusterAutoscalingConfigArgs) ElementType() reflect.Type {
@@ -534,7 +538,7 @@ func (o InstanceClusterAutoscalingConfigOutput) ToInstanceClusterAutoscalingConf
 	}).(InstanceClusterAutoscalingConfigPtrOutput)
 }
 
-// The CPU utilization target in percentage. Must be between 10 and 80.
+// The target CPU utilization for autoscaling, in percentage. Must be between 10 and 80.
 func (o InstanceClusterAutoscalingConfigOutput) CpuTarget() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceClusterAutoscalingConfig) int { return v.CpuTarget }).(pulumi.IntOutput)
 }
@@ -547,6 +551,11 @@ func (o InstanceClusterAutoscalingConfigOutput) MaxNodes() pulumi.IntOutput {
 // The minimum number of nodes for autoscaling.
 func (o InstanceClusterAutoscalingConfigOutput) MinNodes() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceClusterAutoscalingConfig) int { return v.MinNodes }).(pulumi.IntOutput)
+}
+
+// The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+func (o InstanceClusterAutoscalingConfigOutput) StorageTarget() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceClusterAutoscalingConfig) *int { return v.StorageTarget }).(pulumi.IntPtrOutput)
 }
 
 type InstanceClusterAutoscalingConfigPtrOutput struct{ *pulumi.OutputState }
@@ -573,7 +582,7 @@ func (o InstanceClusterAutoscalingConfigPtrOutput) Elem() InstanceClusterAutosca
 	}).(InstanceClusterAutoscalingConfigOutput)
 }
 
-// The CPU utilization target in percentage. Must be between 10 and 80.
+// The target CPU utilization for autoscaling, in percentage. Must be between 10 and 80.
 func (o InstanceClusterAutoscalingConfigPtrOutput) CpuTarget() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceClusterAutoscalingConfig) *int {
 		if v == nil {
@@ -600,6 +609,16 @@ func (o InstanceClusterAutoscalingConfigPtrOutput) MinNodes() pulumi.IntPtrOutpu
 			return nil
 		}
 		return &v.MinNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+func (o InstanceClusterAutoscalingConfigPtrOutput) StorageTarget() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceClusterAutoscalingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StorageTarget
 	}).(pulumi.IntPtrOutput)
 }
 

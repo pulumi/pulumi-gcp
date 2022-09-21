@@ -5,11 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getTensorflowVersions";
-export * from "./node";
+export { GetTensorflowVersionsArgs, GetTensorflowVersionsResult, GetTensorflowVersionsOutputArgs } from "./getTensorflowVersions";
+export const getTensorflowVersions: typeof import("./getTensorflowVersions").getTensorflowVersions = null as any;
+export const getTensorflowVersionsOutput: typeof import("./getTensorflowVersions").getTensorflowVersionsOutput = null as any;
 
-// Import resources to register:
-import { Node } from "./node";
+export { NodeArgs, NodeState } from "./node";
+export type Node = import("./node").Node;
+export const Node: typeof import("./node").Node = null as any;
+
+utilities.lazyLoad(exports, ["getTensorflowVersions","getTensorflowVersionsOutput"], () => require("./getTensorflowVersions"));
+utilities.lazyLoad(exports, ["Node"], () => require("./node"));
 
 const _module = {
     version: utilities.getVersion(),

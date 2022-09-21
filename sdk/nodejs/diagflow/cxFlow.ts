@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -176,6 +177,11 @@ export class CxFlow extends pulumi.CustomResource {
      * A flow's transition routes serve two purposes:
      * They are responsible for matching the user's first utterances in the flow.
      * They are inherited by every page's [transition routes][Page.transition_routes] and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow.
+     * TransitionRoutes are evalauted in the following order:
+     * TransitionRoutes with intent specified.
+     * TransitionRoutes with only condition specified.
+     * TransitionRoutes with intent specified are inherited by pages in the flow.
+     * Structure is documented below.
      */
     public readonly transitionRoutes!: pulumi.Output<outputs.diagflow.CxFlowTransitionRoute[] | undefined>;
 
@@ -276,6 +282,11 @@ export interface CxFlowState {
      * A flow's transition routes serve two purposes:
      * They are responsible for matching the user's first utterances in the flow.
      * They are inherited by every page's [transition routes][Page.transition_routes] and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow.
+     * TransitionRoutes are evalauted in the following order:
+     * TransitionRoutes with intent specified.
+     * TransitionRoutes with only condition specified.
+     * TransitionRoutes with intent specified are inherited by pages in the flow.
+     * Structure is documented below.
      */
     transitionRoutes?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowTransitionRoute>[]>;
 }
@@ -330,6 +341,11 @@ export interface CxFlowArgs {
      * A flow's transition routes serve two purposes:
      * They are responsible for matching the user's first utterances in the flow.
      * They are inherited by every page's [transition routes][Page.transition_routes] and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow.
+     * TransitionRoutes are evalauted in the following order:
+     * TransitionRoutes with intent specified.
+     * TransitionRoutes with only condition specified.
+     * TransitionRoutes with intent specified are inherited by pages in the flow.
+     * Structure is documented below.
      */
     transitionRoutes?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowTransitionRoute>[]>;
 }

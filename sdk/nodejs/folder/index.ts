@@ -5,21 +5,41 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./accessApprovalSettings";
-export * from "./getOrganizationPolicy";
-export * from "./iamAuditConfig";
-export * from "./iambinding";
-export * from "./iammember";
-export * from "./iampolicy";
-export * from "./organizationPolicy";
+export { AccessApprovalSettingsArgs, AccessApprovalSettingsState } from "./accessApprovalSettings";
+export type AccessApprovalSettings = import("./accessApprovalSettings").AccessApprovalSettings;
+export const AccessApprovalSettings: typeof import("./accessApprovalSettings").AccessApprovalSettings = null as any;
 
-// Import resources to register:
-import { AccessApprovalSettings } from "./accessApprovalSettings";
-import { IAMBinding } from "./iambinding";
-import { IAMMember } from "./iammember";
-import { IAMPolicy } from "./iampolicy";
-import { IamAuditConfig } from "./iamAuditConfig";
-import { OrganizationPolicy } from "./organizationPolicy";
+export { GetOrganizationPolicyArgs, GetOrganizationPolicyResult, GetOrganizationPolicyOutputArgs } from "./getOrganizationPolicy";
+export const getOrganizationPolicy: typeof import("./getOrganizationPolicy").getOrganizationPolicy = null as any;
+export const getOrganizationPolicyOutput: typeof import("./getOrganizationPolicy").getOrganizationPolicyOutput = null as any;
+
+export { IamAuditConfigArgs, IamAuditConfigState } from "./iamAuditConfig";
+export type IamAuditConfig = import("./iamAuditConfig").IamAuditConfig;
+export const IamAuditConfig: typeof import("./iamAuditConfig").IamAuditConfig = null as any;
+
+export { IAMBindingArgs, IAMBindingState } from "./iambinding";
+export type IAMBinding = import("./iambinding").IAMBinding;
+export const IAMBinding: typeof import("./iambinding").IAMBinding = null as any;
+
+export { IAMMemberArgs, IAMMemberState } from "./iammember";
+export type IAMMember = import("./iammember").IAMMember;
+export const IAMMember: typeof import("./iammember").IAMMember = null as any;
+
+export { IAMPolicyArgs, IAMPolicyState } from "./iampolicy";
+export type IAMPolicy = import("./iampolicy").IAMPolicy;
+export const IAMPolicy: typeof import("./iampolicy").IAMPolicy = null as any;
+
+export { OrganizationPolicyArgs, OrganizationPolicyState } from "./organizationPolicy";
+export type OrganizationPolicy = import("./organizationPolicy").OrganizationPolicy;
+export const OrganizationPolicy: typeof import("./organizationPolicy").OrganizationPolicy = null as any;
+
+utilities.lazyLoad(exports, ["AccessApprovalSettings"], () => require("./accessApprovalSettings"));
+utilities.lazyLoad(exports, ["getOrganizationPolicy","getOrganizationPolicyOutput"], () => require("./getOrganizationPolicy"));
+utilities.lazyLoad(exports, ["IamAuditConfig"], () => require("./iamAuditConfig"));
+utilities.lazyLoad(exports, ["IAMBinding"], () => require("./iambinding"));
+utilities.lazyLoad(exports, ["IAMMember"], () => require("./iammember"));
+utilities.lazyLoad(exports, ["IAMPolicy"], () => require("./iampolicy"));
+utilities.lazyLoad(exports, ["OrganizationPolicy"], () => require("./organizationPolicy"));
 
 const _module = {
     version: utilities.getVersion(),

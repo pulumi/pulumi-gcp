@@ -5,16 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./certificate";
-export * from "./certificateMap";
-export * from "./certificateMapEntry";
-export * from "./dnsAuthorization";
+export { CertificateArgs, CertificateState } from "./certificate";
+export type Certificate = import("./certificate").Certificate;
+export const Certificate: typeof import("./certificate").Certificate = null as any;
 
-// Import resources to register:
-import { Certificate } from "./certificate";
-import { CertificateMap } from "./certificateMap";
-import { CertificateMapEntry } from "./certificateMapEntry";
-import { DnsAuthorization } from "./dnsAuthorization";
+export { CertificateMapArgs, CertificateMapState } from "./certificateMap";
+export type CertificateMap = import("./certificateMap").CertificateMap;
+export const CertificateMap: typeof import("./certificateMap").CertificateMap = null as any;
+
+export { CertificateMapEntryArgs, CertificateMapEntryState } from "./certificateMapEntry";
+export type CertificateMapEntry = import("./certificateMapEntry").CertificateMapEntry;
+export const CertificateMapEntry: typeof import("./certificateMapEntry").CertificateMapEntry = null as any;
+
+export { DnsAuthorizationArgs, DnsAuthorizationState } from "./dnsAuthorization";
+export type DnsAuthorization = import("./dnsAuthorization").DnsAuthorization;
+export const DnsAuthorization: typeof import("./dnsAuthorization").DnsAuthorization = null as any;
+
+utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
+utilities.lazyLoad(exports, ["CertificateMap"], () => require("./certificateMap"));
+utilities.lazyLoad(exports, ["CertificateMapEntry"], () => require("./certificateMapEntry"));
+utilities.lazyLoad(exports, ["DnsAuthorization"], () => require("./dnsAuthorization"));
 
 const _module = {
     version: utilities.getVersion(),

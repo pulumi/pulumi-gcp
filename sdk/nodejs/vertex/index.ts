@@ -5,16 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./aiDataset";
-export * from "./aiFeatureStore";
-export * from "./aiFeatureStoreEntityType";
-export * from "./aiMetadataStore";
+export { AiDatasetArgs, AiDatasetState } from "./aiDataset";
+export type AiDataset = import("./aiDataset").AiDataset;
+export const AiDataset: typeof import("./aiDataset").AiDataset = null as any;
 
-// Import resources to register:
-import { AiDataset } from "./aiDataset";
-import { AiFeatureStore } from "./aiFeatureStore";
-import { AiFeatureStoreEntityType } from "./aiFeatureStoreEntityType";
-import { AiMetadataStore } from "./aiMetadataStore";
+export { AiFeatureStoreArgs, AiFeatureStoreState } from "./aiFeatureStore";
+export type AiFeatureStore = import("./aiFeatureStore").AiFeatureStore;
+export const AiFeatureStore: typeof import("./aiFeatureStore").AiFeatureStore = null as any;
+
+export { AiFeatureStoreEntityTypeArgs, AiFeatureStoreEntityTypeState } from "./aiFeatureStoreEntityType";
+export type AiFeatureStoreEntityType = import("./aiFeatureStoreEntityType").AiFeatureStoreEntityType;
+export const AiFeatureStoreEntityType: typeof import("./aiFeatureStoreEntityType").AiFeatureStoreEntityType = null as any;
+
+export { AiMetadataStoreArgs, AiMetadataStoreState } from "./aiMetadataStore";
+export type AiMetadataStore = import("./aiMetadataStore").AiMetadataStore;
+export const AiMetadataStore: typeof import("./aiMetadataStore").AiMetadataStore = null as any;
+
+utilities.lazyLoad(exports, ["AiDataset"], () => require("./aiDataset"));
+utilities.lazyLoad(exports, ["AiFeatureStore"], () => require("./aiFeatureStore"));
+utilities.lazyLoad(exports, ["AiFeatureStoreEntityType"], () => require("./aiFeatureStoreEntityType"));
+utilities.lazyLoad(exports, ["AiMetadataStore"], () => require("./aiMetadataStore"));
 
 const _module = {
     version: utilities.getVersion(),

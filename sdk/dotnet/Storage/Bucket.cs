@@ -228,7 +228,7 @@ namespace Pulumi.Gcp.Storage
         /// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
         /// </summary>
         [Output("versioning")]
-        public Output<Outputs.BucketVersioning?> Versioning { get; private set; } = null!;
+        public Output<Outputs.BucketVersioning> Versioning { get; private set; } = null!;
 
         /// <summary>
         /// Configuration if the bucket acts as a website. Structure is documented below.

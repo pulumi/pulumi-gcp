@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *         sub: "subject",
  *     }),
+ *     expiresIn: 60,
  * });
  * export const jwt = foo.then(foo => foo.jwt);
  * ```
@@ -33,6 +34,7 @@ export function getAccountJwt(args: GetAccountJwtArgs, opts?: pulumi.InvokeOptio
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("gcp:serviceAccount/getAccountJwt:getAccountJwt", {
         "delegates": args.delegates,
+        "expiresIn": args.expiresIn,
         "payload": args.payload,
         "targetServiceAccount": args.targetServiceAccount,
     }, opts);
@@ -46,6 +48,10 @@ export interface GetAccountJwtArgs {
      * Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.
      */
     delegates?: string[];
+    /**
+     * Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expiresIn seconds.
+     */
+    expiresIn?: number;
     /**
      * The JSON-encoded JWT claims set to include in the self-signed JWT.
      */
@@ -61,6 +67,7 @@ export interface GetAccountJwtArgs {
  */
 export interface GetAccountJwtResult {
     readonly delegates?: string[];
+    readonly expiresIn?: number;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -85,6 +92,10 @@ export interface GetAccountJwtOutputArgs {
      * Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.
      */
     delegates?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expiresIn seconds.
+     */
+    expiresIn?: pulumi.Input<number>;
     /**
      * The JSON-encoded JWT claims set to include in the self-signed JWT.
      */

@@ -5,12 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./trigger";
-export * from "./workerPool";
+export { TriggerArgs, TriggerState } from "./trigger";
+export type Trigger = import("./trigger").Trigger;
+export const Trigger: typeof import("./trigger").Trigger = null as any;
 
-// Import resources to register:
-import { Trigger } from "./trigger";
-import { WorkerPool } from "./workerPool";
+export { WorkerPoolArgs, WorkerPoolState } from "./workerPool";
+export type WorkerPool = import("./workerPool").WorkerPool;
+export const WorkerPool: typeof import("./workerPool").WorkerPool = null as any;
+
+utilities.lazyLoad(exports, ["Trigger"], () => require("./trigger"));
+utilities.lazyLoad(exports, ["WorkerPool"], () => require("./workerPool"));
 
 const _module = {
     version: utilities.getVersion(),

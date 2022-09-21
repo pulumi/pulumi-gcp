@@ -5,18 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./attestor";
-export * from "./attestorIamBinding";
-export * from "./attestorIamMember";
-export * from "./attestorIamPolicy";
-export * from "./policy";
+export { AttestorArgs, AttestorState } from "./attestor";
+export type Attestor = import("./attestor").Attestor;
+export const Attestor: typeof import("./attestor").Attestor = null as any;
 
-// Import resources to register:
-import { Attestor } from "./attestor";
-import { AttestorIamBinding } from "./attestorIamBinding";
-import { AttestorIamMember } from "./attestorIamMember";
-import { AttestorIamPolicy } from "./attestorIamPolicy";
-import { Policy } from "./policy";
+export { AttestorIamBindingArgs, AttestorIamBindingState } from "./attestorIamBinding";
+export type AttestorIamBinding = import("./attestorIamBinding").AttestorIamBinding;
+export const AttestorIamBinding: typeof import("./attestorIamBinding").AttestorIamBinding = null as any;
+
+export { AttestorIamMemberArgs, AttestorIamMemberState } from "./attestorIamMember";
+export type AttestorIamMember = import("./attestorIamMember").AttestorIamMember;
+export const AttestorIamMember: typeof import("./attestorIamMember").AttestorIamMember = null as any;
+
+export { AttestorIamPolicyArgs, AttestorIamPolicyState } from "./attestorIamPolicy";
+export type AttestorIamPolicy = import("./attestorIamPolicy").AttestorIamPolicy;
+export const AttestorIamPolicy: typeof import("./attestorIamPolicy").AttestorIamPolicy = null as any;
+
+export { PolicyArgs, PolicyState } from "./policy";
+export type Policy = import("./policy").Policy;
+export const Policy: typeof import("./policy").Policy = null as any;
+
+utilities.lazyLoad(exports, ["Attestor"], () => require("./attestor"));
+utilities.lazyLoad(exports, ["AttestorIamBinding"], () => require("./attestorIamBinding"));
+utilities.lazyLoad(exports, ["AttestorIamMember"], () => require("./attestorIamMember"));
+utilities.lazyLoad(exports, ["AttestorIamPolicy"], () => require("./attestorIamPolicy"));
+utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
 
 const _module = {
     version: utilities.getVersion(),

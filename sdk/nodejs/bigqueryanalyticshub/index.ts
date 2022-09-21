@@ -5,16 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./dataExchange";
-export * from "./dataExchangeIamBinding";
-export * from "./dataExchangeIamMember";
-export * from "./dataExchangeIamPolicy";
+export { DataExchangeArgs, DataExchangeState } from "./dataExchange";
+export type DataExchange = import("./dataExchange").DataExchange;
+export const DataExchange: typeof import("./dataExchange").DataExchange = null as any;
 
-// Import resources to register:
-import { DataExchange } from "./dataExchange";
-import { DataExchangeIamBinding } from "./dataExchangeIamBinding";
-import { DataExchangeIamMember } from "./dataExchangeIamMember";
-import { DataExchangeIamPolicy } from "./dataExchangeIamPolicy";
+export { DataExchangeIamBindingArgs, DataExchangeIamBindingState } from "./dataExchangeIamBinding";
+export type DataExchangeIamBinding = import("./dataExchangeIamBinding").DataExchangeIamBinding;
+export const DataExchangeIamBinding: typeof import("./dataExchangeIamBinding").DataExchangeIamBinding = null as any;
+
+export { DataExchangeIamMemberArgs, DataExchangeIamMemberState } from "./dataExchangeIamMember";
+export type DataExchangeIamMember = import("./dataExchangeIamMember").DataExchangeIamMember;
+export const DataExchangeIamMember: typeof import("./dataExchangeIamMember").DataExchangeIamMember = null as any;
+
+export { DataExchangeIamPolicyArgs, DataExchangeIamPolicyState } from "./dataExchangeIamPolicy";
+export type DataExchangeIamPolicy = import("./dataExchangeIamPolicy").DataExchangeIamPolicy;
+export const DataExchangeIamPolicy: typeof import("./dataExchangeIamPolicy").DataExchangeIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["DataExchange"], () => require("./dataExchange"));
+utilities.lazyLoad(exports, ["DataExchangeIamBinding"], () => require("./dataExchangeIamBinding"));
+utilities.lazyLoad(exports, ["DataExchangeIamMember"], () => require("./dataExchangeIamMember"));
+utilities.lazyLoad(exports, ["DataExchangeIamPolicy"], () => require("./dataExchangeIamPolicy"));
 
 const _module = {
     version: utilities.getVersion(),

@@ -5473,11 +5473,11 @@ type JobLoad struct {
 	// The default value is CSV.
 	SourceFormat *string `pulumi:"sourceFormat"`
 	// The fully-qualified URIs that point to your data in Google Cloud.
-	// For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character
+	// For Google Cloud Storage URIs: Each URI can contain one '\*' wildcard character
 	// and it must come after the 'bucket' name. Size limits related to load jobs apply
 	// to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
 	// specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
-	// For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
+	// For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '\*' wildcard character is not allowed.
 	SourceUris []string `pulumi:"sourceUris"`
 	// Time-based partitioning specification for the destination table.
 	// Structure is documented below.
@@ -5580,11 +5580,11 @@ type JobLoadArgs struct {
 	// The default value is CSV.
 	SourceFormat pulumi.StringPtrInput `pulumi:"sourceFormat"`
 	// The fully-qualified URIs that point to your data in Google Cloud.
-	// For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character
+	// For Google Cloud Storage URIs: Each URI can contain one '\*' wildcard character
 	// and it must come after the 'bucket' name. Size limits related to load jobs apply
 	// to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
 	// specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
-	// For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
+	// For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '\*' wildcard character is not allowed.
 	SourceUris pulumi.StringArrayInput `pulumi:"sourceUris"`
 	// Time-based partitioning specification for the destination table.
 	// Structure is documented below.
@@ -5802,11 +5802,11 @@ func (o JobLoadOutput) SourceFormat() pulumi.StringPtrOutput {
 }
 
 // The fully-qualified URIs that point to your data in Google Cloud.
-// For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character
+// For Google Cloud Storage URIs: Each URI can contain one '\*' wildcard character
 // and it must come after the 'bucket' name. Size limits related to load jobs apply
 // to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
 // specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
-// For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
+// For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '\*' wildcard character is not allowed.
 func (o JobLoadOutput) SourceUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobLoad) []string { return v.SourceUris }).(pulumi.StringArrayOutput)
 }
@@ -6056,11 +6056,11 @@ func (o JobLoadPtrOutput) SourceFormat() pulumi.StringPtrOutput {
 }
 
 // The fully-qualified URIs that point to your data in Google Cloud.
-// For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character
+// For Google Cloud Storage URIs: Each URI can contain one '\*' wildcard character
 // and it must come after the 'bucket' name. Size limits related to load jobs apply
 // to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
 // specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
-// For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
+// For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '\*' wildcard character is not allowed.
 func (o JobLoadPtrOutput) SourceUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobLoad) []string {
 		if v == nil {

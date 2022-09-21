@@ -1859,7 +1859,7 @@ class ServiceTemplateSpecVolumeSecret(dict):
                is assumed to be in the same project.
                If the secret is in another project, you must define an alias.
                An alias definition has the form:
-               <alias>:projects/<project-id|project-number>/secrets/<secret-name>.
+               {alias}:projects/{project-id|project-number}/secrets/{secret-name}.
                If multiple alias definitions are needed, they must be separated by
                commas.
                The alias definitions must be set on the run.googleapis.com/secrets
@@ -1889,7 +1889,7 @@ class ServiceTemplateSpecVolumeSecret(dict):
         is assumed to be in the same project.
         If the secret is in another project, you must define an alias.
         An alias definition has the form:
-        <alias>:projects/<project-id|project-number>/secrets/<secret-name>.
+        {alias}:projects/{project-id|project-number}/secrets/{secret-name}.
         If multiple alias definitions are needed, they must be separated by
         commas.
         The alias definitions must be set on the run.googleapis.com/secrets

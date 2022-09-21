@@ -1344,6 +1344,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Filestore resources
 			"google_filestore_instance": {Tok: gcpResource(gcpFilestore, "Instance")},
+			"google_filestore_snapshot": {Tok: gcpResource(gcpFilestore, "Snapshot")},
 
 			// Firebase
 			"google_firebase_project": {
@@ -2026,6 +2027,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_dialogflow_cx_entity_type": {Tok: gcpResource(gcpDiagflow, "CxEntityType")},
 			"google_dialogflow_cx_page":        {Tok: gcpResource(gcpDiagflow, "CxPage")},
 			"google_dialogflow_cx_environment": {Tok: gcpResource(gcpDiagflow, "CxEnvironment")},
+			"google_dialogflow_cx_webhook":     {Tok: gcpResource(gcpDiagflow, "CxWebhook")},
 
 			// Secret Manager
 			"google_secret_manager_secret": {Tok: gcpResource(gcpSecretManager, "Secret")},
@@ -2362,6 +2364,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_apigee_endpoint_attachment": {Tok: gcpResource(gcpApigee, "EndpointAttachment")},
+			"google_apigee_nat_address":         {Tok: gcpResource(gcpApigee, "NatAddress")},
 
 			// API Gateway
 			"google_api_gateway_api_config_iam_binding": {

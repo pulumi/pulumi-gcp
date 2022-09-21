@@ -5,18 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./accountIamBinding";
-export * from "./accountIamMember";
-export * from "./accountIamPolicy";
-export * from "./budget";
-export * from "./subAccount";
+export { AccountIamBindingArgs, AccountIamBindingState } from "./accountIamBinding";
+export type AccountIamBinding = import("./accountIamBinding").AccountIamBinding;
+export const AccountIamBinding: typeof import("./accountIamBinding").AccountIamBinding = null as any;
 
-// Import resources to register:
-import { AccountIamBinding } from "./accountIamBinding";
-import { AccountIamMember } from "./accountIamMember";
-import { AccountIamPolicy } from "./accountIamPolicy";
-import { Budget } from "./budget";
-import { SubAccount } from "./subAccount";
+export { AccountIamMemberArgs, AccountIamMemberState } from "./accountIamMember";
+export type AccountIamMember = import("./accountIamMember").AccountIamMember;
+export const AccountIamMember: typeof import("./accountIamMember").AccountIamMember = null as any;
+
+export { AccountIamPolicyArgs, AccountIamPolicyState } from "./accountIamPolicy";
+export type AccountIamPolicy = import("./accountIamPolicy").AccountIamPolicy;
+export const AccountIamPolicy: typeof import("./accountIamPolicy").AccountIamPolicy = null as any;
+
+export { BudgetArgs, BudgetState } from "./budget";
+export type Budget = import("./budget").Budget;
+export const Budget: typeof import("./budget").Budget = null as any;
+
+export { SubAccountArgs, SubAccountState } from "./subAccount";
+export type SubAccount = import("./subAccount").SubAccount;
+export const SubAccount: typeof import("./subAccount").SubAccount = null as any;
+
+utilities.lazyLoad(exports, ["AccountIamBinding"], () => require("./accountIamBinding"));
+utilities.lazyLoad(exports, ["AccountIamMember"], () => require("./accountIamMember"));
+utilities.lazyLoad(exports, ["AccountIamPolicy"], () => require("./accountIamPolicy"));
+utilities.lazyLoad(exports, ["Budget"], () => require("./budget"));
+utilities.lazyLoad(exports, ["SubAccount"], () => require("./subAccount"));
 
 const _module = {
     version: utilities.getVersion(),

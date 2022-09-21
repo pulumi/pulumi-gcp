@@ -5,280 +5,765 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./address";
-export * from "./attachedDisk";
-export * from "./autoscalar";
-export * from "./autoscaler";
-export * from "./backendBucket";
-export * from "./backendBucketIamBinding";
-export * from "./backendBucketIamMember";
-export * from "./backendBucketIamPolicy";
-export * from "./backendBucketSignedUrlKey";
-export * from "./backendService";
-export * from "./backendServiceIamBinding";
-export * from "./backendServiceIamMember";
-export * from "./backendServiceIamPolicy";
-export * from "./backendServiceSignedUrlKey";
-export * from "./disk";
-export * from "./diskIamBinding";
-export * from "./diskIamMember";
-export * from "./diskIamPolicy";
-export * from "./diskResourcePolicyAttachment";
-export * from "./externalVpnGateway";
-export * from "./firewall";
-export * from "./firewallPolicy";
-export * from "./firewallPolicyAssociation";
-export * from "./firewallPolicyRule";
-export * from "./forwardingRule";
-export * from "./getAddress";
-export * from "./getBackendBucket";
-export * from "./getBackendService";
-export * from "./getCertificate";
-export * from "./getDefaultServiceAccount";
-export * from "./getDisk";
-export * from "./getForwardingRule";
-export * from "./getGlobalAddress";
-export * from "./getGlobalForwardingRule";
-export * from "./getHcVpnGateway";
-export * from "./getHealthCheck";
-export * from "./getImage";
-export * from "./getInstance";
-export * from "./getInstanceGroup";
-export * from "./getInstanceSerialPort";
-export * from "./getInstanceTemplate";
-export * from "./getLBIPRanges";
-export * from "./getNetblockIPRanges";
-export * from "./getNetwork";
-export * from "./getNetworkEndpointGroup";
-export * from "./getNodeTypes";
-export * from "./getRegionInstanceGroup";
-export * from "./getRegionSslCertificate";
-export * from "./getRegions";
-export * from "./getResourcePolicy";
-export * from "./getRouter";
-export * from "./getRouterStatus";
-export * from "./getSSLPolicy";
-export * from "./getSubnetwork";
-export * from "./getVPNGateway";
-export * from "./getZones";
-export * from "./globalAddress";
-export * from "./globalForwardingRule";
-export * from "./globalNetworkEndpoint";
-export * from "./globalNetworkEndpointGroup";
-export * from "./haVpnGateway";
-export * from "./healthCheck";
-export * from "./httpHealthCheck";
-export * from "./httpsHealthCheck";
-export * from "./image";
-export * from "./imageIamBinding";
-export * from "./imageIamMember";
-export * from "./imageIamPolicy";
-export * from "./instance";
-export * from "./instanceFromMachineImage";
-export * from "./instanceFromTemplate";
-export * from "./instanceGroup";
-export * from "./instanceGroupManager";
-export * from "./instanceGroupNamedPort";
-export * from "./instanceIAMBinding";
-export * from "./instanceIAMMember";
-export * from "./instanceIAMPolicy";
-export * from "./instanceTemplate";
-export * from "./interconnectAttachment";
-export * from "./machineImage";
-export * from "./machineImageIamBinding";
-export * from "./machineImageIamMember";
-export * from "./machineImageIamPolicy";
-export * from "./managedSslCertificate";
-export * from "./mangedSslCertificate";
-export * from "./network";
-export * from "./networkEndpoint";
-export * from "./networkEndpointGroup";
-export * from "./networkPeering";
-export * from "./networkPeeringRoutesConfig";
-export * from "./nodeGroup";
-export * from "./nodeTemplate";
-export * from "./organizationSecurityPolicy";
-export * from "./organizationSecurityPolicyAssociation";
-export * from "./organizationSecurityPolicyRule";
-export * from "./packetMirroring";
-export * from "./perInstanceConfig";
-export * from "./projectDefaultNetworkTier";
-export * from "./projectMetadata";
-export * from "./projectMetadataItem";
-export * from "./regionAutoscaler";
-export * from "./regionBackendService";
-export * from "./regionBackendServiceIamBinding";
-export * from "./regionBackendServiceIamMember";
-export * from "./regionBackendServiceIamPolicy";
-export * from "./regionDisk";
-export * from "./regionDiskIamBinding";
-export * from "./regionDiskIamMember";
-export * from "./regionDiskIamPolicy";
-export * from "./regionDiskResourcePolicyAttachment";
-export * from "./regionHealthCheck";
-export * from "./regionInstanceGroupManager";
-export * from "./regionNetworkEndpointGroup";
-export * from "./regionPerInstanceConfig";
-export * from "./regionSslCertificate";
-export * from "./regionSslPolicy";
-export * from "./regionTargetHttpProxy";
-export * from "./regionTargetHttpsProxy";
-export * from "./regionUrlMap";
-export * from "./reservation";
-export * from "./resourcePolicy";
-export * from "./route";
-export * from "./router";
-export * from "./routerInterface";
-export * from "./routerNat";
-export * from "./routerPeer";
-export * from "./routerStatus";
-export * from "./securityPolicy";
-export * from "./securityScanConfig";
-export * from "./serviceAttachment";
-export * from "./sharedVPCHostProject";
-export * from "./sharedVPCServiceProject";
-export * from "./snapshot";
-export * from "./snapshotIamBinding";
-export * from "./snapshotIamMember";
-export * from "./snapshotIamPolicy";
-export * from "./sslcertificate";
-export * from "./sslpolicy";
-export * from "./subnetwork";
-export * from "./subnetworkIAMBinding";
-export * from "./subnetworkIAMMember";
-export * from "./subnetworkIAMPolicy";
-export * from "./targetGrpcProxy";
-export * from "./targetHttpProxy";
-export * from "./targetHttpsProxy";
-export * from "./targetInstance";
-export * from "./targetPool";
-export * from "./targetSSLProxy";
-export * from "./targetTCPProxy";
-export * from "./urlmap";
-export * from "./vpngateway";
-export * from "./vpntunnel";
+export { AddressArgs, AddressState } from "./address";
+export type Address = import("./address").Address;
+export const Address: typeof import("./address").Address = null as any;
 
-// Import resources to register:
-import { Address } from "./address";
-import { AttachedDisk } from "./attachedDisk";
-import { Autoscalar } from "./autoscalar";
-import { Autoscaler } from "./autoscaler";
-import { BackendBucket } from "./backendBucket";
-import { BackendBucketIamBinding } from "./backendBucketIamBinding";
-import { BackendBucketIamMember } from "./backendBucketIamMember";
-import { BackendBucketIamPolicy } from "./backendBucketIamPolicy";
-import { BackendBucketSignedUrlKey } from "./backendBucketSignedUrlKey";
-import { BackendService } from "./backendService";
-import { BackendServiceIamBinding } from "./backendServiceIamBinding";
-import { BackendServiceIamMember } from "./backendServiceIamMember";
-import { BackendServiceIamPolicy } from "./backendServiceIamPolicy";
-import { BackendServiceSignedUrlKey } from "./backendServiceSignedUrlKey";
-import { Disk } from "./disk";
-import { DiskIamBinding } from "./diskIamBinding";
-import { DiskIamMember } from "./diskIamMember";
-import { DiskIamPolicy } from "./diskIamPolicy";
-import { DiskResourcePolicyAttachment } from "./diskResourcePolicyAttachment";
-import { ExternalVpnGateway } from "./externalVpnGateway";
-import { Firewall } from "./firewall";
-import { FirewallPolicy } from "./firewallPolicy";
-import { FirewallPolicyAssociation } from "./firewallPolicyAssociation";
-import { FirewallPolicyRule } from "./firewallPolicyRule";
-import { ForwardingRule } from "./forwardingRule";
-import { GlobalAddress } from "./globalAddress";
-import { GlobalForwardingRule } from "./globalForwardingRule";
-import { GlobalNetworkEndpoint } from "./globalNetworkEndpoint";
-import { GlobalNetworkEndpointGroup } from "./globalNetworkEndpointGroup";
-import { HaVpnGateway } from "./haVpnGateway";
-import { HealthCheck } from "./healthCheck";
-import { HttpHealthCheck } from "./httpHealthCheck";
-import { HttpsHealthCheck } from "./httpsHealthCheck";
-import { Image } from "./image";
-import { ImageIamBinding } from "./imageIamBinding";
-import { ImageIamMember } from "./imageIamMember";
-import { ImageIamPolicy } from "./imageIamPolicy";
-import { Instance } from "./instance";
-import { InstanceFromMachineImage } from "./instanceFromMachineImage";
-import { InstanceFromTemplate } from "./instanceFromTemplate";
-import { InstanceGroup } from "./instanceGroup";
-import { InstanceGroupManager } from "./instanceGroupManager";
-import { InstanceGroupNamedPort } from "./instanceGroupNamedPort";
-import { InstanceIAMBinding } from "./instanceIAMBinding";
-import { InstanceIAMMember } from "./instanceIAMMember";
-import { InstanceIAMPolicy } from "./instanceIAMPolicy";
-import { InstanceTemplate } from "./instanceTemplate";
-import { InterconnectAttachment } from "./interconnectAttachment";
-import { MachineImage } from "./machineImage";
-import { MachineImageIamBinding } from "./machineImageIamBinding";
-import { MachineImageIamMember } from "./machineImageIamMember";
-import { MachineImageIamPolicy } from "./machineImageIamPolicy";
-import { ManagedSslCertificate } from "./managedSslCertificate";
-import { MangedSslCertificate } from "./mangedSslCertificate";
-import { Network } from "./network";
-import { NetworkEndpoint } from "./networkEndpoint";
-import { NetworkEndpointGroup } from "./networkEndpointGroup";
-import { NetworkPeering } from "./networkPeering";
-import { NetworkPeeringRoutesConfig } from "./networkPeeringRoutesConfig";
-import { NodeGroup } from "./nodeGroup";
-import { NodeTemplate } from "./nodeTemplate";
-import { OrganizationSecurityPolicy } from "./organizationSecurityPolicy";
-import { OrganizationSecurityPolicyAssociation } from "./organizationSecurityPolicyAssociation";
-import { OrganizationSecurityPolicyRule } from "./organizationSecurityPolicyRule";
-import { PacketMirroring } from "./packetMirroring";
-import { PerInstanceConfig } from "./perInstanceConfig";
-import { ProjectDefaultNetworkTier } from "./projectDefaultNetworkTier";
-import { ProjectMetadata } from "./projectMetadata";
-import { ProjectMetadataItem } from "./projectMetadataItem";
-import { RegionAutoscaler } from "./regionAutoscaler";
-import { RegionBackendService } from "./regionBackendService";
-import { RegionBackendServiceIamBinding } from "./regionBackendServiceIamBinding";
-import { RegionBackendServiceIamMember } from "./regionBackendServiceIamMember";
-import { RegionBackendServiceIamPolicy } from "./regionBackendServiceIamPolicy";
-import { RegionDisk } from "./regionDisk";
-import { RegionDiskIamBinding } from "./regionDiskIamBinding";
-import { RegionDiskIamMember } from "./regionDiskIamMember";
-import { RegionDiskIamPolicy } from "./regionDiskIamPolicy";
-import { RegionDiskResourcePolicyAttachment } from "./regionDiskResourcePolicyAttachment";
-import { RegionHealthCheck } from "./regionHealthCheck";
-import { RegionInstanceGroupManager } from "./regionInstanceGroupManager";
-import { RegionNetworkEndpointGroup } from "./regionNetworkEndpointGroup";
-import { RegionPerInstanceConfig } from "./regionPerInstanceConfig";
-import { RegionSslCertificate } from "./regionSslCertificate";
-import { RegionSslPolicy } from "./regionSslPolicy";
-import { RegionTargetHttpProxy } from "./regionTargetHttpProxy";
-import { RegionTargetHttpsProxy } from "./regionTargetHttpsProxy";
-import { RegionUrlMap } from "./regionUrlMap";
-import { Reservation } from "./reservation";
-import { ResourcePolicy } from "./resourcePolicy";
-import { Route } from "./route";
-import { Router } from "./router";
-import { RouterInterface } from "./routerInterface";
-import { RouterNat } from "./routerNat";
-import { RouterPeer } from "./routerPeer";
-import { SSLCertificate } from "./sslcertificate";
-import { SSLPolicy } from "./sslpolicy";
-import { SecurityPolicy } from "./securityPolicy";
-import { SecurityScanConfig } from "./securityScanConfig";
-import { ServiceAttachment } from "./serviceAttachment";
-import { SharedVPCHostProject } from "./sharedVPCHostProject";
-import { SharedVPCServiceProject } from "./sharedVPCServiceProject";
-import { Snapshot } from "./snapshot";
-import { SnapshotIamBinding } from "./snapshotIamBinding";
-import { SnapshotIamMember } from "./snapshotIamMember";
-import { SnapshotIamPolicy } from "./snapshotIamPolicy";
-import { Subnetwork } from "./subnetwork";
-import { SubnetworkIAMBinding } from "./subnetworkIAMBinding";
-import { SubnetworkIAMMember } from "./subnetworkIAMMember";
-import { SubnetworkIAMPolicy } from "./subnetworkIAMPolicy";
-import { TargetGrpcProxy } from "./targetGrpcProxy";
-import { TargetHttpProxy } from "./targetHttpProxy";
-import { TargetHttpsProxy } from "./targetHttpsProxy";
-import { TargetInstance } from "./targetInstance";
-import { TargetPool } from "./targetPool";
-import { TargetSSLProxy } from "./targetSSLProxy";
-import { TargetTCPProxy } from "./targetTCPProxy";
-import { URLMap } from "./urlmap";
-import { VPNGateway } from "./vpngateway";
-import { VPNTunnel } from "./vpntunnel";
+export { AttachedDiskArgs, AttachedDiskState } from "./attachedDisk";
+export type AttachedDisk = import("./attachedDisk").AttachedDisk;
+export const AttachedDisk: typeof import("./attachedDisk").AttachedDisk = null as any;
+
+export { AutoscalarArgs, AutoscalarState } from "./autoscalar";
+export type Autoscalar = import("./autoscalar").Autoscalar;
+export const Autoscalar: typeof import("./autoscalar").Autoscalar = null as any;
+
+export { AutoscalerArgs, AutoscalerState } from "./autoscaler";
+export type Autoscaler = import("./autoscaler").Autoscaler;
+export const Autoscaler: typeof import("./autoscaler").Autoscaler = null as any;
+
+export { BackendBucketArgs, BackendBucketState } from "./backendBucket";
+export type BackendBucket = import("./backendBucket").BackendBucket;
+export const BackendBucket: typeof import("./backendBucket").BackendBucket = null as any;
+
+export { BackendBucketIamBindingArgs, BackendBucketIamBindingState } from "./backendBucketIamBinding";
+export type BackendBucketIamBinding = import("./backendBucketIamBinding").BackendBucketIamBinding;
+export const BackendBucketIamBinding: typeof import("./backendBucketIamBinding").BackendBucketIamBinding = null as any;
+
+export { BackendBucketIamMemberArgs, BackendBucketIamMemberState } from "./backendBucketIamMember";
+export type BackendBucketIamMember = import("./backendBucketIamMember").BackendBucketIamMember;
+export const BackendBucketIamMember: typeof import("./backendBucketIamMember").BackendBucketIamMember = null as any;
+
+export { BackendBucketIamPolicyArgs, BackendBucketIamPolicyState } from "./backendBucketIamPolicy";
+export type BackendBucketIamPolicy = import("./backendBucketIamPolicy").BackendBucketIamPolicy;
+export const BackendBucketIamPolicy: typeof import("./backendBucketIamPolicy").BackendBucketIamPolicy = null as any;
+
+export { BackendBucketSignedUrlKeyArgs, BackendBucketSignedUrlKeyState } from "./backendBucketSignedUrlKey";
+export type BackendBucketSignedUrlKey = import("./backendBucketSignedUrlKey").BackendBucketSignedUrlKey;
+export const BackendBucketSignedUrlKey: typeof import("./backendBucketSignedUrlKey").BackendBucketSignedUrlKey = null as any;
+
+export { BackendServiceArgs, BackendServiceState } from "./backendService";
+export type BackendService = import("./backendService").BackendService;
+export const BackendService: typeof import("./backendService").BackendService = null as any;
+
+export { BackendServiceIamBindingArgs, BackendServiceIamBindingState } from "./backendServiceIamBinding";
+export type BackendServiceIamBinding = import("./backendServiceIamBinding").BackendServiceIamBinding;
+export const BackendServiceIamBinding: typeof import("./backendServiceIamBinding").BackendServiceIamBinding = null as any;
+
+export { BackendServiceIamMemberArgs, BackendServiceIamMemberState } from "./backendServiceIamMember";
+export type BackendServiceIamMember = import("./backendServiceIamMember").BackendServiceIamMember;
+export const BackendServiceIamMember: typeof import("./backendServiceIamMember").BackendServiceIamMember = null as any;
+
+export { BackendServiceIamPolicyArgs, BackendServiceIamPolicyState } from "./backendServiceIamPolicy";
+export type BackendServiceIamPolicy = import("./backendServiceIamPolicy").BackendServiceIamPolicy;
+export const BackendServiceIamPolicy: typeof import("./backendServiceIamPolicy").BackendServiceIamPolicy = null as any;
+
+export { BackendServiceSignedUrlKeyArgs, BackendServiceSignedUrlKeyState } from "./backendServiceSignedUrlKey";
+export type BackendServiceSignedUrlKey = import("./backendServiceSignedUrlKey").BackendServiceSignedUrlKey;
+export const BackendServiceSignedUrlKey: typeof import("./backendServiceSignedUrlKey").BackendServiceSignedUrlKey = null as any;
+
+export { DiskArgs, DiskState } from "./disk";
+export type Disk = import("./disk").Disk;
+export const Disk: typeof import("./disk").Disk = null as any;
+
+export { DiskIamBindingArgs, DiskIamBindingState } from "./diskIamBinding";
+export type DiskIamBinding = import("./diskIamBinding").DiskIamBinding;
+export const DiskIamBinding: typeof import("./diskIamBinding").DiskIamBinding = null as any;
+
+export { DiskIamMemberArgs, DiskIamMemberState } from "./diskIamMember";
+export type DiskIamMember = import("./diskIamMember").DiskIamMember;
+export const DiskIamMember: typeof import("./diskIamMember").DiskIamMember = null as any;
+
+export { DiskIamPolicyArgs, DiskIamPolicyState } from "./diskIamPolicy";
+export type DiskIamPolicy = import("./diskIamPolicy").DiskIamPolicy;
+export const DiskIamPolicy: typeof import("./diskIamPolicy").DiskIamPolicy = null as any;
+
+export { DiskResourcePolicyAttachmentArgs, DiskResourcePolicyAttachmentState } from "./diskResourcePolicyAttachment";
+export type DiskResourcePolicyAttachment = import("./diskResourcePolicyAttachment").DiskResourcePolicyAttachment;
+export const DiskResourcePolicyAttachment: typeof import("./diskResourcePolicyAttachment").DiskResourcePolicyAttachment = null as any;
+
+export { ExternalVpnGatewayArgs, ExternalVpnGatewayState } from "./externalVpnGateway";
+export type ExternalVpnGateway = import("./externalVpnGateway").ExternalVpnGateway;
+export const ExternalVpnGateway: typeof import("./externalVpnGateway").ExternalVpnGateway = null as any;
+
+export { FirewallArgs, FirewallState } from "./firewall";
+export type Firewall = import("./firewall").Firewall;
+export const Firewall: typeof import("./firewall").Firewall = null as any;
+
+export { FirewallPolicyArgs, FirewallPolicyState } from "./firewallPolicy";
+export type FirewallPolicy = import("./firewallPolicy").FirewallPolicy;
+export const FirewallPolicy: typeof import("./firewallPolicy").FirewallPolicy = null as any;
+
+export { FirewallPolicyAssociationArgs, FirewallPolicyAssociationState } from "./firewallPolicyAssociation";
+export type FirewallPolicyAssociation = import("./firewallPolicyAssociation").FirewallPolicyAssociation;
+export const FirewallPolicyAssociation: typeof import("./firewallPolicyAssociation").FirewallPolicyAssociation = null as any;
+
+export { FirewallPolicyRuleArgs, FirewallPolicyRuleState } from "./firewallPolicyRule";
+export type FirewallPolicyRule = import("./firewallPolicyRule").FirewallPolicyRule;
+export const FirewallPolicyRule: typeof import("./firewallPolicyRule").FirewallPolicyRule = null as any;
+
+export { ForwardingRuleArgs, ForwardingRuleState } from "./forwardingRule";
+export type ForwardingRule = import("./forwardingRule").ForwardingRule;
+export const ForwardingRule: typeof import("./forwardingRule").ForwardingRule = null as any;
+
+export { GetAddressArgs, GetAddressResult, GetAddressOutputArgs } from "./getAddress";
+export const getAddress: typeof import("./getAddress").getAddress = null as any;
+export const getAddressOutput: typeof import("./getAddress").getAddressOutput = null as any;
+
+export { GetBackendBucketArgs, GetBackendBucketResult, GetBackendBucketOutputArgs } from "./getBackendBucket";
+export const getBackendBucket: typeof import("./getBackendBucket").getBackendBucket = null as any;
+export const getBackendBucketOutput: typeof import("./getBackendBucket").getBackendBucketOutput = null as any;
+
+export { GetBackendServiceArgs, GetBackendServiceResult, GetBackendServiceOutputArgs } from "./getBackendService";
+export const getBackendService: typeof import("./getBackendService").getBackendService = null as any;
+export const getBackendServiceOutput: typeof import("./getBackendService").getBackendServiceOutput = null as any;
+
+export { GetCertificateArgs, GetCertificateResult, GetCertificateOutputArgs } from "./getCertificate";
+export const getCertificate: typeof import("./getCertificate").getCertificate = null as any;
+export const getCertificateOutput: typeof import("./getCertificate").getCertificateOutput = null as any;
+
+export { GetDefaultServiceAccountArgs, GetDefaultServiceAccountResult, GetDefaultServiceAccountOutputArgs } from "./getDefaultServiceAccount";
+export const getDefaultServiceAccount: typeof import("./getDefaultServiceAccount").getDefaultServiceAccount = null as any;
+export const getDefaultServiceAccountOutput: typeof import("./getDefaultServiceAccount").getDefaultServiceAccountOutput = null as any;
+
+export { GetDiskArgs, GetDiskResult, GetDiskOutputArgs } from "./getDisk";
+export const getDisk: typeof import("./getDisk").getDisk = null as any;
+export const getDiskOutput: typeof import("./getDisk").getDiskOutput = null as any;
+
+export { GetForwardingRuleArgs, GetForwardingRuleResult, GetForwardingRuleOutputArgs } from "./getForwardingRule";
+export const getForwardingRule: typeof import("./getForwardingRule").getForwardingRule = null as any;
+export const getForwardingRuleOutput: typeof import("./getForwardingRule").getForwardingRuleOutput = null as any;
+
+export { GetGlobalAddressArgs, GetGlobalAddressResult, GetGlobalAddressOutputArgs } from "./getGlobalAddress";
+export const getGlobalAddress: typeof import("./getGlobalAddress").getGlobalAddress = null as any;
+export const getGlobalAddressOutput: typeof import("./getGlobalAddress").getGlobalAddressOutput = null as any;
+
+export { GetGlobalForwardingRuleArgs, GetGlobalForwardingRuleResult, GetGlobalForwardingRuleOutputArgs } from "./getGlobalForwardingRule";
+export const getGlobalForwardingRule: typeof import("./getGlobalForwardingRule").getGlobalForwardingRule = null as any;
+export const getGlobalForwardingRuleOutput: typeof import("./getGlobalForwardingRule").getGlobalForwardingRuleOutput = null as any;
+
+export { GetHcVpnGatewayArgs, GetHcVpnGatewayResult, GetHcVpnGatewayOutputArgs } from "./getHcVpnGateway";
+export const getHcVpnGateway: typeof import("./getHcVpnGateway").getHcVpnGateway = null as any;
+export const getHcVpnGatewayOutput: typeof import("./getHcVpnGateway").getHcVpnGatewayOutput = null as any;
+
+export { GetHealthCheckArgs, GetHealthCheckResult, GetHealthCheckOutputArgs } from "./getHealthCheck";
+export const getHealthCheck: typeof import("./getHealthCheck").getHealthCheck = null as any;
+export const getHealthCheckOutput: typeof import("./getHealthCheck").getHealthCheckOutput = null as any;
+
+export { GetImageArgs, GetImageResult, GetImageOutputArgs } from "./getImage";
+export const getImage: typeof import("./getImage").getImage = null as any;
+export const getImageOutput: typeof import("./getImage").getImageOutput = null as any;
+
+export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
+export const getInstance: typeof import("./getInstance").getInstance = null as any;
+export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
+
+export { GetInstanceGroupArgs, GetInstanceGroupResult, GetInstanceGroupOutputArgs } from "./getInstanceGroup";
+export const getInstanceGroup: typeof import("./getInstanceGroup").getInstanceGroup = null as any;
+export const getInstanceGroupOutput: typeof import("./getInstanceGroup").getInstanceGroupOutput = null as any;
+
+export { GetInstanceSerialPortArgs, GetInstanceSerialPortResult, GetInstanceSerialPortOutputArgs } from "./getInstanceSerialPort";
+export const getInstanceSerialPort: typeof import("./getInstanceSerialPort").getInstanceSerialPort = null as any;
+export const getInstanceSerialPortOutput: typeof import("./getInstanceSerialPort").getInstanceSerialPortOutput = null as any;
+
+export { GetInstanceTemplateArgs, GetInstanceTemplateResult, GetInstanceTemplateOutputArgs } from "./getInstanceTemplate";
+export const getInstanceTemplate: typeof import("./getInstanceTemplate").getInstanceTemplate = null as any;
+export const getInstanceTemplateOutput: typeof import("./getInstanceTemplate").getInstanceTemplateOutput = null as any;
+
+export { GetLBIPRangesResult } from "./getLBIPRanges";
+export const getLBIPRanges: typeof import("./getLBIPRanges").getLBIPRanges = null as any;
+
+export { GetNetblockIPRangesArgs, GetNetblockIPRangesResult, GetNetblockIPRangesOutputArgs } from "./getNetblockIPRanges";
+export const getNetblockIPRanges: typeof import("./getNetblockIPRanges").getNetblockIPRanges = null as any;
+export const getNetblockIPRangesOutput: typeof import("./getNetblockIPRanges").getNetblockIPRangesOutput = null as any;
+
+export { GetNetworkArgs, GetNetworkResult, GetNetworkOutputArgs } from "./getNetwork";
+export const getNetwork: typeof import("./getNetwork").getNetwork = null as any;
+export const getNetworkOutput: typeof import("./getNetwork").getNetworkOutput = null as any;
+
+export { GetNetworkEndpointGroupArgs, GetNetworkEndpointGroupResult, GetNetworkEndpointGroupOutputArgs } from "./getNetworkEndpointGroup";
+export const getNetworkEndpointGroup: typeof import("./getNetworkEndpointGroup").getNetworkEndpointGroup = null as any;
+export const getNetworkEndpointGroupOutput: typeof import("./getNetworkEndpointGroup").getNetworkEndpointGroupOutput = null as any;
+
+export { GetNodeTypesArgs, GetNodeTypesResult, GetNodeTypesOutputArgs } from "./getNodeTypes";
+export const getNodeTypes: typeof import("./getNodeTypes").getNodeTypes = null as any;
+export const getNodeTypesOutput: typeof import("./getNodeTypes").getNodeTypesOutput = null as any;
+
+export { GetRegionInstanceGroupArgs, GetRegionInstanceGroupResult, GetRegionInstanceGroupOutputArgs } from "./getRegionInstanceGroup";
+export const getRegionInstanceGroup: typeof import("./getRegionInstanceGroup").getRegionInstanceGroup = null as any;
+export const getRegionInstanceGroupOutput: typeof import("./getRegionInstanceGroup").getRegionInstanceGroupOutput = null as any;
+
+export { GetRegionSslCertificateArgs, GetRegionSslCertificateResult, GetRegionSslCertificateOutputArgs } from "./getRegionSslCertificate";
+export const getRegionSslCertificate: typeof import("./getRegionSslCertificate").getRegionSslCertificate = null as any;
+export const getRegionSslCertificateOutput: typeof import("./getRegionSslCertificate").getRegionSslCertificateOutput = null as any;
+
+export { GetRegionsArgs, GetRegionsResult, GetRegionsOutputArgs } from "./getRegions";
+export const getRegions: typeof import("./getRegions").getRegions = null as any;
+export const getRegionsOutput: typeof import("./getRegions").getRegionsOutput = null as any;
+
+export { GetResourcePolicyArgs, GetResourcePolicyResult, GetResourcePolicyOutputArgs } from "./getResourcePolicy";
+export const getResourcePolicy: typeof import("./getResourcePolicy").getResourcePolicy = null as any;
+export const getResourcePolicyOutput: typeof import("./getResourcePolicy").getResourcePolicyOutput = null as any;
+
+export { GetRouterArgs, GetRouterResult, GetRouterOutputArgs } from "./getRouter";
+export const getRouter: typeof import("./getRouter").getRouter = null as any;
+export const getRouterOutput: typeof import("./getRouter").getRouterOutput = null as any;
+
+export { GetRouterStatusArgs, GetRouterStatusResult, GetRouterStatusOutputArgs } from "./getRouterStatus";
+export const getRouterStatus: typeof import("./getRouterStatus").getRouterStatus = null as any;
+export const getRouterStatusOutput: typeof import("./getRouterStatus").getRouterStatusOutput = null as any;
+
+export { GetSSLPolicyArgs, GetSSLPolicyResult, GetSSLPolicyOutputArgs } from "./getSSLPolicy";
+export const getSSLPolicy: typeof import("./getSSLPolicy").getSSLPolicy = null as any;
+export const getSSLPolicyOutput: typeof import("./getSSLPolicy").getSSLPolicyOutput = null as any;
+
+export { GetSubnetworkArgs, GetSubnetworkResult, GetSubnetworkOutputArgs } from "./getSubnetwork";
+export const getSubnetwork: typeof import("./getSubnetwork").getSubnetwork = null as any;
+export const getSubnetworkOutput: typeof import("./getSubnetwork").getSubnetworkOutput = null as any;
+
+export { GetVPNGatewayArgs, GetVPNGatewayResult, GetVPNGatewayOutputArgs } from "./getVPNGateway";
+export const getVPNGateway: typeof import("./getVPNGateway").getVPNGateway = null as any;
+export const getVPNGatewayOutput: typeof import("./getVPNGateway").getVPNGatewayOutput = null as any;
+
+export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
+export const getZones: typeof import("./getZones").getZones = null as any;
+export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
+
+export { GlobalAddressArgs, GlobalAddressState } from "./globalAddress";
+export type GlobalAddress = import("./globalAddress").GlobalAddress;
+export const GlobalAddress: typeof import("./globalAddress").GlobalAddress = null as any;
+
+export { GlobalForwardingRuleArgs, GlobalForwardingRuleState } from "./globalForwardingRule";
+export type GlobalForwardingRule = import("./globalForwardingRule").GlobalForwardingRule;
+export const GlobalForwardingRule: typeof import("./globalForwardingRule").GlobalForwardingRule = null as any;
+
+export { GlobalNetworkEndpointArgs, GlobalNetworkEndpointState } from "./globalNetworkEndpoint";
+export type GlobalNetworkEndpoint = import("./globalNetworkEndpoint").GlobalNetworkEndpoint;
+export const GlobalNetworkEndpoint: typeof import("./globalNetworkEndpoint").GlobalNetworkEndpoint = null as any;
+
+export { GlobalNetworkEndpointGroupArgs, GlobalNetworkEndpointGroupState } from "./globalNetworkEndpointGroup";
+export type GlobalNetworkEndpointGroup = import("./globalNetworkEndpointGroup").GlobalNetworkEndpointGroup;
+export const GlobalNetworkEndpointGroup: typeof import("./globalNetworkEndpointGroup").GlobalNetworkEndpointGroup = null as any;
+
+export { HaVpnGatewayArgs, HaVpnGatewayState } from "./haVpnGateway";
+export type HaVpnGateway = import("./haVpnGateway").HaVpnGateway;
+export const HaVpnGateway: typeof import("./haVpnGateway").HaVpnGateway = null as any;
+
+export { HealthCheckArgs, HealthCheckState } from "./healthCheck";
+export type HealthCheck = import("./healthCheck").HealthCheck;
+export const HealthCheck: typeof import("./healthCheck").HealthCheck = null as any;
+
+export { HttpHealthCheckArgs, HttpHealthCheckState } from "./httpHealthCheck";
+export type HttpHealthCheck = import("./httpHealthCheck").HttpHealthCheck;
+export const HttpHealthCheck: typeof import("./httpHealthCheck").HttpHealthCheck = null as any;
+
+export { HttpsHealthCheckArgs, HttpsHealthCheckState } from "./httpsHealthCheck";
+export type HttpsHealthCheck = import("./httpsHealthCheck").HttpsHealthCheck;
+export const HttpsHealthCheck: typeof import("./httpsHealthCheck").HttpsHealthCheck = null as any;
+
+export { ImageArgs, ImageState } from "./image";
+export type Image = import("./image").Image;
+export const Image: typeof import("./image").Image = null as any;
+
+export { ImageIamBindingArgs, ImageIamBindingState } from "./imageIamBinding";
+export type ImageIamBinding = import("./imageIamBinding").ImageIamBinding;
+export const ImageIamBinding: typeof import("./imageIamBinding").ImageIamBinding = null as any;
+
+export { ImageIamMemberArgs, ImageIamMemberState } from "./imageIamMember";
+export type ImageIamMember = import("./imageIamMember").ImageIamMember;
+export const ImageIamMember: typeof import("./imageIamMember").ImageIamMember = null as any;
+
+export { ImageIamPolicyArgs, ImageIamPolicyState } from "./imageIamPolicy";
+export type ImageIamPolicy = import("./imageIamPolicy").ImageIamPolicy;
+export const ImageIamPolicy: typeof import("./imageIamPolicy").ImageIamPolicy = null as any;
+
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+
+export { InstanceFromMachineImageArgs, InstanceFromMachineImageState } from "./instanceFromMachineImage";
+export type InstanceFromMachineImage = import("./instanceFromMachineImage").InstanceFromMachineImage;
+export const InstanceFromMachineImage: typeof import("./instanceFromMachineImage").InstanceFromMachineImage = null as any;
+
+export { InstanceFromTemplateArgs, InstanceFromTemplateState } from "./instanceFromTemplate";
+export type InstanceFromTemplate = import("./instanceFromTemplate").InstanceFromTemplate;
+export const InstanceFromTemplate: typeof import("./instanceFromTemplate").InstanceFromTemplate = null as any;
+
+export { InstanceGroupArgs, InstanceGroupState } from "./instanceGroup";
+export type InstanceGroup = import("./instanceGroup").InstanceGroup;
+export const InstanceGroup: typeof import("./instanceGroup").InstanceGroup = null as any;
+
+export { InstanceGroupManagerArgs, InstanceGroupManagerState } from "./instanceGroupManager";
+export type InstanceGroupManager = import("./instanceGroupManager").InstanceGroupManager;
+export const InstanceGroupManager: typeof import("./instanceGroupManager").InstanceGroupManager = null as any;
+
+export { InstanceGroupNamedPortArgs, InstanceGroupNamedPortState } from "./instanceGroupNamedPort";
+export type InstanceGroupNamedPort = import("./instanceGroupNamedPort").InstanceGroupNamedPort;
+export const InstanceGroupNamedPort: typeof import("./instanceGroupNamedPort").InstanceGroupNamedPort = null as any;
+
+export { InstanceIAMBindingArgs, InstanceIAMBindingState } from "./instanceIAMBinding";
+export type InstanceIAMBinding = import("./instanceIAMBinding").InstanceIAMBinding;
+export const InstanceIAMBinding: typeof import("./instanceIAMBinding").InstanceIAMBinding = null as any;
+
+export { InstanceIAMMemberArgs, InstanceIAMMemberState } from "./instanceIAMMember";
+export type InstanceIAMMember = import("./instanceIAMMember").InstanceIAMMember;
+export const InstanceIAMMember: typeof import("./instanceIAMMember").InstanceIAMMember = null as any;
+
+export { InstanceIAMPolicyArgs, InstanceIAMPolicyState } from "./instanceIAMPolicy";
+export type InstanceIAMPolicy = import("./instanceIAMPolicy").InstanceIAMPolicy;
+export const InstanceIAMPolicy: typeof import("./instanceIAMPolicy").InstanceIAMPolicy = null as any;
+
+export { InstanceTemplateArgs, InstanceTemplateState } from "./instanceTemplate";
+export type InstanceTemplate = import("./instanceTemplate").InstanceTemplate;
+export const InstanceTemplate: typeof import("./instanceTemplate").InstanceTemplate = null as any;
+
+export { InterconnectAttachmentArgs, InterconnectAttachmentState } from "./interconnectAttachment";
+export type InterconnectAttachment = import("./interconnectAttachment").InterconnectAttachment;
+export const InterconnectAttachment: typeof import("./interconnectAttachment").InterconnectAttachment = null as any;
+
+export { MachineImageArgs, MachineImageState } from "./machineImage";
+export type MachineImage = import("./machineImage").MachineImage;
+export const MachineImage: typeof import("./machineImage").MachineImage = null as any;
+
+export { MachineImageIamBindingArgs, MachineImageIamBindingState } from "./machineImageIamBinding";
+export type MachineImageIamBinding = import("./machineImageIamBinding").MachineImageIamBinding;
+export const MachineImageIamBinding: typeof import("./machineImageIamBinding").MachineImageIamBinding = null as any;
+
+export { MachineImageIamMemberArgs, MachineImageIamMemberState } from "./machineImageIamMember";
+export type MachineImageIamMember = import("./machineImageIamMember").MachineImageIamMember;
+export const MachineImageIamMember: typeof import("./machineImageIamMember").MachineImageIamMember = null as any;
+
+export { MachineImageIamPolicyArgs, MachineImageIamPolicyState } from "./machineImageIamPolicy";
+export type MachineImageIamPolicy = import("./machineImageIamPolicy").MachineImageIamPolicy;
+export const MachineImageIamPolicy: typeof import("./machineImageIamPolicy").MachineImageIamPolicy = null as any;
+
+export { ManagedSslCertificateArgs, ManagedSslCertificateState } from "./managedSslCertificate";
+export type ManagedSslCertificate = import("./managedSslCertificate").ManagedSslCertificate;
+export const ManagedSslCertificate: typeof import("./managedSslCertificate").ManagedSslCertificate = null as any;
+
+export { MangedSslCertificateArgs, MangedSslCertificateState } from "./mangedSslCertificate";
+export type MangedSslCertificate = import("./mangedSslCertificate").MangedSslCertificate;
+export const MangedSslCertificate: typeof import("./mangedSslCertificate").MangedSslCertificate = null as any;
+
+export { NetworkArgs, NetworkState } from "./network";
+export type Network = import("./network").Network;
+export const Network: typeof import("./network").Network = null as any;
+
+export { NetworkEndpointArgs, NetworkEndpointState } from "./networkEndpoint";
+export type NetworkEndpoint = import("./networkEndpoint").NetworkEndpoint;
+export const NetworkEndpoint: typeof import("./networkEndpoint").NetworkEndpoint = null as any;
+
+export { NetworkEndpointGroupArgs, NetworkEndpointGroupState } from "./networkEndpointGroup";
+export type NetworkEndpointGroup = import("./networkEndpointGroup").NetworkEndpointGroup;
+export const NetworkEndpointGroup: typeof import("./networkEndpointGroup").NetworkEndpointGroup = null as any;
+
+export { NetworkPeeringArgs, NetworkPeeringState } from "./networkPeering";
+export type NetworkPeering = import("./networkPeering").NetworkPeering;
+export const NetworkPeering: typeof import("./networkPeering").NetworkPeering = null as any;
+
+export { NetworkPeeringRoutesConfigArgs, NetworkPeeringRoutesConfigState } from "./networkPeeringRoutesConfig";
+export type NetworkPeeringRoutesConfig = import("./networkPeeringRoutesConfig").NetworkPeeringRoutesConfig;
+export const NetworkPeeringRoutesConfig: typeof import("./networkPeeringRoutesConfig").NetworkPeeringRoutesConfig = null as any;
+
+export { NodeGroupArgs, NodeGroupState } from "./nodeGroup";
+export type NodeGroup = import("./nodeGroup").NodeGroup;
+export const NodeGroup: typeof import("./nodeGroup").NodeGroup = null as any;
+
+export { NodeTemplateArgs, NodeTemplateState } from "./nodeTemplate";
+export type NodeTemplate = import("./nodeTemplate").NodeTemplate;
+export const NodeTemplate: typeof import("./nodeTemplate").NodeTemplate = null as any;
+
+export { OrganizationSecurityPolicyArgs, OrganizationSecurityPolicyState } from "./organizationSecurityPolicy";
+export type OrganizationSecurityPolicy = import("./organizationSecurityPolicy").OrganizationSecurityPolicy;
+export const OrganizationSecurityPolicy: typeof import("./organizationSecurityPolicy").OrganizationSecurityPolicy = null as any;
+
+export { OrganizationSecurityPolicyAssociationArgs, OrganizationSecurityPolicyAssociationState } from "./organizationSecurityPolicyAssociation";
+export type OrganizationSecurityPolicyAssociation = import("./organizationSecurityPolicyAssociation").OrganizationSecurityPolicyAssociation;
+export const OrganizationSecurityPolicyAssociation: typeof import("./organizationSecurityPolicyAssociation").OrganizationSecurityPolicyAssociation = null as any;
+
+export { OrganizationSecurityPolicyRuleArgs, OrganizationSecurityPolicyRuleState } from "./organizationSecurityPolicyRule";
+export type OrganizationSecurityPolicyRule = import("./organizationSecurityPolicyRule").OrganizationSecurityPolicyRule;
+export const OrganizationSecurityPolicyRule: typeof import("./organizationSecurityPolicyRule").OrganizationSecurityPolicyRule = null as any;
+
+export { PacketMirroringArgs, PacketMirroringState } from "./packetMirroring";
+export type PacketMirroring = import("./packetMirroring").PacketMirroring;
+export const PacketMirroring: typeof import("./packetMirroring").PacketMirroring = null as any;
+
+export { PerInstanceConfigArgs, PerInstanceConfigState } from "./perInstanceConfig";
+export type PerInstanceConfig = import("./perInstanceConfig").PerInstanceConfig;
+export const PerInstanceConfig: typeof import("./perInstanceConfig").PerInstanceConfig = null as any;
+
+export { ProjectDefaultNetworkTierArgs, ProjectDefaultNetworkTierState } from "./projectDefaultNetworkTier";
+export type ProjectDefaultNetworkTier = import("./projectDefaultNetworkTier").ProjectDefaultNetworkTier;
+export const ProjectDefaultNetworkTier: typeof import("./projectDefaultNetworkTier").ProjectDefaultNetworkTier = null as any;
+
+export { ProjectMetadataArgs, ProjectMetadataState } from "./projectMetadata";
+export type ProjectMetadata = import("./projectMetadata").ProjectMetadata;
+export const ProjectMetadata: typeof import("./projectMetadata").ProjectMetadata = null as any;
+
+export { ProjectMetadataItemArgs, ProjectMetadataItemState } from "./projectMetadataItem";
+export type ProjectMetadataItem = import("./projectMetadataItem").ProjectMetadataItem;
+export const ProjectMetadataItem: typeof import("./projectMetadataItem").ProjectMetadataItem = null as any;
+
+export { RegionAutoscalerArgs, RegionAutoscalerState } from "./regionAutoscaler";
+export type RegionAutoscaler = import("./regionAutoscaler").RegionAutoscaler;
+export const RegionAutoscaler: typeof import("./regionAutoscaler").RegionAutoscaler = null as any;
+
+export { RegionBackendServiceArgs, RegionBackendServiceState } from "./regionBackendService";
+export type RegionBackendService = import("./regionBackendService").RegionBackendService;
+export const RegionBackendService: typeof import("./regionBackendService").RegionBackendService = null as any;
+
+export { RegionBackendServiceIamBindingArgs, RegionBackendServiceIamBindingState } from "./regionBackendServiceIamBinding";
+export type RegionBackendServiceIamBinding = import("./regionBackendServiceIamBinding").RegionBackendServiceIamBinding;
+export const RegionBackendServiceIamBinding: typeof import("./regionBackendServiceIamBinding").RegionBackendServiceIamBinding = null as any;
+
+export { RegionBackendServiceIamMemberArgs, RegionBackendServiceIamMemberState } from "./regionBackendServiceIamMember";
+export type RegionBackendServiceIamMember = import("./regionBackendServiceIamMember").RegionBackendServiceIamMember;
+export const RegionBackendServiceIamMember: typeof import("./regionBackendServiceIamMember").RegionBackendServiceIamMember = null as any;
+
+export { RegionBackendServiceIamPolicyArgs, RegionBackendServiceIamPolicyState } from "./regionBackendServiceIamPolicy";
+export type RegionBackendServiceIamPolicy = import("./regionBackendServiceIamPolicy").RegionBackendServiceIamPolicy;
+export const RegionBackendServiceIamPolicy: typeof import("./regionBackendServiceIamPolicy").RegionBackendServiceIamPolicy = null as any;
+
+export { RegionDiskArgs, RegionDiskState } from "./regionDisk";
+export type RegionDisk = import("./regionDisk").RegionDisk;
+export const RegionDisk: typeof import("./regionDisk").RegionDisk = null as any;
+
+export { RegionDiskIamBindingArgs, RegionDiskIamBindingState } from "./regionDiskIamBinding";
+export type RegionDiskIamBinding = import("./regionDiskIamBinding").RegionDiskIamBinding;
+export const RegionDiskIamBinding: typeof import("./regionDiskIamBinding").RegionDiskIamBinding = null as any;
+
+export { RegionDiskIamMemberArgs, RegionDiskIamMemberState } from "./regionDiskIamMember";
+export type RegionDiskIamMember = import("./regionDiskIamMember").RegionDiskIamMember;
+export const RegionDiskIamMember: typeof import("./regionDiskIamMember").RegionDiskIamMember = null as any;
+
+export { RegionDiskIamPolicyArgs, RegionDiskIamPolicyState } from "./regionDiskIamPolicy";
+export type RegionDiskIamPolicy = import("./regionDiskIamPolicy").RegionDiskIamPolicy;
+export const RegionDiskIamPolicy: typeof import("./regionDiskIamPolicy").RegionDiskIamPolicy = null as any;
+
+export { RegionDiskResourcePolicyAttachmentArgs, RegionDiskResourcePolicyAttachmentState } from "./regionDiskResourcePolicyAttachment";
+export type RegionDiskResourcePolicyAttachment = import("./regionDiskResourcePolicyAttachment").RegionDiskResourcePolicyAttachment;
+export const RegionDiskResourcePolicyAttachment: typeof import("./regionDiskResourcePolicyAttachment").RegionDiskResourcePolicyAttachment = null as any;
+
+export { RegionHealthCheckArgs, RegionHealthCheckState } from "./regionHealthCheck";
+export type RegionHealthCheck = import("./regionHealthCheck").RegionHealthCheck;
+export const RegionHealthCheck: typeof import("./regionHealthCheck").RegionHealthCheck = null as any;
+
+export { RegionInstanceGroupManagerArgs, RegionInstanceGroupManagerState } from "./regionInstanceGroupManager";
+export type RegionInstanceGroupManager = import("./regionInstanceGroupManager").RegionInstanceGroupManager;
+export const RegionInstanceGroupManager: typeof import("./regionInstanceGroupManager").RegionInstanceGroupManager = null as any;
+
+export { RegionNetworkEndpointGroupArgs, RegionNetworkEndpointGroupState } from "./regionNetworkEndpointGroup";
+export type RegionNetworkEndpointGroup = import("./regionNetworkEndpointGroup").RegionNetworkEndpointGroup;
+export const RegionNetworkEndpointGroup: typeof import("./regionNetworkEndpointGroup").RegionNetworkEndpointGroup = null as any;
+
+export { RegionPerInstanceConfigArgs, RegionPerInstanceConfigState } from "./regionPerInstanceConfig";
+export type RegionPerInstanceConfig = import("./regionPerInstanceConfig").RegionPerInstanceConfig;
+export const RegionPerInstanceConfig: typeof import("./regionPerInstanceConfig").RegionPerInstanceConfig = null as any;
+
+export { RegionSslCertificateArgs, RegionSslCertificateState } from "./regionSslCertificate";
+export type RegionSslCertificate = import("./regionSslCertificate").RegionSslCertificate;
+export const RegionSslCertificate: typeof import("./regionSslCertificate").RegionSslCertificate = null as any;
+
+export { RegionSslPolicyArgs, RegionSslPolicyState } from "./regionSslPolicy";
+export type RegionSslPolicy = import("./regionSslPolicy").RegionSslPolicy;
+export const RegionSslPolicy: typeof import("./regionSslPolicy").RegionSslPolicy = null as any;
+
+export { RegionTargetHttpProxyArgs, RegionTargetHttpProxyState } from "./regionTargetHttpProxy";
+export type RegionTargetHttpProxy = import("./regionTargetHttpProxy").RegionTargetHttpProxy;
+export const RegionTargetHttpProxy: typeof import("./regionTargetHttpProxy").RegionTargetHttpProxy = null as any;
+
+export { RegionTargetHttpsProxyArgs, RegionTargetHttpsProxyState } from "./regionTargetHttpsProxy";
+export type RegionTargetHttpsProxy = import("./regionTargetHttpsProxy").RegionTargetHttpsProxy;
+export const RegionTargetHttpsProxy: typeof import("./regionTargetHttpsProxy").RegionTargetHttpsProxy = null as any;
+
+export { RegionUrlMapArgs, RegionUrlMapState } from "./regionUrlMap";
+export type RegionUrlMap = import("./regionUrlMap").RegionUrlMap;
+export const RegionUrlMap: typeof import("./regionUrlMap").RegionUrlMap = null as any;
+
+export { ReservationArgs, ReservationState } from "./reservation";
+export type Reservation = import("./reservation").Reservation;
+export const Reservation: typeof import("./reservation").Reservation = null as any;
+
+export { ResourcePolicyArgs, ResourcePolicyState } from "./resourcePolicy";
+export type ResourcePolicy = import("./resourcePolicy").ResourcePolicy;
+export const ResourcePolicy: typeof import("./resourcePolicy").ResourcePolicy = null as any;
+
+export { RouteArgs, RouteState } from "./route";
+export type Route = import("./route").Route;
+export const Route: typeof import("./route").Route = null as any;
+
+export { RouterArgs, RouterState } from "./router";
+export type Router = import("./router").Router;
+export const Router: typeof import("./router").Router = null as any;
+
+export { RouterInterfaceArgs, RouterInterfaceState } from "./routerInterface";
+export type RouterInterface = import("./routerInterface").RouterInterface;
+export const RouterInterface: typeof import("./routerInterface").RouterInterface = null as any;
+
+export { RouterNatArgs, RouterNatState } from "./routerNat";
+export type RouterNat = import("./routerNat").RouterNat;
+export const RouterNat: typeof import("./routerNat").RouterNat = null as any;
+
+export { RouterPeerArgs, RouterPeerState } from "./routerPeer";
+export type RouterPeer = import("./routerPeer").RouterPeer;
+export const RouterPeer: typeof import("./routerPeer").RouterPeer = null as any;
+
+export { RouterStatusArgs, RouterStatusResult, RouterStatusOutputArgs } from "./routerStatus";
+export const routerStatus: typeof import("./routerStatus").routerStatus = null as any;
+export const routerStatusOutput: typeof import("./routerStatus").routerStatusOutput = null as any;
+
+export { SecurityPolicyArgs, SecurityPolicyState } from "./securityPolicy";
+export type SecurityPolicy = import("./securityPolicy").SecurityPolicy;
+export const SecurityPolicy: typeof import("./securityPolicy").SecurityPolicy = null as any;
+
+export { SecurityScanConfigArgs, SecurityScanConfigState } from "./securityScanConfig";
+export type SecurityScanConfig = import("./securityScanConfig").SecurityScanConfig;
+export const SecurityScanConfig: typeof import("./securityScanConfig").SecurityScanConfig = null as any;
+
+export { ServiceAttachmentArgs, ServiceAttachmentState } from "./serviceAttachment";
+export type ServiceAttachment = import("./serviceAttachment").ServiceAttachment;
+export const ServiceAttachment: typeof import("./serviceAttachment").ServiceAttachment = null as any;
+
+export { SharedVPCHostProjectArgs, SharedVPCHostProjectState } from "./sharedVPCHostProject";
+export type SharedVPCHostProject = import("./sharedVPCHostProject").SharedVPCHostProject;
+export const SharedVPCHostProject: typeof import("./sharedVPCHostProject").SharedVPCHostProject = null as any;
+
+export { SharedVPCServiceProjectArgs, SharedVPCServiceProjectState } from "./sharedVPCServiceProject";
+export type SharedVPCServiceProject = import("./sharedVPCServiceProject").SharedVPCServiceProject;
+export const SharedVPCServiceProject: typeof import("./sharedVPCServiceProject").SharedVPCServiceProject = null as any;
+
+export { SnapshotArgs, SnapshotState } from "./snapshot";
+export type Snapshot = import("./snapshot").Snapshot;
+export const Snapshot: typeof import("./snapshot").Snapshot = null as any;
+
+export { SnapshotIamBindingArgs, SnapshotIamBindingState } from "./snapshotIamBinding";
+export type SnapshotIamBinding = import("./snapshotIamBinding").SnapshotIamBinding;
+export const SnapshotIamBinding: typeof import("./snapshotIamBinding").SnapshotIamBinding = null as any;
+
+export { SnapshotIamMemberArgs, SnapshotIamMemberState } from "./snapshotIamMember";
+export type SnapshotIamMember = import("./snapshotIamMember").SnapshotIamMember;
+export const SnapshotIamMember: typeof import("./snapshotIamMember").SnapshotIamMember = null as any;
+
+export { SnapshotIamPolicyArgs, SnapshotIamPolicyState } from "./snapshotIamPolicy";
+export type SnapshotIamPolicy = import("./snapshotIamPolicy").SnapshotIamPolicy;
+export const SnapshotIamPolicy: typeof import("./snapshotIamPolicy").SnapshotIamPolicy = null as any;
+
+export { SSLCertificateArgs, SSLCertificateState } from "./sslcertificate";
+export type SSLCertificate = import("./sslcertificate").SSLCertificate;
+export const SSLCertificate: typeof import("./sslcertificate").SSLCertificate = null as any;
+
+export { SSLPolicyArgs, SSLPolicyState } from "./sslpolicy";
+export type SSLPolicy = import("./sslpolicy").SSLPolicy;
+export const SSLPolicy: typeof import("./sslpolicy").SSLPolicy = null as any;
+
+export { SubnetworkArgs, SubnetworkState } from "./subnetwork";
+export type Subnetwork = import("./subnetwork").Subnetwork;
+export const Subnetwork: typeof import("./subnetwork").Subnetwork = null as any;
+
+export { SubnetworkIAMBindingArgs, SubnetworkIAMBindingState } from "./subnetworkIAMBinding";
+export type SubnetworkIAMBinding = import("./subnetworkIAMBinding").SubnetworkIAMBinding;
+export const SubnetworkIAMBinding: typeof import("./subnetworkIAMBinding").SubnetworkIAMBinding = null as any;
+
+export { SubnetworkIAMMemberArgs, SubnetworkIAMMemberState } from "./subnetworkIAMMember";
+export type SubnetworkIAMMember = import("./subnetworkIAMMember").SubnetworkIAMMember;
+export const SubnetworkIAMMember: typeof import("./subnetworkIAMMember").SubnetworkIAMMember = null as any;
+
+export { SubnetworkIAMPolicyArgs, SubnetworkIAMPolicyState } from "./subnetworkIAMPolicy";
+export type SubnetworkIAMPolicy = import("./subnetworkIAMPolicy").SubnetworkIAMPolicy;
+export const SubnetworkIAMPolicy: typeof import("./subnetworkIAMPolicy").SubnetworkIAMPolicy = null as any;
+
+export { TargetGrpcProxyArgs, TargetGrpcProxyState } from "./targetGrpcProxy";
+export type TargetGrpcProxy = import("./targetGrpcProxy").TargetGrpcProxy;
+export const TargetGrpcProxy: typeof import("./targetGrpcProxy").TargetGrpcProxy = null as any;
+
+export { TargetHttpProxyArgs, TargetHttpProxyState } from "./targetHttpProxy";
+export type TargetHttpProxy = import("./targetHttpProxy").TargetHttpProxy;
+export const TargetHttpProxy: typeof import("./targetHttpProxy").TargetHttpProxy = null as any;
+
+export { TargetHttpsProxyArgs, TargetHttpsProxyState } from "./targetHttpsProxy";
+export type TargetHttpsProxy = import("./targetHttpsProxy").TargetHttpsProxy;
+export const TargetHttpsProxy: typeof import("./targetHttpsProxy").TargetHttpsProxy = null as any;
+
+export { TargetInstanceArgs, TargetInstanceState } from "./targetInstance";
+export type TargetInstance = import("./targetInstance").TargetInstance;
+export const TargetInstance: typeof import("./targetInstance").TargetInstance = null as any;
+
+export { TargetPoolArgs, TargetPoolState } from "./targetPool";
+export type TargetPool = import("./targetPool").TargetPool;
+export const TargetPool: typeof import("./targetPool").TargetPool = null as any;
+
+export { TargetSSLProxyArgs, TargetSSLProxyState } from "./targetSSLProxy";
+export type TargetSSLProxy = import("./targetSSLProxy").TargetSSLProxy;
+export const TargetSSLProxy: typeof import("./targetSSLProxy").TargetSSLProxy = null as any;
+
+export { TargetTCPProxyArgs, TargetTCPProxyState } from "./targetTCPProxy";
+export type TargetTCPProxy = import("./targetTCPProxy").TargetTCPProxy;
+export const TargetTCPProxy: typeof import("./targetTCPProxy").TargetTCPProxy = null as any;
+
+export { URLMapArgs, URLMapState } from "./urlmap";
+export type URLMap = import("./urlmap").URLMap;
+export const URLMap: typeof import("./urlmap").URLMap = null as any;
+
+export { VPNGatewayArgs, VPNGatewayState } from "./vpngateway";
+export type VPNGateway = import("./vpngateway").VPNGateway;
+export const VPNGateway: typeof import("./vpngateway").VPNGateway = null as any;
+
+export { VPNTunnelArgs, VPNTunnelState } from "./vpntunnel";
+export type VPNTunnel = import("./vpntunnel").VPNTunnel;
+export const VPNTunnel: typeof import("./vpntunnel").VPNTunnel = null as any;
+
+utilities.lazyLoad(exports, ["Address"], () => require("./address"));
+utilities.lazyLoad(exports, ["AttachedDisk"], () => require("./attachedDisk"));
+utilities.lazyLoad(exports, ["Autoscalar"], () => require("./autoscalar"));
+utilities.lazyLoad(exports, ["Autoscaler"], () => require("./autoscaler"));
+utilities.lazyLoad(exports, ["BackendBucket"], () => require("./backendBucket"));
+utilities.lazyLoad(exports, ["BackendBucketIamBinding"], () => require("./backendBucketIamBinding"));
+utilities.lazyLoad(exports, ["BackendBucketIamMember"], () => require("./backendBucketIamMember"));
+utilities.lazyLoad(exports, ["BackendBucketIamPolicy"], () => require("./backendBucketIamPolicy"));
+utilities.lazyLoad(exports, ["BackendBucketSignedUrlKey"], () => require("./backendBucketSignedUrlKey"));
+utilities.lazyLoad(exports, ["BackendService"], () => require("./backendService"));
+utilities.lazyLoad(exports, ["BackendServiceIamBinding"], () => require("./backendServiceIamBinding"));
+utilities.lazyLoad(exports, ["BackendServiceIamMember"], () => require("./backendServiceIamMember"));
+utilities.lazyLoad(exports, ["BackendServiceIamPolicy"], () => require("./backendServiceIamPolicy"));
+utilities.lazyLoad(exports, ["BackendServiceSignedUrlKey"], () => require("./backendServiceSignedUrlKey"));
+utilities.lazyLoad(exports, ["Disk"], () => require("./disk"));
+utilities.lazyLoad(exports, ["DiskIamBinding"], () => require("./diskIamBinding"));
+utilities.lazyLoad(exports, ["DiskIamMember"], () => require("./diskIamMember"));
+utilities.lazyLoad(exports, ["DiskIamPolicy"], () => require("./diskIamPolicy"));
+utilities.lazyLoad(exports, ["DiskResourcePolicyAttachment"], () => require("./diskResourcePolicyAttachment"));
+utilities.lazyLoad(exports, ["ExternalVpnGateway"], () => require("./externalVpnGateway"));
+utilities.lazyLoad(exports, ["Firewall"], () => require("./firewall"));
+utilities.lazyLoad(exports, ["FirewallPolicy"], () => require("./firewallPolicy"));
+utilities.lazyLoad(exports, ["FirewallPolicyAssociation"], () => require("./firewallPolicyAssociation"));
+utilities.lazyLoad(exports, ["FirewallPolicyRule"], () => require("./firewallPolicyRule"));
+utilities.lazyLoad(exports, ["ForwardingRule"], () => require("./forwardingRule"));
+utilities.lazyLoad(exports, ["getAddress","getAddressOutput"], () => require("./getAddress"));
+utilities.lazyLoad(exports, ["getBackendBucket","getBackendBucketOutput"], () => require("./getBackendBucket"));
+utilities.lazyLoad(exports, ["getBackendService","getBackendServiceOutput"], () => require("./getBackendService"));
+utilities.lazyLoad(exports, ["getCertificate","getCertificateOutput"], () => require("./getCertificate"));
+utilities.lazyLoad(exports, ["getDefaultServiceAccount","getDefaultServiceAccountOutput"], () => require("./getDefaultServiceAccount"));
+utilities.lazyLoad(exports, ["getDisk","getDiskOutput"], () => require("./getDisk"));
+utilities.lazyLoad(exports, ["getForwardingRule","getForwardingRuleOutput"], () => require("./getForwardingRule"));
+utilities.lazyLoad(exports, ["getGlobalAddress","getGlobalAddressOutput"], () => require("./getGlobalAddress"));
+utilities.lazyLoad(exports, ["getGlobalForwardingRule","getGlobalForwardingRuleOutput"], () => require("./getGlobalForwardingRule"));
+utilities.lazyLoad(exports, ["getHcVpnGateway","getHcVpnGatewayOutput"], () => require("./getHcVpnGateway"));
+utilities.lazyLoad(exports, ["getHealthCheck","getHealthCheckOutput"], () => require("./getHealthCheck"));
+utilities.lazyLoad(exports, ["getImage","getImageOutput"], () => require("./getImage"));
+utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
+utilities.lazyLoad(exports, ["getInstanceGroup","getInstanceGroupOutput"], () => require("./getInstanceGroup"));
+utilities.lazyLoad(exports, ["getInstanceSerialPort","getInstanceSerialPortOutput"], () => require("./getInstanceSerialPort"));
+utilities.lazyLoad(exports, ["getInstanceTemplate","getInstanceTemplateOutput"], () => require("./getInstanceTemplate"));
+utilities.lazyLoad(exports, ["getLBIPRanges"], () => require("./getLBIPRanges"));
+utilities.lazyLoad(exports, ["getNetblockIPRanges","getNetblockIPRangesOutput"], () => require("./getNetblockIPRanges"));
+utilities.lazyLoad(exports, ["getNetwork","getNetworkOutput"], () => require("./getNetwork"));
+utilities.lazyLoad(exports, ["getNetworkEndpointGroup","getNetworkEndpointGroupOutput"], () => require("./getNetworkEndpointGroup"));
+utilities.lazyLoad(exports, ["getNodeTypes","getNodeTypesOutput"], () => require("./getNodeTypes"));
+utilities.lazyLoad(exports, ["getRegionInstanceGroup","getRegionInstanceGroupOutput"], () => require("./getRegionInstanceGroup"));
+utilities.lazyLoad(exports, ["getRegionSslCertificate","getRegionSslCertificateOutput"], () => require("./getRegionSslCertificate"));
+utilities.lazyLoad(exports, ["getRegions","getRegionsOutput"], () => require("./getRegions"));
+utilities.lazyLoad(exports, ["getResourcePolicy","getResourcePolicyOutput"], () => require("./getResourcePolicy"));
+utilities.lazyLoad(exports, ["getRouter","getRouterOutput"], () => require("./getRouter"));
+utilities.lazyLoad(exports, ["getRouterStatus","getRouterStatusOutput"], () => require("./getRouterStatus"));
+utilities.lazyLoad(exports, ["getSSLPolicy","getSSLPolicyOutput"], () => require("./getSSLPolicy"));
+utilities.lazyLoad(exports, ["getSubnetwork","getSubnetworkOutput"], () => require("./getSubnetwork"));
+utilities.lazyLoad(exports, ["getVPNGateway","getVPNGatewayOutput"], () => require("./getVPNGateway"));
+utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
+utilities.lazyLoad(exports, ["GlobalAddress"], () => require("./globalAddress"));
+utilities.lazyLoad(exports, ["GlobalForwardingRule"], () => require("./globalForwardingRule"));
+utilities.lazyLoad(exports, ["GlobalNetworkEndpoint"], () => require("./globalNetworkEndpoint"));
+utilities.lazyLoad(exports, ["GlobalNetworkEndpointGroup"], () => require("./globalNetworkEndpointGroup"));
+utilities.lazyLoad(exports, ["HaVpnGateway"], () => require("./haVpnGateway"));
+utilities.lazyLoad(exports, ["HealthCheck"], () => require("./healthCheck"));
+utilities.lazyLoad(exports, ["HttpHealthCheck"], () => require("./httpHealthCheck"));
+utilities.lazyLoad(exports, ["HttpsHealthCheck"], () => require("./httpsHealthCheck"));
+utilities.lazyLoad(exports, ["Image"], () => require("./image"));
+utilities.lazyLoad(exports, ["ImageIamBinding"], () => require("./imageIamBinding"));
+utilities.lazyLoad(exports, ["ImageIamMember"], () => require("./imageIamMember"));
+utilities.lazyLoad(exports, ["ImageIamPolicy"], () => require("./imageIamPolicy"));
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+utilities.lazyLoad(exports, ["InstanceFromMachineImage"], () => require("./instanceFromMachineImage"));
+utilities.lazyLoad(exports, ["InstanceFromTemplate"], () => require("./instanceFromTemplate"));
+utilities.lazyLoad(exports, ["InstanceGroup"], () => require("./instanceGroup"));
+utilities.lazyLoad(exports, ["InstanceGroupManager"], () => require("./instanceGroupManager"));
+utilities.lazyLoad(exports, ["InstanceGroupNamedPort"], () => require("./instanceGroupNamedPort"));
+utilities.lazyLoad(exports, ["InstanceIAMBinding"], () => require("./instanceIAMBinding"));
+utilities.lazyLoad(exports, ["InstanceIAMMember"], () => require("./instanceIAMMember"));
+utilities.lazyLoad(exports, ["InstanceIAMPolicy"], () => require("./instanceIAMPolicy"));
+utilities.lazyLoad(exports, ["InstanceTemplate"], () => require("./instanceTemplate"));
+utilities.lazyLoad(exports, ["InterconnectAttachment"], () => require("./interconnectAttachment"));
+utilities.lazyLoad(exports, ["MachineImage"], () => require("./machineImage"));
+utilities.lazyLoad(exports, ["MachineImageIamBinding"], () => require("./machineImageIamBinding"));
+utilities.lazyLoad(exports, ["MachineImageIamMember"], () => require("./machineImageIamMember"));
+utilities.lazyLoad(exports, ["MachineImageIamPolicy"], () => require("./machineImageIamPolicy"));
+utilities.lazyLoad(exports, ["ManagedSslCertificate"], () => require("./managedSslCertificate"));
+utilities.lazyLoad(exports, ["MangedSslCertificate"], () => require("./mangedSslCertificate"));
+utilities.lazyLoad(exports, ["Network"], () => require("./network"));
+utilities.lazyLoad(exports, ["NetworkEndpoint"], () => require("./networkEndpoint"));
+utilities.lazyLoad(exports, ["NetworkEndpointGroup"], () => require("./networkEndpointGroup"));
+utilities.lazyLoad(exports, ["NetworkPeering"], () => require("./networkPeering"));
+utilities.lazyLoad(exports, ["NetworkPeeringRoutesConfig"], () => require("./networkPeeringRoutesConfig"));
+utilities.lazyLoad(exports, ["NodeGroup"], () => require("./nodeGroup"));
+utilities.lazyLoad(exports, ["NodeTemplate"], () => require("./nodeTemplate"));
+utilities.lazyLoad(exports, ["OrganizationSecurityPolicy"], () => require("./organizationSecurityPolicy"));
+utilities.lazyLoad(exports, ["OrganizationSecurityPolicyAssociation"], () => require("./organizationSecurityPolicyAssociation"));
+utilities.lazyLoad(exports, ["OrganizationSecurityPolicyRule"], () => require("./organizationSecurityPolicyRule"));
+utilities.lazyLoad(exports, ["PacketMirroring"], () => require("./packetMirroring"));
+utilities.lazyLoad(exports, ["PerInstanceConfig"], () => require("./perInstanceConfig"));
+utilities.lazyLoad(exports, ["ProjectDefaultNetworkTier"], () => require("./projectDefaultNetworkTier"));
+utilities.lazyLoad(exports, ["ProjectMetadata"], () => require("./projectMetadata"));
+utilities.lazyLoad(exports, ["ProjectMetadataItem"], () => require("./projectMetadataItem"));
+utilities.lazyLoad(exports, ["RegionAutoscaler"], () => require("./regionAutoscaler"));
+utilities.lazyLoad(exports, ["RegionBackendService"], () => require("./regionBackendService"));
+utilities.lazyLoad(exports, ["RegionBackendServiceIamBinding"], () => require("./regionBackendServiceIamBinding"));
+utilities.lazyLoad(exports, ["RegionBackendServiceIamMember"], () => require("./regionBackendServiceIamMember"));
+utilities.lazyLoad(exports, ["RegionBackendServiceIamPolicy"], () => require("./regionBackendServiceIamPolicy"));
+utilities.lazyLoad(exports, ["RegionDisk"], () => require("./regionDisk"));
+utilities.lazyLoad(exports, ["RegionDiskIamBinding"], () => require("./regionDiskIamBinding"));
+utilities.lazyLoad(exports, ["RegionDiskIamMember"], () => require("./regionDiskIamMember"));
+utilities.lazyLoad(exports, ["RegionDiskIamPolicy"], () => require("./regionDiskIamPolicy"));
+utilities.lazyLoad(exports, ["RegionDiskResourcePolicyAttachment"], () => require("./regionDiskResourcePolicyAttachment"));
+utilities.lazyLoad(exports, ["RegionHealthCheck"], () => require("./regionHealthCheck"));
+utilities.lazyLoad(exports, ["RegionInstanceGroupManager"], () => require("./regionInstanceGroupManager"));
+utilities.lazyLoad(exports, ["RegionNetworkEndpointGroup"], () => require("./regionNetworkEndpointGroup"));
+utilities.lazyLoad(exports, ["RegionPerInstanceConfig"], () => require("./regionPerInstanceConfig"));
+utilities.lazyLoad(exports, ["RegionSslCertificate"], () => require("./regionSslCertificate"));
+utilities.lazyLoad(exports, ["RegionSslPolicy"], () => require("./regionSslPolicy"));
+utilities.lazyLoad(exports, ["RegionTargetHttpProxy"], () => require("./regionTargetHttpProxy"));
+utilities.lazyLoad(exports, ["RegionTargetHttpsProxy"], () => require("./regionTargetHttpsProxy"));
+utilities.lazyLoad(exports, ["RegionUrlMap"], () => require("./regionUrlMap"));
+utilities.lazyLoad(exports, ["Reservation"], () => require("./reservation"));
+utilities.lazyLoad(exports, ["ResourcePolicy"], () => require("./resourcePolicy"));
+utilities.lazyLoad(exports, ["Route"], () => require("./route"));
+utilities.lazyLoad(exports, ["Router"], () => require("./router"));
+utilities.lazyLoad(exports, ["RouterInterface"], () => require("./routerInterface"));
+utilities.lazyLoad(exports, ["RouterNat"], () => require("./routerNat"));
+utilities.lazyLoad(exports, ["RouterPeer"], () => require("./routerPeer"));
+utilities.lazyLoad(exports, ["routerStatus","routerStatusOutput"], () => require("./routerStatus"));
+utilities.lazyLoad(exports, ["SecurityPolicy"], () => require("./securityPolicy"));
+utilities.lazyLoad(exports, ["SecurityScanConfig"], () => require("./securityScanConfig"));
+utilities.lazyLoad(exports, ["ServiceAttachment"], () => require("./serviceAttachment"));
+utilities.lazyLoad(exports, ["SharedVPCHostProject"], () => require("./sharedVPCHostProject"));
+utilities.lazyLoad(exports, ["SharedVPCServiceProject"], () => require("./sharedVPCServiceProject"));
+utilities.lazyLoad(exports, ["Snapshot"], () => require("./snapshot"));
+utilities.lazyLoad(exports, ["SnapshotIamBinding"], () => require("./snapshotIamBinding"));
+utilities.lazyLoad(exports, ["SnapshotIamMember"], () => require("./snapshotIamMember"));
+utilities.lazyLoad(exports, ["SnapshotIamPolicy"], () => require("./snapshotIamPolicy"));
+utilities.lazyLoad(exports, ["SSLCertificate"], () => require("./sslcertificate"));
+utilities.lazyLoad(exports, ["SSLPolicy"], () => require("./sslpolicy"));
+utilities.lazyLoad(exports, ["Subnetwork"], () => require("./subnetwork"));
+utilities.lazyLoad(exports, ["SubnetworkIAMBinding"], () => require("./subnetworkIAMBinding"));
+utilities.lazyLoad(exports, ["SubnetworkIAMMember"], () => require("./subnetworkIAMMember"));
+utilities.lazyLoad(exports, ["SubnetworkIAMPolicy"], () => require("./subnetworkIAMPolicy"));
+utilities.lazyLoad(exports, ["TargetGrpcProxy"], () => require("./targetGrpcProxy"));
+utilities.lazyLoad(exports, ["TargetHttpProxy"], () => require("./targetHttpProxy"));
+utilities.lazyLoad(exports, ["TargetHttpsProxy"], () => require("./targetHttpsProxy"));
+utilities.lazyLoad(exports, ["TargetInstance"], () => require("./targetInstance"));
+utilities.lazyLoad(exports, ["TargetPool"], () => require("./targetPool"));
+utilities.lazyLoad(exports, ["TargetSSLProxy"], () => require("./targetSSLProxy"));
+utilities.lazyLoad(exports, ["TargetTCPProxy"], () => require("./targetTCPProxy"));
+utilities.lazyLoad(exports, ["URLMap"], () => require("./urlmap"));
+utilities.lazyLoad(exports, ["VPNGateway"], () => require("./vpngateway"));
+utilities.lazyLoad(exports, ["VPNTunnel"], () => require("./vpntunnel"));
 
 const _module = {
     version: utilities.getVersion(),

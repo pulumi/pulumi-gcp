@@ -5,19 +5,36 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./gameServerCluster";
-export * from "./gameServerConfig";
-export * from "./gameServerDeployment";
-export * from "./gameServerDeploymentRollout";
-export * from "./getGameServerDeploymentRollout";
-export * from "./realm";
+export { GameServerClusterArgs, GameServerClusterState } from "./gameServerCluster";
+export type GameServerCluster = import("./gameServerCluster").GameServerCluster;
+export const GameServerCluster: typeof import("./gameServerCluster").GameServerCluster = null as any;
 
-// Import resources to register:
-import { GameServerCluster } from "./gameServerCluster";
-import { GameServerConfig } from "./gameServerConfig";
-import { GameServerDeployment } from "./gameServerDeployment";
-import { GameServerDeploymentRollout } from "./gameServerDeploymentRollout";
-import { Realm } from "./realm";
+export { GameServerConfigArgs, GameServerConfigState } from "./gameServerConfig";
+export type GameServerConfig = import("./gameServerConfig").GameServerConfig;
+export const GameServerConfig: typeof import("./gameServerConfig").GameServerConfig = null as any;
+
+export { GameServerDeploymentArgs, GameServerDeploymentState } from "./gameServerDeployment";
+export type GameServerDeployment = import("./gameServerDeployment").GameServerDeployment;
+export const GameServerDeployment: typeof import("./gameServerDeployment").GameServerDeployment = null as any;
+
+export { GameServerDeploymentRolloutArgs, GameServerDeploymentRolloutState } from "./gameServerDeploymentRollout";
+export type GameServerDeploymentRollout = import("./gameServerDeploymentRollout").GameServerDeploymentRollout;
+export const GameServerDeploymentRollout: typeof import("./gameServerDeploymentRollout").GameServerDeploymentRollout = null as any;
+
+export { GetGameServerDeploymentRolloutArgs, GetGameServerDeploymentRolloutResult, GetGameServerDeploymentRolloutOutputArgs } from "./getGameServerDeploymentRollout";
+export const getGameServerDeploymentRollout: typeof import("./getGameServerDeploymentRollout").getGameServerDeploymentRollout = null as any;
+export const getGameServerDeploymentRolloutOutput: typeof import("./getGameServerDeploymentRollout").getGameServerDeploymentRolloutOutput = null as any;
+
+export { RealmArgs, RealmState } from "./realm";
+export type Realm = import("./realm").Realm;
+export const Realm: typeof import("./realm").Realm = null as any;
+
+utilities.lazyLoad(exports, ["GameServerCluster"], () => require("./gameServerCluster"));
+utilities.lazyLoad(exports, ["GameServerConfig"], () => require("./gameServerConfig"));
+utilities.lazyLoad(exports, ["GameServerDeployment"], () => require("./gameServerDeployment"));
+utilities.lazyLoad(exports, ["GameServerDeploymentRollout"], () => require("./gameServerDeploymentRollout"));
+utilities.lazyLoad(exports, ["getGameServerDeploymentRollout","getGameServerDeploymentRolloutOutput"], () => require("./getGameServerDeploymentRollout"));
+utilities.lazyLoad(exports, ["Realm"], () => require("./realm"));
 
 const _module = {
     version: utilities.getVersion(),

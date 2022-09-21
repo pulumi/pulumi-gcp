@@ -6,11 +6,13 @@ package com.pulumi.gcp.bigtable.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceClusterAutoscalingConfig {
     /**
-     * @return The CPU utilization target in percentage. Must be between 10 and 80.
+     * @return The target CPU utilization for autoscaling, in percentage. Must be between 10 and 80.
      * 
      */
     private Integer cpuTarget;
@@ -24,10 +26,15 @@ public final class InstanceClusterAutoscalingConfig {
      * 
      */
     private Integer minNodes;
+    /**
+     * @return The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+     * 
+     */
+    private @Nullable Integer storageTarget;
 
     private InstanceClusterAutoscalingConfig() {}
     /**
-     * @return The CPU utilization target in percentage. Must be between 10 and 80.
+     * @return The target CPU utilization for autoscaling, in percentage. Must be between 10 and 80.
      * 
      */
     public Integer cpuTarget() {
@@ -47,6 +54,13 @@ public final class InstanceClusterAutoscalingConfig {
     public Integer minNodes() {
         return this.minNodes;
     }
+    /**
+     * @return The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+     * 
+     */
+    public Optional<Integer> storageTarget() {
+        return Optional.ofNullable(this.storageTarget);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -60,12 +74,14 @@ public final class InstanceClusterAutoscalingConfig {
         private Integer cpuTarget;
         private Integer maxNodes;
         private Integer minNodes;
+        private @Nullable Integer storageTarget;
         public Builder() {}
         public Builder(InstanceClusterAutoscalingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuTarget = defaults.cpuTarget;
     	      this.maxNodes = defaults.maxNodes;
     	      this.minNodes = defaults.minNodes;
+    	      this.storageTarget = defaults.storageTarget;
         }
 
         @CustomType.Setter
@@ -83,11 +99,17 @@ public final class InstanceClusterAutoscalingConfig {
             this.minNodes = Objects.requireNonNull(minNodes);
             return this;
         }
+        @CustomType.Setter
+        public Builder storageTarget(@Nullable Integer storageTarget) {
+            this.storageTarget = storageTarget;
+            return this;
+        }
         public InstanceClusterAutoscalingConfig build() {
             final var o = new InstanceClusterAutoscalingConfig();
             o.cpuTarget = cpuTarget;
             o.maxNodes = maxNodes;
             o.minNodes = minNodes;
+            o.storageTarget = storageTarget;
             return o;
         }
     }

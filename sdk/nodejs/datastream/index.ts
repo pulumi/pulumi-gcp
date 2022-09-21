@@ -5,10 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./connectionProfile";
+export { ConnectionProfileArgs, ConnectionProfileState } from "./connectionProfile";
+export type ConnectionProfile = import("./connectionProfile").ConnectionProfile;
+export const ConnectionProfile: typeof import("./connectionProfile").ConnectionProfile = null as any;
 
-// Import resources to register:
-import { ConnectionProfile } from "./connectionProfile";
+utilities.lazyLoad(exports, ["ConnectionProfile"], () => require("./connectionProfile"));
 
 const _module = {
     version: utilities.getVersion(),

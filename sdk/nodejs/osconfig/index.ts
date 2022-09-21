@@ -5,14 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./guestPolicies";
-export * from "./osPolicyAssignment";
-export * from "./patchDeployment";
+export { GuestPoliciesArgs, GuestPoliciesState } from "./guestPolicies";
+export type GuestPolicies = import("./guestPolicies").GuestPolicies;
+export const GuestPolicies: typeof import("./guestPolicies").GuestPolicies = null as any;
 
-// Import resources to register:
-import { GuestPolicies } from "./guestPolicies";
-import { OsPolicyAssignment } from "./osPolicyAssignment";
-import { PatchDeployment } from "./patchDeployment";
+export { OsPolicyAssignmentArgs, OsPolicyAssignmentState } from "./osPolicyAssignment";
+export type OsPolicyAssignment = import("./osPolicyAssignment").OsPolicyAssignment;
+export const OsPolicyAssignment: typeof import("./osPolicyAssignment").OsPolicyAssignment = null as any;
+
+export { PatchDeploymentArgs, PatchDeploymentState } from "./patchDeployment";
+export type PatchDeployment = import("./patchDeployment").PatchDeployment;
+export const PatchDeployment: typeof import("./patchDeployment").PatchDeployment = null as any;
+
+utilities.lazyLoad(exports, ["GuestPolicies"], () => require("./guestPolicies"));
+utilities.lazyLoad(exports, ["OsPolicyAssignment"], () => require("./osPolicyAssignment"));
+utilities.lazyLoad(exports, ["PatchDeployment"], () => require("./patchDeployment"));
 
 const _module = {
     version: utilities.getVersion(),

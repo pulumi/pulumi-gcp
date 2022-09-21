@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.Organizations
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFoldersResult> InvokeAsync(GetFoldersArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFoldersResult>("gcp:organizations/getFolders:getFolders", args ?? new GetFoldersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFoldersResult>("gcp:organizations/getFolders:getFolders", args ?? new GetFoldersArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieve information about a set of folders based on a parent ID. See the
@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.Organizations
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFoldersResult> Invoke(GetFoldersInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFoldersResult>("gcp:organizations/getFolders:getFolders", args ?? new GetFoldersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFoldersResult>("gcp:organizations/getFolders:getFolders", args ?? new GetFoldersInvokeArgs(), options.WithDefaults());
     }
 
 

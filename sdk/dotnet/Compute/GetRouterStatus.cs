@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouterStatusResult> InvokeAsync(GetRouterStatusArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterStatusResult>("gcp:compute/getRouterStatus:getRouterStatus", args ?? new GetRouterStatusArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouterStatusResult>("gcp:compute/getRouterStatus:getRouterStatus", args ?? new GetRouterStatusArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a Cloud Router's status within GCE from its name and region. This data source exposes the
@@ -73,7 +73,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRouterStatusResult> Invoke(GetRouterStatusInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRouterStatusResult>("gcp:compute/getRouterStatus:getRouterStatus", args ?? new GetRouterStatusInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRouterStatusResult>("gcp:compute/getRouterStatus:getRouterStatus", args ?? new GetRouterStatusInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -5,20 +5,41 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./domainMapping";
-export * from "./getLocations";
-export * from "./getService";
-export * from "./iamBinding";
-export * from "./iamMember";
-export * from "./iamPolicy";
-export * from "./service";
+export { DomainMappingArgs, DomainMappingState } from "./domainMapping";
+export type DomainMapping = import("./domainMapping").DomainMapping;
+export const DomainMapping: typeof import("./domainMapping").DomainMapping = null as any;
 
-// Import resources to register:
-import { DomainMapping } from "./domainMapping";
-import { IamBinding } from "./iamBinding";
-import { IamMember } from "./iamMember";
-import { IamPolicy } from "./iamPolicy";
-import { Service } from "./service";
+export { GetLocationsArgs, GetLocationsResult, GetLocationsOutputArgs } from "./getLocations";
+export const getLocations: typeof import("./getLocations").getLocations = null as any;
+export const getLocationsOutput: typeof import("./getLocations").getLocationsOutput = null as any;
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+
+export { IamBindingArgs, IamBindingState } from "./iamBinding";
+export type IamBinding = import("./iamBinding").IamBinding;
+export const IamBinding: typeof import("./iamBinding").IamBinding = null as any;
+
+export { IamMemberArgs, IamMemberState } from "./iamMember";
+export type IamMember = import("./iamMember").IamMember;
+export const IamMember: typeof import("./iamMember").IamMember = null as any;
+
+export { IamPolicyArgs, IamPolicyState } from "./iamPolicy";
+export type IamPolicy = import("./iamPolicy").IamPolicy;
+export const IamPolicy: typeof import("./iamPolicy").IamPolicy = null as any;
+
+export { ServiceArgs, ServiceState } from "./service";
+export type Service = import("./service").Service;
+export const Service: typeof import("./service").Service = null as any;
+
+utilities.lazyLoad(exports, ["DomainMapping"], () => require("./domainMapping"));
+utilities.lazyLoad(exports, ["getLocations","getLocationsOutput"], () => require("./getLocations"));
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+utilities.lazyLoad(exports, ["IamBinding"], () => require("./iamBinding"));
+utilities.lazyLoad(exports, ["IamMember"], () => require("./iamMember"));
+utilities.lazyLoad(exports, ["IamPolicy"], () => require("./iamPolicy"));
+utilities.lazyLoad(exports, ["Service"], () => require("./service"));
 
 const _module = {
     version: utilities.getVersion(),

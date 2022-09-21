@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Compute
         /// and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
         /// </summary>
         public static Task<GetBackendServiceResult> InvokeAsync(GetBackendServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackendServiceResult>("gcp:compute/getBackendService:getBackendService", args ?? new GetBackendServiceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackendServiceResult>("gcp:compute/getBackendService:getBackendService", args ?? new GetBackendServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provide access to a Backend Service's attribute. For more information
@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Compute
         /// and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
         /// </summary>
         public static Output<GetBackendServiceResult> Invoke(GetBackendServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBackendServiceResult>("gcp:compute/getBackendService:getBackendService", args ?? new GetBackendServiceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBackendServiceResult>("gcp:compute/getBackendService:getBackendService", args ?? new GetBackendServiceInvokeArgs(), options.WithDefaults());
     }
 
 

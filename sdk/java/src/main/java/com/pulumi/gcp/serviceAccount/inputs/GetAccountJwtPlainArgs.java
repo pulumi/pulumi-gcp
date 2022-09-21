@@ -4,6 +4,7 @@
 package com.pulumi.gcp.serviceAccount.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -28,6 +29,21 @@ public final class GetAccountJwtPlainArgs extends com.pulumi.resources.InvokeArg
      */
     public Optional<List<String>> delegates() {
         return Optional.ofNullable(this.delegates);
+    }
+
+    /**
+     * Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+     * 
+     */
+    @Import(name="expiresIn")
+    private @Nullable Integer expiresIn;
+
+    /**
+     * @return Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+     * 
+     */
+    public Optional<Integer> expiresIn() {
+        return Optional.ofNullable(this.expiresIn);
     }
 
     /**
@@ -64,6 +80,7 @@ public final class GetAccountJwtPlainArgs extends com.pulumi.resources.InvokeArg
 
     private GetAccountJwtPlainArgs(GetAccountJwtPlainArgs $) {
         this.delegates = $.delegates;
+        this.expiresIn = $.expiresIn;
         this.payload = $.payload;
         this.targetServiceAccount = $.targetServiceAccount;
     }
@@ -105,6 +122,17 @@ public final class GetAccountJwtPlainArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder delegates(String... delegates) {
             return delegates(List.of(delegates));
+        }
+
+        /**
+         * @param expiresIn Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiresIn(@Nullable Integer expiresIn) {
+            $.expiresIn = expiresIn;
+            return this;
         }
 
         /**

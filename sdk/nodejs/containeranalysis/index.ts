@@ -5,12 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./note";
-export * from "./occurence";
+export { NoteArgs, NoteState } from "./note";
+export type Note = import("./note").Note;
+export const Note: typeof import("./note").Note = null as any;
 
-// Import resources to register:
-import { Note } from "./note";
-import { Occurence } from "./occurence";
+export { OccurenceArgs, OccurenceState } from "./occurence";
+export type Occurence = import("./occurence").Occurence;
+export const Occurence: typeof import("./occurence").Occurence = null as any;
+
+utilities.lazyLoad(exports, ["Note"], () => require("./note"));
+utilities.lazyLoad(exports, ["Occurence"], () => require("./occurence"));
 
 const _module = {
     version: utilities.getVersion(),

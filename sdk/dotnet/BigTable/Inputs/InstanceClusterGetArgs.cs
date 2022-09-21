@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.BigTable.Inputs
     public sealed class InstanceClusterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Autoscaling config for the cluster, contains the following arguments:
+        /// [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
         /// </summary>
         [Input("autoscalingConfig")]
         public Input<Inputs.InstanceClusterAutoscalingConfigGetArgs>? AutoscalingConfig { get; set; }

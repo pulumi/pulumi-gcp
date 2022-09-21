@@ -5,14 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./asset";
-export * from "./lake";
-export * from "./zone";
+export { AssetArgs, AssetState } from "./asset";
+export type Asset = import("./asset").Asset;
+export const Asset: typeof import("./asset").Asset = null as any;
 
-// Import resources to register:
-import { Asset } from "./asset";
-import { Lake } from "./lake";
-import { Zone } from "./zone";
+export { LakeArgs, LakeState } from "./lake";
+export type Lake = import("./lake").Lake;
+export const Lake: typeof import("./lake").Lake = null as any;
+
+export { ZoneArgs, ZoneState } from "./zone";
+export type Zone = import("./zone").Zone;
+export const Zone: typeof import("./zone").Zone = null as any;
+
+utilities.lazyLoad(exports, ["Asset"], () => require("./asset"));
+utilities.lazyLoad(exports, ["Lake"], () => require("./lake"));
+utilities.lazyLoad(exports, ["Zone"], () => require("./zone"));
 
 const _module = {
     version: utilities.getVersion(),

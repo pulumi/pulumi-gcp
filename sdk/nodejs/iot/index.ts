@@ -5,18 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./device";
-export * from "./registry";
-export * from "./registryIamBinding";
-export * from "./registryIamMember";
-export * from "./registryIamPolicy";
+export { DeviceArgs, DeviceState } from "./device";
+export type Device = import("./device").Device;
+export const Device: typeof import("./device").Device = null as any;
 
-// Import resources to register:
-import { Device } from "./device";
-import { Registry } from "./registry";
-import { RegistryIamBinding } from "./registryIamBinding";
-import { RegistryIamMember } from "./registryIamMember";
-import { RegistryIamPolicy } from "./registryIamPolicy";
+export { RegistryArgs, RegistryState } from "./registry";
+export type Registry = import("./registry").Registry;
+export const Registry: typeof import("./registry").Registry = null as any;
+
+export { RegistryIamBindingArgs, RegistryIamBindingState } from "./registryIamBinding";
+export type RegistryIamBinding = import("./registryIamBinding").RegistryIamBinding;
+export const RegistryIamBinding: typeof import("./registryIamBinding").RegistryIamBinding = null as any;
+
+export { RegistryIamMemberArgs, RegistryIamMemberState } from "./registryIamMember";
+export type RegistryIamMember = import("./registryIamMember").RegistryIamMember;
+export const RegistryIamMember: typeof import("./registryIamMember").RegistryIamMember = null as any;
+
+export { RegistryIamPolicyArgs, RegistryIamPolicyState } from "./registryIamPolicy";
+export type RegistryIamPolicy = import("./registryIamPolicy").RegistryIamPolicy;
+export const RegistryIamPolicy: typeof import("./registryIamPolicy").RegistryIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["Device"], () => require("./device"));
+utilities.lazyLoad(exports, ["Registry"], () => require("./registry"));
+utilities.lazyLoad(exports, ["RegistryIamBinding"], () => require("./registryIamBinding"));
+utilities.lazyLoad(exports, ["RegistryIamMember"], () => require("./registryIamMember"));
+utilities.lazyLoad(exports, ["RegistryIamPolicy"], () => require("./registryIamPolicy"));
 
 const _module = {
     version: utilities.getVersion(),

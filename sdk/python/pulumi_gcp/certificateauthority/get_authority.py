@@ -180,7 +180,7 @@ class GetAuthorityResult:
     @pulumi.getter(name="pemCsr")
     def pem_csr(self) -> str:
         """
-        The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities.
+        The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities that are awaiting user activation.
         """
         return pulumi.get(self, "pem_csr")
 
@@ -252,7 +252,7 @@ def get_authority(certificate_authority_id: Optional[str] = None,
                   project: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAuthorityResult:
     """
-    Get info about a Google Cloud IAP Client.
+    Get info about a Google CAS Certificate Authority.
 
     ## Example Usage
 
@@ -314,7 +314,7 @@ def get_authority_output(certificate_authority_id: Optional[pulumi.Input[Optiona
                          project: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAuthorityResult]:
     """
-    Get info about a Google Cloud IAP Client.
+    Get info about a Google CAS Certificate Authority.
 
     ## Example Usage
 

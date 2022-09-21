@@ -5,10 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./connector";
+export { ConnectorArgs, ConnectorState } from "./connector";
+export type Connector = import("./connector").Connector;
+export const Connector: typeof import("./connector").Connector = null as any;
 
-// Import resources to register:
-import { Connector } from "./connector";
+utilities.lazyLoad(exports, ["Connector"], () => require("./connector"));
 
 const _module = {
     version: utilities.getVersion(),

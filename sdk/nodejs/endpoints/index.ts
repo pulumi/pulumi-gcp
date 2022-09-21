@@ -5,22 +5,41 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./consumersIamBinding";
-export * from "./consumersIamMember";
-export * from "./consumersIamPolicy";
-export * from "./service";
-export * from "./serviceIamBinding";
-export * from "./serviceIamMember";
-export * from "./serviceIamPolicy";
+export { ConsumersIamBindingArgs, ConsumersIamBindingState } from "./consumersIamBinding";
+export type ConsumersIamBinding = import("./consumersIamBinding").ConsumersIamBinding;
+export const ConsumersIamBinding: typeof import("./consumersIamBinding").ConsumersIamBinding = null as any;
 
-// Import resources to register:
-import { ConsumersIamBinding } from "./consumersIamBinding";
-import { ConsumersIamMember } from "./consumersIamMember";
-import { ConsumersIamPolicy } from "./consumersIamPolicy";
-import { Service } from "./service";
-import { ServiceIamBinding } from "./serviceIamBinding";
-import { ServiceIamMember } from "./serviceIamMember";
-import { ServiceIamPolicy } from "./serviceIamPolicy";
+export { ConsumersIamMemberArgs, ConsumersIamMemberState } from "./consumersIamMember";
+export type ConsumersIamMember = import("./consumersIamMember").ConsumersIamMember;
+export const ConsumersIamMember: typeof import("./consumersIamMember").ConsumersIamMember = null as any;
+
+export { ConsumersIamPolicyArgs, ConsumersIamPolicyState } from "./consumersIamPolicy";
+export type ConsumersIamPolicy = import("./consumersIamPolicy").ConsumersIamPolicy;
+export const ConsumersIamPolicy: typeof import("./consumersIamPolicy").ConsumersIamPolicy = null as any;
+
+export { ServiceArgs, ServiceState } from "./service";
+export type Service = import("./service").Service;
+export const Service: typeof import("./service").Service = null as any;
+
+export { ServiceIamBindingArgs, ServiceIamBindingState } from "./serviceIamBinding";
+export type ServiceIamBinding = import("./serviceIamBinding").ServiceIamBinding;
+export const ServiceIamBinding: typeof import("./serviceIamBinding").ServiceIamBinding = null as any;
+
+export { ServiceIamMemberArgs, ServiceIamMemberState } from "./serviceIamMember";
+export type ServiceIamMember = import("./serviceIamMember").ServiceIamMember;
+export const ServiceIamMember: typeof import("./serviceIamMember").ServiceIamMember = null as any;
+
+export { ServiceIamPolicyArgs, ServiceIamPolicyState } from "./serviceIamPolicy";
+export type ServiceIamPolicy = import("./serviceIamPolicy").ServiceIamPolicy;
+export const ServiceIamPolicy: typeof import("./serviceIamPolicy").ServiceIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["ConsumersIamBinding"], () => require("./consumersIamBinding"));
+utilities.lazyLoad(exports, ["ConsumersIamMember"], () => require("./consumersIamMember"));
+utilities.lazyLoad(exports, ["ConsumersIamPolicy"], () => require("./consumersIamPolicy"));
+utilities.lazyLoad(exports, ["Service"], () => require("./service"));
+utilities.lazyLoad(exports, ["ServiceIamBinding"], () => require("./serviceIamBinding"));
+utilities.lazyLoad(exports, ["ServiceIamMember"], () => require("./serviceIamMember"));
+utilities.lazyLoad(exports, ["ServiceIamPolicy"], () => require("./serviceIamPolicy"));
 
 const _module = {
     version: utilities.getVersion(),

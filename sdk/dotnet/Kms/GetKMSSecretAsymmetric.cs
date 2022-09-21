@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Kms
         /// A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
         /// </summary>
         public static Task<GetKMSSecretAsymmetricResult> InvokeAsync(GetKMSSecretAsymmetricArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSSecretAsymmetricResult>("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", args ?? new GetKMSSecretAsymmetricArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKMSSecretAsymmetricResult>("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", args ?? new GetKMSSecretAsymmetricArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## get the public key to encrypt the secret with
@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.Kms
         /// A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
         /// </summary>
         public static Output<GetKMSSecretAsymmetricResult> Invoke(GetKMSSecretAsymmetricInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKMSSecretAsymmetricResult>("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", args ?? new GetKMSSecretAsymmetricInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKMSSecretAsymmetricResult>("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", args ?? new GetKMSSecretAsymmetricInvokeArgs(), options.WithDefaults());
     }
 
 

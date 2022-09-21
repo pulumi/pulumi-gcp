@@ -5,18 +5,32 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./function";
-export * from "./functionIamBinding";
-export * from "./functionIamMember";
-export * from "./functionIamPolicy";
-export * from "./getFunction";
-export * from "./zMixins";
+export { FunctionArgs, FunctionState } from "./function";
+export type Function = import("./function").Function;
+export const Function: typeof import("./function").Function = null as any;
 
-// Import resources to register:
-import { Function } from "./function";
-import { FunctionIamBinding } from "./functionIamBinding";
-import { FunctionIamMember } from "./functionIamMember";
-import { FunctionIamPolicy } from "./functionIamPolicy";
+export { FunctionIamBindingArgs, FunctionIamBindingState } from "./functionIamBinding";
+export type FunctionIamBinding = import("./functionIamBinding").FunctionIamBinding;
+export const FunctionIamBinding: typeof import("./functionIamBinding").FunctionIamBinding = null as any;
+
+export { FunctionIamMemberArgs, FunctionIamMemberState } from "./functionIamMember";
+export type FunctionIamMember = import("./functionIamMember").FunctionIamMember;
+export const FunctionIamMember: typeof import("./functionIamMember").FunctionIamMember = null as any;
+
+export { FunctionIamPolicyArgs, FunctionIamPolicyState } from "./functionIamPolicy";
+export type FunctionIamPolicy = import("./functionIamPolicy").FunctionIamPolicy;
+export const FunctionIamPolicy: typeof import("./functionIamPolicy").FunctionIamPolicy = null as any;
+
+export { GetFunctionArgs, GetFunctionResult, GetFunctionOutputArgs } from "./getFunction";
+export const getFunction: typeof import("./getFunction").getFunction = null as any;
+export const getFunctionOutput: typeof import("./getFunction").getFunctionOutput = null as any;
+
+export * from "./zMixins";
+utilities.lazyLoad(exports, ["Function"], () => require("./function"));
+utilities.lazyLoad(exports, ["FunctionIamBinding"], () => require("./functionIamBinding"));
+utilities.lazyLoad(exports, ["FunctionIamMember"], () => require("./functionIamMember"));
+utilities.lazyLoad(exports, ["FunctionIamPolicy"], () => require("./functionIamPolicy"));
+utilities.lazyLoad(exports, ["getFunction","getFunctionOutput"], () => require("./getFunction"));
 
 const _module = {
     version: utilities.getVersion(),

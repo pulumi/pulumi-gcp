@@ -1754,11 +1754,11 @@ class JobLoadArgs:
         :param pulumi.Input['JobLoadDestinationTableArgs'] destination_table: The destination table.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_uris: The fully-qualified URIs that point to your data in Google Cloud.
-               For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character
+               For Google Cloud Storage URIs: Each URI can contain one '\\*' wildcard character
                and it must come after the 'bucket' name. Size limits related to load jobs apply
                to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
                specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
-               For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
+               For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '\\*' wildcard character is not allowed.
         :param pulumi.Input[bool] allow_jagged_rows: Accept rows that are missing trailing optional columns. The missing values are treated as nulls.
                If false, records with missing trailing columns are treated as bad records, and if there are too many bad records,
                an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
@@ -1881,11 +1881,11 @@ class JobLoadArgs:
     def source_uris(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The fully-qualified URIs that point to your data in Google Cloud.
-        For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character
+        For Google Cloud Storage URIs: Each URI can contain one '\\*' wildcard character
         and it must come after the 'bucket' name. Size limits related to load jobs apply
         to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
         specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
-        For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
+        For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '\\*' wildcard character is not allowed.
         """
         return pulumi.get(self, "source_uris")
 

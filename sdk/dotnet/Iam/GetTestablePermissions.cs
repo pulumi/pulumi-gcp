@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.Iam
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTestablePermissionsResult> InvokeAsync(GetTestablePermissionsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTestablePermissionsResult>("gcp:iam/getTestablePermissions:getTestablePermissions", args ?? new GetTestablePermissionsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTestablePermissionsResult>("gcp:iam/getTestablePermissions:getTestablePermissions", args ?? new GetTestablePermissionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieve a list of testable permissions for a resource. Testable permissions mean the permissions that user can add or remove in a role at a given resource. The resource can be referenced either via the full resource name or via a URI.
@@ -77,7 +77,7 @@ namespace Pulumi.Gcp.Iam
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTestablePermissionsResult> Invoke(GetTestablePermissionsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTestablePermissionsResult>("gcp:iam/getTestablePermissions:getTestablePermissions", args ?? new GetTestablePermissionsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTestablePermissionsResult>("gcp:iam/getTestablePermissions:getTestablePermissions", args ?? new GetTestablePermissionsInvokeArgs(), options.WithDefaults());
     }
 
 
