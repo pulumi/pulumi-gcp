@@ -74,8 +74,7 @@ class InstanceFromMachineImageArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
                self_link nor project are provided, the provider project is used.
         :param pulumi.Input['InstanceFromMachineImageReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
-        :param pulumi.Input[str] resource_policies: A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
-               is supported.
+        :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input['InstanceFromMachineImageSchedulingArgs'] scheduling: The scheduling strategy being used by the instance.
         :param pulumi.Input['InstanceFromMachineImageServiceAccountArgs'] service_account: The service account to attach to the instance.
         :param pulumi.Input['InstanceFromMachineImageShieldedInstanceConfigArgs'] shielded_instance_config: The shielded vm config being used by the instance.
@@ -401,8 +400,7 @@ class InstanceFromMachineImageArgs:
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Optional[pulumi.Input[str]]:
         """
-        A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
-        is supported.
+        A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         """
         return pulumi.get(self, "resource_policies")
 
@@ -548,8 +546,7 @@ class _InstanceFromMachineImageState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
                self_link nor project are provided, the provider project is used.
         :param pulumi.Input['InstanceFromMachineImageReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
-        :param pulumi.Input[str] resource_policies: A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
-               is supported.
+        :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input['InstanceFromMachineImageSchedulingArgs'] scheduling: The scheduling strategy being used by the instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageScratchDiskArgs']]] scratch_disks: The scratch disks attached to the instance.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -972,8 +969,7 @@ class _InstanceFromMachineImageState:
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Optional[pulumi.Input[str]]:
         """
-        A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
-        is supported.
+        A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         """
         return pulumi.get(self, "resource_policies")
 
@@ -1180,8 +1176,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
                self_link nor project are provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
-        :param pulumi.Input[str] resource_policies: A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
-               is supported.
+        :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageSchedulingArgs']] scheduling: The scheduling strategy being used by the instance.
         :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageServiceAccountArgs']] service_account: The service account to attach to the instance.
         :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageShieldedInstanceConfigArgs']] shielded_instance_config: The shielded vm config being used by the instance.
@@ -1401,8 +1396,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
                self_link nor project are provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
-        :param pulumi.Input[str] resource_policies: A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
-               is supported.
+        :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[pulumi.InputType['InstanceFromMachineImageSchedulingArgs']] scheduling: The scheduling strategy being used by the instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromMachineImageScratchDiskArgs']]]] scratch_disks: The scratch disks attached to the instance.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -1685,8 +1679,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> pulumi.Output[str]:
         """
-        A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
-        is supported.
+        A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
         """
         return pulumi.get(self, "resource_policies")
 

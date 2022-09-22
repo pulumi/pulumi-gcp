@@ -5,34 +5,76 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./accessApprovalSettings";
-export * from "./apiKey";
-export * from "./defaultServiceAccounts";
-export * from "./getOrganizationPolicy";
-export * from "./getProject";
-export * from "./iamauditConfig";
-export * from "./iambinding";
-export * from "./iamcustomRole";
-export * from "./iammember";
-export * from "./iampolicy";
-export * from "./organizationPolicy";
-export * from "./service";
-export * from "./serviceIdentity";
-export * from "./usageExportBucket";
+export { AccessApprovalSettingsArgs, AccessApprovalSettingsState } from "./accessApprovalSettings";
+export type AccessApprovalSettings = import("./accessApprovalSettings").AccessApprovalSettings;
+export const AccessApprovalSettings: typeof import("./accessApprovalSettings").AccessApprovalSettings = null as any;
 
-// Import resources to register:
-import { AccessApprovalSettings } from "./accessApprovalSettings";
-import { ApiKey } from "./apiKey";
-import { DefaultServiceAccounts } from "./defaultServiceAccounts";
-import { IAMAuditConfig } from "./iamauditConfig";
-import { IAMBinding } from "./iambinding";
-import { IAMCustomRole } from "./iamcustomRole";
-import { IAMMember } from "./iammember";
-import { IAMPolicy } from "./iampolicy";
-import { OrganizationPolicy } from "./organizationPolicy";
-import { Service } from "./service";
-import { ServiceIdentity } from "./serviceIdentity";
-import { UsageExportBucket } from "./usageExportBucket";
+export { ApiKeyArgs, ApiKeyState } from "./apiKey";
+export type ApiKey = import("./apiKey").ApiKey;
+export const ApiKey: typeof import("./apiKey").ApiKey = null as any;
+
+export { DefaultServiceAccountsArgs, DefaultServiceAccountsState } from "./defaultServiceAccounts";
+export type DefaultServiceAccounts = import("./defaultServiceAccounts").DefaultServiceAccounts;
+export const DefaultServiceAccounts: typeof import("./defaultServiceAccounts").DefaultServiceAccounts = null as any;
+
+export { GetOrganizationPolicyArgs, GetOrganizationPolicyResult, GetOrganizationPolicyOutputArgs } from "./getOrganizationPolicy";
+export const getOrganizationPolicy: typeof import("./getOrganizationPolicy").getOrganizationPolicy = null as any;
+export const getOrganizationPolicyOutput: typeof import("./getOrganizationPolicy").getOrganizationPolicyOutput = null as any;
+
+export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getProject";
+export const getProject: typeof import("./getProject").getProject = null as any;
+export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
+
+export { IAMAuditConfigArgs, IAMAuditConfigState } from "./iamauditConfig";
+export type IAMAuditConfig = import("./iamauditConfig").IAMAuditConfig;
+export const IAMAuditConfig: typeof import("./iamauditConfig").IAMAuditConfig = null as any;
+
+export { IAMBindingArgs, IAMBindingState } from "./iambinding";
+export type IAMBinding = import("./iambinding").IAMBinding;
+export const IAMBinding: typeof import("./iambinding").IAMBinding = null as any;
+
+export { IAMCustomRoleArgs, IAMCustomRoleState } from "./iamcustomRole";
+export type IAMCustomRole = import("./iamcustomRole").IAMCustomRole;
+export const IAMCustomRole: typeof import("./iamcustomRole").IAMCustomRole = null as any;
+
+export { IAMMemberArgs, IAMMemberState } from "./iammember";
+export type IAMMember = import("./iammember").IAMMember;
+export const IAMMember: typeof import("./iammember").IAMMember = null as any;
+
+export { IAMPolicyArgs, IAMPolicyState } from "./iampolicy";
+export type IAMPolicy = import("./iampolicy").IAMPolicy;
+export const IAMPolicy: typeof import("./iampolicy").IAMPolicy = null as any;
+
+export { OrganizationPolicyArgs, OrganizationPolicyState } from "./organizationPolicy";
+export type OrganizationPolicy = import("./organizationPolicy").OrganizationPolicy;
+export const OrganizationPolicy: typeof import("./organizationPolicy").OrganizationPolicy = null as any;
+
+export { ServiceArgs, ServiceState } from "./service";
+export type Service = import("./service").Service;
+export const Service: typeof import("./service").Service = null as any;
+
+export { ServiceIdentityArgs, ServiceIdentityState } from "./serviceIdentity";
+export type ServiceIdentity = import("./serviceIdentity").ServiceIdentity;
+export const ServiceIdentity: typeof import("./serviceIdentity").ServiceIdentity = null as any;
+
+export { UsageExportBucketArgs, UsageExportBucketState } from "./usageExportBucket";
+export type UsageExportBucket = import("./usageExportBucket").UsageExportBucket;
+export const UsageExportBucket: typeof import("./usageExportBucket").UsageExportBucket = null as any;
+
+utilities.lazyLoad(exports, ["AccessApprovalSettings"], () => require("./accessApprovalSettings"));
+utilities.lazyLoad(exports, ["ApiKey"], () => require("./apiKey"));
+utilities.lazyLoad(exports, ["DefaultServiceAccounts"], () => require("./defaultServiceAccounts"));
+utilities.lazyLoad(exports, ["getOrganizationPolicy","getOrganizationPolicyOutput"], () => require("./getOrganizationPolicy"));
+utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
+utilities.lazyLoad(exports, ["IAMAuditConfig"], () => require("./iamauditConfig"));
+utilities.lazyLoad(exports, ["IAMBinding"], () => require("./iambinding"));
+utilities.lazyLoad(exports, ["IAMCustomRole"], () => require("./iamcustomRole"));
+utilities.lazyLoad(exports, ["IAMMember"], () => require("./iammember"));
+utilities.lazyLoad(exports, ["IAMPolicy"], () => require("./iampolicy"));
+utilities.lazyLoad(exports, ["OrganizationPolicy"], () => require("./organizationPolicy"));
+utilities.lazyLoad(exports, ["Service"], () => require("./service"));
+utilities.lazyLoad(exports, ["ServiceIdentity"], () => require("./serviceIdentity"));
+utilities.lazyLoad(exports, ["UsageExportBucket"], () => require("./usageExportBucket"));
 
 const _module = {
     version: utilities.getVersion(),

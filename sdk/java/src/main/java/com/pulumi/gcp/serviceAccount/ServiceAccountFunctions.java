@@ -337,6 +337,7 @@ public final class ServiceAccountFunctions {
      *                     jsonProperty(&#34;foo&#34;, &#34;bar&#34;),
      *                     jsonProperty(&#34;sub&#34;, &#34;subject&#34;)
      *                 )))
+     *             .expiresIn(60)
      *             .build());
      * 
      *         ctx.export(&#34;jwt&#34;, foo.applyValue(getAccountJwtResult -&gt; getAccountJwtResult.jwt()));
@@ -383,6 +384,7 @@ public final class ServiceAccountFunctions {
      *                     jsonProperty(&#34;foo&#34;, &#34;bar&#34;),
      *                     jsonProperty(&#34;sub&#34;, &#34;subject&#34;)
      *                 )))
+     *             .expiresIn(60)
      *             .build());
      * 
      *         ctx.export(&#34;jwt&#34;, foo.applyValue(getAccountJwtResult -&gt; getAccountJwtResult.jwt()));
@@ -429,6 +431,7 @@ public final class ServiceAccountFunctions {
      *                     jsonProperty(&#34;foo&#34;, &#34;bar&#34;),
      *                     jsonProperty(&#34;sub&#34;, &#34;subject&#34;)
      *                 )))
+     *             .expiresIn(60)
      *             .build());
      * 
      *         ctx.export(&#34;jwt&#34;, foo.applyValue(getAccountJwtResult -&gt; getAccountJwtResult.jwt()));
@@ -475,6 +478,7 @@ public final class ServiceAccountFunctions {
      *                     jsonProperty(&#34;foo&#34;, &#34;bar&#34;),
      *                     jsonProperty(&#34;sub&#34;, &#34;subject&#34;)
      *                 )))
+     *             .expiresIn(60)
      *             .build());
      * 
      *         ctx.export(&#34;jwt&#34;, foo.applyValue(getAccountJwtResult -&gt; getAccountJwtResult.jwt()));

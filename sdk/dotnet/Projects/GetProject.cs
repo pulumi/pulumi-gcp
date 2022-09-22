@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.Projects
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gcp:projects/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gcp:projects/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieve information about a set of projects based on a filter. See the
@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.Projects
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectResult>("gcp:projects/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("gcp:projects/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
     }
 
 

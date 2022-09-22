@@ -5,14 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./folderFeed";
-export * from "./organizationFeed";
-export * from "./projectFeed";
+export { FolderFeedArgs, FolderFeedState } from "./folderFeed";
+export type FolderFeed = import("./folderFeed").FolderFeed;
+export const FolderFeed: typeof import("./folderFeed").FolderFeed = null as any;
 
-// Import resources to register:
-import { FolderFeed } from "./folderFeed";
-import { OrganizationFeed } from "./organizationFeed";
-import { ProjectFeed } from "./projectFeed";
+export { OrganizationFeedArgs, OrganizationFeedState } from "./organizationFeed";
+export type OrganizationFeed = import("./organizationFeed").OrganizationFeed;
+export const OrganizationFeed: typeof import("./organizationFeed").OrganizationFeed = null as any;
+
+export { ProjectFeedArgs, ProjectFeedState } from "./projectFeed";
+export type ProjectFeed = import("./projectFeed").ProjectFeed;
+export const ProjectFeed: typeof import("./projectFeed").ProjectFeed = null as any;
+
+utilities.lazyLoad(exports, ["FolderFeed"], () => require("./folderFeed"));
+utilities.lazyLoad(exports, ["OrganizationFeed"], () => require("./organizationFeed"));
+utilities.lazyLoad(exports, ["ProjectFeed"], () => require("./projectFeed"));
 
 const _module = {
     version: utilities.getVersion(),

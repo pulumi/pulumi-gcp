@@ -5,61 +5,141 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./appEngineServiceIamBinding";
-export * from "./appEngineServiceIamMember";
-export * from "./appEngineServiceIamPolicy";
-export * from "./appEngineVersionIamBinding";
-export * from "./appEngineVersionIamMember";
-export * from "./appEngineVersionIamPolicy";
-export * from "./brand";
-export * from "./client";
-export * from "./getClient";
-export * from "./tunnelIamBinding";
-export * from "./tunnelIamMember";
-export * from "./tunnelIamPolicy";
-export * from "./tunnelInstanceIAMBinding";
-export * from "./tunnelInstanceIAMMember";
-export * from "./tunnelInstanceIAMPolicy";
-export * from "./webBackendServiceIamBinding";
-export * from "./webBackendServiceIamMember";
-export * from "./webBackendServiceIamPolicy";
-export * from "./webIamBinding";
-export * from "./webIamMember";
-export * from "./webIamPolicy";
-export * from "./webTypeAppEngingIamBinding";
-export * from "./webTypeAppEngingIamMember";
-export * from "./webTypeAppEngingIamPolicy";
-export * from "./webTypeComputeIamBinding";
-export * from "./webTypeComputeIamMember";
-export * from "./webTypeComputeIamPolicy";
+export { AppEngineServiceIamBindingArgs, AppEngineServiceIamBindingState } from "./appEngineServiceIamBinding";
+export type AppEngineServiceIamBinding = import("./appEngineServiceIamBinding").AppEngineServiceIamBinding;
+export const AppEngineServiceIamBinding: typeof import("./appEngineServiceIamBinding").AppEngineServiceIamBinding = null as any;
 
-// Import resources to register:
-import { AppEngineServiceIamBinding } from "./appEngineServiceIamBinding";
-import { AppEngineServiceIamMember } from "./appEngineServiceIamMember";
-import { AppEngineServiceIamPolicy } from "./appEngineServiceIamPolicy";
-import { AppEngineVersionIamBinding } from "./appEngineVersionIamBinding";
-import { AppEngineVersionIamMember } from "./appEngineVersionIamMember";
-import { AppEngineVersionIamPolicy } from "./appEngineVersionIamPolicy";
-import { Brand } from "./brand";
-import { Client } from "./client";
-import { TunnelIamBinding } from "./tunnelIamBinding";
-import { TunnelIamMember } from "./tunnelIamMember";
-import { TunnelIamPolicy } from "./tunnelIamPolicy";
-import { TunnelInstanceIAMBinding } from "./tunnelInstanceIAMBinding";
-import { TunnelInstanceIAMMember } from "./tunnelInstanceIAMMember";
-import { TunnelInstanceIAMPolicy } from "./tunnelInstanceIAMPolicy";
-import { WebBackendServiceIamBinding } from "./webBackendServiceIamBinding";
-import { WebBackendServiceIamMember } from "./webBackendServiceIamMember";
-import { WebBackendServiceIamPolicy } from "./webBackendServiceIamPolicy";
-import { WebIamBinding } from "./webIamBinding";
-import { WebIamMember } from "./webIamMember";
-import { WebIamPolicy } from "./webIamPolicy";
-import { WebTypeAppEngingIamBinding } from "./webTypeAppEngingIamBinding";
-import { WebTypeAppEngingIamMember } from "./webTypeAppEngingIamMember";
-import { WebTypeAppEngingIamPolicy } from "./webTypeAppEngingIamPolicy";
-import { WebTypeComputeIamBinding } from "./webTypeComputeIamBinding";
-import { WebTypeComputeIamMember } from "./webTypeComputeIamMember";
-import { WebTypeComputeIamPolicy } from "./webTypeComputeIamPolicy";
+export { AppEngineServiceIamMemberArgs, AppEngineServiceIamMemberState } from "./appEngineServiceIamMember";
+export type AppEngineServiceIamMember = import("./appEngineServiceIamMember").AppEngineServiceIamMember;
+export const AppEngineServiceIamMember: typeof import("./appEngineServiceIamMember").AppEngineServiceIamMember = null as any;
+
+export { AppEngineServiceIamPolicyArgs, AppEngineServiceIamPolicyState } from "./appEngineServiceIamPolicy";
+export type AppEngineServiceIamPolicy = import("./appEngineServiceIamPolicy").AppEngineServiceIamPolicy;
+export const AppEngineServiceIamPolicy: typeof import("./appEngineServiceIamPolicy").AppEngineServiceIamPolicy = null as any;
+
+export { AppEngineVersionIamBindingArgs, AppEngineVersionIamBindingState } from "./appEngineVersionIamBinding";
+export type AppEngineVersionIamBinding = import("./appEngineVersionIamBinding").AppEngineVersionIamBinding;
+export const AppEngineVersionIamBinding: typeof import("./appEngineVersionIamBinding").AppEngineVersionIamBinding = null as any;
+
+export { AppEngineVersionIamMemberArgs, AppEngineVersionIamMemberState } from "./appEngineVersionIamMember";
+export type AppEngineVersionIamMember = import("./appEngineVersionIamMember").AppEngineVersionIamMember;
+export const AppEngineVersionIamMember: typeof import("./appEngineVersionIamMember").AppEngineVersionIamMember = null as any;
+
+export { AppEngineVersionIamPolicyArgs, AppEngineVersionIamPolicyState } from "./appEngineVersionIamPolicy";
+export type AppEngineVersionIamPolicy = import("./appEngineVersionIamPolicy").AppEngineVersionIamPolicy;
+export const AppEngineVersionIamPolicy: typeof import("./appEngineVersionIamPolicy").AppEngineVersionIamPolicy = null as any;
+
+export { BrandArgs, BrandState } from "./brand";
+export type Brand = import("./brand").Brand;
+export const Brand: typeof import("./brand").Brand = null as any;
+
+export { ClientArgs, ClientState } from "./client";
+export type Client = import("./client").Client;
+export const Client: typeof import("./client").Client = null as any;
+
+export { GetClientArgs, GetClientResult, GetClientOutputArgs } from "./getClient";
+export const getClient: typeof import("./getClient").getClient = null as any;
+export const getClientOutput: typeof import("./getClient").getClientOutput = null as any;
+
+export { TunnelIamBindingArgs, TunnelIamBindingState } from "./tunnelIamBinding";
+export type TunnelIamBinding = import("./tunnelIamBinding").TunnelIamBinding;
+export const TunnelIamBinding: typeof import("./tunnelIamBinding").TunnelIamBinding = null as any;
+
+export { TunnelIamMemberArgs, TunnelIamMemberState } from "./tunnelIamMember";
+export type TunnelIamMember = import("./tunnelIamMember").TunnelIamMember;
+export const TunnelIamMember: typeof import("./tunnelIamMember").TunnelIamMember = null as any;
+
+export { TunnelIamPolicyArgs, TunnelIamPolicyState } from "./tunnelIamPolicy";
+export type TunnelIamPolicy = import("./tunnelIamPolicy").TunnelIamPolicy;
+export const TunnelIamPolicy: typeof import("./tunnelIamPolicy").TunnelIamPolicy = null as any;
+
+export { TunnelInstanceIAMBindingArgs, TunnelInstanceIAMBindingState } from "./tunnelInstanceIAMBinding";
+export type TunnelInstanceIAMBinding = import("./tunnelInstanceIAMBinding").TunnelInstanceIAMBinding;
+export const TunnelInstanceIAMBinding: typeof import("./tunnelInstanceIAMBinding").TunnelInstanceIAMBinding = null as any;
+
+export { TunnelInstanceIAMMemberArgs, TunnelInstanceIAMMemberState } from "./tunnelInstanceIAMMember";
+export type TunnelInstanceIAMMember = import("./tunnelInstanceIAMMember").TunnelInstanceIAMMember;
+export const TunnelInstanceIAMMember: typeof import("./tunnelInstanceIAMMember").TunnelInstanceIAMMember = null as any;
+
+export { TunnelInstanceIAMPolicyArgs, TunnelInstanceIAMPolicyState } from "./tunnelInstanceIAMPolicy";
+export type TunnelInstanceIAMPolicy = import("./tunnelInstanceIAMPolicy").TunnelInstanceIAMPolicy;
+export const TunnelInstanceIAMPolicy: typeof import("./tunnelInstanceIAMPolicy").TunnelInstanceIAMPolicy = null as any;
+
+export { WebBackendServiceIamBindingArgs, WebBackendServiceIamBindingState } from "./webBackendServiceIamBinding";
+export type WebBackendServiceIamBinding = import("./webBackendServiceIamBinding").WebBackendServiceIamBinding;
+export const WebBackendServiceIamBinding: typeof import("./webBackendServiceIamBinding").WebBackendServiceIamBinding = null as any;
+
+export { WebBackendServiceIamMemberArgs, WebBackendServiceIamMemberState } from "./webBackendServiceIamMember";
+export type WebBackendServiceIamMember = import("./webBackendServiceIamMember").WebBackendServiceIamMember;
+export const WebBackendServiceIamMember: typeof import("./webBackendServiceIamMember").WebBackendServiceIamMember = null as any;
+
+export { WebBackendServiceIamPolicyArgs, WebBackendServiceIamPolicyState } from "./webBackendServiceIamPolicy";
+export type WebBackendServiceIamPolicy = import("./webBackendServiceIamPolicy").WebBackendServiceIamPolicy;
+export const WebBackendServiceIamPolicy: typeof import("./webBackendServiceIamPolicy").WebBackendServiceIamPolicy = null as any;
+
+export { WebIamBindingArgs, WebIamBindingState } from "./webIamBinding";
+export type WebIamBinding = import("./webIamBinding").WebIamBinding;
+export const WebIamBinding: typeof import("./webIamBinding").WebIamBinding = null as any;
+
+export { WebIamMemberArgs, WebIamMemberState } from "./webIamMember";
+export type WebIamMember = import("./webIamMember").WebIamMember;
+export const WebIamMember: typeof import("./webIamMember").WebIamMember = null as any;
+
+export { WebIamPolicyArgs, WebIamPolicyState } from "./webIamPolicy";
+export type WebIamPolicy = import("./webIamPolicy").WebIamPolicy;
+export const WebIamPolicy: typeof import("./webIamPolicy").WebIamPolicy = null as any;
+
+export { WebTypeAppEngingIamBindingArgs, WebTypeAppEngingIamBindingState } from "./webTypeAppEngingIamBinding";
+export type WebTypeAppEngingIamBinding = import("./webTypeAppEngingIamBinding").WebTypeAppEngingIamBinding;
+export const WebTypeAppEngingIamBinding: typeof import("./webTypeAppEngingIamBinding").WebTypeAppEngingIamBinding = null as any;
+
+export { WebTypeAppEngingIamMemberArgs, WebTypeAppEngingIamMemberState } from "./webTypeAppEngingIamMember";
+export type WebTypeAppEngingIamMember = import("./webTypeAppEngingIamMember").WebTypeAppEngingIamMember;
+export const WebTypeAppEngingIamMember: typeof import("./webTypeAppEngingIamMember").WebTypeAppEngingIamMember = null as any;
+
+export { WebTypeAppEngingIamPolicyArgs, WebTypeAppEngingIamPolicyState } from "./webTypeAppEngingIamPolicy";
+export type WebTypeAppEngingIamPolicy = import("./webTypeAppEngingIamPolicy").WebTypeAppEngingIamPolicy;
+export const WebTypeAppEngingIamPolicy: typeof import("./webTypeAppEngingIamPolicy").WebTypeAppEngingIamPolicy = null as any;
+
+export { WebTypeComputeIamBindingArgs, WebTypeComputeIamBindingState } from "./webTypeComputeIamBinding";
+export type WebTypeComputeIamBinding = import("./webTypeComputeIamBinding").WebTypeComputeIamBinding;
+export const WebTypeComputeIamBinding: typeof import("./webTypeComputeIamBinding").WebTypeComputeIamBinding = null as any;
+
+export { WebTypeComputeIamMemberArgs, WebTypeComputeIamMemberState } from "./webTypeComputeIamMember";
+export type WebTypeComputeIamMember = import("./webTypeComputeIamMember").WebTypeComputeIamMember;
+export const WebTypeComputeIamMember: typeof import("./webTypeComputeIamMember").WebTypeComputeIamMember = null as any;
+
+export { WebTypeComputeIamPolicyArgs, WebTypeComputeIamPolicyState } from "./webTypeComputeIamPolicy";
+export type WebTypeComputeIamPolicy = import("./webTypeComputeIamPolicy").WebTypeComputeIamPolicy;
+export const WebTypeComputeIamPolicy: typeof import("./webTypeComputeIamPolicy").WebTypeComputeIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["AppEngineServiceIamBinding"], () => require("./appEngineServiceIamBinding"));
+utilities.lazyLoad(exports, ["AppEngineServiceIamMember"], () => require("./appEngineServiceIamMember"));
+utilities.lazyLoad(exports, ["AppEngineServiceIamPolicy"], () => require("./appEngineServiceIamPolicy"));
+utilities.lazyLoad(exports, ["AppEngineVersionIamBinding"], () => require("./appEngineVersionIamBinding"));
+utilities.lazyLoad(exports, ["AppEngineVersionIamMember"], () => require("./appEngineVersionIamMember"));
+utilities.lazyLoad(exports, ["AppEngineVersionIamPolicy"], () => require("./appEngineVersionIamPolicy"));
+utilities.lazyLoad(exports, ["Brand"], () => require("./brand"));
+utilities.lazyLoad(exports, ["Client"], () => require("./client"));
+utilities.lazyLoad(exports, ["getClient","getClientOutput"], () => require("./getClient"));
+utilities.lazyLoad(exports, ["TunnelIamBinding"], () => require("./tunnelIamBinding"));
+utilities.lazyLoad(exports, ["TunnelIamMember"], () => require("./tunnelIamMember"));
+utilities.lazyLoad(exports, ["TunnelIamPolicy"], () => require("./tunnelIamPolicy"));
+utilities.lazyLoad(exports, ["TunnelInstanceIAMBinding"], () => require("./tunnelInstanceIAMBinding"));
+utilities.lazyLoad(exports, ["TunnelInstanceIAMMember"], () => require("./tunnelInstanceIAMMember"));
+utilities.lazyLoad(exports, ["TunnelInstanceIAMPolicy"], () => require("./tunnelInstanceIAMPolicy"));
+utilities.lazyLoad(exports, ["WebBackendServiceIamBinding"], () => require("./webBackendServiceIamBinding"));
+utilities.lazyLoad(exports, ["WebBackendServiceIamMember"], () => require("./webBackendServiceIamMember"));
+utilities.lazyLoad(exports, ["WebBackendServiceIamPolicy"], () => require("./webBackendServiceIamPolicy"));
+utilities.lazyLoad(exports, ["WebIamBinding"], () => require("./webIamBinding"));
+utilities.lazyLoad(exports, ["WebIamMember"], () => require("./webIamMember"));
+utilities.lazyLoad(exports, ["WebIamPolicy"], () => require("./webIamPolicy"));
+utilities.lazyLoad(exports, ["WebTypeAppEngingIamBinding"], () => require("./webTypeAppEngingIamBinding"));
+utilities.lazyLoad(exports, ["WebTypeAppEngingIamMember"], () => require("./webTypeAppEngingIamMember"));
+utilities.lazyLoad(exports, ["WebTypeAppEngingIamPolicy"], () => require("./webTypeAppEngingIamPolicy"));
+utilities.lazyLoad(exports, ["WebTypeComputeIamBinding"], () => require("./webTypeComputeIamBinding"));
+utilities.lazyLoad(exports, ["WebTypeComputeIamMember"], () => require("./webTypeComputeIamMember"));
+utilities.lazyLoad(exports, ["WebTypeComputeIamPolicy"], () => require("./webTypeComputeIamPolicy"));
 
 const _module = {
     version: utilities.getVersion(),

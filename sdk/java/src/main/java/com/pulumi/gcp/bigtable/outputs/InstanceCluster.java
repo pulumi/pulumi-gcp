@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceCluster {
     /**
-     * @return Autoscaling config for the cluster, contains the following arguments:
+     * @return [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
      * 
      */
     private @Nullable InstanceClusterAutoscalingConfig autoscalingConfig;
@@ -51,7 +51,7 @@ public final class InstanceCluster {
 
     private InstanceCluster() {}
     /**
-     * @return Autoscaling config for the cluster, contains the following arguments:
+     * @return [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
      * 
      */
     public Optional<InstanceClusterAutoscalingConfig> autoscalingConfig() {

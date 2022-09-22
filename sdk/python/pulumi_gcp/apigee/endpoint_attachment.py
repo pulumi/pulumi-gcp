@@ -84,6 +84,7 @@ class EndpointAttachmentArgs:
 @pulumi.input_type
 class _EndpointAttachmentState:
     def __init__(__self__, *,
+                 connection_state: Optional[pulumi.Input[str]] = None,
                  endpoint_attachment_id: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -92,6 +93,7 @@ class _EndpointAttachmentState:
                  service_attachment: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EndpointAttachment resources.
+        :param pulumi.Input[str] connection_state: State of the endpoint attachment connection to the service attachment.
         :param pulumi.Input[str] endpoint_attachment_id: ID of the endpoint attachment.
         :param pulumi.Input[str] host: Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
         :param pulumi.Input[str] location: Location of the endpoint attachment.
@@ -101,6 +103,8 @@ class _EndpointAttachmentState:
                in the format `organizations/{{org_name}}`.
         :param pulumi.Input[str] service_attachment: Format: projects/*/regions/*/serviceAttachments/*
         """
+        if connection_state is not None:
+            pulumi.set(__self__, "connection_state", connection_state)
         if endpoint_attachment_id is not None:
             pulumi.set(__self__, "endpoint_attachment_id", endpoint_attachment_id)
         if host is not None:
@@ -113,6 +117,18 @@ class _EndpointAttachmentState:
             pulumi.set(__self__, "org_id", org_id)
         if service_attachment is not None:
             pulumi.set(__self__, "service_attachment", service_attachment)
+
+    @property
+    @pulumi.getter(name="connectionState")
+    def connection_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        State of the endpoint attachment connection to the service attachment.
+        """
+        return pulumi.get(self, "connection_state")
+
+    @connection_state.setter
+    def connection_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_state", value)
 
     @property
     @pulumi.getter(name="endpointAttachmentId")
@@ -355,6 +371,7 @@ class EndpointAttachment(pulumi.CustomResource):
             if service_attachment is None and not opts.urn:
                 raise TypeError("Missing required property 'service_attachment'")
             __props__.__dict__["service_attachment"] = service_attachment
+            __props__.__dict__["connection_state"] = None
             __props__.__dict__["host"] = None
             __props__.__dict__["name"] = None
         super(EndpointAttachment, __self__).__init__(
@@ -367,6 +384,7 @@ class EndpointAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            connection_state: Optional[pulumi.Input[str]] = None,
             endpoint_attachment_id: Optional[pulumi.Input[str]] = None,
             host: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -380,6 +398,7 @@ class EndpointAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] connection_state: State of the endpoint attachment connection to the service attachment.
         :param pulumi.Input[str] endpoint_attachment_id: ID of the endpoint attachment.
         :param pulumi.Input[str] host: Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
         :param pulumi.Input[str] location: Location of the endpoint attachment.
@@ -393,6 +412,7 @@ class EndpointAttachment(pulumi.CustomResource):
 
         __props__ = _EndpointAttachmentState.__new__(_EndpointAttachmentState)
 
+        __props__.__dict__["connection_state"] = connection_state
         __props__.__dict__["endpoint_attachment_id"] = endpoint_attachment_id
         __props__.__dict__["host"] = host
         __props__.__dict__["location"] = location
@@ -400,6 +420,14 @@ class EndpointAttachment(pulumi.CustomResource):
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["service_attachment"] = service_attachment
         return EndpointAttachment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="connectionState")
+    def connection_state(self) -> pulumi.Output[str]:
+        """
+        State of the endpoint attachment connection to the service attachment.
+        """
+        return pulumi.get(self, "connection_state")
 
     @property
     @pulumi.getter(name="endpointAttachmentId")

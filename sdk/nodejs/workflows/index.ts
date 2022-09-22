@@ -5,10 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./workflow";
+export { WorkflowArgs, WorkflowState } from "./workflow";
+export type Workflow = import("./workflow").Workflow;
+export const Workflow: typeof import("./workflow").Workflow = null as any;
 
-// Import resources to register:
-import { Workflow } from "./workflow";
+utilities.lazyLoad(exports, ["Workflow"], () => require("./workflow"));
 
 const _module = {
     version: utilities.getVersion(),

@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Tpu
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTensorflowVersionsResult> InvokeAsync(GetTensorflowVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTensorflowVersionsResult>("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args ?? new GetTensorflowVersionsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTensorflowVersionsResult>("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args ?? new GetTensorflowVersionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
@@ -105,7 +105,7 @@ namespace Pulumi.Gcp.Tpu
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTensorflowVersionsResult> Invoke(GetTensorflowVersionsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTensorflowVersionsResult>("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args ?? new GetTensorflowVersionsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTensorflowVersionsResult>("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args ?? new GetTensorflowVersionsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -5,23 +5,56 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./account";
-export * from "./getAccount";
-export * from "./getAccountAccessToken";
-export * from "./getAccountIdToken";
-export * from "./getAccountJwt";
-export * from "./getAccountKey";
-export * from "./iambinding";
-export * from "./iammember";
-export * from "./iampolicy";
-export * from "./key";
+export { AccountArgs, AccountState } from "./account";
+export type Account = import("./account").Account;
+export const Account: typeof import("./account").Account = null as any;
 
-// Import resources to register:
-import { Account } from "./account";
-import { IAMBinding } from "./iambinding";
-import { IAMMember } from "./iammember";
-import { IAMPolicy } from "./iampolicy";
-import { Key } from "./key";
+export { GetAccountArgs, GetAccountResult, GetAccountOutputArgs } from "./getAccount";
+export const getAccount: typeof import("./getAccount").getAccount = null as any;
+export const getAccountOutput: typeof import("./getAccount").getAccountOutput = null as any;
+
+export { GetAccountAccessTokenArgs, GetAccountAccessTokenResult, GetAccountAccessTokenOutputArgs } from "./getAccountAccessToken";
+export const getAccountAccessToken: typeof import("./getAccountAccessToken").getAccountAccessToken = null as any;
+export const getAccountAccessTokenOutput: typeof import("./getAccountAccessToken").getAccountAccessTokenOutput = null as any;
+
+export { GetAccountIdTokenArgs, GetAccountIdTokenResult, GetAccountIdTokenOutputArgs } from "./getAccountIdToken";
+export const getAccountIdToken: typeof import("./getAccountIdToken").getAccountIdToken = null as any;
+export const getAccountIdTokenOutput: typeof import("./getAccountIdToken").getAccountIdTokenOutput = null as any;
+
+export { GetAccountJwtArgs, GetAccountJwtResult, GetAccountJwtOutputArgs } from "./getAccountJwt";
+export const getAccountJwt: typeof import("./getAccountJwt").getAccountJwt = null as any;
+export const getAccountJwtOutput: typeof import("./getAccountJwt").getAccountJwtOutput = null as any;
+
+export { GetAccountKeyArgs, GetAccountKeyResult, GetAccountKeyOutputArgs } from "./getAccountKey";
+export const getAccountKey: typeof import("./getAccountKey").getAccountKey = null as any;
+export const getAccountKeyOutput: typeof import("./getAccountKey").getAccountKeyOutput = null as any;
+
+export { IAMBindingArgs, IAMBindingState } from "./iambinding";
+export type IAMBinding = import("./iambinding").IAMBinding;
+export const IAMBinding: typeof import("./iambinding").IAMBinding = null as any;
+
+export { IAMMemberArgs, IAMMemberState } from "./iammember";
+export type IAMMember = import("./iammember").IAMMember;
+export const IAMMember: typeof import("./iammember").IAMMember = null as any;
+
+export { IAMPolicyArgs, IAMPolicyState } from "./iampolicy";
+export type IAMPolicy = import("./iampolicy").IAMPolicy;
+export const IAMPolicy: typeof import("./iampolicy").IAMPolicy = null as any;
+
+export { KeyArgs, KeyState } from "./key";
+export type Key = import("./key").Key;
+export const Key: typeof import("./key").Key = null as any;
+
+utilities.lazyLoad(exports, ["Account"], () => require("./account"));
+utilities.lazyLoad(exports, ["getAccount","getAccountOutput"], () => require("./getAccount"));
+utilities.lazyLoad(exports, ["getAccountAccessToken","getAccountAccessTokenOutput"], () => require("./getAccountAccessToken"));
+utilities.lazyLoad(exports, ["getAccountIdToken","getAccountIdTokenOutput"], () => require("./getAccountIdToken"));
+utilities.lazyLoad(exports, ["getAccountJwt","getAccountJwtOutput"], () => require("./getAccountJwt"));
+utilities.lazyLoad(exports, ["getAccountKey","getAccountKeyOutput"], () => require("./getAccountKey"));
+utilities.lazyLoad(exports, ["IAMBinding"], () => require("./iambinding"));
+utilities.lazyLoad(exports, ["IAMMember"], () => require("./iammember"));
+utilities.lazyLoad(exports, ["IAMPolicy"], () => require("./iampolicy"));
+utilities.lazyLoad(exports, ["Key"], () => require("./key"));
 
 const _module = {
     version: utilities.getVersion(),

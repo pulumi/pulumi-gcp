@@ -36,6 +36,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///             ["foo"] = "bar",
         ///             ["sub"] = "subject",
         ///         }),
+        ///         ExpiresIn = 60,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -48,7 +49,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountJwtResult> InvokeAsync(GetAccountJwtArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountJwtResult>("gcp:serviceAccount/getAccountJwt:getAccountJwt", args ?? new GetAccountJwtArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountJwtResult>("gcp:serviceAccount/getAccountJwt:getAccountJwt", args ?? new GetAccountJwtArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides a [self-signed JWT](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-credentials-jwt).  Tokens issued from this data source are typically used to call external services that accept JWTs for authentication.
@@ -75,6 +76,7 @@ namespace Pulumi.Gcp.ServiceAccount
         ///             ["foo"] = "bar",
         ///             ["sub"] = "subject",
         ///         }),
+        ///         ExpiresIn = 60,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -87,7 +89,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccountJwtResult> Invoke(GetAccountJwtInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccountJwtResult>("gcp:serviceAccount/getAccountJwt:getAccountJwt", args ?? new GetAccountJwtInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountJwtResult>("gcp:serviceAccount/getAccountJwt:getAccountJwt", args ?? new GetAccountJwtInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -104,6 +106,12 @@ namespace Pulumi.Gcp.ServiceAccount
             get => _delegates ?? (_delegates = new List<string>());
             set => _delegates = value;
         }
+
+        /// <summary>
+        /// Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+        /// </summary>
+        [Input("expiresIn")]
+        public int? ExpiresIn { get; set; }
 
         /// <summary>
         /// The JSON-encoded JWT claims set to include in the self-signed JWT.
@@ -138,6 +146,12 @@ namespace Pulumi.Gcp.ServiceAccount
         }
 
         /// <summary>
+        /// Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+        /// </summary>
+        [Input("expiresIn")]
+        public Input<int>? ExpiresIn { get; set; }
+
+        /// <summary>
         /// The JSON-encoded JWT claims set to include in the self-signed JWT.
         /// </summary>
         [Input("payload", required: true)]
@@ -160,6 +174,7 @@ namespace Pulumi.Gcp.ServiceAccount
     public sealed class GetAccountJwtResult
     {
         public readonly ImmutableArray<string> Delegates;
+        public readonly int? ExpiresIn;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -175,6 +190,8 @@ namespace Pulumi.Gcp.ServiceAccount
         private GetAccountJwtResult(
             ImmutableArray<string> delegates,
 
+            int? expiresIn,
+
             string id,
 
             string jwt,
@@ -184,6 +201,7 @@ namespace Pulumi.Gcp.ServiceAccount
             string targetServiceAccount)
         {
             Delegates = delegates;
+            ExpiresIn = expiresIn;
             Id = id;
             Jwt = jwt;
             Payload = payload;

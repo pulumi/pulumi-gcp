@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.AccessApproval
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFolderServiceAccountResult> InvokeAsync(GetFolderServiceAccountArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderServiceAccountResult>("gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount", args ?? new GetFolderServiceAccountArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFolderServiceAccountResult>("gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount", args ?? new GetFolderServiceAccountArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get the email address of a folder's Access Approval service account.
@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.AccessApproval
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFolderServiceAccountResult> Invoke(GetFolderServiceAccountInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFolderServiceAccountResult>("gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount", args ?? new GetFolderServiceAccountInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFolderServiceAccountResult>("gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount", args ?? new GetFolderServiceAccountInvokeArgs(), options.WithDefaults());
     }
 
 

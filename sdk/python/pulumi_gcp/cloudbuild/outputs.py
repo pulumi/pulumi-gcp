@@ -1403,8 +1403,8 @@ class TriggerGitFileSource(dict):
                Paths must be absolute and cannot conflict with other volume paths on the same
                build step or with certain reserved volume paths.
         :param str repo_type: The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-               Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
-               Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+               Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
+               Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
         :param str revision: The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
                filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
                If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
@@ -1432,8 +1432,8 @@ class TriggerGitFileSource(dict):
     def repo_type(self) -> str:
         """
         The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-        Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
-        Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+        Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
+        Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
         """
         return pulumi.get(self, "repo_type")
 
@@ -1764,8 +1764,8 @@ class TriggerSourceToBuild(dict):
         """
         :param str ref: The branch or tag to use. Must start with "refs/" (required).
         :param str repo_type: The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-               Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
-               Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+               Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
+               Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
         :param str uri: The URI of the repo (required).
         """
         pulumi.set(__self__, "ref", ref)
@@ -1785,8 +1785,8 @@ class TriggerSourceToBuild(dict):
     def repo_type(self) -> str:
         """
         The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-        Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
-        Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+        Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
+        Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
         """
         return pulumi.get(self, "repo_type")
 

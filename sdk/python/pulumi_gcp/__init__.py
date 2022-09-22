@@ -564,6 +564,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/natAddress",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/natAddress:NatAddress": "NatAddress"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/organization",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -2868,6 +2876,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "diagflow/cxWebhook",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/cxWebhook:CxWebhook": "CxWebhook"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "diagflow/entityType",
   "fqn": "pulumi_gcp.diagflow",
   "classes": {
@@ -3024,6 +3040,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.filestore",
   "classes": {
    "gcp:filestore/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "filestore/snapshot",
+  "fqn": "pulumi_gcp.filestore",
+  "classes": {
+   "gcp:filestore/snapshot:Snapshot": "Snapshot"
   }
  },
  {

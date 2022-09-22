@@ -5,30 +5,66 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./agent";
-export * from "./cxAgent";
-export * from "./cxEntityType";
-export * from "./cxEnvironment";
-export * from "./cxFlow";
-export * from "./cxIntent";
-export * from "./cxPage";
-export * from "./cxVersion";
-export * from "./entityType";
-export * from "./fulfillment";
-export * from "./intent";
+export { AgentArgs, AgentState } from "./agent";
+export type Agent = import("./agent").Agent;
+export const Agent: typeof import("./agent").Agent = null as any;
 
-// Import resources to register:
-import { Agent } from "./agent";
-import { CxAgent } from "./cxAgent";
-import { CxEntityType } from "./cxEntityType";
-import { CxEnvironment } from "./cxEnvironment";
-import { CxFlow } from "./cxFlow";
-import { CxIntent } from "./cxIntent";
-import { CxPage } from "./cxPage";
-import { CxVersion } from "./cxVersion";
-import { EntityType } from "./entityType";
-import { Fulfillment } from "./fulfillment";
-import { Intent } from "./intent";
+export { CxAgentArgs, CxAgentState } from "./cxAgent";
+export type CxAgent = import("./cxAgent").CxAgent;
+export const CxAgent: typeof import("./cxAgent").CxAgent = null as any;
+
+export { CxEntityTypeArgs, CxEntityTypeState } from "./cxEntityType";
+export type CxEntityType = import("./cxEntityType").CxEntityType;
+export const CxEntityType: typeof import("./cxEntityType").CxEntityType = null as any;
+
+export { CxEnvironmentArgs, CxEnvironmentState } from "./cxEnvironment";
+export type CxEnvironment = import("./cxEnvironment").CxEnvironment;
+export const CxEnvironment: typeof import("./cxEnvironment").CxEnvironment = null as any;
+
+export { CxFlowArgs, CxFlowState } from "./cxFlow";
+export type CxFlow = import("./cxFlow").CxFlow;
+export const CxFlow: typeof import("./cxFlow").CxFlow = null as any;
+
+export { CxIntentArgs, CxIntentState } from "./cxIntent";
+export type CxIntent = import("./cxIntent").CxIntent;
+export const CxIntent: typeof import("./cxIntent").CxIntent = null as any;
+
+export { CxPageArgs, CxPageState } from "./cxPage";
+export type CxPage = import("./cxPage").CxPage;
+export const CxPage: typeof import("./cxPage").CxPage = null as any;
+
+export { CxVersionArgs, CxVersionState } from "./cxVersion";
+export type CxVersion = import("./cxVersion").CxVersion;
+export const CxVersion: typeof import("./cxVersion").CxVersion = null as any;
+
+export { CxWebhookArgs, CxWebhookState } from "./cxWebhook";
+export type CxWebhook = import("./cxWebhook").CxWebhook;
+export const CxWebhook: typeof import("./cxWebhook").CxWebhook = null as any;
+
+export { EntityTypeArgs, EntityTypeState } from "./entityType";
+export type EntityType = import("./entityType").EntityType;
+export const EntityType: typeof import("./entityType").EntityType = null as any;
+
+export { FulfillmentArgs, FulfillmentState } from "./fulfillment";
+export type Fulfillment = import("./fulfillment").Fulfillment;
+export const Fulfillment: typeof import("./fulfillment").Fulfillment = null as any;
+
+export { IntentArgs, IntentState } from "./intent";
+export type Intent = import("./intent").Intent;
+export const Intent: typeof import("./intent").Intent = null as any;
+
+utilities.lazyLoad(exports, ["Agent"], () => require("./agent"));
+utilities.lazyLoad(exports, ["CxAgent"], () => require("./cxAgent"));
+utilities.lazyLoad(exports, ["CxEntityType"], () => require("./cxEntityType"));
+utilities.lazyLoad(exports, ["CxEnvironment"], () => require("./cxEnvironment"));
+utilities.lazyLoad(exports, ["CxFlow"], () => require("./cxFlow"));
+utilities.lazyLoad(exports, ["CxIntent"], () => require("./cxIntent"));
+utilities.lazyLoad(exports, ["CxPage"], () => require("./cxPage"));
+utilities.lazyLoad(exports, ["CxVersion"], () => require("./cxVersion"));
+utilities.lazyLoad(exports, ["CxWebhook"], () => require("./cxWebhook"));
+utilities.lazyLoad(exports, ["EntityType"], () => require("./entityType"));
+utilities.lazyLoad(exports, ["Fulfillment"], () => require("./fulfillment"));
+utilities.lazyLoad(exports, ["Intent"], () => require("./intent"));
 
 const _module = {
     version: utilities.getVersion(),
@@ -50,6 +86,8 @@ const _module = {
                 return new CxPage(name, <any>undefined, { urn })
             case "gcp:diagflow/cxVersion:CxVersion":
                 return new CxVersion(name, <any>undefined, { urn })
+            case "gcp:diagflow/cxWebhook:CxWebhook":
+                return new CxWebhook(name, <any>undefined, { urn })
             case "gcp:diagflow/entityType:EntityType":
                 return new EntityType(name, <any>undefined, { urn })
             case "gcp:diagflow/fulfillment:Fulfillment":
@@ -69,6 +107,7 @@ pulumi.runtime.registerResourceModule("gcp", "diagflow/cxFlow", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxIntent", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxPage", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxVersion", _module)
+pulumi.runtime.registerResourceModule("gcp", "diagflow/cxWebhook", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/entityType", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/fulfillment", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/intent", _module)

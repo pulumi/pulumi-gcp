@@ -5,50 +5,111 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./autoscalingPolicy";
-export * from "./autoscalingPolicyIamBinding";
-export * from "./autoscalingPolicyIamMember";
-export * from "./autoscalingPolicyIamPolicy";
-export * from "./cluster";
-export * from "./clusterIAMBinding";
-export * from "./clusterIAMMember";
-export * from "./clusterIAMPolicy";
-export * from "./job";
-export * from "./jobIAMBinding";
-export * from "./jobIAMMember";
-export * from "./jobIAMPolicy";
-export * from "./metastoreFederation";
-export * from "./metastoreFederationIamBinding";
-export * from "./metastoreFederationIamMember";
-export * from "./metastoreFederationIamPolicy";
-export * from "./metastoreService";
-export * from "./metastoreServiceIamBinding";
-export * from "./metastoreServiceIamMember";
-export * from "./metastoreServiceIamPolicy";
-export * from "./workflowTemplate";
+export { AutoscalingPolicyArgs, AutoscalingPolicyState } from "./autoscalingPolicy";
+export type AutoscalingPolicy = import("./autoscalingPolicy").AutoscalingPolicy;
+export const AutoscalingPolicy: typeof import("./autoscalingPolicy").AutoscalingPolicy = null as any;
 
-// Import resources to register:
-import { AutoscalingPolicy } from "./autoscalingPolicy";
-import { AutoscalingPolicyIamBinding } from "./autoscalingPolicyIamBinding";
-import { AutoscalingPolicyIamMember } from "./autoscalingPolicyIamMember";
-import { AutoscalingPolicyIamPolicy } from "./autoscalingPolicyIamPolicy";
-import { Cluster } from "./cluster";
-import { ClusterIAMBinding } from "./clusterIAMBinding";
-import { ClusterIAMMember } from "./clusterIAMMember";
-import { ClusterIAMPolicy } from "./clusterIAMPolicy";
-import { Job } from "./job";
-import { JobIAMBinding } from "./jobIAMBinding";
-import { JobIAMMember } from "./jobIAMMember";
-import { JobIAMPolicy } from "./jobIAMPolicy";
-import { MetastoreFederation } from "./metastoreFederation";
-import { MetastoreFederationIamBinding } from "./metastoreFederationIamBinding";
-import { MetastoreFederationIamMember } from "./metastoreFederationIamMember";
-import { MetastoreFederationIamPolicy } from "./metastoreFederationIamPolicy";
-import { MetastoreService } from "./metastoreService";
-import { MetastoreServiceIamBinding } from "./metastoreServiceIamBinding";
-import { MetastoreServiceIamMember } from "./metastoreServiceIamMember";
-import { MetastoreServiceIamPolicy } from "./metastoreServiceIamPolicy";
-import { WorkflowTemplate } from "./workflowTemplate";
+export { AutoscalingPolicyIamBindingArgs, AutoscalingPolicyIamBindingState } from "./autoscalingPolicyIamBinding";
+export type AutoscalingPolicyIamBinding = import("./autoscalingPolicyIamBinding").AutoscalingPolicyIamBinding;
+export const AutoscalingPolicyIamBinding: typeof import("./autoscalingPolicyIamBinding").AutoscalingPolicyIamBinding = null as any;
+
+export { AutoscalingPolicyIamMemberArgs, AutoscalingPolicyIamMemberState } from "./autoscalingPolicyIamMember";
+export type AutoscalingPolicyIamMember = import("./autoscalingPolicyIamMember").AutoscalingPolicyIamMember;
+export const AutoscalingPolicyIamMember: typeof import("./autoscalingPolicyIamMember").AutoscalingPolicyIamMember = null as any;
+
+export { AutoscalingPolicyIamPolicyArgs, AutoscalingPolicyIamPolicyState } from "./autoscalingPolicyIamPolicy";
+export type AutoscalingPolicyIamPolicy = import("./autoscalingPolicyIamPolicy").AutoscalingPolicyIamPolicy;
+export const AutoscalingPolicyIamPolicy: typeof import("./autoscalingPolicyIamPolicy").AutoscalingPolicyIamPolicy = null as any;
+
+export { ClusterArgs, ClusterState } from "./cluster";
+export type Cluster = import("./cluster").Cluster;
+export const Cluster: typeof import("./cluster").Cluster = null as any;
+
+export { ClusterIAMBindingArgs, ClusterIAMBindingState } from "./clusterIAMBinding";
+export type ClusterIAMBinding = import("./clusterIAMBinding").ClusterIAMBinding;
+export const ClusterIAMBinding: typeof import("./clusterIAMBinding").ClusterIAMBinding = null as any;
+
+export { ClusterIAMMemberArgs, ClusterIAMMemberState } from "./clusterIAMMember";
+export type ClusterIAMMember = import("./clusterIAMMember").ClusterIAMMember;
+export const ClusterIAMMember: typeof import("./clusterIAMMember").ClusterIAMMember = null as any;
+
+export { ClusterIAMPolicyArgs, ClusterIAMPolicyState } from "./clusterIAMPolicy";
+export type ClusterIAMPolicy = import("./clusterIAMPolicy").ClusterIAMPolicy;
+export const ClusterIAMPolicy: typeof import("./clusterIAMPolicy").ClusterIAMPolicy = null as any;
+
+export { JobArgs, JobState } from "./job";
+export type Job = import("./job").Job;
+export const Job: typeof import("./job").Job = null as any;
+
+export { JobIAMBindingArgs, JobIAMBindingState } from "./jobIAMBinding";
+export type JobIAMBinding = import("./jobIAMBinding").JobIAMBinding;
+export const JobIAMBinding: typeof import("./jobIAMBinding").JobIAMBinding = null as any;
+
+export { JobIAMMemberArgs, JobIAMMemberState } from "./jobIAMMember";
+export type JobIAMMember = import("./jobIAMMember").JobIAMMember;
+export const JobIAMMember: typeof import("./jobIAMMember").JobIAMMember = null as any;
+
+export { JobIAMPolicyArgs, JobIAMPolicyState } from "./jobIAMPolicy";
+export type JobIAMPolicy = import("./jobIAMPolicy").JobIAMPolicy;
+export const JobIAMPolicy: typeof import("./jobIAMPolicy").JobIAMPolicy = null as any;
+
+export { MetastoreFederationArgs, MetastoreFederationState } from "./metastoreFederation";
+export type MetastoreFederation = import("./metastoreFederation").MetastoreFederation;
+export const MetastoreFederation: typeof import("./metastoreFederation").MetastoreFederation = null as any;
+
+export { MetastoreFederationIamBindingArgs, MetastoreFederationIamBindingState } from "./metastoreFederationIamBinding";
+export type MetastoreFederationIamBinding = import("./metastoreFederationIamBinding").MetastoreFederationIamBinding;
+export const MetastoreFederationIamBinding: typeof import("./metastoreFederationIamBinding").MetastoreFederationIamBinding = null as any;
+
+export { MetastoreFederationIamMemberArgs, MetastoreFederationIamMemberState } from "./metastoreFederationIamMember";
+export type MetastoreFederationIamMember = import("./metastoreFederationIamMember").MetastoreFederationIamMember;
+export const MetastoreFederationIamMember: typeof import("./metastoreFederationIamMember").MetastoreFederationIamMember = null as any;
+
+export { MetastoreFederationIamPolicyArgs, MetastoreFederationIamPolicyState } from "./metastoreFederationIamPolicy";
+export type MetastoreFederationIamPolicy = import("./metastoreFederationIamPolicy").MetastoreFederationIamPolicy;
+export const MetastoreFederationIamPolicy: typeof import("./metastoreFederationIamPolicy").MetastoreFederationIamPolicy = null as any;
+
+export { MetastoreServiceArgs, MetastoreServiceState } from "./metastoreService";
+export type MetastoreService = import("./metastoreService").MetastoreService;
+export const MetastoreService: typeof import("./metastoreService").MetastoreService = null as any;
+
+export { MetastoreServiceIamBindingArgs, MetastoreServiceIamBindingState } from "./metastoreServiceIamBinding";
+export type MetastoreServiceIamBinding = import("./metastoreServiceIamBinding").MetastoreServiceIamBinding;
+export const MetastoreServiceIamBinding: typeof import("./metastoreServiceIamBinding").MetastoreServiceIamBinding = null as any;
+
+export { MetastoreServiceIamMemberArgs, MetastoreServiceIamMemberState } from "./metastoreServiceIamMember";
+export type MetastoreServiceIamMember = import("./metastoreServiceIamMember").MetastoreServiceIamMember;
+export const MetastoreServiceIamMember: typeof import("./metastoreServiceIamMember").MetastoreServiceIamMember = null as any;
+
+export { MetastoreServiceIamPolicyArgs, MetastoreServiceIamPolicyState } from "./metastoreServiceIamPolicy";
+export type MetastoreServiceIamPolicy = import("./metastoreServiceIamPolicy").MetastoreServiceIamPolicy;
+export const MetastoreServiceIamPolicy: typeof import("./metastoreServiceIamPolicy").MetastoreServiceIamPolicy = null as any;
+
+export { WorkflowTemplateArgs, WorkflowTemplateState } from "./workflowTemplate";
+export type WorkflowTemplate = import("./workflowTemplate").WorkflowTemplate;
+export const WorkflowTemplate: typeof import("./workflowTemplate").WorkflowTemplate = null as any;
+
+utilities.lazyLoad(exports, ["AutoscalingPolicy"], () => require("./autoscalingPolicy"));
+utilities.lazyLoad(exports, ["AutoscalingPolicyIamBinding"], () => require("./autoscalingPolicyIamBinding"));
+utilities.lazyLoad(exports, ["AutoscalingPolicyIamMember"], () => require("./autoscalingPolicyIamMember"));
+utilities.lazyLoad(exports, ["AutoscalingPolicyIamPolicy"], () => require("./autoscalingPolicyIamPolicy"));
+utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
+utilities.lazyLoad(exports, ["ClusterIAMBinding"], () => require("./clusterIAMBinding"));
+utilities.lazyLoad(exports, ["ClusterIAMMember"], () => require("./clusterIAMMember"));
+utilities.lazyLoad(exports, ["ClusterIAMPolicy"], () => require("./clusterIAMPolicy"));
+utilities.lazyLoad(exports, ["Job"], () => require("./job"));
+utilities.lazyLoad(exports, ["JobIAMBinding"], () => require("./jobIAMBinding"));
+utilities.lazyLoad(exports, ["JobIAMMember"], () => require("./jobIAMMember"));
+utilities.lazyLoad(exports, ["JobIAMPolicy"], () => require("./jobIAMPolicy"));
+utilities.lazyLoad(exports, ["MetastoreFederation"], () => require("./metastoreFederation"));
+utilities.lazyLoad(exports, ["MetastoreFederationIamBinding"], () => require("./metastoreFederationIamBinding"));
+utilities.lazyLoad(exports, ["MetastoreFederationIamMember"], () => require("./metastoreFederationIamMember"));
+utilities.lazyLoad(exports, ["MetastoreFederationIamPolicy"], () => require("./metastoreFederationIamPolicy"));
+utilities.lazyLoad(exports, ["MetastoreService"], () => require("./metastoreService"));
+utilities.lazyLoad(exports, ["MetastoreServiceIamBinding"], () => require("./metastoreServiceIamBinding"));
+utilities.lazyLoad(exports, ["MetastoreServiceIamMember"], () => require("./metastoreServiceIamMember"));
+utilities.lazyLoad(exports, ["MetastoreServiceIamPolicy"], () => require("./metastoreServiceIamPolicy"));
+utilities.lazyLoad(exports, ["WorkflowTemplate"], () => require("./workflowTemplate"));
 
 const _module = {
     version: utilities.getVersion(),

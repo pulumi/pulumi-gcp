@@ -5,35 +5,94 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./accessApprovalSettings";
-export * from "./folder";
-export * from "./getActiveFolder";
-export * from "./getBillingAccount";
-export * from "./getClientConfig";
-export * from "./getClientOpenIdUserInfo";
-export * from "./getFolder";
-export * from "./getFolders";
-export * from "./getIAMPolicy";
-export * from "./getOrganization";
-export * from "./getProject";
-export * from "./iamAuditConfig";
-export * from "./iambinding";
-export * from "./iamcustomRole";
-export * from "./iammember";
-export * from "./iampolicy";
-export * from "./policy";
-export * from "./project";
+export { AccessApprovalSettingsArgs, AccessApprovalSettingsState } from "./accessApprovalSettings";
+export type AccessApprovalSettings = import("./accessApprovalSettings").AccessApprovalSettings;
+export const AccessApprovalSettings: typeof import("./accessApprovalSettings").AccessApprovalSettings = null as any;
 
-// Import resources to register:
-import { AccessApprovalSettings } from "./accessApprovalSettings";
-import { Folder } from "./folder";
-import { IAMBinding } from "./iambinding";
-import { IAMCustomRole } from "./iamcustomRole";
-import { IAMMember } from "./iammember";
-import { IAMPolicy } from "./iampolicy";
-import { IamAuditConfig } from "./iamAuditConfig";
-import { Policy } from "./policy";
-import { Project } from "./project";
+export { FolderArgs, FolderState } from "./folder";
+export type Folder = import("./folder").Folder;
+export const Folder: typeof import("./folder").Folder = null as any;
+
+export { GetActiveFolderArgs, GetActiveFolderResult, GetActiveFolderOutputArgs } from "./getActiveFolder";
+export const getActiveFolder: typeof import("./getActiveFolder").getActiveFolder = null as any;
+export const getActiveFolderOutput: typeof import("./getActiveFolder").getActiveFolderOutput = null as any;
+
+export { GetBillingAccountArgs, GetBillingAccountResult, GetBillingAccountOutputArgs } from "./getBillingAccount";
+export const getBillingAccount: typeof import("./getBillingAccount").getBillingAccount = null as any;
+export const getBillingAccountOutput: typeof import("./getBillingAccount").getBillingAccountOutput = null as any;
+
+export { GetClientConfigResult } from "./getClientConfig";
+export const getClientConfig: typeof import("./getClientConfig").getClientConfig = null as any;
+
+export { GetClientOpenIdUserInfoResult } from "./getClientOpenIdUserInfo";
+export const getClientOpenIdUserInfo: typeof import("./getClientOpenIdUserInfo").getClientOpenIdUserInfo = null as any;
+
+export { GetFolderArgs, GetFolderResult, GetFolderOutputArgs } from "./getFolder";
+export const getFolder: typeof import("./getFolder").getFolder = null as any;
+export const getFolderOutput: typeof import("./getFolder").getFolderOutput = null as any;
+
+export { GetFoldersArgs, GetFoldersResult, GetFoldersOutputArgs } from "./getFolders";
+export const getFolders: typeof import("./getFolders").getFolders = null as any;
+export const getFoldersOutput: typeof import("./getFolders").getFoldersOutput = null as any;
+
+export { GetIAMPolicyArgs, GetIAMPolicyResult, GetIAMPolicyOutputArgs } from "./getIAMPolicy";
+export const getIAMPolicy: typeof import("./getIAMPolicy").getIAMPolicy = null as any;
+export const getIAMPolicyOutput: typeof import("./getIAMPolicy").getIAMPolicyOutput = null as any;
+
+export { GetOrganizationArgs, GetOrganizationResult, GetOrganizationOutputArgs } from "./getOrganization";
+export const getOrganization: typeof import("./getOrganization").getOrganization = null as any;
+export const getOrganizationOutput: typeof import("./getOrganization").getOrganizationOutput = null as any;
+
+export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getProject";
+export const getProject: typeof import("./getProject").getProject = null as any;
+export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
+
+export { IamAuditConfigArgs, IamAuditConfigState } from "./iamAuditConfig";
+export type IamAuditConfig = import("./iamAuditConfig").IamAuditConfig;
+export const IamAuditConfig: typeof import("./iamAuditConfig").IamAuditConfig = null as any;
+
+export { IAMBindingArgs, IAMBindingState } from "./iambinding";
+export type IAMBinding = import("./iambinding").IAMBinding;
+export const IAMBinding: typeof import("./iambinding").IAMBinding = null as any;
+
+export { IAMCustomRoleArgs, IAMCustomRoleState } from "./iamcustomRole";
+export type IAMCustomRole = import("./iamcustomRole").IAMCustomRole;
+export const IAMCustomRole: typeof import("./iamcustomRole").IAMCustomRole = null as any;
+
+export { IAMMemberArgs, IAMMemberState } from "./iammember";
+export type IAMMember = import("./iammember").IAMMember;
+export const IAMMember: typeof import("./iammember").IAMMember = null as any;
+
+export { IAMPolicyArgs, IAMPolicyState } from "./iampolicy";
+export type IAMPolicy = import("./iampolicy").IAMPolicy;
+export const IAMPolicy: typeof import("./iampolicy").IAMPolicy = null as any;
+
+export { PolicyArgs, PolicyState } from "./policy";
+export type Policy = import("./policy").Policy;
+export const Policy: typeof import("./policy").Policy = null as any;
+
+export { ProjectArgs, ProjectState } from "./project";
+export type Project = import("./project").Project;
+export const Project: typeof import("./project").Project = null as any;
+
+utilities.lazyLoad(exports, ["AccessApprovalSettings"], () => require("./accessApprovalSettings"));
+utilities.lazyLoad(exports, ["Folder"], () => require("./folder"));
+utilities.lazyLoad(exports, ["getActiveFolder","getActiveFolderOutput"], () => require("./getActiveFolder"));
+utilities.lazyLoad(exports, ["getBillingAccount","getBillingAccountOutput"], () => require("./getBillingAccount"));
+utilities.lazyLoad(exports, ["getClientConfig"], () => require("./getClientConfig"));
+utilities.lazyLoad(exports, ["getClientOpenIdUserInfo"], () => require("./getClientOpenIdUserInfo"));
+utilities.lazyLoad(exports, ["getFolder","getFolderOutput"], () => require("./getFolder"));
+utilities.lazyLoad(exports, ["getFolders","getFoldersOutput"], () => require("./getFolders"));
+utilities.lazyLoad(exports, ["getIAMPolicy","getIAMPolicyOutput"], () => require("./getIAMPolicy"));
+utilities.lazyLoad(exports, ["getOrganization","getOrganizationOutput"], () => require("./getOrganization"));
+utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
+utilities.lazyLoad(exports, ["IamAuditConfig"], () => require("./iamAuditConfig"));
+utilities.lazyLoad(exports, ["IAMBinding"], () => require("./iambinding"));
+utilities.lazyLoad(exports, ["IAMCustomRole"], () => require("./iamcustomRole"));
+utilities.lazyLoad(exports, ["IAMMember"], () => require("./iammember"));
+utilities.lazyLoad(exports, ["IAMPolicy"], () => require("./iampolicy"));
+utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
+utilities.lazyLoad(exports, ["Project"], () => require("./project"));
 
 const _module = {
     version: utilities.getVersion(),

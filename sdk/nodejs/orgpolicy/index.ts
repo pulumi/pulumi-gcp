@@ -5,10 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./policy";
+export { PolicyArgs, PolicyState } from "./policy";
+export type Policy = import("./policy").Policy;
+export const Policy: typeof import("./policy").Policy = null as any;
 
-// Import resources to register:
-import { Policy } from "./policy";
+utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
 
 const _module = {
     version: utilities.getVersion(),

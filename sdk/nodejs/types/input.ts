@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface ProviderBatching {
     enableBatching?: pulumi.Input<boolean>;
@@ -3130,11 +3131,11 @@ export namespace bigquery {
         sourceFormat?: pulumi.Input<string>;
         /**
          * The fully-qualified URIs that point to your data in Google Cloud.
-         * For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character
+         * For Google Cloud Storage URIs: Each URI can contain one '\*' wildcard character
          * and it must come after the 'bucket' name. Size limits related to load jobs apply
          * to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
          * specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
-         * For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
+         * For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '\*' wildcard character is not allowed.
          */
         sourceUris: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -3724,7 +3725,7 @@ export namespace bigtable {
 
     export interface InstanceCluster {
         /**
-         * Autoscaling config for the cluster, contains the following arguments:
+         * [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
          */
         autoscalingConfig?: pulumi.Input<inputs.bigtable.InstanceClusterAutoscalingConfig>;
         /**
@@ -3756,7 +3757,7 @@ export namespace bigtable {
 
     export interface InstanceClusterAutoscalingConfig {
         /**
-         * The CPU utilization target in percentage. Must be between 10 and 80.
+         * The target CPU utilization for autoscaling, in percentage. Must be between 10 and 80.
          */
         cpuTarget: pulumi.Input<number>;
         /**
@@ -3767,6 +3768,10 @@ export namespace bigtable {
          * The minimum number of nodes for autoscaling.
          */
         minNodes: pulumi.Input<number>;
+        /**
+         * The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+         */
+        storageTarget?: pulumi.Input<number>;
     }
 
     export interface InstanceIamBindingCondition {
@@ -6385,8 +6390,8 @@ export namespace cloudbuild {
         path: pulumi.Input<string>;
         /**
          * The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-         * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
-         * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+         * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
+         * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
          */
         repoType: pulumi.Input<string>;
         /**
@@ -6485,8 +6490,8 @@ export namespace cloudbuild {
         ref: pulumi.Input<string>;
         /**
          * The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-         * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB
-         * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, and `GITHUB`.
+         * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
+         * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
          */
         repoType: pulumi.Input<string>;
         /**
@@ -7682,7 +7687,7 @@ export namespace cloudrun {
          * is assumed to be in the same project.
          * If the secret is in another project, you must define an alias.
          * An alias definition has the form:
-         * <alias>:projects/<project-id|project-number>/secrets/<secret-name>.
+         * {alias}:projects/{project-id|project-number}/secrets/{secret-name}.
          * If multiple alias definitions are needed, they must be separated by
          * commas.
          * The alias definitions must be set on the run.googleapis.com/secrets
@@ -23184,6 +23189,48 @@ export namespace diagflow {
         classificationThreshold?: pulumi.Input<number>;
         modelTrainingMode?: pulumi.Input<string>;
         modelType?: pulumi.Input<string>;
+    }
+
+    export interface CxWebhookGenericWebService {
+        /**
+         * Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+         */
+        allowedCaCerts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The HTTP request headers to send together with webhook requests.
+         */
+        requestHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Whether to use speech adaptation for speech recognition.
+         */
+        uri: pulumi.Input<string>;
+    }
+
+    export interface CxWebhookServiceDirectory {
+        /**
+         * The name of Service Directory service.
+         * Structure is documented below.
+         */
+        genericWebService: pulumi.Input<inputs.diagflow.CxWebhookServiceDirectoryGenericWebService>;
+        /**
+         * The name of Service Directory service.
+         */
+        service: pulumi.Input<string>;
+    }
+
+    export interface CxWebhookServiceDirectoryGenericWebService {
+        /**
+         * Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+         */
+        allowedCaCerts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The HTTP request headers to send together with webhook requests.
+         */
+        requestHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Whether to use speech adaptation for speech recognition.
+         */
+        uri: pulumi.Input<string>;
     }
 
     export interface EntityTypeEntity {

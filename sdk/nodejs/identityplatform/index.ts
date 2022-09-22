@@ -5,22 +5,41 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./defaultSupportedIdpConfig";
-export * from "./inboundSamlConfig";
-export * from "./oauthIdpConfig";
-export * from "./tenant";
-export * from "./tenantDefaultSupportedIdpConfig";
-export * from "./tenantInboundSamlConfig";
-export * from "./tenantOauthIdpConfig";
+export { DefaultSupportedIdpConfigArgs, DefaultSupportedIdpConfigState } from "./defaultSupportedIdpConfig";
+export type DefaultSupportedIdpConfig = import("./defaultSupportedIdpConfig").DefaultSupportedIdpConfig;
+export const DefaultSupportedIdpConfig: typeof import("./defaultSupportedIdpConfig").DefaultSupportedIdpConfig = null as any;
 
-// Import resources to register:
-import { DefaultSupportedIdpConfig } from "./defaultSupportedIdpConfig";
-import { InboundSamlConfig } from "./inboundSamlConfig";
-import { OauthIdpConfig } from "./oauthIdpConfig";
-import { Tenant } from "./tenant";
-import { TenantDefaultSupportedIdpConfig } from "./tenantDefaultSupportedIdpConfig";
-import { TenantInboundSamlConfig } from "./tenantInboundSamlConfig";
-import { TenantOauthIdpConfig } from "./tenantOauthIdpConfig";
+export { InboundSamlConfigArgs, InboundSamlConfigState } from "./inboundSamlConfig";
+export type InboundSamlConfig = import("./inboundSamlConfig").InboundSamlConfig;
+export const InboundSamlConfig: typeof import("./inboundSamlConfig").InboundSamlConfig = null as any;
+
+export { OauthIdpConfigArgs, OauthIdpConfigState } from "./oauthIdpConfig";
+export type OauthIdpConfig = import("./oauthIdpConfig").OauthIdpConfig;
+export const OauthIdpConfig: typeof import("./oauthIdpConfig").OauthIdpConfig = null as any;
+
+export { TenantArgs, TenantState } from "./tenant";
+export type Tenant = import("./tenant").Tenant;
+export const Tenant: typeof import("./tenant").Tenant = null as any;
+
+export { TenantDefaultSupportedIdpConfigArgs, TenantDefaultSupportedIdpConfigState } from "./tenantDefaultSupportedIdpConfig";
+export type TenantDefaultSupportedIdpConfig = import("./tenantDefaultSupportedIdpConfig").TenantDefaultSupportedIdpConfig;
+export const TenantDefaultSupportedIdpConfig: typeof import("./tenantDefaultSupportedIdpConfig").TenantDefaultSupportedIdpConfig = null as any;
+
+export { TenantInboundSamlConfigArgs, TenantInboundSamlConfigState } from "./tenantInboundSamlConfig";
+export type TenantInboundSamlConfig = import("./tenantInboundSamlConfig").TenantInboundSamlConfig;
+export const TenantInboundSamlConfig: typeof import("./tenantInboundSamlConfig").TenantInboundSamlConfig = null as any;
+
+export { TenantOauthIdpConfigArgs, TenantOauthIdpConfigState } from "./tenantOauthIdpConfig";
+export type TenantOauthIdpConfig = import("./tenantOauthIdpConfig").TenantOauthIdpConfig;
+export const TenantOauthIdpConfig: typeof import("./tenantOauthIdpConfig").TenantOauthIdpConfig = null as any;
+
+utilities.lazyLoad(exports, ["DefaultSupportedIdpConfig"], () => require("./defaultSupportedIdpConfig"));
+utilities.lazyLoad(exports, ["InboundSamlConfig"], () => require("./inboundSamlConfig"));
+utilities.lazyLoad(exports, ["OauthIdpConfig"], () => require("./oauthIdpConfig"));
+utilities.lazyLoad(exports, ["Tenant"], () => require("./tenant"));
+utilities.lazyLoad(exports, ["TenantDefaultSupportedIdpConfig"], () => require("./tenantDefaultSupportedIdpConfig"));
+utilities.lazyLoad(exports, ["TenantInboundSamlConfig"], () => require("./tenantInboundSamlConfig"));
+utilities.lazyLoad(exports, ["TenantOauthIdpConfig"], () => require("./tenantOauthIdpConfig"));
 
 const _module = {
     version: utilities.getVersion(),

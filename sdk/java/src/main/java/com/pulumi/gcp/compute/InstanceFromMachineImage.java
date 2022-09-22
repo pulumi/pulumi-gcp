@@ -470,16 +470,14 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
         return this.reservationAffinity;
     }
     /**
-     * A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
-     * is supported.
+     * A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      * 
      */
     @Export(name="resourcePolicies", type=String.class, parameters={})
     private Output<String> resourcePolicies;
 
     /**
-     * @return A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
-     * is supported.
+     * @return A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      * 
      */
     public Output<String> resourcePolicies() {

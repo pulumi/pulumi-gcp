@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Iap
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClientResult> InvokeAsync(GetClientArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClientResult>("gcp:iap/getClient:getClient", args ?? new GetClientArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientResult>("gcp:iap/getClient:getClient", args ?? new GetClientArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get info about a Google Cloud IAP Client.
@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.Iap
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClientResult> Invoke(GetClientInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClientResult>("gcp:iap/getClient:getClient", args ?? new GetClientInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClientResult>("gcp:iap/getClient:getClient", args ?? new GetClientInvokeArgs(), options.WithDefaults());
     }
 
 

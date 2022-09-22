@@ -106,6 +106,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:apigee/endpointAttachment:EndpointAttachment")
 public class EndpointAttachment extends com.pulumi.resources.CustomResource {
     /**
+     * State of the endpoint attachment connection to the service attachment.
+     * 
+     */
+    @Export(name="connectionState", type=String.class, parameters={})
+    private Output<String> connectionState;
+
+    /**
+     * @return State of the endpoint attachment connection to the service attachment.
+     * 
+     */
+    public Output<String> connectionState() {
+        return this.connectionState;
+    }
+    /**
      * ID of the endpoint attachment.
      * 
      */

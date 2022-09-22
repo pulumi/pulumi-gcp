@@ -1105,7 +1105,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def versioning(self) -> pulumi.Output[Optional['outputs.BucketVersioning']]:
+    def versioning(self) -> pulumi.Output['outputs.BucketVersioning']:
         """
         The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
         """

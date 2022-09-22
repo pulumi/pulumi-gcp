@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.BigTable.Outputs
     public sealed class InstanceClusterAutoscalingConfig
     {
         /// <summary>
-        /// The CPU utilization target in percentage. Must be between 10 and 80.
+        /// The target CPU utilization for autoscaling, in percentage. Must be between 10 and 80.
         /// </summary>
         public readonly int CpuTarget;
         /// <summary>
@@ -25,6 +25,10 @@ namespace Pulumi.Gcp.BigTable.Outputs
         /// The minimum number of nodes for autoscaling.
         /// </summary>
         public readonly int MinNodes;
+        /// <summary>
+        /// The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+        /// </summary>
+        public readonly int? StorageTarget;
 
         [OutputConstructor]
         private InstanceClusterAutoscalingConfig(
@@ -32,11 +36,14 @@ namespace Pulumi.Gcp.BigTable.Outputs
 
             int maxNodes,
 
-            int minNodes)
+            int minNodes,
+
+            int? storageTarget)
         {
             CpuTarget = cpuTarget;
             MaxNodes = maxNodes;
             MinNodes = minNodes;
+            StorageTarget = storageTarget;
         }
     }
 }

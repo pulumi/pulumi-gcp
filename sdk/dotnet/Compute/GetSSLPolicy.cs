@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSSLPolicyResult> InvokeAsync(GetSSLPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSSLPolicyResult>("gcp:compute/getSSLPolicy:getSSLPolicy", args ?? new GetSSLPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSSLPolicyResult>("gcp:compute/getSSLPolicy:getSSLPolicy", args ?? new GetSSLPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSSLPolicyResult> Invoke(GetSSLPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSSLPolicyResult>("gcp:compute/getSSLPolicy:getSSLPolicy", args ?? new GetSSLPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSSLPolicyResult>("gcp:compute/getSSLPolicy:getSSLPolicy", args ?? new GetSSLPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

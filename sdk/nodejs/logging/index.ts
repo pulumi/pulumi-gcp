@@ -5,36 +5,76 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./billingAccountBucketConfig";
-export * from "./billingAccountExclusion";
-export * from "./billingAccountSink";
-export * from "./folderBucketConfig";
-export * from "./folderExclusion";
-export * from "./folderSink";
-export * from "./logView";
-export * from "./metric";
-export * from "./organizationBucketConfig";
-export * from "./organizationExclusion";
-export * from "./organizationSink";
-export * from "./projectBucketConfig";
-export * from "./projectExclusion";
-export * from "./projectSink";
+export { BillingAccountBucketConfigArgs, BillingAccountBucketConfigState } from "./billingAccountBucketConfig";
+export type BillingAccountBucketConfig = import("./billingAccountBucketConfig").BillingAccountBucketConfig;
+export const BillingAccountBucketConfig: typeof import("./billingAccountBucketConfig").BillingAccountBucketConfig = null as any;
 
-// Import resources to register:
-import { BillingAccountBucketConfig } from "./billingAccountBucketConfig";
-import { BillingAccountExclusion } from "./billingAccountExclusion";
-import { BillingAccountSink } from "./billingAccountSink";
-import { FolderBucketConfig } from "./folderBucketConfig";
-import { FolderExclusion } from "./folderExclusion";
-import { FolderSink } from "./folderSink";
-import { LogView } from "./logView";
-import { Metric } from "./metric";
-import { OrganizationBucketConfig } from "./organizationBucketConfig";
-import { OrganizationExclusion } from "./organizationExclusion";
-import { OrganizationSink } from "./organizationSink";
-import { ProjectBucketConfig } from "./projectBucketConfig";
-import { ProjectExclusion } from "./projectExclusion";
-import { ProjectSink } from "./projectSink";
+export { BillingAccountExclusionArgs, BillingAccountExclusionState } from "./billingAccountExclusion";
+export type BillingAccountExclusion = import("./billingAccountExclusion").BillingAccountExclusion;
+export const BillingAccountExclusion: typeof import("./billingAccountExclusion").BillingAccountExclusion = null as any;
+
+export { BillingAccountSinkArgs, BillingAccountSinkState } from "./billingAccountSink";
+export type BillingAccountSink = import("./billingAccountSink").BillingAccountSink;
+export const BillingAccountSink: typeof import("./billingAccountSink").BillingAccountSink = null as any;
+
+export { FolderBucketConfigArgs, FolderBucketConfigState } from "./folderBucketConfig";
+export type FolderBucketConfig = import("./folderBucketConfig").FolderBucketConfig;
+export const FolderBucketConfig: typeof import("./folderBucketConfig").FolderBucketConfig = null as any;
+
+export { FolderExclusionArgs, FolderExclusionState } from "./folderExclusion";
+export type FolderExclusion = import("./folderExclusion").FolderExclusion;
+export const FolderExclusion: typeof import("./folderExclusion").FolderExclusion = null as any;
+
+export { FolderSinkArgs, FolderSinkState } from "./folderSink";
+export type FolderSink = import("./folderSink").FolderSink;
+export const FolderSink: typeof import("./folderSink").FolderSink = null as any;
+
+export { LogViewArgs, LogViewState } from "./logView";
+export type LogView = import("./logView").LogView;
+export const LogView: typeof import("./logView").LogView = null as any;
+
+export { MetricArgs, MetricState } from "./metric";
+export type Metric = import("./metric").Metric;
+export const Metric: typeof import("./metric").Metric = null as any;
+
+export { OrganizationBucketConfigArgs, OrganizationBucketConfigState } from "./organizationBucketConfig";
+export type OrganizationBucketConfig = import("./organizationBucketConfig").OrganizationBucketConfig;
+export const OrganizationBucketConfig: typeof import("./organizationBucketConfig").OrganizationBucketConfig = null as any;
+
+export { OrganizationExclusionArgs, OrganizationExclusionState } from "./organizationExclusion";
+export type OrganizationExclusion = import("./organizationExclusion").OrganizationExclusion;
+export const OrganizationExclusion: typeof import("./organizationExclusion").OrganizationExclusion = null as any;
+
+export { OrganizationSinkArgs, OrganizationSinkState } from "./organizationSink";
+export type OrganizationSink = import("./organizationSink").OrganizationSink;
+export const OrganizationSink: typeof import("./organizationSink").OrganizationSink = null as any;
+
+export { ProjectBucketConfigArgs, ProjectBucketConfigState } from "./projectBucketConfig";
+export type ProjectBucketConfig = import("./projectBucketConfig").ProjectBucketConfig;
+export const ProjectBucketConfig: typeof import("./projectBucketConfig").ProjectBucketConfig = null as any;
+
+export { ProjectExclusionArgs, ProjectExclusionState } from "./projectExclusion";
+export type ProjectExclusion = import("./projectExclusion").ProjectExclusion;
+export const ProjectExclusion: typeof import("./projectExclusion").ProjectExclusion = null as any;
+
+export { ProjectSinkArgs, ProjectSinkState } from "./projectSink";
+export type ProjectSink = import("./projectSink").ProjectSink;
+export const ProjectSink: typeof import("./projectSink").ProjectSink = null as any;
+
+utilities.lazyLoad(exports, ["BillingAccountBucketConfig"], () => require("./billingAccountBucketConfig"));
+utilities.lazyLoad(exports, ["BillingAccountExclusion"], () => require("./billingAccountExclusion"));
+utilities.lazyLoad(exports, ["BillingAccountSink"], () => require("./billingAccountSink"));
+utilities.lazyLoad(exports, ["FolderBucketConfig"], () => require("./folderBucketConfig"));
+utilities.lazyLoad(exports, ["FolderExclusion"], () => require("./folderExclusion"));
+utilities.lazyLoad(exports, ["FolderSink"], () => require("./folderSink"));
+utilities.lazyLoad(exports, ["LogView"], () => require("./logView"));
+utilities.lazyLoad(exports, ["Metric"], () => require("./metric"));
+utilities.lazyLoad(exports, ["OrganizationBucketConfig"], () => require("./organizationBucketConfig"));
+utilities.lazyLoad(exports, ["OrganizationExclusion"], () => require("./organizationExclusion"));
+utilities.lazyLoad(exports, ["OrganizationSink"], () => require("./organizationSink"));
+utilities.lazyLoad(exports, ["ProjectBucketConfig"], () => require("./projectBucketConfig"));
+utilities.lazyLoad(exports, ["ProjectExclusion"], () => require("./projectExclusion"));
+utilities.lazyLoad(exports, ["ProjectSink"], () => require("./projectSink"));
 
 const _module = {
     version: utilities.getVersion(),

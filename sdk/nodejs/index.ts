@@ -5,8 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./provider";
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+
 export * from "./utils";
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
 // Export sub-modules:
 import * as accessapproval from "./accessapproval";
@@ -192,9 +196,6 @@ export {
     vpcaccess,
     workflows,
 };
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("gcp", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

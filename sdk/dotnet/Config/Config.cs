@@ -30,7 +30,7 @@ namespace Pulumi.Gcp
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("gcp");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("gcp");
 
         private static readonly __Value<string?> _accessApprovalCustomEndpoint = new __Value<string?>(() => __config.Get("accessApprovalCustomEndpoint"));
         public static string? AccessApprovalCustomEndpoint

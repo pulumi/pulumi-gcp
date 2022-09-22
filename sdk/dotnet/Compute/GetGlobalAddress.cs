@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGlobalAddressResult> InvokeAsync(GetGlobalAddressArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalAddressResult>("gcp:compute/getGlobalAddress:getGlobalAddress", args ?? new GetGlobalAddressArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGlobalAddressResult>("gcp:compute/getGlobalAddress:getGlobalAddress", args ?? new GetGlobalAddressArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
@@ -99,7 +99,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGlobalAddressResult> Invoke(GetGlobalAddressInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGlobalAddressResult>("gcp:compute/getGlobalAddress:getGlobalAddress", args ?? new GetGlobalAddressInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGlobalAddressResult>("gcp:compute/getGlobalAddress:getGlobalAddress", args ?? new GetGlobalAddressInvokeArgs(), options.WithDefaults());
     }
 
 

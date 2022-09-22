@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Organizations
         /// ```
         /// </summary>
         public static Task<GetBillingAccountResult> InvokeAsync(GetBillingAccountArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountResult>("gcp:organizations/getBillingAccount:getBillingAccount", args ?? new GetBillingAccountArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountResult>("gcp:organizations/getBillingAccount:getBillingAccount", args ?? new GetBillingAccountArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about a Google Billing Account.
@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.Organizations
         /// ```
         /// </summary>
         public static Output<GetBillingAccountResult> Invoke(GetBillingAccountInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBillingAccountResult>("gcp:organizations/getBillingAccount:getBillingAccount", args ?? new GetBillingAccountInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBillingAccountResult>("gcp:organizations/getBillingAccount:getBillingAccount", args ?? new GetBillingAccountInvokeArgs(), options.WithDefaults());
     }
 
 

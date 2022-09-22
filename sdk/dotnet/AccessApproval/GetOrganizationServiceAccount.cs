@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.AccessApproval
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetOrganizationServiceAccountResult> InvokeAsync(GetOrganizationServiceAccountArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationServiceAccountResult>("gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount", args ?? new GetOrganizationServiceAccountArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationServiceAccountResult>("gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount", args ?? new GetOrganizationServiceAccountArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get the email address of an organization's Access Approval service account.
@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.AccessApproval
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetOrganizationServiceAccountResult> Invoke(GetOrganizationServiceAccountInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOrganizationServiceAccountResult>("gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount", args ?? new GetOrganizationServiceAccountInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationServiceAccountResult>("gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount", args ?? new GetOrganizationServiceAccountInvokeArgs(), options.WithDefaults());
     }
 
 

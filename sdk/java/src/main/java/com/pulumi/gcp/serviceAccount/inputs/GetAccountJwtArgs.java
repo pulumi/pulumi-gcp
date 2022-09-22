@@ -5,6 +5,7 @@ package com.pulumi.gcp.serviceAccount.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -29,6 +30,21 @@ public final class GetAccountJwtArgs extends com.pulumi.resources.InvokeArgs {
      */
     public Optional<Output<List<String>>> delegates() {
         return Optional.ofNullable(this.delegates);
+    }
+
+    /**
+     * Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+     * 
+     */
+    @Import(name="expiresIn")
+    private @Nullable Output<Integer> expiresIn;
+
+    /**
+     * @return Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+     * 
+     */
+    public Optional<Output<Integer>> expiresIn() {
+        return Optional.ofNullable(this.expiresIn);
     }
 
     /**
@@ -65,6 +81,7 @@ public final class GetAccountJwtArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetAccountJwtArgs(GetAccountJwtArgs $) {
         this.delegates = $.delegates;
+        this.expiresIn = $.expiresIn;
         this.payload = $.payload;
         this.targetServiceAccount = $.targetServiceAccount;
     }
@@ -116,6 +133,27 @@ public final class GetAccountJwtArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder delegates(String... delegates) {
             return delegates(List.of(delegates));
+        }
+
+        /**
+         * @param expiresIn Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiresIn(@Nullable Output<Integer> expiresIn) {
+            $.expiresIn = expiresIn;
+            return this;
+        }
+
+        /**
+         * @param expiresIn Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiresIn(Integer expiresIn) {
+            return expiresIn(Output.of(expiresIn));
         }
 
         /**

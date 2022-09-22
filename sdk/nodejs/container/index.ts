@@ -5,30 +5,76 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./awsCluster";
-export * from "./awsNodePool";
-export * from "./azureClient";
-export * from "./azureCluster";
-export * from "./azureNodePool";
-export * from "./cluster";
-export * from "./getAwsVersions";
-export * from "./getAzureVersions";
-export * from "./getCluster";
-export * from "./getEngineVersions";
-export * from "./getRegistryImage";
-export * from "./getRegistryRepository";
-export * from "./nodePool";
-export * from "./registry";
+export { AwsClusterArgs, AwsClusterState } from "./awsCluster";
+export type AwsCluster = import("./awsCluster").AwsCluster;
+export const AwsCluster: typeof import("./awsCluster").AwsCluster = null as any;
 
-// Import resources to register:
-import { AwsCluster } from "./awsCluster";
-import { AwsNodePool } from "./awsNodePool";
-import { AzureClient } from "./azureClient";
-import { AzureCluster } from "./azureCluster";
-import { AzureNodePool } from "./azureNodePool";
-import { Cluster } from "./cluster";
-import { NodePool } from "./nodePool";
-import { Registry } from "./registry";
+export { AwsNodePoolArgs, AwsNodePoolState } from "./awsNodePool";
+export type AwsNodePool = import("./awsNodePool").AwsNodePool;
+export const AwsNodePool: typeof import("./awsNodePool").AwsNodePool = null as any;
+
+export { AzureClientArgs, AzureClientState } from "./azureClient";
+export type AzureClient = import("./azureClient").AzureClient;
+export const AzureClient: typeof import("./azureClient").AzureClient = null as any;
+
+export { AzureClusterArgs, AzureClusterState } from "./azureCluster";
+export type AzureCluster = import("./azureCluster").AzureCluster;
+export const AzureCluster: typeof import("./azureCluster").AzureCluster = null as any;
+
+export { AzureNodePoolArgs, AzureNodePoolState } from "./azureNodePool";
+export type AzureNodePool = import("./azureNodePool").AzureNodePool;
+export const AzureNodePool: typeof import("./azureNodePool").AzureNodePool = null as any;
+
+export { ClusterArgs, ClusterState } from "./cluster";
+export type Cluster = import("./cluster").Cluster;
+export const Cluster: typeof import("./cluster").Cluster = null as any;
+
+export { GetAwsVersionsArgs, GetAwsVersionsResult, GetAwsVersionsOutputArgs } from "./getAwsVersions";
+export const getAwsVersions: typeof import("./getAwsVersions").getAwsVersions = null as any;
+export const getAwsVersionsOutput: typeof import("./getAwsVersions").getAwsVersionsOutput = null as any;
+
+export { GetAzureVersionsArgs, GetAzureVersionsResult, GetAzureVersionsOutputArgs } from "./getAzureVersions";
+export const getAzureVersions: typeof import("./getAzureVersions").getAzureVersions = null as any;
+export const getAzureVersionsOutput: typeof import("./getAzureVersions").getAzureVersionsOutput = null as any;
+
+export { GetClusterArgs, GetClusterResult, GetClusterOutputArgs } from "./getCluster";
+export const getCluster: typeof import("./getCluster").getCluster = null as any;
+export const getClusterOutput: typeof import("./getCluster").getClusterOutput = null as any;
+
+export { GetEngineVersionsArgs, GetEngineVersionsResult, GetEngineVersionsOutputArgs } from "./getEngineVersions";
+export const getEngineVersions: typeof import("./getEngineVersions").getEngineVersions = null as any;
+export const getEngineVersionsOutput: typeof import("./getEngineVersions").getEngineVersionsOutput = null as any;
+
+export { GetRegistryImageArgs, GetRegistryImageResult, GetRegistryImageOutputArgs } from "./getRegistryImage";
+export const getRegistryImage: typeof import("./getRegistryImage").getRegistryImage = null as any;
+export const getRegistryImageOutput: typeof import("./getRegistryImage").getRegistryImageOutput = null as any;
+
+export { GetRegistryRepositoryArgs, GetRegistryRepositoryResult, GetRegistryRepositoryOutputArgs } from "./getRegistryRepository";
+export const getRegistryRepository: typeof import("./getRegistryRepository").getRegistryRepository = null as any;
+export const getRegistryRepositoryOutput: typeof import("./getRegistryRepository").getRegistryRepositoryOutput = null as any;
+
+export { NodePoolArgs, NodePoolState } from "./nodePool";
+export type NodePool = import("./nodePool").NodePool;
+export const NodePool: typeof import("./nodePool").NodePool = null as any;
+
+export { RegistryArgs, RegistryState } from "./registry";
+export type Registry = import("./registry").Registry;
+export const Registry: typeof import("./registry").Registry = null as any;
+
+utilities.lazyLoad(exports, ["AwsCluster"], () => require("./awsCluster"));
+utilities.lazyLoad(exports, ["AwsNodePool"], () => require("./awsNodePool"));
+utilities.lazyLoad(exports, ["AzureClient"], () => require("./azureClient"));
+utilities.lazyLoad(exports, ["AzureCluster"], () => require("./azureCluster"));
+utilities.lazyLoad(exports, ["AzureNodePool"], () => require("./azureNodePool"));
+utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
+utilities.lazyLoad(exports, ["getAwsVersions","getAwsVersionsOutput"], () => require("./getAwsVersions"));
+utilities.lazyLoad(exports, ["getAzureVersions","getAzureVersionsOutput"], () => require("./getAzureVersions"));
+utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
+utilities.lazyLoad(exports, ["getEngineVersions","getEngineVersionsOutput"], () => require("./getEngineVersions"));
+utilities.lazyLoad(exports, ["getRegistryImage","getRegistryImageOutput"], () => require("./getRegistryImage"));
+utilities.lazyLoad(exports, ["getRegistryRepository","getRegistryRepositoryOutput"], () => require("./getRegistryRepository"));
+utilities.lazyLoad(exports, ["NodePool"], () => require("./nodePool"));
+utilities.lazyLoad(exports, ["Registry"], () => require("./registry"));
 
 const _module = {
     version: utilities.getVersion(),

@@ -5,26 +5,51 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./endpoint";
-export * from "./namespace";
-export * from "./namespaceIamBinding";
-export * from "./namespaceIamMember";
-export * from "./namespaceIamPolicy";
-export * from "./service";
-export * from "./serviceIamBinding";
-export * from "./serviceIamMember";
-export * from "./serviceIamPolicy";
+export { EndpointArgs, EndpointState } from "./endpoint";
+export type Endpoint = import("./endpoint").Endpoint;
+export const Endpoint: typeof import("./endpoint").Endpoint = null as any;
 
-// Import resources to register:
-import { Endpoint } from "./endpoint";
-import { Namespace } from "./namespace";
-import { NamespaceIamBinding } from "./namespaceIamBinding";
-import { NamespaceIamMember } from "./namespaceIamMember";
-import { NamespaceIamPolicy } from "./namespaceIamPolicy";
-import { Service } from "./service";
-import { ServiceIamBinding } from "./serviceIamBinding";
-import { ServiceIamMember } from "./serviceIamMember";
-import { ServiceIamPolicy } from "./serviceIamPolicy";
+export { NamespaceArgs, NamespaceState } from "./namespace";
+export type Namespace = import("./namespace").Namespace;
+export const Namespace: typeof import("./namespace").Namespace = null as any;
+
+export { NamespaceIamBindingArgs, NamespaceIamBindingState } from "./namespaceIamBinding";
+export type NamespaceIamBinding = import("./namespaceIamBinding").NamespaceIamBinding;
+export const NamespaceIamBinding: typeof import("./namespaceIamBinding").NamespaceIamBinding = null as any;
+
+export { NamespaceIamMemberArgs, NamespaceIamMemberState } from "./namespaceIamMember";
+export type NamespaceIamMember = import("./namespaceIamMember").NamespaceIamMember;
+export const NamespaceIamMember: typeof import("./namespaceIamMember").NamespaceIamMember = null as any;
+
+export { NamespaceIamPolicyArgs, NamespaceIamPolicyState } from "./namespaceIamPolicy";
+export type NamespaceIamPolicy = import("./namespaceIamPolicy").NamespaceIamPolicy;
+export const NamespaceIamPolicy: typeof import("./namespaceIamPolicy").NamespaceIamPolicy = null as any;
+
+export { ServiceArgs, ServiceState } from "./service";
+export type Service = import("./service").Service;
+export const Service: typeof import("./service").Service = null as any;
+
+export { ServiceIamBindingArgs, ServiceIamBindingState } from "./serviceIamBinding";
+export type ServiceIamBinding = import("./serviceIamBinding").ServiceIamBinding;
+export const ServiceIamBinding: typeof import("./serviceIamBinding").ServiceIamBinding = null as any;
+
+export { ServiceIamMemberArgs, ServiceIamMemberState } from "./serviceIamMember";
+export type ServiceIamMember = import("./serviceIamMember").ServiceIamMember;
+export const ServiceIamMember: typeof import("./serviceIamMember").ServiceIamMember = null as any;
+
+export { ServiceIamPolicyArgs, ServiceIamPolicyState } from "./serviceIamPolicy";
+export type ServiceIamPolicy = import("./serviceIamPolicy").ServiceIamPolicy;
+export const ServiceIamPolicy: typeof import("./serviceIamPolicy").ServiceIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["Endpoint"], () => require("./endpoint"));
+utilities.lazyLoad(exports, ["Namespace"], () => require("./namespace"));
+utilities.lazyLoad(exports, ["NamespaceIamBinding"], () => require("./namespaceIamBinding"));
+utilities.lazyLoad(exports, ["NamespaceIamMember"], () => require("./namespaceIamMember"));
+utilities.lazyLoad(exports, ["NamespaceIamPolicy"], () => require("./namespaceIamPolicy"));
+utilities.lazyLoad(exports, ["Service"], () => require("./service"));
+utilities.lazyLoad(exports, ["ServiceIamBinding"], () => require("./serviceIamBinding"));
+utilities.lazyLoad(exports, ["ServiceIamMember"], () => require("./serviceIamMember"));
+utilities.lazyLoad(exports, ["ServiceIamPolicy"], () => require("./serviceIamPolicy"));
 
 const _module = {
     version: utilities.getVersion(),

@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.SourceRepo
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRepositoryResult> InvokeAsync(GetRepositoryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryResult>("gcp:sourcerepo/getRepository:getRepository", args ?? new GetRepositoryArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryResult>("gcp:sourcerepo/getRepository:getRepository", args ?? new GetRepositoryArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get infomation about an existing Google Cloud Source Repository.
@@ -71,7 +71,7 @@ namespace Pulumi.Gcp.SourceRepo
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRepositoryResult> Invoke(GetRepositoryInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRepositoryResult>("gcp:sourcerepo/getRepository:getRepository", args ?? new GetRepositoryInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryResult>("gcp:sourcerepo/getRepository:getRepository", args ?? new GetRepositoryInvokeArgs(), options.WithDefaults());
     }
 
 

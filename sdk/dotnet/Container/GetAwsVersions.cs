@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Container
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAwsVersionsResult> InvokeAsync(GetAwsVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAwsVersionsResult>("gcp:container/getAwsVersions:getAwsVersions", args ?? new GetAwsVersionsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsVersionsResult>("gcp:container/getAwsVersions:getAwsVersions", args ?? new GetAwsVersionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides access to available Kubernetes versions in a location for a given project.
@@ -73,7 +73,7 @@ namespace Pulumi.Gcp.Container
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAwsVersionsResult> Invoke(GetAwsVersionsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAwsVersionsResult>("gcp:container/getAwsVersions:getAwsVersions", args ?? new GetAwsVersionsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAwsVersionsResult>("gcp:container/getAwsVersions:getAwsVersions", args ?? new GetAwsVersionsInvokeArgs(), options.WithDefaults());
     }
 
 

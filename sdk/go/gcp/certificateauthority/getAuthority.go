@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get info about a Google Cloud IAP Client.
+// Get info about a Google CAS Certificate Authority.
 //
 // ## Example Usage
 //
@@ -81,7 +81,7 @@ type LookupAuthorityResult struct {
 	Name                               string                `pulumi:"name"`
 	PemCaCertificate                   string                `pulumi:"pemCaCertificate"`
 	PemCaCertificates                  []string              `pulumi:"pemCaCertificates"`
-	// The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities.
+	// The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities that are awaiting user activation.
 	PemCsr             string                          `pulumi:"pemCsr"`
 	Pool               *string                         `pulumi:"pool"`
 	Project            *string                         `pulumi:"project"`
@@ -201,7 +201,7 @@ func (o LookupAuthorityResultOutput) PemCaCertificates() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v LookupAuthorityResult) []string { return v.PemCaCertificates }).(pulumi.StringArrayOutput)
 }
 
-// The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities.
+// The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities that are awaiting user activation.
 func (o LookupAuthorityResultOutput) PemCsr() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorityResult) string { return v.PemCsr }).(pulumi.StringOutput)
 }

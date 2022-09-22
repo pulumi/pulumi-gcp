@@ -21,10 +21,13 @@ class GetAccountJwtResult:
     """
     A collection of values returned by getAccountJwt.
     """
-    def __init__(__self__, delegates=None, id=None, jwt=None, payload=None, target_service_account=None):
+    def __init__(__self__, delegates=None, expires_in=None, id=None, jwt=None, payload=None, target_service_account=None):
         if delegates and not isinstance(delegates, list):
             raise TypeError("Expected argument 'delegates' to be a list")
         pulumi.set(__self__, "delegates", delegates)
+        if expires_in and not isinstance(expires_in, int):
+            raise TypeError("Expected argument 'expires_in' to be a int")
+        pulumi.set(__self__, "expires_in", expires_in)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -42,6 +45,11 @@ class GetAccountJwtResult:
     @pulumi.getter
     def delegates(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "delegates")
+
+    @property
+    @pulumi.getter(name="expiresIn")
+    def expires_in(self) -> Optional[int]:
+        return pulumi.get(self, "expires_in")
 
     @property
     @pulumi.getter
@@ -77,6 +85,7 @@ class AwaitableGetAccountJwtResult(GetAccountJwtResult):
             yield self
         return GetAccountJwtResult(
             delegates=self.delegates,
+            expires_in=self.expires_in,
             id=self.id,
             jwt=self.jwt,
             payload=self.payload,
@@ -84,6 +93,7 @@ class AwaitableGetAccountJwtResult(GetAccountJwtResult):
 
 
 def get_account_jwt(delegates: Optional[Sequence[str]] = None,
+                    expires_in: Optional[int] = None,
                     payload: Optional[str] = None,
                     target_service_account: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountJwtResult:
@@ -103,17 +113,20 @@ def get_account_jwt(delegates: Optional[Sequence[str]] = None,
         payload=json.dumps({
             "foo": "bar",
             "sub": "subject",
-        }))
+        }),
+        expires_in=60)
     pulumi.export("jwt", foo.jwt)
     ```
 
 
     :param Sequence[str] delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.
+    :param int expires_in: Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
     :param str payload: The JSON-encoded JWT claims set to include in the self-signed JWT.
     :param str target_service_account: The email of the service account that will sign the JWT.
     """
     __args__ = dict()
     __args__['delegates'] = delegates
+    __args__['expiresIn'] = expires_in
     __args__['payload'] = payload
     __args__['targetServiceAccount'] = target_service_account
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -121,6 +134,7 @@ def get_account_jwt(delegates: Optional[Sequence[str]] = None,
 
     return AwaitableGetAccountJwtResult(
         delegates=__ret__.delegates,
+        expires_in=__ret__.expires_in,
         id=__ret__.id,
         jwt=__ret__.jwt,
         payload=__ret__.payload,
@@ -129,6 +143,7 @@ def get_account_jwt(delegates: Optional[Sequence[str]] = None,
 
 @_utilities.lift_output_func(get_account_jwt)
 def get_account_jwt_output(delegates: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                           expires_in: Optional[pulumi.Input[Optional[int]]] = None,
                            payload: Optional[pulumi.Input[str]] = None,
                            target_service_account: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountJwtResult]:
@@ -148,12 +163,14 @@ def get_account_jwt_output(delegates: Optional[pulumi.Input[Optional[Sequence[st
         payload=json.dumps({
             "foo": "bar",
             "sub": "subject",
-        }))
+        }),
+        expires_in=60)
     pulumi.export("jwt", foo.jwt)
     ```
 
 
     :param Sequence[str] delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.
+    :param int expires_in: Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
     :param str payload: The JSON-encoded JWT claims set to include in the self-signed JWT.
     :param str target_service_account: The email of the service account that will sign the JWT.
     """

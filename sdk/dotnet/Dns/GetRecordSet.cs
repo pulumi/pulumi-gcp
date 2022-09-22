@@ -47,7 +47,7 @@ namespace Pulumi.Gcp.Dns
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRecordSetResult> InvokeAsync(GetRecordSetArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRecordSetResult>("gcp:dns/getRecordSet:getRecordSet", args ?? new GetRecordSetArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRecordSetResult>("gcp:dns/getRecordSet:getRecordSet", args ?? new GetRecordSetArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a DNS record set within Google Cloud DNS
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.Dns
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRecordSetResult> Invoke(GetRecordSetInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRecordSetResult>("gcp:dns/getRecordSet:getRecordSet", args ?? new GetRecordSetInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRecordSetResult>("gcp:dns/getRecordSet:getRecordSet", args ?? new GetRecordSetInvokeArgs(), options.WithDefaults());
     }
 
 

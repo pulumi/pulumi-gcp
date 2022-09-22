@@ -450,16 +450,14 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
-     * is supported.
+     * A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      * 
      */
     @Import(name="resourcePolicies")
     private @Nullable Output<String> resourcePolicies;
 
     /**
-     * @return A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
-     * is supported.
+     * @return A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      * 
      */
     public Optional<Output<String>> resourcePolicies() {
@@ -1277,8 +1275,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param resourcePolicies A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
-         * is supported.
+         * @param resourcePolicies A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 
@@ -1289,8 +1286,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param resourcePolicies A list of short names or self_links of resource policies to attach to the instance. Currently a max of 1 resource policy
-         * is supported.
+         * @param resourcePolicies A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 

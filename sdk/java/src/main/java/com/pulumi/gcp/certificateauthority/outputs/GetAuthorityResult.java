@@ -39,7 +39,7 @@ public final class GetAuthorityResult {
     private String pemCaCertificate;
     private List<String> pemCaCertificates;
     /**
-     * @return The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities.
+     * @return The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities that are awaiting user activation.
      * 
      */
     private String pemCsr;
@@ -104,7 +104,7 @@ public final class GetAuthorityResult {
         return this.pemCaCertificates;
     }
     /**
-     * @return The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities.
+     * @return The PEM-encoded signed certificate signing request (CSR). This is only set on subordinate certificate authorities that are awaiting user activation.
      * 
      */
     public String pemCsr() {

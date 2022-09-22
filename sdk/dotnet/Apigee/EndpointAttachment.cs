@@ -90,6 +90,12 @@ namespace Pulumi.Gcp.Apigee
     public partial class EndpointAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// State of the endpoint attachment connection to the service attachment.
+        /// </summary>
+        [Output("connectionState")]
+        public Output<string> ConnectionState { get; private set; } = null!;
+
+        /// <summary>
         /// ID of the endpoint attachment.
         /// </summary>
         [Output("endpointAttachmentId")]
@@ -206,6 +212,12 @@ namespace Pulumi.Gcp.Apigee
 
     public sealed class EndpointAttachmentState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// State of the endpoint attachment connection to the service attachment.
+        /// </summary>
+        [Input("connectionState")]
+        public Input<string>? ConnectionState { get; set; }
+
         /// <summary>
         /// ID of the endpoint attachment.
         /// </summary>

@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHcVpnGatewayResult> InvokeAsync(GetHcVpnGatewayArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHcVpnGatewayResult>("gcp:compute/getHcVpnGateway:getHcVpnGateway", args ?? new GetHcVpnGatewayArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHcVpnGatewayResult>("gcp:compute/getHcVpnGateway:getHcVpnGateway", args ?? new GetHcVpnGatewayArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a HA VPN Gateway within GCE from its name.
@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHcVpnGatewayResult> Invoke(GetHcVpnGatewayInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHcVpnGatewayResult>("gcp:compute/getHcVpnGateway:getHcVpnGateway", args ?? new GetHcVpnGatewayInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHcVpnGatewayResult>("gcp:compute/getHcVpnGateway:getHcVpnGateway", args ?? new GetHcVpnGatewayInvokeArgs(), options.WithDefaults());
     }
 
 

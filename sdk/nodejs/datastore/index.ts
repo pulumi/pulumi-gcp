@@ -5,10 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./dataStoreIndex";
+export { DataStoreIndexArgs, DataStoreIndexState } from "./dataStoreIndex";
+export type DataStoreIndex = import("./dataStoreIndex").DataStoreIndex;
+export const DataStoreIndex: typeof import("./dataStoreIndex").DataStoreIndex = null as any;
 
-// Import resources to register:
-import { DataStoreIndex } from "./dataStoreIndex";
+utilities.lazyLoad(exports, ["DataStoreIndex"], () => require("./dataStoreIndex"));
 
 const _module = {
     version: utilities.getVersion(),

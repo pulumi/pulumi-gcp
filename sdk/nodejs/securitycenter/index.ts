@@ -5,12 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./notificationConfig";
-export * from "./source";
+export { NotificationConfigArgs, NotificationConfigState } from "./notificationConfig";
+export type NotificationConfig = import("./notificationConfig").NotificationConfig;
+export const NotificationConfig: typeof import("./notificationConfig").NotificationConfig = null as any;
 
-// Import resources to register:
-import { NotificationConfig } from "./notificationConfig";
-import { Source } from "./source";
+export { SourceArgs, SourceState } from "./source";
+export type Source = import("./source").Source;
+export const Source: typeof import("./source").Source = null as any;
+
+utilities.lazyLoad(exports, ["NotificationConfig"], () => require("./notificationConfig"));
+utilities.lazyLoad(exports, ["Source"], () => require("./source"));
 
 const _module = {
     version: utilities.getVersion(),

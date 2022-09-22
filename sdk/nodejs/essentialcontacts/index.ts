@@ -5,14 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./contact";
-export * from "./documentAiProcessor";
-export * from "./documentAiProcessorDefaultVersion";
+export { ContactArgs, ContactState } from "./contact";
+export type Contact = import("./contact").Contact;
+export const Contact: typeof import("./contact").Contact = null as any;
 
-// Import resources to register:
-import { Contact } from "./contact";
-import { DocumentAiProcessor } from "./documentAiProcessor";
-import { DocumentAiProcessorDefaultVersion } from "./documentAiProcessorDefaultVersion";
+export { DocumentAiProcessorArgs, DocumentAiProcessorState } from "./documentAiProcessor";
+export type DocumentAiProcessor = import("./documentAiProcessor").DocumentAiProcessor;
+export const DocumentAiProcessor: typeof import("./documentAiProcessor").DocumentAiProcessor = null as any;
+
+export { DocumentAiProcessorDefaultVersionArgs, DocumentAiProcessorDefaultVersionState } from "./documentAiProcessorDefaultVersion";
+export type DocumentAiProcessorDefaultVersion = import("./documentAiProcessorDefaultVersion").DocumentAiProcessorDefaultVersion;
+export const DocumentAiProcessorDefaultVersion: typeof import("./documentAiProcessorDefaultVersion").DocumentAiProcessorDefaultVersion = null as any;
+
+utilities.lazyLoad(exports, ["Contact"], () => require("./contact"));
+utilities.lazyLoad(exports, ["DocumentAiProcessor"], () => require("./documentAiProcessor"));
+utilities.lazyLoad(exports, ["DocumentAiProcessorDefaultVersion"], () => require("./documentAiProcessorDefaultVersion"));
 
 const _module = {
     version: utilities.getVersion(),

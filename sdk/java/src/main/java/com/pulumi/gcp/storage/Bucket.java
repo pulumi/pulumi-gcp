@@ -395,14 +395,14 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="versioning", type=BucketVersioning.class, parameters={})
-    private Output</* @Nullable */ BucketVersioning> versioning;
+    private Output<BucketVersioning> versioning;
 
     /**
      * @return The bucket&#39;s [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
      * 
      */
-    public Output<Optional<BucketVersioning>> versioning() {
-        return Codegen.optional(this.versioning);
+    public Output<BucketVersioning> versioning() {
+        return this.versioning;
     }
     /**
      * Configuration if the bucket acts as a website. Structure is documented below.

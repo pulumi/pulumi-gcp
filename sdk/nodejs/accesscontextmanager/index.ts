@@ -5,30 +5,61 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./accessLevel";
-export * from "./accessLevelCondition";
-export * from "./accessLevels";
-export * from "./accessPolicy";
-export * from "./accessPolicyIamBinding";
-export * from "./accessPolicyIamMember";
-export * from "./accessPolicyIamPolicy";
-export * from "./gcpUserAccessBinding";
-export * from "./servicePerimeter";
-export * from "./servicePerimeterResource";
-export * from "./servicePerimeters";
+export { AccessLevelArgs, AccessLevelState } from "./accessLevel";
+export type AccessLevel = import("./accessLevel").AccessLevel;
+export const AccessLevel: typeof import("./accessLevel").AccessLevel = null as any;
 
-// Import resources to register:
-import { AccessLevel } from "./accessLevel";
-import { AccessLevelCondition } from "./accessLevelCondition";
-import { AccessLevels } from "./accessLevels";
-import { AccessPolicy } from "./accessPolicy";
-import { AccessPolicyIamBinding } from "./accessPolicyIamBinding";
-import { AccessPolicyIamMember } from "./accessPolicyIamMember";
-import { AccessPolicyIamPolicy } from "./accessPolicyIamPolicy";
-import { GcpUserAccessBinding } from "./gcpUserAccessBinding";
-import { ServicePerimeter } from "./servicePerimeter";
-import { ServicePerimeterResource } from "./servicePerimeterResource";
-import { ServicePerimeters } from "./servicePerimeters";
+export { AccessLevelConditionArgs, AccessLevelConditionState } from "./accessLevelCondition";
+export type AccessLevelCondition = import("./accessLevelCondition").AccessLevelCondition;
+export const AccessLevelCondition: typeof import("./accessLevelCondition").AccessLevelCondition = null as any;
+
+export { AccessLevelsArgs, AccessLevelsState } from "./accessLevels";
+export type AccessLevels = import("./accessLevels").AccessLevels;
+export const AccessLevels: typeof import("./accessLevels").AccessLevels = null as any;
+
+export { AccessPolicyArgs, AccessPolicyState } from "./accessPolicy";
+export type AccessPolicy = import("./accessPolicy").AccessPolicy;
+export const AccessPolicy: typeof import("./accessPolicy").AccessPolicy = null as any;
+
+export { AccessPolicyIamBindingArgs, AccessPolicyIamBindingState } from "./accessPolicyIamBinding";
+export type AccessPolicyIamBinding = import("./accessPolicyIamBinding").AccessPolicyIamBinding;
+export const AccessPolicyIamBinding: typeof import("./accessPolicyIamBinding").AccessPolicyIamBinding = null as any;
+
+export { AccessPolicyIamMemberArgs, AccessPolicyIamMemberState } from "./accessPolicyIamMember";
+export type AccessPolicyIamMember = import("./accessPolicyIamMember").AccessPolicyIamMember;
+export const AccessPolicyIamMember: typeof import("./accessPolicyIamMember").AccessPolicyIamMember = null as any;
+
+export { AccessPolicyIamPolicyArgs, AccessPolicyIamPolicyState } from "./accessPolicyIamPolicy";
+export type AccessPolicyIamPolicy = import("./accessPolicyIamPolicy").AccessPolicyIamPolicy;
+export const AccessPolicyIamPolicy: typeof import("./accessPolicyIamPolicy").AccessPolicyIamPolicy = null as any;
+
+export { GcpUserAccessBindingArgs, GcpUserAccessBindingState } from "./gcpUserAccessBinding";
+export type GcpUserAccessBinding = import("./gcpUserAccessBinding").GcpUserAccessBinding;
+export const GcpUserAccessBinding: typeof import("./gcpUserAccessBinding").GcpUserAccessBinding = null as any;
+
+export { ServicePerimeterArgs, ServicePerimeterState } from "./servicePerimeter";
+export type ServicePerimeter = import("./servicePerimeter").ServicePerimeter;
+export const ServicePerimeter: typeof import("./servicePerimeter").ServicePerimeter = null as any;
+
+export { ServicePerimeterResourceArgs, ServicePerimeterResourceState } from "./servicePerimeterResource";
+export type ServicePerimeterResource = import("./servicePerimeterResource").ServicePerimeterResource;
+export const ServicePerimeterResource: typeof import("./servicePerimeterResource").ServicePerimeterResource = null as any;
+
+export { ServicePerimetersArgs, ServicePerimetersState } from "./servicePerimeters";
+export type ServicePerimeters = import("./servicePerimeters").ServicePerimeters;
+export const ServicePerimeters: typeof import("./servicePerimeters").ServicePerimeters = null as any;
+
+utilities.lazyLoad(exports, ["AccessLevel"], () => require("./accessLevel"));
+utilities.lazyLoad(exports, ["AccessLevelCondition"], () => require("./accessLevelCondition"));
+utilities.lazyLoad(exports, ["AccessLevels"], () => require("./accessLevels"));
+utilities.lazyLoad(exports, ["AccessPolicy"], () => require("./accessPolicy"));
+utilities.lazyLoad(exports, ["AccessPolicyIamBinding"], () => require("./accessPolicyIamBinding"));
+utilities.lazyLoad(exports, ["AccessPolicyIamMember"], () => require("./accessPolicyIamMember"));
+utilities.lazyLoad(exports, ["AccessPolicyIamPolicy"], () => require("./accessPolicyIamPolicy"));
+utilities.lazyLoad(exports, ["GcpUserAccessBinding"], () => require("./gcpUserAccessBinding"));
+utilities.lazyLoad(exports, ["ServicePerimeter"], () => require("./servicePerimeter"));
+utilities.lazyLoad(exports, ["ServicePerimeterResource"], () => require("./servicePerimeterResource"));
+utilities.lazyLoad(exports, ["ServicePerimeters"], () => require("./servicePerimeters"));
 
 const _module = {
     version: utilities.getVersion(),

@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Compute
         /// ```
         /// </summary>
         public static Task<GetInstanceGroupResult> InvokeAsync(GetInstanceGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceGroupResult>("gcp:compute/getInstanceGroup:getInstanceGroup", args ?? new GetInstanceGroupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceGroupResult>("gcp:compute/getInstanceGroup:getInstanceGroup", args ?? new GetInstanceGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a Compute Instance Group within GCE.
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Compute
         /// ```
         /// </summary>
         public static Output<GetInstanceGroupResult> Invoke(GetInstanceGroupInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceGroupResult>("gcp:compute/getInstanceGroup:getInstanceGroup", args ?? new GetInstanceGroupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceGroupResult>("gcp:compute/getInstanceGroup:getInstanceGroup", args ?? new GetInstanceGroupInvokeArgs(), options.WithDefaults());
     }
 
 

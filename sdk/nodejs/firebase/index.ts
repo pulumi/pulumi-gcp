@@ -5,16 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getWebApp";
-export * from "./getWebAppConfig";
-export * from "./project";
-export * from "./projectLocation";
-export * from "./webApp";
+export { GetWebAppArgs, GetWebAppResult, GetWebAppOutputArgs } from "./getWebApp";
+export const getWebApp: typeof import("./getWebApp").getWebApp = null as any;
+export const getWebAppOutput: typeof import("./getWebApp").getWebAppOutput = null as any;
 
-// Import resources to register:
-import { Project } from "./project";
-import { ProjectLocation } from "./projectLocation";
-import { WebApp } from "./webApp";
+export { GetWebAppConfigArgs, GetWebAppConfigResult, GetWebAppConfigOutputArgs } from "./getWebAppConfig";
+export const getWebAppConfig: typeof import("./getWebAppConfig").getWebAppConfig = null as any;
+export const getWebAppConfigOutput: typeof import("./getWebAppConfig").getWebAppConfigOutput = null as any;
+
+export { ProjectArgs, ProjectState } from "./project";
+export type Project = import("./project").Project;
+export const Project: typeof import("./project").Project = null as any;
+
+export { ProjectLocationArgs, ProjectLocationState } from "./projectLocation";
+export type ProjectLocation = import("./projectLocation").ProjectLocation;
+export const ProjectLocation: typeof import("./projectLocation").ProjectLocation = null as any;
+
+export { WebAppArgs, WebAppState } from "./webApp";
+export type WebApp = import("./webApp").WebApp;
+export const WebApp: typeof import("./webApp").WebApp = null as any;
+
+utilities.lazyLoad(exports, ["getWebApp","getWebAppOutput"], () => require("./getWebApp"));
+utilities.lazyLoad(exports, ["getWebAppConfig","getWebAppConfigOutput"], () => require("./getWebAppConfig"));
+utilities.lazyLoad(exports, ["Project"], () => require("./project"));
+utilities.lazyLoad(exports, ["ProjectLocation"], () => require("./projectLocation"));
+utilities.lazyLoad(exports, ["WebApp"], () => require("./webApp"));
 
 const _module = {
     version: utilities.getVersion(),

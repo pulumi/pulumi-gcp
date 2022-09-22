@@ -5,48 +5,106 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./consentStore";
-export * from "./consentStoreIamBinding";
-export * from "./consentStoreIamMember";
-export * from "./consentStoreIamPolicy";
-export * from "./dataset";
-export * from "./datasetIamBinding";
-export * from "./datasetIamMember";
-export * from "./datasetIamPolicy";
-export * from "./dicomStore";
-export * from "./dicomStoreIamBinding";
-export * from "./dicomStoreIamMember";
-export * from "./dicomStoreIamPolicy";
-export * from "./fhirStore";
-export * from "./fhirStoreIamBinding";
-export * from "./fhirStoreIamMember";
-export * from "./fhirStoreIamPolicy";
-export * from "./hl7Store";
-export * from "./hl7StoreIamBinding";
-export * from "./hl7StoreIamMember";
-export * from "./hl7StoreIamPolicy";
+export { ConsentStoreArgs, ConsentStoreState } from "./consentStore";
+export type ConsentStore = import("./consentStore").ConsentStore;
+export const ConsentStore: typeof import("./consentStore").ConsentStore = null as any;
 
-// Import resources to register:
-import { ConsentStore } from "./consentStore";
-import { ConsentStoreIamBinding } from "./consentStoreIamBinding";
-import { ConsentStoreIamMember } from "./consentStoreIamMember";
-import { ConsentStoreIamPolicy } from "./consentStoreIamPolicy";
-import { Dataset } from "./dataset";
-import { DatasetIamBinding } from "./datasetIamBinding";
-import { DatasetIamMember } from "./datasetIamMember";
-import { DatasetIamPolicy } from "./datasetIamPolicy";
-import { DicomStore } from "./dicomStore";
-import { DicomStoreIamBinding } from "./dicomStoreIamBinding";
-import { DicomStoreIamMember } from "./dicomStoreIamMember";
-import { DicomStoreIamPolicy } from "./dicomStoreIamPolicy";
-import { FhirStore } from "./fhirStore";
-import { FhirStoreIamBinding } from "./fhirStoreIamBinding";
-import { FhirStoreIamMember } from "./fhirStoreIamMember";
-import { FhirStoreIamPolicy } from "./fhirStoreIamPolicy";
-import { Hl7Store } from "./hl7Store";
-import { Hl7StoreIamBinding } from "./hl7StoreIamBinding";
-import { Hl7StoreIamMember } from "./hl7StoreIamMember";
-import { Hl7StoreIamPolicy } from "./hl7StoreIamPolicy";
+export { ConsentStoreIamBindingArgs, ConsentStoreIamBindingState } from "./consentStoreIamBinding";
+export type ConsentStoreIamBinding = import("./consentStoreIamBinding").ConsentStoreIamBinding;
+export const ConsentStoreIamBinding: typeof import("./consentStoreIamBinding").ConsentStoreIamBinding = null as any;
+
+export { ConsentStoreIamMemberArgs, ConsentStoreIamMemberState } from "./consentStoreIamMember";
+export type ConsentStoreIamMember = import("./consentStoreIamMember").ConsentStoreIamMember;
+export const ConsentStoreIamMember: typeof import("./consentStoreIamMember").ConsentStoreIamMember = null as any;
+
+export { ConsentStoreIamPolicyArgs, ConsentStoreIamPolicyState } from "./consentStoreIamPolicy";
+export type ConsentStoreIamPolicy = import("./consentStoreIamPolicy").ConsentStoreIamPolicy;
+export const ConsentStoreIamPolicy: typeof import("./consentStoreIamPolicy").ConsentStoreIamPolicy = null as any;
+
+export { DatasetArgs, DatasetState } from "./dataset";
+export type Dataset = import("./dataset").Dataset;
+export const Dataset: typeof import("./dataset").Dataset = null as any;
+
+export { DatasetIamBindingArgs, DatasetIamBindingState } from "./datasetIamBinding";
+export type DatasetIamBinding = import("./datasetIamBinding").DatasetIamBinding;
+export const DatasetIamBinding: typeof import("./datasetIamBinding").DatasetIamBinding = null as any;
+
+export { DatasetIamMemberArgs, DatasetIamMemberState } from "./datasetIamMember";
+export type DatasetIamMember = import("./datasetIamMember").DatasetIamMember;
+export const DatasetIamMember: typeof import("./datasetIamMember").DatasetIamMember = null as any;
+
+export { DatasetIamPolicyArgs, DatasetIamPolicyState } from "./datasetIamPolicy";
+export type DatasetIamPolicy = import("./datasetIamPolicy").DatasetIamPolicy;
+export const DatasetIamPolicy: typeof import("./datasetIamPolicy").DatasetIamPolicy = null as any;
+
+export { DicomStoreArgs, DicomStoreState } from "./dicomStore";
+export type DicomStore = import("./dicomStore").DicomStore;
+export const DicomStore: typeof import("./dicomStore").DicomStore = null as any;
+
+export { DicomStoreIamBindingArgs, DicomStoreIamBindingState } from "./dicomStoreIamBinding";
+export type DicomStoreIamBinding = import("./dicomStoreIamBinding").DicomStoreIamBinding;
+export const DicomStoreIamBinding: typeof import("./dicomStoreIamBinding").DicomStoreIamBinding = null as any;
+
+export { DicomStoreIamMemberArgs, DicomStoreIamMemberState } from "./dicomStoreIamMember";
+export type DicomStoreIamMember = import("./dicomStoreIamMember").DicomStoreIamMember;
+export const DicomStoreIamMember: typeof import("./dicomStoreIamMember").DicomStoreIamMember = null as any;
+
+export { DicomStoreIamPolicyArgs, DicomStoreIamPolicyState } from "./dicomStoreIamPolicy";
+export type DicomStoreIamPolicy = import("./dicomStoreIamPolicy").DicomStoreIamPolicy;
+export const DicomStoreIamPolicy: typeof import("./dicomStoreIamPolicy").DicomStoreIamPolicy = null as any;
+
+export { FhirStoreArgs, FhirStoreState } from "./fhirStore";
+export type FhirStore = import("./fhirStore").FhirStore;
+export const FhirStore: typeof import("./fhirStore").FhirStore = null as any;
+
+export { FhirStoreIamBindingArgs, FhirStoreIamBindingState } from "./fhirStoreIamBinding";
+export type FhirStoreIamBinding = import("./fhirStoreIamBinding").FhirStoreIamBinding;
+export const FhirStoreIamBinding: typeof import("./fhirStoreIamBinding").FhirStoreIamBinding = null as any;
+
+export { FhirStoreIamMemberArgs, FhirStoreIamMemberState } from "./fhirStoreIamMember";
+export type FhirStoreIamMember = import("./fhirStoreIamMember").FhirStoreIamMember;
+export const FhirStoreIamMember: typeof import("./fhirStoreIamMember").FhirStoreIamMember = null as any;
+
+export { FhirStoreIamPolicyArgs, FhirStoreIamPolicyState } from "./fhirStoreIamPolicy";
+export type FhirStoreIamPolicy = import("./fhirStoreIamPolicy").FhirStoreIamPolicy;
+export const FhirStoreIamPolicy: typeof import("./fhirStoreIamPolicy").FhirStoreIamPolicy = null as any;
+
+export { Hl7StoreArgs, Hl7StoreState } from "./hl7Store";
+export type Hl7Store = import("./hl7Store").Hl7Store;
+export const Hl7Store: typeof import("./hl7Store").Hl7Store = null as any;
+
+export { Hl7StoreIamBindingArgs, Hl7StoreIamBindingState } from "./hl7StoreIamBinding";
+export type Hl7StoreIamBinding = import("./hl7StoreIamBinding").Hl7StoreIamBinding;
+export const Hl7StoreIamBinding: typeof import("./hl7StoreIamBinding").Hl7StoreIamBinding = null as any;
+
+export { Hl7StoreIamMemberArgs, Hl7StoreIamMemberState } from "./hl7StoreIamMember";
+export type Hl7StoreIamMember = import("./hl7StoreIamMember").Hl7StoreIamMember;
+export const Hl7StoreIamMember: typeof import("./hl7StoreIamMember").Hl7StoreIamMember = null as any;
+
+export { Hl7StoreIamPolicyArgs, Hl7StoreIamPolicyState } from "./hl7StoreIamPolicy";
+export type Hl7StoreIamPolicy = import("./hl7StoreIamPolicy").Hl7StoreIamPolicy;
+export const Hl7StoreIamPolicy: typeof import("./hl7StoreIamPolicy").Hl7StoreIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["ConsentStore"], () => require("./consentStore"));
+utilities.lazyLoad(exports, ["ConsentStoreIamBinding"], () => require("./consentStoreIamBinding"));
+utilities.lazyLoad(exports, ["ConsentStoreIamMember"], () => require("./consentStoreIamMember"));
+utilities.lazyLoad(exports, ["ConsentStoreIamPolicy"], () => require("./consentStoreIamPolicy"));
+utilities.lazyLoad(exports, ["Dataset"], () => require("./dataset"));
+utilities.lazyLoad(exports, ["DatasetIamBinding"], () => require("./datasetIamBinding"));
+utilities.lazyLoad(exports, ["DatasetIamMember"], () => require("./datasetIamMember"));
+utilities.lazyLoad(exports, ["DatasetIamPolicy"], () => require("./datasetIamPolicy"));
+utilities.lazyLoad(exports, ["DicomStore"], () => require("./dicomStore"));
+utilities.lazyLoad(exports, ["DicomStoreIamBinding"], () => require("./dicomStoreIamBinding"));
+utilities.lazyLoad(exports, ["DicomStoreIamMember"], () => require("./dicomStoreIamMember"));
+utilities.lazyLoad(exports, ["DicomStoreIamPolicy"], () => require("./dicomStoreIamPolicy"));
+utilities.lazyLoad(exports, ["FhirStore"], () => require("./fhirStore"));
+utilities.lazyLoad(exports, ["FhirStoreIamBinding"], () => require("./fhirStoreIamBinding"));
+utilities.lazyLoad(exports, ["FhirStoreIamMember"], () => require("./fhirStoreIamMember"));
+utilities.lazyLoad(exports, ["FhirStoreIamPolicy"], () => require("./fhirStoreIamPolicy"));
+utilities.lazyLoad(exports, ["Hl7Store"], () => require("./hl7Store"));
+utilities.lazyLoad(exports, ["Hl7StoreIamBinding"], () => require("./hl7StoreIamBinding"));
+utilities.lazyLoad(exports, ["Hl7StoreIamMember"], () => require("./hl7StoreIamMember"));
+utilities.lazyLoad(exports, ["Hl7StoreIamPolicy"], () => require("./hl7StoreIamPolicy"));
 
 const _module = {
     version: utilities.getVersion(),

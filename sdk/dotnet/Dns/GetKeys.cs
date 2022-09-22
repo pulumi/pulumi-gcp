@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.Dns
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKeysResult> InvokeAsync(GetKeysArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("gcp:dns/getKeys:getKeys", args ?? new GetKeysArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("gcp:dns/getKeys:getKeys", args ?? new GetKeysArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.Dns
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKeysResult> Invoke(GetKeysInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKeysResult>("gcp:dns/getKeys:getKeys", args ?? new GetKeysInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKeysResult>("gcp:dns/getKeys:getKeys", args ?? new GetKeysInvokeArgs(), options.WithDefaults());
     }
 
 

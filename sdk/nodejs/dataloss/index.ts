@@ -5,16 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./preventionDeidentifyTemplate";
-export * from "./preventionInspectTemplate";
-export * from "./preventionJobTrigger";
-export * from "./preventionStoredInfoType";
+export { PreventionDeidentifyTemplateArgs, PreventionDeidentifyTemplateState } from "./preventionDeidentifyTemplate";
+export type PreventionDeidentifyTemplate = import("./preventionDeidentifyTemplate").PreventionDeidentifyTemplate;
+export const PreventionDeidentifyTemplate: typeof import("./preventionDeidentifyTemplate").PreventionDeidentifyTemplate = null as any;
 
-// Import resources to register:
-import { PreventionDeidentifyTemplate } from "./preventionDeidentifyTemplate";
-import { PreventionInspectTemplate } from "./preventionInspectTemplate";
-import { PreventionJobTrigger } from "./preventionJobTrigger";
-import { PreventionStoredInfoType } from "./preventionStoredInfoType";
+export { PreventionInspectTemplateArgs, PreventionInspectTemplateState } from "./preventionInspectTemplate";
+export type PreventionInspectTemplate = import("./preventionInspectTemplate").PreventionInspectTemplate;
+export const PreventionInspectTemplate: typeof import("./preventionInspectTemplate").PreventionInspectTemplate = null as any;
+
+export { PreventionJobTriggerArgs, PreventionJobTriggerState } from "./preventionJobTrigger";
+export type PreventionJobTrigger = import("./preventionJobTrigger").PreventionJobTrigger;
+export const PreventionJobTrigger: typeof import("./preventionJobTrigger").PreventionJobTrigger = null as any;
+
+export { PreventionStoredInfoTypeArgs, PreventionStoredInfoTypeState } from "./preventionStoredInfoType";
+export type PreventionStoredInfoType = import("./preventionStoredInfoType").PreventionStoredInfoType;
+export const PreventionStoredInfoType: typeof import("./preventionStoredInfoType").PreventionStoredInfoType = null as any;
+
+utilities.lazyLoad(exports, ["PreventionDeidentifyTemplate"], () => require("./preventionDeidentifyTemplate"));
+utilities.lazyLoad(exports, ["PreventionInspectTemplate"], () => require("./preventionInspectTemplate"));
+utilities.lazyLoad(exports, ["PreventionJobTrigger"], () => require("./preventionJobTrigger"));
+utilities.lazyLoad(exports, ["PreventionStoredInfoType"], () => require("./preventionStoredInfoType"));
 
 const _module = {
     version: utilities.getVersion(),

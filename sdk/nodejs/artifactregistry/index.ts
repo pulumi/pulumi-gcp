@@ -5,16 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./repository";
-export * from "./repositoryIamBinding";
-export * from "./repositoryIamMember";
-export * from "./repositoryIamPolicy";
+export { RepositoryArgs, RepositoryState } from "./repository";
+export type Repository = import("./repository").Repository;
+export const Repository: typeof import("./repository").Repository = null as any;
 
-// Import resources to register:
-import { Repository } from "./repository";
-import { RepositoryIamBinding } from "./repositoryIamBinding";
-import { RepositoryIamMember } from "./repositoryIamMember";
-import { RepositoryIamPolicy } from "./repositoryIamPolicy";
+export { RepositoryIamBindingArgs, RepositoryIamBindingState } from "./repositoryIamBinding";
+export type RepositoryIamBinding = import("./repositoryIamBinding").RepositoryIamBinding;
+export const RepositoryIamBinding: typeof import("./repositoryIamBinding").RepositoryIamBinding = null as any;
+
+export { RepositoryIamMemberArgs, RepositoryIamMemberState } from "./repositoryIamMember";
+export type RepositoryIamMember = import("./repositoryIamMember").RepositoryIamMember;
+export const RepositoryIamMember: typeof import("./repositoryIamMember").RepositoryIamMember = null as any;
+
+export { RepositoryIamPolicyArgs, RepositoryIamPolicyState } from "./repositoryIamPolicy";
+export type RepositoryIamPolicy = import("./repositoryIamPolicy").RepositoryIamPolicy;
+export const RepositoryIamPolicy: typeof import("./repositoryIamPolicy").RepositoryIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["Repository"], () => require("./repository"));
+utilities.lazyLoad(exports, ["RepositoryIamBinding"], () => require("./repositoryIamBinding"));
+utilities.lazyLoad(exports, ["RepositoryIamMember"], () => require("./repositoryIamMember"));
+utilities.lazyLoad(exports, ["RepositoryIamPolicy"], () => require("./repositoryIamPolicy"));
 
 const _module = {
     version: utilities.getVersion(),

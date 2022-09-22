@@ -5,25 +5,51 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./database";
-export * from "./databaseIAMBinding";
-export * from "./databaseIAMMember";
-export * from "./databaseIAMPolicy";
-export * from "./getInstance";
-export * from "./instance";
-export * from "./instanceIAMBinding";
-export * from "./instanceIAMMember";
-export * from "./instanceIAMPolicy";
+export { DatabaseArgs, DatabaseState } from "./database";
+export type Database = import("./database").Database;
+export const Database: typeof import("./database").Database = null as any;
 
-// Import resources to register:
-import { Database } from "./database";
-import { DatabaseIAMBinding } from "./databaseIAMBinding";
-import { DatabaseIAMMember } from "./databaseIAMMember";
-import { DatabaseIAMPolicy } from "./databaseIAMPolicy";
-import { Instance } from "./instance";
-import { InstanceIAMBinding } from "./instanceIAMBinding";
-import { InstanceIAMMember } from "./instanceIAMMember";
-import { InstanceIAMPolicy } from "./instanceIAMPolicy";
+export { DatabaseIAMBindingArgs, DatabaseIAMBindingState } from "./databaseIAMBinding";
+export type DatabaseIAMBinding = import("./databaseIAMBinding").DatabaseIAMBinding;
+export const DatabaseIAMBinding: typeof import("./databaseIAMBinding").DatabaseIAMBinding = null as any;
+
+export { DatabaseIAMMemberArgs, DatabaseIAMMemberState } from "./databaseIAMMember";
+export type DatabaseIAMMember = import("./databaseIAMMember").DatabaseIAMMember;
+export const DatabaseIAMMember: typeof import("./databaseIAMMember").DatabaseIAMMember = null as any;
+
+export { DatabaseIAMPolicyArgs, DatabaseIAMPolicyState } from "./databaseIAMPolicy";
+export type DatabaseIAMPolicy = import("./databaseIAMPolicy").DatabaseIAMPolicy;
+export const DatabaseIAMPolicy: typeof import("./databaseIAMPolicy").DatabaseIAMPolicy = null as any;
+
+export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
+export const getInstance: typeof import("./getInstance").getInstance = null as any;
+export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
+
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+
+export { InstanceIAMBindingArgs, InstanceIAMBindingState } from "./instanceIAMBinding";
+export type InstanceIAMBinding = import("./instanceIAMBinding").InstanceIAMBinding;
+export const InstanceIAMBinding: typeof import("./instanceIAMBinding").InstanceIAMBinding = null as any;
+
+export { InstanceIAMMemberArgs, InstanceIAMMemberState } from "./instanceIAMMember";
+export type InstanceIAMMember = import("./instanceIAMMember").InstanceIAMMember;
+export const InstanceIAMMember: typeof import("./instanceIAMMember").InstanceIAMMember = null as any;
+
+export { InstanceIAMPolicyArgs, InstanceIAMPolicyState } from "./instanceIAMPolicy";
+export type InstanceIAMPolicy = import("./instanceIAMPolicy").InstanceIAMPolicy;
+export const InstanceIAMPolicy: typeof import("./instanceIAMPolicy").InstanceIAMPolicy = null as any;
+
+utilities.lazyLoad(exports, ["Database"], () => require("./database"));
+utilities.lazyLoad(exports, ["DatabaseIAMBinding"], () => require("./databaseIAMBinding"));
+utilities.lazyLoad(exports, ["DatabaseIAMMember"], () => require("./databaseIAMMember"));
+utilities.lazyLoad(exports, ["DatabaseIAMPolicy"], () => require("./databaseIAMPolicy"));
+utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+utilities.lazyLoad(exports, ["InstanceIAMBinding"], () => require("./instanceIAMBinding"));
+utilities.lazyLoad(exports, ["InstanceIAMMember"], () => require("./instanceIAMMember"));
+utilities.lazyLoad(exports, ["InstanceIAMPolicy"], () => require("./instanceIAMPolicy"));
 
 const _module = {
     version: utilities.getVersion(),

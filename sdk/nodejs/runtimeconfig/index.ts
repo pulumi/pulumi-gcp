@@ -5,20 +5,41 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./config";
-export * from "./configIamBinding";
-export * from "./configIamMember";
-export * from "./configIamPolicy";
-export * from "./getConfig";
-export * from "./getVariable";
-export * from "./variable";
+export { ConfigArgs, ConfigState } from "./config";
+export type Config = import("./config").Config;
+export const Config: typeof import("./config").Config = null as any;
 
-// Import resources to register:
-import { Config } from "./config";
-import { ConfigIamBinding } from "./configIamBinding";
-import { ConfigIamMember } from "./configIamMember";
-import { ConfigIamPolicy } from "./configIamPolicy";
-import { Variable } from "./variable";
+export { ConfigIamBindingArgs, ConfigIamBindingState } from "./configIamBinding";
+export type ConfigIamBinding = import("./configIamBinding").ConfigIamBinding;
+export const ConfigIamBinding: typeof import("./configIamBinding").ConfigIamBinding = null as any;
+
+export { ConfigIamMemberArgs, ConfigIamMemberState } from "./configIamMember";
+export type ConfigIamMember = import("./configIamMember").ConfigIamMember;
+export const ConfigIamMember: typeof import("./configIamMember").ConfigIamMember = null as any;
+
+export { ConfigIamPolicyArgs, ConfigIamPolicyState } from "./configIamPolicy";
+export type ConfigIamPolicy = import("./configIamPolicy").ConfigIamPolicy;
+export const ConfigIamPolicy: typeof import("./configIamPolicy").ConfigIamPolicy = null as any;
+
+export { GetConfigArgs, GetConfigResult, GetConfigOutputArgs } from "./getConfig";
+export const getConfig: typeof import("./getConfig").getConfig = null as any;
+export const getConfigOutput: typeof import("./getConfig").getConfigOutput = null as any;
+
+export { GetVariableArgs, GetVariableResult, GetVariableOutputArgs } from "./getVariable";
+export const getVariable: typeof import("./getVariable").getVariable = null as any;
+export const getVariableOutput: typeof import("./getVariable").getVariableOutput = null as any;
+
+export { VariableArgs, VariableState } from "./variable";
+export type Variable = import("./variable").Variable;
+export const Variable: typeof import("./variable").Variable = null as any;
+
+utilities.lazyLoad(exports, ["Config"], () => require("./config"));
+utilities.lazyLoad(exports, ["ConfigIamBinding"], () => require("./configIamBinding"));
+utilities.lazyLoad(exports, ["ConfigIamMember"], () => require("./configIamMember"));
+utilities.lazyLoad(exports, ["ConfigIamPolicy"], () => require("./configIamPolicy"));
+utilities.lazyLoad(exports, ["getConfig","getConfigOutput"], () => require("./getConfig"));
+utilities.lazyLoad(exports, ["getVariable","getVariableOutput"], () => require("./getVariable"));
+utilities.lazyLoad(exports, ["Variable"], () => require("./variable"));
 
 const _module = {
     version: utilities.getVersion(),

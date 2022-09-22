@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSubnetworkResult> InvokeAsync(GetSubnetworkArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetworkResult>("gcp:compute/getSubnetwork:getSubnetwork", args ?? new GetSubnetworkArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSubnetworkResult>("gcp:compute/getSubnetwork:getSubnetwork", args ?? new GetSubnetworkArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a subnetwork within GCE from its name and region.
@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSubnetworkResult> Invoke(GetSubnetworkInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSubnetworkResult>("gcp:compute/getSubnetwork:getSubnetwork", args ?? new GetSubnetworkInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSubnetworkResult>("gcp:compute/getSubnetwork:getSubnetwork", args ?? new GetSubnetworkInvokeArgs(), options.WithDefaults());
     }
 
 

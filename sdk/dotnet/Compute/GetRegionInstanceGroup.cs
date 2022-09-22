@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Compute
         /// The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
         /// </summary>
         public static Task<GetRegionInstanceGroupResult> InvokeAsync(GetRegionInstanceGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstanceGroupResult>("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args ?? new GetRegionInstanceGroupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstanceGroupResult>("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args ?? new GetRegionInstanceGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a Compute Region Instance Group within GCE.
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Compute
         /// The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
         /// </summary>
         public static Output<GetRegionInstanceGroupResult> Invoke(GetRegionInstanceGroupInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionInstanceGroupResult>("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args ?? new GetRegionInstanceGroupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionInstanceGroupResult>("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args ?? new GetRegionInstanceGroupInvokeArgs(), options.WithDefaults());
     }
 
 

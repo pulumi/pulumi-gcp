@@ -5,20 +5,36 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./feature";
-export * from "./featureMembership";
-export * from "./membership";
-export * from "./membershipIamBinding";
-export * from "./membershipIamMember";
-export * from "./membershipIamPolicy";
+export { FeatureArgs, FeatureState } from "./feature";
+export type Feature = import("./feature").Feature;
+export const Feature: typeof import("./feature").Feature = null as any;
 
-// Import resources to register:
-import { Feature } from "./feature";
-import { FeatureMembership } from "./featureMembership";
-import { Membership } from "./membership";
-import { MembershipIamBinding } from "./membershipIamBinding";
-import { MembershipIamMember } from "./membershipIamMember";
-import { MembershipIamPolicy } from "./membershipIamPolicy";
+export { FeatureMembershipArgs, FeatureMembershipState } from "./featureMembership";
+export type FeatureMembership = import("./featureMembership").FeatureMembership;
+export const FeatureMembership: typeof import("./featureMembership").FeatureMembership = null as any;
+
+export { MembershipArgs, MembershipState } from "./membership";
+export type Membership = import("./membership").Membership;
+export const Membership: typeof import("./membership").Membership = null as any;
+
+export { MembershipIamBindingArgs, MembershipIamBindingState } from "./membershipIamBinding";
+export type MembershipIamBinding = import("./membershipIamBinding").MembershipIamBinding;
+export const MembershipIamBinding: typeof import("./membershipIamBinding").MembershipIamBinding = null as any;
+
+export { MembershipIamMemberArgs, MembershipIamMemberState } from "./membershipIamMember";
+export type MembershipIamMember = import("./membershipIamMember").MembershipIamMember;
+export const MembershipIamMember: typeof import("./membershipIamMember").MembershipIamMember = null as any;
+
+export { MembershipIamPolicyArgs, MembershipIamPolicyState } from "./membershipIamPolicy";
+export type MembershipIamPolicy = import("./membershipIamPolicy").MembershipIamPolicy;
+export const MembershipIamPolicy: typeof import("./membershipIamPolicy").MembershipIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["Feature"], () => require("./feature"));
+utilities.lazyLoad(exports, ["FeatureMembership"], () => require("./featureMembership"));
+utilities.lazyLoad(exports, ["Membership"], () => require("./membership"));
+utilities.lazyLoad(exports, ["MembershipIamBinding"], () => require("./membershipIamBinding"));
+utilities.lazyLoad(exports, ["MembershipIamMember"], () => require("./membershipIamMember"));
+utilities.lazyLoad(exports, ["MembershipIamPolicy"], () => require("./membershipIamPolicy"));
 
 const _module = {
     version: utilities.getVersion(),

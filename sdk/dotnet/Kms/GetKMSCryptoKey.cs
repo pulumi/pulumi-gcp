@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Kms
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKMSCryptoKeyResult> InvokeAsync(GetKMSCryptoKeyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKMSCryptoKeyResult>("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", args ?? new GetKMSCryptoKeyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKMSCryptoKeyResult>("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", args ?? new GetKMSCryptoKeyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides access to a Google Cloud Platform KMS CryptoKey. For more information see
@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.Kms
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKMSCryptoKeyResult> Invoke(GetKMSCryptoKeyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKMSCryptoKeyResult>("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", args ?? new GetKMSCryptoKeyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKMSCryptoKeyResult>("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", args ?? new GetKMSCryptoKeyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.GameServices
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGameServerDeploymentRolloutResult> InvokeAsync(GetGameServerDeploymentRolloutArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGameServerDeploymentRolloutResult>("gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout", args ?? new GetGameServerDeploymentRolloutArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGameServerDeploymentRolloutResult>("gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout", args ?? new GetGameServerDeploymentRolloutArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the rollout state. 
@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.GameServices
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGameServerDeploymentRolloutResult> Invoke(GetGameServerDeploymentRolloutInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGameServerDeploymentRolloutResult>("gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout", args ?? new GetGameServerDeploymentRolloutInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGameServerDeploymentRolloutResult>("gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout", args ?? new GetGameServerDeploymentRolloutInvokeArgs(), options.WithDefaults());
     }
 
 

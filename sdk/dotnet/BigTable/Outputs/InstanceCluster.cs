@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.BigTable.Outputs
     public sealed class InstanceCluster
     {
         /// <summary>
-        /// Autoscaling config for the cluster, contains the following arguments:
+        /// [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
         /// </summary>
         public readonly Outputs.InstanceClusterAutoscalingConfig? AutoscalingConfig;
         /// <summary>

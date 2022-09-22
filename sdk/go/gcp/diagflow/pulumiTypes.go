@@ -4931,6 +4931,518 @@ func (o CxVersionNluSettingArrayOutput) Index(i pulumi.IntInput) CxVersionNluSet
 	}).(CxVersionNluSettingOutput)
 }
 
+type CxWebhookGenericWebService struct {
+	// Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+	AllowedCaCerts []string `pulumi:"allowedCaCerts"`
+	// The HTTP request headers to send together with webhook requests.
+	RequestHeaders map[string]string `pulumi:"requestHeaders"`
+	// Whether to use speech adaptation for speech recognition.
+	Uri string `pulumi:"uri"`
+}
+
+// CxWebhookGenericWebServiceInput is an input type that accepts CxWebhookGenericWebServiceArgs and CxWebhookGenericWebServiceOutput values.
+// You can construct a concrete instance of `CxWebhookGenericWebServiceInput` via:
+//
+//	CxWebhookGenericWebServiceArgs{...}
+type CxWebhookGenericWebServiceInput interface {
+	pulumi.Input
+
+	ToCxWebhookGenericWebServiceOutput() CxWebhookGenericWebServiceOutput
+	ToCxWebhookGenericWebServiceOutputWithContext(context.Context) CxWebhookGenericWebServiceOutput
+}
+
+type CxWebhookGenericWebServiceArgs struct {
+	// Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+	AllowedCaCerts pulumi.StringArrayInput `pulumi:"allowedCaCerts"`
+	// The HTTP request headers to send together with webhook requests.
+	RequestHeaders pulumi.StringMapInput `pulumi:"requestHeaders"`
+	// Whether to use speech adaptation for speech recognition.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (CxWebhookGenericWebServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxWebhookGenericWebService)(nil)).Elem()
+}
+
+func (i CxWebhookGenericWebServiceArgs) ToCxWebhookGenericWebServiceOutput() CxWebhookGenericWebServiceOutput {
+	return i.ToCxWebhookGenericWebServiceOutputWithContext(context.Background())
+}
+
+func (i CxWebhookGenericWebServiceArgs) ToCxWebhookGenericWebServiceOutputWithContext(ctx context.Context) CxWebhookGenericWebServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookGenericWebServiceOutput)
+}
+
+func (i CxWebhookGenericWebServiceArgs) ToCxWebhookGenericWebServicePtrOutput() CxWebhookGenericWebServicePtrOutput {
+	return i.ToCxWebhookGenericWebServicePtrOutputWithContext(context.Background())
+}
+
+func (i CxWebhookGenericWebServiceArgs) ToCxWebhookGenericWebServicePtrOutputWithContext(ctx context.Context) CxWebhookGenericWebServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookGenericWebServiceOutput).ToCxWebhookGenericWebServicePtrOutputWithContext(ctx)
+}
+
+// CxWebhookGenericWebServicePtrInput is an input type that accepts CxWebhookGenericWebServiceArgs, CxWebhookGenericWebServicePtr and CxWebhookGenericWebServicePtrOutput values.
+// You can construct a concrete instance of `CxWebhookGenericWebServicePtrInput` via:
+//
+//	        CxWebhookGenericWebServiceArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxWebhookGenericWebServicePtrInput interface {
+	pulumi.Input
+
+	ToCxWebhookGenericWebServicePtrOutput() CxWebhookGenericWebServicePtrOutput
+	ToCxWebhookGenericWebServicePtrOutputWithContext(context.Context) CxWebhookGenericWebServicePtrOutput
+}
+
+type cxWebhookGenericWebServicePtrType CxWebhookGenericWebServiceArgs
+
+func CxWebhookGenericWebServicePtr(v *CxWebhookGenericWebServiceArgs) CxWebhookGenericWebServicePtrInput {
+	return (*cxWebhookGenericWebServicePtrType)(v)
+}
+
+func (*cxWebhookGenericWebServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxWebhookGenericWebService)(nil)).Elem()
+}
+
+func (i *cxWebhookGenericWebServicePtrType) ToCxWebhookGenericWebServicePtrOutput() CxWebhookGenericWebServicePtrOutput {
+	return i.ToCxWebhookGenericWebServicePtrOutputWithContext(context.Background())
+}
+
+func (i *cxWebhookGenericWebServicePtrType) ToCxWebhookGenericWebServicePtrOutputWithContext(ctx context.Context) CxWebhookGenericWebServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookGenericWebServicePtrOutput)
+}
+
+type CxWebhookGenericWebServiceOutput struct{ *pulumi.OutputState }
+
+func (CxWebhookGenericWebServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxWebhookGenericWebService)(nil)).Elem()
+}
+
+func (o CxWebhookGenericWebServiceOutput) ToCxWebhookGenericWebServiceOutput() CxWebhookGenericWebServiceOutput {
+	return o
+}
+
+func (o CxWebhookGenericWebServiceOutput) ToCxWebhookGenericWebServiceOutputWithContext(ctx context.Context) CxWebhookGenericWebServiceOutput {
+	return o
+}
+
+func (o CxWebhookGenericWebServiceOutput) ToCxWebhookGenericWebServicePtrOutput() CxWebhookGenericWebServicePtrOutput {
+	return o.ToCxWebhookGenericWebServicePtrOutputWithContext(context.Background())
+}
+
+func (o CxWebhookGenericWebServiceOutput) ToCxWebhookGenericWebServicePtrOutputWithContext(ctx context.Context) CxWebhookGenericWebServicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxWebhookGenericWebService) *CxWebhookGenericWebService {
+		return &v
+	}).(CxWebhookGenericWebServicePtrOutput)
+}
+
+// Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+func (o CxWebhookGenericWebServiceOutput) AllowedCaCerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CxWebhookGenericWebService) []string { return v.AllowedCaCerts }).(pulumi.StringArrayOutput)
+}
+
+// The HTTP request headers to send together with webhook requests.
+func (o CxWebhookGenericWebServiceOutput) RequestHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CxWebhookGenericWebService) map[string]string { return v.RequestHeaders }).(pulumi.StringMapOutput)
+}
+
+// Whether to use speech adaptation for speech recognition.
+func (o CxWebhookGenericWebServiceOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v CxWebhookGenericWebService) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type CxWebhookGenericWebServicePtrOutput struct{ *pulumi.OutputState }
+
+func (CxWebhookGenericWebServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxWebhookGenericWebService)(nil)).Elem()
+}
+
+func (o CxWebhookGenericWebServicePtrOutput) ToCxWebhookGenericWebServicePtrOutput() CxWebhookGenericWebServicePtrOutput {
+	return o
+}
+
+func (o CxWebhookGenericWebServicePtrOutput) ToCxWebhookGenericWebServicePtrOutputWithContext(ctx context.Context) CxWebhookGenericWebServicePtrOutput {
+	return o
+}
+
+func (o CxWebhookGenericWebServicePtrOutput) Elem() CxWebhookGenericWebServiceOutput {
+	return o.ApplyT(func(v *CxWebhookGenericWebService) CxWebhookGenericWebService {
+		if v != nil {
+			return *v
+		}
+		var ret CxWebhookGenericWebService
+		return ret
+	}).(CxWebhookGenericWebServiceOutput)
+}
+
+// Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+func (o CxWebhookGenericWebServicePtrOutput) AllowedCaCerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CxWebhookGenericWebService) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedCaCerts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The HTTP request headers to send together with webhook requests.
+func (o CxWebhookGenericWebServicePtrOutput) RequestHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CxWebhookGenericWebService) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeaders
+	}).(pulumi.StringMapOutput)
+}
+
+// Whether to use speech adaptation for speech recognition.
+func (o CxWebhookGenericWebServicePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxWebhookServiceDirectory struct {
+	// The name of Service Directory service.
+	// Structure is documented below.
+	GenericWebService CxWebhookServiceDirectoryGenericWebService `pulumi:"genericWebService"`
+	// The name of Service Directory service.
+	Service string `pulumi:"service"`
+}
+
+// CxWebhookServiceDirectoryInput is an input type that accepts CxWebhookServiceDirectoryArgs and CxWebhookServiceDirectoryOutput values.
+// You can construct a concrete instance of `CxWebhookServiceDirectoryInput` via:
+//
+//	CxWebhookServiceDirectoryArgs{...}
+type CxWebhookServiceDirectoryInput interface {
+	pulumi.Input
+
+	ToCxWebhookServiceDirectoryOutput() CxWebhookServiceDirectoryOutput
+	ToCxWebhookServiceDirectoryOutputWithContext(context.Context) CxWebhookServiceDirectoryOutput
+}
+
+type CxWebhookServiceDirectoryArgs struct {
+	// The name of Service Directory service.
+	// Structure is documented below.
+	GenericWebService CxWebhookServiceDirectoryGenericWebServiceInput `pulumi:"genericWebService"`
+	// The name of Service Directory service.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (CxWebhookServiceDirectoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxWebhookServiceDirectory)(nil)).Elem()
+}
+
+func (i CxWebhookServiceDirectoryArgs) ToCxWebhookServiceDirectoryOutput() CxWebhookServiceDirectoryOutput {
+	return i.ToCxWebhookServiceDirectoryOutputWithContext(context.Background())
+}
+
+func (i CxWebhookServiceDirectoryArgs) ToCxWebhookServiceDirectoryOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookServiceDirectoryOutput)
+}
+
+func (i CxWebhookServiceDirectoryArgs) ToCxWebhookServiceDirectoryPtrOutput() CxWebhookServiceDirectoryPtrOutput {
+	return i.ToCxWebhookServiceDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (i CxWebhookServiceDirectoryArgs) ToCxWebhookServiceDirectoryPtrOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookServiceDirectoryOutput).ToCxWebhookServiceDirectoryPtrOutputWithContext(ctx)
+}
+
+// CxWebhookServiceDirectoryPtrInput is an input type that accepts CxWebhookServiceDirectoryArgs, CxWebhookServiceDirectoryPtr and CxWebhookServiceDirectoryPtrOutput values.
+// You can construct a concrete instance of `CxWebhookServiceDirectoryPtrInput` via:
+//
+//	        CxWebhookServiceDirectoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxWebhookServiceDirectoryPtrInput interface {
+	pulumi.Input
+
+	ToCxWebhookServiceDirectoryPtrOutput() CxWebhookServiceDirectoryPtrOutput
+	ToCxWebhookServiceDirectoryPtrOutputWithContext(context.Context) CxWebhookServiceDirectoryPtrOutput
+}
+
+type cxWebhookServiceDirectoryPtrType CxWebhookServiceDirectoryArgs
+
+func CxWebhookServiceDirectoryPtr(v *CxWebhookServiceDirectoryArgs) CxWebhookServiceDirectoryPtrInput {
+	return (*cxWebhookServiceDirectoryPtrType)(v)
+}
+
+func (*cxWebhookServiceDirectoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxWebhookServiceDirectory)(nil)).Elem()
+}
+
+func (i *cxWebhookServiceDirectoryPtrType) ToCxWebhookServiceDirectoryPtrOutput() CxWebhookServiceDirectoryPtrOutput {
+	return i.ToCxWebhookServiceDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (i *cxWebhookServiceDirectoryPtrType) ToCxWebhookServiceDirectoryPtrOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookServiceDirectoryPtrOutput)
+}
+
+type CxWebhookServiceDirectoryOutput struct{ *pulumi.OutputState }
+
+func (CxWebhookServiceDirectoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxWebhookServiceDirectory)(nil)).Elem()
+}
+
+func (o CxWebhookServiceDirectoryOutput) ToCxWebhookServiceDirectoryOutput() CxWebhookServiceDirectoryOutput {
+	return o
+}
+
+func (o CxWebhookServiceDirectoryOutput) ToCxWebhookServiceDirectoryOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryOutput {
+	return o
+}
+
+func (o CxWebhookServiceDirectoryOutput) ToCxWebhookServiceDirectoryPtrOutput() CxWebhookServiceDirectoryPtrOutput {
+	return o.ToCxWebhookServiceDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (o CxWebhookServiceDirectoryOutput) ToCxWebhookServiceDirectoryPtrOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxWebhookServiceDirectory) *CxWebhookServiceDirectory {
+		return &v
+	}).(CxWebhookServiceDirectoryPtrOutput)
+}
+
+// The name of Service Directory service.
+// Structure is documented below.
+func (o CxWebhookServiceDirectoryOutput) GenericWebService() CxWebhookServiceDirectoryGenericWebServiceOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectory) CxWebhookServiceDirectoryGenericWebService {
+		return v.GenericWebService
+	}).(CxWebhookServiceDirectoryGenericWebServiceOutput)
+}
+
+// The name of Service Directory service.
+func (o CxWebhookServiceDirectoryOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectory) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type CxWebhookServiceDirectoryPtrOutput struct{ *pulumi.OutputState }
+
+func (CxWebhookServiceDirectoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxWebhookServiceDirectory)(nil)).Elem()
+}
+
+func (o CxWebhookServiceDirectoryPtrOutput) ToCxWebhookServiceDirectoryPtrOutput() CxWebhookServiceDirectoryPtrOutput {
+	return o
+}
+
+func (o CxWebhookServiceDirectoryPtrOutput) ToCxWebhookServiceDirectoryPtrOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryPtrOutput {
+	return o
+}
+
+func (o CxWebhookServiceDirectoryPtrOutput) Elem() CxWebhookServiceDirectoryOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectory) CxWebhookServiceDirectory {
+		if v != nil {
+			return *v
+		}
+		var ret CxWebhookServiceDirectory
+		return ret
+	}).(CxWebhookServiceDirectoryOutput)
+}
+
+// The name of Service Directory service.
+// Structure is documented below.
+func (o CxWebhookServiceDirectoryPtrOutput) GenericWebService() CxWebhookServiceDirectoryGenericWebServicePtrOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectory) *CxWebhookServiceDirectoryGenericWebService {
+		if v == nil {
+			return nil
+		}
+		return &v.GenericWebService
+	}).(CxWebhookServiceDirectoryGenericWebServicePtrOutput)
+}
+
+// The name of Service Directory service.
+func (o CxWebhookServiceDirectoryPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectory) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxWebhookServiceDirectoryGenericWebService struct {
+	// Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+	AllowedCaCerts []string `pulumi:"allowedCaCerts"`
+	// The HTTP request headers to send together with webhook requests.
+	RequestHeaders map[string]string `pulumi:"requestHeaders"`
+	// Whether to use speech adaptation for speech recognition.
+	Uri string `pulumi:"uri"`
+}
+
+// CxWebhookServiceDirectoryGenericWebServiceInput is an input type that accepts CxWebhookServiceDirectoryGenericWebServiceArgs and CxWebhookServiceDirectoryGenericWebServiceOutput values.
+// You can construct a concrete instance of `CxWebhookServiceDirectoryGenericWebServiceInput` via:
+//
+//	CxWebhookServiceDirectoryGenericWebServiceArgs{...}
+type CxWebhookServiceDirectoryGenericWebServiceInput interface {
+	pulumi.Input
+
+	ToCxWebhookServiceDirectoryGenericWebServiceOutput() CxWebhookServiceDirectoryGenericWebServiceOutput
+	ToCxWebhookServiceDirectoryGenericWebServiceOutputWithContext(context.Context) CxWebhookServiceDirectoryGenericWebServiceOutput
+}
+
+type CxWebhookServiceDirectoryGenericWebServiceArgs struct {
+	// Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+	AllowedCaCerts pulumi.StringArrayInput `pulumi:"allowedCaCerts"`
+	// The HTTP request headers to send together with webhook requests.
+	RequestHeaders pulumi.StringMapInput `pulumi:"requestHeaders"`
+	// Whether to use speech adaptation for speech recognition.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (CxWebhookServiceDirectoryGenericWebServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxWebhookServiceDirectoryGenericWebService)(nil)).Elem()
+}
+
+func (i CxWebhookServiceDirectoryGenericWebServiceArgs) ToCxWebhookServiceDirectoryGenericWebServiceOutput() CxWebhookServiceDirectoryGenericWebServiceOutput {
+	return i.ToCxWebhookServiceDirectoryGenericWebServiceOutputWithContext(context.Background())
+}
+
+func (i CxWebhookServiceDirectoryGenericWebServiceArgs) ToCxWebhookServiceDirectoryGenericWebServiceOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryGenericWebServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookServiceDirectoryGenericWebServiceOutput)
+}
+
+func (i CxWebhookServiceDirectoryGenericWebServiceArgs) ToCxWebhookServiceDirectoryGenericWebServicePtrOutput() CxWebhookServiceDirectoryGenericWebServicePtrOutput {
+	return i.ToCxWebhookServiceDirectoryGenericWebServicePtrOutputWithContext(context.Background())
+}
+
+func (i CxWebhookServiceDirectoryGenericWebServiceArgs) ToCxWebhookServiceDirectoryGenericWebServicePtrOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryGenericWebServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookServiceDirectoryGenericWebServiceOutput).ToCxWebhookServiceDirectoryGenericWebServicePtrOutputWithContext(ctx)
+}
+
+// CxWebhookServiceDirectoryGenericWebServicePtrInput is an input type that accepts CxWebhookServiceDirectoryGenericWebServiceArgs, CxWebhookServiceDirectoryGenericWebServicePtr and CxWebhookServiceDirectoryGenericWebServicePtrOutput values.
+// You can construct a concrete instance of `CxWebhookServiceDirectoryGenericWebServicePtrInput` via:
+//
+//	        CxWebhookServiceDirectoryGenericWebServiceArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxWebhookServiceDirectoryGenericWebServicePtrInput interface {
+	pulumi.Input
+
+	ToCxWebhookServiceDirectoryGenericWebServicePtrOutput() CxWebhookServiceDirectoryGenericWebServicePtrOutput
+	ToCxWebhookServiceDirectoryGenericWebServicePtrOutputWithContext(context.Context) CxWebhookServiceDirectoryGenericWebServicePtrOutput
+}
+
+type cxWebhookServiceDirectoryGenericWebServicePtrType CxWebhookServiceDirectoryGenericWebServiceArgs
+
+func CxWebhookServiceDirectoryGenericWebServicePtr(v *CxWebhookServiceDirectoryGenericWebServiceArgs) CxWebhookServiceDirectoryGenericWebServicePtrInput {
+	return (*cxWebhookServiceDirectoryGenericWebServicePtrType)(v)
+}
+
+func (*cxWebhookServiceDirectoryGenericWebServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxWebhookServiceDirectoryGenericWebService)(nil)).Elem()
+}
+
+func (i *cxWebhookServiceDirectoryGenericWebServicePtrType) ToCxWebhookServiceDirectoryGenericWebServicePtrOutput() CxWebhookServiceDirectoryGenericWebServicePtrOutput {
+	return i.ToCxWebhookServiceDirectoryGenericWebServicePtrOutputWithContext(context.Background())
+}
+
+func (i *cxWebhookServiceDirectoryGenericWebServicePtrType) ToCxWebhookServiceDirectoryGenericWebServicePtrOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryGenericWebServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookServiceDirectoryGenericWebServicePtrOutput)
+}
+
+type CxWebhookServiceDirectoryGenericWebServiceOutput struct{ *pulumi.OutputState }
+
+func (CxWebhookServiceDirectoryGenericWebServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxWebhookServiceDirectoryGenericWebService)(nil)).Elem()
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServiceOutput) ToCxWebhookServiceDirectoryGenericWebServiceOutput() CxWebhookServiceDirectoryGenericWebServiceOutput {
+	return o
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServiceOutput) ToCxWebhookServiceDirectoryGenericWebServiceOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryGenericWebServiceOutput {
+	return o
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServiceOutput) ToCxWebhookServiceDirectoryGenericWebServicePtrOutput() CxWebhookServiceDirectoryGenericWebServicePtrOutput {
+	return o.ToCxWebhookServiceDirectoryGenericWebServicePtrOutputWithContext(context.Background())
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServiceOutput) ToCxWebhookServiceDirectoryGenericWebServicePtrOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryGenericWebServicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxWebhookServiceDirectoryGenericWebService) *CxWebhookServiceDirectoryGenericWebService {
+		return &v
+	}).(CxWebhookServiceDirectoryGenericWebServicePtrOutput)
+}
+
+// Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+func (o CxWebhookServiceDirectoryGenericWebServiceOutput) AllowedCaCerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebService) []string { return v.AllowedCaCerts }).(pulumi.StringArrayOutput)
+}
+
+// The HTTP request headers to send together with webhook requests.
+func (o CxWebhookServiceDirectoryGenericWebServiceOutput) RequestHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebService) map[string]string { return v.RequestHeaders }).(pulumi.StringMapOutput)
+}
+
+// Whether to use speech adaptation for speech recognition.
+func (o CxWebhookServiceDirectoryGenericWebServiceOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v CxWebhookServiceDirectoryGenericWebService) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type CxWebhookServiceDirectoryGenericWebServicePtrOutput struct{ *pulumi.OutputState }
+
+func (CxWebhookServiceDirectoryGenericWebServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxWebhookServiceDirectoryGenericWebService)(nil)).Elem()
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) ToCxWebhookServiceDirectoryGenericWebServicePtrOutput() CxWebhookServiceDirectoryGenericWebServicePtrOutput {
+	return o
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) ToCxWebhookServiceDirectoryGenericWebServicePtrOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryGenericWebServicePtrOutput {
+	return o
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) Elem() CxWebhookServiceDirectoryGenericWebServiceOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebService) CxWebhookServiceDirectoryGenericWebService {
+		if v != nil {
+			return *v
+		}
+		var ret CxWebhookServiceDirectoryGenericWebService
+		return ret
+	}).(CxWebhookServiceDirectoryGenericWebServiceOutput)
+}
+
+// Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) AllowedCaCerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebService) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedCaCerts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The HTTP request headers to send together with webhook requests.
+func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) RequestHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebService) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeaders
+	}).(pulumi.StringMapOutput)
+}
+
+// Whether to use speech adaptation for speech recognition.
+func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxWebhookServiceDirectoryGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
 type EntityTypeEntity struct {
 	// A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
 	// could be green onions.
@@ -5533,6 +6045,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageTextPtrInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentMessageTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxVersionNluSettingInput)(nil)).Elem(), CxVersionNluSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxVersionNluSettingArrayInput)(nil)).Elem(), CxVersionNluSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookGenericWebServiceInput)(nil)).Elem(), CxWebhookGenericWebServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookGenericWebServicePtrInput)(nil)).Elem(), CxWebhookGenericWebServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookServiceDirectoryInput)(nil)).Elem(), CxWebhookServiceDirectoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookServiceDirectoryPtrInput)(nil)).Elem(), CxWebhookServiceDirectoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookServiceDirectoryGenericWebServiceInput)(nil)).Elem(), CxWebhookServiceDirectoryGenericWebServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookServiceDirectoryGenericWebServicePtrInput)(nil)).Elem(), CxWebhookServiceDirectoryGenericWebServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityTypeEntityInput)(nil)).Elem(), EntityTypeEntityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityTypeEntityArrayInput)(nil)).Elem(), EntityTypeEntityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentFeatureInput)(nil)).Elem(), FulfillmentFeatureArgs{})
@@ -5609,6 +6127,12 @@ func init() {
 	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput{})
 	pulumi.RegisterOutputType(CxVersionNluSettingOutput{})
 	pulumi.RegisterOutputType(CxVersionNluSettingArrayOutput{})
+	pulumi.RegisterOutputType(CxWebhookGenericWebServiceOutput{})
+	pulumi.RegisterOutputType(CxWebhookGenericWebServicePtrOutput{})
+	pulumi.RegisterOutputType(CxWebhookServiceDirectoryOutput{})
+	pulumi.RegisterOutputType(CxWebhookServiceDirectoryPtrOutput{})
+	pulumi.RegisterOutputType(CxWebhookServiceDirectoryGenericWebServiceOutput{})
+	pulumi.RegisterOutputType(CxWebhookServiceDirectoryGenericWebServicePtrOutput{})
 	pulumi.RegisterOutputType(EntityTypeEntityOutput{})
 	pulumi.RegisterOutputType(EntityTypeEntityArrayOutput{})
 	pulumi.RegisterOutputType(FulfillmentFeatureOutput{})

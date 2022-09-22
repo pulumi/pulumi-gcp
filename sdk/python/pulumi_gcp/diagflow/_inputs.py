@@ -44,6 +44,9 @@ __all__ = [
     'CxPageTransitionRouteTriggerFulfillmentMessageArgs',
     'CxPageTransitionRouteTriggerFulfillmentMessageTextArgs',
     'CxVersionNluSettingArgs',
+    'CxWebhookGenericWebServiceArgs',
+    'CxWebhookServiceDirectoryArgs',
+    'CxWebhookServiceDirectoryGenericWebServiceArgs',
     'EntityTypeEntityArgs',
     'FulfillmentFeatureArgs',
     'FulfillmentGenericWebServiceArgs',
@@ -1849,6 +1852,153 @@ class CxVersionNluSettingArgs:
     @model_type.setter
     def model_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "model_type", value)
+
+
+@pulumi.input_type
+class CxWebhookGenericWebServiceArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[str],
+                 allowed_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 request_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] uri: Whether to use speech adaptation for speech recognition.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_ca_certs: Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] request_headers: The HTTP request headers to send together with webhook requests.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if allowed_ca_certs is not None:
+            pulumi.set(__self__, "allowed_ca_certs", allowed_ca_certs)
+        if request_headers is not None:
+            pulumi.set(__self__, "request_headers", request_headers)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        Whether to use speech adaptation for speech recognition.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter(name="allowedCaCerts")
+    def allowed_ca_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+        """
+        return pulumi.get(self, "allowed_ca_certs")
+
+    @allowed_ca_certs.setter
+    def allowed_ca_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_ca_certs", value)
+
+    @property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The HTTP request headers to send together with webhook requests.
+        """
+        return pulumi.get(self, "request_headers")
+
+    @request_headers.setter
+    def request_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "request_headers", value)
+
+
+@pulumi.input_type
+class CxWebhookServiceDirectoryArgs:
+    def __init__(__self__, *,
+                 generic_web_service: pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgs'],
+                 service: pulumi.Input[str]):
+        """
+        :param pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgs'] generic_web_service: The name of Service Directory service.
+               Structure is documented below.
+        :param pulumi.Input[str] service: The name of Service Directory service.
+        """
+        pulumi.set(__self__, "generic_web_service", generic_web_service)
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter(name="genericWebService")
+    def generic_web_service(self) -> pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgs']:
+        """
+        The name of Service Directory service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "generic_web_service")
+
+    @generic_web_service.setter
+    def generic_web_service(self, value: pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgs']):
+        pulumi.set(self, "generic_web_service", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[str]:
+        """
+        The name of Service Directory service.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service", value)
+
+
+@pulumi.input_type
+class CxWebhookServiceDirectoryGenericWebServiceArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[str],
+                 allowed_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 request_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] uri: Whether to use speech adaptation for speech recognition.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_ca_certs: Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] request_headers: The HTTP request headers to send together with webhook requests.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if allowed_ca_certs is not None:
+            pulumi.set(__self__, "allowed_ca_certs", allowed_ca_certs)
+        if request_headers is not None:
+            pulumi.set(__self__, "request_headers", request_headers)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        Whether to use speech adaptation for speech recognition.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter(name="allowedCaCerts")
+    def allowed_ca_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+        """
+        return pulumi.get(self, "allowed_ca_certs")
+
+    @allowed_ca_certs.setter
+    def allowed_ca_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_ca_certs", value)
+
+    @property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The HTTP request headers to send together with webhook requests.
+        """
+        return pulumi.get(self, "request_headers")
+
+    @request_headers.setter
+    def request_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "request_headers", value)
 
 
 @pulumi.input_type

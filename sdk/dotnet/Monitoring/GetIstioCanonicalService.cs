@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.Monitoring
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIstioCanonicalServiceResult> InvokeAsync(GetIstioCanonicalServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIstioCanonicalServiceResult>("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", args ?? new GetIstioCanonicalServiceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIstioCanonicalServiceResult>("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", args ?? new GetIstioCanonicalServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// A Monitoring Service is the root resource under which operational aspects of a
@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.Monitoring
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIstioCanonicalServiceResult> Invoke(GetIstioCanonicalServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIstioCanonicalServiceResult>("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", args ?? new GetIstioCanonicalServiceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetIstioCanonicalServiceResult>("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", args ?? new GetIstioCanonicalServiceInvokeArgs(), options.WithDefaults());
     }
 
 

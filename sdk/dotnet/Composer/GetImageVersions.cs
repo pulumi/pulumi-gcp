@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Composer
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetImageVersionsResult> InvokeAsync(GetImageVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? new GetImageVersionsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? new GetImageVersionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides access to available Cloud Composer versions in a region for a given project.
@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.Composer
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetImageVersionsResult> Invoke(GetImageVersionsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? new GetImageVersionsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetImageVersionsResult>("gcp:composer/getImageVersions:getImageVersions", args ?? new GetImageVersionsInvokeArgs(), options.WithDefaults());
     }
 
 
