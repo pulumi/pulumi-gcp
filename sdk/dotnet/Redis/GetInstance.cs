@@ -160,6 +160,7 @@ namespace Pulumi.Gcp.Redis
         public readonly int MemorySizeGb;
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetInstanceNodeResult> Nodes;
+        public readonly ImmutableArray<Outputs.GetInstancePersistenceConfigResult> PersistenceConfigs;
         public readonly string PersistenceIamIdentity;
         public readonly int Port;
         public readonly string? Project;
@@ -214,6 +215,8 @@ namespace Pulumi.Gcp.Redis
 
             ImmutableArray<Outputs.GetInstanceNodeResult> nodes,
 
+            ImmutableArray<Outputs.GetInstancePersistenceConfigResult> persistenceConfigs,
+
             string persistenceIamIdentity,
 
             int port,
@@ -262,6 +265,7 @@ namespace Pulumi.Gcp.Redis
             MemorySizeGb = memorySizeGb;
             Name = name;
             Nodes = nodes;
+            PersistenceConfigs = persistenceConfigs;
             PersistenceIamIdentity = persistenceIamIdentity;
             Port = port;
             Project = project;

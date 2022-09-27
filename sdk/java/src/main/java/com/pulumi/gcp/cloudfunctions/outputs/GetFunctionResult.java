@@ -26,6 +26,7 @@ public final class GetFunctionResult {
      */
     private Integer availableMemoryMb;
     private Map<String,Object> buildEnvironmentVariables;
+    private String buildWorkerPool;
     /**
      * @return Description of the function.
      * 
@@ -137,6 +138,9 @@ public final class GetFunctionResult {
     }
     public Map<String,Object> buildEnvironmentVariables() {
         return this.buildEnvironmentVariables;
+    }
+    public String buildWorkerPool() {
+        return this.buildWorkerPool;
     }
     /**
      * @return Description of the function.
@@ -306,6 +310,7 @@ public final class GetFunctionResult {
     public static final class Builder {
         private Integer availableMemoryMb;
         private Map<String,Object> buildEnvironmentVariables;
+        private String buildWorkerPool;
         private String description;
         private String dockerRegistry;
         private String dockerRepository;
@@ -339,6 +344,7 @@ public final class GetFunctionResult {
     	      Objects.requireNonNull(defaults);
     	      this.availableMemoryMb = defaults.availableMemoryMb;
     	      this.buildEnvironmentVariables = defaults.buildEnvironmentVariables;
+    	      this.buildWorkerPool = defaults.buildWorkerPool;
     	      this.description = defaults.description;
     	      this.dockerRegistry = defaults.dockerRegistry;
     	      this.dockerRepository = defaults.dockerRepository;
@@ -377,6 +383,11 @@ public final class GetFunctionResult {
         @CustomType.Setter
         public Builder buildEnvironmentVariables(Map<String,Object> buildEnvironmentVariables) {
             this.buildEnvironmentVariables = Objects.requireNonNull(buildEnvironmentVariables);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder buildWorkerPool(String buildWorkerPool) {
+            this.buildWorkerPool = Objects.requireNonNull(buildWorkerPool);
             return this;
         }
         @CustomType.Setter
@@ -535,6 +546,7 @@ public final class GetFunctionResult {
             final var o = new GetFunctionResult();
             o.availableMemoryMb = availableMemoryMb;
             o.buildEnvironmentVariables = buildEnvironmentVariables;
+            o.buildWorkerPool = buildWorkerPool;
             o.description = description;
             o.dockerRegistry = dockerRegistry;
             o.dockerRepository = dockerRepository;

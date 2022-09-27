@@ -64,6 +64,7 @@ export interface GetFunctionResult {
      */
     readonly availableMemoryMb: number;
     readonly buildEnvironmentVariables: {[key: string]: any};
+    readonly buildWorkerPool: string;
     /**
      * Description of the function.
      */

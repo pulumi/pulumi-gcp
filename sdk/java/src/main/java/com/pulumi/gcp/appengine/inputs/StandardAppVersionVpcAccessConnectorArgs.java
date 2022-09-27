@@ -7,11 +7,28 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class StandardAppVersionVpcAccessConnectorArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final StandardAppVersionVpcAccessConnectorArgs Empty = new StandardAppVersionVpcAccessConnectorArgs();
+
+    /**
+     * The egress setting for the connector, controlling what traffic is diverted through it.
+     * 
+     */
+    @Import(name="egressSetting")
+    private @Nullable Output<String> egressSetting;
+
+    /**
+     * @return The egress setting for the connector, controlling what traffic is diverted through it.
+     * 
+     */
+    public Optional<Output<String>> egressSetting() {
+        return Optional.ofNullable(this.egressSetting);
+    }
 
     /**
      * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
@@ -31,6 +48,7 @@ public final class StandardAppVersionVpcAccessConnectorArgs extends com.pulumi.r
     private StandardAppVersionVpcAccessConnectorArgs() {}
 
     private StandardAppVersionVpcAccessConnectorArgs(StandardAppVersionVpcAccessConnectorArgs $) {
+        this.egressSetting = $.egressSetting;
         this.name = $.name;
     }
 
@@ -50,6 +68,27 @@ public final class StandardAppVersionVpcAccessConnectorArgs extends com.pulumi.r
 
         public Builder(StandardAppVersionVpcAccessConnectorArgs defaults) {
             $ = new StandardAppVersionVpcAccessConnectorArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param egressSetting The egress setting for the connector, controlling what traffic is diverted through it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder egressSetting(@Nullable Output<String> egressSetting) {
+            $.egressSetting = egressSetting;
+            return this;
+        }
+
+        /**
+         * @param egressSetting The egress setting for the connector, controlling what traffic is diverted through it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder egressSetting(String egressSetting) {
+            return egressSetting(Output.of(egressSetting));
         }
 
         /**

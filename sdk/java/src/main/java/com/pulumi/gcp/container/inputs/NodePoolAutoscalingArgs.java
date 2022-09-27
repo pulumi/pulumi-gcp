@@ -17,20 +17,22 @@ public final class NodePoolAutoscalingArgs extends com.pulumi.resources.Resource
     public static final NodePoolAutoscalingArgs Empty = new NodePoolAutoscalingArgs();
 
     /**
-     * Location policy specifies the algorithm used when scaling-up the node pool.\
-     * &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones.\
-     * &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
-     * and reduce preemption risk for Spot VMs.
+     * Location policy specifies the algorithm used when
+     * scaling-up the node pool. Location policy is supported only in 1.24.1+ clusters.
+     * * &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones.
+     * * &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+     *   and reduce preemption risk for Spot VMs.
      * 
      */
     @Import(name="locationPolicy")
     private @Nullable Output<String> locationPolicy;
 
     /**
-     * @return Location policy specifies the algorithm used when scaling-up the node pool.\
-     * &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones.\
-     * &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
-     * and reduce preemption risk for Spot VMs.
+     * @return Location policy specifies the algorithm used when
+     * scaling-up the node pool. Location policy is supported only in 1.24.1+ clusters.
+     * * &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones.
+     * * &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+     *   and reduce preemption risk for Spot VMs.
      * 
      */
     public Optional<Output<String>> locationPolicy() {
@@ -74,6 +76,7 @@ public final class NodePoolAutoscalingArgs extends com.pulumi.resources.Resource
     /**
      * Total maximum number of nodes in the NodePool.
      * Must be &gt;= total_min_node_count. Cannot be used with per zone limits.
+     * Total size limits are supported only in 1.24.1+ clusters.
      * 
      */
     @Import(name="totalMaxNodeCount")
@@ -82,6 +85,7 @@ public final class NodePoolAutoscalingArgs extends com.pulumi.resources.Resource
     /**
      * @return Total maximum number of nodes in the NodePool.
      * Must be &gt;= total_min_node_count. Cannot be used with per zone limits.
+     * Total size limits are supported only in 1.24.1+ clusters.
      * 
      */
     public Optional<Output<Integer>> totalMaxNodeCount() {
@@ -91,6 +95,7 @@ public final class NodePoolAutoscalingArgs extends com.pulumi.resources.Resource
     /**
      * Total minimum number of nodes in the NodePool.
      * Must be &gt;=0 and &lt;= `total_max_node_count`. Cannot be used with per zone limits.
+     * Total size limits are supported only in 1.24.1+ clusters.
      * 
      */
     @Import(name="totalMinNodeCount")
@@ -99,6 +104,7 @@ public final class NodePoolAutoscalingArgs extends com.pulumi.resources.Resource
     /**
      * @return Total minimum number of nodes in the NodePool.
      * Must be &gt;=0 and &lt;= `total_max_node_count`. Cannot be used with per zone limits.
+     * Total size limits are supported only in 1.24.1+ clusters.
      * 
      */
     public Optional<Output<Integer>> totalMinNodeCount() {
@@ -134,10 +140,11 @@ public final class NodePoolAutoscalingArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param locationPolicy Location policy specifies the algorithm used when scaling-up the node pool.\
-         * &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones.\
-         * &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
-         * and reduce preemption risk for Spot VMs.
+         * @param locationPolicy Location policy specifies the algorithm used when
+         * scaling-up the node pool. Location policy is supported only in 1.24.1+ clusters.
+         * * &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones.
+         * * &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+         *   and reduce preemption risk for Spot VMs.
          * 
          * @return builder
          * 
@@ -148,10 +155,11 @@ public final class NodePoolAutoscalingArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param locationPolicy Location policy specifies the algorithm used when scaling-up the node pool.\
-         * &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones.\
-         * &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
-         * and reduce preemption risk for Spot VMs.
+         * @param locationPolicy Location policy specifies the algorithm used when
+         * scaling-up the node pool. Location policy is supported only in 1.24.1+ clusters.
+         * * &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones.
+         * * &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+         *   and reduce preemption risk for Spot VMs.
          * 
          * @return builder
          * 
@@ -209,6 +217,7 @@ public final class NodePoolAutoscalingArgs extends com.pulumi.resources.Resource
         /**
          * @param totalMaxNodeCount Total maximum number of nodes in the NodePool.
          * Must be &gt;= total_min_node_count. Cannot be used with per zone limits.
+         * Total size limits are supported only in 1.24.1+ clusters.
          * 
          * @return builder
          * 
@@ -221,6 +230,7 @@ public final class NodePoolAutoscalingArgs extends com.pulumi.resources.Resource
         /**
          * @param totalMaxNodeCount Total maximum number of nodes in the NodePool.
          * Must be &gt;= total_min_node_count. Cannot be used with per zone limits.
+         * Total size limits are supported only in 1.24.1+ clusters.
          * 
          * @return builder
          * 
@@ -232,6 +242,7 @@ public final class NodePoolAutoscalingArgs extends com.pulumi.resources.Resource
         /**
          * @param totalMinNodeCount Total minimum number of nodes in the NodePool.
          * Must be &gt;=0 and &lt;= `total_max_node_count`. Cannot be used with per zone limits.
+         * Total size limits are supported only in 1.24.1+ clusters.
          * 
          * @return builder
          * 
@@ -244,6 +255,7 @@ public final class NodePoolAutoscalingArgs extends com.pulumi.resources.Resource
         /**
          * @param totalMinNodeCount Total minimum number of nodes in the NodePool.
          * Must be &gt;=0 and &lt;= `total_max_node_count`. Cannot be used with per zone limits.
+         * Total size limits are supported only in 1.24.1+ clusters.
          * 
          * @return builder
          * 

@@ -165,6 +165,8 @@ type Function struct {
 	AvailableMemoryMb pulumi.IntPtrOutput `pulumi:"availableMemoryMb"`
 	// A set of key/value environment variable pairs available during build time.
 	BuildEnvironmentVariables pulumi.MapOutput `pulumi:"buildEnvironmentVariables"`
+	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+	BuildWorkerPool pulumi.StringPtrOutput `pulumi:"buildWorkerPool"`
 	// Description of the function.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
@@ -260,6 +262,8 @@ type functionState struct {
 	AvailableMemoryMb *int `pulumi:"availableMemoryMb"`
 	// A set of key/value environment variable pairs available during build time.
 	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
+	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+	BuildWorkerPool *string `pulumi:"buildWorkerPool"`
 	// Description of the function.
 	Description *string `pulumi:"description"`
 	// Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
@@ -324,6 +328,8 @@ type FunctionState struct {
 	AvailableMemoryMb pulumi.IntPtrInput
 	// A set of key/value environment variable pairs available during build time.
 	BuildEnvironmentVariables pulumi.MapInput
+	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+	BuildWorkerPool pulumi.StringPtrInput
 	// Description of the function.
 	Description pulumi.StringPtrInput
 	// Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
@@ -392,6 +398,8 @@ type functionArgs struct {
 	AvailableMemoryMb *int `pulumi:"availableMemoryMb"`
 	// A set of key/value environment variable pairs available during build time.
 	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
+	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+	BuildWorkerPool *string `pulumi:"buildWorkerPool"`
 	// Description of the function.
 	Description *string `pulumi:"description"`
 	// Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
@@ -457,6 +465,8 @@ type FunctionArgs struct {
 	AvailableMemoryMb pulumi.IntPtrInput
 	// A set of key/value environment variable pairs available during build time.
 	BuildEnvironmentVariables pulumi.MapInput
+	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+	BuildWorkerPool pulumi.StringPtrInput
 	// Description of the function.
 	Description pulumi.StringPtrInput
 	// Docker Registry to use for storing the function's Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
@@ -611,6 +621,11 @@ func (o FunctionOutput) AvailableMemoryMb() pulumi.IntPtrOutput {
 // A set of key/value environment variable pairs available during build time.
 func (o FunctionOutput) BuildEnvironmentVariables() pulumi.MapOutput {
 	return o.ApplyT(func(v *Function) pulumi.MapOutput { return v.BuildEnvironmentVariables }).(pulumi.MapOutput)
+}
+
+// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+func (o FunctionOutput) BuildWorkerPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.BuildWorkerPool }).(pulumi.StringPtrOutput)
 }
 
 // Description of the function.

@@ -85,6 +85,14 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<bool>? IgnoreUnknownValues { get; set; }
 
         /// <summary>
+        /// If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON.
+        /// For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited
+        /// GeoJSON: set to GEOJSON.
+        /// </summary>
+        [Input("jsonExtension")]
+        public Input<string>? JsonExtension { get; set; }
+
+        /// <summary>
         /// The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
         /// an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
         /// </summary>

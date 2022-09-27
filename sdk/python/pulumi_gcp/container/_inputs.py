@@ -6691,9 +6691,10 @@ class NodePoolAutoscalingArgs:
                  total_max_node_count: Optional[pulumi.Input[int]] = None,
                  total_min_node_count: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] location_policy: Location policy specifies the algorithm used when scaling-up the node pool. \\
-               "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones. \\
-               "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+        :param pulumi.Input[str] location_policy: Location policy specifies the algorithm used when
+               scaling-up the node pool. Location policy is supported only in 1.24.1+ clusters.
+               * "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.
+               * "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
                and reduce preemption risk for Spot VMs.
         :param pulumi.Input[int] max_node_count: Maximum number of nodes per zone in the NodePool.
                Must be >= min_node_count. Cannot be used with total limits.
@@ -6701,8 +6702,10 @@ class NodePoolAutoscalingArgs:
                Must be >=0 and <= `max_node_count`. Cannot be used with total limits.
         :param pulumi.Input[int] total_max_node_count: Total maximum number of nodes in the NodePool.
                Must be >= total_min_node_count. Cannot be used with per zone limits.
+               Total size limits are supported only in 1.24.1+ clusters.
         :param pulumi.Input[int] total_min_node_count: Total minimum number of nodes in the NodePool.
                Must be >=0 and <= `total_max_node_count`. Cannot be used with per zone limits.
+               Total size limits are supported only in 1.24.1+ clusters.
         """
         if location_policy is not None:
             pulumi.set(__self__, "location_policy", location_policy)
@@ -6719,9 +6722,10 @@ class NodePoolAutoscalingArgs:
     @pulumi.getter(name="locationPolicy")
     def location_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Location policy specifies the algorithm used when scaling-up the node pool. \\
-        "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones. \\
-        "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+        Location policy specifies the algorithm used when
+        scaling-up the node pool. Location policy is supported only in 1.24.1+ clusters.
+        * "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.
+        * "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
         and reduce preemption risk for Spot VMs.
         """
         return pulumi.get(self, "location_policy")
@@ -6762,6 +6766,7 @@ class NodePoolAutoscalingArgs:
         """
         Total maximum number of nodes in the NodePool.
         Must be >= total_min_node_count. Cannot be used with per zone limits.
+        Total size limits are supported only in 1.24.1+ clusters.
         """
         return pulumi.get(self, "total_max_node_count")
 
@@ -6775,6 +6780,7 @@ class NodePoolAutoscalingArgs:
         """
         Total minimum number of nodes in the NodePool.
         Must be >=0 and <= `total_max_node_count`. Cannot be used with per zone limits.
+        Total size limits are supported only in 1.24.1+ clusters.
         """
         return pulumi.get(self, "total_min_node_count")
 

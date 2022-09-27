@@ -6,6 +6,7 @@ package com.pulumi.gcp.storage.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -62,12 +63,28 @@ public final class TransferJobTransferSpecTransferOptionsArgs extends com.pulumi
         return Optional.ofNullable(this.overwriteObjectsAlreadyExistingInSink);
     }
 
+    /**
+     * When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+     * 
+     */
+    @Import(name="overwriteWhen")
+    private @Nullable Output<String> overwriteWhen;
+
+    /**
+     * @return When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+     * 
+     */
+    public Optional<Output<String>> overwriteWhen() {
+        return Optional.ofNullable(this.overwriteWhen);
+    }
+
     private TransferJobTransferSpecTransferOptionsArgs() {}
 
     private TransferJobTransferSpecTransferOptionsArgs(TransferJobTransferSpecTransferOptionsArgs $) {
         this.deleteObjectsFromSourceAfterTransfer = $.deleteObjectsFromSourceAfterTransfer;
         this.deleteObjectsUniqueInSink = $.deleteObjectsUniqueInSink;
         this.overwriteObjectsAlreadyExistingInSink = $.overwriteObjectsAlreadyExistingInSink;
+        this.overwriteWhen = $.overwriteWhen;
     }
 
     public static Builder builder() {
@@ -151,6 +168,27 @@ public final class TransferJobTransferSpecTransferOptionsArgs extends com.pulumi
          */
         public Builder overwriteObjectsAlreadyExistingInSink(Boolean overwriteObjectsAlreadyExistingInSink) {
             return overwriteObjectsAlreadyExistingInSink(Output.of(overwriteObjectsAlreadyExistingInSink));
+        }
+
+        /**
+         * @param overwriteWhen When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder overwriteWhen(@Nullable Output<String> overwriteWhen) {
+            $.overwriteWhen = overwriteWhen;
+            return this;
+        }
+
+        /**
+         * @param overwriteWhen When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder overwriteWhen(String overwriteWhen) {
+            return overwriteWhen(Output.of(overwriteWhen));
         }
 
         public TransferJobTransferSpecTransferOptionsArgs build() {

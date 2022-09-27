@@ -81,6 +81,13 @@ public final class JobLoad {
      */
     private @Nullable Boolean ignoreUnknownValues;
     /**
+     * @return If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON.
+     * For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited
+     * GeoJSON: set to GEOJSON.
+     * 
+     */
+    private @Nullable String jsonExtension;
+    /**
      * @return The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
      * an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
      * 
@@ -251,6 +258,15 @@ public final class JobLoad {
         return Optional.ofNullable(this.ignoreUnknownValues);
     }
     /**
+     * @return If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON.
+     * For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited
+     * GeoJSON: set to GEOJSON.
+     * 
+     */
+    public Optional<String> jsonExtension() {
+        return Optional.ofNullable(this.jsonExtension);
+    }
+    /**
      * @return The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
      * an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
      * 
@@ -376,6 +392,7 @@ public final class JobLoad {
         private @Nullable String encoding;
         private @Nullable String fieldDelimiter;
         private @Nullable Boolean ignoreUnknownValues;
+        private @Nullable String jsonExtension;
         private @Nullable Integer maxBadRecords;
         private @Nullable String nullMarker;
         private @Nullable List<String> projectionFields;
@@ -398,6 +415,7 @@ public final class JobLoad {
     	      this.encoding = defaults.encoding;
     	      this.fieldDelimiter = defaults.fieldDelimiter;
     	      this.ignoreUnknownValues = defaults.ignoreUnknownValues;
+    	      this.jsonExtension = defaults.jsonExtension;
     	      this.maxBadRecords = defaults.maxBadRecords;
     	      this.nullMarker = defaults.nullMarker;
     	      this.projectionFields = defaults.projectionFields;
@@ -453,6 +471,11 @@ public final class JobLoad {
         @CustomType.Setter
         public Builder ignoreUnknownValues(@Nullable Boolean ignoreUnknownValues) {
             this.ignoreUnknownValues = ignoreUnknownValues;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder jsonExtension(@Nullable String jsonExtension) {
+            this.jsonExtension = jsonExtension;
             return this;
         }
         @CustomType.Setter
@@ -525,6 +548,7 @@ public final class JobLoad {
             o.encoding = encoding;
             o.fieldDelimiter = fieldDelimiter;
             o.ignoreUnknownValues = ignoreUnknownValues;
+            o.jsonExtension = jsonExtension;
             o.maxBadRecords = maxBadRecords;
             o.nullMarker = nullMarker;
             o.projectionFields = projectionFields;

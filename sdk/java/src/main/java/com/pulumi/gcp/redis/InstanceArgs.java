@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.redis.inputs.InstanceMaintenancePolicyArgs;
 import com.pulumi.gcp.redis.inputs.InstanceMaintenanceScheduleArgs;
+import com.pulumi.gcp.redis.inputs.InstancePersistenceConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -233,6 +234,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Maintenance policy for an instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="persistenceConfig")
+    private @Nullable Output<InstancePersistenceConfigArgs> persistenceConfig;
+
+    /**
+     * @return Maintenance policy for an instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstancePersistenceConfigArgs>> persistenceConfig() {
+        return Optional.ofNullable(this.persistenceConfig);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -453,6 +471,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.maintenanceSchedule = $.maintenanceSchedule;
         this.memorySizeGb = $.memorySizeGb;
         this.name = $.name;
+        this.persistenceConfig = $.persistenceConfig;
         this.project = $.project;
         this.readReplicasMode = $.readReplicasMode;
         this.redisConfigs = $.redisConfigs;
@@ -765,6 +784,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param persistenceConfig Maintenance policy for an instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder persistenceConfig(@Nullable Output<InstancePersistenceConfigArgs> persistenceConfig) {
+            $.persistenceConfig = persistenceConfig;
+            return this;
+        }
+
+        /**
+         * @param persistenceConfig Maintenance policy for an instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder persistenceConfig(InstancePersistenceConfigArgs persistenceConfig) {
+            return persistenceConfig(Output.of(persistenceConfig));
         }
 
         /**

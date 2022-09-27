@@ -1741,6 +1741,7 @@ class JobLoadArgs:
                  encoding: Optional[pulumi.Input[str]] = None,
                  field_delimiter: Optional[pulumi.Input[str]] = None,
                  ignore_unknown_values: Optional[pulumi.Input[bool]] = None,
+                 json_extension: Optional[pulumi.Input[str]] = None,
                  max_bad_records: Optional[pulumi.Input[int]] = None,
                  null_marker: Optional[pulumi.Input[str]] = None,
                  projection_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1784,6 +1785,9 @@ class JobLoadArgs:
                The default value is false. The sourceFormat property determines what BigQuery treats as an extra value:
                CSV: Trailing columns
                JSON: Named values that don't match any column names
+        :param pulumi.Input[str] json_extension: If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON.
+               For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited
+               GeoJSON: set to GEOJSON.
         :param pulumi.Input[int] max_bad_records: The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
                an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
         :param pulumi.Input[str] null_marker: Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
@@ -1844,6 +1848,8 @@ class JobLoadArgs:
             pulumi.set(__self__, "field_delimiter", field_delimiter)
         if ignore_unknown_values is not None:
             pulumi.set(__self__, "ignore_unknown_values", ignore_unknown_values)
+        if json_extension is not None:
+            pulumi.set(__self__, "json_extension", json_extension)
         if max_bad_records is not None:
             pulumi.set(__self__, "max_bad_records", max_bad_records)
         if null_marker is not None:
@@ -2005,6 +2011,20 @@ class JobLoadArgs:
     @ignore_unknown_values.setter
     def ignore_unknown_values(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ignore_unknown_values", value)
+
+    @property
+    @pulumi.getter(name="jsonExtension")
+    def json_extension(self) -> Optional[pulumi.Input[str]]:
+        """
+        If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON.
+        For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited
+        GeoJSON: set to GEOJSON.
+        """
+        return pulumi.get(self, "json_extension")
+
+    @json_extension.setter
+    def json_extension(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "json_extension", value)
 
     @property
     @pulumi.getter(name="maxBadRecords")

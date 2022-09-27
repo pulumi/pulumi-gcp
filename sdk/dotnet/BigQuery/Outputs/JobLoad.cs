@@ -68,6 +68,12 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly bool? IgnoreUnknownValues;
         /// <summary>
+        /// If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON.
+        /// For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited
+        /// GeoJSON: set to GEOJSON.
+        /// </summary>
+        public readonly string? JsonExtension;
+        /// <summary>
         /// The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
         /// an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
         /// </summary>
@@ -165,6 +171,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             bool? ignoreUnknownValues,
 
+            string? jsonExtension,
+
             int? maxBadRecords,
 
             string? nullMarker,
@@ -194,6 +202,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             Encoding = encoding;
             FieldDelimiter = fieldDelimiter;
             IgnoreUnknownValues = ignoreUnknownValues;
+            JsonExtension = jsonExtension;
             MaxBadRecords = maxBadRecords;
             NullMarker = nullMarker;
             ProjectionFields = projectionFields;

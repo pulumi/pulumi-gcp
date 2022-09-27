@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// Whether overwriting objects that already exist in the sink is allowed.
         /// </summary>
         public readonly bool? OverwriteObjectsAlreadyExistingInSink;
+        /// <summary>
+        /// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+        /// </summary>
+        public readonly string? OverwriteWhen;
 
         [OutputConstructor]
         private TransferJobTransferSpecTransferOptions(
@@ -33,11 +37,14 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             bool? deleteObjectsUniqueInSink,
 
-            bool? overwriteObjectsAlreadyExistingInSink)
+            bool? overwriteObjectsAlreadyExistingInSink,
+
+            string? overwriteWhen)
         {
             DeleteObjectsFromSourceAfterTransfer = deleteObjectsFromSourceAfterTransfer;
             DeleteObjectsUniqueInSink = deleteObjectsUniqueInSink;
             OverwriteObjectsAlreadyExistingInSink = overwriteObjectsAlreadyExistingInSink;
+            OverwriteWhen = overwriteWhen;
         }
     }
 }

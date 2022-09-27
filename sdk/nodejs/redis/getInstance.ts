@@ -81,6 +81,7 @@ export interface GetInstanceResult {
     readonly memorySizeGb: number;
     readonly name: string;
     readonly nodes: outputs.redis.GetInstanceNode[];
+    readonly persistenceConfigs: outputs.redis.GetInstancePersistenceConfig[];
     readonly persistenceIamIdentity: string;
     readonly port: number;
     readonly project?: string;

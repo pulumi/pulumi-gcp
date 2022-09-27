@@ -193,6 +193,25 @@ public final class JobLoadArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON.
+     * For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited
+     * GeoJSON: set to GEOJSON.
+     * 
+     */
+    @Import(name="jsonExtension")
+    private @Nullable Output<String> jsonExtension;
+
+    /**
+     * @return If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON.
+     * For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited
+     * GeoJSON: set to GEOJSON.
+     * 
+     */
+    public Optional<Output<String>> jsonExtension() {
+        return Optional.ofNullable(this.jsonExtension);
+    }
+
+    /**
      * The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
      * an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
      * 
@@ -428,6 +447,7 @@ public final class JobLoadArgs extends com.pulumi.resources.ResourceArgs {
         this.encoding = $.encoding;
         this.fieldDelimiter = $.fieldDelimiter;
         this.ignoreUnknownValues = $.ignoreUnknownValues;
+        this.jsonExtension = $.jsonExtension;
         this.maxBadRecords = $.maxBadRecords;
         this.nullMarker = $.nullMarker;
         this.projectionFields = $.projectionFields;
@@ -681,6 +701,31 @@ public final class JobLoadArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ignoreUnknownValues(Boolean ignoreUnknownValues) {
             return ignoreUnknownValues(Output.of(ignoreUnknownValues));
+        }
+
+        /**
+         * @param jsonExtension If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON.
+         * For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited
+         * GeoJSON: set to GEOJSON.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jsonExtension(@Nullable Output<String> jsonExtension) {
+            $.jsonExtension = jsonExtension;
+            return this;
+        }
+
+        /**
+         * @param jsonExtension If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON.
+         * For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited
+         * GeoJSON: set to GEOJSON.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jsonExtension(String jsonExtension) {
+            return jsonExtension(Output.of(jsonExtension));
         }
 
         /**

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.redis.inputs.InstanceMaintenancePolicyArgs;
 import com.pulumi.gcp.redis.inputs.InstanceMaintenanceScheduleArgs;
 import com.pulumi.gcp.redis.inputs.InstanceNodeArgs;
+import com.pulumi.gcp.redis.inputs.InstancePersistenceConfigArgs;
 import com.pulumi.gcp.redis.inputs.InstanceServerCaCertArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -321,6 +322,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Maintenance policy for an instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="persistenceConfig")
+    private @Nullable Output<InstancePersistenceConfigArgs> persistenceConfig;
+
+    /**
+     * @return Maintenance policy for an instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstancePersistenceConfigArgs>> persistenceConfig() {
+        return Optional.ofNullable(this.persistenceConfig);
+    }
+
+    /**
      * Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
      * &#34;serviceAccount:&#34;. The value may change over time for a given instance so should be checked before each import/export
      * operation.
@@ -631,6 +649,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.memorySizeGb = $.memorySizeGb;
         this.name = $.name;
         this.nodes = $.nodes;
+        this.persistenceConfig = $.persistenceConfig;
         this.persistenceIamIdentity = $.persistenceIamIdentity;
         this.port = $.port;
         this.project = $.project;
@@ -1073,6 +1092,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nodes(InstanceNodeArgs... nodes) {
             return nodes(List.of(nodes));
+        }
+
+        /**
+         * @param persistenceConfig Maintenance policy for an instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder persistenceConfig(@Nullable Output<InstancePersistenceConfigArgs> persistenceConfig) {
+            $.persistenceConfig = persistenceConfig;
+            return this;
+        }
+
+        /**
+         * @param persistenceConfig Maintenance policy for an instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder persistenceConfig(InstancePersistenceConfigArgs persistenceConfig) {
+            return persistenceConfig(Output.of(persistenceConfig));
         }
 
         /**

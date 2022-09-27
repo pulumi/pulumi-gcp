@@ -13,6 +13,7 @@ import com.pulumi.gcp.redis.inputs.InstanceState;
 import com.pulumi.gcp.redis.outputs.InstanceMaintenancePolicy;
 import com.pulumi.gcp.redis.outputs.InstanceMaintenanceSchedule;
 import com.pulumi.gcp.redis.outputs.InstanceNode;
+import com.pulumi.gcp.redis.outputs.InstancePersistenceConfig;
 import com.pulumi.gcp.redis.outputs.InstanceServerCaCert;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -114,6 +115,43 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Redis Instance Full With Persistence Config
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.redis.Instance;
+ * import com.pulumi.gcp.redis.InstanceArgs;
+ * import com.pulumi.gcp.redis.inputs.InstancePersistenceConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cache_persis = new Instance(&#34;cache-persis&#34;, InstanceArgs.builder()        
+ *             .alternativeLocationId(&#34;us-central1-f&#34;)
+ *             .locationId(&#34;us-central1-a&#34;)
+ *             .memorySizeGb(1)
+ *             .persistenceConfig(InstancePersistenceConfigArgs.builder()
+ *                 .persistenceMode(&#34;RDB&#34;)
+ *                 .rdbSnapshotPeriod(&#34;TWELVE_HOURS&#34;)
+ *                 .build())
+ *             .tier(&#34;STANDARD_HA&#34;)
  *             .build());
  * 
  *     }
@@ -591,6 +629,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<List<InstanceNode>> nodes() {
         return this.nodes;
+    }
+    /**
+     * Maintenance policy for an instance.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="persistenceConfig", type=InstancePersistenceConfig.class, parameters={})
+    private Output<InstancePersistenceConfig> persistenceConfig;
+
+    /**
+     * @return Maintenance policy for an instance.
+     * Structure is documented below.
+     * 
+     */
+    public Output<InstancePersistenceConfig> persistenceConfig() {
+        return this.persistenceConfig;
     }
     /**
      * Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is

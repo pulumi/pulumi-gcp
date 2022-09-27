@@ -148,6 +148,12 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<ImmutableDictionary<string, object>?> BuildEnvironmentVariables { get; private set; } = null!;
 
         /// <summary>
+        /// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+        /// </summary>
+        [Output("buildWorkerPool")]
+        public Output<string?> BuildWorkerPool { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the function.
         /// </summary>
         [Output("description")]
@@ -377,6 +383,12 @@ namespace Pulumi.Gcp.CloudFunctions
         }
 
         /// <summary>
+        /// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+        /// </summary>
+        [Input("buildWorkerPool")]
+        public Input<string>? BuildWorkerPool { get; set; }
+
+        /// <summary>
         /// Description of the function.
         /// </summary>
         [Input("description")]
@@ -590,6 +602,12 @@ namespace Pulumi.Gcp.CloudFunctions
             get => _buildEnvironmentVariables ?? (_buildEnvironmentVariables = new InputMap<object>());
             set => _buildEnvironmentVariables = value;
         }
+
+        /// <summary>
+        /// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+        /// </summary>
+        [Input("buildWorkerPool")]
+        public Input<string>? BuildWorkerPool { get; set; }
 
         /// <summary>
         /// Description of the function.

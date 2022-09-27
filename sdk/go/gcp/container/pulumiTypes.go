@@ -21836,10 +21836,11 @@ func (o ClusterWorkloadIdentityConfigPtrOutput) WorkloadPool() pulumi.StringPtrO
 }
 
 type NodePoolAutoscaling struct {
-	// Location policy specifies the algorithm used when scaling-up the node pool.\
-	// "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.\
-	// "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
-	// and reduce preemption risk for Spot VMs.
+	// Location policy specifies the algorithm used when
+	// scaling-up the node pool. Location policy is supported only in 1.24.1+ clusters.
+	// * "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.
+	// * "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+	//   and reduce preemption risk for Spot VMs.
 	LocationPolicy *string `pulumi:"locationPolicy"`
 	// Maximum number of nodes per zone in the NodePool.
 	// Must be >= min_node_count. Cannot be used with total limits.
@@ -21849,9 +21850,11 @@ type NodePoolAutoscaling struct {
 	MinNodeCount *int `pulumi:"minNodeCount"`
 	// Total maximum number of nodes in the NodePool.
 	// Must be >= total_min_node_count. Cannot be used with per zone limits.
+	// Total size limits are supported only in 1.24.1+ clusters.
 	TotalMaxNodeCount *int `pulumi:"totalMaxNodeCount"`
 	// Total minimum number of nodes in the NodePool.
 	// Must be >=0 and <= `totalMaxNodeCount`. Cannot be used with per zone limits.
+	// Total size limits are supported only in 1.24.1+ clusters.
 	TotalMinNodeCount *int `pulumi:"totalMinNodeCount"`
 }
 
@@ -21867,10 +21870,11 @@ type NodePoolAutoscalingInput interface {
 }
 
 type NodePoolAutoscalingArgs struct {
-	// Location policy specifies the algorithm used when scaling-up the node pool.\
-	// "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.\
-	// "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
-	// and reduce preemption risk for Spot VMs.
+	// Location policy specifies the algorithm used when
+	// scaling-up the node pool. Location policy is supported only in 1.24.1+ clusters.
+	// * "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.
+	// * "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+	//   and reduce preemption risk for Spot VMs.
 	LocationPolicy pulumi.StringPtrInput `pulumi:"locationPolicy"`
 	// Maximum number of nodes per zone in the NodePool.
 	// Must be >= min_node_count. Cannot be used with total limits.
@@ -21880,9 +21884,11 @@ type NodePoolAutoscalingArgs struct {
 	MinNodeCount pulumi.IntPtrInput `pulumi:"minNodeCount"`
 	// Total maximum number of nodes in the NodePool.
 	// Must be >= total_min_node_count. Cannot be used with per zone limits.
+	// Total size limits are supported only in 1.24.1+ clusters.
 	TotalMaxNodeCount pulumi.IntPtrInput `pulumi:"totalMaxNodeCount"`
 	// Total minimum number of nodes in the NodePool.
 	// Must be >=0 and <= `totalMaxNodeCount`. Cannot be used with per zone limits.
+	// Total size limits are supported only in 1.24.1+ clusters.
 	TotalMinNodeCount pulumi.IntPtrInput `pulumi:"totalMinNodeCount"`
 }
 
@@ -21963,10 +21969,11 @@ func (o NodePoolAutoscalingOutput) ToNodePoolAutoscalingPtrOutputWithContext(ctx
 	}).(NodePoolAutoscalingPtrOutput)
 }
 
-// Location policy specifies the algorithm used when scaling-up the node pool.\
-// "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.\
-// "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
-// and reduce preemption risk for Spot VMs.
+// Location policy specifies the algorithm used when
+// scaling-up the node pool. Location policy is supported only in 1.24.1+ clusters.
+//   - "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.
+//   - "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+//     and reduce preemption risk for Spot VMs.
 func (o NodePoolAutoscalingOutput) LocationPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolAutoscaling) *string { return v.LocationPolicy }).(pulumi.StringPtrOutput)
 }
@@ -21985,12 +21992,14 @@ func (o NodePoolAutoscalingOutput) MinNodeCount() pulumi.IntPtrOutput {
 
 // Total maximum number of nodes in the NodePool.
 // Must be >= total_min_node_count. Cannot be used with per zone limits.
+// Total size limits are supported only in 1.24.1+ clusters.
 func (o NodePoolAutoscalingOutput) TotalMaxNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolAutoscaling) *int { return v.TotalMaxNodeCount }).(pulumi.IntPtrOutput)
 }
 
 // Total minimum number of nodes in the NodePool.
 // Must be >=0 and <= `totalMaxNodeCount`. Cannot be used with per zone limits.
+// Total size limits are supported only in 1.24.1+ clusters.
 func (o NodePoolAutoscalingOutput) TotalMinNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolAutoscaling) *int { return v.TotalMinNodeCount }).(pulumi.IntPtrOutput)
 }
@@ -22019,10 +22028,11 @@ func (o NodePoolAutoscalingPtrOutput) Elem() NodePoolAutoscalingOutput {
 	}).(NodePoolAutoscalingOutput)
 }
 
-// Location policy specifies the algorithm used when scaling-up the node pool.\
-// "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.\
-// "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
-// and reduce preemption risk for Spot VMs.
+// Location policy specifies the algorithm used when
+// scaling-up the node pool. Location policy is supported only in 1.24.1+ clusters.
+//   - "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.
+//   - "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+//     and reduce preemption risk for Spot VMs.
 func (o NodePoolAutoscalingPtrOutput) LocationPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolAutoscaling) *string {
 		if v == nil {
@@ -22056,6 +22066,7 @@ func (o NodePoolAutoscalingPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
 
 // Total maximum number of nodes in the NodePool.
 // Must be >= total_min_node_count. Cannot be used with per zone limits.
+// Total size limits are supported only in 1.24.1+ clusters.
 func (o NodePoolAutoscalingPtrOutput) TotalMaxNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolAutoscaling) *int {
 		if v == nil {
@@ -22067,6 +22078,7 @@ func (o NodePoolAutoscalingPtrOutput) TotalMaxNodeCount() pulumi.IntPtrOutput {
 
 // Total minimum number of nodes in the NodePool.
 // Must be >=0 and <= `totalMaxNodeCount`. Cannot be used with per zone limits.
+// Total size limits are supported only in 1.24.1+ clusters.
 func (o NodePoolAutoscalingPtrOutput) TotalMinNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolAutoscaling) *int {
 		if v == nil {

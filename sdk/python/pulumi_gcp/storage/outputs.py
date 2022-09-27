@@ -1647,6 +1647,8 @@ class TransferJobTransferSpecTransferOptions(dict):
             suggest = "delete_objects_unique_in_sink"
         elif key == "overwriteObjectsAlreadyExistingInSink":
             suggest = "overwrite_objects_already_existing_in_sink"
+        elif key == "overwriteWhen":
+            suggest = "overwrite_when"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpecTransferOptions. Access the value via the '{suggest}' property getter instead.")
@@ -1662,12 +1664,14 @@ class TransferJobTransferSpecTransferOptions(dict):
     def __init__(__self__, *,
                  delete_objects_from_source_after_transfer: Optional[bool] = None,
                  delete_objects_unique_in_sink: Optional[bool] = None,
-                 overwrite_objects_already_existing_in_sink: Optional[bool] = None):
+                 overwrite_objects_already_existing_in_sink: Optional[bool] = None,
+                 overwrite_when: Optional[str] = None):
         """
         :param bool delete_objects_from_source_after_transfer: Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
         :param bool delete_objects_unique_in_sink: Whether objects that exist only in the sink should be deleted. Note that this option and
                `delete_objects_from_source_after_transfer` are mutually exclusive.
         :param bool overwrite_objects_already_existing_in_sink: Whether overwriting objects that already exist in the sink is allowed.
+        :param str overwrite_when: When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
         """
         if delete_objects_from_source_after_transfer is not None:
             pulumi.set(__self__, "delete_objects_from_source_after_transfer", delete_objects_from_source_after_transfer)
@@ -1675,6 +1679,8 @@ class TransferJobTransferSpecTransferOptions(dict):
             pulumi.set(__self__, "delete_objects_unique_in_sink", delete_objects_unique_in_sink)
         if overwrite_objects_already_existing_in_sink is not None:
             pulumi.set(__self__, "overwrite_objects_already_existing_in_sink", overwrite_objects_already_existing_in_sink)
+        if overwrite_when is not None:
+            pulumi.set(__self__, "overwrite_when", overwrite_when)
 
     @property
     @pulumi.getter(name="deleteObjectsFromSourceAfterTransfer")
@@ -1700,6 +1706,14 @@ class TransferJobTransferSpecTransferOptions(dict):
         Whether overwriting objects that already exist in the sink is allowed.
         """
         return pulumi.get(self, "overwrite_objects_already_existing_in_sink")
+
+    @property
+    @pulumi.getter(name="overwriteWhen")
+    def overwrite_when(self) -> Optional[str]:
+        """
+        When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+        """
+        return pulumi.get(self, "overwrite_when")
 
 
 @pulumi.output_type

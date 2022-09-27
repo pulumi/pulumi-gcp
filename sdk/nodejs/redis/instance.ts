@@ -61,6 +61,23 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Redis Instance Full With Persistence Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cache_persis = new gcp.redis.Instance("cache-persis", {
+ *     alternativeLocationId: "us-central1-f",
+ *     locationId: "us-central1-a",
+ *     memorySizeGb: 1,
+ *     persistenceConfig: {
+ *         persistenceMode: "RDB",
+ *         rdbSnapshotPeriod: "TWELVE_HOURS",
+ *     },
+ *     tier: "STANDARD_HA",
+ * });
+ * ```
  * ### Redis Instance Private Service
  *
  * ```typescript
@@ -286,6 +303,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly nodes!: pulumi.Output<outputs.redis.InstanceNode[]>;
     /**
+     * Maintenance policy for an instance.
+     * Structure is documented below.
+     */
+    public readonly persistenceConfig!: pulumi.Output<outputs.redis.InstancePersistenceConfig>;
+    /**
      * Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
      * "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
      * operation.
@@ -409,6 +431,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["memorySizeGb"] = state ? state.memorySizeGb : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodes"] = state ? state.nodes : undefined;
+            resourceInputs["persistenceConfig"] = state ? state.persistenceConfig : undefined;
             resourceInputs["persistenceIamIdentity"] = state ? state.persistenceIamIdentity : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -441,6 +464,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["maintenanceSchedule"] = args ? args.maintenanceSchedule : undefined;
             resourceInputs["memorySizeGb"] = args ? args.memorySizeGb : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["persistenceConfig"] = args ? args.persistenceConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["readReplicasMode"] = args ? args.readReplicasMode : undefined;
             resourceInputs["redisConfigs"] = args ? args.redisConfigs : undefined;
@@ -560,6 +584,11 @@ export interface InstanceState {
      * Output only. Info per node.
      */
     nodes?: pulumi.Input<pulumi.Input<inputs.redis.InstanceNode>[]>;
+    /**
+     * Maintenance policy for an instance.
+     * Structure is documented below.
+     */
+    persistenceConfig?: pulumi.Input<inputs.redis.InstancePersistenceConfig>;
     /**
      * Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
      * "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
@@ -723,6 +752,11 @@ export interface InstanceArgs {
      * The ID of the instance or a fully qualified identifier for the instance.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Maintenance policy for an instance.
+     * Structure is documented below.
+     */
+    persistenceConfig?: pulumi.Input<inputs.redis.InstancePersistenceConfig>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class SecurityPolicyAdvancedOptionsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Custom configuration to apply the JSON parsing. Only applicable when
+        /// `json_parsing` is set to `STANDARD`. Structure is documented below.
+        /// </summary>
+        [Input("jsonCustomConfig")]
+        public Input<Inputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs>? JsonCustomConfig { get; set; }
+
+        /// <summary>
         /// Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
         /// * DISABLED - Don't parse JSON payloads in POST bodies.
         /// * STANDARD - Parse JSON payloads in POST bodies.

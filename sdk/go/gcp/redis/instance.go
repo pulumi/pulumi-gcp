@@ -101,6 +101,38 @@ import (
 //	}
 //
 // ```
+// ### Redis Instance Full With Persistence Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := redis.NewInstance(ctx, "cache-persis", &redis.InstanceArgs{
+//				AlternativeLocationId: pulumi.String("us-central1-f"),
+//				LocationId:            pulumi.String("us-central1-a"),
+//				MemorySizeGb:          pulumi.Int(1),
+//				PersistenceConfig: &redis.InstancePersistenceConfigArgs{
+//					PersistenceMode:   pulumi.String("RDB"),
+//					RdbSnapshotPeriod: pulumi.String("TWELVE_HOURS"),
+//				},
+//				Tier: pulumi.String("STANDARD_HA"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Redis Instance Private Service
 //
 // ```go
@@ -350,6 +382,9 @@ type Instance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Output only. Info per node.
 	Nodes InstanceNodeArrayOutput `pulumi:"nodes"`
+	// Maintenance policy for an instance.
+	// Structure is documented below.
+	PersistenceConfig InstancePersistenceConfigOutput `pulumi:"persistenceConfig"`
 	// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
 	// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
 	// operation.
@@ -502,6 +537,9 @@ type instanceState struct {
 	Name *string `pulumi:"name"`
 	// Output only. Info per node.
 	Nodes []InstanceNode `pulumi:"nodes"`
+	// Maintenance policy for an instance.
+	// Structure is documented below.
+	PersistenceConfig *InstancePersistenceConfig `pulumi:"persistenceConfig"`
 	// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
 	// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
 	// operation.
@@ -623,6 +661,9 @@ type InstanceState struct {
 	Name pulumi.StringPtrInput
 	// Output only. Info per node.
 	Nodes InstanceNodeArrayInput
+	// Maintenance policy for an instance.
+	// Structure is documented below.
+	PersistenceConfig InstancePersistenceConfigPtrInput
 	// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
 	// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
 	// operation.
@@ -733,6 +774,9 @@ type instanceArgs struct {
 	MemorySizeGb int `pulumi:"memorySizeGb"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name *string `pulumi:"name"`
+	// Maintenance policy for an instance.
+	// Structure is documented below.
+	PersistenceConfig *InstancePersistenceConfig `pulumi:"persistenceConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -825,6 +869,9 @@ type InstanceArgs struct {
 	MemorySizeGb pulumi.IntInput
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringPtrInput
+	// Maintenance policy for an instance.
+	// Structure is documented below.
+	PersistenceConfig InstancePersistenceConfigPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -1066,6 +1113,12 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 // Output only. Info per node.
 func (o InstanceOutput) Nodes() InstanceNodeArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceNodeArrayOutput { return v.Nodes }).(InstanceNodeArrayOutput)
+}
+
+// Maintenance policy for an instance.
+// Structure is documented below.
+func (o InstanceOutput) PersistenceConfig() InstancePersistenceConfigOutput {
+	return o.ApplyT(func(v *Instance) InstancePersistenceConfigOutput { return v.PersistenceConfig }).(InstancePersistenceConfigOutput)
 }
 
 // Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is

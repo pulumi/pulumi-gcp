@@ -13,10 +13,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodePoolAutoscaling {
     /**
-     * @return Location policy specifies the algorithm used when scaling-up the node pool.\
-     * &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones.\
-     * &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
-     * and reduce preemption risk for Spot VMs.
+     * @return Location policy specifies the algorithm used when
+     * scaling-up the node pool. Location policy is supported only in 1.24.1+ clusters.
+     * * &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones.
+     * * &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+     *   and reduce preemption risk for Spot VMs.
      * 
      */
     private @Nullable String locationPolicy;
@@ -35,22 +36,25 @@ public final class NodePoolAutoscaling {
     /**
      * @return Total maximum number of nodes in the NodePool.
      * Must be &gt;= total_min_node_count. Cannot be used with per zone limits.
+     * Total size limits are supported only in 1.24.1+ clusters.
      * 
      */
     private @Nullable Integer totalMaxNodeCount;
     /**
      * @return Total minimum number of nodes in the NodePool.
      * Must be &gt;=0 and &lt;= `total_max_node_count`. Cannot be used with per zone limits.
+     * Total size limits are supported only in 1.24.1+ clusters.
      * 
      */
     private @Nullable Integer totalMinNodeCount;
 
     private NodePoolAutoscaling() {}
     /**
-     * @return Location policy specifies the algorithm used when scaling-up the node pool.\
-     * &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones.\
-     * &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
-     * and reduce preemption risk for Spot VMs.
+     * @return Location policy specifies the algorithm used when
+     * scaling-up the node pool. Location policy is supported only in 1.24.1+ clusters.
+     * * &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones.
+     * * &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+     *   and reduce preemption risk for Spot VMs.
      * 
      */
     public Optional<String> locationPolicy() {
@@ -75,6 +79,7 @@ public final class NodePoolAutoscaling {
     /**
      * @return Total maximum number of nodes in the NodePool.
      * Must be &gt;= total_min_node_count. Cannot be used with per zone limits.
+     * Total size limits are supported only in 1.24.1+ clusters.
      * 
      */
     public Optional<Integer> totalMaxNodeCount() {
@@ -83,6 +88,7 @@ public final class NodePoolAutoscaling {
     /**
      * @return Total minimum number of nodes in the NodePool.
      * Must be &gt;=0 and &lt;= `total_max_node_count`. Cannot be used with per zone limits.
+     * Total size limits are supported only in 1.24.1+ clusters.
      * 
      */
     public Optional<Integer> totalMinNodeCount() {
