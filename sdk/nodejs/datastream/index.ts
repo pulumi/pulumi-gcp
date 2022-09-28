@@ -9,7 +9,12 @@ export { ConnectionProfileArgs, ConnectionProfileState } from "./connectionProfi
 export type ConnectionProfile = import("./connectionProfile").ConnectionProfile;
 export const ConnectionProfile: typeof import("./connectionProfile").ConnectionProfile = null as any;
 
+export { PrivateConnectionArgs, PrivateConnectionState } from "./privateConnection";
+export type PrivateConnection = import("./privateConnection").PrivateConnection;
+export const PrivateConnection: typeof import("./privateConnection").PrivateConnection = null as any;
+
 utilities.lazyLoad(exports, ["ConnectionProfile"], () => require("./connectionProfile"));
+utilities.lazyLoad(exports, ["PrivateConnection"], () => require("./privateConnection"));
 
 const _module = {
     version: utilities.getVersion(),
@@ -17,9 +22,12 @@ const _module = {
         switch (type) {
             case "gcp:datastream/connectionProfile:ConnectionProfile":
                 return new ConnectionProfile(name, <any>undefined, { urn })
+            case "gcp:datastream/privateConnection:PrivateConnection":
+                return new PrivateConnection(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "datastream/connectionProfile", _module)
+pulumi.runtime.registerResourceModule("gcp", "datastream/privateConnection", _module)

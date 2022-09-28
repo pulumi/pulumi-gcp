@@ -1341,6 +1341,166 @@ func (o ConnectionProfilePostgresqlProfilePtrOutput) Username() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+type PrivateConnectionVpcPeeringConfig struct {
+	// A free subnet for peering. (CIDR of /29)
+	Subnet string `pulumi:"subnet"`
+	// Fully qualified name of the VPC that Datastream will peer to.
+	// Format: projects/{project}/global/{networks}/{name}
+	Vpc string `pulumi:"vpc"`
+}
+
+// PrivateConnectionVpcPeeringConfigInput is an input type that accepts PrivateConnectionVpcPeeringConfigArgs and PrivateConnectionVpcPeeringConfigOutput values.
+// You can construct a concrete instance of `PrivateConnectionVpcPeeringConfigInput` via:
+//
+//	PrivateConnectionVpcPeeringConfigArgs{...}
+type PrivateConnectionVpcPeeringConfigInput interface {
+	pulumi.Input
+
+	ToPrivateConnectionVpcPeeringConfigOutput() PrivateConnectionVpcPeeringConfigOutput
+	ToPrivateConnectionVpcPeeringConfigOutputWithContext(context.Context) PrivateConnectionVpcPeeringConfigOutput
+}
+
+type PrivateConnectionVpcPeeringConfigArgs struct {
+	// A free subnet for peering. (CIDR of /29)
+	Subnet pulumi.StringInput `pulumi:"subnet"`
+	// Fully qualified name of the VPC that Datastream will peer to.
+	// Format: projects/{project}/global/{networks}/{name}
+	Vpc pulumi.StringInput `pulumi:"vpc"`
+}
+
+func (PrivateConnectionVpcPeeringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateConnectionVpcPeeringConfig)(nil)).Elem()
+}
+
+func (i PrivateConnectionVpcPeeringConfigArgs) ToPrivateConnectionVpcPeeringConfigOutput() PrivateConnectionVpcPeeringConfigOutput {
+	return i.ToPrivateConnectionVpcPeeringConfigOutputWithContext(context.Background())
+}
+
+func (i PrivateConnectionVpcPeeringConfigArgs) ToPrivateConnectionVpcPeeringConfigOutputWithContext(ctx context.Context) PrivateConnectionVpcPeeringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionVpcPeeringConfigOutput)
+}
+
+func (i PrivateConnectionVpcPeeringConfigArgs) ToPrivateConnectionVpcPeeringConfigPtrOutput() PrivateConnectionVpcPeeringConfigPtrOutput {
+	return i.ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateConnectionVpcPeeringConfigArgs) ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(ctx context.Context) PrivateConnectionVpcPeeringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionVpcPeeringConfigOutput).ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(ctx)
+}
+
+// PrivateConnectionVpcPeeringConfigPtrInput is an input type that accepts PrivateConnectionVpcPeeringConfigArgs, PrivateConnectionVpcPeeringConfigPtr and PrivateConnectionVpcPeeringConfigPtrOutput values.
+// You can construct a concrete instance of `PrivateConnectionVpcPeeringConfigPtrInput` via:
+//
+//	        PrivateConnectionVpcPeeringConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateConnectionVpcPeeringConfigPtrInput interface {
+	pulumi.Input
+
+	ToPrivateConnectionVpcPeeringConfigPtrOutput() PrivateConnectionVpcPeeringConfigPtrOutput
+	ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(context.Context) PrivateConnectionVpcPeeringConfigPtrOutput
+}
+
+type privateConnectionVpcPeeringConfigPtrType PrivateConnectionVpcPeeringConfigArgs
+
+func PrivateConnectionVpcPeeringConfigPtr(v *PrivateConnectionVpcPeeringConfigArgs) PrivateConnectionVpcPeeringConfigPtrInput {
+	return (*privateConnectionVpcPeeringConfigPtrType)(v)
+}
+
+func (*privateConnectionVpcPeeringConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateConnectionVpcPeeringConfig)(nil)).Elem()
+}
+
+func (i *privateConnectionVpcPeeringConfigPtrType) ToPrivateConnectionVpcPeeringConfigPtrOutput() PrivateConnectionVpcPeeringConfigPtrOutput {
+	return i.ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *privateConnectionVpcPeeringConfigPtrType) ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(ctx context.Context) PrivateConnectionVpcPeeringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionVpcPeeringConfigPtrOutput)
+}
+
+type PrivateConnectionVpcPeeringConfigOutput struct{ *pulumi.OutputState }
+
+func (PrivateConnectionVpcPeeringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateConnectionVpcPeeringConfig)(nil)).Elem()
+}
+
+func (o PrivateConnectionVpcPeeringConfigOutput) ToPrivateConnectionVpcPeeringConfigOutput() PrivateConnectionVpcPeeringConfigOutput {
+	return o
+}
+
+func (o PrivateConnectionVpcPeeringConfigOutput) ToPrivateConnectionVpcPeeringConfigOutputWithContext(ctx context.Context) PrivateConnectionVpcPeeringConfigOutput {
+	return o
+}
+
+func (o PrivateConnectionVpcPeeringConfigOutput) ToPrivateConnectionVpcPeeringConfigPtrOutput() PrivateConnectionVpcPeeringConfigPtrOutput {
+	return o.ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateConnectionVpcPeeringConfigOutput) ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(ctx context.Context) PrivateConnectionVpcPeeringConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateConnectionVpcPeeringConfig) *PrivateConnectionVpcPeeringConfig {
+		return &v
+	}).(PrivateConnectionVpcPeeringConfigPtrOutput)
+}
+
+// A free subnet for peering. (CIDR of /29)
+func (o PrivateConnectionVpcPeeringConfigOutput) Subnet() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateConnectionVpcPeeringConfig) string { return v.Subnet }).(pulumi.StringOutput)
+}
+
+// Fully qualified name of the VPC that Datastream will peer to.
+// Format: projects/{project}/global/{networks}/{name}
+func (o PrivateConnectionVpcPeeringConfigOutput) Vpc() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateConnectionVpcPeeringConfig) string { return v.Vpc }).(pulumi.StringOutput)
+}
+
+type PrivateConnectionVpcPeeringConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateConnectionVpcPeeringConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateConnectionVpcPeeringConfig)(nil)).Elem()
+}
+
+func (o PrivateConnectionVpcPeeringConfigPtrOutput) ToPrivateConnectionVpcPeeringConfigPtrOutput() PrivateConnectionVpcPeeringConfigPtrOutput {
+	return o
+}
+
+func (o PrivateConnectionVpcPeeringConfigPtrOutput) ToPrivateConnectionVpcPeeringConfigPtrOutputWithContext(ctx context.Context) PrivateConnectionVpcPeeringConfigPtrOutput {
+	return o
+}
+
+func (o PrivateConnectionVpcPeeringConfigPtrOutput) Elem() PrivateConnectionVpcPeeringConfigOutput {
+	return o.ApplyT(func(v *PrivateConnectionVpcPeeringConfig) PrivateConnectionVpcPeeringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateConnectionVpcPeeringConfig
+		return ret
+	}).(PrivateConnectionVpcPeeringConfigOutput)
+}
+
+// A free subnet for peering. (CIDR of /29)
+func (o PrivateConnectionVpcPeeringConfigPtrOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateConnectionVpcPeeringConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Subnet
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified name of the VPC that Datastream will peer to.
+// Format: projects/{project}/global/{networks}/{name}
+func (o PrivateConnectionVpcPeeringConfigPtrOutput) Vpc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateConnectionVpcPeeringConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Vpc
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileForwardSshConnectivityInput)(nil)).Elem(), ConnectionProfileForwardSshConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileForwardSshConnectivityPtrInput)(nil)).Elem(), ConnectionProfileForwardSshConnectivityArgs{})
@@ -1354,6 +1514,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileOracleProfilePtrInput)(nil)).Elem(), ConnectionProfileOracleProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlProfileInput)(nil)).Elem(), ConnectionProfilePostgresqlProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlProfilePtrInput)(nil)).Elem(), ConnectionProfilePostgresqlProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionVpcPeeringConfigInput)(nil)).Elem(), PrivateConnectionVpcPeeringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionVpcPeeringConfigPtrInput)(nil)).Elem(), PrivateConnectionVpcPeeringConfigArgs{})
 	pulumi.RegisterOutputType(ConnectionProfileForwardSshConnectivityOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileForwardSshConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileGcsProfileOutput{})
@@ -1366,4 +1528,6 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionProfileOracleProfilePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlProfileOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlProfilePtrOutput{})
+	pulumi.RegisterOutputType(PrivateConnectionVpcPeeringConfigOutput{})
+	pulumi.RegisterOutputType(PrivateConnectionVpcPeeringConfigPtrOutput{})
 }

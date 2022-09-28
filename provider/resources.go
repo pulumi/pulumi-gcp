@@ -627,6 +627,10 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpDatastream, "ConnectionProfile"),
 			},
 
+			"google_datastream_private_connection": {
+				Tok: gcpResource(gcpDatastream, "PrivateConnection"),
+			},
+
 			// Cloud Scheduler
 			"google_cloud_scheduler_job": {Tok: gcpResource(gcpCloudScheduler, "Job")},
 

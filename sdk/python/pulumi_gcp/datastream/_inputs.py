@@ -16,6 +16,7 @@ __all__ = [
     'ConnectionProfileMysqlProfileSslConfigArgs',
     'ConnectionProfileOracleProfileArgs',
     'ConnectionProfilePostgresqlProfileArgs',
+    'PrivateConnectionVpcPeeringConfigArgs',
 ]
 
 @pulumi.input_type
@@ -544,5 +545,44 @@ class ConnectionProfilePostgresqlProfileArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
+
+
+@pulumi.input_type
+class PrivateConnectionVpcPeeringConfigArgs:
+    def __init__(__self__, *,
+                 subnet: pulumi.Input[str],
+                 vpc: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] subnet: A free subnet for peering. (CIDR of /29)
+        :param pulumi.Input[str] vpc: Fully qualified name of the VPC that Datastream will peer to.
+               Format: projects/{project}/global/{networks}/{name}
+        """
+        pulumi.set(__self__, "subnet", subnet)
+        pulumi.set(__self__, "vpc", vpc)
+
+    @property
+    @pulumi.getter
+    def subnet(self) -> pulumi.Input[str]:
+        """
+        A free subnet for peering. (CIDR of /29)
+        """
+        return pulumi.get(self, "subnet")
+
+    @subnet.setter
+    def subnet(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subnet", value)
+
+    @property
+    @pulumi.getter
+    def vpc(self) -> pulumi.Input[str]:
+        """
+        Fully qualified name of the VPC that Datastream will peer to.
+        Format: projects/{project}/global/{networks}/{name}
+        """
+        return pulumi.get(self, "vpc")
+
+    @vpc.setter
+    def vpc(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vpc", value)
 
 
