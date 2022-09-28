@@ -418,6 +418,7 @@
         "datastore/index.ts",
         "datastream/connectionProfile.ts",
         "datastream/index.ts",
+        "datastream/privateConnection.ts",
         "deploymentmanager/deployment.ts",
         "deploymentmanager/index.ts",
         "diagflow/agent.ts",

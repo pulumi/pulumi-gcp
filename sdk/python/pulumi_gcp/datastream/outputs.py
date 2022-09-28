@@ -17,6 +17,7 @@ __all__ = [
     'ConnectionProfileMysqlProfileSslConfig',
     'ConnectionProfileOracleProfile',
     'ConnectionProfilePostgresqlProfile',
+    'PrivateConnectionVpcPeeringConfig',
 ]
 
 @pulumi.output_type
@@ -526,5 +527,36 @@ class ConnectionProfilePostgresqlProfile(dict):
         Port for the SSH tunnel.
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class PrivateConnectionVpcPeeringConfig(dict):
+    def __init__(__self__, *,
+                 subnet: str,
+                 vpc: str):
+        """
+        :param str subnet: A free subnet for peering. (CIDR of /29)
+        :param str vpc: Fully qualified name of the VPC that Datastream will peer to.
+               Format: projects/{project}/global/{networks}/{name}
+        """
+        pulumi.set(__self__, "subnet", subnet)
+        pulumi.set(__self__, "vpc", vpc)
+
+    @property
+    @pulumi.getter
+    def subnet(self) -> str:
+        """
+        A free subnet for peering. (CIDR of /29)
+        """
+        return pulumi.get(self, "subnet")
+
+    @property
+    @pulumi.getter
+    def vpc(self) -> str:
+        """
+        Fully qualified name of the VPC that Datastream will peer to.
+        Format: projects/{project}/global/{networks}/{name}
+        """
+        return pulumi.get(self, "vpc")
 
 

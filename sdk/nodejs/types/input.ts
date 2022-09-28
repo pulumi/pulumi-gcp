@@ -22653,6 +22653,18 @@ export namespace datastream {
          */
         username: pulumi.Input<string>;
     }
+
+    export interface PrivateConnectionVpcPeeringConfig {
+        /**
+         * A free subnet for peering. (CIDR of /29)
+         */
+        subnet: pulumi.Input<string>;
+        /**
+         * Fully qualified name of the VPC that Datastream will peer to.
+         * Format: projects/{project}/global/{networks}/{name}
+         */
+        vpc: pulumi.Input<string>;
+    }
 }
 
 export namespace deploymentmanager {

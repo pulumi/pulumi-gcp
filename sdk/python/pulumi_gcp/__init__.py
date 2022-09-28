@@ -2804,6 +2804,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "datastream/privateConnection",
+  "fqn": "pulumi_gcp.datastream",
+  "classes": {
+   "gcp:datastream/privateConnection:PrivateConnection": "PrivateConnection"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "deploymentmanager/deployment",
   "fqn": "pulumi_gcp.deploymentmanager",
   "classes": {
