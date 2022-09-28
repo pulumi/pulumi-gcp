@@ -97,6 +97,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+     * Structure is documented below.
      * 
      */
     @Export(name="advancedOptionsConfig", type=SecurityPolicyAdvancedOptionsConfig.class, parameters={})
@@ -104,6 +105,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+     * Structure is documented below.
      * 
      */
     public Output<SecurityPolicyAdvancedOptionsConfig> advancedOptionsConfig() {

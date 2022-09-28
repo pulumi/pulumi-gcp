@@ -55,6 +55,21 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+     * 
+     */
+    @Import(name="buildWorkerPool")
+    private @Nullable Output<String> buildWorkerPool;
+
+    /**
+     * @return Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+     * 
+     */
+    public Optional<Output<String>> buildWorkerPool() {
+        return Optional.ofNullable(this.buildWorkerPool);
+    }
+
+    /**
      * Description of the function.
      * 
      */
@@ -470,6 +485,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
     private FunctionArgs(FunctionArgs $) {
         this.availableMemoryMb = $.availableMemoryMb;
         this.buildEnvironmentVariables = $.buildEnvironmentVariables;
+        this.buildWorkerPool = $.buildWorkerPool;
         this.description = $.description;
         this.dockerRegistry = $.dockerRegistry;
         this.dockerRepository = $.dockerRepository;
@@ -557,6 +573,27 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder buildEnvironmentVariables(Map<String,Object> buildEnvironmentVariables) {
             return buildEnvironmentVariables(Output.of(buildEnvironmentVariables));
+        }
+
+        /**
+         * @param buildWorkerPool Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder buildWorkerPool(@Nullable Output<String> buildWorkerPool) {
+            $.buildWorkerPool = buildWorkerPool;
+            return this;
+        }
+
+        /**
+         * @param buildWorkerPool Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder buildWorkerPool(String buildWorkerPool) {
+            return buildWorkerPool(Output.of(buildWorkerPool));
         }
 
         /**

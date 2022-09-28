@@ -4519,6 +4519,8 @@ type TransferJobTransferSpecTransferOptions struct {
 	DeleteObjectsUniqueInSink *bool `pulumi:"deleteObjectsUniqueInSink"`
 	// Whether overwriting objects that already exist in the sink is allowed.
 	OverwriteObjectsAlreadyExistingInSink *bool `pulumi:"overwriteObjectsAlreadyExistingInSink"`
+	// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwriteObjectsAlreadyExistingInSink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+	OverwriteWhen *string `pulumi:"overwriteWhen"`
 }
 
 // TransferJobTransferSpecTransferOptionsInput is an input type that accepts TransferJobTransferSpecTransferOptionsArgs and TransferJobTransferSpecTransferOptionsOutput values.
@@ -4540,6 +4542,8 @@ type TransferJobTransferSpecTransferOptionsArgs struct {
 	DeleteObjectsUniqueInSink pulumi.BoolPtrInput `pulumi:"deleteObjectsUniqueInSink"`
 	// Whether overwriting objects that already exist in the sink is allowed.
 	OverwriteObjectsAlreadyExistingInSink pulumi.BoolPtrInput `pulumi:"overwriteObjectsAlreadyExistingInSink"`
+	// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwriteObjectsAlreadyExistingInSink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+	OverwriteWhen pulumi.StringPtrInput `pulumi:"overwriteWhen"`
 }
 
 func (TransferJobTransferSpecTransferOptionsArgs) ElementType() reflect.Type {
@@ -4635,6 +4639,11 @@ func (o TransferJobTransferSpecTransferOptionsOutput) OverwriteObjectsAlreadyExi
 	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *bool { return v.OverwriteObjectsAlreadyExistingInSink }).(pulumi.BoolPtrOutput)
 }
 
+// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwriteObjectsAlreadyExistingInSink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+func (o TransferJobTransferSpecTransferOptionsOutput) OverwriteWhen() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecTransferOptions) *string { return v.OverwriteWhen }).(pulumi.StringPtrOutput)
+}
+
 type TransferJobTransferSpecTransferOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (TransferJobTransferSpecTransferOptionsPtrOutput) ElementType() reflect.Type {
@@ -4688,6 +4697,16 @@ func (o TransferJobTransferSpecTransferOptionsPtrOutput) OverwriteObjectsAlready
 		}
 		return v.OverwriteObjectsAlreadyExistingInSink
 	}).(pulumi.BoolPtrOutput)
+}
+
+// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwriteObjectsAlreadyExistingInSink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+func (o TransferJobTransferSpecTransferOptionsPtrOutput) OverwriteWhen() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecTransferOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OverwriteWhen
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetBucketCor struct {

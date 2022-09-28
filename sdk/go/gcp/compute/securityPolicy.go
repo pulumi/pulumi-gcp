@@ -72,6 +72,7 @@ type SecurityPolicy struct {
 	// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
 	AdaptiveProtectionConfig SecurityPolicyAdaptiveProtectionConfigPtrOutput `pulumi:"adaptiveProtectionConfig"`
 	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+	// Structure is documented below.
 	AdvancedOptionsConfig SecurityPolicyAdvancedOptionsConfigOutput `pulumi:"advancedOptionsConfig"`
 	// An optional description of this rule. Max size is 64.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -124,6 +125,7 @@ type securityPolicyState struct {
 	// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
 	AdaptiveProtectionConfig *SecurityPolicyAdaptiveProtectionConfig `pulumi:"adaptiveProtectionConfig"`
 	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+	// Structure is documented below.
 	AdvancedOptionsConfig *SecurityPolicyAdvancedOptionsConfig `pulumi:"advancedOptionsConfig"`
 	// An optional description of this rule. Max size is 64.
 	Description *string `pulumi:"description"`
@@ -148,6 +150,7 @@ type SecurityPolicyState struct {
 	// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
 	AdaptiveProtectionConfig SecurityPolicyAdaptiveProtectionConfigPtrInput
 	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+	// Structure is documented below.
 	AdvancedOptionsConfig SecurityPolicyAdvancedOptionsConfigPtrInput
 	// An optional description of this rule. Max size is 64.
 	Description pulumi.StringPtrInput
@@ -176,6 +179,7 @@ type securityPolicyArgs struct {
 	// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
 	AdaptiveProtectionConfig *SecurityPolicyAdaptiveProtectionConfig `pulumi:"adaptiveProtectionConfig"`
 	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+	// Structure is documented below.
 	AdvancedOptionsConfig *SecurityPolicyAdvancedOptionsConfig `pulumi:"advancedOptionsConfig"`
 	// An optional description of this rule. Max size is 64.
 	Description *string `pulumi:"description"`
@@ -197,6 +201,7 @@ type SecurityPolicyArgs struct {
 	// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
 	AdaptiveProtectionConfig SecurityPolicyAdaptiveProtectionConfigPtrInput
 	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+	// Structure is documented below.
 	AdvancedOptionsConfig SecurityPolicyAdvancedOptionsConfigPtrInput
 	// An optional description of this rule. Max size is 64.
 	Description pulumi.StringPtrInput
@@ -308,6 +313,7 @@ func (o SecurityPolicyOutput) AdaptiveProtectionConfig() SecurityPolicyAdaptiveP
 }
 
 // [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+// Structure is documented below.
 func (o SecurityPolicyOutput) AdvancedOptionsConfig() SecurityPolicyAdvancedOptionsConfigOutput {
 	return o.ApplyT(func(v *SecurityPolicy) SecurityPolicyAdvancedOptionsConfigOutput { return v.AdvancedOptionsConfig }).(SecurityPolicyAdvancedOptionsConfigOutput)
 }

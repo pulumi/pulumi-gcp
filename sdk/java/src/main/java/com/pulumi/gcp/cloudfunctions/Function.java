@@ -204,6 +204,20 @@ public class Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.buildEnvironmentVariables);
     }
     /**
+     * Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+     * 
+     */
+    @Export(name="buildWorkerPool", type=String.class, parameters={})
+    private Output</* @Nullable */ String> buildWorkerPool;
+
+    /**
+     * @return Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+     * 
+     */
+    public Output<Optional<String>> buildWorkerPool() {
+        return Codegen.optional(this.buildWorkerPool);
+    }
+    /**
      * Description of the function.
      * 
      */

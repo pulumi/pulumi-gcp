@@ -136,6 +136,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly buildEnvironmentVariables!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
+     * Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+     */
+    public readonly buildWorkerPool!: pulumi.Output<string | undefined>;
+    /**
      * Description of the function.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -262,6 +266,7 @@ export class Function extends pulumi.CustomResource {
             const state = argsOrState as FunctionState | undefined;
             resourceInputs["availableMemoryMb"] = state ? state.availableMemoryMb : undefined;
             resourceInputs["buildEnvironmentVariables"] = state ? state.buildEnvironmentVariables : undefined;
+            resourceInputs["buildWorkerPool"] = state ? state.buildWorkerPool : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dockerRegistry"] = state ? state.dockerRegistry : undefined;
             resourceInputs["dockerRepository"] = state ? state.dockerRepository : undefined;
@@ -296,6 +301,7 @@ export class Function extends pulumi.CustomResource {
             }
             resourceInputs["availableMemoryMb"] = args ? args.availableMemoryMb : undefined;
             resourceInputs["buildEnvironmentVariables"] = args ? args.buildEnvironmentVariables : undefined;
+            resourceInputs["buildWorkerPool"] = args ? args.buildWorkerPool : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["dockerRegistry"] = args ? args.dockerRegistry : undefined;
             resourceInputs["dockerRepository"] = args ? args.dockerRepository : undefined;
@@ -341,6 +347,10 @@ export interface FunctionState {
      * A set of key/value environment variable pairs available during build time.
      */
     buildEnvironmentVariables?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+     */
+    buildWorkerPool?: pulumi.Input<string>;
     /**
      * Description of the function.
      */
@@ -466,6 +476,10 @@ export interface FunctionArgs {
      * A set of key/value environment variable pairs available during build time.
      */
     buildEnvironmentVariables?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+     */
+    buildWorkerPool?: pulumi.Input<string>;
     /**
      * Description of the function.
      */

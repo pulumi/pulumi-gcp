@@ -28,6 +28,7 @@ class InstanceArgs:
                  maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
                  maintenance_schedule: Optional[pulumi.Input['InstanceMaintenanceScheduleArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 persistence_config: Optional[pulumi.Input['InstancePersistenceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  read_replicas_mode: Optional[pulumi.Input[str]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -68,6 +69,8 @@ class InstanceArgs:
         :param pulumi.Input['InstanceMaintenanceScheduleArgs'] maintenance_schedule: Upcoming maintenance schedule.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
+        :param pulumi.Input['InstancePersistenceConfigArgs'] persistence_config: Maintenance policy for an instance.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance.
@@ -130,6 +133,8 @@ class InstanceArgs:
             pulumi.set(__self__, "maintenance_schedule", maintenance_schedule)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if persistence_config is not None:
+            pulumi.set(__self__, "persistence_config", persistence_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if read_replicas_mode is not None:
@@ -312,6 +317,19 @@ class InstanceArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="persistenceConfig")
+    def persistence_config(self) -> Optional[pulumi.Input['InstancePersistenceConfigArgs']]:
+        """
+        Maintenance policy for an instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "persistence_config")
+
+    @persistence_config.setter
+    def persistence_config(self, value: Optional[pulumi.Input['InstancePersistenceConfigArgs']]):
+        pulumi.set(self, "persistence_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -480,6 +498,7 @@ class _InstanceState:
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]]] = None,
+                 persistence_config: Optional[pulumi.Input['InstancePersistenceConfigArgs']] = None,
                  persistence_iam_identity: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -535,6 +554,8 @@ class _InstanceState:
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]] nodes: Output only. Info per node.
+        :param pulumi.Input['InstancePersistenceConfigArgs'] persistence_config: Maintenance policy for an instance.
+               Structure is documented below.
         :param pulumi.Input[str] persistence_iam_identity: Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
                "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
                operation.
@@ -618,6 +639,8 @@ class _InstanceState:
             pulumi.set(__self__, "name", name)
         if nodes is not None:
             pulumi.set(__self__, "nodes", nodes)
+        if persistence_config is not None:
+            pulumi.set(__self__, "persistence_config", persistence_config)
         if persistence_iam_identity is not None:
             pulumi.set(__self__, "persistence_iam_identity", persistence_iam_identity)
         if port is not None:
@@ -875,6 +898,19 @@ class _InstanceState:
         pulumi.set(self, "nodes", value)
 
     @property
+    @pulumi.getter(name="persistenceConfig")
+    def persistence_config(self) -> Optional[pulumi.Input['InstancePersistenceConfigArgs']]:
+        """
+        Maintenance policy for an instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "persistence_config")
+
+    @persistence_config.setter
+    def persistence_config(self, value: Optional[pulumi.Input['InstancePersistenceConfigArgs']]):
+        pulumi.set(self, "persistence_config", value)
+
+    @property
     @pulumi.getter(name="persistenceIamIdentity")
     def persistence_iam_identity(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1105,6 +1141,7 @@ class Instance(pulumi.CustomResource):
                  maintenance_schedule: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 persistence_config: Optional[pulumi.Input[pulumi.InputType['InstancePersistenceConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  read_replicas_mode: Optional[pulumi.Input[str]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1165,6 +1202,22 @@ class Instance(pulumi.CustomResource):
                     ),
                 )],
             ))
+        ```
+        ### Redis Instance Full With Persistence Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cache_persis = gcp.redis.Instance("cache-persis",
+            alternative_location_id="us-central1-f",
+            location_id="us-central1-a",
+            memory_size_gb=1,
+            persistence_config=gcp.redis.InstancePersistenceConfigArgs(
+                persistence_mode="RDB",
+                rdb_snapshot_period="TWELVE_HOURS",
+            ),
+            tier="STANDARD_HA")
         ```
         ### Redis Instance Private Service
 
@@ -1291,6 +1344,8 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
+        :param pulumi.Input[pulumi.InputType['InstancePersistenceConfigArgs']] persistence_config: Maintenance policy for an instance.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance.
@@ -1385,6 +1440,22 @@ class Instance(pulumi.CustomResource):
                     ),
                 )],
             ))
+        ```
+        ### Redis Instance Full With Persistence Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cache_persis = gcp.redis.Instance("cache-persis",
+            alternative_location_id="us-central1-f",
+            location_id="us-central1-a",
+            memory_size_gb=1,
+            persistence_config=gcp.redis.InstancePersistenceConfigArgs(
+                persistence_mode="RDB",
+                rdb_snapshot_period="TWELVE_HOURS",
+            ),
+            tier="STANDARD_HA")
         ```
         ### Redis Instance Private Service
 
@@ -1508,6 +1579,7 @@ class Instance(pulumi.CustomResource):
                  maintenance_schedule: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 persistence_config: Optional[pulumi.Input[pulumi.InputType['InstancePersistenceConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  read_replicas_mode: Optional[pulumi.Input[str]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1541,6 +1613,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'memory_size_gb'")
             __props__.__dict__["memory_size_gb"] = memory_size_gb
             __props__.__dict__["name"] = name
+            __props__.__dict__["persistence_config"] = persistence_config
             __props__.__dict__["project"] = project
             __props__.__dict__["read_replicas_mode"] = read_replicas_mode
             __props__.__dict__["redis_configs"] = redis_configs
@@ -1588,6 +1661,7 @@ class Instance(pulumi.CustomResource):
             memory_size_gb: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNodeArgs']]]]] = None,
+            persistence_config: Optional[pulumi.Input[pulumi.InputType['InstancePersistenceConfigArgs']]] = None,
             persistence_iam_identity: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -1648,6 +1722,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNodeArgs']]]] nodes: Output only. Info per node.
+        :param pulumi.Input[pulumi.InputType['InstancePersistenceConfigArgs']] persistence_config: Maintenance policy for an instance.
+               Structure is documented below.
         :param pulumi.Input[str] persistence_iam_identity: Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
                "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
                operation.
@@ -1718,6 +1794,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["memory_size_gb"] = memory_size_gb
         __props__.__dict__["name"] = name
         __props__.__dict__["nodes"] = nodes
+        __props__.__dict__["persistence_config"] = persistence_config
         __props__.__dict__["persistence_iam_identity"] = persistence_iam_identity
         __props__.__dict__["port"] = port
         __props__.__dict__["project"] = project
@@ -1891,6 +1968,15 @@ class Instance(pulumi.CustomResource):
         Output only. Info per node.
         """
         return pulumi.get(self, "nodes")
+
+    @property
+    @pulumi.getter(name="persistenceConfig")
+    def persistence_config(self) -> pulumi.Output['outputs.InstancePersistenceConfig']:
+        """
+        Maintenance policy for an instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "persistence_config")
 
     @property
     @pulumi.getter(name="persistenceIamIdentity")

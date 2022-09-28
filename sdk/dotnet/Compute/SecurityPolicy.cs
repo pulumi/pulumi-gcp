@@ -78,6 +78,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+        /// Structure is documented below.
         /// </summary>
         [Output("advancedOptionsConfig")]
         public Output<Outputs.SecurityPolicyAdvancedOptionsConfig> AdvancedOptionsConfig { get; private set; } = null!;
@@ -181,6 +182,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+        /// Structure is documented below.
         /// </summary>
         [Input("advancedOptionsConfig")]
         public Input<Inputs.SecurityPolicyAdvancedOptionsConfigArgs>? AdvancedOptionsConfig { get; set; }
@@ -240,6 +242,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+        /// Structure is documented below.
         /// </summary>
         [Input("advancedOptionsConfig")]
         public Input<Inputs.SecurityPolicyAdvancedOptionsConfigGetArgs>? AdvancedOptionsConfig { get; set; }

@@ -22,7 +22,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, customer_managed_key=None, display_name=None, host=None, id=None, labels=None, location_id=None, maintenance_policies=None, maintenance_schedules=None, memory_size_gb=None, name=None, nodes=None, persistence_iam_identity=None, port=None, project=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, region=None, replica_count=None, reserved_ip_range=None, secondary_ip_range=None, server_ca_certs=None, tier=None, transit_encryption_mode=None):
+    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, customer_managed_key=None, display_name=None, host=None, id=None, labels=None, location_id=None, maintenance_policies=None, maintenance_schedules=None, memory_size_gb=None, name=None, nodes=None, persistence_configs=None, persistence_iam_identity=None, port=None, project=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, region=None, replica_count=None, reserved_ip_range=None, secondary_ip_range=None, server_ca_certs=None, tier=None, transit_encryption_mode=None):
         if alternative_location_id and not isinstance(alternative_location_id, str):
             raise TypeError("Expected argument 'alternative_location_id' to be a str")
         pulumi.set(__self__, "alternative_location_id", alternative_location_id)
@@ -77,6 +77,9 @@ class GetInstanceResult:
         if nodes and not isinstance(nodes, list):
             raise TypeError("Expected argument 'nodes' to be a list")
         pulumi.set(__self__, "nodes", nodes)
+        if persistence_configs and not isinstance(persistence_configs, list):
+            raise TypeError("Expected argument 'persistence_configs' to be a list")
+        pulumi.set(__self__, "persistence_configs", persistence_configs)
         if persistence_iam_identity and not isinstance(persistence_iam_identity, str):
             raise TypeError("Expected argument 'persistence_iam_identity' to be a str")
         pulumi.set(__self__, "persistence_iam_identity", persistence_iam_identity)
@@ -217,6 +220,11 @@ class GetInstanceResult:
         return pulumi.get(self, "nodes")
 
     @property
+    @pulumi.getter(name="persistenceConfigs")
+    def persistence_configs(self) -> Sequence['outputs.GetInstancePersistenceConfigResult']:
+        return pulumi.get(self, "persistence_configs")
+
+    @property
     @pulumi.getter(name="persistenceIamIdentity")
     def persistence_iam_identity(self) -> str:
         return pulumi.get(self, "persistence_iam_identity")
@@ -316,6 +324,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             memory_size_gb=self.memory_size_gb,
             name=self.name,
             nodes=self.nodes,
+            persistence_configs=self.persistence_configs,
             persistence_iam_identity=self.persistence_iam_identity,
             port=self.port,
             project=self.project,
@@ -385,6 +394,7 @@ def get_instance(name: Optional[str] = None,
         memory_size_gb=__ret__.memory_size_gb,
         name=__ret__.name,
         nodes=__ret__.nodes,
+        persistence_configs=__ret__.persistence_configs,
         persistence_iam_identity=__ret__.persistence_iam_identity,
         port=__ret__.port,
         project=__ret__.project,

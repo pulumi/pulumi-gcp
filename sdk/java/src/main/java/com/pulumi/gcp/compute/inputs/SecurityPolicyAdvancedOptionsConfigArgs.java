@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,23 @@ import javax.annotation.Nullable;
 public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SecurityPolicyAdvancedOptionsConfigArgs Empty = new SecurityPolicyAdvancedOptionsConfigArgs();
+
+    /**
+     * Custom configuration to apply the JSON parsing. Only applicable when
+     * `json_parsing` is set to `STANDARD`. Structure is documented below.
+     * 
+     */
+    @Import(name="jsonCustomConfig")
+    private @Nullable Output<SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs> jsonCustomConfig;
+
+    /**
+     * @return Custom configuration to apply the JSON parsing. Only applicable when
+     * `json_parsing` is set to `STANDARD`. Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs>> jsonCustomConfig() {
+        return Optional.ofNullable(this.jsonCustomConfig);
+    }
 
     /**
      * Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
@@ -56,6 +74,7 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
     private SecurityPolicyAdvancedOptionsConfigArgs() {}
 
     private SecurityPolicyAdvancedOptionsConfigArgs(SecurityPolicyAdvancedOptionsConfigArgs $) {
+        this.jsonCustomConfig = $.jsonCustomConfig;
         this.jsonParsing = $.jsonParsing;
         this.logLevel = $.logLevel;
     }
@@ -76,6 +95,29 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
 
         public Builder(SecurityPolicyAdvancedOptionsConfigArgs defaults) {
             $ = new SecurityPolicyAdvancedOptionsConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param jsonCustomConfig Custom configuration to apply the JSON parsing. Only applicable when
+         * `json_parsing` is set to `STANDARD`. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jsonCustomConfig(@Nullable Output<SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs> jsonCustomConfig) {
+            $.jsonCustomConfig = jsonCustomConfig;
+            return this;
+        }
+
+        /**
+         * @param jsonCustomConfig Custom configuration to apply the JSON parsing. Only applicable when
+         * `json_parsing` is set to `STANDARD`. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jsonCustomConfig(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs jsonCustomConfig) {
+            return jsonCustomConfig(Output.of(jsonCustomConfig));
         }
 
         /**

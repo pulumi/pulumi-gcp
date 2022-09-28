@@ -82,6 +82,7 @@ type LookupInstanceResult struct {
 	MemorySizeGb           int                              `pulumi:"memorySizeGb"`
 	Name                   string                           `pulumi:"name"`
 	Nodes                  []GetInstanceNode                `pulumi:"nodes"`
+	PersistenceConfigs     []GetInstancePersistenceConfig   `pulumi:"persistenceConfigs"`
 	PersistenceIamIdentity string                           `pulumi:"persistenceIamIdentity"`
 	Port                   int                              `pulumi:"port"`
 	Project                *string                          `pulumi:"project"`
@@ -214,6 +215,10 @@ func (o LookupInstanceResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) Nodes() GetInstanceNodeArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceNode { return v.Nodes }).(GetInstanceNodeArrayOutput)
+}
+
+func (o LookupInstanceResultOutput) PersistenceConfigs() GetInstancePersistenceConfigArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstancePersistenceConfig { return v.PersistenceConfigs }).(GetInstancePersistenceConfigArrayOutput)
 }
 
 func (o LookupInstanceResultOutput) PersistenceIamIdentity() pulumi.StringOutput {

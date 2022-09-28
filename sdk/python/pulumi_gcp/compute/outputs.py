@@ -318,6 +318,7 @@ __all__ = [
     'SecurityPolicyAdaptiveProtectionConfig',
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig',
     'SecurityPolicyAdvancedOptionsConfig',
+    'SecurityPolicyAdvancedOptionsConfigJsonCustomConfig',
     'SecurityPolicyRule',
     'SecurityPolicyRuleMatch',
     'SecurityPolicyRuleMatchConfig',
@@ -22061,7 +22062,9 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "jsonParsing":
+        if key == "jsonCustomConfig":
+            suggest = "json_custom_config"
+        elif key == "jsonParsing":
             suggest = "json_parsing"
         elif key == "logLevel":
             suggest = "log_level"
@@ -22078,9 +22081,12 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 json_custom_config: Optional['outputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfig'] = None,
                  json_parsing: Optional[str] = None,
                  log_level: Optional[str] = None):
         """
+        :param 'SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs' json_custom_config: Custom configuration to apply the JSON parsing. Only applicable when
+               `json_parsing` is set to `STANDARD`. Structure is documented below.
         :param str json_parsing: Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
                * DISABLED - Don't parse JSON payloads in POST bodies.
                * STANDARD - Parse JSON payloads in POST bodies.
@@ -22088,10 +22094,21 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
                * NORMAL - Normal log level.
                * VERBOSE - Verbose log level.
         """
+        if json_custom_config is not None:
+            pulumi.set(__self__, "json_custom_config", json_custom_config)
         if json_parsing is not None:
             pulumi.set(__self__, "json_parsing", json_parsing)
         if log_level is not None:
             pulumi.set(__self__, "log_level", log_level)
+
+    @property
+    @pulumi.getter(name="jsonCustomConfig")
+    def json_custom_config(self) -> Optional['outputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfig']:
+        """
+        Custom configuration to apply the JSON parsing. Only applicable when
+        `json_parsing` is set to `STANDARD`. Structure is documented below.
+        """
+        return pulumi.get(self, "json_custom_config")
 
     @property
     @pulumi.getter(name="jsonParsing")
@@ -22112,6 +22129,47 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
         * VERBOSE - Verbose log level.
         """
         return pulumi.get(self, "log_level")
+
+
+@pulumi.output_type
+class SecurityPolicyAdvancedOptionsConfigJsonCustomConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentTypes":
+            suggest = "content_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPolicyAdvancedOptionsConfigJsonCustomConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPolicyAdvancedOptionsConfigJsonCustomConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPolicyAdvancedOptionsConfigJsonCustomConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 content_types: Sequence[str]):
+        """
+        :param Sequence[str] content_types: A list of custom Content-Type header values to apply the JSON parsing. The
+               format of the Content-Type header values is defined in
+               [RFC 1341](https://www.ietf.org/rfc/rfc1341.txt). When configuring a custom Content-Type header
+               value, only the type/subtype needs to be specified, and the parameters should be excluded.
+        """
+        pulumi.set(__self__, "content_types", content_types)
+
+    @property
+    @pulumi.getter(name="contentTypes")
+    def content_types(self) -> Sequence[str]:
+        """
+        A list of custom Content-Type header values to apply the JSON parsing. The
+        format of the Content-Type header values is defined in
+        [RFC 1341](https://www.ietf.org/rfc/rfc1341.txt). When configuring a custom Content-Type header
+        value, only the type/subtype needs to be specified, and the parameters should be excluded.
+        """
+        return pulumi.get(self, "content_types")
 
 
 @pulumi.output_type

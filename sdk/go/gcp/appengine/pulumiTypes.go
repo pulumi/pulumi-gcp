@@ -7638,6 +7638,8 @@ func (o StandardAppVersionManualScalingPtrOutput) Instances() pulumi.IntPtrOutpu
 }
 
 type StandardAppVersionVpcAccessConnector struct {
+	// The egress setting for the connector, controlling what traffic is diverted through it.
+	EgressSetting *string `pulumi:"egressSetting"`
 	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name string `pulumi:"name"`
 }
@@ -7654,6 +7656,8 @@ type StandardAppVersionVpcAccessConnectorInput interface {
 }
 
 type StandardAppVersionVpcAccessConnectorArgs struct {
+	// The egress setting for the connector, controlling what traffic is diverted through it.
+	EgressSetting pulumi.StringPtrInput `pulumi:"egressSetting"`
 	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -7735,6 +7739,11 @@ func (o StandardAppVersionVpcAccessConnectorOutput) ToStandardAppVersionVpcAcces
 	}).(StandardAppVersionVpcAccessConnectorPtrOutput)
 }
 
+// The egress setting for the connector, controlling what traffic is diverted through it.
+func (o StandardAppVersionVpcAccessConnectorOutput) EgressSetting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StandardAppVersionVpcAccessConnector) *string { return v.EgressSetting }).(pulumi.StringPtrOutput)
+}
+
 // Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 func (o StandardAppVersionVpcAccessConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v StandardAppVersionVpcAccessConnector) string { return v.Name }).(pulumi.StringOutput)
@@ -7762,6 +7771,16 @@ func (o StandardAppVersionVpcAccessConnectorPtrOutput) Elem() StandardAppVersion
 		var ret StandardAppVersionVpcAccessConnector
 		return ret
 	}).(StandardAppVersionVpcAccessConnectorOutput)
+}
+
+// The egress setting for the connector, controlling what traffic is diverted through it.
+func (o StandardAppVersionVpcAccessConnectorPtrOutput) EgressSetting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionVpcAccessConnector) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressSetting
+	}).(pulumi.StringPtrOutput)
 }
 
 // Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.

@@ -10,6 +10,199 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetRouterStatusBestRoutesForRouter struct {
+	Description string `pulumi:"description"`
+	DestRange   string `pulumi:"destRange"`
+	// The name of the router.
+	Name string `pulumi:"name"`
+	// The network name or resource link to the parent
+	// network of this subnetwork.
+	Network             string `pulumi:"network"`
+	NextHopGateway      string `pulumi:"nextHopGateway"`
+	NextHopIlb          string `pulumi:"nextHopIlb"`
+	NextHopInstance     string `pulumi:"nextHopInstance"`
+	NextHopInstanceZone string `pulumi:"nextHopInstanceZone"`
+	NextHopIp           string `pulumi:"nextHopIp"`
+	NextHopNetwork      string `pulumi:"nextHopNetwork"`
+	NextHopVpnTunnel    string `pulumi:"nextHopVpnTunnel"`
+	Priority            int    `pulumi:"priority"`
+	// The ID of the project in which the resource
+	// belongs. If it is not provided, the provider project is used.
+	Project  string   `pulumi:"project"`
+	SelfLink string   `pulumi:"selfLink"`
+	Tags     []string `pulumi:"tags"`
+}
+
+// GetRouterStatusBestRoutesForRouterInput is an input type that accepts GetRouterStatusBestRoutesForRouterArgs and GetRouterStatusBestRoutesForRouterOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRoutesForRouterInput` via:
+//
+//	GetRouterStatusBestRoutesForRouterArgs{...}
+type GetRouterStatusBestRoutesForRouterInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRoutesForRouterOutput() GetRouterStatusBestRoutesForRouterOutput
+	ToGetRouterStatusBestRoutesForRouterOutputWithContext(context.Context) GetRouterStatusBestRoutesForRouterOutput
+}
+
+type GetRouterStatusBestRoutesForRouterArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	DestRange   pulumi.StringInput `pulumi:"destRange"`
+	// The name of the router.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The network name or resource link to the parent
+	// network of this subnetwork.
+	Network             pulumi.StringInput `pulumi:"network"`
+	NextHopGateway      pulumi.StringInput `pulumi:"nextHopGateway"`
+	NextHopIlb          pulumi.StringInput `pulumi:"nextHopIlb"`
+	NextHopInstance     pulumi.StringInput `pulumi:"nextHopInstance"`
+	NextHopInstanceZone pulumi.StringInput `pulumi:"nextHopInstanceZone"`
+	NextHopIp           pulumi.StringInput `pulumi:"nextHopIp"`
+	NextHopNetwork      pulumi.StringInput `pulumi:"nextHopNetwork"`
+	NextHopVpnTunnel    pulumi.StringInput `pulumi:"nextHopVpnTunnel"`
+	Priority            pulumi.IntInput    `pulumi:"priority"`
+	// The ID of the project in which the resource
+	// belongs. If it is not provided, the provider project is used.
+	Project  pulumi.StringInput      `pulumi:"project"`
+	SelfLink pulumi.StringInput      `pulumi:"selfLink"`
+	Tags     pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (GetRouterStatusBestRoutesForRouterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoutesForRouter)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRoutesForRouterArgs) ToGetRouterStatusBestRoutesForRouterOutput() GetRouterStatusBestRoutesForRouterOutput {
+	return i.ToGetRouterStatusBestRoutesForRouterOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRoutesForRouterArgs) ToGetRouterStatusBestRoutesForRouterOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRoutesForRouterOutput)
+}
+
+// GetRouterStatusBestRoutesForRouterArrayInput is an input type that accepts GetRouterStatusBestRoutesForRouterArray and GetRouterStatusBestRoutesForRouterArrayOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRoutesForRouterArrayInput` via:
+//
+//	GetRouterStatusBestRoutesForRouterArray{ GetRouterStatusBestRoutesForRouterArgs{...} }
+type GetRouterStatusBestRoutesForRouterArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRoutesForRouterArrayOutput() GetRouterStatusBestRoutesForRouterArrayOutput
+	ToGetRouterStatusBestRoutesForRouterArrayOutputWithContext(context.Context) GetRouterStatusBestRoutesForRouterArrayOutput
+}
+
+type GetRouterStatusBestRoutesForRouterArray []GetRouterStatusBestRoutesForRouterInput
+
+func (GetRouterStatusBestRoutesForRouterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoutesForRouter)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRoutesForRouterArray) ToGetRouterStatusBestRoutesForRouterArrayOutput() GetRouterStatusBestRoutesForRouterArrayOutput {
+	return i.ToGetRouterStatusBestRoutesForRouterArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRoutesForRouterArray) ToGetRouterStatusBestRoutesForRouterArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRoutesForRouterArrayOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRoutesForRouterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoutesForRouter)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRoutesForRouterOutput) ToGetRouterStatusBestRoutesForRouterOutput() GetRouterStatusBestRoutesForRouterOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterOutput) ToGetRouterStatusBestRoutesForRouterOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetRouterStatusBestRoutesForRouterOutput) DestRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.DestRange }).(pulumi.StringOutput)
+}
+
+// The name of the router.
+func (o GetRouterStatusBestRoutesForRouterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The network name or resource link to the parent
+// network of this subnetwork.
+func (o GetRouterStatusBestRoutesForRouterOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopGateway() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopGateway }).(pulumi.StringOutput)
+}
+
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopIlb() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopIlb }).(pulumi.StringOutput)
+}
+
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopInstance }).(pulumi.StringOutput)
+}
+
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopInstanceZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopInstanceZone }).(pulumi.StringOutput)
+}
+
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopIp }).(pulumi.StringOutput)
+}
+
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopNetwork }).(pulumi.StringOutput)
+}
+
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopVpnTunnel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopVpnTunnel }).(pulumi.StringOutput)
+}
+
+func (o GetRouterStatusBestRoutesForRouterOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The ID of the project in which the resource
+// belongs. If it is not provided, the provider project is used.
+func (o GetRouterStatusBestRoutesForRouterOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o GetRouterStatusBestRoutesForRouterOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func (o GetRouterStatusBestRoutesForRouterOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRoutesForRouterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoutesForRouter)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRoutesForRouterArrayOutput) ToGetRouterStatusBestRoutesForRouterArrayOutput() GetRouterStatusBestRoutesForRouterArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterArrayOutput) ToGetRouterStatusBestRoutesForRouterArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterArrayOutput) Index(i pulumi.IntInput) GetRouterStatusBestRoutesForRouterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRoutesForRouter {
+		return vs[0].([]GetRouterStatusBestRoutesForRouter)[vs[1].(int)]
+	}).(GetRouterStatusBestRoutesForRouterOutput)
+}
+
 type GetSubnetworkSecondaryIpRange struct {
 	// The range of IP addresses belonging to this subnetwork
 	// secondary range.
@@ -123,8 +316,12 @@ func (o GetSubnetworkSecondaryIpRangeArrayOutput) Index(i pulumi.IntInput) GetSu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterArrayInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterArrayOutput{})
 	pulumi.RegisterOutputType(GetSubnetworkSecondaryIpRangeOutput{})
 	pulumi.RegisterOutputType(GetSubnetworkSecondaryIpRangeArrayOutput{})
 }

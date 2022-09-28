@@ -27,6 +27,7 @@ class SecurityPolicyArgs:
         The set of arguments for constructing a SecurityPolicy resource.
         :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs'] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         :param pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs'] advanced_options_config: [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
         :param pulumi.Input[str] name: The name of the security policy.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
@@ -68,6 +69,7 @@ class SecurityPolicyArgs:
     def advanced_options_config(self) -> Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs']]:
         """
         [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+        Structure is documented below.
         """
         return pulumi.get(self, "advanced_options_config")
 
@@ -155,6 +157,7 @@ class _SecurityPolicyState:
         Input properties used for looking up and filtering SecurityPolicy resources.
         :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs'] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         :param pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs'] advanced_options_config: [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource.
         :param pulumi.Input[str] name: The name of the security policy.
@@ -202,6 +205,7 @@ class _SecurityPolicyState:
     def advanced_options_config(self) -> Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs']]:
         """
         [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+        Structure is documented below.
         """
         return pulumi.get(self, "advanced_options_config")
 
@@ -351,6 +355,7 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         :param pulumi.Input[pulumi.InputType['SecurityPolicyAdvancedOptionsConfigArgs']] advanced_options_config: [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
         :param pulumi.Input[str] name: The name of the security policy.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
@@ -471,6 +476,7 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']] adaptive_protection_config: Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         :param pulumi.Input[pulumi.InputType['SecurityPolicyAdvancedOptionsConfigArgs']] advanced_options_config: [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource.
         :param pulumi.Input[str] name: The name of the security policy.
@@ -510,6 +516,7 @@ class SecurityPolicy(pulumi.CustomResource):
     def advanced_options_config(self) -> pulumi.Output['outputs.SecurityPolicyAdvancedOptionsConfig']:
         """
         [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+        Structure is documented below.
         """
         return pulumi.get(self, "advanced_options_config")
 

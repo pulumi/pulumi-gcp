@@ -2931,12 +2931,33 @@ class StandardAppVersionManualScaling(dict):
 
 @pulumi.output_type
 class StandardAppVersionVpcAccessConnector(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "egressSetting":
+            suggest = "egress_setting"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StandardAppVersionVpcAccessConnector. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StandardAppVersionVpcAccessConnector.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StandardAppVersionVpcAccessConnector.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 name: str):
+                 name: str,
+                 egress_setting: Optional[str] = None):
         """
         :param str name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        :param str egress_setting: The egress setting for the connector, controlling what traffic is diverted through it.
         """
         pulumi.set(__self__, "name", name)
+        if egress_setting is not None:
+            pulumi.set(__self__, "egress_setting", egress_setting)
 
     @property
     @pulumi.getter
@@ -2945,5 +2966,13 @@ class StandardAppVersionVpcAccessConnector(dict):
         Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="egressSetting")
+    def egress_setting(self) -> Optional[str]:
+        """
+        The egress setting for the connector, controlling what traffic is diverted through it.
+        """
+        return pulumi.get(self, "egress_setting")
 
 

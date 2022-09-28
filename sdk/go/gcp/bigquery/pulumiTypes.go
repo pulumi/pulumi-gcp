@@ -5434,6 +5434,10 @@ type JobLoad struct {
 	// CSV: Trailing columns
 	// JSON: Named values that don't match any column names
 	IgnoreUnknownValues *bool `pulumi:"ignoreUnknownValues"`
+	// If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON.
+	// For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited
+	// GeoJSON: set to GEOJSON.
+	JsonExtension *string `pulumi:"jsonExtension"`
 	// The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
 	// an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
 	MaxBadRecords *int `pulumi:"maxBadRecords"`
@@ -5541,6 +5545,10 @@ type JobLoadArgs struct {
 	// CSV: Trailing columns
 	// JSON: Named values that don't match any column names
 	IgnoreUnknownValues pulumi.BoolPtrInput `pulumi:"ignoreUnknownValues"`
+	// If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON.
+	// For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited
+	// GeoJSON: set to GEOJSON.
+	JsonExtension pulumi.StringPtrInput `pulumi:"jsonExtension"`
 	// The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
 	// an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
 	MaxBadRecords pulumi.IntPtrInput `pulumi:"maxBadRecords"`
@@ -5740,6 +5748,13 @@ func (o JobLoadOutput) FieldDelimiter() pulumi.StringPtrOutput {
 // JSON: Named values that don't match any column names
 func (o JobLoadOutput) IgnoreUnknownValues() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobLoad) *bool { return v.IgnoreUnknownValues }).(pulumi.BoolPtrOutput)
+}
+
+// If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON.
+// For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited
+// GeoJSON: set to GEOJSON.
+func (o JobLoadOutput) JsonExtension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobLoad) *string { return v.JsonExtension }).(pulumi.StringPtrOutput)
 }
 
 // The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
@@ -5959,6 +5974,18 @@ func (o JobLoadPtrOutput) IgnoreUnknownValues() pulumi.BoolPtrOutput {
 		}
 		return v.IgnoreUnknownValues
 	}).(pulumi.BoolPtrOutput)
+}
+
+// If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON.
+// For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited
+// GeoJSON: set to GEOJSON.
+func (o JobLoadPtrOutput) JsonExtension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobLoad) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JsonExtension
+	}).(pulumi.StringPtrOutput)
 }
 
 // The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,

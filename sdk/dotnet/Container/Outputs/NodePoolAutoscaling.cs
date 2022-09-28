@@ -14,9 +14,10 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class NodePoolAutoscaling
     {
         /// <summary>
-        /// Location policy specifies the algorithm used when scaling-up the node pool. \
-        /// "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones. \
-        /// "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+        /// Location policy specifies the algorithm used when
+        /// scaling-up the node pool. Location policy is supported only in 1.24.1+ clusters.
+        /// * "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.
+        /// * "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
         /// and reduce preemption risk for Spot VMs.
         /// </summary>
         public readonly string? LocationPolicy;
@@ -33,11 +34,13 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// Total maximum number of nodes in the NodePool.
         /// Must be &gt;= total_min_node_count. Cannot be used with per zone limits.
+        /// Total size limits are supported only in 1.24.1+ clusters.
         /// </summary>
         public readonly int? TotalMaxNodeCount;
         /// <summary>
         /// Total minimum number of nodes in the NodePool.
         /// Must be &gt;=0 and &lt;= `total_max_node_count`. Cannot be used with per zone limits.
+        /// Total size limits are supported only in 1.24.1+ clusters.
         /// </summary>
         public readonly int? TotalMinNodeCount;
 

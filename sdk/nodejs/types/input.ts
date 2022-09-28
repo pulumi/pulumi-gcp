@@ -2474,6 +2474,10 @@ export namespace appengine {
 
     export interface StandardAppVersionVpcAccessConnector {
         /**
+         * The egress setting for the connector, controlling what traffic is diverted through it.
+         */
+        egressSetting?: pulumi.Input<string>;
+        /**
          * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
          */
         name: pulumi.Input<string>;
@@ -3077,6 +3081,12 @@ export namespace bigquery {
          * JSON: Named values that don't match any column names
          */
         ignoreUnknownValues?: pulumi.Input<boolean>;
+        /**
+         * If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON.
+         * For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited
+         * GeoJSON: set to GEOJSON.
+         */
+        jsonExtension?: pulumi.Input<string>;
         /**
          * The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
          * an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
@@ -14436,6 +14446,11 @@ export namespace compute {
 
     export interface SecurityPolicyAdvancedOptionsConfig {
         /**
+         * Custom configuration to apply the JSON parsing. Only applicable when
+         * `jsonParsing` is set to `STANDARD`. Structure is documented below.
+         */
+        jsonCustomConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdvancedOptionsConfigJsonCustomConfig>;
+        /**
          * Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
          * * DISABLED - Don't parse JSON payloads in POST bodies.
          * * STANDARD - Parse JSON payloads in POST bodies.
@@ -14447,6 +14462,16 @@ export namespace compute {
          * * VERBOSE - Verbose log level.
          */
         logLevel?: pulumi.Input<string>;
+    }
+
+    export interface SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+        /**
+         * A list of custom Content-Type header values to apply the JSON parsing. The
+         * format of the Content-Type header values is defined in
+         * [RFC 1341](https://www.ietf.org/rfc/rfc1341.txt). When configuring a custom Content-Type header
+         * value, only the type/subtype needs to be specified, and the parameters should be excluded.
+         */
+        contentTypes: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface SecurityPolicyRule {
@@ -18623,9 +18648,10 @@ export namespace container {
 
     export interface NodePoolAutoscaling {
         /**
-         * Location policy specifies the algorithm used when scaling-up the node pool. \
-         * "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones. \
-         * "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
+         * Location policy specifies the algorithm used when
+         * scaling-up the node pool. Location policy is supported only in 1.24.1+ clusters.
+         * * "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.
+         * * "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
          * and reduce preemption risk for Spot VMs.
          */
         locationPolicy?: pulumi.Input<string>;
@@ -18642,11 +18668,13 @@ export namespace container {
         /**
          * Total maximum number of nodes in the NodePool.
          * Must be >= total_min_node_count. Cannot be used with per zone limits.
+         * Total size limits are supported only in 1.24.1+ clusters.
          */
         totalMaxNodeCount?: pulumi.Input<number>;
         /**
          * Total minimum number of nodes in the NodePool.
          * Must be >=0 and <= `totalMaxNodeCount`. Cannot be used with per zone limits.
+         * Total size limits are supported only in 1.24.1+ clusters.
          */
         totalMinNodeCount?: pulumi.Input<number>;
     }
@@ -30581,6 +30609,42 @@ export namespace redis {
         zone?: pulumi.Input<string>;
     }
 
+    export interface InstancePersistenceConfig {
+        /**
+         * Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+         * - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
+         * - RDB: RDB based Persistence is enabled.
+         * Possible values are `DISABLED` and `RDB`.
+         */
+        persistenceMode?: pulumi.Input<string>;
+        /**
+         * -
+         * Output only. The next time that a snapshot attempt is scheduled to occur.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+         * to nine fractional digits.
+         * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        rdbNextSnapshotTime?: pulumi.Input<string>;
+        /**
+         * Optional. Available snapshot periods for scheduling.
+         * - ONE_HOUR:	Snapshot every 1 hour.
+         * - SIX_HOURS:	Snapshot every 6 hours.
+         * - TWELVE_HOURS:	Snapshot every 12 hours.
+         * - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
+         * Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
+         */
+        rdbSnapshotPeriod: pulumi.Input<string>;
+        /**
+         * Optional. Date and time that the first snapshot was/will be attempted,
+         * and to which future snapshots will be aligned. If not provided,
+         * the current time will be used.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution
+         * and up to nine fractional digits.
+         * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        rdbSnapshotStartTime?: pulumi.Input<string>;
+    }
+
     export interface InstanceServerCaCert {
         cert?: pulumi.Input<string>;
         /**
@@ -31637,6 +31701,10 @@ export namespace storage {
          * Whether overwriting objects that already exist in the sink is allowed.
          */
         overwriteObjectsAlreadyExistingInSink?: pulumi.Input<boolean>;
+        /**
+         * When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwriteObjectsAlreadyExistingInSink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+         */
+        overwriteWhen?: pulumi.Input<string>;
     }
 
 }

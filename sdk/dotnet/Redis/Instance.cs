@@ -85,6 +85,30 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
+    /// ### Redis Instance Full With Persistence Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cache_persis = new Gcp.Redis.Instance("cache-persis", new()
+    ///     {
+    ///         AlternativeLocationId = "us-central1-f",
+    ///         LocationId = "us-central1-a",
+    ///         MemorySizeGb = 1,
+    ///         PersistenceConfig = new Gcp.Redis.Inputs.InstancePersistenceConfigArgs
+    ///         {
+    ///             PersistenceMode = "RDB",
+    ///             RdbSnapshotPeriod = "TWELVE_HOURS",
+    ///         },
+    ///         Tier = "STANDARD_HA",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Redis Instance Private Service
     /// 
     /// ```csharp
@@ -364,6 +388,13 @@ namespace Pulumi.Gcp.Redis
         public Output<ImmutableArray<Outputs.InstanceNode>> Nodes { get; private set; } = null!;
 
         /// <summary>
+        /// Maintenance policy for an instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("persistenceConfig")]
+        public Output<Outputs.InstancePersistenceConfig> PersistenceConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
         /// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
         /// operation.
@@ -627,6 +658,13 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Maintenance policy for an instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("persistenceConfig")]
+        public Input<Inputs.InstancePersistenceConfigArgs>? PersistenceConfig { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -862,6 +900,13 @@ namespace Pulumi.Gcp.Redis
             get => _nodes ?? (_nodes = new InputList<Inputs.InstanceNodeGetArgs>());
             set => _nodes = value;
         }
+
+        /// <summary>
+        /// Maintenance policy for an instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("persistenceConfig")]
+        public Input<Inputs.InstancePersistenceConfigGetArgs>? PersistenceConfig { get; set; }
 
         /// <summary>
         /// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is

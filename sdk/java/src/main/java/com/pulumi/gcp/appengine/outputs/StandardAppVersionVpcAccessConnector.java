@@ -6,9 +6,16 @@ package com.pulumi.gcp.appengine.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class StandardAppVersionVpcAccessConnector {
+    /**
+     * @return The egress setting for the connector, controlling what traffic is diverted through it.
+     * 
+     */
+    private @Nullable String egressSetting;
     /**
      * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      * 
@@ -16,6 +23,13 @@ public final class StandardAppVersionVpcAccessConnector {
     private String name;
 
     private StandardAppVersionVpcAccessConnector() {}
+    /**
+     * @return The egress setting for the connector, controlling what traffic is diverted through it.
+     * 
+     */
+    public Optional<String> egressSetting() {
+        return Optional.ofNullable(this.egressSetting);
+    }
     /**
      * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      * 
@@ -33,13 +47,20 @@ public final class StandardAppVersionVpcAccessConnector {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String egressSetting;
         private String name;
         public Builder() {}
         public Builder(StandardAppVersionVpcAccessConnector defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.egressSetting = defaults.egressSetting;
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
+        public Builder egressSetting(@Nullable String egressSetting) {
+            this.egressSetting = egressSetting;
+            return this;
+        }
         @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
@@ -47,6 +68,7 @@ public final class StandardAppVersionVpcAccessConnector {
         }
         public StandardAppVersionVpcAccessConnector build() {
             final var o = new StandardAppVersionVpcAccessConnector();
+            o.egressSetting = egressSetting;
             o.name = name;
             return o;
         }

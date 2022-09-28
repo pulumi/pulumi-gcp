@@ -818,6 +818,268 @@ func (o InstanceNodeArrayOutput) Index(i pulumi.IntInput) InstanceNodeOutput {
 	}).(InstanceNodeOutput)
 }
 
+type InstancePersistenceConfig struct {
+	// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+	// - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
+	// - RDB: RDB based Persistence is enabled.
+	//   Possible values are `DISABLED` and `RDB`.
+	PersistenceMode *string `pulumi:"persistenceMode"`
+	// -
+	// Output only. The next time that a snapshot attempt is scheduled to occur.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+	// to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	RdbNextSnapshotTime *string `pulumi:"rdbNextSnapshotTime"`
+	// Optional. Available snapshot periods for scheduling.
+	// - ONE_HOUR:	Snapshot every 1 hour.
+	// - SIX_HOURS:	Snapshot every 6 hours.
+	// - TWELVE_HOURS:	Snapshot every 12 hours.
+	// - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
+	//   Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
+	RdbSnapshotPeriod string `pulumi:"rdbSnapshotPeriod"`
+	// Optional. Date and time that the first snapshot was/will be attempted,
+	// and to which future snapshots will be aligned. If not provided,
+	// the current time will be used.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution
+	// and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	RdbSnapshotStartTime *string `pulumi:"rdbSnapshotStartTime"`
+}
+
+// InstancePersistenceConfigInput is an input type that accepts InstancePersistenceConfigArgs and InstancePersistenceConfigOutput values.
+// You can construct a concrete instance of `InstancePersistenceConfigInput` via:
+//
+//	InstancePersistenceConfigArgs{...}
+type InstancePersistenceConfigInput interface {
+	pulumi.Input
+
+	ToInstancePersistenceConfigOutput() InstancePersistenceConfigOutput
+	ToInstancePersistenceConfigOutputWithContext(context.Context) InstancePersistenceConfigOutput
+}
+
+type InstancePersistenceConfigArgs struct {
+	// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+	// - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
+	// - RDB: RDB based Persistence is enabled.
+	//   Possible values are `DISABLED` and `RDB`.
+	PersistenceMode pulumi.StringPtrInput `pulumi:"persistenceMode"`
+	// -
+	// Output only. The next time that a snapshot attempt is scheduled to occur.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+	// to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	RdbNextSnapshotTime pulumi.StringPtrInput `pulumi:"rdbNextSnapshotTime"`
+	// Optional. Available snapshot periods for scheduling.
+	// - ONE_HOUR:	Snapshot every 1 hour.
+	// - SIX_HOURS:	Snapshot every 6 hours.
+	// - TWELVE_HOURS:	Snapshot every 12 hours.
+	// - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
+	//   Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
+	RdbSnapshotPeriod pulumi.StringInput `pulumi:"rdbSnapshotPeriod"`
+	// Optional. Date and time that the first snapshot was/will be attempted,
+	// and to which future snapshots will be aligned. If not provided,
+	// the current time will be used.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution
+	// and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	RdbSnapshotStartTime pulumi.StringPtrInput `pulumi:"rdbSnapshotStartTime"`
+}
+
+func (InstancePersistenceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePersistenceConfig)(nil)).Elem()
+}
+
+func (i InstancePersistenceConfigArgs) ToInstancePersistenceConfigOutput() InstancePersistenceConfigOutput {
+	return i.ToInstancePersistenceConfigOutputWithContext(context.Background())
+}
+
+func (i InstancePersistenceConfigArgs) ToInstancePersistenceConfigOutputWithContext(ctx context.Context) InstancePersistenceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePersistenceConfigOutput)
+}
+
+func (i InstancePersistenceConfigArgs) ToInstancePersistenceConfigPtrOutput() InstancePersistenceConfigPtrOutput {
+	return i.ToInstancePersistenceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstancePersistenceConfigArgs) ToInstancePersistenceConfigPtrOutputWithContext(ctx context.Context) InstancePersistenceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePersistenceConfigOutput).ToInstancePersistenceConfigPtrOutputWithContext(ctx)
+}
+
+// InstancePersistenceConfigPtrInput is an input type that accepts InstancePersistenceConfigArgs, InstancePersistenceConfigPtr and InstancePersistenceConfigPtrOutput values.
+// You can construct a concrete instance of `InstancePersistenceConfigPtrInput` via:
+//
+//	        InstancePersistenceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstancePersistenceConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstancePersistenceConfigPtrOutput() InstancePersistenceConfigPtrOutput
+	ToInstancePersistenceConfigPtrOutputWithContext(context.Context) InstancePersistenceConfigPtrOutput
+}
+
+type instancePersistenceConfigPtrType InstancePersistenceConfigArgs
+
+func InstancePersistenceConfigPtr(v *InstancePersistenceConfigArgs) InstancePersistenceConfigPtrInput {
+	return (*instancePersistenceConfigPtrType)(v)
+}
+
+func (*instancePersistenceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePersistenceConfig)(nil)).Elem()
+}
+
+func (i *instancePersistenceConfigPtrType) ToInstancePersistenceConfigPtrOutput() InstancePersistenceConfigPtrOutput {
+	return i.ToInstancePersistenceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instancePersistenceConfigPtrType) ToInstancePersistenceConfigPtrOutputWithContext(ctx context.Context) InstancePersistenceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePersistenceConfigPtrOutput)
+}
+
+type InstancePersistenceConfigOutput struct{ *pulumi.OutputState }
+
+func (InstancePersistenceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePersistenceConfig)(nil)).Elem()
+}
+
+func (o InstancePersistenceConfigOutput) ToInstancePersistenceConfigOutput() InstancePersistenceConfigOutput {
+	return o
+}
+
+func (o InstancePersistenceConfigOutput) ToInstancePersistenceConfigOutputWithContext(ctx context.Context) InstancePersistenceConfigOutput {
+	return o
+}
+
+func (o InstancePersistenceConfigOutput) ToInstancePersistenceConfigPtrOutput() InstancePersistenceConfigPtrOutput {
+	return o.ToInstancePersistenceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstancePersistenceConfigOutput) ToInstancePersistenceConfigPtrOutputWithContext(ctx context.Context) InstancePersistenceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstancePersistenceConfig) *InstancePersistenceConfig {
+		return &v
+	}).(InstancePersistenceConfigPtrOutput)
+}
+
+// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+//   - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
+//   - RDB: RDB based Persistence is enabled.
+//     Possible values are `DISABLED` and `RDB`.
+func (o InstancePersistenceConfigOutput) PersistenceMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePersistenceConfig) *string { return v.PersistenceMode }).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. The next time that a snapshot attempt is scheduled to occur.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+// to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o InstancePersistenceConfigOutput) RdbNextSnapshotTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePersistenceConfig) *string { return v.RdbNextSnapshotTime }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Available snapshot periods for scheduling.
+//   - ONE_HOUR:	Snapshot every 1 hour.
+//   - SIX_HOURS:	Snapshot every 6 hours.
+//   - TWELVE_HOURS:	Snapshot every 12 hours.
+//   - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
+//     Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
+func (o InstancePersistenceConfigOutput) RdbSnapshotPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v InstancePersistenceConfig) string { return v.RdbSnapshotPeriod }).(pulumi.StringOutput)
+}
+
+// Optional. Date and time that the first snapshot was/will be attempted,
+// and to which future snapshots will be aligned. If not provided,
+// the current time will be used.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution
+// and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o InstancePersistenceConfigOutput) RdbSnapshotStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePersistenceConfig) *string { return v.RdbSnapshotStartTime }).(pulumi.StringPtrOutput)
+}
+
+type InstancePersistenceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstancePersistenceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePersistenceConfig)(nil)).Elem()
+}
+
+func (o InstancePersistenceConfigPtrOutput) ToInstancePersistenceConfigPtrOutput() InstancePersistenceConfigPtrOutput {
+	return o
+}
+
+func (o InstancePersistenceConfigPtrOutput) ToInstancePersistenceConfigPtrOutputWithContext(ctx context.Context) InstancePersistenceConfigPtrOutput {
+	return o
+}
+
+func (o InstancePersistenceConfigPtrOutput) Elem() InstancePersistenceConfigOutput {
+	return o.ApplyT(func(v *InstancePersistenceConfig) InstancePersistenceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstancePersistenceConfig
+		return ret
+	}).(InstancePersistenceConfigOutput)
+}
+
+// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+//   - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
+//   - RDB: RDB based Persistence is enabled.
+//     Possible values are `DISABLED` and `RDB`.
+func (o InstancePersistenceConfigPtrOutput) PersistenceMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstancePersistenceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PersistenceMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// Output only. The next time that a snapshot attempt is scheduled to occur.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+// to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o InstancePersistenceConfigPtrOutput) RdbNextSnapshotTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstancePersistenceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RdbNextSnapshotTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Available snapshot periods for scheduling.
+//   - ONE_HOUR:	Snapshot every 1 hour.
+//   - SIX_HOURS:	Snapshot every 6 hours.
+//   - TWELVE_HOURS:	Snapshot every 12 hours.
+//   - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
+//     Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
+func (o InstancePersistenceConfigPtrOutput) RdbSnapshotPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstancePersistenceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RdbSnapshotPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Date and time that the first snapshot was/will be attempted,
+// and to which future snapshots will be aligned. If not provided,
+// the current time will be used.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution
+// and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o InstancePersistenceConfigPtrOutput) RdbSnapshotStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstancePersistenceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RdbSnapshotStartTime
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceServerCaCert struct {
 	Cert *string `pulumi:"cert"`
 	// -
@@ -1488,6 +1750,118 @@ func (o GetInstanceNodeArrayOutput) Index(i pulumi.IntInput) GetInstanceNodeOutp
 	}).(GetInstanceNodeOutput)
 }
 
+type GetInstancePersistenceConfig struct {
+	PersistenceMode      string `pulumi:"persistenceMode"`
+	RdbNextSnapshotTime  string `pulumi:"rdbNextSnapshotTime"`
+	RdbSnapshotPeriod    string `pulumi:"rdbSnapshotPeriod"`
+	RdbSnapshotStartTime string `pulumi:"rdbSnapshotStartTime"`
+}
+
+// GetInstancePersistenceConfigInput is an input type that accepts GetInstancePersistenceConfigArgs and GetInstancePersistenceConfigOutput values.
+// You can construct a concrete instance of `GetInstancePersistenceConfigInput` via:
+//
+//	GetInstancePersistenceConfigArgs{...}
+type GetInstancePersistenceConfigInput interface {
+	pulumi.Input
+
+	ToGetInstancePersistenceConfigOutput() GetInstancePersistenceConfigOutput
+	ToGetInstancePersistenceConfigOutputWithContext(context.Context) GetInstancePersistenceConfigOutput
+}
+
+type GetInstancePersistenceConfigArgs struct {
+	PersistenceMode      pulumi.StringInput `pulumi:"persistenceMode"`
+	RdbNextSnapshotTime  pulumi.StringInput `pulumi:"rdbNextSnapshotTime"`
+	RdbSnapshotPeriod    pulumi.StringInput `pulumi:"rdbSnapshotPeriod"`
+	RdbSnapshotStartTime pulumi.StringInput `pulumi:"rdbSnapshotStartTime"`
+}
+
+func (GetInstancePersistenceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePersistenceConfig)(nil)).Elem()
+}
+
+func (i GetInstancePersistenceConfigArgs) ToGetInstancePersistenceConfigOutput() GetInstancePersistenceConfigOutput {
+	return i.ToGetInstancePersistenceConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstancePersistenceConfigArgs) ToGetInstancePersistenceConfigOutputWithContext(ctx context.Context) GetInstancePersistenceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePersistenceConfigOutput)
+}
+
+// GetInstancePersistenceConfigArrayInput is an input type that accepts GetInstancePersistenceConfigArray and GetInstancePersistenceConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstancePersistenceConfigArrayInput` via:
+//
+//	GetInstancePersistenceConfigArray{ GetInstancePersistenceConfigArgs{...} }
+type GetInstancePersistenceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancePersistenceConfigArrayOutput() GetInstancePersistenceConfigArrayOutput
+	ToGetInstancePersistenceConfigArrayOutputWithContext(context.Context) GetInstancePersistenceConfigArrayOutput
+}
+
+type GetInstancePersistenceConfigArray []GetInstancePersistenceConfigInput
+
+func (GetInstancePersistenceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePersistenceConfig)(nil)).Elem()
+}
+
+func (i GetInstancePersistenceConfigArray) ToGetInstancePersistenceConfigArrayOutput() GetInstancePersistenceConfigArrayOutput {
+	return i.ToGetInstancePersistenceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancePersistenceConfigArray) ToGetInstancePersistenceConfigArrayOutputWithContext(ctx context.Context) GetInstancePersistenceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePersistenceConfigArrayOutput)
+}
+
+type GetInstancePersistenceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePersistenceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePersistenceConfig)(nil)).Elem()
+}
+
+func (o GetInstancePersistenceConfigOutput) ToGetInstancePersistenceConfigOutput() GetInstancePersistenceConfigOutput {
+	return o
+}
+
+func (o GetInstancePersistenceConfigOutput) ToGetInstancePersistenceConfigOutputWithContext(ctx context.Context) GetInstancePersistenceConfigOutput {
+	return o
+}
+
+func (o GetInstancePersistenceConfigOutput) PersistenceMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePersistenceConfig) string { return v.PersistenceMode }).(pulumi.StringOutput)
+}
+
+func (o GetInstancePersistenceConfigOutput) RdbNextSnapshotTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePersistenceConfig) string { return v.RdbNextSnapshotTime }).(pulumi.StringOutput)
+}
+
+func (o GetInstancePersistenceConfigOutput) RdbSnapshotPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePersistenceConfig) string { return v.RdbSnapshotPeriod }).(pulumi.StringOutput)
+}
+
+func (o GetInstancePersistenceConfigOutput) RdbSnapshotStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancePersistenceConfig) string { return v.RdbSnapshotStartTime }).(pulumi.StringOutput)
+}
+
+type GetInstancePersistenceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePersistenceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePersistenceConfig)(nil)).Elem()
+}
+
+func (o GetInstancePersistenceConfigArrayOutput) ToGetInstancePersistenceConfigArrayOutput() GetInstancePersistenceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstancePersistenceConfigArrayOutput) ToGetInstancePersistenceConfigArrayOutputWithContext(ctx context.Context) GetInstancePersistenceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstancePersistenceConfigArrayOutput) Index(i pulumi.IntInput) GetInstancePersistenceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancePersistenceConfig {
+		return vs[0].([]GetInstancePersistenceConfig)[vs[1].(int)]
+	}).(GetInstancePersistenceConfigOutput)
+}
+
 type GetInstanceServerCaCert struct {
 	Cert            string `pulumi:"cert"`
 	CreateTime      string `pulumi:"createTime"`
@@ -1616,6 +1990,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenanceSchedulePtrInput)(nil)).Elem(), InstanceMaintenanceScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNodeInput)(nil)).Elem(), InstanceNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNodeArrayInput)(nil)).Elem(), InstanceNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePersistenceConfigInput)(nil)).Elem(), InstancePersistenceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePersistenceConfigPtrInput)(nil)).Elem(), InstancePersistenceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceServerCaCertInput)(nil)).Elem(), InstanceServerCaCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceServerCaCertArrayInput)(nil)).Elem(), InstanceServerCaCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenancePolicyInput)(nil)).Elem(), GetInstanceMaintenancePolicyArgs{})
@@ -1628,6 +2004,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenanceScheduleArrayInput)(nil)).Elem(), GetInstanceMaintenanceScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNodeInput)(nil)).Elem(), GetInstanceNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNodeArrayInput)(nil)).Elem(), GetInstanceNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePersistenceConfigInput)(nil)).Elem(), GetInstancePersistenceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePersistenceConfigArrayInput)(nil)).Elem(), GetInstancePersistenceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceServerCaCertInput)(nil)).Elem(), GetInstanceServerCaCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceServerCaCertArrayInput)(nil)).Elem(), GetInstanceServerCaCertArray{})
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyOutput{})
@@ -1639,6 +2017,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceMaintenanceSchedulePtrOutput{})
 	pulumi.RegisterOutputType(InstanceNodeOutput{})
 	pulumi.RegisterOutputType(InstanceNodeArrayOutput{})
+	pulumi.RegisterOutputType(InstancePersistenceConfigOutput{})
+	pulumi.RegisterOutputType(InstancePersistenceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceServerCaCertOutput{})
 	pulumi.RegisterOutputType(InstanceServerCaCertArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceMaintenancePolicyOutput{})
@@ -1651,6 +2031,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceMaintenanceScheduleArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNodeOutput{})
 	pulumi.RegisterOutputType(GetInstanceNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancePersistenceConfigOutput{})
+	pulumi.RegisterOutputType(GetInstancePersistenceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceServerCaCertOutput{})
 	pulumi.RegisterOutputType(GetInstanceServerCaCertArrayOutput{})
 }

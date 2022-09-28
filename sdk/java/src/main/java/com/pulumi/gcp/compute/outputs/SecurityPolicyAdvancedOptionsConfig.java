@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfig;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,6 +12,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SecurityPolicyAdvancedOptionsConfig {
+    /**
+     * @return Custom configuration to apply the JSON parsing. Only applicable when
+     * `json_parsing` is set to `STANDARD`. Structure is documented below.
+     * 
+     */
+    private @Nullable SecurityPolicyAdvancedOptionsConfigJsonCustomConfig jsonCustomConfig;
     /**
      * @return Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
      * * DISABLED - Don&#39;t parse JSON payloads in POST bodies.
@@ -27,6 +34,14 @@ public final class SecurityPolicyAdvancedOptionsConfig {
     private @Nullable String logLevel;
 
     private SecurityPolicyAdvancedOptionsConfig() {}
+    /**
+     * @return Custom configuration to apply the JSON parsing. Only applicable when
+     * `json_parsing` is set to `STANDARD`. Structure is documented below.
+     * 
+     */
+    public Optional<SecurityPolicyAdvancedOptionsConfigJsonCustomConfig> jsonCustomConfig() {
+        return Optional.ofNullable(this.jsonCustomConfig);
+    }
     /**
      * @return Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
      * * DISABLED - Don&#39;t parse JSON payloads in POST bodies.
@@ -55,15 +70,22 @@ public final class SecurityPolicyAdvancedOptionsConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable SecurityPolicyAdvancedOptionsConfigJsonCustomConfig jsonCustomConfig;
         private @Nullable String jsonParsing;
         private @Nullable String logLevel;
         public Builder() {}
         public Builder(SecurityPolicyAdvancedOptionsConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.jsonCustomConfig = defaults.jsonCustomConfig;
     	      this.jsonParsing = defaults.jsonParsing;
     	      this.logLevel = defaults.logLevel;
         }
 
+        @CustomType.Setter
+        public Builder jsonCustomConfig(@Nullable SecurityPolicyAdvancedOptionsConfigJsonCustomConfig jsonCustomConfig) {
+            this.jsonCustomConfig = jsonCustomConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder jsonParsing(@Nullable String jsonParsing) {
             this.jsonParsing = jsonParsing;
@@ -76,6 +98,7 @@ public final class SecurityPolicyAdvancedOptionsConfig {
         }
         public SecurityPolicyAdvancedOptionsConfig build() {
             final var o = new SecurityPolicyAdvancedOptionsConfig();
+            o.jsonCustomConfig = jsonCustomConfig;
             o.jsonParsing = jsonParsing;
             o.logLevel = logLevel;
             return o;

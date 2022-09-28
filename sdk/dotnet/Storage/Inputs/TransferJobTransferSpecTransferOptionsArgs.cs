@@ -31,6 +31,12 @@ namespace Pulumi.Gcp.Storage.Inputs
         [Input("overwriteObjectsAlreadyExistingInSink")]
         public Input<bool>? OverwriteObjectsAlreadyExistingInSink { get; set; }
 
+        /// <summary>
+        /// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+        /// </summary>
+        [Input("overwriteWhen")]
+        public Input<string>? OverwriteWhen { get; set; }
+
         public TransferJobTransferSpecTransferOptionsArgs()
         {
         }

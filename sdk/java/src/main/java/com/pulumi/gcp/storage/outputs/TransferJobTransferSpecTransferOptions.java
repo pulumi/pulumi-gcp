@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -27,6 +28,11 @@ public final class TransferJobTransferSpecTransferOptions {
      * 
      */
     private @Nullable Boolean overwriteObjectsAlreadyExistingInSink;
+    /**
+     * @return When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+     * 
+     */
+    private @Nullable String overwriteWhen;
 
     private TransferJobTransferSpecTransferOptions() {}
     /**
@@ -51,6 +57,13 @@ public final class TransferJobTransferSpecTransferOptions {
     public Optional<Boolean> overwriteObjectsAlreadyExistingInSink() {
         return Optional.ofNullable(this.overwriteObjectsAlreadyExistingInSink);
     }
+    /**
+     * @return When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+     * 
+     */
+    public Optional<String> overwriteWhen() {
+        return Optional.ofNullable(this.overwriteWhen);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -64,12 +77,14 @@ public final class TransferJobTransferSpecTransferOptions {
         private @Nullable Boolean deleteObjectsFromSourceAfterTransfer;
         private @Nullable Boolean deleteObjectsUniqueInSink;
         private @Nullable Boolean overwriteObjectsAlreadyExistingInSink;
+        private @Nullable String overwriteWhen;
         public Builder() {}
         public Builder(TransferJobTransferSpecTransferOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deleteObjectsFromSourceAfterTransfer = defaults.deleteObjectsFromSourceAfterTransfer;
     	      this.deleteObjectsUniqueInSink = defaults.deleteObjectsUniqueInSink;
     	      this.overwriteObjectsAlreadyExistingInSink = defaults.overwriteObjectsAlreadyExistingInSink;
+    	      this.overwriteWhen = defaults.overwriteWhen;
         }
 
         @CustomType.Setter
@@ -87,11 +102,17 @@ public final class TransferJobTransferSpecTransferOptions {
             this.overwriteObjectsAlreadyExistingInSink = overwriteObjectsAlreadyExistingInSink;
             return this;
         }
+        @CustomType.Setter
+        public Builder overwriteWhen(@Nullable String overwriteWhen) {
+            this.overwriteWhen = overwriteWhen;
+            return this;
+        }
         public TransferJobTransferSpecTransferOptions build() {
             final var o = new TransferJobTransferSpecTransferOptions();
             o.deleteObjectsFromSourceAfterTransfer = deleteObjectsFromSourceAfterTransfer;
             o.deleteObjectsUniqueInSink = deleteObjectsUniqueInSink;
             o.overwriteObjectsAlreadyExistingInSink = overwriteObjectsAlreadyExistingInSink;
+            o.overwriteWhen = overwriteWhen;
             return o;
         }
     }

@@ -79,6 +79,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
     public readonly adaptiveProtectionConfig!: pulumi.Output<outputs.compute.SecurityPolicyAdaptiveProtectionConfig | undefined>;
     /**
      * [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+     * Structure is documented below.
      */
     public readonly advancedOptionsConfig!: pulumi.Output<outputs.compute.SecurityPolicyAdvancedOptionsConfig>;
     /**
@@ -162,6 +163,7 @@ export interface SecurityPolicyState {
     adaptiveProtectionConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdaptiveProtectionConfig>;
     /**
      * [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+     * Structure is documented below.
      */
     advancedOptionsConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdvancedOptionsConfig>;
     /**
@@ -207,6 +209,7 @@ export interface SecurityPolicyArgs {
     adaptiveProtectionConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdaptiveProtectionConfig>;
     /**
      * [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
+     * Structure is documented below.
      */
     advancedOptionsConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdvancedOptionsConfig>;
     /**

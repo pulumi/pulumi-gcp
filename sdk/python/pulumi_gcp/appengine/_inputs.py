@@ -2843,11 +2843,15 @@ class StandardAppVersionManualScalingArgs:
 @pulumi.input_type
 class StandardAppVersionVpcAccessConnectorArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[str]):
+                 name: pulumi.Input[str],
+                 egress_setting: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        :param pulumi.Input[str] egress_setting: The egress setting for the connector, controlling what traffic is diverted through it.
         """
         pulumi.set(__self__, "name", name)
+        if egress_setting is not None:
+            pulumi.set(__self__, "egress_setting", egress_setting)
 
     @property
     @pulumi.getter
@@ -2860,5 +2864,17 @@ class StandardAppVersionVpcAccessConnectorArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="egressSetting")
+    def egress_setting(self) -> Optional[pulumi.Input[str]]:
+        """
+        The egress setting for the connector, controlling what traffic is diverted through it.
+        """
+        return pulumi.get(self, "egress_setting")
+
+    @egress_setting.setter
+    def egress_setting(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "egress_setting", value)
 
 

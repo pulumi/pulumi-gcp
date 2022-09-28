@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.redis.outputs.GetInstanceMaintenancePolicy;
 import com.pulumi.gcp.redis.outputs.GetInstanceMaintenanceSchedule;
 import com.pulumi.gcp.redis.outputs.GetInstanceNode;
+import com.pulumi.gcp.redis.outputs.GetInstancePersistenceConfig;
 import com.pulumi.gcp.redis.outputs.GetInstanceServerCaCert;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -41,6 +42,7 @@ public final class GetInstanceResult {
     private Integer memorySizeGb;
     private String name;
     private List<GetInstanceNode> nodes;
+    private List<GetInstancePersistenceConfig> persistenceConfigs;
     private String persistenceIamIdentity;
     private Integer port;
     private @Nullable String project;
@@ -116,6 +118,9 @@ public final class GetInstanceResult {
     public List<GetInstanceNode> nodes() {
         return this.nodes;
     }
+    public List<GetInstancePersistenceConfig> persistenceConfigs() {
+        return this.persistenceConfigs;
+    }
     public String persistenceIamIdentity() {
         return this.persistenceIamIdentity;
     }
@@ -189,6 +194,7 @@ public final class GetInstanceResult {
         private Integer memorySizeGb;
         private String name;
         private List<GetInstanceNode> nodes;
+        private List<GetInstancePersistenceConfig> persistenceConfigs;
         private String persistenceIamIdentity;
         private Integer port;
         private @Nullable String project;
@@ -225,6 +231,7 @@ public final class GetInstanceResult {
     	      this.memorySizeGb = defaults.memorySizeGb;
     	      this.name = defaults.name;
     	      this.nodes = defaults.nodes;
+    	      this.persistenceConfigs = defaults.persistenceConfigs;
     	      this.persistenceIamIdentity = defaults.persistenceIamIdentity;
     	      this.port = defaults.port;
     	      this.project = defaults.project;
@@ -342,6 +349,14 @@ public final class GetInstanceResult {
             return nodes(List.of(nodes));
         }
         @CustomType.Setter
+        public Builder persistenceConfigs(List<GetInstancePersistenceConfig> persistenceConfigs) {
+            this.persistenceConfigs = Objects.requireNonNull(persistenceConfigs);
+            return this;
+        }
+        public Builder persistenceConfigs(GetInstancePersistenceConfig... persistenceConfigs) {
+            return persistenceConfigs(List.of(persistenceConfigs));
+        }
+        @CustomType.Setter
         public Builder persistenceIamIdentity(String persistenceIamIdentity) {
             this.persistenceIamIdentity = Objects.requireNonNull(persistenceIamIdentity);
             return this;
@@ -439,6 +454,7 @@ public final class GetInstanceResult {
             o.memorySizeGb = memorySizeGb;
             o.name = name;
             o.nodes = nodes;
+            o.persistenceConfigs = persistenceConfigs;
             o.persistenceIamIdentity = persistenceIamIdentity;
             o.port = port;
             o.project = project;

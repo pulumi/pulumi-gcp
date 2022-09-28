@@ -315,6 +315,7 @@ __all__ = [
     'SecurityPolicyAdaptiveProtectionConfigArgs',
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs',
     'SecurityPolicyAdvancedOptionsConfigArgs',
+    'SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs',
     'SecurityPolicyRuleArgs',
     'SecurityPolicyRuleMatchArgs',
     'SecurityPolicyRuleMatchConfigArgs',
@@ -21595,9 +21596,12 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
 @pulumi.input_type
 class SecurityPolicyAdvancedOptionsConfigArgs:
     def __init__(__self__, *,
+                 json_custom_config: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs']] = None,
                  json_parsing: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs'] json_custom_config: Custom configuration to apply the JSON parsing. Only applicable when
+               `json_parsing` is set to `STANDARD`. Structure is documented below.
         :param pulumi.Input[str] json_parsing: Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
                * DISABLED - Don't parse JSON payloads in POST bodies.
                * STANDARD - Parse JSON payloads in POST bodies.
@@ -21605,10 +21609,25 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
                * NORMAL - Normal log level.
                * VERBOSE - Verbose log level.
         """
+        if json_custom_config is not None:
+            pulumi.set(__self__, "json_custom_config", json_custom_config)
         if json_parsing is not None:
             pulumi.set(__self__, "json_parsing", json_parsing)
         if log_level is not None:
             pulumi.set(__self__, "log_level", log_level)
+
+    @property
+    @pulumi.getter(name="jsonCustomConfig")
+    def json_custom_config(self) -> Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs']]:
+        """
+        Custom configuration to apply the JSON parsing. Only applicable when
+        `json_parsing` is set to `STANDARD`. Structure is documented below.
+        """
+        return pulumi.get(self, "json_custom_config")
+
+    @json_custom_config.setter
+    def json_custom_config(self, value: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs']]):
+        pulumi.set(self, "json_custom_config", value)
 
     @property
     @pulumi.getter(name="jsonParsing")
@@ -21637,6 +21656,34 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
     @log_level.setter
     def log_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "log_level", value)
+
+
+@pulumi.input_type
+class SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs:
+    def __init__(__self__, *,
+                 content_types: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] content_types: A list of custom Content-Type header values to apply the JSON parsing. The
+               format of the Content-Type header values is defined in
+               [RFC 1341](https://www.ietf.org/rfc/rfc1341.txt). When configuring a custom Content-Type header
+               value, only the type/subtype needs to be specified, and the parameters should be excluded.
+        """
+        pulumi.set(__self__, "content_types", content_types)
+
+    @property
+    @pulumi.getter(name="contentTypes")
+    def content_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of custom Content-Type header values to apply the JSON parsing. The
+        format of the Content-Type header values is defined in
+        [RFC 1341](https://www.ietf.org/rfc/rfc1341.txt). When configuring a custom Content-Type header
+        value, only the type/subtype needs to be specified, and the parameters should be excluded.
+        """
+        return pulumi.get(self, "content_types")
+
+    @content_types.setter
+    def content_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "content_types", value)
 
 
 @pulumi.input_type

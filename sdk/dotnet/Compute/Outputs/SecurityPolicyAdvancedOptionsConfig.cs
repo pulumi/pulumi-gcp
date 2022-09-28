@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class SecurityPolicyAdvancedOptionsConfig
     {
         /// <summary>
+        /// Custom configuration to apply the JSON parsing. Only applicable when
+        /// `json_parsing` is set to `STANDARD`. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfig? JsonCustomConfig;
+        /// <summary>
         /// Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
         /// * DISABLED - Don't parse JSON payloads in POST bodies.
         /// * STANDARD - Parse JSON payloads in POST bodies.
@@ -28,10 +33,13 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private SecurityPolicyAdvancedOptionsConfig(
+            Outputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfig? jsonCustomConfig,
+
             string? jsonParsing,
 
             string? logLevel)
         {
+            JsonCustomConfig = jsonCustomConfig;
             JsonParsing = jsonParsing;
             LogLevel = logLevel;
         }

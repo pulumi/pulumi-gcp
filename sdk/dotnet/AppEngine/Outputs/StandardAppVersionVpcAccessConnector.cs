@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     public sealed class StandardAppVersionVpcAccessConnector
     {
         /// <summary>
+        /// The egress setting for the connector, controlling what traffic is diverted through it.
+        /// </summary>
+        public readonly string? EgressSetting;
+        /// <summary>
         /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>
         public readonly string Name;
 
         [OutputConstructor]
-        private StandardAppVersionVpcAccessConnector(string name)
+        private StandardAppVersionVpcAccessConnector(
+            string? egressSetting,
+
+            string name)
         {
+            EgressSetting = egressSetting;
             Name = name;
         }
     }
