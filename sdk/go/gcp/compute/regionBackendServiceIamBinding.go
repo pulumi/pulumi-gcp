@@ -43,7 +43,7 @@ import (
 type RegionBackendServiceIamBinding struct {
 	pulumi.CustomResourceState
 
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition RegionBackendServiceIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -101,7 +101,7 @@ func GetRegionBackendServiceIamBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionBackendServiceIamBinding resources.
 type regionBackendServiceIamBindingState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *RegionBackendServiceIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -125,7 +125,7 @@ type regionBackendServiceIamBindingState struct {
 }
 
 type RegionBackendServiceIamBindingState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition RegionBackendServiceIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
@@ -153,7 +153,7 @@ func (RegionBackendServiceIamBindingState) ElementType() reflect.Type {
 }
 
 type regionBackendServiceIamBindingArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *RegionBackendServiceIamBindingCondition `pulumi:"condition"`
 	Members   []string                                 `pulumi:"members"`
@@ -176,7 +176,7 @@ type regionBackendServiceIamBindingArgs struct {
 
 // The set of arguments for constructing a RegionBackendServiceIamBinding resource.
 type RegionBackendServiceIamBindingArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition RegionBackendServiceIamBindingConditionPtrInput
 	Members   pulumi.StringArrayInput
@@ -284,7 +284,7 @@ func (o RegionBackendServiceIamBindingOutput) ToRegionBackendServiceIamBindingOu
 	return o
 }
 
-// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
 func (o RegionBackendServiceIamBindingOutput) Condition() RegionBackendServiceIamBindingConditionPtrOutput {
 	return o.ApplyT(func(v *RegionBackendServiceIamBinding) RegionBackendServiceIamBindingConditionPtrOutput {

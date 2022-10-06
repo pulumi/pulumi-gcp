@@ -22,7 +22,10 @@ class GetDatabaseInstanceResult:
     """
     A collection of values returned by getDatabaseInstance.
     """
-    def __init__(__self__, clones=None, connection_name=None, database_version=None, deletion_protection=None, encryption_key_name=None, first_ip_address=None, id=None, ip_addresses=None, master_instance_name=None, name=None, private_ip_address=None, project=None, public_ip_address=None, region=None, replica_configurations=None, restore_backup_contexts=None, root_password=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
+    def __init__(__self__, available_maintenance_versions=None, clones=None, connection_name=None, database_version=None, deletion_protection=None, encryption_key_name=None, first_ip_address=None, id=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, private_ip_address=None, project=None, public_ip_address=None, region=None, replica_configurations=None, restore_backup_contexts=None, root_password=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
+        if available_maintenance_versions and not isinstance(available_maintenance_versions, list):
+            raise TypeError("Expected argument 'available_maintenance_versions' to be a list")
+        pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
         if clones and not isinstance(clones, list):
             raise TypeError("Expected argument 'clones' to be a list")
         pulumi.set(__self__, "clones", clones)
@@ -47,6 +50,9 @@ class GetDatabaseInstanceResult:
         if ip_addresses and not isinstance(ip_addresses, list):
             raise TypeError("Expected argument 'ip_addresses' to be a list")
         pulumi.set(__self__, "ip_addresses", ip_addresses)
+        if maintenance_version and not isinstance(maintenance_version, str):
+            raise TypeError("Expected argument 'maintenance_version' to be a str")
+        pulumi.set(__self__, "maintenance_version", maintenance_version)
         if master_instance_name and not isinstance(master_instance_name, str):
             raise TypeError("Expected argument 'master_instance_name' to be a str")
         pulumi.set(__self__, "master_instance_name", master_instance_name)
@@ -86,6 +92,11 @@ class GetDatabaseInstanceResult:
         if settings and not isinstance(settings, list):
             raise TypeError("Expected argument 'settings' to be a list")
         pulumi.set(__self__, "settings", settings)
+
+    @property
+    @pulumi.getter(name="availableMaintenanceVersions")
+    def available_maintenance_versions(self) -> Sequence[str]:
+        return pulumi.get(self, "available_maintenance_versions")
 
     @property
     @pulumi.getter
@@ -129,6 +140,11 @@ class GetDatabaseInstanceResult:
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> Sequence['outputs.GetDatabaseInstanceIpAddressResult']:
         return pulumi.get(self, "ip_addresses")
+
+    @property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> str:
+        return pulumi.get(self, "maintenance_version")
 
     @property
     @pulumi.getter(name="masterInstanceName")
@@ -202,6 +218,7 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
         if False:
             yield self
         return GetDatabaseInstanceResult(
+            available_maintenance_versions=self.available_maintenance_versions,
             clones=self.clones,
             connection_name=self.connection_name,
             database_version=self.database_version,
@@ -210,6 +227,7 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
             first_ip_address=self.first_ip_address,
             id=self.id,
             ip_addresses=self.ip_addresses,
+            maintenance_version=self.maintenance_version,
             master_instance_name=self.master_instance_name,
             name=self.name,
             private_ip_address=self.private_ip_address,
@@ -251,6 +269,7 @@ def get_database_instance(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:sql/getDatabaseInstance:getDatabaseInstance', __args__, opts=opts, typ=GetDatabaseInstanceResult).value
 
     return AwaitableGetDatabaseInstanceResult(
+        available_maintenance_versions=__ret__.available_maintenance_versions,
         clones=__ret__.clones,
         connection_name=__ret__.connection_name,
         database_version=__ret__.database_version,
@@ -259,6 +278,7 @@ def get_database_instance(name: Optional[str] = None,
         first_ip_address=__ret__.first_ip_address,
         id=__ret__.id,
         ip_addresses=__ret__.ip_addresses,
+        maintenance_version=__ret__.maintenance_version,
         master_instance_name=__ret__.master_instance_name,
         name=__ret__.name,
         private_ip_address=__ret__.private_ip_address,

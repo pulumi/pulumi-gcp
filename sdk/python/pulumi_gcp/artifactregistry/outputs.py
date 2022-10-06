@@ -13,6 +13,7 @@ __all__ = [
     'RepositoryIamBindingCondition',
     'RepositoryIamMemberCondition',
     'RepositoryMavenConfig',
+    'GetRepositoryMavenConfigResult',
 ]
 
 @pulumi.output_type
@@ -122,6 +123,25 @@ class RepositoryMavenConfig(dict):
         Default value is `VERSION_POLICY_UNSPECIFIED`.
         Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
         """
+        return pulumi.get(self, "version_policy")
+
+
+@pulumi.output_type
+class GetRepositoryMavenConfigResult(dict):
+    def __init__(__self__, *,
+                 allow_snapshot_overwrites: bool,
+                 version_policy: str):
+        pulumi.set(__self__, "allow_snapshot_overwrites", allow_snapshot_overwrites)
+        pulumi.set(__self__, "version_policy", version_policy)
+
+    @property
+    @pulumi.getter(name="allowSnapshotOverwrites")
+    def allow_snapshot_overwrites(self) -> bool:
+        return pulumi.get(self, "allow_snapshot_overwrites")
+
+    @property
+    @pulumi.getter(name="versionPolicy")
+    def version_policy(self) -> str:
         return pulumi.get(self, "version_policy")
 
 

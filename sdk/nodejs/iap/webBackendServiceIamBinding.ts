@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.iap.WebBackendServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.WebBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
  *
+ * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ *
  * ## google\_iap\_web\_backend\_service\_iam\_policy
  *
  * ```typescript
@@ -177,7 +179,7 @@ export class WebBackendServiceIamBinding extends pulumi.CustomResource {
     }
 
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     public readonly condition!: pulumi.Output<outputs.iap.WebBackendServiceIamBindingCondition | undefined>;
@@ -249,7 +251,7 @@ export class WebBackendServiceIamBinding extends pulumi.CustomResource {
  */
 export interface WebBackendServiceIamBindingState {
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.iap.WebBackendServiceIamBindingCondition>;
@@ -280,7 +282,7 @@ export interface WebBackendServiceIamBindingState {
  */
 export interface WebBackendServiceIamBindingArgs {
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.iap.WebBackendServiceIamBindingCondition>;

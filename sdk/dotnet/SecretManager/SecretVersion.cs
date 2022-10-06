@@ -95,6 +95,12 @@ namespace Pulumi.Gcp.SecretManager
         [Output("secretData")]
         public Output<string> SecretData { get; private set; } = null!;
 
+        /// <summary>
+        /// The version of the Secret.
+        /// </summary>
+        [Output("version")]
+        public Output<string> Version { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a SecretVersion resource with the given unique name, arguments, and options.
@@ -204,6 +210,12 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         [Input("secretData")]
         public Input<string>? SecretData { get; set; }
+
+        /// <summary>
+        /// The version of the Secret.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
 
         public SecretVersionState()
         {

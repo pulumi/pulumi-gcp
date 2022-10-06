@@ -21,6 +21,8 @@ import (
 //
 // > **Note:** `iap.WebTypeAppEngingIamBinding` resources **can be** used in conjunction with `iap.WebTypeAppEngingIamMember` resources **only if** they do not grant privilege to the same role.
 //
+// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+//
 // ## google\_iap\_web\_type\_app\_engine\_iam\_policy
 //
 // ```go
@@ -272,7 +274,7 @@ type WebTypeAppEngingIamMember struct {
 
 	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
 	AppId pulumi.StringOutput `pulumi:"appId"`
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition WebTypeAppEngingIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -327,7 +329,7 @@ func GetWebTypeAppEngingIamMember(ctx *pulumi.Context,
 type webTypeAppEngingIamMemberState struct {
 	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
 	AppId *string `pulumi:"appId"`
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *WebTypeAppEngingIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -345,7 +347,7 @@ type webTypeAppEngingIamMemberState struct {
 type WebTypeAppEngingIamMemberState struct {
 	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
 	AppId pulumi.StringPtrInput
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition WebTypeAppEngingIamMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
@@ -367,7 +369,7 @@ func (WebTypeAppEngingIamMemberState) ElementType() reflect.Type {
 type webTypeAppEngingIamMemberArgs struct {
 	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
 	AppId string `pulumi:"appId"`
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *WebTypeAppEngingIamMemberCondition `pulumi:"condition"`
 	Member    string                              `pulumi:"member"`
@@ -384,7 +386,7 @@ type webTypeAppEngingIamMemberArgs struct {
 type WebTypeAppEngingIamMemberArgs struct {
 	// Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
 	AppId pulumi.StringInput
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition WebTypeAppEngingIamMemberConditionPtrInput
 	Member    pulumi.StringInput
@@ -489,7 +491,7 @@ func (o WebTypeAppEngingIamMemberOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebTypeAppEngingIamMember) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }
 
-// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
 func (o WebTypeAppEngingIamMemberOutput) Condition() WebTypeAppEngingIamMemberConditionPtrOutput {
 	return o.ApplyT(func(v *WebTypeAppEngingIamMember) WebTypeAppEngingIamMemberConditionPtrOutput { return v.Condition }).(WebTypeAppEngingIamMemberConditionPtrOutput)

@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class CertificateSelfManagedArgs extends com.pulumi.resources.ResourceArgs {
@@ -14,13 +16,44 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
     public static final CertificateSelfManagedArgs Empty = new CertificateSelfManagedArgs();
 
     /**
+     * - 
+     * (Optional, Deprecated)
+     * **Deprecated** The certificate chain in PEM-encoded form.
+     * Leaf certificate comes first, followed by intermediate ones if any.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     * @deprecated
+     * Deprecated in favor of `pem_certificate`
+     * 
+     */
+    @Deprecated /* Deprecated in favor of `pem_certificate` */
+    @Import(name="certificatePem")
+    private @Nullable Output<String> certificatePem;
+
+    /**
+     * @return -
+     * (Optional, Deprecated)
+     * **Deprecated** The certificate chain in PEM-encoded form.
+     * Leaf certificate comes first, followed by intermediate ones if any.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     * @deprecated
+     * Deprecated in favor of `pem_certificate`
+     * 
+     */
+    @Deprecated /* Deprecated in favor of `pem_certificate` */
+    public Optional<Output<String>> certificatePem() {
+        return Optional.ofNullable(this.certificatePem);
+    }
+
+    /**
      * The certificate chain in PEM-encoded form.
      * Leaf certificate comes first, followed by intermediate ones if any.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Import(name="certificatePem", required=true)
-    private Output<String> certificatePem;
+    @Import(name="pemCertificate")
+    private @Nullable Output<String> pemCertificate;
 
     /**
      * @return The certificate chain in PEM-encoded form.
@@ -28,8 +61,8 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> certificatePem() {
-        return this.certificatePem;
+    public Optional<Output<String>> pemCertificate() {
+        return Optional.ofNullable(this.pemCertificate);
     }
 
     /**
@@ -37,22 +70,53 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Import(name="privateKeyPem", required=true)
-    private Output<String> privateKeyPem;
+    @Import(name="pemPrivateKey")
+    private @Nullable Output<String> pemPrivateKey;
 
     /**
      * @return The private key of the leaf certificate in PEM-encoded form.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> privateKeyPem() {
-        return this.privateKeyPem;
+    public Optional<Output<String>> pemPrivateKey() {
+        return Optional.ofNullable(this.pemPrivateKey);
+    }
+
+    /**
+     * - 
+     * (Optional, Deprecated)
+     * **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     * @deprecated
+     * Deprecated in favor of `pem_private_key`
+     * 
+     */
+    @Deprecated /* Deprecated in favor of `pem_private_key` */
+    @Import(name="privateKeyPem")
+    private @Nullable Output<String> privateKeyPem;
+
+    /**
+     * @return -
+     * (Optional, Deprecated)
+     * **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     * @deprecated
+     * Deprecated in favor of `pem_private_key`
+     * 
+     */
+    @Deprecated /* Deprecated in favor of `pem_private_key` */
+    public Optional<Output<String>> privateKeyPem() {
+        return Optional.ofNullable(this.privateKeyPem);
     }
 
     private CertificateSelfManagedArgs() {}
 
     private CertificateSelfManagedArgs(CertificateSelfManagedArgs $) {
         this.certificatePem = $.certificatePem;
+        this.pemCertificate = $.pemCertificate;
+        this.pemPrivateKey = $.pemPrivateKey;
         this.privateKeyPem = $.privateKeyPem;
     }
 
@@ -75,56 +139,126 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param certificatePem The certificate chain in PEM-encoded form.
+         * @param certificatePem -
+         * (Optional, Deprecated)
+         * **Deprecated** The certificate chain in PEM-encoded form.
          * Leaf certificate comes first, followed by intermediate ones if any.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Deprecated in favor of `pem_certificate`
+         * 
          */
-        public Builder certificatePem(Output<String> certificatePem) {
+        @Deprecated /* Deprecated in favor of `pem_certificate` */
+        public Builder certificatePem(@Nullable Output<String> certificatePem) {
             $.certificatePem = certificatePem;
             return this;
         }
 
         /**
-         * @param certificatePem The certificate chain in PEM-encoded form.
+         * @param certificatePem -
+         * (Optional, Deprecated)
+         * **Deprecated** The certificate chain in PEM-encoded form.
+         * Leaf certificate comes first, followed by intermediate ones if any.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Deprecated in favor of `pem_certificate`
+         * 
+         */
+        @Deprecated /* Deprecated in favor of `pem_certificate` */
+        public Builder certificatePem(String certificatePem) {
+            return certificatePem(Output.of(certificatePem));
+        }
+
+        /**
+         * @param pemCertificate The certificate chain in PEM-encoded form.
          * Leaf certificate comes first, followed by intermediate ones if any.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
          */
-        public Builder certificatePem(String certificatePem) {
-            return certificatePem(Output.of(certificatePem));
+        public Builder pemCertificate(@Nullable Output<String> pemCertificate) {
+            $.pemCertificate = pemCertificate;
+            return this;
         }
 
         /**
-         * @param privateKeyPem The private key of the leaf certificate in PEM-encoded form.
+         * @param pemCertificate The certificate chain in PEM-encoded form.
+         * Leaf certificate comes first, followed by intermediate ones if any.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
          */
-        public Builder privateKeyPem(Output<String> privateKeyPem) {
+        public Builder pemCertificate(String pemCertificate) {
+            return pemCertificate(Output.of(pemCertificate));
+        }
+
+        /**
+         * @param pemPrivateKey The private key of the leaf certificate in PEM-encoded form.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pemPrivateKey(@Nullable Output<String> pemPrivateKey) {
+            $.pemPrivateKey = pemPrivateKey;
+            return this;
+        }
+
+        /**
+         * @param pemPrivateKey The private key of the leaf certificate in PEM-encoded form.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pemPrivateKey(String pemPrivateKey) {
+            return pemPrivateKey(Output.of(pemPrivateKey));
+        }
+
+        /**
+         * @param privateKeyPem -
+         * (Optional, Deprecated)
+         * **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Deprecated in favor of `pem_private_key`
+         * 
+         */
+        @Deprecated /* Deprecated in favor of `pem_private_key` */
+        public Builder privateKeyPem(@Nullable Output<String> privateKeyPem) {
             $.privateKeyPem = privateKeyPem;
             return this;
         }
 
         /**
-         * @param privateKeyPem The private key of the leaf certificate in PEM-encoded form.
+         * @param privateKeyPem -
+         * (Optional, Deprecated)
+         * **Deprecated** The private key of the leaf certificate in PEM-encoded form.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Deprecated in favor of `pem_private_key`
+         * 
          */
+        @Deprecated /* Deprecated in favor of `pem_private_key` */
         public Builder privateKeyPem(String privateKeyPem) {
             return privateKeyPem(Output.of(privateKeyPem));
         }
 
         public CertificateSelfManagedArgs build() {
-            $.certificatePem = Objects.requireNonNull($.certificatePem, "expected parameter 'certificatePem' to be non-null");
-            $.privateKeyPem = Objects.requireNonNull($.privateKeyPem, "expected parameter 'privateKeyPem' to be non-null");
             return $;
         }
     }

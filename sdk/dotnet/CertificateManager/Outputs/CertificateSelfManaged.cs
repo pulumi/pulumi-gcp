@@ -14,24 +14,45 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
     public sealed class CertificateSelfManaged
     {
         /// <summary>
+        /// -
+        /// (Optional, Deprecated)
+        /// **Deprecated** The certificate chain in PEM-encoded form.
+        /// Leaf certificate comes first, followed by intermediate ones if any.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// </summary>
+        public readonly string? CertificatePem;
+        /// <summary>
         /// The certificate chain in PEM-encoded form.
         /// Leaf certificate comes first, followed by intermediate ones if any.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        public readonly string CertificatePem;
+        public readonly string? PemCertificate;
         /// <summary>
         /// The private key of the leaf certificate in PEM-encoded form.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        public readonly string PrivateKeyPem;
+        public readonly string? PemPrivateKey;
+        /// <summary>
+        /// -
+        /// (Optional, Deprecated)
+        /// **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// </summary>
+        public readonly string? PrivateKeyPem;
 
         [OutputConstructor]
         private CertificateSelfManaged(
-            string certificatePem,
+            string? certificatePem,
 
-            string privateKeyPem)
+            string? pemCertificate,
+
+            string? pemPrivateKey,
+
+            string? privateKeyPem)
         {
             CertificatePem = certificatePem;
+            PemCertificate = pemCertificate;
+            PemPrivateKey = pemPrivateKey;
             PrivateKeyPem = privateKeyPem;
         }
     }

@@ -138,6 +138,12 @@ namespace Pulumi.Gcp.Sql
     public partial class DatabaseInstance : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The list of all maintenance versions applicable on the instance.
+        /// </summary>
+        [Output("availableMaintenanceVersions")]
+        public Output<ImmutableArray<string>> AvailableMaintenanceVersions { get; private set; } = null!;
+
+        /// <summary>
         /// The context needed to create this instance as a clone of another instance. When this field is set during
         /// resource creation, this provider will attempt to clone another instance as indicated in the context. The
         /// configuration is detailed below.
@@ -167,8 +173,8 @@ namespace Pulumi.Gcp.Sql
         public Output<string> DatabaseVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-        /// in state, a `destroy` or `update` command that deletes the instance will fail.
+        /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+        /// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
@@ -194,6 +200,12 @@ namespace Pulumi.Gcp.Sql
 
         [Output("ipAddresses")]
         public Output<ImmutableArray<Outputs.DatabaseInstanceIpAddress>> IpAddresses { get; private set; } = null!;
+
+        /// <summary>
+        /// The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+        /// </summary>
+        [Output("maintenanceVersion")]
+        public Output<string> MaintenanceVersion { get; private set; } = null!;
 
         /// <summary>
         /// The name of the existing instance that will
@@ -348,8 +360,8 @@ namespace Pulumi.Gcp.Sql
         public Input<string> DatabaseVersion { get; set; } = null!;
 
         /// <summary>
-        /// Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-        /// in state, a `destroy` or `update` command that deletes the instance will fail.
+        /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+        /// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -366,6 +378,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("encryptionKeyName")]
         public Input<string>? EncryptionKeyName { get; set; }
+
+        /// <summary>
+        /// The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+        /// </summary>
+        [Input("maintenanceVersion")]
+        public Input<string>? MaintenanceVersion { get; set; }
 
         /// <summary>
         /// The name of the existing instance that will
@@ -431,6 +449,18 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class DatabaseInstanceState : global::Pulumi.ResourceArgs
     {
+        [Input("availableMaintenanceVersions")]
+        private InputList<string>? _availableMaintenanceVersions;
+
+        /// <summary>
+        /// The list of all maintenance versions applicable on the instance.
+        /// </summary>
+        public InputList<string> AvailableMaintenanceVersions
+        {
+            get => _availableMaintenanceVersions ?? (_availableMaintenanceVersions = new InputList<string>());
+            set => _availableMaintenanceVersions = value;
+        }
+
         /// <summary>
         /// The context needed to create this instance as a clone of another instance. When this field is set during
         /// resource creation, this provider will attempt to clone another instance as indicated in the context. The
@@ -461,8 +491,8 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? DatabaseVersion { get; set; }
 
         /// <summary>
-        /// Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-        /// in state, a `destroy` or `update` command that deletes the instance will fail.
+        /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+        /// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -493,6 +523,12 @@ namespace Pulumi.Gcp.Sql
             get => _ipAddresses ?? (_ipAddresses = new InputList<Inputs.DatabaseInstanceIpAddressGetArgs>());
             set => _ipAddresses = value;
         }
+
+        /// <summary>
+        /// The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+        /// </summary>
+        [Input("maintenanceVersion")]
+        public Input<string>? MaintenanceVersion { get; set; }
 
         /// <summary>
         /// The name of the existing instance that will

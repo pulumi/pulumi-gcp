@@ -18,6 +18,7 @@ class TransferJobArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[str],
                  transfer_spec: pulumi.Input['TransferJobTransferSpecArgs'],
+                 notification_config: Optional[pulumi.Input['TransferJobNotificationConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input['TransferJobScheduleArgs']] = None,
                  status: Optional[pulumi.Input[str]] = None):
@@ -25,6 +26,7 @@ class TransferJobArgs:
         The set of arguments for constructing a TransferJob resource.
         :param pulumi.Input[str] description: Unique description to identify the Transfer Job.
         :param pulumi.Input['TransferJobTransferSpecArgs'] transfer_spec: Transfer specification. Structure documented below.
+        :param pulumi.Input['TransferJobNotificationConfigArgs'] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['TransferJobScheduleArgs'] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
@@ -32,6 +34,8 @@ class TransferJobArgs:
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "transfer_spec", transfer_spec)
+        if notification_config is not None:
+            pulumi.set(__self__, "notification_config", notification_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if schedule is not None:
@@ -62,6 +66,18 @@ class TransferJobArgs:
     @transfer_spec.setter
     def transfer_spec(self, value: pulumi.Input['TransferJobTransferSpecArgs']):
         pulumi.set(self, "transfer_spec", value)
+
+    @property
+    @pulumi.getter(name="notificationConfig")
+    def notification_config(self) -> Optional[pulumi.Input['TransferJobNotificationConfigArgs']]:
+        """
+        Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+        """
+        return pulumi.get(self, "notification_config")
+
+    @notification_config.setter
+    def notification_config(self, value: Optional[pulumi.Input['TransferJobNotificationConfigArgs']]):
+        pulumi.set(self, "notification_config", value)
 
     @property
     @pulumi.getter
@@ -109,6 +125,7 @@ class _TransferJobState:
                  description: Optional[pulumi.Input[str]] = None,
                  last_modification_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 notification_config: Optional[pulumi.Input['TransferJobNotificationConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input['TransferJobScheduleArgs']] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -120,6 +137,7 @@ class _TransferJobState:
         :param pulumi.Input[str] description: Unique description to identify the Transfer Job.
         :param pulumi.Input[str] last_modification_time: When the Transfer Job was last modified.
         :param pulumi.Input[str] name: The name of the Transfer Job.
+        :param pulumi.Input['TransferJobNotificationConfigArgs'] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['TransferJobScheduleArgs'] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
@@ -136,6 +154,8 @@ class _TransferJobState:
             pulumi.set(__self__, "last_modification_time", last_modification_time)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if notification_config is not None:
+            pulumi.set(__self__, "notification_config", notification_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if schedule is not None:
@@ -206,6 +226,18 @@ class _TransferJobState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="notificationConfig")
+    def notification_config(self) -> Optional[pulumi.Input['TransferJobNotificationConfigArgs']]:
+        """
+        Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+        """
+        return pulumi.get(self, "notification_config")
+
+    @notification_config.setter
+    def notification_config(self, value: Optional[pulumi.Input['TransferJobNotificationConfigArgs']]):
+        pulumi.set(self, "notification_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -261,6 +293,7 @@ class TransferJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 notification_config: Optional[pulumi.Input[pulumi.InputType['TransferJobNotificationConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['TransferJobScheduleArgs']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -294,6 +327,11 @@ class TransferJob(pulumi.CustomResource):
             role="roles/storage.admin",
             member=f"serviceAccount:{default.email}",
             opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket_bucket]))
+        topic = gcp.pubsub.Topic("topic")
+        notification_config = gcp.pubsub.TopicIAMMember("notificationConfig",
+            topic=topic.id,
+            role="roles/pubsub.publisher",
+            member=f"serviceAccount:{default.email}")
         s3_bucket_nightly_backup = gcp.storage.TransferJob("s3-bucket-nightly-backup",
             description="Nightly backup of S3 bucket",
             project=var["project"],
@@ -336,7 +374,18 @@ class TransferJob(pulumi.CustomResource):
                 ),
                 repeat_interval="604800s",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket_bucket_iam_member]))
+            notification_config=gcp.storage.TransferJobNotificationConfigArgs(
+                pubsub_topic=topic.id,
+                event_types=[
+                    "TRANSFER_OPERATION_SUCCESS",
+                    "TRANSFER_OPERATION_FAILED",
+                ],
+                payload_format="JSON",
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    s3_backup_bucket_bucket_iam_member,
+                    notification_config,
+                ]))
         ```
 
         ## Import
@@ -350,6 +399,7 @@ class TransferJob(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Unique description to identify the Transfer Job.
+        :param pulumi.Input[pulumi.InputType['TransferJobNotificationConfigArgs']] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['TransferJobScheduleArgs']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
@@ -390,6 +440,11 @@ class TransferJob(pulumi.CustomResource):
             role="roles/storage.admin",
             member=f"serviceAccount:{default.email}",
             opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket_bucket]))
+        topic = gcp.pubsub.Topic("topic")
+        notification_config = gcp.pubsub.TopicIAMMember("notificationConfig",
+            topic=topic.id,
+            role="roles/pubsub.publisher",
+            member=f"serviceAccount:{default.email}")
         s3_bucket_nightly_backup = gcp.storage.TransferJob("s3-bucket-nightly-backup",
             description="Nightly backup of S3 bucket",
             project=var["project"],
@@ -432,7 +487,18 @@ class TransferJob(pulumi.CustomResource):
                 ),
                 repeat_interval="604800s",
             ),
-            opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket_bucket_iam_member]))
+            notification_config=gcp.storage.TransferJobNotificationConfigArgs(
+                pubsub_topic=topic.id,
+                event_types=[
+                    "TRANSFER_OPERATION_SUCCESS",
+                    "TRANSFER_OPERATION_FAILED",
+                ],
+                payload_format="JSON",
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    s3_backup_bucket_bucket_iam_member,
+                    notification_config,
+                ]))
         ```
 
         ## Import
@@ -459,6 +525,7 @@ class TransferJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 notification_config: Optional[pulumi.Input[pulumi.InputType['TransferJobNotificationConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['TransferJobScheduleArgs']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -475,6 +542,7 @@ class TransferJob(pulumi.CustomResource):
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
+            __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["project"] = project
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["status"] = status
@@ -500,6 +568,7 @@ class TransferJob(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             last_modification_time: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            notification_config: Optional[pulumi.Input[pulumi.InputType['TransferJobNotificationConfigArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             schedule: Optional[pulumi.Input[pulumi.InputType['TransferJobScheduleArgs']]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -516,6 +585,7 @@ class TransferJob(pulumi.CustomResource):
         :param pulumi.Input[str] description: Unique description to identify the Transfer Job.
         :param pulumi.Input[str] last_modification_time: When the Transfer Job was last modified.
         :param pulumi.Input[str] name: The name of the Transfer Job.
+        :param pulumi.Input[pulumi.InputType['TransferJobNotificationConfigArgs']] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['TransferJobScheduleArgs']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
@@ -531,6 +601,7 @@ class TransferJob(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["last_modification_time"] = last_modification_time
         __props__.__dict__["name"] = name
+        __props__.__dict__["notification_config"] = notification_config
         __props__.__dict__["project"] = project
         __props__.__dict__["schedule"] = schedule
         __props__.__dict__["status"] = status
@@ -576,6 +647,14 @@ class TransferJob(pulumi.CustomResource):
         The name of the Transfer Job.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="notificationConfig")
+    def notification_config(self) -> pulumi.Output[Optional['outputs.TransferJobNotificationConfig']]:
+        """
+        Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+        """
+        return pulumi.get(self, "notification_config")
 
     @property
     @pulumi.getter

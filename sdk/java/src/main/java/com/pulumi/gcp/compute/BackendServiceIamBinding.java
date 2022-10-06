@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/backendServiceIamBinding:BackendServiceIamBinding")
 public class BackendServiceIamBinding extends com.pulumi.resources.CustomResource {
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
@@ -53,7 +53,7 @@ public class BackendServiceIamBinding extends com.pulumi.resources.CustomResourc
     private Output</* @Nullable */ BackendServiceIamBindingCondition> condition;
 
     /**
-     * @return ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */

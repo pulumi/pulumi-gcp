@@ -4,8 +4,11 @@
 package com.pulumi.gcp.healthcare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class FhirStoreNotificationConfig {
@@ -19,6 +22,15 @@ public final class FhirStoreNotificationConfig {
      * 
      */
     private String pubsubTopic;
+    /**
+     * @return Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation.
+     * Note that setting this to true does not guarantee that all resources will be sent in the format of
+     * full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be
+     * sent. Clients should always check the &#34;payloadType&#34; label from a Pub/Sub message to determine whether
+     * it needs to fetch the full resource as a separate operation.
+     * 
+     */
+    private @Nullable Boolean sendFullResource;
 
     private FhirStoreNotificationConfig() {}
     /**
@@ -33,6 +45,17 @@ public final class FhirStoreNotificationConfig {
     public String pubsubTopic() {
         return this.pubsubTopic;
     }
+    /**
+     * @return Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation.
+     * Note that setting this to true does not guarantee that all resources will be sent in the format of
+     * full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be
+     * sent. Clients should always check the &#34;payloadType&#34; label from a Pub/Sub message to determine whether
+     * it needs to fetch the full resource as a separate operation.
+     * 
+     */
+    public Optional<Boolean> sendFullResource() {
+        return Optional.ofNullable(this.sendFullResource);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -44,10 +67,12 @@ public final class FhirStoreNotificationConfig {
     @CustomType.Builder
     public static final class Builder {
         private String pubsubTopic;
+        private @Nullable Boolean sendFullResource;
         public Builder() {}
         public Builder(FhirStoreNotificationConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pubsubTopic = defaults.pubsubTopic;
+    	      this.sendFullResource = defaults.sendFullResource;
         }
 
         @CustomType.Setter
@@ -55,9 +80,15 @@ public final class FhirStoreNotificationConfig {
             this.pubsubTopic = Objects.requireNonNull(pubsubTopic);
             return this;
         }
+        @CustomType.Setter
+        public Builder sendFullResource(@Nullable Boolean sendFullResource) {
+            this.sendFullResource = sendFullResource;
+            return this;
+        }
         public FhirStoreNotificationConfig build() {
             final var o = new FhirStoreNotificationConfig();
             o.pubsubTopic = pubsubTopic;
+            o.sendFullResource = sendFullResource;
             return o;
         }
     }

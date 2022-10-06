@@ -70,7 +70,7 @@ public final class DatabaseInstanceReplicaConfigurationArgs extends com.pulumi.r
 
     /**
      * The number of seconds
-     * between connect retries.
+     * between connect retries. MySQL&#39;s default is 60 seconds.
      * 
      */
     @Import(name="connectRetryInterval")
@@ -78,7 +78,7 @@ public final class DatabaseInstanceReplicaConfigurationArgs extends com.pulumi.r
 
     /**
      * @return The number of seconds
-     * between connect retries.
+     * between connect retries. MySQL&#39;s default is 60 seconds.
      * 
      */
     public Optional<Output<Integer>> connectRetryInterval() {
@@ -299,7 +299,7 @@ public final class DatabaseInstanceReplicaConfigurationArgs extends com.pulumi.r
 
         /**
          * @param connectRetryInterval The number of seconds
-         * between connect retries.
+         * between connect retries. MySQL&#39;s default is 60 seconds.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class DatabaseInstanceReplicaConfigurationArgs extends com.pulumi.r
 
         /**
          * @param connectRetryInterval The number of seconds
-         * between connect retries.
+         * between connect retries. MySQL&#39;s default is 60 seconds.
          * 
          * @return builder
          * 

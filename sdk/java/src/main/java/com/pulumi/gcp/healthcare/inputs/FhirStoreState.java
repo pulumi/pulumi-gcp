@@ -201,6 +201,21 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     * 
+     */
+    @Import(name="notificationConfigs")
+    private @Nullable Output<List<FhirStoreNotificationConfigArgs>> notificationConfigs;
+
+    /**
+     * @return A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     * 
+     */
+    public Optional<Output<List<FhirStoreNotificationConfigArgs>>> notificationConfigs() {
+        return Optional.ofNullable(this.notificationConfigs);
+    }
+
+    /**
      * The fully qualified name of this dataset
      * 
      */
@@ -272,6 +287,7 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.name = $.name;
         this.notificationConfig = $.notificationConfig;
+        this.notificationConfigs = $.notificationConfigs;
         this.selfLink = $.selfLink;
         this.streamConfigs = $.streamConfigs;
         this.version = $.version;
@@ -521,6 +537,37 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder notificationConfig(FhirStoreNotificationConfigArgs notificationConfig) {
             return notificationConfig(Output.of(notificationConfig));
+        }
+
+        /**
+         * @param notificationConfigs A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationConfigs(@Nullable Output<List<FhirStoreNotificationConfigArgs>> notificationConfigs) {
+            $.notificationConfigs = notificationConfigs;
+            return this;
+        }
+
+        /**
+         * @param notificationConfigs A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationConfigs(List<FhirStoreNotificationConfigArgs> notificationConfigs) {
+            return notificationConfigs(Output.of(notificationConfigs));
+        }
+
+        /**
+         * @param notificationConfigs A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationConfigs(FhirStoreNotificationConfigArgs... notificationConfigs) {
+            return notificationConfigs(List.of(notificationConfigs));
         }
 
         /**

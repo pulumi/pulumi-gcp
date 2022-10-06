@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetRepositoryArgs, GetRepositoryResult, GetRepositoryOutputArgs } from "./getRepository";
+export const getRepository: typeof import("./getRepository").getRepository = null as any;
+export const getRepositoryOutput: typeof import("./getRepository").getRepositoryOutput = null as any;
+
 export { RepositoryArgs, RepositoryState } from "./repository";
 export type Repository = import("./repository").Repository;
 export const Repository: typeof import("./repository").Repository = null as any;
@@ -21,6 +25,7 @@ export { RepositoryIamPolicyArgs, RepositoryIamPolicyState } from "./repositoryI
 export type RepositoryIamPolicy = import("./repositoryIamPolicy").RepositoryIamPolicy;
 export const RepositoryIamPolicy: typeof import("./repositoryIamPolicy").RepositoryIamPolicy = null as any;
 
+utilities.lazyLoad(exports, ["getRepository","getRepositoryOutput"], () => require("./getRepository"));
 utilities.lazyLoad(exports, ["Repository"], () => require("./repository"));
 utilities.lazyLoad(exports, ["RepositoryIamBinding"], () => require("./repositoryIamBinding"));
 utilities.lazyLoad(exports, ["RepositoryIamMember"], () => require("./repositoryIamMember"));

@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.storage.inputs.TransferJobNotificationConfigArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobScheduleArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecArgs;
 import java.lang.String;
@@ -30,6 +31,21 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> description() {
         return this.description;
+    }
+
+    /**
+     * Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+     * 
+     */
+    @Import(name="notificationConfig")
+    private @Nullable Output<TransferJobNotificationConfigArgs> notificationConfig;
+
+    /**
+     * @return Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+     * 
+     */
+    public Optional<Output<TransferJobNotificationConfigArgs>> notificationConfig() {
+        return Optional.ofNullable(this.notificationConfig);
     }
 
     /**
@@ -98,6 +114,7 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
 
     private TransferJobArgs(TransferJobArgs $) {
         this.description = $.description;
+        this.notificationConfig = $.notificationConfig;
         this.project = $.project;
         this.schedule = $.schedule;
         this.status = $.status;
@@ -141,6 +158,27 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param notificationConfig Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationConfig(@Nullable Output<TransferJobNotificationConfigArgs> notificationConfig) {
+            $.notificationConfig = notificationConfig;
+            return this;
+        }
+
+        /**
+         * @param notificationConfig Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationConfig(TransferJobNotificationConfigArgs notificationConfig) {
+            return notificationConfig(Output.of(notificationConfig));
         }
 
         /**

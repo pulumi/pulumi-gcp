@@ -31,6 +31,7 @@ import (
 //
 //	"fmt"
 //
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -59,6 +60,18 @@ import (
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				s3_backup_bucketBucket,
 //			}))
+//			if err != nil {
+//				return err
+//			}
+//			topic, err := pubsub.NewTopic(ctx, "topic", nil)
+//			if err != nil {
+//				return err
+//			}
+//			notificationConfig, err := pubsub.NewTopicIAMMember(ctx, "notificationConfig", &pubsub.TopicIAMMemberArgs{
+//				Topic:  topic.ID(),
+//				Role:   pulumi.String("roles/pubsub.publisher"),
+//				Member: pulumi.String(fmt.Sprintf("serviceAccount:%v", _default.Email)),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -106,8 +119,17 @@ import (
 //					},
 //					RepeatInterval: pulumi.String("604800s"),
 //				},
+//				NotificationConfig: &storage.TransferJobNotificationConfigArgs{
+//					PubsubTopic: topic.ID(),
+//					EventTypes: pulumi.StringArray{
+//						pulumi.String("TRANSFER_OPERATION_SUCCESS"),
+//						pulumi.String("TRANSFER_OPERATION_FAILED"),
+//					},
+//					PayloadFormat: pulumi.String("JSON"),
+//				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				s3_backup_bucketBucketIAMMember,
+//				notificationConfig,
 //			}))
 //			if err != nil {
 //				return err
@@ -140,6 +162,8 @@ type TransferJob struct {
 	LastModificationTime pulumi.StringOutput `pulumi:"lastModificationTime"`
 	// The name of the Transfer Job.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+	NotificationConfig TransferJobNotificationConfigPtrOutput `pulumi:"notificationConfig"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -196,6 +220,8 @@ type transferJobState struct {
 	LastModificationTime *string `pulumi:"lastModificationTime"`
 	// The name of the Transfer Job.
 	Name *string `pulumi:"name"`
+	// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+	NotificationConfig *TransferJobNotificationConfig `pulumi:"notificationConfig"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -218,6 +244,8 @@ type TransferJobState struct {
 	LastModificationTime pulumi.StringPtrInput
 	// The name of the Transfer Job.
 	Name pulumi.StringPtrInput
+	// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+	NotificationConfig TransferJobNotificationConfigPtrInput
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -236,6 +264,8 @@ func (TransferJobState) ElementType() reflect.Type {
 type transferJobArgs struct {
 	// Unique description to identify the Transfer Job.
 	Description string `pulumi:"description"`
+	// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+	NotificationConfig *TransferJobNotificationConfig `pulumi:"notificationConfig"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -251,6 +281,8 @@ type transferJobArgs struct {
 type TransferJobArgs struct {
 	// Unique description to identify the Transfer Job.
 	Description pulumi.StringInput
+	// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+	NotificationConfig TransferJobNotificationConfigPtrInput
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -372,6 +404,11 @@ func (o TransferJobOutput) LastModificationTime() pulumi.StringOutput {
 // The name of the Transfer Job.
 func (o TransferJobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferJob) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+func (o TransferJobOutput) NotificationConfig() TransferJobNotificationConfigPtrOutput {
+	return o.ApplyT(func(v *TransferJob) TransferJobNotificationConfigPtrOutput { return v.NotificationConfig }).(TransferJobNotificationConfigPtrOutput)
 }
 
 // The project in which the resource belongs. If it

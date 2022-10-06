@@ -55,6 +55,15 @@ namespace Pulumi.Gcp.Storage
     ///         },
     ///     });
     /// 
+    ///     var topic = new Gcp.PubSub.Topic("topic");
+    /// 
+    ///     var notificationConfig = new Gcp.PubSub.TopicIAMMember("notificationConfig", new()
+    ///     {
+    ///         Topic = topic.Id,
+    ///         Role = "roles/pubsub.publisher",
+    ///         Member = @default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult).Apply(@default =&gt; $"serviceAccount:{@default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult.Email)}"),
+    ///     });
+    /// 
     ///     var s3_bucket_nightly_backup = new Gcp.Storage.TransferJob("s3-bucket-nightly-backup", new()
     ///     {
     ///         Description = "Nightly backup of S3 bucket",
@@ -111,11 +120,22 @@ namespace Pulumi.Gcp.Storage
     ///             },
     ///             RepeatInterval = "604800s",
     ///         },
+    ///         NotificationConfig = new Gcp.Storage.Inputs.TransferJobNotificationConfigArgs
+    ///         {
+    ///             PubsubTopic = topic.Id,
+    ///             EventTypes = new[]
+    ///             {
+    ///                 "TRANSFER_OPERATION_SUCCESS",
+    ///                 "TRANSFER_OPERATION_FAILED",
+    ///             },
+    ///             PayloadFormat = "JSON",
+    ///         },
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn = new[]
     ///         {
     ///             s3_backup_bucketBucketIAMMember,
+    ///             notificationConfig,
     ///         },
     ///     });
     /// 
@@ -162,6 +182,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+        /// </summary>
+        [Output("notificationConfig")]
+        public Output<Outputs.TransferJobNotificationConfig?> NotificationConfig { get; private set; } = null!;
 
         /// <summary>
         /// The project in which the resource belongs. If it
@@ -241,6 +267,12 @@ namespace Pulumi.Gcp.Storage
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
+        /// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+        /// </summary>
+        [Input("notificationConfig")]
+        public Input<Inputs.TransferJobNotificationConfigArgs>? NotificationConfig { get; set; }
+
+        /// <summary>
         /// The project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -302,6 +334,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+        /// </summary>
+        [Input("notificationConfig")]
+        public Input<Inputs.TransferJobNotificationConfigGetArgs>? NotificationConfig { get; set; }
 
         /// <summary>
         /// The project in which the resource belongs. If it

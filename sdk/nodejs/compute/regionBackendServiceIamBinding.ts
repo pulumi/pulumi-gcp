@@ -60,7 +60,7 @@ export class RegionBackendServiceIamBinding extends pulumi.CustomResource {
     }
 
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     public readonly condition!: pulumi.Output<outputs.compute.RegionBackendServiceIamBindingCondition | undefined>;
@@ -139,7 +139,7 @@ export class RegionBackendServiceIamBinding extends pulumi.CustomResource {
  */
 export interface RegionBackendServiceIamBindingState {
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.compute.RegionBackendServiceIamBindingCondition>;
@@ -178,7 +178,7 @@ export interface RegionBackendServiceIamBindingState {
  */
 export interface RegionBackendServiceIamBindingArgs {
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.compute.RegionBackendServiceIamBindingCondition>;

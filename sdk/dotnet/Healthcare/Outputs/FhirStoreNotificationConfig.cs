@@ -22,11 +22,23 @@ namespace Pulumi.Gcp.Healthcare.Outputs
         /// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         /// </summary>
         public readonly string PubsubTopic;
+        /// <summary>
+        /// Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation.
+        /// Note that setting this to true does not guarantee that all resources will be sent in the format of
+        /// full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be
+        /// sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether
+        /// it needs to fetch the full resource as a separate operation.
+        /// </summary>
+        public readonly bool? SendFullResource;
 
         [OutputConstructor]
-        private FhirStoreNotificationConfig(string pubsubTopic)
+        private FhirStoreNotificationConfig(
+            string pubsubTopic,
+
+            bool? sendFullResource)
         {
             PubsubTopic = pubsubTopic;
+            SendFullResource = sendFullResource;
         }
     }
 }

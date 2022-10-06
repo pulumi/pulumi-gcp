@@ -20,6 +20,7 @@ class DatabaseInstanceArgs:
                  clone: Optional[pulumi.Input['DatabaseInstanceCloneArgs']] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_key_name: Optional[pulumi.Input[str]] = None,
+                 maintenance_version: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -42,8 +43,8 @@ class DatabaseInstanceArgs:
         :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, this provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-               in state, a `destroy` or `update` command that deletes the instance will fail.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+               in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
         :param pulumi.Input[str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
@@ -52,6 +53,7 @@ class DatabaseInstanceArgs:
                manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        :param pulumi.Input[str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[str] master_instance_name: The name of the existing instance that will
                act as the master in the replication setup. Note, this requires the master to
                have `binary_log_enabled` set, as well as existing backups.
@@ -76,6 +78,8 @@ class DatabaseInstanceArgs:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if encryption_key_name is not None:
             pulumi.set(__self__, "encryption_key_name", encryption_key_name)
+        if maintenance_version is not None:
+            pulumi.set(__self__, "maintenance_version", maintenance_version)
         if master_instance_name is not None:
             pulumi.set(__self__, "master_instance_name", master_instance_name)
         if name is not None:
@@ -131,8 +135,8 @@ class DatabaseInstanceArgs:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-        in state, a `destroy` or `update` command that deletes the instance will fail.
+        Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+        in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -158,6 +162,18 @@ class DatabaseInstanceArgs:
     @encryption_key_name.setter
     def encryption_key_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "encryption_key_name", value)
+
+    @property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+        """
+        return pulumi.get(self, "maintenance_version")
+
+    @maintenance_version.setter
+    def maintenance_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_version", value)
 
     @property
     @pulumi.getter(name="masterInstanceName")
@@ -267,6 +283,7 @@ class DatabaseInstanceArgs:
 @pulumi.input_type
 class _DatabaseInstanceState:
     def __init__(__self__, *,
+                 available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  clone: Optional[pulumi.Input['DatabaseInstanceCloneArgs']] = None,
                  connection_name: Optional[pulumi.Input[str]] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
@@ -274,6 +291,7 @@ class _DatabaseInstanceState:
                  encryption_key_name: Optional[pulumi.Input[str]] = None,
                  first_ip_address: Optional[pulumi.Input[str]] = None,
                  ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceIpAddressArgs']]]] = None,
+                 maintenance_version: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
@@ -289,6 +307,7 @@ class _DatabaseInstanceState:
                  settings: Optional[pulumi.Input['DatabaseInstanceSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering DatabaseInstance resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] available_maintenance_versions: The list of all maintenance versions applicable on the instance.
         :param pulumi.Input['DatabaseInstanceCloneArgs'] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, this provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
@@ -303,8 +322,8 @@ class _DatabaseInstanceState:
                `SQLSERVER_2019_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
                includes an up-to-date reference of supported versions.
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-               in state, a `destroy` or `update` command that deletes the instance will fail.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+               in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
         :param pulumi.Input[str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
@@ -314,6 +333,7 @@ class _DatabaseInstanceState:
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
         :param pulumi.Input[str] first_ip_address: The first IPv4 address of any type assigned.
+        :param pulumi.Input[str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[str] master_instance_name: The name of the existing instance that will
                act as the master in the replication setup. Note, this requires the master to
                have `binary_log_enabled` set, as well as existing backups.
@@ -336,6 +356,8 @@ class _DatabaseInstanceState:
         :param pulumi.Input['DatabaseInstanceSettingsArgs'] settings: The settings to use for the database. The
                configuration is detailed below. Required if `clone` is not set.
         """
+        if available_maintenance_versions is not None:
+            pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
         if clone is not None:
             pulumi.set(__self__, "clone", clone)
         if connection_name is not None:
@@ -350,6 +372,8 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "first_ip_address", first_ip_address)
         if ip_addresses is not None:
             pulumi.set(__self__, "ip_addresses", ip_addresses)
+        if maintenance_version is not None:
+            pulumi.set(__self__, "maintenance_version", maintenance_version)
         if master_instance_name is not None:
             pulumi.set(__self__, "master_instance_name", master_instance_name)
         if name is not None:
@@ -376,6 +400,18 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "service_account_email_address", service_account_email_address)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
+
+    @property
+    @pulumi.getter(name="availableMaintenanceVersions")
+    def available_maintenance_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of all maintenance versions applicable on the instance.
+        """
+        return pulumi.get(self, "available_maintenance_versions")
+
+    @available_maintenance_versions.setter
+    def available_maintenance_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "available_maintenance_versions", value)
 
     @property
     @pulumi.getter
@@ -428,8 +464,8 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-        in state, a `destroy` or `update` command that deletes the instance will fail.
+        Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+        in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -476,6 +512,18 @@ class _DatabaseInstanceState:
     @ip_addresses.setter
     def ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceIpAddressArgs']]]]):
         pulumi.set(self, "ip_addresses", value)
+
+    @property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+        """
+        return pulumi.get(self, "maintenance_version")
+
+    @maintenance_version.setter
+    def maintenance_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_version", value)
 
     @property
     @pulumi.getter(name="masterInstanceName")
@@ -649,6 +697,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  database_version: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_key_name: Optional[pulumi.Input[str]] = None,
+                 maintenance_version: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -752,8 +801,8 @@ class DatabaseInstance(pulumi.CustomResource):
                `SQLSERVER_2019_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
                includes an up-to-date reference of supported versions.
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-               in state, a `destroy` or `update` command that deletes the instance will fail.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+               in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
         :param pulumi.Input[str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
@@ -762,6 +811,7 @@ class DatabaseInstance(pulumi.CustomResource):
                manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        :param pulumi.Input[str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[str] master_instance_name: The name of the existing instance that will
                act as the master in the replication setup. Note, this requires the master to
                have `binary_log_enabled` set, as well as existing backups.
@@ -884,6 +934,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  database_version: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_key_name: Optional[pulumi.Input[str]] = None,
+                 maintenance_version: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -907,6 +958,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["database_version"] = database_version
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["encryption_key_name"] = encryption_key_name
+            __props__.__dict__["maintenance_version"] = maintenance_version
             __props__.__dict__["master_instance_name"] = master_instance_name
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -915,6 +967,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["restore_backup_context"] = restore_backup_context
             __props__.__dict__["root_password"] = root_password
             __props__.__dict__["settings"] = settings
+            __props__.__dict__["available_maintenance_versions"] = None
             __props__.__dict__["connection_name"] = None
             __props__.__dict__["first_ip_address"] = None
             __props__.__dict__["ip_addresses"] = None
@@ -933,6 +986,7 @@ class DatabaseInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             clone: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']]] = None,
             connection_name: Optional[pulumi.Input[str]] = None,
             database_version: Optional[pulumi.Input[str]] = None,
@@ -940,6 +994,7 @@ class DatabaseInstance(pulumi.CustomResource):
             encryption_key_name: Optional[pulumi.Input[str]] = None,
             first_ip_address: Optional[pulumi.Input[str]] = None,
             ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseInstanceIpAddressArgs']]]]] = None,
+            maintenance_version: Optional[pulumi.Input[str]] = None,
             master_instance_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None,
@@ -960,6 +1015,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] available_maintenance_versions: The list of all maintenance versions applicable on the instance.
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']] clone: The context needed to create this instance as a clone of another instance. When this field is set during
                resource creation, this provider will attempt to clone another instance as indicated in the context. The
                configuration is detailed below.
@@ -974,8 +1030,8 @@ class DatabaseInstance(pulumi.CustomResource):
                `SQLSERVER_2019_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
                includes an up-to-date reference of supported versions.
-        :param pulumi.Input[bool] deletion_protection: Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-               in state, a `destroy` or `update` command that deletes the instance will fail.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+               in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
         :param pulumi.Input[str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
@@ -985,6 +1041,7 @@ class DatabaseInstance(pulumi.CustomResource):
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
         :param pulumi.Input[str] first_ip_address: The first IPv4 address of any type assigned.
+        :param pulumi.Input[str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[str] master_instance_name: The name of the existing instance that will
                act as the master in the replication setup. Note, this requires the master to
                have `binary_log_enabled` set, as well as existing backups.
@@ -1011,6 +1068,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
         __props__ = _DatabaseInstanceState.__new__(_DatabaseInstanceState)
 
+        __props__.__dict__["available_maintenance_versions"] = available_maintenance_versions
         __props__.__dict__["clone"] = clone
         __props__.__dict__["connection_name"] = connection_name
         __props__.__dict__["database_version"] = database_version
@@ -1018,6 +1076,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["encryption_key_name"] = encryption_key_name
         __props__.__dict__["first_ip_address"] = first_ip_address
         __props__.__dict__["ip_addresses"] = ip_addresses
+        __props__.__dict__["maintenance_version"] = maintenance_version
         __props__.__dict__["master_instance_name"] = master_instance_name
         __props__.__dict__["name"] = name
         __props__.__dict__["private_ip_address"] = private_ip_address
@@ -1032,6 +1091,14 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["service_account_email_address"] = service_account_email_address
         __props__.__dict__["settings"] = settings
         return DatabaseInstance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="availableMaintenanceVersions")
+    def available_maintenance_versions(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The list of all maintenance versions applicable on the instance.
+        """
+        return pulumi.get(self, "available_maintenance_versions")
 
     @property
     @pulumi.getter
@@ -1072,8 +1139,8 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-        in state, a `destroy` or `update` command that deletes the instance will fail.
+        Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+        in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -1104,6 +1171,14 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> pulumi.Output[Sequence['outputs.DatabaseInstanceIpAddress']]:
         return pulumi.get(self, "ip_addresses")
+
+    @property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> pulumi.Output[str]:
+        """
+        The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+        """
+        return pulumi.get(self, "maintenance_version")
 
     @property
     @pulumi.getter(name="masterInstanceName")

@@ -20,6 +20,8 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// &gt; **Note:** `gcp.iap.TunnelInstanceIAMBinding` resources **can be** used in conjunction with `gcp.iap.TunnelInstanceIAMMember` resources **only if** they do not grant privilege to the same role.
     /// 
+    /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+    /// 
     /// ## google\_iap\_tunnel\_instance\_iam\_policy
     /// 
     /// ```csharp
@@ -224,7 +226,7 @@ namespace Pulumi.Gcp.Iap
     public partial class TunnelInstanceIAMBinding : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Output("condition")]
@@ -310,7 +312,7 @@ namespace Pulumi.Gcp.Iap
     public sealed class TunnelInstanceIAMBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
@@ -357,7 +359,7 @@ namespace Pulumi.Gcp.Iap
     public sealed class TunnelInstanceIAMBindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]

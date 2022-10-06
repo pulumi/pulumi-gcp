@@ -108,6 +108,21 @@ public final class SecretVersionState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.secretData);
     }
 
+    /**
+     * The version of the Secret.
+     * 
+     */
+    @Import(name="version")
+    private @Nullable Output<String> version;
+
+    /**
+     * @return The version of the Secret.
+     * 
+     */
+    public Optional<Output<String>> version() {
+        return Optional.ofNullable(this.version);
+    }
+
     private SecretVersionState() {}
 
     private SecretVersionState(SecretVersionState $) {
@@ -117,6 +132,7 @@ public final class SecretVersionState extends com.pulumi.resources.ResourceArgs 
         this.name = $.name;
         this.secret = $.secret;
         this.secretData = $.secretData;
+        this.version = $.version;
     }
 
     public static Builder builder() {
@@ -263,6 +279,27 @@ public final class SecretVersionState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder secretData(String secretData) {
             return secretData(Output.of(secretData));
+        }
+
+        /**
+         * @param version The version of the Secret.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(@Nullable Output<String> version) {
+            $.version = version;
+            return this;
+        }
+
+        /**
+         * @param version The version of the Secret.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(String version) {
+            return version(Output.of(version));
         }
 
         public SecretVersionState build() {

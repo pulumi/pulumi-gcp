@@ -28,7 +28,7 @@ public final class SourcerepoFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
-     * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -68,7 +68,7 @@ public final class SourcerepoFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
-     * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -108,7 +108,7 @@ public final class SourcerepoFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
-     * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -148,7 +148,7 @@ public final class SourcerepoFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
-     * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

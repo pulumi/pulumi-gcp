@@ -82,7 +82,15 @@ import javax.annotation.Nullable;
  * Brand can be imported using any of these accepted formats
  * 
  * ```sh
- *  $ pulumi import gcp:iap/brand:Brand default {{name}}
+ *  $ pulumi import gcp:iap/brand:Brand default projects/{{project_id}}/brands/{{brand_id}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:iap/brand:Brand default projects/{{project_number}}/brands/{{brand_id}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:iap/brand:Brand default {{project_number}}/{{brand_id}}
  * ```
  * 
  */
@@ -103,16 +111,18 @@ public class Brand extends com.pulumi.resources.CustomResource {
         return this.applicationTitle;
     }
     /**
-     * Output only. Identifier of the brand, in the format &#39;projects/{project_number}/brands/{brand_id}&#39;. NOTE: The brand
-     * identification corresponds to the project number as only one brand per project can be created.
+     * Output only. Identifier of the brand, in the format &#39;projects/{project_number}/brands/{brand_id}&#39; NOTE: The name can
+     * also be expressed as &#39;projects/{project_id}/brands/{brand_id}&#39;, e.g. when importing. NOTE: The brand identification
+     * corresponds to the project number as only one brand can be created per project.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Output only. Identifier of the brand, in the format &#39;projects/{project_number}/brands/{brand_id}&#39;. NOTE: The brand
-     * identification corresponds to the project number as only one brand per project can be created.
+     * @return Output only. Identifier of the brand, in the format &#39;projects/{project_number}/brands/{brand_id}&#39; NOTE: The name can
+     * also be expressed as &#39;projects/{project_id}/brands/{brand_id}&#39;, e.g. when importing. NOTE: The brand identification
+     * corresponds to the project number as only one brand can be created per project.
      * 
      */
     public Output<String> name() {

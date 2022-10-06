@@ -16,18 +16,29 @@ class TagKeyArgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[str],
                  short_name: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None):
+                 description: Optional[pulumi.Input[str]] = None,
+                 purpose: Optional[pulumi.Input[str]] = None,
+                 purpose_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a TagKey resource.
         :param pulumi.Input[str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
         :param pulumi.Input[str] short_name: Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
                The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[str] description: User-assigned description of the TagKey. Must not exceed 256 characters.
+        :param pulumi.Input[str] purpose: Optional. A purpose cannot be changed once set.
+               A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+               Possible values are `GCE_FIREWALL`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] purpose_data: Optional. Purpose data cannot be changed once set.
+               Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
         """
         pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "short_name", short_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if purpose is not None:
+            pulumi.set(__self__, "purpose", purpose)
+        if purpose_data is not None:
+            pulumi.set(__self__, "purpose_data", purpose_data)
 
     @property
     @pulumi.getter
@@ -66,6 +77,33 @@ class TagKeyArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+    @property
+    @pulumi.getter
+    def purpose(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A purpose cannot be changed once set.
+        A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+        Possible values are `GCE_FIREWALL`.
+        """
+        return pulumi.get(self, "purpose")
+
+    @purpose.setter
+    def purpose(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "purpose", value)
+
+    @property
+    @pulumi.getter(name="purposeData")
+    def purpose_data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Purpose data cannot be changed once set.
+        Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
+        """
+        return pulumi.get(self, "purpose_data")
+
+    @purpose_data.setter
+    def purpose_data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "purpose_data", value)
+
 
 @pulumi.input_type
 class _TagKeyState:
@@ -75,6 +113,8 @@ class _TagKeyState:
                  name: Optional[pulumi.Input[str]] = None,
                  namespaced_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 purpose: Optional[pulumi.Input[str]] = None,
+                 purpose_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  short_name: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -85,6 +125,11 @@ class _TagKeyState:
         :param pulumi.Input[str] name: The generated numeric id for the TagKey.
         :param pulumi.Input[str] namespaced_name: Output only. Namespaced name of the TagKey.
         :param pulumi.Input[str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+        :param pulumi.Input[str] purpose: Optional. A purpose cannot be changed once set.
+               A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+               Possible values are `GCE_FIREWALL`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] purpose_data: Optional. Purpose data cannot be changed once set.
+               Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
         :param pulumi.Input[str] short_name: Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
                The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[str] update_time: Output only. Update time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
@@ -100,6 +145,10 @@ class _TagKeyState:
             pulumi.set(__self__, "namespaced_name", namespaced_name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if purpose is not None:
+            pulumi.set(__self__, "purpose", purpose)
+        if purpose_data is not None:
+            pulumi.set(__self__, "purpose_data", purpose_data)
         if short_name is not None:
             pulumi.set(__self__, "short_name", short_name)
         if update_time is not None:
@@ -167,6 +216,33 @@ class _TagKeyState:
         pulumi.set(self, "parent", value)
 
     @property
+    @pulumi.getter
+    def purpose(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A purpose cannot be changed once set.
+        A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+        Possible values are `GCE_FIREWALL`.
+        """
+        return pulumi.get(self, "purpose")
+
+    @purpose.setter
+    def purpose(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "purpose", value)
+
+    @property
+    @pulumi.getter(name="purposeData")
+    def purpose_data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Purpose data cannot be changed once set.
+        Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
+        """
+        return pulumi.get(self, "purpose_data")
+
+    @purpose_data.setter
+    def purpose_data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "purpose_data", value)
+
+    @property
     @pulumi.getter(name="shortName")
     def short_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -200,6 +276,8 @@ class TagKey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 purpose: Optional[pulumi.Input[str]] = None,
+                 purpose_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  short_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -240,6 +318,11 @@ class TagKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: User-assigned description of the TagKey. Must not exceed 256 characters.
         :param pulumi.Input[str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+        :param pulumi.Input[str] purpose: Optional. A purpose cannot be changed once set.
+               A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+               Possible values are `GCE_FIREWALL`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] purpose_data: Optional. Purpose data cannot be changed once set.
+               Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
         :param pulumi.Input[str] short_name: Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
                The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
         """
@@ -300,6 +383,8 @@ class TagKey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 purpose: Optional[pulumi.Input[str]] = None,
+                 purpose_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  short_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -314,6 +399,8 @@ class TagKey(pulumi.CustomResource):
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["purpose"] = purpose
+            __props__.__dict__["purpose_data"] = purpose_data
             if short_name is None and not opts.urn:
                 raise TypeError("Missing required property 'short_name'")
             __props__.__dict__["short_name"] = short_name
@@ -336,6 +423,8 @@ class TagKey(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             namespaced_name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
+            purpose: Optional[pulumi.Input[str]] = None,
+            purpose_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             short_name: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'TagKey':
         """
@@ -351,6 +440,11 @@ class TagKey(pulumi.CustomResource):
         :param pulumi.Input[str] name: The generated numeric id for the TagKey.
         :param pulumi.Input[str] namespaced_name: Output only. Namespaced name of the TagKey.
         :param pulumi.Input[str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+        :param pulumi.Input[str] purpose: Optional. A purpose cannot be changed once set.
+               A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+               Possible values are `GCE_FIREWALL`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] purpose_data: Optional. Purpose data cannot be changed once set.
+               Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
         :param pulumi.Input[str] short_name: Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
                The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[str] update_time: Output only. Update time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
@@ -365,6 +459,8 @@ class TagKey(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["namespaced_name"] = namespaced_name
         __props__.__dict__["parent"] = parent
+        __props__.__dict__["purpose"] = purpose
+        __props__.__dict__["purpose_data"] = purpose_data
         __props__.__dict__["short_name"] = short_name
         __props__.__dict__["update_time"] = update_time
         return TagKey(resource_name, opts=opts, __props__=__props__)
@@ -409,6 +505,25 @@ class TagKey(pulumi.CustomResource):
         Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
         """
         return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter
+    def purpose(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. A purpose cannot be changed once set.
+        A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+        Possible values are `GCE_FIREWALL`.
+        """
+        return pulumi.get(self, "purpose")
+
+    @property
+    @pulumi.getter(name="purposeData")
+    def purpose_data(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Optional. Purpose data cannot be changed once set.
+        Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
+        """
+        return pulumi.get(self, "purpose_data")
 
     @property
     @pulumi.getter(name="shortName")

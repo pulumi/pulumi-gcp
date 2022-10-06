@@ -126,6 +126,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
     }
 
     /**
+     * The list of all maintenance versions applicable on the instance.
+     */
+    public /*out*/ readonly availableMaintenanceVersions!: pulumi.Output<string[]>;
+    /**
      * The context needed to create this instance as a clone of another instance. When this field is set during
      * resource creation, this provider will attempt to clone another instance as indicated in the context. The
      * configuration is detailed below.
@@ -149,8 +153,8 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly databaseVersion!: pulumi.Output<string>;
     /**
-     * Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` command that deletes the instance will fail.
+     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
@@ -169,6 +173,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly firstIpAddress!: pulumi.Output<string>;
     public /*out*/ readonly ipAddresses!: pulumi.Output<outputs.sql.DatabaseInstanceIpAddress[]>;
+    /**
+     * The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
+     */
+    public readonly maintenanceVersion!: pulumi.Output<string>;
     /**
      * The name of the existing instance that will
      * act as the master in the replication setup. Note, this requires the master to
@@ -241,6 +249,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseInstanceState | undefined;
+            resourceInputs["availableMaintenanceVersions"] = state ? state.availableMaintenanceVersions : undefined;
             resourceInputs["clone"] = state ? state.clone : undefined;
             resourceInputs["connectionName"] = state ? state.connectionName : undefined;
             resourceInputs["databaseVersion"] = state ? state.databaseVersion : undefined;
@@ -248,6 +257,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["encryptionKeyName"] = state ? state.encryptionKeyName : undefined;
             resourceInputs["firstIpAddress"] = state ? state.firstIpAddress : undefined;
             resourceInputs["ipAddresses"] = state ? state.ipAddresses : undefined;
+            resourceInputs["maintenanceVersion"] = state ? state.maintenanceVersion : undefined;
             resourceInputs["masterInstanceName"] = state ? state.masterInstanceName : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
@@ -270,6 +280,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["databaseVersion"] = args ? args.databaseVersion : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["encryptionKeyName"] = args ? args.encryptionKeyName : undefined;
+            resourceInputs["maintenanceVersion"] = args ? args.maintenanceVersion : undefined;
             resourceInputs["masterInstanceName"] = args ? args.masterInstanceName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -278,6 +289,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["restoreBackupContext"] = args ? args.restoreBackupContext : undefined;
             resourceInputs["rootPassword"] = args ? args.rootPassword : undefined;
             resourceInputs["settings"] = args ? args.settings : undefined;
+            resourceInputs["availableMaintenanceVersions"] = undefined /*out*/;
             resourceInputs["connectionName"] = undefined /*out*/;
             resourceInputs["firstIpAddress"] = undefined /*out*/;
             resourceInputs["ipAddresses"] = undefined /*out*/;
@@ -296,6 +308,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DatabaseInstance resources.
  */
 export interface DatabaseInstanceState {
+    /**
+     * The list of all maintenance versions applicable on the instance.
+     */
+    availableMaintenanceVersions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The context needed to create this instance as a clone of another instance. When this field is set during
      * resource creation, this provider will attempt to clone another instance as indicated in the context. The
@@ -320,8 +336,8 @@ export interface DatabaseInstanceState {
      */
     databaseVersion?: pulumi.Input<string>;
     /**
-     * Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` command that deletes the instance will fail.
+     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -340,6 +356,10 @@ export interface DatabaseInstanceState {
      */
     firstIpAddress?: pulumi.Input<string>;
     ipAddresses?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceIpAddress>[]>;
+    /**
+     * The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
+     */
+    maintenanceVersion?: pulumi.Input<string>;
     /**
      * The name of the existing instance that will
      * act as the master in the replication setup. Note, this requires the master to
@@ -423,8 +443,8 @@ export interface DatabaseInstanceArgs {
      */
     databaseVersion: pulumi.Input<string>;
     /**
-     * Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` command that deletes the instance will fail.
+     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -438,6 +458,10 @@ export interface DatabaseInstanceArgs {
      * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
      */
     encryptionKeyName?: pulumi.Input<string>;
+    /**
+     * The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
+     */
+    maintenanceVersion?: pulumi.Input<string>;
     /**
      * The name of the existing instance that will
      * act as the master in the replication setup. Note, this requires the master to

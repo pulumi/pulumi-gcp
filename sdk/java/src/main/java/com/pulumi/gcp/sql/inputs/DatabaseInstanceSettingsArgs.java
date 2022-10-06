@@ -58,7 +58,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
      * `settings.backup_configuration.enabled` is set to `true`.
      * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
      * For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
-     * is set to `true`.
+     * is set to `true`. Defaults to `ZONAL`.
      * 
      */
     @Import(name="availabilityType")
@@ -70,7 +70,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
      * `settings.backup_configuration.enabled` is set to `true`.
      * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
      * For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
-     * is set to `true`.
+     * is set to `true`. Defaults to `ZONAL`.
      * 
      */
     public Optional<Output<String>> availabilityType() {
@@ -107,14 +107,14 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
+     * Enables auto-resizing of the storage size. Defaults to `true`.
      * 
      */
     @Import(name="diskAutoresize")
     private @Nullable Output<Boolean> diskAutoresize;
 
     /**
-     * @return Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
+     * @return Enables auto-resizing of the storage size. Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> diskAutoresize() {
@@ -137,14 +137,14 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `disk_autoresize` to false.
+     * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
      * 
      */
     @Import(name="diskSize")
     private @Nullable Output<Integer> diskSize;
 
     /**
-     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `disk_autoresize` to false.
+     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
      * 
      */
     public Optional<Output<Integer>> diskSize() {
@@ -152,14 +152,14 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The type of data disk: PD_SSD or PD_HDD.
+     * The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
      * 
      */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
     /**
-     * @return The type of data disk: PD_SSD or PD_HDD.
+     * @return The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -345,7 +345,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          * `settings.backup_configuration.enabled` is set to `true`.
          * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
          * For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
-         * is set to `true`.
+         * is set to `true`. Defaults to `ZONAL`.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          * `settings.backup_configuration.enabled` is set to `true`.
          * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
          * For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
-         * is set to `true`.
+         * is set to `true`. Defaults to `ZONAL`.
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskAutoresize Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
+         * @param diskAutoresize Enables auto-resizing of the storage size. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -425,7 +425,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskAutoresize Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
+         * @param diskAutoresize Enables auto-resizing of the storage size. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskSize The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `disk_autoresize` to false.
+         * @param diskSize The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
          * 
          * @return builder
          * 
@@ -467,7 +467,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskSize The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `disk_autoresize` to false.
+         * @param diskSize The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
          * 
          * @return builder
          * 
@@ -477,7 +477,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskType The type of data disk: PD_SSD or PD_HDD.
+         * @param diskType The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
          * 
          * @return builder
          * 
@@ -488,7 +488,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param diskType The type of data disk: PD_SSD or PD_HDD.
+         * @param diskType The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
          * 
          * @return builder
          * 

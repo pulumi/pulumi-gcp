@@ -1019,7 +1019,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="nodePoolAutoConfig", type=ClusterNodePoolAutoConfig.class, parameters={})
-    private Output</* @Nullable */ ClusterNodePoolAutoConfig> nodePoolAutoConfig;
+    private Output<ClusterNodePoolAutoConfig> nodePoolAutoConfig;
 
     /**
      * @return ) Node pool configs that apply to auto-provisioned node pools in
@@ -1027,22 +1027,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
      * 
      */
-    public Output<Optional<ClusterNodePoolAutoConfig>> nodePoolAutoConfig() {
-        return Codegen.optional(this.nodePoolAutoConfig);
+    public Output<ClusterNodePoolAutoConfig> nodePoolAutoConfig() {
+        return this.nodePoolAutoConfig;
     }
     /**
      * ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
      * 
      */
     @Export(name="nodePoolDefaults", type=ClusterNodePoolDefaults.class, parameters={})
-    private Output</* @Nullable */ ClusterNodePoolDefaults> nodePoolDefaults;
+    private Output<ClusterNodePoolDefaults> nodePoolDefaults;
 
     /**
      * @return ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
      * 
      */
-    public Output<Optional<ClusterNodePoolDefaults>> nodePoolDefaults() {
-        return Codegen.optional(this.nodePoolDefaults);
+    public Output<ClusterNodePoolDefaults> nodePoolDefaults() {
+        return this.nodePoolDefaults;
     }
     /**
      * List of node pools associated with this cluster.

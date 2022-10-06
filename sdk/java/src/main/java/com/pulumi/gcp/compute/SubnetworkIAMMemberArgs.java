@@ -17,7 +17,7 @@ public final class SubnetworkIAMMemberArgs extends com.pulumi.resources.Resource
     public static final SubnetworkIAMMemberArgs Empty = new SubnetworkIAMMemberArgs();
 
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
@@ -25,7 +25,7 @@ public final class SubnetworkIAMMemberArgs extends com.pulumi.resources.Resource
     private @Nullable Output<SubnetworkIAMMemberConditionArgs> condition;
 
     /**
-     * @return ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
@@ -142,7 +142,7 @@ public final class SubnetworkIAMMemberArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param condition ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
          * Structure is documented below.
          * 
          * @return builder
@@ -154,7 +154,7 @@ public final class SubnetworkIAMMemberArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param condition ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
          * Structure is documented below.
          * 
          * @return builder

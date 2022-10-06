@@ -14,15 +14,19 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterNotificationConfigPubsubResult
     {
         public readonly bool Enabled;
+        public readonly ImmutableArray<Outputs.GetClusterNotificationConfigPubsubFilterResult> Filters;
         public readonly string Topic;
 
         [OutputConstructor]
         private GetClusterNotificationConfigPubsubResult(
             bool enabled,
 
+            ImmutableArray<Outputs.GetClusterNotificationConfigPubsubFilterResult> filters,
+
             string topic)
         {
             Enabled = enabled;
+            Filters = filters;
             Topic = topic;
         }
     }

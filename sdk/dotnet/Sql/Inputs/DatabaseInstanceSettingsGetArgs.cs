@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         /// `settings.backup_configuration.enabled` is set to `true`.
         /// For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
         /// For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
-        /// is set to `true`.
+        /// is set to `true`. Defaults to `ZONAL`.
         /// </summary>
         [Input("availabilityType")]
         public Input<string>? AvailabilityType { get; set; }
@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         }
 
         /// <summary>
-        /// Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
+        /// Enables auto-resizing of the storage size. Defaults to `true`.
         /// </summary>
         [Input("diskAutoresize")]
         public Input<bool>? DiskAutoresize { get; set; }
@@ -63,13 +63,13 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<int>? DiskAutoresizeLimit { get; set; }
 
         /// <summary>
-        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `disk_autoresize` to false.
+        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
         /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// The type of data disk: PD_SSD or PD_HDD.
+        /// The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }

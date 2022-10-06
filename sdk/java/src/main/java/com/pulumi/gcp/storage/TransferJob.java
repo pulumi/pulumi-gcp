@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.storage.TransferJobArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobState;
+import com.pulumi.gcp.storage.outputs.TransferJobNotificationConfig;
 import com.pulumi.gcp.storage.outputs.TransferJobSchedule;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpec;
 import java.lang.String;
@@ -41,6 +42,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.storage.BucketIAMMember;
  * import com.pulumi.gcp.storage.BucketIAMMemberArgs;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicIAMMember;
+ * import com.pulumi.gcp.pubsub.TopicIAMMemberArgs;
  * import com.pulumi.gcp.storage.TransferJob;
  * import com.pulumi.gcp.storage.TransferJobArgs;
  * import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecArgs;
@@ -53,6 +57,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.inputs.TransferJobScheduleScheduleStartDateArgs;
  * import com.pulumi.gcp.storage.inputs.TransferJobScheduleScheduleEndDateArgs;
  * import com.pulumi.gcp.storage.inputs.TransferJobScheduleStartTimeOfDayArgs;
+ * import com.pulumi.gcp.storage.inputs.TransferJobNotificationConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -84,6 +89,14 @@ import javax.annotation.Nullable;
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(s3_backup_bucketBucket)
  *                 .build());
+ * 
+ *         var topic = new Topic(&#34;topic&#34;);
+ * 
+ *         var notificationConfig = new TopicIAMMember(&#34;notificationConfig&#34;, TopicIAMMemberArgs.builder()        
+ *             .topic(topic.id())
+ *             .role(&#34;roles/pubsub.publisher&#34;)
+ *             .member(String.format(&#34;serviceAccount:%s&#34;, default_.email()))
+ *             .build());
  * 
  *         var s3_bucket_nightly_backup = new TransferJob(&#34;s3-bucket-nightly-backup&#34;, TransferJobArgs.builder()        
  *             .description(&#34;Nightly backup of S3 bucket&#34;)
@@ -127,8 +140,17 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .repeatInterval(&#34;604800s&#34;)
  *                 .build())
+ *             .notificationConfig(TransferJobNotificationConfigArgs.builder()
+ *                 .pubsubTopic(topic.id())
+ *                 .eventTypes(                
+ *                     &#34;TRANSFER_OPERATION_SUCCESS&#34;,
+ *                     &#34;TRANSFER_OPERATION_FAILED&#34;)
+ *                 .payloadFormat(&#34;JSON&#34;)
+ *                 .build())
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(s3_backup_bucketBucketIAMMember)
+ *                 .dependsOn(                
+ *                     s3_backup_bucketBucketIAMMember,
+ *                     notificationConfig)
  *                 .build());
  * 
  *     }
@@ -215,6 +237,20 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+     * 
+     */
+    @Export(name="notificationConfig", type=TransferJobNotificationConfig.class, parameters={})
+    private Output</* @Nullable */ TransferJobNotificationConfig> notificationConfig;
+
+    /**
+     * @return Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+     * 
+     */
+    public Output<Optional<TransferJobNotificationConfig>> notificationConfig() {
+        return Codegen.optional(this.notificationConfig);
     }
     /**
      * The project in which the resource belongs. If it

@@ -132,6 +132,7 @@ __all__ = [
     'ClusterNodePoolUpgradeSettings',
     'ClusterNotificationConfig',
     'ClusterNotificationConfigPubsub',
+    'ClusterNotificationConfigPubsubFilter',
     'ClusterPodSecurityPolicyConfig',
     'ClusterPrivateClusterConfig',
     'ClusterPrivateClusterConfigMasterGlobalAccessConfig',
@@ -235,6 +236,7 @@ __all__ = [
     'GetClusterNodePoolUpgradeSettingResult',
     'GetClusterNotificationConfigResult',
     'GetClusterNotificationConfigPubsubResult',
+    'GetClusterNotificationConfigPubsubFilterResult',
     'GetClusterPodSecurityPolicyConfigResult',
     'GetClusterPrivateClusterConfigResult',
     'GetClusterPrivateClusterConfigMasterGlobalAccessConfigResult',
@@ -6694,13 +6696,17 @@ class ClusterNotificationConfig(dict):
 class ClusterNotificationConfigPubsub(dict):
     def __init__(__self__, *,
                  enabled: bool,
+                 filter: Optional['outputs.ClusterNotificationConfigPubsubFilter'] = None,
                  topic: Optional[str] = None):
         """
         :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param 'ClusterNotificationConfigPubsubFilterArgs' filter: Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
         :param str topic: The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
         """
         pulumi.set(__self__, "enabled", enabled)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
         if topic is not None:
             pulumi.set(__self__, "topic", topic)
 
@@ -6715,11 +6721,54 @@ class ClusterNotificationConfigPubsub(dict):
 
     @property
     @pulumi.getter
+    def filter(self) -> Optional['outputs.ClusterNotificationConfigPubsubFilter']:
+        """
+        Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
     def topic(self) -> Optional[str]:
         """
         The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
         """
         return pulumi.get(self, "topic")
+
+
+@pulumi.output_type
+class ClusterNotificationConfigPubsubFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "eventTypes":
+            suggest = "event_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNotificationConfigPubsubFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNotificationConfigPubsubFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNotificationConfigPubsubFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 event_types: Sequence[str]):
+        """
+        :param Sequence[str] event_types: Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT` and `SECURITY_BULLETIN_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
+        """
+        pulumi.set(__self__, "event_types", event_types)
+
+    @property
+    @pulumi.getter(name="eventTypes")
+    def event_types(self) -> Sequence[str]:
+        """
+        Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT` and `SECURITY_BULLETIN_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
+        """
+        return pulumi.get(self, "event_types")
 
 
 @pulumi.output_type
@@ -9879,8 +9928,10 @@ class GetClusterNotificationConfigResult(dict):
 class GetClusterNotificationConfigPubsubResult(dict):
     def __init__(__self__, *,
                  enabled: bool,
+                 filters: Sequence['outputs.GetClusterNotificationConfigPubsubFilterResult'],
                  topic: str):
         pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "filters", filters)
         pulumi.set(__self__, "topic", topic)
 
     @property
@@ -9890,8 +9941,25 @@ class GetClusterNotificationConfigPubsubResult(dict):
 
     @property
     @pulumi.getter
+    def filters(self) -> Sequence['outputs.GetClusterNotificationConfigPubsubFilterResult']:
+        return pulumi.get(self, "filters")
+
+    @property
+    @pulumi.getter
     def topic(self) -> str:
         return pulumi.get(self, "topic")
+
+
+@pulumi.output_type
+class GetClusterNotificationConfigPubsubFilterResult(dict):
+    def __init__(__self__, *,
+                 event_types: Sequence[str]):
+        pulumi.set(__self__, "event_types", event_types)
+
+    @property
+    @pulumi.getter(name="eventTypes")
+    def event_types(self) -> Sequence[str]:
+        return pulumi.get(self, "event_types")
 
 
 @pulumi.output_type

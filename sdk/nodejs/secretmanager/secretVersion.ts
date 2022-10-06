@@ -93,6 +93,10 @@ export class SecretVersion extends pulumi.CustomResource {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     public readonly secretData!: pulumi.Output<string>;
+    /**
+     * The version of the Secret.
+     */
+    public /*out*/ readonly version!: pulumi.Output<string>;
 
     /**
      * Create a SecretVersion resource with the given unique name, arguments, and options.
@@ -113,6 +117,7 @@ export class SecretVersion extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["secret"] = state ? state.secret : undefined;
             resourceInputs["secretData"] = state ? state.secretData : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as SecretVersionArgs | undefined;
             if ((!args || args.secret === undefined) && !opts.urn) {
@@ -127,6 +132,7 @@ export class SecretVersion extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["destroyTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecretVersion.__pulumiType, name, resourceInputs, opts);
@@ -162,6 +168,10 @@ export interface SecretVersionState {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     secretData?: pulumi.Input<string>;
+    /**
+     * The version of the Secret.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**

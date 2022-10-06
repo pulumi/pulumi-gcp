@@ -20,6 +20,8 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// &gt; **Note:** `gcp.iap.WebTypeAppEngingIamBinding` resources **can be** used in conjunction with `gcp.iap.WebTypeAppEngingIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
+    /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+    /// 
     /// ## google\_iap\_web\_type\_app\_engine\_iam\_policy
     /// 
     /// ```csharp
@@ -224,7 +226,7 @@ namespace Pulumi.Gcp.Iap
         public Output<string> AppId { get; private set; } = null!;
 
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Output("condition")]
@@ -307,7 +309,7 @@ namespace Pulumi.Gcp.Iap
         public Input<string> AppId { get; set; } = null!;
 
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
@@ -351,7 +353,7 @@ namespace Pulumi.Gcp.Iap
         public Input<string>? AppId { get; set; }
 
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]

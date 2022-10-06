@@ -6,40 +6,96 @@ package com.pulumi.gcp.certificatemanager.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateSelfManaged {
+    /**
+     * @return -
+     * (Optional, Deprecated)
+     * **Deprecated** The certificate chain in PEM-encoded form.
+     * Leaf certificate comes first, followed by intermediate ones if any.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     * @deprecated
+     * Deprecated in favor of `pem_certificate`
+     * 
+     */
+    @Deprecated /* Deprecated in favor of `pem_certificate` */
+    private @Nullable String certificatePem;
     /**
      * @return The certificate chain in PEM-encoded form.
      * Leaf certificate comes first, followed by intermediate ones if any.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private String certificatePem;
+    private @Nullable String pemCertificate;
     /**
      * @return The private key of the leaf certificate in PEM-encoded form.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private String privateKeyPem;
+    private @Nullable String pemPrivateKey;
+    /**
+     * @return -
+     * (Optional, Deprecated)
+     * **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     * @deprecated
+     * Deprecated in favor of `pem_private_key`
+     * 
+     */
+    @Deprecated /* Deprecated in favor of `pem_private_key` */
+    private @Nullable String privateKeyPem;
 
     private CertificateSelfManaged() {}
+    /**
+     * @return -
+     * (Optional, Deprecated)
+     * **Deprecated** The certificate chain in PEM-encoded form.
+     * Leaf certificate comes first, followed by intermediate ones if any.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     * @deprecated
+     * Deprecated in favor of `pem_certificate`
+     * 
+     */
+    @Deprecated /* Deprecated in favor of `pem_certificate` */
+    public Optional<String> certificatePem() {
+        return Optional.ofNullable(this.certificatePem);
+    }
     /**
      * @return The certificate chain in PEM-encoded form.
      * Leaf certificate comes first, followed by intermediate ones if any.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public String certificatePem() {
-        return this.certificatePem;
+    public Optional<String> pemCertificate() {
+        return Optional.ofNullable(this.pemCertificate);
     }
     /**
      * @return The private key of the leaf certificate in PEM-encoded form.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public String privateKeyPem() {
-        return this.privateKeyPem;
+    public Optional<String> pemPrivateKey() {
+        return Optional.ofNullable(this.pemPrivateKey);
+    }
+    /**
+     * @return -
+     * (Optional, Deprecated)
+     * **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     * @deprecated
+     * Deprecated in favor of `pem_private_key`
+     * 
+     */
+    @Deprecated /* Deprecated in favor of `pem_private_key` */
+    public Optional<String> privateKeyPem() {
+        return Optional.ofNullable(this.privateKeyPem);
     }
 
     public static Builder builder() {
@@ -51,28 +107,44 @@ public final class CertificateSelfManaged {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String certificatePem;
-        private String privateKeyPem;
+        private @Nullable String certificatePem;
+        private @Nullable String pemCertificate;
+        private @Nullable String pemPrivateKey;
+        private @Nullable String privateKeyPem;
         public Builder() {}
         public Builder(CertificateSelfManaged defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificatePem = defaults.certificatePem;
+    	      this.pemCertificate = defaults.pemCertificate;
+    	      this.pemPrivateKey = defaults.pemPrivateKey;
     	      this.privateKeyPem = defaults.privateKeyPem;
         }
 
         @CustomType.Setter
-        public Builder certificatePem(String certificatePem) {
-            this.certificatePem = Objects.requireNonNull(certificatePem);
+        public Builder certificatePem(@Nullable String certificatePem) {
+            this.certificatePem = certificatePem;
             return this;
         }
         @CustomType.Setter
-        public Builder privateKeyPem(String privateKeyPem) {
-            this.privateKeyPem = Objects.requireNonNull(privateKeyPem);
+        public Builder pemCertificate(@Nullable String pemCertificate) {
+            this.pemCertificate = pemCertificate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pemPrivateKey(@Nullable String pemPrivateKey) {
+            this.pemPrivateKey = pemPrivateKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder privateKeyPem(@Nullable String privateKeyPem) {
+            this.privateKeyPem = privateKeyPem;
             return this;
         }
         public CertificateSelfManaged build() {
             final var o = new CertificateSelfManaged();
             o.certificatePem = certificatePem;
+            o.pemCertificate = pemCertificate;
+            o.pemPrivateKey = pemPrivateKey;
             o.privateKeyPem = privateKeyPem;
             return o;
         }

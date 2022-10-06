@@ -77,6 +77,13 @@ type TagKey struct {
 	NamespacedName pulumi.StringOutput `pulumi:"namespacedName"`
 	// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
 	Parent pulumi.StringOutput `pulumi:"parent"`
+	// Optional. A purpose cannot be changed once set.
+	// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+	// Possible values are `GCE_FIREWALL`.
+	Purpose pulumi.StringPtrOutput `pulumi:"purpose"`
+	// Optional. Purpose data cannot be changed once set.
+	// Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
+	PurposeData pulumi.StringMapOutput `pulumi:"purposeData"`
 	// Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
 	// The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName pulumi.StringOutput `pulumi:"shortName"`
@@ -131,6 +138,13 @@ type tagKeyState struct {
 	NamespacedName *string `pulumi:"namespacedName"`
 	// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
 	Parent *string `pulumi:"parent"`
+	// Optional. A purpose cannot be changed once set.
+	// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+	// Possible values are `GCE_FIREWALL`.
+	Purpose *string `pulumi:"purpose"`
+	// Optional. Purpose data cannot be changed once set.
+	// Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
+	PurposeData map[string]string `pulumi:"purposeData"`
 	// Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
 	// The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName *string `pulumi:"shortName"`
@@ -151,6 +165,13 @@ type TagKeyState struct {
 	NamespacedName pulumi.StringPtrInput
 	// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
 	Parent pulumi.StringPtrInput
+	// Optional. A purpose cannot be changed once set.
+	// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+	// Possible values are `GCE_FIREWALL`.
+	Purpose pulumi.StringPtrInput
+	// Optional. Purpose data cannot be changed once set.
+	// Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
+	PurposeData pulumi.StringMapInput
 	// Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
 	// The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName pulumi.StringPtrInput
@@ -168,6 +189,13 @@ type tagKeyArgs struct {
 	Description *string `pulumi:"description"`
 	// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
 	Parent string `pulumi:"parent"`
+	// Optional. A purpose cannot be changed once set.
+	// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+	// Possible values are `GCE_FIREWALL`.
+	Purpose *string `pulumi:"purpose"`
+	// Optional. Purpose data cannot be changed once set.
+	// Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
+	PurposeData map[string]string `pulumi:"purposeData"`
 	// Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
 	// The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName string `pulumi:"shortName"`
@@ -179,6 +207,13 @@ type TagKeyArgs struct {
 	Description pulumi.StringPtrInput
 	// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
 	Parent pulumi.StringInput
+	// Optional. A purpose cannot be changed once set.
+	// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+	// Possible values are `GCE_FIREWALL`.
+	Purpose pulumi.StringPtrInput
+	// Optional. Purpose data cannot be changed once set.
+	// Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
+	PurposeData pulumi.StringMapInput
 	// Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
 	// The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName pulumi.StringInput
@@ -295,6 +330,19 @@ func (o TagKeyOutput) NamespacedName() pulumi.StringOutput {
 // Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
 func (o TagKeyOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagKey) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
+}
+
+// Optional. A purpose cannot be changed once set.
+// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+// Possible values are `GCE_FIREWALL`.
+func (o TagKeyOutput) Purpose() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TagKey) pulumi.StringPtrOutput { return v.Purpose }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Purpose data cannot be changed once set.
+// Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
+func (o TagKeyOutput) PurposeData() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TagKey) pulumi.StringMapOutput { return v.PurposeData }).(pulumi.StringMapOutput)
 }
 
 // Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.

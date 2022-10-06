@@ -21,6 +21,8 @@ import (
 //
 // > **Note:** `iap.WebTypeComputeIamBinding` resources **can be** used in conjunction with `iap.WebTypeComputeIamMember` resources **only if** they do not grant privilege to the same role.
 //
+// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+//
 // ## google\_iap\_web\_type\_compute\_iam\_policy
 //
 // ```go
@@ -264,7 +266,7 @@ import (
 type WebTypeComputeIamMember struct {
 	pulumi.CustomResourceState
 
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition WebTypeComputeIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -314,7 +316,7 @@ func GetWebTypeComputeIamMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WebTypeComputeIamMember resources.
 type webTypeComputeIamMemberState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *WebTypeComputeIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -330,7 +332,7 @@ type webTypeComputeIamMemberState struct {
 }
 
 type WebTypeComputeIamMemberState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition WebTypeComputeIamMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
@@ -350,7 +352,7 @@ func (WebTypeComputeIamMemberState) ElementType() reflect.Type {
 }
 
 type webTypeComputeIamMemberArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *WebTypeComputeIamMemberCondition `pulumi:"condition"`
 	Member    string                            `pulumi:"member"`
@@ -365,7 +367,7 @@ type webTypeComputeIamMemberArgs struct {
 
 // The set of arguments for constructing a WebTypeComputeIamMember resource.
 type WebTypeComputeIamMemberArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition WebTypeComputeIamMemberConditionPtrInput
 	Member    pulumi.StringInput
@@ -465,7 +467,7 @@ func (o WebTypeComputeIamMemberOutput) ToWebTypeComputeIamMemberOutputWithContex
 	return o
 }
 
-// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
 func (o WebTypeComputeIamMemberOutput) Condition() WebTypeComputeIamMemberConditionPtrOutput {
 	return o.ApplyT(func(v *WebTypeComputeIamMember) WebTypeComputeIamMemberConditionPtrOutput { return v.Condition }).(WebTypeComputeIamMemberConditionPtrOutput)

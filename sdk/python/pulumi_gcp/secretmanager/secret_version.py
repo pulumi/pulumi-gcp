@@ -75,7 +75,8 @@ class _SecretVersionState:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
-                 secret_data: Optional[pulumi.Input[str]] = None):
+                 secret_data: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SecretVersion resources.
         :param pulumi.Input[str] create_time: The time at which the Secret was created.
@@ -85,6 +86,7 @@ class _SecretVersionState:
         :param pulumi.Input[str] secret: Secret Manager secret resource
         :param pulumi.Input[str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[str] version: The version of the Secret.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -98,6 +100,8 @@ class _SecretVersionState:
             pulumi.set(__self__, "secret", secret)
         if secret_data is not None:
             pulumi.set(__self__, "secret_data", secret_data)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="createTime")
@@ -171,6 +175,18 @@ class _SecretVersionState:
     @secret_data.setter
     def secret_data(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_data", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the Secret.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
 
 class SecretVersion(pulumi.CustomResource):
@@ -300,6 +316,7 @@ class SecretVersion(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["destroy_time"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["version"] = None
         super(SecretVersion, __self__).__init__(
             'gcp:secretmanager/secretVersion:SecretVersion',
             resource_name,
@@ -315,7 +332,8 @@ class SecretVersion(pulumi.CustomResource):
             enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             secret: Optional[pulumi.Input[str]] = None,
-            secret_data: Optional[pulumi.Input[str]] = None) -> 'SecretVersion':
+            secret_data: Optional[pulumi.Input[str]] = None,
+            version: Optional[pulumi.Input[str]] = None) -> 'SecretVersion':
         """
         Get an existing SecretVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -330,6 +348,7 @@ class SecretVersion(pulumi.CustomResource):
         :param pulumi.Input[str] secret: Secret Manager secret resource
         :param pulumi.Input[str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[str] version: The version of the Secret.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -341,6 +360,7 @@ class SecretVersion(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["secret"] = secret
         __props__.__dict__["secret_data"] = secret_data
+        __props__.__dict__["version"] = version
         return SecretVersion(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -391,4 +411,12 @@ class SecretVersion(pulumi.CustomResource):
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "secret_data")
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Output[str]:
+        """
+        The version of the Secret.
+        """
+        return pulumi.get(self, "version")
 

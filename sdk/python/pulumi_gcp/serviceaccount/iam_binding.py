@@ -215,7 +215,7 @@ class IAMBinding(pulumi.CustomResource):
             service_account_id=sa.name,
             policy_data=admin.policy_data)
         ```
-        ### Service Account IAM Binging
+        ### Service Account IAM Binding
 
         ```python
         import pulumi
@@ -360,7 +360,7 @@ class IAMBinding(pulumi.CustomResource):
             service_account_id=sa.name,
             policy_data=admin.policy_data)
         ```
-        ### Service Account IAM Binging
+        ### Service Account IAM Binding
 
         ```python
         import pulumi

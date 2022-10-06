@@ -76,6 +76,30 @@ import * as utilities from "../utilities";
  * });
  * const topic = new gcp.pubsub.Topic("topic", {});
  * ```
+ * ### Healthcare Fhir Store Notification Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const topic = new gcp.pubsub.Topic("topic", {});
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
+ * const _default = new gcp.healthcare.FhirStore("default", {
+ *     dataset: dataset.id,
+ *     version: "R4",
+ *     enableUpdateCreate: false,
+ *     disableReferentialIntegrity: false,
+ *     disableResourceVersioning: false,
+ *     enableHistoryImport: false,
+ *     labels: {
+ *         label1: "labelvalue1",
+ *     },
+ *     notificationConfigs: [{
+ *         pubsubTopic: topic.id,
+ *         sendFullResource: true,
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -180,6 +204,10 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.FhirStoreNotificationConfig | undefined>;
     /**
+     * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     */
+    public readonly notificationConfigs!: pulumi.Output<outputs.healthcare.FhirStoreNotificationConfig[] | undefined>;
+    /**
      * The fully qualified name of this dataset
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -221,6 +249,7 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
+            resourceInputs["notificationConfigs"] = state ? state.notificationConfigs : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["streamConfigs"] = state ? state.streamConfigs : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
@@ -237,6 +266,7 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
+            resourceInputs["notificationConfigs"] = args ? args.notificationConfigs : undefined;
             resourceInputs["streamConfigs"] = args ? args.streamConfigs : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -312,6 +342,10 @@ export interface FhirStoreState {
      * Structure is documented below.
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>;
+    /**
+     * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     */
+    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>[]>;
     /**
      * The fully qualified name of this dataset
      */
@@ -400,6 +434,10 @@ export interface FhirStoreArgs {
      * Structure is documented below.
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>;
+    /**
+     * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     */
+    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>[]>;
     /**
      * A list of streaming configs that configure the destinations of streaming export for every resource mutation in
      * this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next

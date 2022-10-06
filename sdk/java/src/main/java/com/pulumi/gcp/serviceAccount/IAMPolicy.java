@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Service Account IAM Binging
+ * ### Service Account IAM Binding
  * ```java
  * package generated_program;
  * 

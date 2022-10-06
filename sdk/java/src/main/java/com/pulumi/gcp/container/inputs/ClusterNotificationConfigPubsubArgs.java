@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterNotificationConfigPubsubFilterArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -34,6 +35,21 @@ public final class ClusterNotificationConfigPubsubArgs extends com.pulumi.resour
     }
 
     /**
+     * Choose what type of notifications you want to receive. If no filters are applied, you&#39;ll receive all notification types. Structure is documented below.
+     * 
+     */
+    @Import(name="filter")
+    private @Nullable Output<ClusterNotificationConfigPubsubFilterArgs> filter;
+
+    /**
+     * @return Choose what type of notifications you want to receive. If no filters are applied, you&#39;ll receive all notification types. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNotificationConfigPubsubFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
+    /**
      * The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
      * 
      */
@@ -52,6 +68,7 @@ public final class ClusterNotificationConfigPubsubArgs extends com.pulumi.resour
 
     private ClusterNotificationConfigPubsubArgs(ClusterNotificationConfigPubsubArgs $) {
         this.enabled = $.enabled;
+        this.filter = $.filter;
         this.topic = $.topic;
     }
 
@@ -94,6 +111,27 @@ public final class ClusterNotificationConfigPubsubArgs extends com.pulumi.resour
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param filter Choose what type of notifications you want to receive. If no filters are applied, you&#39;ll receive all notification types. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(@Nullable Output<ClusterNotificationConfigPubsubFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        /**
+         * @param filter Choose what type of notifications you want to receive. If no filters are applied, you&#39;ll receive all notification types. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(ClusterNotificationConfigPubsubFilterArgs filter) {
+            return filter(Output.of(filter));
         }
 
         /**

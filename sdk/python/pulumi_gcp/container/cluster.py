@@ -3838,7 +3838,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodePoolAutoConfig")
-    def node_pool_auto_config(self) -> pulumi.Output[Optional['outputs.ClusterNodePoolAutoConfig']]:
+    def node_pool_auto_config(self) -> pulumi.Output['outputs.ClusterNodePoolAutoConfig']:
         """
         ) Node pool configs that apply to auto-provisioned node pools in
         [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
@@ -3848,7 +3848,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodePoolDefaults")
-    def node_pool_defaults(self) -> pulumi.Output[Optional['outputs.ClusterNodePoolDefaults']]:
+    def node_pool_defaults(self) -> pulumi.Output['outputs.ClusterNodePoolDefaults']:
         """
         ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
         """

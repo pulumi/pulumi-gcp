@@ -18,7 +18,7 @@ public final class BackendServiceIamBindingState extends com.pulumi.resources.Re
     public static final BackendServiceIamBindingState Empty = new BackendServiceIamBindingState();
 
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
@@ -26,7 +26,7 @@ public final class BackendServiceIamBindingState extends com.pulumi.resources.Re
     private @Nullable Output<BackendServiceIamBindingConditionArgs> condition;
 
     /**
-     * @return ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
@@ -137,7 +137,7 @@ public final class BackendServiceIamBindingState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param condition ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
          * Structure is documented below.
          * 
          * @return builder
@@ -149,7 +149,7 @@ public final class BackendServiceIamBindingState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param condition ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
          * Structure is documented below.
          * 
          * @return builder

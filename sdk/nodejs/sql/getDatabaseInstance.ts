@@ -50,6 +50,7 @@ export interface GetDatabaseInstanceArgs {
  * A collection of values returned by getDatabaseInstance.
  */
 export interface GetDatabaseInstanceResult {
+    readonly availableMaintenanceVersions: string[];
     readonly clones: outputs.sql.GetDatabaseInstanceClone[];
     readonly connectionName: string;
     readonly databaseVersion: string;
@@ -61,6 +62,7 @@ export interface GetDatabaseInstanceResult {
      */
     readonly id: string;
     readonly ipAddresses: outputs.sql.GetDatabaseInstanceIpAddress[];
+    readonly maintenanceVersion: string;
     readonly masterInstanceName: string;
     readonly name: string;
     readonly privateIpAddress: string;

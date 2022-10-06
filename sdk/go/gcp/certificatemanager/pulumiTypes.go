@@ -720,13 +720,28 @@ func (o CertificateMapGclbTargetIpConfigArrayOutput) Index(i pulumi.IntInput) Ce
 }
 
 type CertificateSelfManaged struct {
+	// -
+	// (Optional, Deprecated)
+	// **Deprecated** The certificate chain in PEM-encoded form.
+	// Leaf certificate comes first, followed by intermediate ones if any.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	//
+	// Deprecated: Deprecated in favor of `pem_certificate`
+	CertificatePem *string `pulumi:"certificatePem"`
 	// The certificate chain in PEM-encoded form.
 	// Leaf certificate comes first, followed by intermediate ones if any.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	CertificatePem string `pulumi:"certificatePem"`
+	PemCertificate *string `pulumi:"pemCertificate"`
 	// The private key of the leaf certificate in PEM-encoded form.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	PrivateKeyPem string `pulumi:"privateKeyPem"`
+	PemPrivateKey *string `pulumi:"pemPrivateKey"`
+	// -
+	// (Optional, Deprecated)
+	// **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	//
+	// Deprecated: Deprecated in favor of `pem_private_key`
+	PrivateKeyPem *string `pulumi:"privateKeyPem"`
 }
 
 // CertificateSelfManagedInput is an input type that accepts CertificateSelfManagedArgs and CertificateSelfManagedOutput values.
@@ -741,13 +756,28 @@ type CertificateSelfManagedInput interface {
 }
 
 type CertificateSelfManagedArgs struct {
+	// -
+	// (Optional, Deprecated)
+	// **Deprecated** The certificate chain in PEM-encoded form.
+	// Leaf certificate comes first, followed by intermediate ones if any.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	//
+	// Deprecated: Deprecated in favor of `pem_certificate`
+	CertificatePem pulumi.StringPtrInput `pulumi:"certificatePem"`
 	// The certificate chain in PEM-encoded form.
 	// Leaf certificate comes first, followed by intermediate ones if any.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	CertificatePem pulumi.StringInput `pulumi:"certificatePem"`
+	PemCertificate pulumi.StringPtrInput `pulumi:"pemCertificate"`
 	// The private key of the leaf certificate in PEM-encoded form.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	PrivateKeyPem pulumi.StringInput `pulumi:"privateKeyPem"`
+	PemPrivateKey pulumi.StringPtrInput `pulumi:"pemPrivateKey"`
+	// -
+	// (Optional, Deprecated)
+	// **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	//
+	// Deprecated: Deprecated in favor of `pem_private_key`
+	PrivateKeyPem pulumi.StringPtrInput `pulumi:"privateKeyPem"`
 }
 
 func (CertificateSelfManagedArgs) ElementType() reflect.Type {
@@ -827,17 +857,38 @@ func (o CertificateSelfManagedOutput) ToCertificateSelfManagedPtrOutputWithConte
 	}).(CertificateSelfManagedPtrOutput)
 }
 
+// -
+// (Optional, Deprecated)
+// **Deprecated** The certificate chain in PEM-encoded form.
+// Leaf certificate comes first, followed by intermediate ones if any.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+//
+// Deprecated: Deprecated in favor of `pem_certificate`
+func (o CertificateSelfManagedOutput) CertificatePem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateSelfManaged) *string { return v.CertificatePem }).(pulumi.StringPtrOutput)
+}
+
 // The certificate chain in PEM-encoded form.
 // Leaf certificate comes first, followed by intermediate ones if any.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-func (o CertificateSelfManagedOutput) CertificatePem() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificateSelfManaged) string { return v.CertificatePem }).(pulumi.StringOutput)
+func (o CertificateSelfManagedOutput) PemCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateSelfManaged) *string { return v.PemCertificate }).(pulumi.StringPtrOutput)
 }
 
 // The private key of the leaf certificate in PEM-encoded form.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-func (o CertificateSelfManagedOutput) PrivateKeyPem() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificateSelfManaged) string { return v.PrivateKeyPem }).(pulumi.StringOutput)
+func (o CertificateSelfManagedOutput) PemPrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateSelfManaged) *string { return v.PemPrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// -
+// (Optional, Deprecated)
+// **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+//
+// Deprecated: Deprecated in favor of `pem_private_key`
+func (o CertificateSelfManagedOutput) PrivateKeyPem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateSelfManaged) *string { return v.PrivateKeyPem }).(pulumi.StringPtrOutput)
 }
 
 type CertificateSelfManagedPtrOutput struct{ *pulumi.OutputState }
@@ -864,26 +915,57 @@ func (o CertificateSelfManagedPtrOutput) Elem() CertificateSelfManagedOutput {
 	}).(CertificateSelfManagedOutput)
 }
 
-// The certificate chain in PEM-encoded form.
+// -
+// (Optional, Deprecated)
+// **Deprecated** The certificate chain in PEM-encoded form.
 // Leaf certificate comes first, followed by intermediate ones if any.
 // **Note**: This property is sensitive and will not be displayed in the plan.
+//
+// Deprecated: Deprecated in favor of `pem_certificate`
 func (o CertificateSelfManagedPtrOutput) CertificatePem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateSelfManaged) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.CertificatePem
+		return v.CertificatePem
+	}).(pulumi.StringPtrOutput)
+}
+
+// The certificate chain in PEM-encoded form.
+// Leaf certificate comes first, followed by intermediate ones if any.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o CertificateSelfManagedPtrOutput) PemCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateSelfManaged) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PemCertificate
 	}).(pulumi.StringPtrOutput)
 }
 
 // The private key of the leaf certificate in PEM-encoded form.
 // **Note**: This property is sensitive and will not be displayed in the plan.
+func (o CertificateSelfManagedPtrOutput) PemPrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateSelfManaged) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PemPrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// (Optional, Deprecated)
+// **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+//
+// Deprecated: Deprecated in favor of `pem_private_key`
 func (o CertificateSelfManagedPtrOutput) PrivateKeyPem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateSelfManaged) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.PrivateKeyPem
+		return v.PrivateKeyPem
 	}).(pulumi.StringPtrOutput)
 }
 

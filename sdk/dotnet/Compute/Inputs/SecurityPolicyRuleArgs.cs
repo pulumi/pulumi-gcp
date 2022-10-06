@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int> Priority { get; set; } = null!;
 
         /// <summary>
-        /// Must be specified if the `action` is "rate_based_bad" or "throttle". Cannot be specified for other actions. Structure is documented below.
+        /// Must be specified if the `action` is "rate_based_ban" or "throttle". Cannot be specified for other actions. Structure is documented below.
         /// </summary>
         [Input("rateLimitOptions")]
         public Input<Inputs.SecurityPolicyRuleRateLimitOptionsArgs>? RateLimitOptions { get; set; }

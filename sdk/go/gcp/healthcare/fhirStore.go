@@ -142,6 +142,56 @@ import (
 //	}
 //
 // ```
+// ### Healthcare Fhir Store Notification Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/healthcare"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			topic, err := pubsub.NewTopic(ctx, "topic", nil)
+//			if err != nil {
+//				return err
+//			}
+//			dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
+//				Dataset:                     dataset.ID(),
+//				Version:                     pulumi.String("R4"),
+//				EnableUpdateCreate:          pulumi.Bool(false),
+//				DisableReferentialIntegrity: pulumi.Bool(false),
+//				DisableResourceVersioning:   pulumi.Bool(false),
+//				EnableHistoryImport:         pulumi.Bool(false),
+//				Labels: pulumi.StringMap{
+//					"label1": pulumi.String("labelvalue1"),
+//				},
+//				NotificationConfigs: healthcare.FhirStoreNotificationConfigArray{
+//					&healthcare.FhirStoreNotificationConfigArgs{
+//						PubsubTopic:      topic.ID(),
+//						SendFullResource: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -207,6 +257,8 @@ type FhirStore struct {
 	// A nested object resource
 	// Structure is documented below.
 	NotificationConfig FhirStoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
+	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+	NotificationConfigs FhirStoreNotificationConfigArrayOutput `pulumi:"notificationConfigs"`
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in
@@ -301,6 +353,8 @@ type fhirStoreState struct {
 	// A nested object resource
 	// Structure is documented below.
 	NotificationConfig *FhirStoreNotificationConfig `pulumi:"notificationConfig"`
+	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+	NotificationConfigs []FhirStoreNotificationConfig `pulumi:"notificationConfigs"`
 	// The fully qualified name of this dataset
 	SelfLink *string `pulumi:"selfLink"`
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in
@@ -364,6 +418,8 @@ type FhirStoreState struct {
 	// A nested object resource
 	// Structure is documented below.
 	NotificationConfig FhirStoreNotificationConfigPtrInput
+	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+	NotificationConfigs FhirStoreNotificationConfigArrayInput
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringPtrInput
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in
@@ -431,6 +487,8 @@ type fhirStoreArgs struct {
 	// A nested object resource
 	// Structure is documented below.
 	NotificationConfig *FhirStoreNotificationConfig `pulumi:"notificationConfig"`
+	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+	NotificationConfigs []FhirStoreNotificationConfig `pulumi:"notificationConfigs"`
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in
 	// this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
 	// resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
@@ -493,6 +551,8 @@ type FhirStoreArgs struct {
 	// A nested object resource
 	// Structure is documented below.
 	NotificationConfig FhirStoreNotificationConfigPtrInput
+	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+	NotificationConfigs FhirStoreNotificationConfigArrayInput
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in
 	// this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
 	// resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
@@ -662,6 +722,11 @@ func (o FhirStoreOutput) Name() pulumi.StringOutput {
 // Structure is documented below.
 func (o FhirStoreOutput) NotificationConfig() FhirStoreNotificationConfigPtrOutput {
 	return o.ApplyT(func(v *FhirStore) FhirStoreNotificationConfigPtrOutput { return v.NotificationConfig }).(FhirStoreNotificationConfigPtrOutput)
+}
+
+// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+func (o FhirStoreOutput) NotificationConfigs() FhirStoreNotificationConfigArrayOutput {
+	return o.ApplyT(func(v *FhirStore) FhirStoreNotificationConfigArrayOutput { return v.NotificationConfigs }).(FhirStoreNotificationConfigArrayOutput)
 }
 
 // The fully qualified name of this dataset

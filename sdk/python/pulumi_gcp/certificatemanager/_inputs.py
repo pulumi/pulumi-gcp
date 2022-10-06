@@ -323,43 +323,97 @@ class CertificateMapGclbTargetIpConfigArgs:
 @pulumi.input_type
 class CertificateSelfManagedArgs:
     def __init__(__self__, *,
-                 certificate_pem: pulumi.Input[str],
-                 private_key_pem: pulumi.Input[str]):
+                 certificate_pem: Optional[pulumi.Input[str]] = None,
+                 pem_certificate: Optional[pulumi.Input[str]] = None,
+                 pem_private_key: Optional[pulumi.Input[str]] = None,
+                 private_key_pem: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] certificate_pem: The certificate chain in PEM-encoded form.
+        :param pulumi.Input[str] certificate_pem: -
+               (Optional, Deprecated)
+               **Deprecated** The certificate chain in PEM-encoded form.
                Leaf certificate comes first, followed by intermediate ones if any.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param pulumi.Input[str] private_key_pem: The private key of the leaf certificate in PEM-encoded form.
+        :param pulumi.Input[str] pem_certificate: The certificate chain in PEM-encoded form.
+               Leaf certificate comes first, followed by intermediate ones if any.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[str] pem_private_key: The private key of the leaf certificate in PEM-encoded form.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[str] private_key_pem: -
+               (Optional, Deprecated)
+               **Deprecated** The private key of the leaf certificate in PEM-encoded form.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
-        pulumi.set(__self__, "certificate_pem", certificate_pem)
-        pulumi.set(__self__, "private_key_pem", private_key_pem)
+        if certificate_pem is not None:
+            warnings.warn("""Deprecated in favor of `pem_certificate`""", DeprecationWarning)
+            pulumi.log.warn("""certificate_pem is deprecated: Deprecated in favor of `pem_certificate`""")
+        if certificate_pem is not None:
+            pulumi.set(__self__, "certificate_pem", certificate_pem)
+        if pem_certificate is not None:
+            pulumi.set(__self__, "pem_certificate", pem_certificate)
+        if pem_private_key is not None:
+            pulumi.set(__self__, "pem_private_key", pem_private_key)
+        if private_key_pem is not None:
+            warnings.warn("""Deprecated in favor of `pem_private_key`""", DeprecationWarning)
+            pulumi.log.warn("""private_key_pem is deprecated: Deprecated in favor of `pem_private_key`""")
+        if private_key_pem is not None:
+            pulumi.set(__self__, "private_key_pem", private_key_pem)
 
     @property
     @pulumi.getter(name="certificatePem")
-    def certificate_pem(self) -> pulumi.Input[str]:
+    def certificate_pem(self) -> Optional[pulumi.Input[str]]:
         """
-        The certificate chain in PEM-encoded form.
+        -
+        (Optional, Deprecated)
+        **Deprecated** The certificate chain in PEM-encoded form.
         Leaf certificate comes first, followed by intermediate ones if any.
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "certificate_pem")
 
     @certificate_pem.setter
-    def certificate_pem(self, value: pulumi.Input[str]):
+    def certificate_pem(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "certificate_pem", value)
 
     @property
-    @pulumi.getter(name="privateKeyPem")
-    def private_key_pem(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The certificate chain in PEM-encoded form.
+        Leaf certificate comes first, followed by intermediate ones if any.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "pem_certificate")
+
+    @pem_certificate.setter
+    def pem_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pem_certificate", value)
+
+    @property
+    @pulumi.getter(name="pemPrivateKey")
+    def pem_private_key(self) -> Optional[pulumi.Input[str]]:
         """
         The private key of the leaf certificate in PEM-encoded form.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "pem_private_key")
+
+    @pem_private_key.setter
+    def pem_private_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pem_private_key", value)
+
+    @property
+    @pulumi.getter(name="privateKeyPem")
+    def private_key_pem(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        (Optional, Deprecated)
+        **Deprecated** The private key of the leaf certificate in PEM-encoded form.
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "private_key_pem")
 
     @private_key_pem.setter
-    def private_key_pem(self, value: pulumi.Input[str]):
+    def private_key_pem(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "private_key_pem", value)
 
 

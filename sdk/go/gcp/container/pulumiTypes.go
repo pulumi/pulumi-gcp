@@ -20011,6 +20011,8 @@ type ClusterNotificationConfigPubsub struct {
 	// Enable the PodSecurityPolicy controller for this cluster.
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	Enabled bool `pulumi:"enabled"`
+	// Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
+	Filter *ClusterNotificationConfigPubsubFilter `pulumi:"filter"`
 	// The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
 	Topic *string `pulumi:"topic"`
 }
@@ -20030,6 +20032,8 @@ type ClusterNotificationConfigPubsubArgs struct {
 	// Enable the PodSecurityPolicy controller for this cluster.
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
+	Filter ClusterNotificationConfigPubsubFilterPtrInput `pulumi:"filter"`
 	// The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
 	Topic pulumi.StringPtrInput `pulumi:"topic"`
 }
@@ -20117,6 +20121,11 @@ func (o ClusterNotificationConfigPubsubOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterNotificationConfigPubsub) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
+func (o ClusterNotificationConfigPubsubOutput) Filter() ClusterNotificationConfigPubsubFilterPtrOutput {
+	return o.ApplyT(func(v ClusterNotificationConfigPubsub) *ClusterNotificationConfigPubsubFilter { return v.Filter }).(ClusterNotificationConfigPubsubFilterPtrOutput)
+}
+
 // The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
 func (o ClusterNotificationConfigPubsubOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNotificationConfigPubsub) *string { return v.Topic }).(pulumi.StringPtrOutput)
@@ -20157,6 +20166,16 @@ func (o ClusterNotificationConfigPubsubPtrOutput) Enabled() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
+func (o ClusterNotificationConfigPubsubPtrOutput) Filter() ClusterNotificationConfigPubsubFilterPtrOutput {
+	return o.ApplyT(func(v *ClusterNotificationConfigPubsub) *ClusterNotificationConfigPubsubFilter {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(ClusterNotificationConfigPubsubFilterPtrOutput)
+}
+
 // The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
 func (o ClusterNotificationConfigPubsubPtrOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNotificationConfigPubsub) *string {
@@ -20165,6 +20184,143 @@ func (o ClusterNotificationConfigPubsubPtrOutput) Topic() pulumi.StringPtrOutput
 		}
 		return v.Topic
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterNotificationConfigPubsubFilter struct {
+	// Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT` and `SECURITY_BULLETIN_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
+	EventTypes []string `pulumi:"eventTypes"`
+}
+
+// ClusterNotificationConfigPubsubFilterInput is an input type that accepts ClusterNotificationConfigPubsubFilterArgs and ClusterNotificationConfigPubsubFilterOutput values.
+// You can construct a concrete instance of `ClusterNotificationConfigPubsubFilterInput` via:
+//
+//	ClusterNotificationConfigPubsubFilterArgs{...}
+type ClusterNotificationConfigPubsubFilterInput interface {
+	pulumi.Input
+
+	ToClusterNotificationConfigPubsubFilterOutput() ClusterNotificationConfigPubsubFilterOutput
+	ToClusterNotificationConfigPubsubFilterOutputWithContext(context.Context) ClusterNotificationConfigPubsubFilterOutput
+}
+
+type ClusterNotificationConfigPubsubFilterArgs struct {
+	// Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT` and `SECURITY_BULLETIN_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
+	EventTypes pulumi.StringArrayInput `pulumi:"eventTypes"`
+}
+
+func (ClusterNotificationConfigPubsubFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNotificationConfigPubsubFilter)(nil)).Elem()
+}
+
+func (i ClusterNotificationConfigPubsubFilterArgs) ToClusterNotificationConfigPubsubFilterOutput() ClusterNotificationConfigPubsubFilterOutput {
+	return i.ToClusterNotificationConfigPubsubFilterOutputWithContext(context.Background())
+}
+
+func (i ClusterNotificationConfigPubsubFilterArgs) ToClusterNotificationConfigPubsubFilterOutputWithContext(ctx context.Context) ClusterNotificationConfigPubsubFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNotificationConfigPubsubFilterOutput)
+}
+
+func (i ClusterNotificationConfigPubsubFilterArgs) ToClusterNotificationConfigPubsubFilterPtrOutput() ClusterNotificationConfigPubsubFilterPtrOutput {
+	return i.ToClusterNotificationConfigPubsubFilterPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNotificationConfigPubsubFilterArgs) ToClusterNotificationConfigPubsubFilterPtrOutputWithContext(ctx context.Context) ClusterNotificationConfigPubsubFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNotificationConfigPubsubFilterOutput).ToClusterNotificationConfigPubsubFilterPtrOutputWithContext(ctx)
+}
+
+// ClusterNotificationConfigPubsubFilterPtrInput is an input type that accepts ClusterNotificationConfigPubsubFilterArgs, ClusterNotificationConfigPubsubFilterPtr and ClusterNotificationConfigPubsubFilterPtrOutput values.
+// You can construct a concrete instance of `ClusterNotificationConfigPubsubFilterPtrInput` via:
+//
+//	        ClusterNotificationConfigPubsubFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNotificationConfigPubsubFilterPtrInput interface {
+	pulumi.Input
+
+	ToClusterNotificationConfigPubsubFilterPtrOutput() ClusterNotificationConfigPubsubFilterPtrOutput
+	ToClusterNotificationConfigPubsubFilterPtrOutputWithContext(context.Context) ClusterNotificationConfigPubsubFilterPtrOutput
+}
+
+type clusterNotificationConfigPubsubFilterPtrType ClusterNotificationConfigPubsubFilterArgs
+
+func ClusterNotificationConfigPubsubFilterPtr(v *ClusterNotificationConfigPubsubFilterArgs) ClusterNotificationConfigPubsubFilterPtrInput {
+	return (*clusterNotificationConfigPubsubFilterPtrType)(v)
+}
+
+func (*clusterNotificationConfigPubsubFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNotificationConfigPubsubFilter)(nil)).Elem()
+}
+
+func (i *clusterNotificationConfigPubsubFilterPtrType) ToClusterNotificationConfigPubsubFilterPtrOutput() ClusterNotificationConfigPubsubFilterPtrOutput {
+	return i.ToClusterNotificationConfigPubsubFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNotificationConfigPubsubFilterPtrType) ToClusterNotificationConfigPubsubFilterPtrOutputWithContext(ctx context.Context) ClusterNotificationConfigPubsubFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNotificationConfigPubsubFilterPtrOutput)
+}
+
+type ClusterNotificationConfigPubsubFilterOutput struct{ *pulumi.OutputState }
+
+func (ClusterNotificationConfigPubsubFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNotificationConfigPubsubFilter)(nil)).Elem()
+}
+
+func (o ClusterNotificationConfigPubsubFilterOutput) ToClusterNotificationConfigPubsubFilterOutput() ClusterNotificationConfigPubsubFilterOutput {
+	return o
+}
+
+func (o ClusterNotificationConfigPubsubFilterOutput) ToClusterNotificationConfigPubsubFilterOutputWithContext(ctx context.Context) ClusterNotificationConfigPubsubFilterOutput {
+	return o
+}
+
+func (o ClusterNotificationConfigPubsubFilterOutput) ToClusterNotificationConfigPubsubFilterPtrOutput() ClusterNotificationConfigPubsubFilterPtrOutput {
+	return o.ToClusterNotificationConfigPubsubFilterPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNotificationConfigPubsubFilterOutput) ToClusterNotificationConfigPubsubFilterPtrOutputWithContext(ctx context.Context) ClusterNotificationConfigPubsubFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNotificationConfigPubsubFilter) *ClusterNotificationConfigPubsubFilter {
+		return &v
+	}).(ClusterNotificationConfigPubsubFilterPtrOutput)
+}
+
+// Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT` and `SECURITY_BULLETIN_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
+func (o ClusterNotificationConfigPubsubFilterOutput) EventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterNotificationConfigPubsubFilter) []string { return v.EventTypes }).(pulumi.StringArrayOutput)
+}
+
+type ClusterNotificationConfigPubsubFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNotificationConfigPubsubFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNotificationConfigPubsubFilter)(nil)).Elem()
+}
+
+func (o ClusterNotificationConfigPubsubFilterPtrOutput) ToClusterNotificationConfigPubsubFilterPtrOutput() ClusterNotificationConfigPubsubFilterPtrOutput {
+	return o
+}
+
+func (o ClusterNotificationConfigPubsubFilterPtrOutput) ToClusterNotificationConfigPubsubFilterPtrOutputWithContext(ctx context.Context) ClusterNotificationConfigPubsubFilterPtrOutput {
+	return o
+}
+
+func (o ClusterNotificationConfigPubsubFilterPtrOutput) Elem() ClusterNotificationConfigPubsubFilterOutput {
+	return o.ApplyT(func(v *ClusterNotificationConfigPubsubFilter) ClusterNotificationConfigPubsubFilter {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNotificationConfigPubsubFilter
+		return ret
+	}).(ClusterNotificationConfigPubsubFilterOutput)
+}
+
+// Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT` and `SECURITY_BULLETIN_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
+func (o ClusterNotificationConfigPubsubFilterPtrOutput) EventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterNotificationConfigPubsubFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EventTypes
+	}).(pulumi.StringArrayOutput)
 }
 
 type ClusterPodSecurityPolicyConfig struct {
@@ -32627,8 +32783,9 @@ func (o GetClusterNotificationConfigArrayOutput) Index(i pulumi.IntInput) GetClu
 }
 
 type GetClusterNotificationConfigPubsub struct {
-	Enabled bool   `pulumi:"enabled"`
-	Topic   string `pulumi:"topic"`
+	Enabled bool                                       `pulumi:"enabled"`
+	Filters []GetClusterNotificationConfigPubsubFilter `pulumi:"filters"`
+	Topic   string                                     `pulumi:"topic"`
 }
 
 // GetClusterNotificationConfigPubsubInput is an input type that accepts GetClusterNotificationConfigPubsubArgs and GetClusterNotificationConfigPubsubOutput values.
@@ -32643,8 +32800,9 @@ type GetClusterNotificationConfigPubsubInput interface {
 }
 
 type GetClusterNotificationConfigPubsubArgs struct {
-	Enabled pulumi.BoolInput   `pulumi:"enabled"`
-	Topic   pulumi.StringInput `pulumi:"topic"`
+	Enabled pulumi.BoolInput                                   `pulumi:"enabled"`
+	Filters GetClusterNotificationConfigPubsubFilterArrayInput `pulumi:"filters"`
+	Topic   pulumi.StringInput                                 `pulumi:"topic"`
 }
 
 func (GetClusterNotificationConfigPubsubArgs) ElementType() reflect.Type {
@@ -32702,6 +32860,12 @@ func (o GetClusterNotificationConfigPubsubOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterNotificationConfigPubsub) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+func (o GetClusterNotificationConfigPubsubOutput) Filters() GetClusterNotificationConfigPubsubFilterArrayOutput {
+	return o.ApplyT(func(v GetClusterNotificationConfigPubsub) []GetClusterNotificationConfigPubsubFilter {
+		return v.Filters
+	}).(GetClusterNotificationConfigPubsubFilterArrayOutput)
+}
+
 func (o GetClusterNotificationConfigPubsubOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNotificationConfigPubsub) string { return v.Topic }).(pulumi.StringOutput)
 }
@@ -32724,6 +32888,100 @@ func (o GetClusterNotificationConfigPubsubArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNotificationConfigPubsub {
 		return vs[0].([]GetClusterNotificationConfigPubsub)[vs[1].(int)]
 	}).(GetClusterNotificationConfigPubsubOutput)
+}
+
+type GetClusterNotificationConfigPubsubFilter struct {
+	EventTypes []string `pulumi:"eventTypes"`
+}
+
+// GetClusterNotificationConfigPubsubFilterInput is an input type that accepts GetClusterNotificationConfigPubsubFilterArgs and GetClusterNotificationConfigPubsubFilterOutput values.
+// You can construct a concrete instance of `GetClusterNotificationConfigPubsubFilterInput` via:
+//
+//	GetClusterNotificationConfigPubsubFilterArgs{...}
+type GetClusterNotificationConfigPubsubFilterInput interface {
+	pulumi.Input
+
+	ToGetClusterNotificationConfigPubsubFilterOutput() GetClusterNotificationConfigPubsubFilterOutput
+	ToGetClusterNotificationConfigPubsubFilterOutputWithContext(context.Context) GetClusterNotificationConfigPubsubFilterOutput
+}
+
+type GetClusterNotificationConfigPubsubFilterArgs struct {
+	EventTypes pulumi.StringArrayInput `pulumi:"eventTypes"`
+}
+
+func (GetClusterNotificationConfigPubsubFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNotificationConfigPubsubFilter)(nil)).Elem()
+}
+
+func (i GetClusterNotificationConfigPubsubFilterArgs) ToGetClusterNotificationConfigPubsubFilterOutput() GetClusterNotificationConfigPubsubFilterOutput {
+	return i.ToGetClusterNotificationConfigPubsubFilterOutputWithContext(context.Background())
+}
+
+func (i GetClusterNotificationConfigPubsubFilterArgs) ToGetClusterNotificationConfigPubsubFilterOutputWithContext(ctx context.Context) GetClusterNotificationConfigPubsubFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNotificationConfigPubsubFilterOutput)
+}
+
+// GetClusterNotificationConfigPubsubFilterArrayInput is an input type that accepts GetClusterNotificationConfigPubsubFilterArray and GetClusterNotificationConfigPubsubFilterArrayOutput values.
+// You can construct a concrete instance of `GetClusterNotificationConfigPubsubFilterArrayInput` via:
+//
+//	GetClusterNotificationConfigPubsubFilterArray{ GetClusterNotificationConfigPubsubFilterArgs{...} }
+type GetClusterNotificationConfigPubsubFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNotificationConfigPubsubFilterArrayOutput() GetClusterNotificationConfigPubsubFilterArrayOutput
+	ToGetClusterNotificationConfigPubsubFilterArrayOutputWithContext(context.Context) GetClusterNotificationConfigPubsubFilterArrayOutput
+}
+
+type GetClusterNotificationConfigPubsubFilterArray []GetClusterNotificationConfigPubsubFilterInput
+
+func (GetClusterNotificationConfigPubsubFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNotificationConfigPubsubFilter)(nil)).Elem()
+}
+
+func (i GetClusterNotificationConfigPubsubFilterArray) ToGetClusterNotificationConfigPubsubFilterArrayOutput() GetClusterNotificationConfigPubsubFilterArrayOutput {
+	return i.ToGetClusterNotificationConfigPubsubFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNotificationConfigPubsubFilterArray) ToGetClusterNotificationConfigPubsubFilterArrayOutputWithContext(ctx context.Context) GetClusterNotificationConfigPubsubFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNotificationConfigPubsubFilterArrayOutput)
+}
+
+type GetClusterNotificationConfigPubsubFilterOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNotificationConfigPubsubFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNotificationConfigPubsubFilter)(nil)).Elem()
+}
+
+func (o GetClusterNotificationConfigPubsubFilterOutput) ToGetClusterNotificationConfigPubsubFilterOutput() GetClusterNotificationConfigPubsubFilterOutput {
+	return o
+}
+
+func (o GetClusterNotificationConfigPubsubFilterOutput) ToGetClusterNotificationConfigPubsubFilterOutputWithContext(ctx context.Context) GetClusterNotificationConfigPubsubFilterOutput {
+	return o
+}
+
+func (o GetClusterNotificationConfigPubsubFilterOutput) EventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNotificationConfigPubsubFilter) []string { return v.EventTypes }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterNotificationConfigPubsubFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNotificationConfigPubsubFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNotificationConfigPubsubFilter)(nil)).Elem()
+}
+
+func (o GetClusterNotificationConfigPubsubFilterArrayOutput) ToGetClusterNotificationConfigPubsubFilterArrayOutput() GetClusterNotificationConfigPubsubFilterArrayOutput {
+	return o
+}
+
+func (o GetClusterNotificationConfigPubsubFilterArrayOutput) ToGetClusterNotificationConfigPubsubFilterArrayOutputWithContext(ctx context.Context) GetClusterNotificationConfigPubsubFilterArrayOutput {
+	return o
+}
+
+func (o GetClusterNotificationConfigPubsubFilterArrayOutput) Index(i pulumi.IntInput) GetClusterNotificationConfigPubsubFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNotificationConfigPubsubFilter {
+		return vs[0].([]GetClusterNotificationConfigPubsubFilter)[vs[1].(int)]
+	}).(GetClusterNotificationConfigPubsubFilterOutput)
 }
 
 type GetClusterPodSecurityPolicyConfig struct {
@@ -33973,6 +34231,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNotificationConfigPtrInput)(nil)).Elem(), ClusterNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNotificationConfigPubsubInput)(nil)).Elem(), ClusterNotificationConfigPubsubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNotificationConfigPubsubPtrInput)(nil)).Elem(), ClusterNotificationConfigPubsubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNotificationConfigPubsubFilterInput)(nil)).Elem(), ClusterNotificationConfigPubsubFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNotificationConfigPubsubFilterPtrInput)(nil)).Elem(), ClusterNotificationConfigPubsubFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPodSecurityPolicyConfigInput)(nil)).Elem(), ClusterPodSecurityPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPodSecurityPolicyConfigPtrInput)(nil)).Elem(), ClusterPodSecurityPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPrivateClusterConfigInput)(nil)).Elem(), ClusterPrivateClusterConfigArgs{})
@@ -34179,6 +34439,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNotificationConfigArrayInput)(nil)).Elem(), GetClusterNotificationConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNotificationConfigPubsubInput)(nil)).Elem(), GetClusterNotificationConfigPubsubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNotificationConfigPubsubArrayInput)(nil)).Elem(), GetClusterNotificationConfigPubsubArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNotificationConfigPubsubFilterInput)(nil)).Elem(), GetClusterNotificationConfigPubsubFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNotificationConfigPubsubFilterArrayInput)(nil)).Elem(), GetClusterNotificationConfigPubsubFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterPodSecurityPolicyConfigInput)(nil)).Elem(), GetClusterPodSecurityPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterPodSecurityPolicyConfigArrayInput)(nil)).Elem(), GetClusterPodSecurityPolicyConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterPrivateClusterConfigInput)(nil)).Elem(), GetClusterPrivateClusterConfigArgs{})
@@ -34441,6 +34703,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNotificationConfigPubsubOutput{})
 	pulumi.RegisterOutputType(ClusterNotificationConfigPubsubPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNotificationConfigPubsubFilterOutput{})
+	pulumi.RegisterOutputType(ClusterNotificationConfigPubsubFilterPtrOutput{})
 	pulumi.RegisterOutputType(ClusterPodSecurityPolicyConfigOutput{})
 	pulumi.RegisterOutputType(ClusterPodSecurityPolicyConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterPrivateClusterConfigOutput{})
@@ -34647,6 +34911,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNotificationConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNotificationConfigPubsubOutput{})
 	pulumi.RegisterOutputType(GetClusterNotificationConfigPubsubArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNotificationConfigPubsubFilterOutput{})
+	pulumi.RegisterOutputType(GetClusterNotificationConfigPubsubFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterPodSecurityPolicyConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterPodSecurityPolicyConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterPrivateClusterConfigOutput{})

@@ -22215,7 +22215,7 @@ class SecurityPolicyRule(dict):
         :param str description: An optional description of this rule. Max size is 64.
         :param bool preview: When set to true, the `action` specified above is not enforced.
                Stackdriver logs for requests that trigger a preview action are annotated as such.
-        :param 'SecurityPolicyRuleRateLimitOptionsArgs' rate_limit_options: Must be specified if the `action` is "rate_based_bad" or "throttle". Cannot be specified for other actions. Structure is documented below.
+        :param 'SecurityPolicyRuleRateLimitOptionsArgs' rate_limit_options: Must be specified if the `action` is "rate_based_ban" or "throttle". Cannot be specified for other actions. Structure is documented below.
         :param 'SecurityPolicyRuleRedirectOptionsArgs' redirect_options: Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
         """
         pulumi.set(__self__, "action", action)
@@ -22282,7 +22282,7 @@ class SecurityPolicyRule(dict):
     @pulumi.getter(name="rateLimitOptions")
     def rate_limit_options(self) -> Optional['outputs.SecurityPolicyRuleRateLimitOptions']:
         """
-        Must be specified if the `action` is "rate_based_bad" or "throttle". Cannot be specified for other actions. Structure is documented below.
+        Must be specified if the `action` is "rate_based_ban" or "throttle". Cannot be specified for other actions. Structure is documented below.
         """
         return pulumi.get(self, "rate_limit_options")
 

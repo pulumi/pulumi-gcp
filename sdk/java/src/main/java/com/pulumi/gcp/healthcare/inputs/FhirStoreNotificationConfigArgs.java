@@ -5,8 +5,11 @@ package com.pulumi.gcp.healthcare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class FhirStoreNotificationConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -38,10 +41,34 @@ public final class FhirStoreNotificationConfigArgs extends com.pulumi.resources.
         return this.pubsubTopic;
     }
 
+    /**
+     * Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation.
+     * Note that setting this to true does not guarantee that all resources will be sent in the format of
+     * full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be
+     * sent. Clients should always check the &#34;payloadType&#34; label from a Pub/Sub message to determine whether
+     * it needs to fetch the full resource as a separate operation.
+     * 
+     */
+    @Import(name="sendFullResource")
+    private @Nullable Output<Boolean> sendFullResource;
+
+    /**
+     * @return Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation.
+     * Note that setting this to true does not guarantee that all resources will be sent in the format of
+     * full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be
+     * sent. Clients should always check the &#34;payloadType&#34; label from a Pub/Sub message to determine whether
+     * it needs to fetch the full resource as a separate operation.
+     * 
+     */
+    public Optional<Output<Boolean>> sendFullResource() {
+        return Optional.ofNullable(this.sendFullResource);
+    }
+
     private FhirStoreNotificationConfigArgs() {}
 
     private FhirStoreNotificationConfigArgs(FhirStoreNotificationConfigArgs $) {
         this.pubsubTopic = $.pubsubTopic;
+        this.sendFullResource = $.sendFullResource;
     }
 
     public static Builder builder() {
@@ -91,6 +118,35 @@ public final class FhirStoreNotificationConfigArgs extends com.pulumi.resources.
          */
         public Builder pubsubTopic(String pubsubTopic) {
             return pubsubTopic(Output.of(pubsubTopic));
+        }
+
+        /**
+         * @param sendFullResource Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation.
+         * Note that setting this to true does not guarantee that all resources will be sent in the format of
+         * full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be
+         * sent. Clients should always check the &#34;payloadType&#34; label from a Pub/Sub message to determine whether
+         * it needs to fetch the full resource as a separate operation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendFullResource(@Nullable Output<Boolean> sendFullResource) {
+            $.sendFullResource = sendFullResource;
+            return this;
+        }
+
+        /**
+         * @param sendFullResource Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation.
+         * Note that setting this to true does not guarantee that all resources will be sent in the format of
+         * full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be
+         * sent. Clients should always check the &#34;payloadType&#34; label from a Pub/Sub message to determine whether
+         * it needs to fetch the full resource as a separate operation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendFullResource(Boolean sendFullResource) {
+            return sendFullResource(Output.of(sendFullResource));
         }
 
         public FhirStoreNotificationConfigArgs build() {

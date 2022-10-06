@@ -21,6 +21,8 @@ import (
 //
 // > **Note:** `iap.WebIamBinding` resources **can be** used in conjunction with `iap.WebIamMember` resources **only if** they do not grant privilege to the same role.
 //
+// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+//
 // ## google\_iap\_web\_iam\_policy
 //
 // ```go
@@ -264,7 +266,7 @@ import (
 type WebIamBinding struct {
 	pulumi.CustomResourceState
 
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition WebIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -314,7 +316,7 @@ func GetWebIamBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WebIamBinding resources.
 type webIamBindingState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *WebIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -330,7 +332,7 @@ type webIamBindingState struct {
 }
 
 type WebIamBindingState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition WebIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
@@ -350,7 +352,7 @@ func (WebIamBindingState) ElementType() reflect.Type {
 }
 
 type webIamBindingArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *WebIamBindingCondition `pulumi:"condition"`
 	Members   []string                `pulumi:"members"`
@@ -365,7 +367,7 @@ type webIamBindingArgs struct {
 
 // The set of arguments for constructing a WebIamBinding resource.
 type WebIamBindingArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition WebIamBindingConditionPtrInput
 	Members   pulumi.StringArrayInput
@@ -465,7 +467,7 @@ func (o WebIamBindingOutput) ToWebIamBindingOutputWithContext(ctx context.Contex
 	return o
 }
 
-// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
 func (o WebIamBindingOutput) Condition() WebIamBindingConditionPtrOutput {
 	return o.ApplyT(func(v *WebIamBinding) WebIamBindingConditionPtrOutput { return v.Condition }).(WebIamBindingConditionPtrOutput)

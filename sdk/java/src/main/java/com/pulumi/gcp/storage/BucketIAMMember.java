@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.storage.BucketIAMBinding` resources **can be** used in conjunction with `gcp.storage.BucketIAMMember` resources **only if** they do not grant privilege to the same role.
  * 
+ * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ * 
  * ## google\_storage\_bucket\_iam\_policy
  * ```java
  * package generated_program;
@@ -291,7 +293,7 @@ public class BucketIAMMember extends com.pulumi.resources.CustomResource {
         return this.bucket;
     }
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
@@ -299,7 +301,7 @@ public class BucketIAMMember extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ BucketIAMMemberCondition> condition;
 
     /**
-     * @return ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
