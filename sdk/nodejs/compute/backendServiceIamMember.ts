@@ -60,7 +60,7 @@ export class BackendServiceIamMember extends pulumi.CustomResource {
     }
 
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     public readonly condition!: pulumi.Output<outputs.compute.BackendServiceIamMemberCondition | undefined>;
@@ -129,7 +129,7 @@ export class BackendServiceIamMember extends pulumi.CustomResource {
  */
 export interface BackendServiceIamMemberState {
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.compute.BackendServiceIamMemberCondition>;
@@ -160,7 +160,7 @@ export interface BackendServiceIamMemberState {
  */
 export interface BackendServiceIamMemberArgs {
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.compute.BackendServiceIamMemberCondition>;

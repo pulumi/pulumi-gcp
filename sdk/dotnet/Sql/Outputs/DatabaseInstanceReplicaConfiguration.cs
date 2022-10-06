@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly string? ClientKey;
         /// <summary>
         /// The number of seconds
-        /// between connect retries.
+        /// between connect retries. MySQL's default is 60 seconds.
         /// </summary>
         public readonly int? ConnectRetryInterval;
         /// <summary>

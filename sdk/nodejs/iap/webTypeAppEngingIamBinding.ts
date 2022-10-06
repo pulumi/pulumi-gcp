@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.iap.WebTypeAppEngingIamBinding` resources **can be** used in conjunction with `gcp.iap.WebTypeAppEngingIamMember` resources **only if** they do not grant privilege to the same role.
  *
+ * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ *
  * ## google\_iap\_web\_type\_app\_engine\_iam\_policy
  *
  * ```typescript
@@ -181,7 +183,7 @@ export class WebTypeAppEngingIamBinding extends pulumi.CustomResource {
      */
     public readonly appId!: pulumi.Output<string>;
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     public readonly condition!: pulumi.Output<outputs.iap.WebTypeAppEngingIamBindingCondition | undefined>;
@@ -253,7 +255,7 @@ export interface WebTypeAppEngingIamBindingState {
      */
     appId?: pulumi.Input<string>;
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.iap.WebTypeAppEngingIamBindingCondition>;
@@ -284,7 +286,7 @@ export interface WebTypeAppEngingIamBindingArgs {
      */
     appId: pulumi.Input<string>;
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.iap.WebTypeAppEngingIamBindingCondition>;

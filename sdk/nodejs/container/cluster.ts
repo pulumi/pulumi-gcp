@@ -379,11 +379,11 @@ export class Cluster extends pulumi.CustomResource {
      * [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
      * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
      */
-    public readonly nodePoolAutoConfig!: pulumi.Output<outputs.container.ClusterNodePoolAutoConfig | undefined>;
+    public readonly nodePoolAutoConfig!: pulumi.Output<outputs.container.ClusterNodePoolAutoConfig>;
     /**
      * ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
      */
-    public readonly nodePoolDefaults!: pulumi.Output<outputs.container.ClusterNodePoolDefaults | undefined>;
+    public readonly nodePoolDefaults!: pulumi.Output<outputs.container.ClusterNodePoolDefaults>;
     /**
      * List of node pools associated with this cluster.
      * See gcp.container.NodePool for schema.

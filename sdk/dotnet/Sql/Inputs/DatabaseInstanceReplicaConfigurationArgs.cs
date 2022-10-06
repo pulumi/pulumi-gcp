@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Sql.Inputs
 
         /// <summary>
         /// The number of seconds
-        /// between connect retries.
+        /// between connect retries. MySQL's default is 60 seconds.
         /// </summary>
         [Input("connectRetryInterval")]
         public Input<int>? ConnectRetryInterval { get; set; }

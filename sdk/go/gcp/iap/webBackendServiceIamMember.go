@@ -21,6 +21,8 @@ import (
 //
 // > **Note:** `iap.WebBackendServiceIamBinding` resources **can be** used in conjunction with `iap.WebBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
 //
+// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+//
 // ## google\_iap\_web\_backend\_service\_iam\_policy
 //
 // ```go
@@ -270,7 +272,7 @@ import (
 type WebBackendServiceIamMember struct {
 	pulumi.CustomResourceState
 
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition WebBackendServiceIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -325,7 +327,7 @@ func GetWebBackendServiceIamMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WebBackendServiceIamMember resources.
 type webBackendServiceIamMemberState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *WebBackendServiceIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -343,7 +345,7 @@ type webBackendServiceIamMemberState struct {
 }
 
 type WebBackendServiceIamMemberState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition WebBackendServiceIamMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
@@ -365,7 +367,7 @@ func (WebBackendServiceIamMemberState) ElementType() reflect.Type {
 }
 
 type webBackendServiceIamMemberArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *WebBackendServiceIamMemberCondition `pulumi:"condition"`
 	Member    string                               `pulumi:"member"`
@@ -382,7 +384,7 @@ type webBackendServiceIamMemberArgs struct {
 
 // The set of arguments for constructing a WebBackendServiceIamMember resource.
 type WebBackendServiceIamMemberArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition WebBackendServiceIamMemberConditionPtrInput
 	Member    pulumi.StringInput
@@ -484,7 +486,7 @@ func (o WebBackendServiceIamMemberOutput) ToWebBackendServiceIamMemberOutputWith
 	return o
 }
 
-// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
 func (o WebBackendServiceIamMemberOutput) Condition() WebBackendServiceIamMemberConditionPtrOutput {
 	return o.ApplyT(func(v *WebBackendServiceIamMember) WebBackendServiceIamMemberConditionPtrOutput { return v.Condition }).(WebBackendServiceIamMemberConditionPtrOutput)

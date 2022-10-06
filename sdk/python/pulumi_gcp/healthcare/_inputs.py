@@ -425,7 +425,8 @@ class FhirStoreIamMemberConditionArgs:
 @pulumi.input_type
 class FhirStoreNotificationConfigArgs:
     def __init__(__self__, *,
-                 pubsub_topic: pulumi.Input[str]):
+                 pubsub_topic: pulumi.Input[str],
+                 send_full_resource: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] pubsub_topic: The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
                PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
@@ -433,8 +434,15 @@ class FhirStoreNotificationConfigArgs:
                was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
                project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
                Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+        :param pulumi.Input[bool] send_full_resource: Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation.
+               Note that setting this to true does not guarantee that all resources will be sent in the format of
+               full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be
+               sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether
+               it needs to fetch the full resource as a separate operation.
         """
         pulumi.set(__self__, "pubsub_topic", pubsub_topic)
+        if send_full_resource is not None:
+            pulumi.set(__self__, "send_full_resource", send_full_resource)
 
     @property
     @pulumi.getter(name="pubsubTopic")
@@ -452,6 +460,22 @@ class FhirStoreNotificationConfigArgs:
     @pubsub_topic.setter
     def pubsub_topic(self, value: pulumi.Input[str]):
         pulumi.set(self, "pubsub_topic", value)
+
+    @property
+    @pulumi.getter(name="sendFullResource")
+    def send_full_resource(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation.
+        Note that setting this to true does not guarantee that all resources will be sent in the format of
+        full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be
+        sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether
+        it needs to fetch the full resource as a separate operation.
+        """
+        return pulumi.get(self, "send_full_resource")
+
+    @send_full_resource.setter
+    def send_full_resource(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "send_full_resource", value)
 
 
 @pulumi.input_type

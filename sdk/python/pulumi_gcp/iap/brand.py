@@ -86,8 +86,9 @@ class _BrandState:
         """
         Input properties used for looking up and filtering Brand resources.
         :param pulumi.Input[str] application_title: Application name displayed on OAuth consent screen.
-        :param pulumi.Input[str] name: Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}'. NOTE: The brand
-               identification corresponds to the project number as only one brand per project can be created.
+        :param pulumi.Input[str] name: Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}' NOTE: The name can
+               also be expressed as 'projects/{project_id}/brands/{brand_id}', e.g. when importing. NOTE: The brand identification
+               corresponds to the project number as only one brand can be created per project.
         :param pulumi.Input[bool] org_internal_only: Whether the brand is only intended for usage inside the GSuite organization only.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -124,8 +125,9 @@ class _BrandState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}'. NOTE: The brand
-        identification corresponds to the project number as only one brand per project can be created.
+        Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}' NOTE: The name can
+        also be expressed as 'projects/{project_id}/brands/{brand_id}', e.g. when importing. NOTE: The brand identification
+        corresponds to the project number as only one brand can be created per project.
         """
         return pulumi.get(self, "name")
 
@@ -224,7 +226,15 @@ class Brand(pulumi.CustomResource):
         Brand can be imported using any of these accepted formats
 
         ```sh
-         $ pulumi import gcp:iap/brand:Brand default {{name}}
+         $ pulumi import gcp:iap/brand:Brand default projects/{{project_id}}/brands/{{brand_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:iap/brand:Brand default projects/{{project_number}}/brands/{{brand_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:iap/brand:Brand default {{project_number}}/{{brand_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -284,7 +294,15 @@ class Brand(pulumi.CustomResource):
         Brand can be imported using any of these accepted formats
 
         ```sh
-         $ pulumi import gcp:iap/brand:Brand default {{name}}
+         $ pulumi import gcp:iap/brand:Brand default projects/{{project_id}}/brands/{{brand_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:iap/brand:Brand default projects/{{project_number}}/brands/{{brand_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:iap/brand:Brand default {{project_number}}/{{brand_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -346,8 +364,9 @@ class Brand(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_title: Application name displayed on OAuth consent screen.
-        :param pulumi.Input[str] name: Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}'. NOTE: The brand
-               identification corresponds to the project number as only one brand per project can be created.
+        :param pulumi.Input[str] name: Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}' NOTE: The name can
+               also be expressed as 'projects/{project_id}/brands/{brand_id}', e.g. when importing. NOTE: The brand identification
+               corresponds to the project number as only one brand can be created per project.
         :param pulumi.Input[bool] org_internal_only: Whether the brand is only intended for usage inside the GSuite organization only.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -380,8 +399,9 @@ class Brand(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}'. NOTE: The brand
-        identification corresponds to the project number as only one brand per project can be created.
+        Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}' NOTE: The name can
+        also be expressed as 'projects/{project_id}/brands/{brand_id}', e.g. when importing. NOTE: The brand identification
+        corresponds to the project number as only one brand can be created per project.
         """
         return pulumi.get(self, "name")
 

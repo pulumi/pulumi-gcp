@@ -111,6 +111,7 @@ namespace Pulumi.Gcp.Sql
     [OutputType]
     public sealed class GetDatabaseInstanceResult
     {
+        public readonly ImmutableArray<string> AvailableMaintenanceVersions;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceCloneResult> Clones;
         public readonly string ConnectionName;
         public readonly string DatabaseVersion;
@@ -122,6 +123,7 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceIpAddressResult> IpAddresses;
+        public readonly string MaintenanceVersion;
         public readonly string MasterInstanceName;
         public readonly string Name;
         public readonly string PrivateIpAddress;
@@ -138,6 +140,8 @@ namespace Pulumi.Gcp.Sql
 
         [OutputConstructor]
         private GetDatabaseInstanceResult(
+            ImmutableArray<string> availableMaintenanceVersions,
+
             ImmutableArray<Outputs.GetDatabaseInstanceCloneResult> clones,
 
             string connectionName,
@@ -153,6 +157,8 @@ namespace Pulumi.Gcp.Sql
             string id,
 
             ImmutableArray<Outputs.GetDatabaseInstanceIpAddressResult> ipAddresses,
+
+            string maintenanceVersion,
 
             string masterInstanceName,
 
@@ -180,6 +186,7 @@ namespace Pulumi.Gcp.Sql
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingResult> settings)
         {
+            AvailableMaintenanceVersions = availableMaintenanceVersions;
             Clones = clones;
             ConnectionName = connectionName;
             DatabaseVersion = databaseVersion;
@@ -188,6 +195,7 @@ namespace Pulumi.Gcp.Sql
             FirstIpAddress = firstIpAddress;
             Id = id;
             IpAddresses = ipAddresses;
+            MaintenanceVersion = maintenanceVersion;
             MasterInstanceName = masterInstanceName;
             Name = name;
             PrivateIpAddress = privateIpAddress;

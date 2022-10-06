@@ -39,6 +39,12 @@ import * as utilities from "../utilities";
  * }, {
  *     dependsOn: [s3_backup_bucketBucket],
  * });
+ * const topic = new gcp.pubsub.Topic("topic", {});
+ * const notificationConfig = new gcp.pubsub.TopicIAMMember("notificationConfig", {
+ *     topic: topic.id,
+ *     role: "roles/pubsub.publisher",
+ *     member: _default.then(_default => `serviceAccount:${_default.email}`),
+ * });
  * const s3_bucket_nightly_backup = new gcp.storage.TransferJob("s3-bucket-nightly-backup", {
  *     description: "Nightly backup of S3 bucket",
  *     project: _var.project,
@@ -81,8 +87,19 @@ import * as utilities from "../utilities";
  *         },
  *         repeatInterval: "604800s",
  *     },
+ *     notificationConfig: {
+ *         pubsubTopic: topic.id,
+ *         eventTypes: [
+ *             "TRANSFER_OPERATION_SUCCESS",
+ *             "TRANSFER_OPERATION_FAILED",
+ *         ],
+ *         payloadFormat: "JSON",
+ *     },
  * }, {
- *     dependsOn: [s3_backup_bucketBucketIAMMember],
+ *     dependsOn: [
+ *         s3_backup_bucketBucketIAMMember,
+ *         notificationConfig,
+ *     ],
  * });
  * ```
  *
@@ -143,6 +160,10 @@ export class TransferJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+     */
+    public readonly notificationConfig!: pulumi.Output<outputs.storage.TransferJobNotificationConfig | undefined>;
+    /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
@@ -178,6 +199,7 @@ export class TransferJob extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["lastModificationTime"] = state ? state.lastModificationTime : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["schedule"] = state ? state.schedule : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -191,6 +213,7 @@ export class TransferJob extends pulumi.CustomResource {
                 throw new Error("Missing required property 'transferSpec'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
@@ -230,6 +253,10 @@ export interface TransferJobState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+     */
+    notificationConfig?: pulumi.Input<inputs.storage.TransferJobNotificationConfig>;
+    /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
@@ -256,6 +283,10 @@ export interface TransferJobArgs {
      * Unique description to identify the Transfer Job.
      */
     description: pulumi.Input<string>;
+    /**
+     * Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
+     */
+    notificationConfig?: pulumi.Input<inputs.storage.TransferJobNotificationConfig>;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.

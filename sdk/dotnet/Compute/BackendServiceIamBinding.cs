@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Compute
     public partial class BackendServiceIamBinding : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Output("condition")]
@@ -121,7 +121,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class BackendServiceIamBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
@@ -165,7 +165,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class BackendServiceIamBindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]

@@ -21,6 +21,8 @@ import (
 //
 // > **Note:** `iap.AppEngineVersionIamBinding` resources **can be** used in conjunction with `iap.AppEngineVersionIamMember` resources **only if** they do not grant privilege to the same role.
 //
+// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+//
 // ## google\_iap\_app\_engine\_version\_iam\_policy
 //
 // ```go

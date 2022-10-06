@@ -463,13 +463,13 @@ namespace Pulumi.Gcp.Container
         /// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
         /// </summary>
         [Output("nodePoolAutoConfig")]
-        public Output<Outputs.ClusterNodePoolAutoConfig?> NodePoolAutoConfig { get; private set; } = null!;
+        public Output<Outputs.ClusterNodePoolAutoConfig> NodePoolAutoConfig { get; private set; } = null!;
 
         /// <summary>
         /// ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
         /// </summary>
         [Output("nodePoolDefaults")]
-        public Output<Outputs.ClusterNodePoolDefaults?> NodePoolDefaults { get; private set; } = null!;
+        public Output<Outputs.ClusterNodePoolDefaults> NodePoolDefaults { get; private set; } = null!;
 
         /// <summary>
         /// List of node pools associated with this cluster.

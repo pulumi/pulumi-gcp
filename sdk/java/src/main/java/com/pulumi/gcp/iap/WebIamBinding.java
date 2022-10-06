@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.iap.WebIamBinding` resources **can be** used in conjunction with `gcp.iap.WebIamMember` resources **only if** they do not grant privilege to the same role.
  * 
+ * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ * 
  * ## google\_iap\_web\_iam\_policy
  * ```java
  * package generated_program;
@@ -278,7 +280,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:iap/webIamBinding:WebIamBinding")
 public class WebIamBinding extends com.pulumi.resources.CustomResource {
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
@@ -286,7 +288,7 @@ public class WebIamBinding extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ WebIamBindingCondition> condition;
 
     /**
-     * @return ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */

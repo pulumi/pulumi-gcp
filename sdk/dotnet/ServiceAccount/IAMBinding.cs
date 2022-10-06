@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// });
     /// ```
-    /// ### Service Account IAM Binging
+    /// ### Service Account IAM Binding
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

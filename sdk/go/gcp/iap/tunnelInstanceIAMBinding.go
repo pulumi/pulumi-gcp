@@ -21,6 +21,8 @@ import (
 //
 // > **Note:** `iap.TunnelInstanceIAMBinding` resources **can be** used in conjunction with `iap.TunnelInstanceIAMMember` resources **only if** they do not grant privilege to the same role.
 //
+// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+//
 // ## google\_iap\_tunnel\_instance\_iam\_policy
 //
 // ```go
@@ -276,7 +278,7 @@ import (
 type TunnelInstanceIAMBinding struct {
 	pulumi.CustomResourceState
 
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition TunnelInstanceIAMBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -332,7 +334,7 @@ func GetTunnelInstanceIAMBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TunnelInstanceIAMBinding resources.
 type tunnelInstanceIAMBindingState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *TunnelInstanceIAMBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -351,7 +353,7 @@ type tunnelInstanceIAMBindingState struct {
 }
 
 type TunnelInstanceIAMBindingState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition TunnelInstanceIAMBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
@@ -374,7 +376,7 @@ func (TunnelInstanceIAMBindingState) ElementType() reflect.Type {
 }
 
 type tunnelInstanceIAMBindingArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *TunnelInstanceIAMBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to
@@ -392,7 +394,7 @@ type tunnelInstanceIAMBindingArgs struct {
 
 // The set of arguments for constructing a TunnelInstanceIAMBinding resource.
 type TunnelInstanceIAMBindingArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition TunnelInstanceIAMBindingConditionPtrInput
 	// Used to find the parent resource to bind the IAM policy to
@@ -495,7 +497,7 @@ func (o TunnelInstanceIAMBindingOutput) ToTunnelInstanceIAMBindingOutputWithCont
 	return o
 }
 
-// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
 func (o TunnelInstanceIAMBindingOutput) Condition() TunnelInstanceIAMBindingConditionPtrOutput {
 	return o.ApplyT(func(v *TunnelInstanceIAMBinding) TunnelInstanceIAMBindingConditionPtrOutput { return v.Condition }).(TunnelInstanceIAMBindingConditionPtrOutput)

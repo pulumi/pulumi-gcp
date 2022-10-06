@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
- * ### Service Account IAM Binging
+ * ### Service Account IAM Binding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

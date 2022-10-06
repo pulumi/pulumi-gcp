@@ -71,7 +71,7 @@ import (
 //	}
 //
 // ```
-// ### Service Account IAM Binging
+// ### Service Account IAM Binding
 //
 // ```go
 // package main

@@ -85,6 +85,21 @@ namespace Pulumi.Gcp.Tags
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. A purpose cannot be changed once set.
+        /// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+        /// Possible values are `GCE_FIREWALL`.
+        /// </summary>
+        [Output("purpose")]
+        public Output<string?> Purpose { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Purpose data cannot be changed once set.
+        /// Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "&lt;project-name&gt;/&lt;vpc-name&gt;"`.
+        /// </summary>
+        [Output("purposeData")]
+        public Output<ImmutableDictionary<string, string>?> PurposeData { get; private set; } = null!;
+
+        /// <summary>
         /// Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
         /// The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
         /// </summary>
@@ -157,6 +172,27 @@ namespace Pulumi.Gcp.Tags
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
+        /// Optional. A purpose cannot be changed once set.
+        /// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+        /// Possible values are `GCE_FIREWALL`.
+        /// </summary>
+        [Input("purpose")]
+        public Input<string>? Purpose { get; set; }
+
+        [Input("purposeData")]
+        private InputMap<string>? _purposeData;
+
+        /// <summary>
+        /// Optional. Purpose data cannot be changed once set.
+        /// Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "&lt;project-name&gt;/&lt;vpc-name&gt;"`.
+        /// </summary>
+        public InputMap<string> PurposeData
+        {
+            get => _purposeData ?? (_purposeData = new InputMap<string>());
+            set => _purposeData = value;
+        }
+
+        /// <summary>
         /// Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
         /// The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
         /// </summary>
@@ -201,6 +237,27 @@ namespace Pulumi.Gcp.Tags
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
+
+        /// <summary>
+        /// Optional. A purpose cannot be changed once set.
+        /// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+        /// Possible values are `GCE_FIREWALL`.
+        /// </summary>
+        [Input("purpose")]
+        public Input<string>? Purpose { get; set; }
+
+        [Input("purposeData")]
+        private InputMap<string>? _purposeData;
+
+        /// <summary>
+        /// Optional. Purpose data cannot be changed once set.
+        /// Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "&lt;project-name&gt;/&lt;vpc-name&gt;"`.
+        /// </summary>
+        public InputMap<string> PurposeData
+        {
+            get => _purposeData ?? (_purposeData = new InputMap<string>());
+            set => _purposeData = value;
+        }
 
         /// <summary>
         /// Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.

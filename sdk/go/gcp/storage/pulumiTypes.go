@@ -1899,6 +1899,181 @@ func (o ObjectAccessControlProjectTeamArrayOutput) Index(i pulumi.IntInput) Obje
 	}).(ObjectAccessControlProjectTeamOutput)
 }
 
+type TransferJobNotificationConfig struct {
+	// Event types for which a notification is desired. If empty, send notifications for all event types. The valid types are "TRANSFER_OPERATION_SUCCESS", "TRANSFER_OPERATION_FAILED", "TRANSFER_OPERATION_ABORTED".
+	EventTypes []string `pulumi:"eventTypes"`
+	// The desired format of the notification message payloads. One of "NONE" or "JSON".
+	PayloadFormat string `pulumi:"payloadFormat"`
+	// The Topic.name of the Pub/Sub topic to which to publish notifications. Must be of the format: projects/{project}/topics/{topic}. Not matching this format results in an INVALID_ARGUMENT error.
+	PubsubTopic string `pulumi:"pubsubTopic"`
+}
+
+// TransferJobNotificationConfigInput is an input type that accepts TransferJobNotificationConfigArgs and TransferJobNotificationConfigOutput values.
+// You can construct a concrete instance of `TransferJobNotificationConfigInput` via:
+//
+//	TransferJobNotificationConfigArgs{...}
+type TransferJobNotificationConfigInput interface {
+	pulumi.Input
+
+	ToTransferJobNotificationConfigOutput() TransferJobNotificationConfigOutput
+	ToTransferJobNotificationConfigOutputWithContext(context.Context) TransferJobNotificationConfigOutput
+}
+
+type TransferJobNotificationConfigArgs struct {
+	// Event types for which a notification is desired. If empty, send notifications for all event types. The valid types are "TRANSFER_OPERATION_SUCCESS", "TRANSFER_OPERATION_FAILED", "TRANSFER_OPERATION_ABORTED".
+	EventTypes pulumi.StringArrayInput `pulumi:"eventTypes"`
+	// The desired format of the notification message payloads. One of "NONE" or "JSON".
+	PayloadFormat pulumi.StringInput `pulumi:"payloadFormat"`
+	// The Topic.name of the Pub/Sub topic to which to publish notifications. Must be of the format: projects/{project}/topics/{topic}. Not matching this format results in an INVALID_ARGUMENT error.
+	PubsubTopic pulumi.StringInput `pulumi:"pubsubTopic"`
+}
+
+func (TransferJobNotificationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobNotificationConfig)(nil)).Elem()
+}
+
+func (i TransferJobNotificationConfigArgs) ToTransferJobNotificationConfigOutput() TransferJobNotificationConfigOutput {
+	return i.ToTransferJobNotificationConfigOutputWithContext(context.Background())
+}
+
+func (i TransferJobNotificationConfigArgs) ToTransferJobNotificationConfigOutputWithContext(ctx context.Context) TransferJobNotificationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobNotificationConfigOutput)
+}
+
+func (i TransferJobNotificationConfigArgs) ToTransferJobNotificationConfigPtrOutput() TransferJobNotificationConfigPtrOutput {
+	return i.ToTransferJobNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i TransferJobNotificationConfigArgs) ToTransferJobNotificationConfigPtrOutputWithContext(ctx context.Context) TransferJobNotificationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobNotificationConfigOutput).ToTransferJobNotificationConfigPtrOutputWithContext(ctx)
+}
+
+// TransferJobNotificationConfigPtrInput is an input type that accepts TransferJobNotificationConfigArgs, TransferJobNotificationConfigPtr and TransferJobNotificationConfigPtrOutput values.
+// You can construct a concrete instance of `TransferJobNotificationConfigPtrInput` via:
+//
+//	        TransferJobNotificationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransferJobNotificationConfigPtrInput interface {
+	pulumi.Input
+
+	ToTransferJobNotificationConfigPtrOutput() TransferJobNotificationConfigPtrOutput
+	ToTransferJobNotificationConfigPtrOutputWithContext(context.Context) TransferJobNotificationConfigPtrOutput
+}
+
+type transferJobNotificationConfigPtrType TransferJobNotificationConfigArgs
+
+func TransferJobNotificationConfigPtr(v *TransferJobNotificationConfigArgs) TransferJobNotificationConfigPtrInput {
+	return (*transferJobNotificationConfigPtrType)(v)
+}
+
+func (*transferJobNotificationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobNotificationConfig)(nil)).Elem()
+}
+
+func (i *transferJobNotificationConfigPtrType) ToTransferJobNotificationConfigPtrOutput() TransferJobNotificationConfigPtrOutput {
+	return i.ToTransferJobNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *transferJobNotificationConfigPtrType) ToTransferJobNotificationConfigPtrOutputWithContext(ctx context.Context) TransferJobNotificationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobNotificationConfigPtrOutput)
+}
+
+type TransferJobNotificationConfigOutput struct{ *pulumi.OutputState }
+
+func (TransferJobNotificationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobNotificationConfig)(nil)).Elem()
+}
+
+func (o TransferJobNotificationConfigOutput) ToTransferJobNotificationConfigOutput() TransferJobNotificationConfigOutput {
+	return o
+}
+
+func (o TransferJobNotificationConfigOutput) ToTransferJobNotificationConfigOutputWithContext(ctx context.Context) TransferJobNotificationConfigOutput {
+	return o
+}
+
+func (o TransferJobNotificationConfigOutput) ToTransferJobNotificationConfigPtrOutput() TransferJobNotificationConfigPtrOutput {
+	return o.ToTransferJobNotificationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobNotificationConfigOutput) ToTransferJobNotificationConfigPtrOutputWithContext(ctx context.Context) TransferJobNotificationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobNotificationConfig) *TransferJobNotificationConfig {
+		return &v
+	}).(TransferJobNotificationConfigPtrOutput)
+}
+
+// Event types for which a notification is desired. If empty, send notifications for all event types. The valid types are "TRANSFER_OPERATION_SUCCESS", "TRANSFER_OPERATION_FAILED", "TRANSFER_OPERATION_ABORTED".
+func (o TransferJobNotificationConfigOutput) EventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TransferJobNotificationConfig) []string { return v.EventTypes }).(pulumi.StringArrayOutput)
+}
+
+// The desired format of the notification message payloads. One of "NONE" or "JSON".
+func (o TransferJobNotificationConfigOutput) PayloadFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v TransferJobNotificationConfig) string { return v.PayloadFormat }).(pulumi.StringOutput)
+}
+
+// The Topic.name of the Pub/Sub topic to which to publish notifications. Must be of the format: projects/{project}/topics/{topic}. Not matching this format results in an INVALID_ARGUMENT error.
+func (o TransferJobNotificationConfigOutput) PubsubTopic() pulumi.StringOutput {
+	return o.ApplyT(func(v TransferJobNotificationConfig) string { return v.PubsubTopic }).(pulumi.StringOutput)
+}
+
+type TransferJobNotificationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (TransferJobNotificationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobNotificationConfig)(nil)).Elem()
+}
+
+func (o TransferJobNotificationConfigPtrOutput) ToTransferJobNotificationConfigPtrOutput() TransferJobNotificationConfigPtrOutput {
+	return o
+}
+
+func (o TransferJobNotificationConfigPtrOutput) ToTransferJobNotificationConfigPtrOutputWithContext(ctx context.Context) TransferJobNotificationConfigPtrOutput {
+	return o
+}
+
+func (o TransferJobNotificationConfigPtrOutput) Elem() TransferJobNotificationConfigOutput {
+	return o.ApplyT(func(v *TransferJobNotificationConfig) TransferJobNotificationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobNotificationConfig
+		return ret
+	}).(TransferJobNotificationConfigOutput)
+}
+
+// Event types for which a notification is desired. If empty, send notifications for all event types. The valid types are "TRANSFER_OPERATION_SUCCESS", "TRANSFER_OPERATION_FAILED", "TRANSFER_OPERATION_ABORTED".
+func (o TransferJobNotificationConfigPtrOutput) EventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TransferJobNotificationConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EventTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The desired format of the notification message payloads. One of "NONE" or "JSON".
+func (o TransferJobNotificationConfigPtrOutput) PayloadFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobNotificationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PayloadFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Topic.name of the Pub/Sub topic to which to publish notifications. Must be of the format: projects/{project}/topics/{topic}. Not matching this format results in an INVALID_ARGUMENT error.
+func (o TransferJobNotificationConfigPtrOutput) PubsubTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobNotificationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PubsubTopic
+	}).(pulumi.StringPtrOutput)
+}
+
 type TransferJobSchedule struct {
 	// Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	RepeatInterval *string `pulumi:"repeatInterval"`
@@ -5890,6 +6065,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlProjectTeamArrayInput)(nil)).Elem(), DefaultObjectAccessControlProjectTeamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlProjectTeamInput)(nil)).Elem(), ObjectAccessControlProjectTeamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlProjectTeamArrayInput)(nil)).Elem(), ObjectAccessControlProjectTeamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobNotificationConfigInput)(nil)).Elem(), TransferJobNotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobNotificationConfigPtrInput)(nil)).Elem(), TransferJobNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobScheduleInput)(nil)).Elem(), TransferJobScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobSchedulePtrInput)(nil)).Elem(), TransferJobScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobScheduleScheduleEndDateInput)(nil)).Elem(), TransferJobScheduleScheduleEndDateArgs{})
@@ -5970,6 +6147,8 @@ func init() {
 	pulumi.RegisterOutputType(DefaultObjectAccessControlProjectTeamArrayOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamArrayOutput{})
+	pulumi.RegisterOutputType(TransferJobNotificationConfigOutput{})
+	pulumi.RegisterOutputType(TransferJobNotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobScheduleOutput{})
 	pulumi.RegisterOutputType(TransferJobSchedulePtrOutput{})
 	pulumi.RegisterOutputType(TransferJobScheduleScheduleEndDateOutput{})

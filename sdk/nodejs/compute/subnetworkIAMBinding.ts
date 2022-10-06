@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `gcp.compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role.
  *
+ * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ *
  * ## google\_compute\_subnetwork\_iam\_policy
  *
  * ```typescript
@@ -183,7 +185,7 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
     }
 
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     public readonly condition!: pulumi.Output<outputs.compute.SubnetworkIAMBindingCondition | undefined>;
@@ -264,7 +266,7 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
  */
 export interface SubnetworkIAMBindingState {
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.compute.SubnetworkIAMBindingCondition>;
@@ -302,7 +304,7 @@ export interface SubnetworkIAMBindingState {
  */
 export interface SubnetworkIAMBindingArgs {
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.compute.SubnetworkIAMBindingCondition>;

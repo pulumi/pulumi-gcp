@@ -17,7 +17,7 @@ public final class TunnelInstanceIAMMemberArgs extends com.pulumi.resources.Reso
     public static final TunnelInstanceIAMMemberArgs Empty = new TunnelInstanceIAMMemberArgs();
 
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
@@ -25,7 +25,7 @@ public final class TunnelInstanceIAMMemberArgs extends com.pulumi.resources.Reso
     private @Nullable Output<TunnelInstanceIAMMemberConditionArgs> condition;
 
     /**
-     * @return ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
@@ -128,7 +128,7 @@ public final class TunnelInstanceIAMMemberArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param condition ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
          * Structure is documented below.
          * 
          * @return builder
@@ -140,7 +140,7 @@ public final class TunnelInstanceIAMMemberArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param condition ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
          * Structure is documented below.
          * 
          * @return builder

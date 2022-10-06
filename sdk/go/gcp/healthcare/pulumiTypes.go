@@ -1631,6 +1631,12 @@ type FhirStoreNotificationConfig struct {
 	// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 	// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 	PubsubTopic string `pulumi:"pubsubTopic"`
+	// Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation.
+	// Note that setting this to true does not guarantee that all resources will be sent in the format of
+	// full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be
+	// sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether
+	// it needs to fetch the full resource as a separate operation.
+	SendFullResource *bool `pulumi:"sendFullResource"`
 }
 
 // FhirStoreNotificationConfigInput is an input type that accepts FhirStoreNotificationConfigArgs and FhirStoreNotificationConfigOutput values.
@@ -1652,6 +1658,12 @@ type FhirStoreNotificationConfigArgs struct {
 	// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 	// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 	PubsubTopic pulumi.StringInput `pulumi:"pubsubTopic"`
+	// Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation.
+	// Note that setting this to true does not guarantee that all resources will be sent in the format of
+	// full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be
+	// sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether
+	// it needs to fetch the full resource as a separate operation.
+	SendFullResource pulumi.BoolPtrInput `pulumi:"sendFullResource"`
 }
 
 func (FhirStoreNotificationConfigArgs) ElementType() reflect.Type {
@@ -1707,6 +1719,31 @@ func (i *fhirStoreNotificationConfigPtrType) ToFhirStoreNotificationConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreNotificationConfigPtrOutput)
 }
 
+// FhirStoreNotificationConfigArrayInput is an input type that accepts FhirStoreNotificationConfigArray and FhirStoreNotificationConfigArrayOutput values.
+// You can construct a concrete instance of `FhirStoreNotificationConfigArrayInput` via:
+//
+//	FhirStoreNotificationConfigArray{ FhirStoreNotificationConfigArgs{...} }
+type FhirStoreNotificationConfigArrayInput interface {
+	pulumi.Input
+
+	ToFhirStoreNotificationConfigArrayOutput() FhirStoreNotificationConfigArrayOutput
+	ToFhirStoreNotificationConfigArrayOutputWithContext(context.Context) FhirStoreNotificationConfigArrayOutput
+}
+
+type FhirStoreNotificationConfigArray []FhirStoreNotificationConfigInput
+
+func (FhirStoreNotificationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FhirStoreNotificationConfig)(nil)).Elem()
+}
+
+func (i FhirStoreNotificationConfigArray) ToFhirStoreNotificationConfigArrayOutput() FhirStoreNotificationConfigArrayOutput {
+	return i.ToFhirStoreNotificationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i FhirStoreNotificationConfigArray) ToFhirStoreNotificationConfigArrayOutputWithContext(ctx context.Context) FhirStoreNotificationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreNotificationConfigArrayOutput)
+}
+
 type FhirStoreNotificationConfigOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreNotificationConfigOutput) ElementType() reflect.Type {
@@ -1739,6 +1776,15 @@ func (o FhirStoreNotificationConfigOutput) ToFhirStoreNotificationConfigPtrOutpu
 // Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
 func (o FhirStoreNotificationConfigOutput) PubsubTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v FhirStoreNotificationConfig) string { return v.PubsubTopic }).(pulumi.StringOutput)
+}
+
+// Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation.
+// Note that setting this to true does not guarantee that all resources will be sent in the format of
+// full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be
+// sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether
+// it needs to fetch the full resource as a separate operation.
+func (o FhirStoreNotificationConfigOutput) SendFullResource() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FhirStoreNotificationConfig) *bool { return v.SendFullResource }).(pulumi.BoolPtrOutput)
 }
 
 type FhirStoreNotificationConfigPtrOutput struct{ *pulumi.OutputState }
@@ -1778,6 +1824,40 @@ func (o FhirStoreNotificationConfigPtrOutput) PubsubTopic() pulumi.StringPtrOutp
 		}
 		return &v.PubsubTopic
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation.
+// Note that setting this to true does not guarantee that all resources will be sent in the format of
+// full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be
+// sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether
+// it needs to fetch the full resource as a separate operation.
+func (o FhirStoreNotificationConfigPtrOutput) SendFullResource() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FhirStoreNotificationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SendFullResource
+	}).(pulumi.BoolPtrOutput)
+}
+
+type FhirStoreNotificationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreNotificationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FhirStoreNotificationConfig)(nil)).Elem()
+}
+
+func (o FhirStoreNotificationConfigArrayOutput) ToFhirStoreNotificationConfigArrayOutput() FhirStoreNotificationConfigArrayOutput {
+	return o
+}
+
+func (o FhirStoreNotificationConfigArrayOutput) ToFhirStoreNotificationConfigArrayOutputWithContext(ctx context.Context) FhirStoreNotificationConfigArrayOutput {
+	return o
+}
+
+func (o FhirStoreNotificationConfigArrayOutput) Index(i pulumi.IntInput) FhirStoreNotificationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FhirStoreNotificationConfig {
+		return vs[0].([]FhirStoreNotificationConfig)[vs[1].(int)]
+	}).(FhirStoreNotificationConfigOutput)
 }
 
 type FhirStoreStreamConfig struct {
@@ -2923,6 +3003,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreIamMemberConditionPtrInput)(nil)).Elem(), FhirStoreIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreNotificationConfigInput)(nil)).Elem(), FhirStoreNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreNotificationConfigPtrInput)(nil)).Elem(), FhirStoreNotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreNotificationConfigArrayInput)(nil)).Elem(), FhirStoreNotificationConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreStreamConfigInput)(nil)).Elem(), FhirStoreStreamConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreStreamConfigArrayInput)(nil)).Elem(), FhirStoreStreamConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreStreamConfigBigqueryDestinationInput)(nil)).Elem(), FhirStoreStreamConfigBigqueryDestinationArgs{})
@@ -2960,6 +3041,7 @@ func init() {
 	pulumi.RegisterOutputType(FhirStoreIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(FhirStoreNotificationConfigOutput{})
 	pulumi.RegisterOutputType(FhirStoreNotificationConfigPtrOutput{})
+	pulumi.RegisterOutputType(FhirStoreNotificationConfigArrayOutput{})
 	pulumi.RegisterOutputType(FhirStoreStreamConfigOutput{})
 	pulumi.RegisterOutputType(FhirStoreStreamConfigArrayOutput{})
 	pulumi.RegisterOutputType(FhirStoreStreamConfigBigqueryDestinationOutput{})

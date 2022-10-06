@@ -21,6 +21,8 @@ import (
 //
 // > **Note:** `compute.InstanceIAMBinding` resources **can be** used in conjunction with `compute.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
 //
+// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+//
 // ## google\_compute\_instance\_iam\_policy
 //
 // ```go
@@ -276,7 +278,7 @@ import (
 type InstanceIAMBinding struct {
 	pulumi.CustomResourceState
 
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition InstanceIAMBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -335,7 +337,7 @@ func GetInstanceIAMBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceIAMBinding resources.
 type instanceIAMBindingState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *InstanceIAMBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -357,7 +359,7 @@ type instanceIAMBindingState struct {
 }
 
 type InstanceIAMBindingState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition InstanceIAMBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
@@ -383,7 +385,7 @@ func (InstanceIAMBindingState) ElementType() reflect.Type {
 }
 
 type instanceIAMBindingArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *InstanceIAMBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to
@@ -404,7 +406,7 @@ type instanceIAMBindingArgs struct {
 
 // The set of arguments for constructing a InstanceIAMBinding resource.
 type InstanceIAMBindingArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition InstanceIAMBindingConditionPtrInput
 	// Used to find the parent resource to bind the IAM policy to
@@ -510,7 +512,7 @@ func (o InstanceIAMBindingOutput) ToInstanceIAMBindingOutputWithContext(ctx cont
 	return o
 }
 
-// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
 func (o InstanceIAMBindingOutput) Condition() InstanceIAMBindingConditionPtrOutput {
 	return o.ApplyT(func(v *InstanceIAMBinding) InstanceIAMBindingConditionPtrOutput { return v.Condition }).(InstanceIAMBindingConditionPtrOutput)

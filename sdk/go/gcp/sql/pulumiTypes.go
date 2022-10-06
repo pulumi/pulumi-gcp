@@ -302,7 +302,7 @@ type DatabaseInstanceReplicaConfiguration struct {
 	// corresponding public key in encoded in the `clientCertificate`.
 	ClientKey *string `pulumi:"clientKey"`
 	// The number of seconds
-	// between connect retries.
+	// between connect retries. MySQL's default is 60 seconds.
 	ConnectRetryInterval *int `pulumi:"connectRetryInterval"`
 	// Path to a SQL file in GCS from which replica
 	// instances are created. Format is `gs://bucket/filename`.
@@ -347,7 +347,7 @@ type DatabaseInstanceReplicaConfigurationArgs struct {
 	// corresponding public key in encoded in the `clientCertificate`.
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
 	// The number of seconds
-	// between connect retries.
+	// between connect retries. MySQL's default is 60 seconds.
 	ConnectRetryInterval pulumi.IntPtrInput `pulumi:"connectRetryInterval"`
 	// Path to a SQL file in GCS from which replica
 	// instances are created. Format is `gs://bucket/filename`.
@@ -466,7 +466,7 @@ func (o DatabaseInstanceReplicaConfigurationOutput) ClientKey() pulumi.StringPtr
 }
 
 // The number of seconds
-// between connect retries.
+// between connect retries. MySQL's default is 60 seconds.
 func (o DatabaseInstanceReplicaConfigurationOutput) ConnectRetryInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *int { return v.ConnectRetryInterval }).(pulumi.IntPtrOutput)
 }
@@ -569,7 +569,7 @@ func (o DatabaseInstanceReplicaConfigurationPtrOutput) ClientKey() pulumi.String
 }
 
 // The number of seconds
-// between connect retries.
+// between connect retries. MySQL's default is 60 seconds.
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) ConnectRetryInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) *int {
 		if v == nil {
@@ -967,19 +967,19 @@ type DatabaseInstanceSettings struct {
 	// `settings.backup_configuration.enabled` is set to `true`.
 	// For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
 	// For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
-	// is set to `true`.
+	// is set to `true`. Defaults to `ZONAL`.
 	AvailabilityType    *string                                      `pulumi:"availabilityType"`
 	BackupConfiguration *DatabaseInstanceSettingsBackupConfiguration `pulumi:"backupConfiguration"`
 	// The name of server instance collation.
 	Collation     *string                                `pulumi:"collation"`
 	DatabaseFlags []DatabaseInstanceSettingsDatabaseFlag `pulumi:"databaseFlags"`
-	// Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
+	// Enables auto-resizing of the storage size. Defaults to `true`.
 	DiskAutoresize *bool `pulumi:"diskAutoresize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	DiskAutoresizeLimit *int `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `diskAutoresize` to false.
+	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
 	DiskSize *int `pulumi:"diskSize"`
-	// The type of data disk: PD_SSD or PD_HDD.
+	// The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
 	DiskType                 *string                                           `pulumi:"diskType"`
 	InsightsConfig           *DatabaseInstanceSettingsInsightsConfig           `pulumi:"insightsConfig"`
 	IpConfiguration          *DatabaseInstanceSettingsIpConfiguration          `pulumi:"ipConfiguration"`
@@ -1019,19 +1019,19 @@ type DatabaseInstanceSettingsArgs struct {
 	// `settings.backup_configuration.enabled` is set to `true`.
 	// For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
 	// For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
-	// is set to `true`.
+	// is set to `true`. Defaults to `ZONAL`.
 	AvailabilityType    pulumi.StringPtrInput                               `pulumi:"availabilityType"`
 	BackupConfiguration DatabaseInstanceSettingsBackupConfigurationPtrInput `pulumi:"backupConfiguration"`
 	// The name of server instance collation.
 	Collation     pulumi.StringPtrInput                          `pulumi:"collation"`
 	DatabaseFlags DatabaseInstanceSettingsDatabaseFlagArrayInput `pulumi:"databaseFlags"`
-	// Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
+	// Enables auto-resizing of the storage size. Defaults to `true`.
 	DiskAutoresize pulumi.BoolPtrInput `pulumi:"diskAutoresize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	DiskAutoresizeLimit pulumi.IntPtrInput `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `diskAutoresize` to false.
+	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
 	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
-	// The type of data disk: PD_SSD or PD_HDD.
+	// The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
 	DiskType                 pulumi.StringPtrInput                                    `pulumi:"diskType"`
 	InsightsConfig           DatabaseInstanceSettingsInsightsConfigPtrInput           `pulumi:"insightsConfig"`
 	IpConfiguration          DatabaseInstanceSettingsIpConfigurationPtrInput          `pulumi:"ipConfiguration"`
@@ -1144,7 +1144,7 @@ func (o DatabaseInstanceSettingsOutput) ActiveDirectoryConfig() DatabaseInstance
 // `settings.backup_configuration.enabled` is set to `true`.
 // For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
 // For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
-// is set to `true`.
+// is set to `true`. Defaults to `ZONAL`.
 func (o DatabaseInstanceSettingsOutput) AvailabilityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.AvailabilityType }).(pulumi.StringPtrOutput)
 }
@@ -1164,7 +1164,7 @@ func (o DatabaseInstanceSettingsOutput) DatabaseFlags() DatabaseInstanceSettings
 	return o.ApplyT(func(v DatabaseInstanceSettings) []DatabaseInstanceSettingsDatabaseFlag { return v.DatabaseFlags }).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
 }
 
-// Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
+// Enables auto-resizing of the storage size. Defaults to `true`.
 func (o DatabaseInstanceSettingsOutput) DiskAutoresize() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *bool { return v.DiskAutoresize }).(pulumi.BoolPtrOutput)
 }
@@ -1174,12 +1174,12 @@ func (o DatabaseInstanceSettingsOutput) DiskAutoresizeLimit() pulumi.IntPtrOutpu
 	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.DiskAutoresizeLimit }).(pulumi.IntPtrOutput)
 }
 
-// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `diskAutoresize` to false.
+// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
 func (o DatabaseInstanceSettingsOutput) DiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
 }
 
-// The type of data disk: PD_SSD or PD_HDD.
+// The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
 func (o DatabaseInstanceSettingsOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
@@ -1286,7 +1286,7 @@ func (o DatabaseInstanceSettingsPtrOutput) ActiveDirectoryConfig() DatabaseInsta
 // `settings.backup_configuration.enabled` is set to `true`.
 // For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
 // For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
-// is set to `true`.
+// is set to `true`. Defaults to `ZONAL`.
 func (o DatabaseInstanceSettingsPtrOutput) AvailabilityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
 		if v == nil {
@@ -1324,7 +1324,7 @@ func (o DatabaseInstanceSettingsPtrOutput) DatabaseFlags() DatabaseInstanceSetti
 	}).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
 }
 
-// Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
+// Enables auto-resizing of the storage size. Defaults to `true`.
 func (o DatabaseInstanceSettingsPtrOutput) DiskAutoresize() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *bool {
 		if v == nil {
@@ -1344,7 +1344,7 @@ func (o DatabaseInstanceSettingsPtrOutput) DiskAutoresizeLimit() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `diskAutoresize` to false.
+// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
 func (o DatabaseInstanceSettingsPtrOutput) DiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *int {
 		if v == nil {
@@ -1354,7 +1354,7 @@ func (o DatabaseInstanceSettingsPtrOutput) DiskSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The type of data disk: PD_SSD or PD_HDD.
+// The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
 func (o DatabaseInstanceSettingsPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
 		if v == nil {

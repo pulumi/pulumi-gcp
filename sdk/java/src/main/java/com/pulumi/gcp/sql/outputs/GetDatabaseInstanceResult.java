@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseInstanceResult {
+    private List<String> availableMaintenanceVersions;
     private List<GetDatabaseInstanceClone> clones;
     private String connectionName;
     private String databaseVersion;
@@ -31,6 +32,7 @@ public final class GetDatabaseInstanceResult {
      */
     private String id;
     private List<GetDatabaseInstanceIpAddress> ipAddresses;
+    private String maintenanceVersion;
     private String masterInstanceName;
     private String name;
     private String privateIpAddress;
@@ -46,6 +48,9 @@ public final class GetDatabaseInstanceResult {
     private List<GetDatabaseInstanceSetting> settings;
 
     private GetDatabaseInstanceResult() {}
+    public List<String> availableMaintenanceVersions() {
+        return this.availableMaintenanceVersions;
+    }
     public List<GetDatabaseInstanceClone> clones() {
         return this.clones;
     }
@@ -73,6 +78,9 @@ public final class GetDatabaseInstanceResult {
     }
     public List<GetDatabaseInstanceIpAddress> ipAddresses() {
         return this.ipAddresses;
+    }
+    public String maintenanceVersion() {
+        return this.maintenanceVersion;
     }
     public String masterInstanceName() {
         return this.masterInstanceName;
@@ -123,6 +131,7 @@ public final class GetDatabaseInstanceResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<String> availableMaintenanceVersions;
         private List<GetDatabaseInstanceClone> clones;
         private String connectionName;
         private String databaseVersion;
@@ -131,6 +140,7 @@ public final class GetDatabaseInstanceResult {
         private String firstIpAddress;
         private String id;
         private List<GetDatabaseInstanceIpAddress> ipAddresses;
+        private String maintenanceVersion;
         private String masterInstanceName;
         private String name;
         private String privateIpAddress;
@@ -147,6 +157,7 @@ public final class GetDatabaseInstanceResult {
         public Builder() {}
         public Builder(GetDatabaseInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.availableMaintenanceVersions = defaults.availableMaintenanceVersions;
     	      this.clones = defaults.clones;
     	      this.connectionName = defaults.connectionName;
     	      this.databaseVersion = defaults.databaseVersion;
@@ -155,6 +166,7 @@ public final class GetDatabaseInstanceResult {
     	      this.firstIpAddress = defaults.firstIpAddress;
     	      this.id = defaults.id;
     	      this.ipAddresses = defaults.ipAddresses;
+    	      this.maintenanceVersion = defaults.maintenanceVersion;
     	      this.masterInstanceName = defaults.masterInstanceName;
     	      this.name = defaults.name;
     	      this.privateIpAddress = defaults.privateIpAddress;
@@ -170,6 +182,14 @@ public final class GetDatabaseInstanceResult {
     	      this.settings = defaults.settings;
         }
 
+        @CustomType.Setter
+        public Builder availableMaintenanceVersions(List<String> availableMaintenanceVersions) {
+            this.availableMaintenanceVersions = Objects.requireNonNull(availableMaintenanceVersions);
+            return this;
+        }
+        public Builder availableMaintenanceVersions(String... availableMaintenanceVersions) {
+            return availableMaintenanceVersions(List.of(availableMaintenanceVersions));
+        }
         @CustomType.Setter
         public Builder clones(List<GetDatabaseInstanceClone> clones) {
             this.clones = Objects.requireNonNull(clones);
@@ -215,6 +235,11 @@ public final class GetDatabaseInstanceResult {
         }
         public Builder ipAddresses(GetDatabaseInstanceIpAddress... ipAddresses) {
             return ipAddresses(List.of(ipAddresses));
+        }
+        @CustomType.Setter
+        public Builder maintenanceVersion(String maintenanceVersion) {
+            this.maintenanceVersion = Objects.requireNonNull(maintenanceVersion);
+            return this;
         }
         @CustomType.Setter
         public Builder masterInstanceName(String masterInstanceName) {
@@ -295,6 +320,7 @@ public final class GetDatabaseInstanceResult {
         }
         public GetDatabaseInstanceResult build() {
             final var o = new GetDatabaseInstanceResult();
+            o.availableMaintenanceVersions = availableMaintenanceVersions;
             o.clones = clones;
             o.connectionName = connectionName;
             o.databaseVersion = databaseVersion;
@@ -303,6 +329,7 @@ public final class GetDatabaseInstanceResult {
             o.firstIpAddress = firstIpAddress;
             o.id = id;
             o.ipAddresses = ipAddresses;
+            o.maintenanceVersion = maintenanceVersion;
             o.masterInstanceName = masterInstanceName;
             o.name = name;
             o.privateIpAddress = privateIpAddress;

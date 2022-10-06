@@ -19,6 +19,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
+        /// Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNotificationConfigPubsubFilter? Filter;
+        /// <summary>
         /// The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
         /// </summary>
         public readonly string? Topic;
@@ -27,9 +31,12 @@ namespace Pulumi.Gcp.Container.Outputs
         private ClusterNotificationConfigPubsub(
             bool enabled,
 
+            Outputs.ClusterNotificationConfigPubsubFilter? filter,
+
             string? topic)
         {
             Enabled = enabled;
+            Filter = filter;
             Topic = topic;
         }
     }

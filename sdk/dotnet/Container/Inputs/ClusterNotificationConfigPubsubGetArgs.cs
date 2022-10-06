@@ -20,6 +20,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
+        /// Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
+        /// </summary>
+        [Input("filter")]
+        public Input<Inputs.ClusterNotificationConfigPubsubFilterGetArgs>? Filter { get; set; }
+
+        /// <summary>
         /// The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
         /// </summary>
         [Input("topic")]

@@ -33,7 +33,7 @@ public final class WebTypeAppEngingIamBindingArgs extends com.pulumi.resources.R
     }
 
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
@@ -41,7 +41,7 @@ public final class WebTypeAppEngingIamBindingArgs extends com.pulumi.resources.R
     private @Nullable Output<WebTypeAppEngingIamBindingConditionArgs> condition;
 
     /**
-     * @return ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
@@ -142,7 +142,7 @@ public final class WebTypeAppEngingIamBindingArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param condition ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
          * Structure is documented below.
          * 
          * @return builder
@@ -154,7 +154,7 @@ public final class WebTypeAppEngingIamBindingArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param condition ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
          * Structure is documented below.
          * 
          * @return builder

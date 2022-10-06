@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.ClusterNotificationConfigPubsubFilter;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -19,6 +20,11 @@ public final class ClusterNotificationConfigPubsub {
      */
     private Boolean enabled;
     /**
+     * @return Choose what type of notifications you want to receive. If no filters are applied, you&#39;ll receive all notification types. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterNotificationConfigPubsubFilter filter;
+    /**
      * @return The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
      * 
      */
@@ -32,6 +38,13 @@ public final class ClusterNotificationConfigPubsub {
      */
     public Boolean enabled() {
         return this.enabled;
+    }
+    /**
+     * @return Choose what type of notifications you want to receive. If no filters are applied, you&#39;ll receive all notification types. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterNotificationConfigPubsubFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
     /**
      * @return The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
@@ -51,17 +64,24 @@ public final class ClusterNotificationConfigPubsub {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
+        private @Nullable ClusterNotificationConfigPubsubFilter filter;
         private @Nullable String topic;
         public Builder() {}
         public Builder(ClusterNotificationConfigPubsub defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.filter = defaults.filter;
     	      this.topic = defaults.topic;
         }
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filter(@Nullable ClusterNotificationConfigPubsubFilter filter) {
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
@@ -72,6 +92,7 @@ public final class ClusterNotificationConfigPubsub {
         public ClusterNotificationConfigPubsub build() {
             final var o = new ClusterNotificationConfigPubsub();
             o.enabled = enabled;
+            o.filter = filter;
             o.topic = topic;
             return o;
         }

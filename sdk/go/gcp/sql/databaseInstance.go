@@ -148,6 +148,8 @@ import (
 type DatabaseInstance struct {
 	pulumi.CustomResourceState
 
+	// The list of all maintenance versions applicable on the instance.
+	AvailableMaintenanceVersions pulumi.StringArrayOutput `pulumi:"availableMaintenanceVersions"`
 	// The context needed to create this instance as a clone of another instance. When this field is set during
 	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
@@ -165,8 +167,8 @@ type DatabaseInstance struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
-	// Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` command that deletes the instance will fail.
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
@@ -180,6 +182,8 @@ type DatabaseInstance struct {
 	// The first IPv4 address of any type assigned.
 	FirstIpAddress pulumi.StringOutput                  `pulumi:"firstIpAddress"`
 	IpAddresses    DatabaseInstanceIpAddressArrayOutput `pulumi:"ipAddresses"`
+	// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
+	MaintenanceVersion pulumi.StringOutput `pulumi:"maintenanceVersion"`
 	// The name of the existing instance that will
 	// act as the master in the replication setup. Note, this requires the master to
 	// have `binaryLogEnabled` set, as well as existing backups.
@@ -248,6 +252,8 @@ func GetDatabaseInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatabaseInstance resources.
 type databaseInstanceState struct {
+	// The list of all maintenance versions applicable on the instance.
+	AvailableMaintenanceVersions []string `pulumi:"availableMaintenanceVersions"`
 	// The context needed to create this instance as a clone of another instance. When this field is set during
 	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
@@ -265,8 +271,8 @@ type databaseInstanceState struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
-	// Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` command that deletes the instance will fail.
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
@@ -280,6 +286,8 @@ type databaseInstanceState struct {
 	// The first IPv4 address of any type assigned.
 	FirstIpAddress *string                     `pulumi:"firstIpAddress"`
 	IpAddresses    []DatabaseInstanceIpAddress `pulumi:"ipAddresses"`
+	// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
+	MaintenanceVersion *string `pulumi:"maintenanceVersion"`
 	// The name of the existing instance that will
 	// act as the master in the replication setup. Note, this requires the master to
 	// have `binaryLogEnabled` set, as well as existing backups.
@@ -317,6 +325,8 @@ type databaseInstanceState struct {
 }
 
 type DatabaseInstanceState struct {
+	// The list of all maintenance versions applicable on the instance.
+	AvailableMaintenanceVersions pulumi.StringArrayInput
 	// The context needed to create this instance as a clone of another instance. When this field is set during
 	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
@@ -334,8 +344,8 @@ type DatabaseInstanceState struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringPtrInput
-	// Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` command that deletes the instance will fail.
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
 	DeletionProtection pulumi.BoolPtrInput
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
@@ -349,6 +359,8 @@ type DatabaseInstanceState struct {
 	// The first IPv4 address of any type assigned.
 	FirstIpAddress pulumi.StringPtrInput
 	IpAddresses    DatabaseInstanceIpAddressArrayInput
+	// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
+	MaintenanceVersion pulumi.StringPtrInput
 	// The name of the existing instance that will
 	// act as the master in the replication setup. Note, this requires the master to
 	// have `binaryLogEnabled` set, as well as existing backups.
@@ -404,8 +416,8 @@ type databaseInstanceArgs struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion string `pulumi:"databaseVersion"`
-	// Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` command that deletes the instance will fail.
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
@@ -416,6 +428,8 @@ type databaseInstanceArgs struct {
 	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName *string `pulumi:"encryptionKeyName"`
+	// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
+	MaintenanceVersion *string `pulumi:"maintenanceVersion"`
 	// The name of the existing instance that will
 	// act as the master in the replication setup. Note, this requires the master to
 	// have `binaryLogEnabled` set, as well as existing backups.
@@ -458,8 +472,8 @@ type DatabaseInstanceArgs struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringInput
-	// Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-	// in state, a `destroy` or `update` command that deletes the instance will fail.
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
 	DeletionProtection pulumi.BoolPtrInput
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
@@ -470,6 +484,8 @@ type DatabaseInstanceArgs struct {
 	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName pulumi.StringPtrInput
+	// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
+	MaintenanceVersion pulumi.StringPtrInput
 	// The name of the existing instance that will
 	// act as the master in the replication setup. Note, this requires the master to
 	// have `binaryLogEnabled` set, as well as existing backups.
@@ -583,6 +599,11 @@ func (o DatabaseInstanceOutput) ToDatabaseInstanceOutputWithContext(ctx context.
 	return o
 }
 
+// The list of all maintenance versions applicable on the instance.
+func (o DatabaseInstanceOutput) AvailableMaintenanceVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringArrayOutput { return v.AvailableMaintenanceVersions }).(pulumi.StringArrayOutput)
+}
+
 // The context needed to create this instance as a clone of another instance. When this field is set during
 // resource creation, this provider will attempt to clone another instance as indicated in the context. The
 // configuration is detailed below.
@@ -609,8 +630,8 @@ func (o DatabaseInstanceOutput) DatabaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.DatabaseVersion }).(pulumi.StringOutput)
 }
 
-// Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-// in state, a `destroy` or `update` command that deletes the instance will fail.
+// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
 func (o DatabaseInstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -634,6 +655,11 @@ func (o DatabaseInstanceOutput) FirstIpAddress() pulumi.StringOutput {
 
 func (o DatabaseInstanceOutput) IpAddresses() DatabaseInstanceIpAddressArrayOutput {
 	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceIpAddressArrayOutput { return v.IpAddresses }).(DatabaseInstanceIpAddressArrayOutput)
+}
+
+// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
+func (o DatabaseInstanceOutput) MaintenanceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.MaintenanceVersion }).(pulumi.StringOutput)
 }
 
 // The name of the existing instance that will

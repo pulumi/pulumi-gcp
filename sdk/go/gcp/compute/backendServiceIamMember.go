@@ -43,7 +43,7 @@ import (
 type BackendServiceIamMember struct {
 	pulumi.CustomResourceState
 
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition BackendServiceIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -95,7 +95,7 @@ func GetBackendServiceIamMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BackendServiceIamMember resources.
 type backendServiceIamMemberState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *BackendServiceIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -113,7 +113,7 @@ type backendServiceIamMemberState struct {
 }
 
 type BackendServiceIamMemberState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition BackendServiceIamMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
@@ -135,7 +135,7 @@ func (BackendServiceIamMemberState) ElementType() reflect.Type {
 }
 
 type backendServiceIamMemberArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *BackendServiceIamMemberCondition `pulumi:"condition"`
 	Member    string                            `pulumi:"member"`
@@ -152,7 +152,7 @@ type backendServiceIamMemberArgs struct {
 
 // The set of arguments for constructing a BackendServiceIamMember resource.
 type BackendServiceIamMemberArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition BackendServiceIamMemberConditionPtrInput
 	Member    pulumi.StringInput
@@ -254,7 +254,7 @@ func (o BackendServiceIamMemberOutput) ToBackendServiceIamMemberOutputWithContex
 	return o
 }
 
-// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
 func (o BackendServiceIamMemberOutput) Condition() BackendServiceIamMemberConditionPtrOutput {
 	return o.ApplyT(func(v *BackendServiceIamMember) BackendServiceIamMemberConditionPtrOutput { return v.Condition }).(BackendServiceIamMemberConditionPtrOutput)

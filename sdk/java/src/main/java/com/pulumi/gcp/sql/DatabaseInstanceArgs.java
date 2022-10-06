@@ -71,16 +71,16 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` command that deletes the instance will fail.
+     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
      * 
      */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
     /**
-     * @return Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` command that deletes the instance will fail.
+     * @return Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
@@ -114,6 +114,21 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> encryptionKeyName() {
         return Optional.ofNullable(this.encryptionKeyName);
+    }
+
+    /**
+     * The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+     * 
+     */
+    @Import(name="maintenanceVersion")
+    private @Nullable Output<String> maintenanceVersion;
+
+    /**
+     * @return The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+     * 
+     */
+    public Optional<Output<String>> maintenanceVersion() {
+        return Optional.ofNullable(this.maintenanceVersion);
     }
 
     /**
@@ -259,6 +274,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         this.databaseVersion = $.databaseVersion;
         this.deletionProtection = $.deletionProtection;
         this.encryptionKeyName = $.encryptionKeyName;
+        this.maintenanceVersion = $.maintenanceVersion;
         this.masterInstanceName = $.masterInstanceName;
         this.name = $.name;
         this.project = $.project;
@@ -350,8 +366,8 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deletionProtection Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-         * in state, a `destroy` or `update` command that deletes the instance will fail.
+         * @param deletionProtection Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+         * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -362,8 +378,8 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deletionProtection Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-         * in state, a `destroy` or `update` command that deletes the instance will fail.
+         * @param deletionProtection Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+         * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -405,6 +421,27 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder encryptionKeyName(String encryptionKeyName) {
             return encryptionKeyName(Output.of(encryptionKeyName));
+        }
+
+        /**
+         * @param maintenanceVersion The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceVersion(@Nullable Output<String> maintenanceVersion) {
+            $.maintenanceVersion = maintenanceVersion;
+            return this;
+        }
+
+        /**
+         * @param maintenanceVersion The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceVersion(String maintenanceVersion) {
+            return maintenanceVersion(Output.of(maintenanceVersion));
         }
 
         /**

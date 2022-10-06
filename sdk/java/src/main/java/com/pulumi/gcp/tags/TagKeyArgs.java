@@ -6,6 +6,7 @@ package com.pulumi.gcp.tags;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -46,6 +47,42 @@ public final class TagKeyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. A purpose cannot be changed once set.
+     * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+     * Possible values are `GCE_FIREWALL`.
+     * 
+     */
+    @Import(name="purpose")
+    private @Nullable Output<String> purpose;
+
+    /**
+     * @return Optional. A purpose cannot be changed once set.
+     * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+     * Possible values are `GCE_FIREWALL`.
+     * 
+     */
+    public Optional<Output<String>> purpose() {
+        return Optional.ofNullable(this.purpose);
+    }
+
+    /**
+     * Optional. Purpose data cannot be changed once set.
+     * Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = &#34;&lt;project-name&gt;/&lt;vpc-name&gt;&#34;`.
+     * 
+     */
+    @Import(name="purposeData")
+    private @Nullable Output<Map<String,String>> purposeData;
+
+    /**
+     * @return Optional. Purpose data cannot be changed once set.
+     * Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = &#34;&lt;project-name&gt;/&lt;vpc-name&gt;&#34;`.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> purposeData() {
+        return Optional.ofNullable(this.purposeData);
+    }
+
+    /**
      * Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
      * The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
@@ -67,6 +104,8 @@ public final class TagKeyArgs extends com.pulumi.resources.ResourceArgs {
     private TagKeyArgs(TagKeyArgs $) {
         this.description = $.description;
         this.parent = $.parent;
+        this.purpose = $.purpose;
+        this.purposeData = $.purposeData;
         this.shortName = $.shortName;
     }
 
@@ -128,6 +167,54 @@ public final class TagKeyArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder parent(String parent) {
             return parent(Output.of(parent));
+        }
+
+        /**
+         * @param purpose Optional. A purpose cannot be changed once set.
+         * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+         * Possible values are `GCE_FIREWALL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purpose(@Nullable Output<String> purpose) {
+            $.purpose = purpose;
+            return this;
+        }
+
+        /**
+         * @param purpose Optional. A purpose cannot be changed once set.
+         * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+         * Possible values are `GCE_FIREWALL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purpose(String purpose) {
+            return purpose(Output.of(purpose));
+        }
+
+        /**
+         * @param purposeData Optional. Purpose data cannot be changed once set.
+         * Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = &#34;&lt;project-name&gt;/&lt;vpc-name&gt;&#34;`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purposeData(@Nullable Output<Map<String,String>> purposeData) {
+            $.purposeData = purposeData;
+            return this;
+        }
+
+        /**
+         * @param purposeData Optional. Purpose data cannot be changed once set.
+         * Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = &#34;&lt;project-name&gt;/&lt;vpc-name&gt;&#34;`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purposeData(Map<String,String> purposeData) {
+            return purposeData(Output.of(purposeData));
         }
 
         /**

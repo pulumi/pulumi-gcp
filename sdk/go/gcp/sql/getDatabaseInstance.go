@@ -56,15 +56,17 @@ type LookupDatabaseInstanceArgs struct {
 
 // A collection of values returned by getDatabaseInstance.
 type LookupDatabaseInstanceResult struct {
-	Clones             []GetDatabaseInstanceClone `pulumi:"clones"`
-	ConnectionName     string                     `pulumi:"connectionName"`
-	DatabaseVersion    string                     `pulumi:"databaseVersion"`
-	DeletionProtection bool                       `pulumi:"deletionProtection"`
-	EncryptionKeyName  string                     `pulumi:"encryptionKeyName"`
-	FirstIpAddress     string                     `pulumi:"firstIpAddress"`
+	AvailableMaintenanceVersions []string                   `pulumi:"availableMaintenanceVersions"`
+	Clones                       []GetDatabaseInstanceClone `pulumi:"clones"`
+	ConnectionName               string                     `pulumi:"connectionName"`
+	DatabaseVersion              string                     `pulumi:"databaseVersion"`
+	DeletionProtection           bool                       `pulumi:"deletionProtection"`
+	EncryptionKeyName            string                     `pulumi:"encryptionKeyName"`
+	FirstIpAddress               string                     `pulumi:"firstIpAddress"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                         string                                    `pulumi:"id"`
 	IpAddresses                []GetDatabaseInstanceIpAddress            `pulumi:"ipAddresses"`
+	MaintenanceVersion         string                                    `pulumi:"maintenanceVersion"`
 	MasterInstanceName         string                                    `pulumi:"masterInstanceName"`
 	Name                       string                                    `pulumi:"name"`
 	PrivateIpAddress           string                                    `pulumi:"privateIpAddress"`
@@ -120,6 +122,10 @@ func (o LookupDatabaseInstanceResultOutput) ToLookupDatabaseInstanceResultOutput
 	return o
 }
 
+func (o LookupDatabaseInstanceResultOutput) AvailableMaintenanceVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) []string { return v.AvailableMaintenanceVersions }).(pulumi.StringArrayOutput)
+}
+
 func (o LookupDatabaseInstanceResultOutput) Clones() GetDatabaseInstanceCloneArrayOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) []GetDatabaseInstanceClone { return v.Clones }).(GetDatabaseInstanceCloneArrayOutput)
 }
@@ -151,6 +157,10 @@ func (o LookupDatabaseInstanceResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupDatabaseInstanceResultOutput) IpAddresses() GetDatabaseInstanceIpAddressArrayOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) []GetDatabaseInstanceIpAddress { return v.IpAddresses }).(GetDatabaseInstanceIpAddressArrayOutput)
+}
+
+func (o LookupDatabaseInstanceResultOutput) MaintenanceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.MaintenanceVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupDatabaseInstanceResultOutput) MasterInstanceName() pulumi.StringOutput {

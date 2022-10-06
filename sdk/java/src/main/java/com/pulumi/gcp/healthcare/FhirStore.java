@@ -148,6 +148,55 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Healthcare Fhir Store Notification Config
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.healthcare.Dataset;
+ * import com.pulumi.gcp.healthcare.DatasetArgs;
+ * import com.pulumi.gcp.healthcare.FhirStore;
+ * import com.pulumi.gcp.healthcare.FhirStoreArgs;
+ * import com.pulumi.gcp.healthcare.inputs.FhirStoreNotificationConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var topic = new Topic(&#34;topic&#34;);
+ * 
+ *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *         var default_ = new FhirStore(&#34;default&#34;, FhirStoreArgs.builder()        
+ *             .dataset(dataset.id())
+ *             .version(&#34;R4&#34;)
+ *             .enableUpdateCreate(false)
+ *             .disableReferentialIntegrity(false)
+ *             .disableResourceVersioning(false)
+ *             .enableHistoryImport(false)
+ *             .labels(Map.of(&#34;label1&#34;, &#34;labelvalue1&#34;))
+ *             .notificationConfigs(FhirStoreNotificationConfigArgs.builder()
+ *                 .pubsubTopic(topic.id())
+ *                 .sendFullResource(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -335,6 +384,20 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<FhirStoreNotificationConfig>> notificationConfig() {
         return Codegen.optional(this.notificationConfig);
+    }
+    /**
+     * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     * 
+     */
+    @Export(name="notificationConfigs", type=List.class, parameters={FhirStoreNotificationConfig.class})
+    private Output</* @Nullable */ List<FhirStoreNotificationConfig>> notificationConfigs;
+
+    /**
+     * @return A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     * 
+     */
+    public Output<Optional<List<FhirStoreNotificationConfig>>> notificationConfigs() {
+        return Codegen.optional(this.notificationConfigs);
     }
     /**
      * The fully qualified name of this dataset

@@ -215,7 +215,7 @@ class DatabaseInstanceReplicaConfiguration(dict):
         :param str client_key: PEM representation of the replica's private key. The
                corresponding public key in encoded in the `client_certificate`.
         :param int connect_retry_interval: The number of seconds
-               between connect retries.
+               between connect retries. MySQL's default is 60 seconds.
         :param str dump_file_path: Path to a SQL file in GCS from which replica
                instances are created. Format is `gs://bucket/filename`.
         :param bool failover_target: Specifies if the replica is the failover target.
@@ -284,7 +284,7 @@ class DatabaseInstanceReplicaConfiguration(dict):
     def connect_retry_interval(self) -> Optional[int]:
         """
         The number of seconds
-        between connect retries.
+        between connect retries. MySQL's default is 60 seconds.
         """
         return pulumi.get(self, "connect_retry_interval")
 
@@ -570,12 +570,12 @@ class DatabaseInstanceSettings(dict):
                `settings.backup_configuration.enabled` is set to `true`.
                For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
                For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
-               is set to `true`.
+               is set to `true`. Defaults to `ZONAL`.
         :param str collation: The name of server instance collation.
-        :param bool disk_autoresize: Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
+        :param bool disk_autoresize: Enables auto-resizing of the storage size. Defaults to `true`.
         :param int disk_autoresize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
-        :param int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `disk_autoresize` to false.
-        :param str disk_type: The type of data disk: PD_SSD or PD_HDD.
+        :param int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+        :param str disk_type: The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
         :param str pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
         :param Mapping[str, str] user_labels: A set of key/value user label pairs to assign to the instance.
         """
@@ -652,7 +652,7 @@ class DatabaseInstanceSettings(dict):
         `settings.backup_configuration.enabled` is set to `true`.
         For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
         For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
-        is set to `true`.
+        is set to `true`. Defaults to `ZONAL`.
         """
         return pulumi.get(self, "availability_type")
 
@@ -678,7 +678,7 @@ class DatabaseInstanceSettings(dict):
     @pulumi.getter(name="diskAutoresize")
     def disk_autoresize(self) -> Optional[bool]:
         """
-        Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
+        Enables auto-resizing of the storage size. Defaults to `true`.
         """
         return pulumi.get(self, "disk_autoresize")
 
@@ -694,7 +694,7 @@ class DatabaseInstanceSettings(dict):
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> Optional[int]:
         """
-        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `disk_autoresize` to false.
+        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
         """
         return pulumi.get(self, "disk_size")
 
@@ -702,7 +702,7 @@ class DatabaseInstanceSettings(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[str]:
         """
-        The type of data disk: PD_SSD or PD_HDD.
+        The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
         """
         return pulumi.get(self, "disk_type")
 

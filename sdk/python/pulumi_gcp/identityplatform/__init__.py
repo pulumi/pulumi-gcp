@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .config import *
 from .default_supported_idp_config import *
 from .inbound_saml_config import *
 from .oauth_idp_config import *

@@ -165,6 +165,8 @@ class WebBackendServiceIamPolicy(pulumi.CustomResource):
 
         > **Note:** `iap.WebBackendServiceIamBinding` resources **can be** used in conjunction with `iap.WebBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
 
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+
         ## google\\_iap\\_web\\_backend\\_service\\_iam\\_policy
 
         ```python
@@ -310,6 +312,8 @@ class WebBackendServiceIamPolicy(pulumi.CustomResource):
         > **Note:** `iap.WebBackendServiceIamPolicy` **cannot** be used in conjunction with `iap.WebBackendServiceIamBinding` and `iap.WebBackendServiceIamMember` or they will fight over what your policy should be.
 
         > **Note:** `iap.WebBackendServiceIamBinding` resources **can be** used in conjunction with `iap.WebBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+
+        > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
         ## google\\_iap\\_web\\_backend\\_service\\_iam\\_policy
 

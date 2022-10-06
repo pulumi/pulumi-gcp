@@ -33,7 +33,7 @@ public final class DatabaseInstanceReplicaConfiguration {
     private @Nullable String clientKey;
     /**
      * @return The number of seconds
-     * between connect retries.
+     * between connect retries. MySQL&#39;s default is 60 seconds.
      * 
      */
     private @Nullable Integer connectRetryInterval;
@@ -102,7 +102,7 @@ public final class DatabaseInstanceReplicaConfiguration {
     }
     /**
      * @return The number of seconds
-     * between connect retries.
+     * between connect retries. MySQL&#39;s default is 60 seconds.
      * 
      */
     public Optional<Integer> connectRetryInterval() {

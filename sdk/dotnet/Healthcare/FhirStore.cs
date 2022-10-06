@@ -120,6 +120,46 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
+    /// ### Healthcare Fhir Store Notification Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var topic = new Gcp.PubSub.Topic("topic");
+    /// 
+    ///     var dataset = new Gcp.Healthcare.Dataset("dataset", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Healthcare.FhirStore("default", new()
+    ///     {
+    ///         Dataset = dataset.Id,
+    ///         Version = "R4",
+    ///         EnableUpdateCreate = false,
+    ///         DisableReferentialIntegrity = false,
+    ///         DisableResourceVersioning = false,
+    ///         EnableHistoryImport = false,
+    ///         Labels = 
+    ///         {
+    ///             { "label1", "labelvalue1" },
+    ///         },
+    ///         NotificationConfigs = new[]
+    ///         {
+    ///             new Gcp.Healthcare.Inputs.FhirStoreNotificationConfigArgs
+    ///             {
+    ///                 PubsubTopic = topic.Id,
+    ///                 SendFullResource = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -213,6 +253,12 @@ namespace Pulumi.Gcp.Healthcare
         /// </summary>
         [Output("notificationConfig")]
         public Output<Outputs.FhirStoreNotificationConfig?> NotificationConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        /// </summary>
+        [Output("notificationConfigs")]
+        public Output<ImmutableArray<Outputs.FhirStoreNotificationConfig>> NotificationConfigs { get; private set; } = null!;
 
         /// <summary>
         /// The fully qualified name of this dataset
@@ -370,6 +416,18 @@ namespace Pulumi.Gcp.Healthcare
         [Input("notificationConfig")]
         public Input<Inputs.FhirStoreNotificationConfigArgs>? NotificationConfig { get; set; }
 
+        [Input("notificationConfigs")]
+        private InputList<Inputs.FhirStoreNotificationConfigArgs>? _notificationConfigs;
+
+        /// <summary>
+        /// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        /// </summary>
+        public InputList<Inputs.FhirStoreNotificationConfigArgs> NotificationConfigs
+        {
+            get => _notificationConfigs ?? (_notificationConfigs = new InputList<Inputs.FhirStoreNotificationConfigArgs>());
+            set => _notificationConfigs = value;
+        }
+
         [Input("streamConfigs")]
         private InputList<Inputs.FhirStoreStreamConfigArgs>? _streamConfigs;
 
@@ -487,6 +545,18 @@ namespace Pulumi.Gcp.Healthcare
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.FhirStoreNotificationConfigGetArgs>? NotificationConfig { get; set; }
+
+        [Input("notificationConfigs")]
+        private InputList<Inputs.FhirStoreNotificationConfigGetArgs>? _notificationConfigs;
+
+        /// <summary>
+        /// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        /// </summary>
+        public InputList<Inputs.FhirStoreNotificationConfigGetArgs> NotificationConfigs
+        {
+            get => _notificationConfigs ?? (_notificationConfigs = new InputList<Inputs.FhirStoreNotificationConfigGetArgs>());
+            set => _notificationConfigs = value;
+        }
 
         /// <summary>
         /// The fully qualified name of this dataset

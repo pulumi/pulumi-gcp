@@ -21,6 +21,8 @@ import (
 //
 // > **Note:** `compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role.
 //
+// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+//
 // ## google\_compute\_subnetwork\_iam\_policy
 //
 // ```go
@@ -276,7 +278,7 @@ import (
 type SubnetworkIAMMember struct {
 	pulumi.CustomResourceState
 
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition SubnetworkIAMMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -336,7 +338,7 @@ func GetSubnetworkIAMMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SubnetworkIAMMember resources.
 type subnetworkIAMMemberState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *SubnetworkIAMMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -359,7 +361,7 @@ type subnetworkIAMMemberState struct {
 }
 
 type SubnetworkIAMMemberState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition SubnetworkIAMMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
@@ -386,7 +388,7 @@ func (SubnetworkIAMMemberState) ElementType() reflect.Type {
 }
 
 type subnetworkIAMMemberArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *SubnetworkIAMMemberCondition `pulumi:"condition"`
 	Member    string                        `pulumi:"member"`
@@ -408,7 +410,7 @@ type subnetworkIAMMemberArgs struct {
 
 // The set of arguments for constructing a SubnetworkIAMMember resource.
 type SubnetworkIAMMemberArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition SubnetworkIAMMemberConditionPtrInput
 	Member    pulumi.StringInput
@@ -515,7 +517,7 @@ func (o SubnetworkIAMMemberOutput) ToSubnetworkIAMMemberOutputWithContext(ctx co
 	return o
 }
 
-// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
 func (o SubnetworkIAMMemberOutput) Condition() SubnetworkIAMMemberConditionPtrOutput {
 	return o.ApplyT(func(v *SubnetworkIAMMember) SubnetworkIAMMemberConditionPtrOutput { return v.Condition }).(SubnetworkIAMMemberConditionPtrOutput)

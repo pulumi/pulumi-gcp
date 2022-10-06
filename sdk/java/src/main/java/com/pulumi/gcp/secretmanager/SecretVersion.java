@@ -161,6 +161,20 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
     public Output<String> secretData() {
         return this.secretData;
     }
+    /**
+     * The version of the Secret.
+     * 
+     */
+    @Export(name="version", type=String.class, parameters={})
+    private Output<String> version;
+
+    /**
+     * @return The version of the Secret.
+     * 
+     */
+    public Output<String> version() {
+        return this.version;
+    }
 
     /**
      *

@@ -5821,16 +5821,35 @@ export namespace certificatemanager {
 
     export interface CertificateSelfManaged {
         /**
+         * -
+         * (Optional, Deprecated)
+         * **Deprecated** The certificate chain in PEM-encoded form.
+         * Leaf certificate comes first, followed by intermediate ones if any.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         *
+         * @deprecated Deprecated in favor of `pem_certificate`
+         */
+        certificatePem?: pulumi.Input<string>;
+        /**
          * The certificate chain in PEM-encoded form.
          * Leaf certificate comes first, followed by intermediate ones if any.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
-        certificatePem: pulumi.Input<string>;
+        pemCertificate?: pulumi.Input<string>;
         /**
          * The private key of the leaf certificate in PEM-encoded form.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
-        privateKeyPem: pulumi.Input<string>;
+        pemPrivateKey?: pulumi.Input<string>;
+        /**
+         * -
+         * (Optional, Deprecated)
+         * **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         *
+         * @deprecated Deprecated in favor of `pem_private_key`
+         */
+        privateKeyPem?: pulumi.Input<string>;
     }
 
     export interface DnsAuthorizationDnsResourceRecord {
@@ -14504,7 +14523,7 @@ export namespace compute {
          */
         priority: pulumi.Input<number>;
         /**
-         * Must be specified if the `action` is "rateBasedBad" or "throttle". Cannot be specified for other actions. Structure is documented below.
+         * Must be specified if the `action` is "rateBasedBan" or "throttle". Cannot be specified for other actions. Structure is documented below.
          */
         rateLimitOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRateLimitOptions>;
         /**
@@ -18511,9 +18530,20 @@ export namespace container {
          */
         enabled: pulumi.Input<boolean>;
         /**
+         * Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
+         */
+        filter?: pulumi.Input<inputs.container.ClusterNotificationConfigPubsubFilter>;
+        /**
          * The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
          */
         topic?: pulumi.Input<string>;
+    }
+
+    export interface ClusterNotificationConfigPubsubFilter {
+        /**
+         * Can be used to filter what notifications are sent. Accepted values are `UPGRADE_AVAILABLE_EVENT`, `UPGRADE_EVENT` and `SECURITY_BULLETIN_EVENT`. See [Filtering notifications](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-notifications#filtering) for more details.
+         */
+        eventTypes: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ClusterPodSecurityPolicyConfig {
@@ -24369,6 +24399,14 @@ export namespace healthcare {
          * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
          */
         pubsubTopic: pulumi.Input<string>;
+        /**
+         * Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation.
+         * Note that setting this to true does not guarantee that all resources will be sent in the format of
+         * full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be
+         * sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether
+         * it needs to fetch the full resource as a separate operation.
+         */
+        sendFullResource?: pulumi.Input<boolean>;
     }
 
     export interface FhirStoreStreamConfig {
@@ -30956,7 +30994,7 @@ export namespace sql {
         clientKey?: pulumi.Input<string>;
         /**
          * The number of seconds
-         * between connect retries.
+         * between connect retries. MySQL's default is 60 seconds.
          */
         connectRetryInterval?: pulumi.Input<number>;
         /**
@@ -31033,7 +31071,7 @@ export namespace sql {
          * `settings.backup_configuration.enabled` is set to `true`.
          * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
          * For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
-         * is set to `true`.
+         * is set to `true`. Defaults to `ZONAL`.
          */
         availabilityType?: pulumi.Input<string>;
         backupConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsBackupConfiguration>;
@@ -31043,7 +31081,7 @@ export namespace sql {
         collation?: pulumi.Input<string>;
         databaseFlags?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsDatabaseFlag>[]>;
         /**
-         * Enables auto-resizing of the storage size. Set to false if you want to set `diskSize`.
+         * Enables auto-resizing of the storage size. Defaults to `true`.
          */
         diskAutoresize?: pulumi.Input<boolean>;
         /**
@@ -31051,11 +31089,11 @@ export namespace sql {
          */
         diskAutoresizeLimit?: pulumi.Input<number>;
         /**
-         * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `diskAutoresize` to false.
+         * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
          */
         diskSize?: pulumi.Input<number>;
         /**
-         * The type of data disk: PD_SSD or PD_HDD.
+         * The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
          */
         diskType?: pulumi.Input<string>;
         insightsConfig?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsInsightsConfig>;
@@ -31476,6 +31514,21 @@ export namespace storage {
     export interface ObjectAccessControlProjectTeam {
         projectNumber?: pulumi.Input<string>;
         team?: pulumi.Input<string>;
+    }
+
+    export interface TransferJobNotificationConfig {
+        /**
+         * Event types for which a notification is desired. If empty, send notifications for all event types. The valid types are "TRANSFER_OPERATION_SUCCESS", "TRANSFER_OPERATION_FAILED", "TRANSFER_OPERATION_ABORTED".
+         */
+        eventTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The desired format of the notification message payloads. One of "NONE" or "JSON".
+         */
+        payloadFormat: pulumi.Input<string>;
+        /**
+         * The Topic.name of the Pub/Sub topic to which to publish notifications. Must be of the format: projects/{project}/topics/{topic}. Not matching this format results in an INVALID_ARGUMENT error.
+         */
+        pubsubTopic: pulumi.Input<string>;
     }
 
     export interface TransferJobSchedule {

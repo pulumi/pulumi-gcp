@@ -81,6 +81,8 @@ type SecretVersion struct {
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SecretData pulumi.StringOutput `pulumi:"secretData"`
+	// The version of the Secret.
+	Version pulumi.StringOutput `pulumi:"version"`
 }
 
 // NewSecretVersion registers a new resource with the given unique name, arguments, and options.
@@ -131,6 +133,8 @@ type secretVersionState struct {
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SecretData *string `pulumi:"secretData"`
+	// The version of the Secret.
+	Version *string `pulumi:"version"`
 }
 
 type SecretVersionState struct {
@@ -147,6 +151,8 @@ type SecretVersionState struct {
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SecretData pulumi.StringPtrInput
+	// The version of the Secret.
+	Version pulumi.StringPtrInput
 }
 
 func (SecretVersionState) ElementType() reflect.Type {
@@ -290,6 +296,11 @@ func (o SecretVersionOutput) Secret() pulumi.StringOutput {
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o SecretVersionOutput) SecretData() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretVersion) pulumi.StringOutput { return v.SecretData }).(pulumi.StringOutput)
+}
+
+// The version of the Secret.
+func (o SecretVersionOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretVersion) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }
 
 type SecretVersionArrayOutput struct{ *pulumi.OutputState }

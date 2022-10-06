@@ -21,6 +21,8 @@ import (
 //
 // > **Note:** `storage.BucketIAMBinding` resources **can be** used in conjunction with `storage.BucketIAMMember` resources **only if** they do not grant privilege to the same role.
 //
+// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+//
 // ## google\_storage\_bucket\_iam\_policy
 //
 // ```go
@@ -266,7 +268,7 @@ type BucketIAMBinding struct {
 
 	// Used to find the parent resource to bind the IAM policy to
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition BucketIAMBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -329,7 +331,7 @@ func GetBucketIAMBinding(ctx *pulumi.Context,
 type bucketIAMBindingState struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Bucket *string `pulumi:"bucket"`
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *BucketIAMBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
@@ -355,7 +357,7 @@ type bucketIAMBindingState struct {
 type BucketIAMBindingState struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Bucket pulumi.StringPtrInput
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition BucketIAMBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
@@ -385,7 +387,7 @@ func (BucketIAMBindingState) ElementType() reflect.Type {
 type bucketIAMBindingArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Bucket string `pulumi:"bucket"`
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *BucketIAMBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.
@@ -410,7 +412,7 @@ type bucketIAMBindingArgs struct {
 type BucketIAMBindingArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Bucket pulumi.StringInput
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition BucketIAMBindingConditionPtrInput
 	// Identities that will be granted the privilege in `role`.
@@ -523,7 +525,7 @@ func (o BucketIAMBindingOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketIAMBinding) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
 }
 
-// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
 func (o BucketIAMBindingOutput) Condition() BucketIAMBindingConditionPtrOutput {
 	return o.ApplyT(func(v *BucketIAMBinding) BucketIAMBindingConditionPtrOutput { return v.Condition }).(BucketIAMBindingConditionPtrOutput)

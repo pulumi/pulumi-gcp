@@ -3644,6 +3644,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "identityplatform/config",
+  "fqn": "pulumi_gcp.identityplatform",
+  "classes": {
+   "gcp:identityplatform/config:Config": "Config"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "identityplatform/defaultSupportedIdpConfig",
   "fqn": "pulumi_gcp.identityplatform",
   "classes": {

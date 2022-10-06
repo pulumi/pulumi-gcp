@@ -89,6 +89,17 @@ export class TagKey extends pulumi.CustomResource {
      */
     public readonly parent!: pulumi.Output<string>;
     /**
+     * Optional. A purpose cannot be changed once set.
+     * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+     * Possible values are `GCE_FIREWALL`.
+     */
+    public readonly purpose!: pulumi.Output<string | undefined>;
+    /**
+     * Optional. Purpose data cannot be changed once set.
+     * Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
+     */
+    public readonly purposeData!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
      * The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
      */
@@ -117,6 +128,8 @@ export class TagKey extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namespacedName"] = state ? state.namespacedName : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["purpose"] = state ? state.purpose : undefined;
+            resourceInputs["purposeData"] = state ? state.purposeData : undefined;
             resourceInputs["shortName"] = state ? state.shortName : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -129,6 +142,8 @@ export class TagKey extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["purpose"] = args ? args.purpose : undefined;
+            resourceInputs["purposeData"] = args ? args.purposeData : undefined;
             resourceInputs["shortName"] = args ? args.shortName : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -166,6 +181,17 @@ export interface TagKeyState {
      */
     parent?: pulumi.Input<string>;
     /**
+     * Optional. A purpose cannot be changed once set.
+     * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+     * Possible values are `GCE_FIREWALL`.
+     */
+    purpose?: pulumi.Input<string>;
+    /**
+     * Optional. Purpose data cannot be changed once set.
+     * Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
+     */
+    purposeData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
      * The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
      */
@@ -189,6 +215,17 @@ export interface TagKeyArgs {
      * Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
      */
     parent: pulumi.Input<string>;
+    /**
+     * Optional. A purpose cannot be changed once set.
+     * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+     * Possible values are `GCE_FIREWALL`.
+     */
+    purpose?: pulumi.Input<string>;
+    /**
+     * Optional. Purpose data cannot be changed once set.
+     * Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
+     */
+    purposeData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
      * The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.

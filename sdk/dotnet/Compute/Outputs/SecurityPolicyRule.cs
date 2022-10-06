@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int Priority;
         /// <summary>
-        /// Must be specified if the `action` is "rate_based_bad" or "throttle". Cannot be specified for other actions. Structure is documented below.
+        /// Must be specified if the `action` is "rate_based_ban" or "throttle". Cannot be specified for other actions. Structure is documented below.
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleRateLimitOptions? RateLimitOptions;
         /// <summary>

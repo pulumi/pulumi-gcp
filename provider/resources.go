@@ -5,12 +5,13 @@ package gcp
 import (
 	"context"
 	"fmt"
-	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 	"os"
 	"path/filepath"
 	"strings"
 	"unicode"
+
+	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 
 	google "github.com/hashicorp/terraform-provider-google-beta/google-beta"
 	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
@@ -2003,6 +2004,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_deployment_manager_deployment": {Tok: gcpResource(gcpDeploymentManager, "Deployment")},
 
 			// Identity Platform
+			"google_identity_platform_config": {
+				Tok: gcpResource(gcpIdentityPlatform, "Config"),
+			},
 			"google_identity_platform_default_supported_idp_config": {
 				Tok: gcpResource(gcpIdentityPlatform, "DefaultSupportedIdpConfig"),
 			},
@@ -2580,6 +2584,10 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_access_approval_project_service_account": {
 				Tok: gcpDataSource(gcpAccessApproval, "getProjectServiceAccount"),
+			},
+
+			"google_artifact_registry_repository": {
+				Tok: gcpDataSource(gcpArtifactRegistry, "getRepository"),
 			},
 
 			"google_billing_account": {

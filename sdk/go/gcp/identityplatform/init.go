@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:identityplatform/config:Config":
+		r = &Config{}
 	case "gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig":
 		r = &DefaultSupportedIdpConfig{}
 	case "gcp:identityplatform/inboundSamlConfig:InboundSamlConfig":
@@ -48,6 +50,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"identityplatform/config",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"identityplatform/defaultSupportedIdpConfig",

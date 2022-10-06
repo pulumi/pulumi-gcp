@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.tags.TagKeyArgs;
 import com.pulumi.gcp.tags.inputs.TagKeyState;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -142,6 +143,40 @@ public class TagKey extends com.pulumi.resources.CustomResource {
      */
     public Output<String> parent() {
         return this.parent;
+    }
+    /**
+     * Optional. A purpose cannot be changed once set.
+     * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+     * Possible values are `GCE_FIREWALL`.
+     * 
+     */
+    @Export(name="purpose", type=String.class, parameters={})
+    private Output</* @Nullable */ String> purpose;
+
+    /**
+     * @return Optional. A purpose cannot be changed once set.
+     * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
+     * Possible values are `GCE_FIREWALL`.
+     * 
+     */
+    public Output<Optional<String>> purpose() {
+        return Codegen.optional(this.purpose);
+    }
+    /**
+     * Optional. Purpose data cannot be changed once set.
+     * Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = &#34;&lt;project-name&gt;/&lt;vpc-name&gt;&#34;`.
+     * 
+     */
+    @Export(name="purposeData", type=Map.class, parameters={String.class, String.class})
+    private Output</* @Nullable */ Map<String,String>> purposeData;
+
+    /**
+     * @return Optional. Purpose data cannot be changed once set.
+     * Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = &#34;&lt;project-name&gt;/&lt;vpc-name&gt;&#34;`.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> purposeData() {
+        return Codegen.optional(this.purposeData);
     }
     /**
      * Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.

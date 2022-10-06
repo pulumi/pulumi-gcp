@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.iap.WebIamBinding` resources **can be** used in conjunction with `gcp.iap.WebIamMember` resources **only if** they do not grant privilege to the same role.
  *
+ * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ *
  * ## google\_iap\_web\_iam\_policy
  *
  * ```typescript
@@ -171,7 +173,7 @@ export class WebIamMember extends pulumi.CustomResource {
     }
 
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     public readonly condition!: pulumi.Output<outputs.iap.WebIamMemberCondition | undefined>;
@@ -234,7 +236,7 @@ export class WebIamMember extends pulumi.CustomResource {
  */
 export interface WebIamMemberState {
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.iap.WebIamMemberCondition>;
@@ -261,7 +263,7 @@ export interface WebIamMemberState {
  */
 export interface WebIamMemberArgs {
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.iap.WebIamMemberCondition>;

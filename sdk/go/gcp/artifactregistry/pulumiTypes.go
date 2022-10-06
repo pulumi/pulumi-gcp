@@ -504,6 +504,106 @@ func (o RepositoryMavenConfigPtrOutput) VersionPolicy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetRepositoryMavenConfig struct {
+	AllowSnapshotOverwrites bool   `pulumi:"allowSnapshotOverwrites"`
+	VersionPolicy           string `pulumi:"versionPolicy"`
+}
+
+// GetRepositoryMavenConfigInput is an input type that accepts GetRepositoryMavenConfigArgs and GetRepositoryMavenConfigOutput values.
+// You can construct a concrete instance of `GetRepositoryMavenConfigInput` via:
+//
+//	GetRepositoryMavenConfigArgs{...}
+type GetRepositoryMavenConfigInput interface {
+	pulumi.Input
+
+	ToGetRepositoryMavenConfigOutput() GetRepositoryMavenConfigOutput
+	ToGetRepositoryMavenConfigOutputWithContext(context.Context) GetRepositoryMavenConfigOutput
+}
+
+type GetRepositoryMavenConfigArgs struct {
+	AllowSnapshotOverwrites pulumi.BoolInput   `pulumi:"allowSnapshotOverwrites"`
+	VersionPolicy           pulumi.StringInput `pulumi:"versionPolicy"`
+}
+
+func (GetRepositoryMavenConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryMavenConfig)(nil)).Elem()
+}
+
+func (i GetRepositoryMavenConfigArgs) ToGetRepositoryMavenConfigOutput() GetRepositoryMavenConfigOutput {
+	return i.ToGetRepositoryMavenConfigOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryMavenConfigArgs) ToGetRepositoryMavenConfigOutputWithContext(ctx context.Context) GetRepositoryMavenConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryMavenConfigOutput)
+}
+
+// GetRepositoryMavenConfigArrayInput is an input type that accepts GetRepositoryMavenConfigArray and GetRepositoryMavenConfigArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryMavenConfigArrayInput` via:
+//
+//	GetRepositoryMavenConfigArray{ GetRepositoryMavenConfigArgs{...} }
+type GetRepositoryMavenConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryMavenConfigArrayOutput() GetRepositoryMavenConfigArrayOutput
+	ToGetRepositoryMavenConfigArrayOutputWithContext(context.Context) GetRepositoryMavenConfigArrayOutput
+}
+
+type GetRepositoryMavenConfigArray []GetRepositoryMavenConfigInput
+
+func (GetRepositoryMavenConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryMavenConfig)(nil)).Elem()
+}
+
+func (i GetRepositoryMavenConfigArray) ToGetRepositoryMavenConfigArrayOutput() GetRepositoryMavenConfigArrayOutput {
+	return i.ToGetRepositoryMavenConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryMavenConfigArray) ToGetRepositoryMavenConfigArrayOutputWithContext(ctx context.Context) GetRepositoryMavenConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryMavenConfigArrayOutput)
+}
+
+type GetRepositoryMavenConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryMavenConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryMavenConfig)(nil)).Elem()
+}
+
+func (o GetRepositoryMavenConfigOutput) ToGetRepositoryMavenConfigOutput() GetRepositoryMavenConfigOutput {
+	return o
+}
+
+func (o GetRepositoryMavenConfigOutput) ToGetRepositoryMavenConfigOutputWithContext(ctx context.Context) GetRepositoryMavenConfigOutput {
+	return o
+}
+
+func (o GetRepositoryMavenConfigOutput) AllowSnapshotOverwrites() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRepositoryMavenConfig) bool { return v.AllowSnapshotOverwrites }).(pulumi.BoolOutput)
+}
+
+func (o GetRepositoryMavenConfigOutput) VersionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryMavenConfig) string { return v.VersionPolicy }).(pulumi.StringOutput)
+}
+
+type GetRepositoryMavenConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryMavenConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryMavenConfig)(nil)).Elem()
+}
+
+func (o GetRepositoryMavenConfigArrayOutput) ToGetRepositoryMavenConfigArrayOutput() GetRepositoryMavenConfigArrayOutput {
+	return o
+}
+
+func (o GetRepositoryMavenConfigArrayOutput) ToGetRepositoryMavenConfigArrayOutputWithContext(ctx context.Context) GetRepositoryMavenConfigArrayOutput {
+	return o
+}
+
+func (o GetRepositoryMavenConfigArrayOutput) Index(i pulumi.IntInput) GetRepositoryMavenConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryMavenConfig {
+		return vs[0].([]GetRepositoryMavenConfig)[vs[1].(int)]
+	}).(GetRepositoryMavenConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamBindingConditionInput)(nil)).Elem(), RepositoryIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamBindingConditionPtrInput)(nil)).Elem(), RepositoryIamBindingConditionArgs{})
@@ -511,10 +611,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamMemberConditionPtrInput)(nil)).Elem(), RepositoryIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryMavenConfigInput)(nil)).Elem(), RepositoryMavenConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryMavenConfigPtrInput)(nil)).Elem(), RepositoryMavenConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryMavenConfigInput)(nil)).Elem(), GetRepositoryMavenConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryMavenConfigArrayInput)(nil)).Elem(), GetRepositoryMavenConfigArray{})
 	pulumi.RegisterOutputType(RepositoryIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(RepositoryIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(RepositoryIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryMavenConfigOutput{})
 	pulumi.RegisterOutputType(RepositoryMavenConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetRepositoryMavenConfigOutput{})
+	pulumi.RegisterOutputType(GetRepositoryMavenConfigArrayOutput{})
 }

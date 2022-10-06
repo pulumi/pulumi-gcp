@@ -37,7 +37,7 @@ public final class DatabaseInstanceSettings {
      * `settings.backup_configuration.enabled` is set to `true`.
      * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
      * For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
-     * is set to `true`.
+     * is set to `true`. Defaults to `ZONAL`.
      * 
      */
     private @Nullable String availabilityType;
@@ -49,7 +49,7 @@ public final class DatabaseInstanceSettings {
     private @Nullable String collation;
     private @Nullable List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags;
     /**
-     * @return Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
+     * @return Enables auto-resizing of the storage size. Defaults to `true`.
      * 
      */
     private @Nullable Boolean diskAutoresize;
@@ -59,12 +59,12 @@ public final class DatabaseInstanceSettings {
      */
     private @Nullable Integer diskAutoresizeLimit;
     /**
-     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `disk_autoresize` to false.
+     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
      * 
      */
     private @Nullable Integer diskSize;
     /**
-     * @return The type of data disk: PD_SSD or PD_HDD.
+     * @return The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
      * 
      */
     private @Nullable String diskType;
@@ -111,7 +111,7 @@ public final class DatabaseInstanceSettings {
      * `settings.backup_configuration.enabled` is set to `true`.
      * For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
      * For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
-     * is set to `true`.
+     * is set to `true`. Defaults to `ZONAL`.
      * 
      */
     public Optional<String> availabilityType() {
@@ -131,7 +131,7 @@ public final class DatabaseInstanceSettings {
         return this.databaseFlags == null ? List.of() : this.databaseFlags;
     }
     /**
-     * @return Enables auto-resizing of the storage size. Set to false if you want to set `disk_size`.
+     * @return Enables auto-resizing of the storage size. Defaults to `true`.
      * 
      */
     public Optional<Boolean> diskAutoresize() {
@@ -145,14 +145,14 @@ public final class DatabaseInstanceSettings {
         return Optional.ofNullable(this.diskAutoresizeLimit);
     }
     /**
-     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. If you want to set this field, set `disk_autoresize` to false.
+     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
      * 
      */
     public Optional<Integer> diskSize() {
         return Optional.ofNullable(this.diskSize);
     }
     /**
-     * @return The type of data disk: PD_SSD or PD_HDD.
+     * @return The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
      * 
      */
     public Optional<String> diskType() {

@@ -13,19 +13,38 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
     public sealed class CertificateSelfManagedArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// -
+        /// (Optional, Deprecated)
+        /// **Deprecated** The certificate chain in PEM-encoded form.
+        /// Leaf certificate comes first, followed by intermediate ones if any.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// </summary>
+        [Input("certificatePem")]
+        public Input<string>? CertificatePem { get; set; }
+
+        /// <summary>
         /// The certificate chain in PEM-encoded form.
         /// Leaf certificate comes first, followed by intermediate ones if any.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("certificatePem", required: true)]
-        public Input<string> CertificatePem { get; set; } = null!;
+        [Input("pemCertificate")]
+        public Input<string>? PemCertificate { get; set; }
 
         /// <summary>
         /// The private key of the leaf certificate in PEM-encoded form.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("privateKeyPem", required: true)]
-        public Input<string> PrivateKeyPem { get; set; } = null!;
+        [Input("pemPrivateKey")]
+        public Input<string>? PemPrivateKey { get; set; }
+
+        /// <summary>
+        /// -
+        /// (Optional, Deprecated)
+        /// **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// </summary>
+        [Input("privateKeyPem")]
+        public Input<string>? PrivateKeyPem { get; set; }
 
         public CertificateSelfManagedArgs()
         {

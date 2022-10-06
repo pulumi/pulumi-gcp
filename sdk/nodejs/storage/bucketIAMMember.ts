@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.storage.BucketIAMBinding` resources **can be** used in conjunction with `gcp.storage.BucketIAMMember` resources **only if** they do not grant privilege to the same role.
  *
+ * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ *
  * ## google\_storage\_bucket\_iam\_policy
  *
  * ```typescript
@@ -175,7 +177,7 @@ export class BucketIAMMember extends pulumi.CustomResource {
      */
     public readonly bucket!: pulumi.Output<string>;
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     public readonly condition!: pulumi.Output<outputs.storage.BucketIAMMemberCondition | undefined>;
@@ -240,7 +242,7 @@ export interface BucketIAMMemberState {
      */
     bucket?: pulumi.Input<string>;
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.storage.BucketIAMMemberCondition>;
@@ -266,7 +268,7 @@ export interface BucketIAMMemberArgs {
      */
     bucket: pulumi.Input<string>;
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.storage.BucketIAMMemberCondition>;

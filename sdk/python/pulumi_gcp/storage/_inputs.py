@@ -24,6 +24,7 @@ __all__ = [
     'BucketWebsiteArgs',
     'DefaultObjectAccessControlProjectTeamArgs',
     'ObjectAccessControlProjectTeamArgs',
+    'TransferJobNotificationConfigArgs',
     'TransferJobScheduleArgs',
     'TransferJobScheduleScheduleEndDateArgs',
     'TransferJobScheduleScheduleStartDateArgs',
@@ -730,6 +731,59 @@ class ObjectAccessControlProjectTeamArgs:
     @team.setter
     def team(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "team", value)
+
+
+@pulumi.input_type
+class TransferJobNotificationConfigArgs:
+    def __init__(__self__, *,
+                 payload_format: pulumi.Input[str],
+                 pubsub_topic: pulumi.Input[str],
+                 event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] payload_format: The desired format of the notification message payloads. One of "NONE" or "JSON".
+        :param pulumi.Input[str] pubsub_topic: The Topic.name of the Pub/Sub topic to which to publish notifications. Must be of the format: projects/{project}/topics/{topic}. Not matching this format results in an INVALID_ARGUMENT error.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] event_types: Event types for which a notification is desired. If empty, send notifications for all event types. The valid types are "TRANSFER_OPERATION_SUCCESS", "TRANSFER_OPERATION_FAILED", "TRANSFER_OPERATION_ABORTED".
+        """
+        pulumi.set(__self__, "payload_format", payload_format)
+        pulumi.set(__self__, "pubsub_topic", pubsub_topic)
+        if event_types is not None:
+            pulumi.set(__self__, "event_types", event_types)
+
+    @property
+    @pulumi.getter(name="payloadFormat")
+    def payload_format(self) -> pulumi.Input[str]:
+        """
+        The desired format of the notification message payloads. One of "NONE" or "JSON".
+        """
+        return pulumi.get(self, "payload_format")
+
+    @payload_format.setter
+    def payload_format(self, value: pulumi.Input[str]):
+        pulumi.set(self, "payload_format", value)
+
+    @property
+    @pulumi.getter(name="pubsubTopic")
+    def pubsub_topic(self) -> pulumi.Input[str]:
+        """
+        The Topic.name of the Pub/Sub topic to which to publish notifications. Must be of the format: projects/{project}/topics/{topic}. Not matching this format results in an INVALID_ARGUMENT error.
+        """
+        return pulumi.get(self, "pubsub_topic")
+
+    @pubsub_topic.setter
+    def pubsub_topic(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pubsub_topic", value)
+
+    @property
+    @pulumi.getter(name="eventTypes")
+    def event_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Event types for which a notification is desired. If empty, send notifications for all event types. The valid types are "TRANSFER_OPERATION_SUCCESS", "TRANSFER_OPERATION_FAILED", "TRANSFER_OPERATION_ABORTED".
+        """
+        return pulumi.get(self, "event_types")
+
+    @event_types.setter
+    def event_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "event_types", value)
 
 
 @pulumi.input_type

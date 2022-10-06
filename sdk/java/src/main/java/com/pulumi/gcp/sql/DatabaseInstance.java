@@ -170,6 +170,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:sql/databaseInstance:DatabaseInstance")
 public class DatabaseInstance extends com.pulumi.resources.CustomResource {
     /**
+     * The list of all maintenance versions applicable on the instance.
+     * 
+     */
+    @Export(name="availableMaintenanceVersions", type=List.class, parameters={String.class})
+    private Output<List<String>> availableMaintenanceVersions;
+
+    /**
+     * @return The list of all maintenance versions applicable on the instance.
+     * 
+     */
+    public Output<List<String>> availableMaintenanceVersions() {
+        return this.availableMaintenanceVersions;
+    }
+    /**
      * The context needed to create this instance as a clone of another instance. When this field is set during
      * resource creation, this provider will attempt to clone another instance as indicated in the context. The
      * configuration is detailed below.
@@ -234,16 +248,16 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.databaseVersion;
     }
     /**
-     * Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` command that deletes the instance will fail.
+     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
      * 
      */
     @Export(name="deletionProtection", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
-     * @return Whether or not to allow he provider to destroy the instance. Unless this field is set to false
-     * in state, a `destroy` or `update` command that deletes the instance will fail.
+     * @return Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
      * 
      */
     public Output<Optional<Boolean>> deletionProtection() {
@@ -296,6 +310,20 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
 
     public Output<List<DatabaseInstanceIpAddress>> ipAddresses() {
         return this.ipAddresses;
+    }
+    /**
+     * The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+     * 
+     */
+    @Export(name="maintenanceVersion", type=String.class, parameters={})
+    private Output<String> maintenanceVersion;
+
+    /**
+     * @return The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
+     * 
+     */
+    public Output<String> maintenanceVersion() {
+        return this.maintenanceVersion;
     }
     /**
      * The name of the existing instance that will

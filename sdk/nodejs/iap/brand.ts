@@ -47,7 +47,15 @@ import * as utilities from "../utilities";
  * Brand can be imported using any of these accepted formats
  *
  * ```sh
- *  $ pulumi import gcp:iap/brand:Brand default {{name}}
+ *  $ pulumi import gcp:iap/brand:Brand default projects/{{project_id}}/brands/{{brand_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:iap/brand:Brand default projects/{{project_number}}/brands/{{brand_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:iap/brand:Brand default {{project_number}}/{{brand_id}}
  * ```
  */
 export class Brand extends pulumi.CustomResource {
@@ -83,8 +91,9 @@ export class Brand extends pulumi.CustomResource {
      */
     public readonly applicationTitle!: pulumi.Output<string>;
     /**
-     * Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}'. NOTE: The brand
-     * identification corresponds to the project number as only one brand per project can be created.
+     * Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}' NOTE: The name can
+     * also be expressed as 'projects/{project_id}/brands/{brand_id}', e.g. when importing. NOTE: The brand identification
+     * corresponds to the project number as only one brand can be created per project.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -151,8 +160,9 @@ export interface BrandState {
      */
     applicationTitle?: pulumi.Input<string>;
     /**
-     * Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}'. NOTE: The brand
-     * identification corresponds to the project number as only one brand per project can be created.
+     * Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}' NOTE: The name can
+     * also be expressed as 'projects/{project_id}/brands/{brand_id}', e.g. when importing. NOTE: The brand identification
+     * corresponds to the project number as only one brand can be created per project.
      */
     name?: pulumi.Input<string>;
     /**
