@@ -66,14 +66,6 @@ jobs:
         title: Update pulumi-terraform-bridge to v${{ github.event.inputs.bridge_version
           }}
         token: ${{ secrets.PULUMI_BOT_TOKEN }}
-    - if: steps.create-pr.outputs.pull-request-operation == 'created'
-      name: Set Automerge
-      uses: peter-evans/enable-pull-request-automerge@v1
-      with:
-        merge-method: squash
-        pull-request-number: ${{ steps.create-pr.outputs.pull-request-number }}
-        repository: ${{ github.repository }}
-        token: ${{ secrets.PULUMI_BOT_TOKEN }}
     strategy:
       fail-fast: true
       matrix:
