@@ -5,7 +5,7 @@ package com.pulumi.gcp.sql;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.sql.inputs.UserSqlServerUserDetailsArgs;
+import com.pulumi.gcp.sql.inputs.UserPasswordPolicyArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -107,6 +107,13 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.password);
     }
 
+    @Import(name="passwordPolicy")
+    private @Nullable Output<UserPasswordPolicyArgs> passwordPolicy;
+
+    public Optional<Output<UserPasswordPolicyArgs>> passwordPolicy() {
+        return Optional.ofNullable(this.passwordPolicy);
+    }
+
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -122,13 +129,6 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
-    }
-
-    @Import(name="sqlServerUserDetails")
-    private @Nullable Output<UserSqlServerUserDetailsArgs> sqlServerUserDetails;
-
-    public Optional<Output<UserSqlServerUserDetailsArgs>> sqlServerUserDetails() {
-        return Optional.ofNullable(this.sqlServerUserDetails);
     }
 
     /**
@@ -158,8 +158,8 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         this.instance = $.instance;
         this.name = $.name;
         this.password = $.password;
+        this.passwordPolicy = $.passwordPolicy;
         this.project = $.project;
-        this.sqlServerUserDetails = $.sqlServerUserDetails;
         this.type = $.type;
     }
 
@@ -302,6 +302,15 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
             return password(Output.of(password));
         }
 
+        public Builder passwordPolicy(@Nullable Output<UserPasswordPolicyArgs> passwordPolicy) {
+            $.passwordPolicy = passwordPolicy;
+            return this;
+        }
+
+        public Builder passwordPolicy(UserPasswordPolicyArgs passwordPolicy) {
+            return passwordPolicy(Output.of(passwordPolicy));
+        }
+
         /**
          * @param project The ID of the project in which the resource belongs. If it
          * is not provided, the provider project is used.
@@ -323,15 +332,6 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
-        }
-
-        public Builder sqlServerUserDetails(@Nullable Output<UserSqlServerUserDetailsArgs> sqlServerUserDetails) {
-            $.sqlServerUserDetails = sqlServerUserDetails;
-            return this;
-        }
-
-        public Builder sqlServerUserDetails(UserSqlServerUserDetailsArgs sqlServerUserDetails) {
-            return sqlServerUserDetails(Output.of(sqlServerUserDetails));
         }
 
         /**

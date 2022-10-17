@@ -5,16 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { CustomConstraintArgs, CustomConstraintState } from "./customConstraint";
+export type CustomConstraint = import("./customConstraint").CustomConstraint;
+export const CustomConstraint: typeof import("./customConstraint").CustomConstraint = null as any;
+
 export { PolicyArgs, PolicyState } from "./policy";
 export type Policy = import("./policy").Policy;
 export const Policy: typeof import("./policy").Policy = null as any;
 
+utilities.lazyLoad(exports, ["CustomConstraint"], () => require("./customConstraint"));
 utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:orgpolicy/customConstraint:CustomConstraint":
+                return new CustomConstraint(name, <any>undefined, { urn })
             case "gcp:orgpolicy/policy:Policy":
                 return new Policy(name, <any>undefined, { urn })
             default:
@@ -22,4 +29,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "orgpolicy/customConstraint", _module)
 pulumi.runtime.registerResourceModule("gcp", "orgpolicy/policy", _module)

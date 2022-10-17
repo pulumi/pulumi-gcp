@@ -416,7 +416,7 @@ import javax.annotation.Nullable;
  *             .allows(FirewallAllowArgs.builder()
  *                 .protocol(&#34;tcp&#34;)
  *                 .build())
- *             .sourceTags(&#34;allow-health-check&#34;)
+ *             .targetTags(&#34;allow-health-check&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
@@ -446,7 +446,8 @@ import javax.annotation.Nullable;
  *                 .protocol(&#34;tcp&#34;)
  *                 .ports(&#34;22&#34;)
  *                 .build())
- *             .sourceTags(&#34;allow-ssh&#34;)
+ *             .targetTags(&#34;allow-ssh&#34;)
+ *             .sourceRanges(&#34;0.0.0.0/0&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());

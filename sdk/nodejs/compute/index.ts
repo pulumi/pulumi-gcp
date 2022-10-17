@@ -216,6 +216,10 @@ export { GetSSLPolicyArgs, GetSSLPolicyResult, GetSSLPolicyOutputArgs } from "./
 export const getSSLPolicy: typeof import("./getSSLPolicy").getSSLPolicy = null as any;
 export const getSSLPolicyOutput: typeof import("./getSSLPolicy").getSSLPolicyOutput = null as any;
 
+export { GetSnapshotArgs, GetSnapshotResult, GetSnapshotOutputArgs } from "./getSnapshot";
+export const getSnapshot: typeof import("./getSnapshot").getSnapshot = null as any;
+export const getSnapshotOutput: typeof import("./getSnapshot").getSnapshotOutput = null as any;
+
 export { GetSubnetworkArgs, GetSubnetworkResult, GetSubnetworkOutputArgs } from "./getSubnetwork";
 export const getSubnetwork: typeof import("./getSubnetwork").getSubnetwork = null as any;
 export const getSubnetworkOutput: typeof import("./getSubnetwork").getSubnetworkOutput = null as any;
@@ -476,6 +480,10 @@ export { RegionTargetHttpsProxyArgs, RegionTargetHttpsProxyState } from "./regio
 export type RegionTargetHttpsProxy = import("./regionTargetHttpsProxy").RegionTargetHttpsProxy;
 export const RegionTargetHttpsProxy: typeof import("./regionTargetHttpsProxy").RegionTargetHttpsProxy = null as any;
 
+export { RegionTargetTcpProxyArgs, RegionTargetTcpProxyState } from "./regionTargetTcpProxy";
+export type RegionTargetTcpProxy = import("./regionTargetTcpProxy").RegionTargetTcpProxy;
+export const RegionTargetTcpProxy: typeof import("./regionTargetTcpProxy").RegionTargetTcpProxy = null as any;
+
 export { RegionUrlMapArgs, RegionUrlMapState } from "./regionUrlMap";
 export type RegionUrlMap = import("./regionUrlMap").RegionUrlMap;
 export const RegionUrlMap: typeof import("./regionUrlMap").RegionUrlMap = null as any;
@@ -665,6 +673,7 @@ utilities.lazyLoad(exports, ["getResourcePolicy","getResourcePolicyOutput"], () 
 utilities.lazyLoad(exports, ["getRouter","getRouterOutput"], () => require("./getRouter"));
 utilities.lazyLoad(exports, ["getRouterStatus","getRouterStatusOutput"], () => require("./getRouterStatus"));
 utilities.lazyLoad(exports, ["getSSLPolicy","getSSLPolicyOutput"], () => require("./getSSLPolicy"));
+utilities.lazyLoad(exports, ["getSnapshot","getSnapshotOutput"], () => require("./getSnapshot"));
 utilities.lazyLoad(exports, ["getSubnetwork","getSubnetworkOutput"], () => require("./getSubnetwork"));
 utilities.lazyLoad(exports, ["getVPNGateway","getVPNGatewayOutput"], () => require("./getVPNGateway"));
 utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
@@ -730,6 +739,7 @@ utilities.lazyLoad(exports, ["RegionSslCertificate"], () => require("./regionSsl
 utilities.lazyLoad(exports, ["RegionSslPolicy"], () => require("./regionSslPolicy"));
 utilities.lazyLoad(exports, ["RegionTargetHttpProxy"], () => require("./regionTargetHttpProxy"));
 utilities.lazyLoad(exports, ["RegionTargetHttpsProxy"], () => require("./regionTargetHttpsProxy"));
+utilities.lazyLoad(exports, ["RegionTargetTcpProxy"], () => require("./regionTargetTcpProxy"));
 utilities.lazyLoad(exports, ["RegionUrlMap"], () => require("./regionUrlMap"));
 utilities.lazyLoad(exports, ["Reservation"], () => require("./reservation"));
 utilities.lazyLoad(exports, ["ResourcePolicy"], () => require("./resourcePolicy"));
@@ -943,6 +953,8 @@ const _module = {
                 return new RegionTargetHttpProxy(name, <any>undefined, { urn })
             case "gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy":
                 return new RegionTargetHttpsProxy(name, <any>undefined, { urn })
+            case "gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy":
+                return new RegionTargetTcpProxy(name, <any>undefined, { urn })
             case "gcp:compute/regionUrlMap:RegionUrlMap":
                 return new RegionUrlMap(name, <any>undefined, { urn })
             case "gcp:compute/reservation:Reservation":
@@ -1101,6 +1113,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/regionSslCertificate", _mo
 pulumi.runtime.registerResourceModule("gcp", "compute/regionSslPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionTargetHttpProxy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionTargetHttpsProxy", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionTargetTcpProxy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionUrlMap", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/reservation", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/resourcePolicy", _module)

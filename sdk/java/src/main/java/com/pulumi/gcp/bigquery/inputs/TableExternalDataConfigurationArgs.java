@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationAvroOptionsArgs;
 import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationCsvOptionsArgs;
 import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationGoogleSheetsOptionsArgs;
 import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationHivePartitioningOptionsArgs;
@@ -36,6 +37,23 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
      */
     public Output<Boolean> autodetect() {
         return this.autodetect;
+    }
+
+    /**
+     * Additional options if `source_format` is set to\
+     * &#34;AVRO&#34;.  Structure is documented below.
+     * 
+     */
+    @Import(name="avroOptions")
+    private @Nullable Output<TableExternalDataConfigurationAvroOptionsArgs> avroOptions;
+
+    /**
+     * @return Additional options if `source_format` is set to\
+     * &#34;AVRO&#34;.  Structure is documented below.
+     * 
+     */
+    public Optional<Output<TableExternalDataConfigurationAvroOptionsArgs>> avroOptions() {
+        return Optional.ofNullable(this.avroOptions);
     }
 
     /**
@@ -254,6 +272,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
     private TableExternalDataConfigurationArgs(TableExternalDataConfigurationArgs $) {
         this.autodetect = $.autodetect;
+        this.avroOptions = $.avroOptions;
         this.compression = $.compression;
         this.connectionId = $.connectionId;
         this.csvOptions = $.csvOptions;
@@ -305,6 +324,29 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
          */
         public Builder autodetect(Boolean autodetect) {
             return autodetect(Output.of(autodetect));
+        }
+
+        /**
+         * @param avroOptions Additional options if `source_format` is set to\
+         * &#34;AVRO&#34;.  Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder avroOptions(@Nullable Output<TableExternalDataConfigurationAvroOptionsArgs> avroOptions) {
+            $.avroOptions = avroOptions;
+            return this;
+        }
+
+        /**
+         * @param avroOptions Additional options if `source_format` is set to\
+         * &#34;AVRO&#34;.  Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder avroOptions(TableExternalDataConfigurationAvroOptionsArgs avroOptions) {
+            return avroOptions(Output.of(avroOptions));
         }
 
         /**

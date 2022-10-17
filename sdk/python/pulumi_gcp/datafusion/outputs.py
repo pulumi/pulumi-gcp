@@ -10,8 +10,44 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'InstanceCryptoKeyConfig',
     'InstanceNetworkConfig',
 ]
+
+@pulumi.output_type
+class InstanceCryptoKeyConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyReference":
+            suggest = "key_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceCryptoKeyConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceCryptoKeyConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceCryptoKeyConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key_reference: str):
+        """
+        :param str key_reference: The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        """
+        pulumi.set(__self__, "key_reference", key_reference)
+
+    @property
+    @pulumi.getter(name="keyReference")
+    def key_reference(self) -> str:
+        """
+        The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        """
+        return pulumi.get(self, "key_reference")
+
 
 @pulumi.output_type
 class InstanceNetworkConfig(dict):

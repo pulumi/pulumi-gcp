@@ -10,6 +10,124 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type ConnectionProfileBigqueryProfile struct {
+}
+
+// ConnectionProfileBigqueryProfileInput is an input type that accepts ConnectionProfileBigqueryProfileArgs and ConnectionProfileBigqueryProfileOutput values.
+// You can construct a concrete instance of `ConnectionProfileBigqueryProfileInput` via:
+//
+//	ConnectionProfileBigqueryProfileArgs{...}
+type ConnectionProfileBigqueryProfileInput interface {
+	pulumi.Input
+
+	ToConnectionProfileBigqueryProfileOutput() ConnectionProfileBigqueryProfileOutput
+	ToConnectionProfileBigqueryProfileOutputWithContext(context.Context) ConnectionProfileBigqueryProfileOutput
+}
+
+type ConnectionProfileBigqueryProfileArgs struct {
+}
+
+func (ConnectionProfileBigqueryProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileBigqueryProfile)(nil)).Elem()
+}
+
+func (i ConnectionProfileBigqueryProfileArgs) ToConnectionProfileBigqueryProfileOutput() ConnectionProfileBigqueryProfileOutput {
+	return i.ToConnectionProfileBigqueryProfileOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileBigqueryProfileArgs) ToConnectionProfileBigqueryProfileOutputWithContext(ctx context.Context) ConnectionProfileBigqueryProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileBigqueryProfileOutput)
+}
+
+func (i ConnectionProfileBigqueryProfileArgs) ToConnectionProfileBigqueryProfilePtrOutput() ConnectionProfileBigqueryProfilePtrOutput {
+	return i.ToConnectionProfileBigqueryProfilePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileBigqueryProfileArgs) ToConnectionProfileBigqueryProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileBigqueryProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileBigqueryProfileOutput).ToConnectionProfileBigqueryProfilePtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileBigqueryProfilePtrInput is an input type that accepts ConnectionProfileBigqueryProfileArgs, ConnectionProfileBigqueryProfilePtr and ConnectionProfileBigqueryProfilePtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileBigqueryProfilePtrInput` via:
+//
+//	        ConnectionProfileBigqueryProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileBigqueryProfilePtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileBigqueryProfilePtrOutput() ConnectionProfileBigqueryProfilePtrOutput
+	ToConnectionProfileBigqueryProfilePtrOutputWithContext(context.Context) ConnectionProfileBigqueryProfilePtrOutput
+}
+
+type connectionProfileBigqueryProfilePtrType ConnectionProfileBigqueryProfileArgs
+
+func ConnectionProfileBigqueryProfilePtr(v *ConnectionProfileBigqueryProfileArgs) ConnectionProfileBigqueryProfilePtrInput {
+	return (*connectionProfileBigqueryProfilePtrType)(v)
+}
+
+func (*connectionProfileBigqueryProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileBigqueryProfile)(nil)).Elem()
+}
+
+func (i *connectionProfileBigqueryProfilePtrType) ToConnectionProfileBigqueryProfilePtrOutput() ConnectionProfileBigqueryProfilePtrOutput {
+	return i.ToConnectionProfileBigqueryProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileBigqueryProfilePtrType) ToConnectionProfileBigqueryProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileBigqueryProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileBigqueryProfilePtrOutput)
+}
+
+type ConnectionProfileBigqueryProfileOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileBigqueryProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileBigqueryProfile)(nil)).Elem()
+}
+
+func (o ConnectionProfileBigqueryProfileOutput) ToConnectionProfileBigqueryProfileOutput() ConnectionProfileBigqueryProfileOutput {
+	return o
+}
+
+func (o ConnectionProfileBigqueryProfileOutput) ToConnectionProfileBigqueryProfileOutputWithContext(ctx context.Context) ConnectionProfileBigqueryProfileOutput {
+	return o
+}
+
+func (o ConnectionProfileBigqueryProfileOutput) ToConnectionProfileBigqueryProfilePtrOutput() ConnectionProfileBigqueryProfilePtrOutput {
+	return o.ToConnectionProfileBigqueryProfilePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileBigqueryProfileOutput) ToConnectionProfileBigqueryProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileBigqueryProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileBigqueryProfile) *ConnectionProfileBigqueryProfile {
+		return &v
+	}).(ConnectionProfileBigqueryProfilePtrOutput)
+}
+
+type ConnectionProfileBigqueryProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileBigqueryProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileBigqueryProfile)(nil)).Elem()
+}
+
+func (o ConnectionProfileBigqueryProfilePtrOutput) ToConnectionProfileBigqueryProfilePtrOutput() ConnectionProfileBigqueryProfilePtrOutput {
+	return o
+}
+
+func (o ConnectionProfileBigqueryProfilePtrOutput) ToConnectionProfileBigqueryProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileBigqueryProfilePtrOutput {
+	return o
+}
+
+func (o ConnectionProfileBigqueryProfilePtrOutput) Elem() ConnectionProfileBigqueryProfileOutput {
+	return o.ApplyT(func(v *ConnectionProfileBigqueryProfile) ConnectionProfileBigqueryProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileBigqueryProfile
+		return ret
+	}).(ConnectionProfileBigqueryProfileOutput)
+}
+
 type ConnectionProfileForwardSshConnectivity struct {
 	// Hostname for the SSH tunnel.
 	Hostname string `pulumi:"hostname"`
@@ -1502,6 +1620,8 @@ func (o PrivateConnectionVpcPeeringConfigPtrOutput) Vpc() pulumi.StringPtrOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileBigqueryProfileInput)(nil)).Elem(), ConnectionProfileBigqueryProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileBigqueryProfilePtrInput)(nil)).Elem(), ConnectionProfileBigqueryProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileForwardSshConnectivityInput)(nil)).Elem(), ConnectionProfileForwardSshConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileForwardSshConnectivityPtrInput)(nil)).Elem(), ConnectionProfileForwardSshConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileGcsProfileInput)(nil)).Elem(), ConnectionProfileGcsProfileArgs{})
@@ -1516,6 +1636,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlProfilePtrInput)(nil)).Elem(), ConnectionProfilePostgresqlProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionVpcPeeringConfigInput)(nil)).Elem(), PrivateConnectionVpcPeeringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionVpcPeeringConfigPtrInput)(nil)).Elem(), PrivateConnectionVpcPeeringConfigArgs{})
+	pulumi.RegisterOutputType(ConnectionProfileBigqueryProfileOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileBigqueryProfilePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileForwardSshConnectivityOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileForwardSshConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileGcsProfileOutput{})

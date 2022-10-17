@@ -3459,152 +3459,419 @@ func (o DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput) UploadInterval() 
 	}).(pulumi.StringPtrOutput)
 }
 
-type UserSqlServerUserDetails struct {
-	Disabled    *bool    `pulumi:"disabled"`
-	ServerRoles []string `pulumi:"serverRoles"`
+type UserPasswordPolicy struct {
+	// Number of failed attempts allowed before the user get locked.
+	AllowedFailedAttempts *int `pulumi:"allowedFailedAttempts"`
+	// If true, the check that will lock user after too many failed login attempts will be enabled.
+	EnableFailedAttemptsCheck *bool `pulumi:"enableFailedAttemptsCheck"`
+	// If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
+	EnablePasswordVerification *bool `pulumi:"enablePasswordVerification"`
+	// Password expiration duration with one week grace period.
+	PasswordExpirationDuration *string                    `pulumi:"passwordExpirationDuration"`
+	Statuses                   []UserPasswordPolicyStatus `pulumi:"statuses"`
 }
 
-// UserSqlServerUserDetailsInput is an input type that accepts UserSqlServerUserDetailsArgs and UserSqlServerUserDetailsOutput values.
-// You can construct a concrete instance of `UserSqlServerUserDetailsInput` via:
+// UserPasswordPolicyInput is an input type that accepts UserPasswordPolicyArgs and UserPasswordPolicyOutput values.
+// You can construct a concrete instance of `UserPasswordPolicyInput` via:
 //
-//	UserSqlServerUserDetailsArgs{...}
-type UserSqlServerUserDetailsInput interface {
+//	UserPasswordPolicyArgs{...}
+type UserPasswordPolicyInput interface {
 	pulumi.Input
 
-	ToUserSqlServerUserDetailsOutput() UserSqlServerUserDetailsOutput
-	ToUserSqlServerUserDetailsOutputWithContext(context.Context) UserSqlServerUserDetailsOutput
+	ToUserPasswordPolicyOutput() UserPasswordPolicyOutput
+	ToUserPasswordPolicyOutputWithContext(context.Context) UserPasswordPolicyOutput
 }
 
-type UserSqlServerUserDetailsArgs struct {
-	Disabled    pulumi.BoolPtrInput     `pulumi:"disabled"`
-	ServerRoles pulumi.StringArrayInput `pulumi:"serverRoles"`
+type UserPasswordPolicyArgs struct {
+	// Number of failed attempts allowed before the user get locked.
+	AllowedFailedAttempts pulumi.IntPtrInput `pulumi:"allowedFailedAttempts"`
+	// If true, the check that will lock user after too many failed login attempts will be enabled.
+	EnableFailedAttemptsCheck pulumi.BoolPtrInput `pulumi:"enableFailedAttemptsCheck"`
+	// If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
+	EnablePasswordVerification pulumi.BoolPtrInput `pulumi:"enablePasswordVerification"`
+	// Password expiration duration with one week grace period.
+	PasswordExpirationDuration pulumi.StringPtrInput              `pulumi:"passwordExpirationDuration"`
+	Statuses                   UserPasswordPolicyStatusArrayInput `pulumi:"statuses"`
 }
 
-func (UserSqlServerUserDetailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserSqlServerUserDetails)(nil)).Elem()
+func (UserPasswordPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPasswordPolicy)(nil)).Elem()
 }
 
-func (i UserSqlServerUserDetailsArgs) ToUserSqlServerUserDetailsOutput() UserSqlServerUserDetailsOutput {
-	return i.ToUserSqlServerUserDetailsOutputWithContext(context.Background())
+func (i UserPasswordPolicyArgs) ToUserPasswordPolicyOutput() UserPasswordPolicyOutput {
+	return i.ToUserPasswordPolicyOutputWithContext(context.Background())
 }
 
-func (i UserSqlServerUserDetailsArgs) ToUserSqlServerUserDetailsOutputWithContext(ctx context.Context) UserSqlServerUserDetailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserSqlServerUserDetailsOutput)
+func (i UserPasswordPolicyArgs) ToUserPasswordPolicyOutputWithContext(ctx context.Context) UserPasswordPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordPolicyOutput)
 }
 
-func (i UserSqlServerUserDetailsArgs) ToUserSqlServerUserDetailsPtrOutput() UserSqlServerUserDetailsPtrOutput {
-	return i.ToUserSqlServerUserDetailsPtrOutputWithContext(context.Background())
+func (i UserPasswordPolicyArgs) ToUserPasswordPolicyPtrOutput() UserPasswordPolicyPtrOutput {
+	return i.ToUserPasswordPolicyPtrOutputWithContext(context.Background())
 }
 
-func (i UserSqlServerUserDetailsArgs) ToUserSqlServerUserDetailsPtrOutputWithContext(ctx context.Context) UserSqlServerUserDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserSqlServerUserDetailsOutput).ToUserSqlServerUserDetailsPtrOutputWithContext(ctx)
+func (i UserPasswordPolicyArgs) ToUserPasswordPolicyPtrOutputWithContext(ctx context.Context) UserPasswordPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordPolicyOutput).ToUserPasswordPolicyPtrOutputWithContext(ctx)
 }
 
-// UserSqlServerUserDetailsPtrInput is an input type that accepts UserSqlServerUserDetailsArgs, UserSqlServerUserDetailsPtr and UserSqlServerUserDetailsPtrOutput values.
-// You can construct a concrete instance of `UserSqlServerUserDetailsPtrInput` via:
+// UserPasswordPolicyPtrInput is an input type that accepts UserPasswordPolicyArgs, UserPasswordPolicyPtr and UserPasswordPolicyPtrOutput values.
+// You can construct a concrete instance of `UserPasswordPolicyPtrInput` via:
 //
-//	        UserSqlServerUserDetailsArgs{...}
+//	        UserPasswordPolicyArgs{...}
 //
 //	or:
 //
 //	        nil
-type UserSqlServerUserDetailsPtrInput interface {
+type UserPasswordPolicyPtrInput interface {
 	pulumi.Input
 
-	ToUserSqlServerUserDetailsPtrOutput() UserSqlServerUserDetailsPtrOutput
-	ToUserSqlServerUserDetailsPtrOutputWithContext(context.Context) UserSqlServerUserDetailsPtrOutput
+	ToUserPasswordPolicyPtrOutput() UserPasswordPolicyPtrOutput
+	ToUserPasswordPolicyPtrOutputWithContext(context.Context) UserPasswordPolicyPtrOutput
 }
 
-type userSqlServerUserDetailsPtrType UserSqlServerUserDetailsArgs
+type userPasswordPolicyPtrType UserPasswordPolicyArgs
 
-func UserSqlServerUserDetailsPtr(v *UserSqlServerUserDetailsArgs) UserSqlServerUserDetailsPtrInput {
-	return (*userSqlServerUserDetailsPtrType)(v)
+func UserPasswordPolicyPtr(v *UserPasswordPolicyArgs) UserPasswordPolicyPtrInput {
+	return (*userPasswordPolicyPtrType)(v)
 }
 
-func (*userSqlServerUserDetailsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**UserSqlServerUserDetails)(nil)).Elem()
+func (*userPasswordPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPasswordPolicy)(nil)).Elem()
 }
 
-func (i *userSqlServerUserDetailsPtrType) ToUserSqlServerUserDetailsPtrOutput() UserSqlServerUserDetailsPtrOutput {
-	return i.ToUserSqlServerUserDetailsPtrOutputWithContext(context.Background())
+func (i *userPasswordPolicyPtrType) ToUserPasswordPolicyPtrOutput() UserPasswordPolicyPtrOutput {
+	return i.ToUserPasswordPolicyPtrOutputWithContext(context.Background())
 }
 
-func (i *userSqlServerUserDetailsPtrType) ToUserSqlServerUserDetailsPtrOutputWithContext(ctx context.Context) UserSqlServerUserDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserSqlServerUserDetailsPtrOutput)
+func (i *userPasswordPolicyPtrType) ToUserPasswordPolicyPtrOutputWithContext(ctx context.Context) UserPasswordPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordPolicyPtrOutput)
 }
 
-type UserSqlServerUserDetailsOutput struct{ *pulumi.OutputState }
+type UserPasswordPolicyOutput struct{ *pulumi.OutputState }
 
-func (UserSqlServerUserDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserSqlServerUserDetails)(nil)).Elem()
+func (UserPasswordPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPasswordPolicy)(nil)).Elem()
 }
 
-func (o UserSqlServerUserDetailsOutput) ToUserSqlServerUserDetailsOutput() UserSqlServerUserDetailsOutput {
+func (o UserPasswordPolicyOutput) ToUserPasswordPolicyOutput() UserPasswordPolicyOutput {
 	return o
 }
 
-func (o UserSqlServerUserDetailsOutput) ToUserSqlServerUserDetailsOutputWithContext(ctx context.Context) UserSqlServerUserDetailsOutput {
+func (o UserPasswordPolicyOutput) ToUserPasswordPolicyOutputWithContext(ctx context.Context) UserPasswordPolicyOutput {
 	return o
 }
 
-func (o UserSqlServerUserDetailsOutput) ToUserSqlServerUserDetailsPtrOutput() UserSqlServerUserDetailsPtrOutput {
-	return o.ToUserSqlServerUserDetailsPtrOutputWithContext(context.Background())
+func (o UserPasswordPolicyOutput) ToUserPasswordPolicyPtrOutput() UserPasswordPolicyPtrOutput {
+	return o.ToUserPasswordPolicyPtrOutputWithContext(context.Background())
 }
 
-func (o UserSqlServerUserDetailsOutput) ToUserSqlServerUserDetailsPtrOutputWithContext(ctx context.Context) UserSqlServerUserDetailsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserSqlServerUserDetails) *UserSqlServerUserDetails {
+func (o UserPasswordPolicyOutput) ToUserPasswordPolicyPtrOutputWithContext(ctx context.Context) UserPasswordPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserPasswordPolicy) *UserPasswordPolicy {
 		return &v
-	}).(UserSqlServerUserDetailsPtrOutput)
+	}).(UserPasswordPolicyPtrOutput)
 }
 
-func (o UserSqlServerUserDetailsOutput) Disabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v UserSqlServerUserDetails) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+// Number of failed attempts allowed before the user get locked.
+func (o UserPasswordPolicyOutput) AllowedFailedAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UserPasswordPolicy) *int { return v.AllowedFailedAttempts }).(pulumi.IntPtrOutput)
 }
 
-func (o UserSqlServerUserDetailsOutput) ServerRoles() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v UserSqlServerUserDetails) []string { return v.ServerRoles }).(pulumi.StringArrayOutput)
+// If true, the check that will lock user after too many failed login attempts will be enabled.
+func (o UserPasswordPolicyOutput) EnableFailedAttemptsCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPasswordPolicy) *bool { return v.EnableFailedAttemptsCheck }).(pulumi.BoolPtrOutput)
 }
 
-type UserSqlServerUserDetailsPtrOutput struct{ *pulumi.OutputState }
-
-func (UserSqlServerUserDetailsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**UserSqlServerUserDetails)(nil)).Elem()
+// If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
+func (o UserPasswordPolicyOutput) EnablePasswordVerification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPasswordPolicy) *bool { return v.EnablePasswordVerification }).(pulumi.BoolPtrOutput)
 }
 
-func (o UserSqlServerUserDetailsPtrOutput) ToUserSqlServerUserDetailsPtrOutput() UserSqlServerUserDetailsPtrOutput {
+// Password expiration duration with one week grace period.
+func (o UserPasswordPolicyOutput) PasswordExpirationDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPasswordPolicy) *string { return v.PasswordExpirationDuration }).(pulumi.StringPtrOutput)
+}
+
+func (o UserPasswordPolicyOutput) Statuses() UserPasswordPolicyStatusArrayOutput {
+	return o.ApplyT(func(v UserPasswordPolicy) []UserPasswordPolicyStatus { return v.Statuses }).(UserPasswordPolicyStatusArrayOutput)
+}
+
+type UserPasswordPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPasswordPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPasswordPolicy)(nil)).Elem()
+}
+
+func (o UserPasswordPolicyPtrOutput) ToUserPasswordPolicyPtrOutput() UserPasswordPolicyPtrOutput {
 	return o
 }
 
-func (o UserSqlServerUserDetailsPtrOutput) ToUserSqlServerUserDetailsPtrOutputWithContext(ctx context.Context) UserSqlServerUserDetailsPtrOutput {
+func (o UserPasswordPolicyPtrOutput) ToUserPasswordPolicyPtrOutputWithContext(ctx context.Context) UserPasswordPolicyPtrOutput {
 	return o
 }
 
-func (o UserSqlServerUserDetailsPtrOutput) Elem() UserSqlServerUserDetailsOutput {
-	return o.ApplyT(func(v *UserSqlServerUserDetails) UserSqlServerUserDetails {
+func (o UserPasswordPolicyPtrOutput) Elem() UserPasswordPolicyOutput {
+	return o.ApplyT(func(v *UserPasswordPolicy) UserPasswordPolicy {
 		if v != nil {
 			return *v
 		}
-		var ret UserSqlServerUserDetails
+		var ret UserPasswordPolicy
 		return ret
-	}).(UserSqlServerUserDetailsOutput)
+	}).(UserPasswordPolicyOutput)
 }
 
-func (o UserSqlServerUserDetailsPtrOutput) Disabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *UserSqlServerUserDetails) *bool {
+// Number of failed attempts allowed before the user get locked.
+func (o UserPasswordPolicyPtrOutput) AllowedFailedAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *UserPasswordPolicy) *int {
 		if v == nil {
 			return nil
 		}
-		return v.Disabled
+		return v.AllowedFailedAttempts
+	}).(pulumi.IntPtrOutput)
+}
+
+// If true, the check that will lock user after too many failed login attempts will be enabled.
+func (o UserPasswordPolicyPtrOutput) EnableFailedAttemptsCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UserPasswordPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableFailedAttemptsCheck
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o UserSqlServerUserDetailsPtrOutput) ServerRoles() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *UserSqlServerUserDetails) []string {
+// If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
+func (o UserPasswordPolicyPtrOutput) EnablePasswordVerification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UserPasswordPolicy) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.ServerRoles
-	}).(pulumi.StringArrayOutput)
+		return v.EnablePasswordVerification
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Password expiration duration with one week grace period.
+func (o UserPasswordPolicyPtrOutput) PasswordExpirationDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserPasswordPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordExpirationDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o UserPasswordPolicyPtrOutput) Statuses() UserPasswordPolicyStatusArrayOutput {
+	return o.ApplyT(func(v *UserPasswordPolicy) []UserPasswordPolicyStatus {
+		if v == nil {
+			return nil
+		}
+		return v.Statuses
+	}).(UserPasswordPolicyStatusArrayOutput)
+}
+
+type UserPasswordPolicyStatus struct {
+	// If true, user does not have login privileges.
+	Locked *bool `pulumi:"locked"`
+	// Password expiration duration with one week grace period.
+	PasswordExpirationTime *string `pulumi:"passwordExpirationTime"`
+}
+
+// UserPasswordPolicyStatusInput is an input type that accepts UserPasswordPolicyStatusArgs and UserPasswordPolicyStatusOutput values.
+// You can construct a concrete instance of `UserPasswordPolicyStatusInput` via:
+//
+//	UserPasswordPolicyStatusArgs{...}
+type UserPasswordPolicyStatusInput interface {
+	pulumi.Input
+
+	ToUserPasswordPolicyStatusOutput() UserPasswordPolicyStatusOutput
+	ToUserPasswordPolicyStatusOutputWithContext(context.Context) UserPasswordPolicyStatusOutput
+}
+
+type UserPasswordPolicyStatusArgs struct {
+	// If true, user does not have login privileges.
+	Locked pulumi.BoolPtrInput `pulumi:"locked"`
+	// Password expiration duration with one week grace period.
+	PasswordExpirationTime pulumi.StringPtrInput `pulumi:"passwordExpirationTime"`
+}
+
+func (UserPasswordPolicyStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPasswordPolicyStatus)(nil)).Elem()
+}
+
+func (i UserPasswordPolicyStatusArgs) ToUserPasswordPolicyStatusOutput() UserPasswordPolicyStatusOutput {
+	return i.ToUserPasswordPolicyStatusOutputWithContext(context.Background())
+}
+
+func (i UserPasswordPolicyStatusArgs) ToUserPasswordPolicyStatusOutputWithContext(ctx context.Context) UserPasswordPolicyStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordPolicyStatusOutput)
+}
+
+// UserPasswordPolicyStatusArrayInput is an input type that accepts UserPasswordPolicyStatusArray and UserPasswordPolicyStatusArrayOutput values.
+// You can construct a concrete instance of `UserPasswordPolicyStatusArrayInput` via:
+//
+//	UserPasswordPolicyStatusArray{ UserPasswordPolicyStatusArgs{...} }
+type UserPasswordPolicyStatusArrayInput interface {
+	pulumi.Input
+
+	ToUserPasswordPolicyStatusArrayOutput() UserPasswordPolicyStatusArrayOutput
+	ToUserPasswordPolicyStatusArrayOutputWithContext(context.Context) UserPasswordPolicyStatusArrayOutput
+}
+
+type UserPasswordPolicyStatusArray []UserPasswordPolicyStatusInput
+
+func (UserPasswordPolicyStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserPasswordPolicyStatus)(nil)).Elem()
+}
+
+func (i UserPasswordPolicyStatusArray) ToUserPasswordPolicyStatusArrayOutput() UserPasswordPolicyStatusArrayOutput {
+	return i.ToUserPasswordPolicyStatusArrayOutputWithContext(context.Background())
+}
+
+func (i UserPasswordPolicyStatusArray) ToUserPasswordPolicyStatusArrayOutputWithContext(ctx context.Context) UserPasswordPolicyStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordPolicyStatusArrayOutput)
+}
+
+type UserPasswordPolicyStatusOutput struct{ *pulumi.OutputState }
+
+func (UserPasswordPolicyStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPasswordPolicyStatus)(nil)).Elem()
+}
+
+func (o UserPasswordPolicyStatusOutput) ToUserPasswordPolicyStatusOutput() UserPasswordPolicyStatusOutput {
+	return o
+}
+
+func (o UserPasswordPolicyStatusOutput) ToUserPasswordPolicyStatusOutputWithContext(ctx context.Context) UserPasswordPolicyStatusOutput {
+	return o
+}
+
+// If true, user does not have login privileges.
+func (o UserPasswordPolicyStatusOutput) Locked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPasswordPolicyStatus) *bool { return v.Locked }).(pulumi.BoolPtrOutput)
+}
+
+// Password expiration duration with one week grace period.
+func (o UserPasswordPolicyStatusOutput) PasswordExpirationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPasswordPolicyStatus) *string { return v.PasswordExpirationTime }).(pulumi.StringPtrOutput)
+}
+
+type UserPasswordPolicyStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (UserPasswordPolicyStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserPasswordPolicyStatus)(nil)).Elem()
+}
+
+func (o UserPasswordPolicyStatusArrayOutput) ToUserPasswordPolicyStatusArrayOutput() UserPasswordPolicyStatusArrayOutput {
+	return o
+}
+
+func (o UserPasswordPolicyStatusArrayOutput) ToUserPasswordPolicyStatusArrayOutputWithContext(ctx context.Context) UserPasswordPolicyStatusArrayOutput {
+	return o
+}
+
+func (o UserPasswordPolicyStatusArrayOutput) Index(i pulumi.IntInput) UserPasswordPolicyStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserPasswordPolicyStatus {
+		return vs[0].([]UserPasswordPolicyStatus)[vs[1].(int)]
+	}).(UserPasswordPolicyStatusOutput)
+}
+
+type UserSqlServerUserDetail struct {
+	Disabled    *bool    `pulumi:"disabled"`
+	ServerRoles []string `pulumi:"serverRoles"`
+}
+
+// UserSqlServerUserDetailInput is an input type that accepts UserSqlServerUserDetailArgs and UserSqlServerUserDetailOutput values.
+// You can construct a concrete instance of `UserSqlServerUserDetailInput` via:
+//
+//	UserSqlServerUserDetailArgs{...}
+type UserSqlServerUserDetailInput interface {
+	pulumi.Input
+
+	ToUserSqlServerUserDetailOutput() UserSqlServerUserDetailOutput
+	ToUserSqlServerUserDetailOutputWithContext(context.Context) UserSqlServerUserDetailOutput
+}
+
+type UserSqlServerUserDetailArgs struct {
+	Disabled    pulumi.BoolPtrInput     `pulumi:"disabled"`
+	ServerRoles pulumi.StringArrayInput `pulumi:"serverRoles"`
+}
+
+func (UserSqlServerUserDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserSqlServerUserDetail)(nil)).Elem()
+}
+
+func (i UserSqlServerUserDetailArgs) ToUserSqlServerUserDetailOutput() UserSqlServerUserDetailOutput {
+	return i.ToUserSqlServerUserDetailOutputWithContext(context.Background())
+}
+
+func (i UserSqlServerUserDetailArgs) ToUserSqlServerUserDetailOutputWithContext(ctx context.Context) UserSqlServerUserDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserSqlServerUserDetailOutput)
+}
+
+// UserSqlServerUserDetailArrayInput is an input type that accepts UserSqlServerUserDetailArray and UserSqlServerUserDetailArrayOutput values.
+// You can construct a concrete instance of `UserSqlServerUserDetailArrayInput` via:
+//
+//	UserSqlServerUserDetailArray{ UserSqlServerUserDetailArgs{...} }
+type UserSqlServerUserDetailArrayInput interface {
+	pulumi.Input
+
+	ToUserSqlServerUserDetailArrayOutput() UserSqlServerUserDetailArrayOutput
+	ToUserSqlServerUserDetailArrayOutputWithContext(context.Context) UserSqlServerUserDetailArrayOutput
+}
+
+type UserSqlServerUserDetailArray []UserSqlServerUserDetailInput
+
+func (UserSqlServerUserDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserSqlServerUserDetail)(nil)).Elem()
+}
+
+func (i UserSqlServerUserDetailArray) ToUserSqlServerUserDetailArrayOutput() UserSqlServerUserDetailArrayOutput {
+	return i.ToUserSqlServerUserDetailArrayOutputWithContext(context.Background())
+}
+
+func (i UserSqlServerUserDetailArray) ToUserSqlServerUserDetailArrayOutputWithContext(ctx context.Context) UserSqlServerUserDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserSqlServerUserDetailArrayOutput)
+}
+
+type UserSqlServerUserDetailOutput struct{ *pulumi.OutputState }
+
+func (UserSqlServerUserDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserSqlServerUserDetail)(nil)).Elem()
+}
+
+func (o UserSqlServerUserDetailOutput) ToUserSqlServerUserDetailOutput() UserSqlServerUserDetailOutput {
+	return o
+}
+
+func (o UserSqlServerUserDetailOutput) ToUserSqlServerUserDetailOutputWithContext(ctx context.Context) UserSqlServerUserDetailOutput {
+	return o
+}
+
+func (o UserSqlServerUserDetailOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserSqlServerUserDetail) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o UserSqlServerUserDetailOutput) ServerRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UserSqlServerUserDetail) []string { return v.ServerRoles }).(pulumi.StringArrayOutput)
+}
+
+type UserSqlServerUserDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (UserSqlServerUserDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserSqlServerUserDetail)(nil)).Elem()
+}
+
+func (o UserSqlServerUserDetailArrayOutput) ToUserSqlServerUserDetailArrayOutput() UserSqlServerUserDetailArrayOutput {
+	return o
+}
+
+func (o UserSqlServerUserDetailArrayOutput) ToUserSqlServerUserDetailArrayOutputWithContext(ctx context.Context) UserSqlServerUserDetailArrayOutput {
+	return o
+}
+
+func (o UserSqlServerUserDetailArrayOutput) Index(i pulumi.IntInput) UserSqlServerUserDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserSqlServerUserDetail {
+		return vs[0].([]UserSqlServerUserDetail)[vs[1].(int)]
+	}).(UserSqlServerUserDetailOutput)
 }
 
 type GetCaCertsCert struct {
@@ -5808,8 +6075,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsPasswordValidationPolicyPtrInput)(nil)).Elem(), DatabaseInstanceSettingsPasswordValidationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsSqlServerAuditConfigInput)(nil)).Elem(), DatabaseInstanceSettingsSqlServerAuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsSqlServerAuditConfigPtrInput)(nil)).Elem(), DatabaseInstanceSettingsSqlServerAuditConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UserSqlServerUserDetailsInput)(nil)).Elem(), UserSqlServerUserDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*UserSqlServerUserDetailsPtrInput)(nil)).Elem(), UserSqlServerUserDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordPolicyInput)(nil)).Elem(), UserPasswordPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordPolicyPtrInput)(nil)).Elem(), UserPasswordPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordPolicyStatusInput)(nil)).Elem(), UserPasswordPolicyStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordPolicyStatusArrayInput)(nil)).Elem(), UserPasswordPolicyStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserSqlServerUserDetailInput)(nil)).Elem(), UserSqlServerUserDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserSqlServerUserDetailArrayInput)(nil)).Elem(), UserSqlServerUserDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCaCertsCertInput)(nil)).Elem(), GetCaCertsCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCaCertsCertArrayInput)(nil)).Elem(), GetCaCertsCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceCloneInput)(nil)).Elem(), GetDatabaseInstanceCloneArgs{})
@@ -5880,8 +6151,12 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsSqlServerAuditConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsSqlServerAuditConfigPtrOutput{})
-	pulumi.RegisterOutputType(UserSqlServerUserDetailsOutput{})
-	pulumi.RegisterOutputType(UserSqlServerUserDetailsPtrOutput{})
+	pulumi.RegisterOutputType(UserPasswordPolicyOutput{})
+	pulumi.RegisterOutputType(UserPasswordPolicyPtrOutput{})
+	pulumi.RegisterOutputType(UserPasswordPolicyStatusOutput{})
+	pulumi.RegisterOutputType(UserPasswordPolicyStatusArrayOutput{})
+	pulumi.RegisterOutputType(UserSqlServerUserDetailOutput{})
+	pulumi.RegisterOutputType(UserSqlServerUserDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetCaCertsCertOutput{})
 	pulumi.RegisterOutputType(GetCaCertsCertArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceCloneOutput{})

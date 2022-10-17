@@ -11,6 +11,7 @@ from .. import _utilities
 
 __all__ = [
     'BucketCorArgs',
+    'BucketCustomPlacementConfigArgs',
     'BucketEncryptionArgs',
     'BucketIAMBindingConditionArgs',
     'BucketIAMMemberConditionArgs',
@@ -112,6 +113,28 @@ class BucketCorArgs:
     @response_headers.setter
     def response_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "response_headers", value)
+
+
+@pulumi.input_type
+class BucketCustomPlacementConfigArgs:
+    def __init__(__self__, *,
+                 data_locations: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] data_locations: The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the data_locations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
+        """
+        pulumi.set(__self__, "data_locations", data_locations)
+
+    @property
+    @pulumi.getter(name="dataLocations")
+    def data_locations(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the data_locations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
+        """
+        return pulumi.get(self, "data_locations")
+
+    @data_locations.setter
+    def data_locations(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "data_locations", value)
 
 
 @pulumi.input_type

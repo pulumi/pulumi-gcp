@@ -59,6 +59,7 @@ type LookupBackendBucketArgs struct {
 type LookupBackendBucketResult struct {
 	BucketName            string                      `pulumi:"bucketName"`
 	CdnPolicies           []GetBackendBucketCdnPolicy `pulumi:"cdnPolicies"`
+	CompressionMode       string                      `pulumi:"compressionMode"`
 	CreationTimestamp     string                      `pulumi:"creationTimestamp"`
 	CustomResponseHeaders []string                    `pulumi:"customResponseHeaders"`
 	Description           string                      `pulumi:"description"`
@@ -118,6 +119,10 @@ func (o LookupBackendBucketResultOutput) BucketName() pulumi.StringOutput {
 
 func (o LookupBackendBucketResultOutput) CdnPolicies() GetBackendBucketCdnPolicyArrayOutput {
 	return o.ApplyT(func(v LookupBackendBucketResult) []GetBackendBucketCdnPolicy { return v.CdnPolicies }).(GetBackendBucketCdnPolicyArrayOutput)
+}
+
+func (o LookupBackendBucketResultOutput) CompressionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendBucketResult) string { return v.CompressionMode }).(pulumi.StringOutput)
 }
 
 func (o LookupBackendBucketResultOutput) CreationTimestamp() pulumi.StringOutput {

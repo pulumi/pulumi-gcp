@@ -1387,7 +1387,6 @@ type TagField struct {
 	// Holds the value for a tag field with double type.
 	DoubleValue *float64 `pulumi:"doubleValue"`
 	// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-	// Structure is documented below.
 	EnumValue *string `pulumi:"enumValue"`
 	// The identifier for this object. Format specified above.
 	FieldName string `pulumi:"fieldName"`
@@ -1422,7 +1421,6 @@ type TagFieldArgs struct {
 	// Holds the value for a tag field with double type.
 	DoubleValue pulumi.Float64PtrInput `pulumi:"doubleValue"`
 	// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-	// Structure is documented below.
 	EnumValue pulumi.StringPtrInput `pulumi:"enumValue"`
 	// The identifier for this object. Format specified above.
 	FieldName pulumi.StringInput `pulumi:"fieldName"`
@@ -1505,7 +1503,6 @@ func (o TagFieldOutput) DoubleValue() pulumi.Float64PtrOutput {
 }
 
 // Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-// Structure is documented below.
 func (o TagFieldOutput) EnumValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagField) *string { return v.EnumValue }).(pulumi.StringPtrOutput)
 }

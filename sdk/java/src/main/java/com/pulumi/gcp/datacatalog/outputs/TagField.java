@@ -32,7 +32,6 @@ public final class TagField {
     private @Nullable Double doubleValue;
     /**
      * @return Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-     * Structure is documented below.
      * 
      */
     private @Nullable String enumValue;
@@ -85,7 +84,6 @@ public final class TagField {
     }
     /**
      * @return Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-     * Structure is documented below.
      * 
      */
     public Optional<String> enumValue() {

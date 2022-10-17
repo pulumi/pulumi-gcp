@@ -6135,7 +6135,8 @@ class InstanceBootDiskInitializeParamsArgs:
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
-        :param pulumi.Input[Mapping[str, Any]] labels: A map of key/value label pairs to assign to the instance.
+        :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs assigned to the disk. This  
+               field is only applicable for persistent disks.
         :param pulumi.Input[int] size: The size of the image in gigabytes. If not specified, it
                will inherit the size of its base image.
         :param pulumi.Input[str] type: The type of reservation from which this instance can consume resources.
@@ -6173,7 +6174,8 @@ class InstanceBootDiskInitializeParamsArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A map of key/value label pairs to assign to the instance.
+        A set of key/value label pairs assigned to the disk. This  
+        field is only applicable for persistent disks.
         """
         return pulumi.get(self, "labels")
 

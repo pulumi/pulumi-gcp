@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? GpuPartitionSize { get; set; }
 
         /// <summary>
+        /// Configuration for GPU sharing. Structure is documented below.
+        /// </summary>
+        [Input("gpuSharingConfig")]
+        public Input<Inputs.ClusterNodeConfigGuestAcceleratorGpuSharingConfigGetArgs>? GpuSharingConfig { get; set; }
+
+        /// <summary>
         /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         /// </summary>
         [Input("type", required: true)]

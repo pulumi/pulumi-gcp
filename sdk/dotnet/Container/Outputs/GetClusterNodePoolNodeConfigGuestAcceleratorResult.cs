@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Container.Outputs
     {
         public readonly int Count;
         public readonly string GpuPartitionSize;
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigResult> GpuSharingConfigs;
         public readonly string Type;
 
         [OutputConstructor]
@@ -23,10 +24,13 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string gpuPartitionSize,
 
+            ImmutableArray<Outputs.GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigResult> gpuSharingConfigs,
+
             string type)
         {
             Count = count;
             GpuPartitionSize = gpuPartitionSize;
+            GpuSharingConfigs = gpuSharingConfigs;
             Type = type;
         }
     }

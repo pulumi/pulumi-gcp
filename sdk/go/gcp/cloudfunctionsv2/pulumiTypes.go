@@ -2452,6 +2452,1216 @@ func (o FunctionServiceConfigSecretVolumeVersionArrayOutput) Index(i pulumi.IntI
 	}).(FunctionServiceConfigSecretVolumeVersionOutput)
 }
 
+type GetFunctionBuildConfig struct {
+	Build                string                         `pulumi:"build"`
+	DockerRepository     string                         `pulumi:"dockerRepository"`
+	EntryPoint           string                         `pulumi:"entryPoint"`
+	EnvironmentVariables map[string]string              `pulumi:"environmentVariables"`
+	Runtime              string                         `pulumi:"runtime"`
+	Sources              []GetFunctionBuildConfigSource `pulumi:"sources"`
+	WorkerPool           string                         `pulumi:"workerPool"`
+}
+
+// GetFunctionBuildConfigInput is an input type that accepts GetFunctionBuildConfigArgs and GetFunctionBuildConfigOutput values.
+// You can construct a concrete instance of `GetFunctionBuildConfigInput` via:
+//
+//	GetFunctionBuildConfigArgs{...}
+type GetFunctionBuildConfigInput interface {
+	pulumi.Input
+
+	ToGetFunctionBuildConfigOutput() GetFunctionBuildConfigOutput
+	ToGetFunctionBuildConfigOutputWithContext(context.Context) GetFunctionBuildConfigOutput
+}
+
+type GetFunctionBuildConfigArgs struct {
+	Build                pulumi.StringInput                     `pulumi:"build"`
+	DockerRepository     pulumi.StringInput                     `pulumi:"dockerRepository"`
+	EntryPoint           pulumi.StringInput                     `pulumi:"entryPoint"`
+	EnvironmentVariables pulumi.StringMapInput                  `pulumi:"environmentVariables"`
+	Runtime              pulumi.StringInput                     `pulumi:"runtime"`
+	Sources              GetFunctionBuildConfigSourceArrayInput `pulumi:"sources"`
+	WorkerPool           pulumi.StringInput                     `pulumi:"workerPool"`
+}
+
+func (GetFunctionBuildConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionBuildConfig)(nil)).Elem()
+}
+
+func (i GetFunctionBuildConfigArgs) ToGetFunctionBuildConfigOutput() GetFunctionBuildConfigOutput {
+	return i.ToGetFunctionBuildConfigOutputWithContext(context.Background())
+}
+
+func (i GetFunctionBuildConfigArgs) ToGetFunctionBuildConfigOutputWithContext(ctx context.Context) GetFunctionBuildConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionBuildConfigOutput)
+}
+
+// GetFunctionBuildConfigArrayInput is an input type that accepts GetFunctionBuildConfigArray and GetFunctionBuildConfigArrayOutput values.
+// You can construct a concrete instance of `GetFunctionBuildConfigArrayInput` via:
+//
+//	GetFunctionBuildConfigArray{ GetFunctionBuildConfigArgs{...} }
+type GetFunctionBuildConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetFunctionBuildConfigArrayOutput() GetFunctionBuildConfigArrayOutput
+	ToGetFunctionBuildConfigArrayOutputWithContext(context.Context) GetFunctionBuildConfigArrayOutput
+}
+
+type GetFunctionBuildConfigArray []GetFunctionBuildConfigInput
+
+func (GetFunctionBuildConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionBuildConfig)(nil)).Elem()
+}
+
+func (i GetFunctionBuildConfigArray) ToGetFunctionBuildConfigArrayOutput() GetFunctionBuildConfigArrayOutput {
+	return i.ToGetFunctionBuildConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetFunctionBuildConfigArray) ToGetFunctionBuildConfigArrayOutputWithContext(ctx context.Context) GetFunctionBuildConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionBuildConfigArrayOutput)
+}
+
+type GetFunctionBuildConfigOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionBuildConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionBuildConfig)(nil)).Elem()
+}
+
+func (o GetFunctionBuildConfigOutput) ToGetFunctionBuildConfigOutput() GetFunctionBuildConfigOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigOutput) ToGetFunctionBuildConfigOutputWithContext(ctx context.Context) GetFunctionBuildConfigOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigOutput) Build() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfig) string { return v.Build }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionBuildConfigOutput) DockerRepository() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfig) string { return v.DockerRepository }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionBuildConfigOutput) EntryPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfig) string { return v.EntryPoint }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionBuildConfigOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfig) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
+}
+
+func (o GetFunctionBuildConfigOutput) Runtime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfig) string { return v.Runtime }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionBuildConfigOutput) Sources() GetFunctionBuildConfigSourceArrayOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfig) []GetFunctionBuildConfigSource { return v.Sources }).(GetFunctionBuildConfigSourceArrayOutput)
+}
+
+func (o GetFunctionBuildConfigOutput) WorkerPool() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfig) string { return v.WorkerPool }).(pulumi.StringOutput)
+}
+
+type GetFunctionBuildConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionBuildConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionBuildConfig)(nil)).Elem()
+}
+
+func (o GetFunctionBuildConfigArrayOutput) ToGetFunctionBuildConfigArrayOutput() GetFunctionBuildConfigArrayOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigArrayOutput) ToGetFunctionBuildConfigArrayOutputWithContext(ctx context.Context) GetFunctionBuildConfigArrayOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigArrayOutput) Index(i pulumi.IntInput) GetFunctionBuildConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionBuildConfig {
+		return vs[0].([]GetFunctionBuildConfig)[vs[1].(int)]
+	}).(GetFunctionBuildConfigOutput)
+}
+
+type GetFunctionBuildConfigSource struct {
+	RepoSources    []GetFunctionBuildConfigSourceRepoSource    `pulumi:"repoSources"`
+	StorageSources []GetFunctionBuildConfigSourceStorageSource `pulumi:"storageSources"`
+}
+
+// GetFunctionBuildConfigSourceInput is an input type that accepts GetFunctionBuildConfigSourceArgs and GetFunctionBuildConfigSourceOutput values.
+// You can construct a concrete instance of `GetFunctionBuildConfigSourceInput` via:
+//
+//	GetFunctionBuildConfigSourceArgs{...}
+type GetFunctionBuildConfigSourceInput interface {
+	pulumi.Input
+
+	ToGetFunctionBuildConfigSourceOutput() GetFunctionBuildConfigSourceOutput
+	ToGetFunctionBuildConfigSourceOutputWithContext(context.Context) GetFunctionBuildConfigSourceOutput
+}
+
+type GetFunctionBuildConfigSourceArgs struct {
+	RepoSources    GetFunctionBuildConfigSourceRepoSourceArrayInput    `pulumi:"repoSources"`
+	StorageSources GetFunctionBuildConfigSourceStorageSourceArrayInput `pulumi:"storageSources"`
+}
+
+func (GetFunctionBuildConfigSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionBuildConfigSource)(nil)).Elem()
+}
+
+func (i GetFunctionBuildConfigSourceArgs) ToGetFunctionBuildConfigSourceOutput() GetFunctionBuildConfigSourceOutput {
+	return i.ToGetFunctionBuildConfigSourceOutputWithContext(context.Background())
+}
+
+func (i GetFunctionBuildConfigSourceArgs) ToGetFunctionBuildConfigSourceOutputWithContext(ctx context.Context) GetFunctionBuildConfigSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionBuildConfigSourceOutput)
+}
+
+// GetFunctionBuildConfigSourceArrayInput is an input type that accepts GetFunctionBuildConfigSourceArray and GetFunctionBuildConfigSourceArrayOutput values.
+// You can construct a concrete instance of `GetFunctionBuildConfigSourceArrayInput` via:
+//
+//	GetFunctionBuildConfigSourceArray{ GetFunctionBuildConfigSourceArgs{...} }
+type GetFunctionBuildConfigSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetFunctionBuildConfigSourceArrayOutput() GetFunctionBuildConfigSourceArrayOutput
+	ToGetFunctionBuildConfigSourceArrayOutputWithContext(context.Context) GetFunctionBuildConfigSourceArrayOutput
+}
+
+type GetFunctionBuildConfigSourceArray []GetFunctionBuildConfigSourceInput
+
+func (GetFunctionBuildConfigSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionBuildConfigSource)(nil)).Elem()
+}
+
+func (i GetFunctionBuildConfigSourceArray) ToGetFunctionBuildConfigSourceArrayOutput() GetFunctionBuildConfigSourceArrayOutput {
+	return i.ToGetFunctionBuildConfigSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetFunctionBuildConfigSourceArray) ToGetFunctionBuildConfigSourceArrayOutputWithContext(ctx context.Context) GetFunctionBuildConfigSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionBuildConfigSourceArrayOutput)
+}
+
+type GetFunctionBuildConfigSourceOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionBuildConfigSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionBuildConfigSource)(nil)).Elem()
+}
+
+func (o GetFunctionBuildConfigSourceOutput) ToGetFunctionBuildConfigSourceOutput() GetFunctionBuildConfigSourceOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigSourceOutput) ToGetFunctionBuildConfigSourceOutputWithContext(ctx context.Context) GetFunctionBuildConfigSourceOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigSourceOutput) RepoSources() GetFunctionBuildConfigSourceRepoSourceArrayOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfigSource) []GetFunctionBuildConfigSourceRepoSource { return v.RepoSources }).(GetFunctionBuildConfigSourceRepoSourceArrayOutput)
+}
+
+func (o GetFunctionBuildConfigSourceOutput) StorageSources() GetFunctionBuildConfigSourceStorageSourceArrayOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfigSource) []GetFunctionBuildConfigSourceStorageSource {
+		return v.StorageSources
+	}).(GetFunctionBuildConfigSourceStorageSourceArrayOutput)
+}
+
+type GetFunctionBuildConfigSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionBuildConfigSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionBuildConfigSource)(nil)).Elem()
+}
+
+func (o GetFunctionBuildConfigSourceArrayOutput) ToGetFunctionBuildConfigSourceArrayOutput() GetFunctionBuildConfigSourceArrayOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigSourceArrayOutput) ToGetFunctionBuildConfigSourceArrayOutputWithContext(ctx context.Context) GetFunctionBuildConfigSourceArrayOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigSourceArrayOutput) Index(i pulumi.IntInput) GetFunctionBuildConfigSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionBuildConfigSource {
+		return vs[0].([]GetFunctionBuildConfigSource)[vs[1].(int)]
+	}).(GetFunctionBuildConfigSourceOutput)
+}
+
+type GetFunctionBuildConfigSourceRepoSource struct {
+	BranchName  string `pulumi:"branchName"`
+	CommitSha   string `pulumi:"commitSha"`
+	Dir         string `pulumi:"dir"`
+	InvertRegex bool   `pulumi:"invertRegex"`
+	ProjectId   string `pulumi:"projectId"`
+	RepoName    string `pulumi:"repoName"`
+	TagName     string `pulumi:"tagName"`
+}
+
+// GetFunctionBuildConfigSourceRepoSourceInput is an input type that accepts GetFunctionBuildConfigSourceRepoSourceArgs and GetFunctionBuildConfigSourceRepoSourceOutput values.
+// You can construct a concrete instance of `GetFunctionBuildConfigSourceRepoSourceInput` via:
+//
+//	GetFunctionBuildConfigSourceRepoSourceArgs{...}
+type GetFunctionBuildConfigSourceRepoSourceInput interface {
+	pulumi.Input
+
+	ToGetFunctionBuildConfigSourceRepoSourceOutput() GetFunctionBuildConfigSourceRepoSourceOutput
+	ToGetFunctionBuildConfigSourceRepoSourceOutputWithContext(context.Context) GetFunctionBuildConfigSourceRepoSourceOutput
+}
+
+type GetFunctionBuildConfigSourceRepoSourceArgs struct {
+	BranchName  pulumi.StringInput `pulumi:"branchName"`
+	CommitSha   pulumi.StringInput `pulumi:"commitSha"`
+	Dir         pulumi.StringInput `pulumi:"dir"`
+	InvertRegex pulumi.BoolInput   `pulumi:"invertRegex"`
+	ProjectId   pulumi.StringInput `pulumi:"projectId"`
+	RepoName    pulumi.StringInput `pulumi:"repoName"`
+	TagName     pulumi.StringInput `pulumi:"tagName"`
+}
+
+func (GetFunctionBuildConfigSourceRepoSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionBuildConfigSourceRepoSource)(nil)).Elem()
+}
+
+func (i GetFunctionBuildConfigSourceRepoSourceArgs) ToGetFunctionBuildConfigSourceRepoSourceOutput() GetFunctionBuildConfigSourceRepoSourceOutput {
+	return i.ToGetFunctionBuildConfigSourceRepoSourceOutputWithContext(context.Background())
+}
+
+func (i GetFunctionBuildConfigSourceRepoSourceArgs) ToGetFunctionBuildConfigSourceRepoSourceOutputWithContext(ctx context.Context) GetFunctionBuildConfigSourceRepoSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionBuildConfigSourceRepoSourceOutput)
+}
+
+// GetFunctionBuildConfigSourceRepoSourceArrayInput is an input type that accepts GetFunctionBuildConfigSourceRepoSourceArray and GetFunctionBuildConfigSourceRepoSourceArrayOutput values.
+// You can construct a concrete instance of `GetFunctionBuildConfigSourceRepoSourceArrayInput` via:
+//
+//	GetFunctionBuildConfigSourceRepoSourceArray{ GetFunctionBuildConfigSourceRepoSourceArgs{...} }
+type GetFunctionBuildConfigSourceRepoSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetFunctionBuildConfigSourceRepoSourceArrayOutput() GetFunctionBuildConfigSourceRepoSourceArrayOutput
+	ToGetFunctionBuildConfigSourceRepoSourceArrayOutputWithContext(context.Context) GetFunctionBuildConfigSourceRepoSourceArrayOutput
+}
+
+type GetFunctionBuildConfigSourceRepoSourceArray []GetFunctionBuildConfigSourceRepoSourceInput
+
+func (GetFunctionBuildConfigSourceRepoSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionBuildConfigSourceRepoSource)(nil)).Elem()
+}
+
+func (i GetFunctionBuildConfigSourceRepoSourceArray) ToGetFunctionBuildConfigSourceRepoSourceArrayOutput() GetFunctionBuildConfigSourceRepoSourceArrayOutput {
+	return i.ToGetFunctionBuildConfigSourceRepoSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetFunctionBuildConfigSourceRepoSourceArray) ToGetFunctionBuildConfigSourceRepoSourceArrayOutputWithContext(ctx context.Context) GetFunctionBuildConfigSourceRepoSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionBuildConfigSourceRepoSourceArrayOutput)
+}
+
+type GetFunctionBuildConfigSourceRepoSourceOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionBuildConfigSourceRepoSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionBuildConfigSourceRepoSource)(nil)).Elem()
+}
+
+func (o GetFunctionBuildConfigSourceRepoSourceOutput) ToGetFunctionBuildConfigSourceRepoSourceOutput() GetFunctionBuildConfigSourceRepoSourceOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigSourceRepoSourceOutput) ToGetFunctionBuildConfigSourceRepoSourceOutputWithContext(ctx context.Context) GetFunctionBuildConfigSourceRepoSourceOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigSourceRepoSourceOutput) BranchName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfigSourceRepoSource) string { return v.BranchName }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionBuildConfigSourceRepoSourceOutput) CommitSha() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfigSourceRepoSource) string { return v.CommitSha }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionBuildConfigSourceRepoSourceOutput) Dir() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfigSourceRepoSource) string { return v.Dir }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionBuildConfigSourceRepoSourceOutput) InvertRegex() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfigSourceRepoSource) bool { return v.InvertRegex }).(pulumi.BoolOutput)
+}
+
+func (o GetFunctionBuildConfigSourceRepoSourceOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfigSourceRepoSource) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionBuildConfigSourceRepoSourceOutput) RepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfigSourceRepoSource) string { return v.RepoName }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionBuildConfigSourceRepoSourceOutput) TagName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfigSourceRepoSource) string { return v.TagName }).(pulumi.StringOutput)
+}
+
+type GetFunctionBuildConfigSourceRepoSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionBuildConfigSourceRepoSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionBuildConfigSourceRepoSource)(nil)).Elem()
+}
+
+func (o GetFunctionBuildConfigSourceRepoSourceArrayOutput) ToGetFunctionBuildConfigSourceRepoSourceArrayOutput() GetFunctionBuildConfigSourceRepoSourceArrayOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigSourceRepoSourceArrayOutput) ToGetFunctionBuildConfigSourceRepoSourceArrayOutputWithContext(ctx context.Context) GetFunctionBuildConfigSourceRepoSourceArrayOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigSourceRepoSourceArrayOutput) Index(i pulumi.IntInput) GetFunctionBuildConfigSourceRepoSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionBuildConfigSourceRepoSource {
+		return vs[0].([]GetFunctionBuildConfigSourceRepoSource)[vs[1].(int)]
+	}).(GetFunctionBuildConfigSourceRepoSourceOutput)
+}
+
+type GetFunctionBuildConfigSourceStorageSource struct {
+	Bucket     string `pulumi:"bucket"`
+	Generation int    `pulumi:"generation"`
+	Object     string `pulumi:"object"`
+}
+
+// GetFunctionBuildConfigSourceStorageSourceInput is an input type that accepts GetFunctionBuildConfigSourceStorageSourceArgs and GetFunctionBuildConfigSourceStorageSourceOutput values.
+// You can construct a concrete instance of `GetFunctionBuildConfigSourceStorageSourceInput` via:
+//
+//	GetFunctionBuildConfigSourceStorageSourceArgs{...}
+type GetFunctionBuildConfigSourceStorageSourceInput interface {
+	pulumi.Input
+
+	ToGetFunctionBuildConfigSourceStorageSourceOutput() GetFunctionBuildConfigSourceStorageSourceOutput
+	ToGetFunctionBuildConfigSourceStorageSourceOutputWithContext(context.Context) GetFunctionBuildConfigSourceStorageSourceOutput
+}
+
+type GetFunctionBuildConfigSourceStorageSourceArgs struct {
+	Bucket     pulumi.StringInput `pulumi:"bucket"`
+	Generation pulumi.IntInput    `pulumi:"generation"`
+	Object     pulumi.StringInput `pulumi:"object"`
+}
+
+func (GetFunctionBuildConfigSourceStorageSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionBuildConfigSourceStorageSource)(nil)).Elem()
+}
+
+func (i GetFunctionBuildConfigSourceStorageSourceArgs) ToGetFunctionBuildConfigSourceStorageSourceOutput() GetFunctionBuildConfigSourceStorageSourceOutput {
+	return i.ToGetFunctionBuildConfigSourceStorageSourceOutputWithContext(context.Background())
+}
+
+func (i GetFunctionBuildConfigSourceStorageSourceArgs) ToGetFunctionBuildConfigSourceStorageSourceOutputWithContext(ctx context.Context) GetFunctionBuildConfigSourceStorageSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionBuildConfigSourceStorageSourceOutput)
+}
+
+// GetFunctionBuildConfigSourceStorageSourceArrayInput is an input type that accepts GetFunctionBuildConfigSourceStorageSourceArray and GetFunctionBuildConfigSourceStorageSourceArrayOutput values.
+// You can construct a concrete instance of `GetFunctionBuildConfigSourceStorageSourceArrayInput` via:
+//
+//	GetFunctionBuildConfigSourceStorageSourceArray{ GetFunctionBuildConfigSourceStorageSourceArgs{...} }
+type GetFunctionBuildConfigSourceStorageSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetFunctionBuildConfigSourceStorageSourceArrayOutput() GetFunctionBuildConfigSourceStorageSourceArrayOutput
+	ToGetFunctionBuildConfigSourceStorageSourceArrayOutputWithContext(context.Context) GetFunctionBuildConfigSourceStorageSourceArrayOutput
+}
+
+type GetFunctionBuildConfigSourceStorageSourceArray []GetFunctionBuildConfigSourceStorageSourceInput
+
+func (GetFunctionBuildConfigSourceStorageSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionBuildConfigSourceStorageSource)(nil)).Elem()
+}
+
+func (i GetFunctionBuildConfigSourceStorageSourceArray) ToGetFunctionBuildConfigSourceStorageSourceArrayOutput() GetFunctionBuildConfigSourceStorageSourceArrayOutput {
+	return i.ToGetFunctionBuildConfigSourceStorageSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetFunctionBuildConfigSourceStorageSourceArray) ToGetFunctionBuildConfigSourceStorageSourceArrayOutputWithContext(ctx context.Context) GetFunctionBuildConfigSourceStorageSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionBuildConfigSourceStorageSourceArrayOutput)
+}
+
+type GetFunctionBuildConfigSourceStorageSourceOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionBuildConfigSourceStorageSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionBuildConfigSourceStorageSource)(nil)).Elem()
+}
+
+func (o GetFunctionBuildConfigSourceStorageSourceOutput) ToGetFunctionBuildConfigSourceStorageSourceOutput() GetFunctionBuildConfigSourceStorageSourceOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigSourceStorageSourceOutput) ToGetFunctionBuildConfigSourceStorageSourceOutputWithContext(ctx context.Context) GetFunctionBuildConfigSourceStorageSourceOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigSourceStorageSourceOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfigSourceStorageSource) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionBuildConfigSourceStorageSourceOutput) Generation() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfigSourceStorageSource) int { return v.Generation }).(pulumi.IntOutput)
+}
+
+func (o GetFunctionBuildConfigSourceStorageSourceOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionBuildConfigSourceStorageSource) string { return v.Object }).(pulumi.StringOutput)
+}
+
+type GetFunctionBuildConfigSourceStorageSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionBuildConfigSourceStorageSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionBuildConfigSourceStorageSource)(nil)).Elem()
+}
+
+func (o GetFunctionBuildConfigSourceStorageSourceArrayOutput) ToGetFunctionBuildConfigSourceStorageSourceArrayOutput() GetFunctionBuildConfigSourceStorageSourceArrayOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigSourceStorageSourceArrayOutput) ToGetFunctionBuildConfigSourceStorageSourceArrayOutputWithContext(ctx context.Context) GetFunctionBuildConfigSourceStorageSourceArrayOutput {
+	return o
+}
+
+func (o GetFunctionBuildConfigSourceStorageSourceArrayOutput) Index(i pulumi.IntInput) GetFunctionBuildConfigSourceStorageSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionBuildConfigSourceStorageSource {
+		return vs[0].([]GetFunctionBuildConfigSourceStorageSource)[vs[1].(int)]
+	}).(GetFunctionBuildConfigSourceStorageSourceOutput)
+}
+
+type GetFunctionEventTrigger struct {
+	EventFilters        []GetFunctionEventTriggerEventFilter `pulumi:"eventFilters"`
+	EventType           string                               `pulumi:"eventType"`
+	PubsubTopic         string                               `pulumi:"pubsubTopic"`
+	RetryPolicy         string                               `pulumi:"retryPolicy"`
+	ServiceAccountEmail string                               `pulumi:"serviceAccountEmail"`
+	Trigger             string                               `pulumi:"trigger"`
+	TriggerRegion       string                               `pulumi:"triggerRegion"`
+}
+
+// GetFunctionEventTriggerInput is an input type that accepts GetFunctionEventTriggerArgs and GetFunctionEventTriggerOutput values.
+// You can construct a concrete instance of `GetFunctionEventTriggerInput` via:
+//
+//	GetFunctionEventTriggerArgs{...}
+type GetFunctionEventTriggerInput interface {
+	pulumi.Input
+
+	ToGetFunctionEventTriggerOutput() GetFunctionEventTriggerOutput
+	ToGetFunctionEventTriggerOutputWithContext(context.Context) GetFunctionEventTriggerOutput
+}
+
+type GetFunctionEventTriggerArgs struct {
+	EventFilters        GetFunctionEventTriggerEventFilterArrayInput `pulumi:"eventFilters"`
+	EventType           pulumi.StringInput                           `pulumi:"eventType"`
+	PubsubTopic         pulumi.StringInput                           `pulumi:"pubsubTopic"`
+	RetryPolicy         pulumi.StringInput                           `pulumi:"retryPolicy"`
+	ServiceAccountEmail pulumi.StringInput                           `pulumi:"serviceAccountEmail"`
+	Trigger             pulumi.StringInput                           `pulumi:"trigger"`
+	TriggerRegion       pulumi.StringInput                           `pulumi:"triggerRegion"`
+}
+
+func (GetFunctionEventTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionEventTrigger)(nil)).Elem()
+}
+
+func (i GetFunctionEventTriggerArgs) ToGetFunctionEventTriggerOutput() GetFunctionEventTriggerOutput {
+	return i.ToGetFunctionEventTriggerOutputWithContext(context.Background())
+}
+
+func (i GetFunctionEventTriggerArgs) ToGetFunctionEventTriggerOutputWithContext(ctx context.Context) GetFunctionEventTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionEventTriggerOutput)
+}
+
+// GetFunctionEventTriggerArrayInput is an input type that accepts GetFunctionEventTriggerArray and GetFunctionEventTriggerArrayOutput values.
+// You can construct a concrete instance of `GetFunctionEventTriggerArrayInput` via:
+//
+//	GetFunctionEventTriggerArray{ GetFunctionEventTriggerArgs{...} }
+type GetFunctionEventTriggerArrayInput interface {
+	pulumi.Input
+
+	ToGetFunctionEventTriggerArrayOutput() GetFunctionEventTriggerArrayOutput
+	ToGetFunctionEventTriggerArrayOutputWithContext(context.Context) GetFunctionEventTriggerArrayOutput
+}
+
+type GetFunctionEventTriggerArray []GetFunctionEventTriggerInput
+
+func (GetFunctionEventTriggerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionEventTrigger)(nil)).Elem()
+}
+
+func (i GetFunctionEventTriggerArray) ToGetFunctionEventTriggerArrayOutput() GetFunctionEventTriggerArrayOutput {
+	return i.ToGetFunctionEventTriggerArrayOutputWithContext(context.Background())
+}
+
+func (i GetFunctionEventTriggerArray) ToGetFunctionEventTriggerArrayOutputWithContext(ctx context.Context) GetFunctionEventTriggerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionEventTriggerArrayOutput)
+}
+
+type GetFunctionEventTriggerOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionEventTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionEventTrigger)(nil)).Elem()
+}
+
+func (o GetFunctionEventTriggerOutput) ToGetFunctionEventTriggerOutput() GetFunctionEventTriggerOutput {
+	return o
+}
+
+func (o GetFunctionEventTriggerOutput) ToGetFunctionEventTriggerOutputWithContext(ctx context.Context) GetFunctionEventTriggerOutput {
+	return o
+}
+
+func (o GetFunctionEventTriggerOutput) EventFilters() GetFunctionEventTriggerEventFilterArrayOutput {
+	return o.ApplyT(func(v GetFunctionEventTrigger) []GetFunctionEventTriggerEventFilter { return v.EventFilters }).(GetFunctionEventTriggerEventFilterArrayOutput)
+}
+
+func (o GetFunctionEventTriggerOutput) EventType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionEventTrigger) string { return v.EventType }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionEventTriggerOutput) PubsubTopic() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionEventTrigger) string { return v.PubsubTopic }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionEventTriggerOutput) RetryPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionEventTrigger) string { return v.RetryPolicy }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionEventTriggerOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionEventTrigger) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionEventTriggerOutput) Trigger() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionEventTrigger) string { return v.Trigger }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionEventTriggerOutput) TriggerRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionEventTrigger) string { return v.TriggerRegion }).(pulumi.StringOutput)
+}
+
+type GetFunctionEventTriggerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionEventTriggerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionEventTrigger)(nil)).Elem()
+}
+
+func (o GetFunctionEventTriggerArrayOutput) ToGetFunctionEventTriggerArrayOutput() GetFunctionEventTriggerArrayOutput {
+	return o
+}
+
+func (o GetFunctionEventTriggerArrayOutput) ToGetFunctionEventTriggerArrayOutputWithContext(ctx context.Context) GetFunctionEventTriggerArrayOutput {
+	return o
+}
+
+func (o GetFunctionEventTriggerArrayOutput) Index(i pulumi.IntInput) GetFunctionEventTriggerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionEventTrigger {
+		return vs[0].([]GetFunctionEventTrigger)[vs[1].(int)]
+	}).(GetFunctionEventTriggerOutput)
+}
+
+type GetFunctionEventTriggerEventFilter struct {
+	Attribute string `pulumi:"attribute"`
+	Operator  string `pulumi:"operator"`
+	Value     string `pulumi:"value"`
+}
+
+// GetFunctionEventTriggerEventFilterInput is an input type that accepts GetFunctionEventTriggerEventFilterArgs and GetFunctionEventTriggerEventFilterOutput values.
+// You can construct a concrete instance of `GetFunctionEventTriggerEventFilterInput` via:
+//
+//	GetFunctionEventTriggerEventFilterArgs{...}
+type GetFunctionEventTriggerEventFilterInput interface {
+	pulumi.Input
+
+	ToGetFunctionEventTriggerEventFilterOutput() GetFunctionEventTriggerEventFilterOutput
+	ToGetFunctionEventTriggerEventFilterOutputWithContext(context.Context) GetFunctionEventTriggerEventFilterOutput
+}
+
+type GetFunctionEventTriggerEventFilterArgs struct {
+	Attribute pulumi.StringInput `pulumi:"attribute"`
+	Operator  pulumi.StringInput `pulumi:"operator"`
+	Value     pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetFunctionEventTriggerEventFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionEventTriggerEventFilter)(nil)).Elem()
+}
+
+func (i GetFunctionEventTriggerEventFilterArgs) ToGetFunctionEventTriggerEventFilterOutput() GetFunctionEventTriggerEventFilterOutput {
+	return i.ToGetFunctionEventTriggerEventFilterOutputWithContext(context.Background())
+}
+
+func (i GetFunctionEventTriggerEventFilterArgs) ToGetFunctionEventTriggerEventFilterOutputWithContext(ctx context.Context) GetFunctionEventTriggerEventFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionEventTriggerEventFilterOutput)
+}
+
+// GetFunctionEventTriggerEventFilterArrayInput is an input type that accepts GetFunctionEventTriggerEventFilterArray and GetFunctionEventTriggerEventFilterArrayOutput values.
+// You can construct a concrete instance of `GetFunctionEventTriggerEventFilterArrayInput` via:
+//
+//	GetFunctionEventTriggerEventFilterArray{ GetFunctionEventTriggerEventFilterArgs{...} }
+type GetFunctionEventTriggerEventFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetFunctionEventTriggerEventFilterArrayOutput() GetFunctionEventTriggerEventFilterArrayOutput
+	ToGetFunctionEventTriggerEventFilterArrayOutputWithContext(context.Context) GetFunctionEventTriggerEventFilterArrayOutput
+}
+
+type GetFunctionEventTriggerEventFilterArray []GetFunctionEventTriggerEventFilterInput
+
+func (GetFunctionEventTriggerEventFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionEventTriggerEventFilter)(nil)).Elem()
+}
+
+func (i GetFunctionEventTriggerEventFilterArray) ToGetFunctionEventTriggerEventFilterArrayOutput() GetFunctionEventTriggerEventFilterArrayOutput {
+	return i.ToGetFunctionEventTriggerEventFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetFunctionEventTriggerEventFilterArray) ToGetFunctionEventTriggerEventFilterArrayOutputWithContext(ctx context.Context) GetFunctionEventTriggerEventFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionEventTriggerEventFilterArrayOutput)
+}
+
+type GetFunctionEventTriggerEventFilterOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionEventTriggerEventFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionEventTriggerEventFilter)(nil)).Elem()
+}
+
+func (o GetFunctionEventTriggerEventFilterOutput) ToGetFunctionEventTriggerEventFilterOutput() GetFunctionEventTriggerEventFilterOutput {
+	return o
+}
+
+func (o GetFunctionEventTriggerEventFilterOutput) ToGetFunctionEventTriggerEventFilterOutputWithContext(ctx context.Context) GetFunctionEventTriggerEventFilterOutput {
+	return o
+}
+
+func (o GetFunctionEventTriggerEventFilterOutput) Attribute() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionEventTriggerEventFilter) string { return v.Attribute }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionEventTriggerEventFilterOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionEventTriggerEventFilter) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionEventTriggerEventFilterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionEventTriggerEventFilter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetFunctionEventTriggerEventFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionEventTriggerEventFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionEventTriggerEventFilter)(nil)).Elem()
+}
+
+func (o GetFunctionEventTriggerEventFilterArrayOutput) ToGetFunctionEventTriggerEventFilterArrayOutput() GetFunctionEventTriggerEventFilterArrayOutput {
+	return o
+}
+
+func (o GetFunctionEventTriggerEventFilterArrayOutput) ToGetFunctionEventTriggerEventFilterArrayOutputWithContext(ctx context.Context) GetFunctionEventTriggerEventFilterArrayOutput {
+	return o
+}
+
+func (o GetFunctionEventTriggerEventFilterArrayOutput) Index(i pulumi.IntInput) GetFunctionEventTriggerEventFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionEventTriggerEventFilter {
+		return vs[0].([]GetFunctionEventTriggerEventFilter)[vs[1].(int)]
+	}).(GetFunctionEventTriggerEventFilterOutput)
+}
+
+type GetFunctionServiceConfig struct {
+	AllTrafficOnLatestRevision bool                                                `pulumi:"allTrafficOnLatestRevision"`
+	AvailableMemory            string                                              `pulumi:"availableMemory"`
+	EnvironmentVariables       map[string]string                                   `pulumi:"environmentVariables"`
+	GcfUri                     string                                              `pulumi:"gcfUri"`
+	IngressSettings            string                                              `pulumi:"ingressSettings"`
+	MaxInstanceCount           int                                                 `pulumi:"maxInstanceCount"`
+	MinInstanceCount           int                                                 `pulumi:"minInstanceCount"`
+	SecretEnvironmentVariables []GetFunctionServiceConfigSecretEnvironmentVariable `pulumi:"secretEnvironmentVariables"`
+	SecretVolumes              []GetFunctionServiceConfigSecretVolume              `pulumi:"secretVolumes"`
+	Service                    string                                              `pulumi:"service"`
+	ServiceAccountEmail        string                                              `pulumi:"serviceAccountEmail"`
+	TimeoutSeconds             int                                                 `pulumi:"timeoutSeconds"`
+	Uri                        string                                              `pulumi:"uri"`
+	VpcConnector               string                                              `pulumi:"vpcConnector"`
+	VpcConnectorEgressSettings string                                              `pulumi:"vpcConnectorEgressSettings"`
+}
+
+// GetFunctionServiceConfigInput is an input type that accepts GetFunctionServiceConfigArgs and GetFunctionServiceConfigOutput values.
+// You can construct a concrete instance of `GetFunctionServiceConfigInput` via:
+//
+//	GetFunctionServiceConfigArgs{...}
+type GetFunctionServiceConfigInput interface {
+	pulumi.Input
+
+	ToGetFunctionServiceConfigOutput() GetFunctionServiceConfigOutput
+	ToGetFunctionServiceConfigOutputWithContext(context.Context) GetFunctionServiceConfigOutput
+}
+
+type GetFunctionServiceConfigArgs struct {
+	AllTrafficOnLatestRevision pulumi.BoolInput                                            `pulumi:"allTrafficOnLatestRevision"`
+	AvailableMemory            pulumi.StringInput                                          `pulumi:"availableMemory"`
+	EnvironmentVariables       pulumi.StringMapInput                                       `pulumi:"environmentVariables"`
+	GcfUri                     pulumi.StringInput                                          `pulumi:"gcfUri"`
+	IngressSettings            pulumi.StringInput                                          `pulumi:"ingressSettings"`
+	MaxInstanceCount           pulumi.IntInput                                             `pulumi:"maxInstanceCount"`
+	MinInstanceCount           pulumi.IntInput                                             `pulumi:"minInstanceCount"`
+	SecretEnvironmentVariables GetFunctionServiceConfigSecretEnvironmentVariableArrayInput `pulumi:"secretEnvironmentVariables"`
+	SecretVolumes              GetFunctionServiceConfigSecretVolumeArrayInput              `pulumi:"secretVolumes"`
+	Service                    pulumi.StringInput                                          `pulumi:"service"`
+	ServiceAccountEmail        pulumi.StringInput                                          `pulumi:"serviceAccountEmail"`
+	TimeoutSeconds             pulumi.IntInput                                             `pulumi:"timeoutSeconds"`
+	Uri                        pulumi.StringInput                                          `pulumi:"uri"`
+	VpcConnector               pulumi.StringInput                                          `pulumi:"vpcConnector"`
+	VpcConnectorEgressSettings pulumi.StringInput                                          `pulumi:"vpcConnectorEgressSettings"`
+}
+
+func (GetFunctionServiceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionServiceConfig)(nil)).Elem()
+}
+
+func (i GetFunctionServiceConfigArgs) ToGetFunctionServiceConfigOutput() GetFunctionServiceConfigOutput {
+	return i.ToGetFunctionServiceConfigOutputWithContext(context.Background())
+}
+
+func (i GetFunctionServiceConfigArgs) ToGetFunctionServiceConfigOutputWithContext(ctx context.Context) GetFunctionServiceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionServiceConfigOutput)
+}
+
+// GetFunctionServiceConfigArrayInput is an input type that accepts GetFunctionServiceConfigArray and GetFunctionServiceConfigArrayOutput values.
+// You can construct a concrete instance of `GetFunctionServiceConfigArrayInput` via:
+//
+//	GetFunctionServiceConfigArray{ GetFunctionServiceConfigArgs{...} }
+type GetFunctionServiceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetFunctionServiceConfigArrayOutput() GetFunctionServiceConfigArrayOutput
+	ToGetFunctionServiceConfigArrayOutputWithContext(context.Context) GetFunctionServiceConfigArrayOutput
+}
+
+type GetFunctionServiceConfigArray []GetFunctionServiceConfigInput
+
+func (GetFunctionServiceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionServiceConfig)(nil)).Elem()
+}
+
+func (i GetFunctionServiceConfigArray) ToGetFunctionServiceConfigArrayOutput() GetFunctionServiceConfigArrayOutput {
+	return i.ToGetFunctionServiceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetFunctionServiceConfigArray) ToGetFunctionServiceConfigArrayOutputWithContext(ctx context.Context) GetFunctionServiceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionServiceConfigArrayOutput)
+}
+
+type GetFunctionServiceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionServiceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionServiceConfig)(nil)).Elem()
+}
+
+func (o GetFunctionServiceConfigOutput) ToGetFunctionServiceConfigOutput() GetFunctionServiceConfigOutput {
+	return o
+}
+
+func (o GetFunctionServiceConfigOutput) ToGetFunctionServiceConfigOutputWithContext(ctx context.Context) GetFunctionServiceConfigOutput {
+	return o
+}
+
+func (o GetFunctionServiceConfigOutput) AllTrafficOnLatestRevision() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) bool { return v.AllTrafficOnLatestRevision }).(pulumi.BoolOutput)
+}
+
+func (o GetFunctionServiceConfigOutput) AvailableMemory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) string { return v.AvailableMemory }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionServiceConfigOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
+}
+
+func (o GetFunctionServiceConfigOutput) GcfUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) string { return v.GcfUri }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionServiceConfigOutput) IngressSettings() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) string { return v.IngressSettings }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionServiceConfigOutput) MaxInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) int { return v.MaxInstanceCount }).(pulumi.IntOutput)
+}
+
+func (o GetFunctionServiceConfigOutput) MinInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) int { return v.MinInstanceCount }).(pulumi.IntOutput)
+}
+
+func (o GetFunctionServiceConfigOutput) SecretEnvironmentVariables() GetFunctionServiceConfigSecretEnvironmentVariableArrayOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) []GetFunctionServiceConfigSecretEnvironmentVariable {
+		return v.SecretEnvironmentVariables
+	}).(GetFunctionServiceConfigSecretEnvironmentVariableArrayOutput)
+}
+
+func (o GetFunctionServiceConfigOutput) SecretVolumes() GetFunctionServiceConfigSecretVolumeArrayOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) []GetFunctionServiceConfigSecretVolume { return v.SecretVolumes }).(GetFunctionServiceConfigSecretVolumeArrayOutput)
+}
+
+func (o GetFunctionServiceConfigOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) string { return v.Service }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionServiceConfigOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionServiceConfigOutput) TimeoutSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) int { return v.TimeoutSeconds }).(pulumi.IntOutput)
+}
+
+func (o GetFunctionServiceConfigOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionServiceConfigOutput) VpcConnector() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) string { return v.VpcConnector }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionServiceConfigOutput) VpcConnectorEgressSettings() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfig) string { return v.VpcConnectorEgressSettings }).(pulumi.StringOutput)
+}
+
+type GetFunctionServiceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionServiceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionServiceConfig)(nil)).Elem()
+}
+
+func (o GetFunctionServiceConfigArrayOutput) ToGetFunctionServiceConfigArrayOutput() GetFunctionServiceConfigArrayOutput {
+	return o
+}
+
+func (o GetFunctionServiceConfigArrayOutput) ToGetFunctionServiceConfigArrayOutputWithContext(ctx context.Context) GetFunctionServiceConfigArrayOutput {
+	return o
+}
+
+func (o GetFunctionServiceConfigArrayOutput) Index(i pulumi.IntInput) GetFunctionServiceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionServiceConfig {
+		return vs[0].([]GetFunctionServiceConfig)[vs[1].(int)]
+	}).(GetFunctionServiceConfigOutput)
+}
+
+type GetFunctionServiceConfigSecretEnvironmentVariable struct {
+	Key       string `pulumi:"key"`
+	ProjectId string `pulumi:"projectId"`
+	Secret    string `pulumi:"secret"`
+	Version   string `pulumi:"version"`
+}
+
+// GetFunctionServiceConfigSecretEnvironmentVariableInput is an input type that accepts GetFunctionServiceConfigSecretEnvironmentVariableArgs and GetFunctionServiceConfigSecretEnvironmentVariableOutput values.
+// You can construct a concrete instance of `GetFunctionServiceConfigSecretEnvironmentVariableInput` via:
+//
+//	GetFunctionServiceConfigSecretEnvironmentVariableArgs{...}
+type GetFunctionServiceConfigSecretEnvironmentVariableInput interface {
+	pulumi.Input
+
+	ToGetFunctionServiceConfigSecretEnvironmentVariableOutput() GetFunctionServiceConfigSecretEnvironmentVariableOutput
+	ToGetFunctionServiceConfigSecretEnvironmentVariableOutputWithContext(context.Context) GetFunctionServiceConfigSecretEnvironmentVariableOutput
+}
+
+type GetFunctionServiceConfigSecretEnvironmentVariableArgs struct {
+	Key       pulumi.StringInput `pulumi:"key"`
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Secret    pulumi.StringInput `pulumi:"secret"`
+	Version   pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetFunctionServiceConfigSecretEnvironmentVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionServiceConfigSecretEnvironmentVariable)(nil)).Elem()
+}
+
+func (i GetFunctionServiceConfigSecretEnvironmentVariableArgs) ToGetFunctionServiceConfigSecretEnvironmentVariableOutput() GetFunctionServiceConfigSecretEnvironmentVariableOutput {
+	return i.ToGetFunctionServiceConfigSecretEnvironmentVariableOutputWithContext(context.Background())
+}
+
+func (i GetFunctionServiceConfigSecretEnvironmentVariableArgs) ToGetFunctionServiceConfigSecretEnvironmentVariableOutputWithContext(ctx context.Context) GetFunctionServiceConfigSecretEnvironmentVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionServiceConfigSecretEnvironmentVariableOutput)
+}
+
+// GetFunctionServiceConfigSecretEnvironmentVariableArrayInput is an input type that accepts GetFunctionServiceConfigSecretEnvironmentVariableArray and GetFunctionServiceConfigSecretEnvironmentVariableArrayOutput values.
+// You can construct a concrete instance of `GetFunctionServiceConfigSecretEnvironmentVariableArrayInput` via:
+//
+//	GetFunctionServiceConfigSecretEnvironmentVariableArray{ GetFunctionServiceConfigSecretEnvironmentVariableArgs{...} }
+type GetFunctionServiceConfigSecretEnvironmentVariableArrayInput interface {
+	pulumi.Input
+
+	ToGetFunctionServiceConfigSecretEnvironmentVariableArrayOutput() GetFunctionServiceConfigSecretEnvironmentVariableArrayOutput
+	ToGetFunctionServiceConfigSecretEnvironmentVariableArrayOutputWithContext(context.Context) GetFunctionServiceConfigSecretEnvironmentVariableArrayOutput
+}
+
+type GetFunctionServiceConfigSecretEnvironmentVariableArray []GetFunctionServiceConfigSecretEnvironmentVariableInput
+
+func (GetFunctionServiceConfigSecretEnvironmentVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionServiceConfigSecretEnvironmentVariable)(nil)).Elem()
+}
+
+func (i GetFunctionServiceConfigSecretEnvironmentVariableArray) ToGetFunctionServiceConfigSecretEnvironmentVariableArrayOutput() GetFunctionServiceConfigSecretEnvironmentVariableArrayOutput {
+	return i.ToGetFunctionServiceConfigSecretEnvironmentVariableArrayOutputWithContext(context.Background())
+}
+
+func (i GetFunctionServiceConfigSecretEnvironmentVariableArray) ToGetFunctionServiceConfigSecretEnvironmentVariableArrayOutputWithContext(ctx context.Context) GetFunctionServiceConfigSecretEnvironmentVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionServiceConfigSecretEnvironmentVariableArrayOutput)
+}
+
+type GetFunctionServiceConfigSecretEnvironmentVariableOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionServiceConfigSecretEnvironmentVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionServiceConfigSecretEnvironmentVariable)(nil)).Elem()
+}
+
+func (o GetFunctionServiceConfigSecretEnvironmentVariableOutput) ToGetFunctionServiceConfigSecretEnvironmentVariableOutput() GetFunctionServiceConfigSecretEnvironmentVariableOutput {
+	return o
+}
+
+func (o GetFunctionServiceConfigSecretEnvironmentVariableOutput) ToGetFunctionServiceConfigSecretEnvironmentVariableOutputWithContext(ctx context.Context) GetFunctionServiceConfigSecretEnvironmentVariableOutput {
+	return o
+}
+
+func (o GetFunctionServiceConfigSecretEnvironmentVariableOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfigSecretEnvironmentVariable) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionServiceConfigSecretEnvironmentVariableOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfigSecretEnvironmentVariable) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionServiceConfigSecretEnvironmentVariableOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfigSecretEnvironmentVariable) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionServiceConfigSecretEnvironmentVariableOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfigSecretEnvironmentVariable) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetFunctionServiceConfigSecretEnvironmentVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionServiceConfigSecretEnvironmentVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionServiceConfigSecretEnvironmentVariable)(nil)).Elem()
+}
+
+func (o GetFunctionServiceConfigSecretEnvironmentVariableArrayOutput) ToGetFunctionServiceConfigSecretEnvironmentVariableArrayOutput() GetFunctionServiceConfigSecretEnvironmentVariableArrayOutput {
+	return o
+}
+
+func (o GetFunctionServiceConfigSecretEnvironmentVariableArrayOutput) ToGetFunctionServiceConfigSecretEnvironmentVariableArrayOutputWithContext(ctx context.Context) GetFunctionServiceConfigSecretEnvironmentVariableArrayOutput {
+	return o
+}
+
+func (o GetFunctionServiceConfigSecretEnvironmentVariableArrayOutput) Index(i pulumi.IntInput) GetFunctionServiceConfigSecretEnvironmentVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionServiceConfigSecretEnvironmentVariable {
+		return vs[0].([]GetFunctionServiceConfigSecretEnvironmentVariable)[vs[1].(int)]
+	}).(GetFunctionServiceConfigSecretEnvironmentVariableOutput)
+}
+
+type GetFunctionServiceConfigSecretVolume struct {
+	MountPath string                                        `pulumi:"mountPath"`
+	ProjectId string                                        `pulumi:"projectId"`
+	Secret    string                                        `pulumi:"secret"`
+	Versions  []GetFunctionServiceConfigSecretVolumeVersion `pulumi:"versions"`
+}
+
+// GetFunctionServiceConfigSecretVolumeInput is an input type that accepts GetFunctionServiceConfigSecretVolumeArgs and GetFunctionServiceConfigSecretVolumeOutput values.
+// You can construct a concrete instance of `GetFunctionServiceConfigSecretVolumeInput` via:
+//
+//	GetFunctionServiceConfigSecretVolumeArgs{...}
+type GetFunctionServiceConfigSecretVolumeInput interface {
+	pulumi.Input
+
+	ToGetFunctionServiceConfigSecretVolumeOutput() GetFunctionServiceConfigSecretVolumeOutput
+	ToGetFunctionServiceConfigSecretVolumeOutputWithContext(context.Context) GetFunctionServiceConfigSecretVolumeOutput
+}
+
+type GetFunctionServiceConfigSecretVolumeArgs struct {
+	MountPath pulumi.StringInput                                    `pulumi:"mountPath"`
+	ProjectId pulumi.StringInput                                    `pulumi:"projectId"`
+	Secret    pulumi.StringInput                                    `pulumi:"secret"`
+	Versions  GetFunctionServiceConfigSecretVolumeVersionArrayInput `pulumi:"versions"`
+}
+
+func (GetFunctionServiceConfigSecretVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionServiceConfigSecretVolume)(nil)).Elem()
+}
+
+func (i GetFunctionServiceConfigSecretVolumeArgs) ToGetFunctionServiceConfigSecretVolumeOutput() GetFunctionServiceConfigSecretVolumeOutput {
+	return i.ToGetFunctionServiceConfigSecretVolumeOutputWithContext(context.Background())
+}
+
+func (i GetFunctionServiceConfigSecretVolumeArgs) ToGetFunctionServiceConfigSecretVolumeOutputWithContext(ctx context.Context) GetFunctionServiceConfigSecretVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionServiceConfigSecretVolumeOutput)
+}
+
+// GetFunctionServiceConfigSecretVolumeArrayInput is an input type that accepts GetFunctionServiceConfigSecretVolumeArray and GetFunctionServiceConfigSecretVolumeArrayOutput values.
+// You can construct a concrete instance of `GetFunctionServiceConfigSecretVolumeArrayInput` via:
+//
+//	GetFunctionServiceConfigSecretVolumeArray{ GetFunctionServiceConfigSecretVolumeArgs{...} }
+type GetFunctionServiceConfigSecretVolumeArrayInput interface {
+	pulumi.Input
+
+	ToGetFunctionServiceConfigSecretVolumeArrayOutput() GetFunctionServiceConfigSecretVolumeArrayOutput
+	ToGetFunctionServiceConfigSecretVolumeArrayOutputWithContext(context.Context) GetFunctionServiceConfigSecretVolumeArrayOutput
+}
+
+type GetFunctionServiceConfigSecretVolumeArray []GetFunctionServiceConfigSecretVolumeInput
+
+func (GetFunctionServiceConfigSecretVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionServiceConfigSecretVolume)(nil)).Elem()
+}
+
+func (i GetFunctionServiceConfigSecretVolumeArray) ToGetFunctionServiceConfigSecretVolumeArrayOutput() GetFunctionServiceConfigSecretVolumeArrayOutput {
+	return i.ToGetFunctionServiceConfigSecretVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i GetFunctionServiceConfigSecretVolumeArray) ToGetFunctionServiceConfigSecretVolumeArrayOutputWithContext(ctx context.Context) GetFunctionServiceConfigSecretVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionServiceConfigSecretVolumeArrayOutput)
+}
+
+type GetFunctionServiceConfigSecretVolumeOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionServiceConfigSecretVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionServiceConfigSecretVolume)(nil)).Elem()
+}
+
+func (o GetFunctionServiceConfigSecretVolumeOutput) ToGetFunctionServiceConfigSecretVolumeOutput() GetFunctionServiceConfigSecretVolumeOutput {
+	return o
+}
+
+func (o GetFunctionServiceConfigSecretVolumeOutput) ToGetFunctionServiceConfigSecretVolumeOutputWithContext(ctx context.Context) GetFunctionServiceConfigSecretVolumeOutput {
+	return o
+}
+
+func (o GetFunctionServiceConfigSecretVolumeOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfigSecretVolume) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionServiceConfigSecretVolumeOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfigSecretVolume) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionServiceConfigSecretVolumeOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfigSecretVolume) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionServiceConfigSecretVolumeOutput) Versions() GetFunctionServiceConfigSecretVolumeVersionArrayOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfigSecretVolume) []GetFunctionServiceConfigSecretVolumeVersion {
+		return v.Versions
+	}).(GetFunctionServiceConfigSecretVolumeVersionArrayOutput)
+}
+
+type GetFunctionServiceConfigSecretVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionServiceConfigSecretVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionServiceConfigSecretVolume)(nil)).Elem()
+}
+
+func (o GetFunctionServiceConfigSecretVolumeArrayOutput) ToGetFunctionServiceConfigSecretVolumeArrayOutput() GetFunctionServiceConfigSecretVolumeArrayOutput {
+	return o
+}
+
+func (o GetFunctionServiceConfigSecretVolumeArrayOutput) ToGetFunctionServiceConfigSecretVolumeArrayOutputWithContext(ctx context.Context) GetFunctionServiceConfigSecretVolumeArrayOutput {
+	return o
+}
+
+func (o GetFunctionServiceConfigSecretVolumeArrayOutput) Index(i pulumi.IntInput) GetFunctionServiceConfigSecretVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionServiceConfigSecretVolume {
+		return vs[0].([]GetFunctionServiceConfigSecretVolume)[vs[1].(int)]
+	}).(GetFunctionServiceConfigSecretVolumeOutput)
+}
+
+type GetFunctionServiceConfigSecretVolumeVersion struct {
+	Path    string `pulumi:"path"`
+	Version string `pulumi:"version"`
+}
+
+// GetFunctionServiceConfigSecretVolumeVersionInput is an input type that accepts GetFunctionServiceConfigSecretVolumeVersionArgs and GetFunctionServiceConfigSecretVolumeVersionOutput values.
+// You can construct a concrete instance of `GetFunctionServiceConfigSecretVolumeVersionInput` via:
+//
+//	GetFunctionServiceConfigSecretVolumeVersionArgs{...}
+type GetFunctionServiceConfigSecretVolumeVersionInput interface {
+	pulumi.Input
+
+	ToGetFunctionServiceConfigSecretVolumeVersionOutput() GetFunctionServiceConfigSecretVolumeVersionOutput
+	ToGetFunctionServiceConfigSecretVolumeVersionOutputWithContext(context.Context) GetFunctionServiceConfigSecretVolumeVersionOutput
+}
+
+type GetFunctionServiceConfigSecretVolumeVersionArgs struct {
+	Path    pulumi.StringInput `pulumi:"path"`
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetFunctionServiceConfigSecretVolumeVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionServiceConfigSecretVolumeVersion)(nil)).Elem()
+}
+
+func (i GetFunctionServiceConfigSecretVolumeVersionArgs) ToGetFunctionServiceConfigSecretVolumeVersionOutput() GetFunctionServiceConfigSecretVolumeVersionOutput {
+	return i.ToGetFunctionServiceConfigSecretVolumeVersionOutputWithContext(context.Background())
+}
+
+func (i GetFunctionServiceConfigSecretVolumeVersionArgs) ToGetFunctionServiceConfigSecretVolumeVersionOutputWithContext(ctx context.Context) GetFunctionServiceConfigSecretVolumeVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionServiceConfigSecretVolumeVersionOutput)
+}
+
+// GetFunctionServiceConfigSecretVolumeVersionArrayInput is an input type that accepts GetFunctionServiceConfigSecretVolumeVersionArray and GetFunctionServiceConfigSecretVolumeVersionArrayOutput values.
+// You can construct a concrete instance of `GetFunctionServiceConfigSecretVolumeVersionArrayInput` via:
+//
+//	GetFunctionServiceConfigSecretVolumeVersionArray{ GetFunctionServiceConfigSecretVolumeVersionArgs{...} }
+type GetFunctionServiceConfigSecretVolumeVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetFunctionServiceConfigSecretVolumeVersionArrayOutput() GetFunctionServiceConfigSecretVolumeVersionArrayOutput
+	ToGetFunctionServiceConfigSecretVolumeVersionArrayOutputWithContext(context.Context) GetFunctionServiceConfigSecretVolumeVersionArrayOutput
+}
+
+type GetFunctionServiceConfigSecretVolumeVersionArray []GetFunctionServiceConfigSecretVolumeVersionInput
+
+func (GetFunctionServiceConfigSecretVolumeVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionServiceConfigSecretVolumeVersion)(nil)).Elem()
+}
+
+func (i GetFunctionServiceConfigSecretVolumeVersionArray) ToGetFunctionServiceConfigSecretVolumeVersionArrayOutput() GetFunctionServiceConfigSecretVolumeVersionArrayOutput {
+	return i.ToGetFunctionServiceConfigSecretVolumeVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetFunctionServiceConfigSecretVolumeVersionArray) ToGetFunctionServiceConfigSecretVolumeVersionArrayOutputWithContext(ctx context.Context) GetFunctionServiceConfigSecretVolumeVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionServiceConfigSecretVolumeVersionArrayOutput)
+}
+
+type GetFunctionServiceConfigSecretVolumeVersionOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionServiceConfigSecretVolumeVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionServiceConfigSecretVolumeVersion)(nil)).Elem()
+}
+
+func (o GetFunctionServiceConfigSecretVolumeVersionOutput) ToGetFunctionServiceConfigSecretVolumeVersionOutput() GetFunctionServiceConfigSecretVolumeVersionOutput {
+	return o
+}
+
+func (o GetFunctionServiceConfigSecretVolumeVersionOutput) ToGetFunctionServiceConfigSecretVolumeVersionOutputWithContext(ctx context.Context) GetFunctionServiceConfigSecretVolumeVersionOutput {
+	return o
+}
+
+func (o GetFunctionServiceConfigSecretVolumeVersionOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfigSecretVolumeVersion) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionServiceConfigSecretVolumeVersionOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionServiceConfigSecretVolumeVersion) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetFunctionServiceConfigSecretVolumeVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionServiceConfigSecretVolumeVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionServiceConfigSecretVolumeVersion)(nil)).Elem()
+}
+
+func (o GetFunctionServiceConfigSecretVolumeVersionArrayOutput) ToGetFunctionServiceConfigSecretVolumeVersionArrayOutput() GetFunctionServiceConfigSecretVolumeVersionArrayOutput {
+	return o
+}
+
+func (o GetFunctionServiceConfigSecretVolumeVersionArrayOutput) ToGetFunctionServiceConfigSecretVolumeVersionArrayOutputWithContext(ctx context.Context) GetFunctionServiceConfigSecretVolumeVersionArrayOutput {
+	return o
+}
+
+func (o GetFunctionServiceConfigSecretVolumeVersionArrayOutput) Index(i pulumi.IntInput) GetFunctionServiceConfigSecretVolumeVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionServiceConfigSecretVolumeVersion {
+		return vs[0].([]GetFunctionServiceConfigSecretVolumeVersion)[vs[1].(int)]
+	}).(GetFunctionServiceConfigSecretVolumeVersionOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionBuildConfigInput)(nil)).Elem(), FunctionBuildConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionBuildConfigPtrInput)(nil)).Elem(), FunctionBuildConfigArgs{})
@@ -2477,6 +3687,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionServiceConfigSecretVolumeArrayInput)(nil)).Elem(), FunctionServiceConfigSecretVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionServiceConfigSecretVolumeVersionInput)(nil)).Elem(), FunctionServiceConfigSecretVolumeVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionServiceConfigSecretVolumeVersionArrayInput)(nil)).Elem(), FunctionServiceConfigSecretVolumeVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionBuildConfigInput)(nil)).Elem(), GetFunctionBuildConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionBuildConfigArrayInput)(nil)).Elem(), GetFunctionBuildConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionBuildConfigSourceInput)(nil)).Elem(), GetFunctionBuildConfigSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionBuildConfigSourceArrayInput)(nil)).Elem(), GetFunctionBuildConfigSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionBuildConfigSourceRepoSourceInput)(nil)).Elem(), GetFunctionBuildConfigSourceRepoSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionBuildConfigSourceRepoSourceArrayInput)(nil)).Elem(), GetFunctionBuildConfigSourceRepoSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionBuildConfigSourceStorageSourceInput)(nil)).Elem(), GetFunctionBuildConfigSourceStorageSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionBuildConfigSourceStorageSourceArrayInput)(nil)).Elem(), GetFunctionBuildConfigSourceStorageSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionEventTriggerInput)(nil)).Elem(), GetFunctionEventTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionEventTriggerArrayInput)(nil)).Elem(), GetFunctionEventTriggerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionEventTriggerEventFilterInput)(nil)).Elem(), GetFunctionEventTriggerEventFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionEventTriggerEventFilterArrayInput)(nil)).Elem(), GetFunctionEventTriggerEventFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionServiceConfigInput)(nil)).Elem(), GetFunctionServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionServiceConfigArrayInput)(nil)).Elem(), GetFunctionServiceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionServiceConfigSecretEnvironmentVariableInput)(nil)).Elem(), GetFunctionServiceConfigSecretEnvironmentVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionServiceConfigSecretEnvironmentVariableArrayInput)(nil)).Elem(), GetFunctionServiceConfigSecretEnvironmentVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionServiceConfigSecretVolumeInput)(nil)).Elem(), GetFunctionServiceConfigSecretVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionServiceConfigSecretVolumeArrayInput)(nil)).Elem(), GetFunctionServiceConfigSecretVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionServiceConfigSecretVolumeVersionInput)(nil)).Elem(), GetFunctionServiceConfigSecretVolumeVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionServiceConfigSecretVolumeVersionArrayInput)(nil)).Elem(), GetFunctionServiceConfigSecretVolumeVersionArray{})
 	pulumi.RegisterOutputType(FunctionBuildConfigOutput{})
 	pulumi.RegisterOutputType(FunctionBuildConfigPtrOutput{})
 	pulumi.RegisterOutputType(FunctionBuildConfigSourceOutput{})
@@ -2501,4 +3731,24 @@ func init() {
 	pulumi.RegisterOutputType(FunctionServiceConfigSecretVolumeArrayOutput{})
 	pulumi.RegisterOutputType(FunctionServiceConfigSecretVolumeVersionOutput{})
 	pulumi.RegisterOutputType(FunctionServiceConfigSecretVolumeVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetFunctionBuildConfigOutput{})
+	pulumi.RegisterOutputType(GetFunctionBuildConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetFunctionBuildConfigSourceOutput{})
+	pulumi.RegisterOutputType(GetFunctionBuildConfigSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetFunctionBuildConfigSourceRepoSourceOutput{})
+	pulumi.RegisterOutputType(GetFunctionBuildConfigSourceRepoSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetFunctionBuildConfigSourceStorageSourceOutput{})
+	pulumi.RegisterOutputType(GetFunctionBuildConfigSourceStorageSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetFunctionEventTriggerOutput{})
+	pulumi.RegisterOutputType(GetFunctionEventTriggerArrayOutput{})
+	pulumi.RegisterOutputType(GetFunctionEventTriggerEventFilterOutput{})
+	pulumi.RegisterOutputType(GetFunctionEventTriggerEventFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetFunctionServiceConfigOutput{})
+	pulumi.RegisterOutputType(GetFunctionServiceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetFunctionServiceConfigSecretEnvironmentVariableOutput{})
+	pulumi.RegisterOutputType(GetFunctionServiceConfigSecretEnvironmentVariableArrayOutput{})
+	pulumi.RegisterOutputType(GetFunctionServiceConfigSecretVolumeOutput{})
+	pulumi.RegisterOutputType(GetFunctionServiceConfigSecretVolumeArrayOutput{})
+	pulumi.RegisterOutputType(GetFunctionServiceConfigSecretVolumeVersionOutput{})
+	pulumi.RegisterOutputType(GetFunctionServiceConfigSecretVolumeVersionArrayOutput{})
 }

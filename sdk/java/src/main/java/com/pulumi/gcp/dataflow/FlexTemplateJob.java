@@ -64,11 +64,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
      * labels will be ignored to prevent diffs on re-apply.
      * 
-     * @deprecated
-     * Deprecated until the API supports this field
-     * 
      */
-    @Deprecated /* Deprecated until the API supports this field */
     @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> labels;
 

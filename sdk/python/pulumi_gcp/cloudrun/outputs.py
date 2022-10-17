@@ -35,6 +35,10 @@ __all__ = [
     'ServiceTemplateSpecContainerEnvValueFromSecretKeyRef',
     'ServiceTemplateSpecContainerPort',
     'ServiceTemplateSpecContainerResources',
+    'ServiceTemplateSpecContainerStartupProbe',
+    'ServiceTemplateSpecContainerStartupProbeHttpGet',
+    'ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader',
+    'ServiceTemplateSpecContainerStartupProbeTcpSocket',
     'ServiceTemplateSpecContainerVolumeMount',
     'ServiceTemplateSpecVolume',
     'ServiceTemplateSpecVolumeSecret',
@@ -57,6 +61,10 @@ __all__ = [
     'GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefResult',
     'GetServiceTemplateSpecContainerPortResult',
     'GetServiceTemplateSpecContainerResourceResult',
+    'GetServiceTemplateSpecContainerStartupProbeResult',
+    'GetServiceTemplateSpecContainerStartupProbeHttpGetResult',
+    'GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderResult',
+    'GetServiceTemplateSpecContainerStartupProbeTcpSocketResult',
     'GetServiceTemplateSpecContainerVolumeMountResult',
     'GetServiceTemplateSpecVolumeResult',
     'GetServiceTemplateSpecVolumeSecretResult',
@@ -1005,7 +1013,9 @@ class ServiceTemplateSpec(dict):
                are in for this Revision.
                It is expected
                that the system will manipulate this based on routability and load.
-        :param int timeout_seconds: TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+        :param int timeout_seconds: Number of seconds after which the probe times out.
+               Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+               Must be smaller than periodSeconds.
         :param Sequence['ServiceTemplateSpecVolumeArgs'] volumes: Volume represents a named volume in a container.
                Structure is documented below.
         """
@@ -1072,7 +1082,9 @@ class ServiceTemplateSpec(dict):
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> Optional[int]:
         """
-        TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+        Number of seconds after which the probe times out.
+        Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+        Must be smaller than periodSeconds.
         """
         return pulumi.get(self, "timeout_seconds")
 
@@ -1093,6 +1105,8 @@ class ServiceTemplateSpecContainer(dict):
         suggest = None
         if key == "envFroms":
             suggest = "env_froms"
+        elif key == "startupProbe":
+            suggest = "startup_probe"
         elif key == "volumeMounts":
             suggest = "volume_mounts"
         elif key == "workingDir":
@@ -1117,6 +1131,7 @@ class ServiceTemplateSpecContainer(dict):
                  envs: Optional[Sequence['outputs.ServiceTemplateSpecContainerEnv']] = None,
                  ports: Optional[Sequence['outputs.ServiceTemplateSpecContainerPort']] = None,
                  resources: Optional['outputs.ServiceTemplateSpecContainerResources'] = None,
+                 startup_probe: Optional['outputs.ServiceTemplateSpecContainerStartupProbe'] = None,
                  volume_mounts: Optional[Sequence['outputs.ServiceTemplateSpecContainerVolumeMount']] = None,
                  working_dir: Optional[str] = None):
         """
@@ -1181,6 +1196,8 @@ class ServiceTemplateSpecContainer(dict):
             pulumi.set(__self__, "ports", ports)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if startup_probe is not None:
+            pulumi.set(__self__, "startup_probe", startup_probe)
         if volume_mounts is not None:
             pulumi.set(__self__, "volume_mounts", volume_mounts)
         if working_dir is not None:
@@ -1275,6 +1292,11 @@ class ServiceTemplateSpecContainer(dict):
         return pulumi.get(self, "resources")
 
     @property
+    @pulumi.getter(name="startupProbe")
+    def startup_probe(self) -> Optional['outputs.ServiceTemplateSpecContainerStartupProbe']:
+        return pulumi.get(self, "startup_probe")
+
+    @property
     @pulumi.getter(name="volumeMounts")
     def volume_mounts(self) -> Optional[Sequence['outputs.ServiceTemplateSpecContainerVolumeMount']]:
         """
@@ -1322,14 +1344,7 @@ class ServiceTemplateSpecContainerEnv(dict):
                  value_from: Optional['outputs.ServiceTemplateSpecContainerEnvValueFrom'] = None):
         """
         :param str name: Volume's name.
-        :param str value: Variable references $(VAR_NAME) are expanded
-               using the previous defined environment variables in the container and
-               any route environment variables. If a variable cannot be resolved,
-               the reference in the input string will be unchanged. The $(VAR_NAME)
-               syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
-               references will never be expanded, regardless of whether the variable
-               exists or not.
-               Defaults to "".
+        :param str value: The header field value.
         :param 'ServiceTemplateSpecContainerEnvValueFromArgs' value_from: Source for the environment variable's value. Only supports secret_key_ref.
                Structure is documented below.
         """
@@ -1352,14 +1367,7 @@ class ServiceTemplateSpecContainerEnv(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        Variable references $(VAR_NAME) are expanded
-        using the previous defined environment variables in the container and
-        any route environment variables. If a variable cannot be resolved,
-        the reference in the input string will be unchanged. The $(VAR_NAME)
-        syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
-        references will never be expanded, regardless of whether the variable
-        exists or not.
-        Defaults to "".
+        The header field value.
         """
         return pulumi.get(self, "value")
 
@@ -1744,6 +1752,233 @@ class ServiceTemplateSpecContainerResources(dict):
         https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "requests")
+
+
+@pulumi.output_type
+class ServiceTemplateSpecContainerStartupProbe(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failureThreshold":
+            suggest = "failure_threshold"
+        elif key == "httpGet":
+            suggest = "http_get"
+        elif key == "initialDelaySeconds":
+            suggest = "initial_delay_seconds"
+        elif key == "periodSeconds":
+            suggest = "period_seconds"
+        elif key == "tcpSocket":
+            suggest = "tcp_socket"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateSpecContainerStartupProbe. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateSpecContainerStartupProbe.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateSpecContainerStartupProbe.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 failure_threshold: Optional[int] = None,
+                 http_get: Optional['outputs.ServiceTemplateSpecContainerStartupProbeHttpGet'] = None,
+                 initial_delay_seconds: Optional[int] = None,
+                 period_seconds: Optional[int] = None,
+                 tcp_socket: Optional['outputs.ServiceTemplateSpecContainerStartupProbeTcpSocket'] = None,
+                 timeout_seconds: Optional[int] = None):
+        """
+        :param int failure_threshold: Minimum consecutive failures for the probe to be considered failed after
+               having succeeded. Defaults to 3. Minimum value is 1.
+        :param 'ServiceTemplateSpecContainerStartupProbeHttpGetArgs' http_get: HttpGet specifies the http request to perform.
+               Structure is documented below.
+        :param int initial_delay_seconds: Number of seconds after the container has started before the probe is
+               initiated.
+               Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+        :param int period_seconds: How often (in seconds) to perform the probe.
+               Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+        :param 'ServiceTemplateSpecContainerStartupProbeTcpSocketArgs' tcp_socket: TcpSocket specifies an action involving a TCP port.
+               Structure is documented below.
+        :param int timeout_seconds: Number of seconds after which the probe times out.
+               Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+               Must be smaller than periodSeconds.
+        """
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if tcp_socket is not None:
+            pulumi.set(__self__, "tcp_socket", tcp_socket)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[int]:
+        """
+        Minimum consecutive failures for the probe to be considered failed after
+        having succeeded. Defaults to 3. Minimum value is 1.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional['outputs.ServiceTemplateSpecContainerStartupProbeHttpGet']:
+        """
+        HttpGet specifies the http request to perform.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_get")
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[int]:
+        """
+        Number of seconds after the container has started before the probe is
+        initiated.
+        Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[int]:
+        """
+        How often (in seconds) to perform the probe.
+        Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @property
+    @pulumi.getter(name="tcpSocket")
+    def tcp_socket(self) -> Optional['outputs.ServiceTemplateSpecContainerStartupProbeTcpSocket']:
+        """
+        TcpSocket specifies an action involving a TCP port.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tcp_socket")
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[int]:
+        """
+        Number of seconds after which the probe times out.
+        Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+        Must be smaller than periodSeconds.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class ServiceTemplateSpecContainerStartupProbeHttpGet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpHeaders":
+            suggest = "http_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateSpecContainerStartupProbeHttpGet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateSpecContainerStartupProbeHttpGet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateSpecContainerStartupProbeHttpGet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 http_headers: Optional[Sequence['outputs.ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader']] = None,
+                 path: Optional[str] = None):
+        """
+        :param Sequence['ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
+               Structure is documented below.
+        :param str path: The relative path of the file to map the key to.
+               May not be an absolute path.
+               May not contain the path element '..'.
+               May not start with the string '..'.
+        """
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[Sequence['outputs.ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader']]:
+        """
+        Custom headers to set in the request. HTTP allows repeated headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        The relative path of the file to map the key to.
+        May not be an absolute path.
+        May not contain the path element '..'.
+        May not start with the string '..'.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 value: Optional[str] = None):
+        """
+        :param str name: Volume's name.
+        :param str value: The header field value.
+        """
+        pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Volume's name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The header field value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ServiceTemplateSpecContainerStartupProbeTcpSocket(dict):
+    def __init__(__self__, *,
+                 port: Optional[int] = None):
+        """
+        :param int port: Port number to access on the container. Number must be in the range 1 to 65535.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type
@@ -2344,6 +2579,7 @@ class GetServiceTemplateSpecContainerResult(dict):
                  image: str,
                  ports: Sequence['outputs.GetServiceTemplateSpecContainerPortResult'],
                  resources: Sequence['outputs.GetServiceTemplateSpecContainerResourceResult'],
+                 startup_probes: Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeResult'],
                  volume_mounts: Sequence['outputs.GetServiceTemplateSpecContainerVolumeMountResult'],
                  working_dir: str):
         pulumi.set(__self__, "args", args)
@@ -2353,6 +2589,7 @@ class GetServiceTemplateSpecContainerResult(dict):
         pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "resources", resources)
+        pulumi.set(__self__, "startup_probes", startup_probes)
         pulumi.set(__self__, "volume_mounts", volume_mounts)
         pulumi.set(__self__, "working_dir", working_dir)
 
@@ -2390,6 +2627,11 @@ class GetServiceTemplateSpecContainerResult(dict):
     @pulumi.getter
     def resources(self) -> Sequence['outputs.GetServiceTemplateSpecContainerResourceResult']:
         return pulumi.get(self, "resources")
+
+    @property
+    @pulumi.getter(name="startupProbes")
+    def startup_probes(self) -> Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeResult']:
+        return pulumi.get(self, "startup_probes")
 
     @property
     @pulumi.getter(name="volumeMounts")
@@ -2620,6 +2862,109 @@ class GetServiceTemplateSpecContainerResourceResult(dict):
     @pulumi.getter
     def requests(self) -> Mapping[str, str]:
         return pulumi.get(self, "requests")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecContainerStartupProbeResult(dict):
+    def __init__(__self__, *,
+                 failure_threshold: int,
+                 http_gets: Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeHttpGetResult'],
+                 initial_delay_seconds: int,
+                 period_seconds: int,
+                 tcp_sockets: Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeTcpSocketResult'],
+                 timeout_seconds: int):
+        pulumi.set(__self__, "failure_threshold", failure_threshold)
+        pulumi.set(__self__, "http_gets", http_gets)
+        pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        pulumi.set(__self__, "period_seconds", period_seconds)
+        pulumi.set(__self__, "tcp_sockets", tcp_sockets)
+        pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> int:
+        return pulumi.get(self, "failure_threshold")
+
+    @property
+    @pulumi.getter(name="httpGets")
+    def http_gets(self) -> Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeHttpGetResult']:
+        return pulumi.get(self, "http_gets")
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> int:
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> int:
+        return pulumi.get(self, "period_seconds")
+
+    @property
+    @pulumi.getter(name="tcpSockets")
+    def tcp_sockets(self) -> Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeTcpSocketResult']:
+        return pulumi.get(self, "tcp_sockets")
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> int:
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecContainerStartupProbeHttpGetResult(dict):
+    def __init__(__self__, *,
+                 http_headers: Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderResult'],
+                 path: str):
+        pulumi.set(__self__, "http_headers", http_headers)
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderResult']:
+        return pulumi.get(self, "http_headers")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 value: str):
+        """
+        :param str name: The name of the Cloud Run Service.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cloud Run Service.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecContainerStartupProbeTcpSocketResult(dict):
+    def __init__(__self__, *,
+                 port: int):
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type

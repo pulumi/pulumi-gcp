@@ -147,11 +147,12 @@ type User struct {
 	// The password for the user. Can be updated. For Postgres
 	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
 	// or CLOUD_IAM_SERVICE_ACCOUNT.
-	Password pulumi.StringPtrOutput `pulumi:"password"`
+	Password       pulumi.StringPtrOutput      `pulumi:"password"`
+	PasswordPolicy UserPasswordPolicyPtrOutput `pulumi:"passwordPolicy"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
-	Project              pulumi.StringOutput               `pulumi:"project"`
-	SqlServerUserDetails UserSqlServerUserDetailsPtrOutput `pulumi:"sqlServerUserDetails"`
+	Project              pulumi.StringOutput                `pulumi:"project"`
+	SqlServerUserDetails UserSqlServerUserDetailArrayOutput `pulumi:"sqlServerUserDetails"`
 	// The user type. It determines the method to authenticate the
 	// user during login. The default is the database's built-in user type. Flags
 	// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
@@ -207,11 +208,12 @@ type userState struct {
 	// The password for the user. Can be updated. For Postgres
 	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
 	// or CLOUD_IAM_SERVICE_ACCOUNT.
-	Password *string `pulumi:"password"`
+	Password       *string             `pulumi:"password"`
+	PasswordPolicy *UserPasswordPolicy `pulumi:"passwordPolicy"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project              *string                   `pulumi:"project"`
-	SqlServerUserDetails *UserSqlServerUserDetails `pulumi:"sqlServerUserDetails"`
+	SqlServerUserDetails []UserSqlServerUserDetail `pulumi:"sqlServerUserDetails"`
 	// The user type. It determines the method to authenticate the
 	// user during login. The default is the database's built-in user type. Flags
 	// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
@@ -236,11 +238,12 @@ type UserState struct {
 	// The password for the user. Can be updated. For Postgres
 	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
 	// or CLOUD_IAM_SERVICE_ACCOUNT.
-	Password pulumi.StringPtrInput
+	Password       pulumi.StringPtrInput
+	PasswordPolicy UserPasswordPolicyPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project              pulumi.StringPtrInput
-	SqlServerUserDetails UserSqlServerUserDetailsPtrInput
+	SqlServerUserDetails UserSqlServerUserDetailArrayInput
 	// The user type. It determines the method to authenticate the
 	// user during login. The default is the database's built-in user type. Flags
 	// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
@@ -269,11 +272,11 @@ type userArgs struct {
 	// The password for the user. Can be updated. For Postgres
 	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
 	// or CLOUD_IAM_SERVICE_ACCOUNT.
-	Password *string `pulumi:"password"`
+	Password       *string             `pulumi:"password"`
+	PasswordPolicy *UserPasswordPolicy `pulumi:"passwordPolicy"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
-	Project              *string                   `pulumi:"project"`
-	SqlServerUserDetails *UserSqlServerUserDetails `pulumi:"sqlServerUserDetails"`
+	Project *string `pulumi:"project"`
 	// The user type. It determines the method to authenticate the
 	// user during login. The default is the database's built-in user type. Flags
 	// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
@@ -299,11 +302,11 @@ type UserArgs struct {
 	// The password for the user. Can be updated. For Postgres
 	// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
 	// or CLOUD_IAM_SERVICE_ACCOUNT.
-	Password pulumi.StringPtrInput
+	Password       pulumi.StringPtrInput
+	PasswordPolicy UserPasswordPolicyPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
-	Project              pulumi.StringPtrInput
-	SqlServerUserDetails UserSqlServerUserDetailsPtrInput
+	Project pulumi.StringPtrInput
 	// The user type. It determines the method to authenticate the
 	// user during login. The default is the database's built-in user type. Flags
 	// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
@@ -430,14 +433,18 @@ func (o UserOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+func (o UserOutput) PasswordPolicy() UserPasswordPolicyPtrOutput {
+	return o.ApplyT(func(v *User) UserPasswordPolicyPtrOutput { return v.PasswordPolicy }).(UserPasswordPolicyPtrOutput)
+}
+
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
 func (o UserOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-func (o UserOutput) SqlServerUserDetails() UserSqlServerUserDetailsPtrOutput {
-	return o.ApplyT(func(v *User) UserSqlServerUserDetailsPtrOutput { return v.SqlServerUserDetails }).(UserSqlServerUserDetailsPtrOutput)
+func (o UserOutput) SqlServerUserDetails() UserSqlServerUserDetailArrayOutput {
+	return o.ApplyT(func(v *User) UserSqlServerUserDetailArrayOutput { return v.SqlServerUserDetails }).(UserSqlServerUserDetailArrayOutput)
 }
 
 // The user type. It determines the method to authenticate the

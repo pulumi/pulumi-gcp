@@ -53,6 +53,7 @@ export interface GetBackendBucketArgs {
 export interface GetBackendBucketResult {
     readonly bucketName: string;
     readonly cdnPolicies: outputs.compute.GetBackendBucketCdnPolicy[];
+    readonly compressionMode: string;
     readonly creationTimestamp: string;
     readonly customResponseHeaders: string[];
     readonly description: string;

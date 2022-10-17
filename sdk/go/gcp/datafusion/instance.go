@@ -96,6 +96,67 @@ import (
 //	}
 //
 // ```
+// ### Data Fusion Instance Cmek
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datafusion"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+//				KeyRing: keyRing.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cryptoKeyBinding, err := kms.NewCryptoKeyIAMBinding(ctx, "cryptoKeyBinding", &kms.CryptoKeyIAMBindingArgs{
+//				CryptoKeyId: cryptoKey.ID(),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Members: pulumi.StringArray{
+//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datafusion.iam.gserviceaccount.com", project.Number)),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datafusion.NewInstance(ctx, "basicCmek", &datafusion.InstanceArgs{
+//				Region: pulumi.String("us-central1"),
+//				Type:   pulumi.String("BASIC"),
+//				CryptoKeyConfig: &datafusion.InstanceCryptoKeyConfigArgs{
+//					KeyReference: cryptoKey.ID(),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				cryptoKeyBinding,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -129,6 +190,9 @@ type Instance struct {
 
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+	// Structure is documented below.
+	CryptoKeyConfig InstanceCryptoKeyConfigPtrOutput `pulumi:"cryptoKeyConfig"`
 	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
 	DataprocServiceAccount pulumi.StringPtrOutput `pulumi:"dataprocServiceAccount"`
 	// An optional description of the instance.
@@ -224,6 +288,9 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	CreateTime *string `pulumi:"createTime"`
+	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+	// Structure is documented below.
+	CryptoKeyConfig *InstanceCryptoKeyConfig `pulumi:"cryptoKeyConfig"`
 	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
 	DataprocServiceAccount *string `pulumi:"dataprocServiceAccount"`
 	// An optional description of the instance.
@@ -288,6 +355,9 @@ type instanceState struct {
 type InstanceState struct {
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	CreateTime pulumi.StringPtrInput
+	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+	// Structure is documented below.
+	CryptoKeyConfig InstanceCryptoKeyConfigPtrInput
 	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
 	DataprocServiceAccount pulumi.StringPtrInput
 	// An optional description of the instance.
@@ -354,6 +424,9 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+	// Structure is documented below.
+	CryptoKeyConfig *InstanceCryptoKeyConfig `pulumi:"cryptoKeyConfig"`
 	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
 	DataprocServiceAccount *string `pulumi:"dataprocServiceAccount"`
 	// An optional description of the instance.
@@ -399,6 +472,9 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+	// Structure is documented below.
+	CryptoKeyConfig InstanceCryptoKeyConfigPtrInput
 	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
 	DataprocServiceAccount pulumi.StringPtrInput
 	// An optional description of the instance.
@@ -532,6 +608,12 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 // The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+// Structure is documented below.
+func (o InstanceOutput) CryptoKeyConfig() InstanceCryptoKeyConfigPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceCryptoKeyConfigPtrOutput { return v.CryptoKeyConfig }).(InstanceCryptoKeyConfigPtrOutput)
 }
 
 // User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.

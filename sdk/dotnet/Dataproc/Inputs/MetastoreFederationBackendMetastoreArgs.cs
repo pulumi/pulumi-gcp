@@ -14,13 +14,13 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     {
         /// <summary>
         /// The type of the backend metastore.
-        /// Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
+        /// Possible values are `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, and `BIGQUERY`.
         /// </summary>
         [Input("metastoreType", required: true)]
         public Input<string> MetastoreType { get; set; } = null!;
 
         /// <summary>
-        /// The relative resource name of the metastore that is being federated.
+        /// The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

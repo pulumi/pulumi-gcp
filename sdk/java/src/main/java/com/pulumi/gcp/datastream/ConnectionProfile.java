@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.datastream.ConnectionProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileState;
+import com.pulumi.gcp.datastream.outputs.ConnectionProfileBigqueryProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfileForwardSshConnectivity;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfileGcsProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfileMysqlProfile;
@@ -52,6 +53,39 @@ import javax.annotation.Nullable;
  *                 .bucket(&#34;my-bucket&#34;)
  *                 .rootPath(&#34;/path&#34;)
  *                 .build())
+ *             .location(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Datastream Connection Profile Bigquery
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datastream.ConnectionProfile;
+ * import com.pulumi.gcp.datastream.ConnectionProfileArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfileBigqueryProfileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new ConnectionProfile(&#34;default&#34;, ConnectionProfileArgs.builder()        
+ *             .bigqueryProfile()
+ *             .connectionProfileId(&#34;my-profile&#34;)
+ *             .displayName(&#34;Connection profile&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .build());
  * 
@@ -210,6 +244,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:datastream/connectionProfile:ConnectionProfile")
 public class ConnectionProfile extends com.pulumi.resources.CustomResource {
+    /**
+     * BigQuery warehouse profile.
+     * 
+     */
+    @Export(name="bigqueryProfile", type=ConnectionProfileBigqueryProfile.class, parameters={})
+    private Output</* @Nullable */ ConnectionProfileBigqueryProfile> bigqueryProfile;
+
+    /**
+     * @return BigQuery warehouse profile.
+     * 
+     */
+    public Output<Optional<ConnectionProfileBigqueryProfile>> bigqueryProfile() {
+        return Codegen.optional(this.bigqueryProfile);
+    }
     /**
      * The connection profile identifier.
      * 

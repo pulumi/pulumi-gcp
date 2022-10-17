@@ -41,6 +41,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly bigqueryAnalyticsHubCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly bigqueryConnectionCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly bigqueryDataTransferCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly bigqueryDatapolicyCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly bigqueryReservationCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly bigtableCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly billingCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -53,6 +54,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly cloudBuildWorkerPoolCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudFunctionsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudIdentityCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly cloudIdsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudIotCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudResourceManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudRunCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -169,6 +171,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["bigqueryAnalyticsHubCustomEndpoint"] = args ? args.bigqueryAnalyticsHubCustomEndpoint : undefined;
             resourceInputs["bigqueryConnectionCustomEndpoint"] = args ? args.bigqueryConnectionCustomEndpoint : undefined;
             resourceInputs["bigqueryDataTransferCustomEndpoint"] = args ? args.bigqueryDataTransferCustomEndpoint : undefined;
+            resourceInputs["bigqueryDatapolicyCustomEndpoint"] = args ? args.bigqueryDatapolicyCustomEndpoint : undefined;
             resourceInputs["bigqueryReservationCustomEndpoint"] = args ? args.bigqueryReservationCustomEndpoint : undefined;
             resourceInputs["bigtableCustomEndpoint"] = args ? args.bigtableCustomEndpoint : undefined;
             resourceInputs["billingCustomEndpoint"] = args ? args.billingCustomEndpoint : undefined;
@@ -181,6 +184,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["cloudBuildWorkerPoolCustomEndpoint"] = args ? args.cloudBuildWorkerPoolCustomEndpoint : undefined;
             resourceInputs["cloudFunctionsCustomEndpoint"] = args ? args.cloudFunctionsCustomEndpoint : undefined;
             resourceInputs["cloudIdentityCustomEndpoint"] = args ? args.cloudIdentityCustomEndpoint : undefined;
+            resourceInputs["cloudIdsCustomEndpoint"] = args ? args.cloudIdsCustomEndpoint : undefined;
             resourceInputs["cloudIotCustomEndpoint"] = args ? args.cloudIotCustomEndpoint : undefined;
             resourceInputs["cloudResourceManagerCustomEndpoint"] = args ? args.cloudResourceManagerCustomEndpoint : undefined;
             resourceInputs["cloudRunCustomEndpoint"] = args ? args.cloudRunCustomEndpoint : undefined;
@@ -299,6 +303,7 @@ export interface ProviderArgs {
     bigqueryAnalyticsHubCustomEndpoint?: pulumi.Input<string>;
     bigqueryConnectionCustomEndpoint?: pulumi.Input<string>;
     bigqueryDataTransferCustomEndpoint?: pulumi.Input<string>;
+    bigqueryDatapolicyCustomEndpoint?: pulumi.Input<string>;
     bigqueryReservationCustomEndpoint?: pulumi.Input<string>;
     bigtableCustomEndpoint?: pulumi.Input<string>;
     billingCustomEndpoint?: pulumi.Input<string>;
@@ -311,6 +316,7 @@ export interface ProviderArgs {
     cloudBuildWorkerPoolCustomEndpoint?: pulumi.Input<string>;
     cloudFunctionsCustomEndpoint?: pulumi.Input<string>;
     cloudIdentityCustomEndpoint?: pulumi.Input<string>;
+    cloudIdsCustomEndpoint?: pulumi.Input<string>;
     cloudIotCustomEndpoint?: pulumi.Input<string>;
     cloudResourceManagerCustomEndpoint?: pulumi.Input<string>;
     cloudRunCustomEndpoint?: pulumi.Input<string>;

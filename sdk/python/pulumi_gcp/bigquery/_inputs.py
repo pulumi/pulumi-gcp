@@ -57,6 +57,7 @@ __all__ = [
     'RoutineArgumentArgs',
     'TableEncryptionConfigurationArgs',
     'TableExternalDataConfigurationArgs',
+    'TableExternalDataConfigurationAvroOptionsArgs',
     'TableExternalDataConfigurationCsvOptionsArgs',
     'TableExternalDataConfigurationGoogleSheetsOptionsArgs',
     'TableExternalDataConfigurationHivePartitioningOptionsArgs',
@@ -3181,6 +3182,7 @@ class TableExternalDataConfigurationArgs:
                  autodetect: pulumi.Input[bool],
                  source_format: pulumi.Input[str],
                  source_uris: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 avro_options: Optional[pulumi.Input['TableExternalDataConfigurationAvroOptionsArgs']] = None,
                  compression: Optional[pulumi.Input[str]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  csv_options: Optional[pulumi.Input['TableExternalDataConfigurationCsvOptionsArgs']] = None,
@@ -3199,6 +3201,8 @@ class TableExternalDataConfigurationArgs:
                "https://www.googleapis.com/auth/drive.readonly".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_uris: A list of the fully-qualified URIs that point to
                your data in Google Cloud.
+        :param pulumi.Input['TableExternalDataConfigurationAvroOptionsArgs'] avro_options: Additional options if `source_format` is set to  
+               "AVRO".  Structure is documented below.
         :param pulumi.Input[str] compression: The compression type of the data source.
                Valid values are "NONE" or "GZIP".
         :param pulumi.Input[str] connection_id: The connection specifying the credentials to be used to read
@@ -3237,6 +3241,8 @@ class TableExternalDataConfigurationArgs:
         pulumi.set(__self__, "autodetect", autodetect)
         pulumi.set(__self__, "source_format", source_format)
         pulumi.set(__self__, "source_uris", source_uris)
+        if avro_options is not None:
+            pulumi.set(__self__, "avro_options", avro_options)
         if compression is not None:
             pulumi.set(__self__, "compression", compression)
         if connection_id is not None:
@@ -3295,6 +3301,19 @@ class TableExternalDataConfigurationArgs:
     @source_uris.setter
     def source_uris(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "source_uris", value)
+
+    @property
+    @pulumi.getter(name="avroOptions")
+    def avro_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationAvroOptionsArgs']]:
+        """
+        Additional options if `source_format` is set to  
+        "AVRO".  Structure is documented below.
+        """
+        return pulumi.get(self, "avro_options")
+
+    @avro_options.setter
+    def avro_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationAvroOptionsArgs']]):
+        pulumi.set(self, "avro_options", value)
 
     @property
     @pulumi.getter
@@ -3417,6 +3436,32 @@ class TableExternalDataConfigurationArgs:
     @schema.setter
     def schema(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "schema", value)
+
+
+@pulumi.input_type
+class TableExternalDataConfigurationAvroOptionsArgs:
+    def __init__(__self__, *,
+                 use_avro_logical_types: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] use_avro_logical_types: If is set to true, indicates whether  
+               to interpret logical types as the corresponding BigQuery data type
+               (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+        """
+        pulumi.set(__self__, "use_avro_logical_types", use_avro_logical_types)
+
+    @property
+    @pulumi.getter(name="useAvroLogicalTypes")
+    def use_avro_logical_types(self) -> pulumi.Input[bool]:
+        """
+        If is set to true, indicates whether  
+        to interpret logical types as the corresponding BigQuery data type
+        (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+        """
+        return pulumi.get(self, "use_avro_logical_types")
+
+    @use_avro_logical_types.setter
+    def use_avro_logical_types(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "use_avro_logical_types", value)
 
 
 @pulumi.input_type

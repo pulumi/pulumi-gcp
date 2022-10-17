@@ -33,6 +33,7 @@ class StandardAppVersionArgs:
                  noop_on_destroy: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  runtime_api_version: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
                  vpc_access_connector: Optional[pulumi.Input['StandardAppVersionVpcAccessConnectorArgs']] = None):
@@ -70,6 +71,7 @@ class StandardAppVersionArgs:
         :param pulumi.Input[str] runtime_api_version: The version of the API in the given runtime environment.
                Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\\
                Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
+        :param pulumi.Input[str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         :param pulumi.Input['StandardAppVersionVpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
@@ -105,6 +107,8 @@ class StandardAppVersionArgs:
             pulumi.set(__self__, "project", project)
         if runtime_api_version is not None:
             pulumi.set(__self__, "runtime_api_version", runtime_api_version)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if threadsafe is not None:
             pulumi.set(__self__, "threadsafe", threadsafe)
         if version_id is not None:
@@ -332,6 +336,18 @@ class StandardAppVersionArgs:
         pulumi.set(self, "runtime_api_version", value)
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
     @pulumi.getter
     def threadsafe(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -390,6 +406,7 @@ class _StandardAppVersionState:
                  runtime: Optional[pulumi.Input[str]] = None,
                  runtime_api_version: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
                  vpc_access_connector: Optional[pulumi.Input['StandardAppVersionVpcAccessConnectorArgs']] = None):
@@ -428,6 +445,7 @@ class _StandardAppVersionState:
                Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\\
                Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
         :param pulumi.Input[str] service: AppEngine service resource
+        :param pulumi.Input[str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         :param pulumi.Input['StandardAppVersionVpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
@@ -469,6 +487,8 @@ class _StandardAppVersionState:
             pulumi.set(__self__, "runtime_api_version", runtime_api_version)
         if service is not None:
             pulumi.set(__self__, "service", service)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if threadsafe is not None:
             pulumi.set(__self__, "threadsafe", threadsafe)
         if version_id is not None:
@@ -708,6 +728,18 @@ class _StandardAppVersionState:
         pulumi.set(self, "service", value)
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
     @pulumi.getter
     def threadsafe(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -767,6 +799,7 @@ class StandardAppVersion(pulumi.CustomResource):
                  runtime: Optional[pulumi.Input[str]] = None,
                  runtime_api_version: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
                  vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['StandardAppVersionVpcAccessConnectorArgs']]] = None,
@@ -790,6 +823,17 @@ class StandardAppVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        custom_service_account = gcp.service_account.Account("customServiceAccount",
+            account_id="my-account",
+            display_name="Custom Service Account")
+        gae_api = gcp.projects.IAMMember("gaeApi",
+            project=custom_service_account.project,
+            role="roles/compute.networkUser",
+            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        storage_viewer = gcp.projects.IAMMember("storageViewer",
+            project=custom_service_account.project,
+            role="roles/storage.objectViewer",
+            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         bucket = gcp.storage.Bucket("bucket", location="US")
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
@@ -822,7 +866,8 @@ class StandardAppVersion(pulumi.CustomResource):
                     max_instances=10,
                 ),
             ),
-            delete_service_on_destroy=True)
+            delete_service_on_destroy=True,
+            service_account=custom_service_account.email)
         myapp_v2 = gcp.appengine.StandardAppVersion("myappV2",
             version_id="v2",
             service="myapp",
@@ -842,7 +887,8 @@ class StandardAppVersion(pulumi.CustomResource):
             basic_scaling=gcp.appengine.StandardAppVersionBasicScalingArgs(
                 max_instances=5,
             ),
-            noop_on_destroy=True)
+            noop_on_destroy=True,
+            service_account=custom_service_account.email)
         ```
 
         ## Import
@@ -895,6 +941,7 @@ class StandardAppVersion(pulumi.CustomResource):
                Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\\
                Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
         :param pulumi.Input[str] service: AppEngine service resource
+        :param pulumi.Input[str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         :param pulumi.Input[pulumi.InputType['StandardAppVersionVpcAccessConnectorArgs']] vpc_access_connector: Enables VPC connectivity for standard apps.
@@ -925,6 +972,17 @@ class StandardAppVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        custom_service_account = gcp.service_account.Account("customServiceAccount",
+            account_id="my-account",
+            display_name="Custom Service Account")
+        gae_api = gcp.projects.IAMMember("gaeApi",
+            project=custom_service_account.project,
+            role="roles/compute.networkUser",
+            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        storage_viewer = gcp.projects.IAMMember("storageViewer",
+            project=custom_service_account.project,
+            role="roles/storage.objectViewer",
+            member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         bucket = gcp.storage.Bucket("bucket", location="US")
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
@@ -957,7 +1015,8 @@ class StandardAppVersion(pulumi.CustomResource):
                     max_instances=10,
                 ),
             ),
-            delete_service_on_destroy=True)
+            delete_service_on_destroy=True,
+            service_account=custom_service_account.email)
         myapp_v2 = gcp.appengine.StandardAppVersion("myappV2",
             version_id="v2",
             service="myapp",
@@ -977,7 +1036,8 @@ class StandardAppVersion(pulumi.CustomResource):
             basic_scaling=gcp.appengine.StandardAppVersionBasicScalingArgs(
                 max_instances=5,
             ),
-            noop_on_destroy=True)
+            noop_on_destroy=True,
+            service_account=custom_service_account.email)
         ```
 
         ## Import
@@ -1028,6 +1088,7 @@ class StandardAppVersion(pulumi.CustomResource):
                  runtime: Optional[pulumi.Input[str]] = None,
                  runtime_api_version: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
                  vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['StandardAppVersionVpcAccessConnectorArgs']]] = None,
@@ -1065,6 +1126,7 @@ class StandardAppVersion(pulumi.CustomResource):
             if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__.__dict__["service"] = service
+            __props__.__dict__["service_account"] = service_account
             __props__.__dict__["threadsafe"] = threadsafe
             __props__.__dict__["version_id"] = version_id
             __props__.__dict__["vpc_access_connector"] = vpc_access_connector
@@ -1097,6 +1159,7 @@ class StandardAppVersion(pulumi.CustomResource):
             runtime: Optional[pulumi.Input[str]] = None,
             runtime_api_version: Optional[pulumi.Input[str]] = None,
             service: Optional[pulumi.Input[str]] = None,
+            service_account: Optional[pulumi.Input[str]] = None,
             threadsafe: Optional[pulumi.Input[bool]] = None,
             version_id: Optional[pulumi.Input[str]] = None,
             vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['StandardAppVersionVpcAccessConnectorArgs']]] = None) -> 'StandardAppVersion':
@@ -1140,6 +1203,7 @@ class StandardAppVersion(pulumi.CustomResource):
                Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\\
                Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
         :param pulumi.Input[str] service: AppEngine service resource
+        :param pulumi.Input[str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         :param pulumi.Input[pulumi.InputType['StandardAppVersionVpcAccessConnectorArgs']] vpc_access_connector: Enables VPC connectivity for standard apps.
@@ -1167,6 +1231,7 @@ class StandardAppVersion(pulumi.CustomResource):
         __props__.__dict__["runtime"] = runtime
         __props__.__dict__["runtime_api_version"] = runtime_api_version
         __props__.__dict__["service"] = service
+        __props__.__dict__["service_account"] = service_account
         __props__.__dict__["threadsafe"] = threadsafe
         __props__.__dict__["version_id"] = version_id
         __props__.__dict__["vpc_access_connector"] = vpc_access_connector
@@ -1330,6 +1395,14 @@ class StandardAppVersion(pulumi.CustomResource):
         AppEngine service resource
         """
         return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Output[str]:
+        """
+        The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+        """
+        return pulumi.get(self, "service_account")
 
     @property
     @pulumi.getter

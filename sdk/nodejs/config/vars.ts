@@ -129,6 +129,14 @@ Object.defineProperty(exports, "bigqueryDataTransferCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const bigqueryDatapolicyCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "bigqueryDatapolicyCustomEndpoint", {
+    get() {
+        return __config.get("bigqueryDatapolicyCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const bigqueryReservationCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "bigqueryReservationCustomEndpoint", {
     get() {
@@ -221,6 +229,14 @@ export declare const cloudIdentityCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "cloudIdentityCustomEndpoint", {
     get() {
         return __config.get("cloudIdentityCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const cloudIdsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "cloudIdsCustomEndpoint", {
+    get() {
+        return __config.get("cloudIdsCustomEndpoint");
     },
     enumerable: true,
 });

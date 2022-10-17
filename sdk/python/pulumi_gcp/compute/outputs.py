@@ -512,6 +512,8 @@ __all__ = [
     'GetRouterBgpAdvertisedIpRangeResult',
     'GetRouterStatusBestRouteResult',
     'GetRouterStatusBestRoutesForRouterResult',
+    'GetSnapshotSnapshotEncryptionKeyResult',
+    'GetSnapshotSourceDiskEncryptionKeyResult',
     'GetSubnetworkSecondaryIpRangeResult',
 ]
 
@@ -6099,7 +6101,8 @@ class InstanceBootDiskInitializeParams(dict):
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
-        :param Mapping[str, Any] labels: A map of key/value label pairs to assign to the instance.
+        :param Mapping[str, Any] labels: A set of key/value label pairs assigned to the disk. This  
+               field is only applicable for persistent disks.
         :param int size: The size of the image in gigabytes. If not specified, it
                will inherit the size of its base image.
         :param str type: The type of reservation from which this instance can consume resources.
@@ -6133,7 +6136,8 @@ class InstanceBootDiskInitializeParams(dict):
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, Any]]:
         """
-        A map of key/value label pairs to assign to the instance.
+        A set of key/value label pairs assigned to the disk. This  
+        field is only applicable for persistent disks.
         """
         return pulumi.get(self, "labels")
 
@@ -33304,6 +33308,58 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetSnapshotSnapshotEncryptionKeyResult(dict):
+    def __init__(__self__, *,
+                 kms_key_self_link: str,
+                 kms_key_service_account: str,
+                 raw_key: str,
+                 sha256: str):
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        pulumi.set(__self__, "raw_key", raw_key)
+        pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> str:
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> str:
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> str:
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> str:
+        return pulumi.get(self, "sha256")
+
+
+@pulumi.output_type
+class GetSnapshotSourceDiskEncryptionKeyResult(dict):
+    def __init__(__self__, *,
+                 kms_key_service_account: str,
+                 raw_key: str):
+        pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        pulumi.set(__self__, "raw_key", raw_key)
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> str:
+        return pulumi.get(self, "kms_key_service_account")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> str:
+        return pulumi.get(self, "raw_key")
 
 
 @pulumi.output_type

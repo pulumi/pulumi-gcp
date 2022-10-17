@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -28,6 +29,13 @@ public final class NodePoolNodeConfigGuestAcceleratorArgs extends com.pulumi.res
 
     public Optional<Output<String>> gpuPartitionSize() {
         return Optional.ofNullable(this.gpuPartitionSize);
+    }
+
+    @Import(name="gpuSharingConfig")
+    private @Nullable Output<NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs> gpuSharingConfig;
+
+    public Optional<Output<NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs>> gpuSharingConfig() {
+        return Optional.ofNullable(this.gpuSharingConfig);
     }
 
     /**
@@ -54,6 +62,7 @@ public final class NodePoolNodeConfigGuestAcceleratorArgs extends com.pulumi.res
     private NodePoolNodeConfigGuestAcceleratorArgs(NodePoolNodeConfigGuestAcceleratorArgs $) {
         this.count = $.count;
         this.gpuPartitionSize = $.gpuPartitionSize;
+        this.gpuSharingConfig = $.gpuSharingConfig;
         this.type = $.type;
     }
 
@@ -91,6 +100,15 @@ public final class NodePoolNodeConfigGuestAcceleratorArgs extends com.pulumi.res
 
         public Builder gpuPartitionSize(String gpuPartitionSize) {
             return gpuPartitionSize(Output.of(gpuPartitionSize));
+        }
+
+        public Builder gpuSharingConfig(@Nullable Output<NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs> gpuSharingConfig) {
+            $.gpuSharingConfig = gpuSharingConfig;
+            return this;
+        }
+
+        public Builder gpuSharingConfig(NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs gpuSharingConfig) {
+            return gpuSharingConfig(Output.of(gpuSharingConfig));
         }
 
         /**

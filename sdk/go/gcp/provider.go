@@ -31,6 +31,7 @@ type Provider struct {
 	BigqueryAnalyticsHubCustomEndpoint pulumi.StringPtrOutput `pulumi:"bigqueryAnalyticsHubCustomEndpoint"`
 	BigqueryConnectionCustomEndpoint   pulumi.StringPtrOutput `pulumi:"bigqueryConnectionCustomEndpoint"`
 	BigqueryDataTransferCustomEndpoint pulumi.StringPtrOutput `pulumi:"bigqueryDataTransferCustomEndpoint"`
+	BigqueryDatapolicyCustomEndpoint   pulumi.StringPtrOutput `pulumi:"bigqueryDatapolicyCustomEndpoint"`
 	BigqueryReservationCustomEndpoint  pulumi.StringPtrOutput `pulumi:"bigqueryReservationCustomEndpoint"`
 	BigtableCustomEndpoint             pulumi.StringPtrOutput `pulumi:"bigtableCustomEndpoint"`
 	BillingCustomEndpoint              pulumi.StringPtrOutput `pulumi:"billingCustomEndpoint"`
@@ -43,6 +44,7 @@ type Provider struct {
 	CloudBuildWorkerPoolCustomEndpoint pulumi.StringPtrOutput `pulumi:"cloudBuildWorkerPoolCustomEndpoint"`
 	CloudFunctionsCustomEndpoint       pulumi.StringPtrOutput `pulumi:"cloudFunctionsCustomEndpoint"`
 	CloudIdentityCustomEndpoint        pulumi.StringPtrOutput `pulumi:"cloudIdentityCustomEndpoint"`
+	CloudIdsCustomEndpoint             pulumi.StringPtrOutput `pulumi:"cloudIdsCustomEndpoint"`
 	CloudIotCustomEndpoint             pulumi.StringPtrOutput `pulumi:"cloudIotCustomEndpoint"`
 	CloudResourceManagerCustomEndpoint pulumi.StringPtrOutput `pulumi:"cloudResourceManagerCustomEndpoint"`
 	CloudRunCustomEndpoint             pulumi.StringPtrOutput `pulumi:"cloudRunCustomEndpoint"`
@@ -174,6 +176,7 @@ type providerArgs struct {
 	BigqueryAnalyticsHubCustomEndpoint *string           `pulumi:"bigqueryAnalyticsHubCustomEndpoint"`
 	BigqueryConnectionCustomEndpoint   *string           `pulumi:"bigqueryConnectionCustomEndpoint"`
 	BigqueryDataTransferCustomEndpoint *string           `pulumi:"bigqueryDataTransferCustomEndpoint"`
+	BigqueryDatapolicyCustomEndpoint   *string           `pulumi:"bigqueryDatapolicyCustomEndpoint"`
 	BigqueryReservationCustomEndpoint  *string           `pulumi:"bigqueryReservationCustomEndpoint"`
 	BigtableCustomEndpoint             *string           `pulumi:"bigtableCustomEndpoint"`
 	BillingCustomEndpoint              *string           `pulumi:"billingCustomEndpoint"`
@@ -186,6 +189,7 @@ type providerArgs struct {
 	CloudBuildWorkerPoolCustomEndpoint *string           `pulumi:"cloudBuildWorkerPoolCustomEndpoint"`
 	CloudFunctionsCustomEndpoint       *string           `pulumi:"cloudFunctionsCustomEndpoint"`
 	CloudIdentityCustomEndpoint        *string           `pulumi:"cloudIdentityCustomEndpoint"`
+	CloudIdsCustomEndpoint             *string           `pulumi:"cloudIdsCustomEndpoint"`
 	CloudIotCustomEndpoint             *string           `pulumi:"cloudIotCustomEndpoint"`
 	CloudResourceManagerCustomEndpoint *string           `pulumi:"cloudResourceManagerCustomEndpoint"`
 	CloudRunCustomEndpoint             *string           `pulumi:"cloudRunCustomEndpoint"`
@@ -298,6 +302,7 @@ type ProviderArgs struct {
 	BigqueryAnalyticsHubCustomEndpoint pulumi.StringPtrInput
 	BigqueryConnectionCustomEndpoint   pulumi.StringPtrInput
 	BigqueryDataTransferCustomEndpoint pulumi.StringPtrInput
+	BigqueryDatapolicyCustomEndpoint   pulumi.StringPtrInput
 	BigqueryReservationCustomEndpoint  pulumi.StringPtrInput
 	BigtableCustomEndpoint             pulumi.StringPtrInput
 	BillingCustomEndpoint              pulumi.StringPtrInput
@@ -310,6 +315,7 @@ type ProviderArgs struct {
 	CloudBuildWorkerPoolCustomEndpoint pulumi.StringPtrInput
 	CloudFunctionsCustomEndpoint       pulumi.StringPtrInput
 	CloudIdentityCustomEndpoint        pulumi.StringPtrInput
+	CloudIdsCustomEndpoint             pulumi.StringPtrInput
 	CloudIotCustomEndpoint             pulumi.StringPtrInput
 	CloudResourceManagerCustomEndpoint pulumi.StringPtrInput
 	CloudRunCustomEndpoint             pulumi.StringPtrInput
@@ -498,6 +504,10 @@ func (o ProviderOutput) BigqueryDataTransferCustomEndpoint() pulumi.StringPtrOut
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BigqueryDataTransferCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) BigqueryDatapolicyCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BigqueryDatapolicyCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) BigqueryReservationCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BigqueryReservationCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -544,6 +554,10 @@ func (o ProviderOutput) CloudFunctionsCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) CloudIdentityCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CloudIdentityCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) CloudIdsCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CloudIdsCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) CloudIotCustomEndpoint() pulumi.StringPtrOutput {

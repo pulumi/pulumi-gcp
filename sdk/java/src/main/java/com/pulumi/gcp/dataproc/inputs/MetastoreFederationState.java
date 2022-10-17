@@ -100,14 +100,14 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The relative resource name of the metastore that is being federated.
+     * The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The relative resource name of the metastore that is being federated.
+     * @return The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
      * 
      */
     public Optional<Output<String>> name() {
@@ -348,7 +348,7 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The relative resource name of the metastore that is being federated.
+         * @param name The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The relative resource name of the metastore that is being federated.
+         * @param name The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
          * 
          * @return builder
          * 

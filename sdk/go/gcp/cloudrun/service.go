@@ -321,6 +321,60 @@ import (
 //	}
 //
 // ```
+// ### Cloud Run Service Probes
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
+//				Location: pulumi.String("us-central1"),
+//				Metadata: &cloudrun.ServiceMetadataArgs{
+//					Annotations: pulumi.StringMap{
+//						"run.googleapis.com/launch-stage": pulumi.String("BETA"),
+//					},
+//				},
+//				Template: &cloudrun.ServiceTemplateArgs{
+//					Spec: &cloudrun.ServiceTemplateSpecArgs{
+//						Containers: cloudrun.ServiceTemplateSpecContainerArray{
+//							&cloudrun.ServiceTemplateSpecContainerArgs{
+//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//								StartupProbe: &cloudrun.ServiceTemplateSpecContainerStartupProbeArgs{
+//									InitialDelaySeconds: pulumi.Int(0),
+//									TimeoutSeconds:      pulumi.Int(1),
+//									PeriodSeconds:       pulumi.Int(3),
+//									FailureThreshold:    pulumi.Int(1),
+//									TcpSocket: &cloudrun.ServiceTemplateSpecContainerStartupProbeTcpSocketArgs{
+//										Port: pulumi.Int(8080),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				Traffics: cloudrun.ServiceTrafficArray{
+//					&cloudrun.ServiceTrafficArgs{
+//						Percent:        pulumi.Int(100),
+//						LatestRevision: pulumi.Bool(true),
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

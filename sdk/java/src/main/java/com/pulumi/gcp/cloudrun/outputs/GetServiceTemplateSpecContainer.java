@@ -8,6 +8,7 @@ import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerEnv;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerEnvFrom;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerPort;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerResource;
+import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerStartupProbe;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerVolumeMount;
 import java.lang.String;
 import java.util.List;
@@ -22,6 +23,7 @@ public final class GetServiceTemplateSpecContainer {
     private String image;
     private List<GetServiceTemplateSpecContainerPort> ports;
     private List<GetServiceTemplateSpecContainerResource> resources;
+    private List<GetServiceTemplateSpecContainerStartupProbe> startupProbes;
     private List<GetServiceTemplateSpecContainerVolumeMount> volumeMounts;
     private String workingDir;
 
@@ -47,6 +49,9 @@ public final class GetServiceTemplateSpecContainer {
     public List<GetServiceTemplateSpecContainerResource> resources() {
         return this.resources;
     }
+    public List<GetServiceTemplateSpecContainerStartupProbe> startupProbes() {
+        return this.startupProbes;
+    }
     public List<GetServiceTemplateSpecContainerVolumeMount> volumeMounts() {
         return this.volumeMounts;
     }
@@ -70,6 +75,7 @@ public final class GetServiceTemplateSpecContainer {
         private String image;
         private List<GetServiceTemplateSpecContainerPort> ports;
         private List<GetServiceTemplateSpecContainerResource> resources;
+        private List<GetServiceTemplateSpecContainerStartupProbe> startupProbes;
         private List<GetServiceTemplateSpecContainerVolumeMount> volumeMounts;
         private String workingDir;
         public Builder() {}
@@ -82,6 +88,7 @@ public final class GetServiceTemplateSpecContainer {
     	      this.image = defaults.image;
     	      this.ports = defaults.ports;
     	      this.resources = defaults.resources;
+    	      this.startupProbes = defaults.startupProbes;
     	      this.volumeMounts = defaults.volumeMounts;
     	      this.workingDir = defaults.workingDir;
         }
@@ -140,6 +147,14 @@ public final class GetServiceTemplateSpecContainer {
             return resources(List.of(resources));
         }
         @CustomType.Setter
+        public Builder startupProbes(List<GetServiceTemplateSpecContainerStartupProbe> startupProbes) {
+            this.startupProbes = Objects.requireNonNull(startupProbes);
+            return this;
+        }
+        public Builder startupProbes(GetServiceTemplateSpecContainerStartupProbe... startupProbes) {
+            return startupProbes(List.of(startupProbes));
+        }
+        @CustomType.Setter
         public Builder volumeMounts(List<GetServiceTemplateSpecContainerVolumeMount> volumeMounts) {
             this.volumeMounts = Objects.requireNonNull(volumeMounts);
             return this;
@@ -161,6 +176,7 @@ public final class GetServiceTemplateSpecContainer {
             o.image = image;
             o.ports = ports;
             o.resources = resources;
+            o.startupProbes = startupProbes;
             o.volumeMounts = volumeMounts;
             o.workingDir = workingDir;
             return o;

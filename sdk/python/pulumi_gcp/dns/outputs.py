@@ -11,6 +11,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'ManagedZoneCloudLoggingConfig',
     'ManagedZoneDnssecConfig',
     'ManagedZoneDnssecConfigDefaultKeySpec',
     'ManagedZoneForwardingConfig',
@@ -35,6 +36,41 @@ __all__ = [
     'GetKeysZoneSigningKeyResult',
     'GetKeysZoneSigningKeyDigestResult',
 ]
+
+@pulumi.output_type
+class ManagedZoneCloudLoggingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableLogging":
+            suggest = "enable_logging"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedZoneCloudLoggingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedZoneCloudLoggingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedZoneCloudLoggingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_logging: bool):
+        """
+        :param bool enable_logging: If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+        """
+        pulumi.set(__self__, "enable_logging", enable_logging)
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> bool:
+        """
+        If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+        """
+        return pulumi.get(self, "enable_logging")
+
 
 @pulumi.output_type
 class ManagedZoneDnssecConfig(dict):

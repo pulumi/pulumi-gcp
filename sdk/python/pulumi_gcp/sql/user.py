@@ -21,8 +21,8 @@ class UserArgs:
                  host: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 password_policy: Optional[pulumi.Input['UserPasswordPolicyArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sql_server_user_details: Optional[pulumi.Input['UserSqlServerUserDetailsArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a User resource.
@@ -54,10 +54,10 @@ class UserArgs:
             pulumi.set(__self__, "name", name)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_policy is not None:
+            pulumi.set(__self__, "password_policy", password_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if sql_server_user_details is not None:
-            pulumi.set(__self__, "sql_server_user_details", sql_server_user_details)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -130,6 +130,15 @@ class UserArgs:
         pulumi.set(self, "password", value)
 
     @property
+    @pulumi.getter(name="passwordPolicy")
+    def password_policy(self) -> Optional[pulumi.Input['UserPasswordPolicyArgs']]:
+        return pulumi.get(self, "password_policy")
+
+    @password_policy.setter
+    def password_policy(self, value: Optional[pulumi.Input['UserPasswordPolicyArgs']]):
+        pulumi.set(self, "password_policy", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -141,15 +150,6 @@ class UserArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="sqlServerUserDetails")
-    def sql_server_user_details(self) -> Optional[pulumi.Input['UserSqlServerUserDetailsArgs']]:
-        return pulumi.get(self, "sql_server_user_details")
-
-    @sql_server_user_details.setter
-    def sql_server_user_details(self, value: Optional[pulumi.Input['UserSqlServerUserDetailsArgs']]):
-        pulumi.set(self, "sql_server_user_details", value)
 
     @property
     @pulumi.getter
@@ -174,8 +174,9 @@ class _UserState:
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 password_policy: Optional[pulumi.Input['UserPasswordPolicyArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sql_server_user_details: Optional[pulumi.Input['UserSqlServerUserDetailsArgs']] = None,
+                 sql_server_user_details: Optional[pulumi.Input[Sequence[pulumi.Input['UserSqlServerUserDetailArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering User resources.
@@ -208,6 +209,8 @@ class _UserState:
             pulumi.set(__self__, "name", name)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_policy is not None:
+            pulumi.set(__self__, "password_policy", password_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if sql_server_user_details is not None:
@@ -284,6 +287,15 @@ class _UserState:
         pulumi.set(self, "password", value)
 
     @property
+    @pulumi.getter(name="passwordPolicy")
+    def password_policy(self) -> Optional[pulumi.Input['UserPasswordPolicyArgs']]:
+        return pulumi.get(self, "password_policy")
+
+    @password_policy.setter
+    def password_policy(self, value: Optional[pulumi.Input['UserPasswordPolicyArgs']]):
+        pulumi.set(self, "password_policy", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -298,11 +310,11 @@ class _UserState:
 
     @property
     @pulumi.getter(name="sqlServerUserDetails")
-    def sql_server_user_details(self) -> Optional[pulumi.Input['UserSqlServerUserDetailsArgs']]:
+    def sql_server_user_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserSqlServerUserDetailArgs']]]]:
         return pulumi.get(self, "sql_server_user_details")
 
     @sql_server_user_details.setter
-    def sql_server_user_details(self, value: Optional[pulumi.Input['UserSqlServerUserDetailsArgs']]):
+    def sql_server_user_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserSqlServerUserDetailArgs']]]]):
         pulumi.set(self, "sql_server_user_details", value)
 
     @property
@@ -330,8 +342,8 @@ class User(pulumi.CustomResource):
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 password_policy: Optional[pulumi.Input[pulumi.InputType['UserPasswordPolicyArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sql_server_user_details: Optional[pulumi.Input[pulumi.InputType['UserSqlServerUserDetailsArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -505,8 +517,8 @@ class User(pulumi.CustomResource):
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 password_policy: Optional[pulumi.Input[pulumi.InputType['UserPasswordPolicyArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sql_server_user_details: Optional[pulumi.Input[pulumi.InputType['UserSqlServerUserDetailsArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -524,9 +536,10 @@ class User(pulumi.CustomResource):
             __props__.__dict__["instance"] = instance
             __props__.__dict__["name"] = name
             __props__.__dict__["password"] = password
+            __props__.__dict__["password_policy"] = password_policy
             __props__.__dict__["project"] = project
-            __props__.__dict__["sql_server_user_details"] = sql_server_user_details
             __props__.__dict__["type"] = type
+            __props__.__dict__["sql_server_user_details"] = None
         super(User, __self__).__init__(
             'gcp:sql/user:User',
             resource_name,
@@ -542,8 +555,9 @@ class User(pulumi.CustomResource):
             instance: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
+            password_policy: Optional[pulumi.Input[pulumi.InputType['UserPasswordPolicyArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            sql_server_user_details: Optional[pulumi.Input[pulumi.InputType['UserSqlServerUserDetailsArgs']]] = None,
+            sql_server_user_details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserSqlServerUserDetailArgs']]]]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
@@ -580,6 +594,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["instance"] = instance
         __props__.__dict__["name"] = name
         __props__.__dict__["password"] = password
+        __props__.__dict__["password_policy"] = password_policy
         __props__.__dict__["project"] = project
         __props__.__dict__["sql_server_user_details"] = sql_server_user_details
         __props__.__dict__["type"] = type
@@ -634,6 +649,11 @@ class User(pulumi.CustomResource):
         return pulumi.get(self, "password")
 
     @property
+    @pulumi.getter(name="passwordPolicy")
+    def password_policy(self) -> pulumi.Output[Optional['outputs.UserPasswordPolicy']]:
+        return pulumi.get(self, "password_policy")
+
+    @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
@@ -644,7 +664,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sqlServerUserDetails")
-    def sql_server_user_details(self) -> pulumi.Output[Optional['outputs.UserSqlServerUserDetails']]:
+    def sql_server_user_details(self) -> pulumi.Output[Sequence['outputs.UserSqlServerUserDetail']]:
         return pulumi.get(self, "sql_server_user_details")
 
     @property

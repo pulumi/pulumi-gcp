@@ -9,6 +9,7 @@ import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerEnvArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerEnvFromArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerPortArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerResourcesArgs;
+import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerStartupProbeArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerVolumeMountArgs;
 import java.lang.String;
 import java.util.List;
@@ -198,6 +199,13 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         return Optional.ofNullable(this.resources);
     }
 
+    @Import(name="startupProbe")
+    private @Nullable Output<ServiceTemplateSpecContainerStartupProbeArgs> startupProbe;
+
+    public Optional<Output<ServiceTemplateSpecContainerStartupProbeArgs>> startupProbe() {
+        return Optional.ofNullable(this.startupProbe);
+    }
+
     /**
      * Volume to mount into the container&#39;s filesystem.
      * Only supports SecretVolumeSources.
@@ -258,6 +266,7 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         this.image = $.image;
         this.ports = $.ports;
         this.resources = $.resources;
+        this.startupProbe = $.startupProbe;
         this.volumeMounts = $.volumeMounts;
         this.workingDir = $.workingDir;
     }
@@ -578,6 +587,15 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
          */
         public Builder resources(ServiceTemplateSpecContainerResourcesArgs resources) {
             return resources(Output.of(resources));
+        }
+
+        public Builder startupProbe(@Nullable Output<ServiceTemplateSpecContainerStartupProbeArgs> startupProbe) {
+            $.startupProbe = startupProbe;
+            return this;
+        }
+
+        public Builder startupProbe(ServiceTemplateSpecContainerStartupProbeArgs startupProbe) {
+            return startupProbe(Output.of(startupProbe));
         }
 
         /**

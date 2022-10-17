@@ -10,8 +10,31 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'InstanceCryptoKeyConfigArgs',
     'InstanceNetworkConfigArgs',
 ]
+
+@pulumi.input_type
+class InstanceCryptoKeyConfigArgs:
+    def __init__(__self__, *,
+                 key_reference: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key_reference: The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        """
+        pulumi.set(__self__, "key_reference", key_reference)
+
+    @property
+    @pulumi.getter(name="keyReference")
+    def key_reference(self) -> pulumi.Input[str]:
+        """
+        The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        """
+        return pulumi.get(self, "key_reference")
+
+    @key_reference.setter
+    def key_reference(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key_reference", value)
+
 
 @pulumi.input_type
 class InstanceNetworkConfigArgs:

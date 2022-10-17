@@ -99,6 +99,7 @@ __all__ = [
     'ClusterNodeConfigEphemeralStorageConfig',
     'ClusterNodeConfigGcfsConfig',
     'ClusterNodeConfigGuestAccelerator',
+    'ClusterNodeConfigGuestAcceleratorGpuSharingConfig',
     'ClusterNodeConfigGvnic',
     'ClusterNodeConfigKubeletConfig',
     'ClusterNodeConfigLinuxNodeConfig',
@@ -120,6 +121,7 @@ __all__ = [
     'ClusterNodePoolNodeConfigEphemeralStorageConfig',
     'ClusterNodePoolNodeConfigGcfsConfig',
     'ClusterNodePoolNodeConfigGuestAccelerator',
+    'ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig',
     'ClusterNodePoolNodeConfigGvnic',
     'ClusterNodePoolNodeConfigKubeletConfig',
     'ClusterNodePoolNodeConfigLinuxNodeConfig',
@@ -150,6 +152,7 @@ __all__ = [
     'NodePoolNodeConfigEphemeralStorageConfig',
     'NodePoolNodeConfigGcfsConfig',
     'NodePoolNodeConfigGuestAccelerator',
+    'NodePoolNodeConfigGuestAcceleratorGpuSharingConfig',
     'NodePoolNodeConfigGvnic',
     'NodePoolNodeConfigKubeletConfig',
     'NodePoolNodeConfigLinuxNodeConfig',
@@ -203,6 +206,7 @@ __all__ = [
     'GetClusterNodeConfigEphemeralStorageConfigResult',
     'GetClusterNodeConfigGcfsConfigResult',
     'GetClusterNodeConfigGuestAcceleratorResult',
+    'GetClusterNodeConfigGuestAcceleratorGpuSharingConfigResult',
     'GetClusterNodeConfigGvnicResult',
     'GetClusterNodeConfigKubeletConfigResult',
     'GetClusterNodeConfigLinuxNodeConfigResult',
@@ -224,6 +228,7 @@ __all__ = [
     'GetClusterNodePoolNodeConfigEphemeralStorageConfigResult',
     'GetClusterNodePoolNodeConfigGcfsConfigResult',
     'GetClusterNodePoolNodeConfigGuestAcceleratorResult',
+    'GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigResult',
     'GetClusterNodePoolNodeConfigGvnicResult',
     'GetClusterNodePoolNodeConfigKubeletConfigResult',
     'GetClusterNodePoolNodeConfigLinuxNodeConfigResult',
@@ -4818,6 +4823,8 @@ class ClusterNodeConfigGuestAccelerator(dict):
         suggest = None
         if key == "gpuPartitionSize":
             suggest = "gpu_partition_size"
+        elif key == "gpuSharingConfig":
+            suggest = "gpu_sharing_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigGuestAccelerator. Access the value via the '{suggest}' property getter instead.")
@@ -4833,16 +4840,20 @@ class ClusterNodeConfigGuestAccelerator(dict):
     def __init__(__self__, *,
                  count: int,
                  type: str,
-                 gpu_partition_size: Optional[str] = None):
+                 gpu_partition_size: Optional[str] = None,
+                 gpu_sharing_config: Optional['outputs.ClusterNodeConfigGuestAcceleratorGpuSharingConfig'] = None):
         """
         :param int count: The number of the guest accelerator cards exposed to this instance.
         :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         :param str gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+        :param 'ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs' gpu_sharing_config: Configuration for GPU sharing. Structure is documented below.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
         if gpu_partition_size is not None:
             pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
+        if gpu_sharing_config is not None:
+            pulumi.set(__self__, "gpu_sharing_config", gpu_sharing_config)
 
     @property
     @pulumi.getter
@@ -4867,6 +4878,66 @@ class ClusterNodeConfigGuestAccelerator(dict):
         Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
         """
         return pulumi.get(self, "gpu_partition_size")
+
+    @property
+    @pulumi.getter(name="gpuSharingConfig")
+    def gpu_sharing_config(self) -> Optional['outputs.ClusterNodeConfigGuestAcceleratorGpuSharingConfig']:
+        """
+        Configuration for GPU sharing. Structure is documented below.
+        """
+        return pulumi.get(self, "gpu_sharing_config")
+
+
+@pulumi.output_type
+class ClusterNodeConfigGuestAcceleratorGpuSharingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gpuSharingStrategy":
+            suggest = "gpu_sharing_strategy"
+        elif key == "maxSharedClientsPerGpu":
+            suggest = "max_shared_clients_per_gpu"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigGuestAcceleratorGpuSharingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigGuestAcceleratorGpuSharingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigGuestAcceleratorGpuSharingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gpu_sharing_strategy: str,
+                 max_shared_clients_per_gpu: int):
+        """
+        :param str gpu_sharing_strategy: The type of GPU sharing strategy to enable on the GPU node. 
+               Accepted values are:
+               * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+        :param int max_shared_clients_per_gpu: The maximum number of containers that can share a GPU.
+        """
+        pulumi.set(__self__, "gpu_sharing_strategy", gpu_sharing_strategy)
+        pulumi.set(__self__, "max_shared_clients_per_gpu", max_shared_clients_per_gpu)
+
+    @property
+    @pulumi.getter(name="gpuSharingStrategy")
+    def gpu_sharing_strategy(self) -> str:
+        """
+        The type of GPU sharing strategy to enable on the GPU node. 
+        Accepted values are:
+        * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+        """
+        return pulumi.get(self, "gpu_sharing_strategy")
+
+    @property
+    @pulumi.getter(name="maxSharedClientsPerGpu")
+    def max_shared_clients_per_gpu(self) -> int:
+        """
+        The maximum number of containers that can share a GPU.
+        """
+        return pulumi.get(self, "max_shared_clients_per_gpu")
 
 
 @pulumi.output_type
@@ -6236,6 +6307,8 @@ class ClusterNodePoolNodeConfigGuestAccelerator(dict):
         suggest = None
         if key == "gpuPartitionSize":
             suggest = "gpu_partition_size"
+        elif key == "gpuSharingConfig":
+            suggest = "gpu_sharing_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigGuestAccelerator. Access the value via the '{suggest}' property getter instead.")
@@ -6251,16 +6324,20 @@ class ClusterNodePoolNodeConfigGuestAccelerator(dict):
     def __init__(__self__, *,
                  count: int,
                  type: str,
-                 gpu_partition_size: Optional[str] = None):
+                 gpu_partition_size: Optional[str] = None,
+                 gpu_sharing_config: Optional['outputs.ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig'] = None):
         """
         :param int count: The number of the guest accelerator cards exposed to this instance.
         :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         :param str gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+        :param 'ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs' gpu_sharing_config: Configuration for GPU sharing. Structure is documented below.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
         if gpu_partition_size is not None:
             pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
+        if gpu_sharing_config is not None:
+            pulumi.set(__self__, "gpu_sharing_config", gpu_sharing_config)
 
     @property
     @pulumi.getter
@@ -6285,6 +6362,66 @@ class ClusterNodePoolNodeConfigGuestAccelerator(dict):
         Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
         """
         return pulumi.get(self, "gpu_partition_size")
+
+    @property
+    @pulumi.getter(name="gpuSharingConfig")
+    def gpu_sharing_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig']:
+        """
+        Configuration for GPU sharing. Structure is documented below.
+        """
+        return pulumi.get(self, "gpu_sharing_config")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gpuSharingStrategy":
+            suggest = "gpu_sharing_strategy"
+        elif key == "maxSharedClientsPerGpu":
+            suggest = "max_shared_clients_per_gpu"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gpu_sharing_strategy: str,
+                 max_shared_clients_per_gpu: int):
+        """
+        :param str gpu_sharing_strategy: The type of GPU sharing strategy to enable on the GPU node. 
+               Accepted values are:
+               * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+        :param int max_shared_clients_per_gpu: The maximum number of containers that can share a GPU.
+        """
+        pulumi.set(__self__, "gpu_sharing_strategy", gpu_sharing_strategy)
+        pulumi.set(__self__, "max_shared_clients_per_gpu", max_shared_clients_per_gpu)
+
+    @property
+    @pulumi.getter(name="gpuSharingStrategy")
+    def gpu_sharing_strategy(self) -> str:
+        """
+        The type of GPU sharing strategy to enable on the GPU node. 
+        Accepted values are:
+        * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+        """
+        return pulumi.get(self, "gpu_sharing_strategy")
+
+    @property
+    @pulumi.getter(name="maxSharedClientsPerGpu")
+    def max_shared_clients_per_gpu(self) -> int:
+        """
+        The maximum number of containers that can share a GPU.
+        """
+        return pulumi.get(self, "max_shared_clients_per_gpu")
 
 
 @pulumi.output_type
@@ -7744,6 +7881,8 @@ class NodePoolNodeConfigGuestAccelerator(dict):
         suggest = None
         if key == "gpuPartitionSize":
             suggest = "gpu_partition_size"
+        elif key == "gpuSharingConfig":
+            suggest = "gpu_sharing_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigGuestAccelerator. Access the value via the '{suggest}' property getter instead.")
@@ -7759,7 +7898,8 @@ class NodePoolNodeConfigGuestAccelerator(dict):
     def __init__(__self__, *,
                  count: int,
                  type: str,
-                 gpu_partition_size: Optional[str] = None):
+                 gpu_partition_size: Optional[str] = None,
+                 gpu_sharing_config: Optional['outputs.NodePoolNodeConfigGuestAcceleratorGpuSharingConfig'] = None):
         """
         :param str type: The type of the policy. Supports a single value: COMPACT.
                Specifying COMPACT placement policy type places node pool's nodes in a closer
@@ -7769,6 +7909,8 @@ class NodePoolNodeConfigGuestAccelerator(dict):
         pulumi.set(__self__, "type", type)
         if gpu_partition_size is not None:
             pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
+        if gpu_sharing_config is not None:
+            pulumi.set(__self__, "gpu_sharing_config", gpu_sharing_config)
 
     @property
     @pulumi.getter
@@ -7789,6 +7931,49 @@ class NodePoolNodeConfigGuestAccelerator(dict):
     @pulumi.getter(name="gpuPartitionSize")
     def gpu_partition_size(self) -> Optional[str]:
         return pulumi.get(self, "gpu_partition_size")
+
+    @property
+    @pulumi.getter(name="gpuSharingConfig")
+    def gpu_sharing_config(self) -> Optional['outputs.NodePoolNodeConfigGuestAcceleratorGpuSharingConfig']:
+        return pulumi.get(self, "gpu_sharing_config")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigGuestAcceleratorGpuSharingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gpuSharingStrategy":
+            suggest = "gpu_sharing_strategy"
+        elif key == "maxSharedClientsPerGpu":
+            suggest = "max_shared_clients_per_gpu"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigGuestAcceleratorGpuSharingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigGuestAcceleratorGpuSharingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigGuestAcceleratorGpuSharingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gpu_sharing_strategy: str,
+                 max_shared_clients_per_gpu: int):
+        pulumi.set(__self__, "gpu_sharing_strategy", gpu_sharing_strategy)
+        pulumi.set(__self__, "max_shared_clients_per_gpu", max_shared_clients_per_gpu)
+
+    @property
+    @pulumi.getter(name="gpuSharingStrategy")
+    def gpu_sharing_strategy(self) -> str:
+        return pulumi.get(self, "gpu_sharing_strategy")
+
+    @property
+    @pulumi.getter(name="maxSharedClientsPerGpu")
+    def max_shared_clients_per_gpu(self) -> int:
+        return pulumi.get(self, "max_shared_clients_per_gpu")
 
 
 @pulumi.output_type
@@ -9072,9 +9257,11 @@ class GetClusterNodeConfigGuestAcceleratorResult(dict):
     def __init__(__self__, *,
                  count: int,
                  gpu_partition_size: str,
+                 gpu_sharing_configs: Sequence['outputs.GetClusterNodeConfigGuestAcceleratorGpuSharingConfigResult'],
                  type: str):
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
+        pulumi.set(__self__, "gpu_sharing_configs", gpu_sharing_configs)
         pulumi.set(__self__, "type", type)
 
     @property
@@ -9088,9 +9275,33 @@ class GetClusterNodeConfigGuestAcceleratorResult(dict):
         return pulumi.get(self, "gpu_partition_size")
 
     @property
+    @pulumi.getter(name="gpuSharingConfigs")
+    def gpu_sharing_configs(self) -> Sequence['outputs.GetClusterNodeConfigGuestAcceleratorGpuSharingConfigResult']:
+        return pulumi.get(self, "gpu_sharing_configs")
+
+    @property
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigGuestAcceleratorGpuSharingConfigResult(dict):
+    def __init__(__self__, *,
+                 gpu_sharing_strategy: str,
+                 max_shared_clients_per_gpu: int):
+        pulumi.set(__self__, "gpu_sharing_strategy", gpu_sharing_strategy)
+        pulumi.set(__self__, "max_shared_clients_per_gpu", max_shared_clients_per_gpu)
+
+    @property
+    @pulumi.getter(name="gpuSharingStrategy")
+    def gpu_sharing_strategy(self) -> str:
+        return pulumi.get(self, "gpu_sharing_strategy")
+
+    @property
+    @pulumi.getter(name="maxSharedClientsPerGpu")
+    def max_shared_clients_per_gpu(self) -> int:
+        return pulumi.get(self, "max_shared_clients_per_gpu")
 
 
 @pulumi.output_type
@@ -9715,9 +9926,11 @@ class GetClusterNodePoolNodeConfigGuestAcceleratorResult(dict):
     def __init__(__self__, *,
                  count: int,
                  gpu_partition_size: str,
+                 gpu_sharing_configs: Sequence['outputs.GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigResult'],
                  type: str):
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
+        pulumi.set(__self__, "gpu_sharing_configs", gpu_sharing_configs)
         pulumi.set(__self__, "type", type)
 
     @property
@@ -9731,9 +9944,33 @@ class GetClusterNodePoolNodeConfigGuestAcceleratorResult(dict):
         return pulumi.get(self, "gpu_partition_size")
 
     @property
+    @pulumi.getter(name="gpuSharingConfigs")
+    def gpu_sharing_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigResult']:
+        return pulumi.get(self, "gpu_sharing_configs")
+
+    @property
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigResult(dict):
+    def __init__(__self__, *,
+                 gpu_sharing_strategy: str,
+                 max_shared_clients_per_gpu: int):
+        pulumi.set(__self__, "gpu_sharing_strategy", gpu_sharing_strategy)
+        pulumi.set(__self__, "max_shared_clients_per_gpu", max_shared_clients_per_gpu)
+
+    @property
+    @pulumi.getter(name="gpuSharingStrategy")
+    def gpu_sharing_strategy(self) -> str:
+        return pulumi.get(self, "gpu_sharing_strategy")
+
+    @property
+    @pulumi.getter(name="maxSharedClientsPerGpu")
+    def max_shared_clients_per_gpu(self) -> int:
+        return pulumi.get(self, "max_shared_clients_per_gpu")
 
 
 @pulumi.output_type

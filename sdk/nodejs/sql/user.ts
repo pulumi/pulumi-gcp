@@ -128,12 +128,13 @@ export class User extends pulumi.CustomResource {
      * or CLOUD_IAM_SERVICE_ACCOUNT.
      */
     public readonly password!: pulumi.Output<string | undefined>;
+    public readonly passwordPolicy!: pulumi.Output<outputs.sql.UserPasswordPolicy | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
-    public readonly sqlServerUserDetails!: pulumi.Output<outputs.sql.UserSqlServerUserDetails | undefined>;
+    public /*out*/ readonly sqlServerUserDetails!: pulumi.Output<outputs.sql.UserSqlServerUserDetail[]>;
     /**
      * The user type. It determines the method to authenticate the
      * user during login. The default is the database's built-in user type. Flags
@@ -159,6 +160,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["instance"] = state ? state.instance : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["passwordPolicy"] = state ? state.passwordPolicy : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["sqlServerUserDetails"] = state ? state.sqlServerUserDetails : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -172,9 +174,10 @@ export class User extends pulumi.CustomResource {
             resourceInputs["instance"] = args ? args.instance : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["passwordPolicy"] = args ? args.passwordPolicy : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["sqlServerUserDetails"] = args ? args.sqlServerUserDetails : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["sqlServerUserDetails"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(User.__pulumiType, name, resourceInputs, opts);
@@ -213,12 +216,13 @@ export interface UserState {
      * or CLOUD_IAM_SERVICE_ACCOUNT.
      */
     password?: pulumi.Input<string>;
+    passwordPolicy?: pulumi.Input<inputs.sql.UserPasswordPolicy>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
-    sqlServerUserDetails?: pulumi.Input<inputs.sql.UserSqlServerUserDetails>;
+    sqlServerUserDetails?: pulumi.Input<pulumi.Input<inputs.sql.UserSqlServerUserDetail>[]>;
     /**
      * The user type. It determines the method to authenticate the
      * user during login. The default is the database's built-in user type. Flags
@@ -259,12 +263,12 @@ export interface UserArgs {
      * or CLOUD_IAM_SERVICE_ACCOUNT.
      */
     password?: pulumi.Input<string>;
+    passwordPolicy?: pulumi.Input<inputs.sql.UserPasswordPolicy>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
-    sqlServerUserDetails?: pulumi.Input<inputs.sql.UserSqlServerUserDetails>;
     /**
      * The user type. It determines the method to authenticate the
      * user during login. The default is the database's built-in user type. Flags

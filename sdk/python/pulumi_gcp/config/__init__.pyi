@@ -40,6 +40,8 @@ bigqueryConnectionCustomEndpoint: Optional[str]
 
 bigqueryDataTransferCustomEndpoint: Optional[str]
 
+bigqueryDatapolicyCustomEndpoint: Optional[str]
+
 bigqueryReservationCustomEndpoint: Optional[str]
 
 bigtableCustomEndpoint: Optional[str]
@@ -63,6 +65,8 @@ cloudBuildWorkerPoolCustomEndpoint: Optional[str]
 cloudFunctionsCustomEndpoint: Optional[str]
 
 cloudIdentityCustomEndpoint: Optional[str]
+
+cloudIdsCustomEndpoint: Optional[str]
 
 cloudIotCustomEndpoint: Optional[str]
 

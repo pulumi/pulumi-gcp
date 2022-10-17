@@ -137,6 +137,13 @@ namespace Pulumi.Gcp
             set => _bigqueryDataTransferCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _bigqueryDatapolicyCustomEndpoint = new __Value<string?>(() => __config.Get("bigqueryDatapolicyCustomEndpoint"));
+        public static string? BigqueryDatapolicyCustomEndpoint
+        {
+            get => _bigqueryDatapolicyCustomEndpoint.Get();
+            set => _bigqueryDatapolicyCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _bigqueryReservationCustomEndpoint = new __Value<string?>(() => __config.Get("bigqueryReservationCustomEndpoint"));
         public static string? BigqueryReservationCustomEndpoint
         {
@@ -219,6 +226,13 @@ namespace Pulumi.Gcp
         {
             get => _cloudIdentityCustomEndpoint.Get();
             set => _cloudIdentityCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _cloudIdsCustomEndpoint = new __Value<string?>(() => __config.Get("cloudIdsCustomEndpoint"));
+        public static string? CloudIdsCustomEndpoint
+        {
+            get => _cloudIdsCustomEndpoint.Get();
+            set => _cloudIdsCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _cloudIotCustomEndpoint = new __Value<string?>(() => __config.Get("cloudIotCustomEndpoint"));

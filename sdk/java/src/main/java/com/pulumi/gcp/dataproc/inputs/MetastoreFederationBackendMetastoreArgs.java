@@ -15,7 +15,7 @@ public final class MetastoreFederationBackendMetastoreArgs extends com.pulumi.re
 
     /**
      * The type of the backend metastore.
-     * Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
+     * Possible values are `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, and `BIGQUERY`.
      * 
      */
     @Import(name="metastoreType", required=true)
@@ -23,7 +23,7 @@ public final class MetastoreFederationBackendMetastoreArgs extends com.pulumi.re
 
     /**
      * @return The type of the backend metastore.
-     * Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
+     * Possible values are `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, and `BIGQUERY`.
      * 
      */
     public Output<String> metastoreType() {
@@ -31,14 +31,14 @@ public final class MetastoreFederationBackendMetastoreArgs extends com.pulumi.re
     }
 
     /**
-     * The relative resource name of the metastore that is being federated.
+     * The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The relative resource name of the metastore that is being federated.
+     * @return The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
      * 
      */
     public Output<String> name() {
@@ -88,7 +88,7 @@ public final class MetastoreFederationBackendMetastoreArgs extends com.pulumi.re
 
         /**
          * @param metastoreType The type of the backend metastore.
-         * Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
+         * Possible values are `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, and `BIGQUERY`.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class MetastoreFederationBackendMetastoreArgs extends com.pulumi.re
 
         /**
          * @param metastoreType The type of the backend metastore.
-         * Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
+         * Possible values are `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, and `BIGQUERY`.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class MetastoreFederationBackendMetastoreArgs extends com.pulumi.re
         }
 
         /**
-         * @param name The relative resource name of the metastore that is being federated.
+         * @param name The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class MetastoreFederationBackendMetastoreArgs extends com.pulumi.re
         }
 
         /**
-         * @param name The relative resource name of the metastore that is being federated.
+         * @param name The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
          * 
          * @return builder
          * 

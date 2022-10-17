@@ -58,6 +58,62 @@ import (
 //	}
 //
 // ```
+// ### Dataproc Metastore Federation Bigquery
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultMetastoreService, err := dataproc.NewMetastoreService(ctx, "defaultMetastoreService", &dataproc.MetastoreServiceArgs{
+//				ServiceId: pulumi.String("fed-2"),
+//				Location:  pulumi.String("us-central1"),
+//				Tier:      pulumi.String("DEVELOPER"),
+//				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
+//					Version:          pulumi.String("3.1.2"),
+//					EndpointProtocol: pulumi.String("GRPC"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataproc.NewMetastoreFederation(ctx, "defaultMetastoreFederation", &dataproc.MetastoreFederationArgs{
+//				Location:     pulumi.String("us-central1"),
+//				FederationId: pulumi.String("fed-2"),
+//				Version:      pulumi.String("3.1.2"),
+//				BackendMetastores: dataproc.MetastoreFederationBackendMetastoreArray{
+//					&dataproc.MetastoreFederationBackendMetastoreArgs{
+//						Rank:          pulumi.String("2"),
+//						Name:          pulumi.String(project.Id),
+//						MetastoreType: pulumi.String("BIGQUERY"),
+//					},
+//					&dataproc.MetastoreFederationBackendMetastoreArgs{
+//						Rank:          pulumi.String("1"),
+//						Name:          defaultMetastoreService.ID(),
+//						MetastoreType: pulumi.String("DATAPROC_METASTORE"),
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -96,7 +152,7 @@ type MetastoreFederation struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the metastore federation should reside.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// The relative resource name of the metastore that is being federated.
+	// The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -162,7 +218,7 @@ type metastoreFederationState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the metastore federation should reside.
 	Location *string `pulumi:"location"`
-	// The relative resource name of the metastore that is being federated.
+	// The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -191,7 +247,7 @@ type MetastoreFederationState struct {
 	Labels pulumi.StringMapInput
 	// The location where the metastore federation should reside.
 	Location pulumi.StringPtrInput
-	// The relative resource name of the metastore that is being federated.
+	// The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -366,7 +422,7 @@ func (o MetastoreFederationOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The relative resource name of the metastore that is being federated.
+// The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
 func (o MetastoreFederationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreFederation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

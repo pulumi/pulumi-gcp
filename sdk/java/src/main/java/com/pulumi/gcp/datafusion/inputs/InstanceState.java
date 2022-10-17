@@ -5,6 +5,7 @@ package com.pulumi.gcp.datafusion.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.datafusion.inputs.InstanceCryptoKeyConfigArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -31,6 +32,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="cryptoKeyConfig")
+    private @Nullable Output<InstanceCryptoKeyConfigArgs> cryptoKeyConfig;
+
+    /**
+     * @return The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceCryptoKeyConfigArgs>> cryptoKeyConfig() {
+        return Optional.ofNullable(this.cryptoKeyConfig);
     }
 
     /**
@@ -379,6 +397,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     private InstanceState(InstanceState $) {
         this.createTime = $.createTime;
+        this.cryptoKeyConfig = $.cryptoKeyConfig;
         this.dataprocServiceAccount = $.dataprocServiceAccount;
         this.description = $.description;
         this.enableStackdriverLogging = $.enableStackdriverLogging;
@@ -438,6 +457,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param cryptoKeyConfig The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cryptoKeyConfig(@Nullable Output<InstanceCryptoKeyConfigArgs> cryptoKeyConfig) {
+            $.cryptoKeyConfig = cryptoKeyConfig;
+            return this;
+        }
+
+        /**
+         * @param cryptoKeyConfig The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cryptoKeyConfig(InstanceCryptoKeyConfigArgs cryptoKeyConfig) {
+            return cryptoKeyConfig(Output.of(cryptoKeyConfig));
         }
 
         /**

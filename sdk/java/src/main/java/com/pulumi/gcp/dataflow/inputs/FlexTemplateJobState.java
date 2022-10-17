@@ -59,11 +59,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
      * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
      * labels will be ignored to prevent diffs on re-apply.
      * 
-     * @deprecated
-     * Deprecated until the API supports this field
-     * 
      */
-    @Deprecated /* Deprecated until the API supports this field */
     @Import(name="labels")
     private @Nullable Output<Map<String,Object>> labels;
 
@@ -76,11 +72,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
      * that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
      * labels will be ignored to prevent diffs on re-apply.
      * 
-     * @deprecated
-     * Deprecated until the API supports this field
-     * 
      */
-    @Deprecated /* Deprecated until the API supports this field */
     public Optional<Output<Map<String,Object>>> labels() {
         return Optional.ofNullable(this.labels);
     }
@@ -290,11 +282,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated until the API supports this field
-         * 
          */
-        @Deprecated /* Deprecated until the API supports this field */
         public Builder labels(@Nullable Output<Map<String,Object>> labels) {
             $.labels = labels;
             return this;
@@ -311,11 +299,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated until the API supports this field
-         * 
          */
-        @Deprecated /* Deprecated until the API supports this field */
         public Builder labels(Map<String,Object> labels) {
             return labels(Output.of(labels));
         }

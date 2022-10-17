@@ -56,6 +56,59 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// ### Dataproc Metastore Federation Bigquery
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultMetastoreService = new Gcp.Dataproc.MetastoreService("defaultMetastoreService", new()
+    ///     {
+    ///         ServiceId = "fed-2",
+    ///         Location = "us-central1",
+    ///         Tier = "DEVELOPER",
+    ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
+    ///         {
+    ///             Version = "3.1.2",
+    ///             EndpointProtocol = "GRPC",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var defaultMetastoreFederation = new Gcp.Dataproc.MetastoreFederation("defaultMetastoreFederation", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         FederationId = "fed-2",
+    ///         Version = "3.1.2",
+    ///         BackendMetastores = new[]
+    ///         {
+    ///             new Gcp.Dataproc.Inputs.MetastoreFederationBackendMetastoreArgs
+    ///             {
+    ///                 Rank = "2",
+    ///                 Name = project.Apply(getProjectResult =&gt; getProjectResult.Id),
+    ///                 MetastoreType = "BIGQUERY",
+    ///             },
+    ///             new Gcp.Dataproc.Inputs.MetastoreFederationBackendMetastoreArgs
+    ///             {
+    ///                 Rank = "1",
+    ///                 Name = defaultMetastoreService.Id,
+    ///                 MetastoreType = "DATAPROC_METASTORE",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -110,7 +163,7 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The relative resource name of the metastore that is being federated.
+        /// The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -298,7 +351,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The relative resource name of the metastore that is being federated.
+        /// The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

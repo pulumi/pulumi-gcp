@@ -34,6 +34,25 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// ### Datastream Connection Profile Bigquery
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Datastream.ConnectionProfile("default", new()
+    ///     {
+    ///         BigqueryProfile = ,
+    ///         ConnectionProfileId = "my-profile",
+    ///         DisplayName = "Connection profile",
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Datastream Connection Profile Full
     /// 
     /// ```csharp
@@ -165,6 +184,12 @@ namespace Pulumi.Gcp.Datastream
     public partial class ConnectionProfile : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// BigQuery warehouse profile.
+        /// </summary>
+        [Output("bigqueryProfile")]
+        public Output<Outputs.ConnectionProfileBigqueryProfile?> BigqueryProfile { get; private set; } = null!;
+
+        /// <summary>
         /// The connection profile identifier.
         /// </summary>
         [Output("connectionProfileId")]
@@ -283,6 +308,12 @@ namespace Pulumi.Gcp.Datastream
     public sealed class ConnectionProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// BigQuery warehouse profile.
+        /// </summary>
+        [Input("bigqueryProfile")]
+        public Input<Inputs.ConnectionProfileBigqueryProfileArgs>? BigqueryProfile { get; set; }
+
+        /// <summary>
         /// The connection profile identifier.
         /// </summary>
         [Input("connectionProfileId", required: true)]
@@ -362,6 +393,12 @@ namespace Pulumi.Gcp.Datastream
 
     public sealed class ConnectionProfileState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// BigQuery warehouse profile.
+        /// </summary>
+        [Input("bigqueryProfile")]
+        public Input<Inputs.ConnectionProfileBigqueryProfileGetArgs>? BigqueryProfile { get; set; }
+
         /// <summary>
         /// The connection profile identifier.
         /// </summary>

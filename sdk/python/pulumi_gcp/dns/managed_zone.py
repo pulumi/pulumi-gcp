@@ -17,6 +17,7 @@ __all__ = ['ManagedZoneArgs', 'ManagedZone']
 class ManagedZoneArgs:
     def __init__(__self__, *,
                  dns_name: pulumi.Input[str],
+                 cloud_logging_config: Optional[pulumi.Input['ManagedZoneCloudLoggingConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dnssec_config: Optional[pulumi.Input['ManagedZoneDnssecConfigArgs']] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -32,6 +33,8 @@ class ManagedZoneArgs:
         """
         The set of arguments for constructing a ManagedZone resource.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
+        :param pulumi.Input['ManagedZoneCloudLoggingConfigArgs'] cloud_logging_config: Cloud logging configuration
+               Structure is documented below.
         :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input['ManagedZoneDnssecConfigArgs'] dnssec_config: DNSSEC configuration
                Structure is documented below.
@@ -62,6 +65,8 @@ class ManagedZoneArgs:
                Possible values are `private` and `public`.
         """
         pulumi.set(__self__, "dns_name", dns_name)
+        if cloud_logging_config is not None:
+            pulumi.set(__self__, "cloud_logging_config", cloud_logging_config)
         if description is None:
             description = 'Managed by Pulumi'
         if description is not None:
@@ -100,6 +105,19 @@ class ManagedZoneArgs:
     @dns_name.setter
     def dns_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "dns_name", value)
+
+    @property
+    @pulumi.getter(name="cloudLoggingConfig")
+    def cloud_logging_config(self) -> Optional[pulumi.Input['ManagedZoneCloudLoggingConfigArgs']]:
+        """
+        Cloud logging configuration
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_logging_config")
+
+    @cloud_logging_config.setter
+    def cloud_logging_config(self, value: Optional[pulumi.Input['ManagedZoneCloudLoggingConfigArgs']]):
+        pulumi.set(self, "cloud_logging_config", value)
 
     @property
     @pulumi.getter
@@ -265,6 +283,7 @@ class ManagedZoneArgs:
 @pulumi.input_type
 class _ManagedZoneState:
     def __init__(__self__, *,
+                 cloud_logging_config: Optional[pulumi.Input['ManagedZoneCloudLoggingConfigArgs']] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
@@ -283,6 +302,8 @@ class _ManagedZoneState:
                  visibility: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ManagedZone resources.
+        :param pulumi.Input['ManagedZoneCloudLoggingConfigArgs'] cloud_logging_config: Cloud logging configuration
+               Structure is documented below.
         :param pulumi.Input[str] creation_time: The time that this resource was created on the server. This is in RFC3339 text format.
         :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
@@ -316,6 +337,8 @@ class _ManagedZoneState:
                Default value is `public`.
                Possible values are `private` and `public`.
         """
+        if cloud_logging_config is not None:
+            pulumi.set(__self__, "cloud_logging_config", cloud_logging_config)
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
         if description is None:
@@ -350,6 +373,19 @@ class _ManagedZoneState:
             pulumi.set(__self__, "service_directory_config", service_directory_config)
         if visibility is not None:
             pulumi.set(__self__, "visibility", visibility)
+
+    @property
+    @pulumi.getter(name="cloudLoggingConfig")
+    def cloud_logging_config(self) -> Optional[pulumi.Input['ManagedZoneCloudLoggingConfigArgs']]:
+        """
+        Cloud logging configuration
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_logging_config")
+
+    @cloud_logging_config.setter
+    def cloud_logging_config(self, value: Optional[pulumi.Input['ManagedZoneCloudLoggingConfigArgs']]):
+        pulumi.set(self, "cloud_logging_config", value)
 
     @property
     @pulumi.getter(name="creationTime")
@@ -565,6 +601,7 @@ class ManagedZone(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cloud_logging_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneCloudLoggingConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
                  dnssec_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']]] = None,
@@ -712,6 +749,22 @@ class ManagedZone(pulumi.CustomResource):
         network = gcp.compute.Network("network", auto_create_subnetworks=False,
         opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Dns Managed Zone Cloud Logging
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cloud_logging_enabled_zone = gcp.dns.ManagedZone("cloud-logging-enabled-zone",
+            cloud_logging_config=gcp.dns.ManagedZoneCloudLoggingConfigArgs(
+                enable_logging=True,
+            ),
+            description="Example cloud logging enabled DNS zone",
+            dns_name="services.example.com.",
+            labels={
+                "foo": "bar",
+            })
+        ```
 
         ## Import
 
@@ -731,6 +784,8 @@ class ManagedZone(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['ManagedZoneCloudLoggingConfigArgs']] cloud_logging_config: Cloud logging configuration
+               Structure is documented below.
         :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']] dnssec_config: DNSSEC configuration
@@ -900,6 +955,22 @@ class ManagedZone(pulumi.CustomResource):
         network = gcp.compute.Network("network", auto_create_subnetworks=False,
         opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Dns Managed Zone Cloud Logging
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cloud_logging_enabled_zone = gcp.dns.ManagedZone("cloud-logging-enabled-zone",
+            cloud_logging_config=gcp.dns.ManagedZoneCloudLoggingConfigArgs(
+                enable_logging=True,
+            ),
+            description="Example cloud logging enabled DNS zone",
+            dns_name="services.example.com.",
+            labels={
+                "foo": "bar",
+            })
+        ```
 
         ## Import
 
@@ -932,6 +1003,7 @@ class ManagedZone(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cloud_logging_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneCloudLoggingConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
                  dnssec_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']]] = None,
@@ -954,6 +1026,7 @@ class ManagedZone(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ManagedZoneArgs.__new__(ManagedZoneArgs)
 
+            __props__.__dict__["cloud_logging_config"] = cloud_logging_config
             if description is None:
                 description = 'Managed by Pulumi'
             __props__.__dict__["description"] = description
@@ -984,6 +1057,7 @@ class ManagedZone(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            cloud_logging_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneCloudLoggingConfigArgs']]] = None,
             creation_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             dns_name: Optional[pulumi.Input[str]] = None,
@@ -1007,6 +1081,8 @@ class ManagedZone(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['ManagedZoneCloudLoggingConfigArgs']] cloud_logging_config: Cloud logging configuration
+               Structure is documented below.
         :param pulumi.Input[str] creation_time: The time that this resource was created on the server. This is in RFC3339 text format.
         :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
@@ -1044,6 +1120,7 @@ class ManagedZone(pulumi.CustomResource):
 
         __props__ = _ManagedZoneState.__new__(_ManagedZoneState)
 
+        __props__.__dict__["cloud_logging_config"] = cloud_logging_config
         __props__.__dict__["creation_time"] = creation_time
         __props__.__dict__["description"] = description
         __props__.__dict__["dns_name"] = dns_name
@@ -1061,6 +1138,15 @@ class ManagedZone(pulumi.CustomResource):
         __props__.__dict__["service_directory_config"] = service_directory_config
         __props__.__dict__["visibility"] = visibility
         return ManagedZone(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="cloudLoggingConfig")
+    def cloud_logging_config(self) -> pulumi.Output['outputs.ManagedZoneCloudLoggingConfig']:
+        """
+        Cloud logging configuration
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_logging_config")
 
     @property
     @pulumi.getter(name="creationTime")

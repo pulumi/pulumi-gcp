@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.dns.ManagedZoneArgs;
 import com.pulumi.gcp.dns.inputs.ManagedZoneState;
+import com.pulumi.gcp.dns.outputs.ManagedZoneCloudLoggingConfig;
 import com.pulumi.gcp.dns.outputs.ManagedZoneDnssecConfig;
 import com.pulumi.gcp.dns.outputs.ManagedZoneForwardingConfig;
 import com.pulumi.gcp.dns.outputs.ManagedZonePeeringConfig;
@@ -292,6 +293,41 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Dns Managed Zone Cloud Logging
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dns.ManagedZone;
+ * import com.pulumi.gcp.dns.ManagedZoneArgs;
+ * import com.pulumi.gcp.dns.inputs.ManagedZoneCloudLoggingConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cloud_logging_enabled_zone = new ManagedZone(&#34;cloud-logging-enabled-zone&#34;, ManagedZoneArgs.builder()        
+ *             .cloudLoggingConfig(ManagedZoneCloudLoggingConfigArgs.builder()
+ *                 .enableLogging(true)
+ *                 .build())
+ *             .description(&#34;Example cloud logging enabled DNS zone&#34;)
+ *             .dnsName(&#34;services.example.com.&#34;)
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -312,6 +348,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:dns/managedZone:ManagedZone")
 public class ManagedZone extends com.pulumi.resources.CustomResource {
+    /**
+     * Cloud logging configuration
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="cloudLoggingConfig", type=ManagedZoneCloudLoggingConfig.class, parameters={})
+    private Output<ManagedZoneCloudLoggingConfig> cloudLoggingConfig;
+
+    /**
+     * @return Cloud logging configuration
+     * Structure is documented below.
+     * 
+     */
+    public Output<ManagedZoneCloudLoggingConfig> cloudLoggingConfig() {
+        return this.cloudLoggingConfig;
+    }
     /**
      * The time that this resource was created on the server. This is in RFC3339 text format.
      * 

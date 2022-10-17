@@ -77,6 +77,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('bigqueryDataTransferCustomEndpoint')
 
     @property
+    def bigquery_datapolicy_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('bigqueryDatapolicyCustomEndpoint')
+
+    @property
     def bigquery_reservation_custom_endpoint(self) -> Optional[str]:
         return __config__.get('bigqueryReservationCustomEndpoint')
 
@@ -123,6 +127,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def cloud_identity_custom_endpoint(self) -> Optional[str]:
         return __config__.get('cloudIdentityCustomEndpoint')
+
+    @property
+    def cloud_ids_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('cloudIdsCustomEndpoint')
 
     @property
     def cloud_iot_custom_endpoint(self) -> Optional[str]:

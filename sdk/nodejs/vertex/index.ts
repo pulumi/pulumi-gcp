@@ -17,6 +17,10 @@ export { AiFeatureStoreEntityTypeArgs, AiFeatureStoreEntityTypeState } from "./a
 export type AiFeatureStoreEntityType = import("./aiFeatureStoreEntityType").AiFeatureStoreEntityType;
 export const AiFeatureStoreEntityType: typeof import("./aiFeatureStoreEntityType").AiFeatureStoreEntityType = null as any;
 
+export { AiFeatureStoreEntityTypeFeatureArgs, AiFeatureStoreEntityTypeFeatureState } from "./aiFeatureStoreEntityTypeFeature";
+export type AiFeatureStoreEntityTypeFeature = import("./aiFeatureStoreEntityTypeFeature").AiFeatureStoreEntityTypeFeature;
+export const AiFeatureStoreEntityTypeFeature: typeof import("./aiFeatureStoreEntityTypeFeature").AiFeatureStoreEntityTypeFeature = null as any;
+
 export { AiMetadataStoreArgs, AiMetadataStoreState } from "./aiMetadataStore";
 export type AiMetadataStore = import("./aiMetadataStore").AiMetadataStore;
 export const AiMetadataStore: typeof import("./aiMetadataStore").AiMetadataStore = null as any;
@@ -24,6 +28,7 @@ export const AiMetadataStore: typeof import("./aiMetadataStore").AiMetadataStore
 utilities.lazyLoad(exports, ["AiDataset"], () => require("./aiDataset"));
 utilities.lazyLoad(exports, ["AiFeatureStore"], () => require("./aiFeatureStore"));
 utilities.lazyLoad(exports, ["AiFeatureStoreEntityType"], () => require("./aiFeatureStoreEntityType"));
+utilities.lazyLoad(exports, ["AiFeatureStoreEntityTypeFeature"], () => require("./aiFeatureStoreEntityTypeFeature"));
 utilities.lazyLoad(exports, ["AiMetadataStore"], () => require("./aiMetadataStore"));
 
 const _module = {
@@ -36,6 +41,8 @@ const _module = {
                 return new AiFeatureStore(name, <any>undefined, { urn })
             case "gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType":
                 return new AiFeatureStoreEntityType(name, <any>undefined, { urn })
+            case "gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature":
+                return new AiFeatureStoreEntityTypeFeature(name, <any>undefined, { urn })
             case "gcp:vertex/aiMetadataStore:AiMetadataStore":
                 return new AiMetadataStore(name, <any>undefined, { urn })
             default:
@@ -46,4 +53,5 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiDataset", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureStore", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureStoreEntityType", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureStoreEntityTypeFeature", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiMetadataStore", _module)

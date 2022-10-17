@@ -80,6 +80,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetBackendServiceBackendResult> Backends;
         public readonly ImmutableArray<Outputs.GetBackendServiceCdnPolicyResult> CdnPolicies;
         public readonly ImmutableArray<Outputs.GetBackendServiceCircuitBreakerResult> CircuitBreakers;
+        public readonly string CompressionMode;
         /// <summary>
         /// Time for which instance will be drained (not accept new connections, but still work to finish started ones).
         /// </summary>
@@ -148,6 +149,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetBackendServiceCircuitBreakerResult> circuitBreakers,
 
+            string compressionMode,
+
             int connectionDrainingTimeoutSec,
 
             ImmutableArray<Outputs.GetBackendServiceConsistentHashResult> consistentHash,
@@ -200,6 +203,7 @@ namespace Pulumi.Gcp.Compute
             Backends = backends;
             CdnPolicies = cdnPolicies;
             CircuitBreakers = circuitBreakers;
+            CompressionMode = compressionMode;
             ConnectionDrainingTimeoutSec = connectionDrainingTimeoutSec;
             ConsistentHash = consistentHash;
             CreationTimestamp = creationTimestamp;

@@ -22,10 +22,13 @@ class GetBucketResult:
     """
     A collection of values returned by getBucket.
     """
-    def __init__(__self__, cors=None, default_event_based_hold=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, public_access_prevention=None, requester_pays=None, retention_policies=None, self_link=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
+    def __init__(__self__, cors=None, custom_placement_configs=None, default_event_based_hold=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, public_access_prevention=None, requester_pays=None, retention_policies=None, self_link=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
         if cors and not isinstance(cors, list):
             raise TypeError("Expected argument 'cors' to be a list")
         pulumi.set(__self__, "cors", cors)
+        if custom_placement_configs and not isinstance(custom_placement_configs, list):
+            raise TypeError("Expected argument 'custom_placement_configs' to be a list")
+        pulumi.set(__self__, "custom_placement_configs", custom_placement_configs)
         if default_event_based_hold and not isinstance(default_event_based_hold, bool):
             raise TypeError("Expected argument 'default_event_based_hold' to be a bool")
         pulumi.set(__self__, "default_event_based_hold", default_event_based_hold)
@@ -88,6 +91,11 @@ class GetBucketResult:
     @pulumi.getter
     def cors(self) -> Sequence['outputs.GetBucketCorResult']:
         return pulumi.get(self, "cors")
+
+    @property
+    @pulumi.getter(name="customPlacementConfigs")
+    def custom_placement_configs(self) -> Sequence['outputs.GetBucketCustomPlacementConfigResult']:
+        return pulumi.get(self, "custom_placement_configs")
 
     @property
     @pulumi.getter(name="defaultEventBasedHold")
@@ -195,6 +203,7 @@ class AwaitableGetBucketResult(GetBucketResult):
             yield self
         return GetBucketResult(
             cors=self.cors,
+            custom_placement_configs=self.custom_placement_configs,
             default_event_based_hold=self.default_event_based_hold,
             encryptions=self.encryptions,
             force_destroy=self.force_destroy,
@@ -243,6 +252,7 @@ def get_bucket(name: Optional[str] = None,
 
     return AwaitableGetBucketResult(
         cors=__ret__.cors,
+        custom_placement_configs=__ret__.custom_placement_configs,
         default_event_based_hold=__ret__.default_event_based_hold,
         encryptions=__ret__.encryptions,
         force_destroy=__ret__.force_destroy,

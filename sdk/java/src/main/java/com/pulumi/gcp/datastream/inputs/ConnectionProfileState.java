@@ -5,6 +5,7 @@ package com.pulumi.gcp.datastream.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.datastream.inputs.ConnectionProfileBigqueryProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileForwardSshConnectivityArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileGcsProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileMysqlProfileArgs;
@@ -20,6 +21,21 @@ import javax.annotation.Nullable;
 public final class ConnectionProfileState extends com.pulumi.resources.ResourceArgs {
 
     public static final ConnectionProfileState Empty = new ConnectionProfileState();
+
+    /**
+     * BigQuery warehouse profile.
+     * 
+     */
+    @Import(name="bigqueryProfile")
+    private @Nullable Output<ConnectionProfileBigqueryProfileArgs> bigqueryProfile;
+
+    /**
+     * @return BigQuery warehouse profile.
+     * 
+     */
+    public Optional<Output<ConnectionProfileBigqueryProfileArgs>> bigqueryProfile() {
+        return Optional.ofNullable(this.bigqueryProfile);
+    }
 
     /**
      * The connection profile identifier.
@@ -201,6 +217,7 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
     private ConnectionProfileState() {}
 
     private ConnectionProfileState(ConnectionProfileState $) {
+        this.bigqueryProfile = $.bigqueryProfile;
         this.connectionProfileId = $.connectionProfileId;
         this.displayName = $.displayName;
         this.forwardSshConnectivity = $.forwardSshConnectivity;
@@ -230,6 +247,27 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
 
         public Builder(ConnectionProfileState defaults) {
             $ = new ConnectionProfileState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param bigqueryProfile BigQuery warehouse profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bigqueryProfile(@Nullable Output<ConnectionProfileBigqueryProfileArgs> bigqueryProfile) {
+            $.bigqueryProfile = bigqueryProfile;
+            return this;
+        }
+
+        /**
+         * @param bigqueryProfile BigQuery warehouse profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bigqueryProfile(ConnectionProfileBigqueryProfileArgs bigqueryProfile) {
+            return bigqueryProfile(Output.of(bigqueryProfile));
         }
 
         /**

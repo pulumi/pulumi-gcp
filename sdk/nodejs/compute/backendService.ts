@@ -151,6 +151,11 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly circuitBreakers!: pulumi.Output<outputs.compute.BackendServiceCircuitBreakers | undefined>;
     /**
+     * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+     * Possible values are `AUTOMATIC` and `DISABLED`.
+     */
+    public readonly compressionMode!: pulumi.Output<string | undefined>;
+    /**
      * Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
      */
@@ -320,6 +325,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["backends"] = state ? state.backends : undefined;
             resourceInputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
             resourceInputs["circuitBreakers"] = state ? state.circuitBreakers : undefined;
+            resourceInputs["compressionMode"] = state ? state.compressionMode : undefined;
             resourceInputs["connectionDrainingTimeoutSec"] = state ? state.connectionDrainingTimeoutSec : undefined;
             resourceInputs["consistentHash"] = state ? state.consistentHash : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
@@ -349,6 +355,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["backends"] = args ? args.backends : undefined;
             resourceInputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
             resourceInputs["circuitBreakers"] = args ? args.circuitBreakers : undefined;
+            resourceInputs["compressionMode"] = args ? args.compressionMode : undefined;
             resourceInputs["connectionDrainingTimeoutSec"] = args ? args.connectionDrainingTimeoutSec : undefined;
             resourceInputs["consistentHash"] = args ? args.consistentHash : undefined;
             resourceInputs["customRequestHeaders"] = args ? args.customRequestHeaders : undefined;
@@ -406,6 +413,11 @@ export interface BackendServiceState {
      * Structure is documented below.
      */
     circuitBreakers?: pulumi.Input<inputs.compute.BackendServiceCircuitBreakers>;
+    /**
+     * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+     * Possible values are `AUTOMATIC` and `DISABLED`.
+     */
+    compressionMode?: pulumi.Input<string>;
     /**
      * Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
@@ -588,6 +600,11 @@ export interface BackendServiceArgs {
      * Structure is documented below.
      */
     circuitBreakers?: pulumi.Input<inputs.compute.BackendServiceCircuitBreakers>;
+    /**
+     * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+     * Possible values are `AUTOMATIC` and `DISABLED`.
+     */
+    compressionMode?: pulumi.Input<string>;
     /**
      * Time for which instance will be drained (not accept new
      * connections, but still work to finish started).

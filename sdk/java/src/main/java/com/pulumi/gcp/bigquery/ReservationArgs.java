@@ -18,6 +18,21 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
     public static final ReservationArgs Empty = new ReservationArgs();
 
     /**
+     * Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+     * 
+     */
+    @Import(name="concurrency")
+    private @Nullable Output<Integer> concurrency;
+
+    /**
+     * @return Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+     * 
+     */
+    public Optional<Output<Integer>> concurrency() {
+        return Optional.ofNullable(this.concurrency);
+    }
+
+    /**
      * If false, any query using this reservation will use idle slots from other reservations within
      * the same admin project. If true, a query using this reservation will execute with the slot
      * capacity specified above at most.
@@ -51,6 +66,23 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
+    }
+
+    /**
+     * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+     * If set to true, this reservation is placed in the organization&#39;s secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization&#39;s default region.
+     * 
+     */
+    @Import(name="multiRegionAuxiliary")
+    private @Nullable Output<Boolean> multiRegionAuxiliary;
+
+    /**
+     * @return Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+     * If set to true, this reservation is placed in the organization&#39;s secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization&#39;s default region.
+     * 
+     */
+    public Optional<Output<Boolean>> multiRegionAuxiliary() {
+        return Optional.ofNullable(this.multiRegionAuxiliary);
     }
 
     /**
@@ -105,8 +137,10 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
     private ReservationArgs() {}
 
     private ReservationArgs(ReservationArgs $) {
+        this.concurrency = $.concurrency;
         this.ignoreIdleSlots = $.ignoreIdleSlots;
         this.location = $.location;
+        this.multiRegionAuxiliary = $.multiRegionAuxiliary;
         this.name = $.name;
         this.project = $.project;
         this.slotCapacity = $.slotCapacity;
@@ -128,6 +162,27 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ReservationArgs defaults) {
             $ = new ReservationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param concurrency Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder concurrency(@Nullable Output<Integer> concurrency) {
+            $.concurrency = concurrency;
+            return this;
+        }
+
+        /**
+         * @param concurrency Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder concurrency(Integer concurrency) {
+            return concurrency(Output.of(concurrency));
         }
 
         /**
@@ -176,6 +231,29 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param multiRegionAuxiliary Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+         * If set to true, this reservation is placed in the organization&#39;s secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization&#39;s default region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiRegionAuxiliary(@Nullable Output<Boolean> multiRegionAuxiliary) {
+            $.multiRegionAuxiliary = multiRegionAuxiliary;
+            return this;
+        }
+
+        /**
+         * @param multiRegionAuxiliary Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+         * If set to true, this reservation is placed in the organization&#39;s secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization&#39;s default region.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiRegionAuxiliary(Boolean multiRegionAuxiliary) {
+            return multiRegionAuxiliary(Output.of(multiRegionAuxiliary));
         }
 
         /**

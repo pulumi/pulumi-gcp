@@ -62,6 +62,8 @@ import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
 import com.pulumi.gcp.compute.inputs.GetRouterStatusPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSSLPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetSSLPolicyPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
+import com.pulumi.gcp.compute.inputs.GetSnapshotPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
 import com.pulumi.gcp.compute.inputs.GetSubnetworkPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetVPNGatewayArgs;
@@ -98,6 +100,7 @@ import com.pulumi.gcp.compute.outputs.GetResourcePolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRouterResult;
 import com.pulumi.gcp.compute.outputs.GetRouterStatusResult;
 import com.pulumi.gcp.compute.outputs.GetSSLPolicyResult;
+import com.pulumi.gcp.compute.outputs.GetSnapshotResult;
 import com.pulumi.gcp.compute.outputs.GetSubnetworkResult;
 import com.pulumi.gcp.compute.outputs.GetVPNGatewayResult;
 import com.pulumi.gcp.compute.outputs.GetZonesResult;
@@ -5913,6 +5916,282 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetSSLPolicyResult> getSSLPolicyPlain(GetSSLPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getSSLPolicy:getSSLPolicy", TypeShape.of(GetSSLPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * To get more information about Snapshot, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
+     *             .name(&#34;my-snapshot&#34;)
+     *             .build());
+     * 
+     *         final var latest-snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
+     *             .filter(&#34;name != my-snapshot&#34;)
+     *             .mostRecent(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSnapshotResult> getSnapshot() {
+        return getSnapshot(GetSnapshotArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * To get more information about Snapshot, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
+     *             .name(&#34;my-snapshot&#34;)
+     *             .build());
+     * 
+     *         final var latest-snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
+     *             .filter(&#34;name != my-snapshot&#34;)
+     *             .mostRecent(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSnapshotResult> getSnapshotPlain() {
+        return getSnapshotPlain(GetSnapshotPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * To get more information about Snapshot, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
+     *             .name(&#34;my-snapshot&#34;)
+     *             .build());
+     * 
+     *         final var latest-snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
+     *             .filter(&#34;name != my-snapshot&#34;)
+     *             .mostRecent(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSnapshotResult> getSnapshot(GetSnapshotArgs args) {
+        return getSnapshot(args, InvokeOptions.Empty);
+    }
+    /**
+     * To get more information about Snapshot, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
+     *             .name(&#34;my-snapshot&#34;)
+     *             .build());
+     * 
+     *         final var latest-snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
+     *             .filter(&#34;name != my-snapshot&#34;)
+     *             .mostRecent(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSnapshotResult> getSnapshotPlain(GetSnapshotPlainArgs args) {
+        return getSnapshotPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * To get more information about Snapshot, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
+     *             .name(&#34;my-snapshot&#34;)
+     *             .build());
+     * 
+     *         final var latest-snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
+     *             .filter(&#34;name != my-snapshot&#34;)
+     *             .mostRecent(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSnapshotResult> getSnapshot(GetSnapshotArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getSnapshot:getSnapshot", TypeShape.of(GetSnapshotResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * To get more information about Snapshot, see:
+     * 
+     * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
+     *             .name(&#34;my-snapshot&#34;)
+     *             .build());
+     * 
+     *         final var latest-snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
+     *             .filter(&#34;name != my-snapshot&#34;)
+     *             .mostRecent(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSnapshotResult> getSnapshotPlain(GetSnapshotPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getSnapshot:getSnapshot", TypeShape.of(GetSnapshotResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get a subnetwork within GCE from its name and region.

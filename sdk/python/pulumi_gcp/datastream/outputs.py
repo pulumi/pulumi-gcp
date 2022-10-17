@@ -11,6 +11,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'ConnectionProfileBigqueryProfile',
     'ConnectionProfileForwardSshConnectivity',
     'ConnectionProfileGcsProfile',
     'ConnectionProfileMysqlProfile',
@@ -19,6 +20,12 @@ __all__ = [
     'ConnectionProfilePostgresqlProfile',
     'PrivateConnectionVpcPeeringConfig',
 ]
+
+@pulumi.output_type
+class ConnectionProfileBigqueryProfile(dict):
+    def __init__(__self__):
+        pass
+
 
 @pulumi.output_type
 class ConnectionProfileForwardSshConnectivity(dict):

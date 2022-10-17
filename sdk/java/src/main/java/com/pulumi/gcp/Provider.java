@@ -106,6 +106,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> bigqueryDataTransferCustomEndpoint() {
         return Codegen.optional(this.bigqueryDataTransferCustomEndpoint);
     }
+    @Export(name="bigqueryDatapolicyCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> bigqueryDatapolicyCustomEndpoint;
+
+    public Output<Optional<String>> bigqueryDatapolicyCustomEndpoint() {
+        return Codegen.optional(this.bigqueryDatapolicyCustomEndpoint);
+    }
     @Export(name="bigqueryReservationCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> bigqueryReservationCustomEndpoint;
 
@@ -177,6 +183,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> cloudIdentityCustomEndpoint() {
         return Codegen.optional(this.cloudIdentityCustomEndpoint);
+    }
+    @Export(name="cloudIdsCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> cloudIdsCustomEndpoint;
+
+    public Output<Optional<String>> cloudIdsCustomEndpoint() {
+        return Codegen.optional(this.cloudIdsCustomEndpoint);
     }
     @Export(name="cloudIotCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> cloudIotCustomEndpoint;

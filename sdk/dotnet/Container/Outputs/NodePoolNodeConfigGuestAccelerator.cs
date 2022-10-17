@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Container.Outputs
     {
         public readonly int Count;
         public readonly string? GpuPartitionSize;
+        public readonly Outputs.NodePoolNodeConfigGuestAcceleratorGpuSharingConfig? GpuSharingConfig;
         /// <summary>
         /// The type of the policy. Supports a single value: COMPACT.
         /// Specifying COMPACT placement policy type places node pool's nodes in a closer
@@ -28,10 +29,13 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? gpuPartitionSize,
 
+            Outputs.NodePoolNodeConfigGuestAcceleratorGpuSharingConfig? gpuSharingConfig,
+
             string type)
         {
             Count = count;
             GpuPartitionSize = gpuPartitionSize;
+            GpuSharingConfig = gpuSharingConfig;
             Type = type;
         }
     }

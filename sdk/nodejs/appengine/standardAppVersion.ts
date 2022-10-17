@@ -25,6 +25,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const customServiceAccount = new gcp.serviceaccount.Account("customServiceAccount", {
+ *     accountId: "my-account",
+ *     displayName: "Custom Service Account",
+ * });
+ * const gaeApi = new gcp.projects.IAMMember("gaeApi", {
+ *     project: customServiceAccount.project,
+ *     role: "roles/compute.networkUser",
+ *     member: pulumi.interpolate`serviceAccount:${customServiceAccount.email}`,
+ * });
+ * const storageViewer = new gcp.projects.IAMMember("storageViewer", {
+ *     project: customServiceAccount.project,
+ *     role: "roles/storage.objectViewer",
+ *     member: pulumi.interpolate`serviceAccount:${customServiceAccount.email}`,
+ * });
  * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
  * const object = new gcp.storage.BucketObject("object", {
  *     bucket: bucket.name,
@@ -59,6 +73,7 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     deleteServiceOnDestroy: true,
+ *     serviceAccount: customServiceAccount.email,
  * });
  * const myappV2 = new gcp.appengine.StandardAppVersion("myappV2", {
  *     versionId: "v2",
@@ -80,6 +95,7 @@ import * as utilities from "../utilities";
  *         maxInstances: 5,
  *     },
  *     noopOnDestroy: true,
+ *     serviceAccount: customServiceAccount.email,
  * });
  * ```
  *
@@ -215,6 +231,10 @@ export class StandardAppVersion extends pulumi.CustomResource {
      */
     public readonly service!: pulumi.Output<string>;
     /**
+     * The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+     */
+    public readonly serviceAccount!: pulumi.Output<string>;
+    /**
      * Whether multiple requests can be dispatched to this version at once.
      */
     public readonly threadsafe!: pulumi.Output<boolean | undefined>;
@@ -259,6 +279,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
             resourceInputs["runtime"] = state ? state.runtime : undefined;
             resourceInputs["runtimeApiVersion"] = state ? state.runtimeApiVersion : undefined;
             resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             resourceInputs["threadsafe"] = state ? state.threadsafe : undefined;
             resourceInputs["versionId"] = state ? state.versionId : undefined;
             resourceInputs["vpcAccessConnector"] = state ? state.vpcAccessConnector : undefined;
@@ -293,6 +314,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
             resourceInputs["runtime"] = args ? args.runtime : undefined;
             resourceInputs["runtimeApiVersion"] = args ? args.runtimeApiVersion : undefined;
             resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["threadsafe"] = args ? args.threadsafe : undefined;
             resourceInputs["versionId"] = args ? args.versionId : undefined;
             resourceInputs["vpcAccessConnector"] = args ? args.vpcAccessConnector : undefined;
@@ -395,6 +417,10 @@ export interface StandardAppVersionState {
      */
     service?: pulumi.Input<string>;
     /**
+     * The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+     */
+    serviceAccount?: pulumi.Input<string>;
+    /**
      * Whether multiple requests can be dispatched to this version at once.
      */
     threadsafe?: pulumi.Input<boolean>;
@@ -496,6 +522,10 @@ export interface StandardAppVersionArgs {
      * AppEngine service resource
      */
     service: pulumi.Input<string>;
+    /**
+     * The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+     */
+    serviceAccount?: pulumi.Input<string>;
     /**
      * Whether multiple requests can be dispatched to this version at once.
      */

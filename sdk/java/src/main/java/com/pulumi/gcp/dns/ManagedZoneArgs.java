@@ -6,6 +6,7 @@ package com.pulumi.gcp.dns;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
+import com.pulumi.gcp.dns.inputs.ManagedZoneCloudLoggingConfigArgs;
 import com.pulumi.gcp.dns.inputs.ManagedZoneDnssecConfigArgs;
 import com.pulumi.gcp.dns.inputs.ManagedZoneForwardingConfigArgs;
 import com.pulumi.gcp.dns.inputs.ManagedZonePeeringConfigArgs;
@@ -22,6 +23,23 @@ import javax.annotation.Nullable;
 public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ManagedZoneArgs Empty = new ManagedZoneArgs();
+
+    /**
+     * Cloud logging configuration
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="cloudLoggingConfig")
+    private @Nullable Output<ManagedZoneCloudLoggingConfigArgs> cloudLoggingConfig;
+
+    /**
+     * @return Cloud logging configuration
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ManagedZoneCloudLoggingConfigArgs>> cloudLoggingConfig() {
+        return Optional.ofNullable(this.cloudLoggingConfig);
+    }
 
     /**
      * A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
@@ -253,6 +271,7 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
     private ManagedZoneArgs() {}
 
     private ManagedZoneArgs(ManagedZoneArgs $) {
+        this.cloudLoggingConfig = $.cloudLoggingConfig;
         this.description = $.description;
         this.dnsName = $.dnsName;
         this.dnssecConfig = $.dnssecConfig;
@@ -284,6 +303,29 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ManagedZoneArgs defaults) {
             $ = new ManagedZoneArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param cloudLoggingConfig Cloud logging configuration
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudLoggingConfig(@Nullable Output<ManagedZoneCloudLoggingConfigArgs> cloudLoggingConfig) {
+            $.cloudLoggingConfig = cloudLoggingConfig;
+            return this;
+        }
+
+        /**
+         * @param cloudLoggingConfig Cloud logging configuration
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudLoggingConfig(ManagedZoneCloudLoggingConfigArgs cloudLoggingConfig) {
+            return cloudLoggingConfig(Output.of(cloudLoggingConfig));
         }
 
         /**

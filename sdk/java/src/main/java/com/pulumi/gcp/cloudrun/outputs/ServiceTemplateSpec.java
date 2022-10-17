@@ -54,7 +54,9 @@ public final class ServiceTemplateSpec {
     @Deprecated /* Not supported by Cloud Run fully managed */
     private @Nullable String servingState;
     /**
-     * @return TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+     * @return Number of seconds after which the probe times out.
+     * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+     * Must be smaller than periodSeconds.
      * 
      */
     private @Nullable Integer timeoutSeconds;
@@ -113,7 +115,9 @@ public final class ServiceTemplateSpec {
         return Optional.ofNullable(this.servingState);
     }
     /**
-     * @return TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+     * @return Number of seconds after which the probe times out.
+     * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+     * Must be smaller than periodSeconds.
      * 
      */
     public Optional<Integer> timeoutSeconds() {

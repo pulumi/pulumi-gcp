@@ -3520,8 +3520,8 @@ class MetastoreFederationBackendMetastoreArgs:
                  rank: pulumi.Input[str]):
         """
         :param pulumi.Input[str] metastore_type: The type of the backend metastore.
-               Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
-        :param pulumi.Input[str] name: The relative resource name of the metastore that is being federated.
+               Possible values are `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, and `BIGQUERY`.
+        :param pulumi.Input[str] name: The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
         :param pulumi.Input[str] rank: The identifier for this object. Format specified above.
         """
         pulumi.set(__self__, "metastore_type", metastore_type)
@@ -3533,7 +3533,7 @@ class MetastoreFederationBackendMetastoreArgs:
     def metastore_type(self) -> pulumi.Input[str]:
         """
         The type of the backend metastore.
-        Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
+        Possible values are `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, and `BIGQUERY`.
         """
         return pulumi.get(self, "metastore_type")
 
@@ -3545,7 +3545,7 @@ class MetastoreFederationBackendMetastoreArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The relative resource name of the metastore that is being federated.
+        The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
         """
         return pulumi.get(self, "name")
 

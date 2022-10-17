@@ -58,6 +58,7 @@ __all__ = [
     'RoutineArgument',
     'TableEncryptionConfiguration',
     'TableExternalDataConfiguration',
+    'TableExternalDataConfigurationAvroOptions',
     'TableExternalDataConfigurationCsvOptions',
     'TableExternalDataConfigurationGoogleSheetsOptions',
     'TableExternalDataConfigurationHivePartitioningOptions',
@@ -3320,6 +3321,8 @@ class TableExternalDataConfiguration(dict):
             suggest = "source_format"
         elif key == "sourceUris":
             suggest = "source_uris"
+        elif key == "avroOptions":
+            suggest = "avro_options"
         elif key == "connectionId":
             suggest = "connection_id"
         elif key == "csvOptions":
@@ -3348,6 +3351,7 @@ class TableExternalDataConfiguration(dict):
                  autodetect: bool,
                  source_format: str,
                  source_uris: Sequence[str],
+                 avro_options: Optional['outputs.TableExternalDataConfigurationAvroOptions'] = None,
                  compression: Optional[str] = None,
                  connection_id: Optional[str] = None,
                  csv_options: Optional['outputs.TableExternalDataConfigurationCsvOptions'] = None,
@@ -3366,6 +3370,8 @@ class TableExternalDataConfiguration(dict):
                "https://www.googleapis.com/auth/drive.readonly".
         :param Sequence[str] source_uris: A list of the fully-qualified URIs that point to
                your data in Google Cloud.
+        :param 'TableExternalDataConfigurationAvroOptionsArgs' avro_options: Additional options if `source_format` is set to  
+               "AVRO".  Structure is documented below.
         :param str compression: The compression type of the data source.
                Valid values are "NONE" or "GZIP".
         :param str connection_id: The connection specifying the credentials to be used to read
@@ -3404,6 +3410,8 @@ class TableExternalDataConfiguration(dict):
         pulumi.set(__self__, "autodetect", autodetect)
         pulumi.set(__self__, "source_format", source_format)
         pulumi.set(__self__, "source_uris", source_uris)
+        if avro_options is not None:
+            pulumi.set(__self__, "avro_options", avro_options)
         if compression is not None:
             pulumi.set(__self__, "compression", compression)
         if connection_id is not None:
@@ -3450,6 +3458,15 @@ class TableExternalDataConfiguration(dict):
         your data in Google Cloud.
         """
         return pulumi.get(self, "source_uris")
+
+    @property
+    @pulumi.getter(name="avroOptions")
+    def avro_options(self) -> Optional['outputs.TableExternalDataConfigurationAvroOptions']:
+        """
+        Additional options if `source_format` is set to  
+        "AVRO".  Structure is documented below.
+        """
+        return pulumi.get(self, "avro_options")
 
     @property
     @pulumi.getter
@@ -3540,6 +3557,45 @@ class TableExternalDataConfiguration(dict):
         `google_bigquery_table.schema`
         """
         return pulumi.get(self, "schema")
+
+
+@pulumi.output_type
+class TableExternalDataConfigurationAvroOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "useAvroLogicalTypes":
+            suggest = "use_avro_logical_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TableExternalDataConfigurationAvroOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TableExternalDataConfigurationAvroOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TableExternalDataConfigurationAvroOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 use_avro_logical_types: bool):
+        """
+        :param bool use_avro_logical_types: If is set to true, indicates whether  
+               to interpret logical types as the corresponding BigQuery data type
+               (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+        """
+        pulumi.set(__self__, "use_avro_logical_types", use_avro_logical_types)
+
+    @property
+    @pulumi.getter(name="useAvroLogicalTypes")
+    def use_avro_logical_types(self) -> bool:
+        """
+        If is set to true, indicates whether  
+        to interpret logical types as the corresponding BigQuery data type
+        (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+        """
+        return pulumi.get(self, "use_avro_logical_types")
 
 
 @pulumi.output_type

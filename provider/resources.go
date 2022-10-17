@@ -38,6 +38,7 @@ const (
 	gcpArtifactRegistry     = "ArtifactRegistry"     // ArtifactRegistry resources
 	gcpAssuredWorkloads     = "AssuredWorkloads"     // AssuredWorkloads resources
 	gcpBigQueryAnalyticsHub = "BigQueryAnalyticsHub" // BigQuery Analytics Hub resources
+	gcpBigQueryDataPolicy   = "BigQueryDataPolicy"   // BigQuery Data Policy resources
 	gcpBigQuery             = "BigQuery"             // BigQuery resources
 	gcpBigTable             = "BigTable"             // BitTable resources
 	gcpBilling              = "Billing"              // Billing resources
@@ -49,6 +50,7 @@ const (
 	gcpCloudDeploy          = "CloudDeploy"          // CloudDeploy resources
 	gcpCloudFunctions       = "CloudFunctions"       // CloudFunction resources
 	gcpCloudFunctionsV2     = "CloudFunctionsV2"     // CloudFunction (2nd Gen) resources
+	gcpCloudIds             = "CloudIds"             // CloudIds resources
 	gcpCloudIdentity        = "CloudIdentity"        // CloudIdentity resources
 	gcpCloudRun             = "CloudRun"             // CloudRun resources
 	gcpCloudScheduler       = "CloudScheduler"       // Cloud Scheduler resources
@@ -382,6 +384,46 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "bigquery_analytics_hub_data_exchange_iam.html.markdown",
 				},
 			},
+			"google_bigquery_analytics_hub_listing_iam_binding": {
+				Tok: gcpResource(gcpBigQueryAnalyticsHub, "ListingIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigquery_analytics_hub_listing_iam.html.markdown",
+				},
+			},
+			"google_bigquery_analytics_hub_listing_iam_member": {
+				Tok: gcpResource(gcpBigQueryAnalyticsHub, "ListingIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigquery_analytics_hub_listing_iam.html.markdown",
+				},
+			},
+			"google_bigquery_analytics_hub_listing_iam_policy": {
+				Tok: gcpResource(gcpBigQueryAnalyticsHub, "ListingIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigquery_analytics_hub_listing_iam.html.markdown",
+				},
+			},
+			"google_bigquery_analytics_hub_listing": {Tok: gcpResource(gcpBigQueryAnalyticsHub, "Listing")},
+
+			// BigQuery Data Policy
+			"google_bigquery_datapolicy_data_policy": {Tok: gcpResource(gcpBigQueryDataPolicy, "DataPolicy")},
+			"google_bigquery_datapolicy_data_policy_iam_binding": {
+				Tok: gcpResource(gcpBigQueryDataPolicy, "DataPolicyIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigquery_datapolicy_data_policy_iam.html.markdown",
+				},
+			},
+			"google_bigquery_datapolicy_data_policy_iam_member": {
+				Tok: gcpResource(gcpBigQueryDataPolicy, "DataPolicyIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigquery_datapolicy_data_policy_iam.html.markdown",
+				},
+			},
+			"google_bigquery_datapolicy_data_policy_iam_policy": {
+				Tok: gcpResource(gcpBigQueryDataPolicy, "DataPolicyIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigquery_datapolicy_data_policy_iam.html.markdown",
+				},
+			},
 
 			// BigQuery
 			"google_bigquery_dataset":              {Tok: gcpResource(gcpBigQuery, "Dataset")},
@@ -620,6 +662,16 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpCloudFunctionsV2, "FunctionIamPolicy"),
 				Docs: &tfbridge.DocInfo{
 					Source: "cloudfunctions2_function_iam.html.markdown",
+				},
+			},
+
+			// Cloud IDs
+			"google_cloud_ids_endpoint": {
+				Tok: gcpResource(gcpCloudIds, "Endpoint"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"endpoint": {
+						CSharpName: "EndpointName",
+					},
 				},
 			},
 
@@ -977,6 +1029,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_region_ssl_certificate":        {Tok: gcpResource(gcpCompute, "RegionSslCertificate")},
 			"google_compute_region_target_http_proxy":      {Tok: gcpResource(gcpCompute, "RegionTargetHttpProxy")},
 			"google_compute_region_target_https_proxy":     {Tok: gcpResource(gcpCompute, "RegionTargetHttpsProxy")},
+			"google_compute_region_target_tcp_proxy":       {Tok: gcpResource(gcpCompute, "RegionTargetTcpProxy")},
 			"google_compute_region_network_endpoint_group": {Tok: gcpResource(gcpCompute, "RegionNetworkEndpointGroup")},
 			"google_compute_region_ssl_policy":             {Tok: gcpResource(gcpCompute, "RegionSslPolicy")},
 			"google_compute_resource_policy":               {Tok: gcpResource(gcpCompute, "ResourcePolicy")},
@@ -1610,10 +1663,11 @@ func Provider() tfbridge.ProviderInfo {
 			"google_tpu_node": {Tok: gcpResource(gcpTPU, "Node")},
 
 			// Vertex
-			"google_vertex_ai_dataset":                 {Tok: gcpResource(gcpVertex, "AiDataset")},
-			"google_vertex_ai_featurestore_entitytype": {Tok: gcpResource(gcpVertex, "AiFeatureStoreEntityType")},
-			"google_vertex_ai_featurestore":            {Tok: gcpResource(gcpVertex, "AiFeatureStore")},
-			"google_vertex_ai_metadata_store":          {Tok: gcpResource(gcpVertex, "AiMetadataStore")},
+			"google_vertex_ai_dataset":                         {Tok: gcpResource(gcpVertex, "AiDataset")},
+			"google_vertex_ai_featurestore_entitytype":         {Tok: gcpResource(gcpVertex, "AiFeatureStoreEntityType")},
+			"google_vertex_ai_featurestore_entitytype_feature": {Tok: gcpResource(gcpVertex, "AiFeatureStoreEntityTypeFeature")},
+			"google_vertex_ai_featurestore":                    {Tok: gcpResource(gcpVertex, "AiFeatureStore")},
+			"google_vertex_ai_metadata_store":                  {Tok: gcpResource(gcpVertex, "AiMetadataStore")},
 
 			// Key Management Service resources
 			"google_kms_key_ring": {
@@ -2063,7 +2117,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_os_login_ssh_public_key": {Tok: gcpResource(gcpOsLogin, "SshPublicKey")},
 
 			// Org Policy
-			"google_org_policy_policy": {Tok: gcpResource(gcpOrgPolicy, "Policy")},
+			"google_org_policy_custom_constraint": {Tok: gcpResource(gcpOrgPolicy, "CustomConstraint")},
+			"google_org_policy_policy":            {Tok: gcpResource(gcpOrgPolicy, "Policy")},
 
 			// OS Config
 			"google_os_config_patch_deployment":     {Tok: gcpResource(gcpOsConfig, "PatchDeployment")},
@@ -2616,6 +2671,12 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_cloudfunctions_function.html.markdown",
 				},
 			},
+			"google_cloudfunctions2_function": {
+				Tok: gcpDataSource(gcpCloudFunctionsV2, "getFunction"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_cloudfunctions2_function.html.markdown",
+				},
+			},
 
 			// Compute
 			"google_compute_address": {
@@ -2696,6 +2757,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_compute_router_status": {Tok: gcpDataSource(gcpCompute, "RouterStatus")}, // fixed via alias
 			"google_compute_disk":          {Tok: gcpDataSource(gcpCompute, "getDisk")},
+			"google_compute_snapshot":      {Tok: gcpDataSource(gcpCompute, "getSnapshot")},
 
 			"google_composer_image_versions": {
 				Tok: gcpDataSource(gcpComposer, "getImageVersions"),
@@ -3098,6 +3160,9 @@ func Provider() tfbridge.ProviderInfo {
 			// Tags
 			"google_tags_tag_key":   {Tok: gcpDataSource(gcpTags, "getTagKey")},
 			"google_tags_tag_value": {Tok: gcpDataSource(gcpTags, "getTagValue")},
+
+			// VPC Access
+			"google_vpc_access_connector": {Tok: gcpDataSource(gcpVpcAccess, "getConnector")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

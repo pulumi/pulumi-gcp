@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.SecretManager
     /// SecretVersion can be imported using any of these accepted formats
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:secretmanager/secretVersion:SecretVersion default {{name}}/{{name}}
+    ///  $ pulumi import gcp:secretmanager/secretVersion:SecretVersion default projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:secretmanager/secretVersion:SecretVersion")]

@@ -60,6 +60,9 @@ namespace Pulumi.Gcp
         [Output("bigqueryDataTransferCustomEndpoint")]
         public Output<string?> BigqueryDataTransferCustomEndpoint { get; private set; } = null!;
 
+        [Output("bigqueryDatapolicyCustomEndpoint")]
+        public Output<string?> BigqueryDatapolicyCustomEndpoint { get; private set; } = null!;
+
         [Output("bigqueryReservationCustomEndpoint")]
         public Output<string?> BigqueryReservationCustomEndpoint { get; private set; } = null!;
 
@@ -95,6 +98,9 @@ namespace Pulumi.Gcp
 
         [Output("cloudIdentityCustomEndpoint")]
         public Output<string?> CloudIdentityCustomEndpoint { get; private set; } = null!;
+
+        [Output("cloudIdsCustomEndpoint")]
+        public Output<string?> CloudIdsCustomEndpoint { get; private set; } = null!;
 
         [Output("cloudIotCustomEndpoint")]
         public Output<string?> CloudIotCustomEndpoint { get; private set; } = null!;
@@ -436,6 +442,9 @@ namespace Pulumi.Gcp
         [Input("bigqueryDataTransferCustomEndpoint")]
         public Input<string>? BigqueryDataTransferCustomEndpoint { get; set; }
 
+        [Input("bigqueryDatapolicyCustomEndpoint")]
+        public Input<string>? BigqueryDatapolicyCustomEndpoint { get; set; }
+
         [Input("bigqueryReservationCustomEndpoint")]
         public Input<string>? BigqueryReservationCustomEndpoint { get; set; }
 
@@ -471,6 +480,9 @@ namespace Pulumi.Gcp
 
         [Input("cloudIdentityCustomEndpoint")]
         public Input<string>? CloudIdentityCustomEndpoint { get; set; }
+
+        [Input("cloudIdsCustomEndpoint")]
+        public Input<string>? CloudIdsCustomEndpoint { get; set; }
 
         [Input("cloudIotCustomEndpoint")]
         public Input<string>? CloudIotCustomEndpoint { get; set; }

@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * To get more information about Reservation, see:
  * 
- * * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1beta1/projects.locations.reservations/create)
+ * * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations/create)
  * * How-to Guides
  *     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
  * 
@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var reservation = new Reservation(&#34;reservation&#34;, ReservationArgs.builder()        
+ *             .concurrency(0)
  *             .ignoreIdleSlots(false)
  *             .location(&#34;asia-northeast1&#34;)
  *             .slotCapacity(0)
@@ -77,6 +78,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:bigquery/reservation:Reservation")
 public class Reservation extends com.pulumi.resources.CustomResource {
+    /**
+     * Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+     * 
+     */
+    @Export(name="concurrency", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> concurrency;
+
+    /**
+     * @return Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+     * 
+     */
+    public Output<Optional<Integer>> concurrency() {
+        return Codegen.optional(this.concurrency);
+    }
     /**
      * If false, any query using this reservation will use idle slots from other reservations within
      * the same admin project. If true, a query using this reservation will execute with the slot
@@ -110,6 +125,22 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> location() {
         return Codegen.optional(this.location);
+    }
+    /**
+     * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+     * If set to true, this reservation is placed in the organization&#39;s secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization&#39;s default region.
+     * 
+     */
+    @Export(name="multiRegionAuxiliary", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> multiRegionAuxiliary;
+
+    /**
+     * @return Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+     * If set to true, this reservation is placed in the organization&#39;s secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization&#39;s default region.
+     * 
+     */
+    public Output<Optional<Boolean>> multiRegionAuxiliary() {
+        return Codegen.optional(this.multiRegionAuxiliary);
     }
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.

@@ -10,6 +10,143 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type ManagedZoneCloudLoggingConfig struct {
+	// If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+	EnableLogging bool `pulumi:"enableLogging"`
+}
+
+// ManagedZoneCloudLoggingConfigInput is an input type that accepts ManagedZoneCloudLoggingConfigArgs and ManagedZoneCloudLoggingConfigOutput values.
+// You can construct a concrete instance of `ManagedZoneCloudLoggingConfigInput` via:
+//
+//	ManagedZoneCloudLoggingConfigArgs{...}
+type ManagedZoneCloudLoggingConfigInput interface {
+	pulumi.Input
+
+	ToManagedZoneCloudLoggingConfigOutput() ManagedZoneCloudLoggingConfigOutput
+	ToManagedZoneCloudLoggingConfigOutputWithContext(context.Context) ManagedZoneCloudLoggingConfigOutput
+}
+
+type ManagedZoneCloudLoggingConfigArgs struct {
+	// If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+	EnableLogging pulumi.BoolInput `pulumi:"enableLogging"`
+}
+
+func (ManagedZoneCloudLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneCloudLoggingConfig)(nil)).Elem()
+}
+
+func (i ManagedZoneCloudLoggingConfigArgs) ToManagedZoneCloudLoggingConfigOutput() ManagedZoneCloudLoggingConfigOutput {
+	return i.ToManagedZoneCloudLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneCloudLoggingConfigArgs) ToManagedZoneCloudLoggingConfigOutputWithContext(ctx context.Context) ManagedZoneCloudLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneCloudLoggingConfigOutput)
+}
+
+func (i ManagedZoneCloudLoggingConfigArgs) ToManagedZoneCloudLoggingConfigPtrOutput() ManagedZoneCloudLoggingConfigPtrOutput {
+	return i.ToManagedZoneCloudLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneCloudLoggingConfigArgs) ToManagedZoneCloudLoggingConfigPtrOutputWithContext(ctx context.Context) ManagedZoneCloudLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneCloudLoggingConfigOutput).ToManagedZoneCloudLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// ManagedZoneCloudLoggingConfigPtrInput is an input type that accepts ManagedZoneCloudLoggingConfigArgs, ManagedZoneCloudLoggingConfigPtr and ManagedZoneCloudLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `ManagedZoneCloudLoggingConfigPtrInput` via:
+//
+//	        ManagedZoneCloudLoggingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedZoneCloudLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToManagedZoneCloudLoggingConfigPtrOutput() ManagedZoneCloudLoggingConfigPtrOutput
+	ToManagedZoneCloudLoggingConfigPtrOutputWithContext(context.Context) ManagedZoneCloudLoggingConfigPtrOutput
+}
+
+type managedZoneCloudLoggingConfigPtrType ManagedZoneCloudLoggingConfigArgs
+
+func ManagedZoneCloudLoggingConfigPtr(v *ManagedZoneCloudLoggingConfigArgs) ManagedZoneCloudLoggingConfigPtrInput {
+	return (*managedZoneCloudLoggingConfigPtrType)(v)
+}
+
+func (*managedZoneCloudLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneCloudLoggingConfig)(nil)).Elem()
+}
+
+func (i *managedZoneCloudLoggingConfigPtrType) ToManagedZoneCloudLoggingConfigPtrOutput() ManagedZoneCloudLoggingConfigPtrOutput {
+	return i.ToManagedZoneCloudLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *managedZoneCloudLoggingConfigPtrType) ToManagedZoneCloudLoggingConfigPtrOutputWithContext(ctx context.Context) ManagedZoneCloudLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneCloudLoggingConfigPtrOutput)
+}
+
+type ManagedZoneCloudLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneCloudLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneCloudLoggingConfig)(nil)).Elem()
+}
+
+func (o ManagedZoneCloudLoggingConfigOutput) ToManagedZoneCloudLoggingConfigOutput() ManagedZoneCloudLoggingConfigOutput {
+	return o
+}
+
+func (o ManagedZoneCloudLoggingConfigOutput) ToManagedZoneCloudLoggingConfigOutputWithContext(ctx context.Context) ManagedZoneCloudLoggingConfigOutput {
+	return o
+}
+
+func (o ManagedZoneCloudLoggingConfigOutput) ToManagedZoneCloudLoggingConfigPtrOutput() ManagedZoneCloudLoggingConfigPtrOutput {
+	return o.ToManagedZoneCloudLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedZoneCloudLoggingConfigOutput) ToManagedZoneCloudLoggingConfigPtrOutputWithContext(ctx context.Context) ManagedZoneCloudLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZoneCloudLoggingConfig) *ManagedZoneCloudLoggingConfig {
+		return &v
+	}).(ManagedZoneCloudLoggingConfigPtrOutput)
+}
+
+// If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+func (o ManagedZoneCloudLoggingConfigOutput) EnableLogging() pulumi.BoolOutput {
+	return o.ApplyT(func(v ManagedZoneCloudLoggingConfig) bool { return v.EnableLogging }).(pulumi.BoolOutput)
+}
+
+type ManagedZoneCloudLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneCloudLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneCloudLoggingConfig)(nil)).Elem()
+}
+
+func (o ManagedZoneCloudLoggingConfigPtrOutput) ToManagedZoneCloudLoggingConfigPtrOutput() ManagedZoneCloudLoggingConfigPtrOutput {
+	return o
+}
+
+func (o ManagedZoneCloudLoggingConfigPtrOutput) ToManagedZoneCloudLoggingConfigPtrOutputWithContext(ctx context.Context) ManagedZoneCloudLoggingConfigPtrOutput {
+	return o
+}
+
+func (o ManagedZoneCloudLoggingConfigPtrOutput) Elem() ManagedZoneCloudLoggingConfigOutput {
+	return o.ApplyT(func(v *ManagedZoneCloudLoggingConfig) ManagedZoneCloudLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedZoneCloudLoggingConfig
+		return ret
+	}).(ManagedZoneCloudLoggingConfigOutput)
+}
+
+// If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+func (o ManagedZoneCloudLoggingConfigPtrOutput) EnableLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedZoneCloudLoggingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ManagedZoneDnssecConfig struct {
 	// Specifies parameters that will be used for generating initial DnsKeys
 	// for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
@@ -3142,6 +3279,8 @@ func (o GetKeysZoneSigningKeyDigestArrayOutput) Index(i pulumi.IntInput) GetKeys
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneCloudLoggingConfigInput)(nil)).Elem(), ManagedZoneCloudLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneCloudLoggingConfigPtrInput)(nil)).Elem(), ManagedZoneCloudLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneDnssecConfigInput)(nil)).Elem(), ManagedZoneDnssecConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneDnssecConfigPtrInput)(nil)).Elem(), ManagedZoneDnssecConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneDnssecConfigDefaultKeySpecInput)(nil)).Elem(), ManagedZoneDnssecConfigDefaultKeySpecArgs{})
@@ -3188,6 +3327,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysZoneSigningKeyArrayInput)(nil)).Elem(), GetKeysZoneSigningKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysZoneSigningKeyDigestInput)(nil)).Elem(), GetKeysZoneSigningKeyDigestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysZoneSigningKeyDigestArrayInput)(nil)).Elem(), GetKeysZoneSigningKeyDigestArray{})
+	pulumi.RegisterOutputType(ManagedZoneCloudLoggingConfigOutput{})
+	pulumi.RegisterOutputType(ManagedZoneCloudLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ManagedZoneDnssecConfigOutput{})
 	pulumi.RegisterOutputType(ManagedZoneDnssecConfigPtrOutput{})
 	pulumi.RegisterOutputType(ManagedZoneDnssecConfigDefaultKeySpecOutput{})

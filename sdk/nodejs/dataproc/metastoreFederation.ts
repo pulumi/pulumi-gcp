@@ -38,6 +38,44 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Dataproc Metastore Federation Bigquery
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultMetastoreService = new gcp.dataproc.MetastoreService("defaultMetastoreService", {
+ *     serviceId: "fed-2",
+ *     location: "us-central1",
+ *     tier: "DEVELOPER",
+ *     hiveMetastoreConfig: {
+ *         version: "3.1.2",
+ *         endpointProtocol: "GRPC",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const defaultMetastoreFederation = new gcp.dataproc.MetastoreFederation("defaultMetastoreFederation", {
+ *     location: "us-central1",
+ *     federationId: "fed-2",
+ *     version: "3.1.2",
+ *     backendMetastores: [
+ *         {
+ *             rank: "2",
+ *             name: project.then(project => project.id),
+ *             metastoreType: "BIGQUERY",
+ *         },
+ *         {
+ *             rank: "1",
+ *             name: defaultMetastoreService.id,
+ *             metastoreType: "DATAPROC_METASTORE",
+ *         },
+ *     ],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -107,7 +145,7 @@ export class MetastoreFederation extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
-     * The relative resource name of the metastore that is being federated.
+     * The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -212,7 +250,7 @@ export interface MetastoreFederationState {
      */
     location?: pulumi.Input<string>;
     /**
-     * The relative resource name of the metastore that is being federated.
+     * The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
      */
     name?: pulumi.Input<string>;
     /**

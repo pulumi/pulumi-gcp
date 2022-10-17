@@ -27,7 +27,9 @@ __all__ = [
     'DatabaseInstanceSettingsMaintenanceWindowArgs',
     'DatabaseInstanceSettingsPasswordValidationPolicyArgs',
     'DatabaseInstanceSettingsSqlServerAuditConfigArgs',
-    'UserSqlServerUserDetailsArgs',
+    'UserPasswordPolicyArgs',
+    'UserPasswordPolicyStatusArgs',
+    'UserSqlServerUserDetailArgs',
 ]
 
 @pulumi.input_type
@@ -1482,7 +1484,129 @@ class DatabaseInstanceSettingsSqlServerAuditConfigArgs:
 
 
 @pulumi.input_type
-class UserSqlServerUserDetailsArgs:
+class UserPasswordPolicyArgs:
+    def __init__(__self__, *,
+                 allowed_failed_attempts: Optional[pulumi.Input[int]] = None,
+                 enable_failed_attempts_check: Optional[pulumi.Input[bool]] = None,
+                 enable_password_verification: Optional[pulumi.Input[bool]] = None,
+                 password_expiration_duration: Optional[pulumi.Input[str]] = None,
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['UserPasswordPolicyStatusArgs']]]] = None):
+        """
+        :param pulumi.Input[int] allowed_failed_attempts: Number of failed attempts allowed before the user get locked.
+        :param pulumi.Input[bool] enable_failed_attempts_check: If true, the check that will lock user after too many failed login attempts will be enabled.
+        :param pulumi.Input[bool] enable_password_verification: If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
+        :param pulumi.Input[str] password_expiration_duration: Password expiration duration with one week grace period.
+        """
+        if allowed_failed_attempts is not None:
+            pulumi.set(__self__, "allowed_failed_attempts", allowed_failed_attempts)
+        if enable_failed_attempts_check is not None:
+            pulumi.set(__self__, "enable_failed_attempts_check", enable_failed_attempts_check)
+        if enable_password_verification is not None:
+            pulumi.set(__self__, "enable_password_verification", enable_password_verification)
+        if password_expiration_duration is not None:
+            pulumi.set(__self__, "password_expiration_duration", password_expiration_duration)
+        if statuses is not None:
+            pulumi.set(__self__, "statuses", statuses)
+
+    @property
+    @pulumi.getter(name="allowedFailedAttempts")
+    def allowed_failed_attempts(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of failed attempts allowed before the user get locked.
+        """
+        return pulumi.get(self, "allowed_failed_attempts")
+
+    @allowed_failed_attempts.setter
+    def allowed_failed_attempts(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "allowed_failed_attempts", value)
+
+    @property
+    @pulumi.getter(name="enableFailedAttemptsCheck")
+    def enable_failed_attempts_check(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the check that will lock user after too many failed login attempts will be enabled.
+        """
+        return pulumi.get(self, "enable_failed_attempts_check")
+
+    @enable_failed_attempts_check.setter
+    def enable_failed_attempts_check(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_failed_attempts_check", value)
+
+    @property
+    @pulumi.getter(name="enablePasswordVerification")
+    def enable_password_verification(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
+        """
+        return pulumi.get(self, "enable_password_verification")
+
+    @enable_password_verification.setter
+    def enable_password_verification(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_password_verification", value)
+
+    @property
+    @pulumi.getter(name="passwordExpirationDuration")
+    def password_expiration_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password expiration duration with one week grace period.
+        """
+        return pulumi.get(self, "password_expiration_duration")
+
+    @password_expiration_duration.setter
+    def password_expiration_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password_expiration_duration", value)
+
+    @property
+    @pulumi.getter
+    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserPasswordPolicyStatusArgs']]]]:
+        return pulumi.get(self, "statuses")
+
+    @statuses.setter
+    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserPasswordPolicyStatusArgs']]]]):
+        pulumi.set(self, "statuses", value)
+
+
+@pulumi.input_type
+class UserPasswordPolicyStatusArgs:
+    def __init__(__self__, *,
+                 locked: Optional[pulumi.Input[bool]] = None,
+                 password_expiration_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] locked: If true, user does not have login privileges.
+        :param pulumi.Input[str] password_expiration_time: Password expiration duration with one week grace period.
+        """
+        if locked is not None:
+            pulumi.set(__self__, "locked", locked)
+        if password_expiration_time is not None:
+            pulumi.set(__self__, "password_expiration_time", password_expiration_time)
+
+    @property
+    @pulumi.getter
+    def locked(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, user does not have login privileges.
+        """
+        return pulumi.get(self, "locked")
+
+    @locked.setter
+    def locked(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "locked", value)
+
+    @property
+    @pulumi.getter(name="passwordExpirationTime")
+    def password_expiration_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password expiration duration with one week grace period.
+        """
+        return pulumi.get(self, "password_expiration_time")
+
+    @password_expiration_time.setter
+    def password_expiration_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password_expiration_time", value)
+
+
+@pulumi.input_type
+class UserSqlServerUserDetailArgs:
     def __init__(__self__, *,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  server_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):

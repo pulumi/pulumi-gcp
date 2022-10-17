@@ -48,6 +48,7 @@ export interface GetBackendServiceResult {
     readonly backends: outputs.compute.GetBackendServiceBackend[];
     readonly cdnPolicies: outputs.compute.GetBackendServiceCdnPolicy[];
     readonly circuitBreakers: outputs.compute.GetBackendServiceCircuitBreaker[];
+    readonly compressionMode: string;
     /**
      * Time for which instance will be drained (not accept new connections, but still work to finish started ones).
      */

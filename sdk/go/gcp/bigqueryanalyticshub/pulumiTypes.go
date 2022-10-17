@@ -336,13 +336,808 @@ func (o DataExchangeIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type ListingBigqueryDataset struct {
+	// Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
+	Dataset string `pulumi:"dataset"`
+}
+
+// ListingBigqueryDatasetInput is an input type that accepts ListingBigqueryDatasetArgs and ListingBigqueryDatasetOutput values.
+// You can construct a concrete instance of `ListingBigqueryDatasetInput` via:
+//
+//	ListingBigqueryDatasetArgs{...}
+type ListingBigqueryDatasetInput interface {
+	pulumi.Input
+
+	ToListingBigqueryDatasetOutput() ListingBigqueryDatasetOutput
+	ToListingBigqueryDatasetOutputWithContext(context.Context) ListingBigqueryDatasetOutput
+}
+
+type ListingBigqueryDatasetArgs struct {
+	// Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
+	Dataset pulumi.StringInput `pulumi:"dataset"`
+}
+
+func (ListingBigqueryDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingBigqueryDataset)(nil)).Elem()
+}
+
+func (i ListingBigqueryDatasetArgs) ToListingBigqueryDatasetOutput() ListingBigqueryDatasetOutput {
+	return i.ToListingBigqueryDatasetOutputWithContext(context.Background())
+}
+
+func (i ListingBigqueryDatasetArgs) ToListingBigqueryDatasetOutputWithContext(ctx context.Context) ListingBigqueryDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingBigqueryDatasetOutput)
+}
+
+func (i ListingBigqueryDatasetArgs) ToListingBigqueryDatasetPtrOutput() ListingBigqueryDatasetPtrOutput {
+	return i.ToListingBigqueryDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i ListingBigqueryDatasetArgs) ToListingBigqueryDatasetPtrOutputWithContext(ctx context.Context) ListingBigqueryDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingBigqueryDatasetOutput).ToListingBigqueryDatasetPtrOutputWithContext(ctx)
+}
+
+// ListingBigqueryDatasetPtrInput is an input type that accepts ListingBigqueryDatasetArgs, ListingBigqueryDatasetPtr and ListingBigqueryDatasetPtrOutput values.
+// You can construct a concrete instance of `ListingBigqueryDatasetPtrInput` via:
+//
+//	        ListingBigqueryDatasetArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingBigqueryDatasetPtrInput interface {
+	pulumi.Input
+
+	ToListingBigqueryDatasetPtrOutput() ListingBigqueryDatasetPtrOutput
+	ToListingBigqueryDatasetPtrOutputWithContext(context.Context) ListingBigqueryDatasetPtrOutput
+}
+
+type listingBigqueryDatasetPtrType ListingBigqueryDatasetArgs
+
+func ListingBigqueryDatasetPtr(v *ListingBigqueryDatasetArgs) ListingBigqueryDatasetPtrInput {
+	return (*listingBigqueryDatasetPtrType)(v)
+}
+
+func (*listingBigqueryDatasetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingBigqueryDataset)(nil)).Elem()
+}
+
+func (i *listingBigqueryDatasetPtrType) ToListingBigqueryDatasetPtrOutput() ListingBigqueryDatasetPtrOutput {
+	return i.ToListingBigqueryDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i *listingBigqueryDatasetPtrType) ToListingBigqueryDatasetPtrOutputWithContext(ctx context.Context) ListingBigqueryDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingBigqueryDatasetPtrOutput)
+}
+
+type ListingBigqueryDatasetOutput struct{ *pulumi.OutputState }
+
+func (ListingBigqueryDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingBigqueryDataset)(nil)).Elem()
+}
+
+func (o ListingBigqueryDatasetOutput) ToListingBigqueryDatasetOutput() ListingBigqueryDatasetOutput {
+	return o
+}
+
+func (o ListingBigqueryDatasetOutput) ToListingBigqueryDatasetOutputWithContext(ctx context.Context) ListingBigqueryDatasetOutput {
+	return o
+}
+
+func (o ListingBigqueryDatasetOutput) ToListingBigqueryDatasetPtrOutput() ListingBigqueryDatasetPtrOutput {
+	return o.ToListingBigqueryDatasetPtrOutputWithContext(context.Background())
+}
+
+func (o ListingBigqueryDatasetOutput) ToListingBigqueryDatasetPtrOutputWithContext(ctx context.Context) ListingBigqueryDatasetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingBigqueryDataset) *ListingBigqueryDataset {
+		return &v
+	}).(ListingBigqueryDatasetPtrOutput)
+}
+
+// Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
+func (o ListingBigqueryDatasetOutput) Dataset() pulumi.StringOutput {
+	return o.ApplyT(func(v ListingBigqueryDataset) string { return v.Dataset }).(pulumi.StringOutput)
+}
+
+type ListingBigqueryDatasetPtrOutput struct{ *pulumi.OutputState }
+
+func (ListingBigqueryDatasetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingBigqueryDataset)(nil)).Elem()
+}
+
+func (o ListingBigqueryDatasetPtrOutput) ToListingBigqueryDatasetPtrOutput() ListingBigqueryDatasetPtrOutput {
+	return o
+}
+
+func (o ListingBigqueryDatasetPtrOutput) ToListingBigqueryDatasetPtrOutputWithContext(ctx context.Context) ListingBigqueryDatasetPtrOutput {
+	return o
+}
+
+func (o ListingBigqueryDatasetPtrOutput) Elem() ListingBigqueryDatasetOutput {
+	return o.ApplyT(func(v *ListingBigqueryDataset) ListingBigqueryDataset {
+		if v != nil {
+			return *v
+		}
+		var ret ListingBigqueryDataset
+		return ret
+	}).(ListingBigqueryDatasetOutput)
+}
+
+// Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
+func (o ListingBigqueryDatasetPtrOutput) Dataset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingBigqueryDataset) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Dataset
+	}).(pulumi.StringPtrOutput)
+}
+
+type ListingDataProvider struct {
+	// Name of the listing publisher.
+	Name string `pulumi:"name"`
+	// Email or URL of the listing publisher.
+	PrimaryContact *string `pulumi:"primaryContact"`
+}
+
+// ListingDataProviderInput is an input type that accepts ListingDataProviderArgs and ListingDataProviderOutput values.
+// You can construct a concrete instance of `ListingDataProviderInput` via:
+//
+//	ListingDataProviderArgs{...}
+type ListingDataProviderInput interface {
+	pulumi.Input
+
+	ToListingDataProviderOutput() ListingDataProviderOutput
+	ToListingDataProviderOutputWithContext(context.Context) ListingDataProviderOutput
+}
+
+type ListingDataProviderArgs struct {
+	// Name of the listing publisher.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Email or URL of the listing publisher.
+	PrimaryContact pulumi.StringPtrInput `pulumi:"primaryContact"`
+}
+
+func (ListingDataProviderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingDataProvider)(nil)).Elem()
+}
+
+func (i ListingDataProviderArgs) ToListingDataProviderOutput() ListingDataProviderOutput {
+	return i.ToListingDataProviderOutputWithContext(context.Background())
+}
+
+func (i ListingDataProviderArgs) ToListingDataProviderOutputWithContext(ctx context.Context) ListingDataProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingDataProviderOutput)
+}
+
+func (i ListingDataProviderArgs) ToListingDataProviderPtrOutput() ListingDataProviderPtrOutput {
+	return i.ToListingDataProviderPtrOutputWithContext(context.Background())
+}
+
+func (i ListingDataProviderArgs) ToListingDataProviderPtrOutputWithContext(ctx context.Context) ListingDataProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingDataProviderOutput).ToListingDataProviderPtrOutputWithContext(ctx)
+}
+
+// ListingDataProviderPtrInput is an input type that accepts ListingDataProviderArgs, ListingDataProviderPtr and ListingDataProviderPtrOutput values.
+// You can construct a concrete instance of `ListingDataProviderPtrInput` via:
+//
+//	        ListingDataProviderArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingDataProviderPtrInput interface {
+	pulumi.Input
+
+	ToListingDataProviderPtrOutput() ListingDataProviderPtrOutput
+	ToListingDataProviderPtrOutputWithContext(context.Context) ListingDataProviderPtrOutput
+}
+
+type listingDataProviderPtrType ListingDataProviderArgs
+
+func ListingDataProviderPtr(v *ListingDataProviderArgs) ListingDataProviderPtrInput {
+	return (*listingDataProviderPtrType)(v)
+}
+
+func (*listingDataProviderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingDataProvider)(nil)).Elem()
+}
+
+func (i *listingDataProviderPtrType) ToListingDataProviderPtrOutput() ListingDataProviderPtrOutput {
+	return i.ToListingDataProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *listingDataProviderPtrType) ToListingDataProviderPtrOutputWithContext(ctx context.Context) ListingDataProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingDataProviderPtrOutput)
+}
+
+type ListingDataProviderOutput struct{ *pulumi.OutputState }
+
+func (ListingDataProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingDataProvider)(nil)).Elem()
+}
+
+func (o ListingDataProviderOutput) ToListingDataProviderOutput() ListingDataProviderOutput {
+	return o
+}
+
+func (o ListingDataProviderOutput) ToListingDataProviderOutputWithContext(ctx context.Context) ListingDataProviderOutput {
+	return o
+}
+
+func (o ListingDataProviderOutput) ToListingDataProviderPtrOutput() ListingDataProviderPtrOutput {
+	return o.ToListingDataProviderPtrOutputWithContext(context.Background())
+}
+
+func (o ListingDataProviderOutput) ToListingDataProviderPtrOutputWithContext(ctx context.Context) ListingDataProviderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingDataProvider) *ListingDataProvider {
+		return &v
+	}).(ListingDataProviderPtrOutput)
+}
+
+// Name of the listing publisher.
+func (o ListingDataProviderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ListingDataProvider) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Email or URL of the listing publisher.
+func (o ListingDataProviderOutput) PrimaryContact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingDataProvider) *string { return v.PrimaryContact }).(pulumi.StringPtrOutput)
+}
+
+type ListingDataProviderPtrOutput struct{ *pulumi.OutputState }
+
+func (ListingDataProviderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingDataProvider)(nil)).Elem()
+}
+
+func (o ListingDataProviderPtrOutput) ToListingDataProviderPtrOutput() ListingDataProviderPtrOutput {
+	return o
+}
+
+func (o ListingDataProviderPtrOutput) ToListingDataProviderPtrOutputWithContext(ctx context.Context) ListingDataProviderPtrOutput {
+	return o
+}
+
+func (o ListingDataProviderPtrOutput) Elem() ListingDataProviderOutput {
+	return o.ApplyT(func(v *ListingDataProvider) ListingDataProvider {
+		if v != nil {
+			return *v
+		}
+		var ret ListingDataProvider
+		return ret
+	}).(ListingDataProviderOutput)
+}
+
+// Name of the listing publisher.
+func (o ListingDataProviderPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingDataProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email or URL of the listing publisher.
+func (o ListingDataProviderPtrOutput) PrimaryContact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingDataProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryContact
+	}).(pulumi.StringPtrOutput)
+}
+
+type ListingIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// ListingIamBindingConditionInput is an input type that accepts ListingIamBindingConditionArgs and ListingIamBindingConditionOutput values.
+// You can construct a concrete instance of `ListingIamBindingConditionInput` via:
+//
+//	ListingIamBindingConditionArgs{...}
+type ListingIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToListingIamBindingConditionOutput() ListingIamBindingConditionOutput
+	ToListingIamBindingConditionOutputWithContext(context.Context) ListingIamBindingConditionOutput
+}
+
+type ListingIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (ListingIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingIamBindingCondition)(nil)).Elem()
+}
+
+func (i ListingIamBindingConditionArgs) ToListingIamBindingConditionOutput() ListingIamBindingConditionOutput {
+	return i.ToListingIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i ListingIamBindingConditionArgs) ToListingIamBindingConditionOutputWithContext(ctx context.Context) ListingIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingIamBindingConditionOutput)
+}
+
+func (i ListingIamBindingConditionArgs) ToListingIamBindingConditionPtrOutput() ListingIamBindingConditionPtrOutput {
+	return i.ToListingIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ListingIamBindingConditionArgs) ToListingIamBindingConditionPtrOutputWithContext(ctx context.Context) ListingIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingIamBindingConditionOutput).ToListingIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// ListingIamBindingConditionPtrInput is an input type that accepts ListingIamBindingConditionArgs, ListingIamBindingConditionPtr and ListingIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `ListingIamBindingConditionPtrInput` via:
+//
+//	        ListingIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToListingIamBindingConditionPtrOutput() ListingIamBindingConditionPtrOutput
+	ToListingIamBindingConditionPtrOutputWithContext(context.Context) ListingIamBindingConditionPtrOutput
+}
+
+type listingIamBindingConditionPtrType ListingIamBindingConditionArgs
+
+func ListingIamBindingConditionPtr(v *ListingIamBindingConditionArgs) ListingIamBindingConditionPtrInput {
+	return (*listingIamBindingConditionPtrType)(v)
+}
+
+func (*listingIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingIamBindingCondition)(nil)).Elem()
+}
+
+func (i *listingIamBindingConditionPtrType) ToListingIamBindingConditionPtrOutput() ListingIamBindingConditionPtrOutput {
+	return i.ToListingIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *listingIamBindingConditionPtrType) ToListingIamBindingConditionPtrOutputWithContext(ctx context.Context) ListingIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingIamBindingConditionPtrOutput)
+}
+
+type ListingIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (ListingIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingIamBindingCondition)(nil)).Elem()
+}
+
+func (o ListingIamBindingConditionOutput) ToListingIamBindingConditionOutput() ListingIamBindingConditionOutput {
+	return o
+}
+
+func (o ListingIamBindingConditionOutput) ToListingIamBindingConditionOutputWithContext(ctx context.Context) ListingIamBindingConditionOutput {
+	return o
+}
+
+func (o ListingIamBindingConditionOutput) ToListingIamBindingConditionPtrOutput() ListingIamBindingConditionPtrOutput {
+	return o.ToListingIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ListingIamBindingConditionOutput) ToListingIamBindingConditionPtrOutputWithContext(ctx context.Context) ListingIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingIamBindingCondition) *ListingIamBindingCondition {
+		return &v
+	}).(ListingIamBindingConditionPtrOutput)
+}
+
+func (o ListingIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ListingIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ListingIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o ListingIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ListingIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ListingIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ListingIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingIamBindingCondition)(nil)).Elem()
+}
+
+func (o ListingIamBindingConditionPtrOutput) ToListingIamBindingConditionPtrOutput() ListingIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ListingIamBindingConditionPtrOutput) ToListingIamBindingConditionPtrOutputWithContext(ctx context.Context) ListingIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ListingIamBindingConditionPtrOutput) Elem() ListingIamBindingConditionOutput {
+	return o.ApplyT(func(v *ListingIamBindingCondition) ListingIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ListingIamBindingCondition
+		return ret
+	}).(ListingIamBindingConditionOutput)
+}
+
+func (o ListingIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ListingIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ListingIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type ListingIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// ListingIamMemberConditionInput is an input type that accepts ListingIamMemberConditionArgs and ListingIamMemberConditionOutput values.
+// You can construct a concrete instance of `ListingIamMemberConditionInput` via:
+//
+//	ListingIamMemberConditionArgs{...}
+type ListingIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToListingIamMemberConditionOutput() ListingIamMemberConditionOutput
+	ToListingIamMemberConditionOutputWithContext(context.Context) ListingIamMemberConditionOutput
+}
+
+type ListingIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (ListingIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingIamMemberCondition)(nil)).Elem()
+}
+
+func (i ListingIamMemberConditionArgs) ToListingIamMemberConditionOutput() ListingIamMemberConditionOutput {
+	return i.ToListingIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i ListingIamMemberConditionArgs) ToListingIamMemberConditionOutputWithContext(ctx context.Context) ListingIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingIamMemberConditionOutput)
+}
+
+func (i ListingIamMemberConditionArgs) ToListingIamMemberConditionPtrOutput() ListingIamMemberConditionPtrOutput {
+	return i.ToListingIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ListingIamMemberConditionArgs) ToListingIamMemberConditionPtrOutputWithContext(ctx context.Context) ListingIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingIamMemberConditionOutput).ToListingIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// ListingIamMemberConditionPtrInput is an input type that accepts ListingIamMemberConditionArgs, ListingIamMemberConditionPtr and ListingIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `ListingIamMemberConditionPtrInput` via:
+//
+//	        ListingIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToListingIamMemberConditionPtrOutput() ListingIamMemberConditionPtrOutput
+	ToListingIamMemberConditionPtrOutputWithContext(context.Context) ListingIamMemberConditionPtrOutput
+}
+
+type listingIamMemberConditionPtrType ListingIamMemberConditionArgs
+
+func ListingIamMemberConditionPtr(v *ListingIamMemberConditionArgs) ListingIamMemberConditionPtrInput {
+	return (*listingIamMemberConditionPtrType)(v)
+}
+
+func (*listingIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingIamMemberCondition)(nil)).Elem()
+}
+
+func (i *listingIamMemberConditionPtrType) ToListingIamMemberConditionPtrOutput() ListingIamMemberConditionPtrOutput {
+	return i.ToListingIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *listingIamMemberConditionPtrType) ToListingIamMemberConditionPtrOutputWithContext(ctx context.Context) ListingIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingIamMemberConditionPtrOutput)
+}
+
+type ListingIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (ListingIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingIamMemberCondition)(nil)).Elem()
+}
+
+func (o ListingIamMemberConditionOutput) ToListingIamMemberConditionOutput() ListingIamMemberConditionOutput {
+	return o
+}
+
+func (o ListingIamMemberConditionOutput) ToListingIamMemberConditionOutputWithContext(ctx context.Context) ListingIamMemberConditionOutput {
+	return o
+}
+
+func (o ListingIamMemberConditionOutput) ToListingIamMemberConditionPtrOutput() ListingIamMemberConditionPtrOutput {
+	return o.ToListingIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ListingIamMemberConditionOutput) ToListingIamMemberConditionPtrOutputWithContext(ctx context.Context) ListingIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingIamMemberCondition) *ListingIamMemberCondition {
+		return &v
+	}).(ListingIamMemberConditionPtrOutput)
+}
+
+func (o ListingIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ListingIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ListingIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o ListingIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ListingIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ListingIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ListingIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingIamMemberCondition)(nil)).Elem()
+}
+
+func (o ListingIamMemberConditionPtrOutput) ToListingIamMemberConditionPtrOutput() ListingIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ListingIamMemberConditionPtrOutput) ToListingIamMemberConditionPtrOutputWithContext(ctx context.Context) ListingIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ListingIamMemberConditionPtrOutput) Elem() ListingIamMemberConditionOutput {
+	return o.ApplyT(func(v *ListingIamMemberCondition) ListingIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ListingIamMemberCondition
+		return ret
+	}).(ListingIamMemberConditionOutput)
+}
+
+func (o ListingIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ListingIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ListingIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type ListingPublisher struct {
+	// Name of the listing publisher.
+	Name string `pulumi:"name"`
+	// Email or URL of the listing publisher.
+	PrimaryContact *string `pulumi:"primaryContact"`
+}
+
+// ListingPublisherInput is an input type that accepts ListingPublisherArgs and ListingPublisherOutput values.
+// You can construct a concrete instance of `ListingPublisherInput` via:
+//
+//	ListingPublisherArgs{...}
+type ListingPublisherInput interface {
+	pulumi.Input
+
+	ToListingPublisherOutput() ListingPublisherOutput
+	ToListingPublisherOutputWithContext(context.Context) ListingPublisherOutput
+}
+
+type ListingPublisherArgs struct {
+	// Name of the listing publisher.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Email or URL of the listing publisher.
+	PrimaryContact pulumi.StringPtrInput `pulumi:"primaryContact"`
+}
+
+func (ListingPublisherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingPublisher)(nil)).Elem()
+}
+
+func (i ListingPublisherArgs) ToListingPublisherOutput() ListingPublisherOutput {
+	return i.ToListingPublisherOutputWithContext(context.Background())
+}
+
+func (i ListingPublisherArgs) ToListingPublisherOutputWithContext(ctx context.Context) ListingPublisherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingPublisherOutput)
+}
+
+func (i ListingPublisherArgs) ToListingPublisherPtrOutput() ListingPublisherPtrOutput {
+	return i.ToListingPublisherPtrOutputWithContext(context.Background())
+}
+
+func (i ListingPublisherArgs) ToListingPublisherPtrOutputWithContext(ctx context.Context) ListingPublisherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingPublisherOutput).ToListingPublisherPtrOutputWithContext(ctx)
+}
+
+// ListingPublisherPtrInput is an input type that accepts ListingPublisherArgs, ListingPublisherPtr and ListingPublisherPtrOutput values.
+// You can construct a concrete instance of `ListingPublisherPtrInput` via:
+//
+//	        ListingPublisherArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingPublisherPtrInput interface {
+	pulumi.Input
+
+	ToListingPublisherPtrOutput() ListingPublisherPtrOutput
+	ToListingPublisherPtrOutputWithContext(context.Context) ListingPublisherPtrOutput
+}
+
+type listingPublisherPtrType ListingPublisherArgs
+
+func ListingPublisherPtr(v *ListingPublisherArgs) ListingPublisherPtrInput {
+	return (*listingPublisherPtrType)(v)
+}
+
+func (*listingPublisherPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingPublisher)(nil)).Elem()
+}
+
+func (i *listingPublisherPtrType) ToListingPublisherPtrOutput() ListingPublisherPtrOutput {
+	return i.ToListingPublisherPtrOutputWithContext(context.Background())
+}
+
+func (i *listingPublisherPtrType) ToListingPublisherPtrOutputWithContext(ctx context.Context) ListingPublisherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingPublisherPtrOutput)
+}
+
+type ListingPublisherOutput struct{ *pulumi.OutputState }
+
+func (ListingPublisherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingPublisher)(nil)).Elem()
+}
+
+func (o ListingPublisherOutput) ToListingPublisherOutput() ListingPublisherOutput {
+	return o
+}
+
+func (o ListingPublisherOutput) ToListingPublisherOutputWithContext(ctx context.Context) ListingPublisherOutput {
+	return o
+}
+
+func (o ListingPublisherOutput) ToListingPublisherPtrOutput() ListingPublisherPtrOutput {
+	return o.ToListingPublisherPtrOutputWithContext(context.Background())
+}
+
+func (o ListingPublisherOutput) ToListingPublisherPtrOutputWithContext(ctx context.Context) ListingPublisherPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingPublisher) *ListingPublisher {
+		return &v
+	}).(ListingPublisherPtrOutput)
+}
+
+// Name of the listing publisher.
+func (o ListingPublisherOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ListingPublisher) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Email or URL of the listing publisher.
+func (o ListingPublisherOutput) PrimaryContact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingPublisher) *string { return v.PrimaryContact }).(pulumi.StringPtrOutput)
+}
+
+type ListingPublisherPtrOutput struct{ *pulumi.OutputState }
+
+func (ListingPublisherPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingPublisher)(nil)).Elem()
+}
+
+func (o ListingPublisherPtrOutput) ToListingPublisherPtrOutput() ListingPublisherPtrOutput {
+	return o
+}
+
+func (o ListingPublisherPtrOutput) ToListingPublisherPtrOutputWithContext(ctx context.Context) ListingPublisherPtrOutput {
+	return o
+}
+
+func (o ListingPublisherPtrOutput) Elem() ListingPublisherOutput {
+	return o.ApplyT(func(v *ListingPublisher) ListingPublisher {
+		if v != nil {
+			return *v
+		}
+		var ret ListingPublisher
+		return ret
+	}).(ListingPublisherOutput)
+}
+
+// Name of the listing publisher.
+func (o ListingPublisherPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingPublisher) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email or URL of the listing publisher.
+func (o ListingPublisherPtrOutput) PrimaryContact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListingPublisher) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryContact
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeIamBindingConditionInput)(nil)).Elem(), DataExchangeIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeIamBindingConditionPtrInput)(nil)).Elem(), DataExchangeIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeIamMemberConditionInput)(nil)).Elem(), DataExchangeIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeIamMemberConditionPtrInput)(nil)).Elem(), DataExchangeIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingBigqueryDatasetInput)(nil)).Elem(), ListingBigqueryDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingBigqueryDatasetPtrInput)(nil)).Elem(), ListingBigqueryDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingDataProviderInput)(nil)).Elem(), ListingDataProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingDataProviderPtrInput)(nil)).Elem(), ListingDataProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingIamBindingConditionInput)(nil)).Elem(), ListingIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingIamBindingConditionPtrInput)(nil)).Elem(), ListingIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingIamMemberConditionInput)(nil)).Elem(), ListingIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingIamMemberConditionPtrInput)(nil)).Elem(), ListingIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingPublisherInput)(nil)).Elem(), ListingPublisherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingPublisherPtrInput)(nil)).Elem(), ListingPublisherArgs{})
 	pulumi.RegisterOutputType(DataExchangeIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(DataExchangeIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(DataExchangeIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(DataExchangeIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(ListingBigqueryDatasetOutput{})
+	pulumi.RegisterOutputType(ListingBigqueryDatasetPtrOutput{})
+	pulumi.RegisterOutputType(ListingDataProviderOutput{})
+	pulumi.RegisterOutputType(ListingDataProviderPtrOutput{})
+	pulumi.RegisterOutputType(ListingIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(ListingIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(ListingIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(ListingIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(ListingPublisherOutput{})
+	pulumi.RegisterOutputType(ListingPublisherPtrOutput{})
 }

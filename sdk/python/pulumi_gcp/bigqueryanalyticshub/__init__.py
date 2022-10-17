@@ -9,5 +9,9 @@ from .data_exchange import *
 from .data_exchange_iam_binding import *
 from .data_exchange_iam_member import *
 from .data_exchange_iam_policy import *
+from .listing import *
+from .listing_iam_binding import *
+from .listing_iam_member import *
+from .listing_iam_policy import *
 from ._inputs import *
 from . import outputs

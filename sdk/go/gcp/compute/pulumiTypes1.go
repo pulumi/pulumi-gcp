@@ -203,6 +203,218 @@ func (o GetRouterStatusBestRoutesForRouterArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetRouterStatusBestRoutesForRouterOutput)
 }
 
+type GetSnapshotSnapshotEncryptionKey struct {
+	KmsKeySelfLink       string `pulumi:"kmsKeySelfLink"`
+	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
+	RawKey               string `pulumi:"rawKey"`
+	Sha256               string `pulumi:"sha256"`
+}
+
+// GetSnapshotSnapshotEncryptionKeyInput is an input type that accepts GetSnapshotSnapshotEncryptionKeyArgs and GetSnapshotSnapshotEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetSnapshotSnapshotEncryptionKeyInput` via:
+//
+//	GetSnapshotSnapshotEncryptionKeyArgs{...}
+type GetSnapshotSnapshotEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetSnapshotSnapshotEncryptionKeyOutput() GetSnapshotSnapshotEncryptionKeyOutput
+	ToGetSnapshotSnapshotEncryptionKeyOutputWithContext(context.Context) GetSnapshotSnapshotEncryptionKeyOutput
+}
+
+type GetSnapshotSnapshotEncryptionKeyArgs struct {
+	KmsKeySelfLink       pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
+	RawKey               pulumi.StringInput `pulumi:"rawKey"`
+	Sha256               pulumi.StringInput `pulumi:"sha256"`
+}
+
+func (GetSnapshotSnapshotEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i GetSnapshotSnapshotEncryptionKeyArgs) ToGetSnapshotSnapshotEncryptionKeyOutput() GetSnapshotSnapshotEncryptionKeyOutput {
+	return i.ToGetSnapshotSnapshotEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetSnapshotSnapshotEncryptionKeyArgs) ToGetSnapshotSnapshotEncryptionKeyOutputWithContext(ctx context.Context) GetSnapshotSnapshotEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotSnapshotEncryptionKeyOutput)
+}
+
+// GetSnapshotSnapshotEncryptionKeyArrayInput is an input type that accepts GetSnapshotSnapshotEncryptionKeyArray and GetSnapshotSnapshotEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetSnapshotSnapshotEncryptionKeyArrayInput` via:
+//
+//	GetSnapshotSnapshotEncryptionKeyArray{ GetSnapshotSnapshotEncryptionKeyArgs{...} }
+type GetSnapshotSnapshotEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetSnapshotSnapshotEncryptionKeyArrayOutput() GetSnapshotSnapshotEncryptionKeyArrayOutput
+	ToGetSnapshotSnapshotEncryptionKeyArrayOutputWithContext(context.Context) GetSnapshotSnapshotEncryptionKeyArrayOutput
+}
+
+type GetSnapshotSnapshotEncryptionKeyArray []GetSnapshotSnapshotEncryptionKeyInput
+
+func (GetSnapshotSnapshotEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnapshotSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i GetSnapshotSnapshotEncryptionKeyArray) ToGetSnapshotSnapshotEncryptionKeyArrayOutput() GetSnapshotSnapshotEncryptionKeyArrayOutput {
+	return i.ToGetSnapshotSnapshotEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetSnapshotSnapshotEncryptionKeyArray) ToGetSnapshotSnapshotEncryptionKeyArrayOutputWithContext(ctx context.Context) GetSnapshotSnapshotEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotSnapshotEncryptionKeyArrayOutput)
+}
+
+type GetSnapshotSnapshotEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotSnapshotEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o GetSnapshotSnapshotEncryptionKeyOutput) ToGetSnapshotSnapshotEncryptionKeyOutput() GetSnapshotSnapshotEncryptionKeyOutput {
+	return o
+}
+
+func (o GetSnapshotSnapshotEncryptionKeyOutput) ToGetSnapshotSnapshotEncryptionKeyOutputWithContext(ctx context.Context) GetSnapshotSnapshotEncryptionKeyOutput {
+	return o
+}
+
+func (o GetSnapshotSnapshotEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotSnapshotEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
+}
+
+func (o GetSnapshotSnapshotEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotSnapshotEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
+}
+
+func (o GetSnapshotSnapshotEncryptionKeyOutput) RawKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotSnapshotEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
+}
+
+func (o GetSnapshotSnapshotEncryptionKeyOutput) Sha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotSnapshotEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
+}
+
+type GetSnapshotSnapshotEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotSnapshotEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnapshotSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o GetSnapshotSnapshotEncryptionKeyArrayOutput) ToGetSnapshotSnapshotEncryptionKeyArrayOutput() GetSnapshotSnapshotEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetSnapshotSnapshotEncryptionKeyArrayOutput) ToGetSnapshotSnapshotEncryptionKeyArrayOutputWithContext(ctx context.Context) GetSnapshotSnapshotEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetSnapshotSnapshotEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetSnapshotSnapshotEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSnapshotSnapshotEncryptionKey {
+		return vs[0].([]GetSnapshotSnapshotEncryptionKey)[vs[1].(int)]
+	}).(GetSnapshotSnapshotEncryptionKeyOutput)
+}
+
+type GetSnapshotSourceDiskEncryptionKey struct {
+	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
+	RawKey               string `pulumi:"rawKey"`
+}
+
+// GetSnapshotSourceDiskEncryptionKeyInput is an input type that accepts GetSnapshotSourceDiskEncryptionKeyArgs and GetSnapshotSourceDiskEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetSnapshotSourceDiskEncryptionKeyInput` via:
+//
+//	GetSnapshotSourceDiskEncryptionKeyArgs{...}
+type GetSnapshotSourceDiskEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetSnapshotSourceDiskEncryptionKeyOutput() GetSnapshotSourceDiskEncryptionKeyOutput
+	ToGetSnapshotSourceDiskEncryptionKeyOutputWithContext(context.Context) GetSnapshotSourceDiskEncryptionKeyOutput
+}
+
+type GetSnapshotSourceDiskEncryptionKeyArgs struct {
+	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
+	RawKey               pulumi.StringInput `pulumi:"rawKey"`
+}
+
+func (GetSnapshotSourceDiskEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKey)(nil)).Elem()
+}
+
+func (i GetSnapshotSourceDiskEncryptionKeyArgs) ToGetSnapshotSourceDiskEncryptionKeyOutput() GetSnapshotSourceDiskEncryptionKeyOutput {
+	return i.ToGetSnapshotSourceDiskEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetSnapshotSourceDiskEncryptionKeyArgs) ToGetSnapshotSourceDiskEncryptionKeyOutputWithContext(ctx context.Context) GetSnapshotSourceDiskEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotSourceDiskEncryptionKeyOutput)
+}
+
+// GetSnapshotSourceDiskEncryptionKeyArrayInput is an input type that accepts GetSnapshotSourceDiskEncryptionKeyArray and GetSnapshotSourceDiskEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetSnapshotSourceDiskEncryptionKeyArrayInput` via:
+//
+//	GetSnapshotSourceDiskEncryptionKeyArray{ GetSnapshotSourceDiskEncryptionKeyArgs{...} }
+type GetSnapshotSourceDiskEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetSnapshotSourceDiskEncryptionKeyArrayOutput() GetSnapshotSourceDiskEncryptionKeyArrayOutput
+	ToGetSnapshotSourceDiskEncryptionKeyArrayOutputWithContext(context.Context) GetSnapshotSourceDiskEncryptionKeyArrayOutput
+}
+
+type GetSnapshotSourceDiskEncryptionKeyArray []GetSnapshotSourceDiskEncryptionKeyInput
+
+func (GetSnapshotSourceDiskEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnapshotSourceDiskEncryptionKey)(nil)).Elem()
+}
+
+func (i GetSnapshotSourceDiskEncryptionKeyArray) ToGetSnapshotSourceDiskEncryptionKeyArrayOutput() GetSnapshotSourceDiskEncryptionKeyArrayOutput {
+	return i.ToGetSnapshotSourceDiskEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetSnapshotSourceDiskEncryptionKeyArray) ToGetSnapshotSourceDiskEncryptionKeyArrayOutputWithContext(ctx context.Context) GetSnapshotSourceDiskEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotSourceDiskEncryptionKeyArrayOutput)
+}
+
+type GetSnapshotSourceDiskEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotSourceDiskEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKey)(nil)).Elem()
+}
+
+func (o GetSnapshotSourceDiskEncryptionKeyOutput) ToGetSnapshotSourceDiskEncryptionKeyOutput() GetSnapshotSourceDiskEncryptionKeyOutput {
+	return o
+}
+
+func (o GetSnapshotSourceDiskEncryptionKeyOutput) ToGetSnapshotSourceDiskEncryptionKeyOutputWithContext(ctx context.Context) GetSnapshotSourceDiskEncryptionKeyOutput {
+	return o
+}
+
+func (o GetSnapshotSourceDiskEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotSourceDiskEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
+}
+
+func (o GetSnapshotSourceDiskEncryptionKeyOutput) RawKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotSourceDiskEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
+}
+
+type GetSnapshotSourceDiskEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotSourceDiskEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnapshotSourceDiskEncryptionKey)(nil)).Elem()
+}
+
+func (o GetSnapshotSourceDiskEncryptionKeyArrayOutput) ToGetSnapshotSourceDiskEncryptionKeyArrayOutput() GetSnapshotSourceDiskEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetSnapshotSourceDiskEncryptionKeyArrayOutput) ToGetSnapshotSourceDiskEncryptionKeyArrayOutputWithContext(ctx context.Context) GetSnapshotSourceDiskEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetSnapshotSourceDiskEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetSnapshotSourceDiskEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSnapshotSourceDiskEncryptionKey {
+		return vs[0].([]GetSnapshotSourceDiskEncryptionKey)[vs[1].(int)]
+	}).(GetSnapshotSourceDiskEncryptionKeyOutput)
+}
+
 type GetSubnetworkSecondaryIpRange struct {
 	// The range of IP addresses belonging to this subnetwork
 	// secondary range.
@@ -318,10 +530,18 @@ func (o GetSubnetworkSecondaryIpRangeArrayOutput) Index(i pulumi.IntInput) GetSu
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterArrayInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSnapshotEncryptionKeyInput)(nil)).Elem(), GetSnapshotSnapshotEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSnapshotEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSnapshotEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterArrayOutput{})
+	pulumi.RegisterOutputType(GetSnapshotSnapshotEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetSnapshotSnapshotEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetSnapshotSourceDiskEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetSnapshotSourceDiskEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetSubnetworkSecondaryIpRangeOutput{})
 	pulumi.RegisterOutputType(GetSubnetworkSecondaryIpRangeArrayOutput{})
 }

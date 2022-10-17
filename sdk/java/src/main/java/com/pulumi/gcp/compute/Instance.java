@@ -78,6 +78,7 @@ import javax.annotation.Nullable;
  *             .bootDisk(InstanceBootDiskArgs.builder()
  *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
  *                     .image(&#34;debian-cloud/debian-11&#34;)
+ *                     .labels(Map.of(&#34;my_label&#34;, &#34;value&#34;))
  *                     .build())
  *                 .build())
  *             .scratchDisks(InstanceScratchDiskArgs.builder()
@@ -365,14 +366,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.labelFingerprint;
     }
     /**
-     * A map of key/value label pairs to assign to the instance.
+     * A set of key/value label pairs assigned to the disk. This\
+     * field is only applicable for persistent disks.
      * 
      */
     @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return A map of key/value label pairs to assign to the instance.
+     * @return A set of key/value label pairs assigned to the disk. This\
+     * field is only applicable for persistent disks.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

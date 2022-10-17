@@ -23,6 +23,16 @@ __all__ = [
     'FunctionServiceConfigSecretEnvironmentVariable',
     'FunctionServiceConfigSecretVolume',
     'FunctionServiceConfigSecretVolumeVersion',
+    'GetFunctionBuildConfigResult',
+    'GetFunctionBuildConfigSourceResult',
+    'GetFunctionBuildConfigSourceRepoSourceResult',
+    'GetFunctionBuildConfigSourceStorageSourceResult',
+    'GetFunctionEventTriggerResult',
+    'GetFunctionEventTriggerEventFilterResult',
+    'GetFunctionServiceConfigResult',
+    'GetFunctionServiceConfigSecretEnvironmentVariableResult',
+    'GetFunctionServiceConfigSecretVolumeResult',
+    'GetFunctionServiceConfigSecretVolumeVersionResult',
 ]
 
 @pulumi.output_type
@@ -1038,6 +1048,434 @@ class FunctionServiceConfigSecretVolumeVersion(dict):
         """
         Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
         """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetFunctionBuildConfigResult(dict):
+    def __init__(__self__, *,
+                 build: str,
+                 docker_repository: str,
+                 entry_point: str,
+                 environment_variables: Mapping[str, str],
+                 runtime: str,
+                 sources: Sequence['outputs.GetFunctionBuildConfigSourceResult'],
+                 worker_pool: str):
+        pulumi.set(__self__, "build", build)
+        pulumi.set(__self__, "docker_repository", docker_repository)
+        pulumi.set(__self__, "entry_point", entry_point)
+        pulumi.set(__self__, "environment_variables", environment_variables)
+        pulumi.set(__self__, "runtime", runtime)
+        pulumi.set(__self__, "sources", sources)
+        pulumi.set(__self__, "worker_pool", worker_pool)
+
+    @property
+    @pulumi.getter
+    def build(self) -> str:
+        return pulumi.get(self, "build")
+
+    @property
+    @pulumi.getter(name="dockerRepository")
+    def docker_repository(self) -> str:
+        return pulumi.get(self, "docker_repository")
+
+    @property
+    @pulumi.getter(name="entryPoint")
+    def entry_point(self) -> str:
+        return pulumi.get(self, "entry_point")
+
+    @property
+    @pulumi.getter(name="environmentVariables")
+    def environment_variables(self) -> Mapping[str, str]:
+        return pulumi.get(self, "environment_variables")
+
+    @property
+    @pulumi.getter
+    def runtime(self) -> str:
+        return pulumi.get(self, "runtime")
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Sequence['outputs.GetFunctionBuildConfigSourceResult']:
+        return pulumi.get(self, "sources")
+
+    @property
+    @pulumi.getter(name="workerPool")
+    def worker_pool(self) -> str:
+        return pulumi.get(self, "worker_pool")
+
+
+@pulumi.output_type
+class GetFunctionBuildConfigSourceResult(dict):
+    def __init__(__self__, *,
+                 repo_sources: Sequence['outputs.GetFunctionBuildConfigSourceRepoSourceResult'],
+                 storage_sources: Sequence['outputs.GetFunctionBuildConfigSourceStorageSourceResult']):
+        pulumi.set(__self__, "repo_sources", repo_sources)
+        pulumi.set(__self__, "storage_sources", storage_sources)
+
+    @property
+    @pulumi.getter(name="repoSources")
+    def repo_sources(self) -> Sequence['outputs.GetFunctionBuildConfigSourceRepoSourceResult']:
+        return pulumi.get(self, "repo_sources")
+
+    @property
+    @pulumi.getter(name="storageSources")
+    def storage_sources(self) -> Sequence['outputs.GetFunctionBuildConfigSourceStorageSourceResult']:
+        return pulumi.get(self, "storage_sources")
+
+
+@pulumi.output_type
+class GetFunctionBuildConfigSourceRepoSourceResult(dict):
+    def __init__(__self__, *,
+                 branch_name: str,
+                 commit_sha: str,
+                 dir: str,
+                 invert_regex: bool,
+                 project_id: str,
+                 repo_name: str,
+                 tag_name: str):
+        pulumi.set(__self__, "branch_name", branch_name)
+        pulumi.set(__self__, "commit_sha", commit_sha)
+        pulumi.set(__self__, "dir", dir)
+        pulumi.set(__self__, "invert_regex", invert_regex)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "repo_name", repo_name)
+        pulumi.set(__self__, "tag_name", tag_name)
+
+    @property
+    @pulumi.getter(name="branchName")
+    def branch_name(self) -> str:
+        return pulumi.get(self, "branch_name")
+
+    @property
+    @pulumi.getter(name="commitSha")
+    def commit_sha(self) -> str:
+        return pulumi.get(self, "commit_sha")
+
+    @property
+    @pulumi.getter
+    def dir(self) -> str:
+        return pulumi.get(self, "dir")
+
+    @property
+    @pulumi.getter(name="invertRegex")
+    def invert_regex(self) -> bool:
+        return pulumi.get(self, "invert_regex")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> str:
+        return pulumi.get(self, "repo_name")
+
+    @property
+    @pulumi.getter(name="tagName")
+    def tag_name(self) -> str:
+        return pulumi.get(self, "tag_name")
+
+
+@pulumi.output_type
+class GetFunctionBuildConfigSourceStorageSourceResult(dict):
+    def __init__(__self__, *,
+                 bucket: str,
+                 generation: int,
+                 object: str):
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "generation", generation)
+        pulumi.set(__self__, "object", object)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter
+    def generation(self) -> int:
+        return pulumi.get(self, "generation")
+
+    @property
+    @pulumi.getter
+    def object(self) -> str:
+        return pulumi.get(self, "object")
+
+
+@pulumi.output_type
+class GetFunctionEventTriggerResult(dict):
+    def __init__(__self__, *,
+                 event_filters: Sequence['outputs.GetFunctionEventTriggerEventFilterResult'],
+                 event_type: str,
+                 pubsub_topic: str,
+                 retry_policy: str,
+                 service_account_email: str,
+                 trigger: str,
+                 trigger_region: str):
+        pulumi.set(__self__, "event_filters", event_filters)
+        pulumi.set(__self__, "event_type", event_type)
+        pulumi.set(__self__, "pubsub_topic", pubsub_topic)
+        pulumi.set(__self__, "retry_policy", retry_policy)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        pulumi.set(__self__, "trigger", trigger)
+        pulumi.set(__self__, "trigger_region", trigger_region)
+
+    @property
+    @pulumi.getter(name="eventFilters")
+    def event_filters(self) -> Sequence['outputs.GetFunctionEventTriggerEventFilterResult']:
+        return pulumi.get(self, "event_filters")
+
+    @property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> str:
+        return pulumi.get(self, "event_type")
+
+    @property
+    @pulumi.getter(name="pubsubTopic")
+    def pubsub_topic(self) -> str:
+        return pulumi.get(self, "pubsub_topic")
+
+    @property
+    @pulumi.getter(name="retryPolicy")
+    def retry_policy(self) -> str:
+        return pulumi.get(self, "retry_policy")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        return pulumi.get(self, "service_account_email")
+
+    @property
+    @pulumi.getter
+    def trigger(self) -> str:
+        return pulumi.get(self, "trigger")
+
+    @property
+    @pulumi.getter(name="triggerRegion")
+    def trigger_region(self) -> str:
+        return pulumi.get(self, "trigger_region")
+
+
+@pulumi.output_type
+class GetFunctionEventTriggerEventFilterResult(dict):
+    def __init__(__self__, *,
+                 attribute: str,
+                 operator: str,
+                 value: str):
+        pulumi.set(__self__, "attribute", attribute)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def attribute(self) -> str:
+        return pulumi.get(self, "attribute")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetFunctionServiceConfigResult(dict):
+    def __init__(__self__, *,
+                 all_traffic_on_latest_revision: bool,
+                 available_memory: str,
+                 environment_variables: Mapping[str, str],
+                 gcf_uri: str,
+                 ingress_settings: str,
+                 max_instance_count: int,
+                 min_instance_count: int,
+                 secret_environment_variables: Sequence['outputs.GetFunctionServiceConfigSecretEnvironmentVariableResult'],
+                 secret_volumes: Sequence['outputs.GetFunctionServiceConfigSecretVolumeResult'],
+                 service: str,
+                 service_account_email: str,
+                 timeout_seconds: int,
+                 uri: str,
+                 vpc_connector: str,
+                 vpc_connector_egress_settings: str):
+        pulumi.set(__self__, "all_traffic_on_latest_revision", all_traffic_on_latest_revision)
+        pulumi.set(__self__, "available_memory", available_memory)
+        pulumi.set(__self__, "environment_variables", environment_variables)
+        pulumi.set(__self__, "gcf_uri", gcf_uri)
+        pulumi.set(__self__, "ingress_settings", ingress_settings)
+        pulumi.set(__self__, "max_instance_count", max_instance_count)
+        pulumi.set(__self__, "min_instance_count", min_instance_count)
+        pulumi.set(__self__, "secret_environment_variables", secret_environment_variables)
+        pulumi.set(__self__, "secret_volumes", secret_volumes)
+        pulumi.set(__self__, "service", service)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+        pulumi.set(__self__, "uri", uri)
+        pulumi.set(__self__, "vpc_connector", vpc_connector)
+        pulumi.set(__self__, "vpc_connector_egress_settings", vpc_connector_egress_settings)
+
+    @property
+    @pulumi.getter(name="allTrafficOnLatestRevision")
+    def all_traffic_on_latest_revision(self) -> bool:
+        return pulumi.get(self, "all_traffic_on_latest_revision")
+
+    @property
+    @pulumi.getter(name="availableMemory")
+    def available_memory(self) -> str:
+        return pulumi.get(self, "available_memory")
+
+    @property
+    @pulumi.getter(name="environmentVariables")
+    def environment_variables(self) -> Mapping[str, str]:
+        return pulumi.get(self, "environment_variables")
+
+    @property
+    @pulumi.getter(name="gcfUri")
+    def gcf_uri(self) -> str:
+        return pulumi.get(self, "gcf_uri")
+
+    @property
+    @pulumi.getter(name="ingressSettings")
+    def ingress_settings(self) -> str:
+        return pulumi.get(self, "ingress_settings")
+
+    @property
+    @pulumi.getter(name="maxInstanceCount")
+    def max_instance_count(self) -> int:
+        return pulumi.get(self, "max_instance_count")
+
+    @property
+    @pulumi.getter(name="minInstanceCount")
+    def min_instance_count(self) -> int:
+        return pulumi.get(self, "min_instance_count")
+
+    @property
+    @pulumi.getter(name="secretEnvironmentVariables")
+    def secret_environment_variables(self) -> Sequence['outputs.GetFunctionServiceConfigSecretEnvironmentVariableResult']:
+        return pulumi.get(self, "secret_environment_variables")
+
+    @property
+    @pulumi.getter(name="secretVolumes")
+    def secret_volumes(self) -> Sequence['outputs.GetFunctionServiceConfigSecretVolumeResult']:
+        return pulumi.get(self, "secret_volumes")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        return pulumi.get(self, "service_account_email")
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> int:
+        return pulumi.get(self, "timeout_seconds")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter(name="vpcConnector")
+    def vpc_connector(self) -> str:
+        return pulumi.get(self, "vpc_connector")
+
+    @property
+    @pulumi.getter(name="vpcConnectorEgressSettings")
+    def vpc_connector_egress_settings(self) -> str:
+        return pulumi.get(self, "vpc_connector_egress_settings")
+
+
+@pulumi.output_type
+class GetFunctionServiceConfigSecretEnvironmentVariableResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 project_id: str,
+                 secret: str,
+                 version: str):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> str:
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetFunctionServiceConfigSecretVolumeResult(dict):
+    def __init__(__self__, *,
+                 mount_path: str,
+                 project_id: str,
+                 secret: str,
+                 versions: Sequence['outputs.GetFunctionServiceConfigSecretVolumeVersionResult']):
+        pulumi.set(__self__, "mount_path", mount_path)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "versions", versions)
+
+    @property
+    @pulumi.getter(name="mountPath")
+    def mount_path(self) -> str:
+        return pulumi.get(self, "mount_path")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> str:
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter
+    def versions(self) -> Sequence['outputs.GetFunctionServiceConfigSecretVolumeVersionResult']:
+        return pulumi.get(self, "versions")
+
+
+@pulumi.output_type
+class GetFunctionServiceConfigSecretVolumeVersionResult(dict):
+    def __init__(__self__, *,
+                 path: str,
+                 version: str):
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
         return pulumi.get(self, "version")
 
 

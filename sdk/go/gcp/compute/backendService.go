@@ -165,6 +165,9 @@ type BackendService struct {
 	// is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	// Structure is documented below.
 	CircuitBreakers BackendServiceCircuitBreakersPtrOutput `pulumi:"circuitBreakers"`
+	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+	// Possible values are `AUTOMATIC` and `DISABLED`.
+	CompressionMode pulumi.StringPtrOutput `pulumi:"compressionMode"`
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrOutput `pulumi:"connectionDrainingTimeoutSec"`
@@ -318,6 +321,9 @@ type backendServiceState struct {
 	// is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	// Structure is documented below.
 	CircuitBreakers *BackendServiceCircuitBreakers `pulumi:"circuitBreakers"`
+	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+	// Possible values are `AUTOMATIC` and `DISABLED`.
+	CompressionMode *string `pulumi:"compressionMode"`
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec *int `pulumi:"connectionDrainingTimeoutSec"`
@@ -443,6 +449,9 @@ type BackendServiceState struct {
 	// is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	// Structure is documented below.
 	CircuitBreakers BackendServiceCircuitBreakersPtrInput
+	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+	// Possible values are `AUTOMATIC` and `DISABLED`.
+	CompressionMode pulumi.StringPtrInput
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrInput
@@ -572,6 +581,9 @@ type backendServiceArgs struct {
 	// is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	// Structure is documented below.
 	CircuitBreakers *BackendServiceCircuitBreakers `pulumi:"circuitBreakers"`
+	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+	// Possible values are `AUTOMATIC` and `DISABLED`.
+	CompressionMode *string `pulumi:"compressionMode"`
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec *int `pulumi:"connectionDrainingTimeoutSec"`
@@ -692,6 +704,9 @@ type BackendServiceArgs struct {
 	// is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	// Structure is documented below.
 	CircuitBreakers BackendServiceCircuitBreakersPtrInput
+	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+	// Possible values are `AUTOMATIC` and `DISABLED`.
+	CompressionMode pulumi.StringPtrInput
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrInput
@@ -907,6 +922,12 @@ func (o BackendServiceOutput) CdnPolicy() BackendServiceCdnPolicyOutput {
 // Structure is documented below.
 func (o BackendServiceOutput) CircuitBreakers() BackendServiceCircuitBreakersPtrOutput {
 	return o.ApplyT(func(v *BackendService) BackendServiceCircuitBreakersPtrOutput { return v.CircuitBreakers }).(BackendServiceCircuitBreakersPtrOutput)
+}
+
+// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+// Possible values are `AUTOMATIC` and `DISABLED`.
+func (o BackendServiceOutput) CompressionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendService) pulumi.StringPtrOutput { return v.CompressionMode }).(pulumi.StringPtrOutput)
 }
 
 // Time for which instance will be drained (not accept new

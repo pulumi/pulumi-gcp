@@ -8672,6 +8672,9 @@ type TableExternalDataConfiguration struct {
 	// - Let BigQuery try to autodetect the schema
 	//   and format of the table.
 	Autodetect bool `pulumi:"autodetect"`
+	// Additional options if `sourceFormat` is set to\
+	// "AVRO".  Structure is documented below.
+	AvroOptions *TableExternalDataConfigurationAvroOptions `pulumi:"avroOptions"`
 	// The compression type of the data source.
 	// Valid values are "NONE" or "GZIP".
 	Compression *string `pulumi:"compression"`
@@ -8740,6 +8743,9 @@ type TableExternalDataConfigurationArgs struct {
 	// - Let BigQuery try to autodetect the schema
 	//   and format of the table.
 	Autodetect pulumi.BoolInput `pulumi:"autodetect"`
+	// Additional options if `sourceFormat` is set to\
+	// "AVRO".  Structure is documented below.
+	AvroOptions TableExternalDataConfigurationAvroOptionsPtrInput `pulumi:"avroOptions"`
 	// The compression type of the data source.
 	// Valid values are "NONE" or "GZIP".
 	Compression pulumi.StringPtrInput `pulumi:"compression"`
@@ -8876,6 +8882,14 @@ func (o TableExternalDataConfigurationOutput) Autodetect() pulumi.BoolOutput {
 	return o.ApplyT(func(v TableExternalDataConfiguration) bool { return v.Autodetect }).(pulumi.BoolOutput)
 }
 
+// Additional options if `sourceFormat` is set to\
+// "AVRO".  Structure is documented below.
+func (o TableExternalDataConfigurationOutput) AvroOptions() TableExternalDataConfigurationAvroOptionsPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfiguration) *TableExternalDataConfigurationAvroOptions {
+		return v.AvroOptions
+	}).(TableExternalDataConfigurationAvroOptionsPtrOutput)
+}
+
 // The compression type of the data source.
 // Valid values are "NONE" or "GZIP".
 func (o TableExternalDataConfigurationOutput) Compression() pulumi.StringPtrOutput {
@@ -8994,6 +9008,17 @@ func (o TableExternalDataConfigurationPtrOutput) Autodetect() pulumi.BoolPtrOutp
 		}
 		return &v.Autodetect
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Additional options if `sourceFormat` is set to\
+// "AVRO".  Structure is documented below.
+func (o TableExternalDataConfigurationPtrOutput) AvroOptions() TableExternalDataConfigurationAvroOptionsPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfiguration) *TableExternalDataConfigurationAvroOptions {
+		if v == nil {
+			return nil
+		}
+		return v.AvroOptions
+	}).(TableExternalDataConfigurationAvroOptionsPtrOutput)
 }
 
 // The compression type of the data source.
@@ -9125,6 +9150,151 @@ func (o TableExternalDataConfigurationPtrOutput) SourceUris() pulumi.StringArray
 		}
 		return v.SourceUris
 	}).(pulumi.StringArrayOutput)
+}
+
+type TableExternalDataConfigurationAvroOptions struct {
+	// If is set to true, indicates whether\
+	// to interpret logical types as the corresponding BigQuery data type
+	// (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+	UseAvroLogicalTypes bool `pulumi:"useAvroLogicalTypes"`
+}
+
+// TableExternalDataConfigurationAvroOptionsInput is an input type that accepts TableExternalDataConfigurationAvroOptionsArgs and TableExternalDataConfigurationAvroOptionsOutput values.
+// You can construct a concrete instance of `TableExternalDataConfigurationAvroOptionsInput` via:
+//
+//	TableExternalDataConfigurationAvroOptionsArgs{...}
+type TableExternalDataConfigurationAvroOptionsInput interface {
+	pulumi.Input
+
+	ToTableExternalDataConfigurationAvroOptionsOutput() TableExternalDataConfigurationAvroOptionsOutput
+	ToTableExternalDataConfigurationAvroOptionsOutputWithContext(context.Context) TableExternalDataConfigurationAvroOptionsOutput
+}
+
+type TableExternalDataConfigurationAvroOptionsArgs struct {
+	// If is set to true, indicates whether\
+	// to interpret logical types as the corresponding BigQuery data type
+	// (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+	UseAvroLogicalTypes pulumi.BoolInput `pulumi:"useAvroLogicalTypes"`
+}
+
+func (TableExternalDataConfigurationAvroOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalDataConfigurationAvroOptions)(nil)).Elem()
+}
+
+func (i TableExternalDataConfigurationAvroOptionsArgs) ToTableExternalDataConfigurationAvroOptionsOutput() TableExternalDataConfigurationAvroOptionsOutput {
+	return i.ToTableExternalDataConfigurationAvroOptionsOutputWithContext(context.Background())
+}
+
+func (i TableExternalDataConfigurationAvroOptionsArgs) ToTableExternalDataConfigurationAvroOptionsOutputWithContext(ctx context.Context) TableExternalDataConfigurationAvroOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationAvroOptionsOutput)
+}
+
+func (i TableExternalDataConfigurationAvroOptionsArgs) ToTableExternalDataConfigurationAvroOptionsPtrOutput() TableExternalDataConfigurationAvroOptionsPtrOutput {
+	return i.ToTableExternalDataConfigurationAvroOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i TableExternalDataConfigurationAvroOptionsArgs) ToTableExternalDataConfigurationAvroOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationAvroOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationAvroOptionsOutput).ToTableExternalDataConfigurationAvroOptionsPtrOutputWithContext(ctx)
+}
+
+// TableExternalDataConfigurationAvroOptionsPtrInput is an input type that accepts TableExternalDataConfigurationAvroOptionsArgs, TableExternalDataConfigurationAvroOptionsPtr and TableExternalDataConfigurationAvroOptionsPtrOutput values.
+// You can construct a concrete instance of `TableExternalDataConfigurationAvroOptionsPtrInput` via:
+//
+//	        TableExternalDataConfigurationAvroOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableExternalDataConfigurationAvroOptionsPtrInput interface {
+	pulumi.Input
+
+	ToTableExternalDataConfigurationAvroOptionsPtrOutput() TableExternalDataConfigurationAvroOptionsPtrOutput
+	ToTableExternalDataConfigurationAvroOptionsPtrOutputWithContext(context.Context) TableExternalDataConfigurationAvroOptionsPtrOutput
+}
+
+type tableExternalDataConfigurationAvroOptionsPtrType TableExternalDataConfigurationAvroOptionsArgs
+
+func TableExternalDataConfigurationAvroOptionsPtr(v *TableExternalDataConfigurationAvroOptionsArgs) TableExternalDataConfigurationAvroOptionsPtrInput {
+	return (*tableExternalDataConfigurationAvroOptionsPtrType)(v)
+}
+
+func (*tableExternalDataConfigurationAvroOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableExternalDataConfigurationAvroOptions)(nil)).Elem()
+}
+
+func (i *tableExternalDataConfigurationAvroOptionsPtrType) ToTableExternalDataConfigurationAvroOptionsPtrOutput() TableExternalDataConfigurationAvroOptionsPtrOutput {
+	return i.ToTableExternalDataConfigurationAvroOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *tableExternalDataConfigurationAvroOptionsPtrType) ToTableExternalDataConfigurationAvroOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationAvroOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationAvroOptionsPtrOutput)
+}
+
+type TableExternalDataConfigurationAvroOptionsOutput struct{ *pulumi.OutputState }
+
+func (TableExternalDataConfigurationAvroOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalDataConfigurationAvroOptions)(nil)).Elem()
+}
+
+func (o TableExternalDataConfigurationAvroOptionsOutput) ToTableExternalDataConfigurationAvroOptionsOutput() TableExternalDataConfigurationAvroOptionsOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationAvroOptionsOutput) ToTableExternalDataConfigurationAvroOptionsOutputWithContext(ctx context.Context) TableExternalDataConfigurationAvroOptionsOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationAvroOptionsOutput) ToTableExternalDataConfigurationAvroOptionsPtrOutput() TableExternalDataConfigurationAvroOptionsPtrOutput {
+	return o.ToTableExternalDataConfigurationAvroOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o TableExternalDataConfigurationAvroOptionsOutput) ToTableExternalDataConfigurationAvroOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationAvroOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableExternalDataConfigurationAvroOptions) *TableExternalDataConfigurationAvroOptions {
+		return &v
+	}).(TableExternalDataConfigurationAvroOptionsPtrOutput)
+}
+
+// If is set to true, indicates whether\
+// to interpret logical types as the corresponding BigQuery data type
+// (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+func (o TableExternalDataConfigurationAvroOptionsOutput) UseAvroLogicalTypes() pulumi.BoolOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationAvroOptions) bool { return v.UseAvroLogicalTypes }).(pulumi.BoolOutput)
+}
+
+type TableExternalDataConfigurationAvroOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (TableExternalDataConfigurationAvroOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableExternalDataConfigurationAvroOptions)(nil)).Elem()
+}
+
+func (o TableExternalDataConfigurationAvroOptionsPtrOutput) ToTableExternalDataConfigurationAvroOptionsPtrOutput() TableExternalDataConfigurationAvroOptionsPtrOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationAvroOptionsPtrOutput) ToTableExternalDataConfigurationAvroOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationAvroOptionsPtrOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationAvroOptionsPtrOutput) Elem() TableExternalDataConfigurationAvroOptionsOutput {
+	return o.ApplyT(func(v *TableExternalDataConfigurationAvroOptions) TableExternalDataConfigurationAvroOptions {
+		if v != nil {
+			return *v
+		}
+		var ret TableExternalDataConfigurationAvroOptions
+		return ret
+	}).(TableExternalDataConfigurationAvroOptionsOutput)
+}
+
+// If is set to true, indicates whether\
+// to interpret logical types as the corresponding BigQuery data type
+// (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+func (o TableExternalDataConfigurationAvroOptionsPtrOutput) UseAvroLogicalTypes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfigurationAvroOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UseAvroLogicalTypes
+	}).(pulumi.BoolPtrOutput)
 }
 
 type TableExternalDataConfigurationCsvOptions struct {
@@ -10805,6 +10975,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TableEncryptionConfigurationPtrInput)(nil)).Elem(), TableEncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationInput)(nil)).Elem(), TableExternalDataConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationPtrInput)(nil)).Elem(), TableExternalDataConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationAvroOptionsInput)(nil)).Elem(), TableExternalDataConfigurationAvroOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationAvroOptionsPtrInput)(nil)).Elem(), TableExternalDataConfigurationAvroOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationCsvOptionsInput)(nil)).Elem(), TableExternalDataConfigurationCsvOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationCsvOptionsPtrInput)(nil)).Elem(), TableExternalDataConfigurationCsvOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationGoogleSheetsOptionsInput)(nil)).Elem(), TableExternalDataConfigurationGoogleSheetsOptionsArgs{})
@@ -10915,6 +11087,8 @@ func init() {
 	pulumi.RegisterOutputType(TableEncryptionConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(TableExternalDataConfigurationAvroOptionsOutput{})
+	pulumi.RegisterOutputType(TableExternalDataConfigurationAvroOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationCsvOptionsOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationCsvOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationGoogleSheetsOptionsOutput{})

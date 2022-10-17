@@ -148,6 +148,23 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Dns Managed Zone Cloud Logging
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cloud_logging_enabled_zone = new gcp.dns.ManagedZone("cloud-logging-enabled-zone", {
+ *     cloudLoggingConfig: {
+ *         enableLogging: true,
+ *     },
+ *     description: "Example cloud logging enabled DNS zone",
+ *     dnsName: "services.example.com.",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -193,6 +210,11 @@ export class ManagedZone extends pulumi.CustomResource {
         return obj['__pulumiType'] === ManagedZone.__pulumiType;
     }
 
+    /**
+     * Cloud logging configuration
+     * Structure is documented below.
+     */
+    public readonly cloudLoggingConfig!: pulumi.Output<outputs.dns.ManagedZoneCloudLoggingConfig>;
     /**
      * The time that this resource was created on the server. This is in RFC3339 text format.
      */
@@ -287,6 +309,7 @@ export class ManagedZone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ManagedZoneState | undefined;
+            resourceInputs["cloudLoggingConfig"] = state ? state.cloudLoggingConfig : undefined;
             resourceInputs["creationTime"] = state ? state.creationTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dnsName"] = state ? state.dnsName : undefined;
@@ -308,6 +331,7 @@ export class ManagedZone extends pulumi.CustomResource {
             if ((!args || args.dnsName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dnsName'");
             }
+            resourceInputs["cloudLoggingConfig"] = args ? args.cloudLoggingConfig : undefined;
             resourceInputs["description"] = (args ? args.description : undefined) ?? "Managed by Pulumi";
             resourceInputs["dnsName"] = args ? args.dnsName : undefined;
             resourceInputs["dnssecConfig"] = args ? args.dnssecConfig : undefined;
@@ -334,6 +358,11 @@ export class ManagedZone extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ManagedZone resources.
  */
 export interface ManagedZoneState {
+    /**
+     * Cloud logging configuration
+     * Structure is documented below.
+     */
+    cloudLoggingConfig?: pulumi.Input<inputs.dns.ManagedZoneCloudLoggingConfig>;
     /**
      * The time that this resource was created on the server. This is in RFC3339 text format.
      */
@@ -420,6 +449,11 @@ export interface ManagedZoneState {
  * The set of arguments for constructing a ManagedZone resource.
  */
 export interface ManagedZoneArgs {
+    /**
+     * Cloud logging configuration
+     * Structure is documented below.
+     */
+    cloudLoggingConfig?: pulumi.Input<inputs.dns.ManagedZoneCloudLoggingConfig>;
     /**
      * A textual description field. Defaults to 'Managed by Pulumi'.
      */

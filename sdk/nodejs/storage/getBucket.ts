@@ -49,6 +49,7 @@ export interface GetBucketArgs {
  */
 export interface GetBucketResult {
     readonly cors: outputs.storage.GetBucketCor[];
+    readonly customPlacementConfigs: outputs.storage.GetBucketCustomPlacementConfig[];
     readonly defaultEventBasedHold: boolean;
     readonly encryptions: outputs.storage.GetBucketEncryption[];
     readonly forceDestroy: boolean;

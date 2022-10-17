@@ -74,6 +74,71 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Dataproc Metastore Federation Bigquery
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataproc.MetastoreService;
+ * import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.dataproc.MetastoreFederation;
+ * import com.pulumi.gcp.dataproc.MetastoreFederationArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreFederationBackendMetastoreArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultMetastoreService = new MetastoreService(&#34;defaultMetastoreService&#34;, MetastoreServiceArgs.builder()        
+ *             .serviceId(&#34;fed-2&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .tier(&#34;DEVELOPER&#34;)
+ *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
+ *                 .version(&#34;3.1.2&#34;)
+ *                 .endpointProtocol(&#34;GRPC&#34;)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var defaultMetastoreFederation = new MetastoreFederation(&#34;defaultMetastoreFederation&#34;, MetastoreFederationArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .federationId(&#34;fed-2&#34;)
+ *             .version(&#34;3.1.2&#34;)
+ *             .backendMetastores(            
+ *                 MetastoreFederationBackendMetastoreArgs.builder()
+ *                     .rank(&#34;2&#34;)
+ *                     .name(project.applyValue(getProjectResult -&gt; getProjectResult.id()))
+ *                     .metastoreType(&#34;BIGQUERY&#34;)
+ *                     .build(),
+ *                 MetastoreFederationBackendMetastoreArgs.builder()
+ *                     .rank(&#34;1&#34;)
+ *                     .name(defaultMetastoreService.id())
+ *                     .metastoreType(&#34;DATAPROC_METASTORE&#34;)
+ *                     .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -171,14 +236,14 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.location);
     }
     /**
-     * The relative resource name of the metastore that is being federated.
+     * The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The relative resource name of the metastore that is being federated.
+     * @return The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
      * 
      */
     public Output<String> name() {

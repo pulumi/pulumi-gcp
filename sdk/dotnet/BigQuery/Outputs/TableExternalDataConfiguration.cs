@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly bool Autodetect;
         /// <summary>
+        /// Additional options if `source_format` is set to  
+        /// "AVRO".  Structure is documented below.
+        /// </summary>
+        public readonly Outputs.TableExternalDataConfigurationAvroOptions? AvroOptions;
+        /// <summary>
         /// The compression type of the data source.
         /// Valid values are "NONE" or "GZIP".
         /// </summary>
@@ -94,6 +99,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         private TableExternalDataConfiguration(
             bool autodetect,
 
+            Outputs.TableExternalDataConfigurationAvroOptions? avroOptions,
+
             string? compression,
 
             string? connectionId,
@@ -115,6 +122,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             ImmutableArray<string> sourceUris)
         {
             Autodetect = autodetect;
+            AvroOptions = avroOptions;
             Compression = compression;
             ConnectionId = connectionId;
             CsvOptions = csvOptions;

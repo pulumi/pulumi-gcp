@@ -116,14 +116,18 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+     * Number of seconds after which the probe times out.
+     * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+     * Must be smaller than periodSeconds.
      * 
      */
     @Import(name="timeoutSeconds")
     private @Nullable Output<Integer> timeoutSeconds;
 
     /**
-     * @return TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+     * @return Number of seconds after which the probe times out.
+     * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+     * Must be smaller than periodSeconds.
      * 
      */
     public Optional<Output<Integer>> timeoutSeconds() {
@@ -312,7 +316,9 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param timeoutSeconds TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+         * @param timeoutSeconds Number of seconds after which the probe times out.
+         * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+         * Must be smaller than periodSeconds.
          * 
          * @return builder
          * 
@@ -323,7 +329,9 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param timeoutSeconds TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+         * @param timeoutSeconds Number of seconds after which the probe times out.
+         * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+         * Must be smaller than periodSeconds.
          * 
          * @return builder
          * 

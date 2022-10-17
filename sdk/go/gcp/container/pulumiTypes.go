@@ -14414,6 +14414,8 @@ type ClusterNodeConfigGuestAccelerator struct {
 	Count int `pulumi:"count"`
 	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
 	GpuPartitionSize *string `pulumi:"gpuPartitionSize"`
+	// Configuration for GPU sharing. Structure is documented below.
+	GpuSharingConfig *ClusterNodeConfigGuestAcceleratorGpuSharingConfig `pulumi:"gpuSharingConfig"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type string `pulumi:"type"`
 }
@@ -14434,6 +14436,8 @@ type ClusterNodeConfigGuestAcceleratorArgs struct {
 	Count pulumi.IntInput `pulumi:"count"`
 	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
 	GpuPartitionSize pulumi.StringPtrInput `pulumi:"gpuPartitionSize"`
+	// Configuration for GPU sharing. Structure is documented below.
+	GpuSharingConfig ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrInput `pulumi:"gpuSharingConfig"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -14499,6 +14503,13 @@ func (o ClusterNodeConfigGuestAcceleratorOutput) GpuPartitionSize() pulumi.Strin
 	return o.ApplyT(func(v ClusterNodeConfigGuestAccelerator) *string { return v.GpuPartitionSize }).(pulumi.StringPtrOutput)
 }
 
+// Configuration for GPU sharing. Structure is documented below.
+func (o ClusterNodeConfigGuestAcceleratorOutput) GpuSharingConfig() ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigGuestAccelerator) *ClusterNodeConfigGuestAcceleratorGpuSharingConfig {
+		return v.GpuSharingConfig
+	}).(ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput)
+}
+
 // The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 func (o ClusterNodeConfigGuestAcceleratorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
@@ -14522,6 +14533,170 @@ func (o ClusterNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) C
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeConfigGuestAccelerator {
 		return vs[0].([]ClusterNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(ClusterNodeConfigGuestAcceleratorOutput)
+}
+
+type ClusterNodeConfigGuestAcceleratorGpuSharingConfig struct {
+	// The type of GPU sharing strategy to enable on the GPU node.
+	// Accepted values are:
+	// * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+	GpuSharingStrategy string `pulumi:"gpuSharingStrategy"`
+	// The maximum number of containers that can share a GPU.
+	MaxSharedClientsPerGpu int `pulumi:"maxSharedClientsPerGpu"`
+}
+
+// ClusterNodeConfigGuestAcceleratorGpuSharingConfigInput is an input type that accepts ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs and ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigGuestAcceleratorGpuSharingConfigInput` via:
+//
+//	ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs{...}
+type ClusterNodeConfigGuestAcceleratorGpuSharingConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput() ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput
+	ToClusterNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(context.Context) ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput
+}
+
+type ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs struct {
+	// The type of GPU sharing strategy to enable on the GPU node.
+	// Accepted values are:
+	// * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+	GpuSharingStrategy pulumi.StringInput `pulumi:"gpuSharingStrategy"`
+	// The maximum number of containers that can share a GPU.
+	MaxSharedClientsPerGpu pulumi.IntInput `pulumi:"maxSharedClientsPerGpu"`
+}
+
+func (ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput() ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return i.ToClusterNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToClusterNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(ctx context.Context) ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput)
+}
+
+func (i ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput() ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return i.ToClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput).ToClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrInput is an input type that accepts ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs, ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtr and ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrInput` via:
+//
+//	        ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput() ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput
+	ToClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(context.Context) ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput
+}
+
+type clusterNodeConfigGuestAcceleratorGpuSharingConfigPtrType ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs
+
+func ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtr(v *ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs) ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrInput {
+	return (*clusterNodeConfigGuestAcceleratorGpuSharingConfigPtrType)(v)
+}
+
+func (*clusterNodeConfigGuestAcceleratorGpuSharingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigGuestAcceleratorGpuSharingConfigPtrType) ToClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput() ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return i.ToClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigGuestAcceleratorGpuSharingConfigPtrType) ToClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput)
+}
+
+type ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput() ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToClusterNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(ctx context.Context) ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput() ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return o.ToClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeConfigGuestAcceleratorGpuSharingConfig) *ClusterNodeConfigGuestAcceleratorGpuSharingConfig {
+		return &v
+	}).(ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput)
+}
+
+// The type of GPU sharing strategy to enable on the GPU node.
+// Accepted values are:
+// * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+func (o ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) GpuSharingStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeConfigGuestAcceleratorGpuSharingConfig) string { return v.GpuSharingStrategy }).(pulumi.StringOutput)
+}
+
+// The maximum number of containers that can share a GPU.
+func (o ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) MaxSharedClientsPerGpu() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterNodeConfigGuestAcceleratorGpuSharingConfig) int { return v.MaxSharedClientsPerGpu }).(pulumi.IntOutput)
+}
+
+type ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) ToClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput() ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) ToClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) Elem() ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigGuestAcceleratorGpuSharingConfig) ClusterNodeConfigGuestAcceleratorGpuSharingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeConfigGuestAcceleratorGpuSharingConfig
+		return ret
+	}).(ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput)
+}
+
+// The type of GPU sharing strategy to enable on the GPU node.
+// Accepted values are:
+// * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+func (o ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) GpuSharingStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigGuestAcceleratorGpuSharingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GpuSharingStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of containers that can share a GPU.
+func (o ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) MaxSharedClientsPerGpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigGuestAcceleratorGpuSharingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxSharedClientsPerGpu
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterNodeConfigGvnic struct {
@@ -18246,6 +18421,8 @@ type ClusterNodePoolNodeConfigGuestAccelerator struct {
 	Count int `pulumi:"count"`
 	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
 	GpuPartitionSize *string `pulumi:"gpuPartitionSize"`
+	// Configuration for GPU sharing. Structure is documented below.
+	GpuSharingConfig *ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig `pulumi:"gpuSharingConfig"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type string `pulumi:"type"`
 }
@@ -18266,6 +18443,8 @@ type ClusterNodePoolNodeConfigGuestAcceleratorArgs struct {
 	Count pulumi.IntInput `pulumi:"count"`
 	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
 	GpuPartitionSize pulumi.StringPtrInput `pulumi:"gpuPartitionSize"`
+	// Configuration for GPU sharing. Structure is documented below.
+	GpuSharingConfig ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrInput `pulumi:"gpuSharingConfig"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -18331,6 +18510,13 @@ func (o ClusterNodePoolNodeConfigGuestAcceleratorOutput) GpuPartitionSize() pulu
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigGuestAccelerator) *string { return v.GpuPartitionSize }).(pulumi.StringPtrOutput)
 }
 
+// Configuration for GPU sharing. Structure is documented below.
+func (o ClusterNodePoolNodeConfigGuestAcceleratorOutput) GpuSharingConfig() ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigGuestAccelerator) *ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
+		return v.GpuSharingConfig
+	}).(ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput)
+}
+
 // The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 func (o ClusterNodePoolNodeConfigGuestAcceleratorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
@@ -18354,6 +18540,170 @@ func (o ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.Int
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodePoolNodeConfigGuestAccelerator {
 		return vs[0].([]ClusterNodePoolNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(ClusterNodePoolNodeConfigGuestAcceleratorOutput)
+}
+
+type ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig struct {
+	// The type of GPU sharing strategy to enable on the GPU node.
+	// Accepted values are:
+	// * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+	GpuSharingStrategy string `pulumi:"gpuSharingStrategy"`
+	// The maximum number of containers that can share a GPU.
+	MaxSharedClientsPerGpu int `pulumi:"maxSharedClientsPerGpu"`
+}
+
+// ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigInput is an input type that accepts ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs and ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigInput` via:
+//
+//	ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs{...}
+type ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput() ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput
+	ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(context.Context) ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput
+}
+
+type ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs struct {
+	// The type of GPU sharing strategy to enable on the GPU node.
+	// Accepted values are:
+	// * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+	GpuSharingStrategy pulumi.StringInput `pulumi:"gpuSharingStrategy"`
+	// The maximum number of containers that can share a GPU.
+	MaxSharedClientsPerGpu pulumi.IntInput `pulumi:"maxSharedClientsPerGpu"`
+}
+
+func (ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput() ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return i.ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput)
+}
+
+func (i ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput() ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput).ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrInput is an input type that accepts ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs, ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtr and ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrInput` via:
+//
+//	        ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput() ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput
+	ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput
+}
+
+type clusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrType ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs
+
+func ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtr(v *ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs) ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrInput {
+	return (*clusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrType) ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput() ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrType) ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput() ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput() ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return o.ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig) *ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
+		return &v
+	}).(ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput)
+}
+
+// The type of GPU sharing strategy to enable on the GPU node.
+// Accepted values are:
+// * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) GpuSharingStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig) string { return v.GpuSharingStrategy }).(pulumi.StringOutput)
+}
+
+// The maximum number of containers that can share a GPU.
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) MaxSharedClientsPerGpu() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig) int { return v.MaxSharedClientsPerGpu }).(pulumi.IntOutput)
+}
+
+type ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput() ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) ToClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) Elem() ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig) ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig
+		return ret
+	}).(ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput)
+}
+
+// The type of GPU sharing strategy to enable on the GPU node.
+// Accepted values are:
+// * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) GpuSharingStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GpuSharingStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of containers that can share a GPU.
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) MaxSharedClientsPerGpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxSharedClientsPerGpu
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterNodePoolNodeConfigGvnic struct {
@@ -23338,8 +23688,9 @@ func (o NodePoolNodeConfigGcfsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type NodePoolNodeConfigGuestAccelerator struct {
-	Count            int     `pulumi:"count"`
-	GpuPartitionSize *string `pulumi:"gpuPartitionSize"`
+	Count            int                                                 `pulumi:"count"`
+	GpuPartitionSize *string                                             `pulumi:"gpuPartitionSize"`
+	GpuSharingConfig *NodePoolNodeConfigGuestAcceleratorGpuSharingConfig `pulumi:"gpuSharingConfig"`
 	// The type of the policy. Supports a single value: COMPACT.
 	// Specifying COMPACT placement policy type places node pool's nodes in a closer
 	// physical proximity in order to reduce network latency between nodes.
@@ -23358,8 +23709,9 @@ type NodePoolNodeConfigGuestAcceleratorInput interface {
 }
 
 type NodePoolNodeConfigGuestAcceleratorArgs struct {
-	Count            pulumi.IntInput       `pulumi:"count"`
-	GpuPartitionSize pulumi.StringPtrInput `pulumi:"gpuPartitionSize"`
+	Count            pulumi.IntInput                                            `pulumi:"count"`
+	GpuPartitionSize pulumi.StringPtrInput                                      `pulumi:"gpuPartitionSize"`
+	GpuSharingConfig NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrInput `pulumi:"gpuSharingConfig"`
 	// The type of the policy. Supports a single value: COMPACT.
 	// Specifying COMPACT placement policy type places node pool's nodes in a closer
 	// physical proximity in order to reduce network latency between nodes.
@@ -23425,6 +23777,12 @@ func (o NodePoolNodeConfigGuestAcceleratorOutput) GpuPartitionSize() pulumi.Stri
 	return o.ApplyT(func(v NodePoolNodeConfigGuestAccelerator) *string { return v.GpuPartitionSize }).(pulumi.StringPtrOutput)
 }
 
+func (o NodePoolNodeConfigGuestAcceleratorOutput) GpuSharingConfig() NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigGuestAccelerator) *NodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
+		return v.GpuSharingConfig
+	}).(NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput)
+}
+
 // The type of the policy. Supports a single value: COMPACT.
 // Specifying COMPACT placement policy type places node pool's nodes in a closer
 // physical proximity in order to reduce network latency between nodes.
@@ -23450,6 +23808,154 @@ func (o NodePoolNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolNodeConfigGuestAccelerator {
 		return vs[0].([]NodePoolNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(NodePoolNodeConfigGuestAcceleratorOutput)
+}
+
+type NodePoolNodeConfigGuestAcceleratorGpuSharingConfig struct {
+	GpuSharingStrategy     string `pulumi:"gpuSharingStrategy"`
+	MaxSharedClientsPerGpu int    `pulumi:"maxSharedClientsPerGpu"`
+}
+
+// NodePoolNodeConfigGuestAcceleratorGpuSharingConfigInput is an input type that accepts NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs and NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigGuestAcceleratorGpuSharingConfigInput` via:
+//
+//	NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs{...}
+type NodePoolNodeConfigGuestAcceleratorGpuSharingConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput() NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput
+	ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(context.Context) NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput
+}
+
+type NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs struct {
+	GpuSharingStrategy     pulumi.StringInput `pulumi:"gpuSharingStrategy"`
+	MaxSharedClientsPerGpu pulumi.IntInput    `pulumi:"maxSharedClientsPerGpu"`
+}
+
+func (NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput() NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return i.ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput)
+}
+
+func (i NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput() NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return i.ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput).ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrInput is an input type that accepts NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs, NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtr and NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrInput` via:
+//
+//	        NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput() NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput
+	ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(context.Context) NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput
+}
+
+type nodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrType NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs
+
+func NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtr(v *NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs) NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrInput {
+	return (*nodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrType)(v)
+}
+
+func (*nodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrType) ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput() NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return i.ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrType) ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput)
+}
+
+type NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput() NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput() NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return o.ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolNodeConfigGuestAcceleratorGpuSharingConfig) *NodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
+		return &v
+	}).(NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput)
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) GpuSharingStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigGuestAcceleratorGpuSharingConfig) string { return v.GpuSharingStrategy }).(pulumi.StringOutput)
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) MaxSharedClientsPerGpu() pulumi.IntOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigGuestAcceleratorGpuSharingConfig) int { return v.MaxSharedClientsPerGpu }).(pulumi.IntOutput)
+}
+
+type NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput() NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) ToNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) Elem() NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigGuestAcceleratorGpuSharingConfig) NodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolNodeConfigGuestAcceleratorGpuSharingConfig
+		return ret
+	}).(NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput)
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) GpuSharingStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigGuestAcceleratorGpuSharingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GpuSharingStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) MaxSharedClientsPerGpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigGuestAcceleratorGpuSharingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxSharedClientsPerGpu
+	}).(pulumi.IntPtrOutput)
 }
 
 type NodePoolNodeConfigGvnic struct {
@@ -29268,9 +29774,10 @@ func (o GetClusterNodeConfigGcfsConfigArrayOutput) Index(i pulumi.IntInput) GetC
 }
 
 type GetClusterNodeConfigGuestAccelerator struct {
-	Count            int    `pulumi:"count"`
-	GpuPartitionSize string `pulumi:"gpuPartitionSize"`
-	Type             string `pulumi:"type"`
+	Count             int                                                    `pulumi:"count"`
+	GpuPartitionSize  string                                                 `pulumi:"gpuPartitionSize"`
+	GpuSharingConfigs []GetClusterNodeConfigGuestAcceleratorGpuSharingConfig `pulumi:"gpuSharingConfigs"`
+	Type              string                                                 `pulumi:"type"`
 }
 
 // GetClusterNodeConfigGuestAcceleratorInput is an input type that accepts GetClusterNodeConfigGuestAcceleratorArgs and GetClusterNodeConfigGuestAcceleratorOutput values.
@@ -29285,9 +29792,10 @@ type GetClusterNodeConfigGuestAcceleratorInput interface {
 }
 
 type GetClusterNodeConfigGuestAcceleratorArgs struct {
-	Count            pulumi.IntInput    `pulumi:"count"`
-	GpuPartitionSize pulumi.StringInput `pulumi:"gpuPartitionSize"`
-	Type             pulumi.StringInput `pulumi:"type"`
+	Count             pulumi.IntInput                                                `pulumi:"count"`
+	GpuPartitionSize  pulumi.StringInput                                             `pulumi:"gpuPartitionSize"`
+	GpuSharingConfigs GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayInput `pulumi:"gpuSharingConfigs"`
+	Type              pulumi.StringInput                                             `pulumi:"type"`
 }
 
 func (GetClusterNodeConfigGuestAcceleratorArgs) ElementType() reflect.Type {
@@ -29349,6 +29857,12 @@ func (o GetClusterNodeConfigGuestAcceleratorOutput) GpuPartitionSize() pulumi.St
 	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) string { return v.GpuPartitionSize }).(pulumi.StringOutput)
 }
 
+func (o GetClusterNodeConfigGuestAcceleratorOutput) GpuSharingConfigs() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) []GetClusterNodeConfigGuestAcceleratorGpuSharingConfig {
+		return v.GpuSharingConfigs
+	}).(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput)
+}
+
 func (o GetClusterNodeConfigGuestAcceleratorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -29371,6 +29885,106 @@ func (o GetClusterNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGuestAccelerator {
 		return vs[0].([]GetClusterNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(GetClusterNodeConfigGuestAcceleratorOutput)
+}
+
+type GetClusterNodeConfigGuestAcceleratorGpuSharingConfig struct {
+	GpuSharingStrategy     string `pulumi:"gpuSharingStrategy"`
+	MaxSharedClientsPerGpu int    `pulumi:"maxSharedClientsPerGpu"`
+}
+
+// GetClusterNodeConfigGuestAcceleratorGpuSharingConfigInput is an input type that accepts GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs and GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigGuestAcceleratorGpuSharingConfigInput` via:
+//
+//	GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs{...}
+type GetClusterNodeConfigGuestAcceleratorGpuSharingConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput
+	ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(context.Context) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput
+}
+
+type GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs struct {
+	GpuSharingStrategy     pulumi.StringInput `pulumi:"gpuSharingStrategy"`
+	MaxSharedClientsPerGpu pulumi.IntInput    `pulumi:"maxSharedClientsPerGpu"`
+}
+
+func (GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return i.ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput)
+}
+
+// GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayInput is an input type that accepts GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray and GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayInput` via:
+//
+//	GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray{ GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs{...} }
+type GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput
+	ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput
+}
+
+type GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray []GetClusterNodeConfigGuestAcceleratorGpuSharingConfigInput
+
+func (GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
+	return i.ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput)
+}
+
+type GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) GpuSharingStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigGuestAcceleratorGpuSharingConfig) string { return v.GpuSharingStrategy }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) MaxSharedClientsPerGpu() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigGuestAcceleratorGpuSharingConfig) int { return v.MaxSharedClientsPerGpu }).(pulumi.IntOutput)
+}
+
+type GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGuestAcceleratorGpuSharingConfig {
+		return vs[0].([]GetClusterNodeConfigGuestAcceleratorGpuSharingConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput)
 }
 
 type GetClusterNodeConfigGvnic struct {
@@ -31595,9 +32209,10 @@ func (o GetClusterNodePoolNodeConfigGcfsConfigArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetClusterNodePoolNodeConfigGuestAccelerator struct {
-	Count            int    `pulumi:"count"`
-	GpuPartitionSize string `pulumi:"gpuPartitionSize"`
-	Type             string `pulumi:"type"`
+	Count             int                                                            `pulumi:"count"`
+	GpuPartitionSize  string                                                         `pulumi:"gpuPartitionSize"`
+	GpuSharingConfigs []GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig `pulumi:"gpuSharingConfigs"`
+	Type              string                                                         `pulumi:"type"`
 }
 
 // GetClusterNodePoolNodeConfigGuestAcceleratorInput is an input type that accepts GetClusterNodePoolNodeConfigGuestAcceleratorArgs and GetClusterNodePoolNodeConfigGuestAcceleratorOutput values.
@@ -31612,9 +32227,10 @@ type GetClusterNodePoolNodeConfigGuestAcceleratorInput interface {
 }
 
 type GetClusterNodePoolNodeConfigGuestAcceleratorArgs struct {
-	Count            pulumi.IntInput    `pulumi:"count"`
-	GpuPartitionSize pulumi.StringInput `pulumi:"gpuPartitionSize"`
-	Type             pulumi.StringInput `pulumi:"type"`
+	Count             pulumi.IntInput                                                        `pulumi:"count"`
+	GpuPartitionSize  pulumi.StringInput                                                     `pulumi:"gpuPartitionSize"`
+	GpuSharingConfigs GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayInput `pulumi:"gpuSharingConfigs"`
+	Type              pulumi.StringInput                                                     `pulumi:"type"`
 }
 
 func (GetClusterNodePoolNodeConfigGuestAcceleratorArgs) ElementType() reflect.Type {
@@ -31676,6 +32292,12 @@ func (o GetClusterNodePoolNodeConfigGuestAcceleratorOutput) GpuPartitionSize() p
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigGuestAccelerator) string { return v.GpuPartitionSize }).(pulumi.StringOutput)
 }
 
+func (o GetClusterNodePoolNodeConfigGuestAcceleratorOutput) GpuSharingConfigs() GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigGuestAccelerator) []GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
+		return v.GpuSharingConfigs
+	}).(GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput)
+}
+
 func (o GetClusterNodePoolNodeConfigGuestAcceleratorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -31698,6 +32320,110 @@ func (o GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigGuestAccelerator {
 		return vs[0].([]GetClusterNodePoolNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigGuestAcceleratorOutput)
+}
+
+type GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig struct {
+	GpuSharingStrategy     string `pulumi:"gpuSharingStrategy"`
+	MaxSharedClientsPerGpu int    `pulumi:"maxSharedClientsPerGpu"`
+}
+
+// GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigInput is an input type that accepts GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs and GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigInput` via:
+//
+//	GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs{...}
+type GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput() GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput
+	ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(context.Context) GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput
+}
+
+type GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs struct {
+	GpuSharingStrategy     pulumi.StringInput `pulumi:"gpuSharingStrategy"`
+	MaxSharedClientsPerGpu pulumi.IntInput    `pulumi:"maxSharedClientsPerGpu"`
+}
+
+func (GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput() GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return i.ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput)
+}
+
+// GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayInput is an input type that accepts GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArray and GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArray{ GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs{...} }
+type GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput() GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput
+	ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArray []GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigInput
+
+func (GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArray) ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput() GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArray) ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput() GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) GpuSharingStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig) string {
+		return v.GpuSharingStrategy
+	}).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput) MaxSharedClientsPerGpu() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig) int {
+		return v.MaxSharedClientsPerGpu
+	}).(pulumi.IntOutput)
+}
+
+type GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput) ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput() GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput) ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
+		return vs[0].([]GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput)
 }
 
 type GetClusterNodePoolNodeConfigGvnic struct {
@@ -34165,6 +34891,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGcfsConfigPtrInput)(nil)).Elem(), ClusterNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorInput)(nil)).Elem(), ClusterNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), ClusterNodeConfigGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorGpuSharingConfigInput)(nil)).Elem(), ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrInput)(nil)).Elem(), ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGvnicInput)(nil)).Elem(), ClusterNodeConfigGvnicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGvnicPtrInput)(nil)).Elem(), ClusterNodeConfigGvnicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigKubeletConfigInput)(nil)).Elem(), ClusterNodeConfigKubeletConfigArgs{})
@@ -34207,6 +34935,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGcfsConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorInput)(nil)).Elem(), ClusterNodePoolNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), ClusterNodePoolNodeConfigGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGvnicInput)(nil)).Elem(), ClusterNodePoolNodeConfigGvnicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGvnicPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigGvnicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigKubeletConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigKubeletConfigArgs{})
@@ -34267,6 +34997,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGcfsConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorInput)(nil)).Elem(), NodePoolNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), NodePoolNodeConfigGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorGpuSharingConfigInput)(nil)).Elem(), NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGvnicInput)(nil)).Elem(), NodePoolNodeConfigGvnicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGvnicPtrInput)(nil)).Elem(), NodePoolNodeConfigGvnicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigKubeletConfigInput)(nil)).Elem(), NodePoolNodeConfigKubeletConfigArgs{})
@@ -34373,6 +35105,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGcfsConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigGcfsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuSharingConfigInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGvnicInput)(nil)).Elem(), GetClusterNodeConfigGvnicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGvnicArrayInput)(nil)).Elem(), GetClusterNodeConfigGvnicArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigArgs{})
@@ -34415,6 +35149,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGcfsConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGcfsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGvnicInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGvnicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGvnicArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGvnicArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigKubeletConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigKubeletConfigArgs{})
@@ -34637,6 +35373,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeConfigGcfsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGvnicOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGvnicPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigKubeletConfigOutput{})
@@ -34679,6 +35417,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGcfsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGvnicOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGvnicPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigKubeletConfigOutput{})
@@ -34739,6 +35479,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigGcfsConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGvnicOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGvnicPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigKubeletConfigOutput{})
@@ -34845,6 +35587,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigGcfsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGvnicOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGvnicArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigOutput{})
@@ -34887,6 +35631,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGcfsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGvnicOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGvnicArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigKubeletConfigOutput{})

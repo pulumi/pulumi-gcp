@@ -57,6 +57,7 @@ from .get_regions import *
 from .get_resource_policy import *
 from .get_router import *
 from .get_router_status import *
+from .get_snapshot import *
 from .get_ssl_policy import *
 from .get_subnetwork import *
 from .get_vpn_gateway import *
@@ -123,6 +124,7 @@ from .region_ssl_certificate import *
 from .region_ssl_policy import *
 from .region_target_http_proxy import *
 from .region_target_https_proxy import *
+from .region_target_tcp_proxy import *
 from .region_url_map import *
 from .reservation import *
 from .resource_policy import *

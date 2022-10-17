@@ -124,6 +124,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.bigqueryDataTransferCustomEndpoint);
     }
 
+    @Import(name="bigqueryDatapolicyCustomEndpoint")
+    private @Nullable Output<String> bigqueryDatapolicyCustomEndpoint;
+
+    public Optional<Output<String>> bigqueryDatapolicyCustomEndpoint() {
+        return Optional.ofNullable(this.bigqueryDatapolicyCustomEndpoint);
+    }
+
     @Import(name="bigqueryReservationCustomEndpoint")
     private @Nullable Output<String> bigqueryReservationCustomEndpoint;
 
@@ -206,6 +213,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> cloudIdentityCustomEndpoint() {
         return Optional.ofNullable(this.cloudIdentityCustomEndpoint);
+    }
+
+    @Import(name="cloudIdsCustomEndpoint")
+    private @Nullable Output<String> cloudIdsCustomEndpoint;
+
+    public Optional<Output<String>> cloudIdsCustomEndpoint() {
+        return Optional.ofNullable(this.cloudIdsCustomEndpoint);
     }
 
     @Import(name="cloudIotCustomEndpoint")
@@ -877,6 +891,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.bigqueryAnalyticsHubCustomEndpoint = $.bigqueryAnalyticsHubCustomEndpoint;
         this.bigqueryConnectionCustomEndpoint = $.bigqueryConnectionCustomEndpoint;
         this.bigqueryDataTransferCustomEndpoint = $.bigqueryDataTransferCustomEndpoint;
+        this.bigqueryDatapolicyCustomEndpoint = $.bigqueryDatapolicyCustomEndpoint;
         this.bigqueryReservationCustomEndpoint = $.bigqueryReservationCustomEndpoint;
         this.bigtableCustomEndpoint = $.bigtableCustomEndpoint;
         this.billingCustomEndpoint = $.billingCustomEndpoint;
@@ -889,6 +904,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.cloudBuildWorkerPoolCustomEndpoint = $.cloudBuildWorkerPoolCustomEndpoint;
         this.cloudFunctionsCustomEndpoint = $.cloudFunctionsCustomEndpoint;
         this.cloudIdentityCustomEndpoint = $.cloudIdentityCustomEndpoint;
+        this.cloudIdsCustomEndpoint = $.cloudIdsCustomEndpoint;
         this.cloudIotCustomEndpoint = $.cloudIotCustomEndpoint;
         this.cloudResourceManagerCustomEndpoint = $.cloudResourceManagerCustomEndpoint;
         this.cloudRunCustomEndpoint = $.cloudRunCustomEndpoint;
@@ -1137,6 +1153,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return bigqueryDataTransferCustomEndpoint(Output.of(bigqueryDataTransferCustomEndpoint));
         }
 
+        public Builder bigqueryDatapolicyCustomEndpoint(@Nullable Output<String> bigqueryDatapolicyCustomEndpoint) {
+            $.bigqueryDatapolicyCustomEndpoint = bigqueryDatapolicyCustomEndpoint;
+            return this;
+        }
+
+        public Builder bigqueryDatapolicyCustomEndpoint(String bigqueryDatapolicyCustomEndpoint) {
+            return bigqueryDatapolicyCustomEndpoint(Output.of(bigqueryDatapolicyCustomEndpoint));
+        }
+
         public Builder bigqueryReservationCustomEndpoint(@Nullable Output<String> bigqueryReservationCustomEndpoint) {
             $.bigqueryReservationCustomEndpoint = bigqueryReservationCustomEndpoint;
             return this;
@@ -1243,6 +1268,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder cloudIdentityCustomEndpoint(String cloudIdentityCustomEndpoint) {
             return cloudIdentityCustomEndpoint(Output.of(cloudIdentityCustomEndpoint));
+        }
+
+        public Builder cloudIdsCustomEndpoint(@Nullable Output<String> cloudIdsCustomEndpoint) {
+            $.cloudIdsCustomEndpoint = cloudIdsCustomEndpoint;
+            return this;
+        }
+
+        public Builder cloudIdsCustomEndpoint(String cloudIdsCustomEndpoint) {
+            return cloudIdsCustomEndpoint(Output.of(cloudIdsCustomEndpoint));
         }
 
         public Builder cloudIotCustomEndpoint(@Nullable Output<String> cloudIotCustomEndpoint) {

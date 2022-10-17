@@ -72,7 +72,8 @@ class InstanceArgs:
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the disk. This  
+               field is only applicable for persistent disks.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Ssh keys attached in the Cloud Console will be removed.
                Add them to your config in order to keep them attached to your instance.
@@ -353,7 +354,8 @@ class InstanceArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A map of key/value label pairs to assign to the instance.
+        A set of key/value label pairs assigned to the disk. This  
+        field is only applicable for persistent disks.
         """
         return pulumi.get(self, "labels")
 
@@ -623,7 +625,8 @@ class _InstanceState:
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input[str] instance_id: The server-assigned unique identifier of this instance.
         :param pulumi.Input[str] label_fingerprint: The unique fingerprint of the labels.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the disk. This  
+               field is only applicable for persistent disks.
         :param pulumi.Input[str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Ssh keys attached in the Cloud Console will be removed.
@@ -950,7 +953,8 @@ class _InstanceState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A map of key/value label pairs to assign to the instance.
+        A set of key/value label pairs assigned to the disk. This  
+        field is only applicable for persistent disks.
         """
         return pulumi.get(self, "labels")
 
@@ -1274,6 +1278,9 @@ class Instance(pulumi.CustomResource):
             boot_disk=gcp.compute.InstanceBootDiskArgs(
                 initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
                     image="debian-cloud/debian-11",
+                    labels={
+                        "my_label": "value",
+                    },
                 ),
             ),
             scratch_disks=[gcp.compute.InstanceScratchDiskArgs(
@@ -1335,7 +1342,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the disk. This  
+               field is only applicable for persistent disks.
         :param pulumi.Input[str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Ssh keys attached in the Cloud Console will be removed.
@@ -1411,6 +1419,9 @@ class Instance(pulumi.CustomResource):
             boot_disk=gcp.compute.InstanceBootDiskArgs(
                 initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
                     image="debian-cloud/debian-11",
+                    labels={
+                        "my_label": "value",
+                    },
                 ),
             ),
             scratch_disks=[gcp.compute.InstanceScratchDiskArgs(
@@ -1622,7 +1633,8 @@ class Instance(pulumi.CustomResource):
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input[str] instance_id: The server-assigned unique identifier of this instance.
         :param pulumi.Input[str] label_fingerprint: The unique fingerprint of the labels.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the disk. This  
+               field is only applicable for persistent disks.
         :param pulumi.Input[str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Ssh keys attached in the Cloud Console will be removed.
@@ -1854,7 +1866,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        A map of key/value label pairs to assign to the instance.
+        A set of key/value label pairs assigned to the disk. This  
+        field is only applicable for persistent disks.
         """
         return pulumi.get(self, "labels")
 

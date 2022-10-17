@@ -6,6 +6,7 @@ package com.pulumi.gcp.dns.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
+import com.pulumi.gcp.dns.inputs.ManagedZoneCloudLoggingConfigArgs;
 import com.pulumi.gcp.dns.inputs.ManagedZoneDnssecConfigArgs;
 import com.pulumi.gcp.dns.inputs.ManagedZoneForwardingConfigArgs;
 import com.pulumi.gcp.dns.inputs.ManagedZonePeeringConfigArgs;
@@ -24,6 +25,23 @@ import javax.annotation.Nullable;
 public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
 
     public static final ManagedZoneState Empty = new ManagedZoneState();
+
+    /**
+     * Cloud logging configuration
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="cloudLoggingConfig")
+    private @Nullable Output<ManagedZoneCloudLoggingConfigArgs> cloudLoggingConfig;
+
+    /**
+     * @return Cloud logging configuration
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ManagedZoneCloudLoggingConfigArgs>> cloudLoggingConfig() {
+        return Optional.ofNullable(this.cloudLoggingConfig);
+    }
 
     /**
      * The time that this resource was created on the server. This is in RFC3339 text format.
@@ -300,6 +318,7 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
     private ManagedZoneState() {}
 
     private ManagedZoneState(ManagedZoneState $) {
+        this.cloudLoggingConfig = $.cloudLoggingConfig;
         this.creationTime = $.creationTime;
         this.description = $.description;
         this.dnsName = $.dnsName;
@@ -334,6 +353,29 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ManagedZoneState defaults) {
             $ = new ManagedZoneState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param cloudLoggingConfig Cloud logging configuration
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudLoggingConfig(@Nullable Output<ManagedZoneCloudLoggingConfigArgs> cloudLoggingConfig) {
+            $.cloudLoggingConfig = cloudLoggingConfig;
+            return this;
+        }
+
+        /**
+         * @param cloudLoggingConfig Cloud logging configuration
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudLoggingConfig(ManagedZoneCloudLoggingConfigArgs cloudLoggingConfig) {
+            return cloudLoggingConfig(Output.of(cloudLoggingConfig));
         }
 
         /**

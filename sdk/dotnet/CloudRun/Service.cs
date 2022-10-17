@@ -288,6 +288,64 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// });
     /// ```
+    /// ### Cloud Run Service Probes
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRun.Service("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
+    ///         {
+    ///             Annotations = 
+    ///             {
+    ///                 { "run.googleapis.com/launch-stage", "BETA" },
+    ///             },
+    ///         },
+    ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                     {
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         StartupProbe = new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerStartupProbeArgs
+    ///                         {
+    ///                             InitialDelaySeconds = 0,
+    ///                             TimeoutSeconds = 1,
+    ///                             PeriodSeconds = 3,
+    ///                             FailureThreshold = 1,
+    ///                             TcpSocket = new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerStartupProbeTcpSocketArgs
+    ///                             {
+    ///                                 Port = 8080,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Traffics = new[]
+    ///         {
+    ///             new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///             {
+    ///                 Percent = 100,
+    ///                 LatestRevision = true,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -37,6 +37,7 @@ type LookupBackendServiceResult struct {
 	Backends        []GetBackendServiceBackend        `pulumi:"backends"`
 	CdnPolicies     []GetBackendServiceCdnPolicy      `pulumi:"cdnPolicies"`
 	CircuitBreakers []GetBackendServiceCircuitBreaker `pulumi:"circuitBreakers"`
+	CompressionMode string                            `pulumi:"compressionMode"`
 	// Time for which instance will be drained (not accept new connections, but still work to finish started ones).
 	ConnectionDrainingTimeoutSec int                               `pulumi:"connectionDrainingTimeoutSec"`
 	ConsistentHash               []GetBackendServiceConsistentHash `pulumi:"consistentHash"`
@@ -129,6 +130,10 @@ func (o LookupBackendServiceResultOutput) CdnPolicies() GetBackendServiceCdnPoli
 
 func (o LookupBackendServiceResultOutput) CircuitBreakers() GetBackendServiceCircuitBreakerArrayOutput {
 	return o.ApplyT(func(v LookupBackendServiceResult) []GetBackendServiceCircuitBreaker { return v.CircuitBreakers }).(GetBackendServiceCircuitBreakerArrayOutput)
+}
+
+func (o LookupBackendServiceResultOutput) CompressionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.CompressionMode }).(pulumi.StringOutput)
 }
 
 // Time for which instance will be drained (not accept new connections, but still work to finish started ones).

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigGuestAcceleratorGpuSharingConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 public final class NodePoolNodeConfigGuestAccelerator {
     private Integer count;
     private @Nullable String gpuPartitionSize;
+    private @Nullable NodePoolNodeConfigGuestAcceleratorGpuSharingConfig gpuSharingConfig;
     /**
      * @return The type of the policy. Supports a single value: COMPACT.
      * Specifying COMPACT placement policy type places node pool&#39;s nodes in a closer
@@ -28,6 +30,9 @@ public final class NodePoolNodeConfigGuestAccelerator {
     }
     public Optional<String> gpuPartitionSize() {
         return Optional.ofNullable(this.gpuPartitionSize);
+    }
+    public Optional<NodePoolNodeConfigGuestAcceleratorGpuSharingConfig> gpuSharingConfig() {
+        return Optional.ofNullable(this.gpuSharingConfig);
     }
     /**
      * @return The type of the policy. Supports a single value: COMPACT.
@@ -50,12 +55,14 @@ public final class NodePoolNodeConfigGuestAccelerator {
     public static final class Builder {
         private Integer count;
         private @Nullable String gpuPartitionSize;
+        private @Nullable NodePoolNodeConfigGuestAcceleratorGpuSharingConfig gpuSharingConfig;
         private String type;
         public Builder() {}
         public Builder(NodePoolNodeConfigGuestAccelerator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
     	      this.gpuPartitionSize = defaults.gpuPartitionSize;
+    	      this.gpuSharingConfig = defaults.gpuSharingConfig;
     	      this.type = defaults.type;
         }
 
@@ -70,6 +77,11 @@ public final class NodePoolNodeConfigGuestAccelerator {
             return this;
         }
         @CustomType.Setter
+        public Builder gpuSharingConfig(@Nullable NodePoolNodeConfigGuestAcceleratorGpuSharingConfig gpuSharingConfig) {
+            this.gpuSharingConfig = gpuSharingConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
@@ -78,6 +90,7 @@ public final class NodePoolNodeConfigGuestAccelerator {
             final var o = new NodePoolNodeConfigGuestAccelerator();
             o.count = count;
             o.gpuPartitionSize = gpuPartitionSize;
+            o.gpuSharingConfig = gpuSharingConfig;
             o.type = type;
             return o;
         }

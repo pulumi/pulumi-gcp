@@ -28,7 +28,9 @@ __all__ = [
     'DatabaseInstanceSettingsMaintenanceWindow',
     'DatabaseInstanceSettingsPasswordValidationPolicy',
     'DatabaseInstanceSettingsSqlServerAuditConfig',
-    'UserSqlServerUserDetails',
+    'UserPasswordPolicy',
+    'UserPasswordPolicyStatus',
+    'UserSqlServerUserDetail',
     'GetCaCertsCertResult',
     'GetDatabaseInstanceCloneResult',
     'GetDatabaseInstanceIpAddressResult',
@@ -1518,7 +1520,141 @@ class DatabaseInstanceSettingsSqlServerAuditConfig(dict):
 
 
 @pulumi.output_type
-class UserSqlServerUserDetails(dict):
+class UserPasswordPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedFailedAttempts":
+            suggest = "allowed_failed_attempts"
+        elif key == "enableFailedAttemptsCheck":
+            suggest = "enable_failed_attempts_check"
+        elif key == "enablePasswordVerification":
+            suggest = "enable_password_verification"
+        elif key == "passwordExpirationDuration":
+            suggest = "password_expiration_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserPasswordPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserPasswordPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserPasswordPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_failed_attempts: Optional[int] = None,
+                 enable_failed_attempts_check: Optional[bool] = None,
+                 enable_password_verification: Optional[bool] = None,
+                 password_expiration_duration: Optional[str] = None,
+                 statuses: Optional[Sequence['outputs.UserPasswordPolicyStatus']] = None):
+        """
+        :param int allowed_failed_attempts: Number of failed attempts allowed before the user get locked.
+        :param bool enable_failed_attempts_check: If true, the check that will lock user after too many failed login attempts will be enabled.
+        :param bool enable_password_verification: If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
+        :param str password_expiration_duration: Password expiration duration with one week grace period.
+        """
+        if allowed_failed_attempts is not None:
+            pulumi.set(__self__, "allowed_failed_attempts", allowed_failed_attempts)
+        if enable_failed_attempts_check is not None:
+            pulumi.set(__self__, "enable_failed_attempts_check", enable_failed_attempts_check)
+        if enable_password_verification is not None:
+            pulumi.set(__self__, "enable_password_verification", enable_password_verification)
+        if password_expiration_duration is not None:
+            pulumi.set(__self__, "password_expiration_duration", password_expiration_duration)
+        if statuses is not None:
+            pulumi.set(__self__, "statuses", statuses)
+
+    @property
+    @pulumi.getter(name="allowedFailedAttempts")
+    def allowed_failed_attempts(self) -> Optional[int]:
+        """
+        Number of failed attempts allowed before the user get locked.
+        """
+        return pulumi.get(self, "allowed_failed_attempts")
+
+    @property
+    @pulumi.getter(name="enableFailedAttemptsCheck")
+    def enable_failed_attempts_check(self) -> Optional[bool]:
+        """
+        If true, the check that will lock user after too many failed login attempts will be enabled.
+        """
+        return pulumi.get(self, "enable_failed_attempts_check")
+
+    @property
+    @pulumi.getter(name="enablePasswordVerification")
+    def enable_password_verification(self) -> Optional[bool]:
+        """
+        If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
+        """
+        return pulumi.get(self, "enable_password_verification")
+
+    @property
+    @pulumi.getter(name="passwordExpirationDuration")
+    def password_expiration_duration(self) -> Optional[str]:
+        """
+        Password expiration duration with one week grace period.
+        """
+        return pulumi.get(self, "password_expiration_duration")
+
+    @property
+    @pulumi.getter
+    def statuses(self) -> Optional[Sequence['outputs.UserPasswordPolicyStatus']]:
+        return pulumi.get(self, "statuses")
+
+
+@pulumi.output_type
+class UserPasswordPolicyStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "passwordExpirationTime":
+            suggest = "password_expiration_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserPasswordPolicyStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserPasswordPolicyStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserPasswordPolicyStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 locked: Optional[bool] = None,
+                 password_expiration_time: Optional[str] = None):
+        """
+        :param bool locked: If true, user does not have login privileges.
+        :param str password_expiration_time: Password expiration duration with one week grace period.
+        """
+        if locked is not None:
+            pulumi.set(__self__, "locked", locked)
+        if password_expiration_time is not None:
+            pulumi.set(__self__, "password_expiration_time", password_expiration_time)
+
+    @property
+    @pulumi.getter
+    def locked(self) -> Optional[bool]:
+        """
+        If true, user does not have login privileges.
+        """
+        return pulumi.get(self, "locked")
+
+    @property
+    @pulumi.getter(name="passwordExpirationTime")
+    def password_expiration_time(self) -> Optional[str]:
+        """
+        Password expiration duration with one week grace period.
+        """
+        return pulumi.get(self, "password_expiration_time")
+
+
+@pulumi.output_type
+class UserSqlServerUserDetail(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1526,14 +1662,14 @@ class UserSqlServerUserDetails(dict):
             suggest = "server_roles"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in UserSqlServerUserDetails. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in UserSqlServerUserDetail. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        UserSqlServerUserDetails.__key_warning(key)
+        UserSqlServerUserDetail.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        UserSqlServerUserDetails.__key_warning(key)
+        UserSqlServerUserDetail.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
