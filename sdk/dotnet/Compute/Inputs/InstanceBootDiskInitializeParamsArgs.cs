@@ -30,7 +30,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// A map of key/value label pairs to assign to the instance.
+        /// A set of key/value label pairs assigned to the disk. This  
+        /// field is only applicable for persistent disks.
         /// </summary>
         public InputMap<object> Labels
         {

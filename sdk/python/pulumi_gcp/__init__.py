@@ -30,6 +30,8 @@ if typing.TYPE_CHECKING:
     bigquery = __bigquery
     import pulumi_gcp.bigqueryanalyticshub as __bigqueryanalyticshub
     bigqueryanalyticshub = __bigqueryanalyticshub
+    import pulumi_gcp.bigquerydatapolicy as __bigquerydatapolicy
+    bigquerydatapolicy = __bigquerydatapolicy
     import pulumi_gcp.bigtable as __bigtable
     bigtable = __bigtable
     import pulumi_gcp.billing as __billing
@@ -52,6 +54,8 @@ if typing.TYPE_CHECKING:
     cloudfunctionsv2 = __cloudfunctionsv2
     import pulumi_gcp.cloudidentity as __cloudidentity
     cloudidentity = __cloudidentity
+    import pulumi_gcp.cloudids as __cloudids
+    cloudids = __cloudids
     import pulumi_gcp.cloudrun as __cloudrun
     cloudrun = __cloudrun
     import pulumi_gcp.cloudscheduler as __cloudscheduler
@@ -199,6 +203,7 @@ else:
     assuredworkloads = _utilities.lazy_import('pulumi_gcp.assuredworkloads')
     bigquery = _utilities.lazy_import('pulumi_gcp.bigquery')
     bigqueryanalyticshub = _utilities.lazy_import('pulumi_gcp.bigqueryanalyticshub')
+    bigquerydatapolicy = _utilities.lazy_import('pulumi_gcp.bigquerydatapolicy')
     bigtable = _utilities.lazy_import('pulumi_gcp.bigtable')
     billing = _utilities.lazy_import('pulumi_gcp.billing')
     binaryauthorization = _utilities.lazy_import('pulumi_gcp.binaryauthorization')
@@ -210,6 +215,7 @@ else:
     cloudfunctions = _utilities.lazy_import('pulumi_gcp.cloudfunctions')
     cloudfunctionsv2 = _utilities.lazy_import('pulumi_gcp.cloudfunctionsv2')
     cloudidentity = _utilities.lazy_import('pulumi_gcp.cloudidentity')
+    cloudids = _utilities.lazy_import('pulumi_gcp.cloudids')
     cloudrun = _utilities.lazy_import('pulumi_gcp.cloudrun')
     cloudscheduler = _utilities.lazy_import('pulumi_gcp.cloudscheduler')
     cloudtasks = _utilities.lazy_import('pulumi_gcp.cloudtasks')
@@ -868,6 +874,70 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "bigqueryanalyticshub/listing",
+  "fqn": "pulumi_gcp.bigqueryanalyticshub",
+  "classes": {
+   "gcp:bigqueryanalyticshub/listing:Listing": "Listing"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigqueryanalyticshub/listingIamBinding",
+  "fqn": "pulumi_gcp.bigqueryanalyticshub",
+  "classes": {
+   "gcp:bigqueryanalyticshub/listingIamBinding:ListingIamBinding": "ListingIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigqueryanalyticshub/listingIamMember",
+  "fqn": "pulumi_gcp.bigqueryanalyticshub",
+  "classes": {
+   "gcp:bigqueryanalyticshub/listingIamMember:ListingIamMember": "ListingIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigqueryanalyticshub/listingIamPolicy",
+  "fqn": "pulumi_gcp.bigqueryanalyticshub",
+  "classes": {
+   "gcp:bigqueryanalyticshub/listingIamPolicy:ListingIamPolicy": "ListingIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigquerydatapolicy/dataPolicy",
+  "fqn": "pulumi_gcp.bigquerydatapolicy",
+  "classes": {
+   "gcp:bigquerydatapolicy/dataPolicy:DataPolicy": "DataPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigquerydatapolicy/dataPolicyIamBinding",
+  "fqn": "pulumi_gcp.bigquerydatapolicy",
+  "classes": {
+   "gcp:bigquerydatapolicy/dataPolicyIamBinding:DataPolicyIamBinding": "DataPolicyIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigquerydatapolicy/dataPolicyIamMember",
+  "fqn": "pulumi_gcp.bigquerydatapolicy",
+  "classes": {
+   "gcp:bigquerydatapolicy/dataPolicyIamMember:DataPolicyIamMember": "DataPolicyIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigquerydatapolicy/dataPolicyIamPolicy",
+  "fqn": "pulumi_gcp.bigquerydatapolicy",
+  "classes": {
+   "gcp:bigquerydatapolicy/dataPolicyIamPolicy:DataPolicyIamPolicy": "DataPolicyIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "bigtable/gCPolicy",
   "fqn": "pulumi_gcp.bigtable",
   "classes": {
@@ -1264,6 +1334,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.cloudidentity",
   "classes": {
    "gcp:cloudidentity/groupMembership:GroupMembership": "GroupMembership"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudids/endpoint",
+  "fqn": "pulumi_gcp.cloudids",
+  "classes": {
+   "gcp:cloudids/endpoint:Endpoint": "Endpoint"
   }
  },
  {
@@ -2048,6 +2126,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy": "RegionTargetHttpsProxy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionTargetTcpProxy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy": "RegionTargetTcpProxy"
   }
  },
  {
@@ -4236,6 +4322,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "orgpolicy/customConstraint",
+  "fqn": "pulumi_gcp.orgpolicy",
+  "classes": {
+   "gcp:orgpolicy/customConstraint:CustomConstraint": "CustomConstraint"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "orgpolicy/policy",
   "fqn": "pulumi_gcp.orgpolicy",
   "classes": {
@@ -5072,6 +5166,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType": "AiFeatureStoreEntityType"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiFeatureStoreEntityTypeFeature",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature": "AiFeatureStoreEntityTypeFeature"
   }
  },
  {

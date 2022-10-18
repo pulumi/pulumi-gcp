@@ -11,6 +11,7 @@ from .. import _utilities
 
 __all__ = [
     'ConnectorSubnet',
+    'GetConnectorSubnetResult',
 ]
 
 @pulumi.output_type
@@ -60,6 +61,31 @@ class ConnectorSubnet(dict):
         """
         Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
         """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetConnectorSubnetResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 project_id: str):
+        """
+        :param str name: Name of the resource.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
         return pulumi.get(self, "project_id")
 
 

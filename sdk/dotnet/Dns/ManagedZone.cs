@@ -238,6 +238,31 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// ### Dns Managed Zone Cloud Logging
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cloud_logging_enabled_zone = new Gcp.Dns.ManagedZone("cloud-logging-enabled-zone", new()
+    ///     {
+    ///         CloudLoggingConfig = new Gcp.Dns.Inputs.ManagedZoneCloudLoggingConfigArgs
+    ///         {
+    ///             EnableLogging = true,
+    ///         },
+    ///         Description = "Example cloud logging enabled DNS zone",
+    ///         DnsName = "services.example.com.",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -258,6 +283,13 @@ namespace Pulumi.Gcp.Dns
     [GcpResourceType("gcp:dns/managedZone:ManagedZone")]
     public partial class ManagedZone : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Cloud logging configuration
+        /// Structure is documented below.
+        /// </summary>
+        [Output("cloudLoggingConfig")]
+        public Output<Outputs.ManagedZoneCloudLoggingConfig> CloudLoggingConfig { get; private set; } = null!;
+
         /// <summary>
         /// The time that this resource was created on the server. This is in RFC3339 text format.
         /// </summary>
@@ -417,6 +449,13 @@ namespace Pulumi.Gcp.Dns
     public sealed class ManagedZoneArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Cloud logging configuration
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cloudLoggingConfig")]
+        public Input<Inputs.ManagedZoneCloudLoggingConfigArgs>? CloudLoggingConfig { get; set; }
+
+        /// <summary>
         /// A textual description field. Defaults to 'Managed by Pulumi'.
         /// </summary>
         [Input("description")]
@@ -525,6 +564,13 @@ namespace Pulumi.Gcp.Dns
 
     public sealed class ManagedZoneState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Cloud logging configuration
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cloudLoggingConfig")]
+        public Input<Inputs.ManagedZoneCloudLoggingConfigGetArgs>? CloudLoggingConfig { get; set; }
+
         /// <summary>
         /// The time that this resource was created on the server. This is in RFC3339 text format.
         /// </summary>

@@ -133,6 +133,8 @@ type Bucket struct {
 
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors BucketCorArrayOutput `pulumi:"cors"`
+	// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+	CustomPlacementConfig BucketCustomPlacementConfigPtrOutput `pulumi:"customPlacementConfig"`
 	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
 	DefaultEventBasedHold pulumi.BoolPtrOutput `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration. Structure is documented below.
@@ -145,7 +147,7 @@ type Bucket struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	LifecycleRules BucketLifecycleRuleArrayOutput `pulumi:"lifecycleRules"`
-	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging BucketLoggingPtrOutput `pulumi:"logging"`
@@ -208,6 +210,8 @@ func GetBucket(ctx *pulumi.Context,
 type bucketState struct {
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors []BucketCor `pulumi:"cors"`
+	// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+	CustomPlacementConfig *BucketCustomPlacementConfig `pulumi:"customPlacementConfig"`
 	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
 	DefaultEventBasedHold *bool `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration. Structure is documented below.
@@ -220,7 +224,7 @@ type bucketState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	LifecycleRules []BucketLifecycleRule `pulumi:"lifecycleRules"`
-	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
 	Location *string `pulumi:"location"`
 	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging *BucketLogging `pulumi:"logging"`
@@ -252,6 +256,8 @@ type bucketState struct {
 type BucketState struct {
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors BucketCorArrayInput
+	// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+	CustomPlacementConfig BucketCustomPlacementConfigPtrInput
 	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
 	DefaultEventBasedHold pulumi.BoolPtrInput
 	// The bucket's encryption configuration. Structure is documented below.
@@ -264,7 +270,7 @@ type BucketState struct {
 	Labels pulumi.StringMapInput
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	LifecycleRules BucketLifecycleRuleArrayInput
-	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
 	Location pulumi.StringPtrInput
 	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging BucketLoggingPtrInput
@@ -300,6 +306,8 @@ func (BucketState) ElementType() reflect.Type {
 type bucketArgs struct {
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors []BucketCor `pulumi:"cors"`
+	// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+	CustomPlacementConfig *BucketCustomPlacementConfig `pulumi:"customPlacementConfig"`
 	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
 	DefaultEventBasedHold *bool `pulumi:"defaultEventBasedHold"`
 	// The bucket's encryption configuration. Structure is documented below.
@@ -312,7 +320,7 @@ type bucketArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	LifecycleRules []BucketLifecycleRule `pulumi:"lifecycleRules"`
-	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
 	Location string `pulumi:"location"`
 	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging *BucketLogging `pulumi:"logging"`
@@ -341,6 +349,8 @@ type bucketArgs struct {
 type BucketArgs struct {
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors BucketCorArrayInput
+	// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+	CustomPlacementConfig BucketCustomPlacementConfigPtrInput
 	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
 	DefaultEventBasedHold pulumi.BoolPtrInput
 	// The bucket's encryption configuration. Structure is documented below.
@@ -353,7 +363,7 @@ type BucketArgs struct {
 	Labels pulumi.StringMapInput
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	LifecycleRules BucketLifecycleRuleArrayInput
-	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
 	Location pulumi.StringInput
 	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging BucketLoggingPtrInput
@@ -470,6 +480,11 @@ func (o BucketOutput) Cors() BucketCorArrayOutput {
 	return o.ApplyT(func(v *Bucket) BucketCorArrayOutput { return v.Cors }).(BucketCorArrayOutput)
 }
 
+// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+func (o BucketOutput) CustomPlacementConfig() BucketCustomPlacementConfigPtrOutput {
+	return o.ApplyT(func(v *Bucket) BucketCustomPlacementConfigPtrOutput { return v.CustomPlacementConfig }).(BucketCustomPlacementConfigPtrOutput)
+}
+
 // Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
 func (o BucketOutput) DefaultEventBasedHold() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.BoolPtrOutput { return v.DefaultEventBasedHold }).(pulumi.BoolPtrOutput)
@@ -497,7 +512,7 @@ func (o BucketOutput) LifecycleRules() BucketLifecycleRuleArrayOutput {
 	return o.ApplyT(func(v *Bucket) BucketLifecycleRuleArrayOutput { return v.LifecycleRules }).(BucketLifecycleRuleArrayOutput)
 }
 
-// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
 func (o BucketOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

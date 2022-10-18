@@ -10,6 +10,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'ConnectionProfileBigqueryProfileArgs',
     'ConnectionProfileForwardSshConnectivityArgs',
     'ConnectionProfileGcsProfileArgs',
     'ConnectionProfileMysqlProfileArgs',
@@ -18,6 +19,12 @@ __all__ = [
     'ConnectionProfilePostgresqlProfileArgs',
     'PrivateConnectionVpcPeeringConfigArgs',
 ]
+
+@pulumi.input_type
+class ConnectionProfileBigqueryProfileArgs:
+    def __init__(__self__):
+        pass
+
 
 @pulumi.input_type
 class ConnectionProfileForwardSshConnectivityArgs:

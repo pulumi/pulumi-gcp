@@ -10,6 +10,143 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type InstanceCryptoKeyConfig struct {
+	// The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	KeyReference string `pulumi:"keyReference"`
+}
+
+// InstanceCryptoKeyConfigInput is an input type that accepts InstanceCryptoKeyConfigArgs and InstanceCryptoKeyConfigOutput values.
+// You can construct a concrete instance of `InstanceCryptoKeyConfigInput` via:
+//
+//	InstanceCryptoKeyConfigArgs{...}
+type InstanceCryptoKeyConfigInput interface {
+	pulumi.Input
+
+	ToInstanceCryptoKeyConfigOutput() InstanceCryptoKeyConfigOutput
+	ToInstanceCryptoKeyConfigOutputWithContext(context.Context) InstanceCryptoKeyConfigOutput
+}
+
+type InstanceCryptoKeyConfigArgs struct {
+	// The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	KeyReference pulumi.StringInput `pulumi:"keyReference"`
+}
+
+func (InstanceCryptoKeyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCryptoKeyConfig)(nil)).Elem()
+}
+
+func (i InstanceCryptoKeyConfigArgs) ToInstanceCryptoKeyConfigOutput() InstanceCryptoKeyConfigOutput {
+	return i.ToInstanceCryptoKeyConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceCryptoKeyConfigArgs) ToInstanceCryptoKeyConfigOutputWithContext(ctx context.Context) InstanceCryptoKeyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCryptoKeyConfigOutput)
+}
+
+func (i InstanceCryptoKeyConfigArgs) ToInstanceCryptoKeyConfigPtrOutput() InstanceCryptoKeyConfigPtrOutput {
+	return i.ToInstanceCryptoKeyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceCryptoKeyConfigArgs) ToInstanceCryptoKeyConfigPtrOutputWithContext(ctx context.Context) InstanceCryptoKeyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCryptoKeyConfigOutput).ToInstanceCryptoKeyConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceCryptoKeyConfigPtrInput is an input type that accepts InstanceCryptoKeyConfigArgs, InstanceCryptoKeyConfigPtr and InstanceCryptoKeyConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceCryptoKeyConfigPtrInput` via:
+//
+//	        InstanceCryptoKeyConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceCryptoKeyConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceCryptoKeyConfigPtrOutput() InstanceCryptoKeyConfigPtrOutput
+	ToInstanceCryptoKeyConfigPtrOutputWithContext(context.Context) InstanceCryptoKeyConfigPtrOutput
+}
+
+type instanceCryptoKeyConfigPtrType InstanceCryptoKeyConfigArgs
+
+func InstanceCryptoKeyConfigPtr(v *InstanceCryptoKeyConfigArgs) InstanceCryptoKeyConfigPtrInput {
+	return (*instanceCryptoKeyConfigPtrType)(v)
+}
+
+func (*instanceCryptoKeyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceCryptoKeyConfig)(nil)).Elem()
+}
+
+func (i *instanceCryptoKeyConfigPtrType) ToInstanceCryptoKeyConfigPtrOutput() InstanceCryptoKeyConfigPtrOutput {
+	return i.ToInstanceCryptoKeyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceCryptoKeyConfigPtrType) ToInstanceCryptoKeyConfigPtrOutputWithContext(ctx context.Context) InstanceCryptoKeyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCryptoKeyConfigPtrOutput)
+}
+
+type InstanceCryptoKeyConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceCryptoKeyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceCryptoKeyConfig)(nil)).Elem()
+}
+
+func (o InstanceCryptoKeyConfigOutput) ToInstanceCryptoKeyConfigOutput() InstanceCryptoKeyConfigOutput {
+	return o
+}
+
+func (o InstanceCryptoKeyConfigOutput) ToInstanceCryptoKeyConfigOutputWithContext(ctx context.Context) InstanceCryptoKeyConfigOutput {
+	return o
+}
+
+func (o InstanceCryptoKeyConfigOutput) ToInstanceCryptoKeyConfigPtrOutput() InstanceCryptoKeyConfigPtrOutput {
+	return o.ToInstanceCryptoKeyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceCryptoKeyConfigOutput) ToInstanceCryptoKeyConfigPtrOutputWithContext(ctx context.Context) InstanceCryptoKeyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceCryptoKeyConfig) *InstanceCryptoKeyConfig {
+		return &v
+	}).(InstanceCryptoKeyConfigPtrOutput)
+}
+
+// The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*/locations/*/keyRings/*/cryptoKeys/*.
+func (o InstanceCryptoKeyConfigOutput) KeyReference() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceCryptoKeyConfig) string { return v.KeyReference }).(pulumi.StringOutput)
+}
+
+type InstanceCryptoKeyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceCryptoKeyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceCryptoKeyConfig)(nil)).Elem()
+}
+
+func (o InstanceCryptoKeyConfigPtrOutput) ToInstanceCryptoKeyConfigPtrOutput() InstanceCryptoKeyConfigPtrOutput {
+	return o
+}
+
+func (o InstanceCryptoKeyConfigPtrOutput) ToInstanceCryptoKeyConfigPtrOutputWithContext(ctx context.Context) InstanceCryptoKeyConfigPtrOutput {
+	return o
+}
+
+func (o InstanceCryptoKeyConfigPtrOutput) Elem() InstanceCryptoKeyConfigOutput {
+	return o.ApplyT(func(v *InstanceCryptoKeyConfig) InstanceCryptoKeyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceCryptoKeyConfig
+		return ret
+	}).(InstanceCryptoKeyConfigOutput)
+}
+
+// The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*/locations/*/keyRings/*/cryptoKeys/*.
+func (o InstanceCryptoKeyConfigPtrOutput) KeyReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceCryptoKeyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyReference
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceNetworkConfig struct {
 	// The IP range in CIDR notation to use for the managed Data Fusion instance
 	// nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
@@ -179,8 +316,12 @@ func (o InstanceNetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCryptoKeyConfigInput)(nil)).Elem(), InstanceCryptoKeyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCryptoKeyConfigPtrInput)(nil)).Elem(), InstanceCryptoKeyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigPtrInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
+	pulumi.RegisterOutputType(InstanceCryptoKeyConfigOutput{})
+	pulumi.RegisterOutputType(InstanceCryptoKeyConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkConfigOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkConfigPtrOutput{})
 }

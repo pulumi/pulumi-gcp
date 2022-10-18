@@ -15,28 +15,37 @@ __all__ = ['ReservationArgs', 'Reservation']
 class ReservationArgs:
     def __init__(__self__, *,
                  slot_capacity: pulumi.Input[int],
+                 concurrency: Optional[pulumi.Input[int]] = None,
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Reservation resource.
         :param pulumi.Input[int] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
                unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
+        :param pulumi.Input[int] concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within
                the same admin project. If true, a query using this reservation will execute with the slot
                capacity specified above at most.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
+        :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+               If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
         :param pulumi.Input[str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "slot_capacity", slot_capacity)
+        if concurrency is not None:
+            pulumi.set(__self__, "concurrency", concurrency)
         if ignore_idle_slots is not None:
             pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if multi_region_auxiliary is not None:
+            pulumi.set(__self__, "multi_region_auxiliary", multi_region_auxiliary)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -54,6 +63,18 @@ class ReservationArgs:
     @slot_capacity.setter
     def slot_capacity(self, value: pulumi.Input[int]):
         pulumi.set(self, "slot_capacity", value)
+
+    @property
+    @pulumi.getter
+    def concurrency(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+        """
+        return pulumi.get(self, "concurrency")
+
+    @concurrency.setter
+    def concurrency(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "concurrency", value)
 
     @property
     @pulumi.getter(name="ignoreIdleSlots")
@@ -81,6 +102,19 @@ class ReservationArgs:
     @location.setter
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="multiRegionAuxiliary")
+    def multi_region_auxiliary(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+        If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+        """
+        return pulumi.get(self, "multi_region_auxiliary")
+
+    @multi_region_auxiliary.setter
+    def multi_region_auxiliary(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multi_region_auxiliary", value)
 
     @property
     @pulumi.getter
@@ -111,34 +145,55 @@ class ReservationArgs:
 @pulumi.input_type
 class _ReservationState:
     def __init__(__self__, *,
+                 concurrency: Optional[pulumi.Input[int]] = None,
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  slot_capacity: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Reservation resources.
+        :param pulumi.Input[int] concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within
                the same admin project. If true, a query using this reservation will execute with the slot
                capacity specified above at most.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
+        :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+               If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
         :param pulumi.Input[str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
                unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
         """
+        if concurrency is not None:
+            pulumi.set(__self__, "concurrency", concurrency)
         if ignore_idle_slots is not None:
             pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if multi_region_auxiliary is not None:
+            pulumi.set(__self__, "multi_region_auxiliary", multi_region_auxiliary)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if slot_capacity is not None:
             pulumi.set(__self__, "slot_capacity", slot_capacity)
+
+    @property
+    @pulumi.getter
+    def concurrency(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+        """
+        return pulumi.get(self, "concurrency")
+
+    @concurrency.setter
+    def concurrency(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "concurrency", value)
 
     @property
     @pulumi.getter(name="ignoreIdleSlots")
@@ -166,6 +221,19 @@ class _ReservationState:
     @location.setter
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="multiRegionAuxiliary")
+    def multi_region_auxiliary(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+        If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+        """
+        return pulumi.get(self, "multi_region_auxiliary")
+
+    @multi_region_auxiliary.setter
+    def multi_region_auxiliary(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multi_region_auxiliary", value)
 
     @property
     @pulumi.getter
@@ -211,8 +279,10 @@ class Reservation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 concurrency: Optional[pulumi.Input[int]] = None,
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  slot_capacity: Optional[pulumi.Input[int]] = None,
@@ -222,7 +292,7 @@ class Reservation(pulumi.CustomResource):
 
         To get more information about Reservation, see:
 
-        * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1beta1/projects.locations.reservations/create)
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations/create)
         * How-to Guides
             * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 
@@ -234,6 +304,7 @@ class Reservation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         reservation = gcp.bigquery.Reservation("reservation",
+            concurrency=0,
             ignore_idle_slots=False,
             location="asia-northeast1",
             slot_capacity=0)
@@ -257,11 +328,14 @@ class Reservation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within
                the same admin project. If true, a query using this reservation will execute with the slot
                capacity specified above at most.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
+        :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+               If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
         :param pulumi.Input[str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -279,7 +353,7 @@ class Reservation(pulumi.CustomResource):
 
         To get more information about Reservation, see:
 
-        * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1beta1/projects.locations.reservations/create)
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations/create)
         * How-to Guides
             * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 
@@ -291,6 +365,7 @@ class Reservation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         reservation = gcp.bigquery.Reservation("reservation",
+            concurrency=0,
             ignore_idle_slots=False,
             location="asia-northeast1",
             slot_capacity=0)
@@ -327,8 +402,10 @@ class Reservation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 concurrency: Optional[pulumi.Input[int]] = None,
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  slot_capacity: Optional[pulumi.Input[int]] = None,
@@ -341,8 +418,10 @@ class Reservation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ReservationArgs.__new__(ReservationArgs)
 
+            __props__.__dict__["concurrency"] = concurrency
             __props__.__dict__["ignore_idle_slots"] = ignore_idle_slots
             __props__.__dict__["location"] = location
+            __props__.__dict__["multi_region_auxiliary"] = multi_region_auxiliary
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             if slot_capacity is None and not opts.urn:
@@ -358,8 +437,10 @@ class Reservation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            concurrency: Optional[pulumi.Input[int]] = None,
             ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
             location: Optional[pulumi.Input[str]] = None,
+            multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             slot_capacity: Optional[pulumi.Input[int]] = None) -> 'Reservation':
@@ -370,11 +451,14 @@ class Reservation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within
                the same admin project. If true, a query using this reservation will execute with the slot
                capacity specified above at most.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
+        :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+               If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
         :param pulumi.Input[str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -385,12 +469,22 @@ class Reservation(pulumi.CustomResource):
 
         __props__ = _ReservationState.__new__(_ReservationState)
 
+        __props__.__dict__["concurrency"] = concurrency
         __props__.__dict__["ignore_idle_slots"] = ignore_idle_slots
         __props__.__dict__["location"] = location
+        __props__.__dict__["multi_region_auxiliary"] = multi_region_auxiliary
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["slot_capacity"] = slot_capacity
         return Reservation(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def concurrency(self) -> pulumi.Output[Optional[int]]:
+        """
+        Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+        """
+        return pulumi.get(self, "concurrency")
 
     @property
     @pulumi.getter(name="ignoreIdleSlots")
@@ -410,6 +504,15 @@ class Reservation(pulumi.CustomResource):
         Examples: US, EU, asia-northeast1. The default value is US.
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="multiRegionAuxiliary")
+    def multi_region_auxiliary(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+        If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+        """
+        return pulumi.get(self, "multi_region_auxiliary")
 
     @property
     @pulumi.getter

@@ -266,6 +266,38 @@ import (
 //	}
 //
 // ```
+// ### Dns Managed Zone Cloud Logging
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dns.NewManagedZone(ctx, "cloud-logging-enabled-zone", &dns.ManagedZoneArgs{
+//				CloudLoggingConfig: &dns.ManagedZoneCloudLoggingConfigArgs{
+//					EnableLogging: pulumi.Bool(true),
+//				},
+//				Description: pulumi.String("Example cloud logging enabled DNS zone"),
+//				DnsName:     pulumi.String("services.example.com."),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -291,6 +323,9 @@ import (
 type ManagedZone struct {
 	pulumi.CustomResourceState
 
+	// Cloud logging configuration
+	// Structure is documented below.
+	CloudLoggingConfig ManagedZoneCloudLoggingConfigOutput `pulumi:"cloudLoggingConfig"`
 	// The time that this resource was created on the server. This is in RFC3339 text format.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// A textual description field. Defaults to 'Managed by Pulumi'.
@@ -376,6 +411,9 @@ func GetManagedZone(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ManagedZone resources.
 type managedZoneState struct {
+	// Cloud logging configuration
+	// Structure is documented below.
+	CloudLoggingConfig *ManagedZoneCloudLoggingConfig `pulumi:"cloudLoggingConfig"`
 	// The time that this resource was created on the server. This is in RFC3339 text format.
 	CreationTime *string `pulumi:"creationTime"`
 	// A textual description field. Defaults to 'Managed by Pulumi'.
@@ -427,6 +465,9 @@ type managedZoneState struct {
 }
 
 type ManagedZoneState struct {
+	// Cloud logging configuration
+	// Structure is documented below.
+	CloudLoggingConfig ManagedZoneCloudLoggingConfigPtrInput
 	// The time that this resource was created on the server. This is in RFC3339 text format.
 	CreationTime pulumi.StringPtrInput
 	// A textual description field. Defaults to 'Managed by Pulumi'.
@@ -482,6 +523,9 @@ func (ManagedZoneState) ElementType() reflect.Type {
 }
 
 type managedZoneArgs struct {
+	// Cloud logging configuration
+	// Structure is documented below.
+	CloudLoggingConfig *ManagedZoneCloudLoggingConfig `pulumi:"cloudLoggingConfig"`
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description *string `pulumi:"description"`
 	// The DNS name of this managed zone, for instance "example.com.".
@@ -528,6 +572,9 @@ type managedZoneArgs struct {
 
 // The set of arguments for constructing a ManagedZone resource.
 type ManagedZoneArgs struct {
+	// Cloud logging configuration
+	// Structure is documented below.
+	CloudLoggingConfig ManagedZoneCloudLoggingConfigPtrInput
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringPtrInput
 	// The DNS name of this managed zone, for instance "example.com.".
@@ -657,6 +704,12 @@ func (o ManagedZoneOutput) ToManagedZoneOutput() ManagedZoneOutput {
 
 func (o ManagedZoneOutput) ToManagedZoneOutputWithContext(ctx context.Context) ManagedZoneOutput {
 	return o
+}
+
+// Cloud logging configuration
+// Structure is documented below.
+func (o ManagedZoneOutput) CloudLoggingConfig() ManagedZoneCloudLoggingConfigOutput {
+	return o.ApplyT(func(v *ManagedZone) ManagedZoneCloudLoggingConfigOutput { return v.CloudLoggingConfig }).(ManagedZoneCloudLoggingConfigOutput)
 }
 
 // The time that this resource was created on the server. This is in RFC3339 text format.

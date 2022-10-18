@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? GpuPartitionSize;
         /// <summary>
+        /// Configuration for GPU sharing. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNodeConfigGuestAcceleratorGpuSharingConfig? GpuSharingConfig;
+        /// <summary>
         /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         /// </summary>
         public readonly string Type;
@@ -32,10 +36,13 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? gpuPartitionSize,
 
+            Outputs.ClusterNodeConfigGuestAcceleratorGpuSharingConfig? gpuSharingConfig,
+
             string type)
         {
             Count = count;
             GpuPartitionSize = gpuPartitionSize;
+            GpuSharingConfig = gpuSharingConfig;
             Type = type;
         }
     }

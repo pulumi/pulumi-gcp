@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.storage.outputs.GetBucketCor;
+import com.pulumi.gcp.storage.outputs.GetBucketCustomPlacementConfig;
 import com.pulumi.gcp.storage.outputs.GetBucketEncryption;
 import com.pulumi.gcp.storage.outputs.GetBucketLifecycleRule;
 import com.pulumi.gcp.storage.outputs.GetBucketLogging;
@@ -20,6 +21,7 @@ import java.util.Objects;
 @CustomType
 public final class GetBucketResult {
     private List<GetBucketCor> cors;
+    private List<GetBucketCustomPlacementConfig> customPlacementConfigs;
     private Boolean defaultEventBasedHold;
     private List<GetBucketEncryption> encryptions;
     private Boolean forceDestroy;
@@ -47,6 +49,9 @@ public final class GetBucketResult {
     private GetBucketResult() {}
     public List<GetBucketCor> cors() {
         return this.cors;
+    }
+    public List<GetBucketCustomPlacementConfig> customPlacementConfigs() {
+        return this.customPlacementConfigs;
     }
     public Boolean defaultEventBasedHold() {
         return this.defaultEventBasedHold;
@@ -120,6 +125,7 @@ public final class GetBucketResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetBucketCor> cors;
+        private List<GetBucketCustomPlacementConfig> customPlacementConfigs;
         private Boolean defaultEventBasedHold;
         private List<GetBucketEncryption> encryptions;
         private Boolean forceDestroy;
@@ -143,6 +149,7 @@ public final class GetBucketResult {
         public Builder(GetBucketResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cors = defaults.cors;
+    	      this.customPlacementConfigs = defaults.customPlacementConfigs;
     	      this.defaultEventBasedHold = defaults.defaultEventBasedHold;
     	      this.encryptions = defaults.encryptions;
     	      this.forceDestroy = defaults.forceDestroy;
@@ -171,6 +178,14 @@ public final class GetBucketResult {
         }
         public Builder cors(GetBucketCor... cors) {
             return cors(List.of(cors));
+        }
+        @CustomType.Setter
+        public Builder customPlacementConfigs(List<GetBucketCustomPlacementConfig> customPlacementConfigs) {
+            this.customPlacementConfigs = Objects.requireNonNull(customPlacementConfigs);
+            return this;
+        }
+        public Builder customPlacementConfigs(GetBucketCustomPlacementConfig... customPlacementConfigs) {
+            return customPlacementConfigs(List.of(customPlacementConfigs));
         }
         @CustomType.Setter
         public Builder defaultEventBasedHold(Boolean defaultEventBasedHold) {
@@ -288,6 +303,7 @@ public final class GetBucketResult {
         public GetBucketResult build() {
             final var o = new GetBucketResult();
             o.cors = cors;
+            o.customPlacementConfigs = customPlacementConfigs;
             o.defaultEventBasedHold = defaultEventBasedHold;
             o.encryptions = encryptions;
             o.forceDestroy = forceDestroy;

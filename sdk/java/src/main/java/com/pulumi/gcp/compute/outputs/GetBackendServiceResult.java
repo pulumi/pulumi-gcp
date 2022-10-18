@@ -30,6 +30,7 @@ public final class GetBackendServiceResult {
     private List<GetBackendServiceBackend> backends;
     private List<GetBackendServiceCdnPolicy> cdnPolicies;
     private List<GetBackendServiceCircuitBreaker> circuitBreakers;
+    private String compressionMode;
     /**
      * @return Time for which instance will be drained (not accept new connections, but still work to finish started ones).
      * 
@@ -115,6 +116,9 @@ public final class GetBackendServiceResult {
     }
     public List<GetBackendServiceCircuitBreaker> circuitBreakers() {
         return this.circuitBreakers;
+    }
+    public String compressionMode() {
+        return this.compressionMode;
     }
     /**
      * @return Time for which instance will be drained (not accept new connections, but still work to finish started ones).
@@ -246,6 +250,7 @@ public final class GetBackendServiceResult {
         private List<GetBackendServiceBackend> backends;
         private List<GetBackendServiceCdnPolicy> cdnPolicies;
         private List<GetBackendServiceCircuitBreaker> circuitBreakers;
+        private String compressionMode;
         private Integer connectionDrainingTimeoutSec;
         private List<GetBackendServiceConsistentHash> consistentHash;
         private String creationTimestamp;
@@ -277,6 +282,7 @@ public final class GetBackendServiceResult {
     	      this.backends = defaults.backends;
     	      this.cdnPolicies = defaults.cdnPolicies;
     	      this.circuitBreakers = defaults.circuitBreakers;
+    	      this.compressionMode = defaults.compressionMode;
     	      this.connectionDrainingTimeoutSec = defaults.connectionDrainingTimeoutSec;
     	      this.consistentHash = defaults.consistentHash;
     	      this.creationTimestamp = defaults.creationTimestamp;
@@ -331,6 +337,11 @@ public final class GetBackendServiceResult {
         }
         public Builder circuitBreakers(GetBackendServiceCircuitBreaker... circuitBreakers) {
             return circuitBreakers(List.of(circuitBreakers));
+        }
+        @CustomType.Setter
+        public Builder compressionMode(String compressionMode) {
+            this.compressionMode = Objects.requireNonNull(compressionMode);
+            return this;
         }
         @CustomType.Setter
         public Builder connectionDrainingTimeoutSec(Integer connectionDrainingTimeoutSec) {
@@ -482,6 +493,7 @@ public final class GetBackendServiceResult {
             o.backends = backends;
             o.cdnPolicies = cdnPolicies;
             o.circuitBreakers = circuitBreakers;
+            o.compressionMode = compressionMode;
             o.connectionDrainingTimeoutSec = connectionDrainingTimeoutSec;
             o.consistentHash = consistentHash;
             o.creationTimestamp = creationTimestamp;

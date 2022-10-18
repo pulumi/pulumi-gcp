@@ -522,6 +522,22 @@ public class BackendService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.circuitBreakers);
     }
     /**
+     * Compress text responses using Brotli or gzip compression, based on the client&#39;s Accept-Encoding header.
+     * Possible values are `AUTOMATIC` and `DISABLED`.
+     * 
+     */
+    @Export(name="compressionMode", type=String.class, parameters={})
+    private Output</* @Nullable */ String> compressionMode;
+
+    /**
+     * @return Compress text responses using Brotli or gzip compression, based on the client&#39;s Accept-Encoding header.
+     * Possible values are `AUTOMATIC` and `DISABLED`.
+     * 
+     */
+    public Output<Optional<String>> compressionMode() {
+        return Codegen.optional(this.compressionMode);
+    }
+    /**
      * Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
      * 

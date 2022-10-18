@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.ClusterNodeConfigGuestAcceleratorGpuSharingConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -22,6 +23,11 @@ public final class ClusterNodeConfigGuestAccelerator {
      * 
      */
     private @Nullable String gpuPartitionSize;
+    /**
+     * @return Configuration for GPU sharing. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterNodeConfigGuestAcceleratorGpuSharingConfig gpuSharingConfig;
     /**
      * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
@@ -44,6 +50,13 @@ public final class ClusterNodeConfigGuestAccelerator {
         return Optional.ofNullable(this.gpuPartitionSize);
     }
     /**
+     * @return Configuration for GPU sharing. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterNodeConfigGuestAcceleratorGpuSharingConfig> gpuSharingConfig() {
+        return Optional.ofNullable(this.gpuSharingConfig);
+    }
+    /**
      * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
@@ -62,12 +75,14 @@ public final class ClusterNodeConfigGuestAccelerator {
     public static final class Builder {
         private Integer count;
         private @Nullable String gpuPartitionSize;
+        private @Nullable ClusterNodeConfigGuestAcceleratorGpuSharingConfig gpuSharingConfig;
         private String type;
         public Builder() {}
         public Builder(ClusterNodeConfigGuestAccelerator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
     	      this.gpuPartitionSize = defaults.gpuPartitionSize;
+    	      this.gpuSharingConfig = defaults.gpuSharingConfig;
     	      this.type = defaults.type;
         }
 
@@ -82,6 +97,11 @@ public final class ClusterNodeConfigGuestAccelerator {
             return this;
         }
         @CustomType.Setter
+        public Builder gpuSharingConfig(@Nullable ClusterNodeConfigGuestAcceleratorGpuSharingConfig gpuSharingConfig) {
+            this.gpuSharingConfig = gpuSharingConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
@@ -90,6 +110,7 @@ public final class ClusterNodeConfigGuestAccelerator {
             final var o = new ClusterNodeConfigGuestAccelerator();
             o.count = count;
             o.gpuPartitionSize = gpuPartitionSize;
+            o.gpuSharingConfig = gpuSharingConfig;
             o.type = type;
             return o;
         }

@@ -312,6 +312,21 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+     * 
+     */
+    @Import(name="serviceAccount")
+    private @Nullable Output<String> serviceAccount;
+
+    /**
+     * @return The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+     * 
+     */
+    public Optional<Output<String>> serviceAccount() {
+        return Optional.ofNullable(this.serviceAccount);
+    }
+
+    /**
      * Whether multiple requests can be dispatched to this version at once.
      * 
      */
@@ -378,6 +393,7 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
         this.runtime = $.runtime;
         this.runtimeApiVersion = $.runtimeApiVersion;
         this.service = $.service;
+        this.serviceAccount = $.serviceAccount;
         this.threadsafe = $.threadsafe;
         this.versionId = $.versionId;
         this.vpcAccessConnector = $.vpcAccessConnector;
@@ -820,6 +836,27 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
          */
         public Builder service(String service) {
             return service(Output.of(service));
+        }
+
+        /**
+         * @param serviceAccount The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(@Nullable Output<String> serviceAccount) {
+            $.serviceAccount = serviceAccount;
+            return this;
+        }
+
+        /**
+         * @param serviceAccount The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(String serviceAccount) {
+            return serviceAccount(Output.of(serviceAccount));
         }
 
         /**

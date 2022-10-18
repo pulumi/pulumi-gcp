@@ -3467,6 +3467,11 @@ export namespace bigquery {
          */
         autodetect: boolean;
         /**
+         * Additional options if `sourceFormat` is set to  
+         * "AVRO".  Structure is documented below.
+         */
+        avroOptions?: outputs.bigquery.TableExternalDataConfigurationAvroOptions;
+        /**
          * The compression type of the data source.
          * Valid values are "NONE" or "GZIP".
          */
@@ -3537,6 +3542,15 @@ export namespace bigquery {
          * your data in Google Cloud.
          */
         sourceUris: string[];
+    }
+
+    export interface TableExternalDataConfigurationAvroOptions {
+        /**
+         * If is set to true, indicates whether  
+         * to interpret logical types as the corresponding BigQuery data type
+         * (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+         */
+        useAvroLogicalTypes: boolean;
     }
 
     export interface TableExternalDataConfigurationCsvOptions {
@@ -3714,6 +3728,70 @@ export namespace bigqueryanalyticshub {
     }
 
     export interface DataExchangeIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface ListingBigqueryDataset {
+        /**
+         * Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
+         */
+        dataset: string;
+    }
+
+    export interface ListingDataProvider {
+        /**
+         * Name of the listing publisher.
+         */
+        name: string;
+        /**
+         * Email or URL of the listing publisher.
+         */
+        primaryContact?: string;
+    }
+
+    export interface ListingIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface ListingIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface ListingPublisher {
+        /**
+         * Name of the listing publisher.
+         */
+        name: string;
+        /**
+         * Email or URL of the listing publisher.
+         */
+        primaryContact?: string;
+    }
+
+}
+
+export namespace bigquerydatapolicy {
+    export interface DataPolicyDataMaskingPolicy {
+        /**
+         * The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
+         * Possible values are `SHA256`, `ALWAYS_NULL`, and `DEFAULT_MASKING_VALUE`.
+         */
+        predefinedExpression: string;
+    }
+
+    export interface DataPolicyIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface DataPolicyIamMemberCondition {
         description?: string;
         expression: string;
         title: string;
@@ -7254,6 +7332,90 @@ export namespace cloudfunctionsv2 {
         version: string;
     }
 
+    export interface GetFunctionBuildConfig {
+        build: string;
+        dockerRepository: string;
+        entryPoint: string;
+        environmentVariables: {[key: string]: string};
+        runtime: string;
+        sources: outputs.cloudfunctionsv2.GetFunctionBuildConfigSource[];
+        workerPool: string;
+    }
+
+    export interface GetFunctionBuildConfigSource {
+        repoSources: outputs.cloudfunctionsv2.GetFunctionBuildConfigSourceRepoSource[];
+        storageSources: outputs.cloudfunctionsv2.GetFunctionBuildConfigSourceStorageSource[];
+    }
+
+    export interface GetFunctionBuildConfigSourceRepoSource {
+        branchName: string;
+        commitSha: string;
+        dir: string;
+        invertRegex: boolean;
+        projectId: string;
+        repoName: string;
+        tagName: string;
+    }
+
+    export interface GetFunctionBuildConfigSourceStorageSource {
+        bucket: string;
+        generation: number;
+        object: string;
+    }
+
+    export interface GetFunctionEventTrigger {
+        eventFilters: outputs.cloudfunctionsv2.GetFunctionEventTriggerEventFilter[];
+        eventType: string;
+        pubsubTopic: string;
+        retryPolicy: string;
+        serviceAccountEmail: string;
+        trigger: string;
+        triggerRegion: string;
+    }
+
+    export interface GetFunctionEventTriggerEventFilter {
+        attribute: string;
+        operator: string;
+        value: string;
+    }
+
+    export interface GetFunctionServiceConfig {
+        allTrafficOnLatestRevision: boolean;
+        availableMemory: string;
+        environmentVariables: {[key: string]: string};
+        gcfUri: string;
+        ingressSettings: string;
+        maxInstanceCount: number;
+        minInstanceCount: number;
+        secretEnvironmentVariables: outputs.cloudfunctionsv2.GetFunctionServiceConfigSecretEnvironmentVariable[];
+        secretVolumes: outputs.cloudfunctionsv2.GetFunctionServiceConfigSecretVolume[];
+        service: string;
+        serviceAccountEmail: string;
+        timeoutSeconds: number;
+        uri: string;
+        vpcConnector: string;
+        vpcConnectorEgressSettings: string;
+    }
+
+    export interface GetFunctionServiceConfigSecretEnvironmentVariable {
+        key: string;
+        projectId: string;
+        secret: string;
+        version: string;
+    }
+
+    export interface GetFunctionServiceConfigSecretVolume {
+        mountPath: string;
+        projectId: string;
+        secret: string;
+        versions: outputs.cloudfunctionsv2.GetFunctionServiceConfigSecretVolumeVersion[];
+    }
+
+    export interface GetFunctionServiceConfigSecretVolumeVersion {
+        path: string;
+        version: string;
+    }
+
 }
 
 export namespace cloudidentity {
@@ -7566,6 +7728,7 @@ export namespace cloudrun {
         image: string;
         ports: outputs.cloudrun.GetServiceTemplateSpecContainerPort[];
         resources: outputs.cloudrun.GetServiceTemplateSpecContainerResource[];
+        startupProbes: outputs.cloudrun.GetServiceTemplateSpecContainerStartupProbe[];
         volumeMounts: outputs.cloudrun.GetServiceTemplateSpecContainerVolumeMount[];
         workingDir: string;
     }
@@ -7633,6 +7796,32 @@ export namespace cloudrun {
     export interface GetServiceTemplateSpecContainerResource {
         limits: {[key: string]: string};
         requests: {[key: string]: string};
+    }
+
+    export interface GetServiceTemplateSpecContainerStartupProbe {
+        failureThreshold: number;
+        httpGets: outputs.cloudrun.GetServiceTemplateSpecContainerStartupProbeHttpGet[];
+        initialDelaySeconds: number;
+        periodSeconds: number;
+        tcpSockets: outputs.cloudrun.GetServiceTemplateSpecContainerStartupProbeTcpSocket[];
+        timeoutSeconds: number;
+    }
+
+    export interface GetServiceTemplateSpecContainerStartupProbeHttpGet {
+        httpHeaders: outputs.cloudrun.GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader[];
+        path: string;
+    }
+
+    export interface GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader {
+        /**
+         * The name of the Cloud Run Service.
+         */
+        name: string;
+        value: string;
+    }
+
+    export interface GetServiceTemplateSpecContainerStartupProbeTcpSocket {
+        port: number;
     }
 
     export interface GetServiceTemplateSpecContainerVolumeMount {
@@ -7866,7 +8055,9 @@ export namespace cloudrun {
          */
         servingState: string;
         /**
-         * TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+         * Number of seconds after which the probe times out.
+         * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+         * Must be smaller than periodSeconds.
          */
         timeoutSeconds: number;
         /**
@@ -7939,6 +8130,7 @@ export namespace cloudrun {
          * Structure is documented below.
          */
         resources: outputs.cloudrun.ServiceTemplateSpecContainerResources;
+        startupProbe: outputs.cloudrun.ServiceTemplateSpecContainerStartupProbe;
         /**
          * Volume to mount into the container's filesystem.
          * Only supports SecretVolumeSources.
@@ -7963,14 +8155,7 @@ export namespace cloudrun {
          */
         name?: string;
         /**
-         * Variable references $(VAR_NAME) are expanded
-         * using the previous defined environment variables in the container and
-         * any route environment variables. If a variable cannot be resolved,
-         * the reference in the input string will be unchanged. The $(VAR_NAME)
-         * syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
-         * references will never be expanded, regardless of whether the variable
-         * exists or not.
-         * Defaults to "".
+         * The header field value.
          */
         value?: string;
         /**
@@ -8085,6 +8270,74 @@ export namespace cloudrun {
          * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
          */
         requests?: {[key: string]: string};
+    }
+
+    export interface ServiceTemplateSpecContainerStartupProbe {
+        /**
+         * Minimum consecutive failures for the probe to be considered failed after
+         * having succeeded. Defaults to 3. Minimum value is 1.
+         */
+        failureThreshold?: number;
+        /**
+         * HttpGet specifies the http request to perform.
+         * Structure is documented below.
+         */
+        httpGet?: outputs.cloudrun.ServiceTemplateSpecContainerStartupProbeHttpGet;
+        /**
+         * Number of seconds after the container has started before the probe is
+         * initiated.
+         * Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+         */
+        initialDelaySeconds?: number;
+        /**
+         * How often (in seconds) to perform the probe.
+         * Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+         */
+        periodSeconds?: number;
+        /**
+         * TcpSocket specifies an action involving a TCP port.
+         * Structure is documented below.
+         */
+        tcpSocket?: outputs.cloudrun.ServiceTemplateSpecContainerStartupProbeTcpSocket;
+        /**
+         * Number of seconds after which the probe times out.
+         * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+         * Must be smaller than periodSeconds.
+         */
+        timeoutSeconds?: number;
+    }
+
+    export interface ServiceTemplateSpecContainerStartupProbeHttpGet {
+        /**
+         * Custom headers to set in the request. HTTP allows repeated headers.
+         * Structure is documented below.
+         */
+        httpHeaders?: outputs.cloudrun.ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader[];
+        /**
+         * The relative path of the file to map the key to.
+         * May not be an absolute path.
+         * May not contain the path element '..'.
+         * May not start with the string '..'.
+         */
+        path?: string;
+    }
+
+    export interface ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader {
+        /**
+         * Volume's name.
+         */
+        name: string;
+        /**
+         * The header field value.
+         */
+        value?: string;
+    }
+
+    export interface ServiceTemplateSpecContainerStartupProbeTcpSocket {
+        /**
+         * Port number to access on the container. Number must be in the range 1 to 65535.
+         */
+        port: number;
     }
 
     export interface ServiceTemplateSpecContainerVolumeMount {
@@ -10960,6 +11213,18 @@ export namespace compute {
         tags: string[];
     }
 
+    export interface GetSnapshotSnapshotEncryptionKey {
+        kmsKeySelfLink: string;
+        kmsKeyServiceAccount: string;
+        rawKey: string;
+        sha256: string;
+    }
+
+    export interface GetSnapshotSourceDiskEncryptionKey {
+        kmsKeyServiceAccount: string;
+        rawKey: string;
+    }
+
     export interface GetSubnetworkSecondaryIpRange {
         /**
          * The range of IP addresses belonging to this subnetwork
@@ -11490,7 +11755,8 @@ export namespace compute {
          */
         image: string;
         /**
-         * A map of key/value label pairs to assign to the instance.
+         * A set of key/value label pairs assigned to the disk. This  
+         * field is only applicable for persistent disks.
          */
         labels: {[key: string]: any};
         /**
@@ -19604,9 +19870,26 @@ export namespace container {
          */
         gpuPartitionSize?: string;
         /**
+         * Configuration for GPU sharing. Structure is documented below.
+         */
+        gpuSharingConfig?: outputs.container.ClusterNodeConfigGuestAcceleratorGpuSharingConfig;
+        /**
          * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: string;
+    }
+
+    export interface ClusterNodeConfigGuestAcceleratorGpuSharingConfig {
+        /**
+         * The type of GPU sharing strategy to enable on the GPU node. 
+         * Accepted values are:
+         * * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+         */
+        gpuSharingStrategy: string;
+        /**
+         * The maximum number of containers that can share a GPU.
+         */
+        maxSharedClientsPerGpu: number;
     }
 
     export interface ClusterNodeConfigGvnic {
@@ -19985,9 +20268,26 @@ export namespace container {
          */
         gpuPartitionSize?: string;
         /**
+         * Configuration for GPU sharing. Structure is documented below.
+         */
+        gpuSharingConfig?: outputs.container.ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig;
+        /**
          * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: string;
+    }
+
+    export interface ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
+        /**
+         * The type of GPU sharing strategy to enable on the GPU node. 
+         * Accepted values are:
+         * * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+         */
+        gpuSharingStrategy: string;
+        /**
+         * The maximum number of containers that can share a GPU.
+         */
+        maxSharedClientsPerGpu: number;
     }
 
     export interface ClusterNodePoolNodeConfigGvnic {
@@ -20499,7 +20799,13 @@ export namespace container {
     export interface GetClusterNodeConfigGuestAccelerator {
         count: number;
         gpuPartitionSize: string;
+        gpuSharingConfigs: outputs.container.GetClusterNodeConfigGuestAcceleratorGpuSharingConfig[];
         type: string;
+    }
+
+    export interface GetClusterNodeConfigGuestAcceleratorGpuSharingConfig {
+        gpuSharingStrategy: string;
+        maxSharedClientsPerGpu: number;
     }
 
     export interface GetClusterNodeConfigGvnic {
@@ -20641,7 +20947,13 @@ export namespace container {
     export interface GetClusterNodePoolNodeConfigGuestAccelerator {
         count: number;
         gpuPartitionSize: string;
+        gpuSharingConfigs: outputs.container.GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig[];
         type: string;
+    }
+
+    export interface GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
+        gpuSharingStrategy: string;
+        maxSharedClientsPerGpu: number;
     }
 
     export interface GetClusterNodePoolNodeConfigGvnic {
@@ -20846,12 +21158,18 @@ export namespace container {
     export interface NodePoolNodeConfigGuestAccelerator {
         count: number;
         gpuPartitionSize?: string;
+        gpuSharingConfig?: outputs.container.NodePoolNodeConfigGuestAcceleratorGpuSharingConfig;
         /**
          * The type of the policy. Supports a single value: COMPACT.
          * Specifying COMPACT placement policy type places node pool's nodes in a closer
          * physical proximity in order to reduce network latency between nodes.
          */
         type: string;
+    }
+
+    export interface NodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
+        gpuSharingStrategy: string;
+        maxSharedClientsPerGpu: number;
     }
 
     export interface NodePoolNodeConfigGvnic {
@@ -21096,7 +21414,6 @@ export namespace datacatalog {
         doubleValue?: number;
         /**
          * Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-         * Structure is documented below.
          */
         enumValue?: string;
         /**
@@ -21216,6 +21533,13 @@ export namespace datacatalog {
 }
 
 export namespace datafusion {
+    export interface InstanceCryptoKeyConfig {
+        /**
+         * The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+         */
+        keyReference: string;
+    }
+
     export interface InstanceNetworkConfig {
         /**
          * The IP range in CIDR notation to use for the managed Data Fusion instance
@@ -23457,11 +23781,11 @@ export namespace dataproc {
     export interface MetastoreFederationBackendMetastore {
         /**
          * The type of the backend metastore.
-         * Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
+         * Possible values are `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, and `BIGQUERY`.
          */
         metastoreType: string;
         /**
-         * The relative resource name of the metastore that is being federated.
+         * The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
          */
         name: string;
         /**
@@ -24620,6 +24944,9 @@ export namespace datastore {
 }
 
 export namespace datastream {
+    export interface ConnectionProfileBigqueryProfile {
+    }
+
     export interface ConnectionProfileForwardSshConnectivity {
         /**
          * Hostname for the SSH tunnel.
@@ -25554,6 +25881,13 @@ export namespace dns {
          * Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
          */
         type?: string;
+    }
+
+    export interface ManagedZoneCloudLoggingConfig {
+        /**
+         * If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+         */
+        enableLogging: boolean;
     }
 
     export interface ManagedZoneDnssecConfig {
@@ -33946,11 +34280,41 @@ export namespace sql {
         uploadInterval: string;
     }
 
-    export interface UserSqlServerUserDetails {
-        disabled?: boolean;
-        serverRoles?: string[];
+    export interface UserPasswordPolicy {
+        /**
+         * Number of failed attempts allowed before the user get locked.
+         */
+        allowedFailedAttempts?: number;
+        /**
+         * If true, the check that will lock user after too many failed login attempts will be enabled.
+         */
+        enableFailedAttemptsCheck?: boolean;
+        /**
+         * If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
+         */
+        enablePasswordVerification?: boolean;
+        /**
+         * Password expiration duration with one week grace period.
+         */
+        passwordExpirationDuration?: string;
+        statuses: outputs.sql.UserPasswordPolicyStatus[];
     }
 
+    export interface UserPasswordPolicyStatus {
+        /**
+         * If true, user does not have login privileges.
+         */
+        locked: boolean;
+        /**
+         * Password expiration duration with one week grace period.
+         */
+        passwordExpirationTime: string;
+    }
+
+    export interface UserSqlServerUserDetail {
+        disabled: boolean;
+        serverRoles: string[];
+    }
 }
 
 export namespace storage {
@@ -33971,6 +34335,13 @@ export namespace storage {
          * The list of HTTP headers other than the [simple response headers](https://www.w3.org/TR/cors/#simple-response-header) to give permission for the user-agent to share across domains.
          */
         responseHeaders?: string[];
+    }
+
+    export interface BucketCustomPlacementConfig {
+        /**
+         * The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the dataLocations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
+         */
+        dataLocations: string[];
     }
 
     export interface BucketEncryption {
@@ -34140,6 +34511,10 @@ export namespace storage {
         methods: string[];
         origins: string[];
         responseHeaders: string[];
+    }
+
+    export interface GetBucketCustomPlacementConfig {
+        dataLocations: string[];
     }
 
     export interface GetBucketEncryption {
@@ -34570,6 +34945,14 @@ export namespace vpcaccess {
         /**
          * Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
          */
+        projectId: string;
+    }
+
+    export interface GetConnectorSubnet {
+        /**
+         * Name of the resource.
+         */
+        name: string;
         projectId: string;
     }
 

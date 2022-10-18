@@ -19,6 +19,7 @@ class ConnectionProfileArgs:
                  connection_profile_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
+                 bigquery_profile: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']] = None,
                  forward_ssh_connectivity: Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArgs']] = None,
                  gcs_profile: Optional[pulumi.Input['ConnectionProfileGcsProfileArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -31,6 +32,7 @@ class ConnectionProfileArgs:
         :param pulumi.Input[str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[str] location: The name of the location this repository is located in.
+        :param pulumi.Input['ConnectionProfileBigqueryProfileArgs'] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input['ConnectionProfileForwardSshConnectivityArgs'] forward_ssh_connectivity: Forward SSH tunnel connectivity.
                Structure is documented below.
         :param pulumi.Input['ConnectionProfileGcsProfileArgs'] gcs_profile: Cloud Storage bucket profile.
@@ -48,6 +50,8 @@ class ConnectionProfileArgs:
         pulumi.set(__self__, "connection_profile_id", connection_profile_id)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
+        if bigquery_profile is not None:
+            pulumi.set(__self__, "bigquery_profile", bigquery_profile)
         if forward_ssh_connectivity is not None:
             pulumi.set(__self__, "forward_ssh_connectivity", forward_ssh_connectivity)
         if gcs_profile is not None:
@@ -98,6 +102,18 @@ class ConnectionProfileArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="bigqueryProfile")
+    def bigquery_profile(self) -> Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']]:
+        """
+        BigQuery warehouse profile.
+        """
+        return pulumi.get(self, "bigquery_profile")
+
+    @bigquery_profile.setter
+    def bigquery_profile(self, value: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']]):
+        pulumi.set(self, "bigquery_profile", value)
 
     @property
     @pulumi.getter(name="forwardSshConnectivity")
@@ -193,6 +209,7 @@ class ConnectionProfileArgs:
 @pulumi.input_type
 class _ConnectionProfileState:
     def __init__(__self__, *,
+                 bigquery_profile: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  forward_ssh_connectivity: Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArgs']] = None,
@@ -206,6 +223,7 @@ class _ConnectionProfileState:
                  project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ConnectionProfile resources.
+        :param pulumi.Input['ConnectionProfileBigqueryProfileArgs'] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input[str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input['ConnectionProfileForwardSshConnectivityArgs'] forward_ssh_connectivity: Forward SSH tunnel connectivity.
@@ -224,6 +242,8 @@ class _ConnectionProfileState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        if bigquery_profile is not None:
+            pulumi.set(__self__, "bigquery_profile", bigquery_profile)
         if connection_profile_id is not None:
             pulumi.set(__self__, "connection_profile_id", connection_profile_id)
         if display_name is not None:
@@ -246,6 +266,18 @@ class _ConnectionProfileState:
             pulumi.set(__self__, "postgresql_profile", postgresql_profile)
         if project is not None:
             pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="bigqueryProfile")
+    def bigquery_profile(self) -> Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']]:
+        """
+        BigQuery warehouse profile.
+        """
+        return pulumi.get(self, "bigquery_profile")
+
+    @bigquery_profile.setter
+    def bigquery_profile(self, value: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']]):
+        pulumi.set(self, "bigquery_profile", value)
 
     @property
     @pulumi.getter(name="connectionProfileId")
@@ -391,6 +423,7 @@ class ConnectionProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bigquery_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArgs']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  forward_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArgs']]] = None,
@@ -417,6 +450,18 @@ class ConnectionProfile(pulumi.CustomResource):
                 bucket="my-bucket",
                 root_path="/path",
             ),
+            location="us-central1")
+        ```
+        ### Datastream Connection Profile Bigquery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.datastream.ConnectionProfile("default",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs(),
+            connection_profile_id="my-profile",
+            display_name="Connection profile",
             location="us-central1")
         ```
         ### Datastream Connection Profile Full
@@ -510,6 +555,7 @@ class ConnectionProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArgs']] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input[str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArgs']] forward_ssh_connectivity: Forward SSH tunnel connectivity.
@@ -548,6 +594,18 @@ class ConnectionProfile(pulumi.CustomResource):
                 bucket="my-bucket",
                 root_path="/path",
             ),
+            location="us-central1")
+        ```
+        ### Datastream Connection Profile Bigquery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.datastream.ConnectionProfile("default",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs(),
+            connection_profile_id="my-profile",
+            display_name="Connection profile",
             location="us-central1")
         ```
         ### Datastream Connection Profile Full
@@ -654,6 +712,7 @@ class ConnectionProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bigquery_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArgs']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  forward_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArgs']]] = None,
@@ -673,6 +732,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionProfileArgs.__new__(ConnectionProfileArgs)
 
+            __props__.__dict__["bigquery_profile"] = bigquery_profile
             if connection_profile_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_profile_id'")
             __props__.__dict__["connection_profile_id"] = connection_profile_id
@@ -700,6 +760,7 @@ class ConnectionProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            bigquery_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArgs']]] = None,
             connection_profile_id: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             forward_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArgs']]] = None,
@@ -718,6 +779,7 @@ class ConnectionProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArgs']] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input[str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArgs']] forward_ssh_connectivity: Forward SSH tunnel connectivity.
@@ -740,6 +802,7 @@ class ConnectionProfile(pulumi.CustomResource):
 
         __props__ = _ConnectionProfileState.__new__(_ConnectionProfileState)
 
+        __props__.__dict__["bigquery_profile"] = bigquery_profile
         __props__.__dict__["connection_profile_id"] = connection_profile_id
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["forward_ssh_connectivity"] = forward_ssh_connectivity
@@ -752,6 +815,14 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["postgresql_profile"] = postgresql_profile
         __props__.__dict__["project"] = project
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="bigqueryProfile")
+    def bigquery_profile(self) -> pulumi.Output[Optional['outputs.ConnectionProfileBigqueryProfile']]:
+        """
+        BigQuery warehouse profile.
+        """
+        return pulumi.get(self, "bigquery_profile")
 
     @property
     @pulumi.getter(name="connectionProfileId")

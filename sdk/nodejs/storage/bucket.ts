@@ -116,6 +116,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly cors!: pulumi.Output<outputs.storage.BucketCor[] | undefined>;
     /**
+     * The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+     */
+    public readonly customPlacementConfig!: pulumi.Output<outputs.storage.BucketCustomPlacementConfig | undefined>;
+    /**
      * Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
      */
     public readonly defaultEventBasedHold!: pulumi.Output<boolean | undefined>;
@@ -138,7 +142,7 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly lifecycleRules!: pulumi.Output<outputs.storage.BucketLifecycleRule[] | undefined>;
     /**
-     * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+     * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -205,6 +209,7 @@ export class Bucket extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as BucketState | undefined;
             resourceInputs["cors"] = state ? state.cors : undefined;
+            resourceInputs["customPlacementConfig"] = state ? state.customPlacementConfig : undefined;
             resourceInputs["defaultEventBasedHold"] = state ? state.defaultEventBasedHold : undefined;
             resourceInputs["encryption"] = state ? state.encryption : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
@@ -229,6 +234,7 @@ export class Bucket extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["cors"] = args ? args.cors : undefined;
+            resourceInputs["customPlacementConfig"] = args ? args.customPlacementConfig : undefined;
             resourceInputs["defaultEventBasedHold"] = args ? args.defaultEventBasedHold : undefined;
             resourceInputs["encryption"] = args ? args.encryption : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
@@ -262,6 +268,10 @@ export interface BucketState {
      */
     cors?: pulumi.Input<pulumi.Input<inputs.storage.BucketCor>[]>;
     /**
+     * The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+     */
+    customPlacementConfig?: pulumi.Input<inputs.storage.BucketCustomPlacementConfig>;
+    /**
      * Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
      */
     defaultEventBasedHold?: pulumi.Input<boolean>;
@@ -284,7 +294,7 @@ export interface BucketState {
      */
     lifecycleRules?: pulumi.Input<pulumi.Input<inputs.storage.BucketLifecycleRule>[]>;
     /**
-     * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+     * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
      */
     location?: pulumi.Input<string>;
     /**
@@ -347,6 +357,10 @@ export interface BucketArgs {
      */
     cors?: pulumi.Input<pulumi.Input<inputs.storage.BucketCor>[]>;
     /**
+     * The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+     */
+    customPlacementConfig?: pulumi.Input<inputs.storage.BucketCustomPlacementConfig>;
+    /**
      * Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
      */
     defaultEventBasedHold?: pulumi.Input<boolean>;
@@ -369,7 +383,7 @@ export interface BucketArgs {
      */
     lifecycleRules?: pulumi.Input<pulumi.Input<inputs.storage.BucketLifecycleRule>[]>;
     /**
-     * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+     * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
      */
     location: pulumi.Input<string>;
     /**

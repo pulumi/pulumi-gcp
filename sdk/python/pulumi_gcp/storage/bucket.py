@@ -18,6 +18,7 @@ class BucketArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]]] = None,
+                 custom_placement_config: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input['BucketEncryptionArgs']] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -35,8 +36,9 @@ class BucketArgs:
                  website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
         """
         The set of arguments for constructing a Bucket resource.
-        :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+        :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input['BucketCustomPlacementConfigArgs'] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
@@ -59,6 +61,8 @@ class BucketArgs:
         pulumi.set(__self__, "location", location)
         if cors is not None:
             pulumi.set(__self__, "cors", cors)
+        if custom_placement_config is not None:
+            pulumi.set(__self__, "custom_placement_config", custom_placement_config)
         if default_event_based_hold is not None:
             pulumi.set(__self__, "default_event_based_hold", default_event_based_hold)
         if encryption is not None:
@@ -94,7 +98,7 @@ class BucketArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+        The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
         """
         return pulumi.get(self, "location")
 
@@ -113,6 +117,18 @@ class BucketArgs:
     @cors.setter
     def cors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]]]):
         pulumi.set(self, "cors", value)
+
+    @property
+    @pulumi.getter(name="customPlacementConfig")
+    def custom_placement_config(self) -> Optional[pulumi.Input['BucketCustomPlacementConfigArgs']]:
+        """
+        The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+        """
+        return pulumi.get(self, "custom_placement_config")
+
+    @custom_placement_config.setter
+    def custom_placement_config(self, value: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']]):
+        pulumi.set(self, "custom_placement_config", value)
 
     @property
     @pulumi.getter(name="defaultEventBasedHold")
@@ -302,6 +318,7 @@ class BucketArgs:
 class _BucketState:
     def __init__(__self__, *,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]]] = None,
+                 custom_placement_config: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input['BucketEncryptionArgs']] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -323,6 +340,7 @@ class _BucketState:
         """
         Input properties used for looking up and filtering Bucket resources.
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input['BucketCustomPlacementConfigArgs'] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
@@ -330,7 +348,7 @@ class _BucketState:
                bucket that contains objects, the provider will fail that run.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-        :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+        :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
         :param pulumi.Input['BucketLoggingArgs'] logging: The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -347,6 +365,8 @@ class _BucketState:
         """
         if cors is not None:
             pulumi.set(__self__, "cors", cors)
+        if custom_placement_config is not None:
+            pulumi.set(__self__, "custom_placement_config", custom_placement_config)
         if default_event_based_hold is not None:
             pulumi.set(__self__, "default_event_based_hold", default_event_based_hold)
         if encryption is not None:
@@ -395,6 +415,18 @@ class _BucketState:
     @cors.setter
     def cors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]]]):
         pulumi.set(self, "cors", value)
+
+    @property
+    @pulumi.getter(name="customPlacementConfig")
+    def custom_placement_config(self) -> Optional[pulumi.Input['BucketCustomPlacementConfigArgs']]:
+        """
+        The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+        """
+        return pulumi.get(self, "custom_placement_config")
+
+    @custom_placement_config.setter
+    def custom_placement_config(self, value: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']]):
+        pulumi.set(self, "custom_placement_config", value)
 
     @property
     @pulumi.getter(name="defaultEventBasedHold")
@@ -462,7 +494,7 @@ class _BucketState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+        The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
         """
         return pulumi.get(self, "location")
 
@@ -622,6 +654,7 @@ class Bucket(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]]] = None,
+                 custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -717,6 +750,7 @@ class Bucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
@@ -724,7 +758,7 @@ class Bucket(pulumi.CustomResource):
                bucket that contains objects, the provider will fail that run.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-        :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+        :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
         :param pulumi.Input[pulumi.InputType['BucketLoggingArgs']] logging: The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -834,6 +868,7 @@ class Bucket(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]]] = None,
+                 custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -860,6 +895,7 @@ class Bucket(pulumi.CustomResource):
             __props__ = BucketArgs.__new__(BucketArgs)
 
             __props__.__dict__["cors"] = cors
+            __props__.__dict__["custom_placement_config"] = custom_placement_config
             __props__.__dict__["default_event_based_hold"] = default_event_based_hold
             __props__.__dict__["encryption"] = encryption
             __props__.__dict__["force_destroy"] = force_destroy
@@ -891,6 +927,7 @@ class Bucket(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]]] = None,
+            custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
             default_event_based_hold: Optional[pulumi.Input[bool]] = None,
             encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -917,6 +954,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
@@ -924,7 +962,7 @@ class Bucket(pulumi.CustomResource):
                bucket that contains objects, the provider will fail that run.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
-        :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+        :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
         :param pulumi.Input[pulumi.InputType['BucketLoggingArgs']] logging: The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -944,6 +982,7 @@ class Bucket(pulumi.CustomResource):
         __props__ = _BucketState.__new__(_BucketState)
 
         __props__.__dict__["cors"] = cors
+        __props__.__dict__["custom_placement_config"] = custom_placement_config
         __props__.__dict__["default_event_based_hold"] = default_event_based_hold
         __props__.__dict__["encryption"] = encryption
         __props__.__dict__["force_destroy"] = force_destroy
@@ -971,6 +1010,14 @@ class Bucket(pulumi.CustomResource):
         The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         """
         return pulumi.get(self, "cors")
+
+    @property
+    @pulumi.getter(name="customPlacementConfig")
+    def custom_placement_config(self) -> pulumi.Output[Optional['outputs.BucketCustomPlacementConfig']]:
+        """
+        The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+        """
+        return pulumi.get(self, "custom_placement_config")
 
     @property
     @pulumi.getter(name="defaultEventBasedHold")
@@ -1018,7 +1065,7 @@ class Bucket(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+        The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
         """
         return pulumi.get(self, "location")
 

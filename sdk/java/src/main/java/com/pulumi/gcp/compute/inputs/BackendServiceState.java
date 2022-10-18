@@ -103,6 +103,23 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Compress text responses using Brotli or gzip compression, based on the client&#39;s Accept-Encoding header.
+     * Possible values are `AUTOMATIC` and `DISABLED`.
+     * 
+     */
+    @Import(name="compressionMode")
+    private @Nullable Output<String> compressionMode;
+
+    /**
+     * @return Compress text responses using Brotli or gzip compression, based on the client&#39;s Accept-Encoding header.
+     * Possible values are `AUTOMATIC` and `DISABLED`.
+     * 
+     */
+    public Optional<Output<String>> compressionMode() {
+        return Optional.ofNullable(this.compressionMode);
+    }
+
+    /**
      * Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
      * 
@@ -574,6 +591,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
         this.backends = $.backends;
         this.cdnPolicy = $.cdnPolicy;
         this.circuitBreakers = $.circuitBreakers;
+        this.compressionMode = $.compressionMode;
         this.connectionDrainingTimeoutSec = $.connectionDrainingTimeoutSec;
         this.consistentHash = $.consistentHash;
         this.creationTimestamp = $.creationTimestamp;
@@ -726,6 +744,29 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
          */
         public Builder circuitBreakers(BackendServiceCircuitBreakersArgs circuitBreakers) {
             return circuitBreakers(Output.of(circuitBreakers));
+        }
+
+        /**
+         * @param compressionMode Compress text responses using Brotli or gzip compression, based on the client&#39;s Accept-Encoding header.
+         * Possible values are `AUTOMATIC` and `DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compressionMode(@Nullable Output<String> compressionMode) {
+            $.compressionMode = compressionMode;
+            return this;
+        }
+
+        /**
+         * @param compressionMode Compress text responses using Brotli or gzip compression, based on the client&#39;s Accept-Encoding header.
+         * Possible values are `AUTOMATIC` and `DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compressionMode(String compressionMode) {
+            return compressionMode(Output.of(compressionMode));
         }
 
         /**

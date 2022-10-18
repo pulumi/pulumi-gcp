@@ -57,10 +57,11 @@ type LookupBucketArgs struct {
 
 // A collection of values returned by getBucket.
 type LookupBucketResult struct {
-	Cors                  []GetBucketCor        `pulumi:"cors"`
-	DefaultEventBasedHold bool                  `pulumi:"defaultEventBasedHold"`
-	Encryptions           []GetBucketEncryption `pulumi:"encryptions"`
-	ForceDestroy          bool                  `pulumi:"forceDestroy"`
+	Cors                   []GetBucketCor                   `pulumi:"cors"`
+	CustomPlacementConfigs []GetBucketCustomPlacementConfig `pulumi:"customPlacementConfigs"`
+	DefaultEventBasedHold  bool                             `pulumi:"defaultEventBasedHold"`
+	Encryptions            []GetBucketEncryption            `pulumi:"encryptions"`
+	ForceDestroy           bool                             `pulumi:"forceDestroy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                       string                     `pulumi:"id"`
 	Labels                   map[string]string          `pulumi:"labels"`
@@ -120,6 +121,10 @@ func (o LookupBucketResultOutput) ToLookupBucketResultOutputWithContext(ctx cont
 
 func (o LookupBucketResultOutput) Cors() GetBucketCorArrayOutput {
 	return o.ApplyT(func(v LookupBucketResult) []GetBucketCor { return v.Cors }).(GetBucketCorArrayOutput)
+}
+
+func (o LookupBucketResultOutput) CustomPlacementConfigs() GetBucketCustomPlacementConfigArrayOutput {
+	return o.ApplyT(func(v LookupBucketResult) []GetBucketCustomPlacementConfig { return v.CustomPlacementConfigs }).(GetBucketCustomPlacementConfigArrayOutput)
 }
 
 func (o LookupBucketResultOutput) DefaultEventBasedHold() pulumi.BoolOutput {

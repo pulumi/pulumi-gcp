@@ -3460,6 +3460,11 @@ export namespace bigquery {
          */
         autodetect: pulumi.Input<boolean>;
         /**
+         * Additional options if `sourceFormat` is set to  
+         * "AVRO".  Structure is documented below.
+         */
+        avroOptions?: pulumi.Input<inputs.bigquery.TableExternalDataConfigurationAvroOptions>;
+        /**
          * The compression type of the data source.
          * Valid values are "NONE" or "GZIP".
          */
@@ -3530,6 +3535,15 @@ export namespace bigquery {
          * your data in Google Cloud.
          */
         sourceUris: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface TableExternalDataConfigurationAvroOptions {
+        /**
+         * If is set to true, indicates whether  
+         * to interpret logical types as the corresponding BigQuery data type
+         * (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+         */
+        useAvroLogicalTypes: pulumi.Input<boolean>;
     }
 
     export interface TableExternalDataConfigurationCsvOptions {
@@ -3706,6 +3720,69 @@ export namespace bigqueryanalyticshub {
     }
 
     export interface DataExchangeIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface ListingBigqueryDataset {
+        /**
+         * Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
+         */
+        dataset: pulumi.Input<string>;
+    }
+
+    export interface ListingDataProvider {
+        /**
+         * Name of the listing publisher.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Email or URL of the listing publisher.
+         */
+        primaryContact?: pulumi.Input<string>;
+    }
+
+    export interface ListingIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface ListingIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface ListingPublisher {
+        /**
+         * Name of the listing publisher.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Email or URL of the listing publisher.
+         */
+        primaryContact?: pulumi.Input<string>;
+    }
+}
+
+export namespace bigquerydatapolicy {
+    export interface DataPolicyDataMaskingPolicy {
+        /**
+         * The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
+         * Possible values are `SHA256`, `ALWAYS_NULL`, and `DEFAULT_MASKING_VALUE`.
+         */
+        predefinedExpression: pulumi.Input<string>;
+    }
+
+    export interface DataPolicyIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface DataPolicyIamMemberCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
@@ -7079,6 +7156,7 @@ export namespace cloudfunctionsv2 {
          */
         version: pulumi.Input<string>;
     }
+
 }
 
 export namespace cloudidentity {
@@ -7447,7 +7525,9 @@ export namespace cloudrun {
          */
         servingState?: pulumi.Input<string>;
         /**
-         * TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+         * Number of seconds after which the probe times out.
+         * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+         * Must be smaller than periodSeconds.
          */
         timeoutSeconds?: pulumi.Input<number>;
         /**
@@ -7520,6 +7600,7 @@ export namespace cloudrun {
          * Structure is documented below.
          */
         resources?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerResources>;
+        startupProbe?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerStartupProbe>;
         /**
          * Volume to mount into the container's filesystem.
          * Only supports SecretVolumeSources.
@@ -7544,14 +7625,7 @@ export namespace cloudrun {
          */
         name?: pulumi.Input<string>;
         /**
-         * Variable references $(VAR_NAME) are expanded
-         * using the previous defined environment variables in the container and
-         * any route environment variables. If a variable cannot be resolved,
-         * the reference in the input string will be unchanged. The $(VAR_NAME)
-         * syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
-         * references will never be expanded, regardless of whether the variable
-         * exists or not.
-         * Defaults to "".
+         * The header field value.
          */
         value?: pulumi.Input<string>;
         /**
@@ -7666,6 +7740,74 @@ export namespace cloudrun {
          * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
          */
         requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface ServiceTemplateSpecContainerStartupProbe {
+        /**
+         * Minimum consecutive failures for the probe to be considered failed after
+         * having succeeded. Defaults to 3. Minimum value is 1.
+         */
+        failureThreshold?: pulumi.Input<number>;
+        /**
+         * HttpGet specifies the http request to perform.
+         * Structure is documented below.
+         */
+        httpGet?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerStartupProbeHttpGet>;
+        /**
+         * Number of seconds after the container has started before the probe is
+         * initiated.
+         * Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+         */
+        initialDelaySeconds?: pulumi.Input<number>;
+        /**
+         * How often (in seconds) to perform the probe.
+         * Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+         */
+        periodSeconds?: pulumi.Input<number>;
+        /**
+         * TcpSocket specifies an action involving a TCP port.
+         * Structure is documented below.
+         */
+        tcpSocket?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerStartupProbeTcpSocket>;
+        /**
+         * Number of seconds after which the probe times out.
+         * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+         * Must be smaller than periodSeconds.
+         */
+        timeoutSeconds?: pulumi.Input<number>;
+    }
+
+    export interface ServiceTemplateSpecContainerStartupProbeHttpGet {
+        /**
+         * Custom headers to set in the request. HTTP allows repeated headers.
+         * Structure is documented below.
+         */
+        httpHeaders?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader>[]>;
+        /**
+         * The relative path of the file to map the key to.
+         * May not be an absolute path.
+         * May not contain the path element '..'.
+         * May not start with the string '..'.
+         */
+        path?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader {
+        /**
+         * Volume's name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * The header field value.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTemplateSpecContainerStartupProbeTcpSocket {
+        /**
+         * Port number to access on the container. Number must be in the range 1 to 65535.
+         */
+        port?: pulumi.Input<number>;
     }
 
     export interface ServiceTemplateSpecContainerVolumeMount {
@@ -9969,7 +10111,8 @@ export namespace compute {
          */
         image?: pulumi.Input<string>;
         /**
-         * A map of key/value label pairs to assign to the instance.
+         * A set of key/value label pairs assigned to the disk. This  
+         * field is only applicable for persistent disks.
          */
         labels?: pulumi.Input<{[key: string]: any}>;
         /**
@@ -18019,9 +18162,26 @@ export namespace container {
          */
         gpuPartitionSize?: pulumi.Input<string>;
         /**
+         * Configuration for GPU sharing. Structure is documented below.
+         */
+        gpuSharingConfig?: pulumi.Input<inputs.container.ClusterNodeConfigGuestAcceleratorGpuSharingConfig>;
+        /**
          * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: pulumi.Input<string>;
+    }
+
+    export interface ClusterNodeConfigGuestAcceleratorGpuSharingConfig {
+        /**
+         * The type of GPU sharing strategy to enable on the GPU node. 
+         * Accepted values are:
+         * * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+         */
+        gpuSharingStrategy: pulumi.Input<string>;
+        /**
+         * The maximum number of containers that can share a GPU.
+         */
+        maxSharedClientsPerGpu: pulumi.Input<number>;
     }
 
     export interface ClusterNodeConfigGvnic {
@@ -18400,9 +18560,26 @@ export namespace container {
          */
         gpuPartitionSize?: pulumi.Input<string>;
         /**
+         * Configuration for GPU sharing. Structure is documented below.
+         */
+        gpuSharingConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig>;
+        /**
          * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: pulumi.Input<string>;
+    }
+
+    export interface ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
+        /**
+         * The type of GPU sharing strategy to enable on the GPU node. 
+         * Accepted values are:
+         * * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
+         */
+        gpuSharingStrategy: pulumi.Input<string>;
+        /**
+         * The maximum number of containers that can share a GPU.
+         */
+        maxSharedClientsPerGpu: pulumi.Input<number>;
     }
 
     export interface ClusterNodePoolNodeConfigGvnic {
@@ -18766,12 +18943,18 @@ export namespace container {
     export interface NodePoolNodeConfigGuestAccelerator {
         count: pulumi.Input<number>;
         gpuPartitionSize?: pulumi.Input<string>;
+        gpuSharingConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigGuestAcceleratorGpuSharingConfig>;
         /**
          * The type of the policy. Supports a single value: COMPACT.
          * Specifying COMPACT placement policy type places node pool's nodes in a closer
          * physical proximity in order to reduce network latency between nodes.
          */
         type: pulumi.Input<string>;
+    }
+
+    export interface NodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
+        gpuSharingStrategy: pulumi.Input<string>;
+        maxSharedClientsPerGpu: pulumi.Input<number>;
     }
 
     export interface NodePoolNodeConfigGvnic {
@@ -19014,7 +19197,6 @@ export namespace datacatalog {
         doubleValue?: pulumi.Input<number>;
         /**
          * Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-         * Structure is documented below.
          */
         enumValue?: pulumi.Input<string>;
         /**
@@ -19133,6 +19315,13 @@ export namespace datacatalog {
 }
 
 export namespace datafusion {
+    export interface InstanceCryptoKeyConfig {
+        /**
+         * The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+         */
+        keyReference: pulumi.Input<string>;
+    }
+
     export interface InstanceNetworkConfig {
         /**
          * The IP range in CIDR notation to use for the managed Data Fusion instance
@@ -21371,11 +21560,11 @@ export namespace dataproc {
     export interface MetastoreFederationBackendMetastore {
         /**
          * The type of the backend metastore.
-         * Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
+         * Possible values are `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, and `BIGQUERY`.
          */
         metastoreType: pulumi.Input<string>;
         /**
-         * The relative resource name of the metastore that is being federated.
+         * The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
          */
         name: pulumi.Input<string>;
         /**
@@ -22532,6 +22721,9 @@ export namespace datastore {
 }
 
 export namespace datastream {
+    export interface ConnectionProfileBigqueryProfile {
+    }
+
     export interface ConnectionProfileForwardSshConnectivity {
         /**
          * Hostname for the SSH tunnel.
@@ -23361,6 +23553,13 @@ export namespace diagflow {
 }
 
 export namespace dns {
+    export interface ManagedZoneCloudLoggingConfig {
+        /**
+         * If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+         */
+        enableLogging: pulumi.Input<boolean>;
+    }
+
     export interface ManagedZoneDnssecConfig {
         /**
          * Specifies parameters that will be used for generating initial DnsKeys
@@ -31323,10 +31522,42 @@ export namespace sql {
         uploadInterval?: pulumi.Input<string>;
     }
 
-    export interface UserSqlServerUserDetails {
+    export interface UserPasswordPolicy {
+        /**
+         * Number of failed attempts allowed before the user get locked.
+         */
+        allowedFailedAttempts?: pulumi.Input<number>;
+        /**
+         * If true, the check that will lock user after too many failed login attempts will be enabled.
+         */
+        enableFailedAttemptsCheck?: pulumi.Input<boolean>;
+        /**
+         * If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
+         */
+        enablePasswordVerification?: pulumi.Input<boolean>;
+        /**
+         * Password expiration duration with one week grace period.
+         */
+        passwordExpirationDuration?: pulumi.Input<string>;
+        statuses?: pulumi.Input<pulumi.Input<inputs.sql.UserPasswordPolicyStatus>[]>;
+    }
+
+    export interface UserPasswordPolicyStatus {
+        /**
+         * If true, user does not have login privileges.
+         */
+        locked?: pulumi.Input<boolean>;
+        /**
+         * Password expiration duration with one week grace period.
+         */
+        passwordExpirationTime?: pulumi.Input<string>;
+    }
+
+    export interface UserSqlServerUserDetail {
         disabled?: pulumi.Input<boolean>;
         serverRoles?: pulumi.Input<pulumi.Input<string>[]>;
     }
+
 }
 
 export namespace storage {
@@ -31347,6 +31578,13 @@ export namespace storage {
          * The list of HTTP headers other than the [simple response headers](https://www.w3.org/TR/cors/#simple-response-header) to give permission for the user-agent to share across domains.
          */
         responseHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface BucketCustomPlacementConfig {
+        /**
+         * The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the dataLocations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
+         */
+        dataLocations: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface BucketEncryption {
@@ -31882,4 +32120,5 @@ export namespace vpcaccess {
          */
         projectId?: pulumi.Input<string>;
     }
+
 }

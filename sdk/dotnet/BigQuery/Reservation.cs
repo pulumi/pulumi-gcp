@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// To get more information about Reservation, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1beta1/projects.locations.reservations/create)
+    /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations/create)
     /// * How-to Guides
     ///     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
     /// 
@@ -30,6 +30,7 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var reservation = new Gcp.BigQuery.Reservation("reservation", new()
     ///     {
+    ///         Concurrency = 0,
     ///         IgnoreIdleSlots = false,
     ///         Location = "asia-northeast1",
     ///         SlotCapacity = 0,
@@ -58,6 +59,12 @@ namespace Pulumi.Gcp.BigQuery
     public partial class Reservation : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+        /// </summary>
+        [Output("concurrency")]
+        public Output<int?> Concurrency { get; private set; } = null!;
+
+        /// <summary>
         /// If false, any query using this reservation will use idle slots from other reservations within
         /// the same admin project. If true, a query using this reservation will execute with the slot
         /// capacity specified above at most.
@@ -71,6 +78,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+        /// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+        /// </summary>
+        [Output("multiRegionAuxiliary")]
+        public Output<bool?> MultiRegionAuxiliary { get; private set; } = null!;
 
         /// <summary>
         /// The name of the reservation. This field must only contain alphanumeric characters or dash.
@@ -139,6 +153,12 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class ReservationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+        /// </summary>
+        [Input("concurrency")]
+        public Input<int>? Concurrency { get; set; }
+
+        /// <summary>
         /// If false, any query using this reservation will use idle slots from other reservations within
         /// the same admin project. If true, a query using this reservation will execute with the slot
         /// capacity specified above at most.
@@ -152,6 +172,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+        /// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+        /// </summary>
+        [Input("multiRegionAuxiliary")]
+        public Input<bool>? MultiRegionAuxiliary { get; set; }
 
         /// <summary>
         /// The name of the reservation. This field must only contain alphanumeric characters or dash.
@@ -182,6 +209,12 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class ReservationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+        /// </summary>
+        [Input("concurrency")]
+        public Input<int>? Concurrency { get; set; }
+
+        /// <summary>
         /// If false, any query using this reservation will use idle slots from other reservations within
         /// the same admin project. If true, a query using this reservation will execute with the slot
         /// capacity specified above at most.
@@ -195,6 +228,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+        /// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+        /// </summary>
+        [Input("multiRegionAuxiliary")]
+        public Input<bool>? MultiRegionAuxiliary { get; set; }
 
         /// <summary>
         /// The name of the reservation. This field must only contain alphanumeric characters or dash.

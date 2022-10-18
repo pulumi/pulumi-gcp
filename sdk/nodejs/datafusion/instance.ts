@@ -59,6 +59,30 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Data Fusion Instance Cmek
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us-central1"});
+ * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
+ * const project = gcp.organizations.getProject({});
+ * const cryptoKeyBinding = new gcp.kms.CryptoKeyIAMBinding("cryptoKeyBinding", {
+ *     cryptoKeyId: cryptoKey.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datafusion.iam.gserviceaccount.com`)],
+ * });
+ * const basicCmek = new gcp.datafusion.Instance("basicCmek", {
+ *     region: "us-central1",
+ *     type: "BASIC",
+ *     cryptoKeyConfig: {
+ *         keyReference: cryptoKey.id,
+ *     },
+ * }, {
+ *     dependsOn: [cryptoKeyBinding],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -112,6 +136,11 @@ export class Instance extends pulumi.CustomResource {
      * The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+     * Structure is documented below.
+     */
+    public readonly cryptoKeyConfig!: pulumi.Output<outputs.datafusion.InstanceCryptoKeyConfig | undefined>;
     /**
      * User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
      */
@@ -226,6 +255,7 @@ export class Instance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["cryptoKeyConfig"] = state ? state.cryptoKeyConfig : undefined;
             resourceInputs["dataprocServiceAccount"] = state ? state.dataprocServiceAccount : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enableStackdriverLogging"] = state ? state.enableStackdriverLogging : undefined;
@@ -251,6 +281,7 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
+            resourceInputs["cryptoKeyConfig"] = args ? args.cryptoKeyConfig : undefined;
             resourceInputs["dataprocServiceAccount"] = args ? args.dataprocServiceAccount : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
@@ -286,6 +317,11 @@ export interface InstanceState {
      * The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+     * Structure is documented below.
+     */
+    cryptoKeyConfig?: pulumi.Input<inputs.datafusion.InstanceCryptoKeyConfig>;
     /**
      * User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
      */
@@ -391,6 +427,11 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+     * Structure is documented below.
+     */
+    cryptoKeyConfig?: pulumi.Input<inputs.datafusion.InstanceCryptoKeyConfig>;
     /**
      * User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
      */

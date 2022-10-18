@@ -73,6 +73,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ServiceTemplateSpecContainerResources? Resources;
+        public readonly Outputs.ServiceTemplateSpecContainerStartupProbe? StartupProbe;
         /// <summary>
         /// Volume to mount into the container's filesystem.
         /// Only supports SecretVolumeSources.
@@ -104,6 +105,8 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
             Outputs.ServiceTemplateSpecContainerResources? resources,
 
+            Outputs.ServiceTemplateSpecContainerStartupProbe? startupProbe,
+
             ImmutableArray<Outputs.ServiceTemplateSpecContainerVolumeMount> volumeMounts,
 
             string? workingDir)
@@ -115,6 +118,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
             Image = image;
             Ports = ports;
             Resources = resources;
+            StartupProbe = startupProbe;
             VolumeMounts = volumeMounts;
             WorkingDir = workingDir;
         }

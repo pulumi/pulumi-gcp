@@ -231,14 +231,16 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A map of key/value label pairs to assign to the instance.
+     * A set of key/value label pairs assigned to the disk. This\
+     * field is only applicable for persistent disks.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return A map of key/value label pairs to assign to the instance.
+     * @return A set of key/value label pairs assigned to the disk. This\
+     * field is only applicable for persistent disks.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -885,7 +887,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A map of key/value label pairs to assign to the instance.
+         * @param labels A set of key/value label pairs assigned to the disk. This\
+         * field is only applicable for persistent disks.
          * 
          * @return builder
          * 
@@ -896,7 +899,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A map of key/value label pairs to assign to the instance.
+         * @param labels A set of key/value label pairs assigned to the disk. This\
+         * field is only applicable for persistent disks.
          * 
          * @return builder
          * 

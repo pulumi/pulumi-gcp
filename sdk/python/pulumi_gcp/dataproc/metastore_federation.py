@@ -146,7 +146,7 @@ class _MetastoreFederationState:
                3 and 63 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore federation.
         :param pulumi.Input[str] location: The location where the metastore federation should reside.
-        :param pulumi.Input[str] name: The relative resource name of the metastore that is being federated.
+        :param pulumi.Input[str] name: The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: The current state of the metastore federation.
@@ -244,7 +244,7 @@ class _MetastoreFederationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The relative resource name of the metastore that is being federated.
+        The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
         """
         return pulumi.get(self, "name")
 
@@ -354,6 +354,40 @@ class MetastoreFederation(pulumi.CustomResource):
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Dataproc Metastore Federation Bigquery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_metastore_service = gcp.dataproc.MetastoreService("defaultMetastoreService",
+            service_id="fed-2",
+            location="us-central1",
+            tier="DEVELOPER",
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+                endpoint_protocol="GRPC",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        project = gcp.organizations.get_project()
+        default_metastore_federation = gcp.dataproc.MetastoreFederation("defaultMetastoreFederation",
+            location="us-central1",
+            federation_id="fed-2",
+            version="3.1.2",
+            backend_metastores=[
+                gcp.dataproc.MetastoreFederationBackendMetastoreArgs(
+                    rank="2",
+                    name=project.id,
+                    metastore_type="BIGQUERY",
+                ),
+                gcp.dataproc.MetastoreFederationBackendMetastoreArgs(
+                    rank="1",
+                    name=default_metastore_service.id,
+                    metastore_type="DATAPROC_METASTORE",
+                ),
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -416,6 +450,40 @@ class MetastoreFederation(pulumi.CustomResource):
                 name=default_metastore_service.id,
                 metastore_type="DATAPROC_METASTORE",
             )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Dataproc Metastore Federation Bigquery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_metastore_service = gcp.dataproc.MetastoreService("defaultMetastoreService",
+            service_id="fed-2",
+            location="us-central1",
+            tier="DEVELOPER",
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+                endpoint_protocol="GRPC",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        project = gcp.organizations.get_project()
+        default_metastore_federation = gcp.dataproc.MetastoreFederation("defaultMetastoreFederation",
+            location="us-central1",
+            federation_id="fed-2",
+            version="3.1.2",
+            backend_metastores=[
+                gcp.dataproc.MetastoreFederationBackendMetastoreArgs(
+                    rank="2",
+                    name=project.id,
+                    metastore_type="BIGQUERY",
+                ),
+                gcp.dataproc.MetastoreFederationBackendMetastoreArgs(
+                    rank="1",
+                    name=default_metastore_service.id,
+                    metastore_type="DATAPROC_METASTORE",
+                ),
+            ],
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
@@ -518,7 +586,7 @@ class MetastoreFederation(pulumi.CustomResource):
                3 and 63 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore federation.
         :param pulumi.Input[str] location: The location where the metastore federation should reside.
-        :param pulumi.Input[str] name: The relative resource name of the metastore that is being federated.
+        :param pulumi.Input[str] name: The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: The current state of the metastore federation.
@@ -590,7 +658,7 @@ class MetastoreFederation(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The relative resource name of the metastore that is being federated.
+        The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
         """
         return pulumi.get(self, "name")
 

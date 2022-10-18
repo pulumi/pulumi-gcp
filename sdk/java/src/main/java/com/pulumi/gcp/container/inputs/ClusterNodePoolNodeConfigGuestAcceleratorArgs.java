@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -47,6 +48,21 @@ public final class ClusterNodePoolNodeConfigGuestAcceleratorArgs extends com.pul
     }
 
     /**
+     * Configuration for GPU sharing. Structure is documented below.
+     * 
+     */
+    @Import(name="gpuSharingConfig")
+    private @Nullable Output<ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs> gpuSharingConfig;
+
+    /**
+     * @return Configuration for GPU sharing. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs>> gpuSharingConfig() {
+        return Optional.ofNullable(this.gpuSharingConfig);
+    }
+
+    /**
      * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
@@ -66,6 +82,7 @@ public final class ClusterNodePoolNodeConfigGuestAcceleratorArgs extends com.pul
     private ClusterNodePoolNodeConfigGuestAcceleratorArgs(ClusterNodePoolNodeConfigGuestAcceleratorArgs $) {
         this.count = $.count;
         this.gpuPartitionSize = $.gpuPartitionSize;
+        this.gpuSharingConfig = $.gpuSharingConfig;
         this.type = $.type;
     }
 
@@ -127,6 +144,27 @@ public final class ClusterNodePoolNodeConfigGuestAcceleratorArgs extends com.pul
          */
         public Builder gpuPartitionSize(String gpuPartitionSize) {
             return gpuPartitionSize(Output.of(gpuPartitionSize));
+        }
+
+        /**
+         * @param gpuSharingConfig Configuration for GPU sharing. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpuSharingConfig(@Nullable Output<ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs> gpuSharingConfig) {
+            $.gpuSharingConfig = gpuSharingConfig;
+            return this;
+        }
+
+        /**
+         * @param gpuSharingConfig Configuration for GPU sharing. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpuSharingConfig(ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs gpuSharingConfig) {
+            return gpuSharingConfig(Output.of(gpuSharingConfig));
         }
 
         /**

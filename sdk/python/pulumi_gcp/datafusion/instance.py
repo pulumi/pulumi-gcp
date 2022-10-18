@@ -17,6 +17,7 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
+                 crypto_key_config: Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
@@ -42,6 +43,8 @@ class InstanceArgs:
                with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
                pipelines at low cost.
                Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+        :param pulumi.Input['InstanceCryptoKeyConfigArgs'] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+               Structure is documented below.
         :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
         :param pulumi.Input[str] description: An optional description of the instance.
         :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
@@ -61,6 +64,8 @@ class InstanceArgs:
         :param pulumi.Input[str] version: Current version of the Data Fusion.
         """
         pulumi.set(__self__, "type", type)
+        if crypto_key_config is not None:
+            pulumi.set(__self__, "crypto_key_config", crypto_key_config)
         if dataproc_service_account is not None:
             pulumi.set(__self__, "dataproc_service_account", dataproc_service_account)
         if description is not None:
@@ -107,6 +112,19 @@ class InstanceArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="cryptoKeyConfig")
+    def crypto_key_config(self) -> Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']]:
+        """
+        The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "crypto_key_config")
+
+    @crypto_key_config.setter
+    def crypto_key_config(self, value: Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']]):
+        pulumi.set(self, "crypto_key_config", value)
 
     @property
     @pulumi.getter(name="dataprocServiceAccount")
@@ -262,6 +280,7 @@ class InstanceArgs:
 class _InstanceState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 crypto_key_config: Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
@@ -285,6 +304,8 @@ class _InstanceState:
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        :param pulumi.Input['InstanceCryptoKeyConfigArgs'] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+               Structure is documented below.
         :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
         :param pulumi.Input[str] description: An optional description of the instance.
         :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
@@ -325,6 +346,8 @@ class _InstanceState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if crypto_key_config is not None:
+            pulumi.set(__self__, "crypto_key_config", crypto_key_config)
         if dataproc_service_account is not None:
             pulumi.set(__self__, "dataproc_service_account", dataproc_service_account)
         if description is not None:
@@ -380,6 +403,19 @@ class _InstanceState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="cryptoKeyConfig")
+    def crypto_key_config(self) -> Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']]:
+        """
+        The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "crypto_key_config")
+
+    @crypto_key_config.setter
+    def crypto_key_config(self, value: Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']]):
+        pulumi.set(self, "crypto_key_config", value)
 
     @property
     @pulumi.getter(name="dataprocServiceAccount")
@@ -644,6 +680,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 crypto_key_config: Optional[pulumi.Input[pulumi.InputType['InstanceCryptoKeyConfigArgs']]] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
@@ -708,6 +745,27 @@ class Instance(pulumi.CustomResource):
                 "prober_test_run": "true",
             })
         ```
+        ### Data Fusion Instance Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        project = gcp.organizations.get_project()
+        crypto_key_binding = gcp.kms.CryptoKeyIAMBinding("cryptoKeyBinding",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com"])
+        basic_cmek = gcp.datafusion.Instance("basicCmek",
+            region="us-central1",
+            type="BASIC",
+            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
+                key_reference=crypto_key.id,
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
+        ```
 
         ## Import
 
@@ -731,6 +789,8 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['InstanceCryptoKeyConfigArgs']] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+               Structure is documented below.
         :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
         :param pulumi.Input[str] description: An optional description of the instance.
         :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
@@ -816,6 +876,27 @@ class Instance(pulumi.CustomResource):
                 "prober_test_run": "true",
             })
         ```
+        ### Data Fusion Instance Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        project = gcp.organizations.get_project()
+        crypto_key_binding = gcp.kms.CryptoKeyIAMBinding("cryptoKeyBinding",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com"])
+        basic_cmek = gcp.datafusion.Instance("basicCmek",
+            region="us-central1",
+            type="BASIC",
+            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
+                key_reference=crypto_key.id,
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
+        ```
 
         ## Import
 
@@ -852,6 +933,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 crypto_key_config: Optional[pulumi.Input[pulumi.InputType['InstanceCryptoKeyConfigArgs']]] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
@@ -874,6 +956,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["crypto_key_config"] = crypto_key_config
             __props__.__dict__["dataproc_service_account"] = dataproc_service_account
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_stackdriver_logging"] = enable_stackdriver_logging
@@ -908,6 +991,7 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            crypto_key_config: Optional[pulumi.Input[pulumi.InputType['InstanceCryptoKeyConfigArgs']]] = None,
             dataproc_service_account: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
@@ -936,6 +1020,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        :param pulumi.Input[pulumi.InputType['InstanceCryptoKeyConfigArgs']] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+               Structure is documented below.
         :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
         :param pulumi.Input[str] description: An optional description of the instance.
         :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
@@ -979,6 +1065,7 @@ class Instance(pulumi.CustomResource):
         __props__ = _InstanceState.__new__(_InstanceState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["crypto_key_config"] = crypto_key_config
         __props__.__dict__["dataproc_service_account"] = dataproc_service_account
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_stackdriver_logging"] = enable_stackdriver_logging
@@ -1008,6 +1095,15 @@ class Instance(pulumi.CustomResource):
         The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="cryptoKeyConfig")
+    def crypto_key_config(self) -> pulumi.Output[Optional['outputs.InstanceCryptoKeyConfig']]:
+        """
+        The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "crypto_key_config")
 
     @property
     @pulumi.getter(name="dataprocServiceAccount")

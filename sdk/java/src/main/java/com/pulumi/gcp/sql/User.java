@@ -10,8 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.sql.UserArgs;
 import com.pulumi.gcp.sql.inputs.UserState;
-import com.pulumi.gcp.sql.outputs.UserSqlServerUserDetails;
+import com.pulumi.gcp.sql.outputs.UserPasswordPolicy;
+import com.pulumi.gcp.sql.outputs.UserSqlServerUserDetail;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -224,6 +226,12 @@ public class User extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
+    @Export(name="passwordPolicy", type=UserPasswordPolicy.class, parameters={})
+    private Output</* @Nullable */ UserPasswordPolicy> passwordPolicy;
+
+    public Output<Optional<UserPasswordPolicy>> passwordPolicy() {
+        return Codegen.optional(this.passwordPolicy);
+    }
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -240,11 +248,11 @@ public class User extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
-    @Export(name="sqlServerUserDetails", type=UserSqlServerUserDetails.class, parameters={})
-    private Output</* @Nullable */ UserSqlServerUserDetails> sqlServerUserDetails;
+    @Export(name="sqlServerUserDetails", type=List.class, parameters={UserSqlServerUserDetail.class})
+    private Output<List<UserSqlServerUserDetail>> sqlServerUserDetails;
 
-    public Output<Optional<UserSqlServerUserDetails>> sqlServerUserDetails() {
-        return Codegen.optional(this.sqlServerUserDetails);
+    public Output<List<UserSqlServerUserDetail>> sqlServerUserDetails() {
+        return this.sqlServerUserDetails;
     }
     /**
      * The user type. It determines the method to authenticate the

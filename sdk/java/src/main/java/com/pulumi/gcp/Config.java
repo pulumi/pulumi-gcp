@@ -59,6 +59,9 @@ public final class Config {
     public Optional<String> bigqueryDataTransferCustomEndpoint() {
         return Codegen.stringProp("bigqueryDataTransferCustomEndpoint").config(config).get();
     }
+    public Optional<String> bigqueryDatapolicyCustomEndpoint() {
+        return Codegen.stringProp("bigqueryDatapolicyCustomEndpoint").config(config).get();
+    }
     public Optional<String> bigqueryReservationCustomEndpoint() {
         return Codegen.stringProp("bigqueryReservationCustomEndpoint").config(config).get();
     }
@@ -94,6 +97,9 @@ public final class Config {
     }
     public Optional<String> cloudIdentityCustomEndpoint() {
         return Codegen.stringProp("cloudIdentityCustomEndpoint").config(config).get();
+    }
+    public Optional<String> cloudIdsCustomEndpoint() {
+        return Codegen.stringProp("cloudIdsCustomEndpoint").config(config).get();
     }
     public Optional<String> cloudIotCustomEndpoint() {
         return Codegen.stringProp("cloudIotCustomEndpoint").config(config).get();

@@ -33,6 +33,8 @@ import (
 //	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -40,6 +42,33 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			customServiceAccount, err := serviceAccount.NewAccount(ctx, "customServiceAccount", &serviceAccount.AccountArgs{
+//				AccountId:   pulumi.String("my-account"),
+//				DisplayName: pulumi.String("Custom Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMMember(ctx, "gaeApi", &projects.IAMMemberArgs{
+//				Project: customServiceAccount.Project,
+//				Role:    pulumi.String("roles/compute.networkUser"),
+//				Member: customServiceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMMember(ctx, "storageViewer", &projects.IAMMemberArgs{
+//				Project: customServiceAccount.Project,
+//				Role:    pulumi.String("roles/storage.objectViewer"),
+//				Member: customServiceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
 //				Location: pulumi.String("US"),
 //			})
@@ -86,6 +115,7 @@ import (
 //					},
 //				},
 //				DeleteServiceOnDestroy: pulumi.Bool(true),
+//				ServiceAccount:         customServiceAccount.Email,
 //			})
 //			if err != nil {
 //				return err
@@ -113,7 +143,8 @@ import (
 //				BasicScaling: &appengine.StandardAppVersionBasicScalingArgs{
 //					MaxInstances: pulumi.Int(5),
 //				},
-//				NoopOnDestroy: pulumi.Bool(true),
+//				NoopOnDestroy:  pulumi.Bool(true),
+//				ServiceAccount: customServiceAccount.Email,
 //			})
 //			if err != nil {
 //				return err
@@ -199,6 +230,8 @@ type StandardAppVersion struct {
 	RuntimeApiVersion pulumi.StringPtrOutput `pulumi:"runtimeApiVersion"`
 	// AppEngine service resource
 	Service pulumi.StringOutput `pulumi:"service"`
+	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe pulumi.BoolPtrOutput `pulumi:"threadsafe"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -300,6 +333,8 @@ type standardAppVersionState struct {
 	RuntimeApiVersion *string `pulumi:"runtimeApiVersion"`
 	// AppEngine service resource
 	Service *string `pulumi:"service"`
+	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe *bool `pulumi:"threadsafe"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -361,6 +396,8 @@ type StandardAppVersionState struct {
 	RuntimeApiVersion pulumi.StringPtrInput
 	// AppEngine service resource
 	Service pulumi.StringPtrInput
+	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+	ServiceAccount pulumi.StringPtrInput
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe pulumi.BoolPtrInput
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -424,6 +461,8 @@ type standardAppVersionArgs struct {
 	RuntimeApiVersion *string `pulumi:"runtimeApiVersion"`
 	// AppEngine service resource
 	Service string `pulumi:"service"`
+	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe *bool `pulumi:"threadsafe"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -484,6 +523,8 @@ type StandardAppVersionArgs struct {
 	RuntimeApiVersion pulumi.StringPtrInput
 	// AppEngine service resource
 	Service pulumi.StringInput
+	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+	ServiceAccount pulumi.StringPtrInput
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe pulumi.BoolPtrInput
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -683,6 +724,11 @@ func (o StandardAppVersionOutput) RuntimeApiVersion() pulumi.StringPtrOutput {
 // AppEngine service resource
 func (o StandardAppVersionOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *StandardAppVersion) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
+}
+
+// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+func (o StandardAppVersionOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *StandardAppVersion) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
 // Whether multiple requests can be dispatched to this version at once.

@@ -12,6 +12,11 @@ from .. import _utilities
 __all__ = [
     'DataExchangeIamBindingConditionArgs',
     'DataExchangeIamMemberConditionArgs',
+    'ListingBigqueryDatasetArgs',
+    'ListingDataProviderArgs',
+    'ListingIamBindingConditionArgs',
+    'ListingIamMemberConditionArgs',
+    'ListingPublisherArgs',
 ]
 
 @pulumi.input_type
@@ -90,5 +95,181 @@ class DataExchangeIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class ListingBigqueryDatasetArgs:
+    def __init__(__self__, *,
+                 dataset: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] dataset: Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
+        """
+        pulumi.set(__self__, "dataset", dataset)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> pulumi.Input[str]:
+        """
+        Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset", value)
+
+
+@pulumi.input_type
+class ListingDataProviderArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 primary_contact: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the listing publisher.
+        :param pulumi.Input[str] primary_contact: Email or URL of the listing publisher.
+        """
+        pulumi.set(__self__, "name", name)
+        if primary_contact is not None:
+            pulumi.set(__self__, "primary_contact", primary_contact)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the listing publisher.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="primaryContact")
+    def primary_contact(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email or URL of the listing publisher.
+        """
+        return pulumi.get(self, "primary_contact")
+
+    @primary_contact.setter
+    def primary_contact(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_contact", value)
+
+
+@pulumi.input_type
+class ListingIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class ListingIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class ListingPublisherArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 primary_contact: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the listing publisher.
+        :param pulumi.Input[str] primary_contact: Email or URL of the listing publisher.
+        """
+        pulumi.set(__self__, "name", name)
+        if primary_contact is not None:
+            pulumi.set(__self__, "primary_contact", primary_contact)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the listing publisher.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="primaryContact")
+    def primary_contact(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email or URL of the listing publisher.
+        """
+        return pulumi.get(self, "primary_contact")
+
+    @primary_contact.setter
+    def primary_contact(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_contact", value)
 
 

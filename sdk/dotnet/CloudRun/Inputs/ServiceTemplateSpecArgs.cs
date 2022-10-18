@@ -57,7 +57,9 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public Input<string>? ServingState { get; set; }
 
         /// <summary>
-        /// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+        /// Number of seconds after which the probe times out.
+        /// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+        /// Must be smaller than periodSeconds.
         /// </summary>
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }

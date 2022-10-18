@@ -144,6 +144,11 @@ export class BackendBucket extends pulumi.CustomResource {
      */
     public readonly cdnPolicy!: pulumi.Output<outputs.compute.BackendBucketCdnPolicy>;
     /**
+     * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+     * Possible values are `AUTOMATIC` and `DISABLED`.
+     */
+    public readonly compressionMode!: pulumi.Output<string | undefined>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -199,6 +204,7 @@ export class BackendBucket extends pulumi.CustomResource {
             const state = argsOrState as BackendBucketState | undefined;
             resourceInputs["bucketName"] = state ? state.bucketName : undefined;
             resourceInputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
+            resourceInputs["compressionMode"] = state ? state.compressionMode : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["customResponseHeaders"] = state ? state.customResponseHeaders : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -214,6 +220,7 @@ export class BackendBucket extends pulumi.CustomResource {
             }
             resourceInputs["bucketName"] = args ? args.bucketName : undefined;
             resourceInputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
+            resourceInputs["compressionMode"] = args ? args.compressionMode : undefined;
             resourceInputs["customResponseHeaders"] = args ? args.customResponseHeaders : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["edgeSecurityPolicy"] = args ? args.edgeSecurityPolicy : undefined;
@@ -241,6 +248,11 @@ export interface BackendBucketState {
      * Structure is documented below.
      */
     cdnPolicy?: pulumi.Input<inputs.compute.BackendBucketCdnPolicy>;
+    /**
+     * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+     * Possible values are `AUTOMATIC` and `DISABLED`.
+     */
+    compressionMode?: pulumi.Input<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -296,6 +308,11 @@ export interface BackendBucketArgs {
      * Structure is documented below.
      */
     cdnPolicy?: pulumi.Input<inputs.compute.BackendBucketCdnPolicy>;
+    /**
+     * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+     * Possible values are `AUTOMATIC` and `DISABLED`.
+     */
+    compressionMode?: pulumi.Input<string>;
     /**
      * Headers that the HTTP/S load balancer should add to proxied responses.
      */

@@ -2351,7 +2351,9 @@ type ServiceTemplateSpec struct {
 	//
 	// Deprecated: Not supported by Cloud Run fully managed
 	ServingState *string `pulumi:"servingState"`
-	// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+	// Number of seconds after which the probe times out.
+	// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+	// Must be smaller than periodSeconds.
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 	// Volume represents a named volume in a container.
 	// Structure is documented below.
@@ -2394,7 +2396,9 @@ type ServiceTemplateSpecArgs struct {
 	//
 	// Deprecated: Not supported by Cloud Run fully managed
 	ServingState pulumi.StringPtrInput `pulumi:"servingState"`
-	// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+	// Number of seconds after which the probe times out.
+	// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+	// Must be smaller than periodSeconds.
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
 	// Volume represents a named volume in a container.
 	// Structure is documented below.
@@ -2514,7 +2518,9 @@ func (o ServiceTemplateSpecOutput) ServingState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpec) *string { return v.ServingState }).(pulumi.StringPtrOutput)
 }
 
-// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+// Number of seconds after which the probe times out.
+// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+// Must be smaller than periodSeconds.
 func (o ServiceTemplateSpecOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpec) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
 }
@@ -2605,7 +2611,9 @@ func (o ServiceTemplateSpecPtrOutput) ServingState() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+// Number of seconds after which the probe times out.
+// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+// Must be smaller than periodSeconds.
 func (o ServiceTemplateSpecPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpec) *int {
 		if v == nil {
@@ -2674,7 +2682,8 @@ type ServiceTemplateSpecContainer struct {
 	// More info:
 	// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
 	// Structure is documented below.
-	Resources *ServiceTemplateSpecContainerResources `pulumi:"resources"`
+	Resources    *ServiceTemplateSpecContainerResources    `pulumi:"resources"`
+	StartupProbe *ServiceTemplateSpecContainerStartupProbe `pulumi:"startupProbe"`
 	// Volume to mount into the container's filesystem.
 	// Only supports SecretVolumeSources.
 	// Structure is documented below.
@@ -2748,7 +2757,8 @@ type ServiceTemplateSpecContainerArgs struct {
 	// More info:
 	// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
 	// Structure is documented below.
-	Resources ServiceTemplateSpecContainerResourcesPtrInput `pulumi:"resources"`
+	Resources    ServiceTemplateSpecContainerResourcesPtrInput    `pulumi:"resources"`
+	StartupProbe ServiceTemplateSpecContainerStartupProbePtrInput `pulumi:"startupProbe"`
 	// Volume to mount into the container's filesystem.
 	// Only supports SecretVolumeSources.
 	// Structure is documented below.
@@ -2883,6 +2893,10 @@ func (o ServiceTemplateSpecContainerOutput) Resources() ServiceTemplateSpecConta
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) *ServiceTemplateSpecContainerResources { return v.Resources }).(ServiceTemplateSpecContainerResourcesPtrOutput)
 }
 
+func (o ServiceTemplateSpecContainerOutput) StartupProbe() ServiceTemplateSpecContainerStartupProbePtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainer) *ServiceTemplateSpecContainerStartupProbe { return v.StartupProbe }).(ServiceTemplateSpecContainerStartupProbePtrOutput)
+}
+
 // Volume to mount into the container's filesystem.
 // Only supports SecretVolumeSources.
 // Structure is documented below.
@@ -2924,14 +2938,7 @@ func (o ServiceTemplateSpecContainerArrayOutput) Index(i pulumi.IntInput) Servic
 type ServiceTemplateSpecContainerEnv struct {
 	// Volume's name.
 	Name *string `pulumi:"name"`
-	// Variable references $(VAR_NAME) are expanded
-	// using the previous defined environment variables in the container and
-	// any route environment variables. If a variable cannot be resolved,
-	// the reference in the input string will be unchanged. The $(VAR_NAME)
-	// syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
-	// references will never be expanded, regardless of whether the variable
-	// exists or not.
-	// Defaults to "".
+	// The header field value.
 	Value *string `pulumi:"value"`
 	// Source for the environment variable's value. Only supports secret_key_ref.
 	// Structure is documented below.
@@ -2952,14 +2959,7 @@ type ServiceTemplateSpecContainerEnvInput interface {
 type ServiceTemplateSpecContainerEnvArgs struct {
 	// Volume's name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Variable references $(VAR_NAME) are expanded
-	// using the previous defined environment variables in the container and
-	// any route environment variables. If a variable cannot be resolved,
-	// the reference in the input string will be unchanged. The $(VAR_NAME)
-	// syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
-	// references will never be expanded, regardless of whether the variable
-	// exists or not.
-	// Defaults to "".
+	// The header field value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 	// Source for the environment variable's value. Only supports secret_key_ref.
 	// Structure is documented below.
@@ -3022,14 +3022,7 @@ func (o ServiceTemplateSpecContainerEnvOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainerEnv) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Variable references $(VAR_NAME) are expanded
-// using the previous defined environment variables in the container and
-// any route environment variables. If a variable cannot be resolved,
-// the reference in the input string will be unchanged. The $(VAR_NAME)
-// syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
-// references will never be expanded, regardless of whether the variable
-// exists or not.
-// Defaults to "".
+// The header field value.
 func (o ServiceTemplateSpecContainerEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainerEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -4379,6 +4372,691 @@ func (o ServiceTemplateSpecContainerResourcesPtrOutput) Requests() pulumi.String
 		}
 		return v.Requests
 	}).(pulumi.StringMapOutput)
+}
+
+type ServiceTemplateSpecContainerStartupProbe struct {
+	// Minimum consecutive failures for the probe to be considered failed after
+	// having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// HttpGet specifies the http request to perform.
+	// Structure is documented below.
+	HttpGet *ServiceTemplateSpecContainerStartupProbeHttpGet `pulumi:"httpGet"`
+	// Number of seconds after the container has started before the probe is
+	// initiated.
+	// Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe.
+	// Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// TcpSocket specifies an action involving a TCP port.
+	// Structure is documented below.
+	TcpSocket *ServiceTemplateSpecContainerStartupProbeTcpSocket `pulumi:"tcpSocket"`
+	// Number of seconds after which the probe times out.
+	// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+	// Must be smaller than periodSeconds.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// ServiceTemplateSpecContainerStartupProbeInput is an input type that accepts ServiceTemplateSpecContainerStartupProbeArgs and ServiceTemplateSpecContainerStartupProbeOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecContainerStartupProbeInput` via:
+//
+//	ServiceTemplateSpecContainerStartupProbeArgs{...}
+type ServiceTemplateSpecContainerStartupProbeInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecContainerStartupProbeOutput() ServiceTemplateSpecContainerStartupProbeOutput
+	ToServiceTemplateSpecContainerStartupProbeOutputWithContext(context.Context) ServiceTemplateSpecContainerStartupProbeOutput
+}
+
+type ServiceTemplateSpecContainerStartupProbeArgs struct {
+	// Minimum consecutive failures for the probe to be considered failed after
+	// having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// HttpGet specifies the http request to perform.
+	// Structure is documented below.
+	HttpGet ServiceTemplateSpecContainerStartupProbeHttpGetPtrInput `pulumi:"httpGet"`
+	// Number of seconds after the container has started before the probe is
+	// initiated.
+	// Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe.
+	// Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// TcpSocket specifies an action involving a TCP port.
+	// Structure is documented below.
+	TcpSocket ServiceTemplateSpecContainerStartupProbeTcpSocketPtrInput `pulumi:"tcpSocket"`
+	// Number of seconds after which the probe times out.
+	// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+	// Must be smaller than periodSeconds.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (ServiceTemplateSpecContainerStartupProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecContainerStartupProbe)(nil)).Elem()
+}
+
+func (i ServiceTemplateSpecContainerStartupProbeArgs) ToServiceTemplateSpecContainerStartupProbeOutput() ServiceTemplateSpecContainerStartupProbeOutput {
+	return i.ToServiceTemplateSpecContainerStartupProbeOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecContainerStartupProbeArgs) ToServiceTemplateSpecContainerStartupProbeOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerStartupProbeOutput)
+}
+
+func (i ServiceTemplateSpecContainerStartupProbeArgs) ToServiceTemplateSpecContainerStartupProbePtrOutput() ServiceTemplateSpecContainerStartupProbePtrOutput {
+	return i.ToServiceTemplateSpecContainerStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecContainerStartupProbeArgs) ToServiceTemplateSpecContainerStartupProbePtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerStartupProbeOutput).ToServiceTemplateSpecContainerStartupProbePtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateSpecContainerStartupProbePtrInput is an input type that accepts ServiceTemplateSpecContainerStartupProbeArgs, ServiceTemplateSpecContainerStartupProbePtr and ServiceTemplateSpecContainerStartupProbePtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecContainerStartupProbePtrInput` via:
+//
+//	        ServiceTemplateSpecContainerStartupProbeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateSpecContainerStartupProbePtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecContainerStartupProbePtrOutput() ServiceTemplateSpecContainerStartupProbePtrOutput
+	ToServiceTemplateSpecContainerStartupProbePtrOutputWithContext(context.Context) ServiceTemplateSpecContainerStartupProbePtrOutput
+}
+
+type serviceTemplateSpecContainerStartupProbePtrType ServiceTemplateSpecContainerStartupProbeArgs
+
+func ServiceTemplateSpecContainerStartupProbePtr(v *ServiceTemplateSpecContainerStartupProbeArgs) ServiceTemplateSpecContainerStartupProbePtrInput {
+	return (*serviceTemplateSpecContainerStartupProbePtrType)(v)
+}
+
+func (*serviceTemplateSpecContainerStartupProbePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecContainerStartupProbe)(nil)).Elem()
+}
+
+func (i *serviceTemplateSpecContainerStartupProbePtrType) ToServiceTemplateSpecContainerStartupProbePtrOutput() ServiceTemplateSpecContainerStartupProbePtrOutput {
+	return i.ToServiceTemplateSpecContainerStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateSpecContainerStartupProbePtrType) ToServiceTemplateSpecContainerStartupProbePtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerStartupProbePtrOutput)
+}
+
+type ServiceTemplateSpecContainerStartupProbeOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecContainerStartupProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecContainerStartupProbe)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeOutput) ToServiceTemplateSpecContainerStartupProbeOutput() ServiceTemplateSpecContainerStartupProbeOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeOutput) ToServiceTemplateSpecContainerStartupProbeOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbeOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeOutput) ToServiceTemplateSpecContainerStartupProbePtrOutput() ServiceTemplateSpecContainerStartupProbePtrOutput {
+	return o.ToServiceTemplateSpecContainerStartupProbePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeOutput) ToServiceTemplateSpecContainerStartupProbePtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateSpecContainerStartupProbe) *ServiceTemplateSpecContainerStartupProbe {
+		return &v
+	}).(ServiceTemplateSpecContainerStartupProbePtrOutput)
+}
+
+// Minimum consecutive failures for the probe to be considered failed after
+// having succeeded. Defaults to 3. Minimum value is 1.
+func (o ServiceTemplateSpecContainerStartupProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerStartupProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// HttpGet specifies the http request to perform.
+// Structure is documented below.
+func (o ServiceTemplateSpecContainerStartupProbeOutput) HttpGet() ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerStartupProbe) *ServiceTemplateSpecContainerStartupProbeHttpGet {
+		return v.HttpGet
+	}).(ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput)
+}
+
+// Number of seconds after the container has started before the probe is
+// initiated.
+// Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+func (o ServiceTemplateSpecContainerStartupProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerStartupProbe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// How often (in seconds) to perform the probe.
+// Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+func (o ServiceTemplateSpecContainerStartupProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerStartupProbe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// TcpSocket specifies an action involving a TCP port.
+// Structure is documented below.
+func (o ServiceTemplateSpecContainerStartupProbeOutput) TcpSocket() ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerStartupProbe) *ServiceTemplateSpecContainerStartupProbeTcpSocket {
+		return v.TcpSocket
+	}).(ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput)
+}
+
+// Number of seconds after which the probe times out.
+// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+// Must be smaller than periodSeconds.
+func (o ServiceTemplateSpecContainerStartupProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerStartupProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type ServiceTemplateSpecContainerStartupProbePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecContainerStartupProbePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecContainerStartupProbe)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecContainerStartupProbePtrOutput) ToServiceTemplateSpecContainerStartupProbePtrOutput() ServiceTemplateSpecContainerStartupProbePtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerStartupProbePtrOutput) ToServiceTemplateSpecContainerStartupProbePtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbePtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerStartupProbePtrOutput) Elem() ServiceTemplateSpecContainerStartupProbeOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerStartupProbe) ServiceTemplateSpecContainerStartupProbe {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateSpecContainerStartupProbe
+		return ret
+	}).(ServiceTemplateSpecContainerStartupProbeOutput)
+}
+
+// Minimum consecutive failures for the probe to be considered failed after
+// having succeeded. Defaults to 3. Minimum value is 1.
+func (o ServiceTemplateSpecContainerStartupProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// HttpGet specifies the http request to perform.
+// Structure is documented below.
+func (o ServiceTemplateSpecContainerStartupProbePtrOutput) HttpGet() ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerStartupProbe) *ServiceTemplateSpecContainerStartupProbeHttpGet {
+		if v == nil {
+			return nil
+		}
+		return v.HttpGet
+	}).(ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput)
+}
+
+// Number of seconds after the container has started before the probe is
+// initiated.
+// Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+func (o ServiceTemplateSpecContainerStartupProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// How often (in seconds) to perform the probe.
+// Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+func (o ServiceTemplateSpecContainerStartupProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// TcpSocket specifies an action involving a TCP port.
+// Structure is documented below.
+func (o ServiceTemplateSpecContainerStartupProbePtrOutput) TcpSocket() ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerStartupProbe) *ServiceTemplateSpecContainerStartupProbeTcpSocket {
+		if v == nil {
+			return nil
+		}
+		return v.TcpSocket
+	}).(ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput)
+}
+
+// Number of seconds after which the probe times out.
+// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+// Must be smaller than periodSeconds.
+func (o ServiceTemplateSpecContainerStartupProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerStartupProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type ServiceTemplateSpecContainerStartupProbeHttpGet struct {
+	// Custom headers to set in the request. HTTP allows repeated headers.
+	// Structure is documented below.
+	HttpHeaders []ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
+	// The relative path of the file to map the key to.
+	// May not be an absolute path.
+	// May not contain the path element '..'.
+	// May not start with the string '..'.
+	Path *string `pulumi:"path"`
+}
+
+// ServiceTemplateSpecContainerStartupProbeHttpGetInput is an input type that accepts ServiceTemplateSpecContainerStartupProbeHttpGetArgs and ServiceTemplateSpecContainerStartupProbeHttpGetOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecContainerStartupProbeHttpGetInput` via:
+//
+//	ServiceTemplateSpecContainerStartupProbeHttpGetArgs{...}
+type ServiceTemplateSpecContainerStartupProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecContainerStartupProbeHttpGetOutput() ServiceTemplateSpecContainerStartupProbeHttpGetOutput
+	ToServiceTemplateSpecContainerStartupProbeHttpGetOutputWithContext(context.Context) ServiceTemplateSpecContainerStartupProbeHttpGetOutput
+}
+
+type ServiceTemplateSpecContainerStartupProbeHttpGetArgs struct {
+	// Custom headers to set in the request. HTTP allows repeated headers.
+	// Structure is documented below.
+	HttpHeaders ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
+	// The relative path of the file to map the key to.
+	// May not be an absolute path.
+	// May not contain the path element '..'.
+	// May not start with the string '..'.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (ServiceTemplateSpecContainerStartupProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i ServiceTemplateSpecContainerStartupProbeHttpGetArgs) ToServiceTemplateSpecContainerStartupProbeHttpGetOutput() ServiceTemplateSpecContainerStartupProbeHttpGetOutput {
+	return i.ToServiceTemplateSpecContainerStartupProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecContainerStartupProbeHttpGetArgs) ToServiceTemplateSpecContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerStartupProbeHttpGetOutput)
+}
+
+func (i ServiceTemplateSpecContainerStartupProbeHttpGetArgs) ToServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput() ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return i.ToServiceTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecContainerStartupProbeHttpGetArgs) ToServiceTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerStartupProbeHttpGetOutput).ToServiceTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateSpecContainerStartupProbeHttpGetPtrInput is an input type that accepts ServiceTemplateSpecContainerStartupProbeHttpGetArgs, ServiceTemplateSpecContainerStartupProbeHttpGetPtr and ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecContainerStartupProbeHttpGetPtrInput` via:
+//
+//	        ServiceTemplateSpecContainerStartupProbeHttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateSpecContainerStartupProbeHttpGetPtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput() ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput
+	ToServiceTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(context.Context) ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput
+}
+
+type serviceTemplateSpecContainerStartupProbeHttpGetPtrType ServiceTemplateSpecContainerStartupProbeHttpGetArgs
+
+func ServiceTemplateSpecContainerStartupProbeHttpGetPtr(v *ServiceTemplateSpecContainerStartupProbeHttpGetArgs) ServiceTemplateSpecContainerStartupProbeHttpGetPtrInput {
+	return (*serviceTemplateSpecContainerStartupProbeHttpGetPtrType)(v)
+}
+
+func (*serviceTemplateSpecContainerStartupProbeHttpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i *serviceTemplateSpecContainerStartupProbeHttpGetPtrType) ToServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput() ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return i.ToServiceTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateSpecContainerStartupProbeHttpGetPtrType) ToServiceTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput)
+}
+
+type ServiceTemplateSpecContainerStartupProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecContainerStartupProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetOutput) ToServiceTemplateSpecContainerStartupProbeHttpGetOutput() ServiceTemplateSpecContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetOutput) ToServiceTemplateSpecContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetOutput) ToServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput() ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return o.ToServiceTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetOutput) ToServiceTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateSpecContainerStartupProbeHttpGet) *ServiceTemplateSpecContainerStartupProbeHttpGet {
+		return &v
+	}).(ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput)
+}
+
+// Custom headers to set in the request. HTTP allows repeated headers.
+// Structure is documented below.
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetOutput) HttpHeaders() ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerStartupProbeHttpGet) []ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader {
+		return v.HttpHeaders
+	}).(ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// The relative path of the file to map the key to.
+// May not be an absolute path.
+// May not contain the path element '..'.
+// May not start with the string '..'.
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerStartupProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput) ToServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput() ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput) ToServiceTemplateSpecContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput) Elem() ServiceTemplateSpecContainerStartupProbeHttpGetOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerStartupProbeHttpGet) ServiceTemplateSpecContainerStartupProbeHttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateSpecContainerStartupProbeHttpGet
+		return ret
+	}).(ServiceTemplateSpecContainerStartupProbeHttpGetOutput)
+}
+
+// Custom headers to set in the request. HTTP allows repeated headers.
+// Structure is documented below.
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput) HttpHeaders() ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerStartupProbeHttpGet) []ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHeaders
+	}).(ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+// The relative path of the file to map the key to.
+// May not be an absolute path.
+// May not contain the path element '..'.
+// May not start with the string '..'.
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerStartupProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader struct {
+	// Volume's name.
+	Name string `pulumi:"name"`
+	// The header field value.
+	Value *string `pulumi:"value"`
+}
+
+// ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput is an input type that accepts ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs and ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput` via:
+//
+//	ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs{...}
+type ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput() ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput
+	ToServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Context) ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput
+}
+
+type ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs struct {
+	// Volume's name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The header field value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs) ToServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput() ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
+	return i.ToServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs) ToServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput)
+}
+
+// ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput is an input type that accepts ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray and ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput` via:
+//
+//	ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray{ ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs{...} }
+type ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput() ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput
+	ToServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput
+}
+
+type ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray []ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput
+
+func (ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray) ToServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput() ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray) ToServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+type ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) ToServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput() ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) ToServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+// Volume's name.
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The header field value.
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput() ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader {
+		return vs[0].([]ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput)
+}
+
+type ServiceTemplateSpecContainerStartupProbeTcpSocket struct {
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	Port *int `pulumi:"port"`
+}
+
+// ServiceTemplateSpecContainerStartupProbeTcpSocketInput is an input type that accepts ServiceTemplateSpecContainerStartupProbeTcpSocketArgs and ServiceTemplateSpecContainerStartupProbeTcpSocketOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecContainerStartupProbeTcpSocketInput` via:
+//
+//	ServiceTemplateSpecContainerStartupProbeTcpSocketArgs{...}
+type ServiceTemplateSpecContainerStartupProbeTcpSocketInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecContainerStartupProbeTcpSocketOutput() ServiceTemplateSpecContainerStartupProbeTcpSocketOutput
+	ToServiceTemplateSpecContainerStartupProbeTcpSocketOutputWithContext(context.Context) ServiceTemplateSpecContainerStartupProbeTcpSocketOutput
+}
+
+type ServiceTemplateSpecContainerStartupProbeTcpSocketArgs struct {
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (ServiceTemplateSpecContainerStartupProbeTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i ServiceTemplateSpecContainerStartupProbeTcpSocketArgs) ToServiceTemplateSpecContainerStartupProbeTcpSocketOutput() ServiceTemplateSpecContainerStartupProbeTcpSocketOutput {
+	return i.ToServiceTemplateSpecContainerStartupProbeTcpSocketOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecContainerStartupProbeTcpSocketArgs) ToServiceTemplateSpecContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbeTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerStartupProbeTcpSocketOutput)
+}
+
+func (i ServiceTemplateSpecContainerStartupProbeTcpSocketArgs) ToServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput() ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput {
+	return i.ToServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecContainerStartupProbeTcpSocketArgs) ToServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerStartupProbeTcpSocketOutput).ToServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateSpecContainerStartupProbeTcpSocketPtrInput is an input type that accepts ServiceTemplateSpecContainerStartupProbeTcpSocketArgs, ServiceTemplateSpecContainerStartupProbeTcpSocketPtr and ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecContainerStartupProbeTcpSocketPtrInput` via:
+//
+//	        ServiceTemplateSpecContainerStartupProbeTcpSocketArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateSpecContainerStartupProbeTcpSocketPtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput() ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput
+	ToServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutputWithContext(context.Context) ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput
+}
+
+type serviceTemplateSpecContainerStartupProbeTcpSocketPtrType ServiceTemplateSpecContainerStartupProbeTcpSocketArgs
+
+func ServiceTemplateSpecContainerStartupProbeTcpSocketPtr(v *ServiceTemplateSpecContainerStartupProbeTcpSocketArgs) ServiceTemplateSpecContainerStartupProbeTcpSocketPtrInput {
+	return (*serviceTemplateSpecContainerStartupProbeTcpSocketPtrType)(v)
+}
+
+func (*serviceTemplateSpecContainerStartupProbeTcpSocketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i *serviceTemplateSpecContainerStartupProbeTcpSocketPtrType) ToServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput() ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput {
+	return i.ToServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateSpecContainerStartupProbeTcpSocketPtrType) ToServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput)
+}
+
+type ServiceTemplateSpecContainerStartupProbeTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecContainerStartupProbeTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeTcpSocketOutput) ToServiceTemplateSpecContainerStartupProbeTcpSocketOutput() ServiceTemplateSpecContainerStartupProbeTcpSocketOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeTcpSocketOutput) ToServiceTemplateSpecContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbeTcpSocketOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeTcpSocketOutput) ToServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput() ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput {
+	return o.ToServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeTcpSocketOutput) ToServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateSpecContainerStartupProbeTcpSocket) *ServiceTemplateSpecContainerStartupProbeTcpSocket {
+		return &v
+	}).(ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+func (o ServiceTemplateSpecContainerStartupProbeTcpSocketOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerStartupProbeTcpSocket) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput) ToServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput() ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput) ToServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput) Elem() ServiceTemplateSpecContainerStartupProbeTcpSocketOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerStartupProbeTcpSocket) ServiceTemplateSpecContainerStartupProbeTcpSocket {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateSpecContainerStartupProbeTcpSocket
+		return ret
+	}).(ServiceTemplateSpecContainerStartupProbeTcpSocketOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+func (o ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerStartupProbeTcpSocket) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServiceTemplateSpecContainerVolumeMount struct {
@@ -5734,15 +6412,16 @@ func (o GetServiceTemplateSpecArrayOutput) Index(i pulumi.IntInput) GetServiceTe
 }
 
 type GetServiceTemplateSpecContainer struct {
-	Args         []string                                     `pulumi:"args"`
-	Commands     []string                                     `pulumi:"commands"`
-	EnvFroms     []GetServiceTemplateSpecContainerEnvFrom     `pulumi:"envFroms"`
-	Envs         []GetServiceTemplateSpecContainerEnv         `pulumi:"envs"`
-	Image        string                                       `pulumi:"image"`
-	Ports        []GetServiceTemplateSpecContainerPort        `pulumi:"ports"`
-	Resources    []GetServiceTemplateSpecContainerResource    `pulumi:"resources"`
-	VolumeMounts []GetServiceTemplateSpecContainerVolumeMount `pulumi:"volumeMounts"`
-	WorkingDir   string                                       `pulumi:"workingDir"`
+	Args          []string                                      `pulumi:"args"`
+	Commands      []string                                      `pulumi:"commands"`
+	EnvFroms      []GetServiceTemplateSpecContainerEnvFrom      `pulumi:"envFroms"`
+	Envs          []GetServiceTemplateSpecContainerEnv          `pulumi:"envs"`
+	Image         string                                        `pulumi:"image"`
+	Ports         []GetServiceTemplateSpecContainerPort         `pulumi:"ports"`
+	Resources     []GetServiceTemplateSpecContainerResource     `pulumi:"resources"`
+	StartupProbes []GetServiceTemplateSpecContainerStartupProbe `pulumi:"startupProbes"`
+	VolumeMounts  []GetServiceTemplateSpecContainerVolumeMount  `pulumi:"volumeMounts"`
+	WorkingDir    string                                        `pulumi:"workingDir"`
 }
 
 // GetServiceTemplateSpecContainerInput is an input type that accepts GetServiceTemplateSpecContainerArgs and GetServiceTemplateSpecContainerOutput values.
@@ -5757,15 +6436,16 @@ type GetServiceTemplateSpecContainerInput interface {
 }
 
 type GetServiceTemplateSpecContainerArgs struct {
-	Args         pulumi.StringArrayInput                              `pulumi:"args"`
-	Commands     pulumi.StringArrayInput                              `pulumi:"commands"`
-	EnvFroms     GetServiceTemplateSpecContainerEnvFromArrayInput     `pulumi:"envFroms"`
-	Envs         GetServiceTemplateSpecContainerEnvArrayInput         `pulumi:"envs"`
-	Image        pulumi.StringInput                                   `pulumi:"image"`
-	Ports        GetServiceTemplateSpecContainerPortArrayInput        `pulumi:"ports"`
-	Resources    GetServiceTemplateSpecContainerResourceArrayInput    `pulumi:"resources"`
-	VolumeMounts GetServiceTemplateSpecContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
-	WorkingDir   pulumi.StringInput                                   `pulumi:"workingDir"`
+	Args          pulumi.StringArrayInput                               `pulumi:"args"`
+	Commands      pulumi.StringArrayInput                               `pulumi:"commands"`
+	EnvFroms      GetServiceTemplateSpecContainerEnvFromArrayInput      `pulumi:"envFroms"`
+	Envs          GetServiceTemplateSpecContainerEnvArrayInput          `pulumi:"envs"`
+	Image         pulumi.StringInput                                    `pulumi:"image"`
+	Ports         GetServiceTemplateSpecContainerPortArrayInput         `pulumi:"ports"`
+	Resources     GetServiceTemplateSpecContainerResourceArrayInput     `pulumi:"resources"`
+	StartupProbes GetServiceTemplateSpecContainerStartupProbeArrayInput `pulumi:"startupProbes"`
+	VolumeMounts  GetServiceTemplateSpecContainerVolumeMountArrayInput  `pulumi:"volumeMounts"`
+	WorkingDir    pulumi.StringInput                                    `pulumi:"workingDir"`
 }
 
 func (GetServiceTemplateSpecContainerArgs) ElementType() reflect.Type {
@@ -5845,6 +6525,12 @@ func (o GetServiceTemplateSpecContainerOutput) Ports() GetServiceTemplateSpecCon
 
 func (o GetServiceTemplateSpecContainerOutput) Resources() GetServiceTemplateSpecContainerResourceArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecContainer) []GetServiceTemplateSpecContainerResource { return v.Resources }).(GetServiceTemplateSpecContainerResourceArrayOutput)
+}
+
+func (o GetServiceTemplateSpecContainerOutput) StartupProbes() GetServiceTemplateSpecContainerStartupProbeArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainer) []GetServiceTemplateSpecContainerStartupProbe {
+		return v.StartupProbes
+	}).(GetServiceTemplateSpecContainerStartupProbeArrayOutput)
 }
 
 func (o GetServiceTemplateSpecContainerOutput) VolumeMounts() GetServiceTemplateSpecContainerVolumeMountArrayOutput {
@@ -6904,6 +7590,433 @@ func (o GetServiceTemplateSpecContainerResourceArrayOutput) Index(i pulumi.IntIn
 	}).(GetServiceTemplateSpecContainerResourceOutput)
 }
 
+type GetServiceTemplateSpecContainerStartupProbe struct {
+	FailureThreshold    int                                                    `pulumi:"failureThreshold"`
+	HttpGets            []GetServiceTemplateSpecContainerStartupProbeHttpGet   `pulumi:"httpGets"`
+	InitialDelaySeconds int                                                    `pulumi:"initialDelaySeconds"`
+	PeriodSeconds       int                                                    `pulumi:"periodSeconds"`
+	TcpSockets          []GetServiceTemplateSpecContainerStartupProbeTcpSocket `pulumi:"tcpSockets"`
+	TimeoutSeconds      int                                                    `pulumi:"timeoutSeconds"`
+}
+
+// GetServiceTemplateSpecContainerStartupProbeInput is an input type that accepts GetServiceTemplateSpecContainerStartupProbeArgs and GetServiceTemplateSpecContainerStartupProbeOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecContainerStartupProbeInput` via:
+//
+//	GetServiceTemplateSpecContainerStartupProbeArgs{...}
+type GetServiceTemplateSpecContainerStartupProbeInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecContainerStartupProbeOutput() GetServiceTemplateSpecContainerStartupProbeOutput
+	ToGetServiceTemplateSpecContainerStartupProbeOutputWithContext(context.Context) GetServiceTemplateSpecContainerStartupProbeOutput
+}
+
+type GetServiceTemplateSpecContainerStartupProbeArgs struct {
+	FailureThreshold    pulumi.IntInput                                                `pulumi:"failureThreshold"`
+	HttpGets            GetServiceTemplateSpecContainerStartupProbeHttpGetArrayInput   `pulumi:"httpGets"`
+	InitialDelaySeconds pulumi.IntInput                                                `pulumi:"initialDelaySeconds"`
+	PeriodSeconds       pulumi.IntInput                                                `pulumi:"periodSeconds"`
+	TcpSockets          GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
+	TimeoutSeconds      pulumi.IntInput                                                `pulumi:"timeoutSeconds"`
+}
+
+func (GetServiceTemplateSpecContainerStartupProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecContainerStartupProbe)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecContainerStartupProbeArgs) ToGetServiceTemplateSpecContainerStartupProbeOutput() GetServiceTemplateSpecContainerStartupProbeOutput {
+	return i.ToGetServiceTemplateSpecContainerStartupProbeOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecContainerStartupProbeArgs) ToGetServiceTemplateSpecContainerStartupProbeOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerStartupProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecContainerStartupProbeOutput)
+}
+
+// GetServiceTemplateSpecContainerStartupProbeArrayInput is an input type that accepts GetServiceTemplateSpecContainerStartupProbeArray and GetServiceTemplateSpecContainerStartupProbeArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecContainerStartupProbeArrayInput` via:
+//
+//	GetServiceTemplateSpecContainerStartupProbeArray{ GetServiceTemplateSpecContainerStartupProbeArgs{...} }
+type GetServiceTemplateSpecContainerStartupProbeArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecContainerStartupProbeArrayOutput() GetServiceTemplateSpecContainerStartupProbeArrayOutput
+	ToGetServiceTemplateSpecContainerStartupProbeArrayOutputWithContext(context.Context) GetServiceTemplateSpecContainerStartupProbeArrayOutput
+}
+
+type GetServiceTemplateSpecContainerStartupProbeArray []GetServiceTemplateSpecContainerStartupProbeInput
+
+func (GetServiceTemplateSpecContainerStartupProbeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecContainerStartupProbe)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecContainerStartupProbeArray) ToGetServiceTemplateSpecContainerStartupProbeArrayOutput() GetServiceTemplateSpecContainerStartupProbeArrayOutput {
+	return i.ToGetServiceTemplateSpecContainerStartupProbeArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecContainerStartupProbeArray) ToGetServiceTemplateSpecContainerStartupProbeArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerStartupProbeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecContainerStartupProbeArrayOutput)
+}
+
+type GetServiceTemplateSpecContainerStartupProbeOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecContainerStartupProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecContainerStartupProbe)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeOutput) ToGetServiceTemplateSpecContainerStartupProbeOutput() GetServiceTemplateSpecContainerStartupProbeOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeOutput) ToGetServiceTemplateSpecContainerStartupProbeOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerStartupProbeOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeOutput) FailureThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerStartupProbe) int { return v.FailureThreshold }).(pulumi.IntOutput)
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeOutput) HttpGets() GetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerStartupProbe) []GetServiceTemplateSpecContainerStartupProbeHttpGet {
+		return v.HttpGets
+	}).(GetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput)
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeOutput) InitialDelaySeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerStartupProbe) int { return v.InitialDelaySeconds }).(pulumi.IntOutput)
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeOutput) PeriodSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerStartupProbe) int { return v.PeriodSeconds }).(pulumi.IntOutput)
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeOutput) TcpSockets() GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerStartupProbe) []GetServiceTemplateSpecContainerStartupProbeTcpSocket {
+		return v.TcpSockets
+	}).(GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutput)
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeOutput) TimeoutSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerStartupProbe) int { return v.TimeoutSeconds }).(pulumi.IntOutput)
+}
+
+type GetServiceTemplateSpecContainerStartupProbeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecContainerStartupProbeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecContainerStartupProbe)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeArrayOutput) ToGetServiceTemplateSpecContainerStartupProbeArrayOutput() GetServiceTemplateSpecContainerStartupProbeArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeArrayOutput) ToGetServiceTemplateSpecContainerStartupProbeArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerStartupProbeArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateSpecContainerStartupProbeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateSpecContainerStartupProbe {
+		return vs[0].([]GetServiceTemplateSpecContainerStartupProbe)[vs[1].(int)]
+	}).(GetServiceTemplateSpecContainerStartupProbeOutput)
+}
+
+type GetServiceTemplateSpecContainerStartupProbeHttpGet struct {
+	HttpHeaders []GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
+	Path        string                                                         `pulumi:"path"`
+}
+
+// GetServiceTemplateSpecContainerStartupProbeHttpGetInput is an input type that accepts GetServiceTemplateSpecContainerStartupProbeHttpGetArgs and GetServiceTemplateSpecContainerStartupProbeHttpGetOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecContainerStartupProbeHttpGetInput` via:
+//
+//	GetServiceTemplateSpecContainerStartupProbeHttpGetArgs{...}
+type GetServiceTemplateSpecContainerStartupProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecContainerStartupProbeHttpGetOutput() GetServiceTemplateSpecContainerStartupProbeHttpGetOutput
+	ToGetServiceTemplateSpecContainerStartupProbeHttpGetOutputWithContext(context.Context) GetServiceTemplateSpecContainerStartupProbeHttpGetOutput
+}
+
+type GetServiceTemplateSpecContainerStartupProbeHttpGetArgs struct {
+	HttpHeaders GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
+	Path        pulumi.StringInput                                                     `pulumi:"path"`
+}
+
+func (GetServiceTemplateSpecContainerStartupProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecContainerStartupProbeHttpGetArgs) ToGetServiceTemplateSpecContainerStartupProbeHttpGetOutput() GetServiceTemplateSpecContainerStartupProbeHttpGetOutput {
+	return i.ToGetServiceTemplateSpecContainerStartupProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecContainerStartupProbeHttpGetArgs) ToGetServiceTemplateSpecContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerStartupProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecContainerStartupProbeHttpGetOutput)
+}
+
+// GetServiceTemplateSpecContainerStartupProbeHttpGetArrayInput is an input type that accepts GetServiceTemplateSpecContainerStartupProbeHttpGetArray and GetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecContainerStartupProbeHttpGetArrayInput` via:
+//
+//	GetServiceTemplateSpecContainerStartupProbeHttpGetArray{ GetServiceTemplateSpecContainerStartupProbeHttpGetArgs{...} }
+type GetServiceTemplateSpecContainerStartupProbeHttpGetArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput() GetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput
+	ToGetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutputWithContext(context.Context) GetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput
+}
+
+type GetServiceTemplateSpecContainerStartupProbeHttpGetArray []GetServiceTemplateSpecContainerStartupProbeHttpGetInput
+
+func (GetServiceTemplateSpecContainerStartupProbeHttpGetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecContainerStartupProbeHttpGetArray) ToGetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput() GetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput {
+	return i.ToGetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecContainerStartupProbeHttpGetArray) ToGetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput)
+}
+
+type GetServiceTemplateSpecContainerStartupProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecContainerStartupProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeHttpGetOutput) ToGetServiceTemplateSpecContainerStartupProbeHttpGetOutput() GetServiceTemplateSpecContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeHttpGetOutput) ToGetServiceTemplateSpecContainerStartupProbeHttpGetOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerStartupProbeHttpGetOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeHttpGetOutput) HttpHeaders() GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerStartupProbeHttpGet) []GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader {
+		return v.HttpHeaders
+	}).(GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeHttpGetOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerStartupProbeHttpGet) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecContainerStartupProbeHttpGet)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput) ToGetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput() GetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput) ToGetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateSpecContainerStartupProbeHttpGetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateSpecContainerStartupProbeHttpGet {
+		return vs[0].([]GetServiceTemplateSpecContainerStartupProbeHttpGet)[vs[1].(int)]
+	}).(GetServiceTemplateSpecContainerStartupProbeHttpGetOutput)
+}
+
+type GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader struct {
+	// The name of the Cloud Run Service.
+	Name  string `pulumi:"name"`
+	Value string `pulumi:"value"`
+}
+
+// GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput is an input type that accepts GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs and GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput` via:
+//
+//	GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs{...}
+type GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput() GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput
+	ToGetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Context) GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput
+}
+
+type GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs struct {
+	// The name of the Cloud Run Service.
+	Name  pulumi.StringInput `pulumi:"name"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs) ToGetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput() GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
+	return i.ToGetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs) ToGetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput)
+}
+
+// GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput is an input type that accepts GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray and GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput` via:
+//
+//	GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray{ GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs{...} }
+type GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput() GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput
+	ToGetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput
+}
+
+type GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray []GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput
+
+func (GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray) ToGetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput() GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToGetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray) ToGetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput)
+}
+
+type GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) ToGetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput() GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) ToGetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
+	return o
+}
+
+// The name of the Cloud Run Service.
+func (o GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToGetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput() GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToGetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader {
+		return vs[0].([]GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput)
+}
+
+type GetServiceTemplateSpecContainerStartupProbeTcpSocket struct {
+	Port int `pulumi:"port"`
+}
+
+// GetServiceTemplateSpecContainerStartupProbeTcpSocketInput is an input type that accepts GetServiceTemplateSpecContainerStartupProbeTcpSocketArgs and GetServiceTemplateSpecContainerStartupProbeTcpSocketOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecContainerStartupProbeTcpSocketInput` via:
+//
+//	GetServiceTemplateSpecContainerStartupProbeTcpSocketArgs{...}
+type GetServiceTemplateSpecContainerStartupProbeTcpSocketInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecContainerStartupProbeTcpSocketOutput() GetServiceTemplateSpecContainerStartupProbeTcpSocketOutput
+	ToGetServiceTemplateSpecContainerStartupProbeTcpSocketOutputWithContext(context.Context) GetServiceTemplateSpecContainerStartupProbeTcpSocketOutput
+}
+
+type GetServiceTemplateSpecContainerStartupProbeTcpSocketArgs struct {
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetServiceTemplateSpecContainerStartupProbeTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecContainerStartupProbeTcpSocketArgs) ToGetServiceTemplateSpecContainerStartupProbeTcpSocketOutput() GetServiceTemplateSpecContainerStartupProbeTcpSocketOutput {
+	return i.ToGetServiceTemplateSpecContainerStartupProbeTcpSocketOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecContainerStartupProbeTcpSocketArgs) ToGetServiceTemplateSpecContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerStartupProbeTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecContainerStartupProbeTcpSocketOutput)
+}
+
+// GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayInput is an input type that accepts GetServiceTemplateSpecContainerStartupProbeTcpSocketArray and GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayInput` via:
+//
+//	GetServiceTemplateSpecContainerStartupProbeTcpSocketArray{ GetServiceTemplateSpecContainerStartupProbeTcpSocketArgs{...} }
+type GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutput() GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutput
+	ToGetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutputWithContext(context.Context) GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutput
+}
+
+type GetServiceTemplateSpecContainerStartupProbeTcpSocketArray []GetServiceTemplateSpecContainerStartupProbeTcpSocketInput
+
+func (GetServiceTemplateSpecContainerStartupProbeTcpSocketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecContainerStartupProbeTcpSocketArray) ToGetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutput() GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutput {
+	return i.ToGetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecContainerStartupProbeTcpSocketArray) ToGetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutput)
+}
+
+type GetServiceTemplateSpecContainerStartupProbeTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecContainerStartupProbeTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeTcpSocketOutput) ToGetServiceTemplateSpecContainerStartupProbeTcpSocketOutput() GetServiceTemplateSpecContainerStartupProbeTcpSocketOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeTcpSocketOutput) ToGetServiceTemplateSpecContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerStartupProbeTcpSocketOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeTcpSocketOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerStartupProbeTcpSocket) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecContainerStartupProbeTcpSocket)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutput) ToGetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutput() GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutput) ToGetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateSpecContainerStartupProbeTcpSocketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateSpecContainerStartupProbeTcpSocket {
+		return vs[0].([]GetServiceTemplateSpecContainerStartupProbeTcpSocket)[vs[1].(int)]
+	}).(GetServiceTemplateSpecContainerStartupProbeTcpSocketOutput)
+}
+
 type GetServiceTemplateSpecContainerVolumeMount struct {
 	MountPath string `pulumi:"mountPath"`
 	// The name of the Cloud Run Service.
@@ -7489,6 +8602,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerPortArrayInput)(nil)).Elem(), ServiceTemplateSpecContainerPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerResourcesInput)(nil)).Elem(), ServiceTemplateSpecContainerResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerResourcesPtrInput)(nil)).Elem(), ServiceTemplateSpecContainerResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerStartupProbeInput)(nil)).Elem(), ServiceTemplateSpecContainerStartupProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerStartupProbePtrInput)(nil)).Elem(), ServiceTemplateSpecContainerStartupProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerStartupProbeHttpGetInput)(nil)).Elem(), ServiceTemplateSpecContainerStartupProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerStartupProbeHttpGetPtrInput)(nil)).Elem(), ServiceTemplateSpecContainerStartupProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput)(nil)).Elem(), ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerStartupProbeTcpSocketInput)(nil)).Elem(), ServiceTemplateSpecContainerStartupProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerStartupProbeTcpSocketPtrInput)(nil)).Elem(), ServiceTemplateSpecContainerStartupProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerVolumeMountInput)(nil)).Elem(), ServiceTemplateSpecContainerVolumeMountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerVolumeMountArrayInput)(nil)).Elem(), ServiceTemplateSpecContainerVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeInput)(nil)).Elem(), ServiceTemplateSpecVolumeArgs{})
@@ -7532,6 +8653,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerPortArrayInput)(nil)).Elem(), GetServiceTemplateSpecContainerPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerResourceInput)(nil)).Elem(), GetServiceTemplateSpecContainerResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerResourceArrayInput)(nil)).Elem(), GetServiceTemplateSpecContainerResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerStartupProbeInput)(nil)).Elem(), GetServiceTemplateSpecContainerStartupProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerStartupProbeArrayInput)(nil)).Elem(), GetServiceTemplateSpecContainerStartupProbeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerStartupProbeHttpGetInput)(nil)).Elem(), GetServiceTemplateSpecContainerStartupProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerStartupProbeHttpGetArrayInput)(nil)).Elem(), GetServiceTemplateSpecContainerStartupProbeHttpGetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput)(nil)).Elem(), GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerStartupProbeTcpSocketInput)(nil)).Elem(), GetServiceTemplateSpecContainerStartupProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayInput)(nil)).Elem(), GetServiceTemplateSpecContainerStartupProbeTcpSocketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerVolumeMountInput)(nil)).Elem(), GetServiceTemplateSpecContainerVolumeMountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerVolumeMountArrayInput)(nil)).Elem(), GetServiceTemplateSpecContainerVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeInput)(nil)).Elem(), GetServiceTemplateSpecVolumeArgs{})
@@ -7590,6 +8719,14 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerPortArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerResourcesOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerResourcesPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecContainerStartupProbeOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecContainerStartupProbePtrOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecContainerStartupProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecContainerStartupProbeTcpSocketOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerVolumeMountOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeOutput{})
@@ -7633,6 +8770,14 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerPortArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerResourceOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerResourceArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerStartupProbeOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerStartupProbeArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerStartupProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerStartupProbeTcpSocketOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerStartupProbeTcpSocketArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerVolumeMountOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeOutput{})

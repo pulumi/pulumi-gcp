@@ -520,6 +520,41 @@ class Service(pulumi.CustomResource):
                 ),
             ])
         ```
+        ### Cloud Run Service Probes
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                annotations={
+                    "run.googleapis.com/launch-stage": "BETA",
+                },
+            ),
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        startup_probe=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeArgs(
+                            initial_delay_seconds=0,
+                            timeout_seconds=1,
+                            period_seconds=3,
+                            failure_threshold=1,
+                            tcp_socket=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeTcpSocketArgs(
+                                port=8080,
+                            ),
+                        ),
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                percent=100,
+                latest_revision=True,
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -737,6 +772,41 @@ class Service(pulumi.CustomResource):
                     tag="tag-name",
                 ),
             ])
+        ```
+        ### Cloud Run Service Probes
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                annotations={
+                    "run.googleapis.com/launch-stage": "BETA",
+                },
+            ),
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        startup_probe=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeArgs(
+                            initial_delay_seconds=0,
+                            timeout_seconds=1,
+                            period_seconds=3,
+                            failure_threshold=1,
+                            tcp_socket=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeTcpSocketArgs(
+                                port=8080,
+                            ),
+                        ),
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                percent=100,
+                latest_revision=True,
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import

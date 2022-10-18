@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 public final class GetBackendBucketResult {
     private String bucketName;
     private List<GetBackendBucketCdnPolicy> cdnPolicies;
+    private String compressionMode;
     private String creationTimestamp;
     private List<String> customResponseHeaders;
     private String description;
@@ -36,6 +37,9 @@ public final class GetBackendBucketResult {
     }
     public List<GetBackendBucketCdnPolicy> cdnPolicies() {
         return this.cdnPolicies;
+    }
+    public String compressionMode() {
+        return this.compressionMode;
     }
     public String creationTimestamp() {
         return this.creationTimestamp;
@@ -80,6 +84,7 @@ public final class GetBackendBucketResult {
     public static final class Builder {
         private String bucketName;
         private List<GetBackendBucketCdnPolicy> cdnPolicies;
+        private String compressionMode;
         private String creationTimestamp;
         private List<String> customResponseHeaders;
         private String description;
@@ -94,6 +99,7 @@ public final class GetBackendBucketResult {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
     	      this.cdnPolicies = defaults.cdnPolicies;
+    	      this.compressionMode = defaults.compressionMode;
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.customResponseHeaders = defaults.customResponseHeaders;
     	      this.description = defaults.description;
@@ -117,6 +123,11 @@ public final class GetBackendBucketResult {
         }
         public Builder cdnPolicies(GetBackendBucketCdnPolicy... cdnPolicies) {
             return cdnPolicies(List.of(cdnPolicies));
+        }
+        @CustomType.Setter
+        public Builder compressionMode(String compressionMode) {
+            this.compressionMode = Objects.requireNonNull(compressionMode);
+            return this;
         }
         @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
@@ -170,6 +181,7 @@ public final class GetBackendBucketResult {
             final var o = new GetBackendBucketResult();
             o.bucketName = bucketName;
             o.cdnPolicies = cdnPolicies;
+            o.compressionMode = compressionMode;
             o.creationTimestamp = creationTimestamp;
             o.customResponseHeaders = customResponseHeaders;
             o.description = description;

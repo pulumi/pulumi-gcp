@@ -195,6 +195,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionTargetHttpProxy{}
 	case "gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy":
 		r = &RegionTargetHttpsProxy{}
+	case "gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy":
+		r = &RegionTargetTcpProxy{}
 	case "gcp:compute/regionUrlMap:RegionUrlMap":
 		r = &RegionUrlMap{}
 	case "gcp:compute/reservation:Reservation":
@@ -707,6 +709,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/regionTargetHttpsProxy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionTargetTcpProxy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

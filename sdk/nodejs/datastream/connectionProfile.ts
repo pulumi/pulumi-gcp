@@ -24,6 +24,19 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  * });
  * ```
+ * ### Datastream Connection Profile Bigquery
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultConnectionProfile = new gcp.datastream.ConnectionProfile("default", {
+ *     bigqueryProfile: {},
+ *     connectionProfileId: "my-profile",
+ *     displayName: "Connection profile",
+ *     location: "us-central1",
+ * });
+ * ```
  * ### Datastream Connection Profile Full
  *
  * ```typescript
@@ -147,6 +160,10 @@ export class ConnectionProfile extends pulumi.CustomResource {
     }
 
     /**
+     * BigQuery warehouse profile.
+     */
+    public readonly bigqueryProfile!: pulumi.Output<outputs.datastream.ConnectionProfileBigqueryProfile | undefined>;
+    /**
      * The connection profile identifier.
      */
     public readonly connectionProfileId!: pulumi.Output<string>;
@@ -210,6 +227,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionProfileState | undefined;
+            resourceInputs["bigqueryProfile"] = state ? state.bigqueryProfile : undefined;
             resourceInputs["connectionProfileId"] = state ? state.connectionProfileId : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["forwardSshConnectivity"] = state ? state.forwardSshConnectivity : undefined;
@@ -232,6 +250,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["bigqueryProfile"] = args ? args.bigqueryProfile : undefined;
             resourceInputs["connectionProfileId"] = args ? args.connectionProfileId : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["forwardSshConnectivity"] = args ? args.forwardSshConnectivity : undefined;
@@ -253,6 +272,10 @@ export class ConnectionProfile extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ConnectionProfile resources.
  */
 export interface ConnectionProfileState {
+    /**
+     * BigQuery warehouse profile.
+     */
+    bigqueryProfile?: pulumi.Input<inputs.datastream.ConnectionProfileBigqueryProfile>;
     /**
      * The connection profile identifier.
      */
@@ -309,6 +332,10 @@ export interface ConnectionProfileState {
  * The set of arguments for constructing a ConnectionProfile resource.
  */
 export interface ConnectionProfileArgs {
+    /**
+     * BigQuery warehouse profile.
+     */
+    bigqueryProfile?: pulumi.Input<inputs.datastream.ConnectionProfileBigqueryProfile>;
     /**
      * The connection profile identifier.
      */

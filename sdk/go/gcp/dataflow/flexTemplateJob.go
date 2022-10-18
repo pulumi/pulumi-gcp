@@ -29,8 +29,6 @@ type FlexTemplateJob struct {
 	// **NOTE**: Google-provided Dataflow templates often provide default labels
 	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
 	// labels will be ignored to prevent diffs on re-apply.
-	//
-	// Deprecated: Deprecated until the API supports this field
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// A unique name for the resource, required by Dataflow.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -98,8 +96,6 @@ type flexTemplateJobState struct {
 	// **NOTE**: Google-provided Dataflow templates often provide default labels
 	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
 	// labels will be ignored to prevent diffs on re-apply.
-	//
-	// Deprecated: Deprecated until the API supports this field
 	Labels map[string]interface{} `pulumi:"labels"`
 	// A unique name for the resource, required by Dataflow.
 	Name *string `pulumi:"name"`
@@ -136,8 +132,6 @@ type FlexTemplateJobState struct {
 	// **NOTE**: Google-provided Dataflow templates often provide default labels
 	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
 	// labels will be ignored to prevent diffs on re-apply.
-	//
-	// Deprecated: Deprecated until the API supports this field
 	Labels pulumi.MapInput
 	// A unique name for the resource, required by Dataflow.
 	Name pulumi.StringPtrInput
@@ -176,8 +170,6 @@ type flexTemplateJobArgs struct {
 	// **NOTE**: Google-provided Dataflow templates often provide default labels
 	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
 	// labels will be ignored to prevent diffs on re-apply.
-	//
-	// Deprecated: Deprecated until the API supports this field
 	Labels map[string]interface{} `pulumi:"labels"`
 	// A unique name for the resource, required by Dataflow.
 	Name *string `pulumi:"name"`
@@ -211,8 +203,6 @@ type FlexTemplateJobArgs struct {
 	// **NOTE**: Google-provided Dataflow templates often provide default labels
 	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
 	// labels will be ignored to prevent diffs on re-apply.
-	//
-	// Deprecated: Deprecated until the API supports this field
 	Labels pulumi.MapInput
 	// A unique name for the resource, required by Dataflow.
 	Name pulumi.StringPtrInput
@@ -339,8 +329,6 @@ func (o FlexTemplateJobOutput) JobId() pulumi.StringOutput {
 // **NOTE**: Google-provided Dataflow templates often provide default labels
 // that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
 // labels will be ignored to prevent diffs on re-apply.
-//
-// Deprecated: Deprecated until the API supports this field
 func (o FlexTemplateJobOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
 }

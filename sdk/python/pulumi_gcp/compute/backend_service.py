@@ -20,6 +20,7 @@ class BackendServiceArgs:
                  backends: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArgs']]]] = None,
                  cdn_policy: Optional[pulumi.Input['BackendServiceCdnPolicyArgs']] = None,
                  circuit_breakers: Optional[pulumi.Input['BackendServiceCircuitBreakersArgs']] = None,
+                 compression_mode: Optional[pulumi.Input[str]] = None,
                  connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
                  consistent_hash: Optional[pulumi.Input['BackendServiceConsistentHashArgs']] = None,
                  custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -54,6 +55,8 @@ class BackendServiceArgs:
         :param pulumi.Input['BackendServiceCircuitBreakersArgs'] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
                is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
+        :param pulumi.Input[str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+               Possible values are `AUTOMATIC` and `DISABLED`.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
         :param pulumi.Input['BackendServiceConsistentHashArgs'] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
@@ -143,6 +146,8 @@ class BackendServiceArgs:
             pulumi.set(__self__, "cdn_policy", cdn_policy)
         if circuit_breakers is not None:
             pulumi.set(__self__, "circuit_breakers", circuit_breakers)
+        if compression_mode is not None:
+            pulumi.set(__self__, "compression_mode", compression_mode)
         if connection_draining_timeout_sec is not None:
             pulumi.set(__self__, "connection_draining_timeout_sec", connection_draining_timeout_sec)
         if consistent_hash is not None:
@@ -239,6 +244,19 @@ class BackendServiceArgs:
     @circuit_breakers.setter
     def circuit_breakers(self, value: Optional[pulumi.Input['BackendServiceCircuitBreakersArgs']]):
         pulumi.set(self, "circuit_breakers", value)
+
+    @property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        Possible values are `AUTOMATIC` and `DISABLED`.
+        """
+        return pulumi.get(self, "compression_mode")
+
+    @compression_mode.setter
+    def compression_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compression_mode", value)
 
     @property
     @pulumi.getter(name="connectionDrainingTimeoutSec")
@@ -548,6 +566,7 @@ class _BackendServiceState:
                  backends: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArgs']]]] = None,
                  cdn_policy: Optional[pulumi.Input['BackendServiceCdnPolicyArgs']] = None,
                  circuit_breakers: Optional[pulumi.Input['BackendServiceCircuitBreakersArgs']] = None,
+                 compression_mode: Optional[pulumi.Input[str]] = None,
                  connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
                  consistent_hash: Optional[pulumi.Input['BackendServiceConsistentHashArgs']] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -585,6 +604,8 @@ class _BackendServiceState:
         :param pulumi.Input['BackendServiceCircuitBreakersArgs'] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
                is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
+        :param pulumi.Input[str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+               Possible values are `AUTOMATIC` and `DISABLED`.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
         :param pulumi.Input['BackendServiceConsistentHashArgs'] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
@@ -677,6 +698,8 @@ class _BackendServiceState:
             pulumi.set(__self__, "cdn_policy", cdn_policy)
         if circuit_breakers is not None:
             pulumi.set(__self__, "circuit_breakers", circuit_breakers)
+        if compression_mode is not None:
+            pulumi.set(__self__, "compression_mode", compression_mode)
         if connection_draining_timeout_sec is not None:
             pulumi.set(__self__, "connection_draining_timeout_sec", connection_draining_timeout_sec)
         if consistent_hash is not None:
@@ -779,6 +802,19 @@ class _BackendServiceState:
     @circuit_breakers.setter
     def circuit_breakers(self, value: Optional[pulumi.Input['BackendServiceCircuitBreakersArgs']]):
         pulumi.set(self, "circuit_breakers", value)
+
+    @property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        Possible values are `AUTOMATIC` and `DISABLED`.
+        """
+        return pulumi.get(self, "compression_mode")
+
+    @compression_mode.setter
+    def compression_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compression_mode", value)
 
     @property
     @pulumi.getter(name="connectionDrainingTimeoutSec")
@@ -1126,6 +1162,7 @@ class BackendService(pulumi.CustomResource):
                  backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceBackendArgs']]]]] = None,
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']]] = None,
                  circuit_breakers: Optional[pulumi.Input[pulumi.InputType['BackendServiceCircuitBreakersArgs']]] = None,
+                 compression_mode: Optional[pulumi.Input[str]] = None,
                  connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
                  consistent_hash: Optional[pulumi.Input[pulumi.InputType['BackendServiceConsistentHashArgs']]] = None,
                  custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1246,6 +1283,8 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BackendServiceCircuitBreakersArgs']] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
                is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
+        :param pulumi.Input[str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+               Possible values are `AUTOMATIC` and `DISABLED`.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
         :param pulumi.Input[pulumi.InputType['BackendServiceConsistentHashArgs']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
@@ -1437,6 +1476,7 @@ class BackendService(pulumi.CustomResource):
                  backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceBackendArgs']]]]] = None,
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']]] = None,
                  circuit_breakers: Optional[pulumi.Input[pulumi.InputType['BackendServiceCircuitBreakersArgs']]] = None,
+                 compression_mode: Optional[pulumi.Input[str]] = None,
                  connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
                  consistent_hash: Optional[pulumi.Input[pulumi.InputType['BackendServiceConsistentHashArgs']]] = None,
                  custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1470,6 +1510,7 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["backends"] = backends
             __props__.__dict__["cdn_policy"] = cdn_policy
             __props__.__dict__["circuit_breakers"] = circuit_breakers
+            __props__.__dict__["compression_mode"] = compression_mode
             __props__.__dict__["connection_draining_timeout_sec"] = connection_draining_timeout_sec
             __props__.__dict__["consistent_hash"] = consistent_hash
             __props__.__dict__["custom_request_headers"] = custom_request_headers
@@ -1507,6 +1548,7 @@ class BackendService(pulumi.CustomResource):
             backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceBackendArgs']]]]] = None,
             cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']]] = None,
             circuit_breakers: Optional[pulumi.Input[pulumi.InputType['BackendServiceCircuitBreakersArgs']]] = None,
+            compression_mode: Optional[pulumi.Input[str]] = None,
             connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
             consistent_hash: Optional[pulumi.Input[pulumi.InputType['BackendServiceConsistentHashArgs']]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -1549,6 +1591,8 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BackendServiceCircuitBreakersArgs']] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
                is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
+        :param pulumi.Input[str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+               Possible values are `AUTOMATIC` and `DISABLED`.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
         :param pulumi.Input[pulumi.InputType['BackendServiceConsistentHashArgs']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
@@ -1641,6 +1685,7 @@ class BackendService(pulumi.CustomResource):
         __props__.__dict__["backends"] = backends
         __props__.__dict__["cdn_policy"] = cdn_policy
         __props__.__dict__["circuit_breakers"] = circuit_breakers
+        __props__.__dict__["compression_mode"] = compression_mode
         __props__.__dict__["connection_draining_timeout_sec"] = connection_draining_timeout_sec
         __props__.__dict__["consistent_hash"] = consistent_hash
         __props__.__dict__["creation_timestamp"] = creation_timestamp
@@ -1705,6 +1750,15 @@ class BackendService(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "circuit_breakers")
+
+    @property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> pulumi.Output[Optional[str]]:
+        """
+        Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        Possible values are `AUTOMATIC` and `DISABLED`.
+        """
+        return pulumi.get(self, "compression_mode")
 
     @property
     @pulumi.getter(name="connectionDrainingTimeoutSec")

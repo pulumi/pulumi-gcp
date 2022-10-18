@@ -126,6 +126,12 @@ namespace Pulumi.Gcp.Storage
         public Output<ImmutableArray<Outputs.BucketCor>> Cors { get; private set; } = null!;
 
         /// <summary>
+        /// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+        /// </summary>
+        [Output("customPlacementConfig")]
+        public Output<Outputs.BucketCustomPlacementConfig?> CustomPlacementConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         /// </summary>
         [Output("defaultEventBasedHold")]
@@ -158,7 +164,7 @@ namespace Pulumi.Gcp.Storage
         public Output<ImmutableArray<Outputs.BucketLifecycleRule>> LifecycleRules { get; private set; } = null!;
 
         /// <summary>
-        /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+        /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -295,6 +301,12 @@ namespace Pulumi.Gcp.Storage
         }
 
         /// <summary>
+        /// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+        /// </summary>
+        [Input("customPlacementConfig")]
+        public Input<Inputs.BucketCustomPlacementConfigArgs>? CustomPlacementConfig { get; set; }
+
+        /// <summary>
         /// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         /// </summary>
         [Input("defaultEventBasedHold")]
@@ -339,7 +351,7 @@ namespace Pulumi.Gcp.Storage
         }
 
         /// <summary>
-        /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+        /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -426,6 +438,12 @@ namespace Pulumi.Gcp.Storage
         }
 
         /// <summary>
+        /// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+        /// </summary>
+        [Input("customPlacementConfig")]
+        public Input<Inputs.BucketCustomPlacementConfigGetArgs>? CustomPlacementConfig { get; set; }
+
+        /// <summary>
         /// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         /// </summary>
         [Input("defaultEventBasedHold")]
@@ -470,7 +488,7 @@ namespace Pulumi.Gcp.Storage
         }
 
         /// <summary>
-        /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+        /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

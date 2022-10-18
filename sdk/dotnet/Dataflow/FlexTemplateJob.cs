@@ -155,7 +155,6 @@ namespace Pulumi.Gcp.Dataflow
         /// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
         /// labels will be ignored to prevent diffs on re-apply.
         /// </summary>
-        [Obsolete(@"Deprecated until the API supports this field")]
         public InputMap<object> Labels
         {
             get => _labels ?? (_labels = new InputMap<object>());
@@ -243,7 +242,6 @@ namespace Pulumi.Gcp.Dataflow
         /// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
         /// labels will be ignored to prevent diffs on re-apply.
         /// </summary>
-        [Obsolete(@"Deprecated until the API supports this field")]
         public InputMap<object> Labels
         {
             get => _labels ?? (_labels = new InputMap<object>());

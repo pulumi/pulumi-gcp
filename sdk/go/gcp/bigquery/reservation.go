@@ -15,7 +15,7 @@ import (
 //
 // To get more information about Reservation, see:
 //
-// * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1beta1/projects.locations.reservations/create)
+// * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations/create)
 // * How-to Guides
 //   - [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 //
@@ -35,6 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquery.NewReservation(ctx, "reservation", &bigquery.ReservationArgs{
+//				Concurrency:     pulumi.Int(0),
 //				IgnoreIdleSlots: pulumi.Bool(false),
 //				Location:        pulumi.String("asia-northeast1"),
 //				SlotCapacity:    pulumi.Int(0),
@@ -72,6 +73,8 @@ import (
 type Reservation struct {
 	pulumi.CustomResourceState
 
+	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+	Concurrency pulumi.IntPtrOutput `pulumi:"concurrency"`
 	// If false, any query using this reservation will use idle slots from other reservations within
 	// the same admin project. If true, a query using this reservation will execute with the slot
 	// capacity specified above at most.
@@ -79,6 +82,9 @@ type Reservation struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
+	// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+	// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+	MultiRegionAuxiliary pulumi.BoolPtrOutput `pulumi:"multiRegionAuxiliary"`
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -121,6 +127,8 @@ func GetReservation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Reservation resources.
 type reservationState struct {
+	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+	Concurrency *int `pulumi:"concurrency"`
 	// If false, any query using this reservation will use idle slots from other reservations within
 	// the same admin project. If true, a query using this reservation will execute with the slot
 	// capacity specified above at most.
@@ -128,6 +136,9 @@ type reservationState struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
+	// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+	// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+	MultiRegionAuxiliary *bool `pulumi:"multiRegionAuxiliary"`
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -139,6 +150,8 @@ type reservationState struct {
 }
 
 type ReservationState struct {
+	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+	Concurrency pulumi.IntPtrInput
 	// If false, any query using this reservation will use idle slots from other reservations within
 	// the same admin project. If true, a query using this reservation will execute with the slot
 	// capacity specified above at most.
@@ -146,6 +159,9 @@ type ReservationState struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
+	// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+	// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+	MultiRegionAuxiliary pulumi.BoolPtrInput
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -161,6 +177,8 @@ func (ReservationState) ElementType() reflect.Type {
 }
 
 type reservationArgs struct {
+	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+	Concurrency *int `pulumi:"concurrency"`
 	// If false, any query using this reservation will use idle slots from other reservations within
 	// the same admin project. If true, a query using this reservation will execute with the slot
 	// capacity specified above at most.
@@ -168,6 +186,9 @@ type reservationArgs struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
+	// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+	// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+	MultiRegionAuxiliary *bool `pulumi:"multiRegionAuxiliary"`
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -180,6 +201,8 @@ type reservationArgs struct {
 
 // The set of arguments for constructing a Reservation resource.
 type ReservationArgs struct {
+	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+	Concurrency pulumi.IntPtrInput
 	// If false, any query using this reservation will use idle slots from other reservations within
 	// the same admin project. If true, a query using this reservation will execute with the slot
 	// capacity specified above at most.
@@ -187,6 +210,9 @@ type ReservationArgs struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
+	// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+	// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+	MultiRegionAuxiliary pulumi.BoolPtrInput
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -284,6 +310,11 @@ func (o ReservationOutput) ToReservationOutputWithContext(ctx context.Context) R
 	return o
 }
 
+// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+func (o ReservationOutput) Concurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.IntPtrOutput { return v.Concurrency }).(pulumi.IntPtrOutput)
+}
+
 // If false, any query using this reservation will use idle slots from other reservations within
 // the same admin project. If true, a query using this reservation will execute with the slot
 // capacity specified above at most.
@@ -295,6 +326,12 @@ func (o ReservationOutput) IgnoreIdleSlots() pulumi.BoolPtrOutput {
 // Examples: US, EU, asia-northeast1. The default value is US.
 func (o ReservationOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+func (o ReservationOutput) MultiRegionAuxiliary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.BoolPtrOutput { return v.MultiRegionAuxiliary }).(pulumi.BoolPtrOutput)
 }
 
 // The name of the reservation. This field must only contain alphanumeric characters or dash.

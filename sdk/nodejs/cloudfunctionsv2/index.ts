@@ -21,10 +21,15 @@ export { FunctionIamPolicyArgs, FunctionIamPolicyState } from "./functionIamPoli
 export type FunctionIamPolicy = import("./functionIamPolicy").FunctionIamPolicy;
 export const FunctionIamPolicy: typeof import("./functionIamPolicy").FunctionIamPolicy = null as any;
 
+export { GetFunctionArgs, GetFunctionResult, GetFunctionOutputArgs } from "./getFunction";
+export const getFunction: typeof import("./getFunction").getFunction = null as any;
+export const getFunctionOutput: typeof import("./getFunction").getFunctionOutput = null as any;
+
 utilities.lazyLoad(exports, ["Function"], () => require("./function"));
 utilities.lazyLoad(exports, ["FunctionIamBinding"], () => require("./functionIamBinding"));
 utilities.lazyLoad(exports, ["FunctionIamMember"], () => require("./functionIamMember"));
 utilities.lazyLoad(exports, ["FunctionIamPolicy"], () => require("./functionIamPolicy"));
+utilities.lazyLoad(exports, ["getFunction","getFunctionOutput"], () => require("./getFunction"));
 
 const _module = {
     version: utilities.getVersion(),

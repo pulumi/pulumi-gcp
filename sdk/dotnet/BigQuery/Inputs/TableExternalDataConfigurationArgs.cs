@@ -20,6 +20,13 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<bool> Autodetect { get; set; } = null!;
 
         /// <summary>
+        /// Additional options if `source_format` is set to  
+        /// "AVRO".  Structure is documented below.
+        /// </summary>
+        [Input("avroOptions")]
+        public Input<Inputs.TableExternalDataConfigurationAvroOptionsArgs>? AvroOptions { get; set; }
+
+        /// <summary>
         /// The compression type of the data source.
         /// Valid values are "NONE" or "GZIP".
         /// </summary>

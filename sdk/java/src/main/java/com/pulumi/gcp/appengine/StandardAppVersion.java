@@ -45,6 +45,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.storage.BucketObject;
@@ -71,6 +75,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var customServiceAccount = new Account(&#34;customServiceAccount&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;my-account&#34;)
+ *             .displayName(&#34;Custom Service Account&#34;)
+ *             .build());
+ * 
+ *         var gaeApi = new IAMMember(&#34;gaeApi&#34;, IAMMemberArgs.builder()        
+ *             .project(customServiceAccount.project())
+ *             .role(&#34;roles/compute.networkUser&#34;)
+ *             .member(customServiceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build());
+ * 
+ *         var storageViewer = new IAMMember(&#34;storageViewer&#34;, IAMMemberArgs.builder()        
+ *             .project(customServiceAccount.project())
+ *             .role(&#34;roles/storage.objectViewer&#34;)
+ *             .member(customServiceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build());
+ * 
  *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
  *             .location(&#34;US&#34;)
  *             .build());
@@ -111,6 +132,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .deleteServiceOnDestroy(true)
+ *             .serviceAccount(customServiceAccount.email())
  *             .build());
  * 
  *         var myappV2 = new StandardAppVersion(&#34;myappV2&#34;, StandardAppVersionArgs.builder()        
@@ -135,6 +157,7 @@ import javax.annotation.Nullable;
  *                 .maxInstances(5)
  *                 .build())
  *             .noopOnDestroy(true)
+ *             .serviceAccount(customServiceAccount.email())
  *             .build());
  * 
  *     }
@@ -441,6 +464,20 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<String> service() {
         return this.service;
+    }
+    /**
+     * The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+     * 
+     */
+    @Export(name="serviceAccount", type=String.class, parameters={})
+    private Output<String> serviceAccount;
+
+    /**
+     * @return The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+     * 
+     */
+    public Output<String> serviceAccount() {
+        return this.serviceAccount;
     }
     /**
      * Whether multiple requests can be dispatched to this version at once.

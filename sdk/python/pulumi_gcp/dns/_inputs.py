@@ -10,6 +10,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'ManagedZoneCloudLoggingConfigArgs',
     'ManagedZoneDnssecConfigArgs',
     'ManagedZoneDnssecConfigDefaultKeySpecArgs',
     'ManagedZoneForwardingConfigArgs',
@@ -30,6 +31,28 @@ __all__ = [
     'ResponsePolicyRuleLocalDataArgs',
     'ResponsePolicyRuleLocalDataLocalDataArgs',
 ]
+
+@pulumi.input_type
+class ManagedZoneCloudLoggingConfigArgs:
+    def __init__(__self__, *,
+                 enable_logging: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enable_logging: If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+        """
+        pulumi.set(__self__, "enable_logging", enable_logging)
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> pulumi.Input[bool]:
+        """
+        If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @enable_logging.setter
+    def enable_logging(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enable_logging", value)
+
 
 @pulumi.input_type
 class ManagedZoneDnssecConfigArgs:

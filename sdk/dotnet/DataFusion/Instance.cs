@@ -78,6 +78,55 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
+    /// ### Data Fusion Instance Cmek
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     {
+    ///         KeyRing = keyRing.Id,
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var cryptoKeyBinding = new Gcp.Kms.CryptoKeyIAMBinding("cryptoKeyBinding", new()
+    ///     {
+    ///         CryptoKeyId = cryptoKey.Id,
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Members = new[]
+    ///         {
+    ///             $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-datafusion.iam.gserviceaccount.com",
+    ///         },
+    ///     });
+    /// 
+    ///     var basicCmek = new Gcp.DataFusion.Instance("basicCmek", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Type = "BASIC",
+    ///         CryptoKeyConfig = new Gcp.DataFusion.Inputs.InstanceCryptoKeyConfigArgs
+    ///         {
+    ///             KeyReference = cryptoKey.Id,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             cryptoKeyBinding,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -107,6 +156,13 @@ namespace Pulumi.Gcp.DataFusion
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("cryptoKeyConfig")]
+        public Output<Outputs.InstanceCryptoKeyConfig?> CryptoKeyConfig { get; private set; } = null!;
 
         /// <summary>
         /// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
@@ -292,6 +348,13 @@ namespace Pulumi.Gcp.DataFusion
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cryptoKeyConfig")]
+        public Input<Inputs.InstanceCryptoKeyConfigArgs>? CryptoKeyConfig { get; set; }
+
+        /// <summary>
         /// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
         /// </summary>
         [Input("dataprocServiceAccount")]
@@ -409,6 +472,13 @@ namespace Pulumi.Gcp.DataFusion
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cryptoKeyConfig")]
+        public Input<Inputs.InstanceCryptoKeyConfigGetArgs>? CryptoKeyConfig { get; set; }
 
         /// <summary>
         /// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.

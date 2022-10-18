@@ -11,12 +11,12 @@ import java.util.Objects;
 public final class MetastoreFederationBackendMetastore {
     /**
      * @return The type of the backend metastore.
-     * Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
+     * Possible values are `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, and `BIGQUERY`.
      * 
      */
     private String metastoreType;
     /**
-     * @return The relative resource name of the metastore that is being federated.
+     * @return The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
      * 
      */
     private String name;
@@ -29,14 +29,14 @@ public final class MetastoreFederationBackendMetastore {
     private MetastoreFederationBackendMetastore() {}
     /**
      * @return The type of the backend metastore.
-     * Possible values are `METASTORE_TYPE_UNSPECIFIED` and `DATAPROC_METASTORE`.
+     * Possible values are `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, and `BIGQUERY`.
      * 
      */
     public String metastoreType() {
         return this.metastoreType;
     }
     /**
-     * @return The relative resource name of the metastore that is being federated.
+     * @return The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
      * 
      */
     public String name() {

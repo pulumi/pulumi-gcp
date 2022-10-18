@@ -23,6 +23,7 @@ import * as artifactregistry from "./artifactregistry";
 import * as assuredworkloads from "./assuredworkloads";
 import * as bigquery from "./bigquery";
 import * as bigqueryanalyticshub from "./bigqueryanalyticshub";
+import * as bigquerydatapolicy from "./bigquerydatapolicy";
 import * as bigtable from "./bigtable";
 import * as billing from "./billing";
 import * as binaryauthorization from "./binaryauthorization";
@@ -34,6 +35,7 @@ import * as clouddeploy from "./clouddeploy";
 import * as cloudfunctions from "./cloudfunctions";
 import * as cloudfunctionsv2 from "./cloudfunctionsv2";
 import * as cloudidentity from "./cloudidentity";
+import * as cloudids from "./cloudids";
 import * as cloudrun from "./cloudrun";
 import * as cloudscheduler from "./cloudscheduler";
 import * as cloudtasks from "./cloudtasks";
@@ -115,6 +117,7 @@ export {
     assuredworkloads,
     bigquery,
     bigqueryanalyticshub,
+    bigquerydatapolicy,
     bigtable,
     billing,
     binaryauthorization,
@@ -126,6 +129,7 @@ export {
     cloudfunctions,
     cloudfunctionsv2,
     cloudidentity,
+    cloudids,
     cloudrun,
     cloudscheduler,
     cloudtasks,

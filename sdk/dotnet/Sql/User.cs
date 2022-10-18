@@ -146,6 +146,9 @@ namespace Pulumi.Gcp.Sql
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
+        [Output("passwordPolicy")]
+        public Output<Outputs.UserPasswordPolicy?> PasswordPolicy { get; private set; } = null!;
+
         /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
@@ -154,7 +157,7 @@ namespace Pulumi.Gcp.Sql
         public Output<string> Project { get; private set; } = null!;
 
         [Output("sqlServerUserDetails")]
-        public Output<Outputs.UserSqlServerUserDetails?> SqlServerUserDetails { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.UserSqlServerUserDetail>> SqlServerUserDetails { get; private set; } = null!;
 
         /// <summary>
         /// The user type. It determines the method to authenticate the
@@ -248,15 +251,15 @@ namespace Pulumi.Gcp.Sql
         [Input("password")]
         public Input<string>? Password { get; set; }
 
+        [Input("passwordPolicy")]
+        public Input<Inputs.UserPasswordPolicyArgs>? PasswordPolicy { get; set; }
+
         /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        [Input("sqlServerUserDetails")]
-        public Input<Inputs.UserSqlServerUserDetailsArgs>? SqlServerUserDetails { get; set; }
 
         /// <summary>
         /// The user type. It determines the method to authenticate the
@@ -312,6 +315,9 @@ namespace Pulumi.Gcp.Sql
         [Input("password")]
         public Input<string>? Password { get; set; }
 
+        [Input("passwordPolicy")]
+        public Input<Inputs.UserPasswordPolicyGetArgs>? PasswordPolicy { get; set; }
+
         /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
@@ -320,7 +326,12 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Project { get; set; }
 
         [Input("sqlServerUserDetails")]
-        public Input<Inputs.UserSqlServerUserDetailsGetArgs>? SqlServerUserDetails { get; set; }
+        private InputList<Inputs.UserSqlServerUserDetailGetArgs>? _sqlServerUserDetails;
+        public InputList<Inputs.UserSqlServerUserDetailGetArgs> SqlServerUserDetails
+        {
+            get => _sqlServerUserDetails ?? (_sqlServerUserDetails = new InputList<Inputs.UserSqlServerUserDetailGetArgs>());
+            set => _sqlServerUserDetails = value;
+        }
 
         /// <summary>
         /// The user type. It determines the method to authenticate the

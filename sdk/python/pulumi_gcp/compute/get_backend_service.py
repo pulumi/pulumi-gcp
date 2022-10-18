@@ -22,7 +22,7 @@ class GetBackendServiceResult:
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, id=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, session_affinity=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, id=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, session_affinity=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -35,6 +35,9 @@ class GetBackendServiceResult:
         if circuit_breakers and not isinstance(circuit_breakers, list):
             raise TypeError("Expected argument 'circuit_breakers' to be a list")
         pulumi.set(__self__, "circuit_breakers", circuit_breakers)
+        if compression_mode and not isinstance(compression_mode, str):
+            raise TypeError("Expected argument 'compression_mode' to be a str")
+        pulumi.set(__self__, "compression_mode", compression_mode)
         if connection_draining_timeout_sec and not isinstance(connection_draining_timeout_sec, int):
             raise TypeError("Expected argument 'connection_draining_timeout_sec' to be a int")
         pulumi.set(__self__, "connection_draining_timeout_sec", connection_draining_timeout_sec)
@@ -130,6 +133,11 @@ class GetBackendServiceResult:
     @pulumi.getter(name="circuitBreakers")
     def circuit_breakers(self) -> Sequence['outputs.GetBackendServiceCircuitBreakerResult']:
         return pulumi.get(self, "circuit_breakers")
+
+    @property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> str:
+        return pulumi.get(self, "compression_mode")
 
     @property
     @pulumi.getter(name="connectionDrainingTimeoutSec")
@@ -295,6 +303,7 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             backends=self.backends,
             cdn_policies=self.cdn_policies,
             circuit_breakers=self.circuit_breakers,
+            compression_mode=self.compression_mode,
             connection_draining_timeout_sec=self.connection_draining_timeout_sec,
             consistent_hash=self.consistent_hash,
             creation_timestamp=self.creation_timestamp,
@@ -344,6 +353,7 @@ def get_backend_service(name: Optional[str] = None,
         backends=__ret__.backends,
         cdn_policies=__ret__.cdn_policies,
         circuit_breakers=__ret__.circuit_breakers,
+        compression_mode=__ret__.compression_mode,
         connection_draining_timeout_sec=__ret__.connection_draining_timeout_sec,
         consistent_hash=__ret__.consistent_hash,
         creation_timestamp=__ret__.creation_timestamp,

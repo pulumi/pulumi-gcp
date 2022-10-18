@@ -115,6 +115,7 @@ namespace Pulumi.Gcp.Compute
     {
         public readonly string BucketName;
         public readonly ImmutableArray<Outputs.GetBackendBucketCdnPolicyResult> CdnPolicies;
+        public readonly string CompressionMode;
         public readonly string CreationTimestamp;
         public readonly ImmutableArray<string> CustomResponseHeaders;
         public readonly string Description;
@@ -133,6 +134,8 @@ namespace Pulumi.Gcp.Compute
             string bucketName,
 
             ImmutableArray<Outputs.GetBackendBucketCdnPolicyResult> cdnPolicies,
+
+            string compressionMode,
 
             string creationTimestamp,
 
@@ -154,6 +157,7 @@ namespace Pulumi.Gcp.Compute
         {
             BucketName = bucketName;
             CdnPolicies = cdnPolicies;
+            CompressionMode = compressionMode;
             CreationTimestamp = creationTimestamp;
             CustomResponseHeaders = customResponseHeaders;
             Description = description;

@@ -169,6 +169,13 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.BackendServiceCircuitBreakers?> CircuitBreakers { get; private set; } = null!;
 
         /// <summary>
+        /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        /// Possible values are `AUTOMATIC` and `DISABLED`.
+        /// </summary>
+        [Output("compressionMode")]
+        public Output<string?> CompressionMode { get; private set; } = null!;
+
+        /// <summary>
         /// Time for which instance will be drained (not accept new
         /// connections, but still work to finish started).
         /// </summary>
@@ -451,6 +458,13 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.BackendServiceCircuitBreakersArgs>? CircuitBreakers { get; set; }
 
         /// <summary>
+        /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        /// Possible values are `AUTOMATIC` and `DISABLED`.
+        /// </summary>
+        [Input("compressionMode")]
+        public Input<string>? CompressionMode { get; set; }
+
+        /// <summary>
         /// Time for which instance will be drained (not accept new
         /// connections, but still work to finish started).
         /// </summary>
@@ -687,6 +701,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("circuitBreakers")]
         public Input<Inputs.BackendServiceCircuitBreakersGetArgs>? CircuitBreakers { get; set; }
+
+        /// <summary>
+        /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        /// Possible values are `AUTOMATIC` and `DISABLED`.
+        /// </summary>
+        [Input("compressionMode")]
+        public Input<string>? CompressionMode { get; set; }
 
         /// <summary>
         /// Time for which instance will be drained (not accept new

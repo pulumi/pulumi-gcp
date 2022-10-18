@@ -30,6 +30,7 @@ class ProviderArgs:
                  bigquery_analytics_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_connection_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_data_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 bigquery_datapolicy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_reservation_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigtable_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -42,6 +43,7 @@ class ProviderArgs:
                  cloud_build_worker_pool_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_functions_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_identity_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_ids_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_iot_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -168,6 +170,8 @@ class ProviderArgs:
             pulumi.set(__self__, "bigquery_connection_custom_endpoint", bigquery_connection_custom_endpoint)
         if bigquery_data_transfer_custom_endpoint is not None:
             pulumi.set(__self__, "bigquery_data_transfer_custom_endpoint", bigquery_data_transfer_custom_endpoint)
+        if bigquery_datapolicy_custom_endpoint is not None:
+            pulumi.set(__self__, "bigquery_datapolicy_custom_endpoint", bigquery_datapolicy_custom_endpoint)
         if bigquery_reservation_custom_endpoint is not None:
             pulumi.set(__self__, "bigquery_reservation_custom_endpoint", bigquery_reservation_custom_endpoint)
         if bigtable_custom_endpoint is not None:
@@ -192,6 +196,8 @@ class ProviderArgs:
             pulumi.set(__self__, "cloud_functions_custom_endpoint", cloud_functions_custom_endpoint)
         if cloud_identity_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_identity_custom_endpoint", cloud_identity_custom_endpoint)
+        if cloud_ids_custom_endpoint is not None:
+            pulumi.set(__self__, "cloud_ids_custom_endpoint", cloud_ids_custom_endpoint)
         if cloud_iot_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_iot_custom_endpoint", cloud_iot_custom_endpoint)
         if cloud_resource_manager_custom_endpoint is not None:
@@ -521,6 +527,15 @@ class ProviderArgs:
         pulumi.set(self, "bigquery_data_transfer_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="bigqueryDatapolicyCustomEndpoint")
+    def bigquery_datapolicy_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "bigquery_datapolicy_custom_endpoint")
+
+    @bigquery_datapolicy_custom_endpoint.setter
+    def bigquery_datapolicy_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bigquery_datapolicy_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="bigqueryReservationCustomEndpoint")
     def bigquery_reservation_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "bigquery_reservation_custom_endpoint")
@@ -627,6 +642,15 @@ class ProviderArgs:
     @cloud_identity_custom_endpoint.setter
     def cloud_identity_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cloud_identity_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="cloudIdsCustomEndpoint")
+    def cloud_ids_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cloud_ids_custom_endpoint")
+
+    @cloud_ids_custom_endpoint.setter
+    def cloud_ids_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_ids_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="cloudIotCustomEndpoint")
@@ -1486,6 +1510,7 @@ class Provider(pulumi.ProviderResource):
                  bigquery_analytics_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_connection_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_data_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 bigquery_datapolicy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_reservation_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigtable_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1498,6 +1523,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_build_worker_pool_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_functions_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_identity_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_ids_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_iot_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1643,6 +1669,7 @@ class Provider(pulumi.ProviderResource):
                  bigquery_analytics_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_connection_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_data_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 bigquery_datapolicy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_reservation_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigtable_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1655,6 +1682,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_build_worker_pool_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_functions_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_identity_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_ids_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_iot_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1772,6 +1800,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["bigquery_analytics_hub_custom_endpoint"] = bigquery_analytics_hub_custom_endpoint
             __props__.__dict__["bigquery_connection_custom_endpoint"] = bigquery_connection_custom_endpoint
             __props__.__dict__["bigquery_data_transfer_custom_endpoint"] = bigquery_data_transfer_custom_endpoint
+            __props__.__dict__["bigquery_datapolicy_custom_endpoint"] = bigquery_datapolicy_custom_endpoint
             __props__.__dict__["bigquery_reservation_custom_endpoint"] = bigquery_reservation_custom_endpoint
             __props__.__dict__["bigtable_custom_endpoint"] = bigtable_custom_endpoint
             __props__.__dict__["billing_custom_endpoint"] = billing_custom_endpoint
@@ -1784,6 +1813,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["cloud_build_worker_pool_custom_endpoint"] = cloud_build_worker_pool_custom_endpoint
             __props__.__dict__["cloud_functions_custom_endpoint"] = cloud_functions_custom_endpoint
             __props__.__dict__["cloud_identity_custom_endpoint"] = cloud_identity_custom_endpoint
+            __props__.__dict__["cloud_ids_custom_endpoint"] = cloud_ids_custom_endpoint
             __props__.__dict__["cloud_iot_custom_endpoint"] = cloud_iot_custom_endpoint
             __props__.__dict__["cloud_resource_manager_custom_endpoint"] = cloud_resource_manager_custom_endpoint
             __props__.__dict__["cloud_run_custom_endpoint"] = cloud_run_custom_endpoint
@@ -1960,6 +1990,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "bigquery_data_transfer_custom_endpoint")
 
     @property
+    @pulumi.getter(name="bigqueryDatapolicyCustomEndpoint")
+    def bigquery_datapolicy_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "bigquery_datapolicy_custom_endpoint")
+
+    @property
     @pulumi.getter(name="bigqueryReservationCustomEndpoint")
     def bigquery_reservation_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "bigquery_reservation_custom_endpoint")
@@ -2018,6 +2053,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="cloudIdentityCustomEndpoint")
     def cloud_identity_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "cloud_identity_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="cloudIdsCustomEndpoint")
+    def cloud_ids_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "cloud_ids_custom_endpoint")
 
     @property
     @pulumi.getter(name="cloudIotCustomEndpoint")

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about Reservation, see:
  *
- * * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1beta1/projects.locations.reservations/create)
+ * * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations/create)
  * * How-to Guides
  *     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
  *
@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const reservation = new gcp.bigquery.Reservation("reservation", {
+ *     concurrency: 0,
  *     ignoreIdleSlots: false,
  *     location: "asia-northeast1",
  *     // Set to 0 for testing purposes
@@ -74,6 +75,10 @@ export class Reservation extends pulumi.CustomResource {
     }
 
     /**
+     * Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+     */
+    public readonly concurrency!: pulumi.Output<number | undefined>;
+    /**
      * If false, any query using this reservation will use idle slots from other reservations within
      * the same admin project. If true, a query using this reservation will execute with the slot
      * capacity specified above at most.
@@ -84,6 +89,11 @@ export class Reservation extends pulumi.CustomResource {
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
     public readonly location!: pulumi.Output<string | undefined>;
+    /**
+     * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+     * If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+     */
+    public readonly multiRegionAuxiliary!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
      */
@@ -112,8 +122,10 @@ export class Reservation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReservationState | undefined;
+            resourceInputs["concurrency"] = state ? state.concurrency : undefined;
             resourceInputs["ignoreIdleSlots"] = state ? state.ignoreIdleSlots : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["multiRegionAuxiliary"] = state ? state.multiRegionAuxiliary : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["slotCapacity"] = state ? state.slotCapacity : undefined;
@@ -122,8 +134,10 @@ export class Reservation extends pulumi.CustomResource {
             if ((!args || args.slotCapacity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'slotCapacity'");
             }
+            resourceInputs["concurrency"] = args ? args.concurrency : undefined;
             resourceInputs["ignoreIdleSlots"] = args ? args.ignoreIdleSlots : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["multiRegionAuxiliary"] = args ? args.multiRegionAuxiliary : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["slotCapacity"] = args ? args.slotCapacity : undefined;
@@ -138,6 +152,10 @@ export class Reservation extends pulumi.CustomResource {
  */
 export interface ReservationState {
     /**
+     * Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+     */
+    concurrency?: pulumi.Input<number>;
+    /**
      * If false, any query using this reservation will use idle slots from other reservations within
      * the same admin project. If true, a query using this reservation will execute with the slot
      * capacity specified above at most.
@@ -148,6 +166,11 @@ export interface ReservationState {
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
     location?: pulumi.Input<string>;
+    /**
+     * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+     * If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+     */
+    multiRegionAuxiliary?: pulumi.Input<boolean>;
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
      */
@@ -169,6 +192,10 @@ export interface ReservationState {
  */
 export interface ReservationArgs {
     /**
+     * Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+     */
+    concurrency?: pulumi.Input<number>;
+    /**
      * If false, any query using this reservation will use idle slots from other reservations within
      * the same admin project. If true, a query using this reservation will execute with the slot
      * capacity specified above at most.
@@ -179,6 +206,11 @@ export interface ReservationArgs {
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
     location?: pulumi.Input<string>;
+    /**
+     * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
+     * If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+     */
+    multiRegionAuxiliary?: pulumi.Input<boolean>;
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
      */

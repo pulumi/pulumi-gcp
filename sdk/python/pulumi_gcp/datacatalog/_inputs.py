@@ -426,7 +426,6 @@ class TagFieldArgs:
                The display name of this field
         :param pulumi.Input[float] double_value: Holds the value for a tag field with double type.
         :param pulumi.Input[str] enum_value: Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-               Structure is documented below.
         :param pulumi.Input[int] order: -
                The order of this field with respect to other fields in this tag. For example, a higher value can indicate
                a more important field. The value can be negative. Multiple fields can have the same order, and field orders
@@ -504,7 +503,6 @@ class TagFieldArgs:
     def enum_value(self) -> Optional[pulumi.Input[str]]:
         """
         Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-        Structure is documented below.
         """
         return pulumi.get(self, "enum_value")
 

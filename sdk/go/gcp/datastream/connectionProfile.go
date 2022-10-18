@@ -43,6 +43,34 @@ import (
 //	}
 //
 // ```
+// ### Datastream Connection Profile Bigquery
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastream"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datastream.NewConnectionProfile(ctx, "default", &datastream.ConnectionProfileArgs{
+//				BigqueryProfile:     nil,
+//				ConnectionProfileId: pulumi.String("my-profile"),
+//				DisplayName:         pulumi.String("Connection profile"),
+//				Location:            pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Datastream Connection Profile Full
 //
 // ```go
@@ -190,6 +218,8 @@ import (
 type ConnectionProfile struct {
 	pulumi.CustomResourceState
 
+	// BigQuery warehouse profile.
+	BigqueryProfile ConnectionProfileBigqueryProfilePtrOutput `pulumi:"bigqueryProfile"`
 	// The connection profile identifier.
 	ConnectionProfileId pulumi.StringOutput `pulumi:"connectionProfileId"`
 	// Display name.
@@ -258,6 +288,8 @@ func GetConnectionProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConnectionProfile resources.
 type connectionProfileState struct {
+	// BigQuery warehouse profile.
+	BigqueryProfile *ConnectionProfileBigqueryProfile `pulumi:"bigqueryProfile"`
 	// The connection profile identifier.
 	ConnectionProfileId *string `pulumi:"connectionProfileId"`
 	// Display name.
@@ -289,6 +321,8 @@ type connectionProfileState struct {
 }
 
 type ConnectionProfileState struct {
+	// BigQuery warehouse profile.
+	BigqueryProfile ConnectionProfileBigqueryProfilePtrInput
 	// The connection profile identifier.
 	ConnectionProfileId pulumi.StringPtrInput
 	// Display name.
@@ -324,6 +358,8 @@ func (ConnectionProfileState) ElementType() reflect.Type {
 }
 
 type connectionProfileArgs struct {
+	// BigQuery warehouse profile.
+	BigqueryProfile *ConnectionProfileBigqueryProfile `pulumi:"bigqueryProfile"`
 	// The connection profile identifier.
 	ConnectionProfileId string `pulumi:"connectionProfileId"`
 	// Display name.
@@ -354,6 +390,8 @@ type connectionProfileArgs struct {
 
 // The set of arguments for constructing a ConnectionProfile resource.
 type ConnectionProfileArgs struct {
+	// BigQuery warehouse profile.
+	BigqueryProfile ConnectionProfileBigqueryProfilePtrInput
 	// The connection profile identifier.
 	ConnectionProfileId pulumi.StringInput
 	// Display name.
@@ -467,6 +505,11 @@ func (o ConnectionProfileOutput) ToConnectionProfileOutput() ConnectionProfileOu
 
 func (o ConnectionProfileOutput) ToConnectionProfileOutputWithContext(ctx context.Context) ConnectionProfileOutput {
 	return o
+}
+
+// BigQuery warehouse profile.
+func (o ConnectionProfileOutput) BigqueryProfile() ConnectionProfileBigqueryProfilePtrOutput {
+	return o.ApplyT(func(v *ConnectionProfile) ConnectionProfileBigqueryProfilePtrOutput { return v.BigqueryProfile }).(ConnectionProfileBigqueryProfilePtrOutput)
 }
 
 // The connection profile identifier.

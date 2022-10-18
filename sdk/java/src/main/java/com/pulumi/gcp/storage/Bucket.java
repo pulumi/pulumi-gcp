@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.storage.BucketArgs;
 import com.pulumi.gcp.storage.inputs.BucketState;
 import com.pulumi.gcp.storage.outputs.BucketCor;
+import com.pulumi.gcp.storage.outputs.BucketCustomPlacementConfig;
 import com.pulumi.gcp.storage.outputs.BucketEncryption;
 import com.pulumi.gcp.storage.outputs.BucketLifecycleRule;
 import com.pulumi.gcp.storage.outputs.BucketLogging;
@@ -161,6 +162,20 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cors);
     }
     /**
+     * The bucket&#39;s custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+     * 
+     */
+    @Export(name="customPlacementConfig", type=BucketCustomPlacementConfig.class, parameters={})
+    private Output</* @Nullable */ BucketCustomPlacementConfig> customPlacementConfig;
+
+    /**
+     * @return The bucket&#39;s custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+     * 
+     */
+    public Output<Optional<BucketCustomPlacementConfig>> customPlacementConfig() {
+        return Codegen.optional(this.customPlacementConfig);
+    }
+    /**
      * Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
      * 
      */
@@ -235,14 +250,14 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.lifecycleRules);
     }
     /**
-     * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+     * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
      * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
-     * @return The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+     * @return The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
      * 
      */
     public Output<String> location() {

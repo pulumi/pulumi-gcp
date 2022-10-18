@@ -44,6 +44,10 @@ namespace Pulumi.Gcp.Compute
     ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
     ///             {
     ///                 Image = "debian-cloud/debian-11",
+    ///                 Labels = 
+    ///                 {
+    ///                     { "my_label", "value" },
+    ///                 },
     ///             },
     ///         },
     ///         ScratchDisks = new[]
@@ -210,7 +214,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> LabelFingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// A map of key/value label pairs to assign to the instance.
+        /// A set of key/value label pairs assigned to the disk. This  
+        /// field is only applicable for persistent disks.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -500,7 +505,8 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// A map of key/value label pairs to assign to the instance.
+        /// A set of key/value label pairs assigned to the disk. This  
+        /// field is only applicable for persistent disks.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -785,7 +791,8 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// A map of key/value label pairs to assign to the instance.
+        /// A set of key/value label pairs assigned to the disk. This  
+        /// field is only applicable for persistent disks.
         /// </summary>
         public InputMap<string> Labels
         {

@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'BucketCor',
+    'BucketCustomPlacementConfig',
     'BucketEncryption',
     'BucketIAMBindingCondition',
     'BucketIAMMemberCondition',
@@ -43,6 +44,7 @@ __all__ = [
     'TransferJobTransferSpecPosixDataSource',
     'TransferJobTransferSpecTransferOptions',
     'GetBucketCorResult',
+    'GetBucketCustomPlacementConfigResult',
     'GetBucketEncryptionResult',
     'GetBucketLifecycleRuleResult',
     'GetBucketLifecycleRuleActionResult',
@@ -127,6 +129,41 @@ class BucketCor(dict):
         The list of HTTP headers other than the [simple response headers](https://www.w3.org/TR/cors/#simple-response-header) to give permission for the user-agent to share across domains.
         """
         return pulumi.get(self, "response_headers")
+
+
+@pulumi.output_type
+class BucketCustomPlacementConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataLocations":
+            suggest = "data_locations"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketCustomPlacementConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketCustomPlacementConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketCustomPlacementConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_locations: Sequence[str]):
+        """
+        :param Sequence[str] data_locations: The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the data_locations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
+        """
+        pulumi.set(__self__, "data_locations", data_locations)
+
+    @property
+    @pulumi.getter(name="dataLocations")
+    def data_locations(self) -> Sequence[str]:
+        """
+        The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the data_locations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
+        """
+        return pulumi.get(self, "data_locations")
 
 
 @pulumi.output_type
@@ -1810,6 +1847,18 @@ class GetBucketCorResult(dict):
     @pulumi.getter(name="responseHeaders")
     def response_headers(self) -> Sequence[str]:
         return pulumi.get(self, "response_headers")
+
+
+@pulumi.output_type
+class GetBucketCustomPlacementConfigResult(dict):
+    def __init__(__self__, *,
+                 data_locations: Sequence[str]):
+        pulumi.set(__self__, "data_locations", data_locations)
+
+    @property
+    @pulumi.getter(name="dataLocations")
+    def data_locations(self) -> Sequence[str]:
+        return pulumi.get(self, "data_locations")
 
 
 @pulumi.output_type

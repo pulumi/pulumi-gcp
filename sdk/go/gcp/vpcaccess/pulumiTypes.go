@@ -170,9 +170,116 @@ func (o ConnectorSubnetPtrOutput) ProjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetConnectorSubnet struct {
+	// Name of the resource.
+	Name      string `pulumi:"name"`
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetConnectorSubnetInput is an input type that accepts GetConnectorSubnetArgs and GetConnectorSubnetOutput values.
+// You can construct a concrete instance of `GetConnectorSubnetInput` via:
+//
+//	GetConnectorSubnetArgs{...}
+type GetConnectorSubnetInput interface {
+	pulumi.Input
+
+	ToGetConnectorSubnetOutput() GetConnectorSubnetOutput
+	ToGetConnectorSubnetOutputWithContext(context.Context) GetConnectorSubnetOutput
+}
+
+type GetConnectorSubnetArgs struct {
+	// Name of the resource.
+	Name      pulumi.StringInput `pulumi:"name"`
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetConnectorSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorSubnet)(nil)).Elem()
+}
+
+func (i GetConnectorSubnetArgs) ToGetConnectorSubnetOutput() GetConnectorSubnetOutput {
+	return i.ToGetConnectorSubnetOutputWithContext(context.Background())
+}
+
+func (i GetConnectorSubnetArgs) ToGetConnectorSubnetOutputWithContext(ctx context.Context) GetConnectorSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorSubnetOutput)
+}
+
+// GetConnectorSubnetArrayInput is an input type that accepts GetConnectorSubnetArray and GetConnectorSubnetArrayOutput values.
+// You can construct a concrete instance of `GetConnectorSubnetArrayInput` via:
+//
+//	GetConnectorSubnetArray{ GetConnectorSubnetArgs{...} }
+type GetConnectorSubnetArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorSubnetArrayOutput() GetConnectorSubnetArrayOutput
+	ToGetConnectorSubnetArrayOutputWithContext(context.Context) GetConnectorSubnetArrayOutput
+}
+
+type GetConnectorSubnetArray []GetConnectorSubnetInput
+
+func (GetConnectorSubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorSubnet)(nil)).Elem()
+}
+
+func (i GetConnectorSubnetArray) ToGetConnectorSubnetArrayOutput() GetConnectorSubnetArrayOutput {
+	return i.ToGetConnectorSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorSubnetArray) ToGetConnectorSubnetArrayOutputWithContext(ctx context.Context) GetConnectorSubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorSubnetArrayOutput)
+}
+
+type GetConnectorSubnetOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorSubnet)(nil)).Elem()
+}
+
+func (o GetConnectorSubnetOutput) ToGetConnectorSubnetOutput() GetConnectorSubnetOutput {
+	return o
+}
+
+func (o GetConnectorSubnetOutput) ToGetConnectorSubnetOutputWithContext(ctx context.Context) GetConnectorSubnetOutput {
+	return o
+}
+
+// Name of the resource.
+func (o GetConnectorSubnetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorSubnet) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetConnectorSubnetOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorSubnet) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetConnectorSubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorSubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorSubnet)(nil)).Elem()
+}
+
+func (o GetConnectorSubnetArrayOutput) ToGetConnectorSubnetArrayOutput() GetConnectorSubnetArrayOutput {
+	return o
+}
+
+func (o GetConnectorSubnetArrayOutput) ToGetConnectorSubnetArrayOutputWithContext(ctx context.Context) GetConnectorSubnetArrayOutput {
+	return o
+}
+
+func (o GetConnectorSubnetArrayOutput) Index(i pulumi.IntInput) GetConnectorSubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorSubnet {
+		return vs[0].([]GetConnectorSubnet)[vs[1].(int)]
+	}).(GetConnectorSubnetOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSubnetInput)(nil)).Elem(), ConnectorSubnetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSubnetPtrInput)(nil)).Elem(), ConnectorSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorSubnetInput)(nil)).Elem(), GetConnectorSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorSubnetArrayInput)(nil)).Elem(), GetConnectorSubnetArray{})
 	pulumi.RegisterOutputType(ConnectorSubnetOutput{})
 	pulumi.RegisterOutputType(ConnectorSubnetPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectorSubnetOutput{})
+	pulumi.RegisterOutputType(GetConnectorSubnetArrayOutput{})
 }

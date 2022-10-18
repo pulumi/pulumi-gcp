@@ -6,6 +6,7 @@ package com.pulumi.gcp.storage.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.storage.inputs.BucketCorArgs;
+import com.pulumi.gcp.storage.inputs.BucketCustomPlacementConfigArgs;
 import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
 import com.pulumi.gcp.storage.inputs.BucketLifecycleRuleArgs;
 import com.pulumi.gcp.storage.inputs.BucketLoggingArgs;
@@ -38,6 +39,21 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<BucketCorArgs>>> cors() {
         return Optional.ofNullable(this.cors);
+    }
+
+    /**
+     * The bucket&#39;s custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+     * 
+     */
+    @Import(name="customPlacementConfig")
+    private @Nullable Output<BucketCustomPlacementConfigArgs> customPlacementConfig;
+
+    /**
+     * @return The bucket&#39;s custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+     * 
+     */
+    public Optional<Output<BucketCustomPlacementConfigArgs>> customPlacementConfig() {
+        return Optional.ofNullable(this.customPlacementConfig);
     }
 
     /**
@@ -120,14 +136,14 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+     * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+     * @return The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
      * 
      */
     public Optional<Output<String>> location() {
@@ -320,6 +336,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
 
     private BucketState(BucketState $) {
         this.cors = $.cors;
+        this.customPlacementConfig = $.customPlacementConfig;
         this.defaultEventBasedHold = $.defaultEventBasedHold;
         this.encryption = $.encryption;
         this.forceDestroy = $.forceDestroy;
@@ -387,6 +404,27 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder cors(BucketCorArgs... cors) {
             return cors(List.of(cors));
+        }
+
+        /**
+         * @param customPlacementConfig The bucket&#39;s custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPlacementConfig(@Nullable Output<BucketCustomPlacementConfigArgs> customPlacementConfig) {
+            $.customPlacementConfig = customPlacementConfig;
+            return this;
+        }
+
+        /**
+         * @param customPlacementConfig The bucket&#39;s custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPlacementConfig(BucketCustomPlacementConfigArgs customPlacementConfig) {
+            return customPlacementConfig(Output.of(customPlacementConfig));
         }
 
         /**
@@ -509,7 +547,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+         * @param location The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
          * 
          * @return builder
          * 
@@ -520,7 +558,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
+         * @param location The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
          * 
          * @return builder
          * 

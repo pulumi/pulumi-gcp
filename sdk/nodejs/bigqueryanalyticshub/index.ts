@@ -21,10 +21,30 @@ export { DataExchangeIamPolicyArgs, DataExchangeIamPolicyState } from "./dataExc
 export type DataExchangeIamPolicy = import("./dataExchangeIamPolicy").DataExchangeIamPolicy;
 export const DataExchangeIamPolicy: typeof import("./dataExchangeIamPolicy").DataExchangeIamPolicy = null as any;
 
+export { ListingArgs, ListingState } from "./listing";
+export type Listing = import("./listing").Listing;
+export const Listing: typeof import("./listing").Listing = null as any;
+
+export { ListingIamBindingArgs, ListingIamBindingState } from "./listingIamBinding";
+export type ListingIamBinding = import("./listingIamBinding").ListingIamBinding;
+export const ListingIamBinding: typeof import("./listingIamBinding").ListingIamBinding = null as any;
+
+export { ListingIamMemberArgs, ListingIamMemberState } from "./listingIamMember";
+export type ListingIamMember = import("./listingIamMember").ListingIamMember;
+export const ListingIamMember: typeof import("./listingIamMember").ListingIamMember = null as any;
+
+export { ListingIamPolicyArgs, ListingIamPolicyState } from "./listingIamPolicy";
+export type ListingIamPolicy = import("./listingIamPolicy").ListingIamPolicy;
+export const ListingIamPolicy: typeof import("./listingIamPolicy").ListingIamPolicy = null as any;
+
 utilities.lazyLoad(exports, ["DataExchange"], () => require("./dataExchange"));
 utilities.lazyLoad(exports, ["DataExchangeIamBinding"], () => require("./dataExchangeIamBinding"));
 utilities.lazyLoad(exports, ["DataExchangeIamMember"], () => require("./dataExchangeIamMember"));
 utilities.lazyLoad(exports, ["DataExchangeIamPolicy"], () => require("./dataExchangeIamPolicy"));
+utilities.lazyLoad(exports, ["Listing"], () => require("./listing"));
+utilities.lazyLoad(exports, ["ListingIamBinding"], () => require("./listingIamBinding"));
+utilities.lazyLoad(exports, ["ListingIamMember"], () => require("./listingIamMember"));
+utilities.lazyLoad(exports, ["ListingIamPolicy"], () => require("./listingIamPolicy"));
 
 const _module = {
     version: utilities.getVersion(),
@@ -38,6 +58,14 @@ const _module = {
                 return new DataExchangeIamMember(name, <any>undefined, { urn })
             case "gcp:bigqueryanalyticshub/dataExchangeIamPolicy:DataExchangeIamPolicy":
                 return new DataExchangeIamPolicy(name, <any>undefined, { urn })
+            case "gcp:bigqueryanalyticshub/listing:Listing":
+                return new Listing(name, <any>undefined, { urn })
+            case "gcp:bigqueryanalyticshub/listingIamBinding:ListingIamBinding":
+                return new ListingIamBinding(name, <any>undefined, { urn })
+            case "gcp:bigqueryanalyticshub/listingIamMember:ListingIamMember":
+                return new ListingIamMember(name, <any>undefined, { urn })
+            case "gcp:bigqueryanalyticshub/listingIamPolicy:ListingIamPolicy":
+                return new ListingIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -47,3 +75,7 @@ pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/dataExchange"
 pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/dataExchangeIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/dataExchangeIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/dataExchangeIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/listing", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/listingIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/listingIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/listingIamPolicy", _module)

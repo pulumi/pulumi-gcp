@@ -53,6 +53,9 @@ func GetBigqueryConnectionCustomEndpoint(ctx *pulumi.Context) string {
 func GetBigqueryDataTransferCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:bigqueryDataTransferCustomEndpoint")
 }
+func GetBigqueryDatapolicyCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:bigqueryDatapolicyCustomEndpoint")
+}
 func GetBigqueryReservationCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:bigqueryReservationCustomEndpoint")
 }
@@ -88,6 +91,9 @@ func GetCloudFunctionsCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetCloudIdentityCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudIdentityCustomEndpoint")
+}
+func GetCloudIdsCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:cloudIdsCustomEndpoint")
 }
 func GetCloudIotCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudIotCustomEndpoint")

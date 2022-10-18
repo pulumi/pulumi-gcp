@@ -31,6 +31,26 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var customServiceAccount = new Gcp.ServiceAccount.Account("customServiceAccount", new()
+    ///     {
+    ///         AccountId = "my-account",
+    ///         DisplayName = "Custom Service Account",
+    ///     });
+    /// 
+    ///     var gaeApi = new Gcp.Projects.IAMMember("gaeApi", new()
+    ///     {
+    ///         Project = customServiceAccount.Project,
+    ///         Role = "roles/compute.networkUser",
+    ///         Member = customServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var storageViewer = new Gcp.Projects.IAMMember("storageViewer", new()
+    ///     {
+    ///         Project = customServiceAccount.Project,
+    ///         Role = "roles/storage.objectViewer",
+    ///         Member = customServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
     ///         Location = "US",
@@ -83,6 +103,7 @@ namespace Pulumi.Gcp.AppEngine
     ///             },
     ///         },
     ///         DeleteServiceOnDestroy = true,
+    ///         ServiceAccount = customServiceAccount.Email,
     ///     });
     /// 
     ///     var myappV2 = new Gcp.AppEngine.StandardAppVersion("myappV2", new()
@@ -116,6 +137,7 @@ namespace Pulumi.Gcp.AppEngine
     ///             MaxInstances = 5,
     ///         },
     ///         NoopOnDestroy = true,
+    ///         ServiceAccount = customServiceAccount.Email,
     ///     });
     /// 
     /// });
@@ -262,6 +284,12 @@ namespace Pulumi.Gcp.AppEngine
         /// </summary>
         [Output("service")]
         public Output<string> Service { get; private set; } = null!;
+
+        /// <summary>
+        /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+        /// </summary>
+        [Output("serviceAccount")]
+        public Output<string> ServiceAccount { get; private set; } = null!;
 
         /// <summary>
         /// Whether multiple requests can be dispatched to this version at once.
@@ -470,6 +498,12 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string> Service { get; set; } = null!;
 
         /// <summary>
+        /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
         /// Whether multiple requests can be dispatched to this version at once.
         /// </summary>
         [Input("threadsafe")]
@@ -642,6 +676,12 @@ namespace Pulumi.Gcp.AppEngine
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
+
+        /// <summary>
+        /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
         /// Whether multiple requests can be dispatched to this version at once.

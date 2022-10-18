@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.datafusion.InstanceArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceState;
+import com.pulumi.gcp.datafusion.outputs.InstanceCryptoKeyConfig;
 import com.pulumi.gcp.datafusion.outputs.InstanceNetworkConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -105,6 +106,67 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Data Fusion Instance Cmek
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.kms.KeyRing;
+ * import com.pulumi.gcp.kms.KeyRingArgs;
+ * import com.pulumi.gcp.kms.CryptoKey;
+ * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+ * import com.pulumi.gcp.datafusion.Instance;
+ * import com.pulumi.gcp.datafusion.InstanceArgs;
+ * import com.pulumi.gcp.datafusion.inputs.InstanceCryptoKeyConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
+ *             .keyRing(keyRing.id())
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var cryptoKeyBinding = new CryptoKeyIAMBinding(&#34;cryptoKeyBinding&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *             .cryptoKeyId(cryptoKey.id())
+ *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
+ *             .members(String.format(&#34;serviceAccount:service-%s@gcp-sa-datafusion.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .build());
+ * 
+ *         var basicCmek = new Instance(&#34;basicCmek&#34;, InstanceArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .type(&#34;BASIC&#34;)
+ *             .cryptoKeyConfig(InstanceCryptoKeyConfigArgs.builder()
+ *                 .keyReference(cryptoKey.id())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(cryptoKeyBinding)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -142,6 +204,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="cryptoKeyConfig", type=InstanceCryptoKeyConfig.class, parameters={})
+    private Output</* @Nullable */ InstanceCryptoKeyConfig> cryptoKeyConfig;
+
+    /**
+     * @return The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstanceCryptoKeyConfig>> cryptoKeyConfig() {
+        return Codegen.optional(this.cryptoKeyConfig);
     }
     /**
      * User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.

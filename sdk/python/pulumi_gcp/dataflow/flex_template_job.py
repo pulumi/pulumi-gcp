@@ -48,9 +48,6 @@ class FlexTemplateJobArgs:
         """
         pulumi.set(__self__, "container_spec_gcs_path", container_spec_gcs_path)
         if labels is not None:
-            warnings.warn("""Deprecated until the API supports this field""", DeprecationWarning)
-            pulumi.log.warn("""labels is deprecated: Deprecated until the API supports this field""")
-        if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -218,9 +215,6 @@ class _FlexTemplateJobState:
             pulumi.set(__self__, "container_spec_gcs_path", container_spec_gcs_path)
         if job_id is not None:
             pulumi.set(__self__, "job_id", job_id)
-        if labels is not None:
-            warnings.warn("""Deprecated until the API supports this field""", DeprecationWarning)
-            pulumi.log.warn("""labels is deprecated: Deprecated until the API supports this field""")
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -461,9 +455,6 @@ class FlexTemplateJob(pulumi.CustomResource):
             if container_spec_gcs_path is None and not opts.urn:
                 raise TypeError("Missing required property 'container_spec_gcs_path'")
             __props__.__dict__["container_spec_gcs_path"] = container_spec_gcs_path
-            if labels is not None and not opts.urn:
-                warnings.warn("""Deprecated until the API supports this field""", DeprecationWarning)
-                pulumi.log.warn("""labels is deprecated: Deprecated until the API supports this field""")
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["on_delete"] = on_delete

@@ -117,6 +117,9 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         [Input("resources")]
         public Input<Inputs.ServiceTemplateSpecContainerResourcesGetArgs>? Resources { get; set; }
 
+        [Input("startupProbe")]
+        public Input<Inputs.ServiceTemplateSpecContainerStartupProbeGetArgs>? StartupProbe { get; set; }
+
         [Input("volumeMounts")]
         private InputList<Inputs.ServiceTemplateSpecContainerVolumeMountGetArgs>? _volumeMounts;
 

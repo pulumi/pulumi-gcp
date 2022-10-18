@@ -108,6 +108,7 @@ namespace Pulumi.Gcp.Storage
     public sealed class GetBucketResult
     {
         public readonly ImmutableArray<Outputs.GetBucketCorResult> Cors;
+        public readonly ImmutableArray<Outputs.GetBucketCustomPlacementConfigResult> CustomPlacementConfigs;
         public readonly bool DefaultEventBasedHold;
         public readonly ImmutableArray<Outputs.GetBucketEncryptionResult> Encryptions;
         public readonly bool ForceDestroy;
@@ -134,6 +135,8 @@ namespace Pulumi.Gcp.Storage
         [OutputConstructor]
         private GetBucketResult(
             ImmutableArray<Outputs.GetBucketCorResult> cors,
+
+            ImmutableArray<Outputs.GetBucketCustomPlacementConfigResult> customPlacementConfigs,
 
             bool defaultEventBasedHold,
 
@@ -174,6 +177,7 @@ namespace Pulumi.Gcp.Storage
             ImmutableArray<Outputs.GetBucketWebsiteResult> websites)
         {
             Cors = cors;
+            CustomPlacementConfigs = customPlacementConfigs;
             DefaultEventBasedHold = defaultEventBasedHold;
             Encryptions = encryptions;
             ForceDestroy = forceDestroy;
