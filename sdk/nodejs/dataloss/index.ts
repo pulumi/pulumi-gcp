@@ -8,23 +8,23 @@ import * as utilities from "../utilities";
 export { PreventionDeidentifyTemplateArgs, PreventionDeidentifyTemplateState } from "./preventionDeidentifyTemplate";
 export type PreventionDeidentifyTemplate = import("./preventionDeidentifyTemplate").PreventionDeidentifyTemplate;
 export const PreventionDeidentifyTemplate: typeof import("./preventionDeidentifyTemplate").PreventionDeidentifyTemplate = null as any;
+utilities.lazyLoad(exports, ["PreventionDeidentifyTemplate"], () => require("./preventionDeidentifyTemplate"));
 
 export { PreventionInspectTemplateArgs, PreventionInspectTemplateState } from "./preventionInspectTemplate";
 export type PreventionInspectTemplate = import("./preventionInspectTemplate").PreventionInspectTemplate;
 export const PreventionInspectTemplate: typeof import("./preventionInspectTemplate").PreventionInspectTemplate = null as any;
+utilities.lazyLoad(exports, ["PreventionInspectTemplate"], () => require("./preventionInspectTemplate"));
 
 export { PreventionJobTriggerArgs, PreventionJobTriggerState } from "./preventionJobTrigger";
 export type PreventionJobTrigger = import("./preventionJobTrigger").PreventionJobTrigger;
 export const PreventionJobTrigger: typeof import("./preventionJobTrigger").PreventionJobTrigger = null as any;
+utilities.lazyLoad(exports, ["PreventionJobTrigger"], () => require("./preventionJobTrigger"));
 
 export { PreventionStoredInfoTypeArgs, PreventionStoredInfoTypeState } from "./preventionStoredInfoType";
 export type PreventionStoredInfoType = import("./preventionStoredInfoType").PreventionStoredInfoType;
 export const PreventionStoredInfoType: typeof import("./preventionStoredInfoType").PreventionStoredInfoType = null as any;
-
-utilities.lazyLoad(exports, ["PreventionDeidentifyTemplate"], () => require("./preventionDeidentifyTemplate"));
-utilities.lazyLoad(exports, ["PreventionInspectTemplate"], () => require("./preventionInspectTemplate"));
-utilities.lazyLoad(exports, ["PreventionJobTrigger"], () => require("./preventionJobTrigger"));
 utilities.lazyLoad(exports, ["PreventionStoredInfoType"], () => require("./preventionStoredInfoType"));
+
 
 const _module = {
     version: utilities.getVersion(),

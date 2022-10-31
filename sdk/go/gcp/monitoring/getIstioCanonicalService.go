@@ -39,7 +39,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.GetIstioCanonicalService(ctx, &monitoring.GetIstioCanonicalServiceArgs{
+//			_, err = monitoring.GetIstioCanonicalService(ctx, &monitoring.GetIstioCanonicalServiceArgs{
 //				CanonicalService:          "prometheus",
 //				CanonicalServiceNamespace: "istio-system",
 //				MeshUid:                   "proj-573164786102",

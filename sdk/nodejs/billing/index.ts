@@ -8,28 +8,28 @@ import * as utilities from "../utilities";
 export { AccountIamBindingArgs, AccountIamBindingState } from "./accountIamBinding";
 export type AccountIamBinding = import("./accountIamBinding").AccountIamBinding;
 export const AccountIamBinding: typeof import("./accountIamBinding").AccountIamBinding = null as any;
+utilities.lazyLoad(exports, ["AccountIamBinding"], () => require("./accountIamBinding"));
 
 export { AccountIamMemberArgs, AccountIamMemberState } from "./accountIamMember";
 export type AccountIamMember = import("./accountIamMember").AccountIamMember;
 export const AccountIamMember: typeof import("./accountIamMember").AccountIamMember = null as any;
+utilities.lazyLoad(exports, ["AccountIamMember"], () => require("./accountIamMember"));
 
 export { AccountIamPolicyArgs, AccountIamPolicyState } from "./accountIamPolicy";
 export type AccountIamPolicy = import("./accountIamPolicy").AccountIamPolicy;
 export const AccountIamPolicy: typeof import("./accountIamPolicy").AccountIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AccountIamPolicy"], () => require("./accountIamPolicy"));
 
 export { BudgetArgs, BudgetState } from "./budget";
 export type Budget = import("./budget").Budget;
 export const Budget: typeof import("./budget").Budget = null as any;
+utilities.lazyLoad(exports, ["Budget"], () => require("./budget"));
 
 export { SubAccountArgs, SubAccountState } from "./subAccount";
 export type SubAccount = import("./subAccount").SubAccount;
 export const SubAccount: typeof import("./subAccount").SubAccount = null as any;
-
-utilities.lazyLoad(exports, ["AccountIamBinding"], () => require("./accountIamBinding"));
-utilities.lazyLoad(exports, ["AccountIamMember"], () => require("./accountIamMember"));
-utilities.lazyLoad(exports, ["AccountIamPolicy"], () => require("./accountIamPolicy"));
-utilities.lazyLoad(exports, ["Budget"], () => require("./budget"));
 utilities.lazyLoad(exports, ["SubAccount"], () => require("./subAccount"));
+
 
 const _module = {
     version: utilities.getVersion(),

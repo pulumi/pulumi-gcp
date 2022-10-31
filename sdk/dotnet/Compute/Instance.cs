@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.Compute
     ///                 Network = "default",
     ///                 AccessConfigs = new[]
     ///                 {
-    ///                     ,
+    ///                     null,
     ///                 },
     ///             },
     ///         },

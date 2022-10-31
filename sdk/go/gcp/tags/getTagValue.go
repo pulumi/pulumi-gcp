@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := tags.LookupTagValue(ctx, &tags.LookupTagValueArgs{
+//			_, err = tags.LookupTagValue(ctx, &tags.LookupTagValueArgs{
 //				Parent:    "tagKeys/56789",
 //				ShortName: "production",
 //			}, nil)

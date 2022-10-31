@@ -151,10 +151,12 @@ export class DomainTrust extends pulumi.CustomResource {
             resourceInputs["targetDnsIpAddresses"] = args ? args.targetDnsIpAddresses : undefined;
             resourceInputs["targetDomainName"] = args ? args.targetDomainName : undefined;
             resourceInputs["trustDirection"] = args ? args.trustDirection : undefined;
-            resourceInputs["trustHandshakeSecret"] = args ? args.trustHandshakeSecret : undefined;
+            resourceInputs["trustHandshakeSecret"] = args?.trustHandshakeSecret ? pulumi.secret(args.trustHandshakeSecret) : undefined;
             resourceInputs["trustType"] = args ? args.trustType : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["trustHandshakeSecret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(DomainTrust.__pulumiType, name, resourceInputs, opts);
     }
 }

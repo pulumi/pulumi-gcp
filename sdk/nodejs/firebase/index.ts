@@ -8,28 +8,28 @@ import * as utilities from "../utilities";
 export { GetWebAppArgs, GetWebAppResult, GetWebAppOutputArgs } from "./getWebApp";
 export const getWebApp: typeof import("./getWebApp").getWebApp = null as any;
 export const getWebAppOutput: typeof import("./getWebApp").getWebAppOutput = null as any;
+utilities.lazyLoad(exports, ["getWebApp","getWebAppOutput"], () => require("./getWebApp"));
 
 export { GetWebAppConfigArgs, GetWebAppConfigResult, GetWebAppConfigOutputArgs } from "./getWebAppConfig";
 export const getWebAppConfig: typeof import("./getWebAppConfig").getWebAppConfig = null as any;
 export const getWebAppConfigOutput: typeof import("./getWebAppConfig").getWebAppConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getWebAppConfig","getWebAppConfigOutput"], () => require("./getWebAppConfig"));
 
 export { ProjectArgs, ProjectState } from "./project";
 export type Project = import("./project").Project;
 export const Project: typeof import("./project").Project = null as any;
+utilities.lazyLoad(exports, ["Project"], () => require("./project"));
 
 export { ProjectLocationArgs, ProjectLocationState } from "./projectLocation";
 export type ProjectLocation = import("./projectLocation").ProjectLocation;
 export const ProjectLocation: typeof import("./projectLocation").ProjectLocation = null as any;
+utilities.lazyLoad(exports, ["ProjectLocation"], () => require("./projectLocation"));
 
 export { WebAppArgs, WebAppState } from "./webApp";
 export type WebApp = import("./webApp").WebApp;
 export const WebApp: typeof import("./webApp").WebApp = null as any;
-
-utilities.lazyLoad(exports, ["getWebApp","getWebAppOutput"], () => require("./getWebApp"));
-utilities.lazyLoad(exports, ["getWebAppConfig","getWebAppConfigOutput"], () => require("./getWebAppConfig"));
-utilities.lazyLoad(exports, ["Project"], () => require("./project"));
-utilities.lazyLoad(exports, ["ProjectLocation"], () => require("./projectLocation"));
 utilities.lazyLoad(exports, ["WebApp"], () => require("./webApp"));
+
 
 const _module = {
     version: utilities.getVersion(),

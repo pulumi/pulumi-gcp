@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.LookupTopic(ctx, &pubsub.LookupTopicArgs{
+//			_, err = pubsub.LookupTopic(ctx, &pubsub.LookupTopicArgs{
 //				Name: "my-pubsub-topic",
 //			}, nil)
 //			if err != nil {

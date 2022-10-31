@@ -121,6 +121,10 @@ func NewClient(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secret",
+	})
+	opts = append(opts, secrets)
 	var resource Client
 	err := ctx.RegisterResource("gcp:iap/client:Client", name, args, &resource, opts...)
 	if err != nil {

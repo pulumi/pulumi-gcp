@@ -131,6 +131,10 @@ namespace Pulumi.Gcp.ActiveDirectory
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "trustHandshakeSecret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -199,12 +203,22 @@ namespace Pulumi.Gcp.ActiveDirectory
         [Input("trustDirection", required: true)]
         public Input<string> TrustDirection { get; set; } = null!;
 
+        [Input("trustHandshakeSecret", required: true)]
+        private Input<string>? _trustHandshakeSecret;
+
         /// <summary>
         /// The trust secret used for the handshake with the target domain. This will not be stored.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("trustHandshakeSecret", required: true)]
-        public Input<string> TrustHandshakeSecret { get; set; } = null!;
+        public Input<string>? TrustHandshakeSecret
+        {
+            get => _trustHandshakeSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _trustHandshakeSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The type of trust represented by the trust resource.
@@ -266,12 +280,22 @@ namespace Pulumi.Gcp.ActiveDirectory
         [Input("trustDirection")]
         public Input<string>? TrustDirection { get; set; }
 
+        [Input("trustHandshakeSecret")]
+        private Input<string>? _trustHandshakeSecret;
+
         /// <summary>
         /// The trust secret used for the handshake with the target domain. This will not be stored.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("trustHandshakeSecret")]
-        public Input<string>? TrustHandshakeSecret { get; set; }
+        public Input<string>? TrustHandshakeSecret
+        {
+            get => _trustHandshakeSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _trustHandshakeSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The type of trust represented by the trust resource.

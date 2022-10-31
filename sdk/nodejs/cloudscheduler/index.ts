@@ -8,8 +8,8 @@ import * as utilities from "../utilities";
 export { JobArgs, JobState } from "./job";
 export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;
-
 utilities.lazyLoad(exports, ["Job"], () => require("./job"));
+
 
 const _module = {
     version: utilities.getVersion(),

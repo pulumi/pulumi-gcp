@@ -284,6 +284,8 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["client_id"] = None
             __props__.__dict__["secret"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Client, __self__).__init__(
             'gcp:iap/client:Client',
             resource_name,

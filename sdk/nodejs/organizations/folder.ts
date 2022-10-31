@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Folders can be imported using the folder's id, e.g. # Both syntaxes are valid
+ * Folders can be imported using the folder's id, e.g. Both syntaxes are valid
  *
  * ```sh
  *  $ pulumi import gcp:organizations/folder:Folder department1 1234567

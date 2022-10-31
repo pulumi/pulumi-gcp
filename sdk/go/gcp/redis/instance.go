@@ -460,6 +460,10 @@ func NewInstance(ctx *pulumi.Context,
 	if args.MemorySizeGb == nil {
 		return nil, errors.New("invalid value for required argument 'MemorySizeGb'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"authString",
+	})
+	opts = append(opts, secrets)
 	var resource Instance
 	err := ctx.RegisterResource("gcp:redis/instance:Instance", name, args, &resource, opts...)
 	if err != nil {

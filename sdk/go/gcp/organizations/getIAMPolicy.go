@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//			_, err = organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				AuditConfigs: []organizations.GetIAMPolicyAuditConfig{
 //					organizations.GetIAMPolicyAuditConfig{
 //						AuditLogConfigs: []organizations.GetIAMPolicyAuditConfigAuditLogConfig{

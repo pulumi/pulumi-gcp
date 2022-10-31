@@ -7568,6 +7568,7 @@ export namespace cloudidentity {
          */
         name: string;
     }
+
 }
 
 export namespace cloudrun {
@@ -8447,6 +8448,7 @@ export namespace cloudrun {
          */
         url: string;
     }
+
 }
 
 export namespace cloudscheduler {
@@ -26120,6 +26122,7 @@ export namespace dns {
          */
         type: string;
     }
+
 }
 
 export namespace endpoints {
@@ -26549,6 +26552,7 @@ export namespace folder {
          */
         default: boolean;
     }
+
 }
 
 export namespace gameservices {
@@ -27221,6 +27225,7 @@ export namespace iam {
          */
         issuerUri: string;
     }
+
 }
 
 export namespace iap {
@@ -30875,6 +30880,7 @@ export namespace organizations {
          */
         default: boolean;
     }
+
 }
 
 export namespace orgpolicy {
@@ -32946,6 +32952,7 @@ export namespace projects {
          */
         default: boolean;
     }
+
 }
 
 export namespace pubsub {
@@ -33189,6 +33196,7 @@ export namespace pubsub {
          */
         schema: string;
     }
+
 }
 
 export namespace recaptcha {
@@ -33461,6 +33469,7 @@ export namespace redis {
         serialNumber: string;
         sha1Fingerprint: string;
     }
+
 }
 
 export namespace runtimeconfig {
@@ -33577,6 +33586,7 @@ export namespace secretmanager {
          */
         name: string;
     }
+
 }
 
 export namespace securitycenter {
@@ -34315,6 +34325,7 @@ export namespace sql {
         disabled: boolean;
         serverRoles: string[];
     }
+
 }
 
 export namespace storage {
@@ -34834,6 +34845,7 @@ export namespace storage {
          */
         overwriteWhen?: string;
     }
+
 }
 
 export namespace tags {

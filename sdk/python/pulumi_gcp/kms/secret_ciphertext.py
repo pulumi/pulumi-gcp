@@ -302,14 +302,16 @@ class SecretCiphertext(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecretCiphertextArgs.__new__(SecretCiphertextArgs)
 
-            __props__.__dict__["additional_authenticated_data"] = additional_authenticated_data
+            __props__.__dict__["additional_authenticated_data"] = None if additional_authenticated_data is None else pulumi.Output.secret(additional_authenticated_data)
             if crypto_key is None and not opts.urn:
                 raise TypeError("Missing required property 'crypto_key'")
             __props__.__dict__["crypto_key"] = crypto_key
             if plaintext is None and not opts.urn:
                 raise TypeError("Missing required property 'plaintext'")
-            __props__.__dict__["plaintext"] = plaintext
+            __props__.__dict__["plaintext"] = None if plaintext is None else pulumi.Output.secret(plaintext)
             __props__.__dict__["ciphertext"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["additionalAuthenticatedData", "plaintext"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(SecretCiphertext, __self__).__init__(
             'gcp:kms/secretCiphertext:SecretCiphertext',
             resource_name,

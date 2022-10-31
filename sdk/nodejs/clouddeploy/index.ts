@@ -8,13 +8,13 @@ import * as utilities from "../utilities";
 export { DeliveryPipelineArgs, DeliveryPipelineState } from "./deliveryPipeline";
 export type DeliveryPipeline = import("./deliveryPipeline").DeliveryPipeline;
 export const DeliveryPipeline: typeof import("./deliveryPipeline").DeliveryPipeline = null as any;
+utilities.lazyLoad(exports, ["DeliveryPipeline"], () => require("./deliveryPipeline"));
 
 export { TargetArgs, TargetState } from "./target";
 export type Target = import("./target").Target;
 export const Target: typeof import("./target").Target = null as any;
-
-utilities.lazyLoad(exports, ["DeliveryPipeline"], () => require("./deliveryPipeline"));
 utilities.lazyLoad(exports, ["Target"], () => require("./target"));
+
 
 const _module = {
     version: utilities.getVersion(),

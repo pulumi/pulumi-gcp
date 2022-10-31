@@ -114,6 +114,10 @@ func NewHmacKey(ctx *pulumi.Context,
 	if args.ServiceAccountEmail == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceAccountEmail'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secret",
+	})
+	opts = append(opts, secrets)
 	var resource HmacKey
 	err := ctx.RegisterResource("gcp:storage/hmacKey:HmacKey", name, args, &resource, opts...)
 	if err != nil {

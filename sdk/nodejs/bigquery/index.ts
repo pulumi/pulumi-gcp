@@ -8,103 +8,103 @@ import * as utilities from "../utilities";
 export { AppProfileArgs, AppProfileState } from "./appProfile";
 export type AppProfile = import("./appProfile").AppProfile;
 export const AppProfile: typeof import("./appProfile").AppProfile = null as any;
+utilities.lazyLoad(exports, ["AppProfile"], () => require("./appProfile"));
 
 export { ConnectionArgs, ConnectionState } from "./connection";
 export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
+utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
 
 export { ConnectionIamBindingArgs, ConnectionIamBindingState } from "./connectionIamBinding";
 export type ConnectionIamBinding = import("./connectionIamBinding").ConnectionIamBinding;
 export const ConnectionIamBinding: typeof import("./connectionIamBinding").ConnectionIamBinding = null as any;
+utilities.lazyLoad(exports, ["ConnectionIamBinding"], () => require("./connectionIamBinding"));
 
 export { ConnectionIamMemberArgs, ConnectionIamMemberState } from "./connectionIamMember";
 export type ConnectionIamMember = import("./connectionIamMember").ConnectionIamMember;
 export const ConnectionIamMember: typeof import("./connectionIamMember").ConnectionIamMember = null as any;
+utilities.lazyLoad(exports, ["ConnectionIamMember"], () => require("./connectionIamMember"));
 
 export { ConnectionIamPolicyArgs, ConnectionIamPolicyState } from "./connectionIamPolicy";
 export type ConnectionIamPolicy = import("./connectionIamPolicy").ConnectionIamPolicy;
 export const ConnectionIamPolicy: typeof import("./connectionIamPolicy").ConnectionIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ConnectionIamPolicy"], () => require("./connectionIamPolicy"));
 
 export { DataTransferConfigArgs, DataTransferConfigState } from "./dataTransferConfig";
 export type DataTransferConfig = import("./dataTransferConfig").DataTransferConfig;
 export const DataTransferConfig: typeof import("./dataTransferConfig").DataTransferConfig = null as any;
+utilities.lazyLoad(exports, ["DataTransferConfig"], () => require("./dataTransferConfig"));
 
 export { DatasetArgs, DatasetState } from "./dataset";
 export type Dataset = import("./dataset").Dataset;
 export const Dataset: typeof import("./dataset").Dataset = null as any;
+utilities.lazyLoad(exports, ["Dataset"], () => require("./dataset"));
 
 export { DatasetAccessArgs, DatasetAccessState } from "./datasetAccess";
 export type DatasetAccess = import("./datasetAccess").DatasetAccess;
 export const DatasetAccess: typeof import("./datasetAccess").DatasetAccess = null as any;
+utilities.lazyLoad(exports, ["DatasetAccess"], () => require("./datasetAccess"));
 
 export { DatasetIamBindingArgs, DatasetIamBindingState } from "./datasetIamBinding";
 export type DatasetIamBinding = import("./datasetIamBinding").DatasetIamBinding;
 export const DatasetIamBinding: typeof import("./datasetIamBinding").DatasetIamBinding = null as any;
+utilities.lazyLoad(exports, ["DatasetIamBinding"], () => require("./datasetIamBinding"));
 
 export { DatasetIamMemberArgs, DatasetIamMemberState } from "./datasetIamMember";
 export type DatasetIamMember = import("./datasetIamMember").DatasetIamMember;
 export const DatasetIamMember: typeof import("./datasetIamMember").DatasetIamMember = null as any;
+utilities.lazyLoad(exports, ["DatasetIamMember"], () => require("./datasetIamMember"));
 
 export { DatasetIamPolicyArgs, DatasetIamPolicyState } from "./datasetIamPolicy";
 export type DatasetIamPolicy = import("./datasetIamPolicy").DatasetIamPolicy;
 export const DatasetIamPolicy: typeof import("./datasetIamPolicy").DatasetIamPolicy = null as any;
+utilities.lazyLoad(exports, ["DatasetIamPolicy"], () => require("./datasetIamPolicy"));
 
 export { GetDefaultServiceAccountArgs, GetDefaultServiceAccountResult, GetDefaultServiceAccountOutputArgs } from "./getDefaultServiceAccount";
 export const getDefaultServiceAccount: typeof import("./getDefaultServiceAccount").getDefaultServiceAccount = null as any;
 export const getDefaultServiceAccountOutput: typeof import("./getDefaultServiceAccount").getDefaultServiceAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getDefaultServiceAccount","getDefaultServiceAccountOutput"], () => require("./getDefaultServiceAccount"));
 
 export { IamBindingArgs, IamBindingState } from "./iamBinding";
 export type IamBinding = import("./iamBinding").IamBinding;
 export const IamBinding: typeof import("./iamBinding").IamBinding = null as any;
+utilities.lazyLoad(exports, ["IamBinding"], () => require("./iamBinding"));
 
 export { IamMemberArgs, IamMemberState } from "./iamMember";
 export type IamMember = import("./iamMember").IamMember;
 export const IamMember: typeof import("./iamMember").IamMember = null as any;
+utilities.lazyLoad(exports, ["IamMember"], () => require("./iamMember"));
 
 export { IamPolicyArgs, IamPolicyState } from "./iamPolicy";
 export type IamPolicy = import("./iamPolicy").IamPolicy;
 export const IamPolicy: typeof import("./iamPolicy").IamPolicy = null as any;
+utilities.lazyLoad(exports, ["IamPolicy"], () => require("./iamPolicy"));
 
 export { JobArgs, JobState } from "./job";
 export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;
+utilities.lazyLoad(exports, ["Job"], () => require("./job"));
 
 export { ReservationArgs, ReservationState } from "./reservation";
 export type Reservation = import("./reservation").Reservation;
 export const Reservation: typeof import("./reservation").Reservation = null as any;
+utilities.lazyLoad(exports, ["Reservation"], () => require("./reservation"));
 
 export { ReservationAssignmentArgs, ReservationAssignmentState } from "./reservationAssignment";
 export type ReservationAssignment = import("./reservationAssignment").ReservationAssignment;
 export const ReservationAssignment: typeof import("./reservationAssignment").ReservationAssignment = null as any;
+utilities.lazyLoad(exports, ["ReservationAssignment"], () => require("./reservationAssignment"));
 
 export { RoutineArgs, RoutineState } from "./routine";
 export type Routine = import("./routine").Routine;
 export const Routine: typeof import("./routine").Routine = null as any;
+utilities.lazyLoad(exports, ["Routine"], () => require("./routine"));
 
 export { TableArgs, TableState } from "./table";
 export type Table = import("./table").Table;
 export const Table: typeof import("./table").Table = null as any;
-
-utilities.lazyLoad(exports, ["AppProfile"], () => require("./appProfile"));
-utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
-utilities.lazyLoad(exports, ["ConnectionIamBinding"], () => require("./connectionIamBinding"));
-utilities.lazyLoad(exports, ["ConnectionIamMember"], () => require("./connectionIamMember"));
-utilities.lazyLoad(exports, ["ConnectionIamPolicy"], () => require("./connectionIamPolicy"));
-utilities.lazyLoad(exports, ["DataTransferConfig"], () => require("./dataTransferConfig"));
-utilities.lazyLoad(exports, ["Dataset"], () => require("./dataset"));
-utilities.lazyLoad(exports, ["DatasetAccess"], () => require("./datasetAccess"));
-utilities.lazyLoad(exports, ["DatasetIamBinding"], () => require("./datasetIamBinding"));
-utilities.lazyLoad(exports, ["DatasetIamMember"], () => require("./datasetIamMember"));
-utilities.lazyLoad(exports, ["DatasetIamPolicy"], () => require("./datasetIamPolicy"));
-utilities.lazyLoad(exports, ["getDefaultServiceAccount","getDefaultServiceAccountOutput"], () => require("./getDefaultServiceAccount"));
-utilities.lazyLoad(exports, ["IamBinding"], () => require("./iamBinding"));
-utilities.lazyLoad(exports, ["IamMember"], () => require("./iamMember"));
-utilities.lazyLoad(exports, ["IamPolicy"], () => require("./iamPolicy"));
-utilities.lazyLoad(exports, ["Job"], () => require("./job"));
-utilities.lazyLoad(exports, ["Reservation"], () => require("./reservation"));
-utilities.lazyLoad(exports, ["ReservationAssignment"], () => require("./reservationAssignment"));
-utilities.lazyLoad(exports, ["Routine"], () => require("./routine"));
 utilities.lazyLoad(exports, ["Table"], () => require("./table"));
+
 
 const _module = {
     version: utilities.getVersion(),

@@ -8,8 +8,8 @@ import * as utilities from "../utilities";
 export { SshPublicKeyArgs, SshPublicKeyState } from "./sshPublicKey";
 export type SshPublicKey = import("./sshPublicKey").SshPublicKey;
 export const SshPublicKey: typeof import("./sshPublicKey").SshPublicKey = null as any;
-
 utilities.lazyLoad(exports, ["SshPublicKey"], () => require("./sshPublicKey"));
+
 
 const _module = {
     version: utilities.getVersion(),

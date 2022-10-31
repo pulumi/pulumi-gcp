@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := serviceAccount.GetAccount(ctx, &serviceaccount.GetAccountArgs{
+//			_, err = serviceAccount.GetAccount(ctx, &serviceaccount.GetAccountArgs{
 //				AccountId: "object-viewer",
 //			}, nil)
 //			if err != nil {

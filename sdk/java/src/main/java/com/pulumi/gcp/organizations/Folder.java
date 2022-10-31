@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Folders can be imported using the folder&#39;s id, e.g. # Both syntaxes are valid
+ * Folders can be imported using the folder&#39;s id, e.g. Both syntaxes are valid
  * 
  * ```sh
  *  $ pulumi import gcp:organizations/folder:Folder department1 1234567

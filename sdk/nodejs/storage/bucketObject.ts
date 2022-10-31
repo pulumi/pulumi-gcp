@@ -189,12 +189,12 @@ export class BucketObject extends pulumi.CustomResource {
             }
             resourceInputs["bucket"] = args ? args.bucket : undefined;
             resourceInputs["cacheControl"] = args ? args.cacheControl : undefined;
-            resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["content"] = args?.content ? pulumi.secret(args.content) : undefined;
             resourceInputs["contentDisposition"] = args ? args.contentDisposition : undefined;
             resourceInputs["contentEncoding"] = args ? args.contentEncoding : undefined;
             resourceInputs["contentLanguage"] = args ? args.contentLanguage : undefined;
             resourceInputs["contentType"] = args ? args.contentType : undefined;
-            resourceInputs["customerEncryption"] = args ? args.customerEncryption : undefined;
+            resourceInputs["customerEncryption"] = args?.customerEncryption ? pulumi.secret(args.customerEncryption) : undefined;
             resourceInputs["detectMd5hash"] = args ? args.detectMd5hash : undefined;
             resourceInputs["eventBasedHold"] = args ? args.eventBasedHold : undefined;
             resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
@@ -210,6 +210,8 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["content", "customerEncryption"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(BucketObject.__pulumiType, name, resourceInputs, opts);
     }
 }

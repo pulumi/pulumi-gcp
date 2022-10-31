@@ -8,88 +8,88 @@ import * as utilities from "../utilities";
 export { CryptoKeyArgs, CryptoKeyState } from "./cryptoKey";
 export type CryptoKey = import("./cryptoKey").CryptoKey;
 export const CryptoKey: typeof import("./cryptoKey").CryptoKey = null as any;
+utilities.lazyLoad(exports, ["CryptoKey"], () => require("./cryptoKey"));
 
 export { CryptoKeyIAMBindingArgs, CryptoKeyIAMBindingState } from "./cryptoKeyIAMBinding";
 export type CryptoKeyIAMBinding = import("./cryptoKeyIAMBinding").CryptoKeyIAMBinding;
 export const CryptoKeyIAMBinding: typeof import("./cryptoKeyIAMBinding").CryptoKeyIAMBinding = null as any;
+utilities.lazyLoad(exports, ["CryptoKeyIAMBinding"], () => require("./cryptoKeyIAMBinding"));
 
 export { CryptoKeyIAMMemberArgs, CryptoKeyIAMMemberState } from "./cryptoKeyIAMMember";
 export type CryptoKeyIAMMember = import("./cryptoKeyIAMMember").CryptoKeyIAMMember;
 export const CryptoKeyIAMMember: typeof import("./cryptoKeyIAMMember").CryptoKeyIAMMember = null as any;
+utilities.lazyLoad(exports, ["CryptoKeyIAMMember"], () => require("./cryptoKeyIAMMember"));
 
 export { CryptoKeyIAMPolicyArgs, CryptoKeyIAMPolicyState } from "./cryptoKeyIAMPolicy";
 export type CryptoKeyIAMPolicy = import("./cryptoKeyIAMPolicy").CryptoKeyIAMPolicy;
 export const CryptoKeyIAMPolicy: typeof import("./cryptoKeyIAMPolicy").CryptoKeyIAMPolicy = null as any;
+utilities.lazyLoad(exports, ["CryptoKeyIAMPolicy"], () => require("./cryptoKeyIAMPolicy"));
 
 export { GetKMSCryptoKeyArgs, GetKMSCryptoKeyResult, GetKMSCryptoKeyOutputArgs } from "./getKMSCryptoKey";
 export const getKMSCryptoKey: typeof import("./getKMSCryptoKey").getKMSCryptoKey = null as any;
 export const getKMSCryptoKeyOutput: typeof import("./getKMSCryptoKey").getKMSCryptoKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getKMSCryptoKey","getKMSCryptoKeyOutput"], () => require("./getKMSCryptoKey"));
 
 export { GetKMSCryptoKeyVersionArgs, GetKMSCryptoKeyVersionResult, GetKMSCryptoKeyVersionOutputArgs } from "./getKMSCryptoKeyVersion";
 export const getKMSCryptoKeyVersion: typeof import("./getKMSCryptoKeyVersion").getKMSCryptoKeyVersion = null as any;
 export const getKMSCryptoKeyVersionOutput: typeof import("./getKMSCryptoKeyVersion").getKMSCryptoKeyVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getKMSCryptoKeyVersion","getKMSCryptoKeyVersionOutput"], () => require("./getKMSCryptoKeyVersion"));
 
 export { GetKMSKeyRingArgs, GetKMSKeyRingResult, GetKMSKeyRingOutputArgs } from "./getKMSKeyRing";
 export const getKMSKeyRing: typeof import("./getKMSKeyRing").getKMSKeyRing = null as any;
 export const getKMSKeyRingOutput: typeof import("./getKMSKeyRing").getKMSKeyRingOutput = null as any;
+utilities.lazyLoad(exports, ["getKMSKeyRing","getKMSKeyRingOutput"], () => require("./getKMSKeyRing"));
 
 export { GetKMSSecretArgs, GetKMSSecretResult, GetKMSSecretOutputArgs } from "./getKMSSecret";
 export const getKMSSecret: typeof import("./getKMSSecret").getKMSSecret = null as any;
 export const getKMSSecretOutput: typeof import("./getKMSSecret").getKMSSecretOutput = null as any;
+utilities.lazyLoad(exports, ["getKMSSecret","getKMSSecretOutput"], () => require("./getKMSSecret"));
 
 export { GetKMSSecretAsymmetricArgs, GetKMSSecretAsymmetricResult, GetKMSSecretAsymmetricOutputArgs } from "./getKMSSecretAsymmetric";
 export const getKMSSecretAsymmetric: typeof import("./getKMSSecretAsymmetric").getKMSSecretAsymmetric = null as any;
 export const getKMSSecretAsymmetricOutput: typeof import("./getKMSSecretAsymmetric").getKMSSecretAsymmetricOutput = null as any;
+utilities.lazyLoad(exports, ["getKMSSecretAsymmetric","getKMSSecretAsymmetricOutput"], () => require("./getKMSSecretAsymmetric"));
 
 export { GetKMSSecretCiphertextArgs, GetKMSSecretCiphertextResult, GetKMSSecretCiphertextOutputArgs } from "./getKMSSecretCiphertext";
 export const getKMSSecretCiphertext: typeof import("./getKMSSecretCiphertext").getKMSSecretCiphertext = null as any;
 export const getKMSSecretCiphertextOutput: typeof import("./getKMSSecretCiphertext").getKMSSecretCiphertextOutput = null as any;
+utilities.lazyLoad(exports, ["getKMSSecretCiphertext","getKMSSecretCiphertextOutput"], () => require("./getKMSSecretCiphertext"));
 
 export { KeyRingArgs, KeyRingState } from "./keyRing";
 export type KeyRing = import("./keyRing").KeyRing;
 export const KeyRing: typeof import("./keyRing").KeyRing = null as any;
+utilities.lazyLoad(exports, ["KeyRing"], () => require("./keyRing"));
 
 export { KeyRingIAMBindingArgs, KeyRingIAMBindingState } from "./keyRingIAMBinding";
 export type KeyRingIAMBinding = import("./keyRingIAMBinding").KeyRingIAMBinding;
 export const KeyRingIAMBinding: typeof import("./keyRingIAMBinding").KeyRingIAMBinding = null as any;
+utilities.lazyLoad(exports, ["KeyRingIAMBinding"], () => require("./keyRingIAMBinding"));
 
 export { KeyRingIAMMemberArgs, KeyRingIAMMemberState } from "./keyRingIAMMember";
 export type KeyRingIAMMember = import("./keyRingIAMMember").KeyRingIAMMember;
 export const KeyRingIAMMember: typeof import("./keyRingIAMMember").KeyRingIAMMember = null as any;
+utilities.lazyLoad(exports, ["KeyRingIAMMember"], () => require("./keyRingIAMMember"));
 
 export { KeyRingIAMPolicyArgs, KeyRingIAMPolicyState } from "./keyRingIAMPolicy";
 export type KeyRingIAMPolicy = import("./keyRingIAMPolicy").KeyRingIAMPolicy;
 export const KeyRingIAMPolicy: typeof import("./keyRingIAMPolicy").KeyRingIAMPolicy = null as any;
+utilities.lazyLoad(exports, ["KeyRingIAMPolicy"], () => require("./keyRingIAMPolicy"));
 
 export { KeyRingImportJobArgs, KeyRingImportJobState } from "./keyRingImportJob";
 export type KeyRingImportJob = import("./keyRingImportJob").KeyRingImportJob;
 export const KeyRingImportJob: typeof import("./keyRingImportJob").KeyRingImportJob = null as any;
+utilities.lazyLoad(exports, ["KeyRingImportJob"], () => require("./keyRingImportJob"));
 
 export { RegistryArgs, RegistryState } from "./registry";
 export type Registry = import("./registry").Registry;
 export const Registry: typeof import("./registry").Registry = null as any;
+utilities.lazyLoad(exports, ["Registry"], () => require("./registry"));
 
 export { SecretCiphertextArgs, SecretCiphertextState } from "./secretCiphertext";
 export type SecretCiphertext = import("./secretCiphertext").SecretCiphertext;
 export const SecretCiphertext: typeof import("./secretCiphertext").SecretCiphertext = null as any;
-
-utilities.lazyLoad(exports, ["CryptoKey"], () => require("./cryptoKey"));
-utilities.lazyLoad(exports, ["CryptoKeyIAMBinding"], () => require("./cryptoKeyIAMBinding"));
-utilities.lazyLoad(exports, ["CryptoKeyIAMMember"], () => require("./cryptoKeyIAMMember"));
-utilities.lazyLoad(exports, ["CryptoKeyIAMPolicy"], () => require("./cryptoKeyIAMPolicy"));
-utilities.lazyLoad(exports, ["getKMSCryptoKey","getKMSCryptoKeyOutput"], () => require("./getKMSCryptoKey"));
-utilities.lazyLoad(exports, ["getKMSCryptoKeyVersion","getKMSCryptoKeyVersionOutput"], () => require("./getKMSCryptoKeyVersion"));
-utilities.lazyLoad(exports, ["getKMSKeyRing","getKMSKeyRingOutput"], () => require("./getKMSKeyRing"));
-utilities.lazyLoad(exports, ["getKMSSecret","getKMSSecretOutput"], () => require("./getKMSSecret"));
-utilities.lazyLoad(exports, ["getKMSSecretAsymmetric","getKMSSecretAsymmetricOutput"], () => require("./getKMSSecretAsymmetric"));
-utilities.lazyLoad(exports, ["getKMSSecretCiphertext","getKMSSecretCiphertextOutput"], () => require("./getKMSSecretCiphertext"));
-utilities.lazyLoad(exports, ["KeyRing"], () => require("./keyRing"));
-utilities.lazyLoad(exports, ["KeyRingIAMBinding"], () => require("./keyRingIAMBinding"));
-utilities.lazyLoad(exports, ["KeyRingIAMMember"], () => require("./keyRingIAMMember"));
-utilities.lazyLoad(exports, ["KeyRingIAMPolicy"], () => require("./keyRingIAMPolicy"));
-utilities.lazyLoad(exports, ["KeyRingImportJob"], () => require("./keyRingImportJob"));
-utilities.lazyLoad(exports, ["Registry"], () => require("./registry"));
 utilities.lazyLoad(exports, ["SecretCiphertext"], () => require("./secretCiphertext"));
+
 
 const _module = {
     version: utilities.getVersion(),

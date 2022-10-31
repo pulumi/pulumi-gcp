@@ -8,13 +8,13 @@ import * as utilities from "../utilities";
 export { ConnectorArgs, ConnectorState } from "./connector";
 export type Connector = import("./connector").Connector;
 export const Connector: typeof import("./connector").Connector = null as any;
+utilities.lazyLoad(exports, ["Connector"], () => require("./connector"));
 
 export { GetConnectorArgs, GetConnectorResult, GetConnectorOutputArgs } from "./getConnector";
 export const getConnector: typeof import("./getConnector").getConnector = null as any;
 export const getConnectorOutput: typeof import("./getConnector").getConnectorOutput = null as any;
-
-utilities.lazyLoad(exports, ["Connector"], () => require("./connector"));
 utilities.lazyLoad(exports, ["getConnector","getConnectorOutput"], () => require("./getConnector"));
+
 
 const _module = {
     version: utilities.getVersion(),

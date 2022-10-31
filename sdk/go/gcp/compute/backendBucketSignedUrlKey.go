@@ -104,6 +104,13 @@ func NewBackendBucketSignedUrlKey(ctx *pulumi.Context,
 	if args.KeyValue == nil {
 		return nil, errors.New("invalid value for required argument 'KeyValue'")
 	}
+	if args.KeyValue != nil {
+		args.KeyValue = pulumi.ToSecret(args.KeyValue).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"keyValue",
+	})
+	opts = append(opts, secrets)
 	var resource BackendBucketSignedUrlKey
 	err := ctx.RegisterResource("gcp:compute/backendBucketSignedUrlKey:BackendBucketSignedUrlKey", name, args, &resource, opts...)
 	if err != nil {

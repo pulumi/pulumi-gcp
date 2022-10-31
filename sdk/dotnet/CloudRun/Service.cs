@@ -269,7 +269,7 @@ namespace Pulumi.Gcp.CloudRun
     ///     var @default = new Gcp.CloudRun.Service("default", new()
     ///     {
     ///         Location = "us-central1",
-    ///         Template = ,
+    ///         Template = null,
     ///         Traffics = new[]
     ///         {
     ///             new Gcp.CloudRun.Inputs.ServiceTrafficArgs

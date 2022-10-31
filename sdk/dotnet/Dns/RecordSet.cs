@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Dns
     ///                 Network = "default",
     ///                 AccessConfigs = new[]
     ///                 {
-    ///                     ,
+    ///                     null,
     ///                 },
     ///             },
     ///         },

@@ -63,11 +63,21 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("masterHeartbeatPeriod")]
         public Input<int>? MasterHeartbeatPeriod { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Password for the replication connection.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("sslCipher")]
         public Input<string>? SslCipher { get; set; }

@@ -230,6 +230,13 @@ func NewDatabaseInstance(ctx *pulumi.Context,
 	if args.DatabaseVersion == nil {
 		return nil, errors.New("invalid value for required argument 'DatabaseVersion'")
 	}
+	if args.RootPassword != nil {
+		args.RootPassword = pulumi.ToSecret(args.RootPassword).(pulumi.StringPtrOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"rootPassword",
+	})
+	opts = append(opts, secrets)
 	var resource DatabaseInstance
 	err := ctx.RegisterResource("gcp:sql/databaseInstance:DatabaseInstance", name, args, &resource, opts...)
 	if err != nil {

@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.LookupVPNGateway(ctx, &compute.LookupVPNGatewayArgs{
+//			_, err = compute.LookupVPNGateway(ctx, &compute.LookupVPNGatewayArgs{
 //				Name: "vpn-gateway-us-east1",
 //			}, nil)
 //			if err != nil {

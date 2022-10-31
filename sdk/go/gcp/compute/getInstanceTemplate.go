@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.LookupInstanceTemplate(ctx, &compute.LookupInstanceTemplateArgs{
+//			_, err = compute.LookupInstanceTemplate(ctx, &compute.LookupInstanceTemplateArgs{
 //				Name: pulumi.StringRef("generic-tpl-20200107"),
 //			}, nil)
 //			if err != nil {

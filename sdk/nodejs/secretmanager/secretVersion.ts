@@ -128,13 +128,15 @@ export class SecretVersion extends pulumi.CustomResource {
             }
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["secret"] = args ? args.secret : undefined;
-            resourceInputs["secretData"] = args ? args.secretData : undefined;
+            resourceInputs["secretData"] = args?.secretData ? pulumi.secret(args.secretData) : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["destroyTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["secretData"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(SecretVersion.__pulumiType, name, resourceInputs, opts);
     }
 }

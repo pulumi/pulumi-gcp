@@ -96,6 +96,10 @@ func NewKey(ctx *pulumi.Context,
 	if args.ServiceAccountId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceAccountId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"privateKey",
+	})
+	opts = append(opts, secrets)
 	var resource Key
 	err := ctx.RegisterResource("gcp:serviceAccount/key:Key", name, args, &resource, opts...)
 	if err != nil {

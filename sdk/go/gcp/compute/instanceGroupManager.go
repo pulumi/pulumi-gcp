@@ -109,7 +109,7 @@ import (
 //					},
 //					&compute.InstanceGroupManagerVersionArgs{
 //						Name:             pulumi.String("appserver-canary"),
-//						InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver - canary.Id),
+//						InstanceTemplate: pulumi.Any(google_compute_instance_template.AppserverCanary.Id),
 //						TargetSize: &compute.InstanceGroupManagerVersionTargetSizeArgs{
 //							Fixed: pulumi.Int(1),
 //						},

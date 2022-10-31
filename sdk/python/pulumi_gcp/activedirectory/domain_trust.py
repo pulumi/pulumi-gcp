@@ -447,10 +447,12 @@ class DomainTrust(pulumi.CustomResource):
             __props__.__dict__["trust_direction"] = trust_direction
             if trust_handshake_secret is None and not opts.urn:
                 raise TypeError("Missing required property 'trust_handshake_secret'")
-            __props__.__dict__["trust_handshake_secret"] = trust_handshake_secret
+            __props__.__dict__["trust_handshake_secret"] = None if trust_handshake_secret is None else pulumi.Output.secret(trust_handshake_secret)
             if trust_type is None and not opts.urn:
                 raise TypeError("Missing required property 'trust_type'")
             __props__.__dict__["trust_type"] = trust_type
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["trustHandshakeSecret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(DomainTrust, __self__).__init__(
             'gcp:activedirectory/domainTrust:DomainTrust',
             resource_name,

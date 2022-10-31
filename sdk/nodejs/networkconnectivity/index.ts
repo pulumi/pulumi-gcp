@@ -8,13 +8,13 @@ import * as utilities from "../utilities";
 export { HubArgs, HubState } from "./hub";
 export type Hub = import("./hub").Hub;
 export const Hub: typeof import("./hub").Hub = null as any;
+utilities.lazyLoad(exports, ["Hub"], () => require("./hub"));
 
 export { SpokeArgs, SpokeState } from "./spoke";
 export type Spoke = import("./spoke").Spoke;
 export const Spoke: typeof import("./spoke").Spoke = null as any;
-
-utilities.lazyLoad(exports, ["Hub"], () => require("./hub"));
 utilities.lazyLoad(exports, ["Spoke"], () => require("./spoke"));
+
 
 const _module = {
     version: utilities.getVersion(),

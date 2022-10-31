@@ -8,13 +8,13 @@ import * as utilities from "../utilities";
 export { GetTensorflowVersionsArgs, GetTensorflowVersionsResult, GetTensorflowVersionsOutputArgs } from "./getTensorflowVersions";
 export const getTensorflowVersions: typeof import("./getTensorflowVersions").getTensorflowVersions = null as any;
 export const getTensorflowVersionsOutput: typeof import("./getTensorflowVersions").getTensorflowVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getTensorflowVersions","getTensorflowVersionsOutput"], () => require("./getTensorflowVersions"));
 
 export { NodeArgs, NodeState } from "./node";
 export type Node = import("./node").Node;
 export const Node: typeof import("./node").Node = null as any;
-
-utilities.lazyLoad(exports, ["getTensorflowVersions","getTensorflowVersionsOutput"], () => require("./getTensorflowVersions"));
 utilities.lazyLoad(exports, ["Node"], () => require("./node"));
+
 
 const _module = {
     version: utilities.getVersion(),

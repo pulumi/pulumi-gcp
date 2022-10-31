@@ -22,7 +22,16 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterMasterAuthClientCertificateConfigGetArgs> ClientCertificateConfig { get; set; } = null!;
 
         [Input("clientKey")]
-        public Input<string>? ClientKey { get; set; }
+        private Input<string>? _clientKey;
+        public Input<string>? ClientKey
+        {
+            get => _clientKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("clusterCaCertificate")]
         public Input<string>? ClusterCaCertificate { get; set; }

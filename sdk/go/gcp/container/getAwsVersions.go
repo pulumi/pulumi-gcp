@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := container.GetAwsVersions(ctx, &container.GetAwsVersionsArgs{
+//			_, err = container.GetAwsVersions(ctx, &container.GetAwsVersionsArgs{
 //				Location: pulumi.StringRef("us-west1"),
 //				Project:  pulumi.StringRef("my-project"),
 //			}, nil)

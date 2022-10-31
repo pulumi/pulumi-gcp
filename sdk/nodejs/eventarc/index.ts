@@ -8,8 +8,8 @@ import * as utilities from "../utilities";
 export { TriggerArgs, TriggerState } from "./trigger";
 export type Trigger = import("./trigger").Trigger;
 export const Trigger: typeof import("./trigger").Trigger = null as any;
-
 utilities.lazyLoad(exports, ["Trigger"], () => require("./trigger"));
+
 
 const _module = {
     version: utilities.getVersion(),

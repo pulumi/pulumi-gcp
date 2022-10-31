@@ -8,82 +8,82 @@ import * as utilities from "../utilities";
 export { AlertPolicyArgs, AlertPolicyState } from "./alertPolicy";
 export type AlertPolicy = import("./alertPolicy").AlertPolicy;
 export const AlertPolicy: typeof import("./alertPolicy").AlertPolicy = null as any;
+utilities.lazyLoad(exports, ["AlertPolicy"], () => require("./alertPolicy"));
 
 export { CustomServiceArgs, CustomServiceState } from "./customService";
 export type CustomService = import("./customService").CustomService;
 export const CustomService: typeof import("./customService").CustomService = null as any;
+utilities.lazyLoad(exports, ["CustomService"], () => require("./customService"));
 
 export { DashboardArgs, DashboardState } from "./dashboard";
 export type Dashboard = import("./dashboard").Dashboard;
 export const Dashboard: typeof import("./dashboard").Dashboard = null as any;
+utilities.lazyLoad(exports, ["Dashboard"], () => require("./dashboard"));
 
 export { GetAppEngineServiceArgs, GetAppEngineServiceResult, GetAppEngineServiceOutputArgs } from "./getAppEngineService";
 export const getAppEngineService: typeof import("./getAppEngineService").getAppEngineService = null as any;
 export const getAppEngineServiceOutput: typeof import("./getAppEngineService").getAppEngineServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getAppEngineService","getAppEngineServiceOutput"], () => require("./getAppEngineService"));
 
 export { GetClusterIstioServiceArgs, GetClusterIstioServiceResult, GetClusterIstioServiceOutputArgs } from "./getClusterIstioService";
 export const getClusterIstioService: typeof import("./getClusterIstioService").getClusterIstioService = null as any;
 export const getClusterIstioServiceOutput: typeof import("./getClusterIstioService").getClusterIstioServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterIstioService","getClusterIstioServiceOutput"], () => require("./getClusterIstioService"));
 
 export { GetIstioCanonicalServiceArgs, GetIstioCanonicalServiceResult, GetIstioCanonicalServiceOutputArgs } from "./getIstioCanonicalService";
 export const getIstioCanonicalService: typeof import("./getIstioCanonicalService").getIstioCanonicalService = null as any;
 export const getIstioCanonicalServiceOutput: typeof import("./getIstioCanonicalService").getIstioCanonicalServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getIstioCanonicalService","getIstioCanonicalServiceOutput"], () => require("./getIstioCanonicalService"));
 
 export { GetMeshIstioServiceArgs, GetMeshIstioServiceResult, GetMeshIstioServiceOutputArgs } from "./getMeshIstioService";
 export const getMeshIstioService: typeof import("./getMeshIstioService").getMeshIstioService = null as any;
 export const getMeshIstioServiceOutput: typeof import("./getMeshIstioService").getMeshIstioServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getMeshIstioService","getMeshIstioServiceOutput"], () => require("./getMeshIstioService"));
 
 export { GetNotificationChannelArgs, GetNotificationChannelResult, GetNotificationChannelOutputArgs } from "./getNotificationChannel";
 export const getNotificationChannel: typeof import("./getNotificationChannel").getNotificationChannel = null as any;
 export const getNotificationChannelOutput: typeof import("./getNotificationChannel").getNotificationChannelOutput = null as any;
+utilities.lazyLoad(exports, ["getNotificationChannel","getNotificationChannelOutput"], () => require("./getNotificationChannel"));
 
 export { GetSecretVersionArgs, GetSecretVersionResult, GetSecretVersionOutputArgs } from "./getSecretVersion";
 export const getSecretVersion: typeof import("./getSecretVersion").getSecretVersion = null as any;
 export const getSecretVersionOutput: typeof import("./getSecretVersion").getSecretVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getSecretVersion","getSecretVersionOutput"], () => require("./getSecretVersion"));
 
 export { GetUptimeCheckIPsResult } from "./getUptimeCheckIPs";
 export const getUptimeCheckIPs: typeof import("./getUptimeCheckIPs").getUptimeCheckIPs = null as any;
+utilities.lazyLoad(exports, ["getUptimeCheckIPs"], () => require("./getUptimeCheckIPs"));
 
 export { GroupArgs, GroupState } from "./group";
 export type Group = import("./group").Group;
 export const Group: typeof import("./group").Group = null as any;
+utilities.lazyLoad(exports, ["Group"], () => require("./group"));
 
 export { MetricDescriptorArgs, MetricDescriptorState } from "./metricDescriptor";
 export type MetricDescriptor = import("./metricDescriptor").MetricDescriptor;
 export const MetricDescriptor: typeof import("./metricDescriptor").MetricDescriptor = null as any;
+utilities.lazyLoad(exports, ["MetricDescriptor"], () => require("./metricDescriptor"));
 
 export { MonitoredProjectArgs, MonitoredProjectState } from "./monitoredProject";
 export type MonitoredProject = import("./monitoredProject").MonitoredProject;
 export const MonitoredProject: typeof import("./monitoredProject").MonitoredProject = null as any;
+utilities.lazyLoad(exports, ["MonitoredProject"], () => require("./monitoredProject"));
 
 export { NotificationChannelArgs, NotificationChannelState } from "./notificationChannel";
 export type NotificationChannel = import("./notificationChannel").NotificationChannel;
 export const NotificationChannel: typeof import("./notificationChannel").NotificationChannel = null as any;
+utilities.lazyLoad(exports, ["NotificationChannel"], () => require("./notificationChannel"));
 
 export { SloArgs, SloState } from "./slo";
 export type Slo = import("./slo").Slo;
 export const Slo: typeof import("./slo").Slo = null as any;
+utilities.lazyLoad(exports, ["Slo"], () => require("./slo"));
 
 export { UptimeCheckConfigArgs, UptimeCheckConfigState } from "./uptimeCheckConfig";
 export type UptimeCheckConfig = import("./uptimeCheckConfig").UptimeCheckConfig;
 export const UptimeCheckConfig: typeof import("./uptimeCheckConfig").UptimeCheckConfig = null as any;
-
-utilities.lazyLoad(exports, ["AlertPolicy"], () => require("./alertPolicy"));
-utilities.lazyLoad(exports, ["CustomService"], () => require("./customService"));
-utilities.lazyLoad(exports, ["Dashboard"], () => require("./dashboard"));
-utilities.lazyLoad(exports, ["getAppEngineService","getAppEngineServiceOutput"], () => require("./getAppEngineService"));
-utilities.lazyLoad(exports, ["getClusterIstioService","getClusterIstioServiceOutput"], () => require("./getClusterIstioService"));
-utilities.lazyLoad(exports, ["getIstioCanonicalService","getIstioCanonicalServiceOutput"], () => require("./getIstioCanonicalService"));
-utilities.lazyLoad(exports, ["getMeshIstioService","getMeshIstioServiceOutput"], () => require("./getMeshIstioService"));
-utilities.lazyLoad(exports, ["getNotificationChannel","getNotificationChannelOutput"], () => require("./getNotificationChannel"));
-utilities.lazyLoad(exports, ["getSecretVersion","getSecretVersionOutput"], () => require("./getSecretVersion"));
-utilities.lazyLoad(exports, ["getUptimeCheckIPs"], () => require("./getUptimeCheckIPs"));
-utilities.lazyLoad(exports, ["Group"], () => require("./group"));
-utilities.lazyLoad(exports, ["MetricDescriptor"], () => require("./metricDescriptor"));
-utilities.lazyLoad(exports, ["MonitoredProject"], () => require("./monitoredProject"));
-utilities.lazyLoad(exports, ["NotificationChannel"], () => require("./notificationChannel"));
-utilities.lazyLoad(exports, ["Slo"], () => require("./slo"));
 utilities.lazyLoad(exports, ["UptimeCheckConfig"], () => require("./uptimeCheckConfig"));
+
 
 const _module = {
     version: utilities.getVersion(),

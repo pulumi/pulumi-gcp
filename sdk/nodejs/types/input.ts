@@ -7230,7 +7230,6 @@ export namespace cloudidentity {
          */
         name: pulumi.Input<string>;
     }
-
 }
 
 export namespace cloudrun {
@@ -7917,7 +7916,6 @@ export namespace cloudrun {
          */
         url?: pulumi.Input<string>;
     }
-
 }
 
 export namespace cloudscheduler {
@@ -23790,7 +23788,6 @@ export namespace dns {
          */
         type: pulumi.Input<string>;
     }
-
 }
 
 export namespace endpoints {
@@ -24190,7 +24187,6 @@ export namespace folder {
          */
         default: pulumi.Input<boolean>;
     }
-
 }
 
 export namespace gameservices {
@@ -24820,7 +24816,6 @@ export namespace iam {
          */
         issuerUri: pulumi.Input<string>;
     }
-
 }
 
 export namespace iap {
@@ -28432,7 +28427,6 @@ export namespace organizations {
          */
         default: pulumi.Input<boolean>;
     }
-
 }
 
 export namespace orgpolicy {
@@ -30446,7 +30440,6 @@ export namespace projects {
          */
         default: pulumi.Input<boolean>;
     }
-
 }
 
 export namespace pubsub {
@@ -30681,7 +30674,6 @@ export namespace pubsub {
          */
         schema: pulumi.Input<string>;
     }
-
 }
 
 export namespace recaptcha {
@@ -30907,7 +30899,6 @@ export namespace redis {
         serialNumber?: pulumi.Input<string>;
         sha1Fingerprint?: pulumi.Input<string>;
     }
-
 }
 
 export namespace runtimeconfig {
@@ -30996,7 +30987,6 @@ export namespace secretmanager {
          */
         name: pulumi.Input<string>;
     }
-
 }
 
 export namespace securitycenter {
@@ -31557,7 +31547,6 @@ export namespace sql {
         disabled?: pulumi.Input<boolean>;
         serverRoles?: pulumi.Input<pulumi.Input<string>[]>;
     }
-
 }
 
 export namespace storage {
@@ -32009,7 +31998,6 @@ export namespace storage {
          */
         overwriteWhen?: pulumi.Input<string>;
     }
-
 }
 
 export namespace tags {

@@ -24,7 +24,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.LookupResourcePolicy(ctx, &compute.LookupResourcePolicyArgs{
+//			_, err = compute.LookupResourcePolicy(ctx, &compute.LookupResourcePolicyArgs{
 //				Name:   "daily",
 //				Region: pulumi.StringRef("us-central1"),
 //			}, nil)

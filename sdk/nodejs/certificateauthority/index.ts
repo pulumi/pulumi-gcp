@@ -8,58 +8,58 @@ import * as utilities from "../utilities";
 export { AuthorityArgs, AuthorityState } from "./authority";
 export type Authority = import("./authority").Authority;
 export const Authority: typeof import("./authority").Authority = null as any;
+utilities.lazyLoad(exports, ["Authority"], () => require("./authority"));
 
 export { CaPoolArgs, CaPoolState } from "./caPool";
 export type CaPool = import("./caPool").CaPool;
 export const CaPool: typeof import("./caPool").CaPool = null as any;
+utilities.lazyLoad(exports, ["CaPool"], () => require("./caPool"));
 
 export { CaPoolIamBindingArgs, CaPoolIamBindingState } from "./caPoolIamBinding";
 export type CaPoolIamBinding = import("./caPoolIamBinding").CaPoolIamBinding;
 export const CaPoolIamBinding: typeof import("./caPoolIamBinding").CaPoolIamBinding = null as any;
+utilities.lazyLoad(exports, ["CaPoolIamBinding"], () => require("./caPoolIamBinding"));
 
 export { CaPoolIamMemberArgs, CaPoolIamMemberState } from "./caPoolIamMember";
 export type CaPoolIamMember = import("./caPoolIamMember").CaPoolIamMember;
 export const CaPoolIamMember: typeof import("./caPoolIamMember").CaPoolIamMember = null as any;
+utilities.lazyLoad(exports, ["CaPoolIamMember"], () => require("./caPoolIamMember"));
 
 export { CaPoolIamPolicyArgs, CaPoolIamPolicyState } from "./caPoolIamPolicy";
 export type CaPoolIamPolicy = import("./caPoolIamPolicy").CaPoolIamPolicy;
 export const CaPoolIamPolicy: typeof import("./caPoolIamPolicy").CaPoolIamPolicy = null as any;
+utilities.lazyLoad(exports, ["CaPoolIamPolicy"], () => require("./caPoolIamPolicy"));
 
 export { CertificateArgs, CertificateState } from "./certificate";
 export type Certificate = import("./certificate").Certificate;
 export const Certificate: typeof import("./certificate").Certificate = null as any;
+utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
 
 export { CertificateTemplateArgs, CertificateTemplateState } from "./certificateTemplate";
 export type CertificateTemplate = import("./certificateTemplate").CertificateTemplate;
 export const CertificateTemplate: typeof import("./certificateTemplate").CertificateTemplate = null as any;
+utilities.lazyLoad(exports, ["CertificateTemplate"], () => require("./certificateTemplate"));
 
 export { CertificateTemplateIamBindingArgs, CertificateTemplateIamBindingState } from "./certificateTemplateIamBinding";
 export type CertificateTemplateIamBinding = import("./certificateTemplateIamBinding").CertificateTemplateIamBinding;
 export const CertificateTemplateIamBinding: typeof import("./certificateTemplateIamBinding").CertificateTemplateIamBinding = null as any;
+utilities.lazyLoad(exports, ["CertificateTemplateIamBinding"], () => require("./certificateTemplateIamBinding"));
 
 export { CertificateTemplateIamMemberArgs, CertificateTemplateIamMemberState } from "./certificateTemplateIamMember";
 export type CertificateTemplateIamMember = import("./certificateTemplateIamMember").CertificateTemplateIamMember;
 export const CertificateTemplateIamMember: typeof import("./certificateTemplateIamMember").CertificateTemplateIamMember = null as any;
+utilities.lazyLoad(exports, ["CertificateTemplateIamMember"], () => require("./certificateTemplateIamMember"));
 
 export { CertificateTemplateIamPolicyArgs, CertificateTemplateIamPolicyState } from "./certificateTemplateIamPolicy";
 export type CertificateTemplateIamPolicy = import("./certificateTemplateIamPolicy").CertificateTemplateIamPolicy;
 export const CertificateTemplateIamPolicy: typeof import("./certificateTemplateIamPolicy").CertificateTemplateIamPolicy = null as any;
+utilities.lazyLoad(exports, ["CertificateTemplateIamPolicy"], () => require("./certificateTemplateIamPolicy"));
 
 export { GetAuthorityArgs, GetAuthorityResult, GetAuthorityOutputArgs } from "./getAuthority";
 export const getAuthority: typeof import("./getAuthority").getAuthority = null as any;
 export const getAuthorityOutput: typeof import("./getAuthority").getAuthorityOutput = null as any;
-
-utilities.lazyLoad(exports, ["Authority"], () => require("./authority"));
-utilities.lazyLoad(exports, ["CaPool"], () => require("./caPool"));
-utilities.lazyLoad(exports, ["CaPoolIamBinding"], () => require("./caPoolIamBinding"));
-utilities.lazyLoad(exports, ["CaPoolIamMember"], () => require("./caPoolIamMember"));
-utilities.lazyLoad(exports, ["CaPoolIamPolicy"], () => require("./caPoolIamPolicy"));
-utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
-utilities.lazyLoad(exports, ["CertificateTemplate"], () => require("./certificateTemplate"));
-utilities.lazyLoad(exports, ["CertificateTemplateIamBinding"], () => require("./certificateTemplateIamBinding"));
-utilities.lazyLoad(exports, ["CertificateTemplateIamMember"], () => require("./certificateTemplateIamMember"));
-utilities.lazyLoad(exports, ["CertificateTemplateIamPolicy"], () => require("./certificateTemplateIamPolicy"));
 utilities.lazyLoad(exports, ["getAuthority","getAuthorityOutput"], () => require("./getAuthority"));
+
 
 const _module = {
     version: utilities.getVersion(),

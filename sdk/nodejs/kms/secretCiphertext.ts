@@ -131,12 +131,14 @@ export class SecretCiphertext extends pulumi.CustomResource {
             if ((!args || args.plaintext === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'plaintext'");
             }
-            resourceInputs["additionalAuthenticatedData"] = args ? args.additionalAuthenticatedData : undefined;
+            resourceInputs["additionalAuthenticatedData"] = args?.additionalAuthenticatedData ? pulumi.secret(args.additionalAuthenticatedData) : undefined;
             resourceInputs["cryptoKey"] = args ? args.cryptoKey : undefined;
-            resourceInputs["plaintext"] = args ? args.plaintext : undefined;
+            resourceInputs["plaintext"] = args?.plaintext ? pulumi.secret(args.plaintext) : undefined;
             resourceInputs["ciphertext"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["additionalAuthenticatedData", "plaintext"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(SecretCiphertext.__pulumiType, name, resourceInputs, opts);
     }
 }

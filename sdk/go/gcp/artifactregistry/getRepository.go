@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := artifactregistry.LookupRepository(ctx, &artifactregistry.LookupRepositoryArgs{
+//			_, err = artifactregistry.LookupRepository(ctx, &artifactregistry.LookupRepositoryArgs{
 //				Location:     "us-central1",
 //				RepositoryId: "my-repository",
 //			}, nil)

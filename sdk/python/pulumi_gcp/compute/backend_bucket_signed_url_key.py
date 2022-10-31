@@ -294,9 +294,11 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
             __props__.__dict__["backend_bucket"] = backend_bucket
             if key_value is None and not opts.urn:
                 raise TypeError("Missing required property 'key_value'")
-            __props__.__dict__["key_value"] = key_value
+            __props__.__dict__["key_value"] = None if key_value is None else pulumi.Output.secret(key_value)
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["keyValue"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(BackendBucketSignedUrlKey, __self__).__init__(
             'gcp:compute/backendBucketSignedUrlKey:BackendBucketSignedUrlKey',
             resource_name,

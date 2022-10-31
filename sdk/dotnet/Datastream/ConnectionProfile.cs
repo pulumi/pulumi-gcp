@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Datastream
     /// {
     ///     var @default = new Gcp.Datastream.ConnectionProfile("default", new()
     ///     {
-    ///         BigqueryProfile = ,
+    ///         BigqueryProfile = null,
     ///         ConnectionProfileId = "my-profile",
     ///         DisplayName = "Connection profile",
     ///         Location = "us-central1",

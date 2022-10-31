@@ -8,18 +8,18 @@ import * as utilities from "../utilities";
 export { AssetArgs, AssetState } from "./asset";
 export type Asset = import("./asset").Asset;
 export const Asset: typeof import("./asset").Asset = null as any;
+utilities.lazyLoad(exports, ["Asset"], () => require("./asset"));
 
 export { LakeArgs, LakeState } from "./lake";
 export type Lake = import("./lake").Lake;
 export const Lake: typeof import("./lake").Lake = null as any;
+utilities.lazyLoad(exports, ["Lake"], () => require("./lake"));
 
 export { ZoneArgs, ZoneState } from "./zone";
 export type Zone = import("./zone").Zone;
 export const Zone: typeof import("./zone").Zone = null as any;
-
-utilities.lazyLoad(exports, ["Asset"], () => require("./asset"));
-utilities.lazyLoad(exports, ["Lake"], () => require("./lake"));
 utilities.lazyLoad(exports, ["Zone"], () => require("./zone"));
+
 
 const _module = {
     version: utilities.getVersion(),

@@ -8,13 +8,13 @@ import * as utilities from "../utilities";
 export { NotificationConfigArgs, NotificationConfigState } from "./notificationConfig";
 export type NotificationConfig = import("./notificationConfig").NotificationConfig;
 export const NotificationConfig: typeof import("./notificationConfig").NotificationConfig = null as any;
+utilities.lazyLoad(exports, ["NotificationConfig"], () => require("./notificationConfig"));
 
 export { SourceArgs, SourceState } from "./source";
 export type Source = import("./source").Source;
 export const Source: typeof import("./source").Source = null as any;
-
-utilities.lazyLoad(exports, ["NotificationConfig"], () => require("./notificationConfig"));
 utilities.lazyLoad(exports, ["Source"], () => require("./source"));
+
 
 const _module = {
     version: utilities.getVersion(),

@@ -8,38 +8,38 @@ import * as utilities from "../utilities";
 export { DenyPolicyArgs, DenyPolicyState } from "./denyPolicy";
 export type DenyPolicy = import("./denyPolicy").DenyPolicy;
 export const DenyPolicy: typeof import("./denyPolicy").DenyPolicy = null as any;
+utilities.lazyLoad(exports, ["DenyPolicy"], () => require("./denyPolicy"));
 
 export { GetRuleArgs, GetRuleResult, GetRuleOutputArgs } from "./getRule";
 export const getRule: typeof import("./getRule").getRule = null as any;
 export const getRuleOutput: typeof import("./getRule").getRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getRule","getRuleOutput"], () => require("./getRule"));
 
 export { GetTestablePermissionsArgs, GetTestablePermissionsResult, GetTestablePermissionsOutputArgs } from "./getTestablePermissions";
 export const getTestablePermissions: typeof import("./getTestablePermissions").getTestablePermissions = null as any;
 export const getTestablePermissionsOutput: typeof import("./getTestablePermissions").getTestablePermissionsOutput = null as any;
+utilities.lazyLoad(exports, ["getTestablePermissions","getTestablePermissionsOutput"], () => require("./getTestablePermissions"));
 
 export { GetWorkloadIdentityPoolArgs, GetWorkloadIdentityPoolResult, GetWorkloadIdentityPoolOutputArgs } from "./getWorkloadIdentityPool";
 export const getWorkloadIdentityPool: typeof import("./getWorkloadIdentityPool").getWorkloadIdentityPool = null as any;
 export const getWorkloadIdentityPoolOutput: typeof import("./getWorkloadIdentityPool").getWorkloadIdentityPoolOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkloadIdentityPool","getWorkloadIdentityPoolOutput"], () => require("./getWorkloadIdentityPool"));
 
 export { GetWorkloadIdentityPoolProviderArgs, GetWorkloadIdentityPoolProviderResult, GetWorkloadIdentityPoolProviderOutputArgs } from "./getWorkloadIdentityPoolProvider";
 export const getWorkloadIdentityPoolProvider: typeof import("./getWorkloadIdentityPoolProvider").getWorkloadIdentityPoolProvider = null as any;
 export const getWorkloadIdentityPoolProviderOutput: typeof import("./getWorkloadIdentityPoolProvider").getWorkloadIdentityPoolProviderOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkloadIdentityPoolProvider","getWorkloadIdentityPoolProviderOutput"], () => require("./getWorkloadIdentityPoolProvider"));
 
 export { WorkloadIdentityPoolArgs, WorkloadIdentityPoolState } from "./workloadIdentityPool";
 export type WorkloadIdentityPool = import("./workloadIdentityPool").WorkloadIdentityPool;
 export const WorkloadIdentityPool: typeof import("./workloadIdentityPool").WorkloadIdentityPool = null as any;
+utilities.lazyLoad(exports, ["WorkloadIdentityPool"], () => require("./workloadIdentityPool"));
 
 export { WorkloadIdentityPoolProviderArgs, WorkloadIdentityPoolProviderState } from "./workloadIdentityPoolProvider";
 export type WorkloadIdentityPoolProvider = import("./workloadIdentityPoolProvider").WorkloadIdentityPoolProvider;
 export const WorkloadIdentityPoolProvider: typeof import("./workloadIdentityPoolProvider").WorkloadIdentityPoolProvider = null as any;
-
-utilities.lazyLoad(exports, ["DenyPolicy"], () => require("./denyPolicy"));
-utilities.lazyLoad(exports, ["getRule","getRuleOutput"], () => require("./getRule"));
-utilities.lazyLoad(exports, ["getTestablePermissions","getTestablePermissionsOutput"], () => require("./getTestablePermissions"));
-utilities.lazyLoad(exports, ["getWorkloadIdentityPool","getWorkloadIdentityPoolOutput"], () => require("./getWorkloadIdentityPool"));
-utilities.lazyLoad(exports, ["getWorkloadIdentityPoolProvider","getWorkloadIdentityPoolProviderOutput"], () => require("./getWorkloadIdentityPoolProvider"));
-utilities.lazyLoad(exports, ["WorkloadIdentityPool"], () => require("./workloadIdentityPool"));
 utilities.lazyLoad(exports, ["WorkloadIdentityPoolProvider"], () => require("./workloadIdentityPoolProvider"));
+
 
 const _module = {
     version: utilities.getVersion(),

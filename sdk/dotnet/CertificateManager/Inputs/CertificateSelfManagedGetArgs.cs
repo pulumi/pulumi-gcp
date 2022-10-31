@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
 
     public sealed class CertificateSelfManagedGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("certificatePem")]
+        private Input<string>? _certificatePem;
+
         /// <summary>
         /// -
         /// (Optional, Deprecated)
@@ -19,8 +22,16 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
         /// Leaf certificate comes first, followed by intermediate ones if any.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("certificatePem")]
-        public Input<string>? CertificatePem { get; set; }
+        [Obsolete(@"Deprecated in favor of `pem_certificate`")]
+        public Input<string>? CertificatePem
+        {
+            get => _certificatePem;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificatePem = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The certificate chain in PEM-encoded form.
@@ -37,14 +48,25 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
         [Input("pemPrivateKey")]
         public Input<string>? PemPrivateKey { get; set; }
 
+        [Input("privateKeyPem")]
+        private Input<string>? _privateKeyPem;
+
         /// <summary>
         /// -
         /// (Optional, Deprecated)
         /// **Deprecated** The private key of the leaf certificate in PEM-encoded form.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("privateKeyPem")]
-        public Input<string>? PrivateKeyPem { get; set; }
+        [Obsolete(@"Deprecated in favor of `pem_private_key`")]
+        public Input<string>? PrivateKeyPem
+        {
+            get => _privateKeyPem;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKeyPem = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public CertificateSelfManagedGetArgs()
         {

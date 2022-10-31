@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.NetworkManagement
     ///                 Network = vpc.Id,
     ///                 AccessConfigs = new[]
     ///                 {
-    ///                     ,
+    ///                     null,
     ///                 },
     ///             },
     ///         },
@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.NetworkManagement
     ///                 Network = vpc.Id,
     ///                 AccessConfigs = new[]
     ///                 {
-    ///                     ,
+    ///                     null,
     ///                 },
     ///             },
     ///         },

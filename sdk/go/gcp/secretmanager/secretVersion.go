@@ -98,6 +98,13 @@ func NewSecretVersion(ctx *pulumi.Context,
 	if args.SecretData == nil {
 		return nil, errors.New("invalid value for required argument 'SecretData'")
 	}
+	if args.SecretData != nil {
+		args.SecretData = pulumi.ToSecret(args.SecretData).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secretData",
+	})
+	opts = append(opts, secrets)
 	var resource SecretVersion
 	err := ctx.RegisterResource("gcp:secretmanager/secretVersion:SecretVersion", name, args, &resource, opts...)
 	if err != nil {

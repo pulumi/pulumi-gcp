@@ -8,63 +8,63 @@ import * as utilities from "../utilities";
 export { AgentArgs, AgentState } from "./agent";
 export type Agent = import("./agent").Agent;
 export const Agent: typeof import("./agent").Agent = null as any;
+utilities.lazyLoad(exports, ["Agent"], () => require("./agent"));
 
 export { CxAgentArgs, CxAgentState } from "./cxAgent";
 export type CxAgent = import("./cxAgent").CxAgent;
 export const CxAgent: typeof import("./cxAgent").CxAgent = null as any;
+utilities.lazyLoad(exports, ["CxAgent"], () => require("./cxAgent"));
 
 export { CxEntityTypeArgs, CxEntityTypeState } from "./cxEntityType";
 export type CxEntityType = import("./cxEntityType").CxEntityType;
 export const CxEntityType: typeof import("./cxEntityType").CxEntityType = null as any;
+utilities.lazyLoad(exports, ["CxEntityType"], () => require("./cxEntityType"));
 
 export { CxEnvironmentArgs, CxEnvironmentState } from "./cxEnvironment";
 export type CxEnvironment = import("./cxEnvironment").CxEnvironment;
 export const CxEnvironment: typeof import("./cxEnvironment").CxEnvironment = null as any;
+utilities.lazyLoad(exports, ["CxEnvironment"], () => require("./cxEnvironment"));
 
 export { CxFlowArgs, CxFlowState } from "./cxFlow";
 export type CxFlow = import("./cxFlow").CxFlow;
 export const CxFlow: typeof import("./cxFlow").CxFlow = null as any;
+utilities.lazyLoad(exports, ["CxFlow"], () => require("./cxFlow"));
 
 export { CxIntentArgs, CxIntentState } from "./cxIntent";
 export type CxIntent = import("./cxIntent").CxIntent;
 export const CxIntent: typeof import("./cxIntent").CxIntent = null as any;
+utilities.lazyLoad(exports, ["CxIntent"], () => require("./cxIntent"));
 
 export { CxPageArgs, CxPageState } from "./cxPage";
 export type CxPage = import("./cxPage").CxPage;
 export const CxPage: typeof import("./cxPage").CxPage = null as any;
+utilities.lazyLoad(exports, ["CxPage"], () => require("./cxPage"));
 
 export { CxVersionArgs, CxVersionState } from "./cxVersion";
 export type CxVersion = import("./cxVersion").CxVersion;
 export const CxVersion: typeof import("./cxVersion").CxVersion = null as any;
+utilities.lazyLoad(exports, ["CxVersion"], () => require("./cxVersion"));
 
 export { CxWebhookArgs, CxWebhookState } from "./cxWebhook";
 export type CxWebhook = import("./cxWebhook").CxWebhook;
 export const CxWebhook: typeof import("./cxWebhook").CxWebhook = null as any;
+utilities.lazyLoad(exports, ["CxWebhook"], () => require("./cxWebhook"));
 
 export { EntityTypeArgs, EntityTypeState } from "./entityType";
 export type EntityType = import("./entityType").EntityType;
 export const EntityType: typeof import("./entityType").EntityType = null as any;
+utilities.lazyLoad(exports, ["EntityType"], () => require("./entityType"));
 
 export { FulfillmentArgs, FulfillmentState } from "./fulfillment";
 export type Fulfillment = import("./fulfillment").Fulfillment;
 export const Fulfillment: typeof import("./fulfillment").Fulfillment = null as any;
+utilities.lazyLoad(exports, ["Fulfillment"], () => require("./fulfillment"));
 
 export { IntentArgs, IntentState } from "./intent";
 export type Intent = import("./intent").Intent;
 export const Intent: typeof import("./intent").Intent = null as any;
-
-utilities.lazyLoad(exports, ["Agent"], () => require("./agent"));
-utilities.lazyLoad(exports, ["CxAgent"], () => require("./cxAgent"));
-utilities.lazyLoad(exports, ["CxEntityType"], () => require("./cxEntityType"));
-utilities.lazyLoad(exports, ["CxEnvironment"], () => require("./cxEnvironment"));
-utilities.lazyLoad(exports, ["CxFlow"], () => require("./cxFlow"));
-utilities.lazyLoad(exports, ["CxIntent"], () => require("./cxIntent"));
-utilities.lazyLoad(exports, ["CxPage"], () => require("./cxPage"));
-utilities.lazyLoad(exports, ["CxVersion"], () => require("./cxVersion"));
-utilities.lazyLoad(exports, ["CxWebhook"], () => require("./cxWebhook"));
-utilities.lazyLoad(exports, ["EntityType"], () => require("./entityType"));
-utilities.lazyLoad(exports, ["Fulfillment"], () => require("./fulfillment"));
 utilities.lazyLoad(exports, ["Intent"], () => require("./intent"));
+
 
 const _module = {
     version: utilities.getVersion(),

@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.LookupInstance(ctx, &compute.LookupInstanceArgs{
+//			_, err = compute.LookupInstance(ctx, &compute.LookupInstanceArgs{
 //				Name: pulumi.StringRef("primary-application-server"),
 //				Zone: pulumi.StringRef("us-central1-a"),
 //			}, nil)

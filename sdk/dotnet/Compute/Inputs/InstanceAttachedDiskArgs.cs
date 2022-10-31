@@ -19,14 +19,24 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("deviceName")]
         public Input<string>? DeviceName { get; set; }
 
+        [Input("diskEncryptionKeyRaw")]
+        private Input<string>? _diskEncryptionKeyRaw;
+
         /// <summary>
         /// A 256-bit [customer-supplied encryption key]
         /// (&lt;https://cloud.google.com/compute/docs/disks/customer-supplied-encryption&gt;),
         /// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         /// to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
         /// </summary>
-        [Input("diskEncryptionKeyRaw")]
-        public Input<string>? DiskEncryptionKeyRaw { get; set; }
+        public Input<string>? DiskEncryptionKeyRaw
+        {
+            get => _diskEncryptionKeyRaw;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _diskEncryptionKeyRaw = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("diskEncryptionKeySha256")]
         public Input<string>? DiskEncryptionKeySha256 { get; set; }

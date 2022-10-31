@@ -8,8 +8,8 @@ import * as utilities from "../utilities";
 export { DeploymentArgs, DeploymentState } from "./deployment";
 export type Deployment = import("./deployment").Deployment;
 export const Deployment: typeof import("./deployment").Deployment = null as any;
-
 utilities.lazyLoad(exports, ["Deployment"], () => require("./deployment"));
+
 
 const _module = {
     version: utilities.getVersion(),

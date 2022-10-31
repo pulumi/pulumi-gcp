@@ -8,104 +8,104 @@ import * as utilities from "../utilities";
 export { BucketArgs, BucketState } from "./bucket";
 export type Bucket = import("./bucket").Bucket;
 export const Bucket: typeof import("./bucket").Bucket = null as any;
+utilities.lazyLoad(exports, ["Bucket"], () => require("./bucket"));
 
 export { BucketACLArgs, BucketACLState } from "./bucketACL";
 export type BucketACL = import("./bucketACL").BucketACL;
 export const BucketACL: typeof import("./bucketACL").BucketACL = null as any;
+utilities.lazyLoad(exports, ["BucketACL"], () => require("./bucketACL"));
 
 export { BucketAccessControlArgs, BucketAccessControlState } from "./bucketAccessControl";
 export type BucketAccessControl = import("./bucketAccessControl").BucketAccessControl;
 export const BucketAccessControl: typeof import("./bucketAccessControl").BucketAccessControl = null as any;
+utilities.lazyLoad(exports, ["BucketAccessControl"], () => require("./bucketAccessControl"));
 
 export { BucketIAMBindingArgs, BucketIAMBindingState } from "./bucketIAMBinding";
 export type BucketIAMBinding = import("./bucketIAMBinding").BucketIAMBinding;
 export const BucketIAMBinding: typeof import("./bucketIAMBinding").BucketIAMBinding = null as any;
+utilities.lazyLoad(exports, ["BucketIAMBinding"], () => require("./bucketIAMBinding"));
 
 export { BucketIAMMemberArgs, BucketIAMMemberState } from "./bucketIAMMember";
 export type BucketIAMMember = import("./bucketIAMMember").BucketIAMMember;
 export const BucketIAMMember: typeof import("./bucketIAMMember").BucketIAMMember = null as any;
+utilities.lazyLoad(exports, ["BucketIAMMember"], () => require("./bucketIAMMember"));
 
 export { BucketIAMPolicyArgs, BucketIAMPolicyState } from "./bucketIAMPolicy";
 export type BucketIAMPolicy = import("./bucketIAMPolicy").BucketIAMPolicy;
 export const BucketIAMPolicy: typeof import("./bucketIAMPolicy").BucketIAMPolicy = null as any;
+utilities.lazyLoad(exports, ["BucketIAMPolicy"], () => require("./bucketIAMPolicy"));
 
 export { BucketObjectArgs, BucketObjectState } from "./bucketObject";
 export type BucketObject = import("./bucketObject").BucketObject;
 export const BucketObject: typeof import("./bucketObject").BucketObject = null as any;
+utilities.lazyLoad(exports, ["BucketObject"], () => require("./bucketObject"));
 
 export { DefaultObjectACLArgs, DefaultObjectACLState } from "./defaultObjectACL";
 export type DefaultObjectACL = import("./defaultObjectACL").DefaultObjectACL;
 export const DefaultObjectACL: typeof import("./defaultObjectACL").DefaultObjectACL = null as any;
+utilities.lazyLoad(exports, ["DefaultObjectACL"], () => require("./defaultObjectACL"));
 
 export { DefaultObjectAccessControlArgs, DefaultObjectAccessControlState } from "./defaultObjectAccessControl";
 export type DefaultObjectAccessControl = import("./defaultObjectAccessControl").DefaultObjectAccessControl;
 export const DefaultObjectAccessControl: typeof import("./defaultObjectAccessControl").DefaultObjectAccessControl = null as any;
+utilities.lazyLoad(exports, ["DefaultObjectAccessControl"], () => require("./defaultObjectAccessControl"));
 
 export { GetBucketArgs, GetBucketResult, GetBucketOutputArgs } from "./getBucket";
 export const getBucket: typeof import("./getBucket").getBucket = null as any;
 export const getBucketOutput: typeof import("./getBucket").getBucketOutput = null as any;
+utilities.lazyLoad(exports, ["getBucket","getBucketOutput"], () => require("./getBucket"));
 
 export { GetBucketObjectArgs, GetBucketObjectResult, GetBucketObjectOutputArgs } from "./getBucketObject";
 export const getBucketObject: typeof import("./getBucketObject").getBucketObject = null as any;
 export const getBucketObjectOutput: typeof import("./getBucketObject").getBucketObjectOutput = null as any;
+utilities.lazyLoad(exports, ["getBucketObject","getBucketObjectOutput"], () => require("./getBucketObject"));
 
 export { GetBucketObjectContentArgs, GetBucketObjectContentResult, GetBucketObjectContentOutputArgs } from "./getBucketObjectContent";
 export const getBucketObjectContent: typeof import("./getBucketObjectContent").getBucketObjectContent = null as any;
 export const getBucketObjectContentOutput: typeof import("./getBucketObjectContent").getBucketObjectContentOutput = null as any;
+utilities.lazyLoad(exports, ["getBucketObjectContent","getBucketObjectContentOutput"], () => require("./getBucketObjectContent"));
 
 export { GetObjectSignedUrlArgs, GetObjectSignedUrlResult, GetObjectSignedUrlOutputArgs } from "./getObjectSignedUrl";
 export const getObjectSignedUrl: typeof import("./getObjectSignedUrl").getObjectSignedUrl = null as any;
 export const getObjectSignedUrlOutput: typeof import("./getObjectSignedUrl").getObjectSignedUrlOutput = null as any;
+utilities.lazyLoad(exports, ["getObjectSignedUrl","getObjectSignedUrlOutput"], () => require("./getObjectSignedUrl"));
 
 export { GetProjectServiceAccountArgs, GetProjectServiceAccountResult, GetProjectServiceAccountOutputArgs } from "./getProjectServiceAccount";
 export const getProjectServiceAccount: typeof import("./getProjectServiceAccount").getProjectServiceAccount = null as any;
 export const getProjectServiceAccountOutput: typeof import("./getProjectServiceAccount").getProjectServiceAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectServiceAccount","getProjectServiceAccountOutput"], () => require("./getProjectServiceAccount"));
 
 export { GetTransferProjectServieAccountArgs, GetTransferProjectServieAccountResult, GetTransferProjectServieAccountOutputArgs } from "./getTransferProjectServieAccount";
 export const getTransferProjectServieAccount: typeof import("./getTransferProjectServieAccount").getTransferProjectServieAccount = null as any;
 export const getTransferProjectServieAccountOutput: typeof import("./getTransferProjectServieAccount").getTransferProjectServieAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getTransferProjectServieAccount","getTransferProjectServieAccountOutput"], () => require("./getTransferProjectServieAccount"));
 
 export { HmacKeyArgs, HmacKeyState } from "./hmacKey";
 export type HmacKey = import("./hmacKey").HmacKey;
 export const HmacKey: typeof import("./hmacKey").HmacKey = null as any;
+utilities.lazyLoad(exports, ["HmacKey"], () => require("./hmacKey"));
 
 export { NotificationArgs, NotificationState } from "./notification";
 export type Notification = import("./notification").Notification;
 export const Notification: typeof import("./notification").Notification = null as any;
+utilities.lazyLoad(exports, ["Notification"], () => require("./notification"));
 
 export { ObjectACLArgs, ObjectACLState } from "./objectACL";
 export type ObjectACL = import("./objectACL").ObjectACL;
 export const ObjectACL: typeof import("./objectACL").ObjectACL = null as any;
+utilities.lazyLoad(exports, ["ObjectACL"], () => require("./objectACL"));
 
 export { ObjectAccessControlArgs, ObjectAccessControlState } from "./objectAccessControl";
 export type ObjectAccessControl = import("./objectAccessControl").ObjectAccessControl;
 export const ObjectAccessControl: typeof import("./objectAccessControl").ObjectAccessControl = null as any;
+utilities.lazyLoad(exports, ["ObjectAccessControl"], () => require("./objectAccessControl"));
 
 export { TransferJobArgs, TransferJobState } from "./transferJob";
 export type TransferJob = import("./transferJob").TransferJob;
 export const TransferJob: typeof import("./transferJob").TransferJob = null as any;
+utilities.lazyLoad(exports, ["TransferJob"], () => require("./transferJob"));
 
 export * from "./zMixins";
-utilities.lazyLoad(exports, ["Bucket"], () => require("./bucket"));
-utilities.lazyLoad(exports, ["BucketACL"], () => require("./bucketACL"));
-utilities.lazyLoad(exports, ["BucketAccessControl"], () => require("./bucketAccessControl"));
-utilities.lazyLoad(exports, ["BucketIAMBinding"], () => require("./bucketIAMBinding"));
-utilities.lazyLoad(exports, ["BucketIAMMember"], () => require("./bucketIAMMember"));
-utilities.lazyLoad(exports, ["BucketIAMPolicy"], () => require("./bucketIAMPolicy"));
-utilities.lazyLoad(exports, ["BucketObject"], () => require("./bucketObject"));
-utilities.lazyLoad(exports, ["DefaultObjectACL"], () => require("./defaultObjectACL"));
-utilities.lazyLoad(exports, ["DefaultObjectAccessControl"], () => require("./defaultObjectAccessControl"));
-utilities.lazyLoad(exports, ["getBucket","getBucketOutput"], () => require("./getBucket"));
-utilities.lazyLoad(exports, ["getBucketObject","getBucketObjectOutput"], () => require("./getBucketObject"));
-utilities.lazyLoad(exports, ["getBucketObjectContent","getBucketObjectContentOutput"], () => require("./getBucketObjectContent"));
-utilities.lazyLoad(exports, ["getObjectSignedUrl","getObjectSignedUrlOutput"], () => require("./getObjectSignedUrl"));
-utilities.lazyLoad(exports, ["getProjectServiceAccount","getProjectServiceAccountOutput"], () => require("./getProjectServiceAccount"));
-utilities.lazyLoad(exports, ["getTransferProjectServieAccount","getTransferProjectServieAccountOutput"], () => require("./getTransferProjectServieAccount"));
-utilities.lazyLoad(exports, ["HmacKey"], () => require("./hmacKey"));
-utilities.lazyLoad(exports, ["Notification"], () => require("./notification"));
-utilities.lazyLoad(exports, ["ObjectACL"], () => require("./objectACL"));
-utilities.lazyLoad(exports, ["ObjectAccessControl"], () => require("./objectAccessControl"));
-utilities.lazyLoad(exports, ["TransferJob"], () => require("./transferJob"));
 
 const _module = {
     version: utilities.getVersion(),

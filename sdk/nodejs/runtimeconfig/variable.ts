@@ -136,11 +136,13 @@ export class Variable extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["text"] = args ? args.text : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["text"] = args?.text ? pulumi.secret(args.text) : undefined;
+            resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["text", "value"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Variable.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -314,6 +314,10 @@ namespace Pulumi.Gcp.Sql
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "rootPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -428,11 +432,21 @@ namespace Pulumi.Gcp.Sql
         [Input("restoreBackupContext")]
         public Input<Inputs.DatabaseInstanceRestoreBackupContextArgs>? RestoreBackupContext { get; set; }
 
+        [Input("rootPassword")]
+        private Input<string>? _rootPassword;
+
         /// <summary>
         /// Initial root password. Required for MS SQL Server.
         /// </summary>
-        [Input("rootPassword")]
-        public Input<string>? RootPassword { get; set; }
+        public Input<string>? RootPassword
+        {
+            get => _rootPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rootPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The settings to use for the database. The
@@ -585,11 +599,21 @@ namespace Pulumi.Gcp.Sql
         [Input("restoreBackupContext")]
         public Input<Inputs.DatabaseInstanceRestoreBackupContextGetArgs>? RestoreBackupContext { get; set; }
 
+        [Input("rootPassword")]
+        private Input<string>? _rootPassword;
+
         /// <summary>
         /// Initial root password. Required for MS SQL Server.
         /// </summary>
-        [Input("rootPassword")]
-        public Input<string>? RootPassword { get; set; }
+        public Input<string>? RootPassword
+        {
+            get => _rootPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rootPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The URI of the created resource.

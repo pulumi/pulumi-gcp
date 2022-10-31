@@ -25,13 +25,23 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("kmsKeyServiceAccount")]
         public Input<string>? KmsKeyServiceAccount { get; set; }
 
+        [Input("rawKey")]
+        private Input<string>? _rawKey;
+
         /// <summary>
         /// Specifies a 256-bit customer-supplied encryption key, encoded in
         /// RFC 4648 base64 to either encrypt or decrypt this resource.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("rawKey")]
-        public Input<string>? RawKey { get; set; }
+        public Input<string>? RawKey
+        {
+            get => _rawKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rawKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// -

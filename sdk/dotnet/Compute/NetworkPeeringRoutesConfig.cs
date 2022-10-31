@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.Compute
     ///             EnablePrivateNodes = true,
     ///             MasterIpv4CidrBlock = "10.42.0.0/28",
     ///         },
-    ///         MasterAuthorizedNetworksConfig = ,
+    ///         MasterAuthorizedNetworksConfig = null,
     ///         IpAllocationPolicy = new Gcp.Container.Inputs.ClusterIpAllocationPolicyArgs
     ///         {
     ///             ClusterSecondaryRangeName = containerSubnetwork.SecondaryIpRanges.Apply(secondaryIpRanges =&gt; secondaryIpRanges[0].RangeName),

@@ -452,6 +452,8 @@ class Key(pulumi.CustomResource):
             __props__.__dict__["public_key"] = None
             __props__.__dict__["valid_after"] = None
             __props__.__dict__["valid_before"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["privateKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Key, __self__).__init__(
             'gcp:serviceAccount/key:Key',
             resource_name,

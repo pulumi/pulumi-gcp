@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.GetActiveFolder(ctx, &organizations.GetActiveFolderArgs{
+//			_, err = organizations.GetActiveFolder(ctx, &organizations.GetActiveFolderArgs{
 //				DisplayName: "Department 1",
 //				Parent:      "organizations/1234567",
 //			}, nil)
