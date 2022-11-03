@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sql.LookupDatabaseInstance(ctx, &sql.LookupDatabaseInstanceArgs{
+//			_, err = sql.LookupDatabaseInstance(ctx, &sql.LookupDatabaseInstanceArgs{
 //				Name: "test-sql-instance",
 //			}, nil)
 //			if err != nil {

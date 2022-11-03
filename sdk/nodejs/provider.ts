@@ -31,6 +31,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly accessContextManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly accessToken!: pulumi.Output<string | undefined>;
     public readonly activeDirectoryCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly alloydbCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly apiGatewayCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly apigeeCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly apikeysCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -73,6 +74,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly dataFusionCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataLossPreventionCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataflowCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly dataformCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataplexCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataprocCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataprocMetastoreCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -98,6 +100,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly iamBetaCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly iamCredentialsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly iamCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly iamWorkforcePoolCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly iapCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly identityPlatformCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly impersonateServiceAccount!: pulumi.Output<string | undefined>;
@@ -160,6 +163,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["accessContextManagerCustomEndpoint"] = args ? args.accessContextManagerCustomEndpoint : undefined;
             resourceInputs["accessToken"] = args ? args.accessToken : undefined;
             resourceInputs["activeDirectoryCustomEndpoint"] = args ? args.activeDirectoryCustomEndpoint : undefined;
+            resourceInputs["alloydbCustomEndpoint"] = args ? args.alloydbCustomEndpoint : undefined;
             resourceInputs["apiGatewayCustomEndpoint"] = args ? args.apiGatewayCustomEndpoint : undefined;
             resourceInputs["apigeeCustomEndpoint"] = args ? args.apigeeCustomEndpoint : undefined;
             resourceInputs["apikeysCustomEndpoint"] = args ? args.apikeysCustomEndpoint : undefined;
@@ -203,6 +207,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["dataFusionCustomEndpoint"] = args ? args.dataFusionCustomEndpoint : undefined;
             resourceInputs["dataLossPreventionCustomEndpoint"] = args ? args.dataLossPreventionCustomEndpoint : undefined;
             resourceInputs["dataflowCustomEndpoint"] = args ? args.dataflowCustomEndpoint : undefined;
+            resourceInputs["dataformCustomEndpoint"] = args ? args.dataformCustomEndpoint : undefined;
             resourceInputs["dataplexCustomEndpoint"] = args ? args.dataplexCustomEndpoint : undefined;
             resourceInputs["dataprocCustomEndpoint"] = args ? args.dataprocCustomEndpoint : undefined;
             resourceInputs["dataprocMetastoreCustomEndpoint"] = args ? args.dataprocMetastoreCustomEndpoint : undefined;
@@ -229,6 +234,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["iamBetaCustomEndpoint"] = args ? args.iamBetaCustomEndpoint : undefined;
             resourceInputs["iamCredentialsCustomEndpoint"] = args ? args.iamCredentialsCustomEndpoint : undefined;
             resourceInputs["iamCustomEndpoint"] = args ? args.iamCustomEndpoint : undefined;
+            resourceInputs["iamWorkforcePoolCustomEndpoint"] = args ? args.iamWorkforcePoolCustomEndpoint : undefined;
             resourceInputs["iapCustomEndpoint"] = args ? args.iapCustomEndpoint : undefined;
             resourceInputs["identityPlatformCustomEndpoint"] = args ? args.identityPlatformCustomEndpoint : undefined;
             resourceInputs["impersonateServiceAccount"] = args ? args.impersonateServiceAccount : undefined;
@@ -292,6 +298,7 @@ export interface ProviderArgs {
     accessContextManagerCustomEndpoint?: pulumi.Input<string>;
     accessToken?: pulumi.Input<string>;
     activeDirectoryCustomEndpoint?: pulumi.Input<string>;
+    alloydbCustomEndpoint?: pulumi.Input<string>;
     apiGatewayCustomEndpoint?: pulumi.Input<string>;
     apigeeCustomEndpoint?: pulumi.Input<string>;
     apikeysCustomEndpoint?: pulumi.Input<string>;
@@ -335,6 +342,7 @@ export interface ProviderArgs {
     dataFusionCustomEndpoint?: pulumi.Input<string>;
     dataLossPreventionCustomEndpoint?: pulumi.Input<string>;
     dataflowCustomEndpoint?: pulumi.Input<string>;
+    dataformCustomEndpoint?: pulumi.Input<string>;
     dataplexCustomEndpoint?: pulumi.Input<string>;
     dataprocCustomEndpoint?: pulumi.Input<string>;
     dataprocMetastoreCustomEndpoint?: pulumi.Input<string>;
@@ -361,6 +369,7 @@ export interface ProviderArgs {
     iamBetaCustomEndpoint?: pulumi.Input<string>;
     iamCredentialsCustomEndpoint?: pulumi.Input<string>;
     iamCustomEndpoint?: pulumi.Input<string>;
+    iamWorkforcePoolCustomEndpoint?: pulumi.Input<string>;
     iapCustomEndpoint?: pulumi.Input<string>;
     identityPlatformCustomEndpoint?: pulumi.Input<string>;
     impersonateServiceAccount?: pulumi.Input<string>;

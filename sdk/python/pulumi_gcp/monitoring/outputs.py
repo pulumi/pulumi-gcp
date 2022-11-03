@@ -27,6 +27,8 @@ __all__ = [
     'AlertPolicyCreationRecord',
     'AlertPolicyDocumentation',
     'CustomServiceTelemetry',
+    'GenericServiceBasicService',
+    'GenericServiceTelemetry',
     'MetricDescriptorLabel',
     'MetricDescriptorMetadata',
     'NotificationChannelSensitiveLabels',
@@ -1779,6 +1781,90 @@ class CustomServiceTelemetry(dict):
         Formatted as described in
         https://cloud.google.com/apis/design/resource_names.
         """
+        return pulumi.get(self, "resource_name")
+
+
+@pulumi.output_type
+class GenericServiceBasicService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceLabels":
+            suggest = "service_labels"
+        elif key == "serviceType":
+            suggest = "service_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GenericServiceBasicService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GenericServiceBasicService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GenericServiceBasicService.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_labels: Optional[Mapping[str, str]] = None,
+                 service_type: Optional[str] = None):
+        """
+        :param Mapping[str, str] service_labels: Labels that specify the resource that emits the monitoring data
+               which is used for SLO reporting of this `Service`.
+        :param str service_type: The type of service that this basic service defines, e.g.
+               APP_ENGINE service type
+        """
+        if service_labels is not None:
+            pulumi.set(__self__, "service_labels", service_labels)
+        if service_type is not None:
+            pulumi.set(__self__, "service_type", service_type)
+
+    @property
+    @pulumi.getter(name="serviceLabels")
+    def service_labels(self) -> Optional[Mapping[str, str]]:
+        """
+        Labels that specify the resource that emits the monitoring data
+        which is used for SLO reporting of this `Service`.
+        """
+        return pulumi.get(self, "service_labels")
+
+    @property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> Optional[str]:
+        """
+        The type of service that this basic service defines, e.g.
+        APP_ENGINE service type
+        """
+        return pulumi.get(self, "service_type")
+
+
+@pulumi.output_type
+class GenericServiceTelemetry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceName":
+            suggest = "resource_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GenericServiceTelemetry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GenericServiceTelemetry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GenericServiceTelemetry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_name: Optional[str] = None):
+        if resource_name is not None:
+            pulumi.set(__self__, "resource_name", resource_name)
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> Optional[str]:
         return pulumi.get(self, "resource_name")
 
 

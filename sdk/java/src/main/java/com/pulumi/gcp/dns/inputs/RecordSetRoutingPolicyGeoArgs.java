@@ -5,14 +5,34 @@ package com.pulumi.gcp.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RecordSetRoutingPolicyGeoArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RecordSetRoutingPolicyGeoArgs Empty = new RecordSetRoutingPolicyGeoArgs();
+
+    /**
+     * For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+     * Structure is document below.
+     * 
+     */
+    @Import(name="healthCheckedTargets")
+    private @Nullable Output<RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs> healthCheckedTargets;
+
+    /**
+     * @return For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+     * Structure is document below.
+     * 
+     */
+    public Optional<Output<RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs>> healthCheckedTargets() {
+        return Optional.ofNullable(this.healthCheckedTargets);
+    }
 
     /**
      * The location name defined in Google Cloud.
@@ -33,20 +53,21 @@ public final class RecordSetRoutingPolicyGeoArgs extends com.pulumi.resources.Re
      * Same as `rrdatas` above.
      * 
      */
-    @Import(name="rrdatas", required=true)
-    private Output<List<String>> rrdatas;
+    @Import(name="rrdatas")
+    private @Nullable Output<List<String>> rrdatas;
 
     /**
      * @return Same as `rrdatas` above.
      * 
      */
-    public Output<List<String>> rrdatas() {
-        return this.rrdatas;
+    public Optional<Output<List<String>>> rrdatas() {
+        return Optional.ofNullable(this.rrdatas);
     }
 
     private RecordSetRoutingPolicyGeoArgs() {}
 
     private RecordSetRoutingPolicyGeoArgs(RecordSetRoutingPolicyGeoArgs $) {
+        this.healthCheckedTargets = $.healthCheckedTargets;
         this.location = $.location;
         this.rrdatas = $.rrdatas;
     }
@@ -67,6 +88,29 @@ public final class RecordSetRoutingPolicyGeoArgs extends com.pulumi.resources.Re
 
         public Builder(RecordSetRoutingPolicyGeoArgs defaults) {
             $ = new RecordSetRoutingPolicyGeoArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param healthCheckedTargets For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+         * Structure is document below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckedTargets(@Nullable Output<RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs> healthCheckedTargets) {
+            $.healthCheckedTargets = healthCheckedTargets;
+            return this;
+        }
+
+        /**
+         * @param healthCheckedTargets For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+         * Structure is document below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckedTargets(RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs healthCheckedTargets) {
+            return healthCheckedTargets(Output.of(healthCheckedTargets));
         }
 
         /**
@@ -96,7 +140,7 @@ public final class RecordSetRoutingPolicyGeoArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder rrdatas(Output<List<String>> rrdatas) {
+        public Builder rrdatas(@Nullable Output<List<String>> rrdatas) {
             $.rrdatas = rrdatas;
             return this;
         }
@@ -123,7 +167,6 @@ public final class RecordSetRoutingPolicyGeoArgs extends com.pulumi.resources.Re
 
         public RecordSetRoutingPolicyGeoArgs build() {
             $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.rrdatas = Objects.requireNonNull($.rrdatas, "expected parameter 'rrdatas' to be non-null");
             return $;
         }
     }

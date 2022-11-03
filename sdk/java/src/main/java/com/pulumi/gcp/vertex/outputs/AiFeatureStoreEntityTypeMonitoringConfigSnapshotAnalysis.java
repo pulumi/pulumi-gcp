@@ -18,10 +18,11 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
-     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * @deprecated
+     * This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
      * 
      */
+    @Deprecated /* This field is unavailable in the GA provider and will be removed from the beta provider in a future release. */
     private @Nullable String monitoringInterval;
 
     private AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis() {}
@@ -33,10 +34,11 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
-     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * @deprecated
+     * This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
      * 
      */
+    @Deprecated /* This field is unavailable in the GA provider and will be removed from the beta provider in a future release. */
     public Optional<String> monitoringInterval() {
         return Optional.ofNullable(this.monitoringInterval);
     }

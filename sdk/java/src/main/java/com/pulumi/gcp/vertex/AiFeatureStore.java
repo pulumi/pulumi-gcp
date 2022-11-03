@@ -19,6 +19,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A collection of DataItems and Annotations on them.
+ * 
+ * To get more information about Featurestore, see:
+ * 
+ * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+ * 
  * ## Example Usage
  * ### Vertex Ai Featurestore
  * ```java
@@ -29,9 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.vertex.AiFeatureStore;
  * import com.pulumi.gcp.vertex.AiFeatureStoreArgs;
- * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreOnlineServingConfigArgs;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEncryptionSpecArgs;
- * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreOnlineServingConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,18 +53,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var featurestore = new AiFeatureStore(&#34;featurestore&#34;, AiFeatureStoreArgs.builder()        
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .region(&#34;us-central1&#34;)
- *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
- *                 .fixedNodeCount(2)
- *                 .build())
  *             .encryptionSpec(AiFeatureStoreEncryptionSpecArgs.builder()
  *                 .kmsKeyName(&#34;kms-name&#34;)
  *                 .build())
  *             .forceDestroy(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
+ *                 .fixedNodeCount(2)
+ *                 .build())
+ *             .region(&#34;us-central1&#34;)
+ *             .build());
  * 
  *     }
  * }

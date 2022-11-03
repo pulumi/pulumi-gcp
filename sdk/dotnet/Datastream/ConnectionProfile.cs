@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
-    /// ### Datastream Connection Profile Bigquery
+    /// ### Datastream Connection Profile Bigquery Private Connection
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -43,12 +43,34 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Gcp.Datastream.ConnectionProfile("default", new()
+    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
+    /// 
+    ///     var privateConnection = new Gcp.Datastream.PrivateConnection("privateConnection", new()
     ///     {
-    ///         BigqueryProfile = ,
-    ///         ConnectionProfileId = "my-profile",
     ///         DisplayName = "Connection profile",
     ///         Location = "us-central1",
+    ///         PrivateConnectionId = "my-connection",
+    ///         Labels = 
+    ///         {
+    ///             { "key", "value" },
+    ///         },
+    ///         VpcPeeringConfig = new Gcp.Datastream.Inputs.PrivateConnectionVpcPeeringConfigArgs
+    ///         {
+    ///             Vpc = defaultNetwork.Id,
+    ///             Subnet = "10.0.0.0/29",
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultConnectionProfile = new Gcp.Datastream.ConnectionProfile("defaultConnectionProfile", new()
+    ///     {
+    ///         DisplayName = "Connection profile",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "my-profile",
+    ///         BigqueryProfile = null,
+    ///         PrivateConnectivity = new Gcp.Datastream.Inputs.ConnectionProfilePrivateConnectivityArgs
+    ///         {
+    ///             PrivateConnection = privateConnection.Id,
+    ///         },
     ///     });
     /// 
     /// });
@@ -255,6 +277,13 @@ namespace Pulumi.Gcp.Datastream
         public Output<Outputs.ConnectionProfilePostgresqlProfile?> PostgresqlProfile { get; private set; } = null!;
 
         /// <summary>
+        /// Private connectivity.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("privateConnectivity")]
+        public Output<Outputs.ConnectionProfilePrivateConnectivity?> PrivateConnectivity { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -379,6 +408,13 @@ namespace Pulumi.Gcp.Datastream
         public Input<Inputs.ConnectionProfilePostgresqlProfileArgs>? PostgresqlProfile { get; set; }
 
         /// <summary>
+        /// Private connectivity.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("privateConnectivity")]
+        public Input<Inputs.ConnectionProfilePrivateConnectivityArgs>? PrivateConnectivity { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -469,6 +505,13 @@ namespace Pulumi.Gcp.Datastream
         /// </summary>
         [Input("postgresqlProfile")]
         public Input<Inputs.ConnectionProfilePostgresqlProfileGetArgs>? PostgresqlProfile { get; set; }
+
+        /// <summary>
+        /// Private connectivity.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("privateConnectivity")]
+        public Input<Inputs.ConnectionProfilePrivateConnectivityGetArgs>? PrivateConnectivity { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

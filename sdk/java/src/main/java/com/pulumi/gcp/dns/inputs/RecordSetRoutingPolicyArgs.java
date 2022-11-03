@@ -6,7 +6,9 @@ package com.pulumi.gcp.dns.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyGeoArgs;
+import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupArgs;
 import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyWrrArgs;
+import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +18,21 @@ import javax.annotation.Nullable;
 public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RecordSetRoutingPolicyArgs Empty = new RecordSetRoutingPolicyArgs();
+
+    /**
+     * Specifies whether to enable fencing for geo queries.
+     * 
+     */
+    @Import(name="enableGeoFencing")
+    private @Nullable Output<Boolean> enableGeoFencing;
+
+    /**
+     * @return Specifies whether to enable fencing for geo queries.
+     * 
+     */
+    public Optional<Output<Boolean>> enableGeoFencing() {
+        return Optional.ofNullable(this.enableGeoFencing);
+    }
 
     /**
      * The configuration for Geolocation based routing policy.
@@ -32,6 +49,23 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
      */
     public Optional<Output<List<RecordSetRoutingPolicyGeoArgs>>> geos() {
         return Optional.ofNullable(this.geos);
+    }
+
+    /**
+     * The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+     * Structure is document below.
+     * 
+     */
+    @Import(name="primaryBackup")
+    private @Nullable Output<RecordSetRoutingPolicyPrimaryBackupArgs> primaryBackup;
+
+    /**
+     * @return The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+     * Structure is document below.
+     * 
+     */
+    public Optional<Output<RecordSetRoutingPolicyPrimaryBackupArgs>> primaryBackup() {
+        return Optional.ofNullable(this.primaryBackup);
     }
 
     /**
@@ -54,7 +88,9 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
     private RecordSetRoutingPolicyArgs() {}
 
     private RecordSetRoutingPolicyArgs(RecordSetRoutingPolicyArgs $) {
+        this.enableGeoFencing = $.enableGeoFencing;
         this.geos = $.geos;
+        this.primaryBackup = $.primaryBackup;
         this.wrrs = $.wrrs;
     }
 
@@ -74,6 +110,27 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
 
         public Builder(RecordSetRoutingPolicyArgs defaults) {
             $ = new RecordSetRoutingPolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param enableGeoFencing Specifies whether to enable fencing for geo queries.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableGeoFencing(@Nullable Output<Boolean> enableGeoFencing) {
+            $.enableGeoFencing = enableGeoFencing;
+            return this;
+        }
+
+        /**
+         * @param enableGeoFencing Specifies whether to enable fencing for geo queries.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableGeoFencing(Boolean enableGeoFencing) {
+            return enableGeoFencing(Output.of(enableGeoFencing));
         }
 
         /**
@@ -108,6 +165,29 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
          */
         public Builder geos(RecordSetRoutingPolicyGeoArgs... geos) {
             return geos(List.of(geos));
+        }
+
+        /**
+         * @param primaryBackup The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+         * Structure is document below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryBackup(@Nullable Output<RecordSetRoutingPolicyPrimaryBackupArgs> primaryBackup) {
+            $.primaryBackup = primaryBackup;
+            return this;
+        }
+
+        /**
+         * @param primaryBackup The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+         * Structure is document below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryBackup(RecordSetRoutingPolicyPrimaryBackupArgs primaryBackup) {
+            return primaryBackup(Output.of(primaryBackup));
         }
 
         /**

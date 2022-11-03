@@ -273,6 +273,10 @@ export class Authority extends pulumi.CustomResource {
      * resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+     * state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+     */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
      * Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
@@ -339,6 +343,13 @@ export class Authority extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * If this flag is set, the Certificate Authority will be deleted as soon as
+     * possible without a 30-day grace period where undeletion would have been
+     * allowed. If you proceed, there will be no way to recover this CA.
+     * Use with care. Defaults to `false`.
+     */
+    public readonly skipGracePeriod!: pulumi.Output<boolean | undefined>;
+    /**
      * The State for this CertificateAuthority.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -392,6 +403,7 @@ export class Authority extends pulumi.CustomResource {
             resourceInputs["pemCaCertificates"] = state ? state.pemCaCertificates : undefined;
             resourceInputs["pool"] = state ? state.pool : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["skipGracePeriod"] = state ? state.skipGracePeriod : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["subordinateConfig"] = state ? state.subordinateConfig : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -426,6 +438,7 @@ export class Authority extends pulumi.CustomResource {
             resourceInputs["pemCaCertificate"] = args ? args.pemCaCertificate : undefined;
             resourceInputs["pool"] = args ? args.pool : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["skipGracePeriod"] = args ? args.skipGracePeriod : undefined;
             resourceInputs["subordinateConfig"] = args ? args.subordinateConfig : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["accessUrls"] = undefined /*out*/;
@@ -462,6 +475,10 @@ export interface AuthorityState {
      * resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+     * state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
@@ -528,6 +545,13 @@ export interface AuthorityState {
      */
     project?: pulumi.Input<string>;
     /**
+     * If this flag is set, the Certificate Authority will be deleted as soon as
+     * possible without a 30-day grace period where undeletion would have been
+     * allowed. If you proceed, there will be no way to recover this CA.
+     * Use with care. Defaults to `false`.
+     */
+    skipGracePeriod?: pulumi.Input<boolean>;
+    /**
      * The State for this CertificateAuthority.
      */
     state?: pulumi.Input<string>;
@@ -565,6 +589,10 @@ export interface AuthorityArgs {
      * Structure is documented below.
      */
     config: pulumi.Input<inputs.certificateauthority.AuthorityConfig>;
+    /**
+     * Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+     * state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+     */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
@@ -620,6 +648,13 @@ export interface AuthorityArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * If this flag is set, the Certificate Authority will be deleted as soon as
+     * possible without a 30-day grace period where undeletion would have been
+     * allowed. If you proceed, there will be no way to recover this CA.
+     * Use with care. Defaults to `false`.
+     */
+    skipGracePeriod?: pulumi.Input<boolean>;
     /**
      * If this is a subordinate CertificateAuthority, this field will be set
      * with the subordinate configuration, which describes its issuers.

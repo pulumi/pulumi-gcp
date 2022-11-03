@@ -16,6 +16,23 @@ public final class WebAppArgs extends com.pulumi.resources.ResourceArgs {
     public static final WebAppArgs Empty = new WebAppArgs();
 
     /**
+     * Set to &#39;ABANDON&#39; to allow the WebApp to be untracked from terraform state rather than deleted upon &#39;terraform destroy&#39;.
+     * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;ABANDON&#39;
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Set to &#39;ABANDON&#39; to allow the WebApp to be untracked from terraform state rather than deleted upon &#39;terraform destroy&#39;.
+     * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;ABANDON&#39;
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * The user-assigned display name of the App.
      * 
      */
@@ -50,6 +67,7 @@ public final class WebAppArgs extends com.pulumi.resources.ResourceArgs {
     private WebAppArgs() {}
 
     private WebAppArgs(WebAppArgs $) {
+        this.deletionPolicy = $.deletionPolicy;
         this.displayName = $.displayName;
         this.project = $.project;
     }
@@ -70,6 +88,29 @@ public final class WebAppArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(WebAppArgs defaults) {
             $ = new WebAppArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deletionPolicy Set to &#39;ABANDON&#39; to allow the WebApp to be untracked from terraform state rather than deleted upon &#39;terraform destroy&#39;.
+         * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;ABANDON&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Set to &#39;ABANDON&#39; to allow the WebApp to be untracked from terraform state rather than deleted upon &#39;terraform destroy&#39;.
+         * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;ABANDON&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

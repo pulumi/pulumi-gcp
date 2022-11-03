@@ -85,6 +85,7 @@ type LookupAuthorityResult struct {
 	PemCsr             string                          `pulumi:"pemCsr"`
 	Pool               *string                         `pulumi:"pool"`
 	Project            *string                         `pulumi:"project"`
+	SkipGracePeriod    bool                            `pulumi:"skipGracePeriod"`
 	State              string                          `pulumi:"state"`
 	SubordinateConfigs []GetAuthoritySubordinateConfig `pulumi:"subordinateConfigs"`
 	Type               string                          `pulumi:"type"`
@@ -212,6 +213,10 @@ func (o LookupAuthorityResultOutput) Pool() pulumi.StringPtrOutput {
 
 func (o LookupAuthorityResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAuthorityResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupAuthorityResultOutput) SkipGracePeriod() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAuthorityResult) bool { return v.SkipGracePeriod }).(pulumi.BoolOutput)
 }
 
 func (o LookupAuthorityResultOutput) State() pulumi.StringOutput {

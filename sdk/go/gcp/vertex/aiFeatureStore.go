@@ -10,6 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A collection of DataItems and Annotations on them.
+//
+// To get more information about Featurestore, see:
+//
+// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+//
 // ## Example Usage
 // ### Vertex Ai Featurestore
 //
@@ -26,18 +34,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vertex.NewAiFeatureStore(ctx, "featurestore", &vertex.AiFeatureStoreArgs{
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//				Region: pulumi.String("us-central1"),
-//				OnlineServingConfig: &vertex.AiFeatureStoreOnlineServingConfigArgs{
-//					FixedNodeCount: pulumi.Int(2),
-//				},
 //				EncryptionSpec: &vertex.AiFeatureStoreEncryptionSpecArgs{
 //					KmsKeyName: pulumi.String("kms-name"),
 //				},
 //				ForceDestroy: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				OnlineServingConfig: &vertex.AiFeatureStoreOnlineServingConfigArgs{
+//					FixedNodeCount: pulumi.Int(2),
+//				},
+//				Region: pulumi.String("us-central1"),
+//			})
 //			if err != nil {
 //				return err
 //			}

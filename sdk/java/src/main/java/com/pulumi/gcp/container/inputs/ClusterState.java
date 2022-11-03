@@ -183,14 +183,18 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cost management configuration for the cluster.
+     * Configuration for the
+     * [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+     * Structure is documented below.
      * 
      */
     @Import(name="costManagementConfig")
     private @Nullable Output<ClusterCostManagementConfigArgs> costManagementConfig;
 
     /**
-     * @return Cost management configuration for the cluster.
+     * @return Configuration for the
+     * [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<ClusterCostManagementConfigArgs>> costManagementConfig() {
@@ -1552,7 +1556,9 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param costManagementConfig Cost management configuration for the cluster.
+         * @param costManagementConfig Configuration for the
+         * [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1563,7 +1569,9 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param costManagementConfig Cost management configuration for the cluster.
+         * @param costManagementConfig Configuration for the
+         * [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+         * Structure is documented below.
          * 
          * @return builder
          * 

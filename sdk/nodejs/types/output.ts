@@ -1498,6 +1498,114 @@ export namespace accesscontextmanager {
 
 }
 
+export namespace alloydb {
+    export interface ClusterAutomatedBackupPolicy {
+        /**
+         * The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed.
+         * The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        backupWindow?: string;
+        /**
+         * Whether automated automated backups are enabled.
+         */
+        enabled?: boolean;
+        /**
+         * Labels to apply to backups created using this configuration.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+         */
+        location?: string;
+        /**
+         * Quantity-based Backup retention policy to retain recent backups.
+         * Structure is documented below.
+         */
+        quantityBasedRetention?: outputs.alloydb.ClusterAutomatedBackupPolicyQuantityBasedRetention;
+        /**
+         * Time-based Backup retention policy.
+         * Structure is documented below.
+         */
+        timeBasedRetention?: outputs.alloydb.ClusterAutomatedBackupPolicyTimeBasedRetention;
+        /**
+         * Weekly schedule for the Backup.
+         * Structure is documented below.
+         */
+        weeklySchedule: outputs.alloydb.ClusterAutomatedBackupPolicyWeeklySchedule;
+    }
+
+    export interface ClusterAutomatedBackupPolicyQuantityBasedRetention {
+        /**
+         * The number of backups to retain.
+         */
+        count?: number;
+    }
+
+    export interface ClusterAutomatedBackupPolicyTimeBasedRetention {
+        /**
+         * The retention period.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        retentionPeriod?: string;
+    }
+
+    export interface ClusterAutomatedBackupPolicyWeeklySchedule {
+        /**
+         * The days of the week to perform a backup. At least one day of the week must be provided.
+         * Each value may be one of `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         */
+        daysOfWeeks?: string[];
+        /**
+         * The times during the day to start a backup. At least one start time must be provided. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00).
+         * Structure is documented below.
+         */
+        startTimes: outputs.alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleStartTime[];
+    }
+
+    export interface ClusterAutomatedBackupPolicyWeeklyScheduleStartTime {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: number;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: number;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: number;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: number;
+    }
+
+    export interface ClusterBackupSource {
+        backupName?: string;
+    }
+
+    export interface ClusterInitialUser {
+        /**
+         * The initial password for the user.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        password: string;
+        /**
+         * The database username.
+         */
+        user?: string;
+    }
+
+    export interface ClusterMigrationSource {
+        hostPort?: string;
+        referenceId?: string;
+        sourceType?: string;
+    }
+
+}
+
 export namespace apigateway {
     export interface ApiConfigGatewayConfig {
         /**
@@ -6556,6 +6664,11 @@ export namespace cloudbuild {
          */
         name: string;
         /**
+         * A shell script to be executed in the step.
+         * When script is provided, the user cannot specify the entrypoint or args.
+         */
+        script?: string;
+        /**
          * A list of global environment variables, which are encrypted using a Cloud Key Management
          * Service crypto key. These values must be specified in the build's Secret. These variables
          * will be available to all build steps in this build.
@@ -7568,6 +7681,7 @@ export namespace cloudidentity {
          */
         name: string;
     }
+
 }
 
 export namespace cloudrun {
@@ -7726,6 +7840,7 @@ export namespace cloudrun {
         envFroms: outputs.cloudrun.GetServiceTemplateSpecContainerEnvFrom[];
         envs: outputs.cloudrun.GetServiceTemplateSpecContainerEnv[];
         image: string;
+        livenessProbes: outputs.cloudrun.GetServiceTemplateSpecContainerLivenessProbe[];
         ports: outputs.cloudrun.GetServiceTemplateSpecContainerPort[];
         resources: outputs.cloudrun.GetServiceTemplateSpecContainerResource[];
         startupProbes: outputs.cloudrun.GetServiceTemplateSpecContainerStartupProbe[];
@@ -7782,6 +7897,27 @@ export namespace cloudrun {
          * The name of the Cloud Run Service.
          */
         name: string;
+    }
+
+    export interface GetServiceTemplateSpecContainerLivenessProbe {
+        failureThreshold: number;
+        httpGets: outputs.cloudrun.GetServiceTemplateSpecContainerLivenessProbeHttpGet[];
+        initialDelaySeconds: number;
+        periodSeconds: number;
+        timeoutSeconds: number;
+    }
+
+    export interface GetServiceTemplateSpecContainerLivenessProbeHttpGet {
+        httpHeaders: outputs.cloudrun.GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader[];
+        path: string;
+    }
+
+    export interface GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
+        /**
+         * The name of the Cloud Run Service.
+         */
+        name: string;
+        value: string;
     }
 
     export interface GetServiceTemplateSpecContainerPort {
@@ -8057,7 +8193,7 @@ export namespace cloudrun {
         /**
          * Number of seconds after which the probe times out.
          * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-         * Must be smaller than periodSeconds.
+         * Must be smaller than period_seconds.
          */
         timeoutSeconds: number;
         /**
@@ -8116,6 +8252,12 @@ export namespace cloudrun {
          * More info: https://kubernetes.io/docs/concepts/containers/images
          */
         image: string;
+        /**
+         * Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+         * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * Structure is documented below.
+         */
+        livenessProbe?: outputs.cloudrun.ServiceTemplateSpecContainerLivenessProbe;
         /**
          * List of open ports in the container.
          * More Info:
@@ -8240,6 +8382,62 @@ export namespace cloudrun {
         name: string;
     }
 
+    export interface ServiceTemplateSpecContainerLivenessProbe {
+        /**
+         * Minimum consecutive failures for the probe to be considered failed after
+         * having succeeded. Defaults to 3. Minimum value is 1.
+         */
+        failureThreshold?: number;
+        /**
+         * HttpGet specifies the http request to perform.
+         * Structure is documented below.
+         */
+        httpGet?: outputs.cloudrun.ServiceTemplateSpecContainerLivenessProbeHttpGet;
+        /**
+         * Number of seconds after the container has started before the probe is
+         * initiated.
+         * Defaults to 0 seconds. Minimum value is 0. Maximum value is 3600.
+         */
+        initialDelaySeconds?: number;
+        /**
+         * How often (in seconds) to perform the probe.
+         * Default to 10 seconds. Minimum value is 1. Maximum value is 3600.
+         */
+        periodSeconds?: number;
+        /**
+         * Number of seconds after which the probe times out.
+         * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+         * Must be smaller than period_seconds.
+         */
+        timeoutSeconds?: number;
+    }
+
+    export interface ServiceTemplateSpecContainerLivenessProbeHttpGet {
+        /**
+         * Custom headers to set in the request. HTTP allows repeated headers.
+         * Structure is documented below.
+         */
+        httpHeaders?: outputs.cloudrun.ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader[];
+        /**
+         * The relative path of the file to map the key to.
+         * May not be an absolute path.
+         * May not contain the path element '..'.
+         * May not start with the string '..'.
+         */
+        path?: string;
+    }
+
+    export interface ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
+        /**
+         * Volume's name.
+         */
+        name: string;
+        /**
+         * The header field value.
+         */
+        value?: string;
+    }
+
     export interface ServiceTemplateSpecContainerPort {
         /**
          * Port number the container listens on. This must be a valid port number, 0 < x < 65536.
@@ -8286,12 +8484,12 @@ export namespace cloudrun {
         /**
          * Number of seconds after the container has started before the probe is
          * initiated.
-         * Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+         * Defaults to 0 seconds. Minimum value is 0. Maximum value is 3600.
          */
         initialDelaySeconds?: number;
         /**
          * How often (in seconds) to perform the probe.
-         * Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+         * Default to 10 seconds. Minimum value is 1. Maximum value is 3600.
          */
         periodSeconds?: number;
         /**
@@ -8302,7 +8500,7 @@ export namespace cloudrun {
         /**
          * Number of seconds after which the probe times out.
          * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-         * Must be smaller than periodSeconds.
+         * Must be smaller than period_seconds.
          */
         timeoutSeconds?: number;
     }
@@ -8447,6 +8645,7 @@ export namespace cloudrun {
          */
         url: string;
     }
+
 }
 
 export namespace cloudscheduler {
@@ -10259,6 +10458,42 @@ export namespace compute {
         service?: string;
     }
 
+    export interface GetAddressesAddress {
+        /**
+         * The IP address (for example `1.2.3.4`).
+         */
+        address: string;
+        /**
+         * The IP address type, can be `EXTERNAL` or `INTERNAL`.
+         */
+        addressType: string;
+        /**
+         * The IP address description.
+         */
+        description: string;
+        /**
+         * (Beta only) A map containing IP labels.
+         */
+        labels: {[key: string]: string};
+        /**
+         * The IP address name.
+         */
+        name: string;
+        /**
+         * Region that should be considered to search addresses.
+         * All regions are considered if missing.
+         */
+        region: string;
+        /**
+         * The URI of the created resource.
+         */
+        selfLink: string;
+        /**
+         * Indicates if the address is used. Possible values are: RESERVED or IN_USE.
+         */
+        status: string;
+    }
+
     export interface GetBackendBucketCdnPolicy {
         bypassCacheOnRequestHeaders: outputs.compute.GetBackendBucketCdnPolicyBypassCacheOnRequestHeader[];
         cacheKeyPolicies: outputs.compute.GetBackendBucketCdnPolicyCacheKeyPolicy[];
@@ -11075,6 +11310,30 @@ export namespace compute {
          * Integer port number
          */
         port: number;
+    }
+
+    export interface GetRegionNetworkEndpointGroupAppEngine {
+        service: string;
+        urlMask: string;
+        version: string;
+    }
+
+    export interface GetRegionNetworkEndpointGroupCloudFunction {
+        function: string;
+        urlMask: string;
+    }
+
+    export interface GetRegionNetworkEndpointGroupCloudRun {
+        service: string;
+        tag: string;
+        urlMask: string;
+    }
+
+    export interface GetRegionNetworkEndpointGroupServerlessDeployment {
+        platform: string;
+        resource: string;
+        urlMask: string;
+        version: string;
     }
 
     export interface GetResourcePolicyGroupPlacementPolicy {
@@ -16165,6 +16424,49 @@ export namespace compute {
         filter: string;
     }
 
+    export interface RouterNatRule {
+        /**
+         * The action to be enforced for traffic that matches this rule.
+         * Structure is documented below.
+         */
+        action: outputs.compute.RouterNatRuleAction;
+        /**
+         * An optional description of this rule.
+         */
+        description?: string;
+        /**
+         * CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
+         * If it evaluates to true, the corresponding action is enforced.
+         * The following examples are valid match expressions for public NAT:
+         * "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')"
+         * "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+         * The following example is a valid match expression for private NAT:
+         * "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+         */
+        match: string;
+        /**
+         * An integer uniquely identifying a rule in the list.
+         * The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+         */
+        ruleNumber: number;
+    }
+
+    export interface RouterNatRuleAction {
+        /**
+         * A list of URLs of the IP resources used for this NAT rule.
+         * These IP addresses must be valid static external IP addresses assigned to the project.
+         * This field is used for public NAT.
+         */
+        sourceNatActiveIps?: string[];
+        /**
+         * A list of URLs of the IP resources to be drained.
+         * These IPs must be valid static external IPs that have been assigned to the NAT.
+         * These IPs should be used for updating/patching a NAT rule only.
+         * This field is used for public NAT.
+         */
+        sourceNatDrainIps?: string[];
+    }
+
     export interface RouterNatSubnetwork {
         /**
          * Self-link of subnetwork to NAT
@@ -19441,6 +19743,15 @@ export namespace container {
          */
         bootDiskKmsKey?: string;
         /**
+         * Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
+         */
+        diskSize?: number;
+        /**
+         * Type of the disk attached to each node
+         * (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+         */
+        diskType?: string;
+        /**
          * The image type to use for this node. Note that changing the image type
          * will delete and recreate all nodes in the node pool.
          */
@@ -20639,6 +20950,8 @@ export namespace container {
 
     export interface GetClusterClusterAutoscalingAutoProvisioningDefault {
         bootDiskKmsKey: string;
+        diskSize: number;
+        diskType: string;
         imageType: string;
         minCpuPlatform: string;
         oauthScopes: string[];
@@ -21528,6 +21841,29 @@ export namespace datacatalog {
         description?: string;
         expression: string;
         title: string;
+    }
+
+}
+
+export namespace dataform {
+    export interface RepositoryGitRemoteSettings {
+        /**
+         * The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*.
+         */
+        authenticationTokenSecretVersion: string;
+        /**
+         * The Git remote's default branch name.
+         */
+        defaultBranch: string;
+        /**
+         * -
+         * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+         */
+        tokenStatus: string;
+        /**
+         * The Git remote's URL.
+         */
+        url: string;
     }
 
 }
@@ -25099,6 +25435,13 @@ export namespace datastream {
         username: string;
     }
 
+    export interface ConnectionProfilePrivateConnectivity {
+        /**
+         * A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
+         */
+        privateConnection: string;
+    }
+
     export interface PrivateConnectionVpcPeeringConfig {
         /**
          * A free subnet for peering. (CIDR of /29)
@@ -26050,10 +26393,19 @@ export namespace dns {
 
     export interface RecordSetRoutingPolicy {
         /**
+         * Specifies whether to enable fencing for geo queries.
+         */
+        enableGeoFencing?: boolean;
+        /**
          * The configuration for Geolocation based routing policy.
          * Structure is document below.
          */
         geos?: outputs.dns.RecordSetRoutingPolicyGeo[];
+        /**
+         * The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+         * Structure is document below.
+         */
+        primaryBackup?: outputs.dns.RecordSetRoutingPolicyPrimaryBackup;
         /**
          * The configuration for Weighted Round Robin based routing policy.
          * Structure is document below.
@@ -26063,24 +26415,227 @@ export namespace dns {
 
     export interface RecordSetRoutingPolicyGeo {
         /**
+         * For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+         * Structure is document below.
+         */
+        healthCheckedTargets?: outputs.dns.RecordSetRoutingPolicyGeoHealthCheckedTargets;
+        /**
          * The location name defined in Google Cloud.
          */
         location: string;
         /**
          * Same as `rrdatas` above.
          */
-        rrdatas: string[];
+        rrdatas?: string[];
+    }
+
+    export interface RecordSetRoutingPolicyGeoHealthCheckedTargets {
+        /**
+         * The list of internal load balancers to health check.
+         * Structure is document below.
+         */
+        internalLoadBalancers: outputs.dns.RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer[];
+    }
+
+    export interface RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer {
+        /**
+         * The frontend IP address of the load balancer.
+         */
+        ipAddress: string;
+        /**
+         * The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+         */
+        ipProtocol: string;
+        /**
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+         */
+        loadBalancerType: string;
+        /**
+         * The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+         */
+        networkUrl: string;
+        /**
+         * The configured port of the load balancer.
+         */
+        port: string;
+        /**
+         * The ID of the project in which the load balancer belongs.
+         */
+        project: string;
+        /**
+         * The region of the load balancer. Only needed for regional load balancers.
+         */
+        region?: string;
+    }
+
+    export interface RecordSetRoutingPolicyPrimaryBackup {
+        /**
+         * The backup geo targets, which provide a regional failover policy for the otherwise global primary targets.
+         * Structure is document above.
+         */
+        backupGeos: outputs.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeo[];
+        /**
+         * Specifies whether to enable fencing for backup geo queries.
+         */
+        enableGeoFencingForBackups?: boolean;
+        /**
+         * The list of global primary targets to be health checked.
+         * Structure is document below.
+         */
+        primary: outputs.dns.RecordSetRoutingPolicyPrimaryBackupPrimary;
+        /**
+         * Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
+         */
+        trickleRatio?: number;
+    }
+
+    export interface RecordSetRoutingPolicyPrimaryBackupBackupGeo {
+        /**
+         * For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+         * Structure is document below.
+         */
+        healthCheckedTargets?: outputs.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets;
+        /**
+         * The location name defined in Google Cloud.
+         */
+        location: string;
+        /**
+         * Same as `rrdatas` above.
+         */
+        rrdatas?: string[];
+    }
+
+    export interface RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets {
+        /**
+         * The list of internal load balancers to health check.
+         * Structure is document below.
+         */
+        internalLoadBalancers: outputs.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer[];
+    }
+
+    export interface RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer {
+        /**
+         * The frontend IP address of the load balancer.
+         */
+        ipAddress: string;
+        /**
+         * The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+         */
+        ipProtocol: string;
+        /**
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+         */
+        loadBalancerType: string;
+        /**
+         * The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+         */
+        networkUrl: string;
+        /**
+         * The configured port of the load balancer.
+         */
+        port: string;
+        /**
+         * The ID of the project in which the load balancer belongs.
+         */
+        project: string;
+        /**
+         * The region of the load balancer. Only needed for regional load balancers.
+         */
+        region?: string;
+    }
+
+    export interface RecordSetRoutingPolicyPrimaryBackupPrimary {
+        /**
+         * The list of internal load balancers to health check.
+         * Structure is document below.
+         */
+        internalLoadBalancers: outputs.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer[];
+    }
+
+    export interface RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer {
+        /**
+         * The frontend IP address of the load balancer.
+         */
+        ipAddress: string;
+        /**
+         * The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+         */
+        ipProtocol: string;
+        /**
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+         */
+        loadBalancerType: string;
+        /**
+         * The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+         */
+        networkUrl: string;
+        /**
+         * The configured port of the load balancer.
+         */
+        port: string;
+        /**
+         * The ID of the project in which the load balancer belongs.
+         */
+        project: string;
+        /**
+         * The region of the load balancer. Only needed for regional load balancers.
+         */
+        region?: string;
     }
 
     export interface RecordSetRoutingPolicyWrr {
         /**
+         * For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+         * Structure is document below.
+         */
+        healthCheckedTargets?: outputs.dns.RecordSetRoutingPolicyWrrHealthCheckedTargets;
+        /**
          * Same as `rrdatas` above.
          */
-        rrdatas: string[];
+        rrdatas?: string[];
         /**
          * The ratio of traffic routed to the target.
          */
         weight: number;
+    }
+
+    export interface RecordSetRoutingPolicyWrrHealthCheckedTargets {
+        /**
+         * The list of internal load balancers to health check.
+         * Structure is document below.
+         */
+        internalLoadBalancers: outputs.dns.RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer[];
+    }
+
+    export interface RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer {
+        /**
+         * The frontend IP address of the load balancer.
+         */
+        ipAddress: string;
+        /**
+         * The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+         */
+        ipProtocol: string;
+        /**
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+         */
+        loadBalancerType: string;
+        /**
+         * The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+         */
+        networkUrl: string;
+        /**
+         * The configured port of the load balancer.
+         */
+        port: string;
+        /**
+         * The ID of the project in which the load balancer belongs.
+         */
+        project: string;
+        /**
+         * The region of the load balancer. Only needed for regional load balancers.
+         */
+        region?: string;
     }
 
     export interface ResponsePolicyNetwork {
@@ -26120,6 +26675,7 @@ export namespace dns {
          */
         type: string;
     }
+
 }
 
 export namespace endpoints {
@@ -26549,6 +27105,7 @@ export namespace folder {
          */
         default: boolean;
     }
+
 }
 
 export namespace gameservices {
@@ -27221,6 +27778,7 @@ export namespace iam {
          */
         issuerUri: string;
     }
+
 }
 
 export namespace iap {
@@ -28803,6 +29361,23 @@ export namespace monitoring {
          * Formatted as described in
          * https://cloud.google.com/apis/design/resource_names.
          */
+        resourceName?: string;
+    }
+
+    export interface GenericServiceBasicService {
+        /**
+         * Labels that specify the resource that emits the monitoring data
+         * which is used for SLO reporting of this `Service`.
+         */
+        serviceLabels?: {[key: string]: string};
+        /**
+         * The type of service that this basic service defines, e.g.
+         * APP_ENGINE service type
+         */
+        serviceType?: string;
+    }
+
+    export interface GenericServiceTelemetry {
         resourceName?: string;
     }
 
@@ -30875,6 +31450,7 @@ export namespace organizations {
          */
         default: boolean;
     }
+
 }
 
 export namespace orgpolicy {
@@ -32946,6 +33522,7 @@ export namespace projects {
          */
         default: boolean;
     }
+
 }
 
 export namespace pubsub {
@@ -33189,6 +33766,7 @@ export namespace pubsub {
          */
         schema: string;
     }
+
 }
 
 export namespace recaptcha {
@@ -33436,7 +34014,7 @@ export namespace redis {
          * - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
          * Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
          */
-        rdbSnapshotPeriod: string;
+        rdbSnapshotPeriod?: string;
         /**
          * Optional. Date and time that the first snapshot was/will be attempted,
          * and to which future snapshots will be aligned. If not provided,
@@ -33461,6 +34039,7 @@ export namespace redis {
         serialNumber: string;
         sha1Fingerprint: string;
     }
+
 }
 
 export namespace runtimeconfig {
@@ -33577,6 +34156,7 @@ export namespace secretmanager {
          */
         name: string;
     }
+
 }
 
 export namespace securitycenter {
@@ -33603,6 +34183,24 @@ export namespace securitycenter {
          * for information on how to write a filter.
          */
         filter: string;
+    }
+
+    export interface SourceIamBindingCondition {
+        /**
+         * The description of the source (max of 1024 characters).
+         */
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface SourceIamMemberCondition {
+        /**
+         * The description of the source (max of 1024 characters).
+         */
+        description?: string;
+        expression: string;
+        title: string;
     }
 
 }
@@ -33902,6 +34500,7 @@ export namespace sql {
          * and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
          */
         tier: string;
+        timeZone?: string;
         /**
          * A set of key/value user label pairs to assign to the instance.
          */
@@ -34198,6 +34797,7 @@ export namespace sql {
         pricingPlan: string;
         sqlServerAuditConfigs: outputs.sql.GetDatabaseInstanceSettingSqlServerAuditConfig[];
         tier: string;
+        timeZone: string;
         userLabels: {[key: string]: string};
         version: number;
     }
@@ -34315,6 +34915,7 @@ export namespace sql {
         disabled: boolean;
         serverRoles: string[];
     }
+
 }
 
 export namespace storage {
@@ -34834,6 +35435,7 @@ export namespace storage {
          */
         overwriteWhen?: string;
     }
+
 }
 
 export namespace tags {
@@ -34887,6 +35489,64 @@ export namespace vertex {
         kmsKeyName?: string;
     }
 
+    export interface AiEndpointDeployedModel {
+        automaticResources: outputs.vertex.AiEndpointDeployedModelAutomaticResource[];
+        createTime: string;
+        dedicatedResources: outputs.vertex.AiEndpointDeployedModelDedicatedResource[];
+        /**
+         * Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+         */
+        displayName: string;
+        enableAccessLogging: boolean;
+        enableContainerLogging: boolean;
+        /**
+         * an identifier for the resource with format `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+         */
+        id: string;
+        model: string;
+        modelVersionId: string;
+        privateEndpoints: outputs.vertex.AiEndpointDeployedModelPrivateEndpoint[];
+        serviceAccount: string;
+        sharedResources: string;
+    }
+
+    export interface AiEndpointDeployedModelAutomaticResource {
+        maxReplicaCount: number;
+        minReplicaCount: number;
+    }
+
+    export interface AiEndpointDeployedModelDedicatedResource {
+        autoscalingMetricSpecs: outputs.vertex.AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec[];
+        machineSpecs: outputs.vertex.AiEndpointDeployedModelDedicatedResourceMachineSpec[];
+        maxReplicaCount: number;
+        minReplicaCount: number;
+    }
+
+    export interface AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec {
+        metricName: string;
+        target: number;
+    }
+
+    export interface AiEndpointDeployedModelDedicatedResourceMachineSpec {
+        acceleratorCount: number;
+        acceleratorType: string;
+        machineType: string;
+    }
+
+    export interface AiEndpointDeployedModelPrivateEndpoint {
+        explainHttpUri: string;
+        healthHttpUri: string;
+        predictHttpUri: string;
+        serviceAttachment: string;
+    }
+
+    export interface AiEndpointEncryptionSpec {
+        /**
+         * Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+         */
+        kmsKeyName: string;
+    }
+
     export interface AiFeatureStoreEncryptionSpec {
         /**
          * The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
@@ -34908,10 +35568,21 @@ export namespace vertex {
          */
         disabled?: boolean;
         /**
-         * Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
-         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         * @deprecated This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
          */
         monitoringInterval?: string;
+    }
+
+    export interface AiFeatureStoreIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface AiFeatureStoreIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface AiFeatureStoreOnlineServingConfig {

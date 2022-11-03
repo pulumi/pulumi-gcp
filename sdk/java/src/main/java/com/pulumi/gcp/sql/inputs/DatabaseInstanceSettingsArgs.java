@@ -242,6 +242,13 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         return this.tier;
     }
 
+    @Import(name="timeZone")
+    private @Nullable Output<String> timeZone;
+
+    public Optional<Output<String>> timeZone() {
+        return Optional.ofNullable(this.timeZone);
+    }
+
     /**
      * A set of key/value user label pairs to assign to the instance.
      * 
@@ -285,6 +292,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.pricingPlan = $.pricingPlan;
         this.sqlServerAuditConfig = $.sqlServerAuditConfig;
         this.tier = $.tier;
+        this.timeZone = $.timeZone;
         this.userLabels = $.userLabels;
         this.version = $.version;
     }
@@ -595,6 +603,15 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          */
         public Builder tier(String tier) {
             return tier(Output.of(tier));
+        }
+
+        public Builder timeZone(@Nullable Output<String> timeZone) {
+            $.timeZone = timeZone;
+            return this;
+        }
+
+        public Builder timeZone(String timeZone) {
+            return timeZone(Output.of(timeZone));
         }
 
         /**

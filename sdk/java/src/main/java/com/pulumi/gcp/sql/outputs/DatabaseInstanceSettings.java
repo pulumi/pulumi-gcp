@@ -86,6 +86,7 @@ public final class DatabaseInstanceSettings {
      * 
      */
     private String tier;
+    private @Nullable String timeZone;
     /**
      * @return A set of key/value user label pairs to assign to the instance.
      * 
@@ -192,6 +193,9 @@ public final class DatabaseInstanceSettings {
     public String tier() {
         return this.tier;
     }
+    public Optional<String> timeZone() {
+        return Optional.ofNullable(this.timeZone);
+    }
     /**
      * @return A set of key/value user label pairs to assign to the instance.
      * 
@@ -230,6 +234,7 @@ public final class DatabaseInstanceSettings {
         private @Nullable String pricingPlan;
         private @Nullable DatabaseInstanceSettingsSqlServerAuditConfig sqlServerAuditConfig;
         private String tier;
+        private @Nullable String timeZone;
         private @Nullable Map<String,String> userLabels;
         private @Nullable Integer version;
         public Builder() {}
@@ -253,6 +258,7 @@ public final class DatabaseInstanceSettings {
     	      this.pricingPlan = defaults.pricingPlan;
     	      this.sqlServerAuditConfig = defaults.sqlServerAuditConfig;
     	      this.tier = defaults.tier;
+    	      this.timeZone = defaults.timeZone;
     	      this.userLabels = defaults.userLabels;
     	      this.version = defaults.version;
         }
@@ -351,6 +357,11 @@ public final class DatabaseInstanceSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder timeZone(@Nullable String timeZone) {
+            this.timeZone = timeZone;
+            return this;
+        }
+        @CustomType.Setter
         public Builder userLabels(@Nullable Map<String,String> userLabels) {
             this.userLabels = userLabels;
             return this;
@@ -380,6 +391,7 @@ public final class DatabaseInstanceSettings {
             o.pricingPlan = pricingPlan;
             o.sqlServerAuditConfig = sqlServerAuditConfig;
             o.tier = tier;
+            o.timeZone = timeZone;
             o.userLabels = userLabels;
             o.version = version;
             return o;

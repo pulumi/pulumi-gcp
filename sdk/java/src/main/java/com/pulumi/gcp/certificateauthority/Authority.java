@@ -400,9 +400,19 @@ public class Authority extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+     * state, a &#39;terraform destroy&#39; or &#39;terraform apply&#39; that would delete the instance will fail.
+     * 
+     */
     @Export(name="deletionProtection", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deletionProtection;
 
+    /**
+     * @return Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+     * state, a &#39;terraform destroy&#39; or &#39;terraform apply&#39; that would delete the instance will fail.
+     * 
+     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }
@@ -605,6 +615,26 @@ public class Authority extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * If this flag is set, the Certificate Authority will be deleted as soon as
+     * possible without a 30-day grace period where undeletion would have been
+     * allowed. If you proceed, there will be no way to recover this CA.
+     * Use with care. Defaults to `false`.
+     * 
+     */
+    @Export(name="skipGracePeriod", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> skipGracePeriod;
+
+    /**
+     * @return If this flag is set, the Certificate Authority will be deleted as soon as
+     * possible without a 30-day grace period where undeletion would have been
+     * allowed. If you proceed, there will be no way to recover this CA.
+     * Use with care. Defaults to `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> skipGracePeriod() {
+        return Codegen.optional(this.skipGracePeriod);
     }
     /**
      * The State for this CertificateAuthority.

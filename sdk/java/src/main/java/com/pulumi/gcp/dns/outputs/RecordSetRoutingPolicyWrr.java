@@ -4,18 +4,27 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dns.outputs.RecordSetRoutingPolicyWrrHealthCheckedTargets;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RecordSetRoutingPolicyWrr {
     /**
+     * @return For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+     * Structure is document below.
+     * 
+     */
+    private @Nullable RecordSetRoutingPolicyWrrHealthCheckedTargets healthCheckedTargets;
+    /**
      * @return Same as `rrdatas` above.
      * 
      */
-    private List<String> rrdatas;
+    private @Nullable List<String> rrdatas;
     /**
      * @return The ratio of traffic routed to the target.
      * 
@@ -24,11 +33,19 @@ public final class RecordSetRoutingPolicyWrr {
 
     private RecordSetRoutingPolicyWrr() {}
     /**
+     * @return For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+     * Structure is document below.
+     * 
+     */
+    public Optional<RecordSetRoutingPolicyWrrHealthCheckedTargets> healthCheckedTargets() {
+        return Optional.ofNullable(this.healthCheckedTargets);
+    }
+    /**
      * @return Same as `rrdatas` above.
      * 
      */
     public List<String> rrdatas() {
-        return this.rrdatas;
+        return this.rrdatas == null ? List.of() : this.rrdatas;
     }
     /**
      * @return The ratio of traffic routed to the target.
@@ -47,18 +64,25 @@ public final class RecordSetRoutingPolicyWrr {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> rrdatas;
+        private @Nullable RecordSetRoutingPolicyWrrHealthCheckedTargets healthCheckedTargets;
+        private @Nullable List<String> rrdatas;
         private Double weight;
         public Builder() {}
         public Builder(RecordSetRoutingPolicyWrr defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.healthCheckedTargets = defaults.healthCheckedTargets;
     	      this.rrdatas = defaults.rrdatas;
     	      this.weight = defaults.weight;
         }
 
         @CustomType.Setter
-        public Builder rrdatas(List<String> rrdatas) {
-            this.rrdatas = Objects.requireNonNull(rrdatas);
+        public Builder healthCheckedTargets(@Nullable RecordSetRoutingPolicyWrrHealthCheckedTargets healthCheckedTargets) {
+            this.healthCheckedTargets = healthCheckedTargets;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rrdatas(@Nullable List<String> rrdatas) {
+            this.rrdatas = rrdatas;
             return this;
         }
         public Builder rrdatas(String... rrdatas) {
@@ -71,6 +95,7 @@ public final class RecordSetRoutingPolicyWrr {
         }
         public RecordSetRoutingPolicyWrr build() {
             final var o = new RecordSetRoutingPolicyWrr();
+            o.healthCheckedTargets = healthCheckedTargets;
             o.rrdatas = rrdatas;
             o.weight = weight;
             return o;

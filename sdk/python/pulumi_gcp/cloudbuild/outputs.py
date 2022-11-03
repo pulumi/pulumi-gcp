@@ -1134,6 +1134,7 @@ class TriggerBuildStep(dict):
                  entrypoint: Optional[str] = None,
                  envs: Optional[Sequence[str]] = None,
                  id: Optional[str] = None,
+                 script: Optional[str] = None,
                  secret_envs: Optional[Sequence[str]] = None,
                  timeout: Optional[str] = None,
                  timing: Optional[str] = None,
@@ -1166,6 +1167,8 @@ class TriggerBuildStep(dict):
                The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
         :param str id: Unique identifier for this build step, used in `wait_for` to
                reference this build step as a dependency.
+        :param str script: A shell script to be executed in the step.
+               When script is provided, the user cannot specify the entrypoint or args.
         :param Sequence[str] secret_envs: A list of global environment variables, which are encrypted using a Cloud Key Management
                Service crypto key. These values must be specified in the build's Secret. These variables
                will be available to all build steps in this build.
@@ -1200,6 +1203,8 @@ class TriggerBuildStep(dict):
             pulumi.set(__self__, "envs", envs)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if script is not None:
+            pulumi.set(__self__, "script", script)
         if secret_envs is not None:
             pulumi.set(__self__, "secret_envs", secret_envs)
         if timeout is not None:
@@ -1278,6 +1283,15 @@ class TriggerBuildStep(dict):
         reference this build step as a dependency.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def script(self) -> Optional[str]:
+        """
+        A shell script to be executed in the step.
+        When script is provided, the user cannot specify the entrypoint or args.
+        """
+        return pulumi.get(self, "script")
 
     @property
     @pulumi.getter(name="secretEnvs")

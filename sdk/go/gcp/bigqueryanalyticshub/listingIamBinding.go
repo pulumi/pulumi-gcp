@@ -11,6 +11,124 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Three different resources help you manage your IAM policy for Bigquery Analytics Hub Listing. Each of these resources serves a different use case:
+//
+// * `bigqueryanalyticshub.ListingIamPolicy`: Authoritative. Sets the IAM policy for the listing and replaces any existing policy already attached.
+// * `bigqueryanalyticshub.ListingIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the listing are preserved.
+// * `bigqueryanalyticshub.ListingIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the listing are preserved.
+//
+// > **Note:** `bigqueryanalyticshub.ListingIamPolicy` **cannot** be used in conjunction with `bigqueryanalyticshub.ListingIamBinding` and `bigqueryanalyticshub.ListingIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `bigqueryanalyticshub.ListingIamBinding` resources **can be** used in conjunction with `bigqueryanalyticshub.ListingIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## google\_bigquery\_analytics\_hub\_listing\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigqueryanalyticshub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					organizations.GetIAMPolicyBinding{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigqueryanalyticshub.NewListingIamPolicy(ctx, "policy", &bigqueryanalyticshub.ListingIamPolicyArgs{
+//				Project:        pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Project),
+//				Location:       pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Location),
+//				DataExchangeId: pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Data_exchange_id),
+//				ListingId:      pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Listing_id),
+//				PolicyData:     pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_bigquery\_analytics\_hub\_listing\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigqueryanalyticshub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigqueryanalyticshub.NewListingIamBinding(ctx, "binding", &bigqueryanalyticshub.ListingIamBindingArgs{
+//				Project:        pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Project),
+//				Location:       pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Location),
+//				DataExchangeId: pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Data_exchange_id),
+//				ListingId:      pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Listing_id),
+//				Role:           pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_bigquery\_analytics\_hub\_listing\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigqueryanalyticshub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigqueryanalyticshub.NewListingIamMember(ctx, "member", &bigqueryanalyticshub.ListingIamMemberArgs{
+//				Project:        pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Project),
+//				Location:       pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Location),
+//				DataExchangeId: pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Data_exchange_id),
+//				ListingId:      pulumi.Any(google_bigquery_analytics_hub_listing.Listing.Listing_id),
+//				Role:           pulumi.String("roles/viewer"),
+//				Member:         pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}} * {{project}}/{{location}}/{{data_exchange_id}}/{{listing_id}} * {{location}}/{{data_exchange_id}}/{{listing_id}} * {{listing_id}} Any variables not passed in the import command will be taken from the provider configuration. Bigquery Analytics Hub listing IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

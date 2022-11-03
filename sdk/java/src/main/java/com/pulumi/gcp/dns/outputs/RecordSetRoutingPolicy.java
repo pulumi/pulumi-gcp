@@ -5,19 +5,33 @@ package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dns.outputs.RecordSetRoutingPolicyGeo;
+import com.pulumi.gcp.dns.outputs.RecordSetRoutingPolicyPrimaryBackup;
 import com.pulumi.gcp.dns.outputs.RecordSetRoutingPolicyWrr;
+import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class RecordSetRoutingPolicy {
+    /**
+     * @return Specifies whether to enable fencing for geo queries.
+     * 
+     */
+    private @Nullable Boolean enableGeoFencing;
     /**
      * @return The configuration for Geolocation based routing policy.
      * Structure is document below.
      * 
      */
     private @Nullable List<RecordSetRoutingPolicyGeo> geos;
+    /**
+     * @return The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+     * Structure is document below.
+     * 
+     */
+    private @Nullable RecordSetRoutingPolicyPrimaryBackup primaryBackup;
     /**
      * @return The configuration for Weighted Round Robin based routing policy.
      * Structure is document below.
@@ -27,12 +41,27 @@ public final class RecordSetRoutingPolicy {
 
     private RecordSetRoutingPolicy() {}
     /**
+     * @return Specifies whether to enable fencing for geo queries.
+     * 
+     */
+    public Optional<Boolean> enableGeoFencing() {
+        return Optional.ofNullable(this.enableGeoFencing);
+    }
+    /**
      * @return The configuration for Geolocation based routing policy.
      * Structure is document below.
      * 
      */
     public List<RecordSetRoutingPolicyGeo> geos() {
         return this.geos == null ? List.of() : this.geos;
+    }
+    /**
+     * @return The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+     * Structure is document below.
+     * 
+     */
+    public Optional<RecordSetRoutingPolicyPrimaryBackup> primaryBackup() {
+        return Optional.ofNullable(this.primaryBackup);
     }
     /**
      * @return The configuration for Weighted Round Robin based routing policy.
@@ -52,15 +81,24 @@ public final class RecordSetRoutingPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean enableGeoFencing;
         private @Nullable List<RecordSetRoutingPolicyGeo> geos;
+        private @Nullable RecordSetRoutingPolicyPrimaryBackup primaryBackup;
         private @Nullable List<RecordSetRoutingPolicyWrr> wrrs;
         public Builder() {}
         public Builder(RecordSetRoutingPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enableGeoFencing = defaults.enableGeoFencing;
     	      this.geos = defaults.geos;
+    	      this.primaryBackup = defaults.primaryBackup;
     	      this.wrrs = defaults.wrrs;
         }
 
+        @CustomType.Setter
+        public Builder enableGeoFencing(@Nullable Boolean enableGeoFencing) {
+            this.enableGeoFencing = enableGeoFencing;
+            return this;
+        }
         @CustomType.Setter
         public Builder geos(@Nullable List<RecordSetRoutingPolicyGeo> geos) {
             this.geos = geos;
@@ -68,6 +106,11 @@ public final class RecordSetRoutingPolicy {
         }
         public Builder geos(RecordSetRoutingPolicyGeo... geos) {
             return geos(List.of(geos));
+        }
+        @CustomType.Setter
+        public Builder primaryBackup(@Nullable RecordSetRoutingPolicyPrimaryBackup primaryBackup) {
+            this.primaryBackup = primaryBackup;
+            return this;
         }
         @CustomType.Setter
         public Builder wrrs(@Nullable List<RecordSetRoutingPolicyWrr> wrrs) {
@@ -79,7 +122,9 @@ public final class RecordSetRoutingPolicy {
         }
         public RecordSetRoutingPolicy build() {
             final var o = new RecordSetRoutingPolicy();
+            o.enableGeoFencing = enableGeoFencing;
             o.geos = geos;
+            o.primaryBackup = primaryBackup;
             o.wrrs = wrrs;
             return o;
         }

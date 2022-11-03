@@ -227,8 +227,39 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        An entity type is a type of object in a system that needs to be modeled and have stored information about. For example, driver is an entity type, and driver0 is an instance of an entity type driver.
+
+        To get more information about FeaturestoreEntitytype, see:
+
+        * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+
         ## Example Usage
         ### Vertex Ai Featurestore Entitytype
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ),
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ))
+        entity = gcp.vertex.AiFeatureStoreEntityType("entity",
+            labels={
+                "foo": "bar",
+            },
+            featurestore=featurestore.id)
+        ```
+        ### Vertex Ai Featurestore Entitytype With Beta Fields
 
         ```python
         import pulumi
@@ -284,8 +315,39 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                  args: AiFeatureStoreEntityTypeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        An entity type is a type of object in a system that needs to be modeled and have stored information about. For example, driver is an entity type, and driver0 is an instance of an entity type driver.
+
+        To get more information about FeaturestoreEntitytype, see:
+
+        * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+
         ## Example Usage
         ### Vertex Ai Featurestore Entitytype
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ),
+            encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
+                kms_key_name="kms-name",
+            ))
+        entity = gcp.vertex.AiFeatureStoreEntityType("entity",
+            labels={
+                "foo": "bar",
+            },
+            featurestore=featurestore.id)
+        ```
+        ### Vertex Ai Featurestore Entitytype With Beta Fields
 
         ```python
         import pulumi

@@ -17,6 +17,126 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Three different resources help you manage your IAM policy for Bigquery Analytics Hub DataExchange. Each of these resources serves a different use case:
+ * 
+ * * `gcp.bigqueryanalyticshub.DataExchangeIamPolicy`: Authoritative. Sets the IAM policy for the dataexchange and replaces any existing policy already attached.
+ * * `gcp.bigqueryanalyticshub.DataExchangeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the dataexchange are preserved.
+ * * `gcp.bigqueryanalyticshub.DataExchangeIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the dataexchange are preserved.
+ * 
+ * &gt; **Note:** `gcp.bigqueryanalyticshub.DataExchangeIamPolicy` **cannot** be used in conjunction with `gcp.bigqueryanalyticshub.DataExchangeIamBinding` and `gcp.bigqueryanalyticshub.DataExchangeIamMember` or they will fight over what your policy should be.
+ * 
+ * &gt; **Note:** `gcp.bigqueryanalyticshub.DataExchangeIamBinding` resources **can be** used in conjunction with `gcp.bigqueryanalyticshub.DataExchangeIamMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_policy
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeIamPolicy;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role(&#34;roles/viewer&#34;)
+ *                 .members(&#34;user:jane@example.com&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new DataExchangeIamPolicy(&#34;policy&#34;, DataExchangeIamPolicyArgs.builder()        
+ *             .project(google_bigquery_analytics_hub_data_exchange.data_exchange().project())
+ *             .location(google_bigquery_analytics_hub_data_exchange.data_exchange().location())
+ *             .dataExchangeId(google_bigquery_analytics_hub_data_exchange.data_exchange().data_exchange_id())
+ *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_binding
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeIamBinding;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeIamBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var binding = new DataExchangeIamBinding(&#34;binding&#34;, DataExchangeIamBindingArgs.builder()        
+ *             .project(google_bigquery_analytics_hub_data_exchange.data_exchange().project())
+ *             .location(google_bigquery_analytics_hub_data_exchange.data_exchange().location())
+ *             .dataExchangeId(google_bigquery_analytics_hub_data_exchange.data_exchange().data_exchange_id())
+ *             .role(&#34;roles/viewer&#34;)
+ *             .members(&#34;user:jane@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## google\_bigquery\_analytics\_hub\_data\_exchange\_iam\_member
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeIamMember;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeIamMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var member = new DataExchangeIamMember(&#34;member&#34;, DataExchangeIamMemberArgs.builder()        
+ *             .project(google_bigquery_analytics_hub_data_exchange.data_exchange().project())
+ *             .location(google_bigquery_analytics_hub_data_exchange.data_exchange().location())
+ *             .dataExchangeId(google_bigquery_analytics_hub_data_exchange.data_exchange().data_exchange_id())
+ *             .role(&#34;roles/viewer&#34;)
+ *             .member(&#34;user:jane@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms* projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}} * {{project}}/{{location}}/{{data_exchange_id}} * {{location}}/{{data_exchange_id}} * {{data_exchange_id}} Any variables not passed in the import command will be taken from the provider configuration. Bigquery Analytics Hub dataexchange IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

@@ -18,10 +18,6 @@ namespace Pulumi.Gcp.Vertex.Inputs
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
-        /// <summary>
-        /// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
-        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        /// </summary>
         [Input("monitoringInterval")]
         public Input<string>? MonitoringInterval { get; set; }
 

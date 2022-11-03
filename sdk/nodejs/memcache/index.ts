@@ -8,8 +8,8 @@ import * as utilities from "../utilities";
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
-
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
 
 const _module = {
     version: utilities.getVersion(),

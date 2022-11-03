@@ -479,7 +479,6 @@ class Service(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        # Example of how to deploy a publicly-accessible Cloud Run application
         default = gcp.cloudrun.Service("default",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
@@ -498,27 +497,6 @@ class Service(pulumi.CustomResource):
             project=default.project,
             service=default.name,
             policy_data=noauth_iam_policy.policy_data)
-        ```
-        ### Cloud Run Service Add Tag
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrun.Service("default",
-            location="us-central1",
-            template=gcp.cloudrun.ServiceTemplateArgs(),
-            traffics=[
-                gcp.cloudrun.ServiceTrafficArgs(
-                    percent=100,
-                    revision_name="cloudrun-srv-green",
-                ),
-                gcp.cloudrun.ServiceTrafficArgs(
-                    percent=0,
-                    revision_name="cloudrun-srv-blue",
-                    tag="tag-name",
-                ),
-            ])
         ```
         ### Cloud Run Service Probes
 
@@ -544,6 +522,11 @@ class Service(pulumi.CustomResource):
                             failure_threshold=1,
                             tcp_socket=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeTcpSocketArgs(
                                 port=8080,
+                            ),
+                        ),
+                        liveness_probe=gcp.cloudrun.ServiceTemplateSpecContainerLivenessProbeArgs(
+                            http_get=gcp.cloudrun.ServiceTemplateSpecContainerLivenessProbeHttpGetArgs(
+                                path="/",
                             ),
                         ),
                     )],
@@ -732,7 +715,6 @@ class Service(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        # Example of how to deploy a publicly-accessible Cloud Run application
         default = gcp.cloudrun.Service("default",
             location="us-central1",
             template=gcp.cloudrun.ServiceTemplateArgs(
@@ -751,27 +733,6 @@ class Service(pulumi.CustomResource):
             project=default.project,
             service=default.name,
             policy_data=noauth_iam_policy.policy_data)
-        ```
-        ### Cloud Run Service Add Tag
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrun.Service("default",
-            location="us-central1",
-            template=gcp.cloudrun.ServiceTemplateArgs(),
-            traffics=[
-                gcp.cloudrun.ServiceTrafficArgs(
-                    percent=100,
-                    revision_name="cloudrun-srv-green",
-                ),
-                gcp.cloudrun.ServiceTrafficArgs(
-                    percent=0,
-                    revision_name="cloudrun-srv-blue",
-                    tag="tag-name",
-                ),
-            ])
         ```
         ### Cloud Run Service Probes
 
@@ -797,6 +758,11 @@ class Service(pulumi.CustomResource):
                             failure_threshold=1,
                             tcp_socket=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeTcpSocketArgs(
                                 port=8080,
+                            ),
+                        ),
+                        liveness_probe=gcp.cloudrun.ServiceTemplateSpecContainerLivenessProbeArgs(
+                            http_get=gcp.cloudrun.ServiceTemplateSpecContainerLivenessProbeHttpGetArgs(
+                                path="/",
                             ),
                         ),
                     )],

@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         Type = "RAW",
     ///         Description = "Zone for DCL",
     ///         DisplayName = "Zone for DCL",
-    ///         Labels = ,
+    ///         Labels = null,
     ///         Project = "my-project-name",
     ///     });
     /// 

@@ -296,6 +296,10 @@ namespace Pulumi.Gcp.Projects
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "keyString",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -357,12 +361,22 @@ namespace Pulumi.Gcp.Projects
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("keyString")]
+        private Input<string>? _keyString;
+
         /// <summary>
         /// Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
         /// method.
         /// </summary>
-        [Input("keyString")]
-        public Input<string>? KeyString { get; set; }
+        public Input<string>? KeyString
+        {
+            get => _keyString;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _keyString = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.

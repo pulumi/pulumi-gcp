@@ -80,6 +80,10 @@ namespace Pulumi.Gcp.Compute
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "keyValue",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -109,13 +113,23 @@ namespace Pulumi.Gcp.Compute
         [Input("backendService", required: true)]
         public Input<string> BackendService { get; set; } = null!;
 
+        [Input("keyValue", required: true)]
+        private Input<string>? _keyValue;
+
         /// <summary>
         /// 128-bit key value used for signing the URL. The key value must be a
         /// valid RFC 4648 Section 5 base64url encoded string.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("keyValue", required: true)]
-        public Input<string> KeyValue { get; set; } = null!;
+        public Input<string>? KeyValue
+        {
+            get => _keyValue;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _keyValue = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Name of the signed URL key.
@@ -144,13 +158,23 @@ namespace Pulumi.Gcp.Compute
         [Input("backendService")]
         public Input<string>? BackendService { get; set; }
 
+        [Input("keyValue")]
+        private Input<string>? _keyValue;
+
         /// <summary>
         /// 128-bit key value used for signing the URL. The key value must be a
         /// valid RFC 4648 Section 5 base64url encoded string.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("keyValue")]
-        public Input<string>? KeyValue { get; set; }
+        public Input<string>? KeyValue
+        {
+            get => _keyValue;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _keyValue = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Name of the signed URL key.

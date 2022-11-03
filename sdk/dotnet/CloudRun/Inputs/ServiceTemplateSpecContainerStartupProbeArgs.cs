@@ -29,14 +29,14 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// <summary>
         /// Number of seconds after the container has started before the probe is
         /// initiated.
-        /// Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+        /// Defaults to 0 seconds. Minimum value is 0. Maximum value is 3600.
         /// </summary>
         [Input("initialDelaySeconds")]
         public Input<int>? InitialDelaySeconds { get; set; }
 
         /// <summary>
         /// How often (in seconds) to perform the probe.
-        /// Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+        /// Default to 10 seconds. Minimum value is 1. Maximum value is 3600.
         /// </summary>
         [Input("periodSeconds")]
         public Input<int>? PeriodSeconds { get; set; }
@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// <summary>
         /// Number of seconds after which the probe times out.
         /// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-        /// Must be smaller than periodSeconds.
+        /// Must be smaller than period_seconds.
         /// </summary>
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }

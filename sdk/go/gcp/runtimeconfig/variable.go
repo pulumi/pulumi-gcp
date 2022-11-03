@@ -144,6 +144,17 @@ func NewVariable(ctx *pulumi.Context,
 	if args.Parent == nil {
 		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
+	if args.Text != nil {
+		args.Text = pulumi.ToSecret(args.Text).(pulumi.StringPtrOutput)
+	}
+	if args.Value != nil {
+		args.Value = pulumi.ToSecret(args.Value).(pulumi.StringPtrOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"text",
+		"value",
+	})
+	opts = append(opts, secrets)
 	var resource Variable
 	err := ctx.RegisterResource("gcp:runtimeconfig/variable:Variable", name, args, &resource, opts...)
 	if err != nil {

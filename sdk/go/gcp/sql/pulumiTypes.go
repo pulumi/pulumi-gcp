@@ -992,7 +992,8 @@ type DatabaseInstanceSettings struct {
 	// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
 	// for more details and supported versions. Postgres supports only shared-core machine types,
 	// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
-	Tier string `pulumi:"tier"`
+	Tier     string  `pulumi:"tier"`
+	TimeZone *string `pulumi:"timeZone"`
 	// A set of key/value user label pairs to assign to the instance.
 	UserLabels map[string]string `pulumi:"userLabels"`
 	Version    *int              `pulumi:"version"`
@@ -1044,7 +1045,8 @@ type DatabaseInstanceSettingsArgs struct {
 	// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
 	// for more details and supported versions. Postgres supports only shared-core machine types,
 	// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
-	Tier pulumi.StringInput `pulumi:"tier"`
+	Tier     pulumi.StringInput    `pulumi:"tier"`
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
 	// A set of key/value user label pairs to assign to the instance.
 	UserLabels pulumi.StringMapInput `pulumi:"userLabels"`
 	Version    pulumi.IntPtrInput    `pulumi:"version"`
@@ -1226,6 +1228,10 @@ func (o DatabaseInstanceSettingsOutput) SqlServerAuditConfig() DatabaseInstanceS
 // and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
 func (o DatabaseInstanceSettingsOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) string { return v.Tier }).(pulumi.StringOutput)
+}
+
+func (o DatabaseInstanceSettingsOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
 
 // A set of key/value user label pairs to assign to the instance.
@@ -1437,6 +1443,15 @@ func (o DatabaseInstanceSettingsPtrOutput) Tier() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Tier
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatabaseInstanceSettingsPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4619,6 +4634,7 @@ type GetDatabaseInstanceSetting struct {
 	PricingPlan                string                                               `pulumi:"pricingPlan"`
 	SqlServerAuditConfigs      []GetDatabaseInstanceSettingSqlServerAuditConfig     `pulumi:"sqlServerAuditConfigs"`
 	Tier                       string                                               `pulumi:"tier"`
+	TimeZone                   string                                               `pulumi:"timeZone"`
 	UserLabels                 map[string]string                                    `pulumi:"userLabels"`
 	Version                    int                                                  `pulumi:"version"`
 }
@@ -4653,6 +4669,7 @@ type GetDatabaseInstanceSettingArgs struct {
 	PricingPlan                pulumi.StringInput                                           `pulumi:"pricingPlan"`
 	SqlServerAuditConfigs      GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput     `pulumi:"sqlServerAuditConfigs"`
 	Tier                       pulumi.StringInput                                           `pulumi:"tier"`
+	TimeZone                   pulumi.StringInput                                           `pulumi:"timeZone"`
 	UserLabels                 pulumi.StringMapInput                                        `pulumi:"userLabels"`
 	Version                    pulumi.IntInput                                              `pulumi:"version"`
 }
@@ -4794,6 +4811,10 @@ func (o GetDatabaseInstanceSettingOutput) SqlServerAuditConfigs() GetDatabaseIns
 
 func (o GetDatabaseInstanceSettingOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.Tier }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceSettingOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.TimeZone }).(pulumi.StringOutput)
 }
 
 func (o GetDatabaseInstanceSettingOutput) UserLabels() pulumi.StringMapOutput {

@@ -16,6 +16,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Bigquery Analytics Hub data exchange
+ * 
+ * To get more information about DataExchange, see:
+ * 
+ * * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+ * 
  * ## Example Usage
  * ### Bigquery Analyticshub Data Exchange Basic
  * ```java
@@ -26,7 +34,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.bigqueryanalyticshub.DataExchange;
  * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -41,13 +48,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var dataExchange = new DataExchange(&#34;dataExchange&#34;, DataExchangeArgs.builder()        
- *             .location(&#34;US&#34;)
  *             .dataExchangeId(&#34;my_data_exchange&#34;)
- *             .displayName(&#34;my_data_exchange&#34;)
  *             .description(&#34;example data exchange&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .displayName(&#34;my_data_exchange&#34;)
+ *             .location(&#34;US&#34;)
+ *             .build());
  * 
  *     }
  * }

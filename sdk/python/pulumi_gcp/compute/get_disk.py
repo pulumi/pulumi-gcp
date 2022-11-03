@@ -22,7 +22,7 @@ class GetDiskResult:
     """
     A collection of values returned by getDisk.
     """
-    def __init__(__self__, creation_timestamp=None, description=None, disk_encryption_keys=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, multi_writer=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_image_encryption_keys=None, source_image_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None, zone=None):
+    def __init__(__self__, creation_timestamp=None, description=None, disk_encryption_keys=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, multi_writer=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None, zone=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -80,6 +80,12 @@ class GetDiskResult:
         if snapshot and not isinstance(snapshot, str):
             raise TypeError("Expected argument 'snapshot' to be a str")
         pulumi.set(__self__, "snapshot", snapshot)
+        if source_disk and not isinstance(source_disk, str):
+            raise TypeError("Expected argument 'source_disk' to be a str")
+        pulumi.set(__self__, "source_disk", source_disk)
+        if source_disk_id and not isinstance(source_disk_id, str):
+            raise TypeError("Expected argument 'source_disk_id' to be a str")
+        pulumi.set(__self__, "source_disk_id", source_disk_id)
         if source_image_encryption_keys and not isinstance(source_image_encryption_keys, list):
             raise TypeError("Expected argument 'source_image_encryption_keys' to be a list")
         pulumi.set(__self__, "source_image_encryption_keys", source_image_encryption_keys)
@@ -207,6 +213,16 @@ class GetDiskResult:
         return pulumi.get(self, "snapshot")
 
     @property
+    @pulumi.getter(name="sourceDisk")
+    def source_disk(self) -> str:
+        return pulumi.get(self, "source_disk")
+
+    @property
+    @pulumi.getter(name="sourceDiskId")
+    def source_disk_id(self) -> str:
+        return pulumi.get(self, "source_disk_id")
+
+    @property
     @pulumi.getter(name="sourceImageEncryptionKeys")
     def source_image_encryption_keys(self) -> Sequence['outputs.GetDiskSourceImageEncryptionKeyResult']:
         return pulumi.get(self, "source_image_encryption_keys")
@@ -267,6 +283,8 @@ class AwaitableGetDiskResult(GetDiskResult):
             self_link=self.self_link,
             size=self.size,
             snapshot=self.snapshot,
+            source_disk=self.source_disk,
+            source_disk_id=self.source_disk_id,
             source_image_encryption_keys=self.source_image_encryption_keys,
             source_image_id=self.source_image_id,
             source_snapshot_encryption_keys=self.source_snapshot_encryption_keys,
@@ -333,6 +351,8 @@ def get_disk(name: Optional[str] = None,
         self_link=__ret__.self_link,
         size=__ret__.size,
         snapshot=__ret__.snapshot,
+        source_disk=__ret__.source_disk,
+        source_disk_id=__ret__.source_disk_id,
         source_image_encryption_keys=__ret__.source_image_encryption_keys,
         source_image_id=__ret__.source_image_id,
         source_snapshot_encryption_keys=__ret__.source_snapshot_encryption_keys,

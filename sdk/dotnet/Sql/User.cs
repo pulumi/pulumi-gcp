@@ -190,6 +190,10 @@ namespace Pulumi.Gcp.Sql
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -243,13 +247,23 @@ namespace Pulumi.Gcp.Sql
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password for the user. Can be updated. For Postgres
         /// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
         /// or CLOUD_IAM_SERVICE_ACCOUNT.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("passwordPolicy")]
         public Input<Inputs.UserPasswordPolicyArgs>? PasswordPolicy { get; set; }
@@ -307,13 +321,23 @@ namespace Pulumi.Gcp.Sql
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password for the user. Can be updated. For Postgres
         /// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
         /// or CLOUD_IAM_SERVICE_ACCOUNT.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("passwordPolicy")]
         public Input<Inputs.UserPasswordPolicyGetArgs>? PasswordPolicy { get; set; }

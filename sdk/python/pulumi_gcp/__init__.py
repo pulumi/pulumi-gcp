@@ -16,6 +16,8 @@ if typing.TYPE_CHECKING:
     accesscontextmanager = __accesscontextmanager
     import pulumi_gcp.activedirectory as __activedirectory
     activedirectory = __activedirectory
+    import pulumi_gcp.alloydb as __alloydb
+    alloydb = __alloydb
     import pulumi_gcp.apigateway as __apigateway
     apigateway = __apigateway
     import pulumi_gcp.apigee as __apigee
@@ -76,6 +78,8 @@ if typing.TYPE_CHECKING:
     datacatalog = __datacatalog
     import pulumi_gcp.dataflow as __dataflow
     dataflow = __dataflow
+    import pulumi_gcp.dataform as __dataform
+    dataform = __dataform
     import pulumi_gcp.datafusion as __datafusion
     datafusion = __datafusion
     import pulumi_gcp.dataloss as __dataloss
@@ -196,6 +200,7 @@ else:
     accessapproval = _utilities.lazy_import('pulumi_gcp.accessapproval')
     accesscontextmanager = _utilities.lazy_import('pulumi_gcp.accesscontextmanager')
     activedirectory = _utilities.lazy_import('pulumi_gcp.activedirectory')
+    alloydb = _utilities.lazy_import('pulumi_gcp.alloydb')
     apigateway = _utilities.lazy_import('pulumi_gcp.apigateway')
     apigee = _utilities.lazy_import('pulumi_gcp.apigee')
     appengine = _utilities.lazy_import('pulumi_gcp.appengine')
@@ -226,6 +231,7 @@ else:
     containeranalysis = _utilities.lazy_import('pulumi_gcp.containeranalysis')
     datacatalog = _utilities.lazy_import('pulumi_gcp.datacatalog')
     dataflow = _utilities.lazy_import('pulumi_gcp.dataflow')
+    dataform = _utilities.lazy_import('pulumi_gcp.dataform')
     datafusion = _utilities.lazy_import('pulumi_gcp.datafusion')
     dataloss = _utilities.lazy_import('pulumi_gcp.dataloss')
     dataplex = _utilities.lazy_import('pulumi_gcp.dataplex')
@@ -398,6 +404,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.activedirectory",
   "classes": {
    "gcp:activedirectory/peering:Peering": "Peering"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "alloydb/cluster",
+  "fqn": "pulumi_gcp.alloydb",
+  "classes": {
+   "gcp:alloydb/cluster:Cluster": "Cluster"
   }
  },
  {
@@ -2642,6 +2656,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataform/repository",
+  "fqn": "pulumi_gcp.dataform",
+  "classes": {
+   "gcp:dataform/repository:Repository": "Repository"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "datafusion/instance",
   "fqn": "pulumi_gcp.datafusion",
   "classes": {
@@ -3146,6 +3168,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "firebase/androidApp",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/androidApp:AndroidApp": "AndroidApp"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "firebase/project",
   "fqn": "pulumi_gcp.firebase",
   "classes": {
@@ -3502,6 +3532,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.iam",
   "classes": {
    "gcp:iam/denyPolicy:DenyPolicy": "DenyPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iam/workforcePool",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/workforcePool:WorkforcePool": "WorkforcePool"
   }
  },
  {
@@ -4070,6 +4108,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.monitoring",
   "classes": {
    "gcp:monitoring/dashboard:Dashboard": "Dashboard"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "monitoring/genericService",
+  "fqn": "pulumi_gcp.monitoring",
+  "classes": {
+   "gcp:monitoring/genericService:GenericService": "GenericService"
   }
  },
  {
@@ -4682,6 +4728,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "securitycenter/sourceIamBinding",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/sourceIamBinding:SourceIamBinding": "SourceIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/sourceIamMember",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/sourceIamMember:SourceIamMember": "SourceIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/sourceIamPolicy",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": "SourceIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "serviceAccount/account",
   "fqn": "pulumi_gcp.serviceaccount",
   "classes": {
@@ -5154,6 +5224,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "vertex/aiEndpoint",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiEndpoint:AiEndpoint": "AiEndpoint"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "vertex/aiFeatureStore",
   "fqn": "pulumi_gcp.vertex",
   "classes": {
@@ -5174,6 +5252,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature": "AiFeatureStoreEntityTypeFeature"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiFeatureStoreIamBinding",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureStoreIamBinding:AiFeatureStoreIamBinding": "AiFeatureStoreIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiFeatureStoreIamMember",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember": "AiFeatureStoreIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiFeatureStoreIamPolicy",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureStoreIamPolicy:AiFeatureStoreIamPolicy": "AiFeatureStoreIamPolicy"
   }
  },
  {

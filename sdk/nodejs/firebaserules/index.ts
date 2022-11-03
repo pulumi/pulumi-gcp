@@ -8,13 +8,13 @@ import * as utilities from "../utilities";
 export { ReleaseArgs, ReleaseState } from "./release";
 export type Release = import("./release").Release;
 export const Release: typeof import("./release").Release = null as any;
+utilities.lazyLoad(exports, ["Release"], () => require("./release"));
 
 export { RulesetArgs, RulesetState } from "./ruleset";
 export type Ruleset = import("./ruleset").Ruleset;
 export const Ruleset: typeof import("./ruleset").Ruleset = null as any;
-
-utilities.lazyLoad(exports, ["Release"], () => require("./release"));
 utilities.lazyLoad(exports, ["Ruleset"], () => require("./ruleset"));
+
 
 const _module = {
     version: utilities.getVersion(),

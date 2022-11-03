@@ -250,6 +250,8 @@ type Dataset struct {
 	// The geographic location where the dataset should reside.
 	// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
 	Location pulumi.StringPtrOutput `pulumi:"location"`
+	// Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+	MaxTimeTravelHours pulumi.StringPtrOutput `pulumi:"maxTimeTravelHours"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -325,6 +327,8 @@ type datasetState struct {
 	// The geographic location where the dataset should reside.
 	// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
 	Location *string `pulumi:"location"`
+	// Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+	MaxTimeTravelHours *string `pulumi:"maxTimeTravelHours"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -369,6 +373,8 @@ type DatasetState struct {
 	// The geographic location where the dataset should reside.
 	// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
 	Location pulumi.StringPtrInput
+	// Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+	MaxTimeTravelHours pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -411,6 +417,8 @@ type datasetArgs struct {
 	// The geographic location where the dataset should reside.
 	// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
 	Location *string `pulumi:"location"`
+	// Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+	MaxTimeTravelHours *string `pulumi:"maxTimeTravelHours"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -448,6 +456,8 @@ type DatasetArgs struct {
 	// The geographic location where the dataset should reside.
 	// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
 	Location pulumi.StringPtrInput
+	// Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+	MaxTimeTravelHours pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -615,6 +625,11 @@ func (o DatasetOutput) LastModifiedTime() pulumi.IntOutput {
 // See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
 func (o DatasetOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+func (o DatasetOutput) MaxTimeTravelHours() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringPtrOutput { return v.MaxTimeTravelHours }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

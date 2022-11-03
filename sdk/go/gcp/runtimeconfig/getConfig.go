@@ -24,7 +24,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := runtimeconfig.LookupConfig(ctx, &runtimeconfig.LookupConfigArgs{
+//			_, err = runtimeconfig.LookupConfig(ctx, &runtimeconfig.LookupConfigArgs{
 //				Name: "my-service",
 //			}, nil)
 //			if err != nil {

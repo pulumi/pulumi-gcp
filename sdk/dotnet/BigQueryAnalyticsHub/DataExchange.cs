@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQueryAnalyticsHub
 {
     /// <summary>
+    /// A Bigquery Analytics Hub data exchange
+    /// 
+    /// To get more information about DataExchange, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+    /// 
     /// ## Example Usage
     /// ### Bigquery Analyticshub Data Exchange Basic
     /// 
@@ -22,13 +30,10 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// {
     ///     var dataExchange = new Gcp.BigQueryAnalyticsHub.DataExchange("dataExchange", new()
     ///     {
-    ///         Location = "US",
     ///         DataExchangeId = "my_data_exchange",
-    ///         DisplayName = "my_data_exchange",
     ///         Description = "example data exchange",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         DisplayName = "my_data_exchange",
+    ///         Location = "US",
     ///     });
     /// 
     /// });

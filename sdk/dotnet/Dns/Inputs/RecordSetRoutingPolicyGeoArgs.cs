@@ -13,12 +13,19 @@ namespace Pulumi.Gcp.Dns.Inputs
     public sealed class RecordSetRoutingPolicyGeoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+        /// Structure is document below.
+        /// </summary>
+        [Input("healthCheckedTargets")]
+        public Input<Inputs.RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs>? HealthCheckedTargets { get; set; }
+
+        /// <summary>
         /// The location name defined in Google Cloud.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
-        [Input("rrdatas", required: true)]
+        [Input("rrdatas")]
         private InputList<string>? _rrdatas;
 
         /// <summary>

@@ -2698,6 +2698,9 @@ type TriggerBuildStep struct {
 	// Volume names must be unique per build step and must be valid names for Docker volumes.
 	// Each named volume must be used by at least two build steps.
 	Name string `pulumi:"name"`
+	// A shell script to be executed in the step.
+	// When script is provided, the user cannot specify the entrypoint or args.
+	Script *string `pulumi:"script"`
 	// A list of global environment variables, which are encrypted using a Cloud Key Management
 	// Service crypto key. These values must be specified in the build's Secret. These variables
 	// will be available to all build steps in this build.
@@ -2771,6 +2774,9 @@ type TriggerBuildStepArgs struct {
 	// Volume names must be unique per build step and must be valid names for Docker volumes.
 	// Each named volume must be used by at least two build steps.
 	Name pulumi.StringInput `pulumi:"name"`
+	// A shell script to be executed in the step.
+	// When script is provided, the user cannot specify the entrypoint or args.
+	Script pulumi.StringPtrInput `pulumi:"script"`
 	// A list of global environment variables, which are encrypted using a Cloud Key Management
 	// Service crypto key. These values must be specified in the build's Secret. These variables
 	// will be available to all build steps in this build.
@@ -2899,6 +2905,12 @@ func (o TriggerBuildStepOutput) Id() pulumi.StringPtrOutput {
 // Each named volume must be used by at least two build steps.
 func (o TriggerBuildStepOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerBuildStep) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A shell script to be executed in the step.
+// When script is provided, the user cannot specify the entrypoint or args.
+func (o TriggerBuildStepOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildStep) *string { return v.Script }).(pulumi.StringPtrOutput)
 }
 
 // A list of global environment variables, which are encrypted using a Cloud Key Management

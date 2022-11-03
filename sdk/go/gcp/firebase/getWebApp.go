@@ -28,8 +28,10 @@ type LookupWebAppArgs struct {
 
 // A collection of values returned by getWebApp.
 type LookupWebAppResult struct {
-	AppId       string `pulumi:"appId"`
-	DisplayName string `pulumi:"displayName"`
+	AppId          string   `pulumi:"appId"`
+	AppUrls        []string `pulumi:"appUrls"`
+	DeletionPolicy string   `pulumi:"deletionPolicy"`
+	DisplayName    string   `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id      string `pulumi:"id"`
 	Name    string `pulumi:"name"`
@@ -76,6 +78,14 @@ func (o LookupWebAppResultOutput) ToLookupWebAppResultOutputWithContext(ctx cont
 
 func (o LookupWebAppResultOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppResult) string { return v.AppId }).(pulumi.StringOutput)
+}
+
+func (o LookupWebAppResultOutput) AppUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupWebAppResult) []string { return v.AppUrls }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupWebAppResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupWebAppResultOutput) DisplayName() pulumi.StringOutput {

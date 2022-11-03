@@ -57,11 +57,17 @@ namespace Pulumi.Gcp.Kms
         [Input("cryptoKey", required: true)]
         public string CryptoKey { get; set; } = null!;
 
+        [Input("plaintext", required: true)]
+        private string? _plaintext;
+
         /// <summary>
         /// The plaintext to be encrypted
         /// </summary>
-        [Input("plaintext", required: true)]
-        public string Plaintext { get; set; } = null!;
+        public string? Plaintext
+        {
+            get => _plaintext;
+            set => _plaintext = value;
+        }
 
         public GetKMSSecretCiphertextArgs()
         {
@@ -79,11 +85,21 @@ namespace Pulumi.Gcp.Kms
         [Input("cryptoKey", required: true)]
         public Input<string> CryptoKey { get; set; } = null!;
 
+        [Input("plaintext", required: true)]
+        private Input<string>? _plaintext;
+
         /// <summary>
         /// The plaintext to be encrypted
         /// </summary>
-        [Input("plaintext", required: true)]
-        public Input<string> Plaintext { get; set; } = null!;
+        public Input<string>? Plaintext
+        {
+            get => _plaintext;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _plaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public GetKMSSecretCiphertextInvokeArgs()
         {

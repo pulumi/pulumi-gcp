@@ -237,6 +237,21 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+     * 
+     */
+    @Import(name="maxTimeTravelHours")
+    private @Nullable Output<String> maxTimeTravelHours;
+
+    /**
+     * @return Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+     * 
+     */
+    public Optional<Output<String>> maxTimeTravelHours() {
+        return Optional.ofNullable(this.maxTimeTravelHours);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -284,6 +299,7 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.lastModifiedTime = $.lastModifiedTime;
         this.location = $.location;
+        this.maxTimeTravelHours = $.maxTimeTravelHours;
         this.project = $.project;
         this.selfLink = $.selfLink;
     }
@@ -608,6 +624,27 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param maxTimeTravelHours Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxTimeTravelHours(@Nullable Output<String> maxTimeTravelHours) {
+            $.maxTimeTravelHours = maxTimeTravelHours;
+            return this;
+        }
+
+        /**
+         * @param maxTimeTravelHours Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxTimeTravelHours(String maxTimeTravelHours) {
+            return maxTimeTravelHours(Output.of(maxTimeTravelHours));
         }
 
         /**

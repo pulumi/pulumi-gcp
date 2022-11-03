@@ -10,8 +10,59 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Vertex
 {
     /// <summary>
+    /// Feature Metadata information that describes an attribute of an entity type. For example, apple is an entity type, and color is a feature that describes apple.
+    /// 
+    /// To get more information about FeaturestoreEntitytypeFeature, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+    /// 
     /// ## Example Usage
     /// ### Vertex Ai Featurestore Entitytype Feature
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
+    ///     {
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Region = "us-central1",
+    ///         OnlineServingConfig = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigArgs
+    ///         {
+    ///             FixedNodeCount = 2,
+    ///         },
+    ///     });
+    /// 
+    ///     var entity = new Gcp.Vertex.AiFeatureStoreEntityType("entity", new()
+    ///     {
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Featurestore = featurestore.Id,
+    ///     });
+    /// 
+    ///     var feature = new Gcp.Vertex.AiFeatureStoreEntityTypeFeature("feature", new()
+    ///     {
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Entitytype = entity.Id,
+    ///         ValueType = "INT64_ARRAY",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

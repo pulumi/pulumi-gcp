@@ -16,17 +16,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * // Create a VPC network
  * const peeringNetwork = new gcp.compute.Network("peeringNetwork", {});
+ * // Create an IP address
  * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 16,
  *     network: peeringNetwork.id,
  * });
- * const foobar = new gcp.servicenetworking.Connection("foobar", {
+ * // Create a private connection
+ * const _default = new gcp.servicenetworking.Connection("default", {
  *     network: peeringNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAlloc.name],
+ * });
+ * // (Optional) Import or export custom routes
+ * const peeringRoutes = new gcp.compute.NetworkPeeringRoutesConfig("peeringRoutes", {
+ *     peering: _default.peering,
+ *     network: peeringNetwork.name,
+ *     importCustomRoutes: true,
+ *     exportCustomRoutes: true,
  * });
  * ```
  *

@@ -159,6 +159,20 @@ public class Account extends com.pulumi.resources.CustomResource {
         return this.email;
     }
     /**
+     * The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+     * 
+     */
+    @Export(name="member", type=String.class, parameters={})
+    private Output<String> member;
+
+    /**
+     * @return The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+     * 
+     */
+    public Output<String> member() {
+        return this.member;
+    }
+    /**
      * The fully-qualified name of the service account.
      * 
      */

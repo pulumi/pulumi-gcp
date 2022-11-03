@@ -120,6 +120,7 @@ class _AccountState:
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
+                 member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  unique_id: Optional[pulumi.Input[str]] = None):
@@ -138,6 +139,7 @@ class _AccountState:
         :param pulumi.Input[str] email: The e-mail address of the service account. This value
                should be referenced from any `organizations.get_iam_policy` data sources
                that would grant the service account privileges.
+        :param pulumi.Input[str] member: The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
         :param pulumi.Input[str] name: The fully-qualified name of the service account.
         :param pulumi.Input[str] project: The ID of the project that the service account will be created in.
                Defaults to the provider project configuration.
@@ -153,6 +155,8 @@ class _AccountState:
             pulumi.set(__self__, "display_name", display_name)
         if email is not None:
             pulumi.set(__self__, "email", email)
+        if member is not None:
+            pulumi.set(__self__, "member", member)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -227,6 +231,18 @@ class _AccountState:
     @email.setter
     def email(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter
+    def member(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+        """
+        return pulumi.get(self, "member")
+
+    @member.setter
+    def member(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "member", value)
 
     @property
     @pulumi.getter
@@ -403,6 +419,7 @@ class Account(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["project"] = project
             __props__.__dict__["email"] = None
+            __props__.__dict__["member"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["unique_id"] = None
         super(Account, __self__).__init__(
@@ -420,6 +437,7 @@ class Account(pulumi.CustomResource):
             disabled: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             email: Optional[pulumi.Input[str]] = None,
+            member: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             unique_id: Optional[pulumi.Input[str]] = None) -> 'Account':
@@ -443,6 +461,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] email: The e-mail address of the service account. This value
                should be referenced from any `organizations.get_iam_policy` data sources
                that would grant the service account privileges.
+        :param pulumi.Input[str] member: The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
         :param pulumi.Input[str] name: The fully-qualified name of the service account.
         :param pulumi.Input[str] project: The ID of the project that the service account will be created in.
                Defaults to the provider project configuration.
@@ -457,6 +476,7 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["email"] = email
+        __props__.__dict__["member"] = member
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["unique_id"] = unique_id
@@ -509,6 +529,14 @@ class Account(pulumi.CustomResource):
         that would grant the service account privileges.
         """
         return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def member(self) -> pulumi.Output[str]:
+        """
+        The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+        """
+        return pulumi.get(self, "member")
 
     @property
     @pulumi.getter

@@ -50,8 +50,8 @@ import (
 //				return err
 //			}
 //			_, err = healthcare.NewConsentStoreIamPolicy(ctx, "policy", &healthcare.ConsentStoreIamPolicyArgs{
-//				Dataset:        pulumi.Any(google_healthcare_consent_store.My - consent.Dataset),
-//				ConsentStoreId: pulumi.Any(google_healthcare_consent_store.My - consent.Name),
+//				Dataset:        pulumi.Any(google_healthcare_consent_store.MyConsent.Dataset),
+//				ConsentStoreId: pulumi.Any(google_healthcare_consent_store.MyConsent.Name),
 //				PolicyData:     pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -78,8 +78,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := healthcare.NewConsentStoreIamBinding(ctx, "binding", &healthcare.ConsentStoreIamBindingArgs{
-//				Dataset:        pulumi.Any(google_healthcare_consent_store.My - consent.Dataset),
-//				ConsentStoreId: pulumi.Any(google_healthcare_consent_store.My - consent.Name),
+//				Dataset:        pulumi.Any(google_healthcare_consent_store.MyConsent.Dataset),
+//				ConsentStoreId: pulumi.Any(google_healthcare_consent_store.MyConsent.Name),
 //				Role:           pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -109,8 +109,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := healthcare.NewConsentStoreIamMember(ctx, "member", &healthcare.ConsentStoreIamMemberArgs{
-//				Dataset:        pulumi.Any(google_healthcare_consent_store.My - consent.Dataset),
-//				ConsentStoreId: pulumi.Any(google_healthcare_consent_store.My - consent.Name),
+//				Dataset:        pulumi.Any(google_healthcare_consent_store.MyConsent.Dataset),
+//				ConsentStoreId: pulumi.Any(google_healthcare_consent_store.MyConsent.Name),
 //				Role:           pulumi.String("roles/viewer"),
 //				Member:         pulumi.String("user:jane@example.com"),
 //			})

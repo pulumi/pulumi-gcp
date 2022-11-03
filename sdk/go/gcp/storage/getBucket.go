@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.LookupBucket(ctx, &storage.LookupBucketArgs{
+//			_, err = storage.LookupBucket(ctx, &storage.LookupBucketArgs{
 //				Name: "my-bucket",
 //			}, nil)
 //			if err != nil {

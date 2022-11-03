@@ -16,8 +16,65 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Feature Metadata information that describes an attribute of an entity type. For example, apple is an entity type, and color is a feature that describes apple.
+ * 
+ * To get more information about FeaturestoreEntitytypeFeature, see:
+ * 
+ * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+ * 
  * ## Example Usage
  * ### Vertex Ai Featurestore Entitytype Feature
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.vertex.AiFeatureStore;
+ * import com.pulumi.gcp.vertex.AiFeatureStoreArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreOnlineServingConfigArgs;
+ * import com.pulumi.gcp.vertex.AiFeatureStoreEntityType;
+ * import com.pulumi.gcp.vertex.AiFeatureStoreEntityTypeArgs;
+ * import com.pulumi.gcp.vertex.AiFeatureStoreEntityTypeFeature;
+ * import com.pulumi.gcp.vertex.AiFeatureStoreEntityTypeFeatureArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var featurestore = new AiFeatureStore(&#34;featurestore&#34;, AiFeatureStoreArgs.builder()        
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .region(&#34;us-central1&#34;)
+ *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
+ *                 .fixedNodeCount(2)
+ *                 .build())
+ *             .build());
+ * 
+ *         var entity = new AiFeatureStoreEntityType(&#34;entity&#34;, AiFeatureStoreEntityTypeArgs.builder()        
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .featurestore(featurestore.id())
+ *             .build());
+ * 
+ *         var feature = new AiFeatureStoreEntityTypeFeature(&#34;feature&#34;, AiFeatureStoreEntityTypeFeatureArgs.builder()        
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .entitytype(entity.id())
+ *             .valueType(&#34;INT64_ARRAY&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
  * ```java
  * package generated_program;
  * 

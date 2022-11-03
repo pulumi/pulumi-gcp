@@ -26,6 +26,9 @@ public final class Config {
     public Optional<String> activeDirectoryCustomEndpoint() {
         return Codegen.stringProp("activeDirectoryCustomEndpoint").config(config).get();
     }
+    public Optional<String> alloydbCustomEndpoint() {
+        return Codegen.stringProp("alloydbCustomEndpoint").config(config).get();
+    }
     public Optional<String> apiGatewayCustomEndpoint() {
         return Codegen.stringProp("apiGatewayCustomEndpoint").config(config).get();
     }
@@ -155,6 +158,9 @@ public final class Config {
     public Optional<String> dataflowCustomEndpoint() {
         return Codegen.stringProp("dataflowCustomEndpoint").config(config).get();
     }
+    public Optional<String> dataformCustomEndpoint() {
+        return Codegen.stringProp("dataformCustomEndpoint").config(config).get();
+    }
     public Optional<String> dataplexCustomEndpoint() {
         return Codegen.stringProp("dataplexCustomEndpoint").config(config).get();
     }
@@ -232,6 +238,9 @@ public final class Config {
     }
     public Optional<String> iamCustomEndpoint() {
         return Codegen.stringProp("iamCustomEndpoint").config(config).get();
+    }
+    public Optional<String> iamWorkforcePoolCustomEndpoint() {
+        return Codegen.stringProp("iamWorkforcePoolCustomEndpoint").config(config).get();
     }
     public Optional<String> iapCustomEndpoint() {
         return Codegen.stringProp("iapCustomEndpoint").config(config).get();

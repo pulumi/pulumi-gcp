@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.LookupHealthCheck(ctx, &compute.LookupHealthCheckArgs{
+//			_, err = compute.LookupHealthCheck(ctx, &compute.LookupHealthCheckArgs{
 //				Name: "my-hc",
 //			}, nil)
 //			if err != nil {

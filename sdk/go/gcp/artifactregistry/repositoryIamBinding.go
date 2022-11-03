@@ -50,9 +50,9 @@ import (
 //				return err
 //			}
 //			_, err = artifactregistry.NewRepositoryIamPolicy(ctx, "policy", &artifactregistry.RepositoryIamPolicyArgs{
-//				Project:    pulumi.Any(google_artifact_registry_repository.My - repo.Project),
-//				Location:   pulumi.Any(google_artifact_registry_repository.My - repo.Location),
-//				Repository: pulumi.Any(google_artifact_registry_repository.My - repo.Name),
+//				Project:    pulumi.Any(google_artifact_registry_repository.MyRepo.Project),
+//				Location:   pulumi.Any(google_artifact_registry_repository.MyRepo.Location),
+//				Repository: pulumi.Any(google_artifact_registry_repository.MyRepo.Name),
 //				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -79,9 +79,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := artifactregistry.NewRepositoryIamBinding(ctx, "binding", &artifactregistry.RepositoryIamBindingArgs{
-//				Project:    pulumi.Any(google_artifact_registry_repository.My - repo.Project),
-//				Location:   pulumi.Any(google_artifact_registry_repository.My - repo.Location),
-//				Repository: pulumi.Any(google_artifact_registry_repository.My - repo.Name),
+//				Project:    pulumi.Any(google_artifact_registry_repository.MyRepo.Project),
+//				Location:   pulumi.Any(google_artifact_registry_repository.MyRepo.Location),
+//				Repository: pulumi.Any(google_artifact_registry_repository.MyRepo.Name),
 //				Role:       pulumi.String("roles/artifactregistry.reader"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -111,9 +111,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := artifactregistry.NewRepositoryIamMember(ctx, "member", &artifactregistry.RepositoryIamMemberArgs{
-//				Project:    pulumi.Any(google_artifact_registry_repository.My - repo.Project),
-//				Location:   pulumi.Any(google_artifact_registry_repository.My - repo.Location),
-//				Repository: pulumi.Any(google_artifact_registry_repository.My - repo.Name),
+//				Project:    pulumi.Any(google_artifact_registry_repository.MyRepo.Project),
+//				Location:   pulumi.Any(google_artifact_registry_repository.MyRepo.Location),
+//				Repository: pulumi.Any(google_artifact_registry_repository.MyRepo.Name),
 //				Role:       pulumi.String("roles/artifactregistry.reader"),
 //				Member:     pulumi.String("user:jane@example.com"),
 //			})

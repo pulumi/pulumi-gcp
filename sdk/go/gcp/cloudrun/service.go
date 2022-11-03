@@ -284,43 +284,6 @@ import (
 //	}
 //
 // ```
-// ### Cloud Run Service Add Tag
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
-//				Location: pulumi.String("us-central1"),
-//				Template: nil,
-//				Traffics: cloudrun.ServiceTrafficArray{
-//					&cloudrun.ServiceTrafficArgs{
-//						Percent:      pulumi.Int(100),
-//						RevisionName: pulumi.String("cloudrun-srv-green"),
-//					},
-//					&cloudrun.ServiceTrafficArgs{
-//						Percent:      pulumi.Int(0),
-//						RevisionName: pulumi.String("cloudrun-srv-blue"),
-//						Tag:          pulumi.String("tag-name"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Cloud Run Service Probes
 //
 // ```go
@@ -354,6 +317,11 @@ import (
 //									FailureThreshold:    pulumi.Int(1),
 //									TcpSocket: &cloudrun.ServiceTemplateSpecContainerStartupProbeTcpSocketArgs{
 //										Port: pulumi.Int(8080),
+//									},
+//								},
+//								LivenessProbe: &cloudrun.ServiceTemplateSpecContainerLivenessProbeArgs{
+//									HttpGet: &cloudrun.ServiceTemplateSpecContainerLivenessProbeHttpGetArgs{
+//										Path: pulumi.String("/"),
 //									},
 //								},
 //							},

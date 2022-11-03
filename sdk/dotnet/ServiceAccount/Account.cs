@@ -92,6 +92,12 @@ namespace Pulumi.Gcp.ServiceAccount
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
+        /// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+        /// </summary>
+        [Output("member")]
+        public Output<string> Member { get; private set; } = null!;
+
+        /// <summary>
         /// The fully-qualified name of the service account.
         /// </summary>
         [Output("name")]
@@ -238,6 +244,12 @@ namespace Pulumi.Gcp.ServiceAccount
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
+
+        /// <summary>
+        /// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+        /// </summary>
+        [Input("member")]
+        public Input<string>? Member { get; set; }
 
         /// <summary>
         /// The fully-qualified name of the service account.

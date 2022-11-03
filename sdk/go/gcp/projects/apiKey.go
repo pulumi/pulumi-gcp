@@ -293,6 +293,10 @@ func NewApiKey(ctx *pulumi.Context,
 		args = &ApiKeyArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"keyString",
+	})
+	opts = append(opts, secrets)
 	var resource ApiKey
 	err := ctx.RegisterResource("gcp:projects/apiKey:ApiKey", name, args, &resource, opts...)
 	if err != nil {

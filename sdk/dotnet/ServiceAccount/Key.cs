@@ -141,6 +141,10 @@ namespace Pulumi.Gcp.ServiceAccount
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "privateKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -249,12 +253,22 @@ namespace Pulumi.Gcp.ServiceAccount
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("privateKey")]
+        private Input<string>? _privateKey;
+
         /// <summary>
         /// The private key in JSON format, base64 encoded. This is what you normally get as a file when creating
         /// service account keys through the CLI or web console. This is only populated when creating a new key.
         /// </summary>
-        [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.

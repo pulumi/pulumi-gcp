@@ -8,23 +8,23 @@ import * as utilities from "../utilities";
 export { DataPolicyArgs, DataPolicyState } from "./dataPolicy";
 export type DataPolicy = import("./dataPolicy").DataPolicy;
 export const DataPolicy: typeof import("./dataPolicy").DataPolicy = null as any;
+utilities.lazyLoad(exports, ["DataPolicy"], () => require("./dataPolicy"));
 
 export { DataPolicyIamBindingArgs, DataPolicyIamBindingState } from "./dataPolicyIamBinding";
 export type DataPolicyIamBinding = import("./dataPolicyIamBinding").DataPolicyIamBinding;
 export const DataPolicyIamBinding: typeof import("./dataPolicyIamBinding").DataPolicyIamBinding = null as any;
+utilities.lazyLoad(exports, ["DataPolicyIamBinding"], () => require("./dataPolicyIamBinding"));
 
 export { DataPolicyIamMemberArgs, DataPolicyIamMemberState } from "./dataPolicyIamMember";
 export type DataPolicyIamMember = import("./dataPolicyIamMember").DataPolicyIamMember;
 export const DataPolicyIamMember: typeof import("./dataPolicyIamMember").DataPolicyIamMember = null as any;
+utilities.lazyLoad(exports, ["DataPolicyIamMember"], () => require("./dataPolicyIamMember"));
 
 export { DataPolicyIamPolicyArgs, DataPolicyIamPolicyState } from "./dataPolicyIamPolicy";
 export type DataPolicyIamPolicy = import("./dataPolicyIamPolicy").DataPolicyIamPolicy;
 export const DataPolicyIamPolicy: typeof import("./dataPolicyIamPolicy").DataPolicyIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["DataPolicy"], () => require("./dataPolicy"));
-utilities.lazyLoad(exports, ["DataPolicyIamBinding"], () => require("./dataPolicyIamBinding"));
-utilities.lazyLoad(exports, ["DataPolicyIamMember"], () => require("./dataPolicyIamMember"));
 utilities.lazyLoad(exports, ["DataPolicyIamPolicy"], () => require("./dataPolicyIamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),

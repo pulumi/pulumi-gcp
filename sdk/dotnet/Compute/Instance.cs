@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.Compute
     ///                 Network = "default",
     ///                 AccessConfigs = new[]
     ///                 {
-    ///                     ,
+    ///                     null,
     ///                 },
     ///             },
     ///         },
@@ -229,7 +229,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Metadata key/value pairs to make available from
         /// within the instance. Ssh keys attached in the Cloud Console will be removed.
-        /// Add them to your config in order to keep them attached to your instance.
+        /// Add them to your config in order to keep them attached to your instance. A
+        /// list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
         /// </summary>
         [Output("metadata")]
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
@@ -526,7 +527,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Metadata key/value pairs to make available from
         /// within the instance. Ssh keys attached in the Cloud Console will be removed.
-        /// Add them to your config in order to keep them attached to your instance.
+        /// Add them to your config in order to keep them attached to your instance. A
+        /// list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -812,7 +814,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Metadata key/value pairs to make available from
         /// within the instance. Ssh keys attached in the Cloud Console will be removed.
-        /// Add them to your config in order to keep them attached to your instance.
+        /// Add them to your config in order to keep them attached to your instance. A
+        /// list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
         /// </summary>
         public InputMap<string> Metadata
         {

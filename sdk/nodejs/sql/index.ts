@@ -8,43 +8,43 @@ import * as utilities from "../utilities";
 export { DatabaseArgs, DatabaseState } from "./database";
 export type Database = import("./database").Database;
 export const Database: typeof import("./database").Database = null as any;
+utilities.lazyLoad(exports, ["Database"], () => require("./database"));
 
 export { DatabaseInstanceArgs, DatabaseInstanceState } from "./databaseInstance";
 export type DatabaseInstance = import("./databaseInstance").DatabaseInstance;
 export const DatabaseInstance: typeof import("./databaseInstance").DatabaseInstance = null as any;
+utilities.lazyLoad(exports, ["DatabaseInstance"], () => require("./databaseInstance"));
 
 export { GetBackupRunArgs, GetBackupRunResult, GetBackupRunOutputArgs } from "./getBackupRun";
 export const getBackupRun: typeof import("./getBackupRun").getBackupRun = null as any;
 export const getBackupRunOutput: typeof import("./getBackupRun").getBackupRunOutput = null as any;
+utilities.lazyLoad(exports, ["getBackupRun","getBackupRunOutput"], () => require("./getBackupRun"));
 
 export { GetCaCertsArgs, GetCaCertsResult, GetCaCertsOutputArgs } from "./getCaCerts";
 export const getCaCerts: typeof import("./getCaCerts").getCaCerts = null as any;
 export const getCaCertsOutput: typeof import("./getCaCerts").getCaCertsOutput = null as any;
+utilities.lazyLoad(exports, ["getCaCerts","getCaCertsOutput"], () => require("./getCaCerts"));
 
 export { GetDatabaseInstanceArgs, GetDatabaseInstanceResult, GetDatabaseInstanceOutputArgs } from "./getDatabaseInstance";
 export const getDatabaseInstance: typeof import("./getDatabaseInstance").getDatabaseInstance = null as any;
 export const getDatabaseInstanceOutput: typeof import("./getDatabaseInstance").getDatabaseInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabaseInstance","getDatabaseInstanceOutput"], () => require("./getDatabaseInstance"));
 
 export { SourceRepresentationInstanceArgs, SourceRepresentationInstanceState } from "./sourceRepresentationInstance";
 export type SourceRepresentationInstance = import("./sourceRepresentationInstance").SourceRepresentationInstance;
 export const SourceRepresentationInstance: typeof import("./sourceRepresentationInstance").SourceRepresentationInstance = null as any;
+utilities.lazyLoad(exports, ["SourceRepresentationInstance"], () => require("./sourceRepresentationInstance"));
 
 export { SslCertArgs, SslCertState } from "./sslCert";
 export type SslCert = import("./sslCert").SslCert;
 export const SslCert: typeof import("./sslCert").SslCert = null as any;
+utilities.lazyLoad(exports, ["SslCert"], () => require("./sslCert"));
 
 export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
-
-utilities.lazyLoad(exports, ["Database"], () => require("./database"));
-utilities.lazyLoad(exports, ["DatabaseInstance"], () => require("./databaseInstance"));
-utilities.lazyLoad(exports, ["getBackupRun","getBackupRunOutput"], () => require("./getBackupRun"));
-utilities.lazyLoad(exports, ["getCaCerts","getCaCertsOutput"], () => require("./getCaCerts"));
-utilities.lazyLoad(exports, ["getDatabaseInstance","getDatabaseInstanceOutput"], () => require("./getDatabaseInstance"));
-utilities.lazyLoad(exports, ["SourceRepresentationInstance"], () => require("./sourceRepresentationInstance"));
-utilities.lazyLoad(exports, ["SslCert"], () => require("./sslCert"));
 utilities.lazyLoad(exports, ["User"], () => require("./user"));
+
 
 const _module = {
     version: utilities.getVersion(),

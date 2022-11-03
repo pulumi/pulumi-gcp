@@ -331,6 +331,14 @@ class DataExchange(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A Bigquery Analytics Hub data exchange
+
+        To get more information about DataExchange, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+
         ## Example Usage
         ### Bigquery Analyticshub Data Exchange Basic
 
@@ -339,11 +347,10 @@ class DataExchange(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         data_exchange = gcp.bigqueryanalyticshub.DataExchange("dataExchange",
-            location="US",
             data_exchange_id="my_data_exchange",
-            display_name="my_data_exchange",
             description="example data exchange",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            display_name="my_data_exchange",
+            location="US")
         ```
 
         ## Import
@@ -385,6 +392,14 @@ class DataExchange(pulumi.CustomResource):
                  args: DataExchangeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Bigquery Analytics Hub data exchange
+
+        To get more information about DataExchange, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+
         ## Example Usage
         ### Bigquery Analyticshub Data Exchange Basic
 
@@ -393,11 +408,10 @@ class DataExchange(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         data_exchange = gcp.bigqueryanalyticshub.DataExchange("dataExchange",
-            location="US",
             data_exchange_id="my_data_exchange",
-            display_name="my_data_exchange",
             description="example data exchange",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            display_name="my_data_exchange",
+            location="US")
         ```
 
         ## Import

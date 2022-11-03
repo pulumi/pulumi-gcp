@@ -8,18 +8,18 @@ import * as utilities from "../utilities";
 export { EnvironmentArgs, EnvironmentState } from "./environment";
 export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
+utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
 
 export { GetEnvironmentArgs, GetEnvironmentResult, GetEnvironmentOutputArgs } from "./getEnvironment";
 export const getEnvironment: typeof import("./getEnvironment").getEnvironment = null as any;
 export const getEnvironmentOutput: typeof import("./getEnvironment").getEnvironmentOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvironment","getEnvironmentOutput"], () => require("./getEnvironment"));
 
 export { GetImageVersionsArgs, GetImageVersionsResult, GetImageVersionsOutputArgs } from "./getImageVersions";
 export const getImageVersions: typeof import("./getImageVersions").getImageVersions = null as any;
 export const getImageVersionsOutput: typeof import("./getImageVersions").getImageVersionsOutput = null as any;
-
-utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
-utilities.lazyLoad(exports, ["getEnvironment","getEnvironmentOutput"], () => require("./getEnvironment"));
 utilities.lazyLoad(exports, ["getImageVersions","getImageVersionsOutput"], () => require("./getImageVersions"));
+
 
 const _module = {
     version: utilities.getVersion(),

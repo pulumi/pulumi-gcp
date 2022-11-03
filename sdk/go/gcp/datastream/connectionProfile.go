@@ -43,13 +43,14 @@ import (
 //	}
 //
 // ```
-// ### Datastream Connection Profile Bigquery
+// ### Datastream Connection Profile Bigquery Private Connection
 //
 // ```go
 // package main
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datastream"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -57,11 +58,33 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := datastream.NewConnectionProfile(ctx, "default", &datastream.ConnectionProfileArgs{
-//				BigqueryProfile:     nil,
-//				ConnectionProfileId: pulumi.String("my-profile"),
+//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
+//			if err != nil {
+//				return err
+//			}
+//			privateConnection, err := datastream.NewPrivateConnection(ctx, "privateConnection", &datastream.PrivateConnectionArgs{
 //				DisplayName:         pulumi.String("Connection profile"),
 //				Location:            pulumi.String("us-central1"),
+//				PrivateConnectionId: pulumi.String("my-connection"),
+//				Labels: pulumi.StringMap{
+//					"key": pulumi.String("value"),
+//				},
+//				VpcPeeringConfig: &datastream.PrivateConnectionVpcPeeringConfigArgs{
+//					Vpc:    defaultNetwork.ID(),
+//					Subnet: pulumi.String("10.0.0.0/29"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datastream.NewConnectionProfile(ctx, "defaultConnectionProfile", &datastream.ConnectionProfileArgs{
+//				DisplayName:         pulumi.String("Connection profile"),
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("my-profile"),
+//				BigqueryProfile:     nil,
+//				PrivateConnectivity: &datastream.ConnectionProfilePrivateConnectivityArgs{
+//					PrivateConnection: privateConnection.ID(),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -245,6 +268,9 @@ type ConnectionProfile struct {
 	// PostgreSQL database profile.
 	// Structure is documented below.
 	PostgresqlProfile ConnectionProfilePostgresqlProfilePtrOutput `pulumi:"postgresqlProfile"`
+	// Private connectivity.
+	// Structure is documented below.
+	PrivateConnectivity ConnectionProfilePrivateConnectivityPtrOutput `pulumi:"privateConnectivity"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -315,6 +341,9 @@ type connectionProfileState struct {
 	// PostgreSQL database profile.
 	// Structure is documented below.
 	PostgresqlProfile *ConnectionProfilePostgresqlProfile `pulumi:"postgresqlProfile"`
+	// Private connectivity.
+	// Structure is documented below.
+	PrivateConnectivity *ConnectionProfilePrivateConnectivity `pulumi:"privateConnectivity"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -348,6 +377,9 @@ type ConnectionProfileState struct {
 	// PostgreSQL database profile.
 	// Structure is documented below.
 	PostgresqlProfile ConnectionProfilePostgresqlProfilePtrInput
+	// Private connectivity.
+	// Structure is documented below.
+	PrivateConnectivity ConnectionProfilePrivateConnectivityPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -383,6 +415,9 @@ type connectionProfileArgs struct {
 	// PostgreSQL database profile.
 	// Structure is documented below.
 	PostgresqlProfile *ConnectionProfilePostgresqlProfile `pulumi:"postgresqlProfile"`
+	// Private connectivity.
+	// Structure is documented below.
+	PrivateConnectivity *ConnectionProfilePrivateConnectivity `pulumi:"privateConnectivity"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -415,6 +450,9 @@ type ConnectionProfileArgs struct {
 	// PostgreSQL database profile.
 	// Structure is documented below.
 	PostgresqlProfile ConnectionProfilePostgresqlProfilePtrInput
+	// Private connectivity.
+	// Structure is documented below.
+	PrivateConnectivity ConnectionProfilePrivateConnectivityPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -567,6 +605,12 @@ func (o ConnectionProfileOutput) OracleProfile() ConnectionProfileOracleProfileP
 // Structure is documented below.
 func (o ConnectionProfileOutput) PostgresqlProfile() ConnectionProfilePostgresqlProfilePtrOutput {
 	return o.ApplyT(func(v *ConnectionProfile) ConnectionProfilePostgresqlProfilePtrOutput { return v.PostgresqlProfile }).(ConnectionProfilePostgresqlProfilePtrOutput)
+}
+
+// Private connectivity.
+// Structure is documented below.
+func (o ConnectionProfileOutput) PrivateConnectivity() ConnectionProfilePrivateConnectivityPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfile) ConnectionProfilePrivateConnectivityPtrOutput { return v.PrivateConnectivity }).(ConnectionProfilePrivateConnectivityPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

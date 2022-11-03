@@ -108,6 +108,33 @@ import (
 //	}
 //
 // ```
+// ### Enabling Public Access Prevention
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewBucket(ctx, "auto-expire", &storage.BucketArgs{
+//				ForceDestroy:           pulumi.Bool(true),
+//				Location:               pulumi.String("US"),
+//				PublicAccessPrevention: pulumi.String("enforced"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -156,7 +183,7 @@ type Bucket struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Prevents public access to a bucket.
+	// Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
 	PublicAccessPrevention pulumi.StringOutput `pulumi:"publicAccessPrevention"`
 	// Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
 	RequesterPays pulumi.BoolPtrOutput `pulumi:"requesterPays"`
@@ -233,7 +260,7 @@ type bucketState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Prevents public access to a bucket.
+	// Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
 	PublicAccessPrevention *string `pulumi:"publicAccessPrevention"`
 	// Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
 	RequesterPays *bool `pulumi:"requesterPays"`
@@ -279,7 +306,7 @@ type BucketState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Prevents public access to a bucket.
+	// Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
 	PublicAccessPrevention pulumi.StringPtrInput
 	// Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
 	RequesterPays pulumi.BoolPtrInput
@@ -329,7 +356,7 @@ type bucketArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Prevents public access to a bucket.
+	// Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
 	PublicAccessPrevention *string `pulumi:"publicAccessPrevention"`
 	// Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
 	RequesterPays *bool `pulumi:"requesterPays"`
@@ -372,7 +399,7 @@ type BucketArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Prevents public access to a bucket.
+	// Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
 	PublicAccessPrevention pulumi.StringPtrInput
 	// Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
 	RequesterPays pulumi.BoolPtrInput
@@ -533,7 +560,7 @@ func (o BucketOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Prevents public access to a bucket.
+// Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
 func (o BucketOutput) PublicAccessPrevention() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.PublicAccessPrevention }).(pulumi.StringOutput)
 }

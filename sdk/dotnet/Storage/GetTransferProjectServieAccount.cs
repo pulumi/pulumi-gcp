@@ -109,6 +109,10 @@ namespace Pulumi.Gcp.Storage
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+        /// </summary>
+        public readonly string Member;
         public readonly string Project;
         /// <summary>
         /// Unique identifier for the service account.
@@ -121,12 +125,15 @@ namespace Pulumi.Gcp.Storage
 
             string id,
 
+            string member,
+
             string project,
 
             string subjectId)
         {
             Email = email;
             Id = id;
+            Member = member;
             Project = project;
             SubjectId = subjectId;
         }

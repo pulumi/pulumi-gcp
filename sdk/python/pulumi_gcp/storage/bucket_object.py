@@ -779,12 +779,12 @@ class BucketObject(pulumi.CustomResource):
                 raise TypeError("Missing required property 'bucket'")
             __props__.__dict__["bucket"] = bucket
             __props__.__dict__["cache_control"] = cache_control
-            __props__.__dict__["content"] = content
+            __props__.__dict__["content"] = None if content is None else pulumi.Output.secret(content)
             __props__.__dict__["content_disposition"] = content_disposition
             __props__.__dict__["content_encoding"] = content_encoding
             __props__.__dict__["content_language"] = content_language
             __props__.__dict__["content_type"] = content_type
-            __props__.__dict__["customer_encryption"] = customer_encryption
+            __props__.__dict__["customer_encryption"] = None if customer_encryption is None else pulumi.Output.secret(customer_encryption)
             __props__.__dict__["detect_md5hash"] = detect_md5hash
             __props__.__dict__["event_based_hold"] = event_based_hold
             __props__.__dict__["kms_key_name"] = kms_key_name
@@ -798,6 +798,8 @@ class BucketObject(pulumi.CustomResource):
             __props__.__dict__["media_link"] = None
             __props__.__dict__["output_name"] = None
             __props__.__dict__["self_link"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["content", "customerEncryption"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(BucketObject, __self__).__init__(
             'gcp:storage/bucketObject:BucketObject',
             resource_name,

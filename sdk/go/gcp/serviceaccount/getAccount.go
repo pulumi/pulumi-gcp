@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := serviceAccount.GetAccount(ctx, &serviceaccount.GetAccountArgs{
+//			_, err = serviceAccount.GetAccount(ctx, &serviceaccount.GetAccountArgs{
 //				AccountId: "object-viewer",
 //			}, nil)
 //			if err != nil {
@@ -67,6 +67,8 @@ type LookupAccountResult struct {
 	Email string `pulumi:"email"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+	Member string `pulumi:"member"`
 	// The fully-qualified name of the service account.
 	Name    string  `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -134,6 +136,11 @@ func (o LookupAccountResultOutput) Email() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+func (o LookupAccountResultOutput) Member() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.Member }).(pulumi.StringOutput)
 }
 
 // The fully-qualified name of the service account.

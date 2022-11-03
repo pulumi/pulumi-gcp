@@ -26,6 +26,8 @@ __all__ = [
     'AlertPolicyCreationRecordArgs',
     'AlertPolicyDocumentationArgs',
     'CustomServiceTelemetryArgs',
+    'GenericServiceBasicServiceArgs',
+    'GenericServiceTelemetryArgs',
     'MetricDescriptorLabelArgs',
     'MetricDescriptorMetadataArgs',
     'NotificationChannelSensitiveLabelsArgs',
@@ -1749,6 +1751,66 @@ class CustomServiceTelemetryArgs:
         Formatted as described in
         https://cloud.google.com/apis/design/resource_names.
         """
+        return pulumi.get(self, "resource_name")
+
+    @resource_name.setter
+    def resource_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_name", value)
+
+
+@pulumi.input_type
+class GenericServiceBasicServiceArgs:
+    def __init__(__self__, *,
+                 service_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 service_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] service_labels: Labels that specify the resource that emits the monitoring data
+               which is used for SLO reporting of this `Service`.
+        :param pulumi.Input[str] service_type: The type of service that this basic service defines, e.g.
+               APP_ENGINE service type
+        """
+        if service_labels is not None:
+            pulumi.set(__self__, "service_labels", service_labels)
+        if service_type is not None:
+            pulumi.set(__self__, "service_type", service_type)
+
+    @property
+    @pulumi.getter(name="serviceLabels")
+    def service_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels that specify the resource that emits the monitoring data
+        which is used for SLO reporting of this `Service`.
+        """
+        return pulumi.get(self, "service_labels")
+
+    @service_labels.setter
+    def service_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "service_labels", value)
+
+    @property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of service that this basic service defines, e.g.
+        APP_ENGINE service type
+        """
+        return pulumi.get(self, "service_type")
+
+    @service_type.setter
+    def service_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_type", value)
+
+
+@pulumi.input_type
+class GenericServiceTelemetryArgs:
+    def __init__(__self__, *,
+                 resource_name: Optional[pulumi.Input[str]] = None):
+        if resource_name is not None:
+            pulumi.set(__self__, "resource_name", resource_name)
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "resource_name")
 
     @resource_name.setter

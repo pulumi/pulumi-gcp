@@ -19,6 +19,19 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? BootDiskKmsKey { get; set; }
 
         /// <summary>
+        /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
+        /// </summary>
+        [Input("diskSize")]
+        public Input<int>? DiskSize { get; set; }
+
+        /// <summary>
+        /// Type of the disk attached to each node
+        /// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        /// </summary>
+        [Input("diskType")]
+        public Input<string>? DiskType { get; set; }
+
+        /// <summary>
         /// The image type to use for this node. Note that changing the image type
         /// will delete and recreate all nodes in the node pool.
         /// </summary>

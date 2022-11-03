@@ -416,6 +416,50 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.snapshot);
     }
     /**
+     * The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+     * For example, the following are valid values:
+     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * projects/{project}/zones/{zone}/disks/{disk}
+     * * projects/{project}/regions/{region}/disks/{disk}
+     * * zones/{zone}/disks/{disk}
+     * * regions/{region}/disks/{disk}
+     * 
+     */
+    @Export(name="sourceDisk", type=String.class, parameters={})
+    private Output</* @Nullable */ String> sourceDisk;
+
+    /**
+     * @return The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+     * For example, the following are valid values:
+     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * projects/{project}/zones/{zone}/disks/{disk}
+     * * projects/{project}/regions/{region}/disks/{disk}
+     * * zones/{zone}/disks/{disk}
+     * * regions/{region}/disks/{disk}
+     * 
+     */
+    public Output<Optional<String>> sourceDisk() {
+        return Codegen.optional(this.sourceDisk);
+    }
+    /**
+     * The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
+     * the current or a previous instance of a given disk name.
+     * 
+     */
+    @Export(name="sourceDiskId", type=String.class, parameters={})
+    private Output<String> sourceDiskId;
+
+    /**
+     * @return The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
+     * the current or a previous instance of a given disk name.
+     * 
+     */
+    public Output<String> sourceDiskId() {
+        return this.sourceDiskId;
+    }
+    /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
      * key.

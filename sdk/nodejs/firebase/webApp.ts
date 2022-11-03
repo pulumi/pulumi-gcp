@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  * const basicWebApp = new gcp.firebase.WebApp("basicWebApp", {
  *     project: defaultProject.projectId,
  *     displayName: "Display Name Basic",
+ *     deletionPolicy: "DELETE",
  * }, {
  *     provider: google_beta,
  *     dependsOn: [defaultFirebase / projectProject],
@@ -108,6 +109,15 @@ export class WebApp extends pulumi.CustomResource {
      */
     public /*out*/ readonly appId!: pulumi.Output<string>;
     /**
+     * The URLs where the 'WebApp' is hosted.
+     */
+    public /*out*/ readonly appUrls!: pulumi.Output<string[]>;
+    /**
+     * Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
+     * This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+     */
+    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    /**
      * The user-assigned display name of the App.
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -135,6 +145,8 @@ export class WebApp extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as WebAppState | undefined;
             resourceInputs["appId"] = state ? state.appId : undefined;
+            resourceInputs["appUrls"] = state ? state.appUrls : undefined;
+            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -143,9 +155,11 @@ export class WebApp extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["appId"] = undefined /*out*/;
+            resourceInputs["appUrls"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -162,6 +176,15 @@ export interface WebAppState {
      * token, as the data format is not specified.
      */
     appId?: pulumi.Input<string>;
+    /**
+     * The URLs where the 'WebApp' is hosted.
+     */
+    appUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
+     * This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * The user-assigned display name of the App.
      */
@@ -181,6 +204,11 @@ export interface WebAppState {
  * The set of arguments for constructing a WebApp resource.
  */
 export interface WebAppArgs {
+    /**
+     * Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
+     * This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * The user-assigned display name of the App.
      */

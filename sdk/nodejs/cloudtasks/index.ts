@@ -8,23 +8,23 @@ import * as utilities from "../utilities";
 export { QueueArgs, QueueState } from "./queue";
 export type Queue = import("./queue").Queue;
 export const Queue: typeof import("./queue").Queue = null as any;
+utilities.lazyLoad(exports, ["Queue"], () => require("./queue"));
 
 export { QueueIamBindingArgs, QueueIamBindingState } from "./queueIamBinding";
 export type QueueIamBinding = import("./queueIamBinding").QueueIamBinding;
 export const QueueIamBinding: typeof import("./queueIamBinding").QueueIamBinding = null as any;
+utilities.lazyLoad(exports, ["QueueIamBinding"], () => require("./queueIamBinding"));
 
 export { QueueIamMemberArgs, QueueIamMemberState } from "./queueIamMember";
 export type QueueIamMember = import("./queueIamMember").QueueIamMember;
 export const QueueIamMember: typeof import("./queueIamMember").QueueIamMember = null as any;
+utilities.lazyLoad(exports, ["QueueIamMember"], () => require("./queueIamMember"));
 
 export { QueueIamPolicyArgs, QueueIamPolicyState } from "./queueIamPolicy";
 export type QueueIamPolicy = import("./queueIamPolicy").QueueIamPolicy;
 export const QueueIamPolicy: typeof import("./queueIamPolicy").QueueIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["Queue"], () => require("./queue"));
-utilities.lazyLoad(exports, ["QueueIamBinding"], () => require("./queueIamBinding"));
-utilities.lazyLoad(exports, ["QueueIamMember"], () => require("./queueIamMember"));
 utilities.lazyLoad(exports, ["QueueIamPolicy"], () => require("./queueIamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),

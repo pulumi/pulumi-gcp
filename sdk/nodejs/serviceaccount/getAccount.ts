@@ -66,6 +66,10 @@ export interface GetAccountResult {
      */
     readonly id: string;
     /**
+     * The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+     */
+    readonly member: string;
+    /**
      * The fully-qualified name of the service account.
      */
     readonly name: string;

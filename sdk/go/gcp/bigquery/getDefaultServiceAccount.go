@@ -75,7 +75,9 @@ type GetDefaultServiceAccountResult struct {
 	// in order to grant IAM permissions.
 	Email string `pulumi:"email"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+	Member  string `pulumi:"member"`
 	Project string `pulumi:"project"`
 }
 
@@ -126,6 +128,11 @@ func (o GetDefaultServiceAccountResultOutput) Email() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o GetDefaultServiceAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDefaultServiceAccountResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+func (o GetDefaultServiceAccountResultOutput) Member() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefaultServiceAccountResult) string { return v.Member }).(pulumi.StringOutput)
 }
 
 func (o GetDefaultServiceAccountResultOutput) Project() pulumi.StringOutput {

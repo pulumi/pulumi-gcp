@@ -39,7 +39,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.GetClusterIstioService(ctx, &monitoring.GetClusterIstioServiceArgs{
+//			_, err = monitoring.GetClusterIstioService(ctx, &monitoring.GetClusterIstioServiceArgs{
 //				ClusterName:      "west",
 //				Location:         "us-west2-a",
 //				ServiceName:      "istio-policy",

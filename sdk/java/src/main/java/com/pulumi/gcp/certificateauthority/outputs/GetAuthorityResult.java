@@ -45,6 +45,7 @@ public final class GetAuthorityResult {
     private String pemCsr;
     private @Nullable String pool;
     private @Nullable String project;
+    private Boolean skipGracePeriod;
     private String state;
     private List<GetAuthoritySubordinateConfig> subordinateConfigs;
     private String type;
@@ -116,6 +117,9 @@ public final class GetAuthorityResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Boolean skipGracePeriod() {
+        return this.skipGracePeriod;
+    }
     public String state() {
         return this.state;
     }
@@ -157,6 +161,7 @@ public final class GetAuthorityResult {
         private String pemCsr;
         private @Nullable String pool;
         private @Nullable String project;
+        private Boolean skipGracePeriod;
         private String state;
         private List<GetAuthoritySubordinateConfig> subordinateConfigs;
         private String type;
@@ -183,6 +188,7 @@ public final class GetAuthorityResult {
     	      this.pemCsr = defaults.pemCsr;
     	      this.pool = defaults.pool;
     	      this.project = defaults.project;
+    	      this.skipGracePeriod = defaults.skipGracePeriod;
     	      this.state = defaults.state;
     	      this.subordinateConfigs = defaults.subordinateConfigs;
     	      this.type = defaults.type;
@@ -297,6 +303,11 @@ public final class GetAuthorityResult {
             return this;
         }
         @CustomType.Setter
+        public Builder skipGracePeriod(Boolean skipGracePeriod) {
+            this.skipGracePeriod = Objects.requireNonNull(skipGracePeriod);
+            return this;
+        }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
@@ -340,6 +351,7 @@ public final class GetAuthorityResult {
             o.pemCsr = pemCsr;
             o.pool = pool;
             o.project = project;
+            o.skipGracePeriod = skipGracePeriod;
             o.state = state;
             o.subordinateConfigs = subordinateConfigs;
             o.type = type;

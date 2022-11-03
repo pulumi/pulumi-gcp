@@ -219,9 +219,351 @@ func (o NotificationConfigStreamingConfigPtrOutput) Filter() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type SourceIamBindingCondition struct {
+	// The description of the source (max of 1024 characters).
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// SourceIamBindingConditionInput is an input type that accepts SourceIamBindingConditionArgs and SourceIamBindingConditionOutput values.
+// You can construct a concrete instance of `SourceIamBindingConditionInput` via:
+//
+//	SourceIamBindingConditionArgs{...}
+type SourceIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToSourceIamBindingConditionOutput() SourceIamBindingConditionOutput
+	ToSourceIamBindingConditionOutputWithContext(context.Context) SourceIamBindingConditionOutput
+}
+
+type SourceIamBindingConditionArgs struct {
+	// The description of the source (max of 1024 characters).
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (SourceIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceIamBindingCondition)(nil)).Elem()
+}
+
+func (i SourceIamBindingConditionArgs) ToSourceIamBindingConditionOutput() SourceIamBindingConditionOutput {
+	return i.ToSourceIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i SourceIamBindingConditionArgs) ToSourceIamBindingConditionOutputWithContext(ctx context.Context) SourceIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceIamBindingConditionOutput)
+}
+
+func (i SourceIamBindingConditionArgs) ToSourceIamBindingConditionPtrOutput() SourceIamBindingConditionPtrOutput {
+	return i.ToSourceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i SourceIamBindingConditionArgs) ToSourceIamBindingConditionPtrOutputWithContext(ctx context.Context) SourceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceIamBindingConditionOutput).ToSourceIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// SourceIamBindingConditionPtrInput is an input type that accepts SourceIamBindingConditionArgs, SourceIamBindingConditionPtr and SourceIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `SourceIamBindingConditionPtrInput` via:
+//
+//	        SourceIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToSourceIamBindingConditionPtrOutput() SourceIamBindingConditionPtrOutput
+	ToSourceIamBindingConditionPtrOutputWithContext(context.Context) SourceIamBindingConditionPtrOutput
+}
+
+type sourceIamBindingConditionPtrType SourceIamBindingConditionArgs
+
+func SourceIamBindingConditionPtr(v *SourceIamBindingConditionArgs) SourceIamBindingConditionPtrInput {
+	return (*sourceIamBindingConditionPtrType)(v)
+}
+
+func (*sourceIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceIamBindingCondition)(nil)).Elem()
+}
+
+func (i *sourceIamBindingConditionPtrType) ToSourceIamBindingConditionPtrOutput() SourceIamBindingConditionPtrOutput {
+	return i.ToSourceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *sourceIamBindingConditionPtrType) ToSourceIamBindingConditionPtrOutputWithContext(ctx context.Context) SourceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceIamBindingConditionPtrOutput)
+}
+
+type SourceIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (SourceIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceIamBindingCondition)(nil)).Elem()
+}
+
+func (o SourceIamBindingConditionOutput) ToSourceIamBindingConditionOutput() SourceIamBindingConditionOutput {
+	return o
+}
+
+func (o SourceIamBindingConditionOutput) ToSourceIamBindingConditionOutputWithContext(ctx context.Context) SourceIamBindingConditionOutput {
+	return o
+}
+
+func (o SourceIamBindingConditionOutput) ToSourceIamBindingConditionPtrOutput() SourceIamBindingConditionPtrOutput {
+	return o.ToSourceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o SourceIamBindingConditionOutput) ToSourceIamBindingConditionPtrOutputWithContext(ctx context.Context) SourceIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceIamBindingCondition) *SourceIamBindingCondition {
+		return &v
+	}).(SourceIamBindingConditionPtrOutput)
+}
+
+// The description of the source (max of 1024 characters).
+func (o SourceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o SourceIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v SourceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o SourceIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v SourceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type SourceIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (SourceIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceIamBindingCondition)(nil)).Elem()
+}
+
+func (o SourceIamBindingConditionPtrOutput) ToSourceIamBindingConditionPtrOutput() SourceIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o SourceIamBindingConditionPtrOutput) ToSourceIamBindingConditionPtrOutputWithContext(ctx context.Context) SourceIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o SourceIamBindingConditionPtrOutput) Elem() SourceIamBindingConditionOutput {
+	return o.ApplyT(func(v *SourceIamBindingCondition) SourceIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret SourceIamBindingCondition
+		return ret
+	}).(SourceIamBindingConditionOutput)
+}
+
+// The description of the source (max of 1024 characters).
+func (o SourceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SourceIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SourceIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type SourceIamMemberCondition struct {
+	// The description of the source (max of 1024 characters).
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// SourceIamMemberConditionInput is an input type that accepts SourceIamMemberConditionArgs and SourceIamMemberConditionOutput values.
+// You can construct a concrete instance of `SourceIamMemberConditionInput` via:
+//
+//	SourceIamMemberConditionArgs{...}
+type SourceIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToSourceIamMemberConditionOutput() SourceIamMemberConditionOutput
+	ToSourceIamMemberConditionOutputWithContext(context.Context) SourceIamMemberConditionOutput
+}
+
+type SourceIamMemberConditionArgs struct {
+	// The description of the source (max of 1024 characters).
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (SourceIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceIamMemberCondition)(nil)).Elem()
+}
+
+func (i SourceIamMemberConditionArgs) ToSourceIamMemberConditionOutput() SourceIamMemberConditionOutput {
+	return i.ToSourceIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i SourceIamMemberConditionArgs) ToSourceIamMemberConditionOutputWithContext(ctx context.Context) SourceIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceIamMemberConditionOutput)
+}
+
+func (i SourceIamMemberConditionArgs) ToSourceIamMemberConditionPtrOutput() SourceIamMemberConditionPtrOutput {
+	return i.ToSourceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i SourceIamMemberConditionArgs) ToSourceIamMemberConditionPtrOutputWithContext(ctx context.Context) SourceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceIamMemberConditionOutput).ToSourceIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// SourceIamMemberConditionPtrInput is an input type that accepts SourceIamMemberConditionArgs, SourceIamMemberConditionPtr and SourceIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `SourceIamMemberConditionPtrInput` via:
+//
+//	        SourceIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToSourceIamMemberConditionPtrOutput() SourceIamMemberConditionPtrOutput
+	ToSourceIamMemberConditionPtrOutputWithContext(context.Context) SourceIamMemberConditionPtrOutput
+}
+
+type sourceIamMemberConditionPtrType SourceIamMemberConditionArgs
+
+func SourceIamMemberConditionPtr(v *SourceIamMemberConditionArgs) SourceIamMemberConditionPtrInput {
+	return (*sourceIamMemberConditionPtrType)(v)
+}
+
+func (*sourceIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceIamMemberCondition)(nil)).Elem()
+}
+
+func (i *sourceIamMemberConditionPtrType) ToSourceIamMemberConditionPtrOutput() SourceIamMemberConditionPtrOutput {
+	return i.ToSourceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *sourceIamMemberConditionPtrType) ToSourceIamMemberConditionPtrOutputWithContext(ctx context.Context) SourceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceIamMemberConditionPtrOutput)
+}
+
+type SourceIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (SourceIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceIamMemberCondition)(nil)).Elem()
+}
+
+func (o SourceIamMemberConditionOutput) ToSourceIamMemberConditionOutput() SourceIamMemberConditionOutput {
+	return o
+}
+
+func (o SourceIamMemberConditionOutput) ToSourceIamMemberConditionOutputWithContext(ctx context.Context) SourceIamMemberConditionOutput {
+	return o
+}
+
+func (o SourceIamMemberConditionOutput) ToSourceIamMemberConditionPtrOutput() SourceIamMemberConditionPtrOutput {
+	return o.ToSourceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o SourceIamMemberConditionOutput) ToSourceIamMemberConditionPtrOutputWithContext(ctx context.Context) SourceIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceIamMemberCondition) *SourceIamMemberCondition {
+		return &v
+	}).(SourceIamMemberConditionPtrOutput)
+}
+
+// The description of the source (max of 1024 characters).
+func (o SourceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o SourceIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v SourceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o SourceIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v SourceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type SourceIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (SourceIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceIamMemberCondition)(nil)).Elem()
+}
+
+func (o SourceIamMemberConditionPtrOutput) ToSourceIamMemberConditionPtrOutput() SourceIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o SourceIamMemberConditionPtrOutput) ToSourceIamMemberConditionPtrOutputWithContext(ctx context.Context) SourceIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o SourceIamMemberConditionPtrOutput) Elem() SourceIamMemberConditionOutput {
+	return o.ApplyT(func(v *SourceIamMemberCondition) SourceIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret SourceIamMemberCondition
+		return ret
+	}).(SourceIamMemberConditionOutput)
+}
+
+// The description of the source (max of 1024 characters).
+func (o SourceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SourceIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SourceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigStreamingConfigInput)(nil)).Elem(), NotificationConfigStreamingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigStreamingConfigPtrInput)(nil)).Elem(), NotificationConfigStreamingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceIamBindingConditionInput)(nil)).Elem(), SourceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceIamBindingConditionPtrInput)(nil)).Elem(), SourceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceIamMemberConditionInput)(nil)).Elem(), SourceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceIamMemberConditionPtrInput)(nil)).Elem(), SourceIamMemberConditionArgs{})
 	pulumi.RegisterOutputType(NotificationConfigStreamingConfigOutput{})
 	pulumi.RegisterOutputType(NotificationConfigStreamingConfigPtrOutput{})
+	pulumi.RegisterOutputType(SourceIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(SourceIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(SourceIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(SourceIamMemberConditionPtrOutput{})
 }

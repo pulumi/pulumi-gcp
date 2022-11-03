@@ -148,6 +148,11 @@ namespace Pulumi.Gcp.RuntimeConfig
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "text",
+                    "value",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -192,17 +197,36 @@ namespace Pulumi.Gcp.RuntimeConfig
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("text")]
+        private Input<string>? _text;
+
         /// <summary>
         /// or `value` - (Required) The content to associate with the variable.
         /// Exactly one of `text` or `variable` must be specified. If `text` is specified,
         /// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
         /// is specified, it must be base64 encoded and less than 4096 bytes in length.
         /// </summary>
-        [Input("text")]
-        public Input<string>? Text { get; set; }
+        public Input<string>? Text
+        {
+            get => _text;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _text = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("value")]
-        public Input<string>? Value { get; set; }
+        private Input<string>? _value;
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public VariableArgs()
         {
@@ -233,14 +257,24 @@ namespace Pulumi.Gcp.RuntimeConfig
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("text")]
+        private Input<string>? _text;
+
         /// <summary>
         /// or `value` - (Required) The content to associate with the variable.
         /// Exactly one of `text` or `variable` must be specified. If `text` is specified,
         /// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
         /// is specified, it must be base64 encoded and less than 4096 bytes in length.
         /// </summary>
-        [Input("text")]
-        public Input<string>? Text { get; set; }
+        public Input<string>? Text
+        {
+            get => _text;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _text = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// (Computed) The timestamp in RFC3339 UTC "Zulu" format,
@@ -251,7 +285,16 @@ namespace Pulumi.Gcp.RuntimeConfig
         public Input<string>? UpdateTime { get; set; }
 
         [Input("value")]
-        public Input<string>? Value { get; set; }
+        private Input<string>? _value;
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public VariableState()
         {

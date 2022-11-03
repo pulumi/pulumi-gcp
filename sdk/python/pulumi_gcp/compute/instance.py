@@ -76,7 +76,8 @@ class InstanceArgs:
                field is only applicable for persistent disks.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Ssh keys attached in the Cloud Console will be removed.
-               Add them to your config in order to keep them attached to your instance.
+               Add them to your config in order to keep them attached to your instance. A
+               list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
                startup-script metadata key, except this one forces the instance to be recreated
                (thus re-running the script) if it is changed. This replaces the startup-script
@@ -369,7 +370,8 @@ class InstanceArgs:
         """
         Metadata key/value pairs to make available from
         within the instance. Ssh keys attached in the Cloud Console will be removed.
-        Add them to your config in order to keep them attached to your instance.
+        Add them to your config in order to keep them attached to your instance. A
+        list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
         """
         return pulumi.get(self, "metadata")
 
@@ -630,7 +632,8 @@ class _InstanceState:
         :param pulumi.Input[str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Ssh keys attached in the Cloud Console will be removed.
-               Add them to your config in order to keep them attached to your instance.
+               Add them to your config in order to keep them attached to your instance. A
+               list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
                startup-script metadata key, except this one forces the instance to be recreated
@@ -980,7 +983,8 @@ class _InstanceState:
         """
         Metadata key/value pairs to make available from
         within the instance. Ssh keys attached in the Cloud Console will be removed.
-        Add them to your config in order to keep them attached to your instance.
+        Add them to your config in order to keep them attached to your instance. A
+        list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
         """
         return pulumi.get(self, "metadata")
 
@@ -1347,7 +1351,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Ssh keys attached in the Cloud Console will be removed.
-               Add them to your config in order to keep them attached to your instance.
+               Add them to your config in order to keep them attached to your instance. A
+               list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
                startup-script metadata key, except this one forces the instance to be recreated
                (thus re-running the script) if it is changed. This replaces the startup-script
@@ -1638,7 +1643,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Ssh keys attached in the Cloud Console will be removed.
-               Add them to your config in order to keep them attached to your instance.
+               Add them to your config in order to keep them attached to your instance. A
+               list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
                startup-script metadata key, except this one forces the instance to be recreated
@@ -1885,7 +1891,8 @@ class Instance(pulumi.CustomResource):
         """
         Metadata key/value pairs to make available from
         within the instance. Ssh keys attached in the Cloud Console will be removed.
-        Add them to your config in order to keep them attached to your instance.
+        Add them to your config in order to keep them attached to your instance. A
+        list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
         """
         return pulumi.get(self, "metadata")
 

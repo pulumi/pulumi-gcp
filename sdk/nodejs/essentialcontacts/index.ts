@@ -8,18 +8,18 @@ import * as utilities from "../utilities";
 export { ContactArgs, ContactState } from "./contact";
 export type Contact = import("./contact").Contact;
 export const Contact: typeof import("./contact").Contact = null as any;
+utilities.lazyLoad(exports, ["Contact"], () => require("./contact"));
 
 export { DocumentAiProcessorArgs, DocumentAiProcessorState } from "./documentAiProcessor";
 export type DocumentAiProcessor = import("./documentAiProcessor").DocumentAiProcessor;
 export const DocumentAiProcessor: typeof import("./documentAiProcessor").DocumentAiProcessor = null as any;
+utilities.lazyLoad(exports, ["DocumentAiProcessor"], () => require("./documentAiProcessor"));
 
 export { DocumentAiProcessorDefaultVersionArgs, DocumentAiProcessorDefaultVersionState } from "./documentAiProcessorDefaultVersion";
 export type DocumentAiProcessorDefaultVersion = import("./documentAiProcessorDefaultVersion").DocumentAiProcessorDefaultVersion;
 export const DocumentAiProcessorDefaultVersion: typeof import("./documentAiProcessorDefaultVersion").DocumentAiProcessorDefaultVersion = null as any;
-
-utilities.lazyLoad(exports, ["Contact"], () => require("./contact"));
-utilities.lazyLoad(exports, ["DocumentAiProcessor"], () => require("./documentAiProcessor"));
 utilities.lazyLoad(exports, ["DocumentAiProcessorDefaultVersion"], () => require("./documentAiProcessorDefaultVersion"));
+
 
 const _module = {
     version: utilities.getVersion(),

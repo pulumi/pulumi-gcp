@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := tags.LookupTagKey(ctx, &tags.LookupTagKeyArgs{
+//			_, err = tags.LookupTagKey(ctx, &tags.LookupTagKeyArgs{
 //				Parent:    "organizations/12345",
 //				ShortName: "environment",
 //			}, nil)

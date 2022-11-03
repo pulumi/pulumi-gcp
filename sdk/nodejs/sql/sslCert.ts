@@ -152,6 +152,8 @@ export class SslCert extends pulumi.CustomResource {
             resourceInputs["sha1Fingerprint"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["privateKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(SslCert.__pulumiType, name, resourceInputs, opts);
     }
 }

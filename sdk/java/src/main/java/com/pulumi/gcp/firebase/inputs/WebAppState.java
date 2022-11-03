@@ -6,6 +6,7 @@ package com.pulumi.gcp.firebase.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,6 +31,38 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> appId() {
         return Optional.ofNullable(this.appId);
+    }
+
+    /**
+     * The URLs where the &#39;WebApp&#39; is hosted.
+     * 
+     */
+    @Import(name="appUrls")
+    private @Nullable Output<List<String>> appUrls;
+
+    /**
+     * @return The URLs where the &#39;WebApp&#39; is hosted.
+     * 
+     */
+    public Optional<Output<List<String>>> appUrls() {
+        return Optional.ofNullable(this.appUrls);
+    }
+
+    /**
+     * Set to &#39;ABANDON&#39; to allow the WebApp to be untracked from terraform state rather than deleted upon &#39;terraform destroy&#39;.
+     * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;ABANDON&#39;
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Set to &#39;ABANDON&#39; to allow the WebApp to be untracked from terraform state rather than deleted upon &#39;terraform destroy&#39;.
+     * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;ABANDON&#39;
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
     }
 
     /**
@@ -83,6 +116,8 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
 
     private WebAppState(WebAppState $) {
         this.appId = $.appId;
+        this.appUrls = $.appUrls;
+        this.deletionPolicy = $.deletionPolicy;
         this.displayName = $.displayName;
         this.name = $.name;
         this.project = $.project;
@@ -127,6 +162,60 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder appId(String appId) {
             return appId(Output.of(appId));
+        }
+
+        /**
+         * @param appUrls The URLs where the &#39;WebApp&#39; is hosted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appUrls(@Nullable Output<List<String>> appUrls) {
+            $.appUrls = appUrls;
+            return this;
+        }
+
+        /**
+         * @param appUrls The URLs where the &#39;WebApp&#39; is hosted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appUrls(List<String> appUrls) {
+            return appUrls(Output.of(appUrls));
+        }
+
+        /**
+         * @param appUrls The URLs where the &#39;WebApp&#39; is hosted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appUrls(String... appUrls) {
+            return appUrls(List.of(appUrls));
+        }
+
+        /**
+         * @param deletionPolicy Set to &#39;ABANDON&#39; to allow the WebApp to be untracked from terraform state rather than deleted upon &#39;terraform destroy&#39;.
+         * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;ABANDON&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Set to &#39;ABANDON&#39; to allow the WebApp to be untracked from terraform state rather than deleted upon &#39;terraform destroy&#39;.
+         * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;ABANDON&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

@@ -343,7 +343,7 @@ export class VPNTunnel extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["remoteTrafficSelectors"] = args ? args.remoteTrafficSelectors : undefined;
             resourceInputs["router"] = args ? args.router : undefined;
-            resourceInputs["sharedSecret"] = args ? args.sharedSecret : undefined;
+            resourceInputs["sharedSecret"] = args?.sharedSecret ? pulumi.secret(args.sharedSecret) : undefined;
             resourceInputs["targetVpnGateway"] = args ? args.targetVpnGateway : undefined;
             resourceInputs["vpnGateway"] = args ? args.vpnGateway : undefined;
             resourceInputs["vpnGatewayInterface"] = args ? args.vpnGatewayInterface : undefined;
@@ -355,6 +355,8 @@ export class VPNTunnel extends pulumi.CustomResource {
             resourceInputs["tunnelId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["sharedSecret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(VPNTunnel.__pulumiType, name, resourceInputs, opts);
     }
 }

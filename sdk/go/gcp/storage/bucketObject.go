@@ -114,6 +114,17 @@ func NewBucketObject(ctx *pulumi.Context,
 	if args.Bucket == nil {
 		return nil, errors.New("invalid value for required argument 'Bucket'")
 	}
+	if args.Content != nil {
+		args.Content = pulumi.ToSecret(args.Content).(pulumi.StringPtrOutput)
+	}
+	if args.CustomerEncryption != nil {
+		args.CustomerEncryption = pulumi.ToSecret(args.CustomerEncryption).(BucketObjectCustomerEncryptionPtrOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"content",
+		"customerEncryption",
+	})
+	opts = append(opts, secrets)
 	var resource BucketObject
 	err := ctx.RegisterResource("gcp:storage/bucketObject:BucketObject", name, args, &resource, opts...)
 	if err != nil {

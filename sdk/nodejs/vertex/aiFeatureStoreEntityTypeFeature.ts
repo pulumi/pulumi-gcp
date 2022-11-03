@@ -5,8 +5,45 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Feature Metadata information that describes an attribute of an entity type. For example, apple is an entity type, and color is a feature that describes apple.
+ *
+ * To get more information about FeaturestoreEntitytypeFeature, see:
+ *
+ * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+ *
  * ## Example Usage
  * ### Vertex Ai Featurestore Entitytype Feature
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     region: "us-central1",
+ *     onlineServingConfig: {
+ *         fixedNodeCount: 2,
+ *     },
+ * });
+ * const entity = new gcp.vertex.AiFeatureStoreEntityType("entity", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     featurestore: featurestore.id,
+ * });
+ * const feature = new gcp.vertex.AiFeatureStoreEntityTypeFeature("feature", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     entitytype: entity.id,
+ *     valueType: "INT64_ARRAY",
+ * });
+ * ```
+ * ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

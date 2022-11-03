@@ -291,6 +291,97 @@ import (
 //	}
 //
 // ```
+// ### Primary-Backup
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			prodManagedZone, err := dns.NewManagedZone(ctx, "prodManagedZone", &dns.ManagedZoneArgs{
+//				DnsName: pulumi.String("prod.mydomain.com."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			prodRegionBackendService, err := compute.NewRegionBackendService(ctx, "prodRegionBackendService", &compute.RegionBackendServiceArgs{
+//				Region: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			prodNetwork, err := compute.NewNetwork(ctx, "prodNetwork", nil)
+//			if err != nil {
+//				return err
+//			}
+//			prodForwardingRule, err := compute.NewForwardingRule(ctx, "prodForwardingRule", &compute.ForwardingRuleArgs{
+//				Region:              pulumi.String("us-central1"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL"),
+//				BackendService:      prodRegionBackendService.ID(),
+//				AllPorts:            pulumi.Bool(true),
+//				Network:             prodNetwork.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewRecordSet(ctx, "recordSet", &dns.RecordSetArgs{
+//				Name: prodManagedZone.DnsName.ApplyT(func(dnsName string) (string, error) {
+//					return fmt.Sprintf("backend.%v", dnsName), nil
+//				}).(pulumi.StringOutput),
+//				ManagedZone: prodManagedZone.Name,
+//				Type:        pulumi.String("A"),
+//				Ttl:         pulumi.Int(300),
+//				RoutingPolicy: &dns.RecordSetRoutingPolicyArgs{
+//					PrimaryBackup: &dns.RecordSetRoutingPolicyPrimaryBackupArgs{
+//						TrickleRatio: pulumi.Float64(0.1),
+//						Primary: &dns.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs{
+//							InternalLoadBalancers: dns.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArray{
+//								&dns.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs{
+//									LoadBalancerType: pulumi.String("regionalL4ilb"),
+//									IpAddress:        prodForwardingRule.IpAddress,
+//									Port:             pulumi.String("80"),
+//									IpProtocol:       pulumi.String("tcp"),
+//									NetworkUrl:       prodNetwork.ID(),
+//									Project:          prodForwardingRule.Project,
+//									Region:           prodForwardingRule.Region,
+//								},
+//							},
+//						},
+//						BackupGeos: dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArray{
+//							&dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs{
+//								Location: pulumi.String("asia-east1"),
+//								Rrdatas: pulumi.StringArray{
+//									pulumi.String("10.128.1.1"),
+//								},
+//							},
+//							&dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs{
+//								Location: pulumi.String("us-west1"),
+//								Rrdatas: pulumi.StringArray{
+//									pulumi.String("10.130.1.1"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -323,8 +414,7 @@ type RecordSet struct {
 	ManagedZone pulumi.StringOutput `pulumi:"managedZone"`
 	// The DNS name this record set will apply to.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the load balancer belongs.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The configuration for steering traffic based on query.
 	// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
@@ -381,8 +471,7 @@ type recordSetState struct {
 	ManagedZone *string `pulumi:"managedZone"`
 	// The DNS name this record set will apply to.
 	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the load balancer belongs.
 	Project *string `pulumi:"project"`
 	// The configuration for steering traffic based on query.
 	// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
@@ -402,8 +491,7 @@ type RecordSetState struct {
 	ManagedZone pulumi.StringPtrInput
 	// The DNS name this record set will apply to.
 	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the load balancer belongs.
 	Project pulumi.StringPtrInput
 	// The configuration for steering traffic based on query.
 	// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
@@ -427,8 +515,7 @@ type recordSetArgs struct {
 	ManagedZone string `pulumi:"managedZone"`
 	// The DNS name this record set will apply to.
 	Name string `pulumi:"name"`
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the load balancer belongs.
 	Project *string `pulumi:"project"`
 	// The configuration for steering traffic based on query.
 	// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
@@ -449,8 +536,7 @@ type RecordSetArgs struct {
 	ManagedZone pulumi.StringInput
 	// The DNS name this record set will apply to.
 	Name pulumi.StringInput
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the load balancer belongs.
 	Project pulumi.StringPtrInput
 	// The configuration for steering traffic based on query.
 	// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
@@ -562,8 +648,7 @@ func (o RecordSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RecordSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs. If it
-// is not provided, the provider project is used.
+// The ID of the project in which the load balancer belongs.
 func (o RecordSetOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RecordSet) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

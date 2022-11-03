@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.Kms
     ///                 Network = "default",
     ///                 AccessConfigs = new[]
     ///                 {
-    ///                     ,
+    ///                     null,
     ///                 },
     ///             },
     ///         },
@@ -140,6 +140,11 @@ namespace Pulumi.Gcp.Kms
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "additionalAuthenticatedData",
+                    "plaintext",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -163,12 +168,22 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class SecretCiphertextArgs : global::Pulumi.ResourceArgs
     {
+        [Input("additionalAuthenticatedData")]
+        private Input<string>? _additionalAuthenticatedData;
+
         /// <summary>
         /// The additional authenticated data used for integrity checks during encryption and decryption.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("additionalAuthenticatedData")]
-        public Input<string>? AdditionalAuthenticatedData { get; set; }
+        public Input<string>? AdditionalAuthenticatedData
+        {
+            get => _additionalAuthenticatedData;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _additionalAuthenticatedData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
@@ -177,12 +192,22 @@ namespace Pulumi.Gcp.Kms
         [Input("cryptoKey", required: true)]
         public Input<string> CryptoKey { get; set; } = null!;
 
+        [Input("plaintext", required: true)]
+        private Input<string>? _plaintext;
+
         /// <summary>
         /// The plaintext to be encrypted.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("plaintext", required: true)]
-        public Input<string> Plaintext { get; set; } = null!;
+        public Input<string>? Plaintext
+        {
+            get => _plaintext;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _plaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public SecretCiphertextArgs()
         {
@@ -192,12 +217,22 @@ namespace Pulumi.Gcp.Kms
 
     public sealed class SecretCiphertextState : global::Pulumi.ResourceArgs
     {
+        [Input("additionalAuthenticatedData")]
+        private Input<string>? _additionalAuthenticatedData;
+
         /// <summary>
         /// The additional authenticated data used for integrity checks during encryption and decryption.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("additionalAuthenticatedData")]
-        public Input<string>? AdditionalAuthenticatedData { get; set; }
+        public Input<string>? AdditionalAuthenticatedData
+        {
+            get => _additionalAuthenticatedData;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _additionalAuthenticatedData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Contains the result of encrypting the provided plaintext, encoded in base64.
@@ -212,12 +247,22 @@ namespace Pulumi.Gcp.Kms
         [Input("cryptoKey")]
         public Input<string>? CryptoKey { get; set; }
 
+        [Input("plaintext")]
+        private Input<string>? _plaintext;
+
         /// <summary>
         /// The plaintext to be encrypted.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("plaintext")]
-        public Input<string>? Plaintext { get; set; }
+        public Input<string>? Plaintext
+        {
+            get => _plaintext;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _plaintext = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public SecretCiphertextState()
         {

@@ -50,7 +50,7 @@ class BucketArgs:
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[str] public_access_prevention: Prevents public access to a bucket.
+        :param pulumi.Input[str] public_access_prevention: Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input['BucketRetentionPolicyArgs'] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] storage_class: The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
@@ -233,7 +233,7 @@ class BucketArgs:
     @pulumi.getter(name="publicAccessPrevention")
     def public_access_prevention(self) -> Optional[pulumi.Input[str]]:
         """
-        Prevents public access to a bucket.
+        Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
         """
         return pulumi.get(self, "public_access_prevention")
 
@@ -353,7 +353,7 @@ class _BucketState:
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[str] public_access_prevention: Prevents public access to a bucket.
+        :param pulumi.Input[str] public_access_prevention: Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input['BucketRetentionPolicyArgs'] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -543,7 +543,7 @@ class _BucketState:
     @pulumi.getter(name="publicAccessPrevention")
     def public_access_prevention(self) -> Optional[pulumi.Input[str]]:
         """
-        Prevents public access to a bucket.
+        Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
         """
         return pulumi.get(self, "public_access_prevention")
 
@@ -730,6 +730,17 @@ class Bucket(pulumi.CustomResource):
             )],
             location="US")
         ```
+        ### Enabling Public Access Prevention
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        auto_expire = gcp.storage.Bucket("auto-expire",
+            force_destroy=True,
+            location="US",
+            public_access_prevention="enforced")
+        ```
 
         ## Import
 
@@ -763,7 +774,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[str] public_access_prevention: Prevents public access to a bucket.
+        :param pulumi.Input[str] public_access_prevention: Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] storage_class: The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
@@ -834,6 +845,17 @@ class Bucket(pulumi.CustomResource):
                 ),
             )],
             location="US")
+        ```
+        ### Enabling Public Access Prevention
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        auto_expire = gcp.storage.Bucket("auto-expire",
+            force_destroy=True,
+            location="US",
+            public_access_prevention="enforced")
         ```
 
         ## Import
@@ -967,7 +989,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[str] public_access_prevention: Prevents public access to a bucket.
+        :param pulumi.Input[str] public_access_prevention: Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
         :param pulumi.Input[bool] requester_pays: Enables [Requester Pays](https://cloud.google.com/storage/docs/requester-pays) on a storage bucket.
         :param pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -1098,7 +1120,7 @@ class Bucket(pulumi.CustomResource):
     @pulumi.getter(name="publicAccessPrevention")
     def public_access_prevention(self) -> pulumi.Output[str]:
         """
-        Prevents public access to a bucket.
+        Prevents public access to a bucket. Acceptable values are "inherited" or "enforced". If "inherited", the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to "inherited".
         """
         return pulumi.get(self, "public_access_prevention")
 

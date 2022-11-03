@@ -19,7 +19,16 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? DeviceName { get; set; }
 
         [Input("diskEncryptionKeyRaw")]
-        public Input<string>? DiskEncryptionKeyRaw { get; set; }
+        private Input<string>? _diskEncryptionKeyRaw;
+        public Input<string>? DiskEncryptionKeyRaw
+        {
+            get => _diskEncryptionKeyRaw;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _diskEncryptionKeyRaw = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("diskEncryptionKeySha256")]
         public Input<string>? DiskEncryptionKeySha256 { get; set; }

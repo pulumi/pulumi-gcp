@@ -8,13 +8,13 @@ import * as utilities from "../utilities";
 export { ConnectionProfileArgs, ConnectionProfileState } from "./connectionProfile";
 export type ConnectionProfile = import("./connectionProfile").ConnectionProfile;
 export const ConnectionProfile: typeof import("./connectionProfile").ConnectionProfile = null as any;
+utilities.lazyLoad(exports, ["ConnectionProfile"], () => require("./connectionProfile"));
 
 export { PrivateConnectionArgs, PrivateConnectionState } from "./privateConnection";
 export type PrivateConnection = import("./privateConnection").PrivateConnection;
 export const PrivateConnection: typeof import("./privateConnection").PrivateConnection = null as any;
-
-utilities.lazyLoad(exports, ["ConnectionProfile"], () => require("./connectionProfile"));
 utilities.lazyLoad(exports, ["PrivateConnection"], () => require("./privateConnection"));
+
 
 const _module = {
     version: utilities.getVersion(),

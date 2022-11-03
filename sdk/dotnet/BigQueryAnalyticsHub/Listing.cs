@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQueryAnalyticsHub
 {
     /// <summary>
+    /// A Bigquery Analytics Hub data exchange listing
+    /// 
+    /// To get more information about Listing, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges.listings)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+    /// 
     /// ## Example Usage
     /// ### Bigquery Analyticshub Listing Basic
     /// 
@@ -26,9 +34,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     ///         DataExchangeId = "my_data_exchange",
     ///         DisplayName = "my_data_exchange",
     ///         Description = "example data exchange",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var listingDataset = new Gcp.BigQuery.Dataset("listingDataset", new()
@@ -37,9 +42,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     ///         FriendlyName = "my_listing",
     ///         Description = "example data exchange",
     ///         Location = "US",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var listingListing = new Gcp.BigQueryAnalyticsHub.Listing("listingListing", new()
@@ -53,9 +55,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     ///         {
     ///             Dataset = listingDataset.Id,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

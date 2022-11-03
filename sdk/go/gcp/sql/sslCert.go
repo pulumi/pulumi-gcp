@@ -106,6 +106,10 @@ func NewSslCert(ctx *pulumi.Context,
 	if args.Instance == nil {
 		return nil, errors.New("invalid value for required argument 'Instance'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"privateKey",
+	})
+	opts = append(opts, secrets)
 	var resource SslCert
 	err := ctx.RegisterResource("gcp:sql/sslCert:SslCert", name, args, &resource, opts...)
 	if err != nil {

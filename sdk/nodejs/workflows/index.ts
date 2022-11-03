@@ -8,8 +8,8 @@ import * as utilities from "../utilities";
 export { WorkflowArgs, WorkflowState } from "./workflow";
 export type Workflow = import("./workflow").Workflow;
 export const Workflow: typeof import("./workflow").Workflow = null as any;
-
 utilities.lazyLoad(exports, ["Workflow"], () => require("./workflow"));
+
 
 const _module = {
     version: utilities.getVersion(),

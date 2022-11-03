@@ -279,6 +279,12 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+        /// </summary>
+        [Output("maxTimeTravelHours")]
+        public Output<string?> MaxTimeTravelHours { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -420,6 +426,12 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+        /// </summary>
+        [Input("maxTimeTravelHours")]
+        public Input<string>? MaxTimeTravelHours { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -533,6 +545,12 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+        /// </summary>
+        [Input("maxTimeTravelHours")]
+        public Input<string>? MaxTimeTravelHours { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

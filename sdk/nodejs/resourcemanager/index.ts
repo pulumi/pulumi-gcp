@@ -8,8 +8,8 @@ import * as utilities from "../utilities";
 export { LienArgs, LienState } from "./lien";
 export type Lien = import("./lien").Lien;
 export const Lien: typeof import("./lien").Lien = null as any;
-
 utilities.lazyLoad(exports, ["Lien"], () => require("./lien"));
+
 
 const _module = {
     version: utilities.getVersion(),

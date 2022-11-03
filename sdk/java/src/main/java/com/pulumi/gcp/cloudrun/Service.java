@@ -288,48 +288,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Cloud Run Service Add Tag
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.cloudrun.Service;
- * import com.pulumi.gcp.cloudrun.ServiceArgs;
- * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
- * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .template()
- *             .traffics(            
- *                 ServiceTrafficArgs.builder()
- *                     .percent(100)
- *                     .revisionName(&#34;cloudrun-srv-green&#34;)
- *                     .build(),
- *                 ServiceTrafficArgs.builder()
- *                     .percent(0)
- *                     .revisionName(&#34;cloudrun-srv-blue&#34;)
- *                     .tag(&#34;tag-name&#34;)
- *                     .build())
- *             .build());
- * 
- *     }
- * }
- * ```
  * ### Cloud Run Service Probes
  * ```java
  * package generated_program;
@@ -373,6 +331,11 @@ import javax.annotation.Nullable;
  *                             .failureThreshold(1)
  *                             .tcpSocket(ServiceTemplateSpecContainerStartupProbeTcpSocketArgs.builder()
  *                                 .port(8080)
+ *                                 .build())
+ *                             .build())
+ *                         .livenessProbe(ServiceTemplateSpecContainerLivenessProbeArgs.builder()
+ *                             .httpGet(ServiceTemplateSpecContainerLivenessProbeHttpGetArgs.builder()
+ *                                 .path(&#34;/&#34;)
  *                                 .build())
  *                             .build())
  *                         .build())

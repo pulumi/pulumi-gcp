@@ -10,6 +10,8 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.inputs.GetAddressArgs;
 import com.pulumi.gcp.compute.inputs.GetAddressPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetAddressesArgs;
+import com.pulumi.gcp.compute.inputs.GetAddressesPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetBackendBucketArgs;
 import com.pulumi.gcp.compute.inputs.GetBackendBucketPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetBackendServiceArgs;
@@ -50,6 +52,8 @@ import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
 import com.pulumi.gcp.compute.inputs.GetNodeTypesPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionSslCertificatePlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionsArgs;
@@ -73,6 +77,7 @@ import com.pulumi.gcp.compute.inputs.GetZonesPlainArgs;
 import com.pulumi.gcp.compute.inputs.RouterStatusArgs;
 import com.pulumi.gcp.compute.inputs.RouterStatusPlainArgs;
 import com.pulumi.gcp.compute.outputs.GetAddressResult;
+import com.pulumi.gcp.compute.outputs.GetAddressesResult;
 import com.pulumi.gcp.compute.outputs.GetBackendBucketResult;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceResult;
 import com.pulumi.gcp.compute.outputs.GetCertificateResult;
@@ -94,6 +99,7 @@ import com.pulumi.gcp.compute.outputs.GetNetworkEndpointGroupResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkResult;
 import com.pulumi.gcp.compute.outputs.GetNodeTypesResult;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupResult;
+import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupResult;
 import com.pulumi.gcp.compute.outputs.GetRegionSslCertificateResult;
 import com.pulumi.gcp.compute.outputs.GetRegionsResult;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicyResult;
@@ -324,6 +330,60 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetAddressResult> getAddressPlain(GetAddressPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getAddress:getAddress", TypeShape.of(GetAddressResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List IP addresses in a project. For more information see
+     * the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
+     * [aggregated lsit](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+     * 
+     */
+    public static Output<GetAddressesResult> getAddresses() {
+        return getAddresses(GetAddressesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * List IP addresses in a project. For more information see
+     * the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
+     * [aggregated lsit](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+     * 
+     */
+    public static CompletableFuture<GetAddressesResult> getAddressesPlain() {
+        return getAddressesPlain(GetAddressesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * List IP addresses in a project. For more information see
+     * the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
+     * [aggregated lsit](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+     * 
+     */
+    public static Output<GetAddressesResult> getAddresses(GetAddressesArgs args) {
+        return getAddresses(args, InvokeOptions.Empty);
+    }
+    /**
+     * List IP addresses in a project. For more information see
+     * the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
+     * [aggregated lsit](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+     * 
+     */
+    public static CompletableFuture<GetAddressesResult> getAddressesPlain(GetAddressesPlainArgs args) {
+        return getAddressesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List IP addresses in a project. For more information see
+     * the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
+     * [aggregated lsit](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+     * 
+     */
+    public static Output<GetAddressesResult> getAddresses(GetAddressesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getAddresses:getAddresses", TypeShape.of(GetAddressesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List IP addresses in a project. For more information see
+     * the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
+     * [aggregated lsit](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+     * 
+     */
+    public static CompletableFuture<GetAddressesResult> getAddressesPlain(GetAddressesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getAddresses:getAddresses", TypeShape.of(GetAddressesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information about a BackendBucket.
@@ -3396,46 +3456,6 @@ public final class ComputeFunctions {
      * 
      * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.Firewall;
-     * import com.pulumi.gcp.compute.FirewallArgs;
-     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ranges = ComputeFunctions.getLBIPRanges();
-     * 
-     *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
-     *             .network(google_compute_network.main().name())
-     *             .allows(FirewallAllowArgs.builder()
-     *                 .protocol(&#34;tcp&#34;)
-     *                 .ports(&#34;80&#34;)
-     *                 .build())
-     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -&gt; getLBIPRangesResult.networks()))
-     *             .targetTags(&#34;InstanceBehindLoadBalancer&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetLBIPRangesResult> getLBIPRanges() {
         return getLBIPRanges(InvokeArgs.Empty, InvokeOptions.Empty);
@@ -3444,46 +3464,6 @@ public final class ComputeFunctions {
      * Use this data source to access IP ranges in your firewall rules.
      * 
      * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.Firewall;
-     * import com.pulumi.gcp.compute.FirewallArgs;
-     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ranges = ComputeFunctions.getLBIPRanges();
-     * 
-     *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
-     *             .network(google_compute_network.main().name())
-     *             .allows(FirewallAllowArgs.builder()
-     *                 .protocol(&#34;tcp&#34;)
-     *                 .ports(&#34;80&#34;)
-     *                 .build())
-     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -&gt; getLBIPRangesResult.networks()))
-     *             .targetTags(&#34;InstanceBehindLoadBalancer&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetLBIPRangesResult> getLBIPRangesPlain() {
@@ -3494,46 +3474,6 @@ public final class ComputeFunctions {
      * 
      * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.Firewall;
-     * import com.pulumi.gcp.compute.FirewallArgs;
-     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ranges = ComputeFunctions.getLBIPRanges();
-     * 
-     *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
-     *             .network(google_compute_network.main().name())
-     *             .allows(FirewallAllowArgs.builder()
-     *                 .protocol(&#34;tcp&#34;)
-     *                 .ports(&#34;80&#34;)
-     *                 .build())
-     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -&gt; getLBIPRangesResult.networks()))
-     *             .targetTags(&#34;InstanceBehindLoadBalancer&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetLBIPRangesResult> getLBIPRanges(InvokeArgs args) {
         return getLBIPRanges(args, InvokeOptions.Empty);
@@ -3542,46 +3482,6 @@ public final class ComputeFunctions {
      * Use this data source to access IP ranges in your firewall rules.
      * 
      * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.Firewall;
-     * import com.pulumi.gcp.compute.FirewallArgs;
-     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ranges = ComputeFunctions.getLBIPRanges();
-     * 
-     *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
-     *             .network(google_compute_network.main().name())
-     *             .allows(FirewallAllowArgs.builder()
-     *                 .protocol(&#34;tcp&#34;)
-     *                 .ports(&#34;80&#34;)
-     *                 .build())
-     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -&gt; getLBIPRangesResult.networks()))
-     *             .targetTags(&#34;InstanceBehindLoadBalancer&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetLBIPRangesResult> getLBIPRangesPlain(InvokeArgs args) {
@@ -3592,46 +3492,6 @@ public final class ComputeFunctions {
      * 
      * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.Firewall;
-     * import com.pulumi.gcp.compute.FirewallArgs;
-     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ranges = ComputeFunctions.getLBIPRanges();
-     * 
-     *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
-     *             .network(google_compute_network.main().name())
-     *             .allows(FirewallAllowArgs.builder()
-     *                 .protocol(&#34;tcp&#34;)
-     *                 .ports(&#34;80&#34;)
-     *                 .build())
-     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -&gt; getLBIPRangesResult.networks()))
-     *             .targetTags(&#34;InstanceBehindLoadBalancer&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetLBIPRangesResult> getLBIPRanges(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getLBIPRanges:getLBIPRanges", TypeShape.of(GetLBIPRangesResult.class), args, Utilities.withVersion(options));
@@ -3640,46 +3500,6 @@ public final class ComputeFunctions {
      * Use this data source to access IP ranges in your firewall rules.
      * 
      * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.compute.Firewall;
-     * import com.pulumi.gcp.compute.FirewallArgs;
-     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ranges = ComputeFunctions.getLBIPRanges();
-     * 
-     *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
-     *             .network(google_compute_network.main().name())
-     *             .allows(FirewallAllowArgs.builder()
-     *                 .protocol(&#34;tcp&#34;)
-     *                 .ports(&#34;80&#34;)
-     *                 .build())
-     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -&gt; getLBIPRangesResult.networks()))
-     *             .targetTags(&#34;InstanceBehindLoadBalancer&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetLBIPRangesResult> getLBIPRangesPlain(InvokeArgs args, InvokeOptions options) {
@@ -5092,6 +4912,270 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetRegionInstanceGroupResult> getRegionInstanceGroupPlain(GetRegionInstanceGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", TypeShape.of(GetRegionInstanceGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to access a Region Network Endpoint Group&#39;s attributes.
+     * 
+     * The RNEG may be found by providing either a `self_link`, or a `name` and a `region`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rneg1 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
+     *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .region(&#34;us-central1&#34;)
+     *             .build());
+     * 
+     *         final var rneg2 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
+     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroup() {
+        return getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access a Region Network Endpoint Group&#39;s attributes.
+     * 
+     * The RNEG may be found by providing either a `self_link`, or a `name` and a `region`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rneg1 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
+     *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .region(&#34;us-central1&#34;)
+     *             .build());
+     * 
+     *         final var rneg2 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
+     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroupPlain() {
+        return getRegionNetworkEndpointGroupPlain(GetRegionNetworkEndpointGroupPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access a Region Network Endpoint Group&#39;s attributes.
+     * 
+     * The RNEG may be found by providing either a `self_link`, or a `name` and a `region`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rneg1 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
+     *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .region(&#34;us-central1&#34;)
+     *             .build());
+     * 
+     *         final var rneg2 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
+     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs args) {
+        return getRegionNetworkEndpointGroup(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access a Region Network Endpoint Group&#39;s attributes.
+     * 
+     * The RNEG may be found by providing either a `self_link`, or a `name` and a `region`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rneg1 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
+     *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .region(&#34;us-central1&#34;)
+     *             .build());
+     * 
+     *         final var rneg2 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
+     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroupPlain(GetRegionNetworkEndpointGroupPlainArgs args) {
+        return getRegionNetworkEndpointGroupPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access a Region Network Endpoint Group&#39;s attributes.
+     * 
+     * The RNEG may be found by providing either a `self_link`, or a `name` and a `region`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rneg1 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
+     *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .region(&#34;us-central1&#34;)
+     *             .build());
+     * 
+     *         final var rneg2 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
+     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup", TypeShape.of(GetRegionNetworkEndpointGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to access a Region Network Endpoint Group&#39;s attributes.
+     * 
+     * The RNEG may be found by providing either a `self_link`, or a `name` and a `region`.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rneg1 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
+     *             .name(&#34;k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .region(&#34;us-central1&#34;)
+     *             .build());
+     * 
+     *         final var rneg2 = ComputeFunctions.getRegionNetworkEndpointGroup(GetRegionNetworkEndpointGroupArgs.builder()
+     *             .selfLink(&#34;https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroupPlain(GetRegionNetworkEndpointGroupPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup", TypeShape.of(GetRegionNetworkEndpointGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get info about a Region Google Compute SSL Certificate from its name.

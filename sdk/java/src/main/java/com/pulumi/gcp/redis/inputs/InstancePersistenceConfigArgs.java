@@ -68,8 +68,8 @@ public final class InstancePersistenceConfigArgs extends com.pulumi.resources.Re
      *   Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
      * 
      */
-    @Import(name="rdbSnapshotPeriod", required=true)
-    private Output<String> rdbSnapshotPeriod;
+    @Import(name="rdbSnapshotPeriod")
+    private @Nullable Output<String> rdbSnapshotPeriod;
 
     /**
      * @return Optional. Available snapshot periods for scheduling.
@@ -80,8 +80,8 @@ public final class InstancePersistenceConfigArgs extends com.pulumi.resources.Re
      *   Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
      * 
      */
-    public Output<String> rdbSnapshotPeriod() {
-        return this.rdbSnapshotPeriod;
+    public Optional<Output<String>> rdbSnapshotPeriod() {
+        return Optional.ofNullable(this.rdbSnapshotPeriod);
     }
 
     /**
@@ -203,7 +203,7 @@ public final class InstancePersistenceConfigArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder rdbSnapshotPeriod(Output<String> rdbSnapshotPeriod) {
+        public Builder rdbSnapshotPeriod(@Nullable Output<String> rdbSnapshotPeriod) {
             $.rdbSnapshotPeriod = rdbSnapshotPeriod;
             return this;
         }
@@ -255,7 +255,6 @@ public final class InstancePersistenceConfigArgs extends com.pulumi.resources.Re
         }
 
         public InstancePersistenceConfigArgs build() {
-            $.rdbSnapshotPeriod = Objects.requireNonNull($.rdbSnapshotPeriod, "expected parameter 'rdbSnapshotPeriod' to be non-null");
             return $;
         }
     }

@@ -11,6 +11,8 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.firebase.WebAppArgs;
 import com.pulumi.gcp.firebase.inputs.WebAppState;
 import java.lang.String;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -73,6 +75,7 @@ import javax.annotation.Nullable;
  *         var basicWebApp = new WebApp(&#34;basicWebApp&#34;, WebAppArgs.builder()        
  *             .project(defaultProject.projectId())
  *             .displayName(&#34;Display Name Basic&#34;)
+ *             .deletionPolicy(&#34;DELETE&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .dependsOn(defaultFirebase / projectProject)
@@ -151,6 +154,36 @@ public class WebApp extends com.pulumi.resources.CustomResource {
      */
     public Output<String> appId() {
         return this.appId;
+    }
+    /**
+     * The URLs where the &#39;WebApp&#39; is hosted.
+     * 
+     */
+    @Export(name="appUrls", type=List.class, parameters={String.class})
+    private Output<List<String>> appUrls;
+
+    /**
+     * @return The URLs where the &#39;WebApp&#39; is hosted.
+     * 
+     */
+    public Output<List<String>> appUrls() {
+        return this.appUrls;
+    }
+    /**
+     * Set to &#39;ABANDON&#39; to allow the WebApp to be untracked from terraform state rather than deleted upon &#39;terraform destroy&#39;.
+     * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;ABANDON&#39;
+     * 
+     */
+    @Export(name="deletionPolicy", type=String.class, parameters={})
+    private Output</* @Nullable */ String> deletionPolicy;
+
+    /**
+     * @return Set to &#39;ABANDON&#39; to allow the WebApp to be untracked from terraform state rather than deleted upon &#39;terraform destroy&#39;.
+     * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;ABANDON&#39;
+     * 
+     */
+    public Output<Optional<String>> deletionPolicy() {
+        return Codegen.optional(this.deletionPolicy);
     }
     /**
      * The user-assigned display name of the App.

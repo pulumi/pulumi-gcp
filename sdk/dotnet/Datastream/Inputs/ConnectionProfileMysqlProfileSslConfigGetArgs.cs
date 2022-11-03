@@ -12,13 +12,23 @@ namespace Pulumi.Gcp.Datastream.Inputs
 
     public sealed class ConnectionProfileMysqlProfileSslConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("caCertificate")]
+        private Input<string>? _caCertificate;
+
         /// <summary>
         /// PEM-encoded certificate of the CA that signed the source database
         /// server's certificate.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("caCertificate")]
-        public Input<string>? CaCertificate { get; set; }
+        public Input<string>? CaCertificate
+        {
+            get => _caCertificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _caCertificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// -
@@ -27,6 +37,9 @@ namespace Pulumi.Gcp.Datastream.Inputs
         [Input("caCertificateSet")]
         public Input<bool>? CaCertificateSet { get; set; }
 
+        [Input("clientCertificate")]
+        private Input<string>? _clientCertificate;
+
         /// <summary>
         /// PEM-encoded certificate that will be used by the replica to
         /// authenticate against the source database server. If this field
@@ -34,8 +47,15 @@ namespace Pulumi.Gcp.Datastream.Inputs
         /// mandatory.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("clientCertificate")]
-        public Input<string>? ClientCertificate { get; set; }
+        public Input<string>? ClientCertificate
+        {
+            get => _clientCertificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientCertificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// -
@@ -44,14 +64,24 @@ namespace Pulumi.Gcp.Datastream.Inputs
         [Input("clientCertificateSet")]
         public Input<bool>? ClientCertificateSet { get; set; }
 
+        [Input("clientKey")]
+        private Input<string>? _clientKey;
+
         /// <summary>
         /// PEM-encoded private key associated with the Client Certificate.
         /// If this field is used then the 'client_certificate' and the
         /// 'ca_certificate' fields are mandatory.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("clientKey")]
-        public Input<string>? ClientKey { get; set; }
+        public Input<string>? ClientKey
+        {
+            get => _clientKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// -

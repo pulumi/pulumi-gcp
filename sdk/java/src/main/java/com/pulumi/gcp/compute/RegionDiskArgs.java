@@ -260,6 +260,35 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+     * For example, the following are valid values:
+     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * projects/{project}/zones/{zone}/disks/{disk}
+     * * projects/{project}/regions/{region}/disks/{disk}
+     * * zones/{zone}/disks/{disk}
+     * * regions/{region}/disks/{disk}
+     * 
+     */
+    @Import(name="sourceDisk")
+    private @Nullable Output<String> sourceDisk;
+
+    /**
+     * @return The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+     * For example, the following are valid values:
+     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * projects/{project}/zones/{zone}/disks/{disk}
+     * * projects/{project}/regions/{region}/disks/{disk}
+     * * zones/{zone}/disks/{disk}
+     * * regions/{region}/disks/{disk}
+     * 
+     */
+    public Optional<Output<String>> sourceDisk() {
+        return Optional.ofNullable(this.sourceDisk);
+    }
+
+    /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
      * key.
@@ -311,6 +340,7 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
         this.replicaZones = $.replicaZones;
         this.size = $.size;
         this.snapshot = $.snapshot;
+        this.sourceDisk = $.sourceDisk;
         this.sourceSnapshotEncryptionKey = $.sourceSnapshotEncryptionKey;
         this.type = $.type;
     }
@@ -646,6 +676,41 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder snapshot(String snapshot) {
             return snapshot(Output.of(snapshot));
+        }
+
+        /**
+         * @param sourceDisk The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+         * For example, the following are valid values:
+         * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+         * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+         * * projects/{project}/zones/{zone}/disks/{disk}
+         * * projects/{project}/regions/{region}/disks/{disk}
+         * * zones/{zone}/disks/{disk}
+         * * regions/{region}/disks/{disk}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceDisk(@Nullable Output<String> sourceDisk) {
+            $.sourceDisk = sourceDisk;
+            return this;
+        }
+
+        /**
+         * @param sourceDisk The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+         * For example, the following are valid values:
+         * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+         * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+         * * projects/{project}/zones/{zone}/disks/{disk}
+         * * projects/{project}/regions/{region}/disks/{disk}
+         * * zones/{zone}/disks/{disk}
+         * * regions/{region}/disks/{disk}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceDisk(String sourceDisk) {
+            return sourceDisk(Output.of(sourceDisk));
         }
 
         /**

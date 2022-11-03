@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  * const instance = new gcp.spanner.InstanceIAMBinding("instance", {
  *     instance: "your-instance-name",
  *     members: ["user:jane@example.com"],
- *     role: "roles/compute.networkUser",
+ *     role: "roles/spanner.databaseAdmin",
  * });
  * ```
  *
@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  * const instance = new gcp.spanner.InstanceIAMMember("instance", {
  *     instance: "your-instance-name",
  *     member: "user:jane@example.com",
- *     role: "roles/compute.networkUser",
+ *     role: "roles/spanner.databaseAdmin",
  * });
  * ```
  *

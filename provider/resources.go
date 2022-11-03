@@ -31,6 +31,7 @@ const (
 	gcpAccessApproval       = "AccessApproval"       // Access Approval resources
 	gcpAccessContextManager = "AccessContextManager" // Access Context Manager resources
 	gcpActiveDirectory      = "ActiveDirectory"      // Active Directory resources
+	gcpAlloydb              = "Alloydb"              // Alloydb resources
 	// nolint:golint
 	gcpApiGateway           = "ApiGateway"           // ApiGateway resources
 	gcpApigee               = "Apigee"               // Apigee resources
@@ -58,6 +59,7 @@ const (
 	gcpComposer             = "Composer"             // Cloud Composer resources
 	gcpCompute              = "Compute"              // Compute resources
 	gcpContainerAnalysis    = "ContainerAnalysis"    // Container Analysis resources
+	gcpDataform             = "Dataform"             // Dataform resources
 	gcpDNS                  = "Dns"                  // DNS resources
 	gcpDataCatalog          = "DataCatalog"          // Data Catalog resources
 	gcpDataFlow             = "Dataflow"             // DataFlow resources
@@ -343,6 +345,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "access_context_manager_access_policy_iam.html.markdown",
 				},
 			},
+
+			// Alloydb
+			"google_alloydb_cluster": {Tok: gcpResource(gcpAlloydb, "Cluster")},
 
 			// AppEngine
 			"google_app_engine_application": {Tok: gcpResource(gcpAppEngine, "Application")},
@@ -673,6 +678,11 @@ func Provider() tfbridge.ProviderInfo {
 						CSharpName: "EndpointName",
 					},
 				},
+			},
+
+			// Dataform
+			"google_dataform_repository": {
+				Tok: gcpResource(gcpDataform, "Repository"),
 			},
 
 			// Data Stream
@@ -1415,6 +1425,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_firebase_project_location": {Tok: gcpResource(gcpFirebase, "ProjectLocation")},
 			"google_firebase_web_app":          {Tok: gcpResource(gcpFirebase, "WebApp")},
+			"google_firebase_android_app":      {Tok: gcpResource(gcpFirebase, "AndroidApp")},
 
 			// Firebaserules
 			"google_firebaserules_release": {Tok: gcpResource(gcpFirebaserules, "Release")},
@@ -1431,6 +1442,12 @@ func Provider() tfbridge.ProviderInfo {
 			"google_monitoring_uptime_check_config":  {Tok: gcpResource(gcpMonitoring, "UptimeCheckConfig")},
 			"google_monitoring_custom_service": {
 				Tok: gcpResource(gcpMonitoring, "CustomService"),
+				Docs: &tfbridge.DocInfo{
+					Source: "monitoring_service.html.markdown",
+				},
+			},
+			"google_monitoring_service": {
+				Tok: gcpResource(gcpMonitoring, "GenericService"),
 				Docs: &tfbridge.DocInfo{
 					Source: "monitoring_service.html.markdown",
 				},
@@ -1667,7 +1684,26 @@ func Provider() tfbridge.ProviderInfo {
 			"google_vertex_ai_featurestore_entitytype":         {Tok: gcpResource(gcpVertex, "AiFeatureStoreEntityType")},
 			"google_vertex_ai_featurestore_entitytype_feature": {Tok: gcpResource(gcpVertex, "AiFeatureStoreEntityTypeFeature")},
 			"google_vertex_ai_featurestore":                    {Tok: gcpResource(gcpVertex, "AiFeatureStore")},
-			"google_vertex_ai_metadata_store":                  {Tok: gcpResource(gcpVertex, "AiMetadataStore")},
+			"google_vertex_ai_featurestore_iam_binding": {
+				Tok: gcpResource(gcpVertex, "AiFeatureStoreIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "vertex_ai_featurestore.html.markdown",
+				},
+			},
+			"google_vertex_ai_featurestore_iam_member": {
+				Tok: gcpResource(gcpVertex, "AiFeatureStoreIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "vertex_ai_featurestore.html.markdown",
+				},
+			},
+			"google_vertex_ai_featurestore_iam_policy": {
+				Tok: gcpResource(gcpVertex, "AiFeatureStoreIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "vertex_ai_featurestore.html.markdown",
+				},
+			},
+			"google_vertex_ai_metadata_store": {Tok: gcpResource(gcpVertex, "AiMetadataStore")},
+			"google_vertex_ai_endpoint":       {Tok: gcpResource(gcpVertex, "AiEndpoint")},
 
 			// Key Management Service resources
 			"google_kms_key_ring": {
@@ -2026,6 +2062,24 @@ func Provider() tfbridge.ProviderInfo {
 			// Security Center
 			"google_scc_source":              {Tok: gcpResource(gcpSecurityCenter, "Source")},
 			"google_scc_notification_config": {Tok: gcpResource(gcpSecurityCenter, "NotificationConfig")},
+			"google_scc_source_iam_binding": {
+				Tok: gcpResource(gcpSecurityCenter, "SourceIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "scc_source.html.markdown",
+				},
+			},
+			"google_scc_source_iam_member": {
+				Tok: gcpResource(gcpSecurityCenter, "SourceIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "scc_source.html.markdown",
+				},
+			},
+			"google_scc_source_iam_policy": {
+				Tok: gcpResource(gcpSecurityCenter, "SourceIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "scc_source.html.markdown",
+				},
+			},
 
 			// VPC Access
 			"google_vpc_access_connector": {Tok: gcpResource(gcpVpcAccess, "Connector")},
@@ -2400,6 +2454,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_iam_workload_identity_pool":          {Tok: gcpResource(gcpIAM, "WorkloadIdentityPool")},
 			"google_iam_workload_identity_pool_provider": {Tok: gcpResource(gcpIAM, "WorkloadIdentityPoolProvider")},
 			"google_iam_deny_policy":                     {Tok: gcpResource(gcpIAM, "DenyPolicy")},
+			"google_iam_workforce_pool":                  {Tok: gcpResource(gcpIAM, "WorkforcePool")},
 
 			// apigee
 			"google_apigee_organization":        {Tok: gcpResource(gcpApigee, "Organization")},
@@ -2685,6 +2740,12 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_compute_address.html.markdown",
 				},
 			},
+			"google_compute_addresses": {
+				Tok: gcpDataSource(gcpCompute, "getAddresses"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_compute_addresses.html.markdown",
+				},
+			},
 			"google_compute_default_service_account": {
 				Tok: gcpDataSource(gcpCompute, "getDefaultServiceAccount"),
 				Docs: &tfbridge.DocInfo{
@@ -2753,6 +2814,12 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpDataSource(gcpCompute, "getNetworkEndpointGroup"),
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_google_compute_network_endpoint_group.html.markdown",
+				},
+			},
+			"google_compute_region_network_endpoint_group": {
+				Tok: gcpDataSource(gcpCompute, "getRegionNetworkEndpointGroup"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_google_compute_region_network_endpoint_group.html.markdown",
 				},
 			},
 			"google_compute_router_status": {Tok: gcpDataSource(gcpCompute, "RouterStatus")}, // fixed via alias

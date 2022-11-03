@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// <summary>
         /// Number of seconds after which the probe times out.
         /// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-        /// Must be smaller than periodSeconds.
+        /// Must be smaller than period_seconds.
         /// </summary>
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }

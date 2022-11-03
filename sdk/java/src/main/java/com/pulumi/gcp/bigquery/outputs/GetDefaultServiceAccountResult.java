@@ -20,6 +20,11 @@ public final class GetDefaultServiceAccountResult {
      * 
      */
     private String id;
+    /**
+     * @return The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+     * 
+     */
+    private String member;
     private String project;
 
     private GetDefaultServiceAccountResult() {}
@@ -38,6 +43,13 @@ public final class GetDefaultServiceAccountResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+     * 
+     */
+    public String member() {
+        return this.member;
+    }
     public String project() {
         return this.project;
     }
@@ -53,12 +65,14 @@ public final class GetDefaultServiceAccountResult {
     public static final class Builder {
         private String email;
         private String id;
+        private String member;
         private String project;
         public Builder() {}
         public Builder(GetDefaultServiceAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.email = defaults.email;
     	      this.id = defaults.id;
+    	      this.member = defaults.member;
     	      this.project = defaults.project;
         }
 
@@ -73,6 +87,11 @@ public final class GetDefaultServiceAccountResult {
             return this;
         }
         @CustomType.Setter
+        public Builder member(String member) {
+            this.member = Objects.requireNonNull(member);
+            return this;
+        }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
@@ -81,6 +100,7 @@ public final class GetDefaultServiceAccountResult {
             final var o = new GetDefaultServiceAccountResult();
             o.email = email;
             o.id = id;
+            o.member = member;
             o.project = project;
             return o;
         }

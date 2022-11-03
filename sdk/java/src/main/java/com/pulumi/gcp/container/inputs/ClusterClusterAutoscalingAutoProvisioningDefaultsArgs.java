@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -29,6 +30,38 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
      */
     public Optional<Output<String>> bootDiskKmsKey() {
         return Optional.ofNullable(this.bootDiskKmsKey);
+    }
+
+    /**
+     * Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
+     * 
+     */
+    @Import(name="diskSize")
+    private @Nullable Output<Integer> diskSize;
+
+    /**
+     * @return Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
+     * 
+     */
+    public Optional<Output<Integer>> diskSize() {
+        return Optional.ofNullable(this.diskSize);
+    }
+
+    /**
+     * Type of the disk attached to each node
+     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-standard&#39;
+     * 
+     */
+    @Import(name="diskType")
+    private @Nullable Output<String> diskType;
+
+    /**
+     * @return Type of the disk attached to each node
+     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-standard&#39;
+     * 
+     */
+    public Optional<Output<String>> diskType() {
+        return Optional.ofNullable(this.diskType);
     }
 
     /**
@@ -111,6 +144,8 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
 
     private ClusterClusterAutoscalingAutoProvisioningDefaultsArgs(ClusterClusterAutoscalingAutoProvisioningDefaultsArgs $) {
         this.bootDiskKmsKey = $.bootDiskKmsKey;
+        this.diskSize = $.diskSize;
+        this.diskType = $.diskType;
         this.imageType = $.imageType;
         this.minCpuPlatform = $.minCpuPlatform;
         this.oauthScopes = $.oauthScopes;
@@ -154,6 +189,50 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
          */
         public Builder bootDiskKmsKey(String bootDiskKmsKey) {
             return bootDiskKmsKey(Output.of(bootDiskKmsKey));
+        }
+
+        /**
+         * @param diskSize Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskSize(@Nullable Output<Integer> diskSize) {
+            $.diskSize = diskSize;
+            return this;
+        }
+
+        /**
+         * @param diskSize Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskSize(Integer diskSize) {
+            return diskSize(Output.of(diskSize));
+        }
+
+        /**
+         * @param diskType Type of the disk attached to each node
+         * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-standard&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskType(@Nullable Output<String> diskType) {
+            $.diskType = diskType;
+            return this;
+        }
+
+        /**
+         * @param diskType Type of the disk attached to each node
+         * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-standard&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskType(String diskType) {
+            return diskType(Output.of(diskType));
         }
 
         /**

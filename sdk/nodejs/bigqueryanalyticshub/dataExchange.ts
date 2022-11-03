@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A Bigquery Analytics Hub data exchange
+ *
+ * To get more information about DataExchange, see:
+ *
+ * * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+ *
  * ## Example Usage
  * ### Bigquery Analyticshub Data Exchange Basic
  *
@@ -12,13 +20,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dataExchange = new gcp.bigqueryanalyticshub.DataExchange("dataExchange", {
- *     location: "US",
+ * const dataExchange = new gcp.bigqueryanalyticshub.DataExchange("data_exchange", {
  *     dataExchangeId: "my_data_exchange",
- *     displayName: "my_data_exchange",
  *     description: "example data exchange",
- * }, {
- *     provider: google_beta,
+ *     displayName: "my_data_exchange",
+ *     location: "US",
  * });
  * ```
  *

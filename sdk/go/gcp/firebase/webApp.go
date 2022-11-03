@@ -48,6 +48,11 @@ type WebApp struct {
 	// Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
 	// token, as the data format is not specified.
 	AppId pulumi.StringOutput `pulumi:"appId"`
+	// The URLs where the 'WebApp' is hosted.
+	AppUrls pulumi.StringArrayOutput `pulumi:"appUrls"`
+	// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
+	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
@@ -92,6 +97,11 @@ type webAppState struct {
 	// Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
 	// token, as the data format is not specified.
 	AppId *string `pulumi:"appId"`
+	// The URLs where the 'WebApp' is hosted.
+	AppUrls []string `pulumi:"appUrls"`
+	// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
+	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
 	DisplayName *string `pulumi:"displayName"`
 	// The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
@@ -105,6 +115,11 @@ type WebAppState struct {
 	// Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
 	// token, as the data format is not specified.
 	AppId pulumi.StringPtrInput
+	// The URLs where the 'WebApp' is hosted.
+	AppUrls pulumi.StringArrayInput
+	// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
+	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the App.
 	DisplayName pulumi.StringPtrInput
 	// The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
@@ -119,6 +134,9 @@ func (WebAppState) ElementType() reflect.Type {
 }
 
 type webAppArgs struct {
+	// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
+	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
 	DisplayName string `pulumi:"displayName"`
 	// The ID of the project in which the resource belongs.
@@ -128,6 +146,9 @@ type webAppArgs struct {
 
 // The set of arguments for constructing a WebApp resource.
 type WebAppArgs struct {
+	// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
+	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the App.
 	DisplayName pulumi.StringInput
 	// The ID of the project in which the resource belongs.
@@ -226,6 +247,17 @@ func (o WebAppOutput) ToWebAppOutputWithContext(ctx context.Context) WebAppOutpu
 // token, as the data format is not specified.
 func (o WebAppOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
+// The URLs where the 'WebApp' is hosted.
+func (o WebAppOutput) AppUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WebApp) pulumi.StringArrayOutput { return v.AppUrls }).(pulumi.StringArrayOutput)
+}
+
+// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
+// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+func (o WebAppOutput) DeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebApp) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
 
 // The user-assigned display name of the App.

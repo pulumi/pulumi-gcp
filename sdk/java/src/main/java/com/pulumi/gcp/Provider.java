@@ -46,6 +46,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> activeDirectoryCustomEndpoint() {
         return Codegen.optional(this.activeDirectoryCustomEndpoint);
     }
+    @Export(name="alloydbCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> alloydbCustomEndpoint;
+
+    public Output<Optional<String>> alloydbCustomEndpoint() {
+        return Codegen.optional(this.alloydbCustomEndpoint);
+    }
     @Export(name="apiGatewayCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> apiGatewayCustomEndpoint;
 
@@ -298,6 +304,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> dataflowCustomEndpoint() {
         return Codegen.optional(this.dataflowCustomEndpoint);
     }
+    @Export(name="dataformCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> dataformCustomEndpoint;
+
+    public Output<Optional<String>> dataformCustomEndpoint() {
+        return Codegen.optional(this.dataformCustomEndpoint);
+    }
     @Export(name="dataplexCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> dataplexCustomEndpoint;
 
@@ -447,6 +459,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> iamCustomEndpoint() {
         return Codegen.optional(this.iamCustomEndpoint);
+    }
+    @Export(name="iamWorkforcePoolCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> iamWorkforcePoolCustomEndpoint;
+
+    public Output<Optional<String>> iamWorkforcePoolCustomEndpoint() {
+        return Codegen.optional(this.iamWorkforcePoolCustomEndpoint);
     }
     @Export(name="iapCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> iapCustomEndpoint;

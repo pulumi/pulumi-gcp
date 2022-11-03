@@ -36,12 +36,22 @@ namespace Pulumi.Gcp.Datastream.Inputs
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
 
+        [Input("password", required: true)]
+        private Input<string>? _password;
+
         /// <summary>
         /// SSH password.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Port for the SSH tunnel.

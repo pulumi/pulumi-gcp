@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrun.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerEnv;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerEnvFrom;
+import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerLivenessProbe;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerPort;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerResource;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerStartupProbe;
@@ -21,6 +22,7 @@ public final class GetServiceTemplateSpecContainer {
     private List<GetServiceTemplateSpecContainerEnvFrom> envFroms;
     private List<GetServiceTemplateSpecContainerEnv> envs;
     private String image;
+    private List<GetServiceTemplateSpecContainerLivenessProbe> livenessProbes;
     private List<GetServiceTemplateSpecContainerPort> ports;
     private List<GetServiceTemplateSpecContainerResource> resources;
     private List<GetServiceTemplateSpecContainerStartupProbe> startupProbes;
@@ -42,6 +44,9 @@ public final class GetServiceTemplateSpecContainer {
     }
     public String image() {
         return this.image;
+    }
+    public List<GetServiceTemplateSpecContainerLivenessProbe> livenessProbes() {
+        return this.livenessProbes;
     }
     public List<GetServiceTemplateSpecContainerPort> ports() {
         return this.ports;
@@ -73,6 +78,7 @@ public final class GetServiceTemplateSpecContainer {
         private List<GetServiceTemplateSpecContainerEnvFrom> envFroms;
         private List<GetServiceTemplateSpecContainerEnv> envs;
         private String image;
+        private List<GetServiceTemplateSpecContainerLivenessProbe> livenessProbes;
         private List<GetServiceTemplateSpecContainerPort> ports;
         private List<GetServiceTemplateSpecContainerResource> resources;
         private List<GetServiceTemplateSpecContainerStartupProbe> startupProbes;
@@ -86,6 +92,7 @@ public final class GetServiceTemplateSpecContainer {
     	      this.envFroms = defaults.envFroms;
     	      this.envs = defaults.envs;
     	      this.image = defaults.image;
+    	      this.livenessProbes = defaults.livenessProbes;
     	      this.ports = defaults.ports;
     	      this.resources = defaults.resources;
     	      this.startupProbes = defaults.startupProbes;
@@ -131,6 +138,14 @@ public final class GetServiceTemplateSpecContainer {
             return this;
         }
         @CustomType.Setter
+        public Builder livenessProbes(List<GetServiceTemplateSpecContainerLivenessProbe> livenessProbes) {
+            this.livenessProbes = Objects.requireNonNull(livenessProbes);
+            return this;
+        }
+        public Builder livenessProbes(GetServiceTemplateSpecContainerLivenessProbe... livenessProbes) {
+            return livenessProbes(List.of(livenessProbes));
+        }
+        @CustomType.Setter
         public Builder ports(List<GetServiceTemplateSpecContainerPort> ports) {
             this.ports = Objects.requireNonNull(ports);
             return this;
@@ -174,6 +189,7 @@ public final class GetServiceTemplateSpecContainer {
             o.envFroms = envFroms;
             o.envs = envs;
             o.image = image;
+            o.livenessProbes = livenessProbes;
             o.ports = ports;
             o.resources = resources;
             o.startupProbes = startupProbes;

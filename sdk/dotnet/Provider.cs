@@ -30,6 +30,9 @@ namespace Pulumi.Gcp
         [Output("activeDirectoryCustomEndpoint")]
         public Output<string?> ActiveDirectoryCustomEndpoint { get; private set; } = null!;
 
+        [Output("alloydbCustomEndpoint")]
+        public Output<string?> AlloydbCustomEndpoint { get; private set; } = null!;
+
         [Output("apiGatewayCustomEndpoint")]
         public Output<string?> ApiGatewayCustomEndpoint { get; private set; } = null!;
 
@@ -156,6 +159,9 @@ namespace Pulumi.Gcp
         [Output("dataflowCustomEndpoint")]
         public Output<string?> DataflowCustomEndpoint { get; private set; } = null!;
 
+        [Output("dataformCustomEndpoint")]
+        public Output<string?> DataformCustomEndpoint { get; private set; } = null!;
+
         [Output("dataplexCustomEndpoint")]
         public Output<string?> DataplexCustomEndpoint { get; private set; } = null!;
 
@@ -230,6 +236,9 @@ namespace Pulumi.Gcp
 
         [Output("iamCustomEndpoint")]
         public Output<string?> IamCustomEndpoint { get; private set; } = null!;
+
+        [Output("iamWorkforcePoolCustomEndpoint")]
+        public Output<string?> IamWorkforcePoolCustomEndpoint { get; private set; } = null!;
 
         [Output("iapCustomEndpoint")]
         public Output<string?> IapCustomEndpoint { get; private set; } = null!;
@@ -409,6 +418,9 @@ namespace Pulumi.Gcp
         [Input("activeDirectoryCustomEndpoint")]
         public Input<string>? ActiveDirectoryCustomEndpoint { get; set; }
 
+        [Input("alloydbCustomEndpoint")]
+        public Input<string>? AlloydbCustomEndpoint { get; set; }
+
         [Input("apiGatewayCustomEndpoint")]
         public Input<string>? ApiGatewayCustomEndpoint { get; set; }
 
@@ -538,6 +550,9 @@ namespace Pulumi.Gcp
         [Input("dataflowCustomEndpoint")]
         public Input<string>? DataflowCustomEndpoint { get; set; }
 
+        [Input("dataformCustomEndpoint")]
+        public Input<string>? DataformCustomEndpoint { get; set; }
+
         [Input("dataplexCustomEndpoint")]
         public Input<string>? DataplexCustomEndpoint { get; set; }
 
@@ -615,6 +630,9 @@ namespace Pulumi.Gcp
 
         [Input("iamCustomEndpoint")]
         public Input<string>? IamCustomEndpoint { get; set; }
+
+        [Input("iamWorkforcePoolCustomEndpoint")]
+        public Input<string>? IamWorkforcePoolCustomEndpoint { get; set; }
 
         [Input("iapCustomEndpoint")]
         public Input<string>? IapCustomEndpoint { get; set; }

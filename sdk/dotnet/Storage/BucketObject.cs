@@ -196,6 +196,11 @@ namespace Pulumi.Gcp.Storage
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "content",
+                    "customerEncryption",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -232,11 +237,21 @@ namespace Pulumi.Gcp.Storage
         [Input("cacheControl")]
         public Input<string>? CacheControl { get; set; }
 
+        [Input("content")]
+        private Input<string>? _content;
+
         /// <summary>
         /// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
         /// </summary>
-        [Input("content")]
-        public Input<string>? Content { get; set; }
+        public Input<string>? Content
+        {
+            get => _content;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _content = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
@@ -262,12 +277,22 @@ namespace Pulumi.Gcp.Storage
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
+        [Input("customerEncryption")]
+        private Input<Inputs.BucketObjectCustomerEncryptionArgs>? _customerEncryption;
+
         /// <summary>
         /// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
         /// Structure is documented below.
         /// </summary>
-        [Input("customerEncryption")]
-        public Input<Inputs.BucketObjectCustomerEncryptionArgs>? CustomerEncryption { get; set; }
+        public Input<Inputs.BucketObjectCustomerEncryptionArgs>? CustomerEncryption
+        {
+            get => _customerEncryption;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _customerEncryption = Output.Tuple<Input<Inputs.BucketObjectCustomerEncryptionArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("detectMd5hash")]
         public Input<string>? DetectMd5hash { get; set; }
@@ -344,11 +369,21 @@ namespace Pulumi.Gcp.Storage
         [Input("cacheControl")]
         public Input<string>? CacheControl { get; set; }
 
+        [Input("content")]
+        private Input<string>? _content;
+
         /// <summary>
         /// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
         /// </summary>
-        [Input("content")]
-        public Input<string>? Content { get; set; }
+        public Input<string>? Content
+        {
+            get => _content;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _content = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
@@ -380,12 +415,22 @@ namespace Pulumi.Gcp.Storage
         [Input("crc32c")]
         public Input<string>? Crc32c { get; set; }
 
+        [Input("customerEncryption")]
+        private Input<Inputs.BucketObjectCustomerEncryptionGetArgs>? _customerEncryption;
+
         /// <summary>
         /// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
         /// Structure is documented below.
         /// </summary>
-        [Input("customerEncryption")]
-        public Input<Inputs.BucketObjectCustomerEncryptionGetArgs>? CustomerEncryption { get; set; }
+        public Input<Inputs.BucketObjectCustomerEncryptionGetArgs>? CustomerEncryption
+        {
+            get => _customerEncryption;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _customerEncryption = Output.Tuple<Input<Inputs.BucketObjectCustomerEncryptionGetArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("detectMd5hash")]
         public Input<string>? DetectMd5hash { get; set; }

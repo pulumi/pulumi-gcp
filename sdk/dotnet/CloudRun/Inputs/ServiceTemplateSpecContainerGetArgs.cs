@@ -93,6 +93,14 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         [Input("image", required: true)]
         public Input<string> Image { get; set; } = null!;
 
+        /// <summary>
+        /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Structure is documented below.
+        /// </summary>
+        [Input("livenessProbe")]
+        public Input<Inputs.ServiceTemplateSpecContainerLivenessProbeGetArgs>? LivenessProbe { get; set; }
+
         [Input("ports")]
         private InputList<Inputs.ServiceTemplateSpecContainerPortGetArgs>? _ports;
 

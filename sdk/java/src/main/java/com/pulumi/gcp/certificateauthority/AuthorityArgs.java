@@ -52,9 +52,19 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         return this.config;
     }
 
+    /**
+     * Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+     * state, a &#39;terraform destroy&#39; or &#39;terraform apply&#39; that would delete the instance will fail.
+     * 
+     */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
+    /**
+     * @return Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+     * state, a &#39;terraform destroy&#39; or &#39;terraform apply&#39; that would delete the instance will fail.
+     * 
+     */
     public Optional<Output<Boolean>> deletionProtection() {
         return Optional.ofNullable(this.deletionProtection);
     }
@@ -238,6 +248,27 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If this flag is set, the Certificate Authority will be deleted as soon as
+     * possible without a 30-day grace period where undeletion would have been
+     * allowed. If you proceed, there will be no way to recover this CA.
+     * Use with care. Defaults to `false`.
+     * 
+     */
+    @Import(name="skipGracePeriod")
+    private @Nullable Output<Boolean> skipGracePeriod;
+
+    /**
+     * @return If this flag is set, the Certificate Authority will be deleted as soon as
+     * possible without a 30-day grace period where undeletion would have been
+     * allowed. If you proceed, there will be no way to recover this CA.
+     * Use with care. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> skipGracePeriod() {
+        return Optional.ofNullable(this.skipGracePeriod);
+    }
+
+    /**
      * If this is a subordinate CertificateAuthority, this field will be set
      * with the subordinate configuration, which describes its issuers.
      * Structure is documented below.
@@ -295,6 +326,7 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         this.pemCaCertificate = $.pemCaCertificate;
         this.pool = $.pool;
         this.project = $.project;
+        this.skipGracePeriod = $.skipGracePeriod;
         this.subordinateConfig = $.subordinateConfig;
         this.type = $.type;
     }
@@ -361,11 +393,25 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
             return config(Output.of(config));
         }
 
+        /**
+         * @param deletionProtection Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+         * state, a &#39;terraform destroy&#39; or &#39;terraform apply&#39; that would delete the instance will fail.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
             $.deletionProtection = deletionProtection;
             return this;
         }
 
+        /**
+         * @param deletionProtection Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+         * state, a &#39;terraform destroy&#39; or &#39;terraform apply&#39; that would delete the instance will fail.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
         }
@@ -606,6 +652,33 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param skipGracePeriod If this flag is set, the Certificate Authority will be deleted as soon as
+         * possible without a 30-day grace period where undeletion would have been
+         * allowed. If you proceed, there will be no way to recover this CA.
+         * Use with care. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipGracePeriod(@Nullable Output<Boolean> skipGracePeriod) {
+            $.skipGracePeriod = skipGracePeriod;
+            return this;
+        }
+
+        /**
+         * @param skipGracePeriod If this flag is set, the Certificate Authority will be deleted as soon as
+         * possible without a 30-day grace period where undeletion would have been
+         * allowed. If you proceed, there will be no way to recover this CA.
+         * Use with care. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipGracePeriod(Boolean skipGracePeriod) {
+            return skipGracePeriod(Output.of(skipGracePeriod));
         }
 
         /**

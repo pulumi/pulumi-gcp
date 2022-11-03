@@ -398,7 +398,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Metadata key/value pairs to make available from
      * within the instance. Ssh keys attached in the Cloud Console will be removed.
-     * Add them to your config in order to keep them attached to your instance.
+     * Add them to your config in order to keep them attached to your instance. A
+     * list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
      * 
      */
     @Export(name="metadata", type=Map.class, parameters={String.class, String.class})
@@ -407,7 +408,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return Metadata key/value pairs to make available from
      * within the instance. Ssh keys attached in the Cloud Console will be removed.
-     * Add them to your config in order to keep them attached to your instance.
+     * Add them to your config in order to keep them attached to your instance. A
+     * list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
      * 
      */
     public Output<Optional<Map<String,String>>> metadata() {

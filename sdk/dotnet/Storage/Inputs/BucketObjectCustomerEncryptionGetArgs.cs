@@ -18,11 +18,21 @@ namespace Pulumi.Gcp.Storage.Inputs
         [Input("encryptionAlgorithm")]
         public Input<string>? EncryptionAlgorithm { get; set; }
 
+        [Input("encryptionKey", required: true)]
+        private Input<string>? _encryptionKey;
+
         /// <summary>
         /// Base64 encoded Customer-Supplied Encryption Key.
         /// </summary>
-        [Input("encryptionKey", required: true)]
-        public Input<string> EncryptionKey { get; set; } = null!;
+        public Input<string>? EncryptionKey
+        {
+            get => _encryptionKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _encryptionKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public BucketObjectCustomerEncryptionGetArgs()
         {

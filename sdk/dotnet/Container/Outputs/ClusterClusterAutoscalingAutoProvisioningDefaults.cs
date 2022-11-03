@@ -18,6 +18,15 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? BootDiskKmsKey;
         /// <summary>
+        /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
+        /// </summary>
+        public readonly int? DiskSize;
+        /// <summary>
+        /// Type of the disk attached to each node
+        /// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        /// </summary>
+        public readonly string? DiskType;
+        /// <summary>
         /// The image type to use for this node. Note that changing the image type
         /// will delete and recreate all nodes in the node pool.
         /// </summary>
@@ -46,6 +55,10 @@ namespace Pulumi.Gcp.Container.Outputs
         private ClusterClusterAutoscalingAutoProvisioningDefaults(
             string? bootDiskKmsKey,
 
+            int? diskSize,
+
+            string? diskType,
+
             string? imageType,
 
             string? minCpuPlatform,
@@ -55,6 +68,8 @@ namespace Pulumi.Gcp.Container.Outputs
             string? serviceAccount)
         {
             BootDiskKmsKey = bootDiskKmsKey;
+            DiskSize = diskSize;
+            DiskType = diskType;
             ImageType = imageType;
             MinCpuPlatform = minCpuPlatform;
             OauthScopes = oauthScopes;

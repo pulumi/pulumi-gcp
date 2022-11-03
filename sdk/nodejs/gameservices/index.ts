@@ -8,33 +8,33 @@ import * as utilities from "../utilities";
 export { GameServerClusterArgs, GameServerClusterState } from "./gameServerCluster";
 export type GameServerCluster = import("./gameServerCluster").GameServerCluster;
 export const GameServerCluster: typeof import("./gameServerCluster").GameServerCluster = null as any;
+utilities.lazyLoad(exports, ["GameServerCluster"], () => require("./gameServerCluster"));
 
 export { GameServerConfigArgs, GameServerConfigState } from "./gameServerConfig";
 export type GameServerConfig = import("./gameServerConfig").GameServerConfig;
 export const GameServerConfig: typeof import("./gameServerConfig").GameServerConfig = null as any;
+utilities.lazyLoad(exports, ["GameServerConfig"], () => require("./gameServerConfig"));
 
 export { GameServerDeploymentArgs, GameServerDeploymentState } from "./gameServerDeployment";
 export type GameServerDeployment = import("./gameServerDeployment").GameServerDeployment;
 export const GameServerDeployment: typeof import("./gameServerDeployment").GameServerDeployment = null as any;
+utilities.lazyLoad(exports, ["GameServerDeployment"], () => require("./gameServerDeployment"));
 
 export { GameServerDeploymentRolloutArgs, GameServerDeploymentRolloutState } from "./gameServerDeploymentRollout";
 export type GameServerDeploymentRollout = import("./gameServerDeploymentRollout").GameServerDeploymentRollout;
 export const GameServerDeploymentRollout: typeof import("./gameServerDeploymentRollout").GameServerDeploymentRollout = null as any;
+utilities.lazyLoad(exports, ["GameServerDeploymentRollout"], () => require("./gameServerDeploymentRollout"));
 
 export { GetGameServerDeploymentRolloutArgs, GetGameServerDeploymentRolloutResult, GetGameServerDeploymentRolloutOutputArgs } from "./getGameServerDeploymentRollout";
 export const getGameServerDeploymentRollout: typeof import("./getGameServerDeploymentRollout").getGameServerDeploymentRollout = null as any;
 export const getGameServerDeploymentRolloutOutput: typeof import("./getGameServerDeploymentRollout").getGameServerDeploymentRolloutOutput = null as any;
+utilities.lazyLoad(exports, ["getGameServerDeploymentRollout","getGameServerDeploymentRolloutOutput"], () => require("./getGameServerDeploymentRollout"));
 
 export { RealmArgs, RealmState } from "./realm";
 export type Realm = import("./realm").Realm;
 export const Realm: typeof import("./realm").Realm = null as any;
-
-utilities.lazyLoad(exports, ["GameServerCluster"], () => require("./gameServerCluster"));
-utilities.lazyLoad(exports, ["GameServerConfig"], () => require("./gameServerConfig"));
-utilities.lazyLoad(exports, ["GameServerDeployment"], () => require("./gameServerDeployment"));
-utilities.lazyLoad(exports, ["GameServerDeploymentRollout"], () => require("./gameServerDeploymentRollout"));
-utilities.lazyLoad(exports, ["getGameServerDeploymentRollout","getGameServerDeploymentRolloutOutput"], () => require("./getGameServerDeploymentRollout"));
 utilities.lazyLoad(exports, ["Realm"], () => require("./realm"));
+
 
 const _module = {
     version: utilities.getVersion(),

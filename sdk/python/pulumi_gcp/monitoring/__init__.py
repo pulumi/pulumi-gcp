@@ -8,6 +8,7 @@ import typing
 from .alert_policy import *
 from .custom_service import *
 from .dashboard import *
+from .generic_service import *
 from .get_app_engine_service import *
 from .get_cluster_istio_service import *
 from .get_istio_canonical_service import *

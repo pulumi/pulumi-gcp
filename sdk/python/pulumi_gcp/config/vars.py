@@ -33,6 +33,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('activeDirectoryCustomEndpoint')
 
     @property
+    def alloydb_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('alloydbCustomEndpoint')
+
+    @property
     def api_gateway_custom_endpoint(self) -> Optional[str]:
         return __config__.get('apiGatewayCustomEndpoint')
 
@@ -205,6 +209,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('dataflowCustomEndpoint')
 
     @property
+    def dataform_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('dataformCustomEndpoint')
+
+    @property
     def dataplex_custom_endpoint(self) -> Optional[str]:
         return __config__.get('dataplexCustomEndpoint')
 
@@ -307,6 +315,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def iam_custom_endpoint(self) -> Optional[str]:
         return __config__.get('iamCustomEndpoint')
+
+    @property
+    def iam_workforce_pool_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('iamWorkforcePoolCustomEndpoint')
 
     @property
     def iap_custom_endpoint(self) -> Optional[str]:

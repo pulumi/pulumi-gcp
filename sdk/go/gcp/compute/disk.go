@@ -187,6 +187,18 @@ type Disk struct {
 	// * `global/snapshots/snapshot`
 	// * `snapshot`
 	Snapshot pulumi.StringPtrOutput `pulumi:"snapshot"`
+	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+	// For example, the following are valid values:
+	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+	// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+	// * projects/{project}/zones/{zone}/disks/{disk}
+	// * projects/{project}/regions/{region}/disks/{disk}
+	// * zones/{zone}/disks/{disk}
+	// * regions/{region}/disks/{disk}
+	SourceDisk pulumi.StringPtrOutput `pulumi:"sourceDisk"`
+	// The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
+	// the current or a previous instance of a given disk name.
+	SourceDiskId pulumi.StringOutput `pulumi:"sourceDiskId"`
 	// The customer-supplied encryption key of the source image. Required if
 	// the source image is protected by a customer-supplied encryption key.
 	// Structure is documented below.
@@ -331,6 +343,18 @@ type diskState struct {
 	// * `global/snapshots/snapshot`
 	// * `snapshot`
 	Snapshot *string `pulumi:"snapshot"`
+	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+	// For example, the following are valid values:
+	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+	// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+	// * projects/{project}/zones/{zone}/disks/{disk}
+	// * projects/{project}/regions/{region}/disks/{disk}
+	// * zones/{zone}/disks/{disk}
+	// * regions/{region}/disks/{disk}
+	SourceDisk *string `pulumi:"sourceDisk"`
+	// The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
+	// the current or a previous instance of a given disk name.
+	SourceDiskId *string `pulumi:"sourceDiskId"`
 	// The customer-supplied encryption key of the source image. Required if
 	// the source image is protected by a customer-supplied encryption key.
 	// Structure is documented below.
@@ -447,6 +471,18 @@ type DiskState struct {
 	// * `global/snapshots/snapshot`
 	// * `snapshot`
 	Snapshot pulumi.StringPtrInput
+	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+	// For example, the following are valid values:
+	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+	// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+	// * projects/{project}/zones/{zone}/disks/{disk}
+	// * projects/{project}/regions/{region}/disks/{disk}
+	// * zones/{zone}/disks/{disk}
+	// * regions/{region}/disks/{disk}
+	SourceDisk pulumi.StringPtrInput
+	// The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
+	// the current or a previous instance of a given disk name.
+	SourceDiskId pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source image. Required if
 	// the source image is protected by a customer-supplied encryption key.
 	// Structure is documented below.
@@ -557,6 +593,15 @@ type diskArgs struct {
 	// * `global/snapshots/snapshot`
 	// * `snapshot`
 	Snapshot *string `pulumi:"snapshot"`
+	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+	// For example, the following are valid values:
+	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+	// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+	// * projects/{project}/zones/{zone}/disks/{disk}
+	// * projects/{project}/regions/{region}/disks/{disk}
+	// * zones/{zone}/disks/{disk}
+	// * regions/{region}/disks/{disk}
+	SourceDisk *string `pulumi:"sourceDisk"`
 	// The customer-supplied encryption key of the source image. Required if
 	// the source image is protected by a customer-supplied encryption key.
 	// Structure is documented below.
@@ -654,6 +699,15 @@ type DiskArgs struct {
 	// * `global/snapshots/snapshot`
 	// * `snapshot`
 	Snapshot pulumi.StringPtrInput
+	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+	// For example, the following are valid values:
+	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+	// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+	// * projects/{project}/zones/{zone}/disks/{disk}
+	// * projects/{project}/regions/{region}/disks/{disk}
+	// * zones/{zone}/disks/{disk}
+	// * regions/{region}/disks/{disk}
+	SourceDisk pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source image. Required if
 	// the source image is protected by a customer-supplied encryption key.
 	// Structure is documented below.
@@ -898,6 +952,24 @@ func (o DiskOutput) Size() pulumi.IntOutput {
 // * `snapshot`
 func (o DiskOutput) Snapshot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.Snapshot }).(pulumi.StringPtrOutput)
+}
+
+// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+// For example, the following are valid values:
+// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+// * projects/{project}/zones/{zone}/disks/{disk}
+// * projects/{project}/regions/{region}/disks/{disk}
+// * zones/{zone}/disks/{disk}
+// * regions/{region}/disks/{disk}
+func (o DiskOutput) SourceDisk() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.SourceDisk }).(pulumi.StringPtrOutput)
+}
+
+// The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
+// the current or a previous instance of a given disk name.
+func (o DiskOutput) SourceDiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.SourceDiskId }).(pulumi.StringOutput)
 }
 
 // The customer-supplied encryption key of the source image. Required if

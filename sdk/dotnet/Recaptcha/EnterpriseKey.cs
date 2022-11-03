@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.Recaptcha
     ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
     ///     {
     ///         DisplayName = "display-name-one",
-    ///         Labels = ,
+    ///         Labels = null,
     ///         Project = "my-project-name",
     ///         WebSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyWebSettingsArgs
     ///         {

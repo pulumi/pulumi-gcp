@@ -14,10 +14,19 @@ namespace Pulumi.Gcp.Dns.Outputs
     public sealed class RecordSetRoutingPolicy
     {
         /// <summary>
+        /// Specifies whether to enable fencing for geo queries.
+        /// </summary>
+        public readonly bool? EnableGeoFencing;
+        /// <summary>
         /// The configuration for Geolocation based routing policy.
         /// Structure is document below.
         /// </summary>
         public readonly ImmutableArray<Outputs.RecordSetRoutingPolicyGeo> Geos;
+        /// <summary>
+        /// The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+        /// Structure is document below.
+        /// </summary>
+        public readonly Outputs.RecordSetRoutingPolicyPrimaryBackup? PrimaryBackup;
         /// <summary>
         /// The configuration for Weighted Round Robin based routing policy.
         /// Structure is document below.
@@ -26,11 +35,17 @@ namespace Pulumi.Gcp.Dns.Outputs
 
         [OutputConstructor]
         private RecordSetRoutingPolicy(
+            bool? enableGeoFencing,
+
             ImmutableArray<Outputs.RecordSetRoutingPolicyGeo> geos,
+
+            Outputs.RecordSetRoutingPolicyPrimaryBackup? primaryBackup,
 
             ImmutableArray<Outputs.RecordSetRoutingPolicyWrr> wrrs)
         {
+            EnableGeoFencing = enableGeoFencing;
             Geos = geos;
+            PrimaryBackup = primaryBackup;
             Wrrs = wrrs;
         }
     }

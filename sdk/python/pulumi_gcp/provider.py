@@ -19,6 +19,7 @@ class ProviderArgs:
                  access_context_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  access_token: Optional[pulumi.Input[str]] = None,
                  active_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 alloydb_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  api_gateway_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apigee_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apikeys_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -62,6 +63,7 @@ class ProviderArgs:
                  data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_loss_prevention_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataform_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataplex_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -88,6 +90,7 @@ class ProviderArgs:
                  iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_credentials_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iam_workforce_pool_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iap_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  identity_platform_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  impersonate_service_account: Optional[pulumi.Input[str]] = None,
@@ -148,6 +151,8 @@ class ProviderArgs:
             pulumi.set(__self__, "access_token", access_token)
         if active_directory_custom_endpoint is not None:
             pulumi.set(__self__, "active_directory_custom_endpoint", active_directory_custom_endpoint)
+        if alloydb_custom_endpoint is not None:
+            pulumi.set(__self__, "alloydb_custom_endpoint", alloydb_custom_endpoint)
         if api_gateway_custom_endpoint is not None:
             pulumi.set(__self__, "api_gateway_custom_endpoint", api_gateway_custom_endpoint)
         if apigee_custom_endpoint is not None:
@@ -234,6 +239,8 @@ class ProviderArgs:
             pulumi.set(__self__, "data_loss_prevention_custom_endpoint", data_loss_prevention_custom_endpoint)
         if dataflow_custom_endpoint is not None:
             pulumi.set(__self__, "dataflow_custom_endpoint", dataflow_custom_endpoint)
+        if dataform_custom_endpoint is not None:
+            pulumi.set(__self__, "dataform_custom_endpoint", dataform_custom_endpoint)
         if dataplex_custom_endpoint is not None:
             pulumi.set(__self__, "dataplex_custom_endpoint", dataplex_custom_endpoint)
         if dataproc_custom_endpoint is not None:
@@ -286,6 +293,8 @@ class ProviderArgs:
             pulumi.set(__self__, "iam_credentials_custom_endpoint", iam_credentials_custom_endpoint)
         if iam_custom_endpoint is not None:
             pulumi.set(__self__, "iam_custom_endpoint", iam_custom_endpoint)
+        if iam_workforce_pool_custom_endpoint is not None:
+            pulumi.set(__self__, "iam_workforce_pool_custom_endpoint", iam_workforce_pool_custom_endpoint)
         if iap_custom_endpoint is not None:
             pulumi.set(__self__, "iap_custom_endpoint", iap_custom_endpoint)
         if identity_platform_custom_endpoint is not None:
@@ -426,6 +435,15 @@ class ProviderArgs:
     @active_directory_custom_endpoint.setter
     def active_directory_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "active_directory_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="alloydbCustomEndpoint")
+    def alloydb_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "alloydb_custom_endpoint")
+
+    @alloydb_custom_endpoint.setter
+    def alloydb_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alloydb_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="apiGatewayCustomEndpoint")
@@ -815,6 +833,15 @@ class ProviderArgs:
         pulumi.set(self, "dataflow_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="dataformCustomEndpoint")
+    def dataform_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dataform_custom_endpoint")
+
+    @dataform_custom_endpoint.setter
+    def dataform_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataform_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="dataplexCustomEndpoint")
     def dataplex_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "dataplex_custom_endpoint")
@@ -1047,6 +1074,15 @@ class ProviderArgs:
     @iam_custom_endpoint.setter
     def iam_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "iam_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="iamWorkforcePoolCustomEndpoint")
+    def iam_workforce_pool_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "iam_workforce_pool_custom_endpoint")
+
+    @iam_workforce_pool_custom_endpoint.setter
+    def iam_workforce_pool_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iam_workforce_pool_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="iapCustomEndpoint")
@@ -1499,6 +1535,7 @@ class Provider(pulumi.ProviderResource):
                  access_context_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  access_token: Optional[pulumi.Input[str]] = None,
                  active_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 alloydb_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  api_gateway_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apigee_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apikeys_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1542,6 +1579,7 @@ class Provider(pulumi.ProviderResource):
                  data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_loss_prevention_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataform_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataplex_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1568,6 +1606,7 @@ class Provider(pulumi.ProviderResource):
                  iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_credentials_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iam_workforce_pool_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iap_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  identity_platform_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  impersonate_service_account: Optional[pulumi.Input[str]] = None,
@@ -1658,6 +1697,7 @@ class Provider(pulumi.ProviderResource):
                  access_context_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  access_token: Optional[pulumi.Input[str]] = None,
                  active_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 alloydb_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  api_gateway_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apigee_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apikeys_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1701,6 +1741,7 @@ class Provider(pulumi.ProviderResource):
                  data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_loss_prevention_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataform_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataplex_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1727,6 +1768,7 @@ class Provider(pulumi.ProviderResource):
                  iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_credentials_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iam_workforce_pool_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iap_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  identity_platform_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  impersonate_service_account: Optional[pulumi.Input[str]] = None,
@@ -1789,6 +1831,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["access_context_manager_custom_endpoint"] = access_context_manager_custom_endpoint
             __props__.__dict__["access_token"] = access_token
             __props__.__dict__["active_directory_custom_endpoint"] = active_directory_custom_endpoint
+            __props__.__dict__["alloydb_custom_endpoint"] = alloydb_custom_endpoint
             __props__.__dict__["api_gateway_custom_endpoint"] = api_gateway_custom_endpoint
             __props__.__dict__["apigee_custom_endpoint"] = apigee_custom_endpoint
             __props__.__dict__["apikeys_custom_endpoint"] = apikeys_custom_endpoint
@@ -1832,6 +1875,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["data_fusion_custom_endpoint"] = data_fusion_custom_endpoint
             __props__.__dict__["data_loss_prevention_custom_endpoint"] = data_loss_prevention_custom_endpoint
             __props__.__dict__["dataflow_custom_endpoint"] = dataflow_custom_endpoint
+            __props__.__dict__["dataform_custom_endpoint"] = dataform_custom_endpoint
             __props__.__dict__["dataplex_custom_endpoint"] = dataplex_custom_endpoint
             __props__.__dict__["dataproc_custom_endpoint"] = dataproc_custom_endpoint
             __props__.__dict__["dataproc_metastore_custom_endpoint"] = dataproc_metastore_custom_endpoint
@@ -1858,6 +1902,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["iam_beta_custom_endpoint"] = iam_beta_custom_endpoint
             __props__.__dict__["iam_credentials_custom_endpoint"] = iam_credentials_custom_endpoint
             __props__.__dict__["iam_custom_endpoint"] = iam_custom_endpoint
+            __props__.__dict__["iam_workforce_pool_custom_endpoint"] = iam_workforce_pool_custom_endpoint
             __props__.__dict__["iap_custom_endpoint"] = iap_custom_endpoint
             __props__.__dict__["identity_platform_custom_endpoint"] = identity_platform_custom_endpoint
             __props__.__dict__["impersonate_service_account"] = impersonate_service_account
@@ -1938,6 +1983,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="activeDirectoryCustomEndpoint")
     def active_directory_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "active_directory_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="alloydbCustomEndpoint")
+    def alloydb_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "alloydb_custom_endpoint")
 
     @property
     @pulumi.getter(name="apiGatewayCustomEndpoint")
@@ -2150,6 +2200,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "dataflow_custom_endpoint")
 
     @property
+    @pulumi.getter(name="dataformCustomEndpoint")
+    def dataform_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "dataform_custom_endpoint")
+
+    @property
     @pulumi.getter(name="dataplexCustomEndpoint")
     def dataplex_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "dataplex_custom_endpoint")
@@ -2273,6 +2328,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="iamCustomEndpoint")
     def iam_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "iam_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="iamWorkforcePoolCustomEndpoint")
+    def iam_workforce_pool_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "iam_workforce_pool_custom_endpoint")
 
     @property
     @pulumi.getter(name="iapCustomEndpoint")

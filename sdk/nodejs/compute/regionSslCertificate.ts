@@ -197,11 +197,11 @@ export class RegionSslCertificate extends pulumi.CustomResource {
             if ((!args || args.privateKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'privateKey'");
             }
-            resourceInputs["certificate"] = args ? args.certificate : undefined;
+            resourceInputs["certificate"] = args?.certificate ? pulumi.secret(args.certificate) : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
-            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["certificateId"] = undefined /*out*/;
@@ -209,6 +209,8 @@ export class RegionSslCertificate extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["certificate", "privateKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(RegionSslCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }

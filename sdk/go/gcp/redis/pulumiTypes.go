@@ -836,7 +836,7 @@ type InstancePersistenceConfig struct {
 	// - TWELVE_HOURS:	Snapshot every 12 hours.
 	// - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
 	//   Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
-	RdbSnapshotPeriod string `pulumi:"rdbSnapshotPeriod"`
+	RdbSnapshotPeriod *string `pulumi:"rdbSnapshotPeriod"`
 	// Optional. Date and time that the first snapshot was/will be attempted,
 	// and to which future snapshots will be aligned. If not provided,
 	// the current time will be used.
@@ -875,7 +875,7 @@ type InstancePersistenceConfigArgs struct {
 	// - TWELVE_HOURS:	Snapshot every 12 hours.
 	// - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
 	//   Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
-	RdbSnapshotPeriod pulumi.StringInput `pulumi:"rdbSnapshotPeriod"`
+	RdbSnapshotPeriod pulumi.StringPtrInput `pulumi:"rdbSnapshotPeriod"`
 	// Optional. Date and time that the first snapshot was/will be attempted,
 	// and to which future snapshots will be aligned. If not provided,
 	// the current time will be used.
@@ -985,8 +985,8 @@ func (o InstancePersistenceConfigOutput) RdbNextSnapshotTime() pulumi.StringPtrO
 //   - TWELVE_HOURS:	Snapshot every 12 hours.
 //   - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
 //     Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
-func (o InstancePersistenceConfigOutput) RdbSnapshotPeriod() pulumi.StringOutput {
-	return o.ApplyT(func(v InstancePersistenceConfig) string { return v.RdbSnapshotPeriod }).(pulumi.StringOutput)
+func (o InstancePersistenceConfigOutput) RdbSnapshotPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePersistenceConfig) *string { return v.RdbSnapshotPeriod }).(pulumi.StringPtrOutput)
 }
 
 // Optional. Date and time that the first snapshot was/will be attempted,
@@ -1061,7 +1061,7 @@ func (o InstancePersistenceConfigPtrOutput) RdbSnapshotPeriod() pulumi.StringPtr
 		if v == nil {
 			return nil
 		}
-		return &v.RdbSnapshotPeriod
+		return v.RdbSnapshotPeriod
 	}).(pulumi.StringPtrOutput)
 }
 

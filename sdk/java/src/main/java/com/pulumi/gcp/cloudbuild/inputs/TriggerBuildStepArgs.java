@@ -148,6 +148,23 @@ public final class TriggerBuildStepArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * A shell script to be executed in the step.
+     * When script is provided, the user cannot specify the entrypoint or args.
+     * 
+     */
+    @Import(name="script")
+    private @Nullable Output<String> script;
+
+    /**
+     * @return A shell script to be executed in the step.
+     * When script is provided, the user cannot specify the entrypoint or args.
+     * 
+     */
+    public Optional<Output<String>> script() {
+        return Optional.ofNullable(this.script);
+    }
+
+    /**
      * A list of global environment variables, which are encrypted using a Cloud Key Management
      * Service crypto key. These values must be specified in the build&#39;s Secret. These variables
      * will be available to all build steps in this build.
@@ -265,6 +282,7 @@ public final class TriggerBuildStepArgs extends com.pulumi.resources.ResourceArg
         this.envs = $.envs;
         this.id = $.id;
         this.name = $.name;
+        this.script = $.script;
         this.secretEnvs = $.secretEnvs;
         this.timeout = $.timeout;
         this.timing = $.timing;
@@ -481,6 +499,29 @@ public final class TriggerBuildStepArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param script A shell script to be executed in the step.
+         * When script is provided, the user cannot specify the entrypoint or args.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder script(@Nullable Output<String> script) {
+            $.script = script;
+            return this;
+        }
+
+        /**
+         * @param script A shell script to be executed in the step.
+         * When script is provided, the user cannot specify the entrypoint or args.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder script(String script) {
+            return script(Output.of(script));
         }
 
         /**

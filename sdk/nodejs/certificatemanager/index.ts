@@ -8,23 +8,23 @@ import * as utilities from "../utilities";
 export { CertificateArgs, CertificateState } from "./certificate";
 export type Certificate = import("./certificate").Certificate;
 export const Certificate: typeof import("./certificate").Certificate = null as any;
+utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
 
 export { CertificateMapArgs, CertificateMapState } from "./certificateMap";
 export type CertificateMap = import("./certificateMap").CertificateMap;
 export const CertificateMap: typeof import("./certificateMap").CertificateMap = null as any;
+utilities.lazyLoad(exports, ["CertificateMap"], () => require("./certificateMap"));
 
 export { CertificateMapEntryArgs, CertificateMapEntryState } from "./certificateMapEntry";
 export type CertificateMapEntry = import("./certificateMapEntry").CertificateMapEntry;
 export const CertificateMapEntry: typeof import("./certificateMapEntry").CertificateMapEntry = null as any;
+utilities.lazyLoad(exports, ["CertificateMapEntry"], () => require("./certificateMapEntry"));
 
 export { DnsAuthorizationArgs, DnsAuthorizationState } from "./dnsAuthorization";
 export type DnsAuthorization = import("./dnsAuthorization").DnsAuthorization;
 export const DnsAuthorization: typeof import("./dnsAuthorization").DnsAuthorization = null as any;
-
-utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
-utilities.lazyLoad(exports, ["CertificateMap"], () => require("./certificateMap"));
-utilities.lazyLoad(exports, ["CertificateMapEntry"], () => require("./certificateMapEntry"));
 utilities.lazyLoad(exports, ["DnsAuthorization"], () => require("./dnsAuthorization"));
+
 
 const _module = {
     version: utilities.getVersion(),

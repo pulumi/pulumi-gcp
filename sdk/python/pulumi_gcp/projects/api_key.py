@@ -498,6 +498,8 @@ class ApiKey(pulumi.CustomResource):
             __props__.__dict__["restrictions"] = restrictions
             __props__.__dict__["key_string"] = None
             __props__.__dict__["uid"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["keyString"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ApiKey, __self__).__init__(
             'gcp:projects/apiKey:ApiKey',
             resource_name,

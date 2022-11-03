@@ -39,8 +39,8 @@ namespace Pulumi.Gcp.Redis.Inputs
         /// - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
         /// Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
         /// </summary>
-        [Input("rdbSnapshotPeriod", required: true)]
-        public Input<string> RdbSnapshotPeriod { get; set; } = null!;
+        [Input("rdbSnapshotPeriod")]
+        public Input<string>? RdbSnapshotPeriod { get; set; }
 
         /// <summary>
         /// Optional. Date and time that the first snapshot was/will be attempted,

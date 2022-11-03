@@ -47,6 +47,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.activeDirectoryCustomEndpoint);
     }
 
+    @Import(name="alloydbCustomEndpoint")
+    private @Nullable Output<String> alloydbCustomEndpoint;
+
+    public Optional<Output<String>> alloydbCustomEndpoint() {
+        return Optional.ofNullable(this.alloydbCustomEndpoint);
+    }
+
     @Import(name="apiGatewayCustomEndpoint")
     private @Nullable Output<String> apiGatewayCustomEndpoint;
 
@@ -348,6 +355,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dataflowCustomEndpoint);
     }
 
+    @Import(name="dataformCustomEndpoint")
+    private @Nullable Output<String> dataformCustomEndpoint;
+
+    public Optional<Output<String>> dataformCustomEndpoint() {
+        return Optional.ofNullable(this.dataformCustomEndpoint);
+    }
+
     @Import(name="dataplexCustomEndpoint")
     private @Nullable Output<String> dataplexCustomEndpoint;
 
@@ -528,6 +542,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> iamCustomEndpoint() {
         return Optional.ofNullable(this.iamCustomEndpoint);
+    }
+
+    @Import(name="iamWorkforcePoolCustomEndpoint")
+    private @Nullable Output<String> iamWorkforcePoolCustomEndpoint;
+
+    public Optional<Output<String>> iamWorkforcePoolCustomEndpoint() {
+        return Optional.ofNullable(this.iamWorkforcePoolCustomEndpoint);
     }
 
     @Import(name="iapCustomEndpoint")
@@ -880,6 +901,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.accessContextManagerCustomEndpoint = $.accessContextManagerCustomEndpoint;
         this.accessToken = $.accessToken;
         this.activeDirectoryCustomEndpoint = $.activeDirectoryCustomEndpoint;
+        this.alloydbCustomEndpoint = $.alloydbCustomEndpoint;
         this.apiGatewayCustomEndpoint = $.apiGatewayCustomEndpoint;
         this.apigeeCustomEndpoint = $.apigeeCustomEndpoint;
         this.apikeysCustomEndpoint = $.apikeysCustomEndpoint;
@@ -923,6 +945,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.dataFusionCustomEndpoint = $.dataFusionCustomEndpoint;
         this.dataLossPreventionCustomEndpoint = $.dataLossPreventionCustomEndpoint;
         this.dataflowCustomEndpoint = $.dataflowCustomEndpoint;
+        this.dataformCustomEndpoint = $.dataformCustomEndpoint;
         this.dataplexCustomEndpoint = $.dataplexCustomEndpoint;
         this.dataprocCustomEndpoint = $.dataprocCustomEndpoint;
         this.dataprocMetastoreCustomEndpoint = $.dataprocMetastoreCustomEndpoint;
@@ -949,6 +972,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.iamBetaCustomEndpoint = $.iamBetaCustomEndpoint;
         this.iamCredentialsCustomEndpoint = $.iamCredentialsCustomEndpoint;
         this.iamCustomEndpoint = $.iamCustomEndpoint;
+        this.iamWorkforcePoolCustomEndpoint = $.iamWorkforcePoolCustomEndpoint;
         this.iapCustomEndpoint = $.iapCustomEndpoint;
         this.identityPlatformCustomEndpoint = $.identityPlatformCustomEndpoint;
         this.impersonateServiceAccount = $.impersonateServiceAccount;
@@ -1052,6 +1076,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder activeDirectoryCustomEndpoint(String activeDirectoryCustomEndpoint) {
             return activeDirectoryCustomEndpoint(Output.of(activeDirectoryCustomEndpoint));
+        }
+
+        public Builder alloydbCustomEndpoint(@Nullable Output<String> alloydbCustomEndpoint) {
+            $.alloydbCustomEndpoint = alloydbCustomEndpoint;
+            return this;
+        }
+
+        public Builder alloydbCustomEndpoint(String alloydbCustomEndpoint) {
+            return alloydbCustomEndpoint(Output.of(alloydbCustomEndpoint));
         }
 
         public Builder apiGatewayCustomEndpoint(@Nullable Output<String> apiGatewayCustomEndpoint) {
@@ -1441,6 +1474,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return dataflowCustomEndpoint(Output.of(dataflowCustomEndpoint));
         }
 
+        public Builder dataformCustomEndpoint(@Nullable Output<String> dataformCustomEndpoint) {
+            $.dataformCustomEndpoint = dataformCustomEndpoint;
+            return this;
+        }
+
+        public Builder dataformCustomEndpoint(String dataformCustomEndpoint) {
+            return dataformCustomEndpoint(Output.of(dataformCustomEndpoint));
+        }
+
         public Builder dataplexCustomEndpoint(@Nullable Output<String> dataplexCustomEndpoint) {
             $.dataplexCustomEndpoint = dataplexCustomEndpoint;
             return this;
@@ -1673,6 +1715,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder iamCustomEndpoint(String iamCustomEndpoint) {
             return iamCustomEndpoint(Output.of(iamCustomEndpoint));
+        }
+
+        public Builder iamWorkforcePoolCustomEndpoint(@Nullable Output<String> iamWorkforcePoolCustomEndpoint) {
+            $.iamWorkforcePoolCustomEndpoint = iamWorkforcePoolCustomEndpoint;
+            return this;
+        }
+
+        public Builder iamWorkforcePoolCustomEndpoint(String iamWorkforcePoolCustomEndpoint) {
+            return iamWorkforcePoolCustomEndpoint(Output.of(iamWorkforcePoolCustomEndpoint));
         }
 
         public Builder iapCustomEndpoint(@Nullable Output<String> iapCustomEndpoint) {

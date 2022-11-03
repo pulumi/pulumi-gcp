@@ -476,6 +476,7 @@ class DatabaseInstanceSettingsArgs:
                  password_validation_policy: Optional[pulumi.Input['DatabaseInstanceSettingsPasswordValidationPolicyArgs']] = None,
                  pricing_plan: Optional[pulumi.Input[str]] = None,
                  sql_server_audit_config: Optional[pulumi.Input['DatabaseInstanceSettingsSqlServerAuditConfigArgs']] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[int]] = None):
         """
@@ -533,6 +534,8 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "pricing_plan", pricing_plan)
         if sql_server_audit_config is not None:
             pulumi.set(__self__, "sql_server_audit_config", sql_server_audit_config)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
         if user_labels is not None:
             pulumi.set(__self__, "user_labels", user_labels)
         if version is not None:
@@ -734,6 +737,15 @@ class DatabaseInstanceSettingsArgs:
     @sql_server_audit_config.setter
     def sql_server_audit_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsSqlServerAuditConfigArgs']]):
         pulumi.set(self, "sql_server_audit_config", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
 
     @property
     @pulumi.getter(name="userLabels")

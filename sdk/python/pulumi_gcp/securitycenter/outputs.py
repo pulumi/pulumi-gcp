@@ -11,6 +11,8 @@ from .. import _utilities
 
 __all__ = [
     'NotificationConfigStreamingConfig',
+    'SourceIamBindingCondition',
+    'SourceIamMemberCondition',
 ]
 
 @pulumi.output_type
@@ -65,5 +67,71 @@ class NotificationConfigStreamingConfig(dict):
         for information on how to write a filter.
         """
         return pulumi.get(self, "filter")
+
+
+@pulumi.output_type
+class SourceIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        """
+        :param str description: The description of the source (max of 1024 characters).
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the source (max of 1024 characters).
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class SourceIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        """
+        :param str description: The description of the source (max of 1024 characters).
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the source (max of 1024 characters).
+        """
+        return pulumi.get(self, "description")
 
 

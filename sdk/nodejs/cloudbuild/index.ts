@@ -8,13 +8,13 @@ import * as utilities from "../utilities";
 export { TriggerArgs, TriggerState } from "./trigger";
 export type Trigger = import("./trigger").Trigger;
 export const Trigger: typeof import("./trigger").Trigger = null as any;
+utilities.lazyLoad(exports, ["Trigger"], () => require("./trigger"));
 
 export { WorkerPoolArgs, WorkerPoolState } from "./workerPool";
 export type WorkerPool = import("./workerPool").WorkerPool;
 export const WorkerPool: typeof import("./workerPool").WorkerPool = null as any;
-
-utilities.lazyLoad(exports, ["Trigger"], () => require("./trigger"));
 utilities.lazyLoad(exports, ["WorkerPool"], () => require("./workerPool"));
+
 
 const _module = {
     version: utilities.getVersion(),

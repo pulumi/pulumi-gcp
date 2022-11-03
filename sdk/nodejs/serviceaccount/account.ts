@@ -96,6 +96,10 @@ export class Account extends pulumi.CustomResource {
      */
     public /*out*/ readonly email!: pulumi.Output<string>;
     /**
+     * The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+     */
+    public /*out*/ readonly member!: pulumi.Output<string>;
+    /**
      * The fully-qualified name of the service account.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -127,6 +131,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["member"] = state ? state.member : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["uniqueId"] = state ? state.uniqueId : undefined;
@@ -141,6 +146,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["email"] = undefined /*out*/;
+            resourceInputs["member"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["uniqueId"] = undefined /*out*/;
         }
@@ -181,6 +187,10 @@ export interface AccountState {
      * that would grant the service account privileges.
      */
     email?: pulumi.Input<string>;
+    /**
+     * The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+     */
+    member?: pulumi.Input<string>;
     /**
      * The fully-qualified name of the service account.
      */

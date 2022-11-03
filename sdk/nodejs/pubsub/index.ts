@@ -8,69 +8,69 @@ import * as utilities from "../utilities";
 export { GetTopicArgs, GetTopicResult, GetTopicOutputArgs } from "./getTopic";
 export const getTopic: typeof import("./getTopic").getTopic = null as any;
 export const getTopicOutput: typeof import("./getTopic").getTopicOutput = null as any;
+utilities.lazyLoad(exports, ["getTopic","getTopicOutput"], () => require("./getTopic"));
 
 export { LiteReservationArgs, LiteReservationState } from "./liteReservation";
 export type LiteReservation = import("./liteReservation").LiteReservation;
 export const LiteReservation: typeof import("./liteReservation").LiteReservation = null as any;
+utilities.lazyLoad(exports, ["LiteReservation"], () => require("./liteReservation"));
 
 export { LiteSubscriptionArgs, LiteSubscriptionState } from "./liteSubscription";
 export type LiteSubscription = import("./liteSubscription").LiteSubscription;
 export const LiteSubscription: typeof import("./liteSubscription").LiteSubscription = null as any;
+utilities.lazyLoad(exports, ["LiteSubscription"], () => require("./liteSubscription"));
 
 export { LiteTopicArgs, LiteTopicState } from "./liteTopic";
 export type LiteTopic = import("./liteTopic").LiteTopic;
 export const LiteTopic: typeof import("./liteTopic").LiteTopic = null as any;
+utilities.lazyLoad(exports, ["LiteTopic"], () => require("./liteTopic"));
 
 export { SchemaArgs, SchemaState } from "./schema";
 export type Schema = import("./schema").Schema;
 export const Schema: typeof import("./schema").Schema = null as any;
+utilities.lazyLoad(exports, ["Schema"], () => require("./schema"));
 
 export { SubscriptionArgs, SubscriptionState } from "./subscription";
 export type Subscription = import("./subscription").Subscription;
 export const Subscription: typeof import("./subscription").Subscription = null as any;
+utilities.lazyLoad(exports, ["Subscription"], () => require("./subscription"));
 
 export { SubscriptionIAMBindingArgs, SubscriptionIAMBindingState } from "./subscriptionIAMBinding";
 export type SubscriptionIAMBinding = import("./subscriptionIAMBinding").SubscriptionIAMBinding;
 export const SubscriptionIAMBinding: typeof import("./subscriptionIAMBinding").SubscriptionIAMBinding = null as any;
+utilities.lazyLoad(exports, ["SubscriptionIAMBinding"], () => require("./subscriptionIAMBinding"));
 
 export { SubscriptionIAMMemberArgs, SubscriptionIAMMemberState } from "./subscriptionIAMMember";
 export type SubscriptionIAMMember = import("./subscriptionIAMMember").SubscriptionIAMMember;
 export const SubscriptionIAMMember: typeof import("./subscriptionIAMMember").SubscriptionIAMMember = null as any;
+utilities.lazyLoad(exports, ["SubscriptionIAMMember"], () => require("./subscriptionIAMMember"));
 
 export { SubscriptionIAMPolicyArgs, SubscriptionIAMPolicyState } from "./subscriptionIAMPolicy";
 export type SubscriptionIAMPolicy = import("./subscriptionIAMPolicy").SubscriptionIAMPolicy;
 export const SubscriptionIAMPolicy: typeof import("./subscriptionIAMPolicy").SubscriptionIAMPolicy = null as any;
+utilities.lazyLoad(exports, ["SubscriptionIAMPolicy"], () => require("./subscriptionIAMPolicy"));
 
 export { TopicArgs, TopicState } from "./topic";
 export type Topic = import("./topic").Topic;
 export const Topic: typeof import("./topic").Topic = null as any;
+utilities.lazyLoad(exports, ["Topic"], () => require("./topic"));
 
 export { TopicIAMBindingArgs, TopicIAMBindingState } from "./topicIAMBinding";
 export type TopicIAMBinding = import("./topicIAMBinding").TopicIAMBinding;
 export const TopicIAMBinding: typeof import("./topicIAMBinding").TopicIAMBinding = null as any;
+utilities.lazyLoad(exports, ["TopicIAMBinding"], () => require("./topicIAMBinding"));
 
 export { TopicIAMMemberArgs, TopicIAMMemberState } from "./topicIAMMember";
 export type TopicIAMMember = import("./topicIAMMember").TopicIAMMember;
 export const TopicIAMMember: typeof import("./topicIAMMember").TopicIAMMember = null as any;
+utilities.lazyLoad(exports, ["TopicIAMMember"], () => require("./topicIAMMember"));
 
 export { TopicIAMPolicyArgs, TopicIAMPolicyState } from "./topicIAMPolicy";
 export type TopicIAMPolicy = import("./topicIAMPolicy").TopicIAMPolicy;
 export const TopicIAMPolicy: typeof import("./topicIAMPolicy").TopicIAMPolicy = null as any;
+utilities.lazyLoad(exports, ["TopicIAMPolicy"], () => require("./topicIAMPolicy"));
 
 export * from "./zMixins";
-utilities.lazyLoad(exports, ["getTopic","getTopicOutput"], () => require("./getTopic"));
-utilities.lazyLoad(exports, ["LiteReservation"], () => require("./liteReservation"));
-utilities.lazyLoad(exports, ["LiteSubscription"], () => require("./liteSubscription"));
-utilities.lazyLoad(exports, ["LiteTopic"], () => require("./liteTopic"));
-utilities.lazyLoad(exports, ["Schema"], () => require("./schema"));
-utilities.lazyLoad(exports, ["Subscription"], () => require("./subscription"));
-utilities.lazyLoad(exports, ["SubscriptionIAMBinding"], () => require("./subscriptionIAMBinding"));
-utilities.lazyLoad(exports, ["SubscriptionIAMMember"], () => require("./subscriptionIAMMember"));
-utilities.lazyLoad(exports, ["SubscriptionIAMPolicy"], () => require("./subscriptionIAMPolicy"));
-utilities.lazyLoad(exports, ["Topic"], () => require("./topic"));
-utilities.lazyLoad(exports, ["TopicIAMBinding"], () => require("./topicIAMBinding"));
-utilities.lazyLoad(exports, ["TopicIAMMember"], () => require("./topicIAMMember"));
-utilities.lazyLoad(exports, ["TopicIAMPolicy"], () => require("./topicIAMPolicy"));
 
 const _module = {
     version: utilities.getVersion(),

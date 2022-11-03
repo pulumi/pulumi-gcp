@@ -31,6 +31,7 @@ from .firewall_policy_association import *
 from .firewall_policy_rule import *
 from .forwarding_rule import *
 from .get_address import *
+from .get_addresses import *
 from .get_backend_bucket import *
 from .get_backend_service import *
 from .get_certificate import *
@@ -52,6 +53,7 @@ from .get_network import *
 from .get_network_endpoint_group import *
 from .get_node_types import *
 from .get_region_instance_group import *
+from .get_region_network_endpoint_group import *
 from .get_region_ssl_certificate import *
 from .get_regions import *
 from .get_resource_policy import *

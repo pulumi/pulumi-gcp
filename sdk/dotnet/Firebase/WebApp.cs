@@ -50,6 +50,7 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = defaultProject.ProjectId,
     ///         DisplayName = "Display Name Basic",
+    ///         DeletionPolicy = "DELETE",
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,
@@ -130,6 +131,19 @@ namespace Pulumi.Gcp.Firebase
         public Output<string> AppId { get; private set; } = null!;
 
         /// <summary>
+        /// The URLs where the 'WebApp' is hosted.
+        /// </summary>
+        [Output("appUrls")]
+        public Output<ImmutableArray<string>> AppUrls { get; private set; } = null!;
+
+        /// <summary>
+        /// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
+        /// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The user-assigned display name of the App.
         /// </summary>
         [Output("displayName")]
@@ -195,6 +209,13 @@ namespace Pulumi.Gcp.Firebase
     public sealed class WebAppArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
+        /// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The user-assigned display name of the App.
         /// </summary>
         [Input("displayName", required: true)]
@@ -221,6 +242,25 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         [Input("appId")]
         public Input<string>? AppId { get; set; }
+
+        [Input("appUrls")]
+        private InputList<string>? _appUrls;
+
+        /// <summary>
+        /// The URLs where the 'WebApp' is hosted.
+        /// </summary>
+        public InputList<string> AppUrls
+        {
+            get => _appUrls ?? (_appUrls = new InputList<string>());
+            set => _appUrls = value;
+        }
+
+        /// <summary>
+        /// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
+        /// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// The user-assigned display name of the App.

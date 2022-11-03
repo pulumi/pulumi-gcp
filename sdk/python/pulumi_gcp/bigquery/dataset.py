@@ -26,6 +26,7 @@ class DatasetArgs:
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Dataset resource.
@@ -49,6 +50,7 @@ class DatasetArgs:
                organize and group your datasets
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
                See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
+        :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -71,6 +73,8 @@ class DatasetArgs:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if max_time_travel_hours is not None:
+            pulumi.set(__self__, "max_time_travel_hours", max_time_travel_hours)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -205,6 +209,18 @@ class DatasetArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="maxTimeTravelHours")
+    def max_time_travel_hours(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+        """
+        return pulumi.get(self, "max_time_travel_hours")
+
+    @max_time_travel_hours.setter
+    def max_time_travel_hours(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_time_travel_hours", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -234,6 +250,7 @@ class _DatasetState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  last_modified_time: Optional[pulumi.Input[int]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None):
         """
@@ -261,6 +278,7 @@ class _DatasetState:
         :param pulumi.Input[int] last_modified_time: The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
                See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
+        :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -291,6 +309,8 @@ class _DatasetState:
             pulumi.set(__self__, "last_modified_time", last_modified_time)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if max_time_travel_hours is not None:
+            pulumi.set(__self__, "max_time_travel_hours", max_time_travel_hours)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if self_link is not None:
@@ -463,6 +483,18 @@ class _DatasetState:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="maxTimeTravelHours")
+    def max_time_travel_hours(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+        """
+        return pulumi.get(self, "max_time_travel_hours")
+
+    @max_time_travel_hours.setter
+    def max_time_travel_hours(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_time_travel_hours", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -503,6 +535,7 @@ class Dataset(pulumi.CustomResource):
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -646,6 +679,7 @@ class Dataset(pulumi.CustomResource):
                organize and group your datasets
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
                See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
+        :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -799,6 +833,7 @@ class Dataset(pulumi.CustomResource):
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -821,6 +856,7 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["friendly_name"] = friendly_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
+            __props__.__dict__["max_time_travel_hours"] = max_time_travel_hours
             __props__.__dict__["project"] = project
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["etag"] = None
@@ -849,6 +885,7 @@ class Dataset(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             last_modified_time: Optional[pulumi.Input[int]] = None,
             location: Optional[pulumi.Input[str]] = None,
+            max_time_travel_hours: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None) -> 'Dataset':
         """
@@ -881,6 +918,7 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[int] last_modified_time: The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
                See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
+        :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -902,6 +940,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["last_modified_time"] = last_modified_time
         __props__.__dict__["location"] = location
+        __props__.__dict__["max_time_travel_hours"] = max_time_travel_hours
         __props__.__dict__["project"] = project
         __props__.__dict__["self_link"] = self_link
         return Dataset(resource_name, opts=opts, __props__=__props__)
@@ -1019,6 +1058,14 @@ class Dataset(pulumi.CustomResource):
         See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="maxTimeTravelHours")
+    def max_time_travel_hours(self) -> pulumi.Output[Optional[str]]:
+        """
+        Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+        """
+        return pulumi.get(self, "max_time_travel_hours")
 
     @property
     @pulumi.getter

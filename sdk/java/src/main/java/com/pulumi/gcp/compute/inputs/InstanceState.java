@@ -325,7 +325,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Metadata key/value pairs to make available from
      * within the instance. Ssh keys attached in the Cloud Console will be removed.
-     * Add them to your config in order to keep them attached to your instance.
+     * Add them to your config in order to keep them attached to your instance. A
+     * list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
      * 
      */
     @Import(name="metadata")
@@ -334,7 +335,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Metadata key/value pairs to make available from
      * within the instance. Ssh keys attached in the Cloud Console will be removed.
-     * Add them to your config in order to keep them attached to your instance.
+     * Add them to your config in order to keep them attached to your instance. A
+     * list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
      * 
      */
     public Optional<Output<Map<String,String>>> metadata() {
@@ -1129,7 +1131,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param metadata Metadata key/value pairs to make available from
          * within the instance. Ssh keys attached in the Cloud Console will be removed.
-         * Add them to your config in order to keep them attached to your instance.
+         * Add them to your config in order to keep them attached to your instance. A
+         * list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
          * 
          * @return builder
          * 
@@ -1142,7 +1145,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param metadata Metadata key/value pairs to make available from
          * within the instance. Ssh keys attached in the Cloud Console will be removed.
-         * Add them to your config in order to keep them attached to your instance.
+         * Add them to your config in order to keep them attached to your instance. A
+         * list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
          * 
          * @return builder
          * 

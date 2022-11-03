@@ -540,6 +540,10 @@ namespace Pulumi.Gcp.Redis
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "authString",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -783,11 +787,21 @@ namespace Pulumi.Gcp.Redis
         [Input("authEnabled")]
         public Input<bool>? AuthEnabled { get; set; }
 
+        [Input("authString")]
+        private Input<string>? _authString;
+
         /// <summary>
         /// AUTH String set on the instance. This field will only be populated if auth_enabled is true.
         /// </summary>
-        [Input("authString")]
-        public Input<string>? AuthString { get; set; }
+        public Input<string>? AuthString
+        {
+            get => _authString;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authString = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The full name of the Google Compute Engine network to which the

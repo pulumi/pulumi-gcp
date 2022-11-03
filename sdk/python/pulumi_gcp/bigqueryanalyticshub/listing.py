@@ -525,6 +525,14 @@ class Listing(pulumi.CustomResource):
                  request_access: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A Bigquery Analytics Hub data exchange listing
+
+        To get more information about Listing, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges.listings)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+
         ## Example Usage
         ### Bigquery Analyticshub Listing Basic
 
@@ -536,14 +544,12 @@ class Listing(pulumi.CustomResource):
             location="US",
             data_exchange_id="my_data_exchange",
             display_name="my_data_exchange",
-            description="example data exchange",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            description="example data exchange")
         listing_dataset = gcp.bigquery.Dataset("listingDataset",
             dataset_id="my_listing",
             friendly_name="my_listing",
             description="example data exchange",
-            location="US",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="US")
         listing_listing = gcp.bigqueryanalyticshub.Listing("listingListing",
             location="US",
             data_exchange_id=listing_data_exchange.data_exchange_id,
@@ -552,8 +558,7 @@ class Listing(pulumi.CustomResource):
             description="example data exchange",
             bigquery_dataset=gcp.bigqueryanalyticshub.ListingBigqueryDatasetArgs(
                 dataset=listing_dataset.id,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -600,6 +605,14 @@ class Listing(pulumi.CustomResource):
                  args: ListingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Bigquery Analytics Hub data exchange listing
+
+        To get more information about Listing, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges.listings)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+
         ## Example Usage
         ### Bigquery Analyticshub Listing Basic
 
@@ -611,14 +624,12 @@ class Listing(pulumi.CustomResource):
             location="US",
             data_exchange_id="my_data_exchange",
             display_name="my_data_exchange",
-            description="example data exchange",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            description="example data exchange")
         listing_dataset = gcp.bigquery.Dataset("listingDataset",
             dataset_id="my_listing",
             friendly_name="my_listing",
             description="example data exchange",
-            location="US",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="US")
         listing_listing = gcp.bigqueryanalyticshub.Listing("listingListing",
             location="US",
             data_exchange_id=listing_data_exchange.data_exchange_id,
@@ -627,8 +638,7 @@ class Listing(pulumi.CustomResource):
             description="example data exchange",
             bigquery_dataset=gcp.bigqueryanalyticshub.ListingBigqueryDatasetArgs(
                 dataset=listing_dataset.id,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import

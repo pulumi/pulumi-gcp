@@ -41,6 +41,14 @@ Object.defineProperty(exports, "activeDirectoryCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const alloydbCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "alloydbCustomEndpoint", {
+    get() {
+        return __config.get("alloydbCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const apiGatewayCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "apiGatewayCustomEndpoint", {
     get() {
@@ -385,6 +393,14 @@ Object.defineProperty(exports, "dataflowCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const dataformCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "dataformCustomEndpoint", {
+    get() {
+        return __config.get("dataformCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const dataplexCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "dataplexCustomEndpoint", {
     get() {
@@ -589,6 +605,14 @@ export declare const iamCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "iamCustomEndpoint", {
     get() {
         return __config.get("iamCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const iamWorkforcePoolCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "iamWorkforcePoolCustomEndpoint", {
+    get() {
+        return __config.get("iamWorkforcePoolCustomEndpoint");
     },
     enumerable: true,
 });

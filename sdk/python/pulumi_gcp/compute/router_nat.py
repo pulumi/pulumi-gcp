@@ -30,6 +30,7 @@ class RouterNatArgs:
                  nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]]] = None,
                  subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]]] = None,
                  tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  tcp_transitory_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -74,6 +75,8 @@ class RouterNatArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router and NAT reside.
+        :param pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]] rules: A list of rules associated with this NAT.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]] subnetworks: One or more subnetwork NAT configurations. Only used if
                `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
                Structure is documented below.
@@ -108,6 +111,8 @@ class RouterNatArgs:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
         if subnetworks is not None:
             pulumi.set(__self__, "subnetworks", subnetworks)
         if tcp_established_idle_timeout_sec is not None:
@@ -311,6 +316,19 @@ class RouterNatArgs:
 
     @property
     @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]]]:
+        """
+        A list of rules associated with this NAT.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
     def subnetworks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]]]:
         """
         One or more subnetwork NAT configurations. Only used if
@@ -378,6 +396,7 @@ class _RouterNatState:
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]]] = None,
                  source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[str]] = None,
                  subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]]] = None,
                  tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -412,6 +431,8 @@ class _RouterNatState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router and NAT reside.
         :param pulumi.Input[str] router: The name of the Cloud Router in which this NAT will be configured.
+        :param pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]] rules: A list of rules associated with this NAT.
+               Structure is documented below.
         :param pulumi.Input[str] source_subnetwork_ip_ranges_to_nat: How NAT should be configured per Subnetwork.
                If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
                IP ranges in every Subnetwork are allowed to Nat.
@@ -458,6 +479,8 @@ class _RouterNatState:
             pulumi.set(__self__, "region", region)
         if router is not None:
             pulumi.set(__self__, "router", router)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
         if source_subnetwork_ip_ranges_to_nat is not None:
             pulumi.set(__self__, "source_subnetwork_ip_ranges_to_nat", source_subnetwork_ip_ranges_to_nat)
         if subnetworks is not None:
@@ -640,6 +663,19 @@ class _RouterNatState:
         pulumi.set(self, "router", value)
 
     @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]]]:
+        """
+        A list of rules associated with this NAT.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
     @pulumi.getter(name="sourceSubnetworkIpRangesToNat")
     def source_subnetwork_ip_ranges_to_nat(self) -> Optional[pulumi.Input[str]]:
         """
@@ -732,6 +768,7 @@ class RouterNat(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatRuleArgs']]]]] = None,
                  source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[str]] = None,
                  subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatSubnetworkArgs']]]]] = None,
                  tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -803,6 +840,46 @@ class RouterNat(pulumi.CustomResource):
                 source_ip_ranges_to_nats=["ALL_IP_RANGES"],
             )])
         ```
+        ### Router Nat Rules
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        net = gcp.compute.Network("net", auto_create_subnetworks=False)
+        subnet = gcp.compute.Subnetwork("subnet",
+            network=net.id,
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1")
+        router = gcp.compute.Router("router",
+            region=subnet.region,
+            network=net.id)
+        addr1 = gcp.compute.Address("addr1", region=subnet.region)
+        addr2 = gcp.compute.Address("addr2", region=subnet.region)
+        addr3 = gcp.compute.Address("addr3", region=subnet.region)
+        nat_rules = gcp.compute.RouterNat("natRules",
+            router=router.name,
+            region=router.region,
+            nat_ip_allocate_option="MANUAL_ONLY",
+            nat_ips=[addr1.self_link],
+            source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
+            subnetworks=[gcp.compute.RouterNatSubnetworkArgs(
+                name=subnet.id,
+                source_ip_ranges_to_nats=["ALL_IP_RANGES"],
+            )],
+            rules=[gcp.compute.RouterNatRuleArgs(
+                rule_number=100,
+                description="nat rules example",
+                match="inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')",
+                action=gcp.compute.RouterNatRuleActionArgs(
+                    source_nat_active_ips=[
+                        addr2.self_link,
+                        addr3.self_link,
+                    ],
+                ),
+            )],
+            enable_endpoint_independent_mapping=False)
+        ```
 
         ## Import
 
@@ -853,6 +930,8 @@ class RouterNat(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router and NAT reside.
         :param pulumi.Input[str] router: The name of the Cloud Router in which this NAT will be configured.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatRuleArgs']]]] rules: A list of rules associated with this NAT.
+               Structure is documented below.
         :param pulumi.Input[str] source_subnetwork_ip_ranges_to_nat: How NAT should be configured per Subnetwork.
                If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
                IP ranges in every Subnetwork are allowed to Nat.
@@ -944,6 +1023,46 @@ class RouterNat(pulumi.CustomResource):
                 source_ip_ranges_to_nats=["ALL_IP_RANGES"],
             )])
         ```
+        ### Router Nat Rules
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        net = gcp.compute.Network("net", auto_create_subnetworks=False)
+        subnet = gcp.compute.Subnetwork("subnet",
+            network=net.id,
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1")
+        router = gcp.compute.Router("router",
+            region=subnet.region,
+            network=net.id)
+        addr1 = gcp.compute.Address("addr1", region=subnet.region)
+        addr2 = gcp.compute.Address("addr2", region=subnet.region)
+        addr3 = gcp.compute.Address("addr3", region=subnet.region)
+        nat_rules = gcp.compute.RouterNat("natRules",
+            router=router.name,
+            region=router.region,
+            nat_ip_allocate_option="MANUAL_ONLY",
+            nat_ips=[addr1.self_link],
+            source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
+            subnetworks=[gcp.compute.RouterNatSubnetworkArgs(
+                name=subnet.id,
+                source_ip_ranges_to_nats=["ALL_IP_RANGES"],
+            )],
+            rules=[gcp.compute.RouterNatRuleArgs(
+                rule_number=100,
+                description="nat rules example",
+                match="inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')",
+                action=gcp.compute.RouterNatRuleActionArgs(
+                    source_nat_active_ips=[
+                        addr2.self_link,
+                        addr3.self_link,
+                    ],
+                ),
+            )],
+            enable_endpoint_independent_mapping=False)
+        ```
 
         ## Import
 
@@ -993,6 +1112,7 @@ class RouterNat(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatRuleArgs']]]]] = None,
                  source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[str]] = None,
                  subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatSubnetworkArgs']]]]] = None,
                  tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -1024,6 +1144,7 @@ class RouterNat(pulumi.CustomResource):
             if router is None and not opts.urn:
                 raise TypeError("Missing required property 'router'")
             __props__.__dict__["router"] = router
+            __props__.__dict__["rules"] = rules
             if source_subnetwork_ip_ranges_to_nat is None and not opts.urn:
                 raise TypeError("Missing required property 'source_subnetwork_ip_ranges_to_nat'")
             __props__.__dict__["source_subnetwork_ip_ranges_to_nat"] = source_subnetwork_ip_ranges_to_nat
@@ -1054,6 +1175,7 @@ class RouterNat(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             router: Optional[pulumi.Input[str]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatRuleArgs']]]]] = None,
             source_subnetwork_ip_ranges_to_nat: Optional[pulumi.Input[str]] = None,
             subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatSubnetworkArgs']]]]] = None,
             tcp_established_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -1093,6 +1215,8 @@ class RouterNat(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router and NAT reside.
         :param pulumi.Input[str] router: The name of the Cloud Router in which this NAT will be configured.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatRuleArgs']]]] rules: A list of rules associated with this NAT.
+               Structure is documented below.
         :param pulumi.Input[str] source_subnetwork_ip_ranges_to_nat: How NAT should be configured per Subnetwork.
                If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
                IP ranges in every Subnetwork are allowed to Nat.
@@ -1130,6 +1254,7 @@ class RouterNat(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
         __props__.__dict__["router"] = router
+        __props__.__dict__["rules"] = rules
         __props__.__dict__["source_subnetwork_ip_ranges_to_nat"] = source_subnetwork_ip_ranges_to_nat
         __props__.__dict__["subnetworks"] = subnetworks
         __props__.__dict__["tcp_established_idle_timeout_sec"] = tcp_established_idle_timeout_sec
@@ -1254,6 +1379,15 @@ class RouterNat(pulumi.CustomResource):
         The name of the Cloud Router in which this NAT will be configured.
         """
         return pulumi.get(self, "router")
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Output[Optional[Sequence['outputs.RouterNatRule']]]:
+        """
+        A list of rules associated with this NAT.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rules")
 
     @property
     @pulumi.getter(name="sourceSubnetworkIpRangesToNat")

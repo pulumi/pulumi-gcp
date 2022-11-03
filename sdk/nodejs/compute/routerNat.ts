@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  *     region: subnet.region,
  *     network: net.id,
  * });
- * const address: gcp.compute.Address[];
+ * const address: gcp.compute.Address[] = [];
  * for (const range = {value: 0}; range.value < 2; range.value++) {
  *     address.push(new gcp.compute.Address(`address-${range.value}`, {region: subnet.region}));
  * }
@@ -76,6 +76,49 @@ import * as utilities from "../utilities";
  *         name: subnet.id,
  *         sourceIpRangesToNats: ["ALL_IP_RANGES"],
  *     }],
+ * });
+ * ```
+ * ### Router Nat Rules
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const net = new gcp.compute.Network("net", {autoCreateSubnetworks: false});
+ * const subnet = new gcp.compute.Subnetwork("subnet", {
+ *     network: net.id,
+ *     ipCidrRange: "10.0.0.0/16",
+ *     region: "us-central1",
+ * });
+ * const router = new gcp.compute.Router("router", {
+ *     region: subnet.region,
+ *     network: net.id,
+ * });
+ * const addr1 = new gcp.compute.Address("addr1", {region: subnet.region});
+ * const addr2 = new gcp.compute.Address("addr2", {region: subnet.region});
+ * const addr3 = new gcp.compute.Address("addr3", {region: subnet.region});
+ * const natRules = new gcp.compute.RouterNat("natRules", {
+ *     router: router.name,
+ *     region: router.region,
+ *     natIpAllocateOption: "MANUAL_ONLY",
+ *     natIps: [addr1.selfLink],
+ *     sourceSubnetworkIpRangesToNat: "LIST_OF_SUBNETWORKS",
+ *     subnetworks: [{
+ *         name: subnet.id,
+ *         sourceIpRangesToNats: ["ALL_IP_RANGES"],
+ *     }],
+ *     rules: [{
+ *         ruleNumber: 100,
+ *         description: "nat rules example",
+ *         match: "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')",
+ *         action: {
+ *             sourceNatActiveIps: [
+ *                 addr2.selfLink,
+ *                 addr3.selfLink,
+ *             ],
+ *         },
+ *     }],
+ *     enableEndpointIndependentMapping: false,
  * });
  * ```
  *
@@ -194,6 +237,11 @@ export class RouterNat extends pulumi.CustomResource {
      */
     public readonly router!: pulumi.Output<string>;
     /**
+     * A list of rules associated with this NAT.
+     * Structure is documented below.
+     */
+    public readonly rules!: pulumi.Output<outputs.compute.RouterNatRule[] | undefined>;
+    /**
      * How NAT should be configured per Subnetwork.
      * If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
      * IP ranges in every Subnetwork are allowed to Nat.
@@ -254,6 +302,7 @@ export class RouterNat extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["router"] = state ? state.router : undefined;
+            resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["sourceSubnetworkIpRangesToNat"] = state ? state.sourceSubnetworkIpRangesToNat : undefined;
             resourceInputs["subnetworks"] = state ? state.subnetworks : undefined;
             resourceInputs["tcpEstablishedIdleTimeoutSec"] = state ? state.tcpEstablishedIdleTimeoutSec : undefined;
@@ -283,6 +332,7 @@ export class RouterNat extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["router"] = args ? args.router : undefined;
+            resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["sourceSubnetworkIpRangesToNat"] = args ? args.sourceSubnetworkIpRangesToNat : undefined;
             resourceInputs["subnetworks"] = args ? args.subnetworks : undefined;
             resourceInputs["tcpEstablishedIdleTimeoutSec"] = args ? args.tcpEstablishedIdleTimeoutSec : undefined;
@@ -364,6 +414,11 @@ export interface RouterNatState {
      * The name of the Cloud Router in which this NAT will be configured.
      */
     router?: pulumi.Input<string>;
+    /**
+     * A list of rules associated with this NAT.
+     * Structure is documented below.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatRule>[]>;
     /**
      * How NAT should be configured per Subnetwork.
      * If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
@@ -470,6 +525,11 @@ export interface RouterNatArgs {
      * The name of the Cloud Router in which this NAT will be configured.
      */
     router: pulumi.Input<string>;
+    /**
+     * A list of rules associated with this NAT.
+     * Structure is documented below.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatRule>[]>;
     /**
      * How NAT should be configured per Subnetwork.
      * If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the

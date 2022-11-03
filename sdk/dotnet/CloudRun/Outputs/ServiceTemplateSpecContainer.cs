@@ -60,6 +60,12 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly string Image;
         /// <summary>
+        /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ServiceTemplateSpecContainerLivenessProbe? LivenessProbe;
+        /// <summary>
         /// List of open ports in the container.
         /// More Info:
         /// https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
@@ -101,6 +107,8 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
             string image,
 
+            Outputs.ServiceTemplateSpecContainerLivenessProbe? livenessProbe,
+
             ImmutableArray<Outputs.ServiceTemplateSpecContainerPort> ports,
 
             Outputs.ServiceTemplateSpecContainerResources? resources,
@@ -116,6 +124,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
             EnvFroms = envFroms;
             Envs = envs;
             Image = image;
+            LivenessProbe = livenessProbe;
             Ports = ports;
             Resources = resources;
             StartupProbe = startupProbe;

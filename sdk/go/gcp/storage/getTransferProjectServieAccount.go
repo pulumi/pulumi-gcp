@@ -56,7 +56,9 @@ type GetTransferProjectServieAccountResult struct {
 	// Email address of the default service account used by Storage Transfer Jobs running in this project.
 	Email string `pulumi:"email"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+	Member  string `pulumi:"member"`
 	Project string `pulumi:"project"`
 	// Unique identifier for the service account.
 	SubjectId string `pulumi:"subjectId"`
@@ -108,6 +110,11 @@ func (o GetTransferProjectServieAccountResultOutput) Email() pulumi.StringOutput
 // The provider-assigned unique ID for this managed resource.
 func (o GetTransferProjectServieAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransferProjectServieAccountResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+func (o GetTransferProjectServieAccountResultOutput) Member() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransferProjectServieAccountResult) string { return v.Member }).(pulumi.StringOutput)
 }
 
 func (o GetTransferProjectServieAccountResultOutput) Project() pulumi.StringOutput {

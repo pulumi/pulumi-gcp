@@ -8,13 +8,13 @@ import * as utilities from "../utilities";
 export { CustomConstraintArgs, CustomConstraintState } from "./customConstraint";
 export type CustomConstraint = import("./customConstraint").CustomConstraint;
 export const CustomConstraint: typeof import("./customConstraint").CustomConstraint = null as any;
+utilities.lazyLoad(exports, ["CustomConstraint"], () => require("./customConstraint"));
 
 export { PolicyArgs, PolicyState } from "./policy";
 export type Policy = import("./policy").Policy;
 export const Policy: typeof import("./policy").Policy = null as any;
-
-utilities.lazyLoad(exports, ["CustomConstraint"], () => require("./customConstraint"));
 utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
+
 
 const _module = {
     version: utilities.getVersion(),

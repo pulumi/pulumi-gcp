@@ -132,6 +132,55 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Primary-Backup
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const prodManagedZone = new gcp.dns.ManagedZone("prodManagedZone", {dnsName: "prod.mydomain.com."});
+ * const prodRegionBackendService = new gcp.compute.RegionBackendService("prodRegionBackendService", {region: "us-central1"});
+ * const prodNetwork = new gcp.compute.Network("prodNetwork", {});
+ * const prodForwardingRule = new gcp.compute.ForwardingRule("prodForwardingRule", {
+ *     region: "us-central1",
+ *     loadBalancingScheme: "INTERNAL",
+ *     backendService: prodRegionBackendService.id,
+ *     allPorts: true,
+ *     network: prodNetwork.name,
+ * });
+ * const recordSet = new gcp.dns.RecordSet("recordSet", {
+ *     name: pulumi.interpolate`backend.${prodManagedZone.dnsName}`,
+ *     managedZone: prodManagedZone.name,
+ *     type: "A",
+ *     ttl: 300,
+ *     routingPolicy: {
+ *         primaryBackup: {
+ *             trickleRatio: 0.1,
+ *             primary: {
+ *                 internalLoadBalancers: [{
+ *                     loadBalancerType: "regionalL4ilb",
+ *                     ipAddress: prodForwardingRule.ipAddress,
+ *                     port: "80",
+ *                     ipProtocol: "tcp",
+ *                     networkUrl: prodNetwork.id,
+ *                     project: prodForwardingRule.project,
+ *                     region: prodForwardingRule.region,
+ *                 }],
+ *             },
+ *             backupGeos: [
+ *                 {
+ *                     location: "asia-east1",
+ *                     rrdatas: ["10.128.1.1"],
+ *                 },
+ *                 {
+ *                     location: "us-west1",
+ *                     rrdatas: ["10.130.1.1"],
+ *                 },
+ *             ],
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -189,8 +238,7 @@ export class RecordSet extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the load balancer belongs.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -270,8 +318,7 @@ export interface RecordSetState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the load balancer belongs.
      */
     project?: pulumi.Input<string>;
     /**
@@ -308,8 +355,7 @@ export interface RecordSetArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the load balancer belongs.
      */
     project?: pulumi.Input<string>;
     /**

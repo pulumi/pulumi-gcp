@@ -26,7 +26,17 @@ __all__ = [
     'PolicyNetworkArgs',
     'RecordSetRoutingPolicyArgs',
     'RecordSetRoutingPolicyGeoArgs',
+    'RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs',
+    'RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs',
+    'RecordSetRoutingPolicyPrimaryBackupArgs',
+    'RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs',
+    'RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs',
+    'RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs',
+    'RecordSetRoutingPolicyPrimaryBackupPrimaryArgs',
+    'RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs',
     'RecordSetRoutingPolicyWrrArgs',
+    'RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs',
+    'RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs',
     'ResponsePolicyNetworkArgs',
     'ResponsePolicyRuleLocalDataArgs',
     'ResponsePolicyRuleLocalDataLocalDataArgs',
@@ -543,18 +553,39 @@ class PolicyNetworkArgs:
 @pulumi.input_type
 class RecordSetRoutingPolicyArgs:
     def __init__(__self__, *,
+                 enable_geo_fencing: Optional[pulumi.Input[bool]] = None,
                  geos: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgs']]]] = None,
+                 primary_backup: Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArgs']] = None,
                  wrrs: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArgs']]]] = None):
         """
+        :param pulumi.Input[bool] enable_geo_fencing: Specifies whether to enable fencing for geo queries.
         :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgs']]] geos: The configuration for Geolocation based routing policy.
+               Structure is document below.
+        :param pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArgs'] primary_backup: The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
                Structure is document below.
         :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArgs']]] wrrs: The configuration for Weighted Round Robin based routing policy.
                Structure is document below.
         """
+        if enable_geo_fencing is not None:
+            pulumi.set(__self__, "enable_geo_fencing", enable_geo_fencing)
         if geos is not None:
             pulumi.set(__self__, "geos", geos)
+        if primary_backup is not None:
+            pulumi.set(__self__, "primary_backup", primary_backup)
         if wrrs is not None:
             pulumi.set(__self__, "wrrs", wrrs)
+
+    @property
+    @pulumi.getter(name="enableGeoFencing")
+    def enable_geo_fencing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable fencing for geo queries.
+        """
+        return pulumi.get(self, "enable_geo_fencing")
+
+    @enable_geo_fencing.setter
+    def enable_geo_fencing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_geo_fencing", value)
 
     @property
     @pulumi.getter
@@ -568,6 +599,19 @@ class RecordSetRoutingPolicyArgs:
     @geos.setter
     def geos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgs']]]]):
         pulumi.set(self, "geos", value)
+
+    @property
+    @pulumi.getter(name="primaryBackup")
+    def primary_backup(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArgs']]:
+        """
+        The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+        Structure is document below.
+        """
+        return pulumi.get(self, "primary_backup")
+
+    @primary_backup.setter
+    def primary_backup(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArgs']]):
+        pulumi.set(self, "primary_backup", value)
 
     @property
     @pulumi.getter
@@ -587,13 +631,19 @@ class RecordSetRoutingPolicyArgs:
 class RecordSetRoutingPolicyGeoArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 rrdatas: pulumi.Input[Sequence[pulumi.Input[str]]]):
+                 health_checked_targets: Optional[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs']] = None,
+                 rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] location: The location name defined in Google Cloud.
+        :param pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs'] health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+               Structure is document below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "rrdatas", rrdatas)
+        if health_checked_targets is not None:
+            pulumi.set(__self__, "health_checked_targets", health_checked_targets)
+        if rrdatas is not None:
+            pulumi.set(__self__, "rrdatas", rrdatas)
 
     @property
     @pulumi.getter
@@ -608,41 +658,588 @@ class RecordSetRoutingPolicyGeoArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="healthCheckedTargets")
+    def health_checked_targets(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs']]:
+        """
+        For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+        Structure is document below.
+        """
+        return pulumi.get(self, "health_checked_targets")
+
+    @health_checked_targets.setter
+    def health_checked_targets(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs']]):
+        pulumi.set(self, "health_checked_targets", value)
+
+    @property
     @pulumi.getter
-    def rrdatas(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+    def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Same as `rrdatas` above.
         """
         return pulumi.get(self, "rrdatas")
 
     @rrdatas.setter
-    def rrdatas(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+    def rrdatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "rrdatas", value)
+
+
+@pulumi.input_type
+class RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs:
+    def __init__(__self__, *,
+                 internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs']]] internal_load_balancers: The list of internal load balancers to health check.
+               Structure is document below.
+        """
+        pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+
+    @property
+    @pulumi.getter(name="internalLoadBalancers")
+    def internal_load_balancers(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]:
+        """
+        The list of internal load balancers to health check.
+        Structure is document below.
+        """
+        return pulumi.get(self, "internal_load_balancers")
+
+    @internal_load_balancers.setter
+    def internal_load_balancers(self, value: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]):
+        pulumi.set(self, "internal_load_balancers", value)
+
+
+@pulumi.input_type
+class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs:
+    def __init__(__self__, *,
+                 ip_address: pulumi.Input[str],
+                 ip_protocol: pulumi.Input[str],
+                 load_balancer_type: pulumi.Input[str],
+                 network_url: pulumi.Input[str],
+                 port: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ip_address: The frontend IP address of the load balancer.
+        :param pulumi.Input[str] ip_protocol: The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+        :param pulumi.Input[str] load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+        :param pulumi.Input[str] network_url: The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+        :param pulumi.Input[str] port: The configured port of the load balancer.
+        :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
+        :param pulumi.Input[str] region: The region of the load balancer. Only needed for regional load balancers.
+        """
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
+        pulumi.set(__self__, "network_url", network_url)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> pulumi.Input[str]:
+        """
+        The frontend IP address of the load balancer.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> pulumi.Input[str]:
+        """
+        The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @ip_protocol.setter
+    def ip_protocol(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip_protocol", value)
+
+    @property
+    @pulumi.getter(name="loadBalancerType")
+    def load_balancer_type(self) -> pulumi.Input[str]:
+        """
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+        """
+        return pulumi.get(self, "load_balancer_type")
+
+    @load_balancer_type.setter
+    def load_balancer_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "load_balancer_type", value)
+
+    @property
+    @pulumi.getter(name="networkUrl")
+    def network_url(self) -> pulumi.Input[str]:
+        """
+        The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+        """
+        return pulumi.get(self, "network_url")
+
+    @network_url.setter
+    def network_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_url", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[str]:
+        """
+        The configured port of the load balancer.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[str]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        The ID of the project in which the load balancer belongs.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the load balancer. Only needed for regional load balancers.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class RecordSetRoutingPolicyPrimaryBackupArgs:
+    def __init__(__self__, *,
+                 backup_geos: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs']]],
+                 primary: pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryArgs'],
+                 enable_geo_fencing_for_backups: Optional[pulumi.Input[bool]] = None,
+                 trickle_ratio: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs']]] backup_geos: The backup geo targets, which provide a regional failover policy for the otherwise global primary targets.
+               Structure is document above.
+        :param pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryArgs'] primary: The list of global primary targets to be health checked.
+               Structure is document below.
+        :param pulumi.Input[bool] enable_geo_fencing_for_backups: Specifies whether to enable fencing for backup geo queries.
+        :param pulumi.Input[float] trickle_ratio: Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
+        """
+        pulumi.set(__self__, "backup_geos", backup_geos)
+        pulumi.set(__self__, "primary", primary)
+        if enable_geo_fencing_for_backups is not None:
+            pulumi.set(__self__, "enable_geo_fencing_for_backups", enable_geo_fencing_for_backups)
+        if trickle_ratio is not None:
+            pulumi.set(__self__, "trickle_ratio", trickle_ratio)
+
+    @property
+    @pulumi.getter(name="backupGeos")
+    def backup_geos(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs']]]:
+        """
+        The backup geo targets, which provide a regional failover policy for the otherwise global primary targets.
+        Structure is document above.
+        """
+        return pulumi.get(self, "backup_geos")
+
+    @backup_geos.setter
+    def backup_geos(self, value: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs']]]):
+        pulumi.set(self, "backup_geos", value)
+
+    @property
+    @pulumi.getter
+    def primary(self) -> pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryArgs']:
+        """
+        The list of global primary targets to be health checked.
+        Structure is document below.
+        """
+        return pulumi.get(self, "primary")
+
+    @primary.setter
+    def primary(self, value: pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryArgs']):
+        pulumi.set(self, "primary", value)
+
+    @property
+    @pulumi.getter(name="enableGeoFencingForBackups")
+    def enable_geo_fencing_for_backups(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable fencing for backup geo queries.
+        """
+        return pulumi.get(self, "enable_geo_fencing_for_backups")
+
+    @enable_geo_fencing_for_backups.setter
+    def enable_geo_fencing_for_backups(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_geo_fencing_for_backups", value)
+
+    @property
+    @pulumi.getter(name="trickleRatio")
+    def trickle_ratio(self) -> Optional[pulumi.Input[float]]:
+        """
+        Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
+        """
+        return pulumi.get(self, "trickle_ratio")
+
+    @trickle_ratio.setter
+    def trickle_ratio(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "trickle_ratio", value)
+
+
+@pulumi.input_type
+class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs:
+    def __init__(__self__, *,
+                 location: pulumi.Input[str],
+                 health_checked_targets: Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs']] = None,
+                 rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] location: The location name defined in Google Cloud.
+        :param pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs'] health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+               Structure is document below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
+        """
+        pulumi.set(__self__, "location", location)
+        if health_checked_targets is not None:
+            pulumi.set(__self__, "health_checked_targets", health_checked_targets)
+        if rrdatas is not None:
+            pulumi.set(__self__, "rrdatas", rrdatas)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        """
+        The location name defined in Google Cloud.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="healthCheckedTargets")
+    def health_checked_targets(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs']]:
+        """
+        For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+        Structure is document below.
+        """
+        return pulumi.get(self, "health_checked_targets")
+
+    @health_checked_targets.setter
+    def health_checked_targets(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs']]):
+        pulumi.set(self, "health_checked_targets", value)
+
+    @property
+    @pulumi.getter
+    def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Same as `rrdatas` above.
+        """
+        return pulumi.get(self, "rrdatas")
+
+    @rrdatas.setter
+    def rrdatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "rrdatas", value)
+
+
+@pulumi.input_type
+class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs:
+    def __init__(__self__, *,
+                 internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs']]] internal_load_balancers: The list of internal load balancers to health check.
+               Structure is document below.
+        """
+        pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+
+    @property
+    @pulumi.getter(name="internalLoadBalancers")
+    def internal_load_balancers(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]:
+        """
+        The list of internal load balancers to health check.
+        Structure is document below.
+        """
+        return pulumi.get(self, "internal_load_balancers")
+
+    @internal_load_balancers.setter
+    def internal_load_balancers(self, value: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]):
+        pulumi.set(self, "internal_load_balancers", value)
+
+
+@pulumi.input_type
+class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs:
+    def __init__(__self__, *,
+                 ip_address: pulumi.Input[str],
+                 ip_protocol: pulumi.Input[str],
+                 load_balancer_type: pulumi.Input[str],
+                 network_url: pulumi.Input[str],
+                 port: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ip_address: The frontend IP address of the load balancer.
+        :param pulumi.Input[str] ip_protocol: The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+        :param pulumi.Input[str] load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+        :param pulumi.Input[str] network_url: The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+        :param pulumi.Input[str] port: The configured port of the load balancer.
+        :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
+        :param pulumi.Input[str] region: The region of the load balancer. Only needed for regional load balancers.
+        """
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
+        pulumi.set(__self__, "network_url", network_url)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> pulumi.Input[str]:
+        """
+        The frontend IP address of the load balancer.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> pulumi.Input[str]:
+        """
+        The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @ip_protocol.setter
+    def ip_protocol(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip_protocol", value)
+
+    @property
+    @pulumi.getter(name="loadBalancerType")
+    def load_balancer_type(self) -> pulumi.Input[str]:
+        """
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+        """
+        return pulumi.get(self, "load_balancer_type")
+
+    @load_balancer_type.setter
+    def load_balancer_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "load_balancer_type", value)
+
+    @property
+    @pulumi.getter(name="networkUrl")
+    def network_url(self) -> pulumi.Input[str]:
+        """
+        The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+        """
+        return pulumi.get(self, "network_url")
+
+    @network_url.setter
+    def network_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_url", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[str]:
+        """
+        The configured port of the load balancer.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[str]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        The ID of the project in which the load balancer belongs.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the load balancer. Only needed for regional load balancers.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class RecordSetRoutingPolicyPrimaryBackupPrimaryArgs:
+    def __init__(__self__, *,
+                 internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]] internal_load_balancers: The list of internal load balancers to health check.
+               Structure is document below.
+        """
+        pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+
+    @property
+    @pulumi.getter(name="internalLoadBalancers")
+    def internal_load_balancers(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]]:
+        """
+        The list of internal load balancers to health check.
+        Structure is document below.
+        """
+        return pulumi.get(self, "internal_load_balancers")
+
+    @internal_load_balancers.setter
+    def internal_load_balancers(self, value: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]]):
+        pulumi.set(self, "internal_load_balancers", value)
+
+
+@pulumi.input_type
+class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs:
+    def __init__(__self__, *,
+                 ip_address: pulumi.Input[str],
+                 ip_protocol: pulumi.Input[str],
+                 load_balancer_type: pulumi.Input[str],
+                 network_url: pulumi.Input[str],
+                 port: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ip_address: The frontend IP address of the load balancer.
+        :param pulumi.Input[str] ip_protocol: The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+        :param pulumi.Input[str] load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+        :param pulumi.Input[str] network_url: The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+        :param pulumi.Input[str] port: The configured port of the load balancer.
+        :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
+        :param pulumi.Input[str] region: The region of the load balancer. Only needed for regional load balancers.
+        """
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
+        pulumi.set(__self__, "network_url", network_url)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> pulumi.Input[str]:
+        """
+        The frontend IP address of the load balancer.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> pulumi.Input[str]:
+        """
+        The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @ip_protocol.setter
+    def ip_protocol(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip_protocol", value)
+
+    @property
+    @pulumi.getter(name="loadBalancerType")
+    def load_balancer_type(self) -> pulumi.Input[str]:
+        """
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+        """
+        return pulumi.get(self, "load_balancer_type")
+
+    @load_balancer_type.setter
+    def load_balancer_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "load_balancer_type", value)
+
+    @property
+    @pulumi.getter(name="networkUrl")
+    def network_url(self) -> pulumi.Input[str]:
+        """
+        The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+        """
+        return pulumi.get(self, "network_url")
+
+    @network_url.setter
+    def network_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_url", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[str]:
+        """
+        The configured port of the load balancer.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[str]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        The ID of the project in which the load balancer belongs.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the load balancer. Only needed for regional load balancers.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class RecordSetRoutingPolicyWrrArgs:
     def __init__(__self__, *,
-                 rrdatas: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 weight: pulumi.Input[float]):
+                 weight: pulumi.Input[float],
+                 health_checked_targets: Optional[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs']] = None,
+                 rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
         :param pulumi.Input[float] weight: The ratio of traffic routed to the target.
+        :param pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs'] health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+               Structure is document below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
         """
-        pulumi.set(__self__, "rrdatas", rrdatas)
         pulumi.set(__self__, "weight", weight)
-
-    @property
-    @pulumi.getter
-    def rrdatas(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        Same as `rrdatas` above.
-        """
-        return pulumi.get(self, "rrdatas")
-
-    @rrdatas.setter
-    def rrdatas(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "rrdatas", value)
+        if health_checked_targets is not None:
+            pulumi.set(__self__, "health_checked_targets", health_checked_targets)
+        if rrdatas is not None:
+            pulumi.set(__self__, "rrdatas", rrdatas)
 
     @property
     @pulumi.getter
@@ -655,6 +1252,168 @@ class RecordSetRoutingPolicyWrrArgs:
     @weight.setter
     def weight(self, value: pulumi.Input[float]):
         pulumi.set(self, "weight", value)
+
+    @property
+    @pulumi.getter(name="healthCheckedTargets")
+    def health_checked_targets(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs']]:
+        """
+        For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+        Structure is document below.
+        """
+        return pulumi.get(self, "health_checked_targets")
+
+    @health_checked_targets.setter
+    def health_checked_targets(self, value: Optional[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs']]):
+        pulumi.set(self, "health_checked_targets", value)
+
+    @property
+    @pulumi.getter
+    def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Same as `rrdatas` above.
+        """
+        return pulumi.get(self, "rrdatas")
+
+    @rrdatas.setter
+    def rrdatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "rrdatas", value)
+
+
+@pulumi.input_type
+class RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs:
+    def __init__(__self__, *,
+                 internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs']]] internal_load_balancers: The list of internal load balancers to health check.
+               Structure is document below.
+        """
+        pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+
+    @property
+    @pulumi.getter(name="internalLoadBalancers")
+    def internal_load_balancers(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs']]]:
+        """
+        The list of internal load balancers to health check.
+        Structure is document below.
+        """
+        return pulumi.get(self, "internal_load_balancers")
+
+    @internal_load_balancers.setter
+    def internal_load_balancers(self, value: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs']]]):
+        pulumi.set(self, "internal_load_balancers", value)
+
+
+@pulumi.input_type
+class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs:
+    def __init__(__self__, *,
+                 ip_address: pulumi.Input[str],
+                 ip_protocol: pulumi.Input[str],
+                 load_balancer_type: pulumi.Input[str],
+                 network_url: pulumi.Input[str],
+                 port: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ip_address: The frontend IP address of the load balancer.
+        :param pulumi.Input[str] ip_protocol: The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+        :param pulumi.Input[str] load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+        :param pulumi.Input[str] network_url: The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+        :param pulumi.Input[str] port: The configured port of the load balancer.
+        :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
+        :param pulumi.Input[str] region: The region of the load balancer. Only needed for regional load balancers.
+        """
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
+        pulumi.set(__self__, "network_url", network_url)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> pulumi.Input[str]:
+        """
+        The frontend IP address of the load balancer.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> pulumi.Input[str]:
+        """
+        The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @ip_protocol.setter
+    def ip_protocol(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip_protocol", value)
+
+    @property
+    @pulumi.getter(name="loadBalancerType")
+    def load_balancer_type(self) -> pulumi.Input[str]:
+        """
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+        """
+        return pulumi.get(self, "load_balancer_type")
+
+    @load_balancer_type.setter
+    def load_balancer_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "load_balancer_type", value)
+
+    @property
+    @pulumi.getter(name="networkUrl")
+    def network_url(self) -> pulumi.Input[str]:
+        """
+        The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+        """
+        return pulumi.get(self, "network_url")
+
+    @network_url.setter
+    def network_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_url", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[str]:
+        """
+        The configured port of the load balancer.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[str]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        The ID of the project in which the load balancer belongs.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the load balancer. Only needed for regional load balancers.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
 
 @pulumi.input_type

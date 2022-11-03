@@ -64,6 +64,12 @@ public final class TriggerBuildStep {
      */
     private String name;
     /**
+     * @return A shell script to be executed in the step.
+     * When script is provided, the user cannot specify the entrypoint or args.
+     * 
+     */
+    private @Nullable String script;
+    /**
      * @return A list of global environment variables, which are encrypted using a Cloud Key Management
      * Service crypto key. These values must be specified in the build&#39;s Secret. These variables
      * will be available to all build steps in this build.
@@ -170,6 +176,14 @@ public final class TriggerBuildStep {
         return this.name;
     }
     /**
+     * @return A shell script to be executed in the step.
+     * When script is provided, the user cannot specify the entrypoint or args.
+     * 
+     */
+    public Optional<String> script() {
+        return Optional.ofNullable(this.script);
+    }
+    /**
      * @return A list of global environment variables, which are encrypted using a Cloud Key Management
      * Service crypto key. These values must be specified in the build&#39;s Secret. These variables
      * will be available to all build steps in this build.
@@ -237,6 +251,7 @@ public final class TriggerBuildStep {
         private @Nullable List<String> envs;
         private @Nullable String id;
         private String name;
+        private @Nullable String script;
         private @Nullable List<String> secretEnvs;
         private @Nullable String timeout;
         private @Nullable String timing;
@@ -251,6 +266,7 @@ public final class TriggerBuildStep {
     	      this.envs = defaults.envs;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.script = defaults.script;
     	      this.secretEnvs = defaults.secretEnvs;
     	      this.timeout = defaults.timeout;
     	      this.timing = defaults.timing;
@@ -295,6 +311,11 @@ public final class TriggerBuildStep {
             return this;
         }
         @CustomType.Setter
+        public Builder script(@Nullable String script) {
+            this.script = script;
+            return this;
+        }
+        @CustomType.Setter
         public Builder secretEnvs(@Nullable List<String> secretEnvs) {
             this.secretEnvs = secretEnvs;
             return this;
@@ -336,6 +357,7 @@ public final class TriggerBuildStep {
             o.envs = envs;
             o.id = id;
             o.name = name;
+            o.script = script;
             o.secretEnvs = secretEnvs;
             o.timeout = timeout;
             o.timing = timing;

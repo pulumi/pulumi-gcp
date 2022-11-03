@@ -1133,6 +1133,7 @@ class TriggerBuildStepArgs:
                  entrypoint: Optional[pulumi.Input[str]] = None,
                  envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
+                 script: Optional[pulumi.Input[str]] = None,
                  secret_envs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  timing: Optional[pulumi.Input[str]] = None,
@@ -1165,6 +1166,8 @@ class TriggerBuildStepArgs:
                The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
         :param pulumi.Input[str] id: Unique identifier for this build step, used in `wait_for` to
                reference this build step as a dependency.
+        :param pulumi.Input[str] script: A shell script to be executed in the step.
+               When script is provided, the user cannot specify the entrypoint or args.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secret_envs: A list of global environment variables, which are encrypted using a Cloud Key Management
                Service crypto key. These values must be specified in the build's Secret. These variables
                will be available to all build steps in this build.
@@ -1199,6 +1202,8 @@ class TriggerBuildStepArgs:
             pulumi.set(__self__, "envs", envs)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if script is not None:
+            pulumi.set(__self__, "script", script)
         if secret_envs is not None:
             pulumi.set(__self__, "secret_envs", secret_envs)
         if timeout is not None:
@@ -1301,6 +1306,19 @@ class TriggerBuildStepArgs:
     @id.setter
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def script(self) -> Optional[pulumi.Input[str]]:
+        """
+        A shell script to be executed in the step.
+        When script is provided, the user cannot specify the entrypoint or args.
+        """
+        return pulumi.get(self, "script")
+
+    @script.setter
+    def script(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "script", value)
 
     @property
     @pulumi.getter(name="secretEnvs")

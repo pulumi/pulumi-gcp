@@ -29,6 +29,7 @@ class AuthorityArgs:
                  lifetime: Optional[pulumi.Input[str]] = None,
                  pem_ca_certificate: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 skip_grace_period: Optional[pulumi.Input[bool]] = None,
                  subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -43,6 +44,8 @@ class AuthorityArgs:
         :param pulumi.Input[str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate Authority belongs to.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+               state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
                such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
@@ -60,6 +63,10 @@ class AuthorityArgs:
         :param pulumi.Input[str] pem_ca_certificate: The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] skip_grace_period: If this flag is set, the Certificate Authority will be deleted as soon as
+               possible without a 30-day grace period where undeletion would have been
+               allowed. If you proceed, there will be no way to recover this CA.
+               Use with care. Defaults to `false`.
         :param pulumi.Input['AuthoritySubordinateConfigArgs'] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
                with the subordinate configuration, which describes its issuers.
                Structure is documented below.
@@ -90,6 +97,8 @@ class AuthorityArgs:
             pulumi.set(__self__, "pem_ca_certificate", pem_ca_certificate)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if skip_grace_period is not None:
+            pulumi.set(__self__, "skip_grace_period", skip_grace_period)
         if subordinate_config is not None:
             pulumi.set(__self__, "subordinate_config", subordinate_config)
         if type is not None:
@@ -163,6 +172,10 @@ class AuthorityArgs:
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+        state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -264,6 +277,21 @@ class AuthorityArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="skipGracePeriod")
+    def skip_grace_period(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If this flag is set, the Certificate Authority will be deleted as soon as
+        possible without a 30-day grace period where undeletion would have been
+        allowed. If you proceed, there will be no way to recover this CA.
+        Use with care. Defaults to `false`.
+        """
+        return pulumi.get(self, "skip_grace_period")
+
+    @skip_grace_period.setter
+    def skip_grace_period(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_grace_period", value)
+
+    @property
     @pulumi.getter(name="subordinateConfig")
     def subordinate_config(self) -> Optional[pulumi.Input['AuthoritySubordinateConfigArgs']]:
         """
@@ -314,6 +342,7 @@ class _AuthorityState:
                  pem_ca_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  pool: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 skip_grace_period: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -326,6 +355,8 @@ class _AuthorityState:
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+               state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
                such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
@@ -354,6 +385,10 @@ class _AuthorityState:
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate Authority belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] skip_grace_period: If this flag is set, the Certificate Authority will be deleted as soon as
+               possible without a 30-day grace period where undeletion would have been
+               allowed. If you proceed, there will be no way to recover this CA.
+               Use with care. Defaults to `false`.
         :param pulumi.Input[str] state: The State for this CertificateAuthority.
         :param pulumi.Input['AuthoritySubordinateConfigArgs'] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
                with the subordinate configuration, which describes its issuers.
@@ -400,6 +435,8 @@ class _AuthorityState:
             pulumi.set(__self__, "pool", pool)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if skip_grace_period is not None:
+            pulumi.set(__self__, "skip_grace_period", skip_grace_period)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if subordinate_config is not None:
@@ -462,6 +499,10 @@ class _AuthorityState:
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+        state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -629,6 +670,21 @@ class _AuthorityState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="skipGracePeriod")
+    def skip_grace_period(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If this flag is set, the Certificate Authority will be deleted as soon as
+        possible without a 30-day grace period where undeletion would have been
+        allowed. If you proceed, there will be no way to recover this CA.
+        Use with care. Defaults to `false`.
+        """
+        return pulumi.get(self, "skip_grace_period")
+
+    @skip_grace_period.setter
+    def skip_grace_period(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_grace_period", value)
+
+    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
@@ -702,6 +758,7 @@ class Authority(pulumi.CustomResource):
                  pem_ca_certificate: Optional[pulumi.Input[str]] = None,
                  pool: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 skip_grace_period: Optional[pulumi.Input[bool]] = None,
                  subordinate_config: Optional[pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -922,6 +979,8 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[str] certificate_authority_id: The user provided Resource ID for this Certificate Authority.
         :param pulumi.Input[pulumi.InputType['AuthorityConfigArgs']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+               state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
                such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
@@ -946,6 +1005,10 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate Authority belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] skip_grace_period: If this flag is set, the Certificate Authority will be deleted as soon as
+               possible without a 30-day grace period where undeletion would have been
+               allowed. If you proceed, there will be no way to recover this CA.
+               Use with care. Defaults to `false`.
         :param pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
                with the subordinate configuration, which describes its issuers.
                Structure is documented below.
@@ -1201,6 +1264,7 @@ class Authority(pulumi.CustomResource):
                  pem_ca_certificate: Optional[pulumi.Input[str]] = None,
                  pool: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 skip_grace_period: Optional[pulumi.Input[bool]] = None,
                  subordinate_config: Optional[pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1235,6 +1299,7 @@ class Authority(pulumi.CustomResource):
                 raise TypeError("Missing required property 'pool'")
             __props__.__dict__["pool"] = pool
             __props__.__dict__["project"] = project
+            __props__.__dict__["skip_grace_period"] = skip_grace_period
             __props__.__dict__["subordinate_config"] = subordinate_config
             __props__.__dict__["type"] = type
             __props__.__dict__["access_urls"] = None
@@ -1270,6 +1335,7 @@ class Authority(pulumi.CustomResource):
             pem_ca_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             pool: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            skip_grace_period: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
             subordinate_config: Optional[pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']]] = None,
             type: Optional[pulumi.Input[str]] = None,
@@ -1287,6 +1353,8 @@ class Authority(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+               state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
                such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
@@ -1315,6 +1383,10 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate Authority belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] skip_grace_period: If this flag is set, the Certificate Authority will be deleted as soon as
+               possible without a 30-day grace period where undeletion would have been
+               allowed. If you proceed, there will be no way to recover this CA.
+               Use with care. Defaults to `false`.
         :param pulumi.Input[str] state: The State for this CertificateAuthority.
         :param pulumi.Input[pulumi.InputType['AuthoritySubordinateConfigArgs']] subordinate_config: If this is a subordinate CertificateAuthority, this field will be set
                with the subordinate configuration, which describes its issuers.
@@ -1348,6 +1420,7 @@ class Authority(pulumi.CustomResource):
         __props__.__dict__["pem_ca_certificates"] = pem_ca_certificates
         __props__.__dict__["pool"] = pool
         __props__.__dict__["project"] = project
+        __props__.__dict__["skip_grace_period"] = skip_grace_period
         __props__.__dict__["state"] = state
         __props__.__dict__["subordinate_config"] = subordinate_config
         __props__.__dict__["type"] = type
@@ -1391,6 +1464,10 @@ class Authority(pulumi.CustomResource):
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+        state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @property
@@ -1504,6 +1581,17 @@ class Authority(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="skipGracePeriod")
+    def skip_grace_period(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If this flag is set, the Certificate Authority will be deleted as soon as
+        possible without a 30-day grace period where undeletion would have been
+        allowed. If you proceed, there will be no way to recover this CA.
+        Use with care. Defaults to `false`.
+        """
+        return pulumi.get(self, "skip_grace_period")
 
     @property
     @pulumi.getter

@@ -74,6 +74,98 @@ import (
 //	}
 //
 // ```
+// ### Router Nat Rules
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			net, err := compute.NewNetwork(ctx, "net", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
+//				Network:     net.ID(),
+//				IpCidrRange: pulumi.String("10.0.0.0/16"),
+//				Region:      pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
+//				Region:  subnet.Region,
+//				Network: net.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			addr1, err := compute.NewAddress(ctx, "addr1", &compute.AddressArgs{
+//				Region: subnet.Region,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			addr2, err := compute.NewAddress(ctx, "addr2", &compute.AddressArgs{
+//				Region: subnet.Region,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			addr3, err := compute.NewAddress(ctx, "addr3", &compute.AddressArgs{
+//				Region: subnet.Region,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRouterNat(ctx, "natRules", &compute.RouterNatArgs{
+//				Router:              router.Name,
+//				Region:              router.Region,
+//				NatIpAllocateOption: pulumi.String("MANUAL_ONLY"),
+//				NatIps: pulumi.StringArray{
+//					addr1.SelfLink,
+//				},
+//				SourceSubnetworkIpRangesToNat: pulumi.String("LIST_OF_SUBNETWORKS"),
+//				Subnetworks: compute.RouterNatSubnetworkArray{
+//					&compute.RouterNatSubnetworkArgs{
+//						Name: subnet.ID(),
+//						SourceIpRangesToNats: pulumi.StringArray{
+//							pulumi.String("ALL_IP_RANGES"),
+//						},
+//					},
+//				},
+//				Rules: compute.RouterNatRuleArray{
+//					&compute.RouterNatRuleArgs{
+//						RuleNumber:  pulumi.Int(100),
+//						Description: pulumi.String("nat rules example"),
+//						Match:       pulumi.String("inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')"),
+//						Action: &compute.RouterNatRuleActionArgs{
+//							SourceNatActiveIps: pulumi.StringArray{
+//								addr2.SelfLink,
+//								addr3.SelfLink,
+//							},
+//						},
+//					},
+//				},
+//				EnableEndpointIndependentMapping: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -145,6 +237,9 @@ type RouterNat struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The name of the Cloud Router in which this NAT will be configured.
 	Router pulumi.StringOutput `pulumi:"router"`
+	// A list of rules associated with this NAT.
+	// Structure is documented below.
+	Rules RouterNatRuleArrayOutput `pulumi:"rules"`
 	// How NAT should be configured per Subnetwork.
 	// If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
 	// IP ranges in every Subnetwork are allowed to Nat.
@@ -249,6 +344,9 @@ type routerNatState struct {
 	Region *string `pulumi:"region"`
 	// The name of the Cloud Router in which this NAT will be configured.
 	Router *string `pulumi:"router"`
+	// A list of rules associated with this NAT.
+	// Structure is documented below.
+	Rules []RouterNatRule `pulumi:"rules"`
 	// How NAT should be configured per Subnetwork.
 	// If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
 	// IP ranges in every Subnetwork are allowed to Nat.
@@ -316,6 +414,9 @@ type RouterNatState struct {
 	Region pulumi.StringPtrInput
 	// The name of the Cloud Router in which this NAT will be configured.
 	Router pulumi.StringPtrInput
+	// A list of rules associated with this NAT.
+	// Structure is documented below.
+	Rules RouterNatRuleArrayInput
 	// How NAT should be configured per Subnetwork.
 	// If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
 	// IP ranges in every Subnetwork are allowed to Nat.
@@ -387,6 +488,9 @@ type routerNatArgs struct {
 	Region *string `pulumi:"region"`
 	// The name of the Cloud Router in which this NAT will be configured.
 	Router string `pulumi:"router"`
+	// A list of rules associated with this NAT.
+	// Structure is documented below.
+	Rules []RouterNatRule `pulumi:"rules"`
 	// How NAT should be configured per Subnetwork.
 	// If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
 	// IP ranges in every Subnetwork are allowed to Nat.
@@ -455,6 +559,9 @@ type RouterNatArgs struct {
 	Region pulumi.StringPtrInput
 	// The name of the Cloud Router in which this NAT will be configured.
 	Router pulumi.StringInput
+	// A list of rules associated with this NAT.
+	// Structure is documented below.
+	Rules RouterNatRuleArrayInput
 	// How NAT should be configured per Subnetwork.
 	// If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
 	// IP ranges in every Subnetwork are allowed to Nat.
@@ -645,6 +752,12 @@ func (o RouterNatOutput) Region() pulumi.StringOutput {
 // The name of the Cloud Router in which this NAT will be configured.
 func (o RouterNatOutput) Router() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterNat) pulumi.StringOutput { return v.Router }).(pulumi.StringOutput)
+}
+
+// A list of rules associated with this NAT.
+// Structure is documented below.
+func (o RouterNatOutput) Rules() RouterNatRuleArrayOutput {
+	return o.ApplyT(func(v *RouterNat) RouterNatRuleArrayOutput { return v.Rules }).(RouterNatRuleArrayOutput)
 }
 
 // How NAT should be configured per Subnetwork.

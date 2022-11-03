@@ -33,6 +33,8 @@ export interface GetWebAppArgs {
  */
 export interface GetWebAppResult {
     readonly appId: string;
+    readonly appUrls: string[];
+    readonly deletionPolicy: string;
     readonly displayName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
