@@ -1970,9 +1970,14 @@ func (o PolicyNetworkArrayOutput) Index(i pulumi.IntInput) PolicyNetworkOutput {
 }
 
 type RecordSetRoutingPolicy struct {
+	// Specifies whether to enable fencing for geo queries.
+	EnableGeoFencing *bool `pulumi:"enableGeoFencing"`
 	// The configuration for Geolocation based routing policy.
 	// Structure is document below.
 	Geos []RecordSetRoutingPolicyGeo `pulumi:"geos"`
+	// The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+	// Structure is document below.
+	PrimaryBackup *RecordSetRoutingPolicyPrimaryBackup `pulumi:"primaryBackup"`
 	// The configuration for Weighted Round Robin based routing policy.
 	// Structure is document below.
 	Wrrs []RecordSetRoutingPolicyWrr `pulumi:"wrrs"`
@@ -1990,9 +1995,14 @@ type RecordSetRoutingPolicyInput interface {
 }
 
 type RecordSetRoutingPolicyArgs struct {
+	// Specifies whether to enable fencing for geo queries.
+	EnableGeoFencing pulumi.BoolPtrInput `pulumi:"enableGeoFencing"`
 	// The configuration for Geolocation based routing policy.
 	// Structure is document below.
 	Geos RecordSetRoutingPolicyGeoArrayInput `pulumi:"geos"`
+	// The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+	// Structure is document below.
+	PrimaryBackup RecordSetRoutingPolicyPrimaryBackupPtrInput `pulumi:"primaryBackup"`
 	// The configuration for Weighted Round Robin based routing policy.
 	// Structure is document below.
 	Wrrs RecordSetRoutingPolicyWrrArrayInput `pulumi:"wrrs"`
@@ -2075,10 +2085,21 @@ func (o RecordSetRoutingPolicyOutput) ToRecordSetRoutingPolicyPtrOutputWithConte
 	}).(RecordSetRoutingPolicyPtrOutput)
 }
 
+// Specifies whether to enable fencing for geo queries.
+func (o RecordSetRoutingPolicyOutput) EnableGeoFencing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicy) *bool { return v.EnableGeoFencing }).(pulumi.BoolPtrOutput)
+}
+
 // The configuration for Geolocation based routing policy.
 // Structure is document below.
 func (o RecordSetRoutingPolicyOutput) Geos() RecordSetRoutingPolicyGeoArrayOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicy) []RecordSetRoutingPolicyGeo { return v.Geos }).(RecordSetRoutingPolicyGeoArrayOutput)
+}
+
+// The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+// Structure is document below.
+func (o RecordSetRoutingPolicyOutput) PrimaryBackup() RecordSetRoutingPolicyPrimaryBackupPtrOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicy) *RecordSetRoutingPolicyPrimaryBackup { return v.PrimaryBackup }).(RecordSetRoutingPolicyPrimaryBackupPtrOutput)
 }
 
 // The configuration for Weighted Round Robin based routing policy.
@@ -2111,6 +2132,16 @@ func (o RecordSetRoutingPolicyPtrOutput) Elem() RecordSetRoutingPolicyOutput {
 	}).(RecordSetRoutingPolicyOutput)
 }
 
+// Specifies whether to enable fencing for geo queries.
+func (o RecordSetRoutingPolicyPtrOutput) EnableGeoFencing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableGeoFencing
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The configuration for Geolocation based routing policy.
 // Structure is document below.
 func (o RecordSetRoutingPolicyPtrOutput) Geos() RecordSetRoutingPolicyGeoArrayOutput {
@@ -2120,6 +2151,17 @@ func (o RecordSetRoutingPolicyPtrOutput) Geos() RecordSetRoutingPolicyGeoArrayOu
 		}
 		return v.Geos
 	}).(RecordSetRoutingPolicyGeoArrayOutput)
+}
+
+// The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+// Structure is document below.
+func (o RecordSetRoutingPolicyPtrOutput) PrimaryBackup() RecordSetRoutingPolicyPrimaryBackupPtrOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicy) *RecordSetRoutingPolicyPrimaryBackup {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryBackup
+	}).(RecordSetRoutingPolicyPrimaryBackupPtrOutput)
 }
 
 // The configuration for Weighted Round Robin based routing policy.
@@ -2134,6 +2176,9 @@ func (o RecordSetRoutingPolicyPtrOutput) Wrrs() RecordSetRoutingPolicyWrrArrayOu
 }
 
 type RecordSetRoutingPolicyGeo struct {
+	// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+	// Structure is document below.
+	HealthCheckedTargets *RecordSetRoutingPolicyGeoHealthCheckedTargets `pulumi:"healthCheckedTargets"`
 	// The location name defined in Google Cloud.
 	Location string `pulumi:"location"`
 	// Same as `rrdatas` above.
@@ -2152,6 +2197,9 @@ type RecordSetRoutingPolicyGeoInput interface {
 }
 
 type RecordSetRoutingPolicyGeoArgs struct {
+	// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+	// Structure is document below.
+	HealthCheckedTargets RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrInput `pulumi:"healthCheckedTargets"`
 	// The location name defined in Google Cloud.
 	Location pulumi.StringInput `pulumi:"location"`
 	// Same as `rrdatas` above.
@@ -2209,6 +2257,14 @@ func (o RecordSetRoutingPolicyGeoOutput) ToRecordSetRoutingPolicyGeoOutputWithCo
 	return o
 }
 
+// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+// Structure is document below.
+func (o RecordSetRoutingPolicyGeoOutput) HealthCheckedTargets() RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyGeo) *RecordSetRoutingPolicyGeoHealthCheckedTargets {
+		return v.HealthCheckedTargets
+	}).(RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput)
+}
+
 // The location name defined in Google Cloud.
 func (o RecordSetRoutingPolicyGeoOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicyGeo) string { return v.Location }).(pulumi.StringOutput)
@@ -2239,7 +2295,1236 @@ func (o RecordSetRoutingPolicyGeoArrayOutput) Index(i pulumi.IntInput) RecordSet
 	}).(RecordSetRoutingPolicyGeoOutput)
 }
 
+type RecordSetRoutingPolicyGeoHealthCheckedTargets struct {
+	// The list of internal load balancers to health check.
+	// Structure is document below.
+	InternalLoadBalancers []RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer `pulumi:"internalLoadBalancers"`
+}
+
+// RecordSetRoutingPolicyGeoHealthCheckedTargetsInput is an input type that accepts RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs and RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyGeoHealthCheckedTargetsInput` via:
+//
+//	RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs{...}
+type RecordSetRoutingPolicyGeoHealthCheckedTargetsInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyGeoHealthCheckedTargetsOutput() RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput
+	ToRecordSetRoutingPolicyGeoHealthCheckedTargetsOutputWithContext(context.Context) RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput
+}
+
+type RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs struct {
+	// The list of internal load balancers to health check.
+	// Structure is document below.
+	InternalLoadBalancers RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayInput `pulumi:"internalLoadBalancers"`
+}
+
+func (RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyGeoHealthCheckedTargets)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsOutput() RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput {
+	return i.ToRecordSetRoutingPolicyGeoHealthCheckedTargetsOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsOutputWithContext(ctx context.Context) RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput)
+}
+
+func (i RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput() RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput {
+	return i.ToRecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput).ToRecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutputWithContext(ctx)
+}
+
+// RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrInput is an input type that accepts RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs, RecordSetRoutingPolicyGeoHealthCheckedTargetsPtr and RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrInput` via:
+//
+//	        RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput() RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput
+	ToRecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutputWithContext(context.Context) RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput
+}
+
+type recordSetRoutingPolicyGeoHealthCheckedTargetsPtrType RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs
+
+func RecordSetRoutingPolicyGeoHealthCheckedTargetsPtr(v *RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs) RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrInput {
+	return (*recordSetRoutingPolicyGeoHealthCheckedTargetsPtrType)(v)
+}
+
+func (*recordSetRoutingPolicyGeoHealthCheckedTargetsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecordSetRoutingPolicyGeoHealthCheckedTargets)(nil)).Elem()
+}
+
+func (i *recordSetRoutingPolicyGeoHealthCheckedTargetsPtrType) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput() RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput {
+	return i.ToRecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutputWithContext(context.Background())
+}
+
+func (i *recordSetRoutingPolicyGeoHealthCheckedTargetsPtrType) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput)
+}
+
+type RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyGeoHealthCheckedTargets)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsOutput() RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsOutputWithContext(ctx context.Context) RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput() RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput {
+	return o.ToRecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutputWithContext(context.Background())
+}
+
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecordSetRoutingPolicyGeoHealthCheckedTargets) *RecordSetRoutingPolicyGeoHealthCheckedTargets {
+		return &v
+	}).(RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput)
+}
+
+// The list of internal load balancers to health check.
+// Structure is document below.
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput) InternalLoadBalancers() RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyGeoHealthCheckedTargets) []RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer {
+		return v.InternalLoadBalancers
+	}).(RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput)
+}
+
+type RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecordSetRoutingPolicyGeoHealthCheckedTargets)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput() RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput) Elem() RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicyGeoHealthCheckedTargets) RecordSetRoutingPolicyGeoHealthCheckedTargets {
+		if v != nil {
+			return *v
+		}
+		var ret RecordSetRoutingPolicyGeoHealthCheckedTargets
+		return ret
+	}).(RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput)
+}
+
+// The list of internal load balancers to health check.
+// Structure is document below.
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput) InternalLoadBalancers() RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicyGeoHealthCheckedTargets) []RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer {
+		if v == nil {
+			return nil
+		}
+		return v.InternalLoadBalancers
+	}).(RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput)
+}
+
+type RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer struct {
+	// The frontend IP address of the load balancer.
+	IpAddress string `pulumi:"ipAddress"`
+	// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+	IpProtocol string `pulumi:"ipProtocol"`
+	// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+	LoadBalancerType string `pulumi:"loadBalancerType"`
+	// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+	NetworkUrl string `pulumi:"networkUrl"`
+	// The configured port of the load balancer.
+	Port string `pulumi:"port"`
+	// The ID of the project in which the load balancer belongs.
+	Project string `pulumi:"project"`
+	// The region of the load balancer. Only needed for regional load balancers.
+	Region *string `pulumi:"region"`
+}
+
+// RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerInput is an input type that accepts RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs and RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerInput` via:
+//
+//	RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs{...}
+type RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput() RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput
+	ToRecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutputWithContext(context.Context) RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput
+}
+
+type RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs struct {
+	// The frontend IP address of the load balancer.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
+	// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+	LoadBalancerType pulumi.StringInput `pulumi:"loadBalancerType"`
+	// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+	NetworkUrl pulumi.StringInput `pulumi:"networkUrl"`
+	// The configured port of the load balancer.
+	Port pulumi.StringInput `pulumi:"port"`
+	// The ID of the project in which the load balancer belongs.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The region of the load balancer. Only needed for regional load balancers.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput() RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput {
+	return i.ToRecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutputWithContext(ctx context.Context) RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput)
+}
+
+// RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayInput is an input type that accepts RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArray and RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayInput` via:
+//
+//	RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArray{ RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs{...} }
+type RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput() RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput
+	ToRecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutputWithContext(context.Context) RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput
+}
+
+type RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArray []RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerInput
+
+func (RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArray) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput() RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
+	return i.ToRecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArray) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutputWithContext(ctx context.Context) RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput)
+}
+
+type RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput() RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutputWithContext(ctx context.Context) RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput {
+	return o
+}
+
+// The frontend IP address of the load balancer.
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer) string { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput) LoadBalancerType() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer) string {
+		return v.LoadBalancerType
+	}).(pulumi.StringOutput)
+}
+
+// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput) NetworkUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer) string { return v.NetworkUrl }).(pulumi.StringOutput)
+}
+
+// The configured port of the load balancer.
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer) string { return v.Port }).(pulumi.StringOutput)
+}
+
+// The ID of the project in which the load balancer belongs.
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The region of the load balancer. Only needed for regional load balancers.
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput() RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutputWithContext(ctx context.Context) RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput) Index(i pulumi.IntInput) RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer {
+		return vs[0].([]RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer)[vs[1].(int)]
+	}).(RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput)
+}
+
+type RecordSetRoutingPolicyPrimaryBackup struct {
+	// The backup geo targets, which provide a regional failover policy for the otherwise global primary targets.
+	// Structure is document above.
+	BackupGeos []RecordSetRoutingPolicyPrimaryBackupBackupGeo `pulumi:"backupGeos"`
+	// Specifies whether to enable fencing for backup geo queries.
+	EnableGeoFencingForBackups *bool `pulumi:"enableGeoFencingForBackups"`
+	// The list of global primary targets to be health checked.
+	// Structure is document below.
+	Primary RecordSetRoutingPolicyPrimaryBackupPrimary `pulumi:"primary"`
+	// Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
+	TrickleRatio *float64 `pulumi:"trickleRatio"`
+}
+
+// RecordSetRoutingPolicyPrimaryBackupInput is an input type that accepts RecordSetRoutingPolicyPrimaryBackupArgs and RecordSetRoutingPolicyPrimaryBackupOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyPrimaryBackupInput` via:
+//
+//	RecordSetRoutingPolicyPrimaryBackupArgs{...}
+type RecordSetRoutingPolicyPrimaryBackupInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyPrimaryBackupOutput() RecordSetRoutingPolicyPrimaryBackupOutput
+	ToRecordSetRoutingPolicyPrimaryBackupOutputWithContext(context.Context) RecordSetRoutingPolicyPrimaryBackupOutput
+}
+
+type RecordSetRoutingPolicyPrimaryBackupArgs struct {
+	// The backup geo targets, which provide a regional failover policy for the otherwise global primary targets.
+	// Structure is document above.
+	BackupGeos RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayInput `pulumi:"backupGeos"`
+	// Specifies whether to enable fencing for backup geo queries.
+	EnableGeoFencingForBackups pulumi.BoolPtrInput `pulumi:"enableGeoFencingForBackups"`
+	// The list of global primary targets to be health checked.
+	// Structure is document below.
+	Primary RecordSetRoutingPolicyPrimaryBackupPrimaryInput `pulumi:"primary"`
+	// Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
+	TrickleRatio pulumi.Float64PtrInput `pulumi:"trickleRatio"`
+}
+
+func (RecordSetRoutingPolicyPrimaryBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackup)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupArgs) ToRecordSetRoutingPolicyPrimaryBackupOutput() RecordSetRoutingPolicyPrimaryBackupOutput {
+	return i.ToRecordSetRoutingPolicyPrimaryBackupOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupArgs) ToRecordSetRoutingPolicyPrimaryBackupOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupOutput)
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupArgs) ToRecordSetRoutingPolicyPrimaryBackupPtrOutput() RecordSetRoutingPolicyPrimaryBackupPtrOutput {
+	return i.ToRecordSetRoutingPolicyPrimaryBackupPtrOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupArgs) ToRecordSetRoutingPolicyPrimaryBackupPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupOutput).ToRecordSetRoutingPolicyPrimaryBackupPtrOutputWithContext(ctx)
+}
+
+// RecordSetRoutingPolicyPrimaryBackupPtrInput is an input type that accepts RecordSetRoutingPolicyPrimaryBackupArgs, RecordSetRoutingPolicyPrimaryBackupPtr and RecordSetRoutingPolicyPrimaryBackupPtrOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyPrimaryBackupPtrInput` via:
+//
+//	        RecordSetRoutingPolicyPrimaryBackupArgs{...}
+//
+//	or:
+//
+//	        nil
+type RecordSetRoutingPolicyPrimaryBackupPtrInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyPrimaryBackupPtrOutput() RecordSetRoutingPolicyPrimaryBackupPtrOutput
+	ToRecordSetRoutingPolicyPrimaryBackupPtrOutputWithContext(context.Context) RecordSetRoutingPolicyPrimaryBackupPtrOutput
+}
+
+type recordSetRoutingPolicyPrimaryBackupPtrType RecordSetRoutingPolicyPrimaryBackupArgs
+
+func RecordSetRoutingPolicyPrimaryBackupPtr(v *RecordSetRoutingPolicyPrimaryBackupArgs) RecordSetRoutingPolicyPrimaryBackupPtrInput {
+	return (*recordSetRoutingPolicyPrimaryBackupPtrType)(v)
+}
+
+func (*recordSetRoutingPolicyPrimaryBackupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecordSetRoutingPolicyPrimaryBackup)(nil)).Elem()
+}
+
+func (i *recordSetRoutingPolicyPrimaryBackupPtrType) ToRecordSetRoutingPolicyPrimaryBackupPtrOutput() RecordSetRoutingPolicyPrimaryBackupPtrOutput {
+	return i.ToRecordSetRoutingPolicyPrimaryBackupPtrOutputWithContext(context.Background())
+}
+
+func (i *recordSetRoutingPolicyPrimaryBackupPtrType) ToRecordSetRoutingPolicyPrimaryBackupPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupPtrOutput)
+}
+
+type RecordSetRoutingPolicyPrimaryBackupOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyPrimaryBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackup)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupOutput) ToRecordSetRoutingPolicyPrimaryBackupOutput() RecordSetRoutingPolicyPrimaryBackupOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupOutput) ToRecordSetRoutingPolicyPrimaryBackupOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupOutput) ToRecordSetRoutingPolicyPrimaryBackupPtrOutput() RecordSetRoutingPolicyPrimaryBackupPtrOutput {
+	return o.ToRecordSetRoutingPolicyPrimaryBackupPtrOutputWithContext(context.Background())
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupOutput) ToRecordSetRoutingPolicyPrimaryBackupPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecordSetRoutingPolicyPrimaryBackup) *RecordSetRoutingPolicyPrimaryBackup {
+		return &v
+	}).(RecordSetRoutingPolicyPrimaryBackupPtrOutput)
+}
+
+// The backup geo targets, which provide a regional failover policy for the otherwise global primary targets.
+// Structure is document above.
+func (o RecordSetRoutingPolicyPrimaryBackupOutput) BackupGeos() RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackup) []RecordSetRoutingPolicyPrimaryBackupBackupGeo {
+		return v.BackupGeos
+	}).(RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput)
+}
+
+// Specifies whether to enable fencing for backup geo queries.
+func (o RecordSetRoutingPolicyPrimaryBackupOutput) EnableGeoFencingForBackups() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackup) *bool { return v.EnableGeoFencingForBackups }).(pulumi.BoolPtrOutput)
+}
+
+// The list of global primary targets to be health checked.
+// Structure is document below.
+func (o RecordSetRoutingPolicyPrimaryBackupOutput) Primary() RecordSetRoutingPolicyPrimaryBackupPrimaryOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackup) RecordSetRoutingPolicyPrimaryBackupPrimary {
+		return v.Primary
+	}).(RecordSetRoutingPolicyPrimaryBackupPrimaryOutput)
+}
+
+// Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
+func (o RecordSetRoutingPolicyPrimaryBackupOutput) TrickleRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackup) *float64 { return v.TrickleRatio }).(pulumi.Float64PtrOutput)
+}
+
+type RecordSetRoutingPolicyPrimaryBackupPtrOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyPrimaryBackupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecordSetRoutingPolicyPrimaryBackup)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupPtrOutput) ToRecordSetRoutingPolicyPrimaryBackupPtrOutput() RecordSetRoutingPolicyPrimaryBackupPtrOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupPtrOutput) ToRecordSetRoutingPolicyPrimaryBackupPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupPtrOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupPtrOutput) Elem() RecordSetRoutingPolicyPrimaryBackupOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicyPrimaryBackup) RecordSetRoutingPolicyPrimaryBackup {
+		if v != nil {
+			return *v
+		}
+		var ret RecordSetRoutingPolicyPrimaryBackup
+		return ret
+	}).(RecordSetRoutingPolicyPrimaryBackupOutput)
+}
+
+// The backup geo targets, which provide a regional failover policy for the otherwise global primary targets.
+// Structure is document above.
+func (o RecordSetRoutingPolicyPrimaryBackupPtrOutput) BackupGeos() RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicyPrimaryBackup) []RecordSetRoutingPolicyPrimaryBackupBackupGeo {
+		if v == nil {
+			return nil
+		}
+		return v.BackupGeos
+	}).(RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput)
+}
+
+// Specifies whether to enable fencing for backup geo queries.
+func (o RecordSetRoutingPolicyPrimaryBackupPtrOutput) EnableGeoFencingForBackups() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicyPrimaryBackup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableGeoFencingForBackups
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The list of global primary targets to be health checked.
+// Structure is document below.
+func (o RecordSetRoutingPolicyPrimaryBackupPtrOutput) Primary() RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicyPrimaryBackup) *RecordSetRoutingPolicyPrimaryBackupPrimary {
+		if v == nil {
+			return nil
+		}
+		return &v.Primary
+	}).(RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput)
+}
+
+// Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
+func (o RecordSetRoutingPolicyPrimaryBackupPtrOutput) TrickleRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicyPrimaryBackup) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TrickleRatio
+	}).(pulumi.Float64PtrOutput)
+}
+
+type RecordSetRoutingPolicyPrimaryBackupBackupGeo struct {
+	// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+	// Structure is document below.
+	HealthCheckedTargets *RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets `pulumi:"healthCheckedTargets"`
+	// The location name defined in Google Cloud.
+	Location string `pulumi:"location"`
+	// Same as `rrdatas` above.
+	Rrdatas []string `pulumi:"rrdatas"`
+}
+
+// RecordSetRoutingPolicyPrimaryBackupBackupGeoInput is an input type that accepts RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs and RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyPrimaryBackupBackupGeoInput` via:
+//
+//	RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs{...}
+type RecordSetRoutingPolicyPrimaryBackupBackupGeoInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyPrimaryBackupBackupGeoOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput
+	ToRecordSetRoutingPolicyPrimaryBackupBackupGeoOutputWithContext(context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput
+}
+
+type RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs struct {
+	// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+	// Structure is document below.
+	HealthCheckedTargets RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrInput `pulumi:"healthCheckedTargets"`
+	// The location name defined in Google Cloud.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Same as `rrdatas` above.
+	Rrdatas pulumi.StringArrayInput `pulumi:"rrdatas"`
+}
+
+func (RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupBackupGeo)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput {
+	return i.ToRecordSetRoutingPolicyPrimaryBackupBackupGeoOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput)
+}
+
+// RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayInput is an input type that accepts RecordSetRoutingPolicyPrimaryBackupBackupGeoArray and RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayInput` via:
+//
+//	RecordSetRoutingPolicyPrimaryBackupBackupGeoArray{ RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs{...} }
+type RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput
+	ToRecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutputWithContext(context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput
+}
+
+type RecordSetRoutingPolicyPrimaryBackupBackupGeoArray []RecordSetRoutingPolicyPrimaryBackupBackupGeoInput
+
+func (RecordSetRoutingPolicyPrimaryBackupBackupGeoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordSetRoutingPolicyPrimaryBackupBackupGeo)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoArray) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput {
+	return i.ToRecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoArray) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput)
+}
+
+type RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupBackupGeo)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput {
+	return o
+}
+
+// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+// Structure is document below.
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) HealthCheckedTargets() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeo) *RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets {
+		return v.HealthCheckedTargets
+	}).(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput)
+}
+
+// The location name defined in Google Cloud.
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeo) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Same as `rrdatas` above.
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) Rrdatas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeo) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
+}
+
+type RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordSetRoutingPolicyPrimaryBackupBackupGeo)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput) Index(i pulumi.IntInput) RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordSetRoutingPolicyPrimaryBackupBackupGeo {
+		return vs[0].([]RecordSetRoutingPolicyPrimaryBackupBackupGeo)[vs[1].(int)]
+	}).(RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput)
+}
+
+type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets struct {
+	// The list of internal load balancers to health check.
+	// Structure is document below.
+	InternalLoadBalancers []RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer `pulumi:"internalLoadBalancers"`
+}
+
+// RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInput is an input type that accepts RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs and RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInput` via:
+//
+//	RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs{...}
+type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput
+	ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutputWithContext(context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput
+}
+
+type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs struct {
+	// The list of internal load balancers to health check.
+	// Structure is document below.
+	InternalLoadBalancers RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayInput `pulumi:"internalLoadBalancers"`
+}
+
+func (RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput {
+	return i.ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput)
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput {
+	return i.ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput).ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutputWithContext(ctx)
+}
+
+// RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrInput is an input type that accepts RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs, RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtr and RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrInput` via:
+//
+//	        RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput
+	ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutputWithContext(context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput
+}
+
+type recordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrType RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs
+
+func RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtr(v *RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrInput {
+	return (*recordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrType)(v)
+}
+
+func (*recordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets)(nil)).Elem()
+}
+
+func (i *recordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrType) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput {
+	return i.ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutputWithContext(context.Background())
+}
+
+func (i *recordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrType) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput)
+}
+
+type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput {
+	return o.ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutputWithContext(context.Background())
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets) *RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets {
+		return &v
+	}).(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput)
+}
+
+// The list of internal load balancers to health check.
+// Structure is document below.
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput) InternalLoadBalancers() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets) []RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer {
+		return v.InternalLoadBalancers
+	}).(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput)
+}
+
+type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput) Elem() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets {
+		if v != nil {
+			return *v
+		}
+		var ret RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets
+		return ret
+	}).(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput)
+}
+
+// The list of internal load balancers to health check.
+// Structure is document below.
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput) InternalLoadBalancers() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets) []RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer {
+		if v == nil {
+			return nil
+		}
+		return v.InternalLoadBalancers
+	}).(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput)
+}
+
+type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer struct {
+	// The frontend IP address of the load balancer.
+	IpAddress string `pulumi:"ipAddress"`
+	// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+	IpProtocol string `pulumi:"ipProtocol"`
+	// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+	LoadBalancerType string `pulumi:"loadBalancerType"`
+	// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+	NetworkUrl string `pulumi:"networkUrl"`
+	// The configured port of the load balancer.
+	Port string `pulumi:"port"`
+	// The ID of the project in which the load balancer belongs.
+	Project string `pulumi:"project"`
+	// The region of the load balancer. Only needed for regional load balancers.
+	Region *string `pulumi:"region"`
+}
+
+// RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerInput is an input type that accepts RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs and RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerInput` via:
+//
+//	RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs{...}
+type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput
+	ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutputWithContext(context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput
+}
+
+type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs struct {
+	// The frontend IP address of the load balancer.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
+	// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+	LoadBalancerType pulumi.StringInput `pulumi:"loadBalancerType"`
+	// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+	NetworkUrl pulumi.StringInput `pulumi:"networkUrl"`
+	// The configured port of the load balancer.
+	Port pulumi.StringInput `pulumi:"port"`
+	// The ID of the project in which the load balancer belongs.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The region of the load balancer. Only needed for regional load balancers.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput {
+	return i.ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput)
+}
+
+// RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayInput is an input type that accepts RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArray and RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayInput` via:
+//
+//	RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArray{ RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs{...} }
+type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput
+	ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutputWithContext(context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput
+}
+
+type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArray []RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerInput
+
+func (RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArray) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
+	return i.ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArray) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput)
+}
+
+type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput {
+	return o
+}
+
+// The frontend IP address of the load balancer.
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer) string {
+		return v.IpAddress
+	}).(pulumi.StringOutput)
+}
+
+// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer) string {
+		return v.IpProtocol
+	}).(pulumi.StringOutput)
+}
+
+// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput) LoadBalancerType() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer) string {
+		return v.LoadBalancerType
+	}).(pulumi.StringOutput)
+}
+
+// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput) NetworkUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer) string {
+		return v.NetworkUrl
+	}).(pulumi.StringOutput)
+}
+
+// The configured port of the load balancer.
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer) string {
+		return v.Port
+	}).(pulumi.StringOutput)
+}
+
+// The ID of the project in which the load balancer belongs.
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer) string {
+		return v.Project
+	}).(pulumi.StringOutput)
+}
+
+// The region of the load balancer. Only needed for regional load balancers.
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer) *string {
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput) Index(i pulumi.IntInput) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer {
+		return vs[0].([]RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer)[vs[1].(int)]
+	}).(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput)
+}
+
+type RecordSetRoutingPolicyPrimaryBackupPrimary struct {
+	// The list of internal load balancers to health check.
+	// Structure is document below.
+	InternalLoadBalancers []RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer `pulumi:"internalLoadBalancers"`
+}
+
+// RecordSetRoutingPolicyPrimaryBackupPrimaryInput is an input type that accepts RecordSetRoutingPolicyPrimaryBackupPrimaryArgs and RecordSetRoutingPolicyPrimaryBackupPrimaryOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyPrimaryBackupPrimaryInput` via:
+//
+//	RecordSetRoutingPolicyPrimaryBackupPrimaryArgs{...}
+type RecordSetRoutingPolicyPrimaryBackupPrimaryInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyPrimaryBackupPrimaryOutput() RecordSetRoutingPolicyPrimaryBackupPrimaryOutput
+	ToRecordSetRoutingPolicyPrimaryBackupPrimaryOutputWithContext(context.Context) RecordSetRoutingPolicyPrimaryBackupPrimaryOutput
+}
+
+type RecordSetRoutingPolicyPrimaryBackupPrimaryArgs struct {
+	// The list of internal load balancers to health check.
+	// Structure is document below.
+	InternalLoadBalancers RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayInput `pulumi:"internalLoadBalancers"`
+}
+
+func (RecordSetRoutingPolicyPrimaryBackupPrimaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupPrimary)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupPrimaryArgs) ToRecordSetRoutingPolicyPrimaryBackupPrimaryOutput() RecordSetRoutingPolicyPrimaryBackupPrimaryOutput {
+	return i.ToRecordSetRoutingPolicyPrimaryBackupPrimaryOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupPrimaryArgs) ToRecordSetRoutingPolicyPrimaryBackupPrimaryOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupPrimaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupPrimaryOutput)
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupPrimaryArgs) ToRecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput() RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput {
+	return i.ToRecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupPrimaryArgs) ToRecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupPrimaryOutput).ToRecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutputWithContext(ctx)
+}
+
+// RecordSetRoutingPolicyPrimaryBackupPrimaryPtrInput is an input type that accepts RecordSetRoutingPolicyPrimaryBackupPrimaryArgs, RecordSetRoutingPolicyPrimaryBackupPrimaryPtr and RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyPrimaryBackupPrimaryPtrInput` via:
+//
+//	        RecordSetRoutingPolicyPrimaryBackupPrimaryArgs{...}
+//
+//	or:
+//
+//	        nil
+type RecordSetRoutingPolicyPrimaryBackupPrimaryPtrInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput() RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput
+	ToRecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutputWithContext(context.Context) RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput
+}
+
+type recordSetRoutingPolicyPrimaryBackupPrimaryPtrType RecordSetRoutingPolicyPrimaryBackupPrimaryArgs
+
+func RecordSetRoutingPolicyPrimaryBackupPrimaryPtr(v *RecordSetRoutingPolicyPrimaryBackupPrimaryArgs) RecordSetRoutingPolicyPrimaryBackupPrimaryPtrInput {
+	return (*recordSetRoutingPolicyPrimaryBackupPrimaryPtrType)(v)
+}
+
+func (*recordSetRoutingPolicyPrimaryBackupPrimaryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecordSetRoutingPolicyPrimaryBackupPrimary)(nil)).Elem()
+}
+
+func (i *recordSetRoutingPolicyPrimaryBackupPrimaryPtrType) ToRecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput() RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput {
+	return i.ToRecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutputWithContext(context.Background())
+}
+
+func (i *recordSetRoutingPolicyPrimaryBackupPrimaryPtrType) ToRecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput)
+}
+
+type RecordSetRoutingPolicyPrimaryBackupPrimaryOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyPrimaryBackupPrimaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupPrimary)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryOutput) ToRecordSetRoutingPolicyPrimaryBackupPrimaryOutput() RecordSetRoutingPolicyPrimaryBackupPrimaryOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryOutput) ToRecordSetRoutingPolicyPrimaryBackupPrimaryOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupPrimaryOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryOutput) ToRecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput() RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput {
+	return o.ToRecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutputWithContext(context.Background())
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryOutput) ToRecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecordSetRoutingPolicyPrimaryBackupPrimary) *RecordSetRoutingPolicyPrimaryBackupPrimary {
+		return &v
+	}).(RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput)
+}
+
+// The list of internal load balancers to health check.
+// Structure is document below.
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryOutput) InternalLoadBalancers() RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupPrimary) []RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer {
+		return v.InternalLoadBalancers
+	}).(RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput)
+}
+
+type RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecordSetRoutingPolicyPrimaryBackupPrimary)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput) ToRecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput() RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput) ToRecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput) Elem() RecordSetRoutingPolicyPrimaryBackupPrimaryOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicyPrimaryBackupPrimary) RecordSetRoutingPolicyPrimaryBackupPrimary {
+		if v != nil {
+			return *v
+		}
+		var ret RecordSetRoutingPolicyPrimaryBackupPrimary
+		return ret
+	}).(RecordSetRoutingPolicyPrimaryBackupPrimaryOutput)
+}
+
+// The list of internal load balancers to health check.
+// Structure is document below.
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput) InternalLoadBalancers() RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicyPrimaryBackupPrimary) []RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer {
+		if v == nil {
+			return nil
+		}
+		return v.InternalLoadBalancers
+	}).(RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput)
+}
+
+type RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer struct {
+	// The frontend IP address of the load balancer.
+	IpAddress string `pulumi:"ipAddress"`
+	// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+	IpProtocol string `pulumi:"ipProtocol"`
+	// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+	LoadBalancerType string `pulumi:"loadBalancerType"`
+	// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+	NetworkUrl string `pulumi:"networkUrl"`
+	// The configured port of the load balancer.
+	Port string `pulumi:"port"`
+	// The ID of the project in which the load balancer belongs.
+	Project string `pulumi:"project"`
+	// The region of the load balancer. Only needed for regional load balancers.
+	Region *string `pulumi:"region"`
+}
+
+// RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerInput is an input type that accepts RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs and RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerInput` via:
+//
+//	RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs{...}
+type RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput() RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput
+	ToRecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutputWithContext(context.Context) RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput
+}
+
+type RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs struct {
+	// The frontend IP address of the load balancer.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
+	// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+	LoadBalancerType pulumi.StringInput `pulumi:"loadBalancerType"`
+	// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+	NetworkUrl pulumi.StringInput `pulumi:"networkUrl"`
+	// The configured port of the load balancer.
+	Port pulumi.StringInput `pulumi:"port"`
+	// The ID of the project in which the load balancer belongs.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The region of the load balancer. Only needed for regional load balancers.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs) ToRecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput() RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput {
+	return i.ToRecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs) ToRecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput)
+}
+
+// RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayInput is an input type that accepts RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArray and RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayInput` via:
+//
+//	RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArray{ RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs{...} }
+type RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput() RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput
+	ToRecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutputWithContext(context.Context) RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput
+}
+
+type RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArray []RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerInput
+
+func (RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArray) ToRecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput() RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput {
+	return i.ToRecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArray) ToRecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput)
+}
+
+type RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput) ToRecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput() RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput) ToRecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput {
+	return o
+}
+
+// The frontend IP address of the load balancer.
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer) string { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput) LoadBalancerType() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer) string {
+		return v.LoadBalancerType
+	}).(pulumi.StringOutput)
+}
+
+// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput) NetworkUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer) string { return v.NetworkUrl }).(pulumi.StringOutput)
+}
+
+// The configured port of the load balancer.
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer) string { return v.Port }).(pulumi.StringOutput)
+}
+
+// The ID of the project in which the load balancer belongs.
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The region of the load balancer. Only needed for regional load balancers.
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput) ToRecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput() RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput) ToRecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput) Index(i pulumi.IntInput) RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer {
+		return vs[0].([]RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer)[vs[1].(int)]
+	}).(RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput)
+}
+
 type RecordSetRoutingPolicyWrr struct {
+	// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+	// Structure is document below.
+	HealthCheckedTargets *RecordSetRoutingPolicyWrrHealthCheckedTargets `pulumi:"healthCheckedTargets"`
 	// Same as `rrdatas` above.
 	Rrdatas []string `pulumi:"rrdatas"`
 	// The ratio of traffic routed to the target.
@@ -2258,6 +3543,9 @@ type RecordSetRoutingPolicyWrrInput interface {
 }
 
 type RecordSetRoutingPolicyWrrArgs struct {
+	// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+	// Structure is document below.
+	HealthCheckedTargets RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrInput `pulumi:"healthCheckedTargets"`
 	// Same as `rrdatas` above.
 	Rrdatas pulumi.StringArrayInput `pulumi:"rrdatas"`
 	// The ratio of traffic routed to the target.
@@ -2315,6 +3603,14 @@ func (o RecordSetRoutingPolicyWrrOutput) ToRecordSetRoutingPolicyWrrOutputWithCo
 	return o
 }
 
+// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+// Structure is document below.
+func (o RecordSetRoutingPolicyWrrOutput) HealthCheckedTargets() RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyWrr) *RecordSetRoutingPolicyWrrHealthCheckedTargets {
+		return v.HealthCheckedTargets
+	}).(RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput)
+}
+
 // Same as `rrdatas` above.
 func (o RecordSetRoutingPolicyWrrOutput) Rrdatas() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicyWrr) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
@@ -2343,6 +3639,302 @@ func (o RecordSetRoutingPolicyWrrArrayOutput) Index(i pulumi.IntInput) RecordSet
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordSetRoutingPolicyWrr {
 		return vs[0].([]RecordSetRoutingPolicyWrr)[vs[1].(int)]
 	}).(RecordSetRoutingPolicyWrrOutput)
+}
+
+type RecordSetRoutingPolicyWrrHealthCheckedTargets struct {
+	// The list of internal load balancers to health check.
+	// Structure is document below.
+	InternalLoadBalancers []RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer `pulumi:"internalLoadBalancers"`
+}
+
+// RecordSetRoutingPolicyWrrHealthCheckedTargetsInput is an input type that accepts RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs and RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyWrrHealthCheckedTargetsInput` via:
+//
+//	RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs{...}
+type RecordSetRoutingPolicyWrrHealthCheckedTargetsInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyWrrHealthCheckedTargetsOutput() RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput
+	ToRecordSetRoutingPolicyWrrHealthCheckedTargetsOutputWithContext(context.Context) RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput
+}
+
+type RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs struct {
+	// The list of internal load balancers to health check.
+	// Structure is document below.
+	InternalLoadBalancers RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayInput `pulumi:"internalLoadBalancers"`
+}
+
+func (RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyWrrHealthCheckedTargets)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsOutput() RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput {
+	return i.ToRecordSetRoutingPolicyWrrHealthCheckedTargetsOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsOutputWithContext(ctx context.Context) RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput)
+}
+
+func (i RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput() RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput {
+	return i.ToRecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput).ToRecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutputWithContext(ctx)
+}
+
+// RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrInput is an input type that accepts RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs, RecordSetRoutingPolicyWrrHealthCheckedTargetsPtr and RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrInput` via:
+//
+//	        RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput() RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput
+	ToRecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutputWithContext(context.Context) RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput
+}
+
+type recordSetRoutingPolicyWrrHealthCheckedTargetsPtrType RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs
+
+func RecordSetRoutingPolicyWrrHealthCheckedTargetsPtr(v *RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs) RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrInput {
+	return (*recordSetRoutingPolicyWrrHealthCheckedTargetsPtrType)(v)
+}
+
+func (*recordSetRoutingPolicyWrrHealthCheckedTargetsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecordSetRoutingPolicyWrrHealthCheckedTargets)(nil)).Elem()
+}
+
+func (i *recordSetRoutingPolicyWrrHealthCheckedTargetsPtrType) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput() RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput {
+	return i.ToRecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutputWithContext(context.Background())
+}
+
+func (i *recordSetRoutingPolicyWrrHealthCheckedTargetsPtrType) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput)
+}
+
+type RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyWrrHealthCheckedTargets)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsOutput() RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsOutputWithContext(ctx context.Context) RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput() RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput {
+	return o.ToRecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutputWithContext(context.Background())
+}
+
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecordSetRoutingPolicyWrrHealthCheckedTargets) *RecordSetRoutingPolicyWrrHealthCheckedTargets {
+		return &v
+	}).(RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput)
+}
+
+// The list of internal load balancers to health check.
+// Structure is document below.
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput) InternalLoadBalancers() RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyWrrHealthCheckedTargets) []RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer {
+		return v.InternalLoadBalancers
+	}).(RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput)
+}
+
+type RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecordSetRoutingPolicyWrrHealthCheckedTargets)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput() RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput) Elem() RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicyWrrHealthCheckedTargets) RecordSetRoutingPolicyWrrHealthCheckedTargets {
+		if v != nil {
+			return *v
+		}
+		var ret RecordSetRoutingPolicyWrrHealthCheckedTargets
+		return ret
+	}).(RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput)
+}
+
+// The list of internal load balancers to health check.
+// Structure is document below.
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput) InternalLoadBalancers() RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicyWrrHealthCheckedTargets) []RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer {
+		if v == nil {
+			return nil
+		}
+		return v.InternalLoadBalancers
+	}).(RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput)
+}
+
+type RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer struct {
+	// The frontend IP address of the load balancer.
+	IpAddress string `pulumi:"ipAddress"`
+	// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+	IpProtocol string `pulumi:"ipProtocol"`
+	// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+	LoadBalancerType string `pulumi:"loadBalancerType"`
+	// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+	NetworkUrl string `pulumi:"networkUrl"`
+	// The configured port of the load balancer.
+	Port string `pulumi:"port"`
+	// The ID of the project in which the load balancer belongs.
+	Project string `pulumi:"project"`
+	// The region of the load balancer. Only needed for regional load balancers.
+	Region *string `pulumi:"region"`
+}
+
+// RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerInput is an input type that accepts RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs and RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerInput` via:
+//
+//	RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs{...}
+type RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput() RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput
+	ToRecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutputWithContext(context.Context) RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput
+}
+
+type RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs struct {
+	// The frontend IP address of the load balancer.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
+	// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+	LoadBalancerType pulumi.StringInput `pulumi:"loadBalancerType"`
+	// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+	NetworkUrl pulumi.StringInput `pulumi:"networkUrl"`
+	// The configured port of the load balancer.
+	Port pulumi.StringInput `pulumi:"port"`
+	// The ID of the project in which the load balancer belongs.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The region of the load balancer. Only needed for regional load balancers.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput() RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput {
+	return i.ToRecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutputWithContext(ctx context.Context) RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput)
+}
+
+// RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayInput is an input type that accepts RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArray and RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput values.
+// You can construct a concrete instance of `RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayInput` via:
+//
+//	RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArray{ RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs{...} }
+type RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayInput interface {
+	pulumi.Input
+
+	ToRecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput() RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput
+	ToRecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutputWithContext(context.Context) RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput
+}
+
+type RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArray []RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerInput
+
+func (RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer)(nil)).Elem()
+}
+
+func (i RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArray) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput() RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput {
+	return i.ToRecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutputWithContext(context.Background())
+}
+
+func (i RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArray) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutputWithContext(ctx context.Context) RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput)
+}
+
+type RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput() RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutputWithContext(ctx context.Context) RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput {
+	return o
+}
+
+// The frontend IP address of the load balancer.
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer) string { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput) LoadBalancerType() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer) string {
+		return v.LoadBalancerType
+	}).(pulumi.StringOutput)
+}
+
+// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput) NetworkUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer) string { return v.NetworkUrl }).(pulumi.StringOutput)
+}
+
+// The configured port of the load balancer.
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer) string { return v.Port }).(pulumi.StringOutput)
+}
+
+// The ID of the project in which the load balancer belongs.
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The region of the load balancer. Only needed for regional load balancers.
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer)(nil)).Elem()
+}
+
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput() RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutputWithContext(ctx context.Context) RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput {
+	return o
+}
+
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput) Index(i pulumi.IntInput) RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer {
+		return vs[0].([]RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer)[vs[1].(int)]
+	}).(RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput)
 }
 
 type ResponsePolicyNetwork struct {
@@ -3311,8 +4903,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyPtrInput)(nil)).Elem(), RecordSetRoutingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyGeoInput)(nil)).Elem(), RecordSetRoutingPolicyGeoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyGeoArrayInput)(nil)).Elem(), RecordSetRoutingPolicyGeoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyGeoHealthCheckedTargetsInput)(nil)).Elem(), RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrInput)(nil)).Elem(), RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerInput)(nil)).Elem(), RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayInput)(nil)).Elem(), RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupInput)(nil)).Elem(), RecordSetRoutingPolicyPrimaryBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupPtrInput)(nil)).Elem(), RecordSetRoutingPolicyPrimaryBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupBackupGeoInput)(nil)).Elem(), RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayInput)(nil)).Elem(), RecordSetRoutingPolicyPrimaryBackupBackupGeoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInput)(nil)).Elem(), RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrInput)(nil)).Elem(), RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerInput)(nil)).Elem(), RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayInput)(nil)).Elem(), RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupPrimaryInput)(nil)).Elem(), RecordSetRoutingPolicyPrimaryBackupPrimaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupPrimaryPtrInput)(nil)).Elem(), RecordSetRoutingPolicyPrimaryBackupPrimaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerInput)(nil)).Elem(), RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayInput)(nil)).Elem(), RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyWrrInput)(nil)).Elem(), RecordSetRoutingPolicyWrrArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyWrrArrayInput)(nil)).Elem(), RecordSetRoutingPolicyWrrArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyWrrHealthCheckedTargetsInput)(nil)).Elem(), RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrInput)(nil)).Elem(), RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerInput)(nil)).Elem(), RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayInput)(nil)).Elem(), RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyNetworkInput)(nil)).Elem(), ResponsePolicyNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyNetworkArrayInput)(nil)).Elem(), ResponsePolicyNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyRuleLocalDataInput)(nil)).Elem(), ResponsePolicyRuleLocalDataArgs{})
@@ -3359,8 +4971,28 @@ func init() {
 	pulumi.RegisterOutputType(RecordSetRoutingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RecordSetRoutingPolicyGeoOutput{})
 	pulumi.RegisterOutputType(RecordSetRoutingPolicyGeoArrayOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyPrimaryBackupOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyPrimaryBackupPtrOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyPrimaryBackupPrimaryOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput{})
 	pulumi.RegisterOutputType(RecordSetRoutingPolicyWrrOutput{})
 	pulumi.RegisterOutputType(RecordSetRoutingPolicyWrrArrayOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput{})
+	pulumi.RegisterOutputType(RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput{})
 	pulumi.RegisterOutputType(ResponsePolicyNetworkOutput{})
 	pulumi.RegisterOutputType(ResponsePolicyNetworkArrayOutput{})
 	pulumi.RegisterOutputType(ResponsePolicyRuleLocalDataOutput{})

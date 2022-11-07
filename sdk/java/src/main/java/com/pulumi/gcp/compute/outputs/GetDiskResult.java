@@ -49,6 +49,8 @@ public final class GetDiskResult {
     private String selfLink;
     private Integer size;
     private String snapshot;
+    private String sourceDisk;
+    private String sourceDiskId;
     private List<GetDiskSourceImageEncryptionKey> sourceImageEncryptionKeys;
     private String sourceImageId;
     private List<GetDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
@@ -127,6 +129,12 @@ public final class GetDiskResult {
     public String snapshot() {
         return this.snapshot;
     }
+    public String sourceDisk() {
+        return this.sourceDisk;
+    }
+    public String sourceDiskId() {
+        return this.sourceDiskId;
+    }
     public List<GetDiskSourceImageEncryptionKey> sourceImageEncryptionKeys() {
         return this.sourceImageEncryptionKeys;
     }
@@ -177,6 +185,8 @@ public final class GetDiskResult {
         private String selfLink;
         private Integer size;
         private String snapshot;
+        private String sourceDisk;
+        private String sourceDiskId;
         private List<GetDiskSourceImageEncryptionKey> sourceImageEncryptionKeys;
         private String sourceImageId;
         private List<GetDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
@@ -206,6 +216,8 @@ public final class GetDiskResult {
     	      this.selfLink = defaults.selfLink;
     	      this.size = defaults.size;
     	      this.snapshot = defaults.snapshot;
+    	      this.sourceDisk = defaults.sourceDisk;
+    	      this.sourceDiskId = defaults.sourceDiskId;
     	      this.sourceImageEncryptionKeys = defaults.sourceImageEncryptionKeys;
     	      this.sourceImageId = defaults.sourceImageId;
     	      this.sourceSnapshotEncryptionKeys = defaults.sourceSnapshotEncryptionKeys;
@@ -317,6 +329,16 @@ public final class GetDiskResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sourceDisk(String sourceDisk) {
+            this.sourceDisk = Objects.requireNonNull(sourceDisk);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sourceDiskId(String sourceDiskId) {
+            this.sourceDiskId = Objects.requireNonNull(sourceDiskId);
+            return this;
+        }
+        @CustomType.Setter
         public Builder sourceImageEncryptionKeys(List<GetDiskSourceImageEncryptionKey> sourceImageEncryptionKeys) {
             this.sourceImageEncryptionKeys = Objects.requireNonNull(sourceImageEncryptionKeys);
             return this;
@@ -381,6 +403,8 @@ public final class GetDiskResult {
             o.selfLink = selfLink;
             o.size = size;
             o.snapshot = snapshot;
+            o.sourceDisk = sourceDisk;
+            o.sourceDiskId = sourceDiskId;
             o.sourceImageEncryptionKeys = sourceImageEncryptionKeys;
             o.sourceImageId = sourceImageId;
             o.sourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;

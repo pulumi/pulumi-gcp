@@ -4,12 +4,21 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dns.outputs.RecordSetRoutingPolicyGeoHealthCheckedTargets;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RecordSetRoutingPolicyGeo {
+    /**
+     * @return For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+     * Structure is document below.
+     * 
+     */
+    private @Nullable RecordSetRoutingPolicyGeoHealthCheckedTargets healthCheckedTargets;
     /**
      * @return The location name defined in Google Cloud.
      * 
@@ -19,9 +28,17 @@ public final class RecordSetRoutingPolicyGeo {
      * @return Same as `rrdatas` above.
      * 
      */
-    private List<String> rrdatas;
+    private @Nullable List<String> rrdatas;
 
     private RecordSetRoutingPolicyGeo() {}
+    /**
+     * @return For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+     * Structure is document below.
+     * 
+     */
+    public Optional<RecordSetRoutingPolicyGeoHealthCheckedTargets> healthCheckedTargets() {
+        return Optional.ofNullable(this.healthCheckedTargets);
+    }
     /**
      * @return The location name defined in Google Cloud.
      * 
@@ -34,7 +51,7 @@ public final class RecordSetRoutingPolicyGeo {
      * 
      */
     public List<String> rrdatas() {
-        return this.rrdatas;
+        return this.rrdatas == null ? List.of() : this.rrdatas;
     }
 
     public static Builder builder() {
@@ -46,23 +63,30 @@ public final class RecordSetRoutingPolicyGeo {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable RecordSetRoutingPolicyGeoHealthCheckedTargets healthCheckedTargets;
         private String location;
-        private List<String> rrdatas;
+        private @Nullable List<String> rrdatas;
         public Builder() {}
         public Builder(RecordSetRoutingPolicyGeo defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.healthCheckedTargets = defaults.healthCheckedTargets;
     	      this.location = defaults.location;
     	      this.rrdatas = defaults.rrdatas;
         }
 
+        @CustomType.Setter
+        public Builder healthCheckedTargets(@Nullable RecordSetRoutingPolicyGeoHealthCheckedTargets healthCheckedTargets) {
+            this.healthCheckedTargets = healthCheckedTargets;
+            return this;
+        }
         @CustomType.Setter
         public Builder location(String location) {
             this.location = Objects.requireNonNull(location);
             return this;
         }
         @CustomType.Setter
-        public Builder rrdatas(List<String> rrdatas) {
-            this.rrdatas = Objects.requireNonNull(rrdatas);
+        public Builder rrdatas(@Nullable List<String> rrdatas) {
+            this.rrdatas = rrdatas;
             return this;
         }
         public Builder rrdatas(String... rrdatas) {
@@ -70,6 +94,7 @@ public final class RecordSetRoutingPolicyGeo {
         }
         public RecordSetRoutingPolicyGeo build() {
             final var o = new RecordSetRoutingPolicyGeo();
+            o.healthCheckedTargets = healthCheckedTargets;
             o.location = location;
             o.rrdatas = rrdatas;
             return o;

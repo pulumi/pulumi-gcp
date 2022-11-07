@@ -174,6 +174,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public readonly string PemCsr;
         public readonly string? Pool;
         public readonly string? Project;
+        public readonly bool SkipGracePeriod;
         public readonly string State;
         public readonly ImmutableArray<Outputs.GetAuthoritySubordinateConfigResult> SubordinateConfigs;
         public readonly string Type;
@@ -219,6 +220,8 @@ namespace Pulumi.Gcp.CertificateAuthority
 
             string? project,
 
+            bool skipGracePeriod,
+
             string state,
 
             ImmutableArray<Outputs.GetAuthoritySubordinateConfigResult> subordinateConfigs,
@@ -246,6 +249,7 @@ namespace Pulumi.Gcp.CertificateAuthority
             PemCsr = pemCsr;
             Pool = pool;
             Project = project;
+            SkipGracePeriod = skipGracePeriod;
             State = state;
             SubordinateConfigs = subordinateConfigs;
             Type = type;

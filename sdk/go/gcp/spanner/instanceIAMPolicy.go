@@ -84,7 +84,7 @@ import (
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Role: pulumi.String("roles/compute.networkUser"),
+//				Role: pulumi.String("roles/spanner.databaseAdmin"),
 //			})
 //			if err != nil {
 //				return err
@@ -112,7 +112,7 @@ import (
 //			_, err := spanner.NewInstanceIAMMember(ctx, "instance", &spanner.InstanceIAMMemberArgs{
 //				Instance: pulumi.String("your-instance-name"),
 //				Member:   pulumi.String("user:jane@example.com"),
-//				Role:     pulumi.String("roles/compute.networkUser"),
+//				Role:     pulumi.String("roles/spanner.databaseAdmin"),
 //			})
 //			if err != nil {
 //				return err

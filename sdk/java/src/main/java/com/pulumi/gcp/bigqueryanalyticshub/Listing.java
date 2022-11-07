@@ -19,6 +19,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Bigquery Analytics Hub data exchange listing
+ * 
+ * To get more information about Listing, see:
+ * 
+ * * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges.listings)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+ * 
  * ## Example Usage
  * ### Bigquery Analyticshub Listing Basic
  * ```java
@@ -34,7 +42,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.bigqueryanalyticshub.Listing;
  * import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
  * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,18 +60,14 @@ import javax.annotation.Nullable;
  *             .dataExchangeId(&#34;my_data_exchange&#34;)
  *             .displayName(&#34;my_data_exchange&#34;)
  *             .description(&#34;example data exchange&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var listingDataset = new Dataset(&#34;listingDataset&#34;, DatasetArgs.builder()        
  *             .datasetId(&#34;my_listing&#34;)
  *             .friendlyName(&#34;my_listing&#34;)
  *             .description(&#34;example data exchange&#34;)
  *             .location(&#34;US&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var listingListing = new Listing(&#34;listingListing&#34;, ListingArgs.builder()        
  *             .location(&#34;US&#34;)
@@ -75,9 +78,7 @@ import javax.annotation.Nullable;
  *             .bigqueryDataset(ListingBigqueryDatasetArgs.builder()
  *                 .dataset(listingDataset.id())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

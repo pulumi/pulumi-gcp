@@ -20,6 +20,9 @@ func GetAccessToken(ctx *pulumi.Context) string {
 func GetActiveDirectoryCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:activeDirectoryCustomEndpoint")
 }
+func GetAlloydbCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:alloydbCustomEndpoint")
+}
 func GetApiGatewayCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:apiGatewayCustomEndpoint")
 }
@@ -149,6 +152,9 @@ func GetDataLossPreventionCustomEndpoint(ctx *pulumi.Context) string {
 func GetDataflowCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataflowCustomEndpoint")
 }
+func GetDataformCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:dataformCustomEndpoint")
+}
 func GetDataplexCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataplexCustomEndpoint")
 }
@@ -226,6 +232,9 @@ func GetIamCredentialsCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetIamCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:iamCustomEndpoint")
+}
+func GetIamWorkforcePoolCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:iamWorkforcePoolCustomEndpoint")
 }
 func GetIapCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:iapCustomEndpoint")

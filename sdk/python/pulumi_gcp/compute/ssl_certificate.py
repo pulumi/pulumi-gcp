@@ -524,17 +524,19 @@ class SSLCertificate(pulumi.CustomResource):
 
             if certificate is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate'")
-            __props__.__dict__["certificate"] = certificate
+            __props__.__dict__["certificate"] = None if certificate is None else pulumi.Output.secret(certificate)
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["name_prefix"] = name_prefix
             if private_key is None and not opts.urn:
                 raise TypeError("Missing required property 'private_key'")
-            __props__.__dict__["private_key"] = private_key
+            __props__.__dict__["private_key"] = None if private_key is None else pulumi.Output.secret(private_key)
             __props__.__dict__["project"] = project
             __props__.__dict__["certificate_id"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["self_link"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["certificate", "privateKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(SSLCertificate, __self__).__init__(
             'gcp:compute/sSLCertificate:SSLCertificate',
             resource_name,

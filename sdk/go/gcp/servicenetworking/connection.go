@@ -44,12 +44,21 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = servicenetworking.NewConnection(ctx, "foobar", &servicenetworking.ConnectionArgs{
+//			_, err = servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
 //				Network: peeringNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetworkPeeringRoutesConfig(ctx, "peeringRoutes", &compute.NetworkPeeringRoutesConfigArgs{
+//				Peering:            _default.Peering,
+//				Network:            peeringNetwork.Name,
+//				ImportCustomRoutes: pulumi.Bool(true),
+//				ExportCustomRoutes: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

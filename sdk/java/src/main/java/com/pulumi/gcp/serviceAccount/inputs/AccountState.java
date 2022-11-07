@@ -108,6 +108,21 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+     * 
+     */
+    @Import(name="member")
+    private @Nullable Output<String> member;
+
+    /**
+     * @return The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+     * 
+     */
+    public Optional<Output<String>> member() {
+        return Optional.ofNullable(this.member);
+    }
+
+    /**
      * The fully-qualified name of the service account.
      * 
      */
@@ -162,6 +177,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         this.disabled = $.disabled;
         this.displayName = $.displayName;
         this.email = $.email;
+        this.member = $.member;
         this.name = $.name;
         this.project = $.project;
         this.uniqueId = $.uniqueId;
@@ -304,6 +320,27 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder email(String email) {
             return email(Output.of(email));
+        }
+
+        /**
+         * @param member The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder member(@Nullable Output<String> member) {
+            $.member = member;
+            return this;
+        }
+
+        /**
+         * @param member The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder member(String member) {
+            return member(Output.of(member));
         }
 
         /**

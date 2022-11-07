@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Vertex
 {
     /// <summary>
+    /// A collection of DataItems and Annotations on them.
+    /// 
+    /// To get more information about Featurestore, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+    /// 
     /// ## Example Usage
     /// ### Vertex Ai Featurestore
     /// 
@@ -22,23 +30,20 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
     ///     {
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///         Region = "us-central1",
-    ///         OnlineServingConfig = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigArgs
-    ///         {
-    ///             FixedNodeCount = 2,
-    ///         },
     ///         EncryptionSpec = new Gcp.Vertex.Inputs.AiFeatureStoreEncryptionSpecArgs
     ///         {
     ///             KmsKeyName = "kms-name",
     ///         },
     ///         ForceDestroy = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         OnlineServingConfig = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigArgs
+    ///         {
+    ///             FixedNodeCount = 2,
+    ///         },
+    ///         Region = "us-central1",
     ///     });
     /// 
     /// });

@@ -8,13 +8,28 @@ import * as utilities from "../utilities";
 export { NotificationConfigArgs, NotificationConfigState } from "./notificationConfig";
 export type NotificationConfig = import("./notificationConfig").NotificationConfig;
 export const NotificationConfig: typeof import("./notificationConfig").NotificationConfig = null as any;
+utilities.lazyLoad(exports, ["NotificationConfig"], () => require("./notificationConfig"));
 
 export { SourceArgs, SourceState } from "./source";
 export type Source = import("./source").Source;
 export const Source: typeof import("./source").Source = null as any;
-
-utilities.lazyLoad(exports, ["NotificationConfig"], () => require("./notificationConfig"));
 utilities.lazyLoad(exports, ["Source"], () => require("./source"));
+
+export { SourceIamBindingArgs, SourceIamBindingState } from "./sourceIamBinding";
+export type SourceIamBinding = import("./sourceIamBinding").SourceIamBinding;
+export const SourceIamBinding: typeof import("./sourceIamBinding").SourceIamBinding = null as any;
+utilities.lazyLoad(exports, ["SourceIamBinding"], () => require("./sourceIamBinding"));
+
+export { SourceIamMemberArgs, SourceIamMemberState } from "./sourceIamMember";
+export type SourceIamMember = import("./sourceIamMember").SourceIamMember;
+export const SourceIamMember: typeof import("./sourceIamMember").SourceIamMember = null as any;
+utilities.lazyLoad(exports, ["SourceIamMember"], () => require("./sourceIamMember"));
+
+export { SourceIamPolicyArgs, SourceIamPolicyState } from "./sourceIamPolicy";
+export type SourceIamPolicy = import("./sourceIamPolicy").SourceIamPolicy;
+export const SourceIamPolicy: typeof import("./sourceIamPolicy").SourceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["SourceIamPolicy"], () => require("./sourceIamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -24,6 +39,12 @@ const _module = {
                 return new NotificationConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/source:Source":
                 return new Source(name, <any>undefined, { urn })
+            case "gcp:securitycenter/sourceIamBinding:SourceIamBinding":
+                return new SourceIamBinding(name, <any>undefined, { urn })
+            case "gcp:securitycenter/sourceIamMember:SourceIamMember":
+                return new SourceIamMember(name, <any>undefined, { urn })
+            case "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy":
+                return new SourceIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -31,3 +52,6 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/notificationConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/source", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamPolicy", _module)

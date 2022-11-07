@@ -151,6 +151,8 @@ export class Key extends pulumi.CustomResource {
             resourceInputs["validBefore"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["privateKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Key.__pulumiType, name, resourceInputs, opts);
     }
 }

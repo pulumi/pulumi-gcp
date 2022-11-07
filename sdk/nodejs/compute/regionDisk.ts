@@ -209,6 +209,22 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     public readonly snapshot!: pulumi.Output<string | undefined>;
     /**
+     * The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+     * For example, the following are valid values:
+     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * projects/{project}/zones/{zone}/disks/{disk}
+     * * projects/{project}/regions/{region}/disks/{disk}
+     * * zones/{zone}/disks/{disk}
+     * * regions/{region}/disks/{disk}
+     */
+    public readonly sourceDisk!: pulumi.Output<string | undefined>;
+    /**
+     * The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
+     * the current or a previous instance of a given disk name.
+     */
+    public /*out*/ readonly sourceDiskId!: pulumi.Output<string>;
+    /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
      * key.
@@ -260,6 +276,8 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
             resourceInputs["snapshot"] = state ? state.snapshot : undefined;
+            resourceInputs["sourceDisk"] = state ? state.sourceDisk : undefined;
+            resourceInputs["sourceDiskId"] = state ? state.sourceDiskId : undefined;
             resourceInputs["sourceSnapshotEncryptionKey"] = state ? state.sourceSnapshotEncryptionKey : undefined;
             resourceInputs["sourceSnapshotId"] = state ? state.sourceSnapshotId : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -280,6 +298,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["replicaZones"] = args ? args.replicaZones : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["snapshot"] = args ? args.snapshot : undefined;
+            resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
             resourceInputs["sourceSnapshotEncryptionKey"] = args ? args.sourceSnapshotEncryptionKey : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -287,6 +306,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["lastAttachTimestamp"] = undefined /*out*/;
             resourceInputs["lastDetachTimestamp"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["sourceDiskId"] = undefined /*out*/;
             resourceInputs["sourceSnapshotId"] = undefined /*out*/;
             resourceInputs["users"] = undefined /*out*/;
         }
@@ -399,6 +419,22 @@ export interface RegionDiskState {
      */
     snapshot?: pulumi.Input<string>;
     /**
+     * The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+     * For example, the following are valid values:
+     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * projects/{project}/zones/{zone}/disks/{disk}
+     * * projects/{project}/regions/{region}/disks/{disk}
+     * * zones/{zone}/disks/{disk}
+     * * regions/{region}/disks/{disk}
+     */
+    sourceDisk?: pulumi.Input<string>;
+    /**
+     * The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
+     * the current or a previous instance of a given disk name.
+     */
+    sourceDiskId?: pulumi.Input<string>;
+    /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
      * key.
@@ -505,6 +541,17 @@ export interface RegionDiskArgs {
      * * `snapshot`
      */
     snapshot?: pulumi.Input<string>;
+    /**
+     * The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+     * For example, the following are valid values:
+     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * projects/{project}/zones/{zone}/disks/{disk}
+     * * projects/{project}/regions/{region}/disks/{disk}
+     * * zones/{zone}/disks/{disk}
+     * * regions/{region}/disks/{disk}
+     */
+    sourceDisk?: pulumi.Input<string>;
     /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption

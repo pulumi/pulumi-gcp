@@ -21,7 +21,7 @@ class GetDefaultServiceAccountResult:
     """
     A collection of values returned by getDefaultServiceAccount.
     """
-    def __init__(__self__, display_name=None, email=None, id=None, name=None, project=None, unique_id=None):
+    def __init__(__self__, display_name=None, email=None, id=None, member=None, name=None, project=None, unique_id=None):
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -31,6 +31,9 @@ class GetDefaultServiceAccountResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if member and not isinstance(member, str):
+            raise TypeError("Expected argument 'member' to be a str")
+        pulumi.set(__self__, "member", member)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -67,6 +70,14 @@ class GetDefaultServiceAccountResult:
 
     @property
     @pulumi.getter
+    def member(self) -> str:
+        """
+        The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+        """
+        return pulumi.get(self, "member")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         The fully-qualified name of the service account.
@@ -96,6 +107,7 @@ class AwaitableGetDefaultServiceAccountResult(GetDefaultServiceAccountResult):
             display_name=self.display_name,
             email=self.email,
             id=self.id,
+            member=self.member,
             name=self.name,
             project=self.project,
             unique_id=self.unique_id)
@@ -128,6 +140,7 @@ def get_default_service_account(project: Optional[str] = None,
         display_name=__ret__.display_name,
         email=__ret__.email,
         id=__ret__.id,
+        member=__ret__.member,
         name=__ret__.name,
         project=__ret__.project,
         unique_id=__ret__.unique_id)

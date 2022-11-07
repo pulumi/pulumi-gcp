@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := container.GetAzureVersions(ctx, &container.GetAzureVersionsArgs{
+//			_, err = container.GetAzureVersions(ctx, &container.GetAzureVersionsArgs{
 //				Location: pulumi.StringRef("us-west1"),
 //				Project:  pulumi.StringRef("my-project"),
 //			}, nil)

@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := spanner.LookupInstance(ctx, &spanner.LookupInstanceArgs{
+//			_, err = spanner.LookupInstance(ctx, &spanner.LookupInstanceArgs{
 //				Name: "bar",
 //			}, nil)
 //			if err != nil {

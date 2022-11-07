@@ -133,6 +133,10 @@ namespace Pulumi.Gcp.ServiceAccount
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+        /// </summary>
+        public readonly string Member;
+        /// <summary>
         /// The fully-qualified name of the service account.
         /// </summary>
         public readonly string Name;
@@ -152,6 +156,8 @@ namespace Pulumi.Gcp.ServiceAccount
 
             string id,
 
+            string member,
+
             string name,
 
             string? project,
@@ -162,6 +168,7 @@ namespace Pulumi.Gcp.ServiceAccount
             DisplayName = displayName;
             Email = email;
             Id = id;
+            Member = member;
             Name = name;
             Project = project;
             UniqueId = uniqueId;

@@ -213,7 +213,6 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Example of how to deploy a publicly-accessible Cloud Run application
     ///     var @default = new Gcp.CloudRun.Service("default", new()
     ///     {
     ///         Location = "us-central1",
@@ -257,37 +256,6 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// });
     /// ```
-    /// ### Cloud Run Service Add Tag
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.CloudRun.Service("default", new()
-    ///     {
-    ///         Location = "us-central1",
-    ///         Template = ,
-    ///         Traffics = new[]
-    ///         {
-    ///             new Gcp.CloudRun.Inputs.ServiceTrafficArgs
-    ///             {
-    ///                 Percent = 100,
-    ///                 RevisionName = "cloudrun-srv-green",
-    ///             },
-    ///             new Gcp.CloudRun.Inputs.ServiceTrafficArgs
-    ///             {
-    ///                 Percent = 0,
-    ///                 RevisionName = "cloudrun-srv-blue",
-    ///                 Tag = "tag-name",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Cloud Run Service Probes
     /// 
     /// ```csharp
@@ -325,6 +293,13 @@ namespace Pulumi.Gcp.CloudRun
     ///                             TcpSocket = new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerStartupProbeTcpSocketArgs
     ///                             {
     ///                                 Port = 8080,
+    ///                             },
+    ///                         },
+    ///                         LivenessProbe = new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerLivenessProbeArgs
+    ///                         {
+    ///                             HttpGet = new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerLivenessProbeHttpGetArgs
+    ///                             {
+    ///                                 Path = "/",
     ///                             },
     ///                         },
     ///                     },

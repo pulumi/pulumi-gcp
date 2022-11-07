@@ -29,6 +29,7 @@ class DiskArgs:
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot: Optional[pulumi.Input[str]] = None,
+                 source_disk: Optional[pulumi.Input[str]] = None,
                  source_image_encryption_key: Optional[pulumi.Input['DiskSourceImageEncryptionKeyArgs']] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -99,6 +100,14 @@ class DiskArgs:
                * `projects/project/global/snapshots/snapshot`
                * `global/snapshots/snapshot`
                * `snapshot`
+        :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+               For example, the following are valid values:
+               * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+               * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+               * projects/{project}/zones/{zone}/disks/{disk}
+               * projects/{project}/regions/{region}/disks/{disk}
+               * zones/{zone}/disks/{disk}
+               * regions/{region}/disks/{disk}
         :param pulumi.Input['DiskSourceImageEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
                the source image is protected by a customer-supplied encryption key.
                Structure is documented below.
@@ -139,6 +148,8 @@ class DiskArgs:
             pulumi.set(__self__, "size", size)
         if snapshot is not None:
             pulumi.set(__self__, "snapshot", snapshot)
+        if source_disk is not None:
+            pulumi.set(__self__, "source_disk", source_disk)
         if source_image_encryption_key is not None:
             pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
         if source_snapshot_encryption_key is not None:
@@ -356,6 +367,25 @@ class DiskArgs:
         pulumi.set(self, "snapshot", value)
 
     @property
+    @pulumi.getter(name="sourceDisk")
+    def source_disk(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+        For example, the following are valid values:
+        * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+        * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+        * projects/{project}/zones/{zone}/disks/{disk}
+        * projects/{project}/regions/{region}/disks/{disk}
+        * zones/{zone}/disks/{disk}
+        * regions/{region}/disks/{disk}
+        """
+        return pulumi.get(self, "source_disk")
+
+    @source_disk.setter
+    def source_disk(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_disk", value)
+
+    @property
     @pulumi.getter(name="sourceImageEncryptionKey")
     def source_image_encryption_key(self) -> Optional[pulumi.Input['DiskSourceImageEncryptionKeyArgs']]:
         """
@@ -431,6 +461,8 @@ class _DiskState:
                  self_link: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot: Optional[pulumi.Input[str]] = None,
+                 source_disk: Optional[pulumi.Input[str]] = None,
+                 source_disk_id: Optional[pulumi.Input[str]] = None,
                  source_image_encryption_key: Optional[pulumi.Input['DiskSourceImageEncryptionKeyArgs']] = None,
                  source_image_id: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']] = None,
@@ -509,6 +541,16 @@ class _DiskState:
                * `projects/project/global/snapshots/snapshot`
                * `global/snapshots/snapshot`
                * `snapshot`
+        :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+               For example, the following are valid values:
+               * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+               * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+               * projects/{project}/zones/{zone}/disks/{disk}
+               * projects/{project}/regions/{region}/disks/{disk}
+               * zones/{zone}/disks/{disk}
+               * regions/{region}/disks/{disk}
+        :param pulumi.Input[str] source_disk_id: The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
+               the current or a previous instance of a given disk name.
         :param pulumi.Input['DiskSourceImageEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
                the source image is protected by a customer-supplied encryption key.
                Structure is documented below.
@@ -566,6 +608,10 @@ class _DiskState:
             pulumi.set(__self__, "size", size)
         if snapshot is not None:
             pulumi.set(__self__, "snapshot", snapshot)
+        if source_disk is not None:
+            pulumi.set(__self__, "source_disk", source_disk)
+        if source_disk_id is not None:
+            pulumi.set(__self__, "source_disk_id", source_disk_id)
         if source_image_encryption_key is not None:
             pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
         if source_image_id is not None:
@@ -849,6 +895,38 @@ class _DiskState:
         pulumi.set(self, "snapshot", value)
 
     @property
+    @pulumi.getter(name="sourceDisk")
+    def source_disk(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+        For example, the following are valid values:
+        * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+        * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+        * projects/{project}/zones/{zone}/disks/{disk}
+        * projects/{project}/regions/{region}/disks/{disk}
+        * zones/{zone}/disks/{disk}
+        * regions/{region}/disks/{disk}
+        """
+        return pulumi.get(self, "source_disk")
+
+    @source_disk.setter
+    def source_disk(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_disk", value)
+
+    @property
+    @pulumi.getter(name="sourceDiskId")
+    def source_disk_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
+        the current or a previous instance of a given disk name.
+        """
+        return pulumi.get(self, "source_disk_id")
+
+    @source_disk_id.setter
+    def source_disk_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_disk_id", value)
+
+    @property
     @pulumi.getter(name="sourceImageEncryptionKey")
     def source_image_encryption_key(self) -> Optional[pulumi.Input['DiskSourceImageEncryptionKeyArgs']]:
         """
@@ -961,6 +1039,7 @@ class Disk(pulumi.CustomResource):
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot: Optional[pulumi.Input[str]] = None,
+                 source_disk: Optional[pulumi.Input[str]] = None,
                  source_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArgs']]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -1095,6 +1174,14 @@ class Disk(pulumi.CustomResource):
                * `projects/project/global/snapshots/snapshot`
                * `global/snapshots/snapshot`
                * `snapshot`
+        :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+               For example, the following are valid values:
+               * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+               * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+               * projects/{project}/zones/{zone}/disks/{disk}
+               * projects/{project}/regions/{region}/disks/{disk}
+               * zones/{zone}/disks/{disk}
+               * regions/{region}/disks/{disk}
         :param pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArgs']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
                the source image is protected by a customer-supplied encryption key.
                Structure is documented below.
@@ -1203,6 +1290,7 @@ class Disk(pulumi.CustomResource):
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot: Optional[pulumi.Input[str]] = None,
+                 source_disk: Optional[pulumi.Input[str]] = None,
                  source_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArgs']]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -1232,6 +1320,7 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["resource_policies"] = resource_policies
             __props__.__dict__["size"] = size
             __props__.__dict__["snapshot"] = snapshot
+            __props__.__dict__["source_disk"] = source_disk
             __props__.__dict__["source_image_encryption_key"] = source_image_encryption_key
             __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
             __props__.__dict__["type"] = type
@@ -1241,6 +1330,7 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["last_attach_timestamp"] = None
             __props__.__dict__["last_detach_timestamp"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["source_disk_id"] = None
             __props__.__dict__["source_image_id"] = None
             __props__.__dict__["source_snapshot_id"] = None
             __props__.__dict__["users"] = None
@@ -1272,6 +1362,8 @@ class Disk(pulumi.CustomResource):
             self_link: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[int]] = None,
             snapshot: Optional[pulumi.Input[str]] = None,
+            source_disk: Optional[pulumi.Input[str]] = None,
+            source_disk_id: Optional[pulumi.Input[str]] = None,
             source_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArgs']]] = None,
             source_image_id: Optional[pulumi.Input[str]] = None,
             source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArgs']]] = None,
@@ -1355,6 +1447,16 @@ class Disk(pulumi.CustomResource):
                * `projects/project/global/snapshots/snapshot`
                * `global/snapshots/snapshot`
                * `snapshot`
+        :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+               For example, the following are valid values:
+               * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+               * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+               * projects/{project}/zones/{zone}/disks/{disk}
+               * projects/{project}/regions/{region}/disks/{disk}
+               * zones/{zone}/disks/{disk}
+               * regions/{region}/disks/{disk}
+        :param pulumi.Input[str] source_disk_id: The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
+               the current or a previous instance of a given disk name.
         :param pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArgs']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
                the source image is protected by a customer-supplied encryption key.
                Structure is documented below.
@@ -1395,6 +1497,8 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["size"] = size
         __props__.__dict__["snapshot"] = snapshot
+        __props__.__dict__["source_disk"] = source_disk
+        __props__.__dict__["source_disk_id"] = source_disk_id
         __props__.__dict__["source_image_encryption_key"] = source_image_encryption_key
         __props__.__dict__["source_image_id"] = source_image_id
         __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
@@ -1598,6 +1702,30 @@ class Disk(pulumi.CustomResource):
         * `snapshot`
         """
         return pulumi.get(self, "snapshot")
+
+    @property
+    @pulumi.getter(name="sourceDisk")
+    def source_disk(self) -> pulumi.Output[Optional[str]]:
+        """
+        The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+        For example, the following are valid values:
+        * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+        * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+        * projects/{project}/zones/{zone}/disks/{disk}
+        * projects/{project}/regions/{region}/disks/{disk}
+        * zones/{zone}/disks/{disk}
+        * regions/{region}/disks/{disk}
+        """
+        return pulumi.get(self, "source_disk")
+
+    @property
+    @pulumi.getter(name="sourceDiskId")
+    def source_disk_id(self) -> pulumi.Output[str]:
+        """
+        The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
+        the current or a previous instance of a given disk name.
+        """
+        return pulumi.get(self, "source_disk_id")
 
     @property
     @pulumi.getter(name="sourceImageEncryptionKey")

@@ -140,7 +140,6 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * // Example of how to deploy a publicly-accessible Cloud Run application
  * const _default = new gcp.cloudrun.Service("default", {
  *     location: "us-central1",
  *     template: {
@@ -162,30 +161,6 @@ import * as utilities from "../utilities";
  *     project: _default.project,
  *     service: _default.name,
  *     policyData: noauthIAMPolicy.then(noauthIAMPolicy => noauthIAMPolicy.policyData),
- * });
- * ```
- * ### Cloud Run Service Add Tag
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultService = new gcp.cloudrun.Service("default", {
- *     location: "us-central1",
- *     template: {},
- *     traffics: [
- *         {
- *             percent: 100,
- *             // This revision needs to already exist
- *             revisionName: "cloudrun-srv-green",
- *         },
- *         {
- *             // Deploy new revision with 0% traffic
- *             percent: 0,
- *             revisionName: "cloudrun-srv-blue",
- *             tag: "tag-name",
- *         },
- *     ],
  * });
  * ```
  * ### Cloud Run Service Probes
@@ -212,6 +187,11 @@ import * as utilities from "../utilities";
  *                     failureThreshold: 1,
  *                     tcpSocket: {
  *                         port: 8080,
+ *                     },
+ *                 },
+ *                 livenessProbe: {
+ *                     httpGet: {
+ *                         path: "/",
  *                     },
  *                 },
  *             }],

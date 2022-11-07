@@ -17,10 +17,6 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
         /// </summary>
         public readonly bool? Disabled;
-        /// <summary>
-        /// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
-        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        /// </summary>
         public readonly string? MonitoringInterval;
 
         [OutputConstructor]

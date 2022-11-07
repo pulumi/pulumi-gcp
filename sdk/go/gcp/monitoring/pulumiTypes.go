@@ -3873,6 +3873,264 @@ func (o CustomServiceTelemetryPtrOutput) ResourceName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GenericServiceBasicService struct {
+	// Labels that specify the resource that emits the monitoring data
+	// which is used for SLO reporting of this `Service`.
+	ServiceLabels map[string]string `pulumi:"serviceLabels"`
+	// The type of service that this basic service defines, e.g.
+	// APP_ENGINE service type
+	ServiceType *string `pulumi:"serviceType"`
+}
+
+// GenericServiceBasicServiceInput is an input type that accepts GenericServiceBasicServiceArgs and GenericServiceBasicServiceOutput values.
+// You can construct a concrete instance of `GenericServiceBasicServiceInput` via:
+//
+//	GenericServiceBasicServiceArgs{...}
+type GenericServiceBasicServiceInput interface {
+	pulumi.Input
+
+	ToGenericServiceBasicServiceOutput() GenericServiceBasicServiceOutput
+	ToGenericServiceBasicServiceOutputWithContext(context.Context) GenericServiceBasicServiceOutput
+}
+
+type GenericServiceBasicServiceArgs struct {
+	// Labels that specify the resource that emits the monitoring data
+	// which is used for SLO reporting of this `Service`.
+	ServiceLabels pulumi.StringMapInput `pulumi:"serviceLabels"`
+	// The type of service that this basic service defines, e.g.
+	// APP_ENGINE service type
+	ServiceType pulumi.StringPtrInput `pulumi:"serviceType"`
+}
+
+func (GenericServiceBasicServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenericServiceBasicService)(nil)).Elem()
+}
+
+func (i GenericServiceBasicServiceArgs) ToGenericServiceBasicServiceOutput() GenericServiceBasicServiceOutput {
+	return i.ToGenericServiceBasicServiceOutputWithContext(context.Background())
+}
+
+func (i GenericServiceBasicServiceArgs) ToGenericServiceBasicServiceOutputWithContext(ctx context.Context) GenericServiceBasicServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenericServiceBasicServiceOutput)
+}
+
+func (i GenericServiceBasicServiceArgs) ToGenericServiceBasicServicePtrOutput() GenericServiceBasicServicePtrOutput {
+	return i.ToGenericServiceBasicServicePtrOutputWithContext(context.Background())
+}
+
+func (i GenericServiceBasicServiceArgs) ToGenericServiceBasicServicePtrOutputWithContext(ctx context.Context) GenericServiceBasicServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenericServiceBasicServiceOutput).ToGenericServiceBasicServicePtrOutputWithContext(ctx)
+}
+
+// GenericServiceBasicServicePtrInput is an input type that accepts GenericServiceBasicServiceArgs, GenericServiceBasicServicePtr and GenericServiceBasicServicePtrOutput values.
+// You can construct a concrete instance of `GenericServiceBasicServicePtrInput` via:
+//
+//	        GenericServiceBasicServiceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GenericServiceBasicServicePtrInput interface {
+	pulumi.Input
+
+	ToGenericServiceBasicServicePtrOutput() GenericServiceBasicServicePtrOutput
+	ToGenericServiceBasicServicePtrOutputWithContext(context.Context) GenericServiceBasicServicePtrOutput
+}
+
+type genericServiceBasicServicePtrType GenericServiceBasicServiceArgs
+
+func GenericServiceBasicServicePtr(v *GenericServiceBasicServiceArgs) GenericServiceBasicServicePtrInput {
+	return (*genericServiceBasicServicePtrType)(v)
+}
+
+func (*genericServiceBasicServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenericServiceBasicService)(nil)).Elem()
+}
+
+func (i *genericServiceBasicServicePtrType) ToGenericServiceBasicServicePtrOutput() GenericServiceBasicServicePtrOutput {
+	return i.ToGenericServiceBasicServicePtrOutputWithContext(context.Background())
+}
+
+func (i *genericServiceBasicServicePtrType) ToGenericServiceBasicServicePtrOutputWithContext(ctx context.Context) GenericServiceBasicServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenericServiceBasicServicePtrOutput)
+}
+
+type GenericServiceBasicServiceOutput struct{ *pulumi.OutputState }
+
+func (GenericServiceBasicServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenericServiceBasicService)(nil)).Elem()
+}
+
+func (o GenericServiceBasicServiceOutput) ToGenericServiceBasicServiceOutput() GenericServiceBasicServiceOutput {
+	return o
+}
+
+func (o GenericServiceBasicServiceOutput) ToGenericServiceBasicServiceOutputWithContext(ctx context.Context) GenericServiceBasicServiceOutput {
+	return o
+}
+
+func (o GenericServiceBasicServiceOutput) ToGenericServiceBasicServicePtrOutput() GenericServiceBasicServicePtrOutput {
+	return o.ToGenericServiceBasicServicePtrOutputWithContext(context.Background())
+}
+
+func (o GenericServiceBasicServiceOutput) ToGenericServiceBasicServicePtrOutputWithContext(ctx context.Context) GenericServiceBasicServicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GenericServiceBasicService) *GenericServiceBasicService {
+		return &v
+	}).(GenericServiceBasicServicePtrOutput)
+}
+
+// Labels that specify the resource that emits the monitoring data
+// which is used for SLO reporting of this `Service`.
+func (o GenericServiceBasicServiceOutput) ServiceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GenericServiceBasicService) map[string]string { return v.ServiceLabels }).(pulumi.StringMapOutput)
+}
+
+// The type of service that this basic service defines, e.g.
+// APP_ENGINE service type
+func (o GenericServiceBasicServiceOutput) ServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenericServiceBasicService) *string { return v.ServiceType }).(pulumi.StringPtrOutput)
+}
+
+type GenericServiceBasicServicePtrOutput struct{ *pulumi.OutputState }
+
+func (GenericServiceBasicServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenericServiceBasicService)(nil)).Elem()
+}
+
+func (o GenericServiceBasicServicePtrOutput) ToGenericServiceBasicServicePtrOutput() GenericServiceBasicServicePtrOutput {
+	return o
+}
+
+func (o GenericServiceBasicServicePtrOutput) ToGenericServiceBasicServicePtrOutputWithContext(ctx context.Context) GenericServiceBasicServicePtrOutput {
+	return o
+}
+
+func (o GenericServiceBasicServicePtrOutput) Elem() GenericServiceBasicServiceOutput {
+	return o.ApplyT(func(v *GenericServiceBasicService) GenericServiceBasicService {
+		if v != nil {
+			return *v
+		}
+		var ret GenericServiceBasicService
+		return ret
+	}).(GenericServiceBasicServiceOutput)
+}
+
+// Labels that specify the resource that emits the monitoring data
+// which is used for SLO reporting of this `Service`.
+func (o GenericServiceBasicServicePtrOutput) ServiceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GenericServiceBasicService) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceLabels
+	}).(pulumi.StringMapOutput)
+}
+
+// The type of service that this basic service defines, e.g.
+// APP_ENGINE service type
+func (o GenericServiceBasicServicePtrOutput) ServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GenericServiceBasicService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GenericServiceTelemetry struct {
+	ResourceName *string `pulumi:"resourceName"`
+}
+
+// GenericServiceTelemetryInput is an input type that accepts GenericServiceTelemetryArgs and GenericServiceTelemetryOutput values.
+// You can construct a concrete instance of `GenericServiceTelemetryInput` via:
+//
+//	GenericServiceTelemetryArgs{...}
+type GenericServiceTelemetryInput interface {
+	pulumi.Input
+
+	ToGenericServiceTelemetryOutput() GenericServiceTelemetryOutput
+	ToGenericServiceTelemetryOutputWithContext(context.Context) GenericServiceTelemetryOutput
+}
+
+type GenericServiceTelemetryArgs struct {
+	ResourceName pulumi.StringPtrInput `pulumi:"resourceName"`
+}
+
+func (GenericServiceTelemetryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenericServiceTelemetry)(nil)).Elem()
+}
+
+func (i GenericServiceTelemetryArgs) ToGenericServiceTelemetryOutput() GenericServiceTelemetryOutput {
+	return i.ToGenericServiceTelemetryOutputWithContext(context.Background())
+}
+
+func (i GenericServiceTelemetryArgs) ToGenericServiceTelemetryOutputWithContext(ctx context.Context) GenericServiceTelemetryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenericServiceTelemetryOutput)
+}
+
+// GenericServiceTelemetryArrayInput is an input type that accepts GenericServiceTelemetryArray and GenericServiceTelemetryArrayOutput values.
+// You can construct a concrete instance of `GenericServiceTelemetryArrayInput` via:
+//
+//	GenericServiceTelemetryArray{ GenericServiceTelemetryArgs{...} }
+type GenericServiceTelemetryArrayInput interface {
+	pulumi.Input
+
+	ToGenericServiceTelemetryArrayOutput() GenericServiceTelemetryArrayOutput
+	ToGenericServiceTelemetryArrayOutputWithContext(context.Context) GenericServiceTelemetryArrayOutput
+}
+
+type GenericServiceTelemetryArray []GenericServiceTelemetryInput
+
+func (GenericServiceTelemetryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenericServiceTelemetry)(nil)).Elem()
+}
+
+func (i GenericServiceTelemetryArray) ToGenericServiceTelemetryArrayOutput() GenericServiceTelemetryArrayOutput {
+	return i.ToGenericServiceTelemetryArrayOutputWithContext(context.Background())
+}
+
+func (i GenericServiceTelemetryArray) ToGenericServiceTelemetryArrayOutputWithContext(ctx context.Context) GenericServiceTelemetryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenericServiceTelemetryArrayOutput)
+}
+
+type GenericServiceTelemetryOutput struct{ *pulumi.OutputState }
+
+func (GenericServiceTelemetryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenericServiceTelemetry)(nil)).Elem()
+}
+
+func (o GenericServiceTelemetryOutput) ToGenericServiceTelemetryOutput() GenericServiceTelemetryOutput {
+	return o
+}
+
+func (o GenericServiceTelemetryOutput) ToGenericServiceTelemetryOutputWithContext(ctx context.Context) GenericServiceTelemetryOutput {
+	return o
+}
+
+func (o GenericServiceTelemetryOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenericServiceTelemetry) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
+}
+
+type GenericServiceTelemetryArrayOutput struct{ *pulumi.OutputState }
+
+func (GenericServiceTelemetryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenericServiceTelemetry)(nil)).Elem()
+}
+
+func (o GenericServiceTelemetryArrayOutput) ToGenericServiceTelemetryArrayOutput() GenericServiceTelemetryArrayOutput {
+	return o
+}
+
+func (o GenericServiceTelemetryArrayOutput) ToGenericServiceTelemetryArrayOutputWithContext(ctx context.Context) GenericServiceTelemetryArrayOutput {
+	return o
+}
+
+func (o GenericServiceTelemetryArrayOutput) Index(i pulumi.IntInput) GenericServiceTelemetryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenericServiceTelemetry {
+		return vs[0].([]GenericServiceTelemetry)[vs[1].(int)]
+	}).(GenericServiceTelemetryOutput)
+}
+
 type MetricDescriptorLabel struct {
 	// A human-readable description for the label.
 	Description *string `pulumi:"description"`
@@ -10354,6 +10612,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyDocumentationPtrInput)(nil)).Elem(), AlertPolicyDocumentationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomServiceTelemetryInput)(nil)).Elem(), CustomServiceTelemetryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomServiceTelemetryPtrInput)(nil)).Elem(), CustomServiceTelemetryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenericServiceBasicServiceInput)(nil)).Elem(), GenericServiceBasicServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenericServiceBasicServicePtrInput)(nil)).Elem(), GenericServiceBasicServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenericServiceTelemetryInput)(nil)).Elem(), GenericServiceTelemetryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenericServiceTelemetryArrayInput)(nil)).Elem(), GenericServiceTelemetryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorLabelInput)(nil)).Elem(), MetricDescriptorLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorLabelArrayInput)(nil)).Elem(), MetricDescriptorLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorMetadataInput)(nil)).Elem(), MetricDescriptorMetadataArgs{})
@@ -10460,6 +10722,10 @@ func init() {
 	pulumi.RegisterOutputType(AlertPolicyDocumentationPtrOutput{})
 	pulumi.RegisterOutputType(CustomServiceTelemetryOutput{})
 	pulumi.RegisterOutputType(CustomServiceTelemetryPtrOutput{})
+	pulumi.RegisterOutputType(GenericServiceBasicServiceOutput{})
+	pulumi.RegisterOutputType(GenericServiceBasicServicePtrOutput{})
+	pulumi.RegisterOutputType(GenericServiceTelemetryOutput{})
+	pulumi.RegisterOutputType(GenericServiceTelemetryArrayOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorLabelOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorLabelArrayOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorMetadataOutput{})

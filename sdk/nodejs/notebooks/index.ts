@@ -8,53 +8,53 @@ import * as utilities from "../utilities";
 export { EnvironmentArgs, EnvironmentState } from "./environment";
 export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
+utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
 
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
 export { InstanceIamBindingArgs, InstanceIamBindingState } from "./instanceIamBinding";
 export type InstanceIamBinding = import("./instanceIamBinding").InstanceIamBinding;
 export const InstanceIamBinding: typeof import("./instanceIamBinding").InstanceIamBinding = null as any;
+utilities.lazyLoad(exports, ["InstanceIamBinding"], () => require("./instanceIamBinding"));
 
 export { InstanceIamMemberArgs, InstanceIamMemberState } from "./instanceIamMember";
 export type InstanceIamMember = import("./instanceIamMember").InstanceIamMember;
 export const InstanceIamMember: typeof import("./instanceIamMember").InstanceIamMember = null as any;
+utilities.lazyLoad(exports, ["InstanceIamMember"], () => require("./instanceIamMember"));
 
 export { InstanceIamPolicyArgs, InstanceIamPolicyState } from "./instanceIamPolicy";
 export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
 export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
 
 export { LocationArgs, LocationState } from "./location";
 export type Location = import("./location").Location;
 export const Location: typeof import("./location").Location = null as any;
+utilities.lazyLoad(exports, ["Location"], () => require("./location"));
 
 export { RuntimeArgs, RuntimeState } from "./runtime";
 export type Runtime = import("./runtime").Runtime;
 export const Runtime: typeof import("./runtime").Runtime = null as any;
+utilities.lazyLoad(exports, ["Runtime"], () => require("./runtime"));
 
 export { RuntimeIamBindingArgs, RuntimeIamBindingState } from "./runtimeIamBinding";
 export type RuntimeIamBinding = import("./runtimeIamBinding").RuntimeIamBinding;
 export const RuntimeIamBinding: typeof import("./runtimeIamBinding").RuntimeIamBinding = null as any;
+utilities.lazyLoad(exports, ["RuntimeIamBinding"], () => require("./runtimeIamBinding"));
 
 export { RuntimeIamMemberArgs, RuntimeIamMemberState } from "./runtimeIamMember";
 export type RuntimeIamMember = import("./runtimeIamMember").RuntimeIamMember;
 export const RuntimeIamMember: typeof import("./runtimeIamMember").RuntimeIamMember = null as any;
+utilities.lazyLoad(exports, ["RuntimeIamMember"], () => require("./runtimeIamMember"));
 
 export { RuntimeIamPolicyArgs, RuntimeIamPolicyState } from "./runtimeIamPolicy";
 export type RuntimeIamPolicy = import("./runtimeIamPolicy").RuntimeIamPolicy;
 export const RuntimeIamPolicy: typeof import("./runtimeIamPolicy").RuntimeIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
-utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
-utilities.lazyLoad(exports, ["InstanceIamBinding"], () => require("./instanceIamBinding"));
-utilities.lazyLoad(exports, ["InstanceIamMember"], () => require("./instanceIamMember"));
-utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
-utilities.lazyLoad(exports, ["Location"], () => require("./location"));
-utilities.lazyLoad(exports, ["Runtime"], () => require("./runtime"));
-utilities.lazyLoad(exports, ["RuntimeIamBinding"], () => require("./runtimeIamBinding"));
-utilities.lazyLoad(exports, ["RuntimeIamMember"], () => require("./runtimeIamMember"));
 utilities.lazyLoad(exports, ["RuntimeIamPolicy"], () => require("./runtimeIamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),

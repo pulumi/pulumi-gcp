@@ -24,8 +24,10 @@ namespace Pulumi.Gcp.ServiceNetworking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // Create a VPC network
     ///     var peeringNetwork = new Gcp.Compute.Network("peeringNetwork");
     /// 
+    ///     // Create an IP address
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new()
     ///     {
     ///         Purpose = "VPC_PEERING",
@@ -34,7 +36,8 @@ namespace Pulumi.Gcp.ServiceNetworking
     ///         Network = peeringNetwork.Id,
     ///     });
     /// 
-    ///     var foobar = new Gcp.ServiceNetworking.Connection("foobar", new()
+    ///     // Create a private connection
+    ///     var @default = new Gcp.ServiceNetworking.Connection("default", new()
     ///     {
     ///         Network = peeringNetwork.Id,
     ///         Service = "servicenetworking.googleapis.com",
@@ -42,6 +45,15 @@ namespace Pulumi.Gcp.ServiceNetworking
     ///         {
     ///             privateIpAlloc.Name,
     ///         },
+    ///     });
+    /// 
+    ///     // (Optional) Import or export custom routes
+    ///     var peeringRoutes = new Gcp.Compute.NetworkPeeringRoutesConfig("peeringRoutes", new()
+    ///     {
+    ///         Peering = @default.Peering,
+    ///         Network = peeringNetwork.Name,
+    ///         ImportCustomRoutes = true,
+    ///         ExportCustomRoutes = true,
     ///     });
     /// 
     /// });

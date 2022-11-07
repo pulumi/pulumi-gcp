@@ -8,63 +8,63 @@ import * as utilities from "../utilities";
 export { ApiArgs, ApiState } from "./api";
 export type Api = import("./api").Api;
 export const Api: typeof import("./api").Api = null as any;
+utilities.lazyLoad(exports, ["Api"], () => require("./api"));
 
 export { ApiConfigArgs, ApiConfigState } from "./apiConfig";
 export type ApiConfig = import("./apiConfig").ApiConfig;
 export const ApiConfig: typeof import("./apiConfig").ApiConfig = null as any;
+utilities.lazyLoad(exports, ["ApiConfig"], () => require("./apiConfig"));
 
 export { ApiConfigIamBindingArgs, ApiConfigIamBindingState } from "./apiConfigIamBinding";
 export type ApiConfigIamBinding = import("./apiConfigIamBinding").ApiConfigIamBinding;
 export const ApiConfigIamBinding: typeof import("./apiConfigIamBinding").ApiConfigIamBinding = null as any;
+utilities.lazyLoad(exports, ["ApiConfigIamBinding"], () => require("./apiConfigIamBinding"));
 
 export { ApiConfigIamMemberArgs, ApiConfigIamMemberState } from "./apiConfigIamMember";
 export type ApiConfigIamMember = import("./apiConfigIamMember").ApiConfigIamMember;
 export const ApiConfigIamMember: typeof import("./apiConfigIamMember").ApiConfigIamMember = null as any;
+utilities.lazyLoad(exports, ["ApiConfigIamMember"], () => require("./apiConfigIamMember"));
 
 export { ApiConfigIamPolicyArgs, ApiConfigIamPolicyState } from "./apiConfigIamPolicy";
 export type ApiConfigIamPolicy = import("./apiConfigIamPolicy").ApiConfigIamPolicy;
 export const ApiConfigIamPolicy: typeof import("./apiConfigIamPolicy").ApiConfigIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ApiConfigIamPolicy"], () => require("./apiConfigIamPolicy"));
 
 export { ApiIamBindingArgs, ApiIamBindingState } from "./apiIamBinding";
 export type ApiIamBinding = import("./apiIamBinding").ApiIamBinding;
 export const ApiIamBinding: typeof import("./apiIamBinding").ApiIamBinding = null as any;
+utilities.lazyLoad(exports, ["ApiIamBinding"], () => require("./apiIamBinding"));
 
 export { ApiIamMemberArgs, ApiIamMemberState } from "./apiIamMember";
 export type ApiIamMember = import("./apiIamMember").ApiIamMember;
 export const ApiIamMember: typeof import("./apiIamMember").ApiIamMember = null as any;
+utilities.lazyLoad(exports, ["ApiIamMember"], () => require("./apiIamMember"));
 
 export { ApiIamPolicyArgs, ApiIamPolicyState } from "./apiIamPolicy";
 export type ApiIamPolicy = import("./apiIamPolicy").ApiIamPolicy;
 export const ApiIamPolicy: typeof import("./apiIamPolicy").ApiIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ApiIamPolicy"], () => require("./apiIamPolicy"));
 
 export { GatewayArgs, GatewayState } from "./gateway";
 export type Gateway = import("./gateway").Gateway;
 export const Gateway: typeof import("./gateway").Gateway = null as any;
+utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
 
 export { GatewayIamBindingArgs, GatewayIamBindingState } from "./gatewayIamBinding";
 export type GatewayIamBinding = import("./gatewayIamBinding").GatewayIamBinding;
 export const GatewayIamBinding: typeof import("./gatewayIamBinding").GatewayIamBinding = null as any;
+utilities.lazyLoad(exports, ["GatewayIamBinding"], () => require("./gatewayIamBinding"));
 
 export { GatewayIamMemberArgs, GatewayIamMemberState } from "./gatewayIamMember";
 export type GatewayIamMember = import("./gatewayIamMember").GatewayIamMember;
 export const GatewayIamMember: typeof import("./gatewayIamMember").GatewayIamMember = null as any;
+utilities.lazyLoad(exports, ["GatewayIamMember"], () => require("./gatewayIamMember"));
 
 export { GatewayIamPolicyArgs, GatewayIamPolicyState } from "./gatewayIamPolicy";
 export type GatewayIamPolicy = import("./gatewayIamPolicy").GatewayIamPolicy;
 export const GatewayIamPolicy: typeof import("./gatewayIamPolicy").GatewayIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["Api"], () => require("./api"));
-utilities.lazyLoad(exports, ["ApiConfig"], () => require("./apiConfig"));
-utilities.lazyLoad(exports, ["ApiConfigIamBinding"], () => require("./apiConfigIamBinding"));
-utilities.lazyLoad(exports, ["ApiConfigIamMember"], () => require("./apiConfigIamMember"));
-utilities.lazyLoad(exports, ["ApiConfigIamPolicy"], () => require("./apiConfigIamPolicy"));
-utilities.lazyLoad(exports, ["ApiIamBinding"], () => require("./apiIamBinding"));
-utilities.lazyLoad(exports, ["ApiIamMember"], () => require("./apiIamMember"));
-utilities.lazyLoad(exports, ["ApiIamPolicy"], () => require("./apiIamPolicy"));
-utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
-utilities.lazyLoad(exports, ["GatewayIamBinding"], () => require("./gatewayIamBinding"));
-utilities.lazyLoad(exports, ["GatewayIamMember"], () => require("./gatewayIamMember"));
 utilities.lazyLoad(exports, ["GatewayIamPolicy"], () => require("./gatewayIamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),

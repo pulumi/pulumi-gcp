@@ -62,7 +62,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			customTestNetwork, err := compute.NewNetwork(ctx, "customTestNetwork", &compute.NetworkArgs{
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -70,7 +70,7 @@ import (
 //				IpCidrRange: pulumi.String("10.2.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     customTestNetwork.ID(),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -79,98 +79,7 @@ import (
 //					Name: customTestSubnetwork.Name,
 //				},
 //				MachineType: pulumi.String("e2-standard-4"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Cloudrun VPC Access Connector
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vpcaccess"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			vpcaccessApi, err := projects.NewService(ctx, "vpcaccessApi", &projects.ServiceArgs{
-//				Service:          pulumi.String("vpcaccess.googleapis.com"),
-//				DisableOnDestroy: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			connector, err := vpcaccess.NewConnector(ctx, "connector", &vpcaccess.ConnectorArgs{
-//				Region:        pulumi.String("us-west1"),
-//				IpCidrRange:   pulumi.String("10.8.0.0/28"),
-//				MaxThroughput: pulumi.Int(300),
-//				Network:       _default.Name,
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
-//				vpcaccessApi,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
-//				Region:  pulumi.String("us-west1"),
-//				Network: _default.ID(),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewRouterNat(ctx, "routerNat", &compute.RouterNatArgs{
-//				Region:                        pulumi.String("us-west1"),
-//				Router:                        router.Name,
-//				SourceSubnetworkIpRangesToNat: pulumi.String("ALL_SUBNETWORKS_ALL_IP_RANGES"),
-//				NatIpAllocateOption:           pulumi.String("AUTO_ONLY"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudrun.NewService(ctx, "gcrService", &cloudrun.ServiceArgs{
-//				Location: pulumi.String("us-west1"),
-//				Template: &cloudrun.ServiceTemplateArgs{
-//					Spec: &cloudrun.ServiceTemplateSpecArgs{
-//						Containers: cloudrun.ServiceTemplateSpecContainerArray{
-//							&cloudrun.ServiceTemplateSpecContainerArgs{
-//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
-//								Resources: &cloudrun.ServiceTemplateSpecContainerResourcesArgs{
-//									Limits: pulumi.StringMap{
-//										"cpu":    pulumi.String("1000m"),
-//										"memory": pulumi.String("512M"),
-//									},
-//								},
-//							},
-//						},
-//					},
-//					Metadata: &cloudrun.ServiceTemplateMetadataArgs{
-//						Annotations: pulumi.StringMap{
-//							"autoscaling.knative.dev/maxScale":        pulumi.String("5"),
-//							"run.googleapis.com/vpc-access-connector": connector.Name,
-//							"run.googleapis.com/vpc-access-egress":    pulumi.String("all-traffic"),
-//						},
-//					},
-//				},
-//				AutogenerateRevisionName: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -72,7 +72,7 @@ namespace Pulumi.Gcp.Spanner
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Role = "roles/compute.networkUser",
+    ///         Role = "roles/spanner.databaseAdmin",
     ///     });
     /// 
     /// });
@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.Spanner
     ///     {
     ///         Instance = "your-instance-name",
     ///         Member = "user:jane@example.com",
-    ///         Role = "roles/compute.networkUser",
+    ///         Role = "roles/spanner.databaseAdmin",
     ///     });
     /// 
     /// });

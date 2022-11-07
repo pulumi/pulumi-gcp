@@ -154,7 +154,9 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly confidentialNodes!: pulumi.Output<outputs.container.ClusterConfidentialNodes>;
     /**
-     * Cost management configuration for the cluster.
+     * Configuration for the
+     * [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+     * Structure is documented below.
      */
     public readonly costManagementConfig!: pulumi.Output<outputs.container.ClusterCostManagementConfig>;
     /**
@@ -699,7 +701,9 @@ export interface ClusterState {
      */
     confidentialNodes?: pulumi.Input<inputs.container.ClusterConfidentialNodes>;
     /**
-     * Cost management configuration for the cluster.
+     * Configuration for the
+     * [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+     * Structure is documented below.
      */
     costManagementConfig?: pulumi.Input<inputs.container.ClusterCostManagementConfig>;
     /**
@@ -1092,7 +1096,9 @@ export interface ClusterArgs {
      */
     confidentialNodes?: pulumi.Input<inputs.container.ClusterConfidentialNodes>;
     /**
-     * Cost management configuration for the cluster.
+     * Configuration for the
+     * [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+     * Structure is documented below.
      */
     costManagementConfig?: pulumi.Input<inputs.container.ClusterCostManagementConfig>;
     /**

@@ -65,7 +65,7 @@ import (
 //	$ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default {{name}}
 //
 // ```
-type CertificateMap struct {
+type CertificateMapResource struct {
 	pulumi.CustomResourceState
 
 	// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
@@ -88,14 +88,14 @@ type CertificateMap struct {
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
-// NewCertificateMap registers a new resource with the given unique name, arguments, and options.
-func NewCertificateMap(ctx *pulumi.Context,
-	name string, args *CertificateMapArgs, opts ...pulumi.ResourceOption) (*CertificateMap, error) {
+// NewCertificateMapResource registers a new resource with the given unique name, arguments, and options.
+func NewCertificateMapResource(ctx *pulumi.Context,
+	name string, args *CertificateMapResourceArgs, opts ...pulumi.ResourceOption) (*CertificateMapResource, error) {
 	if args == nil {
-		args = &CertificateMapArgs{}
+		args = &CertificateMapResourceArgs{}
 	}
 
-	var resource CertificateMap
+	var resource CertificateMapResource
 	err := ctx.RegisterResource("gcp:certificatemanager/certificateMap:CertificateMap", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
@@ -103,11 +103,11 @@ func NewCertificateMap(ctx *pulumi.Context,
 	return &resource, nil
 }
 
-// GetCertificateMap gets an existing CertificateMap resource's state with the given name, ID, and optional
+// GetCertificateMapResource gets an existing CertificateMapResource resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetCertificateMap(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *CertificateMapState, opts ...pulumi.ResourceOption) (*CertificateMap, error) {
-	var resource CertificateMap
+func GetCertificateMapResource(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *CertificateMapResourceState, opts ...pulumi.ResourceOption) (*CertificateMapResource, error) {
+	var resource CertificateMapResource
 	err := ctx.ReadResource("gcp:certificatemanager/certificateMap:CertificateMap", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
@@ -115,8 +115,8 @@ func GetCertificateMap(ctx *pulumi.Context,
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering CertificateMap resources.
-type certificateMapState struct {
+// Input properties used for looking up and filtering CertificateMapResource resources.
+type certificateMapResourceState struct {
 	// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
 	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
@@ -137,7 +137,7 @@ type certificateMapState struct {
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
-type CertificateMapState struct {
+type CertificateMapResourceState struct {
 	// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
 	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
@@ -158,11 +158,11 @@ type CertificateMapState struct {
 	UpdateTime pulumi.StringPtrInput
 }
 
-func (CertificateMapState) ElementType() reflect.Type {
-	return reflect.TypeOf((*certificateMapState)(nil)).Elem()
+func (CertificateMapResourceState) ElementType() reflect.Type {
+	return reflect.TypeOf((*certificateMapResourceState)(nil)).Elem()
 }
 
-type certificateMapArgs struct {
+type certificateMapResourceArgs struct {
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
 	// Set of labels associated with a Certificate Map resource.
@@ -175,8 +175,8 @@ type certificateMapArgs struct {
 	Project *string `pulumi:"project"`
 }
 
-// The set of arguments for constructing a CertificateMap resource.
-type CertificateMapArgs struct {
+// The set of arguments for constructing a CertificateMapResource resource.
+type CertificateMapResourceArgs struct {
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
 	// Set of labels associated with a Certificate Map resource.
@@ -189,177 +189,177 @@ type CertificateMapArgs struct {
 	Project pulumi.StringPtrInput
 }
 
-func (CertificateMapArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*certificateMapArgs)(nil)).Elem()
+func (CertificateMapResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*certificateMapResourceArgs)(nil)).Elem()
 }
 
-type CertificateMapInput interface {
+type CertificateMapResourceInput interface {
 	pulumi.Input
 
-	ToCertificateMapOutput() CertificateMapOutput
-	ToCertificateMapOutputWithContext(ctx context.Context) CertificateMapOutput
+	ToCertificateMapResourceOutput() CertificateMapResourceOutput
+	ToCertificateMapResourceOutputWithContext(ctx context.Context) CertificateMapResourceOutput
 }
 
-func (*CertificateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertificateMap)(nil)).Elem()
+func (*CertificateMapResource) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateMapResource)(nil)).Elem()
 }
 
-func (i *CertificateMap) ToCertificateMapOutput() CertificateMapOutput {
-	return i.ToCertificateMapOutputWithContext(context.Background())
+func (i *CertificateMapResource) ToCertificateMapResourceOutput() CertificateMapResourceOutput {
+	return i.ToCertificateMapResourceOutputWithContext(context.Background())
 }
 
-func (i *CertificateMap) ToCertificateMapOutputWithContext(ctx context.Context) CertificateMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateMapOutput)
+func (i *CertificateMapResource) ToCertificateMapResourceOutputWithContext(ctx context.Context) CertificateMapResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateMapResourceOutput)
 }
 
-// CertificateMapArrayInput is an input type that accepts CertificateMapArray and CertificateMapArrayOutput values.
-// You can construct a concrete instance of `CertificateMapArrayInput` via:
+// CertificateMapResourceArrayInput is an input type that accepts CertificateMapResourceArray and CertificateMapResourceArrayOutput values.
+// You can construct a concrete instance of `CertificateMapResourceArrayInput` via:
 //
-//	CertificateMapArray{ CertificateMapArgs{...} }
-type CertificateMapArrayInput interface {
+//	CertificateMapResourceArray{ CertificateMapResourceArgs{...} }
+type CertificateMapResourceArrayInput interface {
 	pulumi.Input
 
-	ToCertificateMapArrayOutput() CertificateMapArrayOutput
-	ToCertificateMapArrayOutputWithContext(context.Context) CertificateMapArrayOutput
+	ToCertificateMapResourceArrayOutput() CertificateMapResourceArrayOutput
+	ToCertificateMapResourceArrayOutputWithContext(context.Context) CertificateMapResourceArrayOutput
 }
 
-type CertificateMapArray []CertificateMapInput
+type CertificateMapResourceArray []CertificateMapResourceInput
 
-func (CertificateMapArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*CertificateMap)(nil)).Elem()
+func (CertificateMapResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*CertificateMapResource)(nil)).Elem()
 }
 
-func (i CertificateMapArray) ToCertificateMapArrayOutput() CertificateMapArrayOutput {
-	return i.ToCertificateMapArrayOutputWithContext(context.Background())
+func (i CertificateMapResourceArray) ToCertificateMapResourceArrayOutput() CertificateMapResourceArrayOutput {
+	return i.ToCertificateMapResourceArrayOutputWithContext(context.Background())
 }
 
-func (i CertificateMapArray) ToCertificateMapArrayOutputWithContext(ctx context.Context) CertificateMapArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateMapArrayOutput)
+func (i CertificateMapResourceArray) ToCertificateMapResourceArrayOutputWithContext(ctx context.Context) CertificateMapResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateMapResourceArrayOutput)
 }
 
-// CertificateMapMapInput is an input type that accepts CertificateMapMap and CertificateMapMapOutput values.
-// You can construct a concrete instance of `CertificateMapMapInput` via:
+// CertificateMapResourceMapInput is an input type that accepts CertificateMapResourceMap and CertificateMapResourceMapOutput values.
+// You can construct a concrete instance of `CertificateMapResourceMapInput` via:
 //
-//	CertificateMapMap{ "key": CertificateMapArgs{...} }
-type CertificateMapMapInput interface {
+//	CertificateMapResourceMap{ "key": CertificateMapResourceArgs{...} }
+type CertificateMapResourceMapInput interface {
 	pulumi.Input
 
-	ToCertificateMapMapOutput() CertificateMapMapOutput
-	ToCertificateMapMapOutputWithContext(context.Context) CertificateMapMapOutput
+	ToCertificateMapResourceMapOutput() CertificateMapResourceMapOutput
+	ToCertificateMapResourceMapOutputWithContext(context.Context) CertificateMapResourceMapOutput
 }
 
-type CertificateMapMap map[string]CertificateMapInput
+type CertificateMapResourceMap map[string]CertificateMapResourceInput
 
-func (CertificateMapMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*CertificateMap)(nil)).Elem()
+func (CertificateMapResourceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*CertificateMapResource)(nil)).Elem()
 }
 
-func (i CertificateMapMap) ToCertificateMapMapOutput() CertificateMapMapOutput {
-	return i.ToCertificateMapMapOutputWithContext(context.Background())
+func (i CertificateMapResourceMap) ToCertificateMapResourceMapOutput() CertificateMapResourceMapOutput {
+	return i.ToCertificateMapResourceMapOutputWithContext(context.Background())
 }
 
-func (i CertificateMapMap) ToCertificateMapMapOutputWithContext(ctx context.Context) CertificateMapMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateMapMapOutput)
+func (i CertificateMapResourceMap) ToCertificateMapResourceMapOutputWithContext(ctx context.Context) CertificateMapResourceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateMapResourceMapOutput)
 }
 
-type CertificateMapOutput struct{ *pulumi.OutputState }
+type CertificateMapResourceOutput struct{ *pulumi.OutputState }
 
-func (CertificateMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CertificateMap)(nil)).Elem()
+func (CertificateMapResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateMapResource)(nil)).Elem()
 }
 
-func (o CertificateMapOutput) ToCertificateMapOutput() CertificateMapOutput {
+func (o CertificateMapResourceOutput) ToCertificateMapResourceOutput() CertificateMapResourceOutput {
 	return o
 }
 
-func (o CertificateMapOutput) ToCertificateMapOutputWithContext(ctx context.Context) CertificateMapOutput {
+func (o CertificateMapResourceOutput) ToCertificateMapResourceOutputWithContext(ctx context.Context) CertificateMapResourceOutput {
 	return o
 }
 
 // Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
 // nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-func (o CertificateMapOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v *CertificateMap) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+func (o CertificateMapResourceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateMapResource) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // A human-readable description of the resource.
-func (o CertificateMapOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CertificateMap) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o CertificateMapResourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateMapResource) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // A list of target proxies that use this Certificate Map
-func (o CertificateMapOutput) GclbTargets() CertificateMapGclbTargetArrayOutput {
-	return o.ApplyT(func(v *CertificateMap) CertificateMapGclbTargetArrayOutput { return v.GclbTargets }).(CertificateMapGclbTargetArrayOutput)
+func (o CertificateMapResourceOutput) GclbTargets() CertificateMapGclbTargetArrayOutput {
+	return o.ApplyT(func(v *CertificateMapResource) CertificateMapGclbTargetArrayOutput { return v.GclbTargets }).(CertificateMapGclbTargetArrayOutput)
 }
 
 // Set of labels associated with a Certificate Map resource.
-func (o CertificateMapOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *CertificateMap) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+func (o CertificateMapResourceOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CertificateMapResource) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // A user-defined name of the Certificate Map. Certificate Map names must be unique
 // globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
-func (o CertificateMapOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *CertificateMap) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+func (o CertificateMapResourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateMapResource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (o CertificateMapOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *CertificateMap) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o CertificateMapResourceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateMapResource) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
 // nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-func (o CertificateMapOutput) UpdateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v *CertificateMap) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+func (o CertificateMapResourceOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateMapResource) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-type CertificateMapArrayOutput struct{ *pulumi.OutputState }
+type CertificateMapResourceArrayOutput struct{ *pulumi.OutputState }
 
-func (CertificateMapArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*CertificateMap)(nil)).Elem()
+func (CertificateMapResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*CertificateMapResource)(nil)).Elem()
 }
 
-func (o CertificateMapArrayOutput) ToCertificateMapArrayOutput() CertificateMapArrayOutput {
+func (o CertificateMapResourceArrayOutput) ToCertificateMapResourceArrayOutput() CertificateMapResourceArrayOutput {
 	return o
 }
 
-func (o CertificateMapArrayOutput) ToCertificateMapArrayOutputWithContext(ctx context.Context) CertificateMapArrayOutput {
+func (o CertificateMapResourceArrayOutput) ToCertificateMapResourceArrayOutputWithContext(ctx context.Context) CertificateMapResourceArrayOutput {
 	return o
 }
 
-func (o CertificateMapArrayOutput) Index(i pulumi.IntInput) CertificateMapOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CertificateMap {
-		return vs[0].([]*CertificateMap)[vs[1].(int)]
-	}).(CertificateMapOutput)
+func (o CertificateMapResourceArrayOutput) Index(i pulumi.IntInput) CertificateMapResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CertificateMapResource {
+		return vs[0].([]*CertificateMapResource)[vs[1].(int)]
+	}).(CertificateMapResourceOutput)
 }
 
-type CertificateMapMapOutput struct{ *pulumi.OutputState }
+type CertificateMapResourceMapOutput struct{ *pulumi.OutputState }
 
-func (CertificateMapMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*CertificateMap)(nil)).Elem()
+func (CertificateMapResourceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*CertificateMapResource)(nil)).Elem()
 }
 
-func (o CertificateMapMapOutput) ToCertificateMapMapOutput() CertificateMapMapOutput {
+func (o CertificateMapResourceMapOutput) ToCertificateMapResourceMapOutput() CertificateMapResourceMapOutput {
 	return o
 }
 
-func (o CertificateMapMapOutput) ToCertificateMapMapOutputWithContext(ctx context.Context) CertificateMapMapOutput {
+func (o CertificateMapResourceMapOutput) ToCertificateMapResourceMapOutputWithContext(ctx context.Context) CertificateMapResourceMapOutput {
 	return o
 }
 
-func (o CertificateMapMapOutput) MapIndex(k pulumi.StringInput) CertificateMapOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CertificateMap {
-		return vs[0].(map[string]*CertificateMap)[vs[1].(string)]
-	}).(CertificateMapOutput)
+func (o CertificateMapResourceMapOutput) MapIndex(k pulumi.StringInput) CertificateMapResourceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CertificateMapResource {
+		return vs[0].(map[string]*CertificateMapResource)[vs[1].(string)]
+	}).(CertificateMapResourceOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateMapInput)(nil)).Elem(), &CertificateMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateMapArrayInput)(nil)).Elem(), CertificateMapArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CertificateMapMapInput)(nil)).Elem(), CertificateMapMap{})
-	pulumi.RegisterOutputType(CertificateMapOutput{})
-	pulumi.RegisterOutputType(CertificateMapArrayOutput{})
-	pulumi.RegisterOutputType(CertificateMapMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateMapResourceInput)(nil)).Elem(), &CertificateMapResource{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateMapResourceArrayInput)(nil)).Elem(), CertificateMapResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateMapResourceMapInput)(nil)).Elem(), CertificateMapResourceMap{})
+	pulumi.RegisterOutputType(CertificateMapResourceOutput{})
+	pulumi.RegisterOutputType(CertificateMapResourceArrayOutput{})
+	pulumi.RegisterOutputType(CertificateMapResourceMapOutput{})
 }

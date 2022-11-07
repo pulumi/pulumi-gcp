@@ -24,17 +24,33 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  * });
  * ```
- * ### Datastream Connection Profile Bigquery
+ * ### Datastream Connection Profile Bigquery Private Connection
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultConnectionProfile = new gcp.datastream.ConnectionProfile("default", {
- *     bigqueryProfile: {},
- *     connectionProfileId: "my-profile",
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
+ * const privateConnection = new gcp.datastream.PrivateConnection("privateConnection", {
  *     displayName: "Connection profile",
  *     location: "us-central1",
+ *     privateConnectionId: "my-connection",
+ *     labels: {
+ *         key: "value",
+ *     },
+ *     vpcPeeringConfig: {
+ *         vpc: defaultNetwork.id,
+ *         subnet: "10.0.0.0/29",
+ *     },
+ * });
+ * const defaultConnectionProfile = new gcp.datastream.ConnectionProfile("defaultConnectionProfile", {
+ *     displayName: "Connection profile",
+ *     location: "us-central1",
+ *     connectionProfileId: "my-profile",
+ *     bigqueryProfile: {},
+ *     privateConnectivity: {
+ *         privateConnection: privateConnection.id,
+ *     },
  * });
  * ```
  * ### Datastream Connection Profile Full
@@ -209,6 +225,11 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     public readonly postgresqlProfile!: pulumi.Output<outputs.datastream.ConnectionProfilePostgresqlProfile | undefined>;
     /**
+     * Private connectivity.
+     * Structure is documented below.
+     */
+    public readonly privateConnectivity!: pulumi.Output<outputs.datastream.ConnectionProfilePrivateConnectivity | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -238,6 +259,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["oracleProfile"] = state ? state.oracleProfile : undefined;
             resourceInputs["postgresqlProfile"] = state ? state.postgresqlProfile : undefined;
+            resourceInputs["privateConnectivity"] = state ? state.privateConnectivity : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ConnectionProfileArgs | undefined;
@@ -260,6 +282,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["mysqlProfile"] = args ? args.mysqlProfile : undefined;
             resourceInputs["oracleProfile"] = args ? args.oracleProfile : undefined;
             resourceInputs["postgresqlProfile"] = args ? args.postgresqlProfile : undefined;
+            resourceInputs["privateConnectivity"] = args ? args.privateConnectivity : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["name"] = undefined /*out*/;
         }
@@ -322,6 +345,11 @@ export interface ConnectionProfileState {
      */
     postgresqlProfile?: pulumi.Input<inputs.datastream.ConnectionProfilePostgresqlProfile>;
     /**
+     * Private connectivity.
+     * Structure is documented below.
+     */
+    privateConnectivity?: pulumi.Input<inputs.datastream.ConnectionProfilePrivateConnectivity>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -377,6 +405,11 @@ export interface ConnectionProfileArgs {
      * Structure is documented below.
      */
     postgresqlProfile?: pulumi.Input<inputs.datastream.ConnectionProfilePostgresqlProfile>;
+    /**
+     * Private connectivity.
+     * Structure is documented below.
+     */
+    privateConnectivity?: pulumi.Input<inputs.datastream.ConnectionProfilePrivateConnectivity>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

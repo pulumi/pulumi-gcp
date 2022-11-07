@@ -11,6 +11,7 @@ import com.pulumi.gcp.datastream.inputs.ConnectionProfileGcsProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileMysqlProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileOracleProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfilePostgresqlProfileArgs;
+import com.pulumi.gcp.datastream.inputs.ConnectionProfilePrivateConnectivityArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -183,6 +184,23 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Private connectivity.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="privateConnectivity")
+    private @Nullable Output<ConnectionProfilePrivateConnectivityArgs> privateConnectivity;
+
+    /**
+     * @return Private connectivity.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionProfilePrivateConnectivityArgs>> privateConnectivity() {
+        return Optional.ofNullable(this.privateConnectivity);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -212,6 +230,7 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
         this.mysqlProfile = $.mysqlProfile;
         this.oracleProfile = $.oracleProfile;
         this.postgresqlProfile = $.postgresqlProfile;
+        this.privateConnectivity = $.privateConnectivity;
         this.project = $.project;
     }
 
@@ -451,6 +470,29 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder postgresqlProfile(ConnectionProfilePostgresqlProfileArgs postgresqlProfile) {
             return postgresqlProfile(Output.of(postgresqlProfile));
+        }
+
+        /**
+         * @param privateConnectivity Private connectivity.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateConnectivity(@Nullable Output<ConnectionProfilePrivateConnectivityArgs> privateConnectivity) {
+            $.privateConnectivity = privateConnectivity;
+            return this;
+        }
+
+        /**
+         * @param privateConnectivity Private connectivity.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateConnectivity(ConnectionProfilePrivateConnectivityArgs privateConnectivity) {
+            return privateConnectivity(Output.of(privateConnectivity));
         }
 
         /**

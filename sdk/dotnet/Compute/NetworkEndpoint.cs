@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.Compute
     ///                 Subnetwork = defaultSubnetwork.Id,
     ///                 AccessConfigs = new[]
     ///                 {
-    ///                     ,
+    ///                     null,
     ///                 },
     ///             },
     ///         },

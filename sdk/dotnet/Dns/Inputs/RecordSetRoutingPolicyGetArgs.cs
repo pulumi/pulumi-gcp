@@ -12,6 +12,12 @@ namespace Pulumi.Gcp.Dns.Inputs
 
     public sealed class RecordSetRoutingPolicyGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether to enable fencing for geo queries.
+        /// </summary>
+        [Input("enableGeoFencing")]
+        public Input<bool>? EnableGeoFencing { get; set; }
+
         [Input("geos")]
         private InputList<Inputs.RecordSetRoutingPolicyGeoGetArgs>? _geos;
 
@@ -24,6 +30,13 @@ namespace Pulumi.Gcp.Dns.Inputs
             get => _geos ?? (_geos = new InputList<Inputs.RecordSetRoutingPolicyGeoGetArgs>());
             set => _geos = value;
         }
+
+        /// <summary>
+        /// The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+        /// Structure is document below.
+        /// </summary>
+        [Input("primaryBackup")]
+        public Input<Inputs.RecordSetRoutingPolicyPrimaryBackupGetArgs>? PrimaryBackup { get; set; }
 
         [Input("wrrs")]
         private InputList<Inputs.RecordSetRoutingPolicyWrrGetArgs>? _wrrs;

@@ -8,8 +8,8 @@ import * as utilities from "../utilities";
 export { ConsumerQuotaOverrideArgs, ConsumerQuotaOverrideState } from "./consumerQuotaOverride";
 export type ConsumerQuotaOverride = import("./consumerQuotaOverride").ConsumerQuotaOverride;
 export const ConsumerQuotaOverride: typeof import("./consumerQuotaOverride").ConsumerQuotaOverride = null as any;
-
 utilities.lazyLoad(exports, ["ConsumerQuotaOverride"], () => require("./consumerQuotaOverride"));
+
 
 const _module = {
     version: utilities.getVersion(),

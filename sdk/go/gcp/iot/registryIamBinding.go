@@ -50,8 +50,8 @@ import (
 //				return err
 //			}
 //			_, err = iot.NewRegistryIamPolicy(ctx, "policy", &iot.RegistryIamPolicyArgs{
-//				Project:    pulumi.Any(google_cloudiot_registry.Test - registry.Project),
-//				Region:     pulumi.Any(google_cloudiot_registry.Test - registry.Region),
+//				Project:    pulumi.Any(google_cloudiot_registry.TestRegistry.Project),
+//				Region:     pulumi.Any(google_cloudiot_registry.TestRegistry.Region),
 //				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -78,8 +78,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iot.NewRegistryIamBinding(ctx, "binding", &iot.RegistryIamBindingArgs{
-//				Project: pulumi.Any(google_cloudiot_registry.Test - registry.Project),
-//				Region:  pulumi.Any(google_cloudiot_registry.Test - registry.Region),
+//				Project: pulumi.Any(google_cloudiot_registry.TestRegistry.Project),
+//				Region:  pulumi.Any(google_cloudiot_registry.TestRegistry.Region),
 //				Role:    pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -109,8 +109,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iot.NewRegistryIamMember(ctx, "member", &iot.RegistryIamMemberArgs{
-//				Project: pulumi.Any(google_cloudiot_registry.Test - registry.Project),
-//				Region:  pulumi.Any(google_cloudiot_registry.Test - registry.Region),
+//				Project: pulumi.Any(google_cloudiot_registry.TestRegistry.Project),
+//				Region:  pulumi.Any(google_cloudiot_registry.TestRegistry.Region),
 //				Role:    pulumi.String("roles/viewer"),
 //				Member:  pulumi.String("user:jane@example.com"),
 //			})

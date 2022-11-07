@@ -124,6 +124,10 @@ namespace Pulumi.Gcp.SecretManager
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "secretData",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -159,12 +163,22 @@ namespace Pulumi.Gcp.SecretManager
         [Input("secret", required: true)]
         public Input<string> Secret { get; set; } = null!;
 
+        [Input("secretData", required: true)]
+        private Input<string>? _secretData;
+
         /// <summary>
         /// The secret data. Must be no larger than 64KiB.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("secretData", required: true)]
-        public Input<string> SecretData { get; set; } = null!;
+        public Input<string>? SecretData
+        {
+            get => _secretData;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public SecretVersionArgs()
         {
@@ -204,12 +218,22 @@ namespace Pulumi.Gcp.SecretManager
         [Input("secret")]
         public Input<string>? Secret { get; set; }
 
+        [Input("secretData")]
+        private Input<string>? _secretData;
+
         /// <summary>
         /// The secret data. Must be no larger than 64KiB.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("secretData")]
-        public Input<string>? SecretData { get; set; }
+        public Input<string>? SecretData
+        {
+            get => _secretData;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The version of the Secret.

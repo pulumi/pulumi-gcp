@@ -8,43 +8,43 @@ import * as utilities from "../utilities";
 export { ConfigArgs, ConfigState } from "./config";
 export type Config = import("./config").Config;
 export const Config: typeof import("./config").Config = null as any;
+utilities.lazyLoad(exports, ["Config"], () => require("./config"));
 
 export { DefaultSupportedIdpConfigArgs, DefaultSupportedIdpConfigState } from "./defaultSupportedIdpConfig";
 export type DefaultSupportedIdpConfig = import("./defaultSupportedIdpConfig").DefaultSupportedIdpConfig;
 export const DefaultSupportedIdpConfig: typeof import("./defaultSupportedIdpConfig").DefaultSupportedIdpConfig = null as any;
+utilities.lazyLoad(exports, ["DefaultSupportedIdpConfig"], () => require("./defaultSupportedIdpConfig"));
 
 export { InboundSamlConfigArgs, InboundSamlConfigState } from "./inboundSamlConfig";
 export type InboundSamlConfig = import("./inboundSamlConfig").InboundSamlConfig;
 export const InboundSamlConfig: typeof import("./inboundSamlConfig").InboundSamlConfig = null as any;
+utilities.lazyLoad(exports, ["InboundSamlConfig"], () => require("./inboundSamlConfig"));
 
 export { OauthIdpConfigArgs, OauthIdpConfigState } from "./oauthIdpConfig";
 export type OauthIdpConfig = import("./oauthIdpConfig").OauthIdpConfig;
 export const OauthIdpConfig: typeof import("./oauthIdpConfig").OauthIdpConfig = null as any;
+utilities.lazyLoad(exports, ["OauthIdpConfig"], () => require("./oauthIdpConfig"));
 
 export { TenantArgs, TenantState } from "./tenant";
 export type Tenant = import("./tenant").Tenant;
 export const Tenant: typeof import("./tenant").Tenant = null as any;
+utilities.lazyLoad(exports, ["Tenant"], () => require("./tenant"));
 
 export { TenantDefaultSupportedIdpConfigArgs, TenantDefaultSupportedIdpConfigState } from "./tenantDefaultSupportedIdpConfig";
 export type TenantDefaultSupportedIdpConfig = import("./tenantDefaultSupportedIdpConfig").TenantDefaultSupportedIdpConfig;
 export const TenantDefaultSupportedIdpConfig: typeof import("./tenantDefaultSupportedIdpConfig").TenantDefaultSupportedIdpConfig = null as any;
+utilities.lazyLoad(exports, ["TenantDefaultSupportedIdpConfig"], () => require("./tenantDefaultSupportedIdpConfig"));
 
 export { TenantInboundSamlConfigArgs, TenantInboundSamlConfigState } from "./tenantInboundSamlConfig";
 export type TenantInboundSamlConfig = import("./tenantInboundSamlConfig").TenantInboundSamlConfig;
 export const TenantInboundSamlConfig: typeof import("./tenantInboundSamlConfig").TenantInboundSamlConfig = null as any;
+utilities.lazyLoad(exports, ["TenantInboundSamlConfig"], () => require("./tenantInboundSamlConfig"));
 
 export { TenantOauthIdpConfigArgs, TenantOauthIdpConfigState } from "./tenantOauthIdpConfig";
 export type TenantOauthIdpConfig = import("./tenantOauthIdpConfig").TenantOauthIdpConfig;
 export const TenantOauthIdpConfig: typeof import("./tenantOauthIdpConfig").TenantOauthIdpConfig = null as any;
-
-utilities.lazyLoad(exports, ["Config"], () => require("./config"));
-utilities.lazyLoad(exports, ["DefaultSupportedIdpConfig"], () => require("./defaultSupportedIdpConfig"));
-utilities.lazyLoad(exports, ["InboundSamlConfig"], () => require("./inboundSamlConfig"));
-utilities.lazyLoad(exports, ["OauthIdpConfig"], () => require("./oauthIdpConfig"));
-utilities.lazyLoad(exports, ["Tenant"], () => require("./tenant"));
-utilities.lazyLoad(exports, ["TenantDefaultSupportedIdpConfig"], () => require("./tenantDefaultSupportedIdpConfig"));
-utilities.lazyLoad(exports, ["TenantInboundSamlConfig"], () => require("./tenantInboundSamlConfig"));
 utilities.lazyLoad(exports, ["TenantOauthIdpConfig"], () => require("./tenantOauthIdpConfig"));
+
 
 const _module = {
     version: utilities.getVersion(),

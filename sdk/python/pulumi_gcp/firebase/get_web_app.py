@@ -21,10 +21,16 @@ class GetWebAppResult:
     """
     A collection of values returned by getWebApp.
     """
-    def __init__(__self__, app_id=None, display_name=None, id=None, name=None, project=None):
+    def __init__(__self__, app_id=None, app_urls=None, deletion_policy=None, display_name=None, id=None, name=None, project=None):
         if app_id and not isinstance(app_id, str):
             raise TypeError("Expected argument 'app_id' to be a str")
         pulumi.set(__self__, "app_id", app_id)
+        if app_urls and not isinstance(app_urls, list):
+            raise TypeError("Expected argument 'app_urls' to be a list")
+        pulumi.set(__self__, "app_urls", app_urls)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -42,6 +48,16 @@ class GetWebAppResult:
     @pulumi.getter(name="appId")
     def app_id(self) -> str:
         return pulumi.get(self, "app_id")
+
+    @property
+    @pulumi.getter(name="appUrls")
+    def app_urls(self) -> Sequence[str]:
+        return pulumi.get(self, "app_urls")
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> str:
+        return pulumi.get(self, "deletion_policy")
 
     @property
     @pulumi.getter(name="displayName")
@@ -74,6 +90,8 @@ class AwaitableGetWebAppResult(GetWebAppResult):
             yield self
         return GetWebAppResult(
             app_id=self.app_id,
+            app_urls=self.app_urls,
+            deletion_policy=self.deletion_policy,
             display_name=self.display_name,
             id=self.id,
             name=self.name,
@@ -95,6 +113,8 @@ def get_web_app(app_id: Optional[str] = None,
 
     return AwaitableGetWebAppResult(
         app_id=__ret__.app_id,
+        app_urls=__ret__.app_urls,
+        deletion_policy=__ret__.deletion_policy,
         display_name=__ret__.display_name,
         id=__ret__.id,
         name=__ret__.name,

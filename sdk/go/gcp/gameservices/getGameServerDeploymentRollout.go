@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gameservices.LookupGameServerDeploymentRollout(ctx, &gameservices.LookupGameServerDeploymentRolloutArgs{
+//			_, err = gameservices.LookupGameServerDeploymentRollout(ctx, &gameservices.LookupGameServerDeploymentRolloutArgs{
 //				DeploymentId: "tf-test-deployment-s8sn12jt2c",
 //			}, nil)
 //			if err != nil {

@@ -117,6 +117,13 @@ func NewDomainTrust(ctx *pulumi.Context,
 	if args.TrustType == nil {
 		return nil, errors.New("invalid value for required argument 'TrustType'")
 	}
+	if args.TrustHandshakeSecret != nil {
+		args.TrustHandshakeSecret = pulumi.ToSecret(args.TrustHandshakeSecret).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"trustHandshakeSecret",
+	})
+	opts = append(opts, secrets)
 	var resource DomainTrust
 	err := ctx.RegisterResource("gcp:activedirectory/domainTrust:DomainTrust", name, args, &resource, opts...)
 	if err != nil {

@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Dns.Outputs
     public sealed class RecordSetRoutingPolicyGeo
     {
         /// <summary>
+        /// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+        /// Structure is document below.
+        /// </summary>
+        public readonly Outputs.RecordSetRoutingPolicyGeoHealthCheckedTargets? HealthCheckedTargets;
+        /// <summary>
         /// The location name defined in Google Cloud.
         /// </summary>
         public readonly string Location;
@@ -24,10 +29,13 @@ namespace Pulumi.Gcp.Dns.Outputs
 
         [OutputConstructor]
         private RecordSetRoutingPolicyGeo(
+            Outputs.RecordSetRoutingPolicyGeoHealthCheckedTargets? healthCheckedTargets,
+
             string location,
 
             ImmutableArray<string> rrdatas)
         {
+            HealthCheckedTargets = healthCheckedTargets;
             Location = location;
             Rrdatas = rrdatas;
         }

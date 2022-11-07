@@ -93,6 +93,8 @@ type LookupDiskResult struct {
 	SelfLink                     string                               `pulumi:"selfLink"`
 	Size                         int                                  `pulumi:"size"`
 	Snapshot                     string                               `pulumi:"snapshot"`
+	SourceDisk                   string                               `pulumi:"sourceDisk"`
+	SourceDiskId                 string                               `pulumi:"sourceDiskId"`
 	SourceImageEncryptionKeys    []GetDiskSourceImageEncryptionKey    `pulumi:"sourceImageEncryptionKeys"`
 	SourceImageId                string                               `pulumi:"sourceImageId"`
 	SourceSnapshotEncryptionKeys []GetDiskSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKeys"`
@@ -222,6 +224,14 @@ func (o LookupDiskResultOutput) Size() pulumi.IntOutput {
 
 func (o LookupDiskResultOutput) Snapshot() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Snapshot }).(pulumi.StringOutput)
+}
+
+func (o LookupDiskResultOutput) SourceDisk() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskResult) string { return v.SourceDisk }).(pulumi.StringOutput)
+}
+
+func (o LookupDiskResultOutput) SourceDiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskResult) string { return v.SourceDiskId }).(pulumi.StringOutput)
 }
 
 func (o LookupDiskResultOutput) SourceImageEncryptionKeys() GetDiskSourceImageEncryptionKeyArrayOutput {

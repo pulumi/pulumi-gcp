@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iam.LookupWorkloadIdentityPoolProvider(ctx, &iam.LookupWorkloadIdentityPoolProviderArgs{
+//			_, err = iam.LookupWorkloadIdentityPoolProvider(ctx, &iam.LookupWorkloadIdentityPoolProviderArgs{
 //				WorkloadIdentityPoolId:         "foo-pool",
 //				WorkloadIdentityPoolProviderId: "bar-provider",
 //			}, nil)

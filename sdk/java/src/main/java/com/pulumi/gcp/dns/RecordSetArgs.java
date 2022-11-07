@@ -51,16 +51,14 @@ public final class RecordSetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the load balancer belongs.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * @return The ID of the project in which the load balancer belongs.
      * 
      */
     public Optional<Output<String>> project() {
@@ -206,8 +204,7 @@ public final class RecordSetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The ID of the project in which the resource belongs. If it
-         * is not provided, the provider project is used.
+         * @param project The ID of the project in which the load balancer belongs.
          * 
          * @return builder
          * 
@@ -218,8 +215,7 @@ public final class RecordSetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The ID of the project in which the resource belongs. If it
-         * is not provided, the provider project is used.
+         * @param project The ID of the project in which the load balancer belongs.
          * 
          * @return builder
          * 

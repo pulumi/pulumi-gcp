@@ -331,6 +331,14 @@ class AiFeatureStore(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A collection of DataItems and Annotations on them.
+
+        To get more information about Featurestore, see:
+
+        * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+
         ## Example Usage
         ### Vertex Ai Featurestore
 
@@ -339,18 +347,17 @@ class AiFeatureStore(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            labels={
-                "foo": "bar",
-            },
-            region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ),
             encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
                 kms_key_name="kms-name",
             ),
             force_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            labels={
+                "foo": "bar",
+            },
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ),
+            region="us-central1")
         ```
 
         ## Import
@@ -393,6 +400,14 @@ class AiFeatureStore(pulumi.CustomResource):
                  args: Optional[AiFeatureStoreArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A collection of DataItems and Annotations on them.
+
+        To get more information about Featurestore, see:
+
+        * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+
         ## Example Usage
         ### Vertex Ai Featurestore
 
@@ -401,18 +416,17 @@ class AiFeatureStore(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            labels={
-                "foo": "bar",
-            },
-            region="us-central1",
-            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
-                fixed_node_count=2,
-            ),
             encryption_spec=gcp.vertex.AiFeatureStoreEncryptionSpecArgs(
                 kms_key_name="kms-name",
             ),
             force_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            labels={
+                "foo": "bar",
+            },
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ),
+            region="us-central1")
         ```
 
         ## Import

@@ -33,93 +33,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const customTestNetwork = new gcp.compute.Network("customTestNetwork", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
- * });
+ * const customTestNetwork = new gcp.compute.Network("customTestNetwork", {autoCreateSubnetworks: false});
  * const customTestSubnetwork = new gcp.compute.Subnetwork("customTestSubnetwork", {
  *     ipCidrRange: "10.2.0.0/28",
  *     region: "us-central1",
  *     network: customTestNetwork.id,
- * }, {
- *     provider: google_beta,
  * });
  * const connector = new gcp.vpcaccess.Connector("connector", {
  *     subnet: {
  *         name: customTestSubnetwork.name,
  *     },
  *     machineType: "e2-standard-4",
- * }, {
- *     provider: google_beta,
- * });
- * ```
- * ### Cloudrun VPC Access Connector
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const vpcaccessApi = new gcp.projects.Service("vpcaccessApi", {
- *     service: "vpcaccess.googleapis.com",
- *     disableOnDestroy: false,
- * }, {
- *     provider: google_beta,
- * });
- * // VPC
- * const _default = new gcp.compute.Network("default", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
- * });
- * // VPC access connector
- * const connector = new gcp.vpcaccess.Connector("connector", {
- *     region: "us-west1",
- *     ipCidrRange: "10.8.0.0/28",
- *     maxThroughput: 300,
- *     network: _default.name,
- * }, {
- *     provider: google_beta,
- *     dependsOn: [vpcaccessApi],
- * });
- * // Cloud Router
- * const router = new gcp.compute.Router("router", {
- *     region: "us-west1",
- *     network: _default.id,
- * }, {
- *     provider: google_beta,
- * });
- * // NAT configuration
- * const routerNat = new gcp.compute.RouterNat("routerNat", {
- *     region: "us-west1",
- *     router: router.name,
- *     sourceSubnetworkIpRangesToNat: "ALL_SUBNETWORKS_ALL_IP_RANGES",
- *     natIpAllocateOption: "AUTO_ONLY",
- * }, {
- *     provider: google_beta,
- * });
- * // Cloud Run service
- * const gcrService = new gcp.cloudrun.Service("gcrService", {
- *     location: "us-west1",
- *     template: {
- *         spec: {
- *             containers: [{
- *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
- *                 resources: {
- *                     limits: {
- *                         cpu: "1000m",
- *                         memory: "512M",
- *                     },
- *                 },
- *             }],
- *         },
- *         metadata: {
- *             annotations: {
- *                 "autoscaling.knative.dev/maxScale": "5",
- *                 "run.googleapis.com/vpc-access-connector": connector.name,
- *                 "run.googleapis.com/vpc-access-egress": "all-traffic",
- *             },
- *         },
- *     },
- *     autogenerateRevisionName: true,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

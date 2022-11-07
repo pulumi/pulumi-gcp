@@ -80,6 +80,13 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// A shell script to be executed in the step.
+        /// When script is provided, the user cannot specify the entrypoint or args.
+        /// </summary>
+        [Input("script")]
+        public Input<string>? Script { get; set; }
+
         [Input("secretEnvs")]
         private InputList<string>? _secretEnvs;
 

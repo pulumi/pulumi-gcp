@@ -70,7 +70,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vpcaccess.Connector;
  * import com.pulumi.gcp.vpcaccess.ConnectorArgs;
  * import com.pulumi.gcp.vpcaccess.inputs.ConnectorSubnetArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -86,131 +85,20 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var customTestNetwork = new Network(&#34;customTestNetwork&#34;, NetworkArgs.builder()        
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var customTestSubnetwork = new Subnetwork(&#34;customTestSubnetwork&#34;, SubnetworkArgs.builder()        
  *             .ipCidrRange(&#34;10.2.0.0/28&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(customTestNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var connector = new Connector(&#34;connector&#34;, ConnectorArgs.builder()        
  *             .subnet(ConnectorSubnetArgs.builder()
  *                 .name(customTestSubnetwork.name())
  *                 .build())
  *             .machineType(&#34;e2-standard-4&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *     }
- * }
- * ```
- * ### Cloudrun VPC Access Connector
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.projects.Service;
- * import com.pulumi.gcp.projects.ServiceArgs;
- * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.NetworkArgs;
- * import com.pulumi.gcp.vpcaccess.Connector;
- * import com.pulumi.gcp.vpcaccess.ConnectorArgs;
- * import com.pulumi.gcp.compute.Router;
- * import com.pulumi.gcp.compute.RouterArgs;
- * import com.pulumi.gcp.compute.RouterNat;
- * import com.pulumi.gcp.compute.RouterNatArgs;
- * import com.pulumi.gcp.cloudrun.Service;
- * import com.pulumi.gcp.cloudrun.ServiceArgs;
- * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
- * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
- * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateMetadataArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var vpcaccessApi = new Service(&#34;vpcaccessApi&#34;, ServiceArgs.builder()        
- *             .service(&#34;vpcaccess.googleapis.com&#34;)
- *             .disableOnDestroy(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var connector = new Connector(&#34;connector&#34;, ConnectorArgs.builder()        
- *             .region(&#34;us-west1&#34;)
- *             .ipCidrRange(&#34;10.8.0.0/28&#34;)
- *             .maxThroughput(300)
- *             .network(default_.name())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .dependsOn(vpcaccessApi)
- *                 .build());
- * 
- *         var router = new Router(&#34;router&#34;, RouterArgs.builder()        
- *             .region(&#34;us-west1&#34;)
- *             .network(default_.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var routerNat = new RouterNat(&#34;routerNat&#34;, RouterNatArgs.builder()        
- *             .region(&#34;us-west1&#34;)
- *             .router(router.name())
- *             .sourceSubnetworkIpRangesToNat(&#34;ALL_SUBNETWORKS_ALL_IP_RANGES&#34;)
- *             .natIpAllocateOption(&#34;AUTO_ONLY&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var gcrService = new Service(&#34;gcrService&#34;, ServiceArgs.builder()        
- *             .location(&#34;us-west1&#34;)
- *             .template(ServiceTemplateArgs.builder()
- *                 .spec(ServiceTemplateSpecArgs.builder()
- *                     .containers(ServiceTemplateSpecContainerArgs.builder()
- *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
- *                         .resources(ServiceTemplateSpecContainerResourcesArgs.builder()
- *                             .limits(Map.ofEntries(
- *                                 Map.entry(&#34;cpu&#34;, &#34;1000m&#34;),
- *                                 Map.entry(&#34;memory&#34;, &#34;512M&#34;)
- *                             ))
- *                             .build())
- *                         .build())
- *                     .build())
- *                 .metadata(ServiceTemplateMetadataArgs.builder()
- *                     .annotations(Map.ofEntries(
- *                         Map.entry(&#34;autoscaling.knative.dev/maxScale&#34;, &#34;5&#34;),
- *                         Map.entry(&#34;run.googleapis.com/vpc-access-connector&#34;, connector.name()),
- *                         Map.entry(&#34;run.googleapis.com/vpc-access-egress&#34;, &#34;all-traffic&#34;)
- *                     ))
- *                     .build())
- *                 .build())
- *             .autogenerateRevisionName(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

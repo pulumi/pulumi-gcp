@@ -8,73 +8,73 @@ import * as utilities from "../utilities";
 export { AwsClusterArgs, AwsClusterState } from "./awsCluster";
 export type AwsCluster = import("./awsCluster").AwsCluster;
 export const AwsCluster: typeof import("./awsCluster").AwsCluster = null as any;
+utilities.lazyLoad(exports, ["AwsCluster"], () => require("./awsCluster"));
 
 export { AwsNodePoolArgs, AwsNodePoolState } from "./awsNodePool";
 export type AwsNodePool = import("./awsNodePool").AwsNodePool;
 export const AwsNodePool: typeof import("./awsNodePool").AwsNodePool = null as any;
+utilities.lazyLoad(exports, ["AwsNodePool"], () => require("./awsNodePool"));
 
 export { AzureClientArgs, AzureClientState } from "./azureClient";
 export type AzureClient = import("./azureClient").AzureClient;
 export const AzureClient: typeof import("./azureClient").AzureClient = null as any;
+utilities.lazyLoad(exports, ["AzureClient"], () => require("./azureClient"));
 
 export { AzureClusterArgs, AzureClusterState } from "./azureCluster";
 export type AzureCluster = import("./azureCluster").AzureCluster;
 export const AzureCluster: typeof import("./azureCluster").AzureCluster = null as any;
+utilities.lazyLoad(exports, ["AzureCluster"], () => require("./azureCluster"));
 
 export { AzureNodePoolArgs, AzureNodePoolState } from "./azureNodePool";
 export type AzureNodePool = import("./azureNodePool").AzureNodePool;
 export const AzureNodePool: typeof import("./azureNodePool").AzureNodePool = null as any;
+utilities.lazyLoad(exports, ["AzureNodePool"], () => require("./azureNodePool"));
 
 export { ClusterArgs, ClusterState } from "./cluster";
 export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
+utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
 export { GetAwsVersionsArgs, GetAwsVersionsResult, GetAwsVersionsOutputArgs } from "./getAwsVersions";
 export const getAwsVersions: typeof import("./getAwsVersions").getAwsVersions = null as any;
 export const getAwsVersionsOutput: typeof import("./getAwsVersions").getAwsVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getAwsVersions","getAwsVersionsOutput"], () => require("./getAwsVersions"));
 
 export { GetAzureVersionsArgs, GetAzureVersionsResult, GetAzureVersionsOutputArgs } from "./getAzureVersions";
 export const getAzureVersions: typeof import("./getAzureVersions").getAzureVersions = null as any;
 export const getAzureVersionsOutput: typeof import("./getAzureVersions").getAzureVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getAzureVersions","getAzureVersionsOutput"], () => require("./getAzureVersions"));
 
 export { GetClusterArgs, GetClusterResult, GetClusterOutputArgs } from "./getCluster";
 export const getCluster: typeof import("./getCluster").getCluster = null as any;
 export const getClusterOutput: typeof import("./getCluster").getClusterOutput = null as any;
+utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
 
 export { GetEngineVersionsArgs, GetEngineVersionsResult, GetEngineVersionsOutputArgs } from "./getEngineVersions";
 export const getEngineVersions: typeof import("./getEngineVersions").getEngineVersions = null as any;
 export const getEngineVersionsOutput: typeof import("./getEngineVersions").getEngineVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getEngineVersions","getEngineVersionsOutput"], () => require("./getEngineVersions"));
 
 export { GetRegistryImageArgs, GetRegistryImageResult, GetRegistryImageOutputArgs } from "./getRegistryImage";
 export const getRegistryImage: typeof import("./getRegistryImage").getRegistryImage = null as any;
 export const getRegistryImageOutput: typeof import("./getRegistryImage").getRegistryImageOutput = null as any;
+utilities.lazyLoad(exports, ["getRegistryImage","getRegistryImageOutput"], () => require("./getRegistryImage"));
 
 export { GetRegistryRepositoryArgs, GetRegistryRepositoryResult, GetRegistryRepositoryOutputArgs } from "./getRegistryRepository";
 export const getRegistryRepository: typeof import("./getRegistryRepository").getRegistryRepository = null as any;
 export const getRegistryRepositoryOutput: typeof import("./getRegistryRepository").getRegistryRepositoryOutput = null as any;
+utilities.lazyLoad(exports, ["getRegistryRepository","getRegistryRepositoryOutput"], () => require("./getRegistryRepository"));
 
 export { NodePoolArgs, NodePoolState } from "./nodePool";
 export type NodePool = import("./nodePool").NodePool;
 export const NodePool: typeof import("./nodePool").NodePool = null as any;
+utilities.lazyLoad(exports, ["NodePool"], () => require("./nodePool"));
 
 export { RegistryArgs, RegistryState } from "./registry";
 export type Registry = import("./registry").Registry;
 export const Registry: typeof import("./registry").Registry = null as any;
-
-utilities.lazyLoad(exports, ["AwsCluster"], () => require("./awsCluster"));
-utilities.lazyLoad(exports, ["AwsNodePool"], () => require("./awsNodePool"));
-utilities.lazyLoad(exports, ["AzureClient"], () => require("./azureClient"));
-utilities.lazyLoad(exports, ["AzureCluster"], () => require("./azureCluster"));
-utilities.lazyLoad(exports, ["AzureNodePool"], () => require("./azureNodePool"));
-utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
-utilities.lazyLoad(exports, ["getAwsVersions","getAwsVersionsOutput"], () => require("./getAwsVersions"));
-utilities.lazyLoad(exports, ["getAzureVersions","getAzureVersionsOutput"], () => require("./getAzureVersions"));
-utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
-utilities.lazyLoad(exports, ["getEngineVersions","getEngineVersionsOutput"], () => require("./getEngineVersions"));
-utilities.lazyLoad(exports, ["getRegistryImage","getRegistryImageOutput"], () => require("./getRegistryImage"));
-utilities.lazyLoad(exports, ["getRegistryRepository","getRegistryRepositoryOutput"], () => require("./getRegistryRepository"));
-utilities.lazyLoad(exports, ["NodePool"], () => require("./nodePool"));
 utilities.lazyLoad(exports, ["Registry"], () => require("./registry"));
+
 
 const _module = {
     version: utilities.getVersion(),

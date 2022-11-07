@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Dns
     ///                 Network = "default",
     ///                 AccessConfigs = new[]
     ///                 {
-    ///                     ,
+    ///                     null,
     ///                 },
     ///             },
     ///         },
@@ -225,6 +225,88 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// ### Primary-Backup
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var prodManagedZone = new Gcp.Dns.ManagedZone("prodManagedZone", new()
+    ///     {
+    ///         DnsName = "prod.mydomain.com.",
+    ///     });
+    /// 
+    ///     var prodRegionBackendService = new Gcp.Compute.RegionBackendService("prodRegionBackendService", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    ///     var prodNetwork = new Gcp.Compute.Network("prodNetwork");
+    /// 
+    ///     var prodForwardingRule = new Gcp.Compute.ForwardingRule("prodForwardingRule", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "INTERNAL",
+    ///         BackendService = prodRegionBackendService.Id,
+    ///         AllPorts = true,
+    ///         Network = prodNetwork.Name,
+    ///     });
+    /// 
+    ///     var recordSet = new Gcp.Dns.RecordSet("recordSet", new()
+    ///     {
+    ///         Name = prodManagedZone.DnsName.Apply(dnsName =&gt; $"backend.{dnsName}"),
+    ///         ManagedZone = prodManagedZone.Name,
+    ///         Type = "A",
+    ///         Ttl = 300,
+    ///         RoutingPolicy = new Gcp.Dns.Inputs.RecordSetRoutingPolicyArgs
+    ///         {
+    ///             PrimaryBackup = new Gcp.Dns.Inputs.RecordSetRoutingPolicyPrimaryBackupArgs
+    ///             {
+    ///                 TrickleRatio = 0.1,
+    ///                 Primary = new Gcp.Dns.Inputs.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs
+    ///                 {
+    ///                     InternalLoadBalancers = new[]
+    ///                     {
+    ///                         new Gcp.Dns.Inputs.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs
+    ///                         {
+    ///                             LoadBalancerType = "regionalL4ilb",
+    ///                             IpAddress = prodForwardingRule.IpAddress,
+    ///                             Port = "80",
+    ///                             IpProtocol = "tcp",
+    ///                             NetworkUrl = prodNetwork.Id,
+    ///                             Project = prodForwardingRule.Project,
+    ///                             Region = prodForwardingRule.Region,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 BackupGeos = new[]
+    ///                 {
+    ///                     new Gcp.Dns.Inputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs
+    ///                     {
+    ///                         Location = "asia-east1",
+    ///                         Rrdatas = new[]
+    ///                         {
+    ///                             "10.128.1.1",
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Dns.Inputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs
+    ///                     {
+    ///                         Location = "us-west1",
+    ///                         Rrdatas = new[]
+    ///                         {
+    ///                             "10.130.1.1",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -261,8 +343,7 @@ namespace Pulumi.Gcp.Dns
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If it
-        /// is not provided, the provider project is used.
+        /// The ID of the project in which the load balancer belongs.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -353,8 +434,7 @@ namespace Pulumi.Gcp.Dns
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If it
-        /// is not provided, the provider project is used.
+        /// The ID of the project in which the load balancer belongs.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -413,8 +493,7 @@ namespace Pulumi.Gcp.Dns
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If it
-        /// is not provided, the provider project is used.
+        /// The ID of the project in which the load balancer belongs.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

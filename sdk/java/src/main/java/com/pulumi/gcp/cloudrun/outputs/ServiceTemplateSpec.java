@@ -56,7 +56,7 @@ public final class ServiceTemplateSpec {
     /**
      * @return Number of seconds after which the probe times out.
      * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-     * Must be smaller than periodSeconds.
+     * Must be smaller than period_seconds.
      * 
      */
     private @Nullable Integer timeoutSeconds;
@@ -117,7 +117,7 @@ public final class ServiceTemplateSpec {
     /**
      * @return Number of seconds after which the probe times out.
      * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-     * Must be smaller than periodSeconds.
+     * Must be smaller than period_seconds.
      * 
      */
     public Optional<Integer> timeoutSeconds() {

@@ -8,58 +8,58 @@ import * as utilities from "../utilities";
 export { GetTagKeyArgs, GetTagKeyResult, GetTagKeyOutputArgs } from "./getTagKey";
 export const getTagKey: typeof import("./getTagKey").getTagKey = null as any;
 export const getTagKeyOutput: typeof import("./getTagKey").getTagKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getTagKey","getTagKeyOutput"], () => require("./getTagKey"));
 
 export { GetTagValueArgs, GetTagValueResult, GetTagValueOutputArgs } from "./getTagValue";
 export const getTagValue: typeof import("./getTagValue").getTagValue = null as any;
 export const getTagValueOutput: typeof import("./getTagValue").getTagValueOutput = null as any;
+utilities.lazyLoad(exports, ["getTagValue","getTagValueOutput"], () => require("./getTagValue"));
 
 export { TagBindingArgs, TagBindingState } from "./tagBinding";
 export type TagBinding = import("./tagBinding").TagBinding;
 export const TagBinding: typeof import("./tagBinding").TagBinding = null as any;
+utilities.lazyLoad(exports, ["TagBinding"], () => require("./tagBinding"));
 
 export { TagKeyArgs, TagKeyState } from "./tagKey";
 export type TagKey = import("./tagKey").TagKey;
 export const TagKey: typeof import("./tagKey").TagKey = null as any;
+utilities.lazyLoad(exports, ["TagKey"], () => require("./tagKey"));
 
 export { TagKeyIamBindingArgs, TagKeyIamBindingState } from "./tagKeyIamBinding";
 export type TagKeyIamBinding = import("./tagKeyIamBinding").TagKeyIamBinding;
 export const TagKeyIamBinding: typeof import("./tagKeyIamBinding").TagKeyIamBinding = null as any;
+utilities.lazyLoad(exports, ["TagKeyIamBinding"], () => require("./tagKeyIamBinding"));
 
 export { TagKeyIamMemberArgs, TagKeyIamMemberState } from "./tagKeyIamMember";
 export type TagKeyIamMember = import("./tagKeyIamMember").TagKeyIamMember;
 export const TagKeyIamMember: typeof import("./tagKeyIamMember").TagKeyIamMember = null as any;
+utilities.lazyLoad(exports, ["TagKeyIamMember"], () => require("./tagKeyIamMember"));
 
 export { TagKeyIamPolicyArgs, TagKeyIamPolicyState } from "./tagKeyIamPolicy";
 export type TagKeyIamPolicy = import("./tagKeyIamPolicy").TagKeyIamPolicy;
 export const TagKeyIamPolicy: typeof import("./tagKeyIamPolicy").TagKeyIamPolicy = null as any;
+utilities.lazyLoad(exports, ["TagKeyIamPolicy"], () => require("./tagKeyIamPolicy"));
 
 export { TagValueArgs, TagValueState } from "./tagValue";
 export type TagValue = import("./tagValue").TagValue;
 export const TagValue: typeof import("./tagValue").TagValue = null as any;
+utilities.lazyLoad(exports, ["TagValue"], () => require("./tagValue"));
 
 export { TagValueIamBindingArgs, TagValueIamBindingState } from "./tagValueIamBinding";
 export type TagValueIamBinding = import("./tagValueIamBinding").TagValueIamBinding;
 export const TagValueIamBinding: typeof import("./tagValueIamBinding").TagValueIamBinding = null as any;
+utilities.lazyLoad(exports, ["TagValueIamBinding"], () => require("./tagValueIamBinding"));
 
 export { TagValueIamMemberArgs, TagValueIamMemberState } from "./tagValueIamMember";
 export type TagValueIamMember = import("./tagValueIamMember").TagValueIamMember;
 export const TagValueIamMember: typeof import("./tagValueIamMember").TagValueIamMember = null as any;
+utilities.lazyLoad(exports, ["TagValueIamMember"], () => require("./tagValueIamMember"));
 
 export { TagValueIamPolicyArgs, TagValueIamPolicyState } from "./tagValueIamPolicy";
 export type TagValueIamPolicy = import("./tagValueIamPolicy").TagValueIamPolicy;
 export const TagValueIamPolicy: typeof import("./tagValueIamPolicy").TagValueIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["getTagKey","getTagKeyOutput"], () => require("./getTagKey"));
-utilities.lazyLoad(exports, ["getTagValue","getTagValueOutput"], () => require("./getTagValue"));
-utilities.lazyLoad(exports, ["TagBinding"], () => require("./tagBinding"));
-utilities.lazyLoad(exports, ["TagKey"], () => require("./tagKey"));
-utilities.lazyLoad(exports, ["TagKeyIamBinding"], () => require("./tagKeyIamBinding"));
-utilities.lazyLoad(exports, ["TagKeyIamMember"], () => require("./tagKeyIamMember"));
-utilities.lazyLoad(exports, ["TagKeyIamPolicy"], () => require("./tagKeyIamPolicy"));
-utilities.lazyLoad(exports, ["TagValue"], () => require("./tagValue"));
-utilities.lazyLoad(exports, ["TagValueIamBinding"], () => require("./tagValueIamBinding"));
-utilities.lazyLoad(exports, ["TagValueIamMember"], () => require("./tagValueIamMember"));
 utilities.lazyLoad(exports, ["TagValueIamPolicy"], () => require("./tagValueIamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),

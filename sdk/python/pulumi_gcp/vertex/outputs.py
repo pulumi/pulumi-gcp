@@ -12,9 +12,18 @@ from . import outputs
 
 __all__ = [
     'AiDatasetEncryptionSpec',
+    'AiEndpointDeployedModel',
+    'AiEndpointDeployedModelAutomaticResource',
+    'AiEndpointDeployedModelDedicatedResource',
+    'AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec',
+    'AiEndpointDeployedModelDedicatedResourceMachineSpec',
+    'AiEndpointDeployedModelPrivateEndpoint',
+    'AiEndpointEncryptionSpec',
     'AiFeatureStoreEncryptionSpec',
     'AiFeatureStoreEntityTypeMonitoringConfig',
     'AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis',
+    'AiFeatureStoreIamBindingCondition',
+    'AiFeatureStoreIamMemberCondition',
     'AiFeatureStoreOnlineServingConfig',
     'AiMetadataStoreEncryptionSpec',
     'AiMetadataStoreState',
@@ -54,6 +63,435 @@ class AiDatasetEncryptionSpec(dict):
         """
         Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
         Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class AiEndpointDeployedModel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "automaticResources":
+            suggest = "automatic_resources"
+        elif key == "createTime":
+            suggest = "create_time"
+        elif key == "dedicatedResources":
+            suggest = "dedicated_resources"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "enableAccessLogging":
+            suggest = "enable_access_logging"
+        elif key == "enableContainerLogging":
+            suggest = "enable_container_logging"
+        elif key == "modelVersionId":
+            suggest = "model_version_id"
+        elif key == "privateEndpoints":
+            suggest = "private_endpoints"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+        elif key == "sharedResources":
+            suggest = "shared_resources"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEndpointDeployedModel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEndpointDeployedModel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEndpointDeployedModel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 automatic_resources: Optional[Sequence['outputs.AiEndpointDeployedModelAutomaticResource']] = None,
+                 create_time: Optional[str] = None,
+                 dedicated_resources: Optional[Sequence['outputs.AiEndpointDeployedModelDedicatedResource']] = None,
+                 display_name: Optional[str] = None,
+                 enable_access_logging: Optional[bool] = None,
+                 enable_container_logging: Optional[bool] = None,
+                 id: Optional[str] = None,
+                 model: Optional[str] = None,
+                 model_version_id: Optional[str] = None,
+                 private_endpoints: Optional[Sequence['outputs.AiEndpointDeployedModelPrivateEndpoint']] = None,
+                 service_account: Optional[str] = None,
+                 shared_resources: Optional[str] = None):
+        """
+        :param str display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        :param str id: an identifier for the resource with format `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+        """
+        if automatic_resources is not None:
+            pulumi.set(__self__, "automatic_resources", automatic_resources)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if dedicated_resources is not None:
+            pulumi.set(__self__, "dedicated_resources", dedicated_resources)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if enable_access_logging is not None:
+            pulumi.set(__self__, "enable_access_logging", enable_access_logging)
+        if enable_container_logging is not None:
+            pulumi.set(__self__, "enable_container_logging", enable_container_logging)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+        if model_version_id is not None:
+            pulumi.set(__self__, "model_version_id", model_version_id)
+        if private_endpoints is not None:
+            pulumi.set(__self__, "private_endpoints", private_endpoints)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if shared_resources is not None:
+            pulumi.set(__self__, "shared_resources", shared_resources)
+
+    @property
+    @pulumi.getter(name="automaticResources")
+    def automatic_resources(self) -> Optional[Sequence['outputs.AiEndpointDeployedModelAutomaticResource']]:
+        return pulumi.get(self, "automatic_resources")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[str]:
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dedicatedResources")
+    def dedicated_resources(self) -> Optional[Sequence['outputs.AiEndpointDeployedModelDedicatedResource']]:
+        return pulumi.get(self, "dedicated_resources")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="enableAccessLogging")
+    def enable_access_logging(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_access_logging")
+
+    @property
+    @pulumi.getter(name="enableContainerLogging")
+    def enable_container_logging(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_container_logging")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        an identifier for the resource with format `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def model(self) -> Optional[str]:
+        return pulumi.get(self, "model")
+
+    @property
+    @pulumi.getter(name="modelVersionId")
+    def model_version_id(self) -> Optional[str]:
+        return pulumi.get(self, "model_version_id")
+
+    @property
+    @pulumi.getter(name="privateEndpoints")
+    def private_endpoints(self) -> Optional[Sequence['outputs.AiEndpointDeployedModelPrivateEndpoint']]:
+        return pulumi.get(self, "private_endpoints")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[str]:
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="sharedResources")
+    def shared_resources(self) -> Optional[str]:
+        return pulumi.get(self, "shared_resources")
+
+
+@pulumi.output_type
+class AiEndpointDeployedModelAutomaticResource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxReplicaCount":
+            suggest = "max_replica_count"
+        elif key == "minReplicaCount":
+            suggest = "min_replica_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEndpointDeployedModelAutomaticResource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEndpointDeployedModelAutomaticResource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEndpointDeployedModelAutomaticResource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_replica_count: Optional[int] = None,
+                 min_replica_count: Optional[int] = None):
+        if max_replica_count is not None:
+            pulumi.set(__self__, "max_replica_count", max_replica_count)
+        if min_replica_count is not None:
+            pulumi.set(__self__, "min_replica_count", min_replica_count)
+
+    @property
+    @pulumi.getter(name="maxReplicaCount")
+    def max_replica_count(self) -> Optional[int]:
+        return pulumi.get(self, "max_replica_count")
+
+    @property
+    @pulumi.getter(name="minReplicaCount")
+    def min_replica_count(self) -> Optional[int]:
+        return pulumi.get(self, "min_replica_count")
+
+
+@pulumi.output_type
+class AiEndpointDeployedModelDedicatedResource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoscalingMetricSpecs":
+            suggest = "autoscaling_metric_specs"
+        elif key == "machineSpecs":
+            suggest = "machine_specs"
+        elif key == "maxReplicaCount":
+            suggest = "max_replica_count"
+        elif key == "minReplicaCount":
+            suggest = "min_replica_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEndpointDeployedModelDedicatedResource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEndpointDeployedModelDedicatedResource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEndpointDeployedModelDedicatedResource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 autoscaling_metric_specs: Optional[Sequence['outputs.AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec']] = None,
+                 machine_specs: Optional[Sequence['outputs.AiEndpointDeployedModelDedicatedResourceMachineSpec']] = None,
+                 max_replica_count: Optional[int] = None,
+                 min_replica_count: Optional[int] = None):
+        if autoscaling_metric_specs is not None:
+            pulumi.set(__self__, "autoscaling_metric_specs", autoscaling_metric_specs)
+        if machine_specs is not None:
+            pulumi.set(__self__, "machine_specs", machine_specs)
+        if max_replica_count is not None:
+            pulumi.set(__self__, "max_replica_count", max_replica_count)
+        if min_replica_count is not None:
+            pulumi.set(__self__, "min_replica_count", min_replica_count)
+
+    @property
+    @pulumi.getter(name="autoscalingMetricSpecs")
+    def autoscaling_metric_specs(self) -> Optional[Sequence['outputs.AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec']]:
+        return pulumi.get(self, "autoscaling_metric_specs")
+
+    @property
+    @pulumi.getter(name="machineSpecs")
+    def machine_specs(self) -> Optional[Sequence['outputs.AiEndpointDeployedModelDedicatedResourceMachineSpec']]:
+        return pulumi.get(self, "machine_specs")
+
+    @property
+    @pulumi.getter(name="maxReplicaCount")
+    def max_replica_count(self) -> Optional[int]:
+        return pulumi.get(self, "max_replica_count")
+
+    @property
+    @pulumi.getter(name="minReplicaCount")
+    def min_replica_count(self) -> Optional[int]:
+        return pulumi.get(self, "min_replica_count")
+
+
+@pulumi.output_type
+class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metricName":
+            suggest = "metric_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metric_name: Optional[str] = None,
+                 target: Optional[int] = None):
+        if metric_name is not None:
+            pulumi.set(__self__, "metric_name", metric_name)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> Optional[str]:
+        return pulumi.get(self, "metric_name")
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[int]:
+        return pulumi.get(self, "target")
+
+
+@pulumi.output_type
+class AiEndpointDeployedModelDedicatedResourceMachineSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorCount":
+            suggest = "accelerator_count"
+        elif key == "acceleratorType":
+            suggest = "accelerator_type"
+        elif key == "machineType":
+            suggest = "machine_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEndpointDeployedModelDedicatedResourceMachineSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEndpointDeployedModelDedicatedResourceMachineSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEndpointDeployedModelDedicatedResourceMachineSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accelerator_count: Optional[int] = None,
+                 accelerator_type: Optional[str] = None,
+                 machine_type: Optional[str] = None):
+        if accelerator_count is not None:
+            pulumi.set(__self__, "accelerator_count", accelerator_count)
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+
+    @property
+    @pulumi.getter(name="acceleratorCount")
+    def accelerator_count(self) -> Optional[int]:
+        return pulumi.get(self, "accelerator_count")
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[str]:
+        return pulumi.get(self, "accelerator_type")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[str]:
+        return pulumi.get(self, "machine_type")
+
+
+@pulumi.output_type
+class AiEndpointDeployedModelPrivateEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "explainHttpUri":
+            suggest = "explain_http_uri"
+        elif key == "healthHttpUri":
+            suggest = "health_http_uri"
+        elif key == "predictHttpUri":
+            suggest = "predict_http_uri"
+        elif key == "serviceAttachment":
+            suggest = "service_attachment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEndpointDeployedModelPrivateEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEndpointDeployedModelPrivateEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEndpointDeployedModelPrivateEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 explain_http_uri: Optional[str] = None,
+                 health_http_uri: Optional[str] = None,
+                 predict_http_uri: Optional[str] = None,
+                 service_attachment: Optional[str] = None):
+        if explain_http_uri is not None:
+            pulumi.set(__self__, "explain_http_uri", explain_http_uri)
+        if health_http_uri is not None:
+            pulumi.set(__self__, "health_http_uri", health_http_uri)
+        if predict_http_uri is not None:
+            pulumi.set(__self__, "predict_http_uri", predict_http_uri)
+        if service_attachment is not None:
+            pulumi.set(__self__, "service_attachment", service_attachment)
+
+    @property
+    @pulumi.getter(name="explainHttpUri")
+    def explain_http_uri(self) -> Optional[str]:
+        return pulumi.get(self, "explain_http_uri")
+
+    @property
+    @pulumi.getter(name="healthHttpUri")
+    def health_http_uri(self) -> Optional[str]:
+        return pulumi.get(self, "health_http_uri")
+
+    @property
+    @pulumi.getter(name="predictHttpUri")
+    def predict_http_uri(self) -> Optional[str]:
+        return pulumi.get(self, "predict_http_uri")
+
+    @property
+    @pulumi.getter(name="serviceAttachment")
+    def service_attachment(self) -> Optional[str]:
+        return pulumi.get(self, "service_attachment")
+
+
+@pulumi.output_type
+class AiEndpointEncryptionSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEndpointEncryptionSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEndpointEncryptionSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEndpointEncryptionSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        """
+        :param str kms_key_name: Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -155,8 +593,6 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis(dict):
                  monitoring_interval: Optional[str] = None):
         """
         :param bool disabled: The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
-        :param str monitoring_interval: Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
-               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
@@ -174,11 +610,61 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis(dict):
     @property
     @pulumi.getter(name="monitoringInterval")
     def monitoring_interval(self) -> Optional[str]:
-        """
-        Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        """
         return pulumi.get(self, "monitoring_interval")
+
+
+@pulumi.output_type
+class AiFeatureStoreIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class AiFeatureStoreIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Bigquery Analytics Hub data exchange
+//
+// To get more information about DataExchange, see:
+//
+// * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+//
 // ## Example Usage
 // ### Bigquery Analyticshub Data Exchange Basic
 //
@@ -27,11 +35,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigqueryanalyticshub.NewDataExchange(ctx, "dataExchange", &bigqueryanalyticshub.DataExchangeArgs{
-//				Location:       pulumi.String("US"),
 //				DataExchangeId: pulumi.String("my_data_exchange"),
-//				DisplayName:    pulumi.String("my_data_exchange"),
 //				Description:    pulumi.String("example data exchange"),
-//			}, pulumi.Provider(google_beta))
+//				DisplayName:    pulumi.String("my_data_exchange"),
+//				Location:       pulumi.String("US"),
+//			})
 //			if err != nil {
 //				return err
 //			}

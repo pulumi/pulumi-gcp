@@ -310,6 +310,8 @@ __all__ = [
     'RouterBgp',
     'RouterBgpAdvertisedIpRange',
     'RouterNatLogConfig',
+    'RouterNatRule',
+    'RouterNatRuleAction',
     'RouterNatSubnetwork',
     'RouterPeerAdvertisedIpRange',
     'RouterPeerBfd',
@@ -426,6 +428,7 @@ __all__ = [
     'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd',
     'URLMapPathMatcherRouteRuleUrlRedirect',
     'URLMapTest',
+    'GetAddressesAddressResult',
     'GetBackendBucketCdnPolicyResult',
     'GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderResult',
     'GetBackendBucketCdnPolicyCacheKeyPolicyResult',
@@ -496,6 +499,10 @@ __all__ = [
     'GetInstanceTemplateShieldedInstanceConfigResult',
     'GetRegionInstanceGroupInstanceResult',
     'GetRegionInstanceGroupInstanceNamedPortResult',
+    'GetRegionNetworkEndpointGroupAppEngineResult',
+    'GetRegionNetworkEndpointGroupCloudFunctionResult',
+    'GetRegionNetworkEndpointGroupCloudRunResult',
+    'GetRegionNetworkEndpointGroupServerlessDeploymentResult',
     'GetResourcePolicyGroupPlacementPolicyResult',
     'GetResourcePolicyInstanceSchedulePolicyResult',
     'GetResourcePolicyInstanceSchedulePolicyVmStartScheduleResult',
@@ -21513,6 +21520,152 @@ class RouterNatLogConfig(dict):
 
 
 @pulumi.output_type
+class RouterNatRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ruleNumber":
+            suggest = "rule_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouterNatRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouterNatRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouterNatRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 match: str,
+                 rule_number: int,
+                 action: Optional['outputs.RouterNatRuleAction'] = None,
+                 description: Optional[str] = None):
+        """
+        :param str match: CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
+               If it evaluates to true, the corresponding action is enforced.
+               The following examples are valid match expressions for public NAT:
+               "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')"
+               "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+               The following example is a valid match expression for private NAT:
+               "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+        :param int rule_number: An integer uniquely identifying a rule in the list.
+               The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+        :param 'RouterNatRuleActionArgs' action: The action to be enforced for traffic that matches this rule.
+               Structure is documented below.
+        :param str description: An optional description of this rule.
+        """
+        pulumi.set(__self__, "match", match)
+        pulumi.set(__self__, "rule_number", rule_number)
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def match(self) -> str:
+        """
+        CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
+        If it evaluates to true, the corresponding action is enforced.
+        The following examples are valid match expressions for public NAT:
+        "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')"
+        "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+        The following example is a valid match expression for private NAT:
+        "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+        """
+        return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter(name="ruleNumber")
+    def rule_number(self) -> int:
+        """
+        An integer uniquely identifying a rule in the list.
+        The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+        """
+        return pulumi.get(self, "rule_number")
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional['outputs.RouterNatRuleAction']:
+        """
+        The action to be enforced for traffic that matches this rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of this rule.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class RouterNatRuleAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceNatActiveIps":
+            suggest = "source_nat_active_ips"
+        elif key == "sourceNatDrainIps":
+            suggest = "source_nat_drain_ips"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouterNatRuleAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouterNatRuleAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouterNatRuleAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_nat_active_ips: Optional[Sequence[str]] = None,
+                 source_nat_drain_ips: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] source_nat_active_ips: A list of URLs of the IP resources used for this NAT rule.
+               These IP addresses must be valid static external IP addresses assigned to the project.
+               This field is used for public NAT.
+        :param Sequence[str] source_nat_drain_ips: A list of URLs of the IP resources to be drained.
+               These IPs must be valid static external IPs that have been assigned to the NAT.
+               These IPs should be used for updating/patching a NAT rule only.
+               This field is used for public NAT.
+        """
+        if source_nat_active_ips is not None:
+            pulumi.set(__self__, "source_nat_active_ips", source_nat_active_ips)
+        if source_nat_drain_ips is not None:
+            pulumi.set(__self__, "source_nat_drain_ips", source_nat_drain_ips)
+
+    @property
+    @pulumi.getter(name="sourceNatActiveIps")
+    def source_nat_active_ips(self) -> Optional[Sequence[str]]:
+        """
+        A list of URLs of the IP resources used for this NAT rule.
+        These IP addresses must be valid static external IP addresses assigned to the project.
+        This field is used for public NAT.
+        """
+        return pulumi.get(self, "source_nat_active_ips")
+
+    @property
+    @pulumi.getter(name="sourceNatDrainIps")
+    def source_nat_drain_ips(self) -> Optional[Sequence[str]]:
+        """
+        A list of URLs of the IP resources to be drained.
+        These IPs must be valid static external IPs that have been assigned to the NAT.
+        These IPs should be used for updating/patching a NAT rule only.
+        This field is used for public NAT.
+        """
+        return pulumi.get(self, "source_nat_drain_ips")
+
+
+@pulumi.output_type
 class RouterNatSubnetwork(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -29899,6 +30052,103 @@ class URLMapTest(dict):
 
 
 @pulumi.output_type
+class GetAddressesAddressResult(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 address_type: str,
+                 description: str,
+                 labels: Mapping[str, str],
+                 name: str,
+                 region: str,
+                 self_link: str,
+                 status: str):
+        """
+        :param str address: The IP address (for example `1.2.3.4`).
+        :param str address_type: The IP address type, can be `EXTERNAL` or `INTERNAL`.
+        :param str description: The IP address description.
+        :param Mapping[str, str] labels: (Beta only) A map containing IP labels.
+        :param str name: The IP address name.
+        :param str region: Region that should be considered to search addresses.
+               All regions are considered if missing.
+        :param str self_link: The URI of the created resource.
+        :param str status: Indicates if the address is used. Possible values are: RESERVED or IN_USE.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "address_type", address_type)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "self_link", self_link)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The IP address (for example `1.2.3.4`).
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="addressType")
+    def address_type(self) -> str:
+        """
+        The IP address type, can be `EXTERNAL` or `INTERNAL`.
+        """
+        return pulumi.get(self, "address_type")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The IP address description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        (Beta only) A map containing IP labels.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The IP address name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Region that should be considered to search addresses.
+        All regions are considered if missing.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Indicates if the address is used. Possible values are: RESERVED or IN_USE.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
 class GetBackendBucketCdnPolicyResult(dict):
     def __init__(__self__, *,
                  bypass_cache_on_request_headers: Sequence['outputs.GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderResult'],
@@ -32730,6 +32980,110 @@ class GetRegionInstanceGroupInstanceNamedPortResult(dict):
         Integer port number
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetRegionNetworkEndpointGroupAppEngineResult(dict):
+    def __init__(__self__, *,
+                 service: str,
+                 url_mask: str,
+                 version: str):
+        pulumi.set(__self__, "service", service)
+        pulumi.set(__self__, "url_mask", url_mask)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter(name="urlMask")
+    def url_mask(self) -> str:
+        return pulumi.get(self, "url_mask")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetRegionNetworkEndpointGroupCloudFunctionResult(dict):
+    def __init__(__self__, *,
+                 function: str,
+                 url_mask: str):
+        pulumi.set(__self__, "function", function)
+        pulumi.set(__self__, "url_mask", url_mask)
+
+    @property
+    @pulumi.getter
+    def function(self) -> str:
+        return pulumi.get(self, "function")
+
+    @property
+    @pulumi.getter(name="urlMask")
+    def url_mask(self) -> str:
+        return pulumi.get(self, "url_mask")
+
+
+@pulumi.output_type
+class GetRegionNetworkEndpointGroupCloudRunResult(dict):
+    def __init__(__self__, *,
+                 service: str,
+                 tag: str,
+                 url_mask: str):
+        pulumi.set(__self__, "service", service)
+        pulumi.set(__self__, "tag", tag)
+        pulumi.set(__self__, "url_mask", url_mask)
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> str:
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter(name="urlMask")
+    def url_mask(self) -> str:
+        return pulumi.get(self, "url_mask")
+
+
+@pulumi.output_type
+class GetRegionNetworkEndpointGroupServerlessDeploymentResult(dict):
+    def __init__(__self__, *,
+                 platform: str,
+                 resource: str,
+                 url_mask: str,
+                 version: str):
+        pulumi.set(__self__, "platform", platform)
+        pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "url_mask", url_mask)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def platform(self) -> str:
+        return pulumi.get(self, "platform")
+
+    @property
+    @pulumi.getter
+    def resource(self) -> str:
+        return pulumi.get(self, "resource")
+
+    @property
+    @pulumi.getter(name="urlMask")
+    def url_mask(self) -> str:
+        return pulumi.get(self, "url_mask")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

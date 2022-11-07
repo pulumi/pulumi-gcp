@@ -32,6 +32,9 @@ __all__ = [
     'ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs',
     'ServiceTemplateSpecContainerEnvValueFromArgs',
     'ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs',
+    'ServiceTemplateSpecContainerLivenessProbeArgs',
+    'ServiceTemplateSpecContainerLivenessProbeHttpGetArgs',
+    'ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs',
     'ServiceTemplateSpecContainerPortArgs',
     'ServiceTemplateSpecContainerResourcesArgs',
     'ServiceTemplateSpecContainerStartupProbeArgs',
@@ -1057,7 +1060,7 @@ class ServiceTemplateSpecArgs:
                that the system will manipulate this based on routability and load.
         :param pulumi.Input[int] timeout_seconds: Number of seconds after which the probe times out.
                Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-               Must be smaller than periodSeconds.
+               Must be smaller than period_seconds.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecVolumeArgs']]] volumes: Volume represents a named volume in a container.
                Structure is documented below.
         """
@@ -1145,7 +1148,7 @@ class ServiceTemplateSpecArgs:
         """
         Number of seconds after which the probe times out.
         Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-        Must be smaller than periodSeconds.
+        Must be smaller than period_seconds.
         """
         return pulumi.get(self, "timeout_seconds")
 
@@ -1175,6 +1178,7 @@ class ServiceTemplateSpecContainerArgs:
                  commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  env_froms: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvFromArgs']]]] = None,
                  envs: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvArgs']]]] = None,
+                 liveness_probe: Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeArgs']] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerPortArgs']]]] = None,
                  resources: Optional[pulumi.Input['ServiceTemplateSpecContainerResourcesArgs']] = None,
                  startup_probe: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeArgs']] = None,
@@ -1212,6 +1216,9 @@ class ServiceTemplateSpecContainerArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvArgs']]] envs: List of environment variables to set in the container.
                Structure is documented below.
+        :param pulumi.Input['ServiceTemplateSpecContainerLivenessProbeArgs'] liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+               https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerPortArgs']]] ports: List of open ports in the container.
                More Info:
                https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
@@ -1241,6 +1248,8 @@ class ServiceTemplateSpecContainerArgs:
             pulumi.set(__self__, "env_froms", env_froms)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
+        if liveness_probe is not None:
+            pulumi.set(__self__, "liveness_probe", liveness_probe)
         if ports is not None:
             pulumi.set(__self__, "ports", ports)
         if resources is not None:
@@ -1340,6 +1349,20 @@ class ServiceTemplateSpecContainerArgs:
     @envs.setter
     def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerEnvArgs']]]]):
         pulumi.set(self, "envs", value)
+
+    @property
+    @pulumi.getter(name="livenessProbe")
+    def liveness_probe(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeArgs']]:
+        """
+        Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+        https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Structure is documented below.
+        """
+        return pulumi.get(self, "liveness_probe")
+
+    @liveness_probe.setter
+    def liveness_probe(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeArgs']]):
+        pulumi.set(self, "liveness_probe", value)
 
     @property
     @pulumi.getter
@@ -1717,6 +1740,192 @@ class ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs:
 
 
 @pulumi.input_type
+class ServiceTemplateSpecContainerLivenessProbeArgs:
+    def __init__(__self__, *,
+                 failure_threshold: Optional[pulumi.Input[int]] = None,
+                 http_get: Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetArgs']] = None,
+                 initial_delay_seconds: Optional[pulumi.Input[int]] = None,
+                 period_seconds: Optional[pulumi.Input[int]] = None,
+                 timeout_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] failure_threshold: Minimum consecutive failures for the probe to be considered failed after
+               having succeeded. Defaults to 3. Minimum value is 1.
+        :param pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetArgs'] http_get: HttpGet specifies the http request to perform.
+               Structure is documented below.
+        :param pulumi.Input[int] initial_delay_seconds: Number of seconds after the container has started before the probe is
+               initiated.
+               Defaults to 0 seconds. Minimum value is 0. Maximum value is 3600.
+        :param pulumi.Input[int] period_seconds: How often (in seconds) to perform the probe.
+               Default to 10 seconds. Minimum value is 1. Maximum value is 3600.
+        :param pulumi.Input[int] timeout_seconds: Number of seconds after which the probe times out.
+               Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+               Must be smaller than period_seconds.
+        """
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum consecutive failures for the probe to be considered failed after
+        having succeeded. Defaults to 3. Minimum value is 1.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @failure_threshold.setter
+    def failure_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "failure_threshold", value)
+
+    @property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetArgs']]:
+        """
+        HttpGet specifies the http request to perform.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_get")
+
+    @http_get.setter
+    def http_get(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetArgs']]):
+        pulumi.set(self, "http_get", value)
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of seconds after the container has started before the probe is
+        initiated.
+        Defaults to 0 seconds. Minimum value is 0. Maximum value is 3600.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @initial_delay_seconds.setter
+    def initial_delay_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "initial_delay_seconds", value)
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        How often (in seconds) to perform the probe.
+        Default to 10 seconds. Minimum value is 1. Maximum value is 3600.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @period_seconds.setter
+    def period_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period_seconds", value)
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of seconds after which the probe times out.
+        Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+        Must be smaller than period_seconds.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+    @timeout_seconds.setter
+    def timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_seconds", value)
+
+
+@pulumi.input_type
+class ServiceTemplateSpecContainerLivenessProbeHttpGetArgs:
+    def __init__(__self__, *,
+                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs']]]] = None,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs']]] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
+               Structure is documented below.
+        :param pulumi.Input[str] path: The relative path of the file to map the key to.
+               May not be an absolute path.
+               May not contain the path element '..'.
+               May not start with the string '..'.
+        """
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs']]]]:
+        """
+        Custom headers to set in the request. HTTP allows repeated headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @http_headers.setter
+    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs']]]]):
+        pulumi.set(self, "http_headers", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relative path of the file to map the key to.
+        May not be an absolute path.
+        May not contain the path element '..'.
+        May not start with the string '..'.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Volume's name.
+        :param pulumi.Input[str] value: The header field value.
+        """
+        pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Volume's name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header field value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
 class ServiceTemplateSpecContainerPortArgs:
     def __init__(__self__, *,
                  container_port: Optional[pulumi.Input[int]] = None,
@@ -1838,14 +2047,14 @@ class ServiceTemplateSpecContainerStartupProbeArgs:
                Structure is documented below.
         :param pulumi.Input[int] initial_delay_seconds: Number of seconds after the container has started before the probe is
                initiated.
-               Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+               Defaults to 0 seconds. Minimum value is 0. Maximum value is 3600.
         :param pulumi.Input[int] period_seconds: How often (in seconds) to perform the probe.
-               Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+               Default to 10 seconds. Minimum value is 1. Maximum value is 3600.
         :param pulumi.Input['ServiceTemplateSpecContainerStartupProbeTcpSocketArgs'] tcp_socket: TcpSocket specifies an action involving a TCP port.
                Structure is documented below.
         :param pulumi.Input[int] timeout_seconds: Number of seconds after which the probe times out.
                Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-               Must be smaller than periodSeconds.
+               Must be smaller than period_seconds.
         """
         if failure_threshold is not None:
             pulumi.set(__self__, "failure_threshold", failure_threshold)
@@ -1892,7 +2101,7 @@ class ServiceTemplateSpecContainerStartupProbeArgs:
         """
         Number of seconds after the container has started before the probe is
         initiated.
-        Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+        Defaults to 0 seconds. Minimum value is 0. Maximum value is 3600.
         """
         return pulumi.get(self, "initial_delay_seconds")
 
@@ -1905,7 +2114,7 @@ class ServiceTemplateSpecContainerStartupProbeArgs:
     def period_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         How often (in seconds) to perform the probe.
-        Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+        Default to 10 seconds. Minimum value is 1. Maximum value is 3600.
         """
         return pulumi.get(self, "period_seconds")
 
@@ -1932,7 +2141,7 @@ class ServiceTemplateSpecContainerStartupProbeArgs:
         """
         Number of seconds after which the probe times out.
         Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-        Must be smaller than periodSeconds.
+        Must be smaller than period_seconds.
         """
         return pulumi.get(self, "timeout_seconds")
 

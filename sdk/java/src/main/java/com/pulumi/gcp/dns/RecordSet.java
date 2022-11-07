@@ -287,6 +287,91 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Primary-Backup
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dns.ManagedZone;
+ * import com.pulumi.gcp.dns.ManagedZoneArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.ForwardingRule;
+ * import com.pulumi.gcp.compute.ForwardingRuleArgs;
+ * import com.pulumi.gcp.dns.RecordSet;
+ * import com.pulumi.gcp.dns.RecordSetArgs;
+ * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyArgs;
+ * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupArgs;
+ * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var prodManagedZone = new ManagedZone(&#34;prodManagedZone&#34;, ManagedZoneArgs.builder()        
+ *             .dnsName(&#34;prod.mydomain.com.&#34;)
+ *             .build());
+ * 
+ *         var prodRegionBackendService = new RegionBackendService(&#34;prodRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *         var prodNetwork = new Network(&#34;prodNetwork&#34;);
+ * 
+ *         var prodForwardingRule = new ForwardingRule(&#34;prodForwardingRule&#34;, ForwardingRuleArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .loadBalancingScheme(&#34;INTERNAL&#34;)
+ *             .backendService(prodRegionBackendService.id())
+ *             .allPorts(true)
+ *             .network(prodNetwork.name())
+ *             .build());
+ * 
+ *         var recordSet = new RecordSet(&#34;recordSet&#34;, RecordSetArgs.builder()        
+ *             .name(prodManagedZone.dnsName().applyValue(dnsName -&gt; String.format(&#34;backend.%s&#34;, dnsName)))
+ *             .managedZone(prodManagedZone.name())
+ *             .type(&#34;A&#34;)
+ *             .ttl(300)
+ *             .routingPolicy(RecordSetRoutingPolicyArgs.builder()
+ *                 .primaryBackup(RecordSetRoutingPolicyPrimaryBackupArgs.builder()
+ *                     .trickleRatio(0.1)
+ *                     .primary(RecordSetRoutingPolicyPrimaryBackupPrimaryArgs.builder()
+ *                         .internalLoadBalancers(RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs.builder()
+ *                             .loadBalancerType(&#34;regionalL4ilb&#34;)
+ *                             .ipAddress(prodForwardingRule.ipAddress())
+ *                             .port(&#34;80&#34;)
+ *                             .ipProtocol(&#34;tcp&#34;)
+ *                             .networkUrl(prodNetwork.id())
+ *                             .project(prodForwardingRule.project())
+ *                             .region(prodForwardingRule.region())
+ *                             .build())
+ *                         .build())
+ *                     .backupGeos(                    
+ *                         RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs.builder()
+ *                             .location(&#34;asia-east1&#34;)
+ *                             .rrdatas(&#34;10.128.1.1&#34;)
+ *                             .build(),
+ *                         RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs.builder()
+ *                             .location(&#34;us-west1&#34;)
+ *                             .rrdatas(&#34;10.130.1.1&#34;)
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -340,16 +425,14 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the load balancer belongs.
      * 
      */
     @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
-     * @return The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * @return The ID of the project in which the load balancer belongs.
      * 
      */
     public Output<String> project() {

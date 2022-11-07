@@ -24,7 +24,7 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	case "gcp:certificatemanager/certificate:Certificate":
 		r = &Certificate{}
 	case "gcp:certificatemanager/certificateMap:CertificateMap":
-		r = &CertificateMap{}
+		r = &CertificateMapResource{}
 	case "gcp:certificatemanager/certificateMapEntry:CertificateMapEntry":
 		r = &CertificateMapEntry{}
 	case "gcp:certificatemanager/dnsAuthorization:DnsAuthorization":

@@ -9684,6 +9684,11 @@ func (o ClusterClusterAutoscalingPtrOutput) ResourceLimits() ClusterClusterAutos
 type ClusterClusterAutoscalingAutoProvisioningDefaults struct {
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
+	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
+	DiskSize *int `pulumi:"diskSize"`
+	// Type of the disk attached to each node
+	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+	DiskType *string `pulumi:"diskType"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType *string `pulumi:"imageType"`
@@ -9716,6 +9721,11 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsInput interface {
 type ClusterClusterAutoscalingAutoProvisioningDefaultsArgs struct {
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
+	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
+	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
+	// Type of the disk attached to each node
+	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
@@ -9816,6 +9826,17 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) BootDiskKmsKey(
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
 
+// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) DiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
+}
+
+// Type of the disk attached to each node
+// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
 // The image type to use for this node. Note that changing the image type
 // will delete and recreate all nodes in the node pool.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) ImageType() pulumi.StringPtrOutput {
@@ -9875,6 +9896,27 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) BootDiskKmsK
 			return nil
 		}
 		return v.BootDiskKmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) DiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaults) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DiskSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of the disk attached to each node
+// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -26911,6 +26953,8 @@ func (o GetClusterClusterAutoscalingArrayOutput) Index(i pulumi.IntInput) GetClu
 
 type GetClusterClusterAutoscalingAutoProvisioningDefault struct {
 	BootDiskKmsKey string   `pulumi:"bootDiskKmsKey"`
+	DiskSize       int      `pulumi:"diskSize"`
+	DiskType       string   `pulumi:"diskType"`
 	ImageType      string   `pulumi:"imageType"`
 	MinCpuPlatform string   `pulumi:"minCpuPlatform"`
 	OauthScopes    []string `pulumi:"oauthScopes"`
@@ -26930,6 +26974,8 @@ type GetClusterClusterAutoscalingAutoProvisioningDefaultInput interface {
 
 type GetClusterClusterAutoscalingAutoProvisioningDefaultArgs struct {
 	BootDiskKmsKey pulumi.StringInput      `pulumi:"bootDiskKmsKey"`
+	DiskSize       pulumi.IntInput         `pulumi:"diskSize"`
+	DiskType       pulumi.StringInput      `pulumi:"diskType"`
 	ImageType      pulumi.StringInput      `pulumi:"imageType"`
 	MinCpuPlatform pulumi.StringInput      `pulumi:"minCpuPlatform"`
 	OauthScopes    pulumi.StringArrayInput `pulumi:"oauthScopes"`
@@ -26989,6 +27035,14 @@ func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) ToGetClusterC
 
 func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) BootDiskKmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterClusterAutoscalingAutoProvisioningDefault) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) DiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterClusterAutoscalingAutoProvisioningDefault) int { return v.DiskSize }).(pulumi.IntOutput)
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterAutoscalingAutoProvisioningDefault) string { return v.DiskType }).(pulumi.StringOutput)
 }
 
 func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) ImageType() pulumi.StringOutput {

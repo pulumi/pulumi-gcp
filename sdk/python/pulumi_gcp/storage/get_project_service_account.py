@@ -21,13 +21,16 @@ class GetProjectServiceAccountResult:
     """
     A collection of values returned by getProjectServiceAccount.
     """
-    def __init__(__self__, email_address=None, id=None, project=None, user_project=None):
+    def __init__(__self__, email_address=None, id=None, member=None, project=None, user_project=None):
         if email_address and not isinstance(email_address, str):
             raise TypeError("Expected argument 'email_address' to be a str")
         pulumi.set(__self__, "email_address", email_address)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if member and not isinstance(member, str):
+            raise TypeError("Expected argument 'member' to be a str")
+        pulumi.set(__self__, "member", member)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -54,6 +57,14 @@ class GetProjectServiceAccountResult:
 
     @property
     @pulumi.getter
+    def member(self) -> str:
+        """
+        The Identity of the service account in the form `serviceAccount:{email_address}`. This value is often used to refer to the service account in order to grant IAM permissions.
+        """
+        return pulumi.get(self, "member")
+
+    @property
+    @pulumi.getter
     def project(self) -> str:
         return pulumi.get(self, "project")
 
@@ -71,6 +82,7 @@ class AwaitableGetProjectServiceAccountResult(GetProjectServiceAccountResult):
         return GetProjectServiceAccountResult(
             email_address=self.email_address,
             id=self.id,
+            member=self.member,
             project=self.project,
             user_project=self.user_project)
 
@@ -158,6 +170,7 @@ def get_project_service_account(project: Optional[str] = None,
     return AwaitableGetProjectServiceAccountResult(
         email_address=__ret__.email_address,
         id=__ret__.id,
+        member=__ret__.member,
         project=__ret__.project,
         user_project=__ret__.user_project)
 

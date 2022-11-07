@@ -11,9 +11,18 @@ from .. import _utilities
 
 __all__ = [
     'AiDatasetEncryptionSpecArgs',
+    'AiEndpointDeployedModelArgs',
+    'AiEndpointDeployedModelAutomaticResourceArgs',
+    'AiEndpointDeployedModelDedicatedResourceArgs',
+    'AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs',
+    'AiEndpointDeployedModelDedicatedResourceMachineSpecArgs',
+    'AiEndpointDeployedModelPrivateEndpointArgs',
+    'AiEndpointEncryptionSpecArgs',
     'AiFeatureStoreEncryptionSpecArgs',
     'AiFeatureStoreEntityTypeMonitoringConfigArgs',
     'AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs',
+    'AiFeatureStoreIamBindingConditionArgs',
+    'AiFeatureStoreIamMemberConditionArgs',
     'AiFeatureStoreOnlineServingConfigArgs',
     'AiMetadataStoreEncryptionSpecArgs',
     'AiMetadataStoreStateArgs',
@@ -41,6 +50,392 @@ class AiDatasetEncryptionSpecArgs:
 
     @kms_key_name.setter
     def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+
+@pulumi.input_type
+class AiEndpointDeployedModelArgs:
+    def __init__(__self__, *,
+                 automatic_resources: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 dedicated_resources: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgs']]]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 enable_access_logging: Optional[pulumi.Input[bool]] = None,
+                 enable_container_logging: Optional[pulumi.Input[bool]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 model: Optional[pulumi.Input[str]] = None,
+                 model_version_id: Optional[pulumi.Input[str]] = None,
+                 private_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgs']]]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 shared_resources: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        :param pulumi.Input[str] id: an identifier for the resource with format `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+        """
+        if automatic_resources is not None:
+            pulumi.set(__self__, "automatic_resources", automatic_resources)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if dedicated_resources is not None:
+            pulumi.set(__self__, "dedicated_resources", dedicated_resources)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if enable_access_logging is not None:
+            pulumi.set(__self__, "enable_access_logging", enable_access_logging)
+        if enable_container_logging is not None:
+            pulumi.set(__self__, "enable_container_logging", enable_container_logging)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+        if model_version_id is not None:
+            pulumi.set(__self__, "model_version_id", model_version_id)
+        if private_endpoints is not None:
+            pulumi.set(__self__, "private_endpoints", private_endpoints)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if shared_resources is not None:
+            pulumi.set(__self__, "shared_resources", shared_resources)
+
+    @property
+    @pulumi.getter(name="automaticResources")
+    def automatic_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]]]:
+        return pulumi.get(self, "automatic_resources")
+
+    @automatic_resources.setter
+    def automatic_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]]]):
+        pulumi.set(self, "automatic_resources", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="dedicatedResources")
+    def dedicated_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgs']]]]:
+        return pulumi.get(self, "dedicated_resources")
+
+    @dedicated_resources.setter
+    def dedicated_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgs']]]]):
+        pulumi.set(self, "dedicated_resources", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="enableAccessLogging")
+    def enable_access_logging(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_access_logging")
+
+    @enable_access_logging.setter
+    def enable_access_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_access_logging", value)
+
+    @property
+    @pulumi.getter(name="enableContainerLogging")
+    def enable_container_logging(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_container_logging")
+
+    @enable_container_logging.setter
+    def enable_container_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_container_logging", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        an identifier for the resource with format `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def model(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "model", value)
+
+    @property
+    @pulumi.getter(name="modelVersionId")
+    def model_version_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "model_version_id")
+
+    @model_version_id.setter
+    def model_version_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "model_version_id", value)
+
+    @property
+    @pulumi.getter(name="privateEndpoints")
+    def private_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgs']]]]:
+        return pulumi.get(self, "private_endpoints")
+
+    @private_endpoints.setter
+    def private_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgs']]]]):
+        pulumi.set(self, "private_endpoints", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="sharedResources")
+    def shared_resources(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_resources")
+
+    @shared_resources.setter
+    def shared_resources(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_resources", value)
+
+
+@pulumi.input_type
+class AiEndpointDeployedModelAutomaticResourceArgs:
+    def __init__(__self__, *,
+                 max_replica_count: Optional[pulumi.Input[int]] = None,
+                 min_replica_count: Optional[pulumi.Input[int]] = None):
+        if max_replica_count is not None:
+            pulumi.set(__self__, "max_replica_count", max_replica_count)
+        if min_replica_count is not None:
+            pulumi.set(__self__, "min_replica_count", min_replica_count)
+
+    @property
+    @pulumi.getter(name="maxReplicaCount")
+    def max_replica_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_replica_count")
+
+    @max_replica_count.setter
+    def max_replica_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_replica_count", value)
+
+    @property
+    @pulumi.getter(name="minReplicaCount")
+    def min_replica_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_replica_count")
+
+    @min_replica_count.setter
+    def min_replica_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_replica_count", value)
+
+
+@pulumi.input_type
+class AiEndpointDeployedModelDedicatedResourceArgs:
+    def __init__(__self__, *,
+                 autoscaling_metric_specs: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]]] = None,
+                 machine_specs: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs']]]] = None,
+                 max_replica_count: Optional[pulumi.Input[int]] = None,
+                 min_replica_count: Optional[pulumi.Input[int]] = None):
+        if autoscaling_metric_specs is not None:
+            pulumi.set(__self__, "autoscaling_metric_specs", autoscaling_metric_specs)
+        if machine_specs is not None:
+            pulumi.set(__self__, "machine_specs", machine_specs)
+        if max_replica_count is not None:
+            pulumi.set(__self__, "max_replica_count", max_replica_count)
+        if min_replica_count is not None:
+            pulumi.set(__self__, "min_replica_count", min_replica_count)
+
+    @property
+    @pulumi.getter(name="autoscalingMetricSpecs")
+    def autoscaling_metric_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]]]:
+        return pulumi.get(self, "autoscaling_metric_specs")
+
+    @autoscaling_metric_specs.setter
+    def autoscaling_metric_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]]]):
+        pulumi.set(self, "autoscaling_metric_specs", value)
+
+    @property
+    @pulumi.getter(name="machineSpecs")
+    def machine_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs']]]]:
+        return pulumi.get(self, "machine_specs")
+
+    @machine_specs.setter
+    def machine_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs']]]]):
+        pulumi.set(self, "machine_specs", value)
+
+    @property
+    @pulumi.getter(name="maxReplicaCount")
+    def max_replica_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_replica_count")
+
+    @max_replica_count.setter
+    def max_replica_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_replica_count", value)
+
+    @property
+    @pulumi.getter(name="minReplicaCount")
+    def min_replica_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_replica_count")
+
+    @min_replica_count.setter
+    def min_replica_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_replica_count", value)
+
+
+@pulumi.input_type
+class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs:
+    def __init__(__self__, *,
+                 metric_name: Optional[pulumi.Input[str]] = None,
+                 target: Optional[pulumi.Input[int]] = None):
+        if metric_name is not None:
+            pulumi.set(__self__, "metric_name", metric_name)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "metric_name")
+
+    @metric_name.setter
+    def metric_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric_name", value)
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "target", value)
+
+
+@pulumi.input_type
+class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs:
+    def __init__(__self__, *,
+                 accelerator_count: Optional[pulumi.Input[int]] = None,
+                 accelerator_type: Optional[pulumi.Input[str]] = None,
+                 machine_type: Optional[pulumi.Input[str]] = None):
+        if accelerator_count is not None:
+            pulumi.set(__self__, "accelerator_count", accelerator_count)
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+
+    @property
+    @pulumi.getter(name="acceleratorCount")
+    def accelerator_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "accelerator_count")
+
+    @accelerator_count.setter
+    def accelerator_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "accelerator_count", value)
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "accelerator_type")
+
+    @accelerator_type.setter
+    def accelerator_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "accelerator_type", value)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine_type", value)
+
+
+@pulumi.input_type
+class AiEndpointDeployedModelPrivateEndpointArgs:
+    def __init__(__self__, *,
+                 explain_http_uri: Optional[pulumi.Input[str]] = None,
+                 health_http_uri: Optional[pulumi.Input[str]] = None,
+                 predict_http_uri: Optional[pulumi.Input[str]] = None,
+                 service_attachment: Optional[pulumi.Input[str]] = None):
+        if explain_http_uri is not None:
+            pulumi.set(__self__, "explain_http_uri", explain_http_uri)
+        if health_http_uri is not None:
+            pulumi.set(__self__, "health_http_uri", health_http_uri)
+        if predict_http_uri is not None:
+            pulumi.set(__self__, "predict_http_uri", predict_http_uri)
+        if service_attachment is not None:
+            pulumi.set(__self__, "service_attachment", service_attachment)
+
+    @property
+    @pulumi.getter(name="explainHttpUri")
+    def explain_http_uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "explain_http_uri")
+
+    @explain_http_uri.setter
+    def explain_http_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "explain_http_uri", value)
+
+    @property
+    @pulumi.getter(name="healthHttpUri")
+    def health_http_uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "health_http_uri")
+
+    @health_http_uri.setter
+    def health_http_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_http_uri", value)
+
+    @property
+    @pulumi.getter(name="predictHttpUri")
+    def predict_http_uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "predict_http_uri")
+
+    @predict_http_uri.setter
+    def predict_http_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "predict_http_uri", value)
+
+    @property
+    @pulumi.getter(name="serviceAttachment")
+    def service_attachment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service_attachment")
+
+    @service_attachment.setter
+    def service_attachment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_attachment", value)
+
+
+@pulumi.input_type
+class AiEndpointEncryptionSpecArgs:
+    def __init__(__self__, *,
+                 kms_key_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] kms_key_name: Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Input[str]:
+        """
+        Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_name", value)
 
 
@@ -98,11 +493,12 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
                  monitoring_interval: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] disabled: The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
-        :param pulumi.Input[str] monitoring_interval: Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
-               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if monitoring_interval is not None:
+            warnings.warn("""This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""monitoring_interval is deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""")
         if monitoring_interval is not None:
             pulumi.set(__self__, "monitoring_interval", monitoring_interval)
 
@@ -121,15 +517,89 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
     @property
     @pulumi.getter(name="monitoringInterval")
     def monitoring_interval(self) -> Optional[pulumi.Input[str]]:
-        """
-        Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        """
         return pulumi.get(self, "monitoring_interval")
 
     @monitoring_interval.setter
     def monitoring_interval(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "monitoring_interval", value)
+
+
+@pulumi.input_type
+class AiFeatureStoreIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class AiFeatureStoreIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 @pulumi.input_type

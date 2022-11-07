@@ -66,12 +66,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
  * import com.pulumi.gcp.compute.TargetHttpsProxy;
  * import com.pulumi.gcp.compute.TargetHttpsProxyArgs;
- * import com.pulumi.gcp.dns.ManagedZone;
- * import com.pulumi.gcp.dns.ManagedZoneArgs;
  * import com.pulumi.gcp.compute.GlobalForwardingRule;
  * import com.pulumi.gcp.compute.GlobalForwardingRuleArgs;
- * import com.pulumi.gcp.dns.RecordSet;
- * import com.pulumi.gcp.dns.RecordSetArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -126,21 +122,9 @@ import javax.annotation.Nullable;
  *             .sslCertificates(defaultManagedSslCertificate.id())
  *             .build());
  * 
- *         var zone = new ManagedZone(&#34;zone&#34;, ManagedZoneArgs.builder()        
- *             .dnsName(&#34;sslcert.tf-test.club.&#34;)
- *             .build());
- * 
  *         var defaultGlobalForwardingRule = new GlobalForwardingRule(&#34;defaultGlobalForwardingRule&#34;, GlobalForwardingRuleArgs.builder()        
  *             .target(defaultTargetHttpsProxy.id())
  *             .portRange(443)
- *             .build());
- * 
- *         var set = new RecordSet(&#34;set&#34;, RecordSetArgs.builder()        
- *             .name(&#34;sslcert.tf-test.club.&#34;)
- *             .type(&#34;A&#34;)
- *             .ttl(3600)
- *             .managedZone(zone.name())
- *             .rrdatas(defaultGlobalForwardingRule.ipAddress())
  *             .build());
  * 
  *     }

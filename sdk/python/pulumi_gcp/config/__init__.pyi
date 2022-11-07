@@ -18,6 +18,8 @@ accessToken: Optional[str]
 
 activeDirectoryCustomEndpoint: Optional[str]
 
+alloydbCustomEndpoint: Optional[str]
+
 apiGatewayCustomEndpoint: Optional[str]
 
 apigeeCustomEndpoint: Optional[str]
@@ -104,6 +106,8 @@ dataLossPreventionCustomEndpoint: Optional[str]
 
 dataflowCustomEndpoint: Optional[str]
 
+dataformCustomEndpoint: Optional[str]
+
 dataplexCustomEndpoint: Optional[str]
 
 dataprocCustomEndpoint: Optional[str]
@@ -155,6 +159,8 @@ iamBetaCustomEndpoint: Optional[str]
 iamCredentialsCustomEndpoint: Optional[str]
 
 iamCustomEndpoint: Optional[str]
+
+iamWorkforcePoolCustomEndpoint: Optional[str]
 
 iapCustomEndpoint: Optional[str]
 

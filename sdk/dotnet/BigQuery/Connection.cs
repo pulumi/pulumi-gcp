@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var connection = new Gcp.BigQuery.Connection("connection", new()
     ///     {
-    ///         CloudResource = ,
+    ///         CloudResource = null,
     ///         ConnectionId = "my-connection",
     ///         Description = "a riveting description",
     ///         FriendlyName = "👋",

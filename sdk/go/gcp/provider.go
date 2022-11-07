@@ -21,6 +21,7 @@ type Provider struct {
 	AccessContextManagerCustomEndpoint pulumi.StringPtrOutput `pulumi:"accessContextManagerCustomEndpoint"`
 	AccessToken                        pulumi.StringPtrOutput `pulumi:"accessToken"`
 	ActiveDirectoryCustomEndpoint      pulumi.StringPtrOutput `pulumi:"activeDirectoryCustomEndpoint"`
+	AlloydbCustomEndpoint              pulumi.StringPtrOutput `pulumi:"alloydbCustomEndpoint"`
 	ApiGatewayCustomEndpoint           pulumi.StringPtrOutput `pulumi:"apiGatewayCustomEndpoint"`
 	ApigeeCustomEndpoint               pulumi.StringPtrOutput `pulumi:"apigeeCustomEndpoint"`
 	ApikeysCustomEndpoint              pulumi.StringPtrOutput `pulumi:"apikeysCustomEndpoint"`
@@ -63,6 +64,7 @@ type Provider struct {
 	DataFusionCustomEndpoint           pulumi.StringPtrOutput `pulumi:"dataFusionCustomEndpoint"`
 	DataLossPreventionCustomEndpoint   pulumi.StringPtrOutput `pulumi:"dataLossPreventionCustomEndpoint"`
 	DataflowCustomEndpoint             pulumi.StringPtrOutput `pulumi:"dataflowCustomEndpoint"`
+	DataformCustomEndpoint             pulumi.StringPtrOutput `pulumi:"dataformCustomEndpoint"`
 	DataplexCustomEndpoint             pulumi.StringPtrOutput `pulumi:"dataplexCustomEndpoint"`
 	DataprocCustomEndpoint             pulumi.StringPtrOutput `pulumi:"dataprocCustomEndpoint"`
 	DataprocMetastoreCustomEndpoint    pulumi.StringPtrOutput `pulumi:"dataprocMetastoreCustomEndpoint"`
@@ -88,6 +90,7 @@ type Provider struct {
 	IamBetaCustomEndpoint              pulumi.StringPtrOutput `pulumi:"iamBetaCustomEndpoint"`
 	IamCredentialsCustomEndpoint       pulumi.StringPtrOutput `pulumi:"iamCredentialsCustomEndpoint"`
 	IamCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"iamCustomEndpoint"`
+	IamWorkforcePoolCustomEndpoint     pulumi.StringPtrOutput `pulumi:"iamWorkforcePoolCustomEndpoint"`
 	IapCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"iapCustomEndpoint"`
 	IdentityPlatformCustomEndpoint     pulumi.StringPtrOutput `pulumi:"identityPlatformCustomEndpoint"`
 	ImpersonateServiceAccount          pulumi.StringPtrOutput `pulumi:"impersonateServiceAccount"`
@@ -165,6 +168,7 @@ type providerArgs struct {
 	AccessContextManagerCustomEndpoint *string           `pulumi:"accessContextManagerCustomEndpoint"`
 	AccessToken                        *string           `pulumi:"accessToken"`
 	ActiveDirectoryCustomEndpoint      *string           `pulumi:"activeDirectoryCustomEndpoint"`
+	AlloydbCustomEndpoint              *string           `pulumi:"alloydbCustomEndpoint"`
 	ApiGatewayCustomEndpoint           *string           `pulumi:"apiGatewayCustomEndpoint"`
 	ApigeeCustomEndpoint               *string           `pulumi:"apigeeCustomEndpoint"`
 	ApikeysCustomEndpoint              *string           `pulumi:"apikeysCustomEndpoint"`
@@ -208,6 +212,7 @@ type providerArgs struct {
 	DataFusionCustomEndpoint           *string           `pulumi:"dataFusionCustomEndpoint"`
 	DataLossPreventionCustomEndpoint   *string           `pulumi:"dataLossPreventionCustomEndpoint"`
 	DataflowCustomEndpoint             *string           `pulumi:"dataflowCustomEndpoint"`
+	DataformCustomEndpoint             *string           `pulumi:"dataformCustomEndpoint"`
 	DataplexCustomEndpoint             *string           `pulumi:"dataplexCustomEndpoint"`
 	DataprocCustomEndpoint             *string           `pulumi:"dataprocCustomEndpoint"`
 	DataprocMetastoreCustomEndpoint    *string           `pulumi:"dataprocMetastoreCustomEndpoint"`
@@ -234,6 +239,7 @@ type providerArgs struct {
 	IamBetaCustomEndpoint              *string           `pulumi:"iamBetaCustomEndpoint"`
 	IamCredentialsCustomEndpoint       *string           `pulumi:"iamCredentialsCustomEndpoint"`
 	IamCustomEndpoint                  *string           `pulumi:"iamCustomEndpoint"`
+	IamWorkforcePoolCustomEndpoint     *string           `pulumi:"iamWorkforcePoolCustomEndpoint"`
 	IapCustomEndpoint                  *string           `pulumi:"iapCustomEndpoint"`
 	IdentityPlatformCustomEndpoint     *string           `pulumi:"identityPlatformCustomEndpoint"`
 	ImpersonateServiceAccount          *string           `pulumi:"impersonateServiceAccount"`
@@ -291,6 +297,7 @@ type ProviderArgs struct {
 	AccessContextManagerCustomEndpoint pulumi.StringPtrInput
 	AccessToken                        pulumi.StringPtrInput
 	ActiveDirectoryCustomEndpoint      pulumi.StringPtrInput
+	AlloydbCustomEndpoint              pulumi.StringPtrInput
 	ApiGatewayCustomEndpoint           pulumi.StringPtrInput
 	ApigeeCustomEndpoint               pulumi.StringPtrInput
 	ApikeysCustomEndpoint              pulumi.StringPtrInput
@@ -334,6 +341,7 @@ type ProviderArgs struct {
 	DataFusionCustomEndpoint           pulumi.StringPtrInput
 	DataLossPreventionCustomEndpoint   pulumi.StringPtrInput
 	DataflowCustomEndpoint             pulumi.StringPtrInput
+	DataformCustomEndpoint             pulumi.StringPtrInput
 	DataplexCustomEndpoint             pulumi.StringPtrInput
 	DataprocCustomEndpoint             pulumi.StringPtrInput
 	DataprocMetastoreCustomEndpoint    pulumi.StringPtrInput
@@ -360,6 +368,7 @@ type ProviderArgs struct {
 	IamBetaCustomEndpoint              pulumi.StringPtrInput
 	IamCredentialsCustomEndpoint       pulumi.StringPtrInput
 	IamCustomEndpoint                  pulumi.StringPtrInput
+	IamWorkforcePoolCustomEndpoint     pulumi.StringPtrInput
 	IapCustomEndpoint                  pulumi.StringPtrInput
 	IdentityPlatformCustomEndpoint     pulumi.StringPtrInput
 	ImpersonateServiceAccount          pulumi.StringPtrInput
@@ -462,6 +471,10 @@ func (o ProviderOutput) AccessToken() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) ActiveDirectoryCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ActiveDirectoryCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) AlloydbCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AlloydbCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) ApiGatewayCustomEndpoint() pulumi.StringPtrOutput {
@@ -632,6 +645,10 @@ func (o ProviderOutput) DataflowCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DataflowCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) DataformCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DataformCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) DataplexCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DataplexCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -730,6 +747,10 @@ func (o ProviderOutput) IamCredentialsCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) IamCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.IamCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) IamWorkforcePoolCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.IamWorkforcePoolCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) IapCustomEndpoint() pulumi.StringPtrOutput {

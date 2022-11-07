@@ -96,11 +96,13 @@ export class BackendServiceSignedUrlKey extends pulumi.CustomResource {
                 throw new Error("Missing required property 'keyValue'");
             }
             resourceInputs["backendService"] = args ? args.backendService : undefined;
-            resourceInputs["keyValue"] = args ? args.keyValue : undefined;
+            resourceInputs["keyValue"] = args?.keyValue ? pulumi.secret(args.keyValue) : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["keyValue"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(BackendServiceSignedUrlKey.__pulumiType, name, resourceInputs, opts);
     }
 }

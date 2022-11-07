@@ -60,6 +60,13 @@ namespace Pulumi.Gcp
             set => _activeDirectoryCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _alloydbCustomEndpoint = new __Value<string?>(() => __config.Get("alloydbCustomEndpoint"));
+        public static string? AlloydbCustomEndpoint
+        {
+            get => _alloydbCustomEndpoint.Get();
+            set => _alloydbCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _apiGatewayCustomEndpoint = new __Value<string?>(() => __config.Get("apiGatewayCustomEndpoint"));
         public static string? ApiGatewayCustomEndpoint
         {
@@ -361,6 +368,13 @@ namespace Pulumi.Gcp
             set => _dataflowCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _dataformCustomEndpoint = new __Value<string?>(() => __config.Get("dataformCustomEndpoint"));
+        public static string? DataformCustomEndpoint
+        {
+            get => _dataformCustomEndpoint.Get();
+            set => _dataformCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _dataplexCustomEndpoint = new __Value<string?>(() => __config.Get("dataplexCustomEndpoint"));
         public static string? DataplexCustomEndpoint
         {
@@ -541,6 +555,13 @@ namespace Pulumi.Gcp
         {
             get => _iamCustomEndpoint.Get();
             set => _iamCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _iamWorkforcePoolCustomEndpoint = new __Value<string?>(() => __config.Get("iamWorkforcePoolCustomEndpoint"));
+        public static string? IamWorkforcePoolCustomEndpoint
+        {
+            get => _iamWorkforcePoolCustomEndpoint.Get();
+            set => _iamWorkforcePoolCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _iapCustomEndpoint = new __Value<string?>(() => __config.Get("iapCustomEndpoint"));

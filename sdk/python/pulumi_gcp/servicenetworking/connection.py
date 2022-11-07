@@ -173,16 +173,25 @@ class Connection(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        # Create a VPC network
         peering_network = gcp.compute.Network("peeringNetwork")
+        # Create an IP address
         private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
             network=peering_network.id)
-        foobar = gcp.servicenetworking.Connection("foobar",
+        # Create a private connection
+        default = gcp.servicenetworking.Connection("default",
             network=peering_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
+        # (Optional) Import or export custom routes
+        peering_routes = gcp.compute.NetworkPeeringRoutesConfig("peeringRoutes",
+            peering=default.peering,
+            network=peering_network.name,
+            import_custom_routes=True,
+            export_custom_routes=True)
         ```
 
         ## Import
@@ -225,16 +234,25 @@ class Connection(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        # Create a VPC network
         peering_network = gcp.compute.Network("peeringNetwork")
+        # Create an IP address
         private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
             network=peering_network.id)
-        foobar = gcp.servicenetworking.Connection("foobar",
+        # Create a private connection
+        default = gcp.servicenetworking.Connection("default",
             network=peering_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
+        # (Optional) Import or export custom routes
+        peering_routes = gcp.compute.NetworkPeeringRoutesConfig("peeringRoutes",
+            peering=default.peering,
+            network=peering_network.name,
+            import_custom_routes=True,
+            export_custom_routes=True)
         ```
 
         ## Import

@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Redis.Outputs
         /// - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
         /// Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
         /// </summary>
-        public readonly string RdbSnapshotPeriod;
+        public readonly string? RdbSnapshotPeriod;
         /// <summary>
         /// Optional. Date and time that the first snapshot was/will be attempted,
         /// and to which future snapshots will be aligned. If not provided,
@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.Redis.Outputs
 
             string? rdbNextSnapshotTime,
 
-            string rdbSnapshotPeriod,
+            string? rdbSnapshotPeriod,
 
             string? rdbSnapshotStartTime)
         {

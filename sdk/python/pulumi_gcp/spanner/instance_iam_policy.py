@@ -192,7 +192,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
         instance = gcp.spanner.InstanceIAMBinding("instance",
             instance="your-instance-name",
             members=["user:jane@example.com"],
-            role="roles/compute.networkUser")
+            role="roles/spanner.databaseAdmin")
         ```
 
         ## google\\_spanner\\_instance\\_iam\\_member
@@ -204,7 +204,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
         instance = gcp.spanner.InstanceIAMMember("instance",
             instance="your-instance-name",
             member="user:jane@example.com",
-            role="roles/compute.networkUser")
+            role="roles/spanner.databaseAdmin")
         ```
 
         ## Import
@@ -283,7 +283,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
         instance = gcp.spanner.InstanceIAMBinding("instance",
             instance="your-instance-name",
             members=["user:jane@example.com"],
-            role="roles/compute.networkUser")
+            role="roles/spanner.databaseAdmin")
         ```
 
         ## google\\_spanner\\_instance\\_iam\\_member
@@ -295,7 +295,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
         instance = gcp.spanner.InstanceIAMMember("instance",
             instance="your-instance-name",
             member="user:jane@example.com",
-            role="roles/compute.networkUser")
+            role="roles/spanner.databaseAdmin")
         ```
 
         ## Import

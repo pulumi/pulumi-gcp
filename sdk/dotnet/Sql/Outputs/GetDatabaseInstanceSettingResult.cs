@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly string PricingPlan;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingSqlServerAuditConfigResult> SqlServerAuditConfigs;
         public readonly string Tier;
+        public readonly string TimeZone;
         public readonly ImmutableDictionary<string, string> UserLabels;
         public readonly int Version;
 
@@ -72,6 +73,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string tier,
 
+            string timeZone,
+
             ImmutableDictionary<string, string> userLabels,
 
             int version)
@@ -94,6 +97,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             PricingPlan = pricingPlan;
             SqlServerAuditConfigs = sqlServerAuditConfigs;
             Tier = tier;
+            TimeZone = timeZone;
             UserLabels = userLabels;
             Version = version;
         }

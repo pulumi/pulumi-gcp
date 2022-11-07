@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Bigquery Analytics Hub data exchange listing
+//
+// To get more information about Listing, see:
+//
+// * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges.listings)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+//
 // ## Example Usage
 // ### Bigquery Analyticshub Listing Basic
 //
@@ -32,7 +40,7 @@ import (
 //				DataExchangeId: pulumi.String("my_data_exchange"),
 //				DisplayName:    pulumi.String("my_data_exchange"),
 //				Description:    pulumi.String("example data exchange"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -41,7 +49,7 @@ import (
 //				FriendlyName: pulumi.String("my_listing"),
 //				Description:  pulumi.String("example data exchange"),
 //				Location:     pulumi.String("US"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -54,7 +62,7 @@ import (
 //				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
 //					Dataset: listingDataset.ID(),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

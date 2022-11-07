@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerEnvArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerEnvFromArgs;
+import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerLivenessProbeArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerPortArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerResourcesArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerStartupProbeArgs;
@@ -158,6 +159,25 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
     }
 
     /**
+     * Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+     * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="livenessProbe")
+    private @Nullable Output<ServiceTemplateSpecContainerLivenessProbeArgs> livenessProbe;
+
+    /**
+     * @return Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+     * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServiceTemplateSpecContainerLivenessProbeArgs>> livenessProbe() {
+        return Optional.ofNullable(this.livenessProbe);
+    }
+
+    /**
      * List of open ports in the container.
      * More Info:
      * https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
@@ -264,6 +284,7 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         this.envFroms = $.envFroms;
         this.envs = $.envs;
         this.image = $.image;
+        this.livenessProbe = $.livenessProbe;
         this.ports = $.ports;
         this.resources = $.resources;
         this.startupProbe = $.startupProbe;
@@ -520,6 +541,31 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
          */
         public Builder image(String image) {
             return image(Output.of(image));
+        }
+
+        /**
+         * @param livenessProbe Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+         * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbe(@Nullable Output<ServiceTemplateSpecContainerLivenessProbeArgs> livenessProbe) {
+            $.livenessProbe = livenessProbe;
+            return this;
+        }
+
+        /**
+         * @param livenessProbe Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+         * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessProbe(ServiceTemplateSpecContainerLivenessProbeArgs livenessProbe) {
+            return livenessProbe(Output.of(livenessProbe));
         }
 
         /**

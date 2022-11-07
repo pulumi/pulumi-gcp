@@ -8,38 +8,38 @@ import * as utilities from "../utilities";
 export { GetSecretArgs, GetSecretResult, GetSecretOutputArgs } from "./getSecret";
 export const getSecret: typeof import("./getSecret").getSecret = null as any;
 export const getSecretOutput: typeof import("./getSecret").getSecretOutput = null as any;
+utilities.lazyLoad(exports, ["getSecret","getSecretOutput"], () => require("./getSecret"));
 
 export { GetSecretVersionArgs, GetSecretVersionResult, GetSecretVersionOutputArgs } from "./getSecretVersion";
 export const getSecretVersion: typeof import("./getSecretVersion").getSecretVersion = null as any;
 export const getSecretVersionOutput: typeof import("./getSecretVersion").getSecretVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getSecretVersion","getSecretVersionOutput"], () => require("./getSecretVersion"));
 
 export { SecretArgs, SecretState } from "./secret";
 export type Secret = import("./secret").Secret;
 export const Secret: typeof import("./secret").Secret = null as any;
+utilities.lazyLoad(exports, ["Secret"], () => require("./secret"));
 
 export { SecretIamBindingArgs, SecretIamBindingState } from "./secretIamBinding";
 export type SecretIamBinding = import("./secretIamBinding").SecretIamBinding;
 export const SecretIamBinding: typeof import("./secretIamBinding").SecretIamBinding = null as any;
+utilities.lazyLoad(exports, ["SecretIamBinding"], () => require("./secretIamBinding"));
 
 export { SecretIamMemberArgs, SecretIamMemberState } from "./secretIamMember";
 export type SecretIamMember = import("./secretIamMember").SecretIamMember;
 export const SecretIamMember: typeof import("./secretIamMember").SecretIamMember = null as any;
+utilities.lazyLoad(exports, ["SecretIamMember"], () => require("./secretIamMember"));
 
 export { SecretIamPolicyArgs, SecretIamPolicyState } from "./secretIamPolicy";
 export type SecretIamPolicy = import("./secretIamPolicy").SecretIamPolicy;
 export const SecretIamPolicy: typeof import("./secretIamPolicy").SecretIamPolicy = null as any;
+utilities.lazyLoad(exports, ["SecretIamPolicy"], () => require("./secretIamPolicy"));
 
 export { SecretVersionArgs, SecretVersionState } from "./secretVersion";
 export type SecretVersion = import("./secretVersion").SecretVersion;
 export const SecretVersion: typeof import("./secretVersion").SecretVersion = null as any;
-
-utilities.lazyLoad(exports, ["getSecret","getSecretOutput"], () => require("./getSecret"));
-utilities.lazyLoad(exports, ["getSecretVersion","getSecretVersionOutput"], () => require("./getSecretVersion"));
-utilities.lazyLoad(exports, ["Secret"], () => require("./secret"));
-utilities.lazyLoad(exports, ["SecretIamBinding"], () => require("./secretIamBinding"));
-utilities.lazyLoad(exports, ["SecretIamMember"], () => require("./secretIamMember"));
-utilities.lazyLoad(exports, ["SecretIamPolicy"], () => require("./secretIamPolicy"));
 utilities.lazyLoad(exports, ["SecretVersion"], () => require("./secretVersion"));
+
 
 const _module = {
     version: utilities.getVersion(),

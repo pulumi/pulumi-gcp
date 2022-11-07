@@ -249,8 +249,42 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                  value_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Feature Metadata information that describes an attribute of an entity type. For example, apple is an entity type, and color is a feature that describes apple.
+
+        To get more information about FeaturestoreEntitytypeFeature, see:
+
+        * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+
         ## Example Usage
         ### Vertex Ai Featurestore Entitytype Feature
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ))
+        entity = gcp.vertex.AiFeatureStoreEntityType("entity",
+            labels={
+                "foo": "bar",
+            },
+            featurestore=featurestore.id)
+        feature = gcp.vertex.AiFeatureStoreEntityTypeFeature("feature",
+            labels={
+                "foo": "bar",
+            },
+            entitytype=entity.id,
+            value_type="INT64_ARRAY")
+        ```
+        ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
 
         ```python
         import pulumi
@@ -309,8 +343,42 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                  args: AiFeatureStoreEntityTypeFeatureArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Feature Metadata information that describes an attribute of an entity type. For example, apple is an entity type, and color is a feature that describes apple.
+
+        To get more information about FeaturestoreEntitytypeFeature, see:
+
+        * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+
         ## Example Usage
         ### Vertex Ai Featurestore Entitytype Feature
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featurestore = gcp.vertex.AiFeatureStore("featurestore",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            online_serving_config=gcp.vertex.AiFeatureStoreOnlineServingConfigArgs(
+                fixed_node_count=2,
+            ))
+        entity = gcp.vertex.AiFeatureStoreEntityType("entity",
+            labels={
+                "foo": "bar",
+            },
+            featurestore=featurestore.id)
+        feature = gcp.vertex.AiFeatureStoreEntityTypeFeature("feature",
+            labels={
+                "foo": "bar",
+            },
+            entitytype=entity.id,
+            value_type="INT64_ARRAY")
+        ```
+        ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
 
         ```python
         import pulumi

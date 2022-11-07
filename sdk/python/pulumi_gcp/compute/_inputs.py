@@ -309,6 +309,8 @@ __all__ = [
     'RouterBgpArgs',
     'RouterBgpAdvertisedIpRangeArgs',
     'RouterNatLogConfigArgs',
+    'RouterNatRuleArgs',
+    'RouterNatRuleActionArgs',
     'RouterNatSubnetworkArgs',
     'RouterPeerAdvertisedIpRangeArgs',
     'RouterPeerBfdArgs',
@@ -21326,6 +21328,140 @@ class RouterNatLogConfigArgs:
     @filter.setter
     def filter(self, value: pulumi.Input[str]):
         pulumi.set(self, "filter", value)
+
+
+@pulumi.input_type
+class RouterNatRuleArgs:
+    def __init__(__self__, *,
+                 match: pulumi.Input[str],
+                 rule_number: pulumi.Input[int],
+                 action: Optional[pulumi.Input['RouterNatRuleActionArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] match: CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
+               If it evaluates to true, the corresponding action is enforced.
+               The following examples are valid match expressions for public NAT:
+               "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')"
+               "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+               The following example is a valid match expression for private NAT:
+               "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+        :param pulumi.Input[int] rule_number: An integer uniquely identifying a rule in the list.
+               The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+        :param pulumi.Input['RouterNatRuleActionArgs'] action: The action to be enforced for traffic that matches this rule.
+               Structure is documented below.
+        :param pulumi.Input[str] description: An optional description of this rule.
+        """
+        pulumi.set(__self__, "match", match)
+        pulumi.set(__self__, "rule_number", rule_number)
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def match(self) -> pulumi.Input[str]:
+        """
+        CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
+        If it evaluates to true, the corresponding action is enforced.
+        The following examples are valid match expressions for public NAT:
+        "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')"
+        "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+        The following example is a valid match expression for private NAT:
+        "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+        """
+        return pulumi.get(self, "match")
+
+    @match.setter
+    def match(self, value: pulumi.Input[str]):
+        pulumi.set(self, "match", value)
+
+    @property
+    @pulumi.getter(name="ruleNumber")
+    def rule_number(self) -> pulumi.Input[int]:
+        """
+        An integer uniquely identifying a rule in the list.
+        The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+        """
+        return pulumi.get(self, "rule_number")
+
+    @rule_number.setter
+    def rule_number(self, value: pulumi.Input[int]):
+        pulumi.set(self, "rule_number", value)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input['RouterNatRuleActionArgs']]:
+        """
+        The action to be enforced for traffic that matches this rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input['RouterNatRuleActionArgs']]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this rule.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class RouterNatRuleActionArgs:
+    def __init__(__self__, *,
+                 source_nat_active_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source_nat_drain_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_nat_active_ips: A list of URLs of the IP resources used for this NAT rule.
+               These IP addresses must be valid static external IP addresses assigned to the project.
+               This field is used for public NAT.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_nat_drain_ips: A list of URLs of the IP resources to be drained.
+               These IPs must be valid static external IPs that have been assigned to the NAT.
+               These IPs should be used for updating/patching a NAT rule only.
+               This field is used for public NAT.
+        """
+        if source_nat_active_ips is not None:
+            pulumi.set(__self__, "source_nat_active_ips", source_nat_active_ips)
+        if source_nat_drain_ips is not None:
+            pulumi.set(__self__, "source_nat_drain_ips", source_nat_drain_ips)
+
+    @property
+    @pulumi.getter(name="sourceNatActiveIps")
+    def source_nat_active_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of URLs of the IP resources used for this NAT rule.
+        These IP addresses must be valid static external IP addresses assigned to the project.
+        This field is used for public NAT.
+        """
+        return pulumi.get(self, "source_nat_active_ips")
+
+    @source_nat_active_ips.setter
+    def source_nat_active_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_nat_active_ips", value)
+
+    @property
+    @pulumi.getter(name="sourceNatDrainIps")
+    def source_nat_drain_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of URLs of the IP resources to be drained.
+        These IPs must be valid static external IPs that have been assigned to the NAT.
+        These IPs should be used for updating/patching a NAT rule only.
+        This field is used for public NAT.
+        """
+        return pulumi.get(self, "source_nat_drain_ips")
+
+    @source_nat_drain_ips.setter
+    def source_nat_drain_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_nat_drain_ips", value)
 
 
 @pulumi.input_type

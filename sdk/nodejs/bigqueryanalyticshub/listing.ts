@@ -7,6 +7,14 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A Bigquery Analytics Hub data exchange listing
+ *
+ * To get more information about Listing, see:
+ *
+ * * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges.listings)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+ *
  * ## Example Usage
  * ### Bigquery Analyticshub Listing Basic
  *
@@ -19,16 +27,12 @@ import * as utilities from "../utilities";
  *     dataExchangeId: "my_data_exchange",
  *     displayName: "my_data_exchange",
  *     description: "example data exchange",
- * }, {
- *     provider: google_beta,
  * });
  * const listingDataset = new gcp.bigquery.Dataset("listingDataset", {
  *     datasetId: "my_listing",
  *     friendlyName: "my_listing",
  *     description: "example data exchange",
  *     location: "US",
- * }, {
- *     provider: google_beta,
  * });
  * const listingListing = new gcp.bigqueryanalyticshub.Listing("listingListing", {
  *     location: "US",
@@ -39,8 +43,6 @@ import * as utilities from "../utilities";
  *     bigqueryDataset: {
  *         dataset: listingDataset.id,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

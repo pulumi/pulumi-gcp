@@ -8,18 +8,18 @@ import * as utilities from "../utilities";
 export { FolderFeedArgs, FolderFeedState } from "./folderFeed";
 export type FolderFeed = import("./folderFeed").FolderFeed;
 export const FolderFeed: typeof import("./folderFeed").FolderFeed = null as any;
+utilities.lazyLoad(exports, ["FolderFeed"], () => require("./folderFeed"));
 
 export { OrganizationFeedArgs, OrganizationFeedState } from "./organizationFeed";
 export type OrganizationFeed = import("./organizationFeed").OrganizationFeed;
 export const OrganizationFeed: typeof import("./organizationFeed").OrganizationFeed = null as any;
+utilities.lazyLoad(exports, ["OrganizationFeed"], () => require("./organizationFeed"));
 
 export { ProjectFeedArgs, ProjectFeedState } from "./projectFeed";
 export type ProjectFeed = import("./projectFeed").ProjectFeed;
 export const ProjectFeed: typeof import("./projectFeed").ProjectFeed = null as any;
-
-utilities.lazyLoad(exports, ["FolderFeed"], () => require("./folderFeed"));
-utilities.lazyLoad(exports, ["OrganizationFeed"], () => require("./organizationFeed"));
 utilities.lazyLoad(exports, ["ProjectFeed"], () => require("./projectFeed"));
+
 
 const _module = {
     version: utilities.getVersion(),

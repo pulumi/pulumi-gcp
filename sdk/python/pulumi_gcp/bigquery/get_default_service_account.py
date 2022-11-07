@@ -21,13 +21,16 @@ class GetDefaultServiceAccountResult:
     """
     A collection of values returned by getDefaultServiceAccount.
     """
-    def __init__(__self__, email=None, id=None, project=None):
+    def __init__(__self__, email=None, id=None, member=None, project=None):
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
         pulumi.set(__self__, "email", email)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if member and not isinstance(member, str):
+            raise TypeError("Expected argument 'member' to be a str")
+        pulumi.set(__self__, "member", member)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -51,6 +54,14 @@ class GetDefaultServiceAccountResult:
 
     @property
     @pulumi.getter
+    def member(self) -> str:
+        """
+        The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+        """
+        return pulumi.get(self, "member")
+
+    @property
+    @pulumi.getter
     def project(self) -> str:
         return pulumi.get(self, "project")
 
@@ -63,6 +74,7 @@ class AwaitableGetDefaultServiceAccountResult(GetDefaultServiceAccountResult):
         return GetDefaultServiceAccountResult(
             email=self.email,
             id=self.id,
+            member=self.member,
             project=self.project)
 
 
@@ -103,6 +115,7 @@ def get_default_service_account(project: Optional[str] = None,
     return AwaitableGetDefaultServiceAccountResult(
         email=__ret__.email,
         id=__ret__.id,
+        member=__ret__.member,
         project=__ret__.project)
 
 

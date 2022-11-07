@@ -162,7 +162,9 @@ type Cluster struct {
 	ClusterTelemetry ClusterClusterTelemetryOutput `pulumi:"clusterTelemetry"`
 	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes ClusterConfidentialNodesOutput `pulumi:"confidentialNodes"`
-	// Cost management configuration for the cluster.
+	// Configuration for the
+	// [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+	// Structure is documented below.
 	CostManagementConfig ClusterCostManagementConfigOutput `pulumi:"costManagementConfig"`
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionOutput `pulumi:"databaseEncryption"`
@@ -450,7 +452,9 @@ type clusterState struct {
 	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
 	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes *ClusterConfidentialNodes `pulumi:"confidentialNodes"`
-	// Cost management configuration for the cluster.
+	// Configuration for the
+	// [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+	// Structure is documented below.
 	CostManagementConfig *ClusterCostManagementConfig `pulumi:"costManagementConfig"`
 	// Structure is documented below.
 	DatabaseEncryption *ClusterDatabaseEncryption `pulumi:"databaseEncryption"`
@@ -710,7 +714,9 @@ type ClusterState struct {
 	ClusterTelemetry ClusterClusterTelemetryPtrInput
 	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes ClusterConfidentialNodesPtrInput
-	// Cost management configuration for the cluster.
+	// Configuration for the
+	// [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+	// Structure is documented below.
 	CostManagementConfig ClusterCostManagementConfigPtrInput
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionPtrInput
@@ -974,7 +980,9 @@ type clusterArgs struct {
 	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
 	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes *ClusterConfidentialNodes `pulumi:"confidentialNodes"`
-	// Cost management configuration for the cluster.
+	// Configuration for the
+	// [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+	// Structure is documented below.
 	CostManagementConfig *ClusterCostManagementConfig `pulumi:"costManagementConfig"`
 	// Structure is documented below.
 	DatabaseEncryption *ClusterDatabaseEncryption `pulumi:"databaseEncryption"`
@@ -1215,7 +1223,9 @@ type ClusterArgs struct {
 	ClusterTelemetry ClusterClusterTelemetryPtrInput
 	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes ClusterConfidentialNodesPtrInput
-	// Cost management configuration for the cluster.
+	// Configuration for the
+	// [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+	// Structure is documented below.
 	CostManagementConfig ClusterCostManagementConfigPtrInput
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionPtrInput
@@ -1562,7 +1572,9 @@ func (o ClusterOutput) ConfidentialNodes() ClusterConfidentialNodesOutput {
 	return o.ApplyT(func(v *Cluster) ClusterConfidentialNodesOutput { return v.ConfidentialNodes }).(ClusterConfidentialNodesOutput)
 }
 
-// Cost management configuration for the cluster.
+// Configuration for the
+// [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+// Structure is documented below.
 func (o ClusterOutput) CostManagementConfig() ClusterCostManagementConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterCostManagementConfigOutput { return v.CostManagementConfig }).(ClusterCostManagementConfigOutput)
 }

@@ -40,6 +40,7 @@ public final class GetDatabaseInstanceSetting {
     private String pricingPlan;
     private List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs;
     private String tier;
+    private String timeZone;
     private Map<String,String> userLabels;
     private Integer version;
 
@@ -98,6 +99,9 @@ public final class GetDatabaseInstanceSetting {
     public String tier() {
         return this.tier;
     }
+    public String timeZone() {
+        return this.timeZone;
+    }
     public Map<String,String> userLabels() {
         return this.userLabels;
     }
@@ -132,6 +136,7 @@ public final class GetDatabaseInstanceSetting {
         private String pricingPlan;
         private List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs;
         private String tier;
+        private String timeZone;
         private Map<String,String> userLabels;
         private Integer version;
         public Builder() {}
@@ -155,6 +160,7 @@ public final class GetDatabaseInstanceSetting {
     	      this.pricingPlan = defaults.pricingPlan;
     	      this.sqlServerAuditConfigs = defaults.sqlServerAuditConfigs;
     	      this.tier = defaults.tier;
+    	      this.timeZone = defaults.timeZone;
     	      this.userLabels = defaults.userLabels;
     	      this.version = defaults.version;
         }
@@ -277,6 +283,11 @@ public final class GetDatabaseInstanceSetting {
             return this;
         }
         @CustomType.Setter
+        public Builder timeZone(String timeZone) {
+            this.timeZone = Objects.requireNonNull(timeZone);
+            return this;
+        }
+        @CustomType.Setter
         public Builder userLabels(Map<String,String> userLabels) {
             this.userLabels = Objects.requireNonNull(userLabels);
             return this;
@@ -306,6 +317,7 @@ public final class GetDatabaseInstanceSetting {
             o.pricingPlan = pricingPlan;
             o.sqlServerAuditConfigs = sqlServerAuditConfigs;
             o.tier = tier;
+            o.timeZone = timeZone;
             o.userLabels = userLabels;
             o.version = version;
             return o;

@@ -61,7 +61,7 @@ import (
 //
 // ## Import
 //
-// Folders can be imported using the folder's id, e.g. # Both syntaxes are valid
+// Folders can be imported using the folder's id, e.g. Both syntaxes are valid
 //
 // ```sh
 //

@@ -18,6 +18,7 @@ __all__ = [
     'ConnectionProfileMysqlProfileSslConfig',
     'ConnectionProfileOracleProfile',
     'ConnectionProfilePostgresqlProfile',
+    'ConnectionProfilePrivateConnectivity',
     'PrivateConnectionVpcPeeringConfig',
 ]
 
@@ -534,6 +535,41 @@ class ConnectionProfilePostgresqlProfile(dict):
         Port for the SSH tunnel.
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class ConnectionProfilePrivateConnectivity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateConnection":
+            suggest = "private_connection"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfilePrivateConnectivity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfilePrivateConnectivity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfilePrivateConnectivity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 private_connection: str):
+        """
+        :param str private_connection: A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
+        """
+        pulumi.set(__self__, "private_connection", private_connection)
+
+    @property
+    @pulumi.getter(name="privateConnection")
+    def private_connection(self) -> str:
+        """
+        A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
+        """
+        return pulumi.get(self, "private_connection")
 
 
 @pulumi.output_type

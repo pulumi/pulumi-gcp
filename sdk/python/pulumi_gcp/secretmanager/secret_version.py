@@ -312,11 +312,13 @@ class SecretVersion(pulumi.CustomResource):
             __props__.__dict__["secret"] = secret
             if secret_data is None and not opts.urn:
                 raise TypeError("Missing required property 'secret_data'")
-            __props__.__dict__["secret_data"] = secret_data
+            __props__.__dict__["secret_data"] = None if secret_data is None else pulumi.Output.secret(secret_data)
             __props__.__dict__["create_time"] = None
             __props__.__dict__["destroy_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["version"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secretData"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(SecretVersion, __self__).__init__(
             'gcp:secretmanager/secretVersion:SecretVersion',
             resource_name,

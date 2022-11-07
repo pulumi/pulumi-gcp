@@ -22,6 +22,11 @@ public final class GetProjectServiceAccountResult {
      * 
      */
     private String id;
+    /**
+     * @return The Identity of the service account in the form `serviceAccount:{email_address}`. This value is often used to refer to the service account in order to grant IAM permissions.
+     * 
+     */
+    private String member;
     private String project;
     private @Nullable String userProject;
 
@@ -41,6 +46,13 @@ public final class GetProjectServiceAccountResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The Identity of the service account in the form `serviceAccount:{email_address}`. This value is often used to refer to the service account in order to grant IAM permissions.
+     * 
+     */
+    public String member() {
+        return this.member;
+    }
     public String project() {
         return this.project;
     }
@@ -59,6 +71,7 @@ public final class GetProjectServiceAccountResult {
     public static final class Builder {
         private String emailAddress;
         private String id;
+        private String member;
         private String project;
         private @Nullable String userProject;
         public Builder() {}
@@ -66,6 +79,7 @@ public final class GetProjectServiceAccountResult {
     	      Objects.requireNonNull(defaults);
     	      this.emailAddress = defaults.emailAddress;
     	      this.id = defaults.id;
+    	      this.member = defaults.member;
     	      this.project = defaults.project;
     	      this.userProject = defaults.userProject;
         }
@@ -78,6 +92,11 @@ public final class GetProjectServiceAccountResult {
         @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder member(String member) {
+            this.member = Objects.requireNonNull(member);
             return this;
         }
         @CustomType.Setter
@@ -94,6 +113,7 @@ public final class GetProjectServiceAccountResult {
             final var o = new GetProjectServiceAccountResult();
             o.emailAddress = emailAddress;
             o.id = id;
+            o.member = member;
             o.project = project;
             o.userProject = userProject;
             return o;

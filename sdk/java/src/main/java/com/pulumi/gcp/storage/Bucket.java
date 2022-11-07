@@ -127,6 +127,37 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Enabling Public Access Prevention
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var auto_expire = new Bucket(&#34;auto-expire&#34;, BucketArgs.builder()        
+ *             .forceDestroy(true)
+ *             .location(&#34;US&#34;)
+ *             .publicAccessPrevention(&#34;enforced&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -308,14 +339,14 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Prevents public access to a bucket.
+     * Prevents public access to a bucket. Acceptable values are &#34;inherited&#34; or &#34;enforced&#34;. If &#34;inherited&#34;, the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to &#34;inherited&#34;.
      * 
      */
     @Export(name="publicAccessPrevention", type=String.class, parameters={})
     private Output<String> publicAccessPrevention;
 
     /**
-     * @return Prevents public access to a bucket.
+     * @return Prevents public access to a bucket. Acceptable values are &#34;inherited&#34; or &#34;enforced&#34;. If &#34;inherited&#34;, the bucket uses [public access prevention](https://cloud.google.com/storage/docs/public-access-prevention). only if the bucket is subject to the public access prevention organization policy constraint. Defaults to &#34;inherited&#34;.
      * 
      */
     public Output<String> publicAccessPrevention() {

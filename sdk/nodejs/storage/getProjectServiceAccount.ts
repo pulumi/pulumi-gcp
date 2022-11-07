@@ -115,6 +115,10 @@ export interface GetProjectServiceAccountResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The Identity of the service account in the form `serviceAccount:{email_address}`. This value is often used to refer to the service account in order to grant IAM permissions.
+     */
+    readonly member: string;
     readonly project: string;
     readonly userProject?: string;
 }

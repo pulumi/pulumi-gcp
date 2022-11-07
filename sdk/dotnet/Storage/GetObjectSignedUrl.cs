@@ -151,12 +151,18 @@ namespace Pulumi.Gcp.Storage
         [Input("contentType")]
         public string? ContentType { get; set; }
 
+        [Input("credentials")]
+        private string? _credentials;
+
         /// <summary>
         /// What Google service account credentials json should be used to sign the URL.
         /// This data source checks the following locations for credentials, in order of preference: data source `credentials` attribute, provider `credentials` attribute and finally the GOOGLE_APPLICATION_CREDENTIALS environment variable.
         /// </summary>
-        [Input("credentials")]
-        public string? Credentials { get; set; }
+        public string? Credentials
+        {
+            get => _credentials;
+            set => _credentials = value;
+        }
 
         /// <summary>
         /// For how long shall the signed URL be valid (defaults to 1 hour - i.e. `1h`).
@@ -218,12 +224,22 @@ namespace Pulumi.Gcp.Storage
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
+        [Input("credentials")]
+        private Input<string>? _credentials;
+
         /// <summary>
         /// What Google service account credentials json should be used to sign the URL.
         /// This data source checks the following locations for credentials, in order of preference: data source `credentials` attribute, provider `credentials` attribute and finally the GOOGLE_APPLICATION_CREDENTIALS environment variable.
         /// </summary>
-        [Input("credentials")]
-        public Input<string>? Credentials { get; set; }
+        public Input<string>? Credentials
+        {
+            get => _credentials;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _credentials = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// For how long shall the signed URL be valid (defaults to 1 hour - i.e. `1h`).

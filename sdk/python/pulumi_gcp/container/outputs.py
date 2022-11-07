@@ -3255,6 +3255,10 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
         suggest = None
         if key == "bootDiskKmsKey":
             suggest = "boot_disk_kms_key"
+        elif key == "diskSize":
+            suggest = "disk_size"
+        elif key == "diskType":
+            suggest = "disk_type"
         elif key == "imageType":
             suggest = "image_type"
         elif key == "minCpuPlatform":
@@ -3277,12 +3281,17 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
 
     def __init__(__self__, *,
                  boot_disk_kms_key: Optional[str] = None,
+                 disk_size: Optional[int] = None,
+                 disk_type: Optional[str] = None,
                  image_type: Optional[str] = None,
                  min_cpu_platform: Optional[str] = None,
                  oauth_scopes: Optional[Sequence[str]] = None,
                  service_account: Optional[str] = None):
         """
         :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        :param int disk_size: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
+        :param str disk_type: Type of the disk attached to each node
+               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         :param str image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
         :param str min_cpu_platform: Minimum CPU platform to be used by this instance.
@@ -3298,6 +3307,10 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
         """
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
+        if disk_size is not None:
+            pulumi.set(__self__, "disk_size", disk_size)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
         if image_type is not None:
             pulumi.set(__self__, "image_type", image_type)
         if min_cpu_platform is not None:
@@ -3314,6 +3327,23 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
         The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
         """
         return pulumi.get(self, "boot_disk_kms_key")
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> Optional[int]:
+        """
+        Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
+        """
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[str]:
+        """
+        Type of the disk attached to each node
+        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        """
+        return pulumi.get(self, "disk_type")
 
     @property
     @pulumi.getter(name="imageType")
@@ -8575,11 +8605,15 @@ class GetClusterClusterAutoscalingResult(dict):
 class GetClusterClusterAutoscalingAutoProvisioningDefaultResult(dict):
     def __init__(__self__, *,
                  boot_disk_kms_key: str,
+                 disk_size: int,
+                 disk_type: str,
                  image_type: str,
                  min_cpu_platform: str,
                  oauth_scopes: Sequence[str],
                  service_account: str):
         pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
+        pulumi.set(__self__, "disk_size", disk_size)
+        pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "image_type", image_type)
         pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
@@ -8589,6 +8623,16 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultResult(dict):
     @pulumi.getter(name="bootDiskKmsKey")
     def boot_disk_kms_key(self) -> str:
         return pulumi.get(self, "boot_disk_kms_key")
+
+    @property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> int:
+        return pulumi.get(self, "disk_size")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> str:
+        return pulumi.get(self, "disk_type")
 
     @property
     @pulumi.getter(name="imageType")

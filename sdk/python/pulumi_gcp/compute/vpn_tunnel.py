@@ -1126,7 +1126,7 @@ class VPNTunnel(pulumi.CustomResource):
             __props__.__dict__["router"] = router
             if shared_secret is None and not opts.urn:
                 raise TypeError("Missing required property 'shared_secret'")
-            __props__.__dict__["shared_secret"] = shared_secret
+            __props__.__dict__["shared_secret"] = None if shared_secret is None else pulumi.Output.secret(shared_secret)
             __props__.__dict__["target_vpn_gateway"] = target_vpn_gateway
             __props__.__dict__["vpn_gateway"] = vpn_gateway
             __props__.__dict__["vpn_gateway_interface"] = vpn_gateway_interface
@@ -1136,6 +1136,8 @@ class VPNTunnel(pulumi.CustomResource):
             __props__.__dict__["self_link"] = None
             __props__.__dict__["shared_secret_hash"] = None
             __props__.__dict__["tunnel_id"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["sharedSecret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(VPNTunnel, __self__).__init__(
             'gcp:compute/vPNTunnel:VPNTunnel',
             resource_name,

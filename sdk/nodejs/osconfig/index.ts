@@ -8,18 +8,18 @@ import * as utilities from "../utilities";
 export { GuestPoliciesArgs, GuestPoliciesState } from "./guestPolicies";
 export type GuestPolicies = import("./guestPolicies").GuestPolicies;
 export const GuestPolicies: typeof import("./guestPolicies").GuestPolicies = null as any;
+utilities.lazyLoad(exports, ["GuestPolicies"], () => require("./guestPolicies"));
 
 export { OsPolicyAssignmentArgs, OsPolicyAssignmentState } from "./osPolicyAssignment";
 export type OsPolicyAssignment = import("./osPolicyAssignment").OsPolicyAssignment;
 export const OsPolicyAssignment: typeof import("./osPolicyAssignment").OsPolicyAssignment = null as any;
+utilities.lazyLoad(exports, ["OsPolicyAssignment"], () => require("./osPolicyAssignment"));
 
 export { PatchDeploymentArgs, PatchDeploymentState } from "./patchDeployment";
 export type PatchDeployment = import("./patchDeployment").PatchDeployment;
 export const PatchDeployment: typeof import("./patchDeployment").PatchDeployment = null as any;
-
-utilities.lazyLoad(exports, ["GuestPolicies"], () => require("./guestPolicies"));
-utilities.lazyLoad(exports, ["OsPolicyAssignment"], () => require("./osPolicyAssignment"));
 utilities.lazyLoad(exports, ["PatchDeployment"], () => require("./patchDeployment"));
+
 
 const _module = {
     version: utilities.getVersion(),

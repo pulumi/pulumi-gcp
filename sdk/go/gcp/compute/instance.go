@@ -161,7 +161,8 @@ type Instance struct {
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within the instance. Ssh keys attached in the Cloud Console will be removed.
-	// Add them to your config in order to keep them attached to your instance.
+	// Add them to your config in order to keep them attached to your instance. A
+	// list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The unique fingerprint of the metadata.
 	MetadataFingerprint pulumi.StringOutput `pulumi:"metadataFingerprint"`
@@ -311,7 +312,8 @@ type instanceState struct {
 	MachineType *string `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within the instance. Ssh keys attached in the Cloud Console will be removed.
-	// Add them to your config in order to keep them attached to your instance.
+	// Add them to your config in order to keep them attached to your instance. A
+	// list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
 	Metadata map[string]string `pulumi:"metadata"`
 	// The unique fingerprint of the metadata.
 	MetadataFingerprint *string `pulumi:"metadataFingerprint"`
@@ -424,7 +426,8 @@ type InstanceState struct {
 	MachineType pulumi.StringPtrInput
 	// Metadata key/value pairs to make available from
 	// within the instance. Ssh keys attached in the Cloud Console will be removed.
-	// Add them to your config in order to keep them attached to your instance.
+	// Add them to your config in order to keep them attached to your instance. A
+	// list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
 	Metadata pulumi.StringMapInput
 	// The unique fingerprint of the metadata.
 	MetadataFingerprint pulumi.StringPtrInput
@@ -533,7 +536,8 @@ type instanceArgs struct {
 	MachineType string `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within the instance. Ssh keys attached in the Cloud Console will be removed.
-	// Add them to your config in order to keep them attached to your instance.
+	// Add them to your config in order to keep them attached to your instance. A
+	// list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
 	Metadata map[string]string `pulumi:"metadata"`
 	// An alternative to using the
 	// startup-script metadata key, except this one forces the instance to be recreated
@@ -633,7 +637,8 @@ type InstanceArgs struct {
 	MachineType pulumi.StringInput
 	// Metadata key/value pairs to make available from
 	// within the instance. Ssh keys attached in the Cloud Console will be removed.
-	// Add them to your config in order to keep them attached to your instance.
+	// Add them to your config in order to keep them attached to your instance. A
+	// list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
 	Metadata pulumi.StringMapInput
 	// An alternative to using the
 	// startup-script metadata key, except this one forces the instance to be recreated
@@ -880,7 +885,8 @@ func (o InstanceOutput) MachineType() pulumi.StringOutput {
 
 // Metadata key/value pairs to make available from
 // within the instance. Ssh keys attached in the Cloud Console will be removed.
-// Add them to your config in order to keep them attached to your instance.
+// Add them to your config in order to keep them attached to your instance. A
+// list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
 func (o InstanceOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }

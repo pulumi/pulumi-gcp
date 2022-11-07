@@ -376,9 +376,11 @@ class Variable(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
             __props__.__dict__["project"] = project
-            __props__.__dict__["text"] = text
-            __props__.__dict__["value"] = value
+            __props__.__dict__["text"] = None if text is None else pulumi.Output.secret(text)
+            __props__.__dict__["value"] = None if value is None else pulumi.Output.secret(value)
             __props__.__dict__["update_time"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["text", "value"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Variable, __self__).__init__(
             'gcp:runtimeconfig/variable:Variable',
             resource_name,

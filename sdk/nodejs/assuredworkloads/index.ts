@@ -8,8 +8,8 @@ import * as utilities from "../utilities";
 export { WorkloadArgs, WorkloadState } from "./workload";
 export type Workload = import("./workload").Workload;
 export const Workload: typeof import("./workload").Workload = null as any;
-
 utilities.lazyLoad(exports, ["Workload"], () => require("./workload"));
+
 
 const _module = {
     version: utilities.getVersion(),

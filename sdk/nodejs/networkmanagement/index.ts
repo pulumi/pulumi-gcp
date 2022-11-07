@@ -8,8 +8,8 @@ import * as utilities from "../utilities";
 export { ConnectivityTestArgs, ConnectivityTestState } from "./connectivityTest";
 export type ConnectivityTest = import("./connectivityTest").ConnectivityTest;
 export const ConnectivityTest: typeof import("./connectivityTest").ConnectivityTest = null as any;
-
 utilities.lazyLoad(exports, ["ConnectivityTest"], () => require("./connectivityTest"));
+
 
 const _module = {
     version: utilities.getVersion(),

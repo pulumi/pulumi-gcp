@@ -22,7 +22,7 @@ class GetAuthorityResult:
     """
     A collection of values returned by getAuthority.
     """
-    def __init__(__self__, access_urls=None, certificate_authority_id=None, configs=None, create_time=None, deletion_protection=None, desired_state=None, gcs_bucket=None, id=None, ignore_active_certificates_on_deletion=None, key_specs=None, labels=None, lifetime=None, location=None, name=None, pem_ca_certificate=None, pem_ca_certificates=None, pem_csr=None, pool=None, project=None, state=None, subordinate_configs=None, type=None, update_time=None):
+    def __init__(__self__, access_urls=None, certificate_authority_id=None, configs=None, create_time=None, deletion_protection=None, desired_state=None, gcs_bucket=None, id=None, ignore_active_certificates_on_deletion=None, key_specs=None, labels=None, lifetime=None, location=None, name=None, pem_ca_certificate=None, pem_ca_certificates=None, pem_csr=None, pool=None, project=None, skip_grace_period=None, state=None, subordinate_configs=None, type=None, update_time=None):
         if access_urls and not isinstance(access_urls, list):
             raise TypeError("Expected argument 'access_urls' to be a list")
         pulumi.set(__self__, "access_urls", access_urls)
@@ -80,6 +80,9 @@ class GetAuthorityResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if skip_grace_period and not isinstance(skip_grace_period, bool):
+            raise TypeError("Expected argument 'skip_grace_period' to be a bool")
+        pulumi.set(__self__, "skip_grace_period", skip_grace_period)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -195,6 +198,11 @@ class GetAuthorityResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="skipGracePeriod")
+    def skip_grace_period(self) -> bool:
+        return pulumi.get(self, "skip_grace_period")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         return pulumi.get(self, "state")
@@ -240,6 +248,7 @@ class AwaitableGetAuthorityResult(GetAuthorityResult):
             pem_csr=self.pem_csr,
             pool=self.pool,
             project=self.project,
+            skip_grace_period=self.skip_grace_period,
             state=self.state,
             subordinate_configs=self.subordinate_configs,
             type=self.type,
@@ -301,6 +310,7 @@ def get_authority(certificate_authority_id: Optional[str] = None,
         pem_csr=__ret__.pem_csr,
         pool=__ret__.pool,
         project=__ret__.project,
+        skip_grace_period=__ret__.skip_grace_period,
         state=__ret__.state,
         subordinate_configs=__ret__.subordinate_configs,
         type=__ret__.type,

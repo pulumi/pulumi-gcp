@@ -299,6 +299,13 @@ func NewVPNTunnel(ctx *pulumi.Context,
 	if args.SharedSecret == nil {
 		return nil, errors.New("invalid value for required argument 'SharedSecret'")
 	}
+	if args.SharedSecret != nil {
+		args.SharedSecret = pulumi.ToSecret(args.SharedSecret).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"sharedSecret",
+	})
+	opts = append(opts, secrets)
 	var resource VPNTunnel
 	err := ctx.RegisterResource("gcp:compute/vPNTunnel:VPNTunnel", name, args, &resource, opts...)
 	if err != nil {

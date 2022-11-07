@@ -10,8 +10,53 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Vertex
 {
     /// <summary>
+    /// An entity type is a type of object in a system that needs to be modeled and have stored information about. For example, driver is an entity type, and driver0 is an instance of an entity type driver.
+    /// 
+    /// To get more information about FeaturestoreEntitytype, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+    /// 
     /// ## Example Usage
     /// ### Vertex Ai Featurestore Entitytype
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
+    ///     {
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Region = "us-central1",
+    ///         OnlineServingConfig = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigArgs
+    ///         {
+    ///             FixedNodeCount = 2,
+    ///         },
+    ///         EncryptionSpec = new Gcp.Vertex.Inputs.AiFeatureStoreEncryptionSpecArgs
+    ///         {
+    ///             KmsKeyName = "kms-name",
+    ///         },
+    ///     });
+    /// 
+    ///     var entity = new Gcp.Vertex.AiFeatureStoreEntityType("entity", new()
+    ///     {
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Featurestore = featurestore.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Vertex Ai Featurestore Entitytype With Beta Fields
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

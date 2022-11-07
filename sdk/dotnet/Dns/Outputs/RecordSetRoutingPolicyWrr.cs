@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Dns.Outputs
     public sealed class RecordSetRoutingPolicyWrr
     {
         /// <summary>
+        /// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+        /// Structure is document below.
+        /// </summary>
+        public readonly Outputs.RecordSetRoutingPolicyWrrHealthCheckedTargets? HealthCheckedTargets;
+        /// <summary>
         /// Same as `rrdatas` above.
         /// </summary>
         public readonly ImmutableArray<string> Rrdatas;
@@ -24,10 +29,13 @@ namespace Pulumi.Gcp.Dns.Outputs
 
         [OutputConstructor]
         private RecordSetRoutingPolicyWrr(
+            Outputs.RecordSetRoutingPolicyWrrHealthCheckedTargets? healthCheckedTargets,
+
             ImmutableArray<string> rrdatas,
 
             double weight)
         {
+            HealthCheckedTargets = healthCheckedTargets;
             Rrdatas = rrdatas;
             Weight = weight;
         }

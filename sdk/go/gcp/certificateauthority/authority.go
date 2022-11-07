@@ -321,7 +321,9 @@ type Authority struct {
 	Config AuthorityConfigOutput `pulumi:"config"`
 	// The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+	// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
 	DesiredState pulumi.StringPtrOutput `pulumi:"desiredState"`
@@ -363,6 +365,11 @@ type Authority struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// If this flag is set, the Certificate Authority will be deleted as soon as
+	// possible without a 30-day grace period where undeletion would have been
+	// allowed. If you proceed, there will be no way to recover this CA.
+	// Use with care. Defaults to `false`.
+	SkipGracePeriod pulumi.BoolPtrOutput `pulumi:"skipGracePeriod"`
 	// The State for this CertificateAuthority.
 	State pulumi.StringOutput `pulumi:"state"`
 	// If this is a subordinate CertificateAuthority, this field will be set
@@ -433,8 +440,10 @@ type authorityState struct {
 	Config *AuthorityConfig `pulumi:"config"`
 	// The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-	CreateTime         *string `pulumi:"createTime"`
-	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	CreateTime *string `pulumi:"createTime"`
+	// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+	// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
 	DesiredState *string `pulumi:"desiredState"`
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
@@ -475,6 +484,11 @@ type authorityState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// If this flag is set, the Certificate Authority will be deleted as soon as
+	// possible without a 30-day grace period where undeletion would have been
+	// allowed. If you proceed, there will be no way to recover this CA.
+	// Use with care. Defaults to `false`.
+	SkipGracePeriod *bool `pulumi:"skipGracePeriod"`
 	// The State for this CertificateAuthority.
 	State *string `pulumi:"state"`
 	// If this is a subordinate CertificateAuthority, this field will be set
@@ -502,7 +516,9 @@ type AuthorityState struct {
 	Config AuthorityConfigPtrInput
 	// The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-	CreateTime         pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
+	// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+	// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
 	DesiredState pulumi.StringPtrInput
@@ -544,6 +560,11 @@ type AuthorityState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// If this flag is set, the Certificate Authority will be deleted as soon as
+	// possible without a 30-day grace period where undeletion would have been
+	// allowed. If you proceed, there will be no way to recover this CA.
+	// Use with care. Defaults to `false`.
+	SkipGracePeriod pulumi.BoolPtrInput
 	// The State for this CertificateAuthority.
 	State pulumi.StringPtrInput
 	// If this is a subordinate CertificateAuthority, this field will be set
@@ -570,8 +591,10 @@ type authorityArgs struct {
 	CertificateAuthorityId string `pulumi:"certificateAuthorityId"`
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
-	Config             AuthorityConfig `pulumi:"config"`
-	DeletionProtection *bool           `pulumi:"deletionProtection"`
+	Config AuthorityConfig `pulumi:"config"`
+	// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+	// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
 	DesiredState *string `pulumi:"desiredState"`
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
@@ -606,6 +629,11 @@ type authorityArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// If this flag is set, the Certificate Authority will be deleted as soon as
+	// possible without a 30-day grace period where undeletion would have been
+	// allowed. If you proceed, there will be no way to recover this CA.
+	// Use with care. Defaults to `false`.
+	SkipGracePeriod *bool `pulumi:"skipGracePeriod"`
 	// If this is a subordinate CertificateAuthority, this field will be set
 	// with the subordinate configuration, which describes its issuers.
 	// Structure is documented below.
@@ -624,7 +652,9 @@ type AuthorityArgs struct {
 	CertificateAuthorityId pulumi.StringInput
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
-	Config             AuthorityConfigInput
+	Config AuthorityConfigInput
+	// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+	// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
 	DesiredState pulumi.StringPtrInput
@@ -660,6 +690,11 @@ type AuthorityArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// If this flag is set, the Certificate Authority will be deleted as soon as
+	// possible without a 30-day grace period where undeletion would have been
+	// allowed. If you proceed, there will be no way to recover this CA.
+	// Use with care. Defaults to `false`.
+	SkipGracePeriod pulumi.BoolPtrInput
 	// If this is a subordinate CertificateAuthority, this field will be set
 	// with the subordinate configuration, which describes its issuers.
 	// Structure is documented below.
@@ -781,6 +816,8 @@ func (o AuthorityOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
 func (o AuthorityOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Authority) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -859,6 +896,14 @@ func (o AuthorityOutput) Pool() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o AuthorityOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// If this flag is set, the Certificate Authority will be deleted as soon as
+// possible without a 30-day grace period where undeletion would have been
+// allowed. If you proceed, there will be no way to recover this CA.
+// Use with care. Defaults to `false`.
+func (o AuthorityOutput) SkipGracePeriod() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Authority) pulumi.BoolPtrOutput { return v.SkipGracePeriod }).(pulumi.BoolPtrOutput)
 }
 
 // The State for this CertificateAuthority.

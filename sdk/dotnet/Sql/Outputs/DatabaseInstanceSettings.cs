@@ -66,6 +66,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
         /// </summary>
         public readonly string Tier;
+        public readonly string? TimeZone;
         /// <summary>
         /// A set of key/value user label pairs to assign to the instance.
         /// </summary>
@@ -110,6 +111,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string tier,
 
+            string? timeZone,
+
             ImmutableDictionary<string, string>? userLabels,
 
             int? version)
@@ -132,6 +135,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             PricingPlan = pricingPlan;
             SqlServerAuditConfig = sqlServerAuditConfig;
             Tier = tier;
+            TimeZone = timeZone;
             UserLabels = userLabels;
             Version = version;
         }

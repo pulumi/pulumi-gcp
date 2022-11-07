@@ -1459,6 +1459,143 @@ func (o ConnectionProfilePostgresqlProfilePtrOutput) Username() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectionProfilePrivateConnectivity struct {
+	// A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
+	PrivateConnection string `pulumi:"privateConnection"`
+}
+
+// ConnectionProfilePrivateConnectivityInput is an input type that accepts ConnectionProfilePrivateConnectivityArgs and ConnectionProfilePrivateConnectivityOutput values.
+// You can construct a concrete instance of `ConnectionProfilePrivateConnectivityInput` via:
+//
+//	ConnectionProfilePrivateConnectivityArgs{...}
+type ConnectionProfilePrivateConnectivityInput interface {
+	pulumi.Input
+
+	ToConnectionProfilePrivateConnectivityOutput() ConnectionProfilePrivateConnectivityOutput
+	ToConnectionProfilePrivateConnectivityOutputWithContext(context.Context) ConnectionProfilePrivateConnectivityOutput
+}
+
+type ConnectionProfilePrivateConnectivityArgs struct {
+	// A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
+	PrivateConnection pulumi.StringInput `pulumi:"privateConnection"`
+}
+
+func (ConnectionProfilePrivateConnectivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfilePrivateConnectivity)(nil)).Elem()
+}
+
+func (i ConnectionProfilePrivateConnectivityArgs) ToConnectionProfilePrivateConnectivityOutput() ConnectionProfilePrivateConnectivityOutput {
+	return i.ToConnectionProfilePrivateConnectivityOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfilePrivateConnectivityArgs) ToConnectionProfilePrivateConnectivityOutputWithContext(ctx context.Context) ConnectionProfilePrivateConnectivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePrivateConnectivityOutput)
+}
+
+func (i ConnectionProfilePrivateConnectivityArgs) ToConnectionProfilePrivateConnectivityPtrOutput() ConnectionProfilePrivateConnectivityPtrOutput {
+	return i.ToConnectionProfilePrivateConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfilePrivateConnectivityArgs) ToConnectionProfilePrivateConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfilePrivateConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePrivateConnectivityOutput).ToConnectionProfilePrivateConnectivityPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfilePrivateConnectivityPtrInput is an input type that accepts ConnectionProfilePrivateConnectivityArgs, ConnectionProfilePrivateConnectivityPtr and ConnectionProfilePrivateConnectivityPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfilePrivateConnectivityPtrInput` via:
+//
+//	        ConnectionProfilePrivateConnectivityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfilePrivateConnectivityPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfilePrivateConnectivityPtrOutput() ConnectionProfilePrivateConnectivityPtrOutput
+	ToConnectionProfilePrivateConnectivityPtrOutputWithContext(context.Context) ConnectionProfilePrivateConnectivityPtrOutput
+}
+
+type connectionProfilePrivateConnectivityPtrType ConnectionProfilePrivateConnectivityArgs
+
+func ConnectionProfilePrivateConnectivityPtr(v *ConnectionProfilePrivateConnectivityArgs) ConnectionProfilePrivateConnectivityPtrInput {
+	return (*connectionProfilePrivateConnectivityPtrType)(v)
+}
+
+func (*connectionProfilePrivateConnectivityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfilePrivateConnectivity)(nil)).Elem()
+}
+
+func (i *connectionProfilePrivateConnectivityPtrType) ToConnectionProfilePrivateConnectivityPtrOutput() ConnectionProfilePrivateConnectivityPtrOutput {
+	return i.ToConnectionProfilePrivateConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfilePrivateConnectivityPtrType) ToConnectionProfilePrivateConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfilePrivateConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePrivateConnectivityPtrOutput)
+}
+
+type ConnectionProfilePrivateConnectivityOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfilePrivateConnectivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfilePrivateConnectivity)(nil)).Elem()
+}
+
+func (o ConnectionProfilePrivateConnectivityOutput) ToConnectionProfilePrivateConnectivityOutput() ConnectionProfilePrivateConnectivityOutput {
+	return o
+}
+
+func (o ConnectionProfilePrivateConnectivityOutput) ToConnectionProfilePrivateConnectivityOutputWithContext(ctx context.Context) ConnectionProfilePrivateConnectivityOutput {
+	return o
+}
+
+func (o ConnectionProfilePrivateConnectivityOutput) ToConnectionProfilePrivateConnectivityPtrOutput() ConnectionProfilePrivateConnectivityPtrOutput {
+	return o.ToConnectionProfilePrivateConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfilePrivateConnectivityOutput) ToConnectionProfilePrivateConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfilePrivateConnectivityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfilePrivateConnectivity) *ConnectionProfilePrivateConnectivity {
+		return &v
+	}).(ConnectionProfilePrivateConnectivityPtrOutput)
+}
+
+// A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
+func (o ConnectionProfilePrivateConnectivityOutput) PrivateConnection() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfilePrivateConnectivity) string { return v.PrivateConnection }).(pulumi.StringOutput)
+}
+
+type ConnectionProfilePrivateConnectivityPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfilePrivateConnectivityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfilePrivateConnectivity)(nil)).Elem()
+}
+
+func (o ConnectionProfilePrivateConnectivityPtrOutput) ToConnectionProfilePrivateConnectivityPtrOutput() ConnectionProfilePrivateConnectivityPtrOutput {
+	return o
+}
+
+func (o ConnectionProfilePrivateConnectivityPtrOutput) ToConnectionProfilePrivateConnectivityPtrOutputWithContext(ctx context.Context) ConnectionProfilePrivateConnectivityPtrOutput {
+	return o
+}
+
+func (o ConnectionProfilePrivateConnectivityPtrOutput) Elem() ConnectionProfilePrivateConnectivityOutput {
+	return o.ApplyT(func(v *ConnectionProfilePrivateConnectivity) ConnectionProfilePrivateConnectivity {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfilePrivateConnectivity
+		return ret
+	}).(ConnectionProfilePrivateConnectivityOutput)
+}
+
+// A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
+func (o ConnectionProfilePrivateConnectivityPtrOutput) PrivateConnection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfilePrivateConnectivity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateConnection
+	}).(pulumi.StringPtrOutput)
+}
+
 type PrivateConnectionVpcPeeringConfig struct {
 	// A free subnet for peering. (CIDR of /29)
 	Subnet string `pulumi:"subnet"`
@@ -1634,6 +1771,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileOracleProfilePtrInput)(nil)).Elem(), ConnectionProfileOracleProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlProfileInput)(nil)).Elem(), ConnectionProfilePostgresqlProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlProfilePtrInput)(nil)).Elem(), ConnectionProfilePostgresqlProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePrivateConnectivityInput)(nil)).Elem(), ConnectionProfilePrivateConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePrivateConnectivityPtrInput)(nil)).Elem(), ConnectionProfilePrivateConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionVpcPeeringConfigInput)(nil)).Elem(), PrivateConnectionVpcPeeringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionVpcPeeringConfigPtrInput)(nil)).Elem(), PrivateConnectionVpcPeeringConfigArgs{})
 	pulumi.RegisterOutputType(ConnectionProfileBigqueryProfileOutput{})
@@ -1650,6 +1789,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionProfileOracleProfilePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlProfileOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlProfilePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfilePrivateConnectivityOutput{})
+	pulumi.RegisterOutputType(ConnectionProfilePrivateConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionVpcPeeringConfigOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionVpcPeeringConfigPtrOutput{})
 }

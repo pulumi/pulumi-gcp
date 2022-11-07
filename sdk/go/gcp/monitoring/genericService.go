@@ -38,8 +38,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := monitoring.NewService(ctx, "myService", &monitoring.ServiceArgs{
-//				BasicService: &monitoring.ServiceBasicServiceArgs{
+//			_, err := monitoring.NewGenericService(ctx, "myService", &monitoring.GenericServiceArgs{
+//				BasicService: &monitoring.GenericServiceBasicServiceArgs{
 //					ServiceLabels: pulumi.StringMap{
 //						"moduleId": pulumi.String("another-module-id"),
 //					},
@@ -67,27 +67,29 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:monitoring/service:Service default projects/{{project}}/services/{{service_id}}
+//	$ pulumi import gcp:monitoring/genericService:GenericService default projects/{{project}}/services/{{service_id}}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:monitoring/service:Service default {{project}}/{{service_id}}
+//	$ pulumi import gcp:monitoring/genericService:GenericService default {{project}}/{{service_id}}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:monitoring/service:Service default {{service_id}}
+//	$ pulumi import gcp:monitoring/genericService:GenericService default {{service_id}}
 //
 // ```
-type Service struct {
+type GenericService struct {
 	pulumi.CustomResourceState
 
 	// A well-known service type, defined by its service type and service labels.
+	// Valid values are described at
+	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
 	// Structure is documented below.
-	BasicService ServiceBasicServicePtrOutput `pulumi:"basicService"`
+	BasicService GenericServiceBasicServicePtrOutput `pulumi:"basicService"`
 	// Name used for UI elements listing this Service.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
@@ -99,7 +101,7 @@ type Service struct {
 	// service ID.
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// Configuration for how to query telemetry on a Service.
-	Telemetries ServiceTelemetryArrayOutput `pulumi:"telemetries"`
+	Telemetries GenericServiceTelemetryArrayOutput `pulumi:"telemetries"`
 	// Labels which have been used to annotate the service. Label keys must start
 	// with a letter. Label keys and values may contain lowercase letters,
 	// numbers, underscores, and dashes. Label keys and values have a maximum
@@ -109,9 +111,9 @@ type Service struct {
 	UserLabels pulumi.StringMapOutput `pulumi:"userLabels"`
 }
 
-// NewService registers a new resource with the given unique name, arguments, and options.
-func NewService(ctx *pulumi.Context,
-	name string, args *ServiceArgs, opts ...pulumi.ResourceOption) (*Service, error) {
+// NewGenericService registers a new resource with the given unique name, arguments, and options.
+func NewGenericService(ctx *pulumi.Context,
+	name string, args *GenericServiceArgs, opts ...pulumi.ResourceOption) (*GenericService, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -119,31 +121,33 @@ func NewService(ctx *pulumi.Context,
 	if args.ServiceId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceId'")
 	}
-	var resource Service
-	err := ctx.RegisterResource("gcp:monitoring/service:Service", name, args, &resource, opts...)
+	var resource GenericService
+	err := ctx.RegisterResource("gcp:monitoring/genericService:GenericService", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetService gets an existing Service resource's state with the given name, ID, and optional
+// GetGenericService gets an existing GenericService resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetService(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *ServiceState, opts ...pulumi.ResourceOption) (*Service, error) {
-	var resource Service
-	err := ctx.ReadResource("gcp:monitoring/service:Service", name, id, state, &resource, opts...)
+func GetGenericService(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *GenericServiceState, opts ...pulumi.ResourceOption) (*GenericService, error) {
+	var resource GenericService
+	err := ctx.ReadResource("gcp:monitoring/genericService:GenericService", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering Service resources.
-type serviceState struct {
+// Input properties used for looking up and filtering GenericService resources.
+type genericServiceState struct {
 	// A well-known service type, defined by its service type and service labels.
+	// Valid values are described at
+	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
 	// Structure is documented below.
-	BasicService *ServiceBasicService `pulumi:"basicService"`
+	BasicService *GenericServiceBasicService `pulumi:"basicService"`
 	// Name used for UI elements listing this Service.
 	DisplayName *string `pulumi:"displayName"`
 	// The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
@@ -155,7 +159,7 @@ type serviceState struct {
 	// service ID.
 	ServiceId *string `pulumi:"serviceId"`
 	// Configuration for how to query telemetry on a Service.
-	Telemetries []ServiceTelemetry `pulumi:"telemetries"`
+	Telemetries []GenericServiceTelemetry `pulumi:"telemetries"`
 	// Labels which have been used to annotate the service. Label keys must start
 	// with a letter. Label keys and values may contain lowercase letters,
 	// numbers, underscores, and dashes. Label keys and values have a maximum
@@ -165,10 +169,12 @@ type serviceState struct {
 	UserLabels map[string]string `pulumi:"userLabels"`
 }
 
-type ServiceState struct {
+type GenericServiceState struct {
 	// A well-known service type, defined by its service type and service labels.
+	// Valid values are described at
+	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
 	// Structure is documented below.
-	BasicService ServiceBasicServicePtrInput
+	BasicService GenericServiceBasicServicePtrInput
 	// Name used for UI elements listing this Service.
 	DisplayName pulumi.StringPtrInput
 	// The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
@@ -180,7 +186,7 @@ type ServiceState struct {
 	// service ID.
 	ServiceId pulumi.StringPtrInput
 	// Configuration for how to query telemetry on a Service.
-	Telemetries ServiceTelemetryArrayInput
+	Telemetries GenericServiceTelemetryArrayInput
 	// Labels which have been used to annotate the service. Label keys must start
 	// with a letter. Label keys and values may contain lowercase letters,
 	// numbers, underscores, and dashes. Label keys and values have a maximum
@@ -190,14 +196,16 @@ type ServiceState struct {
 	UserLabels pulumi.StringMapInput
 }
 
-func (ServiceState) ElementType() reflect.Type {
-	return reflect.TypeOf((*serviceState)(nil)).Elem()
+func (GenericServiceState) ElementType() reflect.Type {
+	return reflect.TypeOf((*genericServiceState)(nil)).Elem()
 }
 
-type serviceArgs struct {
+type genericServiceArgs struct {
 	// A well-known service type, defined by its service type and service labels.
+	// Valid values are described at
+	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
 	// Structure is documented below.
-	BasicService *ServiceBasicService `pulumi:"basicService"`
+	BasicService *GenericServiceBasicService `pulumi:"basicService"`
 	// Name used for UI elements listing this Service.
 	DisplayName *string `pulumi:"displayName"`
 	// The ID of the project in which the resource belongs.
@@ -215,11 +223,13 @@ type serviceArgs struct {
 	UserLabels map[string]string `pulumi:"userLabels"`
 }
 
-// The set of arguments for constructing a Service resource.
-type ServiceArgs struct {
+// The set of arguments for constructing a GenericService resource.
+type GenericServiceArgs struct {
 	// A well-known service type, defined by its service type and service labels.
+	// Valid values are described at
+	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
 	// Structure is documented below.
-	BasicService ServiceBasicServicePtrInput
+	BasicService GenericServiceBasicServicePtrInput
 	// Name used for UI elements listing this Service.
 	DisplayName pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -237,124 +247,126 @@ type ServiceArgs struct {
 	UserLabels pulumi.StringMapInput
 }
 
-func (ServiceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*serviceArgs)(nil)).Elem()
+func (GenericServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*genericServiceArgs)(nil)).Elem()
 }
 
-type ServiceInput interface {
+type GenericServiceInput interface {
 	pulumi.Input
 
-	ToServiceOutput() ServiceOutput
-	ToServiceOutputWithContext(ctx context.Context) ServiceOutput
+	ToGenericServiceOutput() GenericServiceOutput
+	ToGenericServiceOutputWithContext(ctx context.Context) GenericServiceOutput
 }
 
-func (*Service) ElementType() reflect.Type {
-	return reflect.TypeOf((**Service)(nil)).Elem()
+func (*GenericService) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenericService)(nil)).Elem()
 }
 
-func (i *Service) ToServiceOutput() ServiceOutput {
-	return i.ToServiceOutputWithContext(context.Background())
+func (i *GenericService) ToGenericServiceOutput() GenericServiceOutput {
+	return i.ToGenericServiceOutputWithContext(context.Background())
 }
 
-func (i *Service) ToServiceOutputWithContext(ctx context.Context) ServiceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceOutput)
+func (i *GenericService) ToGenericServiceOutputWithContext(ctx context.Context) GenericServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenericServiceOutput)
 }
 
-// ServiceArrayInput is an input type that accepts ServiceArray and ServiceArrayOutput values.
-// You can construct a concrete instance of `ServiceArrayInput` via:
+// GenericServiceArrayInput is an input type that accepts GenericServiceArray and GenericServiceArrayOutput values.
+// You can construct a concrete instance of `GenericServiceArrayInput` via:
 //
-//	ServiceArray{ ServiceArgs{...} }
-type ServiceArrayInput interface {
+//	GenericServiceArray{ GenericServiceArgs{...} }
+type GenericServiceArrayInput interface {
 	pulumi.Input
 
-	ToServiceArrayOutput() ServiceArrayOutput
-	ToServiceArrayOutputWithContext(context.Context) ServiceArrayOutput
+	ToGenericServiceArrayOutput() GenericServiceArrayOutput
+	ToGenericServiceArrayOutputWithContext(context.Context) GenericServiceArrayOutput
 }
 
-type ServiceArray []ServiceInput
+type GenericServiceArray []GenericServiceInput
 
-func (ServiceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*Service)(nil)).Elem()
+func (GenericServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*GenericService)(nil)).Elem()
 }
 
-func (i ServiceArray) ToServiceArrayOutput() ServiceArrayOutput {
-	return i.ToServiceArrayOutputWithContext(context.Background())
+func (i GenericServiceArray) ToGenericServiceArrayOutput() GenericServiceArrayOutput {
+	return i.ToGenericServiceArrayOutputWithContext(context.Background())
 }
 
-func (i ServiceArray) ToServiceArrayOutputWithContext(ctx context.Context) ServiceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceArrayOutput)
+func (i GenericServiceArray) ToGenericServiceArrayOutputWithContext(ctx context.Context) GenericServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenericServiceArrayOutput)
 }
 
-// ServiceMapInput is an input type that accepts ServiceMap and ServiceMapOutput values.
-// You can construct a concrete instance of `ServiceMapInput` via:
+// GenericServiceMapInput is an input type that accepts GenericServiceMap and GenericServiceMapOutput values.
+// You can construct a concrete instance of `GenericServiceMapInput` via:
 //
-//	ServiceMap{ "key": ServiceArgs{...} }
-type ServiceMapInput interface {
+//	GenericServiceMap{ "key": GenericServiceArgs{...} }
+type GenericServiceMapInput interface {
 	pulumi.Input
 
-	ToServiceMapOutput() ServiceMapOutput
-	ToServiceMapOutputWithContext(context.Context) ServiceMapOutput
+	ToGenericServiceMapOutput() GenericServiceMapOutput
+	ToGenericServiceMapOutputWithContext(context.Context) GenericServiceMapOutput
 }
 
-type ServiceMap map[string]ServiceInput
+type GenericServiceMap map[string]GenericServiceInput
 
-func (ServiceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*Service)(nil)).Elem()
+func (GenericServiceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*GenericService)(nil)).Elem()
 }
 
-func (i ServiceMap) ToServiceMapOutput() ServiceMapOutput {
-	return i.ToServiceMapOutputWithContext(context.Background())
+func (i GenericServiceMap) ToGenericServiceMapOutput() GenericServiceMapOutput {
+	return i.ToGenericServiceMapOutputWithContext(context.Background())
 }
 
-func (i ServiceMap) ToServiceMapOutputWithContext(ctx context.Context) ServiceMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceMapOutput)
+func (i GenericServiceMap) ToGenericServiceMapOutputWithContext(ctx context.Context) GenericServiceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenericServiceMapOutput)
 }
 
-type ServiceOutput struct{ *pulumi.OutputState }
+type GenericServiceOutput struct{ *pulumi.OutputState }
 
-func (ServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Service)(nil)).Elem()
+func (GenericServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenericService)(nil)).Elem()
 }
 
-func (o ServiceOutput) ToServiceOutput() ServiceOutput {
+func (o GenericServiceOutput) ToGenericServiceOutput() GenericServiceOutput {
 	return o
 }
 
-func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOutput {
+func (o GenericServiceOutput) ToGenericServiceOutputWithContext(ctx context.Context) GenericServiceOutput {
 	return o
 }
 
 // A well-known service type, defined by its service type and service labels.
+// Valid values are described at
+// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
 // Structure is documented below.
-func (o ServiceOutput) BasicService() ServiceBasicServicePtrOutput {
-	return o.ApplyT(func(v *Service) ServiceBasicServicePtrOutput { return v.BasicService }).(ServiceBasicServicePtrOutput)
+func (o GenericServiceOutput) BasicService() GenericServiceBasicServicePtrOutput {
+	return o.ApplyT(func(v *GenericService) GenericServiceBasicServicePtrOutput { return v.BasicService }).(GenericServiceBasicServicePtrOutput)
 }
 
 // Name used for UI elements listing this Service.
-func (o ServiceOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+func (o GenericServiceOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GenericService) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
-func (o ServiceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+func (o GenericServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GenericService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-func (o ServiceOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o GenericServiceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *GenericService) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // An optional service ID to use. If not given, the server will generate a
 // service ID.
-func (o ServiceOutput) ServiceId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
+func (o GenericServiceOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GenericService) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }
 
 // Configuration for how to query telemetry on a Service.
-func (o ServiceOutput) Telemetries() ServiceTelemetryArrayOutput {
-	return o.ApplyT(func(v *Service) ServiceTelemetryArrayOutput { return v.Telemetries }).(ServiceTelemetryArrayOutput)
+func (o GenericServiceOutput) Telemetries() GenericServiceTelemetryArrayOutput {
+	return o.ApplyT(func(v *GenericService) GenericServiceTelemetryArrayOutput { return v.Telemetries }).(GenericServiceTelemetryArrayOutput)
 }
 
 // Labels which have been used to annotate the service. Label keys must start
@@ -363,55 +375,55 @@ func (o ServiceOutput) Telemetries() ServiceTelemetryArrayOutput {
 // length of 63 characters, and must be less than 128 bytes in size. Up to 64
 // label entries may be stored. For labels which do not have a semantic value,
 // the empty string may be supplied for the label value.
-func (o ServiceOutput) UserLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.UserLabels }).(pulumi.StringMapOutput)
+func (o GenericServiceOutput) UserLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GenericService) pulumi.StringMapOutput { return v.UserLabels }).(pulumi.StringMapOutput)
 }
 
-type ServiceArrayOutput struct{ *pulumi.OutputState }
+type GenericServiceArrayOutput struct{ *pulumi.OutputState }
 
-func (ServiceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*Service)(nil)).Elem()
+func (GenericServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*GenericService)(nil)).Elem()
 }
 
-func (o ServiceArrayOutput) ToServiceArrayOutput() ServiceArrayOutput {
+func (o GenericServiceArrayOutput) ToGenericServiceArrayOutput() GenericServiceArrayOutput {
 	return o
 }
 
-func (o ServiceArrayOutput) ToServiceArrayOutputWithContext(ctx context.Context) ServiceArrayOutput {
+func (o GenericServiceArrayOutput) ToGenericServiceArrayOutputWithContext(ctx context.Context) GenericServiceArrayOutput {
 	return o
 }
 
-func (o ServiceArrayOutput) Index(i pulumi.IntInput) ServiceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Service {
-		return vs[0].([]*Service)[vs[1].(int)]
-	}).(ServiceOutput)
+func (o GenericServiceArrayOutput) Index(i pulumi.IntInput) GenericServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GenericService {
+		return vs[0].([]*GenericService)[vs[1].(int)]
+	}).(GenericServiceOutput)
 }
 
-type ServiceMapOutput struct{ *pulumi.OutputState }
+type GenericServiceMapOutput struct{ *pulumi.OutputState }
 
-func (ServiceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*Service)(nil)).Elem()
+func (GenericServiceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*GenericService)(nil)).Elem()
 }
 
-func (o ServiceMapOutput) ToServiceMapOutput() ServiceMapOutput {
+func (o GenericServiceMapOutput) ToGenericServiceMapOutput() GenericServiceMapOutput {
 	return o
 }
 
-func (o ServiceMapOutput) ToServiceMapOutputWithContext(ctx context.Context) ServiceMapOutput {
+func (o GenericServiceMapOutput) ToGenericServiceMapOutputWithContext(ctx context.Context) GenericServiceMapOutput {
 	return o
 }
 
-func (o ServiceMapOutput) MapIndex(k pulumi.StringInput) ServiceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Service {
-		return vs[0].(map[string]*Service)[vs[1].(string)]
-	}).(ServiceOutput)
+func (o GenericServiceMapOutput) MapIndex(k pulumi.StringInput) GenericServiceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *GenericService {
+		return vs[0].(map[string]*GenericService)[vs[1].(string)]
+	}).(GenericServiceOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceInput)(nil)).Elem(), &Service{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceArrayInput)(nil)).Elem(), ServiceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMapInput)(nil)).Elem(), ServiceMap{})
-	pulumi.RegisterOutputType(ServiceOutput{})
-	pulumi.RegisterOutputType(ServiceArrayOutput{})
-	pulumi.RegisterOutputType(ServiceMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenericServiceInput)(nil)).Elem(), &GenericService{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenericServiceArrayInput)(nil)).Elem(), GenericServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenericServiceMapInput)(nil)).Elem(), GenericServiceMap{})
+	pulumi.RegisterOutputType(GenericServiceOutput{})
+	pulumi.RegisterOutputType(GenericServiceArrayOutput{})
+	pulumi.RegisterOutputType(GenericServiceMapOutput{})
 }

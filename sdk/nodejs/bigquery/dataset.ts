@@ -220,6 +220,10 @@ export class Dataset extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
+     * Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+     */
+    public readonly maxTimeTravelHours!: pulumi.Output<string | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -255,6 +259,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["maxTimeTravelHours"] = state ? state.maxTimeTravelHours : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
@@ -272,6 +277,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["maxTimeTravelHours"] = args ? args.maxTimeTravelHours : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -350,6 +356,10 @@ export interface DatasetState {
      */
     location?: pulumi.Input<string>;
     /**
+     * Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+     */
+    maxTimeTravelHours?: pulumi.Input<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -414,6 +424,10 @@ export interface DatasetArgs {
      * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
      */
     location?: pulumi.Input<string>;
+    /**
+     * Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+     */
+    maxTimeTravelHours?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

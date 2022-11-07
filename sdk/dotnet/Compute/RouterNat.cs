@@ -118,6 +118,91 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Router Nat Rules
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var net = new Gcp.Compute.Network("net", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var subnet = new Gcp.Compute.Subnetwork("subnet", new()
+    ///     {
+    ///         Network = net.Id,
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    ///     var router = new Gcp.Compute.Router("router", new()
+    ///     {
+    ///         Region = subnet.Region,
+    ///         Network = net.Id,
+    ///     });
+    /// 
+    ///     var addr1 = new Gcp.Compute.Address("addr1", new()
+    ///     {
+    ///         Region = subnet.Region,
+    ///     });
+    /// 
+    ///     var addr2 = new Gcp.Compute.Address("addr2", new()
+    ///     {
+    ///         Region = subnet.Region,
+    ///     });
+    /// 
+    ///     var addr3 = new Gcp.Compute.Address("addr3", new()
+    ///     {
+    ///         Region = subnet.Region,
+    ///     });
+    /// 
+    ///     var natRules = new Gcp.Compute.RouterNat("natRules", new()
+    ///     {
+    ///         Router = router.Name,
+    ///         Region = router.Region,
+    ///         NatIpAllocateOption = "MANUAL_ONLY",
+    ///         NatIps = new[]
+    ///         {
+    ///             addr1.SelfLink,
+    ///         },
+    ///         SourceSubnetworkIpRangesToNat = "LIST_OF_SUBNETWORKS",
+    ///         Subnetworks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RouterNatSubnetworkArgs
+    ///             {
+    ///                 Name = subnet.Id,
+    ///                 SourceIpRangesToNats = new[]
+    ///                 {
+    ///                     "ALL_IP_RANGES",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RouterNatRuleArgs
+    ///             {
+    ///                 RuleNumber = 100,
+    ///                 Description = "nat rules example",
+    ///                 Match = "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')",
+    ///                 Action = new Gcp.Compute.Inputs.RouterNatRuleActionArgs
+    ///                 {
+    ///                     SourceNatActiveIps = new[]
+    ///                     {
+    ///                         addr2.SelfLink,
+    ///                         addr3.SelfLink,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         EnableEndpointIndependentMapping = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -233,6 +318,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("router")]
         public Output<string> Router { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of rules associated with this NAT.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("rules")]
+        public Output<ImmutableArray<Outputs.RouterNatRule>> Rules { get; private set; } = null!;
 
         /// <summary>
         /// How NAT should be configured per Subnetwork.
@@ -428,6 +520,19 @@ namespace Pulumi.Gcp.Compute
         [Input("router", required: true)]
         public Input<string> Router { get; set; } = null!;
 
+        [Input("rules")]
+        private InputList<Inputs.RouterNatRuleArgs>? _rules;
+
+        /// <summary>
+        /// A list of rules associated with this NAT.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RouterNatRuleArgs> Rules
+        {
+            get => _rules ?? (_rules = new InputList<Inputs.RouterNatRuleArgs>());
+            set => _rules = value;
+        }
+
         /// <summary>
         /// How NAT should be configured per Subnetwork.
         /// If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
@@ -589,6 +694,19 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("router")]
         public Input<string>? Router { get; set; }
+
+        [Input("rules")]
+        private InputList<Inputs.RouterNatRuleGetArgs>? _rules;
+
+        /// <summary>
+        /// A list of rules associated with this NAT.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RouterNatRuleGetArgs> Rules
+        {
+            get => _rules ?? (_rules = new InputList<Inputs.RouterNatRuleGetArgs>());
+            set => _rules = value;
+        }
 
         /// <summary>
         /// How NAT should be configured per Subnetwork.

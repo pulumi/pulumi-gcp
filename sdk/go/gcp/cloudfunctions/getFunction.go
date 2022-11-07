@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudfunctions.LookupFunction(ctx, &cloudfunctions.LookupFunctionArgs{
+//			_, err = cloudfunctions.LookupFunction(ctx, &cloudfunctions.LookupFunctionArgs{
 //				Name: "function",
 //			}, nil)
 //			if err != nil {

@@ -147,15 +147,20 @@ import javax.annotation.Nullable;
  *                         .object(&#34;source_code.tar.gz&#34;)
  *                         .build())
  *                     .build())
- *                 .steps(TriggerBuildStepArgs.builder()
- *                     .args(                    
- *                         &#34;cp&#34;,
- *                         &#34;gs://mybucket/remotefile.zip&#34;,
- *                         &#34;localfile.zip&#34;)
- *                     .name(&#34;gcr.io/cloud-builders/gsutil&#34;)
- *                     .secretEnv(&#34;MY_SECRET&#34;)
- *                     .timeout(&#34;120s&#34;)
- *                     .build())
+ *                 .steps(                
+ *                     TriggerBuildStepArgs.builder()
+ *                         .args(                        
+ *                             &#34;cp&#34;,
+ *                             &#34;gs://mybucket/remotefile.zip&#34;,
+ *                             &#34;localfile.zip&#34;)
+ *                         .name(&#34;gcr.io/cloud-builders/gsutil&#34;)
+ *                         .secretEnv(&#34;MY_SECRET&#34;)
+ *                         .timeout(&#34;120s&#34;)
+ *                         .build(),
+ *                     TriggerBuildStepArgs.builder()
+ *                         .name(&#34;ubuntu&#34;)
+ *                         .script(&#34;echo hello&#34;)
+ *                         .build())
  *                 .substitutions(Map.ofEntries(
  *                     Map.entry(&#34;_BAZ&#34;, &#34;qux&#34;),
  *                     Map.entry(&#34;_FOO&#34;, &#34;bar&#34;)

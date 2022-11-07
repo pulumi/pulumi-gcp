@@ -535,11 +535,13 @@ class User(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance'")
             __props__.__dict__["instance"] = instance
             __props__.__dict__["name"] = name
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["password_policy"] = password_policy
             __props__.__dict__["project"] = project
             __props__.__dict__["type"] = type
             __props__.__dict__["sql_server_user_details"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(User, __self__).__init__(
             'gcp:sql/user:User',
             resource_name,

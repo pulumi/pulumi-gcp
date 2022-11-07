@@ -151,6 +151,847 @@ func (o AiDatasetEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AiEndpointDeployedModel struct {
+	AutomaticResources []AiEndpointDeployedModelAutomaticResource `pulumi:"automaticResources"`
+	CreateTime         *string                                    `pulumi:"createTime"`
+	DedicatedResources []AiEndpointDeployedModelDedicatedResource `pulumi:"dedicatedResources"`
+	// Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+	DisplayName            *string `pulumi:"displayName"`
+	EnableAccessLogging    *bool   `pulumi:"enableAccessLogging"`
+	EnableContainerLogging *bool   `pulumi:"enableContainerLogging"`
+	// an identifier for the resource with format `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+	Id               *string                                  `pulumi:"id"`
+	Model            *string                                  `pulumi:"model"`
+	ModelVersionId   *string                                  `pulumi:"modelVersionId"`
+	PrivateEndpoints []AiEndpointDeployedModelPrivateEndpoint `pulumi:"privateEndpoints"`
+	ServiceAccount   *string                                  `pulumi:"serviceAccount"`
+	SharedResources  *string                                  `pulumi:"sharedResources"`
+}
+
+// AiEndpointDeployedModelInput is an input type that accepts AiEndpointDeployedModelArgs and AiEndpointDeployedModelOutput values.
+// You can construct a concrete instance of `AiEndpointDeployedModelInput` via:
+//
+//	AiEndpointDeployedModelArgs{...}
+type AiEndpointDeployedModelInput interface {
+	pulumi.Input
+
+	ToAiEndpointDeployedModelOutput() AiEndpointDeployedModelOutput
+	ToAiEndpointDeployedModelOutputWithContext(context.Context) AiEndpointDeployedModelOutput
+}
+
+type AiEndpointDeployedModelArgs struct {
+	AutomaticResources AiEndpointDeployedModelAutomaticResourceArrayInput `pulumi:"automaticResources"`
+	CreateTime         pulumi.StringPtrInput                              `pulumi:"createTime"`
+	DedicatedResources AiEndpointDeployedModelDedicatedResourceArrayInput `pulumi:"dedicatedResources"`
+	// Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+	DisplayName            pulumi.StringPtrInput `pulumi:"displayName"`
+	EnableAccessLogging    pulumi.BoolPtrInput   `pulumi:"enableAccessLogging"`
+	EnableContainerLogging pulumi.BoolPtrInput   `pulumi:"enableContainerLogging"`
+	// an identifier for the resource with format `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+	Id               pulumi.StringPtrInput                            `pulumi:"id"`
+	Model            pulumi.StringPtrInput                            `pulumi:"model"`
+	ModelVersionId   pulumi.StringPtrInput                            `pulumi:"modelVersionId"`
+	PrivateEndpoints AiEndpointDeployedModelPrivateEndpointArrayInput `pulumi:"privateEndpoints"`
+	ServiceAccount   pulumi.StringPtrInput                            `pulumi:"serviceAccount"`
+	SharedResources  pulumi.StringPtrInput                            `pulumi:"sharedResources"`
+}
+
+func (AiEndpointDeployedModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointDeployedModel)(nil)).Elem()
+}
+
+func (i AiEndpointDeployedModelArgs) ToAiEndpointDeployedModelOutput() AiEndpointDeployedModelOutput {
+	return i.ToAiEndpointDeployedModelOutputWithContext(context.Background())
+}
+
+func (i AiEndpointDeployedModelArgs) ToAiEndpointDeployedModelOutputWithContext(ctx context.Context) AiEndpointDeployedModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelOutput)
+}
+
+// AiEndpointDeployedModelArrayInput is an input type that accepts AiEndpointDeployedModelArray and AiEndpointDeployedModelArrayOutput values.
+// You can construct a concrete instance of `AiEndpointDeployedModelArrayInput` via:
+//
+//	AiEndpointDeployedModelArray{ AiEndpointDeployedModelArgs{...} }
+type AiEndpointDeployedModelArrayInput interface {
+	pulumi.Input
+
+	ToAiEndpointDeployedModelArrayOutput() AiEndpointDeployedModelArrayOutput
+	ToAiEndpointDeployedModelArrayOutputWithContext(context.Context) AiEndpointDeployedModelArrayOutput
+}
+
+type AiEndpointDeployedModelArray []AiEndpointDeployedModelInput
+
+func (AiEndpointDeployedModelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointDeployedModel)(nil)).Elem()
+}
+
+func (i AiEndpointDeployedModelArray) ToAiEndpointDeployedModelArrayOutput() AiEndpointDeployedModelArrayOutput {
+	return i.ToAiEndpointDeployedModelArrayOutputWithContext(context.Background())
+}
+
+func (i AiEndpointDeployedModelArray) ToAiEndpointDeployedModelArrayOutputWithContext(ctx context.Context) AiEndpointDeployedModelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelArrayOutput)
+}
+
+type AiEndpointDeployedModelOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointDeployedModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointDeployedModel)(nil)).Elem()
+}
+
+func (o AiEndpointDeployedModelOutput) ToAiEndpointDeployedModelOutput() AiEndpointDeployedModelOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelOutput) ToAiEndpointDeployedModelOutputWithContext(ctx context.Context) AiEndpointDeployedModelOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelOutput) AutomaticResources() AiEndpointDeployedModelAutomaticResourceArrayOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModel) []AiEndpointDeployedModelAutomaticResource {
+		return v.AutomaticResources
+	}).(AiEndpointDeployedModelAutomaticResourceArrayOutput)
+}
+
+func (o AiEndpointDeployedModelOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModel) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+func (o AiEndpointDeployedModelOutput) DedicatedResources() AiEndpointDeployedModelDedicatedResourceArrayOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModel) []AiEndpointDeployedModelDedicatedResource {
+		return v.DedicatedResources
+	}).(AiEndpointDeployedModelDedicatedResourceArrayOutput)
+}
+
+// Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+func (o AiEndpointDeployedModelOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModel) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+func (o AiEndpointDeployedModelOutput) EnableAccessLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModel) *bool { return v.EnableAccessLogging }).(pulumi.BoolPtrOutput)
+}
+
+func (o AiEndpointDeployedModelOutput) EnableContainerLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModel) *bool { return v.EnableContainerLogging }).(pulumi.BoolPtrOutput)
+}
+
+// an identifier for the resource with format `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+func (o AiEndpointDeployedModelOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModel) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o AiEndpointDeployedModelOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModel) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+func (o AiEndpointDeployedModelOutput) ModelVersionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModel) *string { return v.ModelVersionId }).(pulumi.StringPtrOutput)
+}
+
+func (o AiEndpointDeployedModelOutput) PrivateEndpoints() AiEndpointDeployedModelPrivateEndpointArrayOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModel) []AiEndpointDeployedModelPrivateEndpoint { return v.PrivateEndpoints }).(AiEndpointDeployedModelPrivateEndpointArrayOutput)
+}
+
+func (o AiEndpointDeployedModelOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModel) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+func (o AiEndpointDeployedModelOutput) SharedResources() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModel) *string { return v.SharedResources }).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointDeployedModelArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointDeployedModelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointDeployedModel)(nil)).Elem()
+}
+
+func (o AiEndpointDeployedModelArrayOutput) ToAiEndpointDeployedModelArrayOutput() AiEndpointDeployedModelArrayOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelArrayOutput) ToAiEndpointDeployedModelArrayOutputWithContext(ctx context.Context) AiEndpointDeployedModelArrayOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelArrayOutput) Index(i pulumi.IntInput) AiEndpointDeployedModelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEndpointDeployedModel {
+		return vs[0].([]AiEndpointDeployedModel)[vs[1].(int)]
+	}).(AiEndpointDeployedModelOutput)
+}
+
+type AiEndpointDeployedModelAutomaticResource struct {
+	MaxReplicaCount *int `pulumi:"maxReplicaCount"`
+	MinReplicaCount *int `pulumi:"minReplicaCount"`
+}
+
+// AiEndpointDeployedModelAutomaticResourceInput is an input type that accepts AiEndpointDeployedModelAutomaticResourceArgs and AiEndpointDeployedModelAutomaticResourceOutput values.
+// You can construct a concrete instance of `AiEndpointDeployedModelAutomaticResourceInput` via:
+//
+//	AiEndpointDeployedModelAutomaticResourceArgs{...}
+type AiEndpointDeployedModelAutomaticResourceInput interface {
+	pulumi.Input
+
+	ToAiEndpointDeployedModelAutomaticResourceOutput() AiEndpointDeployedModelAutomaticResourceOutput
+	ToAiEndpointDeployedModelAutomaticResourceOutputWithContext(context.Context) AiEndpointDeployedModelAutomaticResourceOutput
+}
+
+type AiEndpointDeployedModelAutomaticResourceArgs struct {
+	MaxReplicaCount pulumi.IntPtrInput `pulumi:"maxReplicaCount"`
+	MinReplicaCount pulumi.IntPtrInput `pulumi:"minReplicaCount"`
+}
+
+func (AiEndpointDeployedModelAutomaticResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointDeployedModelAutomaticResource)(nil)).Elem()
+}
+
+func (i AiEndpointDeployedModelAutomaticResourceArgs) ToAiEndpointDeployedModelAutomaticResourceOutput() AiEndpointDeployedModelAutomaticResourceOutput {
+	return i.ToAiEndpointDeployedModelAutomaticResourceOutputWithContext(context.Background())
+}
+
+func (i AiEndpointDeployedModelAutomaticResourceArgs) ToAiEndpointDeployedModelAutomaticResourceOutputWithContext(ctx context.Context) AiEndpointDeployedModelAutomaticResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelAutomaticResourceOutput)
+}
+
+// AiEndpointDeployedModelAutomaticResourceArrayInput is an input type that accepts AiEndpointDeployedModelAutomaticResourceArray and AiEndpointDeployedModelAutomaticResourceArrayOutput values.
+// You can construct a concrete instance of `AiEndpointDeployedModelAutomaticResourceArrayInput` via:
+//
+//	AiEndpointDeployedModelAutomaticResourceArray{ AiEndpointDeployedModelAutomaticResourceArgs{...} }
+type AiEndpointDeployedModelAutomaticResourceArrayInput interface {
+	pulumi.Input
+
+	ToAiEndpointDeployedModelAutomaticResourceArrayOutput() AiEndpointDeployedModelAutomaticResourceArrayOutput
+	ToAiEndpointDeployedModelAutomaticResourceArrayOutputWithContext(context.Context) AiEndpointDeployedModelAutomaticResourceArrayOutput
+}
+
+type AiEndpointDeployedModelAutomaticResourceArray []AiEndpointDeployedModelAutomaticResourceInput
+
+func (AiEndpointDeployedModelAutomaticResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointDeployedModelAutomaticResource)(nil)).Elem()
+}
+
+func (i AiEndpointDeployedModelAutomaticResourceArray) ToAiEndpointDeployedModelAutomaticResourceArrayOutput() AiEndpointDeployedModelAutomaticResourceArrayOutput {
+	return i.ToAiEndpointDeployedModelAutomaticResourceArrayOutputWithContext(context.Background())
+}
+
+func (i AiEndpointDeployedModelAutomaticResourceArray) ToAiEndpointDeployedModelAutomaticResourceArrayOutputWithContext(ctx context.Context) AiEndpointDeployedModelAutomaticResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelAutomaticResourceArrayOutput)
+}
+
+type AiEndpointDeployedModelAutomaticResourceOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointDeployedModelAutomaticResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointDeployedModelAutomaticResource)(nil)).Elem()
+}
+
+func (o AiEndpointDeployedModelAutomaticResourceOutput) ToAiEndpointDeployedModelAutomaticResourceOutput() AiEndpointDeployedModelAutomaticResourceOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelAutomaticResourceOutput) ToAiEndpointDeployedModelAutomaticResourceOutputWithContext(ctx context.Context) AiEndpointDeployedModelAutomaticResourceOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelAutomaticResourceOutput) MaxReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModelAutomaticResource) *int { return v.MaxReplicaCount }).(pulumi.IntPtrOutput)
+}
+
+func (o AiEndpointDeployedModelAutomaticResourceOutput) MinReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModelAutomaticResource) *int { return v.MinReplicaCount }).(pulumi.IntPtrOutput)
+}
+
+type AiEndpointDeployedModelAutomaticResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointDeployedModelAutomaticResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointDeployedModelAutomaticResource)(nil)).Elem()
+}
+
+func (o AiEndpointDeployedModelAutomaticResourceArrayOutput) ToAiEndpointDeployedModelAutomaticResourceArrayOutput() AiEndpointDeployedModelAutomaticResourceArrayOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelAutomaticResourceArrayOutput) ToAiEndpointDeployedModelAutomaticResourceArrayOutputWithContext(ctx context.Context) AiEndpointDeployedModelAutomaticResourceArrayOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelAutomaticResourceArrayOutput) Index(i pulumi.IntInput) AiEndpointDeployedModelAutomaticResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEndpointDeployedModelAutomaticResource {
+		return vs[0].([]AiEndpointDeployedModelAutomaticResource)[vs[1].(int)]
+	}).(AiEndpointDeployedModelAutomaticResourceOutput)
+}
+
+type AiEndpointDeployedModelDedicatedResource struct {
+	AutoscalingMetricSpecs []AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec `pulumi:"autoscalingMetricSpecs"`
+	MachineSpecs           []AiEndpointDeployedModelDedicatedResourceMachineSpec           `pulumi:"machineSpecs"`
+	MaxReplicaCount        *int                                                            `pulumi:"maxReplicaCount"`
+	MinReplicaCount        *int                                                            `pulumi:"minReplicaCount"`
+}
+
+// AiEndpointDeployedModelDedicatedResourceInput is an input type that accepts AiEndpointDeployedModelDedicatedResourceArgs and AiEndpointDeployedModelDedicatedResourceOutput values.
+// You can construct a concrete instance of `AiEndpointDeployedModelDedicatedResourceInput` via:
+//
+//	AiEndpointDeployedModelDedicatedResourceArgs{...}
+type AiEndpointDeployedModelDedicatedResourceInput interface {
+	pulumi.Input
+
+	ToAiEndpointDeployedModelDedicatedResourceOutput() AiEndpointDeployedModelDedicatedResourceOutput
+	ToAiEndpointDeployedModelDedicatedResourceOutputWithContext(context.Context) AiEndpointDeployedModelDedicatedResourceOutput
+}
+
+type AiEndpointDeployedModelDedicatedResourceArgs struct {
+	AutoscalingMetricSpecs AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayInput `pulumi:"autoscalingMetricSpecs"`
+	MachineSpecs           AiEndpointDeployedModelDedicatedResourceMachineSpecArrayInput           `pulumi:"machineSpecs"`
+	MaxReplicaCount        pulumi.IntPtrInput                                                      `pulumi:"maxReplicaCount"`
+	MinReplicaCount        pulumi.IntPtrInput                                                      `pulumi:"minReplicaCount"`
+}
+
+func (AiEndpointDeployedModelDedicatedResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointDeployedModelDedicatedResource)(nil)).Elem()
+}
+
+func (i AiEndpointDeployedModelDedicatedResourceArgs) ToAiEndpointDeployedModelDedicatedResourceOutput() AiEndpointDeployedModelDedicatedResourceOutput {
+	return i.ToAiEndpointDeployedModelDedicatedResourceOutputWithContext(context.Background())
+}
+
+func (i AiEndpointDeployedModelDedicatedResourceArgs) ToAiEndpointDeployedModelDedicatedResourceOutputWithContext(ctx context.Context) AiEndpointDeployedModelDedicatedResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelDedicatedResourceOutput)
+}
+
+// AiEndpointDeployedModelDedicatedResourceArrayInput is an input type that accepts AiEndpointDeployedModelDedicatedResourceArray and AiEndpointDeployedModelDedicatedResourceArrayOutput values.
+// You can construct a concrete instance of `AiEndpointDeployedModelDedicatedResourceArrayInput` via:
+//
+//	AiEndpointDeployedModelDedicatedResourceArray{ AiEndpointDeployedModelDedicatedResourceArgs{...} }
+type AiEndpointDeployedModelDedicatedResourceArrayInput interface {
+	pulumi.Input
+
+	ToAiEndpointDeployedModelDedicatedResourceArrayOutput() AiEndpointDeployedModelDedicatedResourceArrayOutput
+	ToAiEndpointDeployedModelDedicatedResourceArrayOutputWithContext(context.Context) AiEndpointDeployedModelDedicatedResourceArrayOutput
+}
+
+type AiEndpointDeployedModelDedicatedResourceArray []AiEndpointDeployedModelDedicatedResourceInput
+
+func (AiEndpointDeployedModelDedicatedResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointDeployedModelDedicatedResource)(nil)).Elem()
+}
+
+func (i AiEndpointDeployedModelDedicatedResourceArray) ToAiEndpointDeployedModelDedicatedResourceArrayOutput() AiEndpointDeployedModelDedicatedResourceArrayOutput {
+	return i.ToAiEndpointDeployedModelDedicatedResourceArrayOutputWithContext(context.Background())
+}
+
+func (i AiEndpointDeployedModelDedicatedResourceArray) ToAiEndpointDeployedModelDedicatedResourceArrayOutputWithContext(ctx context.Context) AiEndpointDeployedModelDedicatedResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelDedicatedResourceArrayOutput)
+}
+
+type AiEndpointDeployedModelDedicatedResourceOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointDeployedModelDedicatedResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointDeployedModelDedicatedResource)(nil)).Elem()
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceOutput) ToAiEndpointDeployedModelDedicatedResourceOutput() AiEndpointDeployedModelDedicatedResourceOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceOutput) ToAiEndpointDeployedModelDedicatedResourceOutputWithContext(ctx context.Context) AiEndpointDeployedModelDedicatedResourceOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceOutput) AutoscalingMetricSpecs() AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResource) []AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec {
+		return v.AutoscalingMetricSpecs
+	}).(AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput)
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceOutput) MachineSpecs() AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResource) []AiEndpointDeployedModelDedicatedResourceMachineSpec {
+		return v.MachineSpecs
+	}).(AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput)
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceOutput) MaxReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResource) *int { return v.MaxReplicaCount }).(pulumi.IntPtrOutput)
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceOutput) MinReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResource) *int { return v.MinReplicaCount }).(pulumi.IntPtrOutput)
+}
+
+type AiEndpointDeployedModelDedicatedResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointDeployedModelDedicatedResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointDeployedModelDedicatedResource)(nil)).Elem()
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceArrayOutput) ToAiEndpointDeployedModelDedicatedResourceArrayOutput() AiEndpointDeployedModelDedicatedResourceArrayOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceArrayOutput) ToAiEndpointDeployedModelDedicatedResourceArrayOutputWithContext(ctx context.Context) AiEndpointDeployedModelDedicatedResourceArrayOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceArrayOutput) Index(i pulumi.IntInput) AiEndpointDeployedModelDedicatedResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEndpointDeployedModelDedicatedResource {
+		return vs[0].([]AiEndpointDeployedModelDedicatedResource)[vs[1].(int)]
+	}).(AiEndpointDeployedModelDedicatedResourceOutput)
+}
+
+type AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec struct {
+	MetricName *string `pulumi:"metricName"`
+	Target     *int    `pulumi:"target"`
+}
+
+// AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecInput is an input type that accepts AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs and AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput values.
+// You can construct a concrete instance of `AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecInput` via:
+//
+//	AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs{...}
+type AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecInput interface {
+	pulumi.Input
+
+	ToAiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput() AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput
+	ToAiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutputWithContext(context.Context) AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput
+}
+
+type AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs struct {
+	MetricName pulumi.StringPtrInput `pulumi:"metricName"`
+	Target     pulumi.IntPtrInput    `pulumi:"target"`
+}
+
+func (AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec)(nil)).Elem()
+}
+
+func (i AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs) ToAiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput() AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput {
+	return i.ToAiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutputWithContext(context.Background())
+}
+
+func (i AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs) ToAiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutputWithContext(ctx context.Context) AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput)
+}
+
+// AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayInput is an input type that accepts AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArray and AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput values.
+// You can construct a concrete instance of `AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayInput` via:
+//
+//	AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArray{ AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs{...} }
+type AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayInput interface {
+	pulumi.Input
+
+	ToAiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput() AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput
+	ToAiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutputWithContext(context.Context) AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput
+}
+
+type AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArray []AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecInput
+
+func (AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec)(nil)).Elem()
+}
+
+func (i AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArray) ToAiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput() AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput {
+	return i.ToAiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutputWithContext(context.Background())
+}
+
+func (i AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArray) ToAiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutputWithContext(ctx context.Context) AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput)
+}
+
+type AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec)(nil)).Elem()
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput) ToAiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput() AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput) ToAiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutputWithContext(ctx context.Context) AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput) MetricName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec) *string { return v.MetricName }).(pulumi.StringPtrOutput)
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput) Target() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec) *int { return v.Target }).(pulumi.IntPtrOutput)
+}
+
+type AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec)(nil)).Elem()
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput) ToAiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput() AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput) ToAiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutputWithContext(ctx context.Context) AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput) Index(i pulumi.IntInput) AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec {
+		return vs[0].([]AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec)[vs[1].(int)]
+	}).(AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput)
+}
+
+type AiEndpointDeployedModelDedicatedResourceMachineSpec struct {
+	AcceleratorCount *int    `pulumi:"acceleratorCount"`
+	AcceleratorType  *string `pulumi:"acceleratorType"`
+	MachineType      *string `pulumi:"machineType"`
+}
+
+// AiEndpointDeployedModelDedicatedResourceMachineSpecInput is an input type that accepts AiEndpointDeployedModelDedicatedResourceMachineSpecArgs and AiEndpointDeployedModelDedicatedResourceMachineSpecOutput values.
+// You can construct a concrete instance of `AiEndpointDeployedModelDedicatedResourceMachineSpecInput` via:
+//
+//	AiEndpointDeployedModelDedicatedResourceMachineSpecArgs{...}
+type AiEndpointDeployedModelDedicatedResourceMachineSpecInput interface {
+	pulumi.Input
+
+	ToAiEndpointDeployedModelDedicatedResourceMachineSpecOutput() AiEndpointDeployedModelDedicatedResourceMachineSpecOutput
+	ToAiEndpointDeployedModelDedicatedResourceMachineSpecOutputWithContext(context.Context) AiEndpointDeployedModelDedicatedResourceMachineSpecOutput
+}
+
+type AiEndpointDeployedModelDedicatedResourceMachineSpecArgs struct {
+	AcceleratorCount pulumi.IntPtrInput    `pulumi:"acceleratorCount"`
+	AcceleratorType  pulumi.StringPtrInput `pulumi:"acceleratorType"`
+	MachineType      pulumi.StringPtrInput `pulumi:"machineType"`
+}
+
+func (AiEndpointDeployedModelDedicatedResourceMachineSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointDeployedModelDedicatedResourceMachineSpec)(nil)).Elem()
+}
+
+func (i AiEndpointDeployedModelDedicatedResourceMachineSpecArgs) ToAiEndpointDeployedModelDedicatedResourceMachineSpecOutput() AiEndpointDeployedModelDedicatedResourceMachineSpecOutput {
+	return i.ToAiEndpointDeployedModelDedicatedResourceMachineSpecOutputWithContext(context.Background())
+}
+
+func (i AiEndpointDeployedModelDedicatedResourceMachineSpecArgs) ToAiEndpointDeployedModelDedicatedResourceMachineSpecOutputWithContext(ctx context.Context) AiEndpointDeployedModelDedicatedResourceMachineSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelDedicatedResourceMachineSpecOutput)
+}
+
+// AiEndpointDeployedModelDedicatedResourceMachineSpecArrayInput is an input type that accepts AiEndpointDeployedModelDedicatedResourceMachineSpecArray and AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput values.
+// You can construct a concrete instance of `AiEndpointDeployedModelDedicatedResourceMachineSpecArrayInput` via:
+//
+//	AiEndpointDeployedModelDedicatedResourceMachineSpecArray{ AiEndpointDeployedModelDedicatedResourceMachineSpecArgs{...} }
+type AiEndpointDeployedModelDedicatedResourceMachineSpecArrayInput interface {
+	pulumi.Input
+
+	ToAiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput() AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput
+	ToAiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutputWithContext(context.Context) AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput
+}
+
+type AiEndpointDeployedModelDedicatedResourceMachineSpecArray []AiEndpointDeployedModelDedicatedResourceMachineSpecInput
+
+func (AiEndpointDeployedModelDedicatedResourceMachineSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointDeployedModelDedicatedResourceMachineSpec)(nil)).Elem()
+}
+
+func (i AiEndpointDeployedModelDedicatedResourceMachineSpecArray) ToAiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput() AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput {
+	return i.ToAiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutputWithContext(context.Background())
+}
+
+func (i AiEndpointDeployedModelDedicatedResourceMachineSpecArray) ToAiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutputWithContext(ctx context.Context) AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput)
+}
+
+type AiEndpointDeployedModelDedicatedResourceMachineSpecOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointDeployedModelDedicatedResourceMachineSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointDeployedModelDedicatedResourceMachineSpec)(nil)).Elem()
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceMachineSpecOutput) ToAiEndpointDeployedModelDedicatedResourceMachineSpecOutput() AiEndpointDeployedModelDedicatedResourceMachineSpecOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceMachineSpecOutput) ToAiEndpointDeployedModelDedicatedResourceMachineSpecOutputWithContext(ctx context.Context) AiEndpointDeployedModelDedicatedResourceMachineSpecOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceMachineSpecOutput) AcceleratorCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResourceMachineSpec) *int { return v.AcceleratorCount }).(pulumi.IntPtrOutput)
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceMachineSpecOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResourceMachineSpec) *string { return v.AcceleratorType }).(pulumi.StringPtrOutput)
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceMachineSpecOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResourceMachineSpec) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointDeployedModelDedicatedResourceMachineSpec)(nil)).Elem()
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput) ToAiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput() AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput) ToAiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutputWithContext(ctx context.Context) AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput) Index(i pulumi.IntInput) AiEndpointDeployedModelDedicatedResourceMachineSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEndpointDeployedModelDedicatedResourceMachineSpec {
+		return vs[0].([]AiEndpointDeployedModelDedicatedResourceMachineSpec)[vs[1].(int)]
+	}).(AiEndpointDeployedModelDedicatedResourceMachineSpecOutput)
+}
+
+type AiEndpointDeployedModelPrivateEndpoint struct {
+	ExplainHttpUri    *string `pulumi:"explainHttpUri"`
+	HealthHttpUri     *string `pulumi:"healthHttpUri"`
+	PredictHttpUri    *string `pulumi:"predictHttpUri"`
+	ServiceAttachment *string `pulumi:"serviceAttachment"`
+}
+
+// AiEndpointDeployedModelPrivateEndpointInput is an input type that accepts AiEndpointDeployedModelPrivateEndpointArgs and AiEndpointDeployedModelPrivateEndpointOutput values.
+// You can construct a concrete instance of `AiEndpointDeployedModelPrivateEndpointInput` via:
+//
+//	AiEndpointDeployedModelPrivateEndpointArgs{...}
+type AiEndpointDeployedModelPrivateEndpointInput interface {
+	pulumi.Input
+
+	ToAiEndpointDeployedModelPrivateEndpointOutput() AiEndpointDeployedModelPrivateEndpointOutput
+	ToAiEndpointDeployedModelPrivateEndpointOutputWithContext(context.Context) AiEndpointDeployedModelPrivateEndpointOutput
+}
+
+type AiEndpointDeployedModelPrivateEndpointArgs struct {
+	ExplainHttpUri    pulumi.StringPtrInput `pulumi:"explainHttpUri"`
+	HealthHttpUri     pulumi.StringPtrInput `pulumi:"healthHttpUri"`
+	PredictHttpUri    pulumi.StringPtrInput `pulumi:"predictHttpUri"`
+	ServiceAttachment pulumi.StringPtrInput `pulumi:"serviceAttachment"`
+}
+
+func (AiEndpointDeployedModelPrivateEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointDeployedModelPrivateEndpoint)(nil)).Elem()
+}
+
+func (i AiEndpointDeployedModelPrivateEndpointArgs) ToAiEndpointDeployedModelPrivateEndpointOutput() AiEndpointDeployedModelPrivateEndpointOutput {
+	return i.ToAiEndpointDeployedModelPrivateEndpointOutputWithContext(context.Background())
+}
+
+func (i AiEndpointDeployedModelPrivateEndpointArgs) ToAiEndpointDeployedModelPrivateEndpointOutputWithContext(ctx context.Context) AiEndpointDeployedModelPrivateEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelPrivateEndpointOutput)
+}
+
+// AiEndpointDeployedModelPrivateEndpointArrayInput is an input type that accepts AiEndpointDeployedModelPrivateEndpointArray and AiEndpointDeployedModelPrivateEndpointArrayOutput values.
+// You can construct a concrete instance of `AiEndpointDeployedModelPrivateEndpointArrayInput` via:
+//
+//	AiEndpointDeployedModelPrivateEndpointArray{ AiEndpointDeployedModelPrivateEndpointArgs{...} }
+type AiEndpointDeployedModelPrivateEndpointArrayInput interface {
+	pulumi.Input
+
+	ToAiEndpointDeployedModelPrivateEndpointArrayOutput() AiEndpointDeployedModelPrivateEndpointArrayOutput
+	ToAiEndpointDeployedModelPrivateEndpointArrayOutputWithContext(context.Context) AiEndpointDeployedModelPrivateEndpointArrayOutput
+}
+
+type AiEndpointDeployedModelPrivateEndpointArray []AiEndpointDeployedModelPrivateEndpointInput
+
+func (AiEndpointDeployedModelPrivateEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointDeployedModelPrivateEndpoint)(nil)).Elem()
+}
+
+func (i AiEndpointDeployedModelPrivateEndpointArray) ToAiEndpointDeployedModelPrivateEndpointArrayOutput() AiEndpointDeployedModelPrivateEndpointArrayOutput {
+	return i.ToAiEndpointDeployedModelPrivateEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i AiEndpointDeployedModelPrivateEndpointArray) ToAiEndpointDeployedModelPrivateEndpointArrayOutputWithContext(ctx context.Context) AiEndpointDeployedModelPrivateEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointDeployedModelPrivateEndpointArrayOutput)
+}
+
+type AiEndpointDeployedModelPrivateEndpointOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointDeployedModelPrivateEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointDeployedModelPrivateEndpoint)(nil)).Elem()
+}
+
+func (o AiEndpointDeployedModelPrivateEndpointOutput) ToAiEndpointDeployedModelPrivateEndpointOutput() AiEndpointDeployedModelPrivateEndpointOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelPrivateEndpointOutput) ToAiEndpointDeployedModelPrivateEndpointOutputWithContext(ctx context.Context) AiEndpointDeployedModelPrivateEndpointOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelPrivateEndpointOutput) ExplainHttpUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModelPrivateEndpoint) *string { return v.ExplainHttpUri }).(pulumi.StringPtrOutput)
+}
+
+func (o AiEndpointDeployedModelPrivateEndpointOutput) HealthHttpUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModelPrivateEndpoint) *string { return v.HealthHttpUri }).(pulumi.StringPtrOutput)
+}
+
+func (o AiEndpointDeployedModelPrivateEndpointOutput) PredictHttpUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModelPrivateEndpoint) *string { return v.PredictHttpUri }).(pulumi.StringPtrOutput)
+}
+
+func (o AiEndpointDeployedModelPrivateEndpointOutput) ServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointDeployedModelPrivateEndpoint) *string { return v.ServiceAttachment }).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointDeployedModelPrivateEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointDeployedModelPrivateEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiEndpointDeployedModelPrivateEndpoint)(nil)).Elem()
+}
+
+func (o AiEndpointDeployedModelPrivateEndpointArrayOutput) ToAiEndpointDeployedModelPrivateEndpointArrayOutput() AiEndpointDeployedModelPrivateEndpointArrayOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelPrivateEndpointArrayOutput) ToAiEndpointDeployedModelPrivateEndpointArrayOutputWithContext(ctx context.Context) AiEndpointDeployedModelPrivateEndpointArrayOutput {
+	return o
+}
+
+func (o AiEndpointDeployedModelPrivateEndpointArrayOutput) Index(i pulumi.IntInput) AiEndpointDeployedModelPrivateEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiEndpointDeployedModelPrivateEndpoint {
+		return vs[0].([]AiEndpointDeployedModelPrivateEndpoint)[vs[1].(int)]
+	}).(AiEndpointDeployedModelPrivateEndpointOutput)
+}
+
+type AiEndpointEncryptionSpec struct {
+	// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// AiEndpointEncryptionSpecInput is an input type that accepts AiEndpointEncryptionSpecArgs and AiEndpointEncryptionSpecOutput values.
+// You can construct a concrete instance of `AiEndpointEncryptionSpecInput` via:
+//
+//	AiEndpointEncryptionSpecArgs{...}
+type AiEndpointEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToAiEndpointEncryptionSpecOutput() AiEndpointEncryptionSpecOutput
+	ToAiEndpointEncryptionSpecOutputWithContext(context.Context) AiEndpointEncryptionSpecOutput
+}
+
+type AiEndpointEncryptionSpecArgs struct {
+	// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (AiEndpointEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointEncryptionSpec)(nil)).Elem()
+}
+
+func (i AiEndpointEncryptionSpecArgs) ToAiEndpointEncryptionSpecOutput() AiEndpointEncryptionSpecOutput {
+	return i.ToAiEndpointEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i AiEndpointEncryptionSpecArgs) ToAiEndpointEncryptionSpecOutputWithContext(ctx context.Context) AiEndpointEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointEncryptionSpecOutput)
+}
+
+func (i AiEndpointEncryptionSpecArgs) ToAiEndpointEncryptionSpecPtrOutput() AiEndpointEncryptionSpecPtrOutput {
+	return i.ToAiEndpointEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointEncryptionSpecArgs) ToAiEndpointEncryptionSpecPtrOutputWithContext(ctx context.Context) AiEndpointEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointEncryptionSpecOutput).ToAiEndpointEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// AiEndpointEncryptionSpecPtrInput is an input type that accepts AiEndpointEncryptionSpecArgs, AiEndpointEncryptionSpecPtr and AiEndpointEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `AiEndpointEncryptionSpecPtrInput` via:
+//
+//	        AiEndpointEncryptionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointEncryptionSpecPtrOutput() AiEndpointEncryptionSpecPtrOutput
+	ToAiEndpointEncryptionSpecPtrOutputWithContext(context.Context) AiEndpointEncryptionSpecPtrOutput
+}
+
+type aiEndpointEncryptionSpecPtrType AiEndpointEncryptionSpecArgs
+
+func AiEndpointEncryptionSpecPtr(v *AiEndpointEncryptionSpecArgs) AiEndpointEncryptionSpecPtrInput {
+	return (*aiEndpointEncryptionSpecPtrType)(v)
+}
+
+func (*aiEndpointEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointEncryptionSpec)(nil)).Elem()
+}
+
+func (i *aiEndpointEncryptionSpecPtrType) ToAiEndpointEncryptionSpecPtrOutput() AiEndpointEncryptionSpecPtrOutput {
+	return i.ToAiEndpointEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointEncryptionSpecPtrType) ToAiEndpointEncryptionSpecPtrOutputWithContext(ctx context.Context) AiEndpointEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointEncryptionSpecPtrOutput)
+}
+
+type AiEndpointEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiEndpointEncryptionSpecOutput) ToAiEndpointEncryptionSpecOutput() AiEndpointEncryptionSpecOutput {
+	return o
+}
+
+func (o AiEndpointEncryptionSpecOutput) ToAiEndpointEncryptionSpecOutputWithContext(ctx context.Context) AiEndpointEncryptionSpecOutput {
+	return o
+}
+
+func (o AiEndpointEncryptionSpecOutput) ToAiEndpointEncryptionSpecPtrOutput() AiEndpointEncryptionSpecPtrOutput {
+	return o.ToAiEndpointEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointEncryptionSpecOutput) ToAiEndpointEncryptionSpecPtrOutputWithContext(ctx context.Context) AiEndpointEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointEncryptionSpec) *AiEndpointEncryptionSpec {
+		return &v
+	}).(AiEndpointEncryptionSpecPtrOutput)
+}
+
+// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+func (o AiEndpointEncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AiEndpointEncryptionSpec) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type AiEndpointEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiEndpointEncryptionSpecPtrOutput) ToAiEndpointEncryptionSpecPtrOutput() AiEndpointEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiEndpointEncryptionSpecPtrOutput) ToAiEndpointEncryptionSpecPtrOutputWithContext(ctx context.Context) AiEndpointEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiEndpointEncryptionSpecPtrOutput) Elem() AiEndpointEncryptionSpecOutput {
+	return o.ApplyT(func(v *AiEndpointEncryptionSpec) AiEndpointEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointEncryptionSpec
+		return ret
+	}).(AiEndpointEncryptionSpecOutput)
+}
+
+// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+func (o AiEndpointEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
 type AiFeatureStoreEncryptionSpec struct {
 	// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
 	KmsKeyName string `pulumi:"kmsKeyName"`
@@ -434,8 +1275,7 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigPtrOutput) SnapshotAnalysis() Ai
 type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis struct {
 	// The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
 	Disabled *bool `pulumi:"disabled"`
-	// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
-	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	// Deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
 	MonitoringInterval *string `pulumi:"monitoringInterval"`
 }
 
@@ -453,8 +1293,7 @@ type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisInput interface {
 type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs struct {
 	// The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
-	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	// Deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
 	MonitoringInterval pulumi.StringPtrInput `pulumi:"monitoringInterval"`
 }
 
@@ -540,8 +1379,7 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) Disabled
 	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
-// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+// Deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
 func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) MonitoringInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *string { return v.MonitoringInterval }).(pulumi.StringPtrOutput)
 }
@@ -580,14 +1418,339 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) Disab
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
-// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+// Deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
 func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) MonitoringInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *string {
 		if v == nil {
 			return nil
 		}
 		return v.MonitoringInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiFeatureStoreIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AiFeatureStoreIamBindingConditionInput is an input type that accepts AiFeatureStoreIamBindingConditionArgs and AiFeatureStoreIamBindingConditionOutput values.
+// You can construct a concrete instance of `AiFeatureStoreIamBindingConditionInput` via:
+//
+//	AiFeatureStoreIamBindingConditionArgs{...}
+type AiFeatureStoreIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreIamBindingConditionOutput() AiFeatureStoreIamBindingConditionOutput
+	ToAiFeatureStoreIamBindingConditionOutputWithContext(context.Context) AiFeatureStoreIamBindingConditionOutput
+}
+
+type AiFeatureStoreIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AiFeatureStoreIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreIamBindingCondition)(nil)).Elem()
+}
+
+func (i AiFeatureStoreIamBindingConditionArgs) ToAiFeatureStoreIamBindingConditionOutput() AiFeatureStoreIamBindingConditionOutput {
+	return i.ToAiFeatureStoreIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreIamBindingConditionArgs) ToAiFeatureStoreIamBindingConditionOutputWithContext(ctx context.Context) AiFeatureStoreIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreIamBindingConditionOutput)
+}
+
+func (i AiFeatureStoreIamBindingConditionArgs) ToAiFeatureStoreIamBindingConditionPtrOutput() AiFeatureStoreIamBindingConditionPtrOutput {
+	return i.ToAiFeatureStoreIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreIamBindingConditionArgs) ToAiFeatureStoreIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreIamBindingConditionOutput).ToAiFeatureStoreIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// AiFeatureStoreIamBindingConditionPtrInput is an input type that accepts AiFeatureStoreIamBindingConditionArgs, AiFeatureStoreIamBindingConditionPtr and AiFeatureStoreIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `AiFeatureStoreIamBindingConditionPtrInput` via:
+//
+//	        AiFeatureStoreIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureStoreIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreIamBindingConditionPtrOutput() AiFeatureStoreIamBindingConditionPtrOutput
+	ToAiFeatureStoreIamBindingConditionPtrOutputWithContext(context.Context) AiFeatureStoreIamBindingConditionPtrOutput
+}
+
+type aiFeatureStoreIamBindingConditionPtrType AiFeatureStoreIamBindingConditionArgs
+
+func AiFeatureStoreIamBindingConditionPtr(v *AiFeatureStoreIamBindingConditionArgs) AiFeatureStoreIamBindingConditionPtrInput {
+	return (*aiFeatureStoreIamBindingConditionPtrType)(v)
+}
+
+func (*aiFeatureStoreIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreIamBindingCondition)(nil)).Elem()
+}
+
+func (i *aiFeatureStoreIamBindingConditionPtrType) ToAiFeatureStoreIamBindingConditionPtrOutput() AiFeatureStoreIamBindingConditionPtrOutput {
+	return i.ToAiFeatureStoreIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureStoreIamBindingConditionPtrType) ToAiFeatureStoreIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreIamBindingConditionPtrOutput)
+}
+
+type AiFeatureStoreIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreIamBindingCondition)(nil)).Elem()
+}
+
+func (o AiFeatureStoreIamBindingConditionOutput) ToAiFeatureStoreIamBindingConditionOutput() AiFeatureStoreIamBindingConditionOutput {
+	return o
+}
+
+func (o AiFeatureStoreIamBindingConditionOutput) ToAiFeatureStoreIamBindingConditionOutputWithContext(ctx context.Context) AiFeatureStoreIamBindingConditionOutput {
+	return o
+}
+
+func (o AiFeatureStoreIamBindingConditionOutput) ToAiFeatureStoreIamBindingConditionPtrOutput() AiFeatureStoreIamBindingConditionPtrOutput {
+	return o.ToAiFeatureStoreIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureStoreIamBindingConditionOutput) ToAiFeatureStoreIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreIamBindingCondition) *AiFeatureStoreIamBindingCondition {
+		return &v
+	}).(AiFeatureStoreIamBindingConditionPtrOutput)
+}
+
+func (o AiFeatureStoreIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureStoreIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureStoreIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureStoreIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AiFeatureStoreIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureStoreIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AiFeatureStoreIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreIamBindingCondition)(nil)).Elem()
+}
+
+func (o AiFeatureStoreIamBindingConditionPtrOutput) ToAiFeatureStoreIamBindingConditionPtrOutput() AiFeatureStoreIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreIamBindingConditionPtrOutput) ToAiFeatureStoreIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreIamBindingConditionPtrOutput) Elem() AiFeatureStoreIamBindingConditionOutput {
+	return o.ApplyT(func(v *AiFeatureStoreIamBindingCondition) AiFeatureStoreIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureStoreIamBindingCondition
+		return ret
+	}).(AiFeatureStoreIamBindingConditionOutput)
+}
+
+func (o AiFeatureStoreIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureStoreIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureStoreIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiFeatureStoreIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AiFeatureStoreIamMemberConditionInput is an input type that accepts AiFeatureStoreIamMemberConditionArgs and AiFeatureStoreIamMemberConditionOutput values.
+// You can construct a concrete instance of `AiFeatureStoreIamMemberConditionInput` via:
+//
+//	AiFeatureStoreIamMemberConditionArgs{...}
+type AiFeatureStoreIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreIamMemberConditionOutput() AiFeatureStoreIamMemberConditionOutput
+	ToAiFeatureStoreIamMemberConditionOutputWithContext(context.Context) AiFeatureStoreIamMemberConditionOutput
+}
+
+type AiFeatureStoreIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AiFeatureStoreIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreIamMemberCondition)(nil)).Elem()
+}
+
+func (i AiFeatureStoreIamMemberConditionArgs) ToAiFeatureStoreIamMemberConditionOutput() AiFeatureStoreIamMemberConditionOutput {
+	return i.ToAiFeatureStoreIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreIamMemberConditionArgs) ToAiFeatureStoreIamMemberConditionOutputWithContext(ctx context.Context) AiFeatureStoreIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreIamMemberConditionOutput)
+}
+
+func (i AiFeatureStoreIamMemberConditionArgs) ToAiFeatureStoreIamMemberConditionPtrOutput() AiFeatureStoreIamMemberConditionPtrOutput {
+	return i.ToAiFeatureStoreIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreIamMemberConditionArgs) ToAiFeatureStoreIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreIamMemberConditionOutput).ToAiFeatureStoreIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// AiFeatureStoreIamMemberConditionPtrInput is an input type that accepts AiFeatureStoreIamMemberConditionArgs, AiFeatureStoreIamMemberConditionPtr and AiFeatureStoreIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `AiFeatureStoreIamMemberConditionPtrInput` via:
+//
+//	        AiFeatureStoreIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureStoreIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreIamMemberConditionPtrOutput() AiFeatureStoreIamMemberConditionPtrOutput
+	ToAiFeatureStoreIamMemberConditionPtrOutputWithContext(context.Context) AiFeatureStoreIamMemberConditionPtrOutput
+}
+
+type aiFeatureStoreIamMemberConditionPtrType AiFeatureStoreIamMemberConditionArgs
+
+func AiFeatureStoreIamMemberConditionPtr(v *AiFeatureStoreIamMemberConditionArgs) AiFeatureStoreIamMemberConditionPtrInput {
+	return (*aiFeatureStoreIamMemberConditionPtrType)(v)
+}
+
+func (*aiFeatureStoreIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreIamMemberCondition)(nil)).Elem()
+}
+
+func (i *aiFeatureStoreIamMemberConditionPtrType) ToAiFeatureStoreIamMemberConditionPtrOutput() AiFeatureStoreIamMemberConditionPtrOutput {
+	return i.ToAiFeatureStoreIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureStoreIamMemberConditionPtrType) ToAiFeatureStoreIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreIamMemberConditionPtrOutput)
+}
+
+type AiFeatureStoreIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreIamMemberCondition)(nil)).Elem()
+}
+
+func (o AiFeatureStoreIamMemberConditionOutput) ToAiFeatureStoreIamMemberConditionOutput() AiFeatureStoreIamMemberConditionOutput {
+	return o
+}
+
+func (o AiFeatureStoreIamMemberConditionOutput) ToAiFeatureStoreIamMemberConditionOutputWithContext(ctx context.Context) AiFeatureStoreIamMemberConditionOutput {
+	return o
+}
+
+func (o AiFeatureStoreIamMemberConditionOutput) ToAiFeatureStoreIamMemberConditionPtrOutput() AiFeatureStoreIamMemberConditionPtrOutput {
+	return o.ToAiFeatureStoreIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureStoreIamMemberConditionOutput) ToAiFeatureStoreIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreIamMemberCondition) *AiFeatureStoreIamMemberCondition {
+		return &v
+	}).(AiFeatureStoreIamMemberConditionPtrOutput)
+}
+
+func (o AiFeatureStoreIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureStoreIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureStoreIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureStoreIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AiFeatureStoreIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureStoreIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AiFeatureStoreIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreIamMemberCondition)(nil)).Elem()
+}
+
+func (o AiFeatureStoreIamMemberConditionPtrOutput) ToAiFeatureStoreIamMemberConditionPtrOutput() AiFeatureStoreIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreIamMemberConditionPtrOutput) ToAiFeatureStoreIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreIamMemberConditionPtrOutput) Elem() AiFeatureStoreIamMemberConditionOutput {
+	return o.ApplyT(func(v *AiFeatureStoreIamMemberCondition) AiFeatureStoreIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureStoreIamMemberCondition
+		return ret
+	}).(AiFeatureStoreIamMemberConditionOutput)
+}
+
+func (o AiFeatureStoreIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureStoreIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureStoreIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -966,12 +2129,30 @@ func (o AiMetadataStoreStateTypeArrayOutput) Index(i pulumi.IntInput) AiMetadata
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetEncryptionSpecInput)(nil)).Elem(), AiDatasetEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetEncryptionSpecPtrInput)(nil)).Elem(), AiDatasetEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointDeployedModelInput)(nil)).Elem(), AiEndpointDeployedModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointDeployedModelArrayInput)(nil)).Elem(), AiEndpointDeployedModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointDeployedModelAutomaticResourceInput)(nil)).Elem(), AiEndpointDeployedModelAutomaticResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointDeployedModelAutomaticResourceArrayInput)(nil)).Elem(), AiEndpointDeployedModelAutomaticResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointDeployedModelDedicatedResourceInput)(nil)).Elem(), AiEndpointDeployedModelDedicatedResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointDeployedModelDedicatedResourceArrayInput)(nil)).Elem(), AiEndpointDeployedModelDedicatedResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecInput)(nil)).Elem(), AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayInput)(nil)).Elem(), AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointDeployedModelDedicatedResourceMachineSpecInput)(nil)).Elem(), AiEndpointDeployedModelDedicatedResourceMachineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointDeployedModelDedicatedResourceMachineSpecArrayInput)(nil)).Elem(), AiEndpointDeployedModelDedicatedResourceMachineSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointDeployedModelPrivateEndpointInput)(nil)).Elem(), AiEndpointDeployedModelPrivateEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointDeployedModelPrivateEndpointArrayInput)(nil)).Elem(), AiEndpointDeployedModelPrivateEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointEncryptionSpecInput)(nil)).Elem(), AiEndpointEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointEncryptionSpecPtrInput)(nil)).Elem(), AiEndpointEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEncryptionSpecInput)(nil)).Elem(), AiFeatureStoreEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEncryptionSpecPtrInput)(nil)).Elem(), AiFeatureStoreEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigPtrInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreIamBindingConditionInput)(nil)).Elem(), AiFeatureStoreIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreIamBindingConditionPtrInput)(nil)).Elem(), AiFeatureStoreIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreIamMemberConditionInput)(nil)).Elem(), AiFeatureStoreIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreIamMemberConditionPtrInput)(nil)).Elem(), AiFeatureStoreIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreOnlineServingConfigInput)(nil)).Elem(), AiFeatureStoreOnlineServingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreOnlineServingConfigPtrInput)(nil)).Elem(), AiFeatureStoreOnlineServingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreEncryptionSpecInput)(nil)).Elem(), AiMetadataStoreEncryptionSpecArgs{})
@@ -980,12 +2161,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreStateTypeArrayInput)(nil)).Elem(), AiMetadataStoreStateTypeArray{})
 	pulumi.RegisterOutputType(AiDatasetEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiDatasetEncryptionSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointDeployedModelOutput{})
+	pulumi.RegisterOutputType(AiEndpointDeployedModelArrayOutput{})
+	pulumi.RegisterOutputType(AiEndpointDeployedModelAutomaticResourceOutput{})
+	pulumi.RegisterOutputType(AiEndpointDeployedModelAutomaticResourceArrayOutput{})
+	pulumi.RegisterOutputType(AiEndpointDeployedModelDedicatedResourceOutput{})
+	pulumi.RegisterOutputType(AiEndpointDeployedModelDedicatedResourceArrayOutput{})
+	pulumi.RegisterOutputType(AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput{})
+	pulumi.RegisterOutputType(AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput{})
+	pulumi.RegisterOutputType(AiEndpointDeployedModelDedicatedResourceMachineSpecOutput{})
+	pulumi.RegisterOutputType(AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput{})
+	pulumi.RegisterOutputType(AiEndpointDeployedModelPrivateEndpointOutput{})
+	pulumi.RegisterOutputType(AiEndpointDeployedModelPrivateEndpointArrayOutput{})
+	pulumi.RegisterOutputType(AiEndpointEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(AiEndpointEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreOnlineServingConfigOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreOnlineServingConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiMetadataStoreEncryptionSpecOutput{})

@@ -390,12 +390,12 @@ class InstancePersistenceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "rdbSnapshotPeriod":
-            suggest = "rdb_snapshot_period"
-        elif key == "persistenceMode":
+        if key == "persistenceMode":
             suggest = "persistence_mode"
         elif key == "rdbNextSnapshotTime":
             suggest = "rdb_next_snapshot_time"
+        elif key == "rdbSnapshotPeriod":
+            suggest = "rdb_snapshot_period"
         elif key == "rdbSnapshotStartTime":
             suggest = "rdb_snapshot_start_time"
 
@@ -411,17 +411,11 @@ class InstancePersistenceConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 rdb_snapshot_period: str,
                  persistence_mode: Optional[str] = None,
                  rdb_next_snapshot_time: Optional[str] = None,
+                 rdb_snapshot_period: Optional[str] = None,
                  rdb_snapshot_start_time: Optional[str] = None):
         """
-        :param str rdb_snapshot_period: Optional. Available snapshot periods for scheduling.
-               - ONE_HOUR:	Snapshot every 1 hour.
-               - SIX_HOURS:	Snapshot every 6 hours.
-               - TWELVE_HOURS:	Snapshot every 12 hours.
-               - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
-               Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
         :param str persistence_mode: Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
                - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
                - RDB: RDB based Persistence is enabled.
@@ -431,6 +425,12 @@ class InstancePersistenceConfig(dict):
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
                to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param str rdb_snapshot_period: Optional. Available snapshot periods for scheduling.
+               - ONE_HOUR:	Snapshot every 1 hour.
+               - SIX_HOURS:	Snapshot every 6 hours.
+               - TWELVE_HOURS:	Snapshot every 12 hours.
+               - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
+               Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
         :param str rdb_snapshot_start_time: Optional. Date and time that the first snapshot was/will be attempted,
                and to which future snapshots will be aligned. If not provided,
                the current time will be used.
@@ -438,26 +438,14 @@ class InstancePersistenceConfig(dict):
                and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
-        pulumi.set(__self__, "rdb_snapshot_period", rdb_snapshot_period)
         if persistence_mode is not None:
             pulumi.set(__self__, "persistence_mode", persistence_mode)
         if rdb_next_snapshot_time is not None:
             pulumi.set(__self__, "rdb_next_snapshot_time", rdb_next_snapshot_time)
+        if rdb_snapshot_period is not None:
+            pulumi.set(__self__, "rdb_snapshot_period", rdb_snapshot_period)
         if rdb_snapshot_start_time is not None:
             pulumi.set(__self__, "rdb_snapshot_start_time", rdb_snapshot_start_time)
-
-    @property
-    @pulumi.getter(name="rdbSnapshotPeriod")
-    def rdb_snapshot_period(self) -> str:
-        """
-        Optional. Available snapshot periods for scheduling.
-        - ONE_HOUR:	Snapshot every 1 hour.
-        - SIX_HOURS:	Snapshot every 6 hours.
-        - TWELVE_HOURS:	Snapshot every 12 hours.
-        - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
-        Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
-        """
-        return pulumi.get(self, "rdb_snapshot_period")
 
     @property
     @pulumi.getter(name="persistenceMode")
@@ -481,6 +469,19 @@ class InstancePersistenceConfig(dict):
         Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "rdb_next_snapshot_time")
+
+    @property
+    @pulumi.getter(name="rdbSnapshotPeriod")
+    def rdb_snapshot_period(self) -> Optional[str]:
+        """
+        Optional. Available snapshot periods for scheduling.
+        - ONE_HOUR:	Snapshot every 1 hour.
+        - SIX_HOURS:	Snapshot every 6 hours.
+        - TWELVE_HOURS:	Snapshot every 12 hours.
+        - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
+        Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
+        """
+        return pulumi.get(self, "rdb_snapshot_period")
 
     @property
     @pulumi.getter(name="rdbSnapshotStartTime")

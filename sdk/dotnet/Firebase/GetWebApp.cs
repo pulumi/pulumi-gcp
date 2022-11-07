@@ -58,6 +58,8 @@ namespace Pulumi.Gcp.Firebase
     public sealed class GetWebAppResult
     {
         public readonly string AppId;
+        public readonly ImmutableArray<string> AppUrls;
+        public readonly string DeletionPolicy;
         public readonly string DisplayName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -70,6 +72,10 @@ namespace Pulumi.Gcp.Firebase
         private GetWebAppResult(
             string appId,
 
+            ImmutableArray<string> appUrls,
+
+            string deletionPolicy,
+
             string displayName,
 
             string id,
@@ -79,6 +85,8 @@ namespace Pulumi.Gcp.Firebase
             string project)
         {
             AppId = appId;
+            AppUrls = appUrls;
+            DeletionPolicy = deletionPolicy;
             DisplayName = displayName;
             Id = id;
             Name = name;

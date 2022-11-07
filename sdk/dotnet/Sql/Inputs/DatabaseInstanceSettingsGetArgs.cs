@@ -106,6 +106,9 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("tier", required: true)]
         public Input<string> Tier { get; set; } = null!;
 
+        [Input("timeZone")]
+        public Input<string>? TimeZone { get; set; }
+
         [Input("userLabels")]
         private InputMap<string>? _userLabels;
 

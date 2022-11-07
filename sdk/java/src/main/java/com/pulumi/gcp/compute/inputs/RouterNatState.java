@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.RouterNatLogConfigArgs;
+import com.pulumi.gcp.compute.inputs.RouterNatRuleArgs;
 import com.pulumi.gcp.compute.inputs.RouterNatSubnetworkArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -244,6 +245,23 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A list of rules associated with this NAT.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="rules")
+    private @Nullable Output<List<RouterNatRuleArgs>> rules;
+
+    /**
+     * @return A list of rules associated with this NAT.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<RouterNatRuleArgs>>> rules() {
+        return Optional.ofNullable(this.rules);
+    }
+
+    /**
      * How NAT should be configured per Subnetwork.
      * If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
      * IP ranges in every Subnetwork are allowed to Nat.
@@ -362,6 +380,7 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.region = $.region;
         this.router = $.router;
+        this.rules = $.rules;
         this.sourceSubnetworkIpRangesToNat = $.sourceSubnetworkIpRangesToNat;
         this.subnetworks = $.subnetworks;
         this.tcpEstablishedIdleTimeoutSec = $.tcpEstablishedIdleTimeoutSec;
@@ -708,6 +727,40 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder router(String router) {
             return router(Output.of(router));
+        }
+
+        /**
+         * @param rules A list of rules associated with this NAT.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rules(@Nullable Output<List<RouterNatRuleArgs>> rules) {
+            $.rules = rules;
+            return this;
+        }
+
+        /**
+         * @param rules A list of rules associated with this NAT.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rules(List<RouterNatRuleArgs> rules) {
+            return rules(Output.of(rules));
+        }
+
+        /**
+         * @param rules A list of rules associated with this NAT.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rules(RouterNatRuleArgs... rules) {
+            return rules(List.of(rules));
         }
 
         /**

@@ -90,6 +90,7 @@ export interface GetAuthorityResult {
     readonly pemCsr: string;
     readonly pool?: string;
     readonly project?: string;
+    readonly skipGracePeriod: boolean;
     readonly state: string;
     readonly subordinateConfigs: outputs.certificateauthority.GetAuthoritySubordinateConfig[];
     readonly type: string;

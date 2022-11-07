@@ -37,7 +37,7 @@ public final class InstancePersistenceConfig {
      *   Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
      * 
      */
-    private String rdbSnapshotPeriod;
+    private @Nullable String rdbSnapshotPeriod;
     /**
      * @return Optional. Date and time that the first snapshot was/will be attempted,
      * and to which future snapshots will be aligned. If not provided,
@@ -80,8 +80,8 @@ public final class InstancePersistenceConfig {
      *   Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
      * 
      */
-    public String rdbSnapshotPeriod() {
-        return this.rdbSnapshotPeriod;
+    public Optional<String> rdbSnapshotPeriod() {
+        return Optional.ofNullable(this.rdbSnapshotPeriod);
     }
     /**
      * @return Optional. Date and time that the first snapshot was/will be attempted,
@@ -107,7 +107,7 @@ public final class InstancePersistenceConfig {
     public static final class Builder {
         private @Nullable String persistenceMode;
         private @Nullable String rdbNextSnapshotTime;
-        private String rdbSnapshotPeriod;
+        private @Nullable String rdbSnapshotPeriod;
         private @Nullable String rdbSnapshotStartTime;
         public Builder() {}
         public Builder(InstancePersistenceConfig defaults) {
@@ -129,8 +129,8 @@ public final class InstancePersistenceConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder rdbSnapshotPeriod(String rdbSnapshotPeriod) {
-            this.rdbSnapshotPeriod = Objects.requireNonNull(rdbSnapshotPeriod);
+        public Builder rdbSnapshotPeriod(@Nullable String rdbSnapshotPeriod) {
+            this.rdbSnapshotPeriod = rdbSnapshotPeriod;
             return this;
         }
         @CustomType.Setter

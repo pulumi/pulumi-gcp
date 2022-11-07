@@ -12,17 +12,37 @@ namespace Pulumi.Gcp.Storage.Inputs
 
     public sealed class TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessKeyId", required: true)]
+        private Input<string>? _accessKeyId;
+
         /// <summary>
         /// AWS Key ID.
         /// </summary>
-        [Input("accessKeyId", required: true)]
-        public Input<string> AccessKeyId { get; set; } = null!;
+        public Input<string>? AccessKeyId
+        {
+            get => _accessKeyId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKeyId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("secretAccessKey", required: true)]
+        private Input<string>? _secretAccessKey;
 
         /// <summary>
         /// AWS Secret Access Key.
         /// </summary>
-        [Input("secretAccessKey", required: true)]
-        public Input<string> SecretAccessKey { get; set; } = null!;
+        public Input<string>? SecretAccessKey
+        {
+            get => _secretAccessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretAccessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyGetArgs()
         {

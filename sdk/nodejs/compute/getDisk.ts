@@ -92,6 +92,8 @@ export interface GetDiskResult {
     readonly selfLink: string;
     readonly size: number;
     readonly snapshot: string;
+    readonly sourceDisk: string;
+    readonly sourceDiskId: string;
     readonly sourceImageEncryptionKeys: outputs.compute.GetDiskSourceImageEncryptionKey[];
     readonly sourceImageId: string;
     readonly sourceSnapshotEncryptionKeys: outputs.compute.GetDiskSourceSnapshotEncryptionKey[];

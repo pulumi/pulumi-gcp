@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrun.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerEnv;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerEnvFrom;
+import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerLivenessProbe;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerPort;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerResources;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerStartupProbe;
@@ -73,6 +74,13 @@ public final class ServiceTemplateSpecContainer {
      * 
      */
     private String image;
+    /**
+     * @return Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+     * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ServiceTemplateSpecContainerLivenessProbe livenessProbe;
     /**
      * @return List of open ports in the container.
      * More Info:
@@ -178,6 +186,15 @@ public final class ServiceTemplateSpecContainer {
         return this.image;
     }
     /**
+     * @return Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+     * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ServiceTemplateSpecContainerLivenessProbe> livenessProbe() {
+        return Optional.ofNullable(this.livenessProbe);
+    }
+    /**
      * @return List of open ports in the container.
      * More Info:
      * https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
@@ -239,6 +256,7 @@ public final class ServiceTemplateSpecContainer {
         private @Nullable List<ServiceTemplateSpecContainerEnvFrom> envFroms;
         private @Nullable List<ServiceTemplateSpecContainerEnv> envs;
         private String image;
+        private @Nullable ServiceTemplateSpecContainerLivenessProbe livenessProbe;
         private @Nullable List<ServiceTemplateSpecContainerPort> ports;
         private @Nullable ServiceTemplateSpecContainerResources resources;
         private @Nullable ServiceTemplateSpecContainerStartupProbe startupProbe;
@@ -252,6 +270,7 @@ public final class ServiceTemplateSpecContainer {
     	      this.envFroms = defaults.envFroms;
     	      this.envs = defaults.envs;
     	      this.image = defaults.image;
+    	      this.livenessProbe = defaults.livenessProbe;
     	      this.ports = defaults.ports;
     	      this.resources = defaults.resources;
     	      this.startupProbe = defaults.startupProbe;
@@ -297,6 +316,11 @@ public final class ServiceTemplateSpecContainer {
             return this;
         }
         @CustomType.Setter
+        public Builder livenessProbe(@Nullable ServiceTemplateSpecContainerLivenessProbe livenessProbe) {
+            this.livenessProbe = livenessProbe;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ports(@Nullable List<ServiceTemplateSpecContainerPort> ports) {
             this.ports = ports;
             return this;
@@ -334,6 +358,7 @@ public final class ServiceTemplateSpecContainer {
             o.envFroms = envFroms;
             o.envs = envs;
             o.image = image;
+            o.livenessProbe = livenessProbe;
             o.ports = ports;
             o.resources = resources;
             o.startupProbe = startupProbe;

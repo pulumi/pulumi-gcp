@@ -228,6 +228,26 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Snapshot { get; private set; } = null!;
 
         /// <summary>
+        /// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+        /// For example, the following are valid values:
+        /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+        /// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+        /// * projects/{project}/zones/{zone}/disks/{disk}
+        /// * projects/{project}/regions/{region}/disks/{disk}
+        /// * zones/{zone}/disks/{disk}
+        /// * regions/{region}/disks/{disk}
+        /// </summary>
+        [Output("sourceDisk")]
+        public Output<string?> SourceDisk { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
+        /// the current or a previous instance of a given disk name.
+        /// </summary>
+        [Output("sourceDiskId")]
+        public Output<string> SourceDiskId { get; private set; } = null!;
+
+        /// <summary>
         /// The customer-supplied encryption key of the source snapshot. Required
         /// if the source snapshot is protected by a customer-supplied encryption
         /// key.
@@ -415,6 +435,19 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Snapshot { get; set; }
 
         /// <summary>
+        /// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+        /// For example, the following are valid values:
+        /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+        /// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+        /// * projects/{project}/zones/{zone}/disks/{disk}
+        /// * projects/{project}/regions/{region}/disks/{disk}
+        /// * zones/{zone}/disks/{disk}
+        /// * regions/{region}/disks/{disk}
+        /// </summary>
+        [Input("sourceDisk")]
+        public Input<string>? SourceDisk { get; set; }
+
+        /// <summary>
         /// The customer-supplied encryption key of the source snapshot. Required
         /// if the source snapshot is protected by a customer-supplied encryption
         /// key.
@@ -578,6 +611,26 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("snapshot")]
         public Input<string>? Snapshot { get; set; }
+
+        /// <summary>
+        /// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+        /// For example, the following are valid values:
+        /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+        /// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+        /// * projects/{project}/zones/{zone}/disks/{disk}
+        /// * projects/{project}/regions/{region}/disks/{disk}
+        /// * zones/{zone}/disks/{disk}
+        /// * regions/{region}/disks/{disk}
+        /// </summary>
+        [Input("sourceDisk")]
+        public Input<string>? SourceDisk { get; set; }
+
+        /// <summary>
+        /// The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
+        /// the current or a previous instance of a given disk name.
+        /// </summary>
+        [Input("sourceDiskId")]
+        public Input<string>? SourceDiskId { get; set; }
 
         /// <summary>
         /// The customer-supplied encryption key of the source snapshot. Required

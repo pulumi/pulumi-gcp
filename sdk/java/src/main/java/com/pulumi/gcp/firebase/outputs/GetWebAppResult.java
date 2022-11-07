@@ -5,11 +5,14 @@ package com.pulumi.gcp.firebase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetWebAppResult {
     private String appId;
+    private List<String> appUrls;
+    private String deletionPolicy;
     private String displayName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,6 +25,12 @@ public final class GetWebAppResult {
     private GetWebAppResult() {}
     public String appId() {
         return this.appId;
+    }
+    public List<String> appUrls() {
+        return this.appUrls;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String displayName() {
         return this.displayName;
@@ -50,6 +59,8 @@ public final class GetWebAppResult {
     @CustomType.Builder
     public static final class Builder {
         private String appId;
+        private List<String> appUrls;
+        private String deletionPolicy;
         private String displayName;
         private String id;
         private String name;
@@ -58,6 +69,8 @@ public final class GetWebAppResult {
         public Builder(GetWebAppResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appId = defaults.appId;
+    	      this.appUrls = defaults.appUrls;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.displayName = defaults.displayName;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
@@ -67,6 +80,19 @@ public final class GetWebAppResult {
         @CustomType.Setter
         public Builder appId(String appId) {
             this.appId = Objects.requireNonNull(appId);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder appUrls(List<String> appUrls) {
+            this.appUrls = Objects.requireNonNull(appUrls);
+            return this;
+        }
+        public Builder appUrls(String... appUrls) {
+            return appUrls(List.of(appUrls));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            this.deletionPolicy = Objects.requireNonNull(deletionPolicy);
             return this;
         }
         @CustomType.Setter
@@ -92,6 +118,8 @@ public final class GetWebAppResult {
         public GetWebAppResult build() {
             final var o = new GetWebAppResult();
             o.appId = appId;
+            o.appUrls = appUrls;
+            o.deletionPolicy = deletionPolicy;
             o.displayName = displayName;
             o.id = id;
             o.name = name;

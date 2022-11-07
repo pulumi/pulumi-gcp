@@ -8,28 +8,28 @@ import * as utilities from "../utilities";
 export { GetRepositoryArgs, GetRepositoryResult, GetRepositoryOutputArgs } from "./getRepository";
 export const getRepository: typeof import("./getRepository").getRepository = null as any;
 export const getRepositoryOutput: typeof import("./getRepository").getRepositoryOutput = null as any;
+utilities.lazyLoad(exports, ["getRepository","getRepositoryOutput"], () => require("./getRepository"));
 
 export { RepositoryArgs, RepositoryState } from "./repository";
 export type Repository = import("./repository").Repository;
 export const Repository: typeof import("./repository").Repository = null as any;
+utilities.lazyLoad(exports, ["Repository"], () => require("./repository"));
 
 export { RepositoryIamBindingArgs, RepositoryIamBindingState } from "./repositoryIamBinding";
 export type RepositoryIamBinding = import("./repositoryIamBinding").RepositoryIamBinding;
 export const RepositoryIamBinding: typeof import("./repositoryIamBinding").RepositoryIamBinding = null as any;
+utilities.lazyLoad(exports, ["RepositoryIamBinding"], () => require("./repositoryIamBinding"));
 
 export { RepositoryIamMemberArgs, RepositoryIamMemberState } from "./repositoryIamMember";
 export type RepositoryIamMember = import("./repositoryIamMember").RepositoryIamMember;
 export const RepositoryIamMember: typeof import("./repositoryIamMember").RepositoryIamMember = null as any;
+utilities.lazyLoad(exports, ["RepositoryIamMember"], () => require("./repositoryIamMember"));
 
 export { RepositoryIamPolicyArgs, RepositoryIamPolicyState } from "./repositoryIamPolicy";
 export type RepositoryIamPolicy = import("./repositoryIamPolicy").RepositoryIamPolicy;
 export const RepositoryIamPolicy: typeof import("./repositoryIamPolicy").RepositoryIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["getRepository","getRepositoryOutput"], () => require("./getRepository"));
-utilities.lazyLoad(exports, ["Repository"], () => require("./repository"));
-utilities.lazyLoad(exports, ["RepositoryIamBinding"], () => require("./repositoryIamBinding"));
-utilities.lazyLoad(exports, ["RepositoryIamMember"], () => require("./repositoryIamMember"));
 utilities.lazyLoad(exports, ["RepositoryIamPolicy"], () => require("./repositoryIamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),

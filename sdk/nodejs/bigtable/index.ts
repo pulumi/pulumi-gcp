@@ -8,48 +8,48 @@ import * as utilities from "../utilities";
 export { GCPolicyArgs, GCPolicyState } from "./gcpolicy";
 export type GCPolicy = import("./gcpolicy").GCPolicy;
 export const GCPolicy: typeof import("./gcpolicy").GCPolicy = null as any;
+utilities.lazyLoad(exports, ["GCPolicy"], () => require("./gcpolicy"));
 
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
 export { InstanceIamBindingArgs, InstanceIamBindingState } from "./instanceIamBinding";
 export type InstanceIamBinding = import("./instanceIamBinding").InstanceIamBinding;
 export const InstanceIamBinding: typeof import("./instanceIamBinding").InstanceIamBinding = null as any;
+utilities.lazyLoad(exports, ["InstanceIamBinding"], () => require("./instanceIamBinding"));
 
 export { InstanceIamMemberArgs, InstanceIamMemberState } from "./instanceIamMember";
 export type InstanceIamMember = import("./instanceIamMember").InstanceIamMember;
 export const InstanceIamMember: typeof import("./instanceIamMember").InstanceIamMember = null as any;
+utilities.lazyLoad(exports, ["InstanceIamMember"], () => require("./instanceIamMember"));
 
 export { InstanceIamPolicyArgs, InstanceIamPolicyState } from "./instanceIamPolicy";
 export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
 export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
 
 export { TableArgs, TableState } from "./table";
 export type Table = import("./table").Table;
 export const Table: typeof import("./table").Table = null as any;
+utilities.lazyLoad(exports, ["Table"], () => require("./table"));
 
 export { TableIamBindingArgs, TableIamBindingState } from "./tableIamBinding";
 export type TableIamBinding = import("./tableIamBinding").TableIamBinding;
 export const TableIamBinding: typeof import("./tableIamBinding").TableIamBinding = null as any;
+utilities.lazyLoad(exports, ["TableIamBinding"], () => require("./tableIamBinding"));
 
 export { TableIamMemberArgs, TableIamMemberState } from "./tableIamMember";
 export type TableIamMember = import("./tableIamMember").TableIamMember;
 export const TableIamMember: typeof import("./tableIamMember").TableIamMember = null as any;
+utilities.lazyLoad(exports, ["TableIamMember"], () => require("./tableIamMember"));
 
 export { TableIamPolicyArgs, TableIamPolicyState } from "./tableIamPolicy";
 export type TableIamPolicy = import("./tableIamPolicy").TableIamPolicy;
 export const TableIamPolicy: typeof import("./tableIamPolicy").TableIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["GCPolicy"], () => require("./gcpolicy"));
-utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
-utilities.lazyLoad(exports, ["InstanceIamBinding"], () => require("./instanceIamBinding"));
-utilities.lazyLoad(exports, ["InstanceIamMember"], () => require("./instanceIamMember"));
-utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
-utilities.lazyLoad(exports, ["Table"], () => require("./table"));
-utilities.lazyLoad(exports, ["TableIamBinding"], () => require("./tableIamBinding"));
-utilities.lazyLoad(exports, ["TableIamMember"], () => require("./tableIamMember"));
 utilities.lazyLoad(exports, ["TableIamPolicy"], () => require("./tableIamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),

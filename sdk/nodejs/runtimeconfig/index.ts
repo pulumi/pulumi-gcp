@@ -8,38 +8,38 @@ import * as utilities from "../utilities";
 export { ConfigArgs, ConfigState } from "./config";
 export type Config = import("./config").Config;
 export const Config: typeof import("./config").Config = null as any;
+utilities.lazyLoad(exports, ["Config"], () => require("./config"));
 
 export { ConfigIamBindingArgs, ConfigIamBindingState } from "./configIamBinding";
 export type ConfigIamBinding = import("./configIamBinding").ConfigIamBinding;
 export const ConfigIamBinding: typeof import("./configIamBinding").ConfigIamBinding = null as any;
+utilities.lazyLoad(exports, ["ConfigIamBinding"], () => require("./configIamBinding"));
 
 export { ConfigIamMemberArgs, ConfigIamMemberState } from "./configIamMember";
 export type ConfigIamMember = import("./configIamMember").ConfigIamMember;
 export const ConfigIamMember: typeof import("./configIamMember").ConfigIamMember = null as any;
+utilities.lazyLoad(exports, ["ConfigIamMember"], () => require("./configIamMember"));
 
 export { ConfigIamPolicyArgs, ConfigIamPolicyState } from "./configIamPolicy";
 export type ConfigIamPolicy = import("./configIamPolicy").ConfigIamPolicy;
 export const ConfigIamPolicy: typeof import("./configIamPolicy").ConfigIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ConfigIamPolicy"], () => require("./configIamPolicy"));
 
 export { GetConfigArgs, GetConfigResult, GetConfigOutputArgs } from "./getConfig";
 export const getConfig: typeof import("./getConfig").getConfig = null as any;
 export const getConfigOutput: typeof import("./getConfig").getConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getConfig","getConfigOutput"], () => require("./getConfig"));
 
 export { GetVariableArgs, GetVariableResult, GetVariableOutputArgs } from "./getVariable";
 export const getVariable: typeof import("./getVariable").getVariable = null as any;
 export const getVariableOutput: typeof import("./getVariable").getVariableOutput = null as any;
+utilities.lazyLoad(exports, ["getVariable","getVariableOutput"], () => require("./getVariable"));
 
 export { VariableArgs, VariableState } from "./variable";
 export type Variable = import("./variable").Variable;
 export const Variable: typeof import("./variable").Variable = null as any;
-
-utilities.lazyLoad(exports, ["Config"], () => require("./config"));
-utilities.lazyLoad(exports, ["ConfigIamBinding"], () => require("./configIamBinding"));
-utilities.lazyLoad(exports, ["ConfigIamMember"], () => require("./configIamMember"));
-utilities.lazyLoad(exports, ["ConfigIamPolicy"], () => require("./configIamPolicy"));
-utilities.lazyLoad(exports, ["getConfig","getConfigOutput"], () => require("./getConfig"));
-utilities.lazyLoad(exports, ["getVariable","getVariableOutput"], () => require("./getVariable"));
 utilities.lazyLoad(exports, ["Variable"], () => require("./variable"));
+
 
 const _module = {
     version: utilities.getVersion(),

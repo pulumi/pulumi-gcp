@@ -319,33 +319,6 @@ class Environment(pulumi.CustomResource):
             * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 
         ## Example Usage
-        ### Apigee Environment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        current = gcp.organizations.get_client_config()
-        apigee_network = gcp.compute.Network("apigeeNetwork")
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=apigee_network.id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
-            analytics_region="us-central1",
-            project_id=current.project,
-            authorized_network=apigee_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
-        env = gcp.apigee.Environment("env",
-            description="Apigee Environment",
-            display_name="environment-1",
-            org_id=apigee_org.id)
-        ```
 
         ## Import
 
@@ -396,33 +369,6 @@ class Environment(pulumi.CustomResource):
             * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 
         ## Example Usage
-        ### Apigee Environment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        current = gcp.organizations.get_client_config()
-        apigee_network = gcp.compute.Network("apigeeNetwork")
-        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=apigee_network.id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
-        apigee_org = gcp.apigee.Organization("apigeeOrg",
-            analytics_region="us-central1",
-            project_id=current.project,
-            authorized_network=apigee_network.id,
-            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
-        env = gcp.apigee.Environment("env",
-            description="Apigee Environment",
-            display_name="environment-1",
-            org_id=apigee_org.id)
-        ```
 
         ## Import
 

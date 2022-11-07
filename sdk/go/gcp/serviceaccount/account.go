@@ -82,6 +82,8 @@ type Account struct {
 	// should be referenced from any `organizations.getIAMPolicy` data sources
 	// that would grant the service account privileges.
 	Email pulumi.StringOutput `pulumi:"email"`
+	// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+	Member pulumi.StringOutput `pulumi:"member"`
 	// The fully-qualified name of the service account.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project that the service account will be created in.
@@ -141,6 +143,8 @@ type accountState struct {
 	// should be referenced from any `organizations.getIAMPolicy` data sources
 	// that would grant the service account privileges.
 	Email *string `pulumi:"email"`
+	// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+	Member *string `pulumi:"member"`
 	// The fully-qualified name of the service account.
 	Name *string `pulumi:"name"`
 	// The ID of the project that the service account will be created in.
@@ -169,6 +173,8 @@ type AccountState struct {
 	// should be referenced from any `organizations.getIAMPolicy` data sources
 	// that would grant the service account privileges.
 	Email pulumi.StringPtrInput
+	// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+	Member pulumi.StringPtrInput
 	// The fully-qualified name of the service account.
 	Name pulumi.StringPtrInput
 	// The ID of the project that the service account will be created in.
@@ -341,6 +347,11 @@ func (o AccountOutput) DisplayName() pulumi.StringPtrOutput {
 // that would grant the service account privileges.
 func (o AccountOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
+}
+
+// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+func (o AccountOutput) Member() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }
 
 // The fully-qualified name of the service account.

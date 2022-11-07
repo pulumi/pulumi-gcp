@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,6 +18,17 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
      * 
      */
     private @Nullable String bootDiskKmsKey;
+    /**
+     * @return Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
+     * 
+     */
+    private @Nullable Integer diskSize;
+    /**
+     * @return Type of the disk attached to each node
+     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-standard&#39;
+     * 
+     */
+    private @Nullable String diskType;
     /**
      * @return The image type to use for this node. Note that changing the image type
      * will delete and recreate all nodes in the node pool.
@@ -53,6 +65,21 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
      */
     public Optional<String> bootDiskKmsKey() {
         return Optional.ofNullable(this.bootDiskKmsKey);
+    }
+    /**
+     * @return Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
+     * 
+     */
+    public Optional<Integer> diskSize() {
+        return Optional.ofNullable(this.diskSize);
+    }
+    /**
+     * @return Type of the disk attached to each node
+     * (e.g. &#39;pd-standard&#39;, &#39;pd-balanced&#39; or &#39;pd-ssd&#39;). If unspecified, the default disk type is &#39;pd-standard&#39;
+     * 
+     */
+    public Optional<String> diskType() {
+        return Optional.ofNullable(this.diskType);
     }
     /**
      * @return The image type to use for this node. Note that changing the image type
@@ -101,6 +128,8 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String bootDiskKmsKey;
+        private @Nullable Integer diskSize;
+        private @Nullable String diskType;
         private @Nullable String imageType;
         private @Nullable String minCpuPlatform;
         private @Nullable List<String> oauthScopes;
@@ -109,6 +138,8 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
         public Builder(ClusterClusterAutoscalingAutoProvisioningDefaults defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
+    	      this.diskSize = defaults.diskSize;
+    	      this.diskType = defaults.diskType;
     	      this.imageType = defaults.imageType;
     	      this.minCpuPlatform = defaults.minCpuPlatform;
     	      this.oauthScopes = defaults.oauthScopes;
@@ -118,6 +149,16 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
         @CustomType.Setter
         public Builder bootDiskKmsKey(@Nullable String bootDiskKmsKey) {
             this.bootDiskKmsKey = bootDiskKmsKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder diskSize(@Nullable Integer diskSize) {
+            this.diskSize = diskSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder diskType(@Nullable String diskType) {
+            this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
@@ -146,6 +187,8 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
         public ClusterClusterAutoscalingAutoProvisioningDefaults build() {
             final var o = new ClusterClusterAutoscalingAutoProvisioningDefaults();
             o.bootDiskKmsKey = bootDiskKmsKey;
+            o.diskSize = diskSize;
+            o.diskType = diskType;
             o.imageType = imageType;
             o.minCpuPlatform = minCpuPlatform;
             o.oauthScopes = oauthScopes;

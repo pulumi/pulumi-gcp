@@ -26,6 +26,7 @@ class ConnectionProfileArgs:
                  mysql_profile: Optional[pulumi.Input['ConnectionProfileMysqlProfileArgs']] = None,
                  oracle_profile: Optional[pulumi.Input['ConnectionProfileOracleProfileArgs']] = None,
                  postgresql_profile: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']] = None,
+                 private_connectivity: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
@@ -43,6 +44,8 @@ class ConnectionProfileArgs:
         :param pulumi.Input['ConnectionProfileOracleProfileArgs'] oracle_profile: Oracle database profile.
                Structure is documented below.
         :param pulumi.Input['ConnectionProfilePostgresqlProfileArgs'] postgresql_profile: PostgreSQL database profile.
+               Structure is documented below.
+        :param pulumi.Input['ConnectionProfilePrivateConnectivityArgs'] private_connectivity: Private connectivity.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -64,6 +67,8 @@ class ConnectionProfileArgs:
             pulumi.set(__self__, "oracle_profile", oracle_profile)
         if postgresql_profile is not None:
             pulumi.set(__self__, "postgresql_profile", postgresql_profile)
+        if private_connectivity is not None:
+            pulumi.set(__self__, "private_connectivity", private_connectivity)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -193,6 +198,19 @@ class ConnectionProfileArgs:
         pulumi.set(self, "postgresql_profile", value)
 
     @property
+    @pulumi.getter(name="privateConnectivity")
+    def private_connectivity(self) -> Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']]:
+        """
+        Private connectivity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "private_connectivity")
+
+    @private_connectivity.setter
+    def private_connectivity(self, value: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']]):
+        pulumi.set(self, "private_connectivity", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -220,6 +238,7 @@ class _ConnectionProfileState:
                  name: Optional[pulumi.Input[str]] = None,
                  oracle_profile: Optional[pulumi.Input['ConnectionProfileOracleProfileArgs']] = None,
                  postgresql_profile: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']] = None,
+                 private_connectivity: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ConnectionProfile resources.
@@ -238,6 +257,8 @@ class _ConnectionProfileState:
         :param pulumi.Input['ConnectionProfileOracleProfileArgs'] oracle_profile: Oracle database profile.
                Structure is documented below.
         :param pulumi.Input['ConnectionProfilePostgresqlProfileArgs'] postgresql_profile: PostgreSQL database profile.
+               Structure is documented below.
+        :param pulumi.Input['ConnectionProfilePrivateConnectivityArgs'] private_connectivity: Private connectivity.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -264,6 +285,8 @@ class _ConnectionProfileState:
             pulumi.set(__self__, "oracle_profile", oracle_profile)
         if postgresql_profile is not None:
             pulumi.set(__self__, "postgresql_profile", postgresql_profile)
+        if private_connectivity is not None:
+            pulumi.set(__self__, "private_connectivity", private_connectivity)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -405,6 +428,19 @@ class _ConnectionProfileState:
         pulumi.set(self, "postgresql_profile", value)
 
     @property
+    @pulumi.getter(name="privateConnectivity")
+    def private_connectivity(self) -> Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']]:
+        """
+        Private connectivity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "private_connectivity")
+
+    @private_connectivity.setter
+    def private_connectivity(self, value: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']]):
+        pulumi.set(self, "private_connectivity", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -433,6 +469,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  mysql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileMysqlProfileArgs']]] = None,
                  oracle_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileOracleProfileArgs']]] = None,
                  postgresql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlProfileArgs']]] = None,
+                 private_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePrivateConnectivityArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -452,17 +489,32 @@ class ConnectionProfile(pulumi.CustomResource):
             ),
             location="us-central1")
         ```
-        ### Datastream Connection Profile Bigquery
+        ### Datastream Connection Profile Bigquery Private Connection
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.datastream.ConnectionProfile("default",
-            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs(),
-            connection_profile_id="my-profile",
+        default_network = gcp.compute.Network("defaultNetwork")
+        private_connection = gcp.datastream.PrivateConnection("privateConnection",
             display_name="Connection profile",
-            location="us-central1")
+            location="us-central1",
+            private_connection_id="my-connection",
+            labels={
+                "key": "value",
+            },
+            vpc_peering_config=gcp.datastream.PrivateConnectionVpcPeeringConfigArgs(
+                vpc=default_network.id,
+                subnet="10.0.0.0/29",
+            ))
+        default_connection_profile = gcp.datastream.ConnectionProfile("defaultConnectionProfile",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="my-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs(),
+            private_connectivity=gcp.datastream.ConnectionProfilePrivateConnectivityArgs(
+                private_connection=private_connection.id,
+            ))
         ```
         ### Datastream Connection Profile Full
 
@@ -570,6 +622,8 @@ class ConnectionProfile(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlProfileArgs']] postgresql_profile: PostgreSQL database profile.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfilePrivateConnectivityArgs']] private_connectivity: Private connectivity.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -596,17 +650,32 @@ class ConnectionProfile(pulumi.CustomResource):
             ),
             location="us-central1")
         ```
-        ### Datastream Connection Profile Bigquery
+        ### Datastream Connection Profile Bigquery Private Connection
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.datastream.ConnectionProfile("default",
-            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs(),
-            connection_profile_id="my-profile",
+        default_network = gcp.compute.Network("defaultNetwork")
+        private_connection = gcp.datastream.PrivateConnection("privateConnection",
             display_name="Connection profile",
-            location="us-central1")
+            location="us-central1",
+            private_connection_id="my-connection",
+            labels={
+                "key": "value",
+            },
+            vpc_peering_config=gcp.datastream.PrivateConnectionVpcPeeringConfigArgs(
+                vpc=default_network.id,
+                subnet="10.0.0.0/29",
+            ))
+        default_connection_profile = gcp.datastream.ConnectionProfile("defaultConnectionProfile",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="my-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs(),
+            private_connectivity=gcp.datastream.ConnectionProfilePrivateConnectivityArgs(
+                private_connection=private_connection.id,
+            ))
         ```
         ### Datastream Connection Profile Full
 
@@ -722,6 +791,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  mysql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileMysqlProfileArgs']]] = None,
                  oracle_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileOracleProfileArgs']]] = None,
                  postgresql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlProfileArgs']]] = None,
+                 private_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePrivateConnectivityArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -748,6 +818,7 @@ class ConnectionProfile(pulumi.CustomResource):
             __props__.__dict__["mysql_profile"] = mysql_profile
             __props__.__dict__["oracle_profile"] = oracle_profile
             __props__.__dict__["postgresql_profile"] = postgresql_profile
+            __props__.__dict__["private_connectivity"] = private_connectivity
             __props__.__dict__["project"] = project
             __props__.__dict__["name"] = None
         super(ConnectionProfile, __self__).__init__(
@@ -771,6 +842,7 @@ class ConnectionProfile(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             oracle_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileOracleProfileArgs']]] = None,
             postgresql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlProfileArgs']]] = None,
+            private_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePrivateConnectivityArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None) -> 'ConnectionProfile':
         """
         Get an existing ConnectionProfile resource's state with the given name, id, and optional extra
@@ -795,6 +867,8 @@ class ConnectionProfile(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlProfileArgs']] postgresql_profile: PostgreSQL database profile.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConnectionProfilePrivateConnectivityArgs']] private_connectivity: Private connectivity.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -813,6 +887,7 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["oracle_profile"] = oracle_profile
         __props__.__dict__["postgresql_profile"] = postgresql_profile
+        __props__.__dict__["private_connectivity"] = private_connectivity
         __props__.__dict__["project"] = project
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
 
@@ -908,6 +983,15 @@ class ConnectionProfile(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "postgresql_profile")
+
+    @property
+    @pulumi.getter(name="privateConnectivity")
+    def private_connectivity(self) -> pulumi.Output[Optional['outputs.ConnectionProfilePrivateConnectivity']]:
+        """
+        Private connectivity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "private_connectivity")
 
     @property
     @pulumi.getter

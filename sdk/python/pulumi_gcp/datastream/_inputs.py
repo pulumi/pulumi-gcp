@@ -17,6 +17,7 @@ __all__ = [
     'ConnectionProfileMysqlProfileSslConfigArgs',
     'ConnectionProfileOracleProfileArgs',
     'ConnectionProfilePostgresqlProfileArgs',
+    'ConnectionProfilePrivateConnectivityArgs',
     'PrivateConnectionVpcPeeringConfigArgs',
 ]
 
@@ -552,6 +553,28 @@ class ConnectionProfilePostgresqlProfileArgs:
     @port.setter
     def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
+
+
+@pulumi.input_type
+class ConnectionProfilePrivateConnectivityArgs:
+    def __init__(__self__, *,
+                 private_connection: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] private_connection: A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
+        """
+        pulumi.set(__self__, "private_connection", private_connection)
+
+    @property
+    @pulumi.getter(name="privateConnection")
+    def private_connection(self) -> pulumi.Input[str]:
+        """
+        A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
+        """
+        return pulumi.get(self, "private_connection")
+
+    @private_connection.setter
+    def private_connection(self, value: pulumi.Input[str]):
+        pulumi.set(self, "private_connection", value)
 
 
 @pulumi.input_type

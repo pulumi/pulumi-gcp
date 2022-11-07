@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.RouterNatArgs;
 import com.pulumi.gcp.compute.inputs.RouterNatState;
 import com.pulumi.gcp.compute.outputs.RouterNatLogConfig;
+import com.pulumi.gcp.compute.outputs.RouterNatRule;
 import com.pulumi.gcp.compute.outputs.RouterNatSubnetwork;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -149,6 +150,92 @@ import javax.annotation.Nullable;
  *                 .name(subnet.id())
  *                 .sourceIpRangesToNats(&#34;ALL_IP_RANGES&#34;)
  *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Router Nat Rules
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.Router;
+ * import com.pulumi.gcp.compute.RouterArgs;
+ * import com.pulumi.gcp.compute.Address;
+ * import com.pulumi.gcp.compute.AddressArgs;
+ * import com.pulumi.gcp.compute.RouterNat;
+ * import com.pulumi.gcp.compute.RouterNatArgs;
+ * import com.pulumi.gcp.compute.inputs.RouterNatSubnetworkArgs;
+ * import com.pulumi.gcp.compute.inputs.RouterNatRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RouterNatRuleActionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var net = new Network(&#34;net&#34;, NetworkArgs.builder()        
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
+ *             .network(net.id())
+ *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *         var router = new Router(&#34;router&#34;, RouterArgs.builder()        
+ *             .region(subnet.region())
+ *             .network(net.id())
+ *             .build());
+ * 
+ *         var addr1 = new Address(&#34;addr1&#34;, AddressArgs.builder()        
+ *             .region(subnet.region())
+ *             .build());
+ * 
+ *         var addr2 = new Address(&#34;addr2&#34;, AddressArgs.builder()        
+ *             .region(subnet.region())
+ *             .build());
+ * 
+ *         var addr3 = new Address(&#34;addr3&#34;, AddressArgs.builder()        
+ *             .region(subnet.region())
+ *             .build());
+ * 
+ *         var natRules = new RouterNat(&#34;natRules&#34;, RouterNatArgs.builder()        
+ *             .router(router.name())
+ *             .region(router.region())
+ *             .natIpAllocateOption(&#34;MANUAL_ONLY&#34;)
+ *             .natIps(addr1.selfLink())
+ *             .sourceSubnetworkIpRangesToNat(&#34;LIST_OF_SUBNETWORKS&#34;)
+ *             .subnetworks(RouterNatSubnetworkArgs.builder()
+ *                 .name(subnet.id())
+ *                 .sourceIpRangesToNats(&#34;ALL_IP_RANGES&#34;)
+ *                 .build())
+ *             .rules(RouterNatRuleArgs.builder()
+ *                 .ruleNumber(100)
+ *                 .description(&#34;nat rules example&#34;)
+ *                 .match(&#34;inIpRange(destination.ip, &#39;1.1.0.0/16&#39;) || inIpRange(destination.ip, &#39;2.2.0.0/16&#39;)&#34;)
+ *                 .action(RouterNatRuleActionArgs.builder()
+ *                     .sourceNatActiveIps(                    
+ *                         addr2.selfLink(),
+ *                         addr3.selfLink())
+ *                     .build())
+ *                 .build())
+ *             .enableEndpointIndependentMapping(false)
  *             .build());
  * 
  *     }
@@ -387,6 +474,22 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
      */
     public Output<String> router() {
         return this.router;
+    }
+    /**
+     * A list of rules associated with this NAT.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="rules", type=List.class, parameters={RouterNatRule.class})
+    private Output</* @Nullable */ List<RouterNatRule>> rules;
+
+    /**
+     * @return A list of rules associated with this NAT.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<RouterNatRule>>> rules() {
+        return Codegen.optional(this.rules);
     }
     /**
      * How NAT should be configured per Subnetwork.

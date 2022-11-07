@@ -30,6 +30,11 @@ public final class GetAccountResult {
      */
     private String id;
     /**
+     * @return The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+     * 
+     */
+    private String member;
+    /**
      * @return The fully-qualified name of the service account.
      * 
      */
@@ -69,6 +74,13 @@ public final class GetAccountResult {
         return this.id;
     }
     /**
+     * @return The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+     * 
+     */
+    public String member() {
+        return this.member;
+    }
+    /**
      * @return The fully-qualified name of the service account.
      * 
      */
@@ -99,6 +111,7 @@ public final class GetAccountResult {
         private String displayName;
         private String email;
         private String id;
+        private String member;
         private String name;
         private @Nullable String project;
         private String uniqueId;
@@ -109,6 +122,7 @@ public final class GetAccountResult {
     	      this.displayName = defaults.displayName;
     	      this.email = defaults.email;
     	      this.id = defaults.id;
+    	      this.member = defaults.member;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.uniqueId = defaults.uniqueId;
@@ -135,6 +149,11 @@ public final class GetAccountResult {
             return this;
         }
         @CustomType.Setter
+        public Builder member(String member) {
+            this.member = Objects.requireNonNull(member);
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
@@ -155,6 +174,7 @@ public final class GetAccountResult {
             o.displayName = displayName;
             o.email = email;
             o.id = id;
+            o.member = member;
             o.name = name;
             o.project = project;
             o.uniqueId = uniqueId;

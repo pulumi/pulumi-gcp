@@ -8,14 +8,15 @@ import * as utilities from "./utilities";
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
 export * from "./utils";
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
 // Export sub-modules:
 import * as accessapproval from "./accessapproval";
 import * as accesscontextmanager from "./accesscontextmanager";
 import * as activedirectory from "./activedirectory";
+import * as alloydb from "./alloydb";
 import * as apigateway from "./apigateway";
 import * as apigee from "./apigee";
 import * as appengine from "./appengine";
@@ -46,6 +47,7 @@ import * as container from "./container";
 import * as containeranalysis from "./containeranalysis";
 import * as datacatalog from "./datacatalog";
 import * as dataflow from "./dataflow";
+import * as dataform from "./dataform";
 import * as datafusion from "./datafusion";
 import * as dataloss from "./dataloss";
 import * as dataplex from "./dataplex";
@@ -110,6 +112,7 @@ export {
     accessapproval,
     accesscontextmanager,
     activedirectory,
+    alloydb,
     apigateway,
     apigee,
     appengine,
@@ -140,6 +143,7 @@ export {
     containeranalysis,
     datacatalog,
     dataflow,
+    dataform,
     datafusion,
     dataloss,
     dataplex,

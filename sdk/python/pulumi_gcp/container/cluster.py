@@ -97,7 +97,9 @@ class ClusterArgs:
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input['ClusterConfidentialNodesArgs'] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
-        :param pulumi.Input['ClusterCostManagementConfigArgs'] cost_management_config: Cost management configuration for the cluster.
+        :param pulumi.Input['ClusterCostManagementConfigArgs'] cost_management_config: Configuration for the
+               [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+               Structure is documented below.
         :param pulumi.Input['ClusterDatabaseEncryptionArgs'] database_encryption: Structure is documented below.
         :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
@@ -477,7 +479,9 @@ class ClusterArgs:
     @pulumi.getter(name="costManagementConfig")
     def cost_management_config(self) -> Optional[pulumi.Input['ClusterCostManagementConfigArgs']]:
         """
-        Cost management configuration for the cluster.
+        Configuration for the
+        [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+        Structure is documented below.
         """
         return pulumi.get(self, "cost_management_config")
 
@@ -1293,7 +1297,9 @@ class _ClusterState:
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input['ClusterConfidentialNodesArgs'] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
-        :param pulumi.Input['ClusterCostManagementConfigArgs'] cost_management_config: Cost management configuration for the cluster.
+        :param pulumi.Input['ClusterCostManagementConfigArgs'] cost_management_config: Configuration for the
+               [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+               Structure is documented below.
         :param pulumi.Input['ClusterDatabaseEncryptionArgs'] database_encryption: Structure is documented below.
         :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
@@ -1700,7 +1706,9 @@ class _ClusterState:
     @pulumi.getter(name="costManagementConfig")
     def cost_management_config(self) -> Optional[pulumi.Input['ClusterCostManagementConfigArgs']]:
         """
-        Cost management configuration for the cluster.
+        Configuration for the
+        [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+        Structure is documented below.
         """
         return pulumi.get(self, "cost_management_config")
 
@@ -2670,7 +2678,9 @@ class Cluster(pulumi.CustomResource):
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterConfidentialNodesArgs']] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterCostManagementConfigArgs']] cost_management_config: Cost management configuration for the cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterCostManagementConfigArgs']] cost_management_config: Configuration for the
+               [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']] database_encryption: Structure is documented below.
         :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
@@ -3158,7 +3168,9 @@ class Cluster(pulumi.CustomResource):
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterConfidentialNodesArgs']] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterCostManagementConfigArgs']] cost_management_config: Cost management configuration for the cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterCostManagementConfigArgs']] cost_management_config: Configuration for the
+               [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']] database_encryption: Structure is documented below.
         :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
@@ -3473,7 +3485,9 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="costManagementConfig")
     def cost_management_config(self) -> pulumi.Output['outputs.ClusterCostManagementConfig']:
         """
-        Cost management configuration for the cluster.
+        Configuration for the
+        [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+        Structure is documented below.
         """
         return pulumi.get(self, "cost_management_config")
 

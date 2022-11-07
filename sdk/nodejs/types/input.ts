@@ -1501,6 +1501,113 @@ export namespace accesscontextmanager {
     }
 }
 
+export namespace alloydb {
+    export interface ClusterAutomatedBackupPolicy {
+        /**
+         * The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed.
+         * The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        backupWindow?: pulumi.Input<string>;
+        /**
+         * Whether automated automated backups are enabled.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Labels to apply to backups created using this configuration.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * Quantity-based Backup retention policy to retain recent backups.
+         * Structure is documented below.
+         */
+        quantityBasedRetention?: pulumi.Input<inputs.alloydb.ClusterAutomatedBackupPolicyQuantityBasedRetention>;
+        /**
+         * Time-based Backup retention policy.
+         * Structure is documented below.
+         */
+        timeBasedRetention?: pulumi.Input<inputs.alloydb.ClusterAutomatedBackupPolicyTimeBasedRetention>;
+        /**
+         * Weekly schedule for the Backup.
+         * Structure is documented below.
+         */
+        weeklySchedule: pulumi.Input<inputs.alloydb.ClusterAutomatedBackupPolicyWeeklySchedule>;
+    }
+
+    export interface ClusterAutomatedBackupPolicyQuantityBasedRetention {
+        /**
+         * The number of backups to retain.
+         */
+        count?: pulumi.Input<number>;
+    }
+
+    export interface ClusterAutomatedBackupPolicyTimeBasedRetention {
+        /**
+         * The retention period.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        retentionPeriod?: pulumi.Input<string>;
+    }
+
+    export interface ClusterAutomatedBackupPolicyWeeklySchedule {
+        /**
+         * The days of the week to perform a backup. At least one day of the week must be provided.
+         * Each value may be one of `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         */
+        daysOfWeeks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The times during the day to start a backup. At least one start time must be provided. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00).
+         * Structure is documented below.
+         */
+        startTimes: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleStartTime>[]>;
+    }
+
+    export interface ClusterAutomatedBackupPolicyWeeklyScheduleStartTime {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: pulumi.Input<number>;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: pulumi.Input<number>;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: pulumi.Input<number>;
+    }
+
+    export interface ClusterBackupSource {
+        backupName?: pulumi.Input<string>;
+    }
+
+    export interface ClusterInitialUser {
+        /**
+         * The initial password for the user.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        password: pulumi.Input<string>;
+        /**
+         * The database username.
+         */
+        user?: pulumi.Input<string>;
+    }
+
+    export interface ClusterMigrationSource {
+        hostPort?: pulumi.Input<string>;
+        referenceId?: pulumi.Input<string>;
+        sourceType?: pulumi.Input<string>;
+    }
+}
+
 export namespace apigateway {
     export interface ApiConfigGatewayConfig {
         /**
@@ -6434,6 +6541,11 @@ export namespace cloudbuild {
          */
         name: pulumi.Input<string>;
         /**
+         * A shell script to be executed in the step.
+         * When script is provided, the user cannot specify the entrypoint or args.
+         */
+        script?: pulumi.Input<string>;
+        /**
          * A list of global environment variables, which are encrypted using a Cloud Key Management
          * Service crypto key. These values must be specified in the build's Secret. These variables
          * will be available to all build steps in this build.
@@ -7230,7 +7342,6 @@ export namespace cloudidentity {
          */
         name: pulumi.Input<string>;
     }
-
 }
 
 export namespace cloudrun {
@@ -7527,7 +7638,7 @@ export namespace cloudrun {
         /**
          * Number of seconds after which the probe times out.
          * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-         * Must be smaller than periodSeconds.
+         * Must be smaller than period_seconds.
          */
         timeoutSeconds?: pulumi.Input<number>;
         /**
@@ -7586,6 +7697,12 @@ export namespace cloudrun {
          * More info: https://kubernetes.io/docs/concepts/containers/images
          */
         image: pulumi.Input<string>;
+        /**
+         * Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+         * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * Structure is documented below.
+         */
+        livenessProbe?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerLivenessProbe>;
         /**
          * List of open ports in the container.
          * More Info:
@@ -7710,6 +7827,62 @@ export namespace cloudrun {
         name: pulumi.Input<string>;
     }
 
+    export interface ServiceTemplateSpecContainerLivenessProbe {
+        /**
+         * Minimum consecutive failures for the probe to be considered failed after
+         * having succeeded. Defaults to 3. Minimum value is 1.
+         */
+        failureThreshold?: pulumi.Input<number>;
+        /**
+         * HttpGet specifies the http request to perform.
+         * Structure is documented below.
+         */
+        httpGet?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerLivenessProbeHttpGet>;
+        /**
+         * Number of seconds after the container has started before the probe is
+         * initiated.
+         * Defaults to 0 seconds. Minimum value is 0. Maximum value is 3600.
+         */
+        initialDelaySeconds?: pulumi.Input<number>;
+        /**
+         * How often (in seconds) to perform the probe.
+         * Default to 10 seconds. Minimum value is 1. Maximum value is 3600.
+         */
+        periodSeconds?: pulumi.Input<number>;
+        /**
+         * Number of seconds after which the probe times out.
+         * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+         * Must be smaller than period_seconds.
+         */
+        timeoutSeconds?: pulumi.Input<number>;
+    }
+
+    export interface ServiceTemplateSpecContainerLivenessProbeHttpGet {
+        /**
+         * Custom headers to set in the request. HTTP allows repeated headers.
+         * Structure is documented below.
+         */
+        httpHeaders?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader>[]>;
+        /**
+         * The relative path of the file to map the key to.
+         * May not be an absolute path.
+         * May not contain the path element '..'.
+         * May not start with the string '..'.
+         */
+        path?: pulumi.Input<string>;
+    }
+
+    export interface ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
+        /**
+         * Volume's name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * The header field value.
+         */
+        value?: pulumi.Input<string>;
+    }
+
     export interface ServiceTemplateSpecContainerPort {
         /**
          * Port number the container listens on. This must be a valid port number, 0 < x < 65536.
@@ -7756,12 +7929,12 @@ export namespace cloudrun {
         /**
          * Number of seconds after the container has started before the probe is
          * initiated.
-         * Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+         * Defaults to 0 seconds. Minimum value is 0. Maximum value is 3600.
          */
         initialDelaySeconds?: pulumi.Input<number>;
         /**
          * How often (in seconds) to perform the probe.
-         * Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+         * Default to 10 seconds. Minimum value is 1. Maximum value is 3600.
          */
         periodSeconds?: pulumi.Input<number>;
         /**
@@ -7772,7 +7945,7 @@ export namespace cloudrun {
         /**
          * Number of seconds after which the probe times out.
          * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-         * Must be smaller than periodSeconds.
+         * Must be smaller than period_seconds.
          */
         timeoutSeconds?: pulumi.Input<number>;
     }
@@ -7917,7 +8090,6 @@ export namespace cloudrun {
          */
         url?: pulumi.Input<string>;
     }
-
 }
 
 export namespace cloudscheduler {
@@ -14521,6 +14693,49 @@ export namespace compute {
         filter: pulumi.Input<string>;
     }
 
+    export interface RouterNatRule {
+        /**
+         * The action to be enforced for traffic that matches this rule.
+         * Structure is documented below.
+         */
+        action?: pulumi.Input<inputs.compute.RouterNatRuleAction>;
+        /**
+         * An optional description of this rule.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
+         * If it evaluates to true, the corresponding action is enforced.
+         * The following examples are valid match expressions for public NAT:
+         * "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')"
+         * "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+         * The following example is a valid match expression for private NAT:
+         * "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+         */
+        match: pulumi.Input<string>;
+        /**
+         * An integer uniquely identifying a rule in the list.
+         * The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+         */
+        ruleNumber: pulumi.Input<number>;
+    }
+
+    export interface RouterNatRuleAction {
+        /**
+         * A list of URLs of the IP resources used for this NAT rule.
+         * These IP addresses must be valid static external IP addresses assigned to the project.
+         * This field is used for public NAT.
+         */
+        sourceNatActiveIps?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A list of URLs of the IP resources to be drained.
+         * These IPs must be valid static external IPs that have been assigned to the NAT.
+         * These IPs should be used for updating/patching a NAT rule only.
+         * This field is used for public NAT.
+         */
+        sourceNatDrainIps?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface RouterNatSubnetwork {
         /**
          * Self-link of subnetwork to NAT
@@ -17733,6 +17948,15 @@ export namespace container {
          */
         bootDiskKmsKey?: pulumi.Input<string>;
         /**
+         * Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
+         */
+        diskSize?: pulumi.Input<number>;
+        /**
+         * Type of the disk attached to each node
+         * (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+         */
+        diskType?: pulumi.Input<string>;
+        /**
          * The image type to use for this node. Note that changing the image type
          * will delete and recreate all nodes in the node pool.
          */
@@ -19311,6 +19535,28 @@ export namespace datacatalog {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
+    }
+}
+
+export namespace dataform {
+    export interface RepositoryGitRemoteSettings {
+        /**
+         * The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*.
+         */
+        authenticationTokenSecretVersion: pulumi.Input<string>;
+        /**
+         * The Git remote's default branch name.
+         */
+        defaultBranch: pulumi.Input<string>;
+        /**
+         * -
+         * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+         */
+        tokenStatus?: pulumi.Input<string>;
+        /**
+         * The Git remote's URL.
+         */
+        url: pulumi.Input<string>;
     }
 }
 
@@ -22876,6 +23122,13 @@ export namespace datastream {
         username: pulumi.Input<string>;
     }
 
+    export interface ConnectionProfilePrivateConnectivity {
+        /**
+         * A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
+         */
+        privateConnection: pulumi.Input<string>;
+    }
+
     export interface PrivateConnectionVpcPeeringConfig {
         /**
          * A free subnet for peering. (CIDR of /29)
@@ -23720,10 +23973,19 @@ export namespace dns {
 
     export interface RecordSetRoutingPolicy {
         /**
+         * Specifies whether to enable fencing for geo queries.
+         */
+        enableGeoFencing?: pulumi.Input<boolean>;
+        /**
          * The configuration for Geolocation based routing policy.
          * Structure is document below.
          */
         geos?: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyGeo>[]>;
+        /**
+         * The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+         * Structure is document below.
+         */
+        primaryBackup?: pulumi.Input<inputs.dns.RecordSetRoutingPolicyPrimaryBackup>;
         /**
          * The configuration for Weighted Round Robin based routing policy.
          * Structure is document below.
@@ -23733,24 +23995,227 @@ export namespace dns {
 
     export interface RecordSetRoutingPolicyGeo {
         /**
+         * For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+         * Structure is document below.
+         */
+        healthCheckedTargets?: pulumi.Input<inputs.dns.RecordSetRoutingPolicyGeoHealthCheckedTargets>;
+        /**
          * The location name defined in Google Cloud.
          */
         location: pulumi.Input<string>;
         /**
          * Same as `rrdatas` above.
          */
-        rrdatas: pulumi.Input<pulumi.Input<string>[]>;
+        rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RecordSetRoutingPolicyGeoHealthCheckedTargets {
+        /**
+         * The list of internal load balancers to health check.
+         * Structure is document below.
+         */
+        internalLoadBalancers: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer>[]>;
+    }
+
+    export interface RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer {
+        /**
+         * The frontend IP address of the load balancer.
+         */
+        ipAddress: pulumi.Input<string>;
+        /**
+         * The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+         */
+        ipProtocol: pulumi.Input<string>;
+        /**
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+         */
+        loadBalancerType: pulumi.Input<string>;
+        /**
+         * The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+         */
+        networkUrl: pulumi.Input<string>;
+        /**
+         * The configured port of the load balancer.
+         */
+        port: pulumi.Input<string>;
+        /**
+         * The ID of the project in which the load balancer belongs.
+         */
+        project: pulumi.Input<string>;
+        /**
+         * The region of the load balancer. Only needed for regional load balancers.
+         */
+        region?: pulumi.Input<string>;
+    }
+
+    export interface RecordSetRoutingPolicyPrimaryBackup {
+        /**
+         * The backup geo targets, which provide a regional failover policy for the otherwise global primary targets.
+         * Structure is document above.
+         */
+        backupGeos: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeo>[]>;
+        /**
+         * Specifies whether to enable fencing for backup geo queries.
+         */
+        enableGeoFencingForBackups?: pulumi.Input<boolean>;
+        /**
+         * The list of global primary targets to be health checked.
+         * Structure is document below.
+         */
+        primary: pulumi.Input<inputs.dns.RecordSetRoutingPolicyPrimaryBackupPrimary>;
+        /**
+         * Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
+         */
+        trickleRatio?: pulumi.Input<number>;
+    }
+
+    export interface RecordSetRoutingPolicyPrimaryBackupBackupGeo {
+        /**
+         * For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+         * Structure is document below.
+         */
+        healthCheckedTargets?: pulumi.Input<inputs.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets>;
+        /**
+         * The location name defined in Google Cloud.
+         */
+        location: pulumi.Input<string>;
+        /**
+         * Same as `rrdatas` above.
+         */
+        rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets {
+        /**
+         * The list of internal load balancers to health check.
+         * Structure is document below.
+         */
+        internalLoadBalancers: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer>[]>;
+    }
+
+    export interface RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer {
+        /**
+         * The frontend IP address of the load balancer.
+         */
+        ipAddress: pulumi.Input<string>;
+        /**
+         * The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+         */
+        ipProtocol: pulumi.Input<string>;
+        /**
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+         */
+        loadBalancerType: pulumi.Input<string>;
+        /**
+         * The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+         */
+        networkUrl: pulumi.Input<string>;
+        /**
+         * The configured port of the load balancer.
+         */
+        port: pulumi.Input<string>;
+        /**
+         * The ID of the project in which the load balancer belongs.
+         */
+        project: pulumi.Input<string>;
+        /**
+         * The region of the load balancer. Only needed for regional load balancers.
+         */
+        region?: pulumi.Input<string>;
+    }
+
+    export interface RecordSetRoutingPolicyPrimaryBackupPrimary {
+        /**
+         * The list of internal load balancers to health check.
+         * Structure is document below.
+         */
+        internalLoadBalancers: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer>[]>;
+    }
+
+    export interface RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer {
+        /**
+         * The frontend IP address of the load balancer.
+         */
+        ipAddress: pulumi.Input<string>;
+        /**
+         * The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+         */
+        ipProtocol: pulumi.Input<string>;
+        /**
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+         */
+        loadBalancerType: pulumi.Input<string>;
+        /**
+         * The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+         */
+        networkUrl: pulumi.Input<string>;
+        /**
+         * The configured port of the load balancer.
+         */
+        port: pulumi.Input<string>;
+        /**
+         * The ID of the project in which the load balancer belongs.
+         */
+        project: pulumi.Input<string>;
+        /**
+         * The region of the load balancer. Only needed for regional load balancers.
+         */
+        region?: pulumi.Input<string>;
     }
 
     export interface RecordSetRoutingPolicyWrr {
         /**
+         * For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+         * Structure is document below.
+         */
+        healthCheckedTargets?: pulumi.Input<inputs.dns.RecordSetRoutingPolicyWrrHealthCheckedTargets>;
+        /**
          * Same as `rrdatas` above.
          */
-        rrdatas: pulumi.Input<pulumi.Input<string>[]>;
+        rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The ratio of traffic routed to the target.
          */
         weight: pulumi.Input<number>;
+    }
+
+    export interface RecordSetRoutingPolicyWrrHealthCheckedTargets {
+        /**
+         * The list of internal load balancers to health check.
+         * Structure is document below.
+         */
+        internalLoadBalancers: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer>[]>;
+    }
+
+    export interface RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer {
+        /**
+         * The frontend IP address of the load balancer.
+         */
+        ipAddress: pulumi.Input<string>;
+        /**
+         * The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
+         */
+        ipProtocol: pulumi.Input<string>;
+        /**
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+         */
+        loadBalancerType: pulumi.Input<string>;
+        /**
+         * The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+         */
+        networkUrl: pulumi.Input<string>;
+        /**
+         * The configured port of the load balancer.
+         */
+        port: pulumi.Input<string>;
+        /**
+         * The ID of the project in which the load balancer belongs.
+         */
+        project: pulumi.Input<string>;
+        /**
+         * The region of the load balancer. Only needed for regional load balancers.
+         */
+        region?: pulumi.Input<string>;
     }
 
     export interface ResponsePolicyNetwork {
@@ -23790,7 +24255,6 @@ export namespace dns {
          */
         type: pulumi.Input<string>;
     }
-
 }
 
 export namespace endpoints {
@@ -24190,7 +24654,6 @@ export namespace folder {
          */
         default: pulumi.Input<boolean>;
     }
-
 }
 
 export namespace gameservices {
@@ -24820,7 +25283,6 @@ export namespace iam {
          */
         issuerUri: pulumi.Input<string>;
     }
-
 }
 
 export namespace iap {
@@ -26380,6 +26842,23 @@ export namespace monitoring {
          * Formatted as described in
          * https://cloud.google.com/apis/design/resource_names.
          */
+        resourceName?: pulumi.Input<string>;
+    }
+
+    export interface GenericServiceBasicService {
+        /**
+         * Labels that specify the resource that emits the monitoring data
+         * which is used for SLO reporting of this `Service`.
+         */
+        serviceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * The type of service that this basic service defines, e.g.
+         * APP_ENGINE service type
+         */
+        serviceType?: pulumi.Input<string>;
+    }
+
+    export interface GenericServiceTelemetry {
         resourceName?: pulumi.Input<string>;
     }
 
@@ -28432,7 +28911,6 @@ export namespace organizations {
          */
         default: pulumi.Input<boolean>;
     }
-
 }
 
 export namespace orgpolicy {
@@ -30446,7 +30924,6 @@ export namespace projects {
          */
         default: pulumi.Input<boolean>;
     }
-
 }
 
 export namespace pubsub {
@@ -30681,7 +31158,6 @@ export namespace pubsub {
          */
         schema: pulumi.Input<string>;
     }
-
 }
 
 export namespace recaptcha {
@@ -30882,7 +31358,7 @@ export namespace redis {
          * - TWENTY_FOUR_HOURS:	Snapshot every 24 horus.
          * Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
          */
-        rdbSnapshotPeriod: pulumi.Input<string>;
+        rdbSnapshotPeriod?: pulumi.Input<string>;
         /**
          * Optional. Date and time that the first snapshot was/will be attempted,
          * and to which future snapshots will be aligned. If not provided,
@@ -30907,7 +31383,6 @@ export namespace redis {
         serialNumber?: pulumi.Input<string>;
         sha1Fingerprint?: pulumi.Input<string>;
     }
-
 }
 
 export namespace runtimeconfig {
@@ -30996,7 +31471,6 @@ export namespace secretmanager {
          */
         name: pulumi.Input<string>;
     }
-
 }
 
 export namespace securitycenter {
@@ -31023,6 +31497,24 @@ export namespace securitycenter {
          * for information on how to write a filter.
          */
         filter: pulumi.Input<string>;
+    }
+
+    export interface SourceIamBindingCondition {
+        /**
+         * The description of the source (max of 1024 characters).
+         */
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface SourceIamMemberCondition {
+        /**
+         * The description of the source (max of 1024 characters).
+         */
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 }
 
@@ -31311,6 +31803,7 @@ export namespace sql {
          * and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
          */
         tier: pulumi.Input<string>;
+        timeZone?: pulumi.Input<string>;
         /**
          * A set of key/value user label pairs to assign to the instance.
          */
@@ -31557,7 +32050,6 @@ export namespace sql {
         disabled?: pulumi.Input<boolean>;
         serverRoles?: pulumi.Input<pulumi.Input<string>[]>;
     }
-
 }
 
 export namespace storage {
@@ -32009,7 +32501,6 @@ export namespace storage {
          */
         overwriteWhen?: pulumi.Input<string>;
     }
-
 }
 
 export namespace tags {
@@ -32061,6 +32552,64 @@ export namespace vertex {
         kmsKeyName?: pulumi.Input<string>;
     }
 
+    export interface AiEndpointDeployedModel {
+        automaticResources?: pulumi.Input<pulumi.Input<inputs.vertex.AiEndpointDeployedModelAutomaticResource>[]>;
+        createTime?: pulumi.Input<string>;
+        dedicatedResources?: pulumi.Input<pulumi.Input<inputs.vertex.AiEndpointDeployedModelDedicatedResource>[]>;
+        /**
+         * Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+         */
+        displayName?: pulumi.Input<string>;
+        enableAccessLogging?: pulumi.Input<boolean>;
+        enableContainerLogging?: pulumi.Input<boolean>;
+        /**
+         * an identifier for the resource with format `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+         */
+        id?: pulumi.Input<string>;
+        model?: pulumi.Input<string>;
+        modelVersionId?: pulumi.Input<string>;
+        privateEndpoints?: pulumi.Input<pulumi.Input<inputs.vertex.AiEndpointDeployedModelPrivateEndpoint>[]>;
+        serviceAccount?: pulumi.Input<string>;
+        sharedResources?: pulumi.Input<string>;
+    }
+
+    export interface AiEndpointDeployedModelAutomaticResource {
+        maxReplicaCount?: pulumi.Input<number>;
+        minReplicaCount?: pulumi.Input<number>;
+    }
+
+    export interface AiEndpointDeployedModelDedicatedResource {
+        autoscalingMetricSpecs?: pulumi.Input<pulumi.Input<inputs.vertex.AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec>[]>;
+        machineSpecs?: pulumi.Input<pulumi.Input<inputs.vertex.AiEndpointDeployedModelDedicatedResourceMachineSpec>[]>;
+        maxReplicaCount?: pulumi.Input<number>;
+        minReplicaCount?: pulumi.Input<number>;
+    }
+
+    export interface AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec {
+        metricName?: pulumi.Input<string>;
+        target?: pulumi.Input<number>;
+    }
+
+    export interface AiEndpointDeployedModelDedicatedResourceMachineSpec {
+        acceleratorCount?: pulumi.Input<number>;
+        acceleratorType?: pulumi.Input<string>;
+        machineType?: pulumi.Input<string>;
+    }
+
+    export interface AiEndpointDeployedModelPrivateEndpoint {
+        explainHttpUri?: pulumi.Input<string>;
+        healthHttpUri?: pulumi.Input<string>;
+        predictHttpUri?: pulumi.Input<string>;
+        serviceAttachment?: pulumi.Input<string>;
+    }
+
+    export interface AiEndpointEncryptionSpec {
+        /**
+         * Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+         */
+        kmsKeyName: pulumi.Input<string>;
+    }
+
     export interface AiFeatureStoreEncryptionSpec {
         /**
          * The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
@@ -32082,10 +32631,21 @@ export namespace vertex {
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
-         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         * @deprecated This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
          */
         monitoringInterval?: pulumi.Input<string>;
+    }
+
+    export interface AiFeatureStoreIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface AiFeatureStoreIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 
     export interface AiFeatureStoreOnlineServingConfig {

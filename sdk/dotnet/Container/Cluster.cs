@@ -165,7 +165,9 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterConfidentialNodes> ConfidentialNodes { get; private set; } = null!;
 
         /// <summary>
-        /// Cost management configuration for the cluster.
+        /// Configuration for the
+        /// [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+        /// Structure is documented below.
         /// </summary>
         [Output("costManagementConfig")]
         public Output<Outputs.ClusterCostManagementConfig> CostManagementConfig { get; private set; } = null!;
@@ -728,7 +730,9 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterConfidentialNodesArgs>? ConfidentialNodes { get; set; }
 
         /// <summary>
-        /// Cost management configuration for the cluster.
+        /// Configuration for the
+        /// [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+        /// Structure is documented below.
         /// </summary>
         [Input("costManagementConfig")]
         public Input<Inputs.ClusterCostManagementConfigArgs>? CostManagementConfig { get; set; }
@@ -1225,7 +1229,9 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterConfidentialNodesGetArgs>? ConfidentialNodes { get; set; }
 
         /// <summary>
-        /// Cost management configuration for the cluster.
+        /// Configuration for the
+        /// [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+        /// Structure is documented below.
         /// </summary>
         [Input("costManagementConfig")]
         public Input<Inputs.ClusterCostManagementConfigGetArgs>? CostManagementConfig { get; set; }

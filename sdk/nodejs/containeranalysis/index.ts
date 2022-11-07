@@ -8,13 +8,13 @@ import * as utilities from "../utilities";
 export { NoteArgs, NoteState } from "./note";
 export type Note = import("./note").Note;
 export const Note: typeof import("./note").Note = null as any;
+utilities.lazyLoad(exports, ["Note"], () => require("./note"));
 
 export { OccurenceArgs, OccurenceState } from "./occurence";
 export type Occurence = import("./occurence").Occurence;
 export const Occurence: typeof import("./occurence").Occurence = null as any;
-
-utilities.lazyLoad(exports, ["Note"], () => require("./note"));
 utilities.lazyLoad(exports, ["Occurence"], () => require("./occurence"));
+
 
 const _module = {
     version: utilities.getVersion(),

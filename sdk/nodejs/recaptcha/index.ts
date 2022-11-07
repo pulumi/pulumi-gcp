@@ -8,8 +8,8 @@ import * as utilities from "../utilities";
 export { EnterpriseKeyArgs, EnterpriseKeyState } from "./enterpriseKey";
 export type EnterpriseKey = import("./enterpriseKey").EnterpriseKey;
 export const EnterpriseKey: typeof import("./enterpriseKey").EnterpriseKey = null as any;
-
 utilities.lazyLoad(exports, ["EnterpriseKey"], () => require("./enterpriseKey"));
+
 
 const _module = {
     version: utilities.getVersion(),

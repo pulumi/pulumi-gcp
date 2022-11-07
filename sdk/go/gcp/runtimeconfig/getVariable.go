@@ -24,7 +24,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := runtimeconfig.LookupVariable(ctx, &runtimeconfig.LookupVariableArgs{
+//			_, err = runtimeconfig.LookupVariable(ctx, &runtimeconfig.LookupVariableArgs{
 //				Name:   "prod-variables/hostname",
 //				Parent: "my-service",
 //			}, nil)

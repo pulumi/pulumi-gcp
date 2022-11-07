@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomService{}
 	case "gcp:monitoring/dashboard:Dashboard":
 		r = &Dashboard{}
+	case "gcp:monitoring/genericService:GenericService":
+		r = &GenericService{}
 	case "gcp:monitoring/group:Group":
 		r = &Group{}
 	case "gcp:monitoring/metricDescriptor:MetricDescriptor":
@@ -65,6 +67,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"monitoring/dashboard",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"monitoring/genericService",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

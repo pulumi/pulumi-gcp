@@ -7,6 +7,14 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A collection of DataItems and Annotations on them.
+ *
+ * To get more information about Featurestore, see:
+ *
+ * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+ *
  * ## Example Usage
  * ### Vertex Ai Featurestore
  *
@@ -15,19 +23,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
- *     labels: {
- *         foo: "bar",
- *     },
- *     region: "us-central1",
- *     onlineServingConfig: {
- *         fixedNodeCount: 2,
- *     },
  *     encryptionSpec: {
  *         kmsKeyName: "kms-name",
  *     },
  *     forceDestroy: true,
- * }, {
- *     provider: google_beta,
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     onlineServingConfig: {
+ *         fixedNodeCount: 2,
+ *     },
+ *     region: "us-central1",
  * });
  * ```
  *

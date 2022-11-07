@@ -192,6 +192,17 @@ func NewSSLCertificate(ctx *pulumi.Context,
 	if args.PrivateKey == nil {
 		return nil, errors.New("invalid value for required argument 'PrivateKey'")
 	}
+	if args.Certificate != nil {
+		args.Certificate = pulumi.ToSecret(args.Certificate).(pulumi.StringOutput)
+	}
+	if args.PrivateKey != nil {
+		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"certificate",
+		"privateKey",
+	})
+	opts = append(opts, secrets)
 	var resource SSLCertificate
 	err := ctx.RegisterResource("gcp:compute/sSLCertificate:SSLCertificate", name, args, &resource, opts...)
 	if err != nil {

@@ -29,8 +29,7 @@ class RecordSetArgs:
                reside.
         :param pulumi.Input[str] name: The DNS name this record set will apply to.
         :param pulumi.Input[str] type: The DNS record set type.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
+        :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
         :param pulumi.Input['RecordSetRoutingPolicyArgs'] routing_policy: The configuration for steering traffic based on query.
                Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
                Structure is documented below.
@@ -90,8 +89,7 @@ class RecordSetArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
+        The ID of the project in which the load balancer belongs.
         """
         return pulumi.get(self, "project")
 
@@ -153,8 +151,7 @@ class _RecordSetState:
         :param pulumi.Input[str] managed_zone: The name of the zone in which this record set will
                reside.
         :param pulumi.Input[str] name: The DNS name this record set will apply to.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
+        :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
         :param pulumi.Input['RecordSetRoutingPolicyArgs'] routing_policy: The configuration for steering traffic based on query.
                Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
                Structure is documented below.
@@ -206,8 +203,7 @@ class _RecordSetState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
+        The ID of the project in which the load balancer belongs.
         """
         return pulumi.get(self, "project")
 
@@ -398,6 +394,53 @@ class RecordSet(pulumi.CustomResource):
                 ],
             ))
         ```
+        ### Primary-Backup
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod_managed_zone = gcp.dns.ManagedZone("prodManagedZone", dns_name="prod.mydomain.com.")
+        prod_region_backend_service = gcp.compute.RegionBackendService("prodRegionBackendService", region="us-central1")
+        prod_network = gcp.compute.Network("prodNetwork")
+        prod_forwarding_rule = gcp.compute.ForwardingRule("prodForwardingRule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=prod_region_backend_service.id,
+            all_ports=True,
+            network=prod_network.name)
+        record_set = gcp.dns.RecordSet("recordSet",
+            name=prod_managed_zone.dns_name.apply(lambda dns_name: f"backend.{dns_name}"),
+            managed_zone=prod_managed_zone.name,
+            type="A",
+            ttl=300,
+            routing_policy=gcp.dns.RecordSetRoutingPolicyArgs(
+                primary_backup=gcp.dns.RecordSetRoutingPolicyPrimaryBackupArgs(
+                    trickle_ratio=0.1,
+                    primary=gcp.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs(
+                        internal_load_balancers=[gcp.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs(
+                            load_balancer_type="regionalL4ilb",
+                            ip_address=prod_forwarding_rule.ip_address,
+                            port="80",
+                            ip_protocol="tcp",
+                            network_url=prod_network.id,
+                            project=prod_forwarding_rule.project,
+                            region=prod_forwarding_rule.region,
+                        )],
+                    ),
+                    backup_geos=[
+                        gcp.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs(
+                            location="asia-east1",
+                            rrdatas=["10.128.1.1"],
+                        ),
+                        gcp.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs(
+                            location="us-west1",
+                            rrdatas=["10.130.1.1"],
+                        ),
+                    ],
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -422,8 +465,7 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[str] managed_zone: The name of the zone in which this record set will
                reside.
         :param pulumi.Input[str] name: The DNS name this record set will apply to.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
+        :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
         :param pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArgs']] routing_policy: The configuration for steering traffic based on query.
                Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
                Structure is documented below.
@@ -556,6 +598,53 @@ class RecordSet(pulumi.CustomResource):
                 ],
             ))
         ```
+        ### Primary-Backup
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod_managed_zone = gcp.dns.ManagedZone("prodManagedZone", dns_name="prod.mydomain.com.")
+        prod_region_backend_service = gcp.compute.RegionBackendService("prodRegionBackendService", region="us-central1")
+        prod_network = gcp.compute.Network("prodNetwork")
+        prod_forwarding_rule = gcp.compute.ForwardingRule("prodForwardingRule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=prod_region_backend_service.id,
+            all_ports=True,
+            network=prod_network.name)
+        record_set = gcp.dns.RecordSet("recordSet",
+            name=prod_managed_zone.dns_name.apply(lambda dns_name: f"backend.{dns_name}"),
+            managed_zone=prod_managed_zone.name,
+            type="A",
+            ttl=300,
+            routing_policy=gcp.dns.RecordSetRoutingPolicyArgs(
+                primary_backup=gcp.dns.RecordSetRoutingPolicyPrimaryBackupArgs(
+                    trickle_ratio=0.1,
+                    primary=gcp.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs(
+                        internal_load_balancers=[gcp.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs(
+                            load_balancer_type="regionalL4ilb",
+                            ip_address=prod_forwarding_rule.ip_address,
+                            port="80",
+                            ip_protocol="tcp",
+                            network_url=prod_network.id,
+                            project=prod_forwarding_rule.project,
+                            region=prod_forwarding_rule.region,
+                        )],
+                    ),
+                    backup_geos=[
+                        gcp.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs(
+                            location="asia-east1",
+                            rrdatas=["10.128.1.1"],
+                        ),
+                        gcp.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs(
+                            location="us-west1",
+                            rrdatas=["10.130.1.1"],
+                        ),
+                    ],
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -646,8 +735,7 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[str] managed_zone: The name of the zone in which this record set will
                reside.
         :param pulumi.Input[str] name: The DNS name this record set will apply to.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
+        :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
         :param pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArgs']] routing_policy: The configuration for steering traffic based on query.
                Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
                Structure is documented below.
@@ -689,8 +777,7 @@ class RecordSet(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
+        The ID of the project in which the load balancer belongs.
         """
         return pulumi.get(self, "project")
 

@@ -12,11 +12,21 @@ namespace Pulumi.Gcp.Storage.Inputs
 
     public sealed class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("sasToken", required: true)]
+        private Input<string>? _sasToken;
+
         /// <summary>
         /// Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
         /// </summary>
-        [Input("sasToken", required: true)]
-        public Input<string> SasToken { get; set; } = null!;
+        public Input<string>? SasToken
+        {
+            get => _sasToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sasToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsGetArgs()
         {

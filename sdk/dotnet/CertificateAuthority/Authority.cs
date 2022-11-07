@@ -342,6 +342,10 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+        /// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+        /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
@@ -434,6 +438,15 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// If this flag is set, the Certificate Authority will be deleted as soon as
+        /// possible without a 30-day grace period where undeletion would have been
+        /// allowed. If you proceed, there will be no way to recover this CA.
+        /// Use with care. Defaults to `false`.
+        /// </summary>
+        [Output("skipGracePeriod")]
+        public Output<bool?> SkipGracePeriod { get; private set; } = null!;
+
+        /// <summary>
         /// The State for this CertificateAuthority.
         /// </summary>
         [Output("state")]
@@ -523,6 +536,10 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Input("config", required: true)]
         public Input<Inputs.AuthorityConfigArgs> Config { get; set; } = null!;
 
+        /// <summary>
+        /// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+        /// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -607,6 +624,15 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// If this flag is set, the Certificate Authority will be deleted as soon as
+        /// possible without a 30-day grace period where undeletion would have been
+        /// allowed. If you proceed, there will be no way to recover this CA.
+        /// Use with care. Defaults to `false`.
+        /// </summary>
+        [Input("skipGracePeriod")]
+        public Input<bool>? SkipGracePeriod { get; set; }
+
+        /// <summary>
         /// If this is a subordinate CertificateAuthority, this field will be set
         /// with the subordinate configuration, which describes its issuers.
         /// Structure is documented below.
@@ -664,6 +690,10 @@ namespace Pulumi.Gcp.CertificateAuthority
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
+        /// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
+        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -766,6 +796,15 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// If this flag is set, the Certificate Authority will be deleted as soon as
+        /// possible without a 30-day grace period where undeletion would have been
+        /// allowed. If you proceed, there will be no way to recover this CA.
+        /// Use with care. Defaults to `false`.
+        /// </summary>
+        [Input("skipGracePeriod")]
+        public Input<bool>? SkipGracePeriod { get; set; }
 
         /// <summary>
         /// The State for this CertificateAuthority.

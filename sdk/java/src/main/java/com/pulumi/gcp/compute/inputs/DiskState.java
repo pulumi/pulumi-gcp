@@ -403,6 +403,52 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+     * For example, the following are valid values:
+     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * projects/{project}/zones/{zone}/disks/{disk}
+     * * projects/{project}/regions/{region}/disks/{disk}
+     * * zones/{zone}/disks/{disk}
+     * * regions/{region}/disks/{disk}
+     * 
+     */
+    @Import(name="sourceDisk")
+    private @Nullable Output<String> sourceDisk;
+
+    /**
+     * @return The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+     * For example, the following are valid values:
+     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * projects/{project}/zones/{zone}/disks/{disk}
+     * * projects/{project}/regions/{region}/disks/{disk}
+     * * zones/{zone}/disks/{disk}
+     * * regions/{region}/disks/{disk}
+     * 
+     */
+    public Optional<Output<String>> sourceDisk() {
+        return Optional.ofNullable(this.sourceDisk);
+    }
+
+    /**
+     * The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
+     * the current or a previous instance of a given disk name.
+     * 
+     */
+    @Import(name="sourceDiskId")
+    private @Nullable Output<String> sourceDiskId;
+
+    /**
+     * @return The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
+     * the current or a previous instance of a given disk name.
+     * 
+     */
+    public Optional<Output<String>> sourceDiskId() {
+        return Optional.ofNullable(this.sourceDiskId);
+    }
+
+    /**
      * The customer-supplied encryption key of the source image. Required if
      * the source image is protected by a customer-supplied encryption key.
      * Structure is documented below.
@@ -548,6 +594,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         this.selfLink = $.selfLink;
         this.size = $.size;
         this.snapshot = $.snapshot;
+        this.sourceDisk = $.sourceDisk;
+        this.sourceDiskId = $.sourceDiskId;
         this.sourceImageEncryptionKey = $.sourceImageEncryptionKey;
         this.sourceImageId = $.sourceImageId;
         this.sourceSnapshotEncryptionKey = $.sourceSnapshotEncryptionKey;
@@ -1076,6 +1124,64 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder snapshot(String snapshot) {
             return snapshot(Output.of(snapshot));
+        }
+
+        /**
+         * @param sourceDisk The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+         * For example, the following are valid values:
+         * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+         * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+         * * projects/{project}/zones/{zone}/disks/{disk}
+         * * projects/{project}/regions/{region}/disks/{disk}
+         * * zones/{zone}/disks/{disk}
+         * * regions/{region}/disks/{disk}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceDisk(@Nullable Output<String> sourceDisk) {
+            $.sourceDisk = sourceDisk;
+            return this;
+        }
+
+        /**
+         * @param sourceDisk The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
+         * For example, the following are valid values:
+         * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
+         * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+         * * projects/{project}/zones/{zone}/disks/{disk}
+         * * projects/{project}/regions/{region}/disks/{disk}
+         * * zones/{zone}/disks/{disk}
+         * * regions/{region}/disks/{disk}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceDisk(String sourceDisk) {
+            return sourceDisk(Output.of(sourceDisk));
+        }
+
+        /**
+         * @param sourceDiskId The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
+         * the current or a previous instance of a given disk name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceDiskId(@Nullable Output<String> sourceDiskId) {
+            $.sourceDiskId = sourceDiskId;
+            return this;
+        }
+
+        /**
+         * @param sourceDiskId The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
+         * the current or a previous instance of a given disk name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceDiskId(String sourceDiskId) {
+            return sourceDiskId(Output.of(sourceDiskId));
         }
 
         /**

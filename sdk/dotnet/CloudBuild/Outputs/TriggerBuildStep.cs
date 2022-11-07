@@ -58,6 +58,11 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// A shell script to be executed in the step.
+        /// When script is provided, the user cannot specify the entrypoint or args.
+        /// </summary>
+        public readonly string? Script;
+        /// <summary>
         /// A list of global environment variables, which are encrypted using a Cloud Key Management
         /// Service crypto key. These values must be specified in the build's Secret. These variables
         /// will be available to all build steps in this build.
@@ -109,6 +114,8 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
             string name,
 
+            string? script,
+
             ImmutableArray<string> secretEnvs,
 
             string? timeout,
@@ -125,6 +132,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
             Envs = envs;
             Id = id;
             Name = name;
+            Script = script;
             SecretEnvs = secretEnvs;
             Timeout = timeout;
             Timing = timing;

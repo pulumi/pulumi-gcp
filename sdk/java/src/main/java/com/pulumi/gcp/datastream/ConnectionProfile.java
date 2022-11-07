@@ -16,6 +16,7 @@ import com.pulumi.gcp.datastream.outputs.ConnectionProfileGcsProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfileMysqlProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfileOracleProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfilePostgresqlProfile;
+import com.pulumi.gcp.datastream.outputs.ConnectionProfilePrivateConnectivity;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -59,16 +60,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Datastream Connection Profile Bigquery
+ * ### Datastream Connection Profile Bigquery Private Connection
  * ```java
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.datastream.PrivateConnection;
+ * import com.pulumi.gcp.datastream.PrivateConnectionArgs;
+ * import com.pulumi.gcp.datastream.inputs.PrivateConnectionVpcPeeringConfigArgs;
  * import com.pulumi.gcp.datastream.ConnectionProfile;
  * import com.pulumi.gcp.datastream.ConnectionProfileArgs;
  * import com.pulumi.gcp.datastream.inputs.ConnectionProfileBigqueryProfileArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfilePrivateConnectivityArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -82,11 +88,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ConnectionProfile(&#34;default&#34;, ConnectionProfileArgs.builder()        
- *             .bigqueryProfile()
- *             .connectionProfileId(&#34;my-profile&#34;)
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;);
+ * 
+ *         var privateConnection = new PrivateConnection(&#34;privateConnection&#34;, PrivateConnectionArgs.builder()        
  *             .displayName(&#34;Connection profile&#34;)
  *             .location(&#34;us-central1&#34;)
+ *             .privateConnectionId(&#34;my-connection&#34;)
+ *             .labels(Map.of(&#34;key&#34;, &#34;value&#34;))
+ *             .vpcPeeringConfig(PrivateConnectionVpcPeeringConfigArgs.builder()
+ *                 .vpc(defaultNetwork.id())
+ *                 .subnet(&#34;10.0.0.0/29&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultConnectionProfile = new ConnectionProfile(&#34;defaultConnectionProfile&#34;, ConnectionProfileArgs.builder()        
+ *             .displayName(&#34;Connection profile&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .connectionProfileId(&#34;my-profile&#34;)
+ *             .bigqueryProfile()
+ *             .privateConnectivity(ConnectionProfilePrivateConnectivityArgs.builder()
+ *                 .privateConnection(privateConnection.id())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -407,6 +429,22 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ConnectionProfilePostgresqlProfile>> postgresqlProfile() {
         return Codegen.optional(this.postgresqlProfile);
+    }
+    /**
+     * Private connectivity.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="privateConnectivity", type=ConnectionProfilePrivateConnectivity.class, parameters={})
+    private Output</* @Nullable */ ConnectionProfilePrivateConnectivity> privateConnectivity;
+
+    /**
+     * @return Private connectivity.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConnectionProfilePrivateConnectivity>> privateConnectivity() {
+        return Codegen.optional(this.privateConnectivity);
     }
     /**
      * The ID of the project in which the resource belongs.

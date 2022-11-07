@@ -5,10 +5,13 @@ package com.pulumi.gcp.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RecordSetRoutingPolicyWrrArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,18 +19,35 @@ public final class RecordSetRoutingPolicyWrrArgs extends com.pulumi.resources.Re
     public static final RecordSetRoutingPolicyWrrArgs Empty = new RecordSetRoutingPolicyWrrArgs();
 
     /**
+     * For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+     * Structure is document below.
+     * 
+     */
+    @Import(name="healthCheckedTargets")
+    private @Nullable Output<RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs> healthCheckedTargets;
+
+    /**
+     * @return For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+     * Structure is document below.
+     * 
+     */
+    public Optional<Output<RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs>> healthCheckedTargets() {
+        return Optional.ofNullable(this.healthCheckedTargets);
+    }
+
+    /**
      * Same as `rrdatas` above.
      * 
      */
-    @Import(name="rrdatas", required=true)
-    private Output<List<String>> rrdatas;
+    @Import(name="rrdatas")
+    private @Nullable Output<List<String>> rrdatas;
 
     /**
      * @return Same as `rrdatas` above.
      * 
      */
-    public Output<List<String>> rrdatas() {
-        return this.rrdatas;
+    public Optional<Output<List<String>>> rrdatas() {
+        return Optional.ofNullable(this.rrdatas);
     }
 
     /**
@@ -48,6 +68,7 @@ public final class RecordSetRoutingPolicyWrrArgs extends com.pulumi.resources.Re
     private RecordSetRoutingPolicyWrrArgs() {}
 
     private RecordSetRoutingPolicyWrrArgs(RecordSetRoutingPolicyWrrArgs $) {
+        this.healthCheckedTargets = $.healthCheckedTargets;
         this.rrdatas = $.rrdatas;
         this.weight = $.weight;
     }
@@ -71,12 +92,35 @@ public final class RecordSetRoutingPolicyWrrArgs extends com.pulumi.resources.Re
         }
 
         /**
+         * @param healthCheckedTargets For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+         * Structure is document below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckedTargets(@Nullable Output<RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs> healthCheckedTargets) {
+            $.healthCheckedTargets = healthCheckedTargets;
+            return this;
+        }
+
+        /**
+         * @param healthCheckedTargets For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+         * Structure is document below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckedTargets(RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs healthCheckedTargets) {
+            return healthCheckedTargets(Output.of(healthCheckedTargets));
+        }
+
+        /**
          * @param rrdatas Same as `rrdatas` above.
          * 
          * @return builder
          * 
          */
-        public Builder rrdatas(Output<List<String>> rrdatas) {
+        public Builder rrdatas(@Nullable Output<List<String>> rrdatas) {
             $.rrdatas = rrdatas;
             return this;
         }
@@ -123,7 +167,6 @@ public final class RecordSetRoutingPolicyWrrArgs extends com.pulumi.resources.Re
         }
 
         public RecordSetRoutingPolicyWrrArgs build() {
-            $.rrdatas = Objects.requireNonNull($.rrdatas, "expected parameter 'rrdatas' to be non-null");
             $.weight = Objects.requireNonNull($.weight, "expected parameter 'weight' to be non-null");
             return $;
         }

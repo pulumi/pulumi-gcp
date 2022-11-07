@@ -393,6 +393,10 @@ namespace Pulumi.Gcp.Compute
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "sharedSecret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -530,13 +534,23 @@ namespace Pulumi.Gcp.Compute
         [Input("router")]
         public Input<string>? Router { get; set; }
 
+        [Input("sharedSecret", required: true)]
+        private Input<string>? _sharedSecret;
+
         /// <summary>
         /// Shared secret used to set the secure session between the Cloud VPN
         /// gateway and the peer VPN gateway.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("sharedSecret", required: true)]
-        public Input<string> SharedSecret { get; set; } = null!;
+        public Input<string>? SharedSecret
+        {
+            get => _sharedSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sharedSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// URL of the Target VPN gateway with which this VPN tunnel is
@@ -705,13 +719,23 @@ namespace Pulumi.Gcp.Compute
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
+        [Input("sharedSecret")]
+        private Input<string>? _sharedSecret;
+
         /// <summary>
         /// Shared secret used to set the secure session between the Cloud VPN
         /// gateway and the peer VPN gateway.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("sharedSecret")]
-        public Input<string>? SharedSecret { get; set; }
+        public Input<string>? SharedSecret
+        {
+            get => _sharedSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sharedSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Hash of the shared secret.

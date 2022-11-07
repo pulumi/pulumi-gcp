@@ -349,14 +349,18 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.confidentialNodes;
     }
     /**
-     * Cost management configuration for the cluster.
+     * Configuration for the
+     * [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+     * Structure is documented below.
      * 
      */
     @Export(name="costManagementConfig", type=ClusterCostManagementConfig.class, parameters={})
     private Output<ClusterCostManagementConfig> costManagementConfig;
 
     /**
-     * @return Cost management configuration for the cluster.
+     * @return Configuration for the
+     * [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
+     * Structure is documented below.
      * 
      */
     public Output<ClusterCostManagementConfig> costManagementConfig() {

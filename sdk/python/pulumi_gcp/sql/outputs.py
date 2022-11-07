@@ -526,6 +526,8 @@ class DatabaseInstanceSettings(dict):
             suggest = "pricing_plan"
         elif key == "sqlServerAuditConfig":
             suggest = "sql_server_audit_config"
+        elif key == "timeZone":
+            suggest = "time_zone"
         elif key == "userLabels":
             suggest = "user_labels"
 
@@ -559,6 +561,7 @@ class DatabaseInstanceSettings(dict):
                  password_validation_policy: Optional['outputs.DatabaseInstanceSettingsPasswordValidationPolicy'] = None,
                  pricing_plan: Optional[str] = None,
                  sql_server_audit_config: Optional['outputs.DatabaseInstanceSettingsSqlServerAuditConfig'] = None,
+                 time_zone: Optional[str] = None,
                  user_labels: Optional[Mapping[str, str]] = None,
                  version: Optional[int] = None):
         """
@@ -616,6 +619,8 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "pricing_plan", pricing_plan)
         if sql_server_audit_config is not None:
             pulumi.set(__self__, "sql_server_audit_config", sql_server_audit_config)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
         if user_labels is not None:
             pulumi.set(__self__, "user_labels", user_labels)
         if version is not None:
@@ -745,6 +750,11 @@ class DatabaseInstanceSettings(dict):
     @pulumi.getter(name="sqlServerAuditConfig")
     def sql_server_audit_config(self) -> Optional['outputs.DatabaseInstanceSettingsSqlServerAuditConfig']:
         return pulumi.get(self, "sql_server_audit_config")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[str]:
+        return pulumi.get(self, "time_zone")
 
     @property
     @pulumi.getter(name="userLabels")
@@ -1980,6 +1990,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  pricing_plan: str,
                  sql_server_audit_configs: Sequence['outputs.GetDatabaseInstanceSettingSqlServerAuditConfigResult'],
                  tier: str,
+                 time_zone: str,
                  user_labels: Mapping[str, str],
                  version: int):
         pulumi.set(__self__, "activation_policy", activation_policy)
@@ -2000,6 +2011,7 @@ class GetDatabaseInstanceSettingResult(dict):
         pulumi.set(__self__, "pricing_plan", pricing_plan)
         pulumi.set(__self__, "sql_server_audit_configs", sql_server_audit_configs)
         pulumi.set(__self__, "tier", tier)
+        pulumi.set(__self__, "time_zone", time_zone)
         pulumi.set(__self__, "user_labels", user_labels)
         pulumi.set(__self__, "version", version)
 
@@ -2092,6 +2104,11 @@ class GetDatabaseInstanceSettingResult(dict):
     @pulumi.getter
     def tier(self) -> str:
         return pulumi.get(self, "tier")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> str:
+        return pulumi.get(self, "time_zone")
 
     @property
     @pulumi.getter(name="userLabels")

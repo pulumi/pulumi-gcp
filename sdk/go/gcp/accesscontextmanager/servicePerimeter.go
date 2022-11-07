@@ -194,7 +194,7 @@ import (
 //				return err
 //			}
 //			_, err = accesscontextmanager.NewServicePerimeter(ctx, "test-access", &accesscontextmanager.ServicePerimeterArgs{
-//				Parent:        pulumi.String(fmt.Sprintf("accessPolicies/%v", google_access_context_manager_access_policy.Test-access.Name)),
+//				Parent:        pulumi.String(fmt.Sprintf("accessPolicies/%v", google_access_context_manager_access_policy.TestAccess.Name)),
 //				Title:         pulumi.String(fmt.Sprintf("%vs", "%")),
 //				PerimeterType: pulumi.String("PERIMETER_TYPE_REGULAR"),
 //				Status: &accesscontextmanager.ServicePerimeterStatusArgs{
@@ -217,7 +217,7 @@ import (
 //							IngressFrom: &accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromArgs{
 //								Sources: accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromSourceArray{
 //									&accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromSourceArgs{
-//										AccessLevel: pulumi.Any(google_access_context_manager_access_level.Test - access.Name),
+//										AccessLevel: pulumi.Any(google_access_context_manager_access_level.TestAccess.Name),
 //									},
 //								},
 //								IdentityType: pulumi.String("ANY_IDENTITY"),

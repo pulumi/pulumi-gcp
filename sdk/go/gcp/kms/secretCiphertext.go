@@ -123,6 +123,17 @@ func NewSecretCiphertext(ctx *pulumi.Context,
 	if args.Plaintext == nil {
 		return nil, errors.New("invalid value for required argument 'Plaintext'")
 	}
+	if args.AdditionalAuthenticatedData != nil {
+		args.AdditionalAuthenticatedData = pulumi.ToSecret(args.AdditionalAuthenticatedData).(pulumi.StringPtrOutput)
+	}
+	if args.Plaintext != nil {
+		args.Plaintext = pulumi.ToSecret(args.Plaintext).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"additionalAuthenticatedData",
+		"plaintext",
+	})
+	opts = append(opts, secrets)
 	var resource SecretCiphertext
 	err := ctx.RegisterResource("gcp:kms/secretCiphertext:SecretCiphertext", name, args, &resource, opts...)
 	if err != nil {

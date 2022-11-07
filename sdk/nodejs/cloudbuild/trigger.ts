@@ -89,16 +89,22 @@ import * as utilities from "../utilities";
  *                 object: "source_code.tar.gz",
  *             },
  *         },
- *         steps: [{
- *             args: [
- *                 "cp",
- *                 "gs://mybucket/remotefile.zip",
- *                 "localfile.zip",
- *             ],
- *             name: "gcr.io/cloud-builders/gsutil",
- *             secretEnvs: ["MY_SECRET"],
- *             timeout: "120s",
- *         }],
+ *         steps: [
+ *             {
+ *                 args: [
+ *                     "cp",
+ *                     "gs://mybucket/remotefile.zip",
+ *                     "localfile.zip",
+ *                 ],
+ *                 name: "gcr.io/cloud-builders/gsutil",
+ *                 secretEnvs: ["MY_SECRET"],
+ *                 timeout: "120s",
+ *             },
+ *             {
+ *                 name: "ubuntu",
+ *                 script: "echo hello", // using script field
+ *             },
+ *         ],
  *         substitutions: {
  *             _BAZ: "qux",
  *             _FOO: "bar",

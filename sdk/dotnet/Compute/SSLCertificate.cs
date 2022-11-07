@@ -193,6 +193,11 @@ namespace Pulumi.Gcp.Compute
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "certificate",
+                    "privateKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -216,14 +221,24 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SSLCertificateArgs : global::Pulumi.ResourceArgs
     {
+        [Input("certificate", required: true)]
+        private Input<string>? _certificate;
+
         /// <summary>
         /// The certificate in PEM format.
         /// The certificate chain must be no greater than 5 certs long.
         /// The chain must include at least one intermediate cert.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("certificate", required: true)]
-        public Input<string> Certificate { get; set; } = null!;
+        public Input<string>? Certificate
+        {
+            get => _certificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// An optional description of this resource.
@@ -250,12 +265,22 @@ namespace Pulumi.Gcp.Compute
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
+        [Input("privateKey", required: true)]
+        private Input<string>? _privateKey;
+
         /// <summary>
         /// The write-only private key in PEM format.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("privateKey", required: true)]
-        public Input<string> PrivateKey { get; set; } = null!;
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -272,14 +297,24 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class SSLCertificateState : global::Pulumi.ResourceArgs
     {
+        [Input("certificate")]
+        private Input<string>? _certificate;
+
         /// <summary>
         /// The certificate in PEM format.
         /// The certificate chain must be no greater than 5 certs long.
         /// The chain must include at least one intermediate cert.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("certificate")]
-        public Input<string>? Certificate { get; set; }
+        public Input<string>? Certificate
+        {
+            get => _certificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The unique identifier for the resource.
@@ -318,12 +353,22 @@ namespace Pulumi.Gcp.Compute
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
+        [Input("privateKey")]
+        private Input<string>? _privateKey;
+
         /// <summary>
         /// The write-only private key in PEM format.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

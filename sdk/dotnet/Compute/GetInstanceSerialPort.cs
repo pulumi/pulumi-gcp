@@ -68,7 +68,7 @@ namespace Pulumi.Gcp.Compute
         ///                 Network = "default",
         ///                 AccessConfigs = new[]
         ///                 {
-        ///                     ,
+        ///                     null,
         ///                 },
         ///             },
         ///         },
@@ -171,7 +171,7 @@ namespace Pulumi.Gcp.Compute
         ///                 Network = "default",
         ///                 AccessConfigs = new[]
         ///                 {
-        ///                     ,
+        ///                     null,
         ///                 },
         ///             },
         ///         },

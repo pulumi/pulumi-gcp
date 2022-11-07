@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.servicenetworking.Connection;
  * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.compute.NetworkPeeringRoutesConfig;
+ * import com.pulumi.gcp.compute.NetworkPeeringRoutesConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -54,10 +56,17 @@ import javax.annotation.Nullable;
  *             .network(peeringNetwork.id())
  *             .build());
  * 
- *         var foobar = new Connection(&#34;foobar&#34;, ConnectionArgs.builder()        
+ *         var default_ = new Connection(&#34;default&#34;, ConnectionArgs.builder()        
  *             .network(peeringNetwork.id())
  *             .service(&#34;servicenetworking.googleapis.com&#34;)
  *             .reservedPeeringRanges(privateIpAlloc.name())
+ *             .build());
+ * 
+ *         var peeringRoutes = new NetworkPeeringRoutesConfig(&#34;peeringRoutes&#34;, NetworkPeeringRoutesConfigArgs.builder()        
+ *             .peering(default_.peering())
+ *             .network(peeringNetwork.name())
+ *             .importCustomRoutes(true)
+ *             .exportCustomRoutes(true)
  *             .build());
  * 
  *     }

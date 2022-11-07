@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:iam/denyPolicy:DenyPolicy":
 		r = &DenyPolicy{}
+	case "gcp:iam/workforcePool:WorkforcePool":
+		r = &WorkforcePool{}
 	case "gcp:iam/workloadIdentityPool:WorkloadIdentityPool":
 		r = &WorkloadIdentityPool{}
 	case "gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider":
@@ -43,6 +45,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"iam/denyPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iam/workforcePool",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

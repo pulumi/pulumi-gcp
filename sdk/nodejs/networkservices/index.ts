@@ -8,18 +8,18 @@ import * as utilities from "../utilities";
 export { EdgeCacheKeysetArgs, EdgeCacheKeysetState } from "./edgeCacheKeyset";
 export type EdgeCacheKeyset = import("./edgeCacheKeyset").EdgeCacheKeyset;
 export const EdgeCacheKeyset: typeof import("./edgeCacheKeyset").EdgeCacheKeyset = null as any;
+utilities.lazyLoad(exports, ["EdgeCacheKeyset"], () => require("./edgeCacheKeyset"));
 
 export { EdgeCacheOriginArgs, EdgeCacheOriginState } from "./edgeCacheOrigin";
 export type EdgeCacheOrigin = import("./edgeCacheOrigin").EdgeCacheOrigin;
 export const EdgeCacheOrigin: typeof import("./edgeCacheOrigin").EdgeCacheOrigin = null as any;
+utilities.lazyLoad(exports, ["EdgeCacheOrigin"], () => require("./edgeCacheOrigin"));
 
 export { EdgeCacheServiceArgs, EdgeCacheServiceState } from "./edgeCacheService";
 export type EdgeCacheService = import("./edgeCacheService").EdgeCacheService;
 export const EdgeCacheService: typeof import("./edgeCacheService").EdgeCacheService = null as any;
-
-utilities.lazyLoad(exports, ["EdgeCacheKeyset"], () => require("./edgeCacheKeyset"));
-utilities.lazyLoad(exports, ["EdgeCacheOrigin"], () => require("./edgeCacheOrigin"));
 utilities.lazyLoad(exports, ["EdgeCacheService"], () => require("./edgeCacheService"));
+
 
 const _module = {
     version: utilities.getVersion(),

@@ -15,14 +15,19 @@ __all__ = ['WebAppArgs', 'WebApp']
 class WebAppArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WebApp resource.
         :param pulumi.Input[str] display_name: The user-assigned display name of the App.
+        :param pulumi.Input[str] deletion_policy: Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
+               This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "display_name", display_name)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -37,6 +42,19 @@ class WebAppArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
+        This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter
@@ -56,6 +74,8 @@ class WebAppArgs:
 class _WebAppState:
     def __init__(__self__, *,
                  app_id: Optional[pulumi.Input[str]] = None,
+                 app_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -63,6 +83,9 @@ class _WebAppState:
         Input properties used for looking up and filtering WebApp resources.
         :param pulumi.Input[str] app_id: Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
                token, as the data format is not specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] app_urls: The URLs where the 'WebApp' is hosted.
+        :param pulumi.Input[str] deletion_policy: Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
+               This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
         :param pulumi.Input[str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[str] name: The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -70,6 +93,10 @@ class _WebAppState:
         """
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
+        if app_urls is not None:
+            pulumi.set(__self__, "app_urls", app_urls)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if name is not None:
@@ -89,6 +116,31 @@ class _WebAppState:
     @app_id.setter
     def app_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "app_id", value)
+
+    @property
+    @pulumi.getter(name="appUrls")
+    def app_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The URLs where the 'WebApp' is hosted.
+        """
+        return pulumi.get(self, "app_urls")
+
+    @app_urls.setter
+    def app_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "app_urls", value)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
+        This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -133,6 +185,7 @@ class WebApp(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -162,6 +215,7 @@ class WebApp(pulumi.CustomResource):
         basic_web_app = gcp.firebase.WebApp("basicWebApp",
             project=default_project.project_id,
             display_name="Display Name Basic",
+            deletion_policy="DELETE",
             opts=pulumi.ResourceOptions(provider=google_beta,
                 depends_on=[default_firebase / project_project]))
         basic_web_app_config = gcp.firebase.get_web_app_config_output(web_app_id=basic_web_app.app_id)
@@ -199,6 +253,8 @@ class WebApp(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] deletion_policy: Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
+               This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
         :param pulumi.Input[str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -235,6 +291,7 @@ class WebApp(pulumi.CustomResource):
         basic_web_app = gcp.firebase.WebApp("basicWebApp",
             project=default_project.project_id,
             display_name="Display Name Basic",
+            deletion_policy="DELETE",
             opts=pulumi.ResourceOptions(provider=google_beta,
                 depends_on=[default_firebase / project_project]))
         basic_web_app_config = gcp.firebase.get_web_app_config_output(web_app_id=basic_web_app.app_id)
@@ -285,6 +342,7 @@ class WebApp(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -296,11 +354,13 @@ class WebApp(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WebAppArgs.__new__(WebAppArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["project"] = project
             __props__.__dict__["app_id"] = None
+            __props__.__dict__["app_urls"] = None
             __props__.__dict__["name"] = None
         super(WebApp, __self__).__init__(
             'gcp:firebase/webApp:WebApp',
@@ -313,6 +373,8 @@ class WebApp(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_id: Optional[pulumi.Input[str]] = None,
+            app_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            deletion_policy: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None) -> 'WebApp':
@@ -325,6 +387,9 @@ class WebApp(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
                token, as the data format is not specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] app_urls: The URLs where the 'WebApp' is hosted.
+        :param pulumi.Input[str] deletion_policy: Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
+               This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
         :param pulumi.Input[str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[str] name: The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -335,6 +400,8 @@ class WebApp(pulumi.CustomResource):
         __props__ = _WebAppState.__new__(_WebAppState)
 
         __props__.__dict__["app_id"] = app_id
+        __props__.__dict__["app_urls"] = app_urls
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -348,6 +415,23 @@ class WebApp(pulumi.CustomResource):
         token, as the data format is not specified.
         """
         return pulumi.get(self, "app_id")
+
+    @property
+    @pulumi.getter(name="appUrls")
+    def app_urls(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The URLs where the 'WebApp' is hosted.
+        """
+        return pulumi.get(self, "app_urls")
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
+        This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @property
     @pulumi.getter(name="displayName")
