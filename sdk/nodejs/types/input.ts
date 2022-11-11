@@ -25768,6 +25768,24 @@ export namespace kms {
         title: pulumi.Input<string>;
     }
 
+    export interface CryptoKeyVersionAttestation {
+        certChains?: pulumi.Input<inputs.kms.CryptoKeyVersionAttestationCertChains>;
+        content?: pulumi.Input<string>;
+        externalProtectionLevelOptions?: pulumi.Input<inputs.kms.CryptoKeyVersionAttestationExternalProtectionLevelOptions>;
+        format?: pulumi.Input<string>;
+    }
+
+    export interface CryptoKeyVersionAttestationCertChains {
+        caviumCerts?: pulumi.Input<string>;
+        googleCardCerts?: pulumi.Input<string>;
+        googlePartitionCerts?: pulumi.Input<string>;
+    }
+
+    export interface CryptoKeyVersionAttestationExternalProtectionLevelOptions {
+        ekmConnectionKeyPath?: pulumi.Input<string>;
+        externalKeyUri?: pulumi.Input<string>;
+    }
+
     export interface CryptoKeyVersionTemplate {
         /**
          * The algorithm to use when creating a version based on this template.

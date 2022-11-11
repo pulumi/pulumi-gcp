@@ -140,16 +140,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:bigtable/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-     * See structure below.
+     * A block of cluster configuration options. This can be specified at least once, and up
+     * to as many as possible within 8 cloud regions. See structure below.
      * 
      */
     @Export(name="clusters", type=List.class, parameters={InstanceCluster.class})
     private Output<List<InstanceCluster>> clusters;
 
     /**
-     * @return A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-     * See structure below.
+     * @return A block of cluster configuration options. This can be specified at least once, and up
+     * to as many as possible within 8 cloud regions. See structure below.
      * 
      */
     public Output<List<InstanceCluster>> clusters() {

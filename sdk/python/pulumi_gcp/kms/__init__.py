@@ -9,6 +9,7 @@ from .crypto_key import *
 from .crypto_key_iam_binding import *
 from .crypto_key_iam_member import *
 from .crypto_key_iam_policy import *
+from .crypto_key_version import *
 from .get_kms_crypto_key import *
 from .get_kms_crypto_key_version import *
 from .get_kms_key_ring import *

@@ -360,6 +360,433 @@ func (o CryptoKeyIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type CryptoKeyVersionAttestation struct {
+	CertChains                     *CryptoKeyVersionAttestationCertChains                     `pulumi:"certChains"`
+	Content                        *string                                                    `pulumi:"content"`
+	ExternalProtectionLevelOptions *CryptoKeyVersionAttestationExternalProtectionLevelOptions `pulumi:"externalProtectionLevelOptions"`
+	Format                         *string                                                    `pulumi:"format"`
+}
+
+// CryptoKeyVersionAttestationInput is an input type that accepts CryptoKeyVersionAttestationArgs and CryptoKeyVersionAttestationOutput values.
+// You can construct a concrete instance of `CryptoKeyVersionAttestationInput` via:
+//
+//	CryptoKeyVersionAttestationArgs{...}
+type CryptoKeyVersionAttestationInput interface {
+	pulumi.Input
+
+	ToCryptoKeyVersionAttestationOutput() CryptoKeyVersionAttestationOutput
+	ToCryptoKeyVersionAttestationOutputWithContext(context.Context) CryptoKeyVersionAttestationOutput
+}
+
+type CryptoKeyVersionAttestationArgs struct {
+	CertChains                     CryptoKeyVersionAttestationCertChainsPtrInput                     `pulumi:"certChains"`
+	Content                        pulumi.StringPtrInput                                             `pulumi:"content"`
+	ExternalProtectionLevelOptions CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrInput `pulumi:"externalProtectionLevelOptions"`
+	Format                         pulumi.StringPtrInput                                             `pulumi:"format"`
+}
+
+func (CryptoKeyVersionAttestationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyVersionAttestation)(nil)).Elem()
+}
+
+func (i CryptoKeyVersionAttestationArgs) ToCryptoKeyVersionAttestationOutput() CryptoKeyVersionAttestationOutput {
+	return i.ToCryptoKeyVersionAttestationOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyVersionAttestationArgs) ToCryptoKeyVersionAttestationOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionAttestationOutput)
+}
+
+// CryptoKeyVersionAttestationArrayInput is an input type that accepts CryptoKeyVersionAttestationArray and CryptoKeyVersionAttestationArrayOutput values.
+// You can construct a concrete instance of `CryptoKeyVersionAttestationArrayInput` via:
+//
+//	CryptoKeyVersionAttestationArray{ CryptoKeyVersionAttestationArgs{...} }
+type CryptoKeyVersionAttestationArrayInput interface {
+	pulumi.Input
+
+	ToCryptoKeyVersionAttestationArrayOutput() CryptoKeyVersionAttestationArrayOutput
+	ToCryptoKeyVersionAttestationArrayOutputWithContext(context.Context) CryptoKeyVersionAttestationArrayOutput
+}
+
+type CryptoKeyVersionAttestationArray []CryptoKeyVersionAttestationInput
+
+func (CryptoKeyVersionAttestationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CryptoKeyVersionAttestation)(nil)).Elem()
+}
+
+func (i CryptoKeyVersionAttestationArray) ToCryptoKeyVersionAttestationArrayOutput() CryptoKeyVersionAttestationArrayOutput {
+	return i.ToCryptoKeyVersionAttestationArrayOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyVersionAttestationArray) ToCryptoKeyVersionAttestationArrayOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionAttestationArrayOutput)
+}
+
+type CryptoKeyVersionAttestationOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyVersionAttestationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyVersionAttestation)(nil)).Elem()
+}
+
+func (o CryptoKeyVersionAttestationOutput) ToCryptoKeyVersionAttestationOutput() CryptoKeyVersionAttestationOutput {
+	return o
+}
+
+func (o CryptoKeyVersionAttestationOutput) ToCryptoKeyVersionAttestationOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationOutput {
+	return o
+}
+
+func (o CryptoKeyVersionAttestationOutput) CertChains() CryptoKeyVersionAttestationCertChainsPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersionAttestation) *CryptoKeyVersionAttestationCertChains { return v.CertChains }).(CryptoKeyVersionAttestationCertChainsPtrOutput)
+}
+
+func (o CryptoKeyVersionAttestationOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersionAttestation) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+func (o CryptoKeyVersionAttestationOutput) ExternalProtectionLevelOptions() CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersionAttestation) *CryptoKeyVersionAttestationExternalProtectionLevelOptions {
+		return v.ExternalProtectionLevelOptions
+	}).(CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput)
+}
+
+func (o CryptoKeyVersionAttestationOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersionAttestation) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+type CryptoKeyVersionAttestationArrayOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyVersionAttestationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CryptoKeyVersionAttestation)(nil)).Elem()
+}
+
+func (o CryptoKeyVersionAttestationArrayOutput) ToCryptoKeyVersionAttestationArrayOutput() CryptoKeyVersionAttestationArrayOutput {
+	return o
+}
+
+func (o CryptoKeyVersionAttestationArrayOutput) ToCryptoKeyVersionAttestationArrayOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationArrayOutput {
+	return o
+}
+
+func (o CryptoKeyVersionAttestationArrayOutput) Index(i pulumi.IntInput) CryptoKeyVersionAttestationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CryptoKeyVersionAttestation {
+		return vs[0].([]CryptoKeyVersionAttestation)[vs[1].(int)]
+	}).(CryptoKeyVersionAttestationOutput)
+}
+
+type CryptoKeyVersionAttestationCertChains struct {
+	CaviumCerts          *string `pulumi:"caviumCerts"`
+	GoogleCardCerts      *string `pulumi:"googleCardCerts"`
+	GooglePartitionCerts *string `pulumi:"googlePartitionCerts"`
+}
+
+// CryptoKeyVersionAttestationCertChainsInput is an input type that accepts CryptoKeyVersionAttestationCertChainsArgs and CryptoKeyVersionAttestationCertChainsOutput values.
+// You can construct a concrete instance of `CryptoKeyVersionAttestationCertChainsInput` via:
+//
+//	CryptoKeyVersionAttestationCertChainsArgs{...}
+type CryptoKeyVersionAttestationCertChainsInput interface {
+	pulumi.Input
+
+	ToCryptoKeyVersionAttestationCertChainsOutput() CryptoKeyVersionAttestationCertChainsOutput
+	ToCryptoKeyVersionAttestationCertChainsOutputWithContext(context.Context) CryptoKeyVersionAttestationCertChainsOutput
+}
+
+type CryptoKeyVersionAttestationCertChainsArgs struct {
+	CaviumCerts          pulumi.StringPtrInput `pulumi:"caviumCerts"`
+	GoogleCardCerts      pulumi.StringPtrInput `pulumi:"googleCardCerts"`
+	GooglePartitionCerts pulumi.StringPtrInput `pulumi:"googlePartitionCerts"`
+}
+
+func (CryptoKeyVersionAttestationCertChainsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyVersionAttestationCertChains)(nil)).Elem()
+}
+
+func (i CryptoKeyVersionAttestationCertChainsArgs) ToCryptoKeyVersionAttestationCertChainsOutput() CryptoKeyVersionAttestationCertChainsOutput {
+	return i.ToCryptoKeyVersionAttestationCertChainsOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyVersionAttestationCertChainsArgs) ToCryptoKeyVersionAttestationCertChainsOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationCertChainsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionAttestationCertChainsOutput)
+}
+
+func (i CryptoKeyVersionAttestationCertChainsArgs) ToCryptoKeyVersionAttestationCertChainsPtrOutput() CryptoKeyVersionAttestationCertChainsPtrOutput {
+	return i.ToCryptoKeyVersionAttestationCertChainsPtrOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyVersionAttestationCertChainsArgs) ToCryptoKeyVersionAttestationCertChainsPtrOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationCertChainsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionAttestationCertChainsOutput).ToCryptoKeyVersionAttestationCertChainsPtrOutputWithContext(ctx)
+}
+
+// CryptoKeyVersionAttestationCertChainsPtrInput is an input type that accepts CryptoKeyVersionAttestationCertChainsArgs, CryptoKeyVersionAttestationCertChainsPtr and CryptoKeyVersionAttestationCertChainsPtrOutput values.
+// You can construct a concrete instance of `CryptoKeyVersionAttestationCertChainsPtrInput` via:
+//
+//	        CryptoKeyVersionAttestationCertChainsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CryptoKeyVersionAttestationCertChainsPtrInput interface {
+	pulumi.Input
+
+	ToCryptoKeyVersionAttestationCertChainsPtrOutput() CryptoKeyVersionAttestationCertChainsPtrOutput
+	ToCryptoKeyVersionAttestationCertChainsPtrOutputWithContext(context.Context) CryptoKeyVersionAttestationCertChainsPtrOutput
+}
+
+type cryptoKeyVersionAttestationCertChainsPtrType CryptoKeyVersionAttestationCertChainsArgs
+
+func CryptoKeyVersionAttestationCertChainsPtr(v *CryptoKeyVersionAttestationCertChainsArgs) CryptoKeyVersionAttestationCertChainsPtrInput {
+	return (*cryptoKeyVersionAttestationCertChainsPtrType)(v)
+}
+
+func (*cryptoKeyVersionAttestationCertChainsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyVersionAttestationCertChains)(nil)).Elem()
+}
+
+func (i *cryptoKeyVersionAttestationCertChainsPtrType) ToCryptoKeyVersionAttestationCertChainsPtrOutput() CryptoKeyVersionAttestationCertChainsPtrOutput {
+	return i.ToCryptoKeyVersionAttestationCertChainsPtrOutputWithContext(context.Background())
+}
+
+func (i *cryptoKeyVersionAttestationCertChainsPtrType) ToCryptoKeyVersionAttestationCertChainsPtrOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationCertChainsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionAttestationCertChainsPtrOutput)
+}
+
+type CryptoKeyVersionAttestationCertChainsOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyVersionAttestationCertChainsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyVersionAttestationCertChains)(nil)).Elem()
+}
+
+func (o CryptoKeyVersionAttestationCertChainsOutput) ToCryptoKeyVersionAttestationCertChainsOutput() CryptoKeyVersionAttestationCertChainsOutput {
+	return o
+}
+
+func (o CryptoKeyVersionAttestationCertChainsOutput) ToCryptoKeyVersionAttestationCertChainsOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationCertChainsOutput {
+	return o
+}
+
+func (o CryptoKeyVersionAttestationCertChainsOutput) ToCryptoKeyVersionAttestationCertChainsPtrOutput() CryptoKeyVersionAttestationCertChainsPtrOutput {
+	return o.ToCryptoKeyVersionAttestationCertChainsPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyVersionAttestationCertChainsOutput) ToCryptoKeyVersionAttestationCertChainsPtrOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationCertChainsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyVersionAttestationCertChains) *CryptoKeyVersionAttestationCertChains {
+		return &v
+	}).(CryptoKeyVersionAttestationCertChainsPtrOutput)
+}
+
+func (o CryptoKeyVersionAttestationCertChainsOutput) CaviumCerts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersionAttestationCertChains) *string { return v.CaviumCerts }).(pulumi.StringPtrOutput)
+}
+
+func (o CryptoKeyVersionAttestationCertChainsOutput) GoogleCardCerts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersionAttestationCertChains) *string { return v.GoogleCardCerts }).(pulumi.StringPtrOutput)
+}
+
+func (o CryptoKeyVersionAttestationCertChainsOutput) GooglePartitionCerts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersionAttestationCertChains) *string { return v.GooglePartitionCerts }).(pulumi.StringPtrOutput)
+}
+
+type CryptoKeyVersionAttestationCertChainsPtrOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyVersionAttestationCertChainsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyVersionAttestationCertChains)(nil)).Elem()
+}
+
+func (o CryptoKeyVersionAttestationCertChainsPtrOutput) ToCryptoKeyVersionAttestationCertChainsPtrOutput() CryptoKeyVersionAttestationCertChainsPtrOutput {
+	return o
+}
+
+func (o CryptoKeyVersionAttestationCertChainsPtrOutput) ToCryptoKeyVersionAttestationCertChainsPtrOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationCertChainsPtrOutput {
+	return o
+}
+
+func (o CryptoKeyVersionAttestationCertChainsPtrOutput) Elem() CryptoKeyVersionAttestationCertChainsOutput {
+	return o.ApplyT(func(v *CryptoKeyVersionAttestationCertChains) CryptoKeyVersionAttestationCertChains {
+		if v != nil {
+			return *v
+		}
+		var ret CryptoKeyVersionAttestationCertChains
+		return ret
+	}).(CryptoKeyVersionAttestationCertChainsOutput)
+}
+
+func (o CryptoKeyVersionAttestationCertChainsPtrOutput) CaviumCerts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersionAttestationCertChains) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaviumCerts
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CryptoKeyVersionAttestationCertChainsPtrOutput) GoogleCardCerts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersionAttestationCertChains) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GoogleCardCerts
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CryptoKeyVersionAttestationCertChainsPtrOutput) GooglePartitionCerts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersionAttestationCertChains) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GooglePartitionCerts
+	}).(pulumi.StringPtrOutput)
+}
+
+type CryptoKeyVersionAttestationExternalProtectionLevelOptions struct {
+	EkmConnectionKeyPath *string `pulumi:"ekmConnectionKeyPath"`
+	ExternalKeyUri       *string `pulumi:"externalKeyUri"`
+}
+
+// CryptoKeyVersionAttestationExternalProtectionLevelOptionsInput is an input type that accepts CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs and CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput values.
+// You can construct a concrete instance of `CryptoKeyVersionAttestationExternalProtectionLevelOptionsInput` via:
+//
+//	CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs{...}
+type CryptoKeyVersionAttestationExternalProtectionLevelOptionsInput interface {
+	pulumi.Input
+
+	ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput() CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput
+	ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsOutputWithContext(context.Context) CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput
+}
+
+type CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs struct {
+	EkmConnectionKeyPath pulumi.StringPtrInput `pulumi:"ekmConnectionKeyPath"`
+	ExternalKeyUri       pulumi.StringPtrInput `pulumi:"externalKeyUri"`
+}
+
+func (CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyVersionAttestationExternalProtectionLevelOptions)(nil)).Elem()
+}
+
+func (i CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs) ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput() CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput {
+	return i.ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs) ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput)
+}
+
+func (i CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs) ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput() CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput {
+	return i.ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs) ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput).ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutputWithContext(ctx)
+}
+
+// CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrInput is an input type that accepts CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs, CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtr and CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput values.
+// You can construct a concrete instance of `CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrInput` via:
+//
+//	        CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrInput interface {
+	pulumi.Input
+
+	ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput() CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput
+	ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutputWithContext(context.Context) CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput
+}
+
+type cryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrType CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs
+
+func CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtr(v *CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs) CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrInput {
+	return (*cryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrType)(v)
+}
+
+func (*cryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyVersionAttestationExternalProtectionLevelOptions)(nil)).Elem()
+}
+
+func (i *cryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrType) ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput() CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput {
+	return i.ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *cryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrType) ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput)
+}
+
+type CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyVersionAttestationExternalProtectionLevelOptions)(nil)).Elem()
+}
+
+func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput) ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput() CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput {
+	return o
+}
+
+func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput) ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput {
+	return o
+}
+
+func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput) ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput() CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput {
+	return o.ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput) ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyVersionAttestationExternalProtectionLevelOptions) *CryptoKeyVersionAttestationExternalProtectionLevelOptions {
+		return &v
+	}).(CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput)
+}
+
+func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput) EkmConnectionKeyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersionAttestationExternalProtectionLevelOptions) *string {
+		return v.EkmConnectionKeyPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput) ExternalKeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersionAttestationExternalProtectionLevelOptions) *string { return v.ExternalKeyUri }).(pulumi.StringPtrOutput)
+}
+
+type CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyVersionAttestationExternalProtectionLevelOptions)(nil)).Elem()
+}
+
+func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput) ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput() CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput {
+	return o
+}
+
+func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput) ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput {
+	return o
+}
+
+func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput) Elem() CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput {
+	return o.ApplyT(func(v *CryptoKeyVersionAttestationExternalProtectionLevelOptions) CryptoKeyVersionAttestationExternalProtectionLevelOptions {
+		if v != nil {
+			return *v
+		}
+		var ret CryptoKeyVersionAttestationExternalProtectionLevelOptions
+		return ret
+	}).(CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput)
+}
+
+func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput) EkmConnectionKeyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersionAttestationExternalProtectionLevelOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EkmConnectionKeyPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput) ExternalKeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersionAttestationExternalProtectionLevelOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalKeyUri
+	}).(pulumi.StringPtrOutput)
+}
+
 type CryptoKeyVersionTemplate struct {
 	// The algorithm to use when creating a version based on this template.
 	// See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
@@ -1490,6 +1917,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMBindingConditionPtrInput)(nil)).Elem(), CryptoKeyIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMMemberConditionInput)(nil)).Elem(), CryptoKeyIAMMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMMemberConditionPtrInput)(nil)).Elem(), CryptoKeyIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionAttestationInput)(nil)).Elem(), CryptoKeyVersionAttestationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionAttestationArrayInput)(nil)).Elem(), CryptoKeyVersionAttestationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionAttestationCertChainsInput)(nil)).Elem(), CryptoKeyVersionAttestationCertChainsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionAttestationCertChainsPtrInput)(nil)).Elem(), CryptoKeyVersionAttestationCertChainsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionAttestationExternalProtectionLevelOptionsInput)(nil)).Elem(), CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrInput)(nil)).Elem(), CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplateInput)(nil)).Elem(), CryptoKeyVersionTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplatePtrInput)(nil)).Elem(), CryptoKeyVersionTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMBindingConditionInput)(nil)).Elem(), KeyRingIAMBindingConditionArgs{})
@@ -1512,6 +1945,12 @@ func init() {
 	pulumi.RegisterOutputType(CryptoKeyIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyIAMMemberConditionOutput{})
 	pulumi.RegisterOutputType(CryptoKeyIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(CryptoKeyVersionAttestationOutput{})
+	pulumi.RegisterOutputType(CryptoKeyVersionAttestationArrayOutput{})
+	pulumi.RegisterOutputType(CryptoKeyVersionAttestationCertChainsOutput{})
+	pulumi.RegisterOutputType(CryptoKeyVersionAttestationCertChainsPtrOutput{})
+	pulumi.RegisterOutputType(CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput{})
+	pulumi.RegisterOutputType(CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplateOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplatePtrOutput{})
 	pulumi.RegisterOutputType(KeyRingIAMBindingConditionOutput{})

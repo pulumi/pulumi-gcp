@@ -12,6 +12,9 @@ from .. import _utilities
 __all__ = [
     'CryptoKeyIAMBindingConditionArgs',
     'CryptoKeyIAMMemberConditionArgs',
+    'CryptoKeyVersionAttestationArgs',
+    'CryptoKeyVersionAttestationCertChainsArgs',
+    'CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs',
     'CryptoKeyVersionTemplateArgs',
     'KeyRingIAMBindingConditionArgs',
     'KeyRingIAMMemberConditionArgs',
@@ -125,6 +128,129 @@ class CryptoKeyIAMMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class CryptoKeyVersionAttestationArgs:
+    def __init__(__self__, *,
+                 cert_chains: Optional[pulumi.Input['CryptoKeyVersionAttestationCertChainsArgs']] = None,
+                 content: Optional[pulumi.Input[str]] = None,
+                 external_protection_level_options: Optional[pulumi.Input['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs']] = None,
+                 format: Optional[pulumi.Input[str]] = None):
+        if cert_chains is not None:
+            pulumi.set(__self__, "cert_chains", cert_chains)
+        if content is not None:
+            pulumi.set(__self__, "content", content)
+        if external_protection_level_options is not None:
+            pulumi.set(__self__, "external_protection_level_options", external_protection_level_options)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+
+    @property
+    @pulumi.getter(name="certChains")
+    def cert_chains(self) -> Optional[pulumi.Input['CryptoKeyVersionAttestationCertChainsArgs']]:
+        return pulumi.get(self, "cert_chains")
+
+    @cert_chains.setter
+    def cert_chains(self, value: Optional[pulumi.Input['CryptoKeyVersionAttestationCertChainsArgs']]):
+        pulumi.set(self, "cert_chains", value)
+
+    @property
+    @pulumi.getter
+    def content(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter(name="externalProtectionLevelOptions")
+    def external_protection_level_options(self) -> Optional[pulumi.Input['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs']]:
+        return pulumi.get(self, "external_protection_level_options")
+
+    @external_protection_level_options.setter
+    def external_protection_level_options(self, value: Optional[pulumi.Input['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs']]):
+        pulumi.set(self, "external_protection_level_options", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
+
+
+@pulumi.input_type
+class CryptoKeyVersionAttestationCertChainsArgs:
+    def __init__(__self__, *,
+                 cavium_certs: Optional[pulumi.Input[str]] = None,
+                 google_card_certs: Optional[pulumi.Input[str]] = None,
+                 google_partition_certs: Optional[pulumi.Input[str]] = None):
+        if cavium_certs is not None:
+            pulumi.set(__self__, "cavium_certs", cavium_certs)
+        if google_card_certs is not None:
+            pulumi.set(__self__, "google_card_certs", google_card_certs)
+        if google_partition_certs is not None:
+            pulumi.set(__self__, "google_partition_certs", google_partition_certs)
+
+    @property
+    @pulumi.getter(name="caviumCerts")
+    def cavium_certs(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cavium_certs")
+
+    @cavium_certs.setter
+    def cavium_certs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cavium_certs", value)
+
+    @property
+    @pulumi.getter(name="googleCardCerts")
+    def google_card_certs(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "google_card_certs")
+
+    @google_card_certs.setter
+    def google_card_certs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "google_card_certs", value)
+
+    @property
+    @pulumi.getter(name="googlePartitionCerts")
+    def google_partition_certs(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "google_partition_certs")
+
+    @google_partition_certs.setter
+    def google_partition_certs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "google_partition_certs", value)
+
+
+@pulumi.input_type
+class CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs:
+    def __init__(__self__, *,
+                 ekm_connection_key_path: Optional[pulumi.Input[str]] = None,
+                 external_key_uri: Optional[pulumi.Input[str]] = None):
+        if ekm_connection_key_path is not None:
+            pulumi.set(__self__, "ekm_connection_key_path", ekm_connection_key_path)
+        if external_key_uri is not None:
+            pulumi.set(__self__, "external_key_uri", external_key_uri)
+
+    @property
+    @pulumi.getter(name="ekmConnectionKeyPath")
+    def ekm_connection_key_path(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ekm_connection_key_path")
+
+    @ekm_connection_key_path.setter
+    def ekm_connection_key_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ekm_connection_key_path", value)
+
+    @property
+    @pulumi.getter(name="externalKeyUri")
+    def external_key_uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "external_key_uri")
+
+    @external_key_uri.setter
+    def external_key_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_key_uri", value)
 
 
 @pulumi.input_type

@@ -8,10 +8,14 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'CryptoKeyIAMBindingCondition',
     'CryptoKeyIAMMemberCondition',
+    'CryptoKeyVersionAttestation',
+    'CryptoKeyVersionAttestationCertChains',
+    'CryptoKeyVersionAttestationExternalProtectionLevelOptions',
     'CryptoKeyVersionTemplate',
     'KeyRingIAMBindingCondition',
     'KeyRingIAMMemberCondition',
@@ -103,6 +107,152 @@ class CryptoKeyIAMMemberCondition(dict):
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class CryptoKeyVersionAttestation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certChains":
+            suggest = "cert_chains"
+        elif key == "externalProtectionLevelOptions":
+            suggest = "external_protection_level_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CryptoKeyVersionAttestation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CryptoKeyVersionAttestation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CryptoKeyVersionAttestation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cert_chains: Optional['outputs.CryptoKeyVersionAttestationCertChains'] = None,
+                 content: Optional[str] = None,
+                 external_protection_level_options: Optional['outputs.CryptoKeyVersionAttestationExternalProtectionLevelOptions'] = None,
+                 format: Optional[str] = None):
+        if cert_chains is not None:
+            pulumi.set(__self__, "cert_chains", cert_chains)
+        if content is not None:
+            pulumi.set(__self__, "content", content)
+        if external_protection_level_options is not None:
+            pulumi.set(__self__, "external_protection_level_options", external_protection_level_options)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+
+    @property
+    @pulumi.getter(name="certChains")
+    def cert_chains(self) -> Optional['outputs.CryptoKeyVersionAttestationCertChains']:
+        return pulumi.get(self, "cert_chains")
+
+    @property
+    @pulumi.getter
+    def content(self) -> Optional[str]:
+        return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter(name="externalProtectionLevelOptions")
+    def external_protection_level_options(self) -> Optional['outputs.CryptoKeyVersionAttestationExternalProtectionLevelOptions']:
+        return pulumi.get(self, "external_protection_level_options")
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[str]:
+        return pulumi.get(self, "format")
+
+
+@pulumi.output_type
+class CryptoKeyVersionAttestationCertChains(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caviumCerts":
+            suggest = "cavium_certs"
+        elif key == "googleCardCerts":
+            suggest = "google_card_certs"
+        elif key == "googlePartitionCerts":
+            suggest = "google_partition_certs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CryptoKeyVersionAttestationCertChains. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CryptoKeyVersionAttestationCertChains.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CryptoKeyVersionAttestationCertChains.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cavium_certs: Optional[str] = None,
+                 google_card_certs: Optional[str] = None,
+                 google_partition_certs: Optional[str] = None):
+        if cavium_certs is not None:
+            pulumi.set(__self__, "cavium_certs", cavium_certs)
+        if google_card_certs is not None:
+            pulumi.set(__self__, "google_card_certs", google_card_certs)
+        if google_partition_certs is not None:
+            pulumi.set(__self__, "google_partition_certs", google_partition_certs)
+
+    @property
+    @pulumi.getter(name="caviumCerts")
+    def cavium_certs(self) -> Optional[str]:
+        return pulumi.get(self, "cavium_certs")
+
+    @property
+    @pulumi.getter(name="googleCardCerts")
+    def google_card_certs(self) -> Optional[str]:
+        return pulumi.get(self, "google_card_certs")
+
+    @property
+    @pulumi.getter(name="googlePartitionCerts")
+    def google_partition_certs(self) -> Optional[str]:
+        return pulumi.get(self, "google_partition_certs")
+
+
+@pulumi.output_type
+class CryptoKeyVersionAttestationExternalProtectionLevelOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ekmConnectionKeyPath":
+            suggest = "ekm_connection_key_path"
+        elif key == "externalKeyUri":
+            suggest = "external_key_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CryptoKeyVersionAttestationExternalProtectionLevelOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CryptoKeyVersionAttestationExternalProtectionLevelOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CryptoKeyVersionAttestationExternalProtectionLevelOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ekm_connection_key_path: Optional[str] = None,
+                 external_key_uri: Optional[str] = None):
+        if ekm_connection_key_path is not None:
+            pulumi.set(__self__, "ekm_connection_key_path", ekm_connection_key_path)
+        if external_key_uri is not None:
+            pulumi.set(__self__, "external_key_uri", external_key_uri)
+
+    @property
+    @pulumi.getter(name="ekmConnectionKeyPath")
+    def ekm_connection_key_path(self) -> Optional[str]:
+        return pulumi.get(self, "ekm_connection_key_path")
+
+    @property
+    @pulumi.getter(name="externalKeyUri")
+    def external_key_uri(self) -> Optional[str]:
+        return pulumi.get(self, "external_key_uri")
 
 
 @pulumi.output_type

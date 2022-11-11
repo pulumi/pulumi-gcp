@@ -1736,6 +1736,12 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_kms_crypto_key.html.markdown",
 				},
 			},
+			"google_kms_crypto_key_version": {
+				Tok: gcpResource(gcpKMS, "CryptoKeyVersion"),
+				Docs: &tfbridge.DocInfo{
+					Source: "google_kms_crypto_key_version.html.markdown",
+				},
+			},
 			"google_kms_crypto_key_iam_binding": {
 				Tok: gcpResource(gcpKMS, "CryptoKeyIAMBinding"),
 				Docs: &tfbridge.DocInfo{

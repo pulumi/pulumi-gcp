@@ -594,6 +594,7 @@
         "kms/cryptoKeyIAMBinding.ts",
         "kms/cryptoKeyIAMMember.ts",
         "kms/cryptoKeyIAMPolicy.ts",
+        "kms/cryptoKeyVersion.ts",
         "kms/getKMSCryptoKey.ts",
         "kms/getKMSCryptoKeyVersion.ts",
         "kms/getKMSKeyRing.ts",
