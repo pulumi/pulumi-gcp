@@ -117,8 +117,8 @@ namespace Pulumi.Gcp.BigTable
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-        /// See structure below.
+        /// A block of cluster configuration options. This can be specified at least once, and up 
+        /// to as many as possible within 8 cloud regions. See structure below.
         /// </summary>
         [Output("clusters")]
         public Output<ImmutableArray<Outputs.InstanceCluster>> Clusters { get; private set; } = null!;
@@ -215,8 +215,8 @@ namespace Pulumi.Gcp.BigTable
         private InputList<Inputs.InstanceClusterArgs>? _clusters;
 
         /// <summary>
-        /// A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-        /// See structure below.
+        /// A block of cluster configuration options. This can be specified at least once, and up 
+        /// to as many as possible within 8 cloud regions. See structure below.
         /// </summary>
         public InputList<Inputs.InstanceClusterArgs> Clusters
         {
@@ -284,8 +284,8 @@ namespace Pulumi.Gcp.BigTable
         private InputList<Inputs.InstanceClusterGetArgs>? _clusters;
 
         /// <summary>
-        /// A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-        /// See structure below.
+        /// A block of cluster configuration options. This can be specified at least once, and up 
+        /// to as many as possible within 8 cloud regions. See structure below.
         /// </summary>
         public InputList<Inputs.InstanceClusterGetArgs> Clusters
         {

@@ -28267,6 +28267,24 @@ export namespace kms {
         title: string;
     }
 
+    export interface CryptoKeyVersionAttestation {
+        certChains?: outputs.kms.CryptoKeyVersionAttestationCertChains;
+        content: string;
+        externalProtectionLevelOptions?: outputs.kms.CryptoKeyVersionAttestationExternalProtectionLevelOptions;
+        format: string;
+    }
+
+    export interface CryptoKeyVersionAttestationCertChains {
+        caviumCerts?: string;
+        googleCardCerts?: string;
+        googlePartitionCerts?: string;
+    }
+
+    export interface CryptoKeyVersionAttestationExternalProtectionLevelOptions {
+        ekmConnectionKeyPath?: string;
+        externalKeyUri?: string;
+    }
+
     export interface CryptoKeyVersionTemplate {
         /**
          * The algorithm to use when creating a version based on this template.

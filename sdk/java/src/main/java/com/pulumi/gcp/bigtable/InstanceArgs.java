@@ -20,16 +20,16 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
-     * A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-     * See structure below.
+     * A block of cluster configuration options. This can be specified at least once, and up
+     * to as many as possible within 8 cloud regions. See structure below.
      * 
      */
     @Import(name="clusters")
     private @Nullable Output<List<InstanceClusterArgs>> clusters;
 
     /**
-     * @return A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-     * See structure below.
+     * @return A block of cluster configuration options. This can be specified at least once, and up
+     * to as many as possible within 8 cloud regions. See structure below.
      * 
      */
     public Optional<Output<List<InstanceClusterArgs>>> clusters() {
@@ -177,8 +177,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusters A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-         * See structure below.
+         * @param clusters A block of cluster configuration options. This can be specified at least once, and up
+         * to as many as possible within 8 cloud regions. See structure below.
          * 
          * @return builder
          * 
@@ -189,8 +189,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusters A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-         * See structure below.
+         * @param clusters A block of cluster configuration options. This can be specified at least once, and up
+         * to as many as possible within 8 cloud regions. See structure below.
          * 
          * @return builder
          * 
@@ -200,8 +200,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusters A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-         * See structure below.
+         * @param clusters A block of cluster configuration options. This can be specified at least once, and up
+         * to as many as possible within 8 cloud regions. See structure below.
          * 
          * @return builder
          * 

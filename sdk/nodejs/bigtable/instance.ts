@@ -119,8 +119,8 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-     * See structure below.
+     * A block of cluster configuration options. This can be specified at least once, and up 
+     * to as many as possible within 8 cloud regions. See structure below.
      */
     public readonly clusters!: pulumi.Output<outputs.bigtable.InstanceCluster[]>;
     /**
@@ -196,8 +196,8 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-     * See structure below.
+     * A block of cluster configuration options. This can be specified at least once, and up 
+     * to as many as possible within 8 cloud regions. See structure below.
      */
     clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[]>;
     /**
@@ -239,8 +239,8 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-     * See structure below.
+     * A block of cluster configuration options. This can be specified at least once, and up 
+     * to as many as possible within 8 cloud regions. See structure below.
      */
     clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[]>;
     /**

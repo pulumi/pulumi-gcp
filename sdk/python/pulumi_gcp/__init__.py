@@ -3904,6 +3904,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "kms/cryptoKeyVersion",
+  "fqn": "pulumi_gcp.kms",
+  "classes": {
+   "gcp:kms/cryptoKeyVersion:CryptoKeyVersion": "CryptoKeyVersion"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "kms/keyRing",
   "fqn": "pulumi_gcp.kms",
   "classes": {

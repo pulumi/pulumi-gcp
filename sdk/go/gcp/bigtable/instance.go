@@ -133,8 +133,8 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-	// See structure below.
+	// A block of cluster configuration options. This can be specified at least once, and up
+	// to as many as possible within 8 cloud regions. See structure below.
 	Clusters InstanceClusterArrayOutput `pulumi:"clusters"`
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -187,8 +187,8 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-	// See structure below.
+	// A block of cluster configuration options. This can be specified at least once, and up
+	// to as many as possible within 8 cloud regions. See structure below.
 	Clusters []InstanceCluster `pulumi:"clusters"`
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -213,8 +213,8 @@ type instanceState struct {
 }
 
 type InstanceState struct {
-	// A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-	// See structure below.
+	// A block of cluster configuration options. This can be specified at least once, and up
+	// to as many as possible within 8 cloud regions. See structure below.
 	Clusters InstanceClusterArrayInput
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -243,8 +243,8 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-	// See structure below.
+	// A block of cluster configuration options. This can be specified at least once, and up
+	// to as many as possible within 8 cloud regions. See structure below.
 	Clusters []InstanceCluster `pulumi:"clusters"`
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -270,8 +270,8 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-	// See structure below.
+	// A block of cluster configuration options. This can be specified at least once, and up
+	// to as many as possible within 8 cloud regions. See structure below.
 	Clusters InstanceClusterArrayInput
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -382,8 +382,8 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// A block of cluster configuration options. This can be specified at least once, and up to 4 times.
-// See structure below.
+// A block of cluster configuration options. This can be specified at least once, and up
+// to as many as possible within 8 cloud regions. See structure below.
 func (o InstanceOutput) Clusters() InstanceClusterArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceClusterArrayOutput { return v.Clusters }).(InstanceClusterArrayOutput)
 }

@@ -1591,8 +1591,8 @@ github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Di
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220824175045-450992f2f5b9 h1:JMw+t5I+6E8Lna7JF+ghAoOLOl23UIbshJyRNP+K1HU=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220824175045-450992f2f5b9/go.mod h1:mYPs/uchNcBq7AclQv9QUtSf9iNcfp1Ag21jqTlDf2M=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20221103201708-433f80089dea h1:WsGL1nt0ts3dW92X9oiQwQhIa/dcM+blZZrBDE7vcks=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20221103201708-433f80089dea/go.mod h1:lLYSINloADHiGH8BbZeW7D9Ux/hv/PmZTPFG2oBWVvA=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20221111211323-47793ff7a502 h1:M9YBEGW6WKYHUAhgcATKuaiZY3jqSutI8pgPtvaG6E8=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20221111211323-47793ff7a502/go.mod h1:lLYSINloADHiGH8BbZeW7D9Ux/hv/PmZTPFG2oBWVvA=
 github.com/rakyll/embedmd v0.0.0-20171029212350-c8060a0752a2/go.mod h1:7jOTMgqac46PZcF54q6l2hkLEG8op93fZu61KmxWDV4=
 github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a/go.mod h1:bCqnVzQkZxMG4s8nGwiZ5l3QUCyqpo9Y+/ZMZ9VjZe4=
 github.com/rivo/uniseg v0.2.0 h1:S1pD9weZBuJdFmowNwbpi7BJ8TNftyUImj/0WQi72jY=
