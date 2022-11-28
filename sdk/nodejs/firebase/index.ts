@@ -10,6 +10,11 @@ export type AndroidApp = import("./androidApp").AndroidApp;
 export const AndroidApp: typeof import("./androidApp").AndroidApp = null as any;
 utilities.lazyLoad(exports, ["AndroidApp"], () => require("./androidApp"));
 
+export { AppleAppArgs, AppleAppState } from "./appleApp";
+export type AppleApp = import("./appleApp").AppleApp;
+export const AppleApp: typeof import("./appleApp").AppleApp = null as any;
+utilities.lazyLoad(exports, ["AppleApp"], () => require("./appleApp"));
+
 export { GetWebAppArgs, GetWebAppResult, GetWebAppOutputArgs } from "./getWebApp";
 export const getWebApp: typeof import("./getWebApp").getWebApp = null as any;
 export const getWebAppOutput: typeof import("./getWebApp").getWebAppOutput = null as any;
@@ -19,6 +24,16 @@ export { GetWebAppConfigArgs, GetWebAppConfigResult, GetWebAppConfigOutputArgs }
 export const getWebAppConfig: typeof import("./getWebAppConfig").getWebAppConfig = null as any;
 export const getWebAppConfigOutput: typeof import("./getWebAppConfig").getWebAppConfigOutput = null as any;
 utilities.lazyLoad(exports, ["getWebAppConfig","getWebAppConfigOutput"], () => require("./getWebAppConfig"));
+
+export { HostingChannelArgs, HostingChannelState } from "./hostingChannel";
+export type HostingChannel = import("./hostingChannel").HostingChannel;
+export const HostingChannel: typeof import("./hostingChannel").HostingChannel = null as any;
+utilities.lazyLoad(exports, ["HostingChannel"], () => require("./hostingChannel"));
+
+export { HostingSiteArgs, HostingSiteState } from "./hostingSite";
+export type HostingSite = import("./hostingSite").HostingSite;
+export const HostingSite: typeof import("./hostingSite").HostingSite = null as any;
+utilities.lazyLoad(exports, ["HostingSite"], () => require("./hostingSite"));
 
 export { ProjectArgs, ProjectState } from "./project";
 export type Project = import("./project").Project;
@@ -42,6 +57,12 @@ const _module = {
         switch (type) {
             case "gcp:firebase/androidApp:AndroidApp":
                 return new AndroidApp(name, <any>undefined, { urn })
+            case "gcp:firebase/appleApp:AppleApp":
+                return new AppleApp(name, <any>undefined, { urn })
+            case "gcp:firebase/hostingChannel:HostingChannel":
+                return new HostingChannel(name, <any>undefined, { urn })
+            case "gcp:firebase/hostingSite:HostingSite":
+                return new HostingSite(name, <any>undefined, { urn })
             case "gcp:firebase/project:Project":
                 return new Project(name, <any>undefined, { urn })
             case "gcp:firebase/projectLocation:ProjectLocation":
@@ -54,6 +75,9 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "firebase/androidApp", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/appleApp", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/hostingChannel", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/hostingSite", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/project", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/projectLocation", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/webApp", _module)

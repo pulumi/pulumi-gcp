@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Sql.Outputs
     public sealed class GetDatabaseInstanceSettingInsightsConfigResult
     {
         public readonly bool QueryInsightsEnabled;
+        public readonly int QueryPlansPerMinute;
         public readonly int QueryStringLength;
         public readonly bool RecordApplicationTags;
         public readonly bool RecordClientAddress;
@@ -22,6 +23,8 @@ namespace Pulumi.Gcp.Sql.Outputs
         private GetDatabaseInstanceSettingInsightsConfigResult(
             bool queryInsightsEnabled,
 
+            int queryPlansPerMinute,
+
             int queryStringLength,
 
             bool recordApplicationTags,
@@ -29,6 +32,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             bool recordClientAddress)
         {
             QueryInsightsEnabled = queryInsightsEnabled;
+            QueryPlansPerMinute = queryPlansPerMinute;
             QueryStringLength = queryStringLength;
             RecordApplicationTags = recordApplicationTags;
             RecordClientAddress = recordClientAddress;

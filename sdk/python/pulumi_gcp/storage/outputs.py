@@ -26,6 +26,7 @@ __all__ = [
     'BucketWebsite',
     'DefaultObjectAccessControlProjectTeam',
     'ObjectAccessControlProjectTeam',
+    'TransferAgentPoolBandwidthLimit',
     'TransferJobNotificationConfig',
     'TransferJobSchedule',
     'TransferJobScheduleScheduleEndDate',
@@ -822,6 +823,41 @@ class ObjectAccessControlProjectTeam(dict):
     @pulumi.getter
     def team(self) -> Optional[str]:
         return pulumi.get(self, "team")
+
+
+@pulumi.output_type
+class TransferAgentPoolBandwidthLimit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "limitMbps":
+            suggest = "limit_mbps"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferAgentPoolBandwidthLimit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferAgentPoolBandwidthLimit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferAgentPoolBandwidthLimit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 limit_mbps: str):
+        """
+        :param str limit_mbps: Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
+        """
+        pulumi.set(__self__, "limit_mbps", limit_mbps)
+
+    @property
+    @pulumi.getter(name="limitMbps")
+    def limit_mbps(self) -> str:
+        """
+        Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
+        """
+        return pulumi.get(self, "limit_mbps")
 
 
 @pulumi.output_type

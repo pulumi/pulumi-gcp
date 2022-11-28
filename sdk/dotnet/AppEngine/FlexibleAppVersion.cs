@@ -358,7 +358,7 @@ namespace Pulumi.Gcp.AppEngine
         /// default if this field is neither provided in app.yaml file nor through CLI flag.
         /// </summary>
         [Output("serviceAccount")]
-        public Output<string?> ServiceAccount { get; private set; } = null!;
+        public Output<string> ServiceAccount { get; private set; } = null!;
 
         /// <summary>
         /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.

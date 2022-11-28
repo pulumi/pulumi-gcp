@@ -42,6 +42,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("collation")]
         public Input<string>? Collation { get; set; }
 
+        /// <summary>
+        /// Specifies if connections must use Cloud SQL connectors.
+        /// </summary>
+        [Input("connectorEnforcement")]
+        public Input<string>? ConnectorEnforcement { get; set; }
+
         [Input("databaseFlags")]
         private InputList<Inputs.DatabaseInstanceSettingsDatabaseFlagGetArgs>? _databaseFlags;
         public InputList<Inputs.DatabaseInstanceSettingsDatabaseFlagGetArgs> DatabaseFlags
@@ -106,6 +112,9 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("tier", required: true)]
         public Input<string> Tier { get; set; } = null!;
 
+        /// <summary>
+        /// The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+        /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }
 

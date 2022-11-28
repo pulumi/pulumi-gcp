@@ -107,6 +107,65 @@ import (
 //	}
 //
 // ```
+// ### Serivce Mesh
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
+//				Location:         pulumi.String("us-central1-a"),
+//				InitialNodeCount: pulumi.Int(1),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+//				MembershipId: pulumi.String("my-membership"),
+//				Endpoint: &gkehub.MembershipEndpointArgs{
+//					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
+//						ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
+//							return fmt.Sprintf("//container.googleapis.com/%v", id), nil
+//						}).(pulumi.StringOutput),
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			feature, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Location: pulumi.String("global"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkehub.NewFeatureMembership(ctx, "featureMember", &gkehub.FeatureMembershipArgs{
+//				Location:   pulumi.String("global"),
+//				Feature:    feature.Name,
+//				Membership: membership.MembershipId,
+//				Mesh: &gkehub.FeatureMembershipMeshArgs{
+//					Management: pulumi.String("MANAGEMENT_AUTOMATIC"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -133,13 +192,15 @@ type FeatureMembership struct {
 	pulumi.CustomResourceState
 
 	// Config Management-specific spec. Structure is documented below.
-	Configmanagement FeatureMembershipConfigmanagementOutput `pulumi:"configmanagement"`
+	Configmanagement FeatureMembershipConfigmanagementPtrOutput `pulumi:"configmanagement"`
 	// The name of the feature
 	Feature pulumi.StringOutput `pulumi:"feature"`
 	// The location of the feature
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the membership
 	Membership pulumi.StringOutput `pulumi:"membership"`
+	// Service mesh specific spec. Structure is documented below.
+	Mesh FeatureMembershipMeshPtrOutput `pulumi:"mesh"`
 	// The project of the feature
 	Project pulumi.StringOutput `pulumi:"project"`
 }
@@ -151,9 +212,6 @@ func NewFeatureMembership(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Configmanagement == nil {
-		return nil, errors.New("invalid value for required argument 'Configmanagement'")
-	}
 	if args.Feature == nil {
 		return nil, errors.New("invalid value for required argument 'Feature'")
 	}
@@ -193,6 +251,8 @@ type featureMembershipState struct {
 	Location *string `pulumi:"location"`
 	// The name of the membership
 	Membership *string `pulumi:"membership"`
+	// Service mesh specific spec. Structure is documented below.
+	Mesh *FeatureMembershipMesh `pulumi:"mesh"`
 	// The project of the feature
 	Project *string `pulumi:"project"`
 }
@@ -206,6 +266,8 @@ type FeatureMembershipState struct {
 	Location pulumi.StringPtrInput
 	// The name of the membership
 	Membership pulumi.StringPtrInput
+	// Service mesh specific spec. Structure is documented below.
+	Mesh FeatureMembershipMeshPtrInput
 	// The project of the feature
 	Project pulumi.StringPtrInput
 }
@@ -216,13 +278,15 @@ func (FeatureMembershipState) ElementType() reflect.Type {
 
 type featureMembershipArgs struct {
 	// Config Management-specific spec. Structure is documented below.
-	Configmanagement FeatureMembershipConfigmanagement `pulumi:"configmanagement"`
+	Configmanagement *FeatureMembershipConfigmanagement `pulumi:"configmanagement"`
 	// The name of the feature
 	Feature string `pulumi:"feature"`
 	// The location of the feature
 	Location string `pulumi:"location"`
 	// The name of the membership
 	Membership string `pulumi:"membership"`
+	// Service mesh specific spec. Structure is documented below.
+	Mesh *FeatureMembershipMesh `pulumi:"mesh"`
 	// The project of the feature
 	Project *string `pulumi:"project"`
 }
@@ -230,13 +294,15 @@ type featureMembershipArgs struct {
 // The set of arguments for constructing a FeatureMembership resource.
 type FeatureMembershipArgs struct {
 	// Config Management-specific spec. Structure is documented below.
-	Configmanagement FeatureMembershipConfigmanagementInput
+	Configmanagement FeatureMembershipConfigmanagementPtrInput
 	// The name of the feature
 	Feature pulumi.StringInput
 	// The location of the feature
 	Location pulumi.StringInput
 	// The name of the membership
 	Membership pulumi.StringInput
+	// Service mesh specific spec. Structure is documented below.
+	Mesh FeatureMembershipMeshPtrInput
 	// The project of the feature
 	Project pulumi.StringPtrInput
 }
@@ -329,8 +395,8 @@ func (o FeatureMembershipOutput) ToFeatureMembershipOutputWithContext(ctx contex
 }
 
 // Config Management-specific spec. Structure is documented below.
-func (o FeatureMembershipOutput) Configmanagement() FeatureMembershipConfigmanagementOutput {
-	return o.ApplyT(func(v *FeatureMembership) FeatureMembershipConfigmanagementOutput { return v.Configmanagement }).(FeatureMembershipConfigmanagementOutput)
+func (o FeatureMembershipOutput) Configmanagement() FeatureMembershipConfigmanagementPtrOutput {
+	return o.ApplyT(func(v *FeatureMembership) FeatureMembershipConfigmanagementPtrOutput { return v.Configmanagement }).(FeatureMembershipConfigmanagementPtrOutput)
 }
 
 // The name of the feature
@@ -346,6 +412,11 @@ func (o FeatureMembershipOutput) Location() pulumi.StringOutput {
 // The name of the membership
 func (o FeatureMembershipOutput) Membership() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureMembership) pulumi.StringOutput { return v.Membership }).(pulumi.StringOutput)
+}
+
+// Service mesh specific spec. Structure is documented below.
+func (o FeatureMembershipOutput) Mesh() FeatureMembershipMeshPtrOutput {
+	return o.ApplyT(func(v *FeatureMembership) FeatureMembershipMeshPtrOutput { return v.Mesh }).(FeatureMembershipMeshPtrOutput)
 }
 
 // The project of the feature

@@ -63,6 +63,7 @@ __all__ = [
     'PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs',
     'PreventionJobTriggerInspectJobArgs',
     'PreventionJobTriggerInspectJobActionArgs',
+    'PreventionJobTriggerInspectJobActionPubSubArgs',
     'PreventionJobTriggerInspectJobActionSaveFindingsArgs',
     'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs',
     'PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs',
@@ -2541,16 +2542,35 @@ class PreventionJobTriggerInspectJobArgs:
 @pulumi.input_type
 class PreventionJobTriggerInspectJobActionArgs:
     def __init__(__self__, *,
-                 save_findings: pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsArgs']):
+                 pub_sub: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionPubSubArgs']] = None,
+                 save_findings: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsArgs']] = None):
         """
+        :param pulumi.Input['PreventionJobTriggerInspectJobActionPubSubArgs'] pub_sub: Publish a message into a given Pub/Sub topic when the job completes.
+               Structure is documented below.
         :param pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsArgs'] save_findings: Schedule for triggered jobs
                Structure is documented below.
         """
-        pulumi.set(__self__, "save_findings", save_findings)
+        if pub_sub is not None:
+            pulumi.set(__self__, "pub_sub", pub_sub)
+        if save_findings is not None:
+            pulumi.set(__self__, "save_findings", save_findings)
+
+    @property
+    @pulumi.getter(name="pubSub")
+    def pub_sub(self) -> Optional[pulumi.Input['PreventionJobTriggerInspectJobActionPubSubArgs']]:
+        """
+        Publish a message into a given Pub/Sub topic when the job completes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pub_sub")
+
+    @pub_sub.setter
+    def pub_sub(self, value: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionPubSubArgs']]):
+        pulumi.set(self, "pub_sub", value)
 
     @property
     @pulumi.getter(name="saveFindings")
-    def save_findings(self) -> pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsArgs']:
+    def save_findings(self) -> Optional[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsArgs']]:
         """
         Schedule for triggered jobs
         Structure is documented below.
@@ -2558,8 +2578,30 @@ class PreventionJobTriggerInspectJobActionArgs:
         return pulumi.get(self, "save_findings")
 
     @save_findings.setter
-    def save_findings(self, value: pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsArgs']):
+    def save_findings(self, value: Optional[pulumi.Input['PreventionJobTriggerInspectJobActionSaveFindingsArgs']]):
         pulumi.set(self, "save_findings", value)
+
+
+@pulumi.input_type
+class PreventionJobTriggerInspectJobActionPubSubArgs:
+    def __init__(__self__, *,
+                 topic: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] topic: Cloud Pub/Sub topic to send notifications to.
+        """
+        pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> pulumi.Input[str]:
+        """
+        Cloud Pub/Sub topic to send notifications to.
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: pulumi.Input[str]):
+        pulumi.set(self, "topic", value)
 
 
 @pulumi.input_type
@@ -2777,12 +2819,31 @@ class PreventionJobTriggerInspectJobStorageConfigArgs:
 @pulumi.input_type
 class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs:
     def __init__(__self__, *,
-                 table_reference: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs']):
+                 table_reference: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs'],
+                 rows_limit: Optional[pulumi.Input[int]] = None,
+                 rows_limit_percent: Optional[pulumi.Input[int]] = None,
+                 sample_method: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs'] table_reference: Set of files to scan.
                Structure is documented below.
+        :param pulumi.Input[int] rows_limit: Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
+               If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
+               specified. Cannot be used in conjunction with TimespanConfig.
+        :param pulumi.Input[int] rows_limit_percent: Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down.
+               Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of
+               rowsLimit and rowsLimitPercent can be specified. Cannot be used in conjunction with TimespanConfig.
+        :param pulumi.Input[str] sample_method: How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+               rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+               Default value is `TOP`.
+               Possible values are `TOP` and `RANDOM_START`.
         """
         pulumi.set(__self__, "table_reference", table_reference)
+        if rows_limit is not None:
+            pulumi.set(__self__, "rows_limit", rows_limit)
+        if rows_limit_percent is not None:
+            pulumi.set(__self__, "rows_limit_percent", rows_limit_percent)
+        if sample_method is not None:
+            pulumi.set(__self__, "sample_method", sample_method)
 
     @property
     @pulumi.getter(name="tableReference")
@@ -2796,6 +2857,49 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs:
     @table_reference.setter
     def table_reference(self, value: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs']):
         pulumi.set(self, "table_reference", value)
+
+    @property
+    @pulumi.getter(name="rowsLimit")
+    def rows_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
+        If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
+        specified. Cannot be used in conjunction with TimespanConfig.
+        """
+        return pulumi.get(self, "rows_limit")
+
+    @rows_limit.setter
+    def rows_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "rows_limit", value)
+
+    @property
+    @pulumi.getter(name="rowsLimitPercent")
+    def rows_limit_percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down.
+        Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of
+        rowsLimit and rowsLimitPercent can be specified. Cannot be used in conjunction with TimespanConfig.
+        """
+        return pulumi.get(self, "rows_limit_percent")
+
+    @rows_limit_percent.setter
+    def rows_limit_percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "rows_limit_percent", value)
+
+    @property
+    @pulumi.getter(name="sampleMethod")
+    def sample_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+        rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+        Default value is `TOP`.
+        Possible values are `TOP` and `RANDOM_START`.
+        """
+        return pulumi.get(self, "sample_method")
+
+    @sample_method.setter
+    def sample_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sample_method", value)
 
 
 @pulumi.input_type
@@ -2874,8 +2978,9 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs:
                Each value may be one of `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, and `TSV`.
         :param pulumi.Input[int] files_limit_percent: Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down.
                Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
-        :param pulumi.Input[str] sample_method: How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
-               If not specified, scanning would start from the top.
+        :param pulumi.Input[str] sample_method: How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+               rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+               Default value is `TOP`.
                Possible values are `TOP` and `RANDOM_START`.
         """
         pulumi.set(__self__, "file_set", file_set)
@@ -2961,8 +3066,9 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs:
     @pulumi.getter(name="sampleMethod")
     def sample_method(self) -> Optional[pulumi.Input[str]]:
         """
-        How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
-        If not specified, scanning would start from the top.
+        How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+        rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+        Default value is `TOP`.
         Possible values are `TOP` and `RANDOM_START`.
         """
         return pulumi.get(self, "sample_method")

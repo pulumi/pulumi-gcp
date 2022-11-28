@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodePoolDefaultsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) - Subset of NodeConfig message that has defaults.
+        /// Subset of NodeConfig message that has defaults.
         /// </summary>
         [Input("nodeConfigDefaults")]
         public Input<Inputs.ClusterNodePoolDefaultsNodeConfigDefaultsGetArgs>? NodeConfigDefaults { get; set; }

@@ -32,6 +32,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleMatch Match;
         /// <summary>
+        /// ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.SecurityPolicyRulePreconfiguredWafConfig? PreconfiguredWafConfig;
+        /// <summary>
         /// When set to true, the `action` specified above is not enforced.
         /// Stackdriver logs for requests that trigger a preview action are annotated as such.
         /// </summary>
@@ -58,6 +62,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             Outputs.SecurityPolicyRuleMatch match,
 
+            Outputs.SecurityPolicyRulePreconfiguredWafConfig? preconfiguredWafConfig,
+
             bool? preview,
 
             int priority,
@@ -69,6 +75,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             Action = action;
             Description = description;
             Match = match;
+            PreconfiguredWafConfig = preconfiguredWafConfig;
             Preview = preview;
             Priority = priority;
             RateLimitOptions = rateLimitOptions;

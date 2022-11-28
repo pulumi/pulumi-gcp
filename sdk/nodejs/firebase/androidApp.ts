@@ -70,8 +70,8 @@ export class AndroidApp extends pulumi.CustomResource {
     }
 
     /**
-     * Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-     * token, as the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+     * the data format is not specified.
      */
     public /*out*/ readonly appId!: pulumi.Output<string>;
     /**
@@ -140,8 +140,8 @@ export class AndroidApp extends pulumi.CustomResource {
  */
 export interface AndroidAppState {
     /**
-     * Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-     * token, as the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+     * the data format is not specified.
      */
     appId?: pulumi.Input<string>;
     /**

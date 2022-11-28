@@ -205,7 +205,7 @@ class ClusterArgs:
         :param pulumi.Input['ClusterNodePoolAutoConfigArgs'] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
-        :param pulumi.Input['ClusterNodePoolDefaultsArgs'] node_pool_defaults: ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolDefaultsArgs'] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]] node_pools: List of node pools associated with this cluster.
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -972,7 +972,7 @@ class ClusterArgs:
     @pulumi.getter(name="nodePoolDefaults")
     def node_pool_defaults(self) -> Optional[pulumi.Input['ClusterNodePoolDefaultsArgs']]:
         """
-        ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+        Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
         """
         return pulumi.get(self, "node_pool_defaults")
 
@@ -1410,7 +1410,7 @@ class _ClusterState:
         :param pulumi.Input['ClusterNodePoolAutoConfigArgs'] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
-        :param pulumi.Input['ClusterNodePoolDefaultsArgs'] node_pool_defaults: ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolDefaultsArgs'] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]] node_pools: List of node pools associated with this cluster.
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -2237,7 +2237,7 @@ class _ClusterState:
     @pulumi.getter(name="nodePoolDefaults")
     def node_pool_defaults(self) -> Optional[pulumi.Input['ClusterNodePoolDefaultsArgs']]:
         """
-        ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+        Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
         """
         return pulumi.get(self, "node_pool_defaults")
 
@@ -2786,7 +2786,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterNodePoolAutoConfigArgs']] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterNodePoolDefaultsArgs']] node_pool_defaults: ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterNodePoolDefaultsArgs']] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodePoolArgs']]]] node_pools: List of node pools associated with this cluster.
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -3281,7 +3281,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterNodePoolAutoConfigArgs']] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterNodePoolDefaultsArgs']] node_pool_defaults: ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterNodePoolDefaultsArgs']] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodePoolArgs']]]] node_pools: List of node pools associated with this cluster.
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
@@ -3864,7 +3864,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="nodePoolDefaults")
     def node_pool_defaults(self) -> pulumi.Output['outputs.ClusterNodePoolDefaults']:
         """
-        ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+        Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
         """
         return pulumi.get(self, "node_pool_defaults")
 

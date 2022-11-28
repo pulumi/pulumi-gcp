@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigEphemeralStorageConfig? EphemeralStorageConfig;
         /// <summary>
-        /// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+        /// ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigGcfsConfig? GcfsConfig;
         /// <summary>
@@ -73,6 +73,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
         /// </summary>
         public readonly int? LocalSsdCount;
+        /// <summary>
+        /// The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+        /// </summary>
+        public readonly string? LoggingVariant;
         /// <summary>
         /// The name of a Google Compute Engine machine type.
         /// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
@@ -178,6 +182,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             int? localSsdCount,
 
+            string? loggingVariant,
+
             string? machineType,
 
             ImmutableDictionary<string, string>? metadata,
@@ -218,6 +224,7 @@ namespace Pulumi.Gcp.Container.Outputs
             Labels = labels;
             LinuxNodeConfig = linuxNodeConfig;
             LocalSsdCount = localSsdCount;
+            LoggingVariant = loggingVariant;
             MachineType = machineType;
             Metadata = metadata;
             MinCpuPlatform = minCpuPlatform;

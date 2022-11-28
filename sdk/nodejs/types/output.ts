@@ -1604,6 +1604,20 @@ export namespace alloydb {
         sourceType?: string;
     }
 
+    export interface InstanceMachineConfig {
+        /**
+         * The number of CPU's in the VM instance.
+         */
+        cpuCount: number;
+    }
+
+    export interface InstanceReadPoolConfig {
+        /**
+         * Read capacity, i.e. number of nodes in a read pool instance.
+         */
+        nodeCount?: number;
+    }
+
 }
 
 export namespace apigateway {
@@ -2662,6 +2676,29 @@ export namespace assuredworkloads {
 
 }
 
+export namespace beyondcorp {
+    export interface AppConnectorPrincipalInfo {
+        /**
+         * ServiceAccount represents a GCP service account.
+         * Structure is documented below.
+         */
+        serviceAccount: outputs.beyondcorp.AppConnectorPrincipalInfoServiceAccount;
+    }
+
+    export interface AppConnectorPrincipalInfoServiceAccount {
+        /**
+         * Email address of the service account.
+         */
+        email: string;
+    }
+
+    export interface AppGatewayAllocatedConnection {
+        ingressPort?: number;
+        pscUri?: string;
+    }
+
+}
+
 export namespace bigquery {
     export interface AppProfileSingleClusterRouting {
         /**
@@ -2851,6 +2888,15 @@ export namespace bigquery {
          */
         role?: string;
         /**
+         * A routine from a different dataset to grant access to. Queries
+         * executed against that routine will have read access to tables in
+         * this dataset. The role field is not required when this field is
+         * set. If that routine is updated by any user, access to the routine
+         * needs to be granted again via an update operation.
+         * Structure is documented below.
+         */
+        routine?: outputs.bigquery.DatasetAccessRoutine;
+        /**
          * A special group to grant access to. Possible values include:
          */
         specialGroup?: string;
@@ -2916,6 +2962,23 @@ export namespace bigquery {
          * The ID of the project containing this table.
          */
         projectId: string;
+    }
+
+    export interface DatasetAccessRoutine {
+        /**
+         * The ID of the dataset containing this table.
+         */
+        datasetId: string;
+        /**
+         * The ID of the project containing this table.
+         */
+        projectId: string;
+        /**
+         * The ID of the routine. The ID must contain only letters (a-z,
+         * A-Z), numbers (0-9), or underscores (_). The maximum length
+         * is 256 characters.
+         */
+        routineId: string;
     }
 
     export interface DatasetAccessView {
@@ -6208,6 +6271,45 @@ export namespace cloudasset {
         topic: string;
     }
 
+    export interface GetResourcesSearchAllResult {
+        /**
+         * Additional searchable attributes of this resource. Informational only. The exact set of attributes is subject to change. For example: project id, DNS name etc.
+         */
+        additionalAttributes: string[];
+        /**
+         * The type of this resource.
+         */
+        assetType: string;
+        /**
+         * One or more paragraphs of text description of this resource. Maximum length could be up to 1M bytes.
+         */
+        description: string;
+        /**
+         * The display name of this resource.
+         */
+        displayName: string;
+        /**
+         * Labels associated with this resource.
+         */
+        labels: {[key: string]: string};
+        /**
+         * Location can be `global`, regional like `us-east1`, or zonal like `us-west1-b`.
+         */
+        location: string;
+        /**
+         * The full resource name. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
+         */
+        name: string;
+        /**
+         * Network tags associated with this resource.
+         */
+        networkTags: string[];
+        /**
+         * The project that this resource belongs to, in the form of `projects/{project_number}`.
+         */
+        project: string;
+    }
+
     export interface OrganizationFeedCondition {
         /**
          * Description of the expression. This is a longer text which describes the expression,
@@ -6731,8 +6833,8 @@ export namespace cloudbuild {
         path: string;
         /**
          * The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-         * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
-         * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
+         * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
+         * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
          */
         repoType: string;
         /**
@@ -6831,8 +6933,8 @@ export namespace cloudbuild {
         ref: string;
         /**
          * The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-         * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
-         * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
+         * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
+         * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
          */
         repoType: string;
         /**
@@ -6953,9 +7055,27 @@ export namespace clouddeploy {
          */
         profiles?: string[];
         /**
+         * (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+         */
+        strategy?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategy;
+        /**
          * The targetId to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
          */
         targetId?: string;
+    }
+
+    export interface DeliveryPipelineSerialPipelineStageStrategy {
+        /**
+         * Standard deployment strategy executes a single deploy and allows verifying the deployment.
+         */
+        standard?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyStandard;
+    }
+
+    export interface DeliveryPipelineSerialPipelineStageStrategyStandard {
+        /**
+         * Whether to verify a deployment.
+         */
+        verify?: boolean;
     }
 
     export interface TargetAnthosCluster {
@@ -6970,6 +7090,10 @@ export namespace clouddeploy {
          * Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
          */
         artifactStorage: string;
+        /**
+         * Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+         */
+        executionTimeout: string;
         /**
          * Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
          */
@@ -6993,6 +7117,13 @@ export namespace clouddeploy {
          * Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
          */
         internalIp?: boolean;
+    }
+
+    export interface TargetRun {
+        /**
+         * Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+         */
+        location: string;
     }
 
 }
@@ -7273,7 +7404,7 @@ export namespace cloudfunctionsv2 {
         serviceAccountEmail: string;
         /**
          * -
-         * The resource name of the Eventarc trigger.
+         * Output only. The resource name of the Eventarc trigger.
          */
         trigger: string;
         /**
@@ -7901,10 +8032,16 @@ export namespace cloudrun {
 
     export interface GetServiceTemplateSpecContainerLivenessProbe {
         failureThreshold: number;
+        grpcs: outputs.cloudrun.GetServiceTemplateSpecContainerLivenessProbeGrpc[];
         httpGets: outputs.cloudrun.GetServiceTemplateSpecContainerLivenessProbeHttpGet[];
         initialDelaySeconds: number;
         periodSeconds: number;
         timeoutSeconds: number;
+    }
+
+    export interface GetServiceTemplateSpecContainerLivenessProbeGrpc {
+        port: number;
+        service: string;
     }
 
     export interface GetServiceTemplateSpecContainerLivenessProbeHttpGet {
@@ -7936,11 +8073,17 @@ export namespace cloudrun {
 
     export interface GetServiceTemplateSpecContainerStartupProbe {
         failureThreshold: number;
+        grpcs: outputs.cloudrun.GetServiceTemplateSpecContainerStartupProbeGrpc[];
         httpGets: outputs.cloudrun.GetServiceTemplateSpecContainerStartupProbeHttpGet[];
         initialDelaySeconds: number;
         periodSeconds: number;
         tcpSockets: outputs.cloudrun.GetServiceTemplateSpecContainerStartupProbeTcpSocket[];
         timeoutSeconds: number;
+    }
+
+    export interface GetServiceTemplateSpecContainerStartupProbeGrpc {
+        port: number;
+        service: string;
     }
 
     export interface GetServiceTemplateSpecContainerStartupProbeHttpGet {
@@ -8389,6 +8532,11 @@ export namespace cloudrun {
          */
         failureThreshold?: number;
         /**
+         * GRPC specifies an action involving a GRPC port.
+         * Structure is documented below.
+         */
+        grpc?: outputs.cloudrun.ServiceTemplateSpecContainerLivenessProbeGrpc;
+        /**
          * HttpGet specifies the http request to perform.
          * Structure is documented below.
          */
@@ -8410,6 +8558,19 @@ export namespace cloudrun {
          * Must be smaller than period_seconds.
          */
         timeoutSeconds?: number;
+    }
+
+    export interface ServiceTemplateSpecContainerLivenessProbeGrpc {
+        /**
+         * Port number to access on the container. Number must be in the range 1 to 65535.
+         */
+        port: number;
+        /**
+         * The name of the service to place in the gRPC HealthCheckRequest
+         * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+         * If this is not specified, the default behavior is defined by gRPC.
+         */
+        service?: string;
     }
 
     export interface ServiceTemplateSpecContainerLivenessProbeHttpGet {
@@ -8477,6 +8638,11 @@ export namespace cloudrun {
          */
         failureThreshold?: number;
         /**
+         * GRPC specifies an action involving a GRPC port.
+         * Structure is documented below.
+         */
+        grpc?: outputs.cloudrun.ServiceTemplateSpecContainerStartupProbeGrpc;
+        /**
          * HttpGet specifies the http request to perform.
          * Structure is documented below.
          */
@@ -8503,6 +8669,19 @@ export namespace cloudrun {
          * Must be smaller than period_seconds.
          */
         timeoutSeconds?: number;
+    }
+
+    export interface ServiceTemplateSpecContainerStartupProbeGrpc {
+        /**
+         * Port number to access on the container. Number must be in the range 1 to 65535.
+         */
+        port: number;
+        /**
+         * The name of the service to place in the gRPC HealthCheckRequest
+         * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+         * If this is not specified, the default behavior is defined by gRPC.
+         */
+        service?: string;
     }
 
     export interface ServiceTemplateSpecContainerStartupProbeHttpGet {
@@ -11918,7 +12097,7 @@ export namespace compute {
          */
         threadsPerCore?: number;
         /**
-         * ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+         * The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
          */
         visibleCoreCount?: number;
     }
@@ -13165,6 +13344,60 @@ export namespace compute {
          * there can be up to 100 domains in this list.
          */
         domains: string[];
+    }
+
+    export interface NetworkFirewallPolicyRuleMatch {
+        /**
+         * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+         */
+        destIpRanges?: string[];
+        /**
+         * Pairs of IP protocols and ports that the rule should match.
+         */
+        layer4Configs: outputs.compute.NetworkFirewallPolicyRuleMatchLayer4Config[];
+        /**
+         * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+         */
+        srcIpRanges?: string[];
+        /**
+         * List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
+         */
+        srcSecureTags?: outputs.compute.NetworkFirewallPolicyRuleMatchSrcSecureTag[];
+    }
+
+    export interface NetworkFirewallPolicyRuleMatchLayer4Config {
+        /**
+         * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+         */
+        ipProtocol: string;
+        /**
+         * An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+         */
+        ports?: string[];
+    }
+
+    export interface NetworkFirewallPolicyRuleMatchSrcSecureTag {
+        /**
+         * Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
+         */
+        name: string;
+        /**
+         * -
+         * [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+         */
+        state: string;
+    }
+
+    export interface NetworkFirewallPolicyRuleTargetSecureTag {
+        /**
+         * Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
+         */
+        name: string;
+        /**
+         * -
+         * [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+         */
+        state: string;
     }
 
     export interface NodeGroupAutoscalingPolicy {
@@ -14789,6 +15022,60 @@ export namespace compute {
         version?: string;
     }
 
+    export interface RegionNetworkFirewallPolicyRuleMatch {
+        /**
+         * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+         */
+        destIpRanges?: string[];
+        /**
+         * Pairs of IP protocols and ports that the rule should match.
+         */
+        layer4Configs: outputs.compute.RegionNetworkFirewallPolicyRuleMatchLayer4Config[];
+        /**
+         * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+         */
+        srcIpRanges?: string[];
+        /**
+         * List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
+         */
+        srcSecureTags?: outputs.compute.RegionNetworkFirewallPolicyRuleMatchSrcSecureTag[];
+    }
+
+    export interface RegionNetworkFirewallPolicyRuleMatchLayer4Config {
+        /**
+         * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+         */
+        ipProtocol: string;
+        /**
+         * An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+         */
+        ports?: string[];
+    }
+
+    export interface RegionNetworkFirewallPolicyRuleMatchSrcSecureTag {
+        /**
+         * Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
+         */
+        name: string;
+        /**
+         * -
+         * [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+         */
+        state: string;
+    }
+
+    export interface RegionNetworkFirewallPolicyRuleTargetSecureTag {
+        /**
+         * Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
+         */
+        name: string;
+        /**
+         * -
+         * [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+         */
+        state: string;
+    }
+
     export interface RegionPerInstanceConfigPreservedState {
         /**
          * Stateful disks for the instance.
@@ -14827,6 +15114,154 @@ export namespace compute {
          * `projects/project-id/zones/zone/disks/disk-name`.
          */
         source: string;
+    }
+
+    export interface RegionUrlMapDefaultRouteAction {
+        /**
+         * Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
+         * The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+         * Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+         * Structure is documented below.
+         */
+        requestMirrorPolicy?: outputs.compute.RegionUrlMapDefaultRouteActionRequestMirrorPolicy;
+        /**
+         * Specifies the retry policy associated with this route.
+         * Structure is documented below.
+         */
+        retryPolicy?: outputs.compute.RegionUrlMapDefaultRouteActionRetryPolicy;
+        /**
+         * A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
+         * After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
+         * Structure is documented below.
+         */
+        weightedBackendServices?: outputs.compute.RegionUrlMapDefaultRouteActionWeightedBackendService[];
+    }
+
+    export interface RegionUrlMapDefaultRouteActionRequestMirrorPolicy {
+        /**
+         * The full or partial URL to the RegionBackendService resource being mirrored to.
+         * The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
+         * Serverless NEG backends are not currently supported as a mirrored backend service.
+         */
+        backendService?: string;
+    }
+
+    export interface RegionUrlMapDefaultRouteActionRetryPolicy {
+        /**
+         * Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+         */
+        numRetries?: number;
+        /**
+         * Specifies a non-zero timeout per retry attempt.
+         * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+         * will use the largest timeout among all backend services associated with the route.
+         * Structure is documented below.
+         */
+        perTryTimeout?: outputs.compute.RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeout;
+        /**
+         * Specifies one or more conditions when this retry policy applies.
+         * Valid values are listed below. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true: cancelled, deadline-exceeded, internal, resource-exhausted, unavailable.
+         * - 5xx : retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams.
+         * - gateway-error : Similar to 5xx, but only applies to response codes 502, 503 or 504.
+         * - connect-failure : a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts.
+         * - retriable-4xx : a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409.
+         * - refused-stream : a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+         * - cancelled : a retry is attempted if the gRPC status code in the response header is set to cancelled.
+         * - deadline-exceeded : a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded.
+         * - internal :  a retry is attempted if the gRPC status code in the response header is set to internal.
+         * - resource-exhausted : a retry is attempted if the gRPC status code in the response header is set to resource-exhausted.
+         * - unavailable : a retry is attempted if the gRPC status code in the response header is set to unavailable.
+         */
+        retryConditions?: string[];
+    }
+
+    export interface RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+         * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+         */
+        nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+         * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+         */
+        seconds?: string;
+    }
+
+    export interface RegionUrlMapDefaultRouteActionWeightedBackendService {
+        /**
+         * The full or partial URL to the RegionBackendService resource being mirrored to.
+         * The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
+         * Serverless NEG backends are not currently supported as a mirrored backend service.
+         */
+        backendService?: string;
+        /**
+         * Specifies changes to request and response headers that need to take effect for the selected backendService.
+         * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+         * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+         * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+         * Structure is documented below.
+         */
+        headerAction?: outputs.compute.RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderAction;
+        /**
+         * Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) .
+         * The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy.
+         * The value must be from 0 to 1000.
+         */
+        weight?: number;
+    }
+
+    export interface RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderAction {
+        /**
+         * Headers to add to a matching request before forwarding the request to the backendService.
+         * Structure is documented below.
+         */
+        requestHeadersToAdds?: outputs.compute.RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+         */
+        requestHeadersToRemoves?: string[];
+        /**
+         * Headers to add the response before sending the response back to the client.
+         * Structure is documented below.
+         */
+        responseHeadersToAdds?: outputs.compute.RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the response before sending the response back to the client.
+         */
+        responseHeadersToRemoves?: string[];
+    }
+
+    export interface RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+        /**
+         * The name of the header.
+         */
+        headerName?: string;
+        /**
+         * The value of the header to add.
+         */
+        headerValue?: string;
+        /**
+         * If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+         * The default value is false.
+         */
+        replace?: boolean;
+    }
+
+    export interface RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+        /**
+         * The name of the header.
+         */
+        headerName?: string;
+        /**
+         * The value of the header to add.
+         */
+        headerValue?: string;
+        /**
+         * If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+         * The default value is false.
+         */
+        replace?: boolean;
     }
 
     export interface RegionUrlMapDefaultUrlRedirect {
@@ -15041,10 +15476,9 @@ export namespace compute {
          */
         faultInjectionPolicy?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy;
         /**
-         * Specifies the policy on how requests intended for the route's backends are
-         * shadowed to a separate mirrored backend service. Loadbalancer does not wait for
-         * responses from the shadow service. Prior to sending traffic to the shadow
-         * service, the host / authority header is suffixed with -shadow.
+         * Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
+         * The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+         * Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
          * Structure is documented below.
          */
         requestMirrorPolicy?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy;
@@ -15068,14 +15502,8 @@ export namespace compute {
          */
         urlRewrite?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite;
         /**
-         * A list of weighted backend services to send traffic to when a route match
-         * occurs. The weights determine the fraction of traffic that flows to their
-         * corresponding backend service. If all traffic needs to go to a single backend
-         * service, there must be one  weightedBackendService with weight set to a non 0
-         * number. Once a backendService is identified and before forwarding the request to
-         * the backend service, advanced routing actions like Url rewrites and header
-         * transformations are applied depending on additional settings specified in this
-         * HttpRouteAction.
+         * A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
+         * After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
          * Structure is documented below.
          */
         weightedBackendServices?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService[];
@@ -15167,87 +15595,77 @@ export namespace compute {
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
         /**
-         * Span of time that's a fraction of a second at nanosecond resolution. Durations
-         * less than one second are represented with a 0 `seconds` field and a positive
-         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+         * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
          */
         nanos?: number;
         /**
-         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-         * inclusive.
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+         * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
          */
         seconds: string;
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy {
         /**
-         * The default RegionBackendService resource. Before
-         * forwarding the request to backendService, the loadbalancer applies any relevant
-         * headerActions specified as part of this backendServiceWeight.
+         * The full or partial URL to the RegionBackendService resource being mirrored to.
+         * The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
+         * Serverless NEG backends are not currently supported as a mirrored backend service.
          */
         backendService: string;
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy {
         /**
-         * Specifies the allowed number retries. This number must be > 0.
+         * Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
          */
         numRetries?: number;
         /**
          * Specifies a non-zero timeout per retry attempt.
+         * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+         * will use the largest timeout among all backend services associated with the route.
          * Structure is documented below.
          */
         perTryTimeout?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout;
         /**
-         * Specifies one or more conditions when this retry rule applies. Valid values are:
-         * - 5xx: Loadbalancer will attempt a retry if the backend service responds with
-         * any 5xx response code, or if the backend service does not respond at all,
-         * example: disconnects, reset, read timeout, connection failure, and refused
-         * streams.
-         * - gateway-error: Similar to 5xx, but only applies to response codes
-         * 502, 503 or 504.
-         * - connect-failure: Loadbalancer will retry on failures
-         * connecting to backend services, for example due to connection timeouts.
-         * - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
-         * Currently the only retriable error supported is 409.
-         * - refused-stream: Loadbalancer will retry if the backend service resets the stream with a
-         * REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
-         * - cancelled: Loadbalancer will retry if the gRPC status code in the response
-         * header is set to cancelled
-         * - deadline-exceeded: Loadbalancer will retry if the
-         * gRPC status code in the response header is set to deadline-exceeded
-         * - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response
-         * header is set to resource-exhausted
-         * - unavailable: Loadbalancer will retry if
-         * the gRPC status code in the response header is set to unavailable
+         * Specifies one or more conditions when this retry policy applies.
+         * Valid values are listed below. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true: cancelled, deadline-exceeded, internal, resource-exhausted, unavailable.
+         * - 5xx : retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams.
+         * - gateway-error : Similar to 5xx, but only applies to response codes 502, 503 or 504.
+         * - connect-failure : a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts.
+         * - retriable-4xx : a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409.
+         * - refused-stream : a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+         * - cancelled : a retry is attempted if the gRPC status code in the response header is set to cancelled.
+         * - deadline-exceeded : a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded.
+         * - internal :  a retry is attempted if the gRPC status code in the response header is set to internal.
+         * - resource-exhausted : a retry is attempted if the gRPC status code in the response header is set to resource-exhausted.
+         * - unavailable : a retry is attempted if the gRPC status code in the response header is set to unavailable.
          */
         retryConditions?: string[];
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout {
         /**
-         * Span of time that's a fraction of a second at nanosecond resolution. Durations
-         * less than one second are represented with a 0 `seconds` field and a positive
-         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+         * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
          */
         nanos?: number;
         /**
-         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-         * inclusive.
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+         * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
          */
         seconds: string;
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionTimeout {
         /**
-         * Span of time that's a fraction of a second at nanosecond resolution. Durations
-         * less than one second are represented with a 0 `seconds` field and a positive
-         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+         * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
          */
         nanos?: number;
         /**
-         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-         * inclusive.
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+         * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
          */
         seconds: string;
     }
@@ -15269,49 +15687,44 @@ export namespace compute {
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService {
         /**
-         * The default RegionBackendService resource. Before
-         * forwarding the request to backendService, the loadbalancer applies any relevant
-         * headerActions specified as part of this backendServiceWeight.
+         * The full or partial URL to the RegionBackendService resource being mirrored to.
+         * The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
+         * Serverless NEG backends are not currently supported as a mirrored backend service.
          */
         backendService: string;
         /**
-         * Specifies changes to request and response headers that need to take effect for
-         * the selected backendService. headerAction specified here take effect before
-         * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+         * Specifies changes to request and response headers that need to take effect for the selected backendService.
+         * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+         * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+         * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
          * Structure is documented below.
          */
         headerAction?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction;
         /**
-         * Specifies the fraction of traffic sent to backendService, computed as weight /
-         * (sum of all weightedBackendService weights in routeAction) . The selection of a
-         * backend service is determined only for new traffic. Once a user's request has
-         * been directed to a backendService, subsequent requests will be sent to the same
-         * backendService as determined by the BackendService's session affinity policy.
-         * The value must be between 0 and 1000
+         * Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) .
+         * The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy.
+         * The value must be from 0 to 1000.
          */
         weight: number;
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction {
         /**
-         * Headers to add to a matching request prior to forwarding the request to the
-         * backendService.
+         * Headers to add to a matching request before forwarding the request to the backendService.
          * Structure is documented below.
          */
         requestHeadersToAdds?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd[];
         /**
-         * A list of header names for headers that need to be removed from the request
-         * prior to forwarding the request to the backendService.
+         * A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
          */
         requestHeadersToRemoves?: string[];
         /**
-         * Headers to add the response prior to sending the response back to the client.
+         * Headers to add the response before sending the response back to the client.
          * Structure is documented below.
          */
         responseHeadersToAdds?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd[];
         /**
-         * A list of header names for headers that need to be removed from the response
-         * prior to sending the response back to the client.
+         * A list of header names for headers that need to be removed from the response before sending the response back to the client.
          */
         responseHeadersToRemoves?: string[];
     }
@@ -15326,9 +15739,8 @@ export namespace compute {
          */
         headerValue: string;
         /**
-         * If false, headerValue is appended to any values that already exist for the
-         * header. If true, headerValue is set for the header, discarding any values that
-         * were set for that header.
+         * If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+         * The default value is false.
          */
         replace: boolean;
     }
@@ -15343,9 +15755,8 @@ export namespace compute {
          */
         headerValue: string;
         /**
-         * If false, headerValue is appended to any values that already exist for the
-         * header. If true, headerValue is set for the header, discarding any values that
-         * were set for that header.
+         * If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+         * The default value is false.
          */
         replace: boolean;
     }
@@ -15401,9 +15812,10 @@ export namespace compute {
 
     export interface RegionUrlMapPathMatcherRouteRule {
         /**
-         * Specifies changes to request and response headers that need to take effect for
-         * the selected backendService. headerAction specified here take effect before
-         * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+         * Specifies changes to request and response headers that need to take effect for the selected backendService.
+         * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+         * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+         * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
          * Structure is documented below.
          */
         headerAction?: outputs.compute.RegionUrlMapPathMatcherRouteRuleHeaderAction;
@@ -15453,24 +15865,21 @@ export namespace compute {
 
     export interface RegionUrlMapPathMatcherRouteRuleHeaderAction {
         /**
-         * Headers to add to a matching request prior to forwarding the request to the
-         * backendService.
+         * Headers to add to a matching request before forwarding the request to the backendService.
          * Structure is documented below.
          */
         requestHeadersToAdds?: outputs.compute.RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd[];
         /**
-         * A list of header names for headers that need to be removed from the request
-         * prior to forwarding the request to the backendService.
+         * A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
          */
         requestHeadersToRemoves?: string[];
         /**
-         * Headers to add the response prior to sending the response back to the client.
+         * Headers to add the response before sending the response back to the client.
          * Structure is documented below.
          */
         responseHeadersToAdds?: outputs.compute.RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd[];
         /**
-         * A list of header names for headers that need to be removed from the response
-         * prior to sending the response back to the client.
+         * A list of header names for headers that need to be removed from the response before sending the response back to the client.
          */
         responseHeadersToRemoves?: string[];
     }
@@ -15485,9 +15894,8 @@ export namespace compute {
          */
         headerValue: string;
         /**
-         * If false, headerValue is appended to any values that already exist for the
-         * header. If true, headerValue is set for the header, discarding any values that
-         * were set for that header.
+         * If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+         * The default value is false.
          */
         replace: boolean;
     }
@@ -15502,9 +15910,8 @@ export namespace compute {
          */
         headerValue: string;
         /**
-         * If false, headerValue is appended to any values that already exist for the
-         * header. If true, headerValue is set for the header, discarding any values that
-         * were set for that header.
+         * If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+         * The default value is false.
          */
         replace: boolean;
     }
@@ -15712,10 +16119,9 @@ export namespace compute {
          */
         faultInjectionPolicy?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy;
         /**
-         * Specifies the policy on how requests intended for the route's backends are
-         * shadowed to a separate mirrored backend service. Loadbalancer does not wait for
-         * responses from the shadow service. Prior to sending traffic to the shadow
-         * service, the host / authority header is suffixed with -shadow.
+         * Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
+         * The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+         * Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
          * Structure is documented below.
          */
         requestMirrorPolicy?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy;
@@ -15739,14 +16145,8 @@ export namespace compute {
          */
         urlRewrite?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite;
         /**
-         * A list of weighted backend services to send traffic to when a route match
-         * occurs. The weights determine the fraction of traffic that flows to their
-         * corresponding backend service. If all traffic needs to go to a single backend
-         * service, there must be one  weightedBackendService with weight set to a non 0
-         * number. Once a backendService is identified and before forwarding the request to
-         * the backend service, advanced routing actions like Url rewrites and header
-         * transformations are applied depending on additional settings specified in this
-         * HttpRouteAction.
+         * A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
+         * After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
          * Structure is documented below.
          */
         weightedBackendServices?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService[];
@@ -15838,87 +16238,77 @@ export namespace compute {
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
         /**
-         * Span of time that's a fraction of a second at nanosecond resolution. Durations
-         * less than one second are represented with a 0 `seconds` field and a positive
-         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+         * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
          */
         nanos?: number;
         /**
-         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-         * inclusive.
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+         * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
          */
         seconds: string;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy {
         /**
-         * The default RegionBackendService resource. Before
-         * forwarding the request to backendService, the loadbalancer applies any relevant
-         * headerActions specified as part of this backendServiceWeight.
+         * The full or partial URL to the RegionBackendService resource being mirrored to.
+         * The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
+         * Serverless NEG backends are not currently supported as a mirrored backend service.
          */
         backendService: string;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy {
         /**
-         * Specifies the allowed number retries. This number must be > 0.
+         * Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
          */
         numRetries: number;
         /**
          * Specifies a non-zero timeout per retry attempt.
+         * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+         * will use the largest timeout among all backend services associated with the route.
          * Structure is documented below.
          */
         perTryTimeout?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout;
         /**
-         * Specifies one or more conditions when this retry rule applies. Valid values are:
-         * - 5xx: Loadbalancer will attempt a retry if the backend service responds with
-         * any 5xx response code, or if the backend service does not respond at all,
-         * example: disconnects, reset, read timeout, connection failure, and refused
-         * streams.
-         * - gateway-error: Similar to 5xx, but only applies to response codes
-         * 502, 503 or 504.
-         * - connect-failure: Loadbalancer will retry on failures
-         * connecting to backend services, for example due to connection timeouts.
-         * - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
-         * Currently the only retriable error supported is 409.
-         * - refused-stream: Loadbalancer will retry if the backend service resets the stream with a
-         * REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
-         * - cancelled: Loadbalancer will retry if the gRPC status code in the response
-         * header is set to cancelled
-         * - deadline-exceeded: Loadbalancer will retry if the
-         * gRPC status code in the response header is set to deadline-exceeded
-         * - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response
-         * header is set to resource-exhausted
-         * - unavailable: Loadbalancer will retry if
-         * the gRPC status code in the response header is set to unavailable
+         * Specifies one or more conditions when this retry policy applies.
+         * Valid values are listed below. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true: cancelled, deadline-exceeded, internal, resource-exhausted, unavailable.
+         * - 5xx : retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams.
+         * - gateway-error : Similar to 5xx, but only applies to response codes 502, 503 or 504.
+         * - connect-failure : a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts.
+         * - retriable-4xx : a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409.
+         * - refused-stream : a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+         * - cancelled : a retry is attempted if the gRPC status code in the response header is set to cancelled.
+         * - deadline-exceeded : a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded.
+         * - internal :  a retry is attempted if the gRPC status code in the response header is set to internal.
+         * - resource-exhausted : a retry is attempted if the gRPC status code in the response header is set to resource-exhausted.
+         * - unavailable : a retry is attempted if the gRPC status code in the response header is set to unavailable.
          */
         retryConditions?: string[];
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout {
         /**
-         * Span of time that's a fraction of a second at nanosecond resolution. Durations
-         * less than one second are represented with a 0 `seconds` field and a positive
-         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+         * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
          */
         nanos?: number;
         /**
-         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-         * inclusive.
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+         * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
          */
         seconds: string;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionTimeout {
         /**
-         * Span of time that's a fraction of a second at nanosecond resolution. Durations
-         * less than one second are represented with a 0 `seconds` field and a positive
-         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+         * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
          */
         nanos?: number;
         /**
-         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-         * inclusive.
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+         * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
          */
         seconds: string;
     }
@@ -15940,49 +16330,44 @@ export namespace compute {
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService {
         /**
-         * The default RegionBackendService resource. Before
-         * forwarding the request to backendService, the loadbalancer applies any relevant
-         * headerActions specified as part of this backendServiceWeight.
+         * The full or partial URL to the RegionBackendService resource being mirrored to.
+         * The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
+         * Serverless NEG backends are not currently supported as a mirrored backend service.
          */
         backendService: string;
         /**
-         * Specifies changes to request and response headers that need to take effect for
-         * the selected backendService. headerAction specified here take effect before
-         * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+         * Specifies changes to request and response headers that need to take effect for the selected backendService.
+         * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+         * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+         * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
          * Structure is documented below.
          */
         headerAction?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction;
         /**
-         * Specifies the fraction of traffic sent to backendService, computed as weight /
-         * (sum of all weightedBackendService weights in routeAction) . The selection of a
-         * backend service is determined only for new traffic. Once a user's request has
-         * been directed to a backendService, subsequent requests will be sent to the same
-         * backendService as determined by the BackendService's session affinity policy.
-         * The value must be between 0 and 1000
+         * Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) .
+         * The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy.
+         * The value must be from 0 to 1000.
          */
         weight: number;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction {
         /**
-         * Headers to add to a matching request prior to forwarding the request to the
-         * backendService.
+         * Headers to add to a matching request before forwarding the request to the backendService.
          * Structure is documented below.
          */
         requestHeadersToAdds?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd[];
         /**
-         * A list of header names for headers that need to be removed from the request
-         * prior to forwarding the request to the backendService.
+         * A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
          */
         requestHeadersToRemoves?: string[];
         /**
-         * Headers to add the response prior to sending the response back to the client.
+         * Headers to add the response before sending the response back to the client.
          * Structure is documented below.
          */
         responseHeadersToAdds?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd[];
         /**
-         * A list of header names for headers that need to be removed from the response
-         * prior to sending the response back to the client.
+         * A list of header names for headers that need to be removed from the response before sending the response back to the client.
          */
         responseHeadersToRemoves?: string[];
     }
@@ -15997,9 +16382,8 @@ export namespace compute {
          */
         headerValue: string;
         /**
-         * If false, headerValue is appended to any values that already exist for the
-         * header. If true, headerValue is set for the header, discarding any values that
-         * were set for that header.
+         * If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+         * The default value is false.
          */
         replace: boolean;
     }
@@ -16014,9 +16398,8 @@ export namespace compute {
          */
         headerValue: string;
         /**
-         * If false, headerValue is appended to any values that already exist for the
-         * header. If true, headerValue is set for the header, discarding any values that
-         * were set for that header.
+         * If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+         * The default value is false.
          */
         replace: boolean;
     }
@@ -16660,6 +17043,10 @@ export namespace compute {
          */
         match: outputs.compute.SecurityPolicyRuleMatch;
         /**
+         * ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+         */
+        preconfiguredWafConfig?: outputs.compute.SecurityPolicyRulePreconfiguredWafConfig;
+        /**
          * When set to true, the `action` specified above is not enforced.
          * Stackdriver logs for requests that trigger a preview action are annotated as such.
          */
@@ -16715,6 +17102,88 @@ export namespace compute {
          * The application context of the containing message determines which well-known feature set of CEL is supported.
          */
         expression: string;
+    }
+
+    export interface SecurityPolicyRulePreconfiguredWafConfig {
+        /**
+         * An exclusion to apply during preconfigured WAF evaluation. Structure is documented below.
+         */
+        exclusions?: outputs.compute.SecurityPolicyRulePreconfiguredWafConfigExclusion[];
+    }
+
+    export interface SecurityPolicyRulePreconfiguredWafConfigExclusion {
+        /**
+         * Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+         */
+        requestCookies?: outputs.compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky[];
+        /**
+         * Request header whose value will be excluded from inspection during preconfigured WAF evaluation. Structure is documented below.
+         */
+        requestHeaders?: outputs.compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader[];
+        /**
+         * Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
+         */
+        requestQueryParams?: outputs.compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam[];
+        /**
+         * Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
+         */
+        requestUris?: outputs.compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri[];
+        /**
+         * A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+         */
+        targetRuleIds?: string[];
+        /**
+         * Target WAF rule set to apply the preconfigured WAF exclusion.
+         */
+        targetRuleSet: string;
+    }
+
+    export interface SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky {
+        /**
+         * You can specify an exact match or a partial match by using a field operator and a field value.
+         */
+        operator: string;
+        /**
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+         * The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
+         */
+        value?: string;
+    }
+
+    export interface SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader {
+        /**
+         * You can specify an exact match or a partial match by using a field operator and a field value.
+         */
+        operator: string;
+        /**
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+         * The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
+         */
+        value?: string;
+    }
+
+    export interface SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam {
+        /**
+         * You can specify an exact match or a partial match by using a field operator and a field value.
+         */
+        operator: string;
+        /**
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+         * The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
+         */
+        value?: string;
+    }
+
+    export interface SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri {
+        /**
+         * You can specify an exact match or a partial match by using a field operator and a field value.
+         */
+        operator: string;
+        /**
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+         * The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
+         */
+        value?: string;
     }
 
     export interface SecurityPolicyRuleRateLimitOptions {
@@ -19712,7 +20181,8 @@ export namespace container {
 
     export interface ClusterClusterAutoscaling {
         /**
-         * Contains defaults for a node pool created by NAP.
+         * Contains defaults for a node pool created by NAP. A subset of fields also apply to
+         * GKE Autopilot clusters.
          * Structure is documented below.
          */
         autoProvisioningDefaults: outputs.container.ClusterClusterAutoscalingAutoProvisioningDefaults;
@@ -19757,6 +20227,10 @@ export namespace container {
          */
         imageType?: string;
         /**
+         * NodeManagement configuration for this NodePool. Structure is documented below.
+         */
+        management: outputs.container.ClusterClusterAutoscalingAutoProvisioningDefaultsManagement;
+        /**
          * Minimum CPU platform to be used by this instance.
          * The instance may be scheduled on the specified or newer CPU platform. Applicable
          * values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
@@ -19775,6 +20249,41 @@ export namespace container {
          * If not specified, the "default" service account is used.
          */
         serviceAccount?: string;
+        /**
+         * Shielded Instance options. Structure is documented below.
+         */
+        shieldedInstanceConfig?: outputs.container.ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig;
+    }
+
+    export interface ClusterClusterAutoscalingAutoProvisioningDefaultsManagement {
+        /**
+         * Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+         */
+        autoRepair: boolean;
+        /**
+         * Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
+         */
+        autoUpgrade: boolean;
+        upgradeOptions: outputs.container.ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption[];
+    }
+
+    export interface ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption {
+        autoUpgradeStartTime: string;
+        /**
+         * Description of the cluster.
+         */
+        description: string;
+    }
+
+    export interface ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig {
+        /**
+         * Defines if the instance has integrity monitoring enabled.
+         */
+        enableIntegrityMonitoring?: boolean;
+        /**
+         * Defines if the instance has Secure Boot enabled.
+         */
+        enableSecureBoot?: boolean;
     }
 
     export interface ClusterClusterAutoscalingResourceLimit {
@@ -20035,7 +20544,7 @@ export namespace container {
          */
         ephemeralStorageConfig?: outputs.container.ClusterNodeConfigEphemeralStorageConfig;
         /**
-         * The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+         * ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
          */
         gcfsConfig?: outputs.container.ClusterNodeConfigGcfsConfig;
         /**
@@ -20076,6 +20585,10 @@ export namespace container {
          * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
          */
         localSsdCount: number;
+        /**
+         * The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+         */
+        loggingVariant?: string;
         /**
          * The name of a Google Compute Engine machine type.
          * Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
@@ -20192,7 +20705,7 @@ export namespace container {
 
     export interface ClusterNodeConfigGuestAcceleratorGpuSharingConfig {
         /**
-         * The type of GPU sharing strategy to enable on the GPU node. 
+         * The type of GPU sharing strategy to enable on the GPU node.
          * Accepted values are:
          * * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
          */
@@ -20315,6 +20828,9 @@ export namespace container {
         initialNodeCount: number;
         instanceGroupUrls: string[];
         managedInstanceGroupUrls: string[];
+        /**
+         * NodeManagement configuration for this NodePool. Structure is documented below.
+         */
         management: outputs.container.ClusterNodePoolManagement;
         maxPodsPerNode: number;
         /**
@@ -20373,16 +20889,20 @@ export namespace container {
 
     export interface ClusterNodePoolDefaults {
         /**
-         * ) - Subset of NodeConfig message that has defaults.
+         * Subset of NodeConfig message that has defaults.
          */
         nodeConfigDefaults?: outputs.container.ClusterNodePoolDefaultsNodeConfigDefaults;
     }
 
     export interface ClusterNodePoolDefaultsNodeConfigDefaults {
         /**
-         * The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+         * ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
          */
         gcfsConfig?: outputs.container.ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig;
+        /**
+         * The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+         */
+        loggingVariant?: string;
     }
 
     export interface ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig {
@@ -20394,7 +20914,13 @@ export namespace container {
     }
 
     export interface ClusterNodePoolManagement {
+        /**
+         * Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+         */
         autoRepair?: boolean;
+        /**
+         * Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
+         */
         autoUpgrade?: boolean;
     }
 
@@ -20433,7 +20959,7 @@ export namespace container {
          */
         ephemeralStorageConfig?: outputs.container.ClusterNodePoolNodeConfigEphemeralStorageConfig;
         /**
-         * The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+         * ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
          */
         gcfsConfig?: outputs.container.ClusterNodePoolNodeConfigGcfsConfig;
         /**
@@ -20474,6 +21000,10 @@ export namespace container {
          * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
          */
         localSsdCount: number;
+        /**
+         * The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+         */
+        loggingVariant?: string;
         /**
          * The name of a Google Compute Engine machine type.
          * Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
@@ -20590,7 +21120,7 @@ export namespace container {
 
     export interface ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
         /**
-         * The type of GPU sharing strategy to enable on the GPU node. 
+         * The type of GPU sharing strategy to enable on the GPU node.
          * Accepted values are:
          * * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
          */
@@ -20708,8 +21238,21 @@ export namespace container {
     }
 
     export interface ClusterNodePoolUpgradeSettings {
+        blueGreenSettings: outputs.container.ClusterNodePoolUpgradeSettingsBlueGreenSettings;
         maxSurge: number;
         maxUnavailable: number;
+        strategy?: string;
+    }
+
+    export interface ClusterNodePoolUpgradeSettingsBlueGreenSettings {
+        nodePoolSoakDuration: string;
+        standardRolloutPolicy: outputs.container.ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy;
+    }
+
+    export interface ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy {
+        batchNodeCount: number;
+        batchPercentage: number;
+        batchSoakDuration: string;
     }
 
     export interface ClusterNotificationConfig {
@@ -20953,9 +21496,27 @@ export namespace container {
         diskSize: number;
         diskType: string;
         imageType: string;
+        managements: outputs.container.GetClusterClusterAutoscalingAutoProvisioningDefaultManagement[];
         minCpuPlatform: string;
         oauthScopes: string[];
         serviceAccount: string;
+        shieldedInstanceConfigs: outputs.container.GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig[];
+    }
+
+    export interface GetClusterClusterAutoscalingAutoProvisioningDefaultManagement {
+        autoRepair: boolean;
+        autoUpgrade: boolean;
+        upgradeOptions: outputs.container.GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption[];
+    }
+
+    export interface GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption {
+        autoUpgradeStartTime: string;
+        description: string;
+    }
+
+    export interface GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig {
+        enableIntegrityMonitoring: boolean;
+        enableSecureBoot: boolean;
     }
 
     export interface GetClusterClusterAutoscalingResourceLimit {
@@ -21085,6 +21646,7 @@ export namespace container {
         labels: {[key: string]: string};
         linuxNodeConfigs: outputs.container.GetClusterNodeConfigLinuxNodeConfig[];
         localSsdCount: number;
+        loggingVariant: string;
         machineType: string;
         metadata: {[key: string]: string};
         minCpuPlatform: string;
@@ -21203,6 +21765,7 @@ export namespace container {
 
     export interface GetClusterNodePoolDefaultNodeConfigDefault {
         gcfsConfigs: outputs.container.GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig[];
+        loggingVariant: string;
     }
 
     export interface GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig {
@@ -21233,6 +21796,7 @@ export namespace container {
         labels: {[key: string]: string};
         linuxNodeConfigs: outputs.container.GetClusterNodePoolNodeConfigLinuxNodeConfig[];
         localSsdCount: number;
+        loggingVariant: string;
         machineType: string;
         metadata: {[key: string]: string};
         minCpuPlatform: string;
@@ -21313,8 +21877,21 @@ export namespace container {
     }
 
     export interface GetClusterNodePoolUpgradeSetting {
+        blueGreenSettings: outputs.container.GetClusterNodePoolUpgradeSettingBlueGreenSetting[];
         maxSurge: number;
         maxUnavailable: number;
+        strategy: string;
+    }
+
+    export interface GetClusterNodePoolUpgradeSettingBlueGreenSetting {
+        nodePoolSoakDuration: string;
+        standardRolloutPolicies: outputs.container.GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy[];
+    }
+
+    export interface GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy {
+        batchNodeCount: number;
+        batchPercentage: number;
+        batchSoakDuration: string;
     }
 
     export interface GetClusterNotificationConfig {
@@ -21444,6 +22021,7 @@ export namespace container {
         labels: {[key: string]: string};
         linuxNodeConfig?: outputs.container.NodePoolNodeConfigLinuxNodeConfig;
         localSsdCount: number;
+        loggingVariant?: string;
         machineType: string;
         metadata: {[key: string]: string};
         minCpuPlatform: string;
@@ -21535,6 +22113,11 @@ export namespace container {
 
     export interface NodePoolUpgradeSettings {
         /**
+         * The settings to adjust [blue green upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy).
+         * Structure is documented below
+         */
+        blueGreenSettings: outputs.container.NodePoolUpgradeSettingsBlueGreenSettings;
+        /**
          * The number of additional nodes that can be added to the node pool during
          * an upgrade. Increasing `maxSurge` raises the number of nodes that can be upgraded simultaneously.
          * Can be set to 0 or greater.
@@ -21546,6 +22129,37 @@ export namespace container {
          * parallel. Can be set to 0 or greater.
          */
         maxUnavailable: number;
+        /**
+         * The upgrade stragey to be used for upgrading the nodes.
+         */
+        strategy?: string;
+    }
+
+    export interface NodePoolUpgradeSettingsBlueGreenSettings {
+        /**
+         * Time needed after draining the entire blue pool.
+         * After this period, the blue pool will be cleaned up.
+         */
+        nodePoolSoakDuration: string;
+        /**
+         * Specifies the standard policy settings for blue-green upgrades.
+         */
+        standardRolloutPolicy: outputs.container.NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy;
+    }
+
+    export interface NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy {
+        /**
+         * Number of blue nodes to drain in a batch.
+         */
+        batchNodeCount: number;
+        /**
+         * Percentage of the blue pool nodes to drain in a batch.
+         */
+        batchPercentage: number;
+        /**
+         * Soak time after each batch gets drained.
+         */
+        batchSoakDuration: string;
     }
 
 }
@@ -22645,10 +23259,22 @@ export namespace dataloss {
 
     export interface PreventionJobTriggerInspectJobAction {
         /**
+         * Publish a message into a given Pub/Sub topic when the job completes.
+         * Structure is documented below.
+         */
+        pubSub?: outputs.dataloss.PreventionJobTriggerInspectJobActionPubSub;
+        /**
          * Schedule for triggered jobs
          * Structure is documented below.
          */
-        saveFindings: outputs.dataloss.PreventionJobTriggerInspectJobActionSaveFindings;
+        saveFindings?: outputs.dataloss.PreventionJobTriggerInspectJobActionSaveFindings;
+    }
+
+    export interface PreventionJobTriggerInspectJobActionPubSub {
+        /**
+         * Cloud Pub/Sub topic to send notifications to.
+         */
+        topic: string;
     }
 
     export interface PreventionJobTriggerInspectJobActionSaveFindings {
@@ -22719,6 +23345,25 @@ export namespace dataloss {
 
     export interface PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
         /**
+         * Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
+         * If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
+         * specified. Cannot be used in conjunction with TimespanConfig.
+         */
+        rowsLimit?: number;
+        /**
+         * Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down.
+         * Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of
+         * rowsLimit and rowsLimitPercent can be specified. Cannot be used in conjunction with TimespanConfig.
+         */
+        rowsLimitPercent?: number;
+        /**
+         * How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+         * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+         * Default value is `TOP`.
+         * Possible values are `TOP` and `RANDOM_START`.
+         */
+        sampleMethod?: string;
+        /**
          * Set of files to scan.
          * Structure is documented below.
          */
@@ -22770,8 +23415,9 @@ export namespace dataloss {
          */
         filesLimitPercent?: number;
         /**
-         * How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
-         * If not specified, scanning would start from the top.
+         * How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+         * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+         * Default value is `TOP`.
          * Possible values are `TOP` and `RANDOM_START`.
          */
         sampleMethod?: string;
@@ -26327,7 +26973,21 @@ export namespace dns {
     }
 
     export interface ManagedZonePrivateVisibilityConfig {
+        /**
+         * The list of Google Kubernetes Engine clusters that can see this zone.
+         * Structure is documented below.
+         */
+        gkeClusters?: outputs.dns.ManagedZonePrivateVisibilityConfigGkeCluster[];
         networks: outputs.dns.ManagedZonePrivateVisibilityConfigNetwork[];
+    }
+
+    export interface ManagedZonePrivateVisibilityConfigGkeCluster {
+        /**
+         * The resource name of the cluster to bind this ManagedZone to.
+         * This should be specified in the format like
+         * `projects/*&#47;locations/*&#47;clusters/*`
+         */
+        gkeClusterName: string;
     }
 
     export interface ManagedZonePrivateVisibilityConfigNetwork {
@@ -26636,6 +27296,15 @@ export namespace dns {
          * The region of the load balancer. Only needed for regional load balancers.
          */
         region?: string;
+    }
+
+    export interface ResponsePolicyGkeCluster {
+        /**
+         * The resource name of the cluster to bind this ManagedZone to.
+         * This should be specified in the format like
+         * `projects/*&#47;locations/*&#47;clusters/*`
+         */
+        gkeClusterName: string;
     }
 
     export interface ResponsePolicyNetwork {
@@ -27377,6 +28046,13 @@ export namespace gkehub {
         backends: string[];
     }
 
+    export interface FeatureMembershipMesh {
+        /**
+         * Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
+         */
+        management?: string;
+    }
+
     export interface FeatureResourceState {
         hasResources: boolean;
         state: string;
@@ -28076,6 +28752,93 @@ export namespace identityplatform {
          * The x509 certificate
          */
         x509Certificate: string;
+    }
+
+    export interface ProjectDefaultConfigSignIn {
+        /**
+         * Whether to allow more than one account to have the same email.
+         */
+        allowDuplicateEmails?: boolean;
+        /**
+         * Configuration options related to authenticating an anonymous user.
+         * Structure is documented below.
+         */
+        anonymous?: outputs.identityplatform.ProjectDefaultConfigSignInAnonymous;
+        /**
+         * Configuration options related to authenticating a user by their email address.
+         * Structure is documented below.
+         */
+        email?: outputs.identityplatform.ProjectDefaultConfigSignInEmail;
+        /**
+         * -
+         * Output only. Hash config information.
+         * Structure is documented below.
+         */
+        hashConfigs: outputs.identityplatform.ProjectDefaultConfigSignInHashConfig[];
+        /**
+         * Configuration options related to authenticated a user by their phone number.
+         * Structure is documented below.
+         */
+        phoneNumber?: outputs.identityplatform.ProjectDefaultConfigSignInPhoneNumber;
+    }
+
+    export interface ProjectDefaultConfigSignInAnonymous {
+        /**
+         * Whether anonymous user auth is enabled for the project or not.
+         */
+        enabled: boolean;
+    }
+
+    export interface ProjectDefaultConfigSignInEmail {
+        /**
+         * Whether anonymous user auth is enabled for the project or not.
+         */
+        enabled?: boolean;
+        /**
+         * Whether a password is required for email auth or not. If true, both an email and
+         * password must be provided to sign in. If false, a user may sign in via either
+         * email/password or email link.
+         */
+        passwordRequired?: boolean;
+    }
+
+    export interface ProjectDefaultConfigSignInHashConfig {
+        /**
+         * -
+         * Different password hash algorithms used in Identity Toolkit.
+         */
+        algorithm: string;
+        /**
+         * -
+         * Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
+         */
+        memoryCost: number;
+        /**
+         * -
+         * How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
+         */
+        rounds: number;
+        /**
+         * -
+         * Non-printable character to be inserted between the salt and plain text password in base64.
+         */
+        saltSeparator: string;
+        /**
+         * -
+         * Signer key in base64.
+         */
+        signerKey: string;
+    }
+
+    export interface ProjectDefaultConfigSignInPhoneNumber {
+        /**
+         * Whether anonymous user auth is enabled for the project or not.
+         */
+        enabled?: boolean;
+        /**
+         * A map of <test phone number, fake code> that can be used for phone auth testing.
+         */
+        testPhoneNumbers?: {[key: string]: string};
     }
 
     export interface TenantInboundSamlConfigIdpConfig {
@@ -30189,11 +30952,43 @@ export namespace networkservices {
          */
         id: string;
         /**
+         * Set to true to have the CDN automatically manage this public key value.
+         */
+        managed?: boolean;
+        /**
          * The base64-encoded value of the Ed25519 public key. The base64 encoding can be padded (44 bytes) or unpadded (43 bytes).
          * Representations or encodings of the public key other than this will be rejected with an error.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
-        value: string;
+        value?: string;
+    }
+
+    export interface EdgeCacheKeysetValidationSharedKey {
+        /**
+         * The name of the secret version in Secret Manager.
+         * The resource name of the secret version must be in the format `projects/*&#47;secrets/*&#47;versions/*` where the `*` values are replaced by the secrets themselves.
+         * The secrets must be at least 16 bytes large.  The recommended secret size depends on the signature algorithm you are using.
+         * * If you are using HMAC-SHA1, we suggest 20-byte secrets.
+         * * If you are using HMAC-SHA256, we suggest 32-byte secrets.
+         * See RFC 2104, Section 3 for more details on these recommendations.
+         */
+        secretVersion: string;
+    }
+
+    export interface EdgeCacheOriginAwsV4Authentication {
+        /**
+         * The access key ID your origin uses to identify the key.
+         */
+        accessKeyId: string;
+        /**
+         * The name of the AWS region that your origin is in.
+         */
+        originRegion: string;
+        /**
+         * The Secret Manager secret version of the secret access key used by your origin.
+         * This is the resource name of the secret version in the format `projects/*&#47;secrets/*&#47;versions/*` where the `*` values are replaced by the project, secret, and version you require.
+         */
+        secretAccessKeyVersion: string;
     }
 
     export interface EdgeCacheOriginTimeout {
@@ -30503,6 +31298,12 @@ export namespace networkservices {
 
     export interface EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy {
         /**
+         * Enable signature generation or propagation on this route.
+         * This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
+         * Structure is documented below.
+         */
+        addSignatures?: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures;
+        /**
          * Defines the request parameters that contribute to the cache key.
          * Structure is documented below.
          */
@@ -30569,12 +31370,75 @@ export namespace networkservices {
          */
         signedRequestKeyset: string;
         /**
+         * Limit how far into the future the expiration time of a signed request may be.
+         * When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
+         * - The TTL must be > 0.
+         * - Fractions of a second are not allowed.
+         * By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
+         */
+        signedRequestMaximumExpirationTtl?: string;
+        /**
          * Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
          * You must also set a signedRequestKeyset to enable signed requests.
          * When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-         * Possible values are `DISABLED` and `REQUIRE_SIGNATURES`.
+         * Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
          */
         signedRequestMode: string;
+        /**
+         * Additional options for signed tokens.
+         * signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
+         * Structure is documented below.
+         */
+        signedTokenOptions?: outputs.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions;
+    }
+
+    export interface EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures {
+        /**
+         * The actions to take to add signatures to responses.
+         * Each value may be one of `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, and `PROPAGATE_TOKEN_HLS_COOKIELESS`.
+         */
+        actions: string;
+        /**
+         * The parameters to copy from the verified token to the generated token.
+         * Only the following parameters may be copied:
+         * * `PathGlobs`
+         * * `paths`
+         * * `acl`
+         * * `URLPrefix`
+         * * `IPRanges`
+         * * `SessionID`
+         * * `id`
+         * * `Data`
+         * * `data`
+         * * `payload`
+         * * `Headers`
+         * You may specify up to 6 parameters to copy.  A given parameter is be copied only if the parameter exists in the verified token.  Parameter names are matched exactly as specified.  The order of the parameters does not matter.  Duplicates are not allowed.
+         * This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
+         */
+        copiedParameters?: string[];
+        /**
+         * The keyset to use for signature generation.
+         * The following are both valid paths to an EdgeCacheKeyset resource:
+         * * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+         * * `yourKeyset`
+         * This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
+         */
+        keyset?: string;
+        /**
+         * The query parameter in which to put the generated token.
+         * If not specified, defaults to `edge-cache-token`.
+         * If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+         * This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+         */
+        tokenQueryParameter?: string;
+        /**
+         * The duration the token is valid starting from the moment the token is first generated.
+         * Defaults to `86400s` (1 day).
+         * The TTL must be >= 0 and <= 604,800 seconds (1 week).
+         * This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        tokenTtl?: string;
     }
 
     export interface EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy {
@@ -30624,6 +31488,23 @@ export namespace networkservices {
          * Either specify includedQueryParameters or excludedQueryParameters, not both. '&' and '=' will be percent encoded and not treated as delimiters.
          */
         includedQueryParameters?: string[];
+    }
+
+    export interface EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions {
+        /**
+         * The allowed signature algorithms to use.
+         * Defaults to using only ED25519.
+         * You may specify up to 3 signature algorithms to use.
+         * Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
+         */
+        allowedSignatureAlgorithms?: string[];
+        /**
+         * The query parameter in which to put the generated token.
+         * If not specified, defaults to `edge-cache-token`.
+         * If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+         * This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+         */
+        tokenQueryParameter?: string;
     }
 
     export interface EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy {
@@ -34485,6 +35366,10 @@ export namespace sql {
          * The name of server instance collation.
          */
         collation?: string;
+        /**
+         * Specifies if connections must use Cloud SQL connectors.
+         */
+        connectorEnforcement: string;
         databaseFlags?: outputs.sql.DatabaseInstanceSettingsDatabaseFlag[];
         /**
          * Enables auto-resizing of the storage size. Defaults to `true`.
@@ -34518,6 +35403,9 @@ export namespace sql {
          * and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
          */
         tier: string;
+        /**
+         * The timeZone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+         */
         timeZone?: string;
         /**
          * A set of key/value user label pairs to assign to the instance.
@@ -34597,6 +35485,10 @@ export namespace sql {
          * True if Query Insights feature is enabled.
          */
         queryInsightsEnabled?: boolean;
+        /**
+         * Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+         */
+        queryPlansPerMinute: number;
         /**
          * Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
          */
@@ -34802,6 +35694,7 @@ export namespace sql {
         availabilityType: string;
         backupConfigurations: outputs.sql.GetDatabaseInstanceSettingBackupConfiguration[];
         collation: string;
+        connectorEnforcement: string;
         databaseFlags: outputs.sql.GetDatabaseInstanceSettingDatabaseFlag[];
         diskAutoresize: boolean;
         diskAutoresizeLimit: number;
@@ -34849,6 +35742,7 @@ export namespace sql {
 
     export interface GetDatabaseInstanceSettingInsightsConfig {
         queryInsightsEnabled: boolean;
+        queryPlansPerMinute: number;
         queryStringLength: number;
         recordApplicationTags: boolean;
         recordClientAddress: boolean;
@@ -35196,6 +36090,13 @@ export namespace storage {
     export interface ObjectAccessControlProjectTeam {
         projectNumber?: string;
         team?: string;
+    }
+
+    export interface TransferAgentPoolBandwidthLimit {
+        /**
+         * Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
+         */
+        limitMbps: string;
     }
 
     export interface TransferJobNotificationConfig {
@@ -35574,10 +36475,56 @@ export namespace vertex {
 
     export interface AiFeatureStoreEntityTypeMonitoringConfig {
         /**
-         * Configuration of how features in Featurestore are monitored.
+         * Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
+         * Structure is documented below.
+         */
+        categoricalThresholdConfig?: outputs.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig;
+        /**
+         * The config for ImportFeatures Analysis Based Feature Monitoring.
+         * Structure is documented below.
+         */
+        importFeaturesAnalysis?: outputs.vertex.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis;
+        /**
+         * Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
+         * Structure is documented below.
+         */
+        numericalThresholdConfig?: outputs.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig;
+        /**
+         * The config for Snapshot Analysis Based Feature Monitoring.
          * Structure is documented below.
          */
         snapshotAnalysis?: outputs.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis;
+    }
+
+    export interface AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig {
+        /**
+         * Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+         */
+        value: number;
+    }
+
+    export interface AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis {
+        /**
+         * Defines the baseline to do anomaly detection for feature values imported by each [entityTypes.importFeatureValues][] operation. The value must be one of the values below:
+         * * LATEST_STATS: Choose the later one statistics generated by either most recent snapshot analysis or previous import features analysis. If non of them exists, skip anomaly detection and only generate a statistics.
+         * * MOST_RECENT_SNAPSHOT_STATS: Use the statistics generated by the most recent snapshot analysis if exists.
+         * * PREVIOUS_IMPORT_FEATURES_STATS: Use the statistics generated by the previous import features analysis if exists.
+         */
+        anomalyDetectionBaseline?: string;
+        /**
+         * Whether to enable / disable / inherite default hebavior for import features analysis. The value must be one of the values below:
+         * * DEFAULT: The default behavior of whether to enable the monitoring. EntityType-level config: disabled.
+         * * ENABLED: Explicitly enables import features analysis. EntityType-level config: by default enables import features analysis for all Features under it.
+         * * DISABLED: Explicitly disables import features analysis. EntityType-level config: by default disables import features analysis for all Features under it.
+         */
+        state?: string;
+    }
+
+    export interface AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig {
+        /**
+         * Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+         */
+        value: number;
     }
 
     export interface AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
@@ -35588,7 +36535,16 @@ export namespace vertex {
         /**
          * @deprecated This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
          */
-        monitoringInterval?: string;
+        monitoringInterval: string;
+        /**
+         * Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
+         * If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
+         */
+        monitoringIntervalDays?: number;
+        /**
+         * Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
+         */
+        stalenessDays?: number;
     }
 
     export interface AiFeatureStoreIamBindingCondition {

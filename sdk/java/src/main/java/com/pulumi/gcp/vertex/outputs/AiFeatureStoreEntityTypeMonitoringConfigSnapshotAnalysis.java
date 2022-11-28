@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -24,6 +25,17 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
      */
     @Deprecated /* This field is unavailable in the GA provider and will be removed from the beta provider in a future release. */
     private @Nullable String monitoringInterval;
+    /**
+     * @return Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
+     * If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
+     * 
+     */
+    private @Nullable Integer monitoringIntervalDays;
+    /**
+     * @return Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
+     * 
+     */
+    private @Nullable Integer stalenessDays;
 
     private AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis() {}
     /**
@@ -42,6 +54,21 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
     public Optional<String> monitoringInterval() {
         return Optional.ofNullable(this.monitoringInterval);
     }
+    /**
+     * @return Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
+     * If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
+     * 
+     */
+    public Optional<Integer> monitoringIntervalDays() {
+        return Optional.ofNullable(this.monitoringIntervalDays);
+    }
+    /**
+     * @return Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
+     * 
+     */
+    public Optional<Integer> stalenessDays() {
+        return Optional.ofNullable(this.stalenessDays);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -54,11 +81,15 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
     public static final class Builder {
         private @Nullable Boolean disabled;
         private @Nullable String monitoringInterval;
+        private @Nullable Integer monitoringIntervalDays;
+        private @Nullable Integer stalenessDays;
         public Builder() {}
         public Builder(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disabled = defaults.disabled;
     	      this.monitoringInterval = defaults.monitoringInterval;
+    	      this.monitoringIntervalDays = defaults.monitoringIntervalDays;
+    	      this.stalenessDays = defaults.stalenessDays;
         }
 
         @CustomType.Setter
@@ -71,10 +102,22 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
             this.monitoringInterval = monitoringInterval;
             return this;
         }
+        @CustomType.Setter
+        public Builder monitoringIntervalDays(@Nullable Integer monitoringIntervalDays) {
+            this.monitoringIntervalDays = monitoringIntervalDays;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder stalenessDays(@Nullable Integer stalenessDays) {
+            this.stalenessDays = stalenessDays;
+            return this;
+        }
         public AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis build() {
             final var o = new AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis();
             o.disabled = disabled;
             o.monitoringInterval = monitoringInterval;
+            o.monitoringIntervalDays = monitoringIntervalDays;
+            o.stalenessDays = stalenessDays;
             return o;
         }
     }

@@ -38,6 +38,7 @@ public final class NodePoolNodeConfig {
     private @Nullable Map<String,String> labels;
     private @Nullable NodePoolNodeConfigLinuxNodeConfig linuxNodeConfig;
     private @Nullable Integer localSsdCount;
+    private @Nullable String loggingVariant;
     private @Nullable String machineType;
     private @Nullable Map<String,String> metadata;
     private @Nullable String minCpuPlatform;
@@ -89,6 +90,9 @@ public final class NodePoolNodeConfig {
     }
     public Optional<Integer> localSsdCount() {
         return Optional.ofNullable(this.localSsdCount);
+    }
+    public Optional<String> loggingVariant() {
+        return Optional.ofNullable(this.loggingVariant);
     }
     public Optional<String> machineType() {
         return Optional.ofNullable(this.machineType);
@@ -154,6 +158,7 @@ public final class NodePoolNodeConfig {
         private @Nullable Map<String,String> labels;
         private @Nullable NodePoolNodeConfigLinuxNodeConfig linuxNodeConfig;
         private @Nullable Integer localSsdCount;
+        private @Nullable String loggingVariant;
         private @Nullable String machineType;
         private @Nullable Map<String,String> metadata;
         private @Nullable String minCpuPlatform;
@@ -183,6 +188,7 @@ public final class NodePoolNodeConfig {
     	      this.labels = defaults.labels;
     	      this.linuxNodeConfig = defaults.linuxNodeConfig;
     	      this.localSsdCount = defaults.localSsdCount;
+    	      this.loggingVariant = defaults.loggingVariant;
     	      this.machineType = defaults.machineType;
     	      this.metadata = defaults.metadata;
     	      this.minCpuPlatform = defaults.minCpuPlatform;
@@ -260,6 +266,11 @@ public final class NodePoolNodeConfig {
         @CustomType.Setter
         public Builder localSsdCount(@Nullable Integer localSsdCount) {
             this.localSsdCount = localSsdCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder loggingVariant(@Nullable String loggingVariant) {
+            this.loggingVariant = loggingVariant;
             return this;
         }
         @CustomType.Setter
@@ -355,6 +366,7 @@ public final class NodePoolNodeConfig {
             o.labels = labels;
             o.linuxNodeConfig = linuxNodeConfig;
             o.localSsdCount = localSsdCount;
+            o.loggingVariant = loggingVariant;
             o.machineType = machineType;
             o.metadata = metadata;
             o.minCpuPlatform = minCpuPlatform;

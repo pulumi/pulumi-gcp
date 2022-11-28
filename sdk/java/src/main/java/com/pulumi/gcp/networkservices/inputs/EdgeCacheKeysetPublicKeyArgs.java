@@ -5,8 +5,11 @@ package com.pulumi.gcp.networkservices.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class EdgeCacheKeysetPublicKeyArgs extends com.pulumi.resources.ResourceArgs {
@@ -33,13 +36,28 @@ public final class EdgeCacheKeysetPublicKeyArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Set to true to have the CDN automatically manage this public key value.
+     * 
+     */
+    @Import(name="managed")
+    private @Nullable Output<Boolean> managed;
+
+    /**
+     * @return Set to true to have the CDN automatically manage this public key value.
+     * 
+     */
+    public Optional<Output<Boolean>> managed() {
+        return Optional.ofNullable(this.managed);
+    }
+
+    /**
      * The base64-encoded value of the Ed25519 public key. The base64 encoding can be padded (44 bytes) or unpadded (43 bytes).
      * Representations or encodings of the public key other than this will be rejected with an error.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Import(name="value", required=true)
-    private Output<String> value;
+    @Import(name="value")
+    private @Nullable Output<String> value;
 
     /**
      * @return The base64-encoded value of the Ed25519 public key. The base64 encoding can be padded (44 bytes) or unpadded (43 bytes).
@@ -47,14 +65,15 @@ public final class EdgeCacheKeysetPublicKeyArgs extends com.pulumi.resources.Res
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> value() {
-        return this.value;
+    public Optional<Output<String>> value() {
+        return Optional.ofNullable(this.value);
     }
 
     private EdgeCacheKeysetPublicKeyArgs() {}
 
     private EdgeCacheKeysetPublicKeyArgs(EdgeCacheKeysetPublicKeyArgs $) {
         this.id = $.id;
+        this.managed = $.managed;
         this.value = $.value;
     }
 
@@ -102,6 +121,27 @@ public final class EdgeCacheKeysetPublicKeyArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param managed Set to true to have the CDN automatically manage this public key value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managed(@Nullable Output<Boolean> managed) {
+            $.managed = managed;
+            return this;
+        }
+
+        /**
+         * @param managed Set to true to have the CDN automatically manage this public key value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managed(Boolean managed) {
+            return managed(Output.of(managed));
+        }
+
+        /**
          * @param value The base64-encoded value of the Ed25519 public key. The base64 encoding can be padded (44 bytes) or unpadded (43 bytes).
          * Representations or encodings of the public key other than this will be rejected with an error.
          * **Note**: This property is sensitive and will not be displayed in the plan.
@@ -109,7 +149,7 @@ public final class EdgeCacheKeysetPublicKeyArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder value(Output<String> value) {
+        public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
@@ -128,7 +168,6 @@ public final class EdgeCacheKeysetPublicKeyArgs extends com.pulumi.resources.Res
 
         public EdgeCacheKeysetPublicKeyArgs build() {
             $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
             return $;
         }
     }

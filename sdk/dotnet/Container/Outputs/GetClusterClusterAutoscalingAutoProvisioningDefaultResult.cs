@@ -17,9 +17,11 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly int DiskSize;
         public readonly string DiskType;
         public readonly string ImageType;
+        public readonly ImmutableArray<Outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultManagementResult> Managements;
         public readonly string MinCpuPlatform;
         public readonly ImmutableArray<string> OauthScopes;
         public readonly string ServiceAccount;
+        public readonly ImmutableArray<Outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigResult> ShieldedInstanceConfigs;
 
         [OutputConstructor]
         private GetClusterClusterAutoscalingAutoProvisioningDefaultResult(
@@ -31,19 +33,25 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string imageType,
 
+            ImmutableArray<Outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultManagementResult> managements,
+
             string minCpuPlatform,
 
             ImmutableArray<string> oauthScopes,
 
-            string serviceAccount)
+            string serviceAccount,
+
+            ImmutableArray<Outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigResult> shieldedInstanceConfigs)
         {
             BootDiskKmsKey = bootDiskKmsKey;
             DiskSize = diskSize;
             DiskType = diskType;
             ImageType = imageType;
+            Managements = managements;
             MinCpuPlatform = minCpuPlatform;
             OauthScopes = oauthScopes;
             ServiceAccount = serviceAccount;
+            ShieldedInstanceConfigs = shieldedInstanceConfigs;
         }
     }
 }

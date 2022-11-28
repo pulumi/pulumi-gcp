@@ -27,6 +27,7 @@ class ProviderArgs:
                  artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  batching: Optional[pulumi.Input['ProviderBatchingArgs']] = None,
+                 beyondcorp_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_analytics_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_connection_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -79,6 +80,7 @@ class ProviderArgs:
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebase_hosting_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebaserules_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -167,6 +169,8 @@ class ProviderArgs:
             pulumi.set(__self__, "assured_workloads_custom_endpoint", assured_workloads_custom_endpoint)
         if batching is not None:
             pulumi.set(__self__, "batching", batching)
+        if beyondcorp_custom_endpoint is not None:
+            pulumi.set(__self__, "beyondcorp_custom_endpoint", beyondcorp_custom_endpoint)
         if big_query_custom_endpoint is not None:
             pulumi.set(__self__, "big_query_custom_endpoint", big_query_custom_endpoint)
         if bigquery_analytics_hub_custom_endpoint is not None:
@@ -271,6 +275,8 @@ class ProviderArgs:
             pulumi.set(__self__, "filestore_custom_endpoint", filestore_custom_endpoint)
         if firebase_custom_endpoint is not None:
             pulumi.set(__self__, "firebase_custom_endpoint", firebase_custom_endpoint)
+        if firebase_hosting_custom_endpoint is not None:
+            pulumi.set(__self__, "firebase_hosting_custom_endpoint", firebase_hosting_custom_endpoint)
         if firebaserules_custom_endpoint is not None:
             pulumi.set(__self__, "firebaserules_custom_endpoint", firebaserules_custom_endpoint)
         if firestore_custom_endpoint is not None:
@@ -507,6 +513,15 @@ class ProviderArgs:
     @batching.setter
     def batching(self, value: Optional[pulumi.Input['ProviderBatchingArgs']]):
         pulumi.set(self, "batching", value)
+
+    @property
+    @pulumi.getter(name="beyondcorpCustomEndpoint")
+    def beyondcorp_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "beyondcorp_custom_endpoint")
+
+    @beyondcorp_custom_endpoint.setter
+    def beyondcorp_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "beyondcorp_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="bigQueryCustomEndpoint")
@@ -975,6 +990,15 @@ class ProviderArgs:
     @firebase_custom_endpoint.setter
     def firebase_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "firebase_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="firebaseHostingCustomEndpoint")
+    def firebase_hosting_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "firebase_hosting_custom_endpoint")
+
+    @firebase_hosting_custom_endpoint.setter
+    def firebase_hosting_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "firebase_hosting_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="firebaserulesCustomEndpoint")
@@ -1543,6 +1567,7 @@ class Provider(pulumi.ProviderResource):
                  artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  batching: Optional[pulumi.Input[pulumi.InputType['ProviderBatchingArgs']]] = None,
+                 beyondcorp_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_analytics_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_connection_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1595,6 +1620,7 @@ class Provider(pulumi.ProviderResource):
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebase_hosting_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebaserules_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1705,6 +1731,7 @@ class Provider(pulumi.ProviderResource):
                  artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  batching: Optional[pulumi.Input[pulumi.InputType['ProviderBatchingArgs']]] = None,
+                 beyondcorp_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_analytics_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_connection_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1757,6 +1784,7 @@ class Provider(pulumi.ProviderResource):
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebase_hosting_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebaserules_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1839,6 +1867,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["artifact_registry_custom_endpoint"] = artifact_registry_custom_endpoint
             __props__.__dict__["assured_workloads_custom_endpoint"] = assured_workloads_custom_endpoint
             __props__.__dict__["batching"] = pulumi.Output.from_input(batching).apply(pulumi.runtime.to_json) if batching is not None else None
+            __props__.__dict__["beyondcorp_custom_endpoint"] = beyondcorp_custom_endpoint
             __props__.__dict__["big_query_custom_endpoint"] = big_query_custom_endpoint
             __props__.__dict__["bigquery_analytics_hub_custom_endpoint"] = bigquery_analytics_hub_custom_endpoint
             __props__.__dict__["bigquery_connection_custom_endpoint"] = bigquery_connection_custom_endpoint
@@ -1891,6 +1920,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["eventarc_custom_endpoint"] = eventarc_custom_endpoint
             __props__.__dict__["filestore_custom_endpoint"] = filestore_custom_endpoint
             __props__.__dict__["firebase_custom_endpoint"] = firebase_custom_endpoint
+            __props__.__dict__["firebase_hosting_custom_endpoint"] = firebase_hosting_custom_endpoint
             __props__.__dict__["firebaserules_custom_endpoint"] = firebaserules_custom_endpoint
             __props__.__dict__["firestore_custom_endpoint"] = firestore_custom_endpoint
             __props__.__dict__["game_services_custom_endpoint"] = game_services_custom_endpoint
@@ -2018,6 +2048,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="assuredWorkloadsCustomEndpoint")
     def assured_workloads_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "assured_workloads_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="beyondcorpCustomEndpoint")
+    def beyondcorp_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "beyondcorp_custom_endpoint")
 
     @property
     @pulumi.getter(name="bigQueryCustomEndpoint")
@@ -2273,6 +2308,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="firebaseCustomEndpoint")
     def firebase_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "firebase_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="firebaseHostingCustomEndpoint")
+    def firebase_hosting_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "firebase_hosting_custom_endpoint")
 
     @property
     @pulumi.getter(name="firebaserulesCustomEndpoint")

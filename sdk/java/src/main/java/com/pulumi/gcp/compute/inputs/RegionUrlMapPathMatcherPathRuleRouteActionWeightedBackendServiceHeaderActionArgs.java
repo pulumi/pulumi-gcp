@@ -19,8 +19,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
     public static final RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs Empty = new RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs();
 
     /**
-     * Headers to add to a matching request prior to forwarding the request to the
-     * backendService.
+     * Headers to add to a matching request before forwarding the request to the backendService.
      * Structure is documented below.
      * 
      */
@@ -28,8 +27,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
     private @Nullable Output<List<RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs>> requestHeadersToAdds;
 
     /**
-     * @return Headers to add to a matching request prior to forwarding the request to the
-     * backendService.
+     * @return Headers to add to a matching request before forwarding the request to the backendService.
      * Structure is documented below.
      * 
      */
@@ -38,16 +36,14 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
     }
 
     /**
-     * A list of header names for headers that need to be removed from the request
-     * prior to forwarding the request to the backendService.
+     * A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
      * 
      */
     @Import(name="requestHeadersToRemoves")
     private @Nullable Output<List<String>> requestHeadersToRemoves;
 
     /**
-     * @return A list of header names for headers that need to be removed from the request
-     * prior to forwarding the request to the backendService.
+     * @return A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
      * 
      */
     public Optional<Output<List<String>>> requestHeadersToRemoves() {
@@ -55,7 +51,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
     }
 
     /**
-     * Headers to add the response prior to sending the response back to the client.
+     * Headers to add the response before sending the response back to the client.
      * Structure is documented below.
      * 
      */
@@ -63,7 +59,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
     private @Nullable Output<List<RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs>> responseHeadersToAdds;
 
     /**
-     * @return Headers to add the response prior to sending the response back to the client.
+     * @return Headers to add the response before sending the response back to the client.
      * Structure is documented below.
      * 
      */
@@ -72,16 +68,14 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
     }
 
     /**
-     * A list of header names for headers that need to be removed from the response
-     * prior to sending the response back to the client.
+     * A list of header names for headers that need to be removed from the response before sending the response back to the client.
      * 
      */
     @Import(name="responseHeadersToRemoves")
     private @Nullable Output<List<String>> responseHeadersToRemoves;
 
     /**
-     * @return A list of header names for headers that need to be removed from the response
-     * prior to sending the response back to the client.
+     * @return A list of header names for headers that need to be removed from the response before sending the response back to the client.
      * 
      */
     public Optional<Output<List<String>>> responseHeadersToRemoves() {
@@ -116,8 +110,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
         }
 
         /**
-         * @param requestHeadersToAdds Headers to add to a matching request prior to forwarding the request to the
-         * backendService.
+         * @param requestHeadersToAdds Headers to add to a matching request before forwarding the request to the backendService.
          * Structure is documented below.
          * 
          * @return builder
@@ -129,8 +122,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
         }
 
         /**
-         * @param requestHeadersToAdds Headers to add to a matching request prior to forwarding the request to the
-         * backendService.
+         * @param requestHeadersToAdds Headers to add to a matching request before forwarding the request to the backendService.
          * Structure is documented below.
          * 
          * @return builder
@@ -141,8 +133,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
         }
 
         /**
-         * @param requestHeadersToAdds Headers to add to a matching request prior to forwarding the request to the
-         * backendService.
+         * @param requestHeadersToAdds Headers to add to a matching request before forwarding the request to the backendService.
          * Structure is documented below.
          * 
          * @return builder
@@ -153,8 +144,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
         }
 
         /**
-         * @param requestHeadersToRemoves A list of header names for headers that need to be removed from the request
-         * prior to forwarding the request to the backendService.
+         * @param requestHeadersToRemoves A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
          * 
          * @return builder
          * 
@@ -165,8 +155,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
         }
 
         /**
-         * @param requestHeadersToRemoves A list of header names for headers that need to be removed from the request
-         * prior to forwarding the request to the backendService.
+         * @param requestHeadersToRemoves A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
          * 
          * @return builder
          * 
@@ -176,8 +165,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
         }
 
         /**
-         * @param requestHeadersToRemoves A list of header names for headers that need to be removed from the request
-         * prior to forwarding the request to the backendService.
+         * @param requestHeadersToRemoves A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
          * 
          * @return builder
          * 
@@ -187,7 +175,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
         }
 
         /**
-         * @param responseHeadersToAdds Headers to add the response prior to sending the response back to the client.
+         * @param responseHeadersToAdds Headers to add the response before sending the response back to the client.
          * Structure is documented below.
          * 
          * @return builder
@@ -199,7 +187,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
         }
 
         /**
-         * @param responseHeadersToAdds Headers to add the response prior to sending the response back to the client.
+         * @param responseHeadersToAdds Headers to add the response before sending the response back to the client.
          * Structure is documented below.
          * 
          * @return builder
@@ -210,7 +198,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
         }
 
         /**
-         * @param responseHeadersToAdds Headers to add the response prior to sending the response back to the client.
+         * @param responseHeadersToAdds Headers to add the response before sending the response back to the client.
          * Structure is documented below.
          * 
          * @return builder
@@ -221,8 +209,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
         }
 
         /**
-         * @param responseHeadersToRemoves A list of header names for headers that need to be removed from the response
-         * prior to sending the response back to the client.
+         * @param responseHeadersToRemoves A list of header names for headers that need to be removed from the response before sending the response back to the client.
          * 
          * @return builder
          * 
@@ -233,8 +220,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
         }
 
         /**
-         * @param responseHeadersToRemoves A list of header names for headers that need to be removed from the response
-         * prior to sending the response back to the client.
+         * @param responseHeadersToRemoves A list of header names for headers that need to be removed from the response before sending the response back to the client.
          * 
          * @return builder
          * 
@@ -244,8 +230,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
         }
 
         /**
-         * @param responseHeadersToRemoves A list of header names for headers that need to be removed from the response
-         * prior to sending the response back to the client.
+         * @param responseHeadersToRemoves A list of header names for headers that need to be removed from the response before sending the response back to the client.
          * 
          * @return builder
          * 

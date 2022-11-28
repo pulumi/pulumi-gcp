@@ -16,37 +16,30 @@ __all__ = ['FeatureMembershipArgs', 'FeatureMembership']
 @pulumi.input_type
 class FeatureMembershipArgs:
     def __init__(__self__, *,
-                 configmanagement: pulumi.Input['FeatureMembershipConfigmanagementArgs'],
                  feature: pulumi.Input[str],
                  location: pulumi.Input[str],
                  membership: pulumi.Input[str],
+                 configmanagement: Optional[pulumi.Input['FeatureMembershipConfigmanagementArgs']] = None,
+                 mesh: Optional[pulumi.Input['FeatureMembershipMeshArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FeatureMembership resource.
-        :param pulumi.Input['FeatureMembershipConfigmanagementArgs'] configmanagement: Config Management-specific spec. Structure is documented below.
         :param pulumi.Input[str] feature: The name of the feature
         :param pulumi.Input[str] location: The location of the feature
         :param pulumi.Input[str] membership: The name of the membership
+        :param pulumi.Input['FeatureMembershipConfigmanagementArgs'] configmanagement: Config Management-specific spec. Structure is documented below.
+        :param pulumi.Input['FeatureMembershipMeshArgs'] mesh: Service mesh specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
-        pulumi.set(__self__, "configmanagement", configmanagement)
         pulumi.set(__self__, "feature", feature)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "membership", membership)
+        if configmanagement is not None:
+            pulumi.set(__self__, "configmanagement", configmanagement)
+        if mesh is not None:
+            pulumi.set(__self__, "mesh", mesh)
         if project is not None:
             pulumi.set(__self__, "project", project)
-
-    @property
-    @pulumi.getter
-    def configmanagement(self) -> pulumi.Input['FeatureMembershipConfigmanagementArgs']:
-        """
-        Config Management-specific spec. Structure is documented below.
-        """
-        return pulumi.get(self, "configmanagement")
-
-    @configmanagement.setter
-    def configmanagement(self, value: pulumi.Input['FeatureMembershipConfigmanagementArgs']):
-        pulumi.set(self, "configmanagement", value)
 
     @property
     @pulumi.getter
@@ -86,6 +79,30 @@ class FeatureMembershipArgs:
 
     @property
     @pulumi.getter
+    def configmanagement(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementArgs']]:
+        """
+        Config Management-specific spec. Structure is documented below.
+        """
+        return pulumi.get(self, "configmanagement")
+
+    @configmanagement.setter
+    def configmanagement(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementArgs']]):
+        pulumi.set(self, "configmanagement", value)
+
+    @property
+    @pulumi.getter
+    def mesh(self) -> Optional[pulumi.Input['FeatureMembershipMeshArgs']]:
+        """
+        Service mesh specific spec. Structure is documented below.
+        """
+        return pulumi.get(self, "mesh")
+
+    @mesh.setter
+    def mesh(self, value: Optional[pulumi.Input['FeatureMembershipMeshArgs']]):
+        pulumi.set(self, "mesh", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The project of the feature
@@ -104,6 +121,7 @@ class _FeatureMembershipState:
                  feature: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership: Optional[pulumi.Input[str]] = None,
+                 mesh: Optional[pulumi.Input['FeatureMembershipMeshArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FeatureMembership resources.
@@ -111,6 +129,7 @@ class _FeatureMembershipState:
         :param pulumi.Input[str] feature: The name of the feature
         :param pulumi.Input[str] location: The location of the feature
         :param pulumi.Input[str] membership: The name of the membership
+        :param pulumi.Input['FeatureMembershipMeshArgs'] mesh: Service mesh specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
         if configmanagement is not None:
@@ -121,6 +140,8 @@ class _FeatureMembershipState:
             pulumi.set(__self__, "location", location)
         if membership is not None:
             pulumi.set(__self__, "membership", membership)
+        if mesh is not None:
+            pulumi.set(__self__, "mesh", mesh)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -174,6 +195,18 @@ class _FeatureMembershipState:
 
     @property
     @pulumi.getter
+    def mesh(self) -> Optional[pulumi.Input['FeatureMembershipMeshArgs']]:
+        """
+        Service mesh specific spec. Structure is documented below.
+        """
+        return pulumi.get(self, "mesh")
+
+    @mesh.setter
+    def mesh(self, value: Optional[pulumi.Input['FeatureMembershipMeshArgs']]):
+        pulumi.set(self, "mesh", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The project of the feature
@@ -194,6 +227,7 @@ class FeatureMembership(pulumi.CustomResource):
                  feature: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership: Optional[pulumi.Input[str]] = None,
+                 mesh: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -249,6 +283,35 @@ class FeatureMembership(pulumi.CustomResource):
             },
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Serivce Mesh
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster = gcp.container.Cluster("cluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="my-membership",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        feature = gcp.gkehub.Feature("feature", location="global",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+            location="global",
+            feature=feature.name,
+            membership=membership.membership_id,
+            mesh=gcp.gkehub.FeatureMembershipMeshArgs(
+                management="MANAGEMENT_AUTOMATIC",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -272,6 +335,7 @@ class FeatureMembership(pulumi.CustomResource):
         :param pulumi.Input[str] feature: The name of the feature
         :param pulumi.Input[str] location: The location of the feature
         :param pulumi.Input[str] membership: The name of the membership
+        :param pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']] mesh: Service mesh specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
         ...
@@ -333,6 +397,35 @@ class FeatureMembership(pulumi.CustomResource):
             },
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Serivce Mesh
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster = gcp.container.Cluster("cluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="my-membership",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        feature = gcp.gkehub.Feature("feature", location="global",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+            location="global",
+            feature=feature.name,
+            membership=membership.membership_id,
+            mesh=gcp.gkehub.FeatureMembershipMeshArgs(
+                management="MANAGEMENT_AUTOMATIC",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -369,6 +462,7 @@ class FeatureMembership(pulumi.CustomResource):
                  feature: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership: Optional[pulumi.Input[str]] = None,
+                 mesh: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -379,8 +473,6 @@ class FeatureMembership(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FeatureMembershipArgs.__new__(FeatureMembershipArgs)
 
-            if configmanagement is None and not opts.urn:
-                raise TypeError("Missing required property 'configmanagement'")
             __props__.__dict__["configmanagement"] = configmanagement
             if feature is None and not opts.urn:
                 raise TypeError("Missing required property 'feature'")
@@ -391,6 +483,7 @@ class FeatureMembership(pulumi.CustomResource):
             if membership is None and not opts.urn:
                 raise TypeError("Missing required property 'membership'")
             __props__.__dict__["membership"] = membership
+            __props__.__dict__["mesh"] = mesh
             __props__.__dict__["project"] = project
         super(FeatureMembership, __self__).__init__(
             'gcp:gkehub/featureMembership:FeatureMembership',
@@ -406,6 +499,7 @@ class FeatureMembership(pulumi.CustomResource):
             feature: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             membership: Optional[pulumi.Input[str]] = None,
+            mesh: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None) -> 'FeatureMembership':
         """
         Get an existing FeatureMembership resource's state with the given name, id, and optional extra
@@ -418,6 +512,7 @@ class FeatureMembership(pulumi.CustomResource):
         :param pulumi.Input[str] feature: The name of the feature
         :param pulumi.Input[str] location: The location of the feature
         :param pulumi.Input[str] membership: The name of the membership
+        :param pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']] mesh: Service mesh specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -428,12 +523,13 @@ class FeatureMembership(pulumi.CustomResource):
         __props__.__dict__["feature"] = feature
         __props__.__dict__["location"] = location
         __props__.__dict__["membership"] = membership
+        __props__.__dict__["mesh"] = mesh
         __props__.__dict__["project"] = project
         return FeatureMembership(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def configmanagement(self) -> pulumi.Output['outputs.FeatureMembershipConfigmanagement']:
+    def configmanagement(self) -> pulumi.Output[Optional['outputs.FeatureMembershipConfigmanagement']]:
         """
         Config Management-specific spec. Structure is documented below.
         """
@@ -462,6 +558,14 @@ class FeatureMembership(pulumi.CustomResource):
         The name of the membership
         """
         return pulumi.get(self, "membership")
+
+    @property
+    @pulumi.getter
+    def mesh(self) -> pulumi.Output[Optional['outputs.FeatureMembershipMesh']]:
+        """
+        Service mesh specific spec. Structure is documented below.
+        """
+        return pulumi.get(self, "mesh")
 
     @property
     @pulumi.getter

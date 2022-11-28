@@ -45,8 +45,8 @@ import (
 type WebApp struct {
 	pulumi.CustomResourceState
 
-	// Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-	// token, as the data format is not specified.
+	// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+	// the data format is not specified.
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// The URLs where the 'WebApp' is hosted.
 	AppUrls pulumi.StringArrayOutput `pulumi:"appUrls"`
@@ -94,8 +94,8 @@ func GetWebApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WebApp resources.
 type webAppState struct {
-	// Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-	// token, as the data format is not specified.
+	// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+	// the data format is not specified.
 	AppId *string `pulumi:"appId"`
 	// The URLs where the 'WebApp' is hosted.
 	AppUrls []string `pulumi:"appUrls"`
@@ -112,8 +112,8 @@ type webAppState struct {
 }
 
 type WebAppState struct {
-	// Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-	// token, as the data format is not specified.
+	// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+	// the data format is not specified.
 	AppId pulumi.StringPtrInput
 	// The URLs where the 'WebApp' is hosted.
 	AppUrls pulumi.StringArrayInput
@@ -243,8 +243,8 @@ func (o WebAppOutput) ToWebAppOutputWithContext(ctx context.Context) WebAppOutpu
 	return o
 }
 
-// Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-// token, as the data format is not specified.
+// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+// the data format is not specified.
 func (o WebAppOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }

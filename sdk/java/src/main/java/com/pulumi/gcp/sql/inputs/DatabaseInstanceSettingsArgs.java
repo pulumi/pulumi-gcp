@@ -99,6 +99,21 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.collation);
     }
 
+    /**
+     * Specifies if connections must use Cloud SQL connectors.
+     * 
+     */
+    @Import(name="connectorEnforcement")
+    private @Nullable Output<String> connectorEnforcement;
+
+    /**
+     * @return Specifies if connections must use Cloud SQL connectors.
+     * 
+     */
+    public Optional<Output<String>> connectorEnforcement() {
+        return Optional.ofNullable(this.connectorEnforcement);
+    }
+
     @Import(name="databaseFlags")
     private @Nullable Output<List<DatabaseInstanceSettingsDatabaseFlagArgs>> databaseFlags;
 
@@ -242,9 +257,17 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         return this.tier;
     }
 
+    /**
+     * The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+     * 
+     */
     @Import(name="timeZone")
     private @Nullable Output<String> timeZone;
 
+    /**
+     * @return The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+     * 
+     */
     public Optional<Output<String>> timeZone() {
         return Optional.ofNullable(this.timeZone);
     }
@@ -279,6 +302,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.availabilityType = $.availabilityType;
         this.backupConfiguration = $.backupConfiguration;
         this.collation = $.collation;
+        this.connectorEnforcement = $.connectorEnforcement;
         this.databaseFlags = $.databaseFlags;
         this.diskAutoresize = $.diskAutoresize;
         this.diskAutoresizeLimit = $.diskAutoresizeLimit;
@@ -406,6 +430,27 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          */
         public Builder collation(String collation) {
             return collation(Output.of(collation));
+        }
+
+        /**
+         * @param connectorEnforcement Specifies if connections must use Cloud SQL connectors.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectorEnforcement(@Nullable Output<String> connectorEnforcement) {
+            $.connectorEnforcement = connectorEnforcement;
+            return this;
+        }
+
+        /**
+         * @param connectorEnforcement Specifies if connections must use Cloud SQL connectors.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectorEnforcement(String connectorEnforcement) {
+            return connectorEnforcement(Output.of(connectorEnforcement));
         }
 
         public Builder databaseFlags(@Nullable Output<List<DatabaseInstanceSettingsDatabaseFlagArgs>> databaseFlags) {
@@ -605,11 +650,23 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
             return tier(Output.of(tier));
         }
 
+        /**
+         * @param timeZone The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeZone(@Nullable Output<String> timeZone) {
             $.timeZone = timeZone;
             return this;
         }
 
+        /**
+         * @param timeZone The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeZone(String timeZone) {
             return timeZone(Output.of(timeZone));
         }

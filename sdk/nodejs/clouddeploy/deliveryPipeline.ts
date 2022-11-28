@@ -45,6 +45,43 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Verify_delivery_pipeline
+ * tests creating and updating a delivery pipeline with deployment verification strategy
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.clouddeploy.DeliveryPipeline("primary", {
+ *     location: "us-west1",
+ *     annotations: {
+ *         my_first_annotation: "example-annotation-1",
+ *         my_second_annotation: "example-annotation-2",
+ *     },
+ *     description: "basic description",
+ *     labels: {
+ *         my_first_label: "example-label-1",
+ *         my_second_label: "example-label-2",
+ *     },
+ *     project: "my-project-name",
+ *     serialPipeline: {
+ *         stages: [
+ *             {
+ *                 profiles: [
+ *                     "example-profile-one",
+ *                     "example-profile-two",
+ *                 ],
+ *                 targetId: "example-target-one",
+ *             },
+ *             {
+ *                 profiles: [],
+ *                 targetId: "example-target-two",
+ *             },
+ *         ],
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

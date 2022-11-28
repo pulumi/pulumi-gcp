@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkservices;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginAwsV4AuthenticationArgs;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginTimeoutArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -18,6 +19,23 @@ import javax.annotation.Nullable;
 public final class EdgeCacheOriginArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final EdgeCacheOriginArgs Empty = new EdgeCacheOriginArgs();
+
+    /**
+     * Enable AWS Signature Version 4 origin authentication.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="awsV4Authentication")
+    private @Nullable Output<EdgeCacheOriginAwsV4AuthenticationArgs> awsV4Authentication;
+
+    /**
+     * @return Enable AWS Signature Version 4 origin authentication.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<EdgeCacheOriginAwsV4AuthenticationArgs>> awsV4Authentication() {
+        return Optional.ofNullable(this.awsV4Authentication);
+    }
 
     /**
      * A human-readable description of the resource.
@@ -253,6 +271,7 @@ public final class EdgeCacheOriginArgs extends com.pulumi.resources.ResourceArgs
     private EdgeCacheOriginArgs() {}
 
     private EdgeCacheOriginArgs(EdgeCacheOriginArgs $) {
+        this.awsV4Authentication = $.awsV4Authentication;
         this.description = $.description;
         this.failoverOrigin = $.failoverOrigin;
         this.labels = $.labels;
@@ -282,6 +301,29 @@ public final class EdgeCacheOriginArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder(EdgeCacheOriginArgs defaults) {
             $ = new EdgeCacheOriginArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param awsV4Authentication Enable AWS Signature Version 4 origin authentication.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsV4Authentication(@Nullable Output<EdgeCacheOriginAwsV4AuthenticationArgs> awsV4Authentication) {
+            $.awsV4Authentication = awsV4Authentication;
+            return this;
+        }
+
+        /**
+         * @param awsV4Authentication Enable AWS Signature Version 4 origin authentication.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsV4Authentication(EdgeCacheOriginAwsV4AuthenticationArgs awsV4Authentication) {
+            return awsV4Authentication(Output.of(awsV4Authentication));
         }
 
         /**

@@ -315,8 +315,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specify node upgrade settings to change how many nodes GKE attempts to
-     * upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+     * Specify node upgrade settings to change how GKE upgrades nodes.
      * The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
      * 
      */
@@ -324,8 +323,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<NodePoolUpgradeSettingsArgs> upgradeSettings;
 
     /**
-     * @return Specify node upgrade settings to change how many nodes GKE attempts to
-     * upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+     * @return Specify node upgrade settings to change how GKE upgrades nodes.
      * The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
      * 
      */
@@ -823,8 +821,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param upgradeSettings Specify node upgrade settings to change how many nodes GKE attempts to
-         * upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+         * @param upgradeSettings Specify node upgrade settings to change how GKE upgrades nodes.
          * The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
          * 
          * @return builder
@@ -836,8 +833,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param upgradeSettings Specify node upgrade settings to change how many nodes GKE attempts to
-         * upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+         * @param upgradeSettings Specify node upgrade settings to change how GKE upgrades nodes.
          * The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
          * 
          * @return builder

@@ -17,6 +17,7 @@ __all__ = ['EdgeCacheOriginArgs', 'EdgeCacheOrigin']
 class EdgeCacheOriginArgs:
     def __init__(__self__, *,
                  origin_address: pulumi.Input[str],
+                 aws_v4_authentication: Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  failover_origin: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -33,6 +34,8 @@ class EdgeCacheOriginArgs:
                This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
                When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.  It must not contain a protocol (e.g., https://) and it must not contain any slashes.
                If a Cloud Storage bucket is provided, it must be in the canonical "gs://bucketname" format. Other forms, such as "storage.googleapis.com", will be rejected.
+        :param pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs'] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
+               Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[str] failover_origin: The Origin resource to try when the current origin cannot be reached.
                After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
@@ -75,6 +78,8 @@ class EdgeCacheOriginArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "origin_address", origin_address)
+        if aws_v4_authentication is not None:
+            pulumi.set(__self__, "aws_v4_authentication", aws_v4_authentication)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if failover_origin is not None:
@@ -110,6 +115,19 @@ class EdgeCacheOriginArgs:
     @origin_address.setter
     def origin_address(self, value: pulumi.Input[str]):
         pulumi.set(self, "origin_address", value)
+
+    @property
+    @pulumi.getter(name="awsV4Authentication")
+    def aws_v4_authentication(self) -> Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs']]:
+        """
+        Enable AWS Signature Version 4 origin authentication.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "aws_v4_authentication")
+
+    @aws_v4_authentication.setter
+    def aws_v4_authentication(self, value: Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs']]):
+        pulumi.set(self, "aws_v4_authentication", value)
 
     @property
     @pulumi.getter
@@ -265,6 +283,7 @@ class EdgeCacheOriginArgs:
 @pulumi.input_type
 class _EdgeCacheOriginState:
     def __init__(__self__, *,
+                 aws_v4_authentication: Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  failover_origin: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -278,6 +297,8 @@ class _EdgeCacheOriginState:
                  timeout: Optional[pulumi.Input['EdgeCacheOriginTimeoutArgs']] = None):
         """
         Input properties used for looking up and filtering EdgeCacheOrigin resources.
+        :param pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs'] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
+               Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[str] failover_origin: The Origin resource to try when the current origin cannot be reached.
                After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
@@ -323,6 +344,8 @@ class _EdgeCacheOriginState:
         :param pulumi.Input['EdgeCacheOriginTimeoutArgs'] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
+        if aws_v4_authentication is not None:
+            pulumi.set(__self__, "aws_v4_authentication", aws_v4_authentication)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if failover_origin is not None:
@@ -345,6 +368,19 @@ class _EdgeCacheOriginState:
             pulumi.set(__self__, "retry_conditions", retry_conditions)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter(name="awsV4Authentication")
+    def aws_v4_authentication(self) -> Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs']]:
+        """
+        Enable AWS Signature Version 4 origin authentication.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "aws_v4_authentication")
+
+    @aws_v4_authentication.setter
+    def aws_v4_authentication(self, value: Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs']]):
+        pulumi.set(self, "aws_v4_authentication", value)
 
     @property
     @pulumi.getter
@@ -517,6 +553,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 aws_v4_authentication: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginAwsV4AuthenticationArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  failover_origin: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -579,6 +616,29 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 connect_timeout="10s",
             ))
         ```
+        ### Network Services Edge Cache Origin V4auth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-name",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                automatic=True,
+            ))
+        secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
+            secret=secret_basic.id,
+            secret_data="secret-data")
+        default = gcp.networkservices.EdgeCacheOrigin("default",
+            origin_address="gs://media-edge-default",
+            description="The default bucket for V4 authentication",
+            aws_v4_authentication=gcp.networkservices.EdgeCacheOriginAwsV4AuthenticationArgs(
+                access_key_id="ACCESSKEYID",
+                secret_access_key_version=secret_version_basic.id,
+                origin_region="auto",
+            ))
+        ```
 
         ## Import
 
@@ -598,6 +658,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginAwsV4AuthenticationArgs']] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
+               Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[str] failover_origin: The Origin resource to try when the current origin cannot be reached.
                After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
@@ -699,6 +761,29 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 connect_timeout="10s",
             ))
         ```
+        ### Network Services Edge Cache Origin V4auth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-name",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                automatic=True,
+            ))
+        secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
+            secret=secret_basic.id,
+            secret_data="secret-data")
+        default = gcp.networkservices.EdgeCacheOrigin("default",
+            origin_address="gs://media-edge-default",
+            description="The default bucket for V4 authentication",
+            aws_v4_authentication=gcp.networkservices.EdgeCacheOriginAwsV4AuthenticationArgs(
+                access_key_id="ACCESSKEYID",
+                secret_access_key_version=secret_version_basic.id,
+                origin_region="auto",
+            ))
+        ```
 
         ## Import
 
@@ -731,6 +816,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 aws_v4_authentication: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginAwsV4AuthenticationArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  failover_origin: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -751,6 +837,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EdgeCacheOriginArgs.__new__(EdgeCacheOriginArgs)
 
+            __props__.__dict__["aws_v4_authentication"] = aws_v4_authentication
             __props__.__dict__["description"] = description
             __props__.__dict__["failover_origin"] = failover_origin
             __props__.__dict__["labels"] = labels
@@ -774,6 +861,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            aws_v4_authentication: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginAwsV4AuthenticationArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             failover_origin: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -792,6 +880,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginAwsV4AuthenticationArgs']] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
+               Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[str] failover_origin: The Origin resource to try when the current origin cannot be reached.
                After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
@@ -841,6 +931,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
 
         __props__ = _EdgeCacheOriginState.__new__(_EdgeCacheOriginState)
 
+        __props__.__dict__["aws_v4_authentication"] = aws_v4_authentication
         __props__.__dict__["description"] = description
         __props__.__dict__["failover_origin"] = failover_origin
         __props__.__dict__["labels"] = labels
@@ -853,6 +944,15 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         __props__.__dict__["retry_conditions"] = retry_conditions
         __props__.__dict__["timeout"] = timeout
         return EdgeCacheOrigin(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="awsV4Authentication")
+    def aws_v4_authentication(self) -> pulumi.Output[Optional['outputs.EdgeCacheOriginAwsV4Authentication']]:
+        """
+        Enable AWS Signature Version 4 origin authentication.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "aws_v4_authentication")
 
     @property
     @pulumi.getter

@@ -6,6 +6,7 @@ package com.pulumi.gcp.gkehub;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementArgs;
+import com.pulumi.gcp.gkehub.inputs.FeatureMembershipMeshArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,15 +21,15 @@ public final class FeatureMembershipArgs extends com.pulumi.resources.ResourceAr
      * Config Management-specific spec. Structure is documented below.
      * 
      */
-    @Import(name="configmanagement", required=true)
-    private Output<FeatureMembershipConfigmanagementArgs> configmanagement;
+    @Import(name="configmanagement")
+    private @Nullable Output<FeatureMembershipConfigmanagementArgs> configmanagement;
 
     /**
      * @return Config Management-specific spec. Structure is documented below.
      * 
      */
-    public Output<FeatureMembershipConfigmanagementArgs> configmanagement() {
-        return this.configmanagement;
+    public Optional<Output<FeatureMembershipConfigmanagementArgs>> configmanagement() {
+        return Optional.ofNullable(this.configmanagement);
     }
 
     /**
@@ -77,6 +78,21 @@ public final class FeatureMembershipArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Service mesh specific spec. Structure is documented below.
+     * 
+     */
+    @Import(name="mesh")
+    private @Nullable Output<FeatureMembershipMeshArgs> mesh;
+
+    /**
+     * @return Service mesh specific spec. Structure is documented below.
+     * 
+     */
+    public Optional<Output<FeatureMembershipMeshArgs>> mesh() {
+        return Optional.ofNullable(this.mesh);
+    }
+
+    /**
      * The project of the feature
      * 
      */
@@ -98,6 +114,7 @@ public final class FeatureMembershipArgs extends com.pulumi.resources.ResourceAr
         this.feature = $.feature;
         this.location = $.location;
         this.membership = $.membership;
+        this.mesh = $.mesh;
         this.project = $.project;
     }
 
@@ -125,7 +142,7 @@ public final class FeatureMembershipArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder configmanagement(Output<FeatureMembershipConfigmanagementArgs> configmanagement) {
+        public Builder configmanagement(@Nullable Output<FeatureMembershipConfigmanagementArgs> configmanagement) {
             $.configmanagement = configmanagement;
             return this;
         }
@@ -204,6 +221,27 @@ public final class FeatureMembershipArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param mesh Service mesh specific spec. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mesh(@Nullable Output<FeatureMembershipMeshArgs> mesh) {
+            $.mesh = mesh;
+            return this;
+        }
+
+        /**
+         * @param mesh Service mesh specific spec. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mesh(FeatureMembershipMeshArgs mesh) {
+            return mesh(Output.of(mesh));
+        }
+
+        /**
          * @param project The project of the feature
          * 
          * @return builder
@@ -225,7 +263,6 @@ public final class FeatureMembershipArgs extends com.pulumi.resources.ResourceAr
         }
 
         public FeatureMembershipArgs build() {
-            $.configmanagement = Objects.requireNonNull($.configmanagement, "expected parameter 'configmanagement' to be non-null");
             $.feature = Objects.requireNonNull($.feature, "expected parameter 'feature' to be non-null");
             $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
             $.membership = Objects.requireNonNull($.membership, "expected parameter 'membership' to be non-null");

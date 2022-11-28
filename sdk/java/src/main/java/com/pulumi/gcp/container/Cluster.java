@@ -1035,14 +1035,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.nodePoolAutoConfig;
     }
     /**
-     * ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+     * Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
      * 
      */
     @Export(name="nodePoolDefaults", type=ClusterNodePoolDefaults.class, parameters={})
     private Output<ClusterNodePoolDefaults> nodePoolDefaults;
 
     /**
-     * @return ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+     * @return Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
      * 
      */
     public Output<ClusterNodePoolDefaults> nodePoolDefaults() {

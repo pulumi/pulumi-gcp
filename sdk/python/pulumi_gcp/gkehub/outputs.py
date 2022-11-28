@@ -18,6 +18,7 @@ __all__ = [
     'FeatureMembershipConfigmanagementHierarchyController',
     'FeatureMembershipConfigmanagementPolicyController',
     'FeatureMembershipConfigmanagementPolicyControllerMonitoring',
+    'FeatureMembershipMesh',
     'FeatureResourceState',
     'FeatureSpec',
     'FeatureSpecMulticlusteringress',
@@ -538,6 +539,25 @@ class FeatureMembershipConfigmanagementPolicyControllerMonitoring(dict):
     @pulumi.getter
     def backends(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "backends")
+
+
+@pulumi.output_type
+class FeatureMembershipMesh(dict):
+    def __init__(__self__, *,
+                 management: Optional[str] = None):
+        """
+        :param str management: Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
+        """
+        if management is not None:
+            pulumi.set(__self__, "management", management)
+
+    @property
+    @pulumi.getter
+    def management(self) -> Optional[str]:
+        """
+        Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
+        """
+        return pulumi.get(self, "management")
 
 
 @pulumi.output_type

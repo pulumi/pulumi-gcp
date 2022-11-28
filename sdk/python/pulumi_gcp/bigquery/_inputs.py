@@ -28,6 +28,7 @@ __all__ = [
     'DatasetAccessAuthorizedDatasetDatasetArgs',
     'DatasetAccessDatasetArgs',
     'DatasetAccessDatasetDatasetArgs',
+    'DatasetAccessRoutineArgs',
     'DatasetAccessViewArgs',
     'DatasetDefaultEncryptionConfigurationArgs',
     'DatasetIamBindingConditionArgs',
@@ -647,6 +648,7 @@ class DatasetAccessArgs:
                  domain: Optional[pulumi.Input[str]] = None,
                  group_by_email: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
+                 routine: Optional[pulumi.Input['DatasetAccessRoutineArgs']] = None,
                  special_group: Optional[pulumi.Input[str]] = None,
                  user_by_email: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input['DatasetAccessViewArgs']] = None):
@@ -661,6 +663,12 @@ class DatasetAccessArgs:
                are supported. Predefined roles that have equivalent basic roles
                are swapped by the API to their basic counterparts. See
                [official docs](https://cloud.google.com/bigquery/docs/access-control).
+        :param pulumi.Input['DatasetAccessRoutineArgs'] routine: A routine from a different dataset to grant access to. Queries
+               executed against that routine will have read access to tables in
+               this dataset. The role field is not required when this field is
+               set. If that routine is updated by any user, access to the routine
+               needs to be granted again via an update operation.
+               Structure is documented below.
         :param pulumi.Input[str] special_group: A special group to grant access to. Possible values include:
         :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example:
                fred@example.com
@@ -679,6 +687,8 @@ class DatasetAccessArgs:
             pulumi.set(__self__, "group_by_email", group_by_email)
         if role is not None:
             pulumi.set(__self__, "role", role)
+        if routine is not None:
+            pulumi.set(__self__, "routine", routine)
         if special_group is not None:
             pulumi.set(__self__, "special_group", special_group)
         if user_by_email is not None:
@@ -739,6 +749,23 @@ class DatasetAccessArgs:
     @role.setter
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter
+    def routine(self) -> Optional[pulumi.Input['DatasetAccessRoutineArgs']]:
+        """
+        A routine from a different dataset to grant access to. Queries
+        executed against that routine will have read access to tables in
+        this dataset. The role field is not required when this field is
+        set. If that routine is updated by any user, access to the routine
+        needs to be granted again via an update operation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "routine")
+
+    @routine.setter
+    def routine(self, value: Optional[pulumi.Input['DatasetAccessRoutineArgs']]):
+        pulumi.set(self, "routine", value)
 
     @property
     @pulumi.getter(name="specialGroup")
@@ -937,6 +964,62 @@ class DatasetAccessDatasetDatasetArgs:
     @project_id.setter
     def project_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "project_id", value)
+
+
+@pulumi.input_type
+class DatasetAccessRoutineArgs:
+    def __init__(__self__, *,
+                 dataset_id: pulumi.Input[str],
+                 project_id: pulumi.Input[str],
+                 routine_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
+        :param pulumi.Input[str] project_id: The ID of the project containing this table.
+        :param pulumi.Input[str] routine_id: The ID of the routine. The ID must contain only letters (a-z,
+               A-Z), numbers (0-9), or underscores (_). The maximum length
+               is 256 characters.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "routine_id", routine_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the dataset containing this table.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the project containing this table.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="routineId")
+    def routine_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the routine. The ID must contain only letters (a-z,
+        A-Z), numbers (0-9), or underscores (_). The maximum length
+        is 256 characters.
+        """
+        return pulumi.get(self, "routine_id")
+
+    @routine_id.setter
+    def routine_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "routine_id", value)
 
 
 @pulumi.input_type

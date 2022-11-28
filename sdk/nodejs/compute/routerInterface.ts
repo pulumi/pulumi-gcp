@@ -83,6 +83,12 @@ export class RouterInterface extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The name of the interface that is redundant to
+     * this interface. Changing this forces a new interface to
+     * be created.
+     */
+    public readonly redundantInterface!: pulumi.Output<string | undefined>;
+    /**
      * The region this interface's router sits in. If not specified,
      * the project region will be used. Changing this forces a new interface to be
      * created.
@@ -117,6 +123,7 @@ export class RouterInterface extends pulumi.CustomResource {
             resourceInputs["ipRange"] = state ? state.ipRange : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["redundantInterface"] = state ? state.redundantInterface : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["router"] = state ? state.router : undefined;
             resourceInputs["vpnTunnel"] = state ? state.vpnTunnel : undefined;
@@ -129,6 +136,7 @@ export class RouterInterface extends pulumi.CustomResource {
             resourceInputs["ipRange"] = args ? args.ipRange : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["redundantInterface"] = args ? args.redundantInterface : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["router"] = args ? args.router : undefined;
             resourceInputs["vpnTunnel"] = args ? args.vpnTunnel : undefined;
@@ -164,6 +172,12 @@ export interface RouterInterfaceState {
      * is not provided, the provider project is used. Changing this forces a new interface to be created.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The name of the interface that is redundant to
+     * this interface. Changing this forces a new interface to
+     * be created.
+     */
+    redundantInterface?: pulumi.Input<string>;
     /**
      * The region this interface's router sits in. If not specified,
      * the project region will be used. Changing this forces a new interface to be
@@ -209,6 +223,12 @@ export interface RouterInterfaceArgs {
      * is not provided, the provider project is used. Changing this forces a new interface to be created.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The name of the interface that is redundant to
+     * this interface. Changing this forces a new interface to
+     * be created.
+     */
+    redundantInterface?: pulumi.Input<string>;
     /**
      * The region this interface's router sits in. If not specified,
      * the project region will be used. Changing this forces a new interface to be

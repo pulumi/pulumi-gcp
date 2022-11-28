@@ -157,6 +157,36 @@ import (
 //	}
 //
 // ```
+// ### Data Fusion Instance Enterprise
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datafusion"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datafusion.NewInstance(ctx, "enterpriseInstance", &datafusion.InstanceArgs{
+//				EnableRbac: pulumi.Bool(true),
+//				Options: pulumi.StringMap{
+//					"prober_test_run": pulumi.String("true"),
+//				},
+//				Region: pulumi.String("us-central1"),
+//				Type:   pulumi.String("ENTERPRISE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -197,6 +227,8 @@ type Instance struct {
 	DataprocServiceAccount pulumi.StringPtrOutput `pulumi:"dataprocServiceAccount"`
 	// An optional description of the instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Option to enable granular role-based access control.
+	EnableRbac pulumi.BoolPtrOutput `pulumi:"enableRbac"`
 	// Option to enable Stackdriver Logging.
 	EnableStackdriverLogging pulumi.BoolPtrOutput `pulumi:"enableStackdriverLogging"`
 	// Option to enable Stackdriver Monitoring.
@@ -295,6 +327,8 @@ type instanceState struct {
 	DataprocServiceAccount *string `pulumi:"dataprocServiceAccount"`
 	// An optional description of the instance.
 	Description *string `pulumi:"description"`
+	// Option to enable granular role-based access control.
+	EnableRbac *bool `pulumi:"enableRbac"`
 	// Option to enable Stackdriver Logging.
 	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
 	// Option to enable Stackdriver Monitoring.
@@ -362,6 +396,8 @@ type InstanceState struct {
 	DataprocServiceAccount pulumi.StringPtrInput
 	// An optional description of the instance.
 	Description pulumi.StringPtrInput
+	// Option to enable granular role-based access control.
+	EnableRbac pulumi.BoolPtrInput
 	// Option to enable Stackdriver Logging.
 	EnableStackdriverLogging pulumi.BoolPtrInput
 	// Option to enable Stackdriver Monitoring.
@@ -431,6 +467,8 @@ type instanceArgs struct {
 	DataprocServiceAccount *string `pulumi:"dataprocServiceAccount"`
 	// An optional description of the instance.
 	Description *string `pulumi:"description"`
+	// Option to enable granular role-based access control.
+	EnableRbac *bool `pulumi:"enableRbac"`
 	// Option to enable Stackdriver Logging.
 	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
 	// Option to enable Stackdriver Monitoring.
@@ -479,6 +517,8 @@ type InstanceArgs struct {
 	DataprocServiceAccount pulumi.StringPtrInput
 	// An optional description of the instance.
 	Description pulumi.StringPtrInput
+	// Option to enable granular role-based access control.
+	EnableRbac pulumi.BoolPtrInput
 	// Option to enable Stackdriver Logging.
 	EnableStackdriverLogging pulumi.BoolPtrInput
 	// Option to enable Stackdriver Monitoring.
@@ -624,6 +664,11 @@ func (o InstanceOutput) DataprocServiceAccount() pulumi.StringPtrOutput {
 // An optional description of the instance.
 func (o InstanceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Option to enable granular role-based access control.
+func (o InstanceOutput) EnableRbac() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.EnableRbac }).(pulumi.BoolPtrOutput)
 }
 
 // Option to enable Stackdriver Logging.

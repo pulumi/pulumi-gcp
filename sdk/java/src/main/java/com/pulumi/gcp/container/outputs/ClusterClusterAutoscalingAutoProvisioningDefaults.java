@@ -4,6 +4,8 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsManagement;
+import com.pulumi.gcp.container.outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -36,6 +38,11 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
      */
     private @Nullable String imageType;
     /**
+     * @return NodeManagement configuration for this NodePool. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterClusterAutoscalingAutoProvisioningDefaultsManagement management;
+    /**
      * @return Minimum CPU platform to be used by this instance.
      * The instance may be scheduled on the specified or newer CPU platform. Applicable
      * values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
@@ -57,6 +64,11 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
      * 
      */
     private @Nullable String serviceAccount;
+    /**
+     * @return Shielded Instance options. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig shieldedInstanceConfig;
 
     private ClusterClusterAutoscalingAutoProvisioningDefaults() {}
     /**
@@ -90,6 +102,13 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
         return Optional.ofNullable(this.imageType);
     }
     /**
+     * @return NodeManagement configuration for this NodePool. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterClusterAutoscalingAutoProvisioningDefaultsManagement> management() {
+        return Optional.ofNullable(this.management);
+    }
+    /**
      * @return Minimum CPU platform to be used by this instance.
      * The instance may be scheduled on the specified or newer CPU platform. Applicable
      * values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
@@ -117,6 +136,13 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
     public Optional<String> serviceAccount() {
         return Optional.ofNullable(this.serviceAccount);
     }
+    /**
+     * @return Shielded Instance options. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig> shieldedInstanceConfig() {
+        return Optional.ofNullable(this.shieldedInstanceConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -131,9 +157,11 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
         private @Nullable Integer diskSize;
         private @Nullable String diskType;
         private @Nullable String imageType;
+        private @Nullable ClusterClusterAutoscalingAutoProvisioningDefaultsManagement management;
         private @Nullable String minCpuPlatform;
         private @Nullable List<String> oauthScopes;
         private @Nullable String serviceAccount;
+        private @Nullable ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig shieldedInstanceConfig;
         public Builder() {}
         public Builder(ClusterClusterAutoscalingAutoProvisioningDefaults defaults) {
     	      Objects.requireNonNull(defaults);
@@ -141,9 +169,11 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
     	      this.diskSize = defaults.diskSize;
     	      this.diskType = defaults.diskType;
     	      this.imageType = defaults.imageType;
+    	      this.management = defaults.management;
     	      this.minCpuPlatform = defaults.minCpuPlatform;
     	      this.oauthScopes = defaults.oauthScopes;
     	      this.serviceAccount = defaults.serviceAccount;
+    	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
         }
 
         @CustomType.Setter
@@ -167,6 +197,11 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
             return this;
         }
         @CustomType.Setter
+        public Builder management(@Nullable ClusterClusterAutoscalingAutoProvisioningDefaultsManagement management) {
+            this.management = management;
+            return this;
+        }
+        @CustomType.Setter
         public Builder minCpuPlatform(@Nullable String minCpuPlatform) {
             this.minCpuPlatform = minCpuPlatform;
             return this;
@@ -184,15 +219,22 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
             this.serviceAccount = serviceAccount;
             return this;
         }
+        @CustomType.Setter
+        public Builder shieldedInstanceConfig(@Nullable ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig shieldedInstanceConfig) {
+            this.shieldedInstanceConfig = shieldedInstanceConfig;
+            return this;
+        }
         public ClusterClusterAutoscalingAutoProvisioningDefaults build() {
             final var o = new ClusterClusterAutoscalingAutoProvisioningDefaults();
             o.bootDiskKmsKey = bootDiskKmsKey;
             o.diskSize = diskSize;
             o.diskType = diskType;
             o.imageType = imageType;
+            o.management = management;
             o.minCpuPlatform = minCpuPlatform;
             o.oauthScopes = oauthScopes;
             o.serviceAccount = serviceAccount;
+            o.shieldedInstanceConfig = shieldedInstanceConfig;
             return o;
         }
     }

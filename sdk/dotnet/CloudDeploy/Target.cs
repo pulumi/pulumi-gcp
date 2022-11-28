@@ -13,6 +13,54 @@ namespace Pulumi.Gcp.CloudDeploy
     /// The Cloud Deploy `Target` resource
     /// 
     /// ## Example Usage
+    /// ### Run_target
+    /// tests creating and updating a cloud run target
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.CloudDeploy.Target("primary", new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         Annotations = 
+    ///         {
+    ///             { "my_first_annotation", "example-annotation-1" },
+    ///             { "my_second_annotation", "example-annotation-2" },
+    ///         },
+    ///         Description = "basic description",
+    ///         ExecutionConfigs = new[]
+    ///         {
+    ///             new Gcp.CloudDeploy.Inputs.TargetExecutionConfigArgs
+    ///             {
+    ///                 Usages = new[]
+    ///                 {
+    ///                     "RENDER",
+    ///                     "DEPLOY",
+    ///                 },
+    ///                 ExecutionTimeout = "3600s",
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "my_first_label", "example-label-1" },
+    ///             { "my_second_label", "example-label-2" },
+    ///         },
+    ///         Project = "my-project-name",
+    ///         RequireApproval = false,
+    ///         Run = new Gcp.CloudDeploy.Inputs.TargetRunArgs
+    ///         {
+    ///             Location = "projects/my-project-name/locations/us-west1",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Target
     /// Creates a basic Cloud Deploy target
     /// ```csharp
@@ -116,7 +164,7 @@ namespace Pulumi.Gcp.CloudDeploy
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The location for the resource
+        /// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -138,6 +186,12 @@ namespace Pulumi.Gcp.CloudDeploy
         /// </summary>
         [Output("requireApproval")]
         public Output<bool?> RequireApproval { get; private set; } = null!;
+
+        /// <summary>
+        /// (Beta only) Information specifying a Cloud Run deployment target.
+        /// </summary>
+        [Output("run")]
+        public Output<Outputs.TargetRun?> Run { get; private set; } = null!;
 
         /// <summary>
         /// Output only. Resource id of the `Target`.
@@ -258,7 +312,7 @@ namespace Pulumi.Gcp.CloudDeploy
         }
 
         /// <summary>
-        /// The location for the resource
+        /// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -280,6 +334,12 @@ namespace Pulumi.Gcp.CloudDeploy
         /// </summary>
         [Input("requireApproval")]
         public Input<bool>? RequireApproval { get; set; }
+
+        /// <summary>
+        /// (Beta only) Information specifying a Cloud Run deployment target.
+        /// </summary>
+        [Input("run")]
+        public Input<Inputs.TargetRunArgs>? Run { get; set; }
 
         public TargetArgs()
         {
@@ -357,7 +417,7 @@ namespace Pulumi.Gcp.CloudDeploy
         }
 
         /// <summary>
-        /// The location for the resource
+        /// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -379,6 +439,12 @@ namespace Pulumi.Gcp.CloudDeploy
         /// </summary>
         [Input("requireApproval")]
         public Input<bool>? RequireApproval { get; set; }
+
+        /// <summary>
+        /// (Beta only) Information specifying a Cloud Run deployment target.
+        /// </summary>
+        [Input("run")]
+        public Input<Inputs.TargetRunGetArgs>? Run { get; set; }
 
         /// <summary>
         /// Output only. Resource id of the `Target`.

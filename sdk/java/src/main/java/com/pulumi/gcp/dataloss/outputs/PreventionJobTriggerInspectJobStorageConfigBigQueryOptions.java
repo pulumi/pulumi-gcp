@@ -5,10 +5,36 @@ package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference;
+import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
+    /**
+     * @return Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
+     * If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
+     * specified. Cannot be used in conjunction with TimespanConfig.
+     * 
+     */
+    private @Nullable Integer rowsLimit;
+    /**
+     * @return Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down.
+     * Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of
+     * rowsLimit and rowsLimitPercent can be specified. Cannot be used in conjunction with TimespanConfig.
+     * 
+     */
+    private @Nullable Integer rowsLimitPercent;
+    /**
+     * @return How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+     * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+     * Default value is `TOP`.
+     * Possible values are `TOP` and `RANDOM_START`.
+     * 
+     */
+    private @Nullable String sampleMethod;
     /**
      * @return Set of files to scan.
      * Structure is documented below.
@@ -17,6 +43,34 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
     private PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference tableReference;
 
     private PreventionJobTriggerInspectJobStorageConfigBigQueryOptions() {}
+    /**
+     * @return Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
+     * If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
+     * specified. Cannot be used in conjunction with TimespanConfig.
+     * 
+     */
+    public Optional<Integer> rowsLimit() {
+        return Optional.ofNullable(this.rowsLimit);
+    }
+    /**
+     * @return Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down.
+     * Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of
+     * rowsLimit and rowsLimitPercent can be specified. Cannot be used in conjunction with TimespanConfig.
+     * 
+     */
+    public Optional<Integer> rowsLimitPercent() {
+        return Optional.ofNullable(this.rowsLimitPercent);
+    }
+    /**
+     * @return How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+     * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+     * Default value is `TOP`.
+     * Possible values are `TOP` and `RANDOM_START`.
+     * 
+     */
+    public Optional<String> sampleMethod() {
+        return Optional.ofNullable(this.sampleMethod);
+    }
     /**
      * @return Set of files to scan.
      * Structure is documented below.
@@ -35,13 +89,34 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer rowsLimit;
+        private @Nullable Integer rowsLimitPercent;
+        private @Nullable String sampleMethod;
         private PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference tableReference;
         public Builder() {}
         public Builder(PreventionJobTriggerInspectJobStorageConfigBigQueryOptions defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.rowsLimit = defaults.rowsLimit;
+    	      this.rowsLimitPercent = defaults.rowsLimitPercent;
+    	      this.sampleMethod = defaults.sampleMethod;
     	      this.tableReference = defaults.tableReference;
         }
 
+        @CustomType.Setter
+        public Builder rowsLimit(@Nullable Integer rowsLimit) {
+            this.rowsLimit = rowsLimit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rowsLimitPercent(@Nullable Integer rowsLimitPercent) {
+            this.rowsLimitPercent = rowsLimitPercent;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sampleMethod(@Nullable String sampleMethod) {
+            this.sampleMethod = sampleMethod;
+            return this;
+        }
         @CustomType.Setter
         public Builder tableReference(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference tableReference) {
             this.tableReference = Objects.requireNonNull(tableReference);
@@ -49,6 +124,9 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
         }
         public PreventionJobTriggerInspectJobStorageConfigBigQueryOptions build() {
             final var o = new PreventionJobTriggerInspectJobStorageConfigBigQueryOptions();
+            o.rowsLimit = rowsLimit;
+            o.rowsLimitPercent = rowsLimitPercent;
+            o.sampleMethod = sampleMethod;
             o.tableReference = tableReference;
             return o;
         }

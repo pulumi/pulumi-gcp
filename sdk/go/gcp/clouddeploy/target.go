@@ -14,6 +14,54 @@ import (
 // The Cloud Deploy `Target` resource
 //
 // ## Example Usage
+// ### Run_target
+// tests creating and updating a cloud run target
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/clouddeploy"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := clouddeploy.NewTarget(ctx, "primary", &clouddeploy.TargetArgs{
+//				Location: pulumi.String("us-west1"),
+//				Annotations: pulumi.StringMap{
+//					"my_first_annotation":  pulumi.String("example-annotation-1"),
+//					"my_second_annotation": pulumi.String("example-annotation-2"),
+//				},
+//				Description: pulumi.String("basic description"),
+//				ExecutionConfigs: clouddeploy.TargetExecutionConfigArray{
+//					&clouddeploy.TargetExecutionConfigArgs{
+//						Usages: pulumi.StringArray{
+//							pulumi.String("RENDER"),
+//							pulumi.String("DEPLOY"),
+//						},
+//						ExecutionTimeout: pulumi.String("3600s"),
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"my_first_label":  pulumi.String("example-label-1"),
+//					"my_second_label": pulumi.String("example-label-2"),
+//				},
+//				Project:         pulumi.String("my-project-name"),
+//				RequireApproval: pulumi.Bool(false),
+//				Run: &clouddeploy.TargetRunArgs{
+//					Location: pulumi.String("projects/my-project-name/locations/us-west1"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Target
 // Creates a basic Cloud Deploy target
 // ```go
@@ -95,7 +143,7 @@ type Target struct {
 	Gke TargetGkePtrOutput `pulumi:"gke"`
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The location for the resource
+	// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -103,6 +151,8 @@ type Target struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval pulumi.BoolPtrOutput `pulumi:"requireApproval"`
+	// (Beta only) Information specifying a Cloud Run deployment target.
+	Run TargetRunPtrOutput `pulumi:"run"`
 	// Output only. Resource id of the `Target`.
 	TargetId pulumi.StringOutput `pulumi:"targetId"`
 	// Output only. Unique identifier of the `Target`.
@@ -160,7 +210,7 @@ type targetState struct {
 	Gke *TargetGke `pulumi:"gke"`
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels map[string]string `pulumi:"labels"`
-	// The location for the resource
+	// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
 	Location *string `pulumi:"location"`
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	Name *string `pulumi:"name"`
@@ -168,6 +218,8 @@ type targetState struct {
 	Project *string `pulumi:"project"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval *bool `pulumi:"requireApproval"`
+	// (Beta only) Information specifying a Cloud Run deployment target.
+	Run *TargetRun `pulumi:"run"`
 	// Output only. Resource id of the `Target`.
 	TargetId *string `pulumi:"targetId"`
 	// Output only. Unique identifier of the `Target`.
@@ -194,7 +246,7 @@ type TargetState struct {
 	Gke TargetGkePtrInput
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels pulumi.StringMapInput
-	// The location for the resource
+	// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
 	Location pulumi.StringPtrInput
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	Name pulumi.StringPtrInput
@@ -202,6 +254,8 @@ type TargetState struct {
 	Project pulumi.StringPtrInput
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval pulumi.BoolPtrInput
+	// (Beta only) Information specifying a Cloud Run deployment target.
+	Run TargetRunPtrInput
 	// Output only. Resource id of the `Target`.
 	TargetId pulumi.StringPtrInput
 	// Output only. Unique identifier of the `Target`.
@@ -227,7 +281,7 @@ type targetArgs struct {
 	Gke *TargetGke `pulumi:"gke"`
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels map[string]string `pulumi:"labels"`
-	// The location for the resource
+	// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
 	Location string `pulumi:"location"`
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	Name *string `pulumi:"name"`
@@ -235,6 +289,8 @@ type targetArgs struct {
 	Project *string `pulumi:"project"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval *bool `pulumi:"requireApproval"`
+	// (Beta only) Information specifying a Cloud Run deployment target.
+	Run *TargetRun `pulumi:"run"`
 }
 
 // The set of arguments for constructing a Target resource.
@@ -251,7 +307,7 @@ type TargetArgs struct {
 	Gke TargetGkePtrInput
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels pulumi.StringMapInput
-	// The location for the resource
+	// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
 	Location pulumi.StringInput
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	Name pulumi.StringPtrInput
@@ -259,6 +315,8 @@ type TargetArgs struct {
 	Project pulumi.StringPtrInput
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval pulumi.BoolPtrInput
+	// (Beta only) Information specifying a Cloud Run deployment target.
+	Run TargetRunPtrInput
 }
 
 func (TargetArgs) ElementType() reflect.Type {
@@ -389,7 +447,7 @@ func (o TargetOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The location for the resource
+// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
 func (o TargetOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -407,6 +465,11 @@ func (o TargetOutput) Project() pulumi.StringOutput {
 // Optional. Whether or not the `Target` requires approval.
 func (o TargetOutput) RequireApproval() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Target) pulumi.BoolPtrOutput { return v.RequireApproval }).(pulumi.BoolPtrOutput)
+}
+
+// (Beta only) Information specifying a Cloud Run deployment target.
+func (o TargetOutput) Run() TargetRunPtrOutput {
+	return o.ApplyT(func(v *Target) TargetRunPtrOutput { return v.Run }).(TargetRunPtrOutput)
 }
 
 // Output only. Resource id of the `Target`.

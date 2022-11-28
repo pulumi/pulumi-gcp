@@ -89,10 +89,11 @@ type Group struct {
 	// Default value is `EMPTY`.
 	// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
 	InitialGroupConfig pulumi.StringPtrOutput `pulumi:"initialGroupConfig"`
-	// The labels that apply to the Group.
-	// Must not contain more than one entry. Must contain the entry
-	// 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
-	// 'system/groups/external': '' if the Group is an external-identity-mapped group.
+	// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
+	// Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
+	// Existing Google Groups can have an additional label with a key of cloudidentity.googleapis.com/groups.security and an empty value added to them. This is an immutable change and the security label cannot be removed once added.
+	// Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
+	// Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -160,10 +161,11 @@ type groupState struct {
 	// Default value is `EMPTY`.
 	// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
 	InitialGroupConfig *string `pulumi:"initialGroupConfig"`
-	// The labels that apply to the Group.
-	// Must not contain more than one entry. Must contain the entry
-	// 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
-	// 'system/groups/external': '' if the Group is an external-identity-mapped group.
+	// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
+	// Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
+	// Existing Google Groups can have an additional label with a key of cloudidentity.googleapis.com/groups.security and an empty value added to them. This is an immutable change and the security label cannot be removed once added.
+	// Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
+	// Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
 	Labels map[string]string `pulumi:"labels"`
 	// Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
 	Name *string `pulumi:"name"`
@@ -194,10 +196,11 @@ type GroupState struct {
 	// Default value is `EMPTY`.
 	// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
 	InitialGroupConfig pulumi.StringPtrInput
-	// The labels that apply to the Group.
-	// Must not contain more than one entry. Must contain the entry
-	// 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
-	// 'system/groups/external': '' if the Group is an external-identity-mapped group.
+	// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
+	// Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
+	// Existing Google Groups can have an additional label with a key of cloudidentity.googleapis.com/groups.security and an empty value added to them. This is an immutable change and the security label cannot be removed once added.
+	// Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
+	// Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
 	Labels pulumi.StringMapInput
 	// Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
 	Name pulumi.StringPtrInput
@@ -230,10 +233,11 @@ type groupArgs struct {
 	// Default value is `EMPTY`.
 	// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
 	InitialGroupConfig *string `pulumi:"initialGroupConfig"`
-	// The labels that apply to the Group.
-	// Must not contain more than one entry. Must contain the entry
-	// 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
-	// 'system/groups/external': '' if the Group is an external-identity-mapped group.
+	// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
+	// Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
+	// Existing Google Groups can have an additional label with a key of cloudidentity.googleapis.com/groups.security and an empty value added to them. This is an immutable change and the security label cannot be removed once added.
+	// Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
+	// Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the entity under which this Group resides in the
 	// Cloud Identity resource hierarchy.
@@ -259,10 +263,11 @@ type GroupArgs struct {
 	// Default value is `EMPTY`.
 	// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
 	InitialGroupConfig pulumi.StringPtrInput
-	// The labels that apply to the Group.
-	// Must not contain more than one entry. Must contain the entry
-	// 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
-	// 'system/groups/external': '' if the Group is an external-identity-mapped group.
+	// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
+	// Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
+	// Existing Google Groups can have an additional label with a key of cloudidentity.googleapis.com/groups.security and an empty value added to them. This is an immutable change and the security label cannot be removed once added.
+	// Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
+	// Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
 	Labels pulumi.StringMapInput
 	// The resource name of the entity under which this Group resides in the
 	// Cloud Identity resource hierarchy.
@@ -390,10 +395,11 @@ func (o GroupOutput) InitialGroupConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.InitialGroupConfig }).(pulumi.StringPtrOutput)
 }
 
-// The labels that apply to the Group.
-// Must not contain more than one entry. Must contain the entry
-// 'cloudidentity.googleapis.com/groups.discussion_forum': ” if the Group is a Google Group or
-// 'system/groups/external': ” if the Group is an external-identity-mapped group.
+// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
+// Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
+// Existing Google Groups can have an additional label with a key of cloudidentity.googleapis.com/groups.security and an empty value added to them. This is an immutable change and the security label cannot be removed once added.
+// Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
+// Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
 func (o GroupOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }

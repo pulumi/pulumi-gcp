@@ -152,6 +152,91 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Dataset Access Authorized Routine
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			publicDataset, err := bigquery.NewDataset(ctx, "publicDataset", &bigquery.DatasetArgs{
+//				DatasetId:   pulumi.String("public_dataset"),
+//				Description: pulumi.String("This dataset is public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"typeKind": "INT64",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"columns": []map[string]interface{}{
+//					map[string]interface{}{
+//						"name": "value",
+//						"type": map[string]interface{}{
+//							"typeKind": "INT64",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			publicRoutine, err := bigquery.NewRoutine(ctx, "publicRoutine", &bigquery.RoutineArgs{
+//				DatasetId:      publicDataset.DatasetId,
+//				RoutineId:      pulumi.String("public_routine"),
+//				RoutineType:    pulumi.String("TABLE_VALUED_FUNCTION"),
+//				Language:       pulumi.String("SQL"),
+//				DefinitionBody: pulumi.String("SELECT 1 + value AS value\n"),
+//				Arguments: bigquery.RoutineArgumentArray{
+//					&bigquery.RoutineArgumentArgs{
+//						Name:         pulumi.String("value"),
+//						ArgumentKind: pulumi.String("FIXED_TYPE"),
+//						DataType:     pulumi.String(json0),
+//					},
+//				},
+//				ReturnTableType: pulumi.String(json1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			private, err := bigquery.NewDataset(ctx, "private", &bigquery.DatasetArgs{
+//				DatasetId:   pulumi.String("private_dataset"),
+//				Description: pulumi.String("This dataset is private"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetAccess(ctx, "authorizedRoutine", &bigquery.DatasetAccessArgs{
+//				DatasetId: private.DatasetId,
+//				Routine: &bigquery.DatasetAccessRoutineArgs{
+//					ProjectId: publicRoutine.Project,
+//					DatasetId: publicRoutine.DatasetId,
+//					RoutineId: publicRoutine.RoutineId,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -185,6 +270,13 @@ type DatasetAccess struct {
 	// post-create. See
 	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role pulumi.StringPtrOutput `pulumi:"role"`
+	// A routine from a different dataset to grant access to. Queries
+	// executed against that routine will have read access to tables in
+	// this dataset. The role field is not required when this field is
+	// set. If that routine is updated by any user, access to the routine
+	// needs to be granted again via an update operation.
+	// Structure is documented below.
+	Routine DatasetAccessRoutinePtrOutput `pulumi:"routine"`
 	// A special group to grant access to. Possible values include:
 	SpecialGroup pulumi.StringPtrOutput `pulumi:"specialGroup"`
 	// An email address of a user to grant access to. For example:
@@ -257,6 +349,13 @@ type datasetAccessState struct {
 	// post-create. See
 	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role *string `pulumi:"role"`
+	// A routine from a different dataset to grant access to. Queries
+	// executed against that routine will have read access to tables in
+	// this dataset. The role field is not required when this field is
+	// set. If that routine is updated by any user, access to the routine
+	// needs to be granted again via an update operation.
+	// Structure is documented below.
+	Routine *DatasetAccessRoutine `pulumi:"routine"`
 	// A special group to grant access to. Possible values include:
 	SpecialGroup *string `pulumi:"specialGroup"`
 	// An email address of a user to grant access to. For example:
@@ -298,6 +397,13 @@ type DatasetAccessState struct {
 	// post-create. See
 	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role pulumi.StringPtrInput
+	// A routine from a different dataset to grant access to. Queries
+	// executed against that routine will have read access to tables in
+	// this dataset. The role field is not required when this field is
+	// set. If that routine is updated by any user, access to the routine
+	// needs to be granted again via an update operation.
+	// Structure is documented below.
+	Routine DatasetAccessRoutinePtrInput
 	// A special group to grant access to. Possible values include:
 	SpecialGroup pulumi.StringPtrInput
 	// An email address of a user to grant access to. For example:
@@ -340,6 +446,13 @@ type datasetAccessArgs struct {
 	// post-create. See
 	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role *string `pulumi:"role"`
+	// A routine from a different dataset to grant access to. Queries
+	// executed against that routine will have read access to tables in
+	// this dataset. The role field is not required when this field is
+	// set. If that routine is updated by any user, access to the routine
+	// needs to be granted again via an update operation.
+	// Structure is documented below.
+	Routine *DatasetAccessRoutine `pulumi:"routine"`
 	// A special group to grant access to. Possible values include:
 	SpecialGroup *string `pulumi:"specialGroup"`
 	// An email address of a user to grant access to. For example:
@@ -379,6 +492,13 @@ type DatasetAccessArgs struct {
 	// post-create. See
 	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role pulumi.StringPtrInput
+	// A routine from a different dataset to grant access to. Queries
+	// executed against that routine will have read access to tables in
+	// this dataset. The role field is not required when this field is
+	// set. If that routine is updated by any user, access to the routine
+	// needs to be granted again via an update operation.
+	// Structure is documented below.
+	Routine DatasetAccessRoutinePtrInput
 	// A special group to grant access to. Possible values include:
 	SpecialGroup pulumi.StringPtrInput
 	// An email address of a user to grant access to. For example:
@@ -528,6 +648,16 @@ func (o DatasetAccessOutput) Project() pulumi.StringOutput {
 // [official docs](https://cloud.google.com/bigquery/docs/access-control).
 func (o DatasetAccessOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatasetAccess) pulumi.StringPtrOutput { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+// A routine from a different dataset to grant access to. Queries
+// executed against that routine will have read access to tables in
+// this dataset. The role field is not required when this field is
+// set. If that routine is updated by any user, access to the routine
+// needs to be granted again via an update operation.
+// Structure is documented below.
+func (o DatasetAccessOutput) Routine() DatasetAccessRoutinePtrOutput {
+	return o.ApplyT(func(v *DatasetAccess) DatasetAccessRoutinePtrOutput { return v.Routine }).(DatasetAccessRoutinePtrOutput)
 }
 
 // A special group to grant access to. Possible values include:

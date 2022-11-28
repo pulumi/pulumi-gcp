@@ -6,6 +6,7 @@ package com.pulumi.gcp.gkehub.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementArgs;
+import com.pulumi.gcp.gkehub.inputs.FeatureMembershipMeshArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -77,6 +78,21 @@ public final class FeatureMembershipState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Service mesh specific spec. Structure is documented below.
+     * 
+     */
+    @Import(name="mesh")
+    private @Nullable Output<FeatureMembershipMeshArgs> mesh;
+
+    /**
+     * @return Service mesh specific spec. Structure is documented below.
+     * 
+     */
+    public Optional<Output<FeatureMembershipMeshArgs>> mesh() {
+        return Optional.ofNullable(this.mesh);
+    }
+
+    /**
      * The project of the feature
      * 
      */
@@ -98,6 +114,7 @@ public final class FeatureMembershipState extends com.pulumi.resources.ResourceA
         this.feature = $.feature;
         this.location = $.location;
         this.membership = $.membership;
+        this.mesh = $.mesh;
         this.project = $.project;
     }
 
@@ -201,6 +218,27 @@ public final class FeatureMembershipState extends com.pulumi.resources.ResourceA
          */
         public Builder membership(String membership) {
             return membership(Output.of(membership));
+        }
+
+        /**
+         * @param mesh Service mesh specific spec. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mesh(@Nullable Output<FeatureMembershipMeshArgs> mesh) {
+            $.mesh = mesh;
+            return this;
+        }
+
+        /**
+         * @param mesh Service mesh specific spec. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mesh(FeatureMembershipMeshArgs mesh) {
+            return mesh(Output.of(mesh));
         }
 
         /**

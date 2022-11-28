@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodePoolManagement {
+    /**
+     * @return Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+     * 
+     */
     private @Nullable Boolean autoRepair;
+    /**
+     * @return Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
+     * 
+     */
     private @Nullable Boolean autoUpgrade;
 
     private ClusterNodePoolManagement() {}
+    /**
+     * @return Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+     * 
+     */
     public Optional<Boolean> autoRepair() {
         return Optional.ofNullable(this.autoRepair);
     }
+    /**
+     * @return Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
+     * 
+     */
     public Optional<Boolean> autoUpgrade() {
         return Optional.ofNullable(this.autoUpgrade);
     }

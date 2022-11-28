@@ -4,8 +4,11 @@
 package com.pulumi.gcp.networkservices.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class EdgeCacheKeysetPublicKey {
@@ -17,12 +20,17 @@ public final class EdgeCacheKeysetPublicKey {
      */
     private String id;
     /**
+     * @return Set to true to have the CDN automatically manage this public key value.
+     * 
+     */
+    private @Nullable Boolean managed;
+    /**
      * @return The base64-encoded value of the Ed25519 public key. The base64 encoding can be padded (44 bytes) or unpadded (43 bytes).
      * Representations or encodings of the public key other than this will be rejected with an error.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private String value;
+    private @Nullable String value;
 
     private EdgeCacheKeysetPublicKey() {}
     /**
@@ -35,13 +43,20 @@ public final class EdgeCacheKeysetPublicKey {
         return this.id;
     }
     /**
+     * @return Set to true to have the CDN automatically manage this public key value.
+     * 
+     */
+    public Optional<Boolean> managed() {
+        return Optional.ofNullable(this.managed);
+    }
+    /**
      * @return The base64-encoded value of the Ed25519 public key. The base64 encoding can be padded (44 bytes) or unpadded (43 bytes).
      * Representations or encodings of the public key other than this will be rejected with an error.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public String value() {
-        return this.value;
+    public Optional<String> value() {
+        return Optional.ofNullable(this.value);
     }
 
     public static Builder builder() {
@@ -54,11 +69,13 @@ public final class EdgeCacheKeysetPublicKey {
     @CustomType.Builder
     public static final class Builder {
         private String id;
-        private String value;
+        private @Nullable Boolean managed;
+        private @Nullable String value;
         public Builder() {}
         public Builder(EdgeCacheKeysetPublicKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.managed = defaults.managed;
     	      this.value = defaults.value;
         }
 
@@ -68,13 +85,19 @@ public final class EdgeCacheKeysetPublicKey {
             return this;
         }
         @CustomType.Setter
-        public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+        public Builder managed(@Nullable Boolean managed) {
+            this.managed = managed;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder value(@Nullable String value) {
+            this.value = value;
             return this;
         }
         public EdgeCacheKeysetPublicKey build() {
             final var o = new EdgeCacheKeysetPublicKey();
             o.id = id;
+            o.managed = managed;
             o.value = value;
             return o;
         }

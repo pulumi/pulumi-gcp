@@ -32,6 +32,10 @@ public final class ClusterNodePool {
     private @Nullable Integer initialNodeCount;
     private @Nullable List<String> instanceGroupUrls;
     private @Nullable List<String> managedInstanceGroupUrls;
+    /**
+     * @return NodeManagement configuration for this NodePool. Structure is documented below.
+     * 
+     */
     private @Nullable ClusterNodePoolManagement management;
     private @Nullable Integer maxPodsPerNode;
     /**
@@ -91,6 +95,10 @@ public final class ClusterNodePool {
     public List<String> managedInstanceGroupUrls() {
         return this.managedInstanceGroupUrls == null ? List.of() : this.managedInstanceGroupUrls;
     }
+    /**
+     * @return NodeManagement configuration for this NodePool. Structure is documented below.
+     * 
+     */
     public Optional<ClusterNodePoolManagement> management() {
         return Optional.ofNullable(this.management);
     }

@@ -22,9 +22,10 @@ public final class RegionUrlMapPathMatcherRouteRuleArgs extends com.pulumi.resou
     public static final RegionUrlMapPathMatcherRouteRuleArgs Empty = new RegionUrlMapPathMatcherRouteRuleArgs();
 
     /**
-     * Specifies changes to request and response headers that need to take effect for
-     * the selected backendService. headerAction specified here take effect before
-     * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+     * Specifies changes to request and response headers that need to take effect for the selected backendService.
+     * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+     * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+     * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
      * Structure is documented below.
      * 
      */
@@ -32,9 +33,10 @@ public final class RegionUrlMapPathMatcherRouteRuleArgs extends com.pulumi.resou
     private @Nullable Output<RegionUrlMapPathMatcherRouteRuleHeaderActionArgs> headerAction;
 
     /**
-     * @return Specifies changes to request and response headers that need to take effect for
-     * the selected backendService. headerAction specified here take effect before
-     * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+     * @return Specifies changes to request and response headers that need to take effect for the selected backendService.
+     * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+     * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+     * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
      * Structure is documented below.
      * 
      */
@@ -191,9 +193,10 @@ public final class RegionUrlMapPathMatcherRouteRuleArgs extends com.pulumi.resou
         }
 
         /**
-         * @param headerAction Specifies changes to request and response headers that need to take effect for
-         * the selected backendService. headerAction specified here take effect before
-         * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+         * @param headerAction Specifies changes to request and response headers that need to take effect for the selected backendService.
+         * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+         * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+         * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
          * Structure is documented below.
          * 
          * @return builder
@@ -205,9 +208,10 @@ public final class RegionUrlMapPathMatcherRouteRuleArgs extends com.pulumi.resou
         }
 
         /**
-         * @param headerAction Specifies changes to request and response headers that need to take effect for
-         * the selected backendService. headerAction specified here take effect before
-         * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+         * @param headerAction Specifies changes to request and response headers that need to take effect for the selected backendService.
+         * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+         * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+         * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
          * Structure is documented below.
          * 
          * @return builder

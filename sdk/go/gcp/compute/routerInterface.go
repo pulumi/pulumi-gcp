@@ -71,6 +71,10 @@ type RouterInterface struct {
 	// The ID of the project in which this interface's router belongs. If it
 	// is not provided, the provider project is used. Changing this forces a new interface to be created.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The name of the interface that is redundant to
+	// this interface. Changing this forces a new interface to
+	// be created.
+	RedundantInterface pulumi.StringPtrOutput `pulumi:"redundantInterface"`
 	// The region this interface's router sits in. If not specified,
 	// the project region will be used. Changing this forces a new interface to be
 	// created.
@@ -130,6 +134,10 @@ type routerInterfaceState struct {
 	// The ID of the project in which this interface's router belongs. If it
 	// is not provided, the provider project is used. Changing this forces a new interface to be created.
 	Project *string `pulumi:"project"`
+	// The name of the interface that is redundant to
+	// this interface. Changing this forces a new interface to
+	// be created.
+	RedundantInterface *string `pulumi:"redundantInterface"`
 	// The region this interface's router sits in. If not specified,
 	// the project region will be used. Changing this forces a new interface to be
 	// created.
@@ -158,6 +166,10 @@ type RouterInterfaceState struct {
 	// The ID of the project in which this interface's router belongs. If it
 	// is not provided, the provider project is used. Changing this forces a new interface to be created.
 	Project pulumi.StringPtrInput
+	// The name of the interface that is redundant to
+	// this interface. Changing this forces a new interface to
+	// be created.
+	RedundantInterface pulumi.StringPtrInput
 	// The region this interface's router sits in. If not specified,
 	// the project region will be used. Changing this forces a new interface to be
 	// created.
@@ -190,6 +202,10 @@ type routerInterfaceArgs struct {
 	// The ID of the project in which this interface's router belongs. If it
 	// is not provided, the provider project is used. Changing this forces a new interface to be created.
 	Project *string `pulumi:"project"`
+	// The name of the interface that is redundant to
+	// this interface. Changing this forces a new interface to
+	// be created.
+	RedundantInterface *string `pulumi:"redundantInterface"`
 	// The region this interface's router sits in. If not specified,
 	// the project region will be used. Changing this forces a new interface to be
 	// created.
@@ -219,6 +235,10 @@ type RouterInterfaceArgs struct {
 	// The ID of the project in which this interface's router belongs. If it
 	// is not provided, the provider project is used. Changing this forces a new interface to be created.
 	Project pulumi.StringPtrInput
+	// The name of the interface that is redundant to
+	// this interface. Changing this forces a new interface to
+	// be created.
+	RedundantInterface pulumi.StringPtrInput
 	// The region this interface's router sits in. If not specified,
 	// the project region will be used. Changing this forces a new interface to be
 	// created.
@@ -343,6 +363,13 @@ func (o RouterInterfaceOutput) Name() pulumi.StringOutput {
 // is not provided, the provider project is used. Changing this forces a new interface to be created.
 func (o RouterInterfaceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The name of the interface that is redundant to
+// this interface. Changing this forces a new interface to
+// be created.
+func (o RouterInterfaceOutput) RedundantInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.RedundantInterface }).(pulumi.StringPtrOutput)
 }
 
 // The region this interface's router sits in. If not specified,

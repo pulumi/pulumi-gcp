@@ -39,6 +39,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEncryptionSpecArgs;
  * import com.pulumi.gcp.vertex.AiFeatureStoreEntityType;
  * import com.pulumi.gcp.vertex.AiFeatureStoreEntityTypeArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -66,6 +71,23 @@ import javax.annotation.Nullable;
  *         var entity = new AiFeatureStoreEntityType(&#34;entity&#34;, AiFeatureStoreEntityTypeArgs.builder()        
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .featurestore(featurestore.id())
+ *             .monitoringConfig(AiFeatureStoreEntityTypeMonitoringConfigArgs.builder()
+ *                 .snapshotAnalysis(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs.builder()
+ *                     .disabled(false)
+ *                     .monitoringIntervalDays(1)
+ *                     .stalenessDays(21)
+ *                     .build())
+ *                 .numericalThresholdConfig(AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs.builder()
+ *                     .value(0.8)
+ *                     .build())
+ *                 .categoricalThresholdConfig(AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs.builder()
+ *                     .value(10)
+ *                     .build())
+ *                 .importFeaturesAnalysis(AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs.builder()
+ *                     .state(&#34;ENABLED&#34;)
+ *                     .anomalyDetectionBaseline(&#34;PREVIOUS_IMPORT_FEATURES_STATS&#34;)
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -86,6 +108,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.AiFeatureStoreEntityTypeArgs;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigArgs;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -120,6 +144,12 @@ import javax.annotation.Nullable;
  *                 .snapshotAnalysis(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs.builder()
  *                     .disabled(false)
  *                     .monitoringInterval(&#34;86400s&#34;)
+ *                     .build())
+ *                 .categoricalThresholdConfig(AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs.builder()
+ *                     .value(0.3)
+ *                     .build())
+ *                 .numericalThresholdConfig(AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs.builder()
+ *                     .value(0.3)
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
@@ -230,6 +260,20 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The region of the EntityType.
+     * 
+     */
+    @Export(name="region", type=String.class, parameters={})
+    private Output<String> region;
+
+    /**
+     * @return The region of the EntityType.
+     * 
+     */
+    public Output<String> region() {
+        return this.region;
     }
     /**
      * The timestamp of when the featurestore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up

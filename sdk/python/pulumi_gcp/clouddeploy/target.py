@@ -25,10 +25,11 @@ class TargetArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 require_approval: Optional[pulumi.Input[bool]] = None):
+                 require_approval: Optional[pulumi.Input[bool]] = None,
+                 run: Optional[pulumi.Input['TargetRunArgs']] = None):
         """
         The set of arguments for constructing a Target resource.
-        :param pulumi.Input[str] location: The location for the resource
+        :param pulumi.Input[str] location: Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param pulumi.Input['TargetAnthosClusterArgs'] anthos_cluster: Information specifying an Anthos Cluster.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
@@ -38,6 +39,7 @@ class TargetArgs:
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
+        :param pulumi.Input['TargetRunArgs'] run: (Beta only) Information specifying a Cloud Run deployment target.
         """
         pulumi.set(__self__, "location", location)
         if annotations is not None:
@@ -58,12 +60,14 @@ class TargetArgs:
             pulumi.set(__self__, "project", project)
         if require_approval is not None:
             pulumi.set(__self__, "require_approval", require_approval)
+        if run is not None:
+            pulumi.set(__self__, "run", run)
 
     @property
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        The location for the resource
+        Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
         """
         return pulumi.get(self, "location")
 
@@ -179,6 +183,18 @@ class TargetArgs:
     def require_approval(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "require_approval", value)
 
+    @property
+    @pulumi.getter
+    def run(self) -> Optional[pulumi.Input['TargetRunArgs']]:
+        """
+        (Beta only) Information specifying a Cloud Run deployment target.
+        """
+        return pulumi.get(self, "run")
+
+    @run.setter
+    def run(self, value: Optional[pulumi.Input['TargetRunArgs']]):
+        pulumi.set(self, "run", value)
+
 
 @pulumi.input_type
 class _TargetState:
@@ -195,6 +211,7 @@ class _TargetState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  require_approval: Optional[pulumi.Input[bool]] = None,
+                 run: Optional[pulumi.Input['TargetRunArgs']] = None,
                  target_id: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
@@ -209,10 +226,11 @@ class _TargetState:
         :param pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
         :param pulumi.Input['TargetGkeArgs'] gke: Information specifying a GKE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
-        :param pulumi.Input[str] location: The location for the resource
+        :param pulumi.Input[str] location: Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
+        :param pulumi.Input['TargetRunArgs'] run: (Beta only) Information specifying a Cloud Run deployment target.
         :param pulumi.Input[str] target_id: Output only. Resource id of the `Target`.
         :param pulumi.Input[str] uid: Output only. Unique identifier of the `Target`.
         :param pulumi.Input[str] update_time: Output only. Most recent time at which the `Target` was updated.
@@ -241,6 +259,8 @@ class _TargetState:
             pulumi.set(__self__, "project", project)
         if require_approval is not None:
             pulumi.set(__self__, "require_approval", require_approval)
+        if run is not None:
+            pulumi.set(__self__, "run", run)
         if target_id is not None:
             pulumi.set(__self__, "target_id", target_id)
         if uid is not None:
@@ -349,7 +369,7 @@ class _TargetState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The location for the resource
+        Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
         """
         return pulumi.get(self, "location")
 
@@ -392,6 +412,18 @@ class _TargetState:
     @require_approval.setter
     def require_approval(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "require_approval", value)
+
+    @property
+    @pulumi.getter
+    def run(self) -> Optional[pulumi.Input['TargetRunArgs']]:
+        """
+        (Beta only) Information specifying a Cloud Run deployment target.
+        """
+        return pulumi.get(self, "run")
+
+    @run.setter
+    def run(self, value: Optional[pulumi.Input['TargetRunArgs']]):
+        pulumi.set(self, "run", value)
 
     @property
     @pulumi.getter(name="targetId")
@@ -445,11 +477,43 @@ class Target(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  require_approval: Optional[pulumi.Input[bool]] = None,
+                 run: Optional[pulumi.Input[pulumi.InputType['TargetRunArgs']]] = None,
                  __props__=None):
         """
         The Cloud Deploy `Target` resource
 
         ## Example Usage
+        ### Run_target
+        tests creating and updating a cloud run target
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.clouddeploy.Target("primary",
+            location="us-west1",
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            description="basic description",
+            execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
+                usages=[
+                    "RENDER",
+                    "DEPLOY",
+                ],
+                execution_timeout="3600s",
+            )],
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
+            project="my-project-name",
+            require_approval=False,
+            run=gcp.clouddeploy.TargetRunArgs(
+                location="projects/my-project-name/locations/us-west1",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
         ### Target
         Creates a basic Cloud Deploy target
         ```python
@@ -498,10 +562,11 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArgs']]]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
         :param pulumi.Input[pulumi.InputType['TargetGkeArgs']] gke: Information specifying a GKE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
-        :param pulumi.Input[str] location: The location for the resource
+        :param pulumi.Input[str] location: Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
+        :param pulumi.Input[pulumi.InputType['TargetRunArgs']] run: (Beta only) Information specifying a Cloud Run deployment target.
         """
         ...
     @overload
@@ -513,6 +578,37 @@ class Target(pulumi.CustomResource):
         The Cloud Deploy `Target` resource
 
         ## Example Usage
+        ### Run_target
+        tests creating and updating a cloud run target
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.clouddeploy.Target("primary",
+            location="us-west1",
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            description="basic description",
+            execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
+                usages=[
+                    "RENDER",
+                    "DEPLOY",
+                ],
+                execution_timeout="3600s",
+            )],
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
+            project="my-project-name",
+            require_approval=False,
+            run=gcp.clouddeploy.TargetRunArgs(
+                location="projects/my-project-name/locations/us-west1",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
         ### Target
         Creates a basic Cloud Deploy target
         ```python
@@ -578,6 +674,7 @@ class Target(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  require_approval: Optional[pulumi.Input[bool]] = None,
+                 run: Optional[pulumi.Input[pulumi.InputType['TargetRunArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -599,6 +696,7 @@ class Target(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["require_approval"] = require_approval
+            __props__.__dict__["run"] = run
             __props__.__dict__["create_time"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["target_id"] = None
@@ -626,6 +724,7 @@ class Target(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             require_approval: Optional[pulumi.Input[bool]] = None,
+            run: Optional[pulumi.Input[pulumi.InputType['TargetRunArgs']]] = None,
             target_id: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Target':
@@ -645,10 +744,11 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArgs']]]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
         :param pulumi.Input[pulumi.InputType['TargetGkeArgs']] gke: Information specifying a GKE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
-        :param pulumi.Input[str] location: The location for the resource
+        :param pulumi.Input[str] location: Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
+        :param pulumi.Input[pulumi.InputType['TargetRunArgs']] run: (Beta only) Information specifying a Cloud Run deployment target.
         :param pulumi.Input[str] target_id: Output only. Resource id of the `Target`.
         :param pulumi.Input[str] uid: Output only. Unique identifier of the `Target`.
         :param pulumi.Input[str] update_time: Output only. Most recent time at which the `Target` was updated.
@@ -669,6 +769,7 @@ class Target(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["require_approval"] = require_approval
+        __props__.__dict__["run"] = run
         __props__.__dict__["target_id"] = target_id
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
@@ -743,7 +844,7 @@ class Target(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        The location for the resource
+        Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
         """
         return pulumi.get(self, "location")
 
@@ -770,6 +871,14 @@ class Target(pulumi.CustomResource):
         Optional. Whether or not the `Target` requires approval.
         """
         return pulumi.get(self, "require_approval")
+
+    @property
+    @pulumi.getter
+    def run(self) -> pulumi.Output[Optional['outputs.TargetRun']]:
+        """
+        (Beta only) Information specifying a Cloud Run deployment target.
+        """
+        return pulumi.get(self, "run")
 
     @property
     @pulumi.getter(name="targetId")

@@ -92,13 +92,13 @@ export class Endpoint extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Internal IP address of the endpoint's network entry point.
-     */
-    public /*out*/ readonly endpoint!: pulumi.Output<string>;
-    /**
      * URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
      */
     public /*out*/ readonly endpointForwardingRule!: pulumi.Output<string>;
+    /**
+     * Internal IP address of the endpoint's network entry point.
+     */
+    public /*out*/ readonly endpointIp!: pulumi.Output<string>;
     /**
      * The location for the endpoint.
      */
@@ -141,8 +141,8 @@ export class Endpoint extends pulumi.CustomResource {
             const state = argsOrState as EndpointState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
             resourceInputs["endpointForwardingRule"] = state ? state.endpointForwardingRule : undefined;
+            resourceInputs["endpointIp"] = state ? state.endpointIp : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
@@ -167,8 +167,8 @@ export class Endpoint extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["severity"] = args ? args.severity : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
-            resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["endpointForwardingRule"] = undefined /*out*/;
+            resourceInputs["endpointIp"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -189,13 +189,13 @@ export interface EndpointState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Internal IP address of the endpoint's network entry point.
-     */
-    endpoint?: pulumi.Input<string>;
-    /**
      * URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
      */
     endpointForwardingRule?: pulumi.Input<string>;
+    /**
+     * Internal IP address of the endpoint's network entry point.
+     */
+    endpointIp?: pulumi.Input<string>;
     /**
      * The location for the endpoint.
      */

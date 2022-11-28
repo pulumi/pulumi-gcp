@@ -88,6 +88,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> assuredWorkloadsCustomEndpoint() {
         return Codegen.optional(this.assuredWorkloadsCustomEndpoint);
     }
+    @Export(name="beyondcorpCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> beyondcorpCustomEndpoint;
+
+    public Output<Optional<String>> beyondcorpCustomEndpoint() {
+        return Codegen.optional(this.beyondcorpCustomEndpoint);
+    }
     @Export(name="bigQueryCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> bigQueryCustomEndpoint;
 
@@ -393,6 +399,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> firebaseCustomEndpoint() {
         return Codegen.optional(this.firebaseCustomEndpoint);
+    }
+    @Export(name="firebaseHostingCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> firebaseHostingCustomEndpoint;
+
+    public Output<Optional<String>> firebaseHostingCustomEndpoint() {
+        return Codegen.optional(this.firebaseHostingCustomEndpoint);
     }
     @Export(name="firebaserulesCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> firebaserulesCustomEndpoint;

@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodePoolDefaults {
     /**
-     * @return ) - Subset of NodeConfig message that has defaults.
+     * @return Subset of NodeConfig message that has defaults.
      * 
      */
     private @Nullable ClusterNodePoolDefaultsNodeConfigDefaults nodeConfigDefaults;
 
     private ClusterNodePoolDefaults() {}
     /**
-     * @return ) - Subset of NodeConfig message that has defaults.
+     * @return Subset of NodeConfig message that has defaults.
      * 
      */
     public Optional<ClusterNodePoolDefaultsNodeConfigDefaults> nodeConfigDefaults() {

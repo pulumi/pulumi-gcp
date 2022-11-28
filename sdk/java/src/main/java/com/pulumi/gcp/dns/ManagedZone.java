@@ -181,6 +181,103 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Dns Managed Zone Private Gke
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.inputs.SubnetworkSecondaryIpRangeArgs;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterDefaultSnatStatusArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterPrivateClusterConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterMasterAuthorizedNetworksConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyArgs;
+ * import com.pulumi.gcp.dns.ManagedZone;
+ * import com.pulumi.gcp.dns.ManagedZoneArgs;
+ * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network_1 = new Network(&#34;network-1&#34;, NetworkArgs.builder()        
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var subnetwork_1 = new Subnetwork(&#34;subnetwork-1&#34;, SubnetworkArgs.builder()        
+ *             .network(network_1.name())
+ *             .ipCidrRange(&#34;10.0.36.0/24&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .privateIpGoogleAccess(true)
+ *             .secondaryIpRanges(            
+ *                 SubnetworkSecondaryIpRangeArgs.builder()
+ *                     .rangeName(&#34;pod&#34;)
+ *                     .ipCidrRange(&#34;10.0.0.0/19&#34;)
+ *                     .build(),
+ *                 SubnetworkSecondaryIpRangeArgs.builder()
+ *                     .rangeName(&#34;svc&#34;)
+ *                     .ipCidrRange(&#34;10.0.32.0/22&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *         var cluster_1 = new Cluster(&#34;cluster-1&#34;, ClusterArgs.builder()        
+ *             .location(&#34;us-central1-c&#34;)
+ *             .initialNodeCount(1)
+ *             .networkingMode(&#34;VPC_NATIVE&#34;)
+ *             .defaultSnatStatus(ClusterDefaultSnatStatusArgs.builder()
+ *                 .disabled(true)
+ *                 .build())
+ *             .network(network_1.name())
+ *             .subnetwork(subnetwork_1.name())
+ *             .privateClusterConfig(ClusterPrivateClusterConfigArgs.builder()
+ *                 .enablePrivateEndpoint(true)
+ *                 .enablePrivateNodes(true)
+ *                 .masterIpv4CidrBlock(&#34;10.42.0.0/28&#34;)
+ *                 .masterGlobalAccessConfig(ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .masterAuthorizedNetworksConfig()
+ *             .ipAllocationPolicy(ClusterIpAllocationPolicyArgs.builder()
+ *                 .clusterSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(secondaryIpRanges -&gt; secondaryIpRanges[0].rangeName()))
+ *                 .servicesSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(secondaryIpRanges -&gt; secondaryIpRanges[1].rangeName()))
+ *                 .build())
+ *             .build());
+ * 
+ *         var private_zone_gke = new ManagedZone(&#34;private-zone-gke&#34;, ManagedZoneArgs.builder()        
+ *             .dnsName(&#34;private.example.com.&#34;)
+ *             .description(&#34;Example private DNS zone&#34;)
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .visibility(&#34;private&#34;)
+ *             .privateVisibilityConfig(ManagedZonePrivateVisibilityConfigArgs.builder()
+ *                 .networks(ManagedZonePrivateVisibilityConfigNetworkArgs.builder()
+ *                     .networkUrl(network_1.id())
+ *                     .build())
+ *                 .gkeClusters(ManagedZonePrivateVisibilityConfigGkeClusterArgs.builder()
+ *                     .gkeClusterName(cluster_1.id())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Dns Managed Zone Private Peering
  * ```java
  * package generated_program;

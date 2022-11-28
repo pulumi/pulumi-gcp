@@ -16,14 +16,14 @@ public final class ClusterNodePoolDefaultsArgs extends com.pulumi.resources.Reso
     public static final ClusterNodePoolDefaultsArgs Empty = new ClusterNodePoolDefaultsArgs();
 
     /**
-     * ) - Subset of NodeConfig message that has defaults.
+     * Subset of NodeConfig message that has defaults.
      * 
      */
     @Import(name="nodeConfigDefaults")
     private @Nullable Output<ClusterNodePoolDefaultsNodeConfigDefaultsArgs> nodeConfigDefaults;
 
     /**
-     * @return ) - Subset of NodeConfig message that has defaults.
+     * @return Subset of NodeConfig message that has defaults.
      * 
      */
     public Optional<Output<ClusterNodePoolDefaultsNodeConfigDefaultsArgs>> nodeConfigDefaults() {
@@ -55,7 +55,7 @@ public final class ClusterNodePoolDefaultsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param nodeConfigDefaults ) - Subset of NodeConfig message that has defaults.
+         * @param nodeConfigDefaults Subset of NodeConfig message that has defaults.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ClusterNodePoolDefaultsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param nodeConfigDefaults ) - Subset of NodeConfig message that has defaults.
+         * @param nodeConfigDefaults Subset of NodeConfig message that has defaults.
          * 
          * @return builder
          * 

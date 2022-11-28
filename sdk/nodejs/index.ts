@@ -22,6 +22,7 @@ import * as apigee from "./apigee";
 import * as appengine from "./appengine";
 import * as artifactregistry from "./artifactregistry";
 import * as assuredworkloads from "./assuredworkloads";
+import * as beyondcorp from "./beyondcorp";
 import * as bigquery from "./bigquery";
 import * as bigqueryanalyticshub from "./bigqueryanalyticshub";
 import * as bigquerydatapolicy from "./bigquerydatapolicy";
@@ -118,6 +119,7 @@ export {
     appengine,
     artifactregistry,
     assuredworkloads,
+    beyondcorp,
     bigquery,
     bigqueryanalyticshub,
     bigquerydatapolicy,

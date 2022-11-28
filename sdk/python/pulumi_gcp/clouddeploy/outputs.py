@@ -16,9 +16,12 @@ __all__ = [
     'DeliveryPipelineConditionTargetsPresentCondition',
     'DeliveryPipelineSerialPipeline',
     'DeliveryPipelineSerialPipelineStage',
+    'DeliveryPipelineSerialPipelineStageStrategy',
+    'DeliveryPipelineSerialPipelineStageStrategyStandard',
     'TargetAnthosCluster',
     'TargetExecutionConfig',
     'TargetGke',
+    'TargetRun',
 ]
 
 @pulumi.output_type
@@ -187,13 +190,17 @@ class DeliveryPipelineSerialPipelineStage(dict):
 
     def __init__(__self__, *,
                  profiles: Optional[Sequence[str]] = None,
+                 strategy: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategy'] = None,
                  target_id: Optional[str] = None):
         """
         :param Sequence[str] profiles: Skaffold profiles to use when rendering the manifest for this stage's `Target`.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyArgs' strategy: (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
         :param str target_id: The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
         """
         if profiles is not None:
             pulumi.set(__self__, "profiles", profiles)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
         if target_id is not None:
             pulumi.set(__self__, "target_id", target_id)
 
@@ -206,12 +213,58 @@ class DeliveryPipelineSerialPipelineStage(dict):
         return pulumi.get(self, "profiles")
 
     @property
+    @pulumi.getter
+    def strategy(self) -> Optional['outputs.DeliveryPipelineSerialPipelineStageStrategy']:
+        """
+        (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+        """
+        return pulumi.get(self, "strategy")
+
+    @property
     @pulumi.getter(name="targetId")
     def target_id(self) -> Optional[str]:
         """
         The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
         """
         return pulumi.get(self, "target_id")
+
+
+@pulumi.output_type
+class DeliveryPipelineSerialPipelineStageStrategy(dict):
+    def __init__(__self__, *,
+                 standard: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyStandard'] = None):
+        """
+        :param 'DeliveryPipelineSerialPipelineStageStrategyStandardArgs' standard: Standard deployment strategy executes a single deploy and allows verifying the deployment.
+        """
+        if standard is not None:
+            pulumi.set(__self__, "standard", standard)
+
+    @property
+    @pulumi.getter
+    def standard(self) -> Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyStandard']:
+        """
+        Standard deployment strategy executes a single deploy and allows verifying the deployment.
+        """
+        return pulumi.get(self, "standard")
+
+
+@pulumi.output_type
+class DeliveryPipelineSerialPipelineStageStrategyStandard(dict):
+    def __init__(__self__, *,
+                 verify: Optional[bool] = None):
+        """
+        :param bool verify: Whether to verify a deployment.
+        """
+        if verify is not None:
+            pulumi.set(__self__, "verify", verify)
+
+    @property
+    @pulumi.getter
+    def verify(self) -> Optional[bool]:
+        """
+        Whether to verify a deployment.
+        """
+        return pulumi.get(self, "verify")
 
 
 @pulumi.output_type
@@ -240,6 +293,8 @@ class TargetExecutionConfig(dict):
         suggest = None
         if key == "artifactStorage":
             suggest = "artifact_storage"
+        elif key == "executionTimeout":
+            suggest = "execution_timeout"
         elif key == "serviceAccount":
             suggest = "service_account"
         elif key == "workerPool":
@@ -259,17 +314,21 @@ class TargetExecutionConfig(dict):
     def __init__(__self__, *,
                  usages: Sequence[str],
                  artifact_storage: Optional[str] = None,
+                 execution_timeout: Optional[str] = None,
                  service_account: Optional[str] = None,
                  worker_pool: Optional[str] = None):
         """
         :param Sequence[str] usages: Required. Usages when this configuration should be applied.
         :param str artifact_storage: Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+        :param str execution_timeout: Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
         :param str service_account: Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
         :param str worker_pool: Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
         """
         pulumi.set(__self__, "usages", usages)
         if artifact_storage is not None:
             pulumi.set(__self__, "artifact_storage", artifact_storage)
+        if execution_timeout is not None:
+            pulumi.set(__self__, "execution_timeout", execution_timeout)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if worker_pool is not None:
@@ -290,6 +349,14 @@ class TargetExecutionConfig(dict):
         Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
         """
         return pulumi.get(self, "artifact_storage")
+
+    @property
+    @pulumi.getter(name="executionTimeout")
+    def execution_timeout(self) -> Optional[str]:
+        """
+        Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+        """
+        return pulumi.get(self, "execution_timeout")
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -354,5 +421,23 @@ class TargetGke(dict):
         Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
         """
         return pulumi.get(self, "internal_ip")
+
+
+@pulumi.output_type
+class TargetRun(dict):
+    def __init__(__self__, *,
+                 location: str):
+        """
+        :param str location: Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+        """
+        pulumi.set(__self__, "location", location)
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+        """
+        return pulumi.get(self, "location")
 
 

@@ -114,6 +114,21 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
     }
 
     /**
+     * The region of the EntityType.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return The region of the EntityType.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
      * The timestamp of when the featurestore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
      * to nine fractional digits.
      * 
@@ -139,6 +154,7 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
         this.labels = $.labels;
         this.monitoringConfig = $.monitoringConfig;
         this.name = $.name;
+        this.region = $.region;
         this.updateTime = $.updateTime;
     }
 
@@ -290,6 +306,27 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param region The region of the EntityType.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region The region of the EntityType.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         /**

@@ -14,45 +14,44 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService {
     /**
-     * @return The default RegionBackendService resource. Before
-     * forwarding the request to backendService, the loadbalancer applies any relevant
-     * headerActions specified as part of this backendServiceWeight.
+     * @return The full or partial URL to the RegionBackendService resource being mirrored to.
+     * The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
+     * Serverless NEG backends are not currently supported as a mirrored backend service.
      * 
      */
     private String backendService;
     /**
-     * @return Specifies changes to request and response headers that need to take effect for
-     * the selected backendService. headerAction specified here take effect before
-     * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+     * @return Specifies changes to request and response headers that need to take effect for the selected backendService.
+     * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+     * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+     * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
      * Structure is documented below.
      * 
      */
     private @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction headerAction;
     /**
-     * @return Specifies the fraction of traffic sent to backendService, computed as weight /
-     * (sum of all weightedBackendService weights in routeAction) . The selection of a
-     * backend service is determined only for new traffic. Once a user&#39;s request has
-     * been directed to a backendService, subsequent requests will be sent to the same
-     * backendService as determined by the BackendService&#39;s session affinity policy.
-     * The value must be between 0 and 1000
+     * @return Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) .
+     * The selection of a backend service is determined only for new traffic. Once a user&#39;s request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service&#39;s session affinity policy.
+     * The value must be from 0 to 1000.
      * 
      */
     private Integer weight;
 
     private RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService() {}
     /**
-     * @return The default RegionBackendService resource. Before
-     * forwarding the request to backendService, the loadbalancer applies any relevant
-     * headerActions specified as part of this backendServiceWeight.
+     * @return The full or partial URL to the RegionBackendService resource being mirrored to.
+     * The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
+     * Serverless NEG backends are not currently supported as a mirrored backend service.
      * 
      */
     public String backendService() {
         return this.backendService;
     }
     /**
-     * @return Specifies changes to request and response headers that need to take effect for
-     * the selected backendService. headerAction specified here take effect before
-     * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+     * @return Specifies changes to request and response headers that need to take effect for the selected backendService.
+     * headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+     * headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+     * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
      * Structure is documented below.
      * 
      */
@@ -60,12 +59,9 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendSer
         return Optional.ofNullable(this.headerAction);
     }
     /**
-     * @return Specifies the fraction of traffic sent to backendService, computed as weight /
-     * (sum of all weightedBackendService weights in routeAction) . The selection of a
-     * backend service is determined only for new traffic. Once a user&#39;s request has
-     * been directed to a backendService, subsequent requests will be sent to the same
-     * backendService as determined by the BackendService&#39;s session affinity policy.
-     * The value must be between 0 and 1000
+     * @return Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) .
+     * The selection of a backend service is determined only for new traffic. Once a user&#39;s request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service&#39;s session affinity policy.
+     * The value must be from 0 to 1000.
      * 
      */
     public Integer weight() {

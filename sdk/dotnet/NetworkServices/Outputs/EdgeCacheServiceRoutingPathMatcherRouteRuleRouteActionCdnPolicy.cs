@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
     public sealed class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy
     {
         /// <summary>
+        /// Enable signature generation or propagation on this route.
+        /// This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures? AddSignatures;
+        /// <summary>
         /// Defines the request parameters that contribute to the cache key.
         /// Structure is documented below.
         /// </summary>
@@ -80,15 +86,31 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// </summary>
         public readonly string? SignedRequestKeyset;
         /// <summary>
+        /// Limit how far into the future the expiration time of a signed request may be.
+        /// When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
+        /// - The TTL must be &gt; 0.
+        /// - Fractions of a second are not allowed.
+        /// By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
+        /// </summary>
+        public readonly string? SignedRequestMaximumExpirationTtl;
+        /// <summary>
         /// Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
         /// You must also set a signedRequestKeyset to enable signed requests.
         /// When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-        /// Possible values are `DISABLED` and `REQUIRE_SIGNATURES`.
+        /// Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
         /// </summary>
         public readonly string? SignedRequestMode;
+        /// <summary>
+        /// Additional options for signed tokens.
+        /// signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions? SignedTokenOptions;
 
         [OutputConstructor]
         private EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy(
+            Outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures? addSignatures,
+
             Outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy? cacheKeyPolicy,
 
             string? cacheMode,
@@ -105,8 +127,13 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
 
             string? signedRequestKeyset,
 
-            string? signedRequestMode)
+            string? signedRequestMaximumExpirationTtl,
+
+            string? signedRequestMode,
+
+            Outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions? signedTokenOptions)
         {
+            AddSignatures = addSignatures;
             CacheKeyPolicy = cacheKeyPolicy;
             CacheMode = cacheMode;
             ClientTtl = clientTtl;
@@ -115,7 +142,9 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
             NegativeCaching = negativeCaching;
             NegativeCachingPolicy = negativeCachingPolicy;
             SignedRequestKeyset = signedRequestKeyset;
+            SignedRequestMaximumExpirationTtl = signedRequestMaximumExpirationTtl;
             SignedRequestMode = signedRequestMode;
+            SignedTokenOptions = signedTokenOptions;
         }
     }
 }

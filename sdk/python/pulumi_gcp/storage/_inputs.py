@@ -25,6 +25,7 @@ __all__ = [
     'BucketWebsiteArgs',
     'DefaultObjectAccessControlProjectTeamArgs',
     'ObjectAccessControlProjectTeamArgs',
+    'TransferAgentPoolBandwidthLimitArgs',
     'TransferJobNotificationConfigArgs',
     'TransferJobScheduleArgs',
     'TransferJobScheduleScheduleEndDateArgs',
@@ -754,6 +755,28 @@ class ObjectAccessControlProjectTeamArgs:
     @team.setter
     def team(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "team", value)
+
+
+@pulumi.input_type
+class TransferAgentPoolBandwidthLimitArgs:
+    def __init__(__self__, *,
+                 limit_mbps: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] limit_mbps: Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
+        """
+        pulumi.set(__self__, "limit_mbps", limit_mbps)
+
+    @property
+    @pulumi.getter(name="limitMbps")
+    def limit_mbps(self) -> pulumi.Input[str]:
+        """
+        Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
+        """
+        return pulumi.get(self, "limit_mbps")
+
+    @limit_mbps.setter
+    def limit_mbps(self, value: pulumi.Input[str]):
+        pulumi.set(self, "limit_mbps", value)
 
 
 @pulumi.input_type

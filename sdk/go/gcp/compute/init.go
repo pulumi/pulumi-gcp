@@ -135,6 +135,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkEndpoint{}
 	case "gcp:compute/networkEndpointGroup:NetworkEndpointGroup":
 		r = &NetworkEndpointGroup{}
+	case "gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy":
+		r = &NetworkFirewallPolicy{}
+	case "gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation":
+		r = &NetworkFirewallPolicyAssociation{}
+	case "gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule":
+		r = &NetworkFirewallPolicyRule{}
 	case "gcp:compute/networkPeering:NetworkPeering":
 		r = &NetworkPeering{}
 	case "gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig":
@@ -185,6 +191,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionInstanceGroupManager{}
 	case "gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup":
 		r = &RegionNetworkEndpointGroup{}
+	case "gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy":
+		r = &RegionNetworkFirewallPolicy{}
+	case "gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation":
+		r = &RegionNetworkFirewallPolicyAssociation{}
+	case "gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule":
+		r = &RegionNetworkFirewallPolicyRule{}
 	case "gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig":
 		r = &RegionPerInstanceConfig{}
 	case "gcp:compute/regionSslCertificate:RegionSslCertificate":
@@ -563,6 +575,21 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"compute/networkFirewallPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/networkFirewallPolicyAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/networkFirewallPolicyRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"compute/networkPeering",
 		&module{version},
 	)
@@ -684,6 +711,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/regionNetworkEndpointGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionNetworkFirewallPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionNetworkFirewallPolicyAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionNetworkFirewallPolicyRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

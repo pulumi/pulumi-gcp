@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Profiles;
         /// <summary>
+        /// (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+        /// </summary>
+        public readonly Outputs.DeliveryPipelineSerialPipelineStageStrategy? Strategy;
+        /// <summary>
         /// The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
         /// </summary>
         public readonly string? TargetId;
@@ -26,9 +30,12 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         private DeliveryPipelineSerialPipelineStage(
             ImmutableArray<string> profiles,
 
+            Outputs.DeliveryPipelineSerialPipelineStageStrategy? strategy,
+
             string? targetId)
         {
             Profiles = profiles;
+            Strategy = strategy;
             TargetId = targetId;
         }
     }

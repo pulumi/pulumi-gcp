@@ -6,6 +6,7 @@ package com.pulumi.gcp.bigquery.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.bigquery.inputs.DatasetAccessDatasetArgs;
+import com.pulumi.gcp.bigquery.inputs.DatasetAccessRoutineArgs;
 import com.pulumi.gcp.bigquery.inputs.DatasetAccessViewArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -90,6 +91,31 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A routine from a different dataset to grant access to. Queries
+     * executed against that routine will have read access to tables in
+     * this dataset. The role field is not required when this field is
+     * set. If that routine is updated by any user, access to the routine
+     * needs to be granted again via an update operation.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="routine")
+    private @Nullable Output<DatasetAccessRoutineArgs> routine;
+
+    /**
+     * @return A routine from a different dataset to grant access to. Queries
+     * executed against that routine will have read access to tables in
+     * this dataset. The role field is not required when this field is
+     * set. If that routine is updated by any user, access to the routine
+     * needs to be granted again via an update operation.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DatasetAccessRoutineArgs>> routine() {
+        return Optional.ofNullable(this.routine);
+    }
+
+    /**
      * A special group to grant access to. Possible values include:
      * 
      */
@@ -153,6 +179,7 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
         this.domain = $.domain;
         this.groupByEmail = $.groupByEmail;
         this.role = $.role;
+        this.routine = $.routine;
         this.specialGroup = $.specialGroup;
         this.userByEmail = $.userByEmail;
         this.view = $.view;
@@ -270,6 +297,37 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder role(String role) {
             return role(Output.of(role));
+        }
+
+        /**
+         * @param routine A routine from a different dataset to grant access to. Queries
+         * executed against that routine will have read access to tables in
+         * this dataset. The role field is not required when this field is
+         * set. If that routine is updated by any user, access to the routine
+         * needs to be granted again via an update operation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routine(@Nullable Output<DatasetAccessRoutineArgs> routine) {
+            $.routine = routine;
+            return this;
+        }
+
+        /**
+         * @param routine A routine from a different dataset to grant access to. Queries
+         * executed against that routine will have read access to tables in
+         * this dataset. The role field is not required when this field is
+         * set. If that routine is updated by any user, access to the routine
+         * needs to be granted again via an update operation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routine(DatasetAccessRoutineArgs routine) {
+            return routine(Output.of(routine));
         }
 
         /**

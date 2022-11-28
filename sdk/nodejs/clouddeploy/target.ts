@@ -10,6 +10,39 @@ import * as utilities from "../utilities";
  * The Cloud Deploy `Target` resource
  *
  * ## Example Usage
+ * ### Run_target
+ * tests creating and updating a cloud run target
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.clouddeploy.Target("primary", {
+ *     location: "us-west1",
+ *     annotations: {
+ *         my_first_annotation: "example-annotation-1",
+ *         my_second_annotation: "example-annotation-2",
+ *     },
+ *     description: "basic description",
+ *     executionConfigs: [{
+ *         usages: [
+ *             "RENDER",
+ *             "DEPLOY",
+ *         ],
+ *         executionTimeout: "3600s",
+ *     }],
+ *     labels: {
+ *         my_first_label: "example-label-1",
+ *         my_second_label: "example-label-2",
+ *     },
+ *     project: "my-project-name",
+ *     requireApproval: false,
+ *     run: {
+ *         location: "projects/my-project-name/locations/us-west1",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  * ### Target
  * Creates a basic Cloud Deploy target
  * ```typescript
@@ -113,7 +146,7 @@ export class Target extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The location for the resource
+     * Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -128,6 +161,10 @@ export class Target extends pulumi.CustomResource {
      * Optional. Whether or not the `Target` requires approval.
      */
     public readonly requireApproval!: pulumi.Output<boolean | undefined>;
+    /**
+     * (Beta only) Information specifying a Cloud Run deployment target.
+     */
+    public readonly run!: pulumi.Output<outputs.clouddeploy.TargetRun | undefined>;
     /**
      * Output only. Resource id of the `Target`.
      */
@@ -166,6 +203,7 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["requireApproval"] = state ? state.requireApproval : undefined;
+            resourceInputs["run"] = state ? state.run : undefined;
             resourceInputs["targetId"] = state ? state.targetId : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
@@ -184,6 +222,7 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requireApproval"] = args ? args.requireApproval : undefined;
+            resourceInputs["run"] = args ? args.run : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["targetId"] = undefined /*out*/;
@@ -233,7 +272,7 @@ export interface TargetState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The location for the resource
+     * Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
      */
     location?: pulumi.Input<string>;
     /**
@@ -248,6 +287,10 @@ export interface TargetState {
      * Optional. Whether or not the `Target` requires approval.
      */
     requireApproval?: pulumi.Input<boolean>;
+    /**
+     * (Beta only) Information specifying a Cloud Run deployment target.
+     */
+    run?: pulumi.Input<inputs.clouddeploy.TargetRun>;
     /**
      * Output only. Resource id of the `Target`.
      */
@@ -291,7 +334,7 @@ export interface TargetArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The location for the resource
+     * Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
      */
     location: pulumi.Input<string>;
     /**
@@ -306,4 +349,8 @@ export interface TargetArgs {
      * Optional. Whether or not the `Target` requires approval.
      */
     requireApproval?: pulumi.Input<boolean>;
+    /**
+     * (Beta only) Information specifying a Cloud Run deployment target.
+     */
+    run?: pulumi.Input<inputs.clouddeploy.TargetRun>;
 }

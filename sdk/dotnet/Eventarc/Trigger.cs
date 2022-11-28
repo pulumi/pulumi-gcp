@@ -110,6 +110,18 @@ namespace Pulumi.Gcp.Eventarc
     public partial class Trigger : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        /// </summary>
+        [Output("channel")]
+        public Output<string?> Channel { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. The reason(s) why a trigger is in FAILED state.
+        /// </summary>
+        [Output("conditions")]
+        public Output<ImmutableDictionary<string, string>> Conditions { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. The creation time.
         /// </summary>
         [Output("createTime")]
@@ -230,6 +242,12 @@ namespace Pulumi.Gcp.Eventarc
     public sealed class TriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        /// </summary>
+        [Input("channel")]
+        public Input<string>? Channel { get; set; }
+
+        /// <summary>
         /// Required. Destination specifies where the events should be sent to.
         /// </summary>
         [Input("destination", required: true)]
@@ -303,6 +321,24 @@ namespace Pulumi.Gcp.Eventarc
 
     public sealed class TriggerState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        /// </summary>
+        [Input("channel")]
+        public Input<string>? Channel { get; set; }
+
+        [Input("conditions")]
+        private InputMap<string>? _conditions;
+
+        /// <summary>
+        /// Output only. The reason(s) why a trigger is in FAILED state.
+        /// </summary>
+        public InputMap<string> Conditions
+        {
+            get => _conditions ?? (_conditions = new InputMap<string>());
+            set => _conditions = value;
+        }
+
         /// <summary>
         /// Output only. The creation time.
         /// </summary>

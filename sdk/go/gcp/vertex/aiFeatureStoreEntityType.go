@@ -54,6 +54,23 @@ import (
 //					"foo": pulumi.String("bar"),
 //				},
 //				Featurestore: featurestore.ID(),
+//				MonitoringConfig: &vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs{
+//					SnapshotAnalysis: &vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{
+//						Disabled:               pulumi.Bool(false),
+//						MonitoringIntervalDays: pulumi.Int(1),
+//						StalenessDays:          pulumi.Int(21),
+//					},
+//					NumericalThresholdConfig: &vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs{
+//						Value: pulumi.Float64(0.8),
+//					},
+//					CategoricalThresholdConfig: &vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs{
+//						Value: pulumi.Float64(10),
+//					},
+//					ImportFeaturesAnalysis: &vertex.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs{
+//						State:                    pulumi.String("ENABLED"),
+//						AnomalyDetectionBaseline: pulumi.String("PREVIOUS_IMPORT_FEATURES_STATS"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -102,6 +119,12 @@ import (
 //						Disabled:           pulumi.Bool(false),
 //						MonitoringInterval: pulumi.String("86400s"),
 //					},
+//					CategoricalThresholdConfig: &vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs{
+//						Value: pulumi.Float64(0.3),
+//					},
+//					NumericalThresholdConfig: &vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs{
+//						Value: pulumi.Float64(0.3),
+//					},
 //				},
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
@@ -140,6 +163,8 @@ type AiFeatureStoreEntityType struct {
 	MonitoringConfig AiFeatureStoreEntityTypeMonitoringConfigPtrOutput `pulumi:"monitoringConfig"`
 	// The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The region of the EntityType.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
 	// to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -192,6 +217,8 @@ type aiFeatureStoreEntityTypeState struct {
 	MonitoringConfig *AiFeatureStoreEntityTypeMonitoringConfig `pulumi:"monitoringConfig"`
 	// The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name *string `pulumi:"name"`
+	// The region of the EntityType.
+	Region *string `pulumi:"region"`
 	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
 	// to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -213,6 +240,8 @@ type AiFeatureStoreEntityTypeState struct {
 	MonitoringConfig AiFeatureStoreEntityTypeMonitoringConfigPtrInput
 	// The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name pulumi.StringPtrInput
+	// The region of the EntityType.
+	Region pulumi.StringPtrInput
 	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
 	// to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
@@ -369,6 +398,11 @@ func (o AiFeatureStoreEntityTypeOutput) MonitoringConfig() AiFeatureStoreEntityT
 // The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 func (o AiFeatureStoreEntityTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region of the EntityType.
+func (o AiFeatureStoreEntityTypeOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up

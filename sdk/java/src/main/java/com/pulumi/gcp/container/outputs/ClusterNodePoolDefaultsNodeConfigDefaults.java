@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,18 +13,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodePoolDefaultsNodeConfigDefaults {
     /**
-     * @return The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+     * @return ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig gcfsConfig;
+    /**
+     * @return The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+     * 
+     */
+    private @Nullable String loggingVariant;
 
     private ClusterNodePoolDefaultsNodeConfigDefaults() {}
     /**
-     * @return The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+     * @return ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
      * 
      */
     public Optional<ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig> gcfsConfig() {
         return Optional.ofNullable(this.gcfsConfig);
+    }
+    /**
+     * @return The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+     * 
+     */
+    public Optional<String> loggingVariant() {
+        return Optional.ofNullable(this.loggingVariant);
     }
 
     public static Builder builder() {
@@ -36,10 +49,12 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaults {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig gcfsConfig;
+        private @Nullable String loggingVariant;
         public Builder() {}
         public Builder(ClusterNodePoolDefaultsNodeConfigDefaults defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gcfsConfig = defaults.gcfsConfig;
+    	      this.loggingVariant = defaults.loggingVariant;
         }
 
         @CustomType.Setter
@@ -47,9 +62,15 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaults {
             this.gcfsConfig = gcfsConfig;
             return this;
         }
+        @CustomType.Setter
+        public Builder loggingVariant(@Nullable String loggingVariant) {
+            this.loggingVariant = loggingVariant;
+            return this;
+        }
         public ClusterNodePoolDefaultsNodeConfigDefaults build() {
             final var o = new ClusterNodePoolDefaultsNodeConfigDefaults();
             o.gcfsConfig = gcfsConfig;
+            o.loggingVariant = loggingVariant;
             return o;
         }
     }

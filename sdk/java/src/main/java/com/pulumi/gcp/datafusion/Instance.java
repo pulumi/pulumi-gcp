@@ -167,6 +167,38 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Data Fusion Instance Enterprise
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datafusion.Instance;
+ * import com.pulumi.gcp.datafusion.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var enterpriseInstance = new Instance(&#34;enterpriseInstance&#34;, InstanceArgs.builder()        
+ *             .enableRbac(true)
+ *             .options(Map.of(&#34;prober_test_run&#34;, &#34;true&#34;))
+ *             .region(&#34;us-central1&#34;)
+ *             .type(&#34;ENTERPRISE&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -248,6 +280,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Option to enable granular role-based access control.
+     * 
+     */
+    @Export(name="enableRbac", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> enableRbac;
+
+    /**
+     * @return Option to enable granular role-based access control.
+     * 
+     */
+    public Output<Optional<Boolean>> enableRbac() {
+        return Codegen.optional(this.enableRbac);
     }
     /**
      * Option to enable Stackdriver Logging.

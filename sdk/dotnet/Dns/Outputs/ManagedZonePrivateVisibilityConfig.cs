@@ -13,11 +13,20 @@ namespace Pulumi.Gcp.Dns.Outputs
     [OutputType]
     public sealed class ManagedZonePrivateVisibilityConfig
     {
+        /// <summary>
+        /// The list of Google Kubernetes Engine clusters that can see this zone.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ManagedZonePrivateVisibilityConfigGkeCluster> GkeClusters;
         public readonly ImmutableArray<Outputs.ManagedZonePrivateVisibilityConfigNetwork> Networks;
 
         [OutputConstructor]
-        private ManagedZonePrivateVisibilityConfig(ImmutableArray<Outputs.ManagedZonePrivateVisibilityConfigNetwork> networks)
+        private ManagedZonePrivateVisibilityConfig(
+            ImmutableArray<Outputs.ManagedZonePrivateVisibilityConfigGkeCluster> gkeClusters,
+
+            ImmutableArray<Outputs.ManagedZonePrivateVisibilityConfigNetwork> networks)
         {
+            GkeClusters = gkeClusters;
             Networks = networks;
         }
     }

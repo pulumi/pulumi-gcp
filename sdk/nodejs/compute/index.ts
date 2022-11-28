@@ -459,6 +459,21 @@ export type NetworkEndpointGroup = import("./networkEndpointGroup").NetworkEndpo
 export const NetworkEndpointGroup: typeof import("./networkEndpointGroup").NetworkEndpointGroup = null as any;
 utilities.lazyLoad(exports, ["NetworkEndpointGroup"], () => require("./networkEndpointGroup"));
 
+export { NetworkFirewallPolicyArgs, NetworkFirewallPolicyState } from "./networkFirewallPolicy";
+export type NetworkFirewallPolicy = import("./networkFirewallPolicy").NetworkFirewallPolicy;
+export const NetworkFirewallPolicy: typeof import("./networkFirewallPolicy").NetworkFirewallPolicy = null as any;
+utilities.lazyLoad(exports, ["NetworkFirewallPolicy"], () => require("./networkFirewallPolicy"));
+
+export { NetworkFirewallPolicyAssociationArgs, NetworkFirewallPolicyAssociationState } from "./networkFirewallPolicyAssociation";
+export type NetworkFirewallPolicyAssociation = import("./networkFirewallPolicyAssociation").NetworkFirewallPolicyAssociation;
+export const NetworkFirewallPolicyAssociation: typeof import("./networkFirewallPolicyAssociation").NetworkFirewallPolicyAssociation = null as any;
+utilities.lazyLoad(exports, ["NetworkFirewallPolicyAssociation"], () => require("./networkFirewallPolicyAssociation"));
+
+export { NetworkFirewallPolicyRuleArgs, NetworkFirewallPolicyRuleState } from "./networkFirewallPolicyRule";
+export type NetworkFirewallPolicyRule = import("./networkFirewallPolicyRule").NetworkFirewallPolicyRule;
+export const NetworkFirewallPolicyRule: typeof import("./networkFirewallPolicyRule").NetworkFirewallPolicyRule = null as any;
+utilities.lazyLoad(exports, ["NetworkFirewallPolicyRule"], () => require("./networkFirewallPolicyRule"));
+
 export { NetworkPeeringArgs, NetworkPeeringState } from "./networkPeering";
 export type NetworkPeering = import("./networkPeering").NetworkPeering;
 export const NetworkPeering: typeof import("./networkPeering").NetworkPeering = null as any;
@@ -583,6 +598,21 @@ export { RegionNetworkEndpointGroupArgs, RegionNetworkEndpointGroupState } from 
 export type RegionNetworkEndpointGroup = import("./regionNetworkEndpointGroup").RegionNetworkEndpointGroup;
 export const RegionNetworkEndpointGroup: typeof import("./regionNetworkEndpointGroup").RegionNetworkEndpointGroup = null as any;
 utilities.lazyLoad(exports, ["RegionNetworkEndpointGroup"], () => require("./regionNetworkEndpointGroup"));
+
+export { RegionNetworkFirewallPolicyArgs, RegionNetworkFirewallPolicyState } from "./regionNetworkFirewallPolicy";
+export type RegionNetworkFirewallPolicy = import("./regionNetworkFirewallPolicy").RegionNetworkFirewallPolicy;
+export const RegionNetworkFirewallPolicy: typeof import("./regionNetworkFirewallPolicy").RegionNetworkFirewallPolicy = null as any;
+utilities.lazyLoad(exports, ["RegionNetworkFirewallPolicy"], () => require("./regionNetworkFirewallPolicy"));
+
+export { RegionNetworkFirewallPolicyAssociationArgs, RegionNetworkFirewallPolicyAssociationState } from "./regionNetworkFirewallPolicyAssociation";
+export type RegionNetworkFirewallPolicyAssociation = import("./regionNetworkFirewallPolicyAssociation").RegionNetworkFirewallPolicyAssociation;
+export const RegionNetworkFirewallPolicyAssociation: typeof import("./regionNetworkFirewallPolicyAssociation").RegionNetworkFirewallPolicyAssociation = null as any;
+utilities.lazyLoad(exports, ["RegionNetworkFirewallPolicyAssociation"], () => require("./regionNetworkFirewallPolicyAssociation"));
+
+export { RegionNetworkFirewallPolicyRuleArgs, RegionNetworkFirewallPolicyRuleState } from "./regionNetworkFirewallPolicyRule";
+export type RegionNetworkFirewallPolicyRule = import("./regionNetworkFirewallPolicyRule").RegionNetworkFirewallPolicyRule;
+export const RegionNetworkFirewallPolicyRule: typeof import("./regionNetworkFirewallPolicyRule").RegionNetworkFirewallPolicyRule = null as any;
+utilities.lazyLoad(exports, ["RegionNetworkFirewallPolicyRule"], () => require("./regionNetworkFirewallPolicyRule"));
 
 export { RegionPerInstanceConfigArgs, RegionPerInstanceConfigState } from "./regionPerInstanceConfig";
 export type RegionPerInstanceConfig = import("./regionPerInstanceConfig").RegionPerInstanceConfig;
@@ -903,6 +933,12 @@ const _module = {
                 return new NetworkEndpoint(name, <any>undefined, { urn })
             case "gcp:compute/networkEndpointGroup:NetworkEndpointGroup":
                 return new NetworkEndpointGroup(name, <any>undefined, { urn })
+            case "gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy":
+                return new NetworkFirewallPolicy(name, <any>undefined, { urn })
+            case "gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation":
+                return new NetworkFirewallPolicyAssociation(name, <any>undefined, { urn })
+            case "gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule":
+                return new NetworkFirewallPolicyRule(name, <any>undefined, { urn })
             case "gcp:compute/networkPeering:NetworkPeering":
                 return new NetworkPeering(name, <any>undefined, { urn })
             case "gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig":
@@ -953,6 +989,12 @@ const _module = {
                 return new RegionInstanceGroupManager(name, <any>undefined, { urn })
             case "gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup":
                 return new RegionNetworkEndpointGroup(name, <any>undefined, { urn })
+            case "gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy":
+                return new RegionNetworkFirewallPolicy(name, <any>undefined, { urn })
+            case "gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation":
+                return new RegionNetworkFirewallPolicyAssociation(name, <any>undefined, { urn })
+            case "gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule":
+                return new RegionNetworkFirewallPolicyRule(name, <any>undefined, { urn })
             case "gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig":
                 return new RegionPerInstanceConfig(name, <any>undefined, { urn })
             case "gcp:compute/regionSslCertificate:RegionSslCertificate":
@@ -1093,6 +1135,9 @@ pulumi.runtime.registerResourceModule("gcp", "compute/mangedSslCertificate", _mo
 pulumi.runtime.registerResourceModule("gcp", "compute/network", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkEndpointGroup", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicyAssociation", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkPeering", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkPeeringRoutesConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/nodeGroup", _module)
@@ -1118,6 +1163,9 @@ pulumi.runtime.registerResourceModule("gcp", "compute/regionDiskResourcePolicyAt
 pulumi.runtime.registerResourceModule("gcp", "compute/regionHealthCheck", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionInstanceGroupManager", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkEndpointGroup", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyAssociation", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionPerInstanceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionSslCertificate", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionSslPolicy", _module)

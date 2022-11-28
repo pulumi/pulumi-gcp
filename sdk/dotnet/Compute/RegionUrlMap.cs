@@ -45,6 +45,16 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
+        /// defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        /// URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
+        /// defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("defaultRouteAction")]
+        public Output<Outputs.RegionUrlMapDefaultRouteAction?> DefaultRouteAction { get; private set; } = null!;
+
+        /// <summary>
         /// A reference to a RegionBackendService resource. This will be used if
         /// none of the pathRules defined by this PathMatcher is matched by
         /// the URL's path portion.
@@ -175,6 +185,16 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionUrlMapArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        /// URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
+        /// defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("defaultRouteAction")]
+        public Input<Inputs.RegionUrlMapDefaultRouteActionArgs>? DefaultRouteAction { get; set; }
+
+        /// <summary>
         /// A reference to a RegionBackendService resource. This will be used if
         /// none of the pathRules defined by this PathMatcher is matched by
         /// the URL's path portion.
@@ -271,6 +291,16 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("creationTimestamp")]
         public Input<string>? CreationTimestamp { get; set; }
+
+        /// <summary>
+        /// defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        /// URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
+        /// defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("defaultRouteAction")]
+        public Input<Inputs.RegionUrlMapDefaultRouteActionGetArgs>? DefaultRouteAction { get; set; }
 
         /// <summary>
         /// A reference to a RegionBackendService resource. This will be used if

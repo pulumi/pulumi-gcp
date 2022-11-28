@@ -80,6 +80,44 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// ### Network Services Edge Cache Origin V4auth
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secret_basic = new Gcp.SecretManager.Secret("secret-basic", new()
+    ///     {
+    ///         SecretId = "secret-name",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Automatic = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var secret_version_basic = new Gcp.SecretManager.SecretVersion("secret-version-basic", new()
+    ///     {
+    ///         Secret = secret_basic.Id,
+    ///         SecretData = "secret-data",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.NetworkServices.EdgeCacheOrigin("default", new()
+    ///     {
+    ///         OriginAddress = "gs://media-edge-default",
+    ///         Description = "The default bucket for V4 authentication",
+    ///         AwsV4Authentication = new Gcp.NetworkServices.Inputs.EdgeCacheOriginAwsV4AuthenticationArgs
+    ///         {
+    ///             AccessKeyId = "ACCESSKEYID",
+    ///             SecretAccessKeyVersion = secret_version_basic.Id,
+    ///             OriginRegion = "auto",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -100,6 +138,13 @@ namespace Pulumi.Gcp.NetworkServices
     [GcpResourceType("gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin")]
     public partial class EdgeCacheOrigin : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Enable AWS Signature Version 4 origin authentication.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("awsV4Authentication")]
+        public Output<Outputs.EdgeCacheOriginAwsV4Authentication?> AwsV4Authentication { get; private set; } = null!;
+
         /// <summary>
         /// A human-readable description of the resource.
         /// </summary>
@@ -246,6 +291,13 @@ namespace Pulumi.Gcp.NetworkServices
     public sealed class EdgeCacheOriginArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Enable AWS Signature Version 4 origin authentication.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("awsV4Authentication")]
+        public Input<Inputs.EdgeCacheOriginAwsV4AuthenticationArgs>? AwsV4Authentication { get; set; }
+
+        /// <summary>
         /// A human-readable description of the resource.
         /// </summary>
         [Input("description")]
@@ -364,6 +416,13 @@ namespace Pulumi.Gcp.NetworkServices
 
     public sealed class EdgeCacheOriginState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable AWS Signature Version 4 origin authentication.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("awsV4Authentication")]
+        public Input<Inputs.EdgeCacheOriginAwsV4AuthenticationGetArgs>? AwsV4Authentication { get; set; }
+
         /// <summary>
         /// A human-readable description of the resource.
         /// </summary>

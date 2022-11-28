@@ -32,6 +32,21 @@ public final class DatabaseInstanceSettingsInsightsConfigArgs extends com.pulumi
     }
 
     /**
+     * Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+     * 
+     */
+    @Import(name="queryPlansPerMinute")
+    private @Nullable Output<Integer> queryPlansPerMinute;
+
+    /**
+     * @return Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+     * 
+     */
+    public Optional<Output<Integer>> queryPlansPerMinute() {
+        return Optional.ofNullable(this.queryPlansPerMinute);
+    }
+
+    /**
      * Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
      * 
      */
@@ -80,6 +95,7 @@ public final class DatabaseInstanceSettingsInsightsConfigArgs extends com.pulumi
 
     private DatabaseInstanceSettingsInsightsConfigArgs(DatabaseInstanceSettingsInsightsConfigArgs $) {
         this.queryInsightsEnabled = $.queryInsightsEnabled;
+        this.queryPlansPerMinute = $.queryPlansPerMinute;
         this.queryStringLength = $.queryStringLength;
         this.recordApplicationTags = $.recordApplicationTags;
         this.recordClientAddress = $.recordClientAddress;
@@ -122,6 +138,27 @@ public final class DatabaseInstanceSettingsInsightsConfigArgs extends com.pulumi
          */
         public Builder queryInsightsEnabled(Boolean queryInsightsEnabled) {
             return queryInsightsEnabled(Output.of(queryInsightsEnabled));
+        }
+
+        /**
+         * @param queryPlansPerMinute Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queryPlansPerMinute(@Nullable Output<Integer> queryPlansPerMinute) {
+            $.queryPlansPerMinute = queryPlansPerMinute;
+            return this;
+        }
+
+        /**
+         * @param queryPlansPerMinute Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queryPlansPerMinute(Integer queryPlansPerMinute) {
+            return queryPlansPerMinute(Output.of(queryPlansPerMinute));
         }
 
         /**

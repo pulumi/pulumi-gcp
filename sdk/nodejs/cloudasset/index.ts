@@ -10,6 +10,11 @@ export type FolderFeed = import("./folderFeed").FolderFeed;
 export const FolderFeed: typeof import("./folderFeed").FolderFeed = null as any;
 utilities.lazyLoad(exports, ["FolderFeed"], () => require("./folderFeed"));
 
+export { GetResourcesSearchAllArgs, GetResourcesSearchAllResult, GetResourcesSearchAllOutputArgs } from "./getResourcesSearchAll";
+export const getResourcesSearchAll: typeof import("./getResourcesSearchAll").getResourcesSearchAll = null as any;
+export const getResourcesSearchAllOutput: typeof import("./getResourcesSearchAll").getResourcesSearchAllOutput = null as any;
+utilities.lazyLoad(exports, ["getResourcesSearchAll","getResourcesSearchAllOutput"], () => require("./getResourcesSearchAll"));
+
 export { OrganizationFeedArgs, OrganizationFeedState } from "./organizationFeed";
 export type OrganizationFeed = import("./organizationFeed").OrganizationFeed;
 export const OrganizationFeed: typeof import("./organizationFeed").OrganizationFeed = null as any;

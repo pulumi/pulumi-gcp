@@ -5,6 +5,8 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs;
+import com.pulumi.gcp.container.inputs.ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -82,6 +84,21 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
     }
 
     /**
+     * NodeManagement configuration for this NodePool. Structure is documented below.
+     * 
+     */
+    @Import(name="management")
+    private @Nullable Output<ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs> management;
+
+    /**
+     * @return NodeManagement configuration for this NodePool. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs>> management() {
+        return Optional.ofNullable(this.management);
+    }
+
+    /**
      * Minimum CPU platform to be used by this instance.
      * The instance may be scheduled on the specified or newer CPU platform. Applicable
      * values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
@@ -140,6 +157,21 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
         return Optional.ofNullable(this.serviceAccount);
     }
 
+    /**
+     * Shielded Instance options. Structure is documented below.
+     * 
+     */
+    @Import(name="shieldedInstanceConfig")
+    private @Nullable Output<ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs> shieldedInstanceConfig;
+
+    /**
+     * @return Shielded Instance options. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs>> shieldedInstanceConfig() {
+        return Optional.ofNullable(this.shieldedInstanceConfig);
+    }
+
     private ClusterClusterAutoscalingAutoProvisioningDefaultsArgs() {}
 
     private ClusterClusterAutoscalingAutoProvisioningDefaultsArgs(ClusterClusterAutoscalingAutoProvisioningDefaultsArgs $) {
@@ -147,9 +179,11 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
         this.diskSize = $.diskSize;
         this.diskType = $.diskType;
         this.imageType = $.imageType;
+        this.management = $.management;
         this.minCpuPlatform = $.minCpuPlatform;
         this.oauthScopes = $.oauthScopes;
         this.serviceAccount = $.serviceAccount;
+        this.shieldedInstanceConfig = $.shieldedInstanceConfig;
     }
 
     public static Builder builder() {
@@ -259,6 +293,27 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
         }
 
         /**
+         * @param management NodeManagement configuration for this NodePool. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder management(@Nullable Output<ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs> management) {
+            $.management = management;
+            return this;
+        }
+
+        /**
+         * @param management NodeManagement configuration for this NodePool. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder management(ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs management) {
+            return management(Output.of(management));
+        }
+
+        /**
          * @param minCpuPlatform Minimum CPU platform to be used by this instance.
          * The instance may be scheduled on the specified or newer CPU platform. Applicable
          * values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
@@ -345,6 +400,27 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
          */
         public Builder serviceAccount(String serviceAccount) {
             return serviceAccount(Output.of(serviceAccount));
+        }
+
+        /**
+         * @param shieldedInstanceConfig Shielded Instance options. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shieldedInstanceConfig(@Nullable Output<ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs> shieldedInstanceConfig) {
+            $.shieldedInstanceConfig = shieldedInstanceConfig;
+            return this;
+        }
+
+        /**
+         * @param shieldedInstanceConfig Shielded Instance options. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shieldedInstanceConfig(ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs shieldedInstanceConfig) {
+            return shieldedInstanceConfig(Output.of(shieldedInstanceConfig));
         }
 
         public ClusterClusterAutoscalingAutoProvisioningDefaultsArgs build() {

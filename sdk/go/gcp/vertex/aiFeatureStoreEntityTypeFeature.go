@@ -106,6 +106,12 @@ import (
 //						Disabled:           pulumi.Bool(false),
 //						MonitoringInterval: pulumi.String("86400s"),
 //					},
+//					CategoricalThresholdConfig: &vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs{
+//						Value: pulumi.Float64(0.3),
+//					},
+//					NumericalThresholdConfig: &vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs{
+//						Value: pulumi.Float64(0.3),
+//					},
 //				},
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {

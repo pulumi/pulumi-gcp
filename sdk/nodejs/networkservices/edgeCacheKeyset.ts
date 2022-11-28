@@ -28,6 +28,33 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Network Services Edge Cache Keyset Dual Token
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
+ *     secretId: "secret-name",
+ *     replication: {
+ *         automatic: true,
+ *     },
+ * });
+ * const secret_version_basic = new gcp.secretmanager.SecretVersion("secret-version-basic", {
+ *     secret: secret_basic.id,
+ *     secretData: "secret-data",
+ * });
+ * const _default = new gcp.networkservices.EdgeCacheKeyset("default", {
+ *     description: "The default keyset",
+ *     publicKeys: [{
+ *         id: "my-public-key",
+ *         managed: true,
+ *     }],
+ *     validationSharedKeys: [{
+ *         secretVersion: secret_version_basic.id,
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -94,12 +121,22 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * An ordered list of Ed25519 public keys to use for validating signed requests.
-     * You must specify at least one (1) key, and may have up to three (3) keys.
+     * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
+     * You may specify no more than one Google-managed public key.
+     * If you specify `publicKeys`, you must specify at least one (1) key and may specify up to three (3) keys.
      * Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
-     * You should ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
+     * Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
      * Structure is documented below.
      */
-    public readonly publicKeys!: pulumi.Output<outputs.networkservices.EdgeCacheKeysetPublicKey[]>;
+    public readonly publicKeys!: pulumi.Output<outputs.networkservices.EdgeCacheKeysetPublicKey[] | undefined>;
+    /**
+     * An ordered list of shared keys to use for validating signed requests.
+     * Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
+     * You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
+     * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
+     * Structure is documented below.
+     */
+    public readonly validationSharedKeys!: pulumi.Output<outputs.networkservices.EdgeCacheKeysetValidationSharedKey[] | undefined>;
 
     /**
      * Create a EdgeCacheKeyset resource with the given unique name, arguments, and options.
@@ -108,7 +145,7 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: EdgeCacheKeysetArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: EdgeCacheKeysetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EdgeCacheKeysetArgs | EdgeCacheKeysetState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -119,16 +156,15 @@ export class EdgeCacheKeyset extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["publicKeys"] = state ? state.publicKeys : undefined;
+            resourceInputs["validationSharedKeys"] = state ? state.validationSharedKeys : undefined;
         } else {
             const args = argsOrState as EdgeCacheKeysetArgs | undefined;
-            if ((!args || args.publicKeys === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'publicKeys'");
-            }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["publicKeys"] = args ? args.publicKeys : undefined;
+            resourceInputs["validationSharedKeys"] = args ? args.validationSharedKeys : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EdgeCacheKeyset.__pulumiType, name, resourceInputs, opts);
@@ -160,12 +196,22 @@ export interface EdgeCacheKeysetState {
     project?: pulumi.Input<string>;
     /**
      * An ordered list of Ed25519 public keys to use for validating signed requests.
-     * You must specify at least one (1) key, and may have up to three (3) keys.
+     * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
+     * You may specify no more than one Google-managed public key.
+     * If you specify `publicKeys`, you must specify at least one (1) key and may specify up to three (3) keys.
      * Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
-     * You should ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
+     * Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
      * Structure is documented below.
      */
     publicKeys?: pulumi.Input<pulumi.Input<inputs.networkservices.EdgeCacheKeysetPublicKey>[]>;
+    /**
+     * An ordered list of shared keys to use for validating signed requests.
+     * Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
+     * You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
+     * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
+     * Structure is documented below.
+     */
+    validationSharedKeys?: pulumi.Input<pulumi.Input<inputs.networkservices.EdgeCacheKeysetValidationSharedKey>[]>;
 }
 
 /**
@@ -193,10 +239,20 @@ export interface EdgeCacheKeysetArgs {
     project?: pulumi.Input<string>;
     /**
      * An ordered list of Ed25519 public keys to use for validating signed requests.
-     * You must specify at least one (1) key, and may have up to three (3) keys.
+     * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
+     * You may specify no more than one Google-managed public key.
+     * If you specify `publicKeys`, you must specify at least one (1) key and may specify up to three (3) keys.
      * Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
-     * You should ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
+     * Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
      * Structure is documented below.
      */
-    publicKeys: pulumi.Input<pulumi.Input<inputs.networkservices.EdgeCacheKeysetPublicKey>[]>;
+    publicKeys?: pulumi.Input<pulumi.Input<inputs.networkservices.EdgeCacheKeysetPublicKey>[]>;
+    /**
+     * An ordered list of shared keys to use for validating signed requests.
+     * Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
+     * You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
+     * You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
+     * Structure is documented below.
+     */
+    validationSharedKeys?: pulumi.Input<pulumi.Input<inputs.networkservices.EdgeCacheKeysetValidationSharedKey>[]>;
 }

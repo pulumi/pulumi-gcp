@@ -418,6 +418,41 @@ class DeliveryPipeline(pulumi.CustomResource):
                 ],
             ))
         ```
+        ### Verify_delivery_pipeline
+        tests creating and updating a delivery pipeline with deployment verification strategy
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.clouddeploy.DeliveryPipeline("primary",
+            location="us-west1",
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            description="basic description",
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
+            project="my-project-name",
+            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
+                stages=[
+                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
+                        profiles=[
+                            "example-profile-one",
+                            "example-profile-two",
+                        ],
+                        target_id="example-target-one",
+                    ),
+                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
+                        profiles=[],
+                        target_id="example-target-two",
+                    ),
+                ],
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -489,6 +524,41 @@ class DeliveryPipeline(pulumi.CustomResource):
                     ),
                 ],
             ))
+        ```
+        ### Verify_delivery_pipeline
+        tests creating and updating a delivery pipeline with deployment verification strategy
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.clouddeploy.DeliveryPipeline("primary",
+            location="us-west1",
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            description="basic description",
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
+            project="my-project-name",
+            serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
+                stages=[
+                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
+                        profiles=[
+                            "example-profile-one",
+                            "example-profile-two",
+                        ],
+                        target_id="example-target-one",
+                    ),
+                    gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
+                        profiles=[],
+                        target_id="example-target-two",
+                    ),
+                ],
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import

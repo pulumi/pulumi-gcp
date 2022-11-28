@@ -2036,6 +2036,143 @@ func (o ObjectAccessControlProjectTeamArrayOutput) Index(i pulumi.IntInput) Obje
 	}).(ObjectAccessControlProjectTeamOutput)
 }
 
+type TransferAgentPoolBandwidthLimit struct {
+	// Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
+	LimitMbps string `pulumi:"limitMbps"`
+}
+
+// TransferAgentPoolBandwidthLimitInput is an input type that accepts TransferAgentPoolBandwidthLimitArgs and TransferAgentPoolBandwidthLimitOutput values.
+// You can construct a concrete instance of `TransferAgentPoolBandwidthLimitInput` via:
+//
+//	TransferAgentPoolBandwidthLimitArgs{...}
+type TransferAgentPoolBandwidthLimitInput interface {
+	pulumi.Input
+
+	ToTransferAgentPoolBandwidthLimitOutput() TransferAgentPoolBandwidthLimitOutput
+	ToTransferAgentPoolBandwidthLimitOutputWithContext(context.Context) TransferAgentPoolBandwidthLimitOutput
+}
+
+type TransferAgentPoolBandwidthLimitArgs struct {
+	// Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
+	LimitMbps pulumi.StringInput `pulumi:"limitMbps"`
+}
+
+func (TransferAgentPoolBandwidthLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferAgentPoolBandwidthLimit)(nil)).Elem()
+}
+
+func (i TransferAgentPoolBandwidthLimitArgs) ToTransferAgentPoolBandwidthLimitOutput() TransferAgentPoolBandwidthLimitOutput {
+	return i.ToTransferAgentPoolBandwidthLimitOutputWithContext(context.Background())
+}
+
+func (i TransferAgentPoolBandwidthLimitArgs) ToTransferAgentPoolBandwidthLimitOutputWithContext(ctx context.Context) TransferAgentPoolBandwidthLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferAgentPoolBandwidthLimitOutput)
+}
+
+func (i TransferAgentPoolBandwidthLimitArgs) ToTransferAgentPoolBandwidthLimitPtrOutput() TransferAgentPoolBandwidthLimitPtrOutput {
+	return i.ToTransferAgentPoolBandwidthLimitPtrOutputWithContext(context.Background())
+}
+
+func (i TransferAgentPoolBandwidthLimitArgs) ToTransferAgentPoolBandwidthLimitPtrOutputWithContext(ctx context.Context) TransferAgentPoolBandwidthLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferAgentPoolBandwidthLimitOutput).ToTransferAgentPoolBandwidthLimitPtrOutputWithContext(ctx)
+}
+
+// TransferAgentPoolBandwidthLimitPtrInput is an input type that accepts TransferAgentPoolBandwidthLimitArgs, TransferAgentPoolBandwidthLimitPtr and TransferAgentPoolBandwidthLimitPtrOutput values.
+// You can construct a concrete instance of `TransferAgentPoolBandwidthLimitPtrInput` via:
+//
+//	        TransferAgentPoolBandwidthLimitArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransferAgentPoolBandwidthLimitPtrInput interface {
+	pulumi.Input
+
+	ToTransferAgentPoolBandwidthLimitPtrOutput() TransferAgentPoolBandwidthLimitPtrOutput
+	ToTransferAgentPoolBandwidthLimitPtrOutputWithContext(context.Context) TransferAgentPoolBandwidthLimitPtrOutput
+}
+
+type transferAgentPoolBandwidthLimitPtrType TransferAgentPoolBandwidthLimitArgs
+
+func TransferAgentPoolBandwidthLimitPtr(v *TransferAgentPoolBandwidthLimitArgs) TransferAgentPoolBandwidthLimitPtrInput {
+	return (*transferAgentPoolBandwidthLimitPtrType)(v)
+}
+
+func (*transferAgentPoolBandwidthLimitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferAgentPoolBandwidthLimit)(nil)).Elem()
+}
+
+func (i *transferAgentPoolBandwidthLimitPtrType) ToTransferAgentPoolBandwidthLimitPtrOutput() TransferAgentPoolBandwidthLimitPtrOutput {
+	return i.ToTransferAgentPoolBandwidthLimitPtrOutputWithContext(context.Background())
+}
+
+func (i *transferAgentPoolBandwidthLimitPtrType) ToTransferAgentPoolBandwidthLimitPtrOutputWithContext(ctx context.Context) TransferAgentPoolBandwidthLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferAgentPoolBandwidthLimitPtrOutput)
+}
+
+type TransferAgentPoolBandwidthLimitOutput struct{ *pulumi.OutputState }
+
+func (TransferAgentPoolBandwidthLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferAgentPoolBandwidthLimit)(nil)).Elem()
+}
+
+func (o TransferAgentPoolBandwidthLimitOutput) ToTransferAgentPoolBandwidthLimitOutput() TransferAgentPoolBandwidthLimitOutput {
+	return o
+}
+
+func (o TransferAgentPoolBandwidthLimitOutput) ToTransferAgentPoolBandwidthLimitOutputWithContext(ctx context.Context) TransferAgentPoolBandwidthLimitOutput {
+	return o
+}
+
+func (o TransferAgentPoolBandwidthLimitOutput) ToTransferAgentPoolBandwidthLimitPtrOutput() TransferAgentPoolBandwidthLimitPtrOutput {
+	return o.ToTransferAgentPoolBandwidthLimitPtrOutputWithContext(context.Background())
+}
+
+func (o TransferAgentPoolBandwidthLimitOutput) ToTransferAgentPoolBandwidthLimitPtrOutputWithContext(ctx context.Context) TransferAgentPoolBandwidthLimitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferAgentPoolBandwidthLimit) *TransferAgentPoolBandwidthLimit {
+		return &v
+	}).(TransferAgentPoolBandwidthLimitPtrOutput)
+}
+
+// Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
+func (o TransferAgentPoolBandwidthLimitOutput) LimitMbps() pulumi.StringOutput {
+	return o.ApplyT(func(v TransferAgentPoolBandwidthLimit) string { return v.LimitMbps }).(pulumi.StringOutput)
+}
+
+type TransferAgentPoolBandwidthLimitPtrOutput struct{ *pulumi.OutputState }
+
+func (TransferAgentPoolBandwidthLimitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferAgentPoolBandwidthLimit)(nil)).Elem()
+}
+
+func (o TransferAgentPoolBandwidthLimitPtrOutput) ToTransferAgentPoolBandwidthLimitPtrOutput() TransferAgentPoolBandwidthLimitPtrOutput {
+	return o
+}
+
+func (o TransferAgentPoolBandwidthLimitPtrOutput) ToTransferAgentPoolBandwidthLimitPtrOutputWithContext(ctx context.Context) TransferAgentPoolBandwidthLimitPtrOutput {
+	return o
+}
+
+func (o TransferAgentPoolBandwidthLimitPtrOutput) Elem() TransferAgentPoolBandwidthLimitOutput {
+	return o.ApplyT(func(v *TransferAgentPoolBandwidthLimit) TransferAgentPoolBandwidthLimit {
+		if v != nil {
+			return *v
+		}
+		var ret TransferAgentPoolBandwidthLimit
+		return ret
+	}).(TransferAgentPoolBandwidthLimitOutput)
+}
+
+// Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
+func (o TransferAgentPoolBandwidthLimitPtrOutput) LimitMbps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferAgentPoolBandwidthLimit) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LimitMbps
+	}).(pulumi.StringPtrOutput)
+}
+
 type TransferJobNotificationConfig struct {
 	// Event types for which a notification is desired. If empty, send notifications for all event types. The valid types are "TRANSFER_OPERATION_SUCCESS", "TRANSFER_OPERATION_FAILED", "TRANSFER_OPERATION_ABORTED".
 	EventTypes []string `pulumi:"eventTypes"`
@@ -6298,6 +6435,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlProjectTeamArrayInput)(nil)).Elem(), DefaultObjectAccessControlProjectTeamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlProjectTeamInput)(nil)).Elem(), ObjectAccessControlProjectTeamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlProjectTeamArrayInput)(nil)).Elem(), ObjectAccessControlProjectTeamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferAgentPoolBandwidthLimitInput)(nil)).Elem(), TransferAgentPoolBandwidthLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferAgentPoolBandwidthLimitPtrInput)(nil)).Elem(), TransferAgentPoolBandwidthLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobNotificationConfigInput)(nil)).Elem(), TransferJobNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobNotificationConfigPtrInput)(nil)).Elem(), TransferJobNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobScheduleInput)(nil)).Elem(), TransferJobScheduleArgs{})
@@ -6384,6 +6523,8 @@ func init() {
 	pulumi.RegisterOutputType(DefaultObjectAccessControlProjectTeamArrayOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamArrayOutput{})
+	pulumi.RegisterOutputType(TransferAgentPoolBandwidthLimitOutput{})
+	pulumi.RegisterOutputType(TransferAgentPoolBandwidthLimitPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobNotificationConfigOutput{})
 	pulumi.RegisterOutputType(TransferJobNotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobScheduleOutput{})

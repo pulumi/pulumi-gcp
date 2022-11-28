@@ -5,7 +5,9 @@ package com.pulumi.gcp.networkservices.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs;
+import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -17,6 +19,25 @@ import javax.annotation.Nullable;
 public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs Empty = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs();
+
+    /**
+     * Enable signature generation or propagation on this route.
+     * This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="addSignatures")
+    private @Nullable Output<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs> addSignatures;
+
+    /**
+     * @return Enable signature generation or propagation on this route.
+     * This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs>> addSignatures() {
+        return Optional.ofNullable(this.addSignatures);
+    }
 
     /**
      * Defines the request parameters that contribute to the cache key.
@@ -207,10 +228,33 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
     }
 
     /**
+     * Limit how far into the future the expiration time of a signed request may be.
+     * When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
+     * - The TTL must be &gt; 0.
+     * - Fractions of a second are not allowed.
+     *   By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
+     * 
+     */
+    @Import(name="signedRequestMaximumExpirationTtl")
+    private @Nullable Output<String> signedRequestMaximumExpirationTtl;
+
+    /**
+     * @return Limit how far into the future the expiration time of a signed request may be.
+     * When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
+     * - The TTL must be &gt; 0.
+     * - Fractions of a second are not allowed.
+     *   By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
+     * 
+     */
+    public Optional<Output<String>> signedRequestMaximumExpirationTtl() {
+        return Optional.ofNullable(this.signedRequestMaximumExpirationTtl);
+    }
+
+    /**
      * Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
      * You must also set a signedRequestKeyset to enable signed requests.
      * When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-     * Possible values are `DISABLED` and `REQUIRE_SIGNATURES`.
+     * Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
      * 
      */
     @Import(name="signedRequestMode")
@@ -220,16 +264,36 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
      * @return Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
      * You must also set a signedRequestKeyset to enable signed requests.
      * When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-     * Possible values are `DISABLED` and `REQUIRE_SIGNATURES`.
+     * Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
      * 
      */
     public Optional<Output<String>> signedRequestMode() {
         return Optional.ofNullable(this.signedRequestMode);
     }
 
+    /**
+     * Additional options for signed tokens.
+     * signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="signedTokenOptions")
+    private @Nullable Output<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs> signedTokenOptions;
+
+    /**
+     * @return Additional options for signed tokens.
+     * signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs>> signedTokenOptions() {
+        return Optional.ofNullable(this.signedTokenOptions);
+    }
+
     private EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs() {}
 
     private EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs $) {
+        this.addSignatures = $.addSignatures;
         this.cacheKeyPolicy = $.cacheKeyPolicy;
         this.cacheMode = $.cacheMode;
         this.clientTtl = $.clientTtl;
@@ -238,7 +302,9 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
         this.negativeCaching = $.negativeCaching;
         this.negativeCachingPolicy = $.negativeCachingPolicy;
         this.signedRequestKeyset = $.signedRequestKeyset;
+        this.signedRequestMaximumExpirationTtl = $.signedRequestMaximumExpirationTtl;
         this.signedRequestMode = $.signedRequestMode;
+        this.signedTokenOptions = $.signedTokenOptions;
     }
 
     public static Builder builder() {
@@ -257,6 +323,31 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
 
         public Builder(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs defaults) {
             $ = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param addSignatures Enable signature generation or propagation on this route.
+         * This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addSignatures(@Nullable Output<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs> addSignatures) {
+            $.addSignatures = addSignatures;
+            return this;
+        }
+
+        /**
+         * @param addSignatures Enable signature generation or propagation on this route.
+         * This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addSignatures(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs addSignatures) {
+            return addSignatures(Output.of(addSignatures));
         }
 
         /**
@@ -496,10 +587,39 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
         }
 
         /**
+         * @param signedRequestMaximumExpirationTtl Limit how far into the future the expiration time of a signed request may be.
+         * When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
+         * - The TTL must be &gt; 0.
+         * - Fractions of a second are not allowed.
+         *   By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signedRequestMaximumExpirationTtl(@Nullable Output<String> signedRequestMaximumExpirationTtl) {
+            $.signedRequestMaximumExpirationTtl = signedRequestMaximumExpirationTtl;
+            return this;
+        }
+
+        /**
+         * @param signedRequestMaximumExpirationTtl Limit how far into the future the expiration time of a signed request may be.
+         * When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
+         * - The TTL must be &gt; 0.
+         * - Fractions of a second are not allowed.
+         *   By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signedRequestMaximumExpirationTtl(String signedRequestMaximumExpirationTtl) {
+            return signedRequestMaximumExpirationTtl(Output.of(signedRequestMaximumExpirationTtl));
+        }
+
+        /**
          * @param signedRequestMode Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
          * You must also set a signedRequestKeyset to enable signed requests.
          * When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-         * Possible values are `DISABLED` and `REQUIRE_SIGNATURES`.
+         * Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
          * 
          * @return builder
          * 
@@ -513,13 +633,38 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
          * @param signedRequestMode Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
          * You must also set a signedRequestKeyset to enable signed requests.
          * When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-         * Possible values are `DISABLED` and `REQUIRE_SIGNATURES`.
+         * Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
          * 
          * @return builder
          * 
          */
         public Builder signedRequestMode(String signedRequestMode) {
             return signedRequestMode(Output.of(signedRequestMode));
+        }
+
+        /**
+         * @param signedTokenOptions Additional options for signed tokens.
+         * signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signedTokenOptions(@Nullable Output<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs> signedTokenOptions) {
+            $.signedTokenOptions = signedTokenOptions;
+            return this;
+        }
+
+        /**
+         * @param signedTokenOptions Additional options for signed tokens.
+         * signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signedTokenOptions(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs signedTokenOptions) {
+            return signedTokenOptions(Output.of(signedTokenOptions));
         }
 
         public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs build() {

@@ -4,20 +4,31 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolUpgradeSettingBlueGreenSetting;
 import java.lang.Integer;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolUpgradeSetting {
+    private List<GetClusterNodePoolUpgradeSettingBlueGreenSetting> blueGreenSettings;
     private Integer maxSurge;
     private Integer maxUnavailable;
+    private String strategy;
 
     private GetClusterNodePoolUpgradeSetting() {}
+    public List<GetClusterNodePoolUpgradeSettingBlueGreenSetting> blueGreenSettings() {
+        return this.blueGreenSettings;
+    }
     public Integer maxSurge() {
         return this.maxSurge;
     }
     public Integer maxUnavailable() {
         return this.maxUnavailable;
+    }
+    public String strategy() {
+        return this.strategy;
     }
 
     public static Builder builder() {
@@ -29,15 +40,27 @@ public final class GetClusterNodePoolUpgradeSetting {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetClusterNodePoolUpgradeSettingBlueGreenSetting> blueGreenSettings;
         private Integer maxSurge;
         private Integer maxUnavailable;
+        private String strategy;
         public Builder() {}
         public Builder(GetClusterNodePoolUpgradeSetting defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.blueGreenSettings = defaults.blueGreenSettings;
     	      this.maxSurge = defaults.maxSurge;
     	      this.maxUnavailable = defaults.maxUnavailable;
+    	      this.strategy = defaults.strategy;
         }
 
+        @CustomType.Setter
+        public Builder blueGreenSettings(List<GetClusterNodePoolUpgradeSettingBlueGreenSetting> blueGreenSettings) {
+            this.blueGreenSettings = Objects.requireNonNull(blueGreenSettings);
+            return this;
+        }
+        public Builder blueGreenSettings(GetClusterNodePoolUpgradeSettingBlueGreenSetting... blueGreenSettings) {
+            return blueGreenSettings(List.of(blueGreenSettings));
+        }
         @CustomType.Setter
         public Builder maxSurge(Integer maxSurge) {
             this.maxSurge = Objects.requireNonNull(maxSurge);
@@ -48,10 +71,17 @@ public final class GetClusterNodePoolUpgradeSetting {
             this.maxUnavailable = Objects.requireNonNull(maxUnavailable);
             return this;
         }
+        @CustomType.Setter
+        public Builder strategy(String strategy) {
+            this.strategy = Objects.requireNonNull(strategy);
+            return this;
+        }
         public GetClusterNodePoolUpgradeSetting build() {
             final var o = new GetClusterNodePoolUpgradeSetting();
+            o.blueGreenSettings = blueGreenSettings;
             o.maxSurge = maxSurge;
             o.maxUnavailable = maxUnavailable;
+            o.strategy = strategy;
             return o;
         }
     }

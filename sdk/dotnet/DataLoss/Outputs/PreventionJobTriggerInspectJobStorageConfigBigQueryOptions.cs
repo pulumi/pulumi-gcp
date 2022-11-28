@@ -14,14 +14,43 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions
     {
         /// <summary>
+        /// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
+        /// If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
+        /// specified. Cannot be used in conjunction with TimespanConfig.
+        /// </summary>
+        public readonly int? RowsLimit;
+        /// <summary>
+        /// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down.
+        /// Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of
+        /// rowsLimit and rowsLimitPercent can be specified. Cannot be used in conjunction with TimespanConfig.
+        /// </summary>
+        public readonly int? RowsLimitPercent;
+        /// <summary>
+        /// How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+        /// rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+        /// Default value is `TOP`.
+        /// Possible values are `TOP` and `RANDOM_START`.
+        /// </summary>
+        public readonly string? SampleMethod;
+        /// <summary>
         /// Set of files to scan.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference TableReference;
 
         [OutputConstructor]
-        private PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(Outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference tableReference)
+        private PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(
+            int? rowsLimit,
+
+            int? rowsLimitPercent,
+
+            string? sampleMethod,
+
+            Outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference tableReference)
         {
+            RowsLimit = rowsLimit;
+            RowsLimitPercent = rowsLimitPercent;
+            SampleMethod = sampleMethod;
             TableReference = tableReference;
         }
     }

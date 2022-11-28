@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.clouddeploy.inputs.TargetAnthosClusterArgs;
 import com.pulumi.gcp.clouddeploy.inputs.TargetExecutionConfigArgs;
 import com.pulumi.gcp.clouddeploy.inputs.TargetGkeArgs;
+import com.pulumi.gcp.clouddeploy.inputs.TargetRunArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -144,14 +145,14 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The location for the resource
+     * Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return The location for the resource
+     * @return Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
      * 
      */
     public Optional<Output<String>> location() {
@@ -201,6 +202,21 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> requireApproval() {
         return Optional.ofNullable(this.requireApproval);
+    }
+
+    /**
+     * (Beta only) Information specifying a Cloud Run deployment target.
+     * 
+     */
+    @Import(name="run")
+    private @Nullable Output<TargetRunArgs> run;
+
+    /**
+     * @return (Beta only) Information specifying a Cloud Run deployment target.
+     * 
+     */
+    public Optional<Output<TargetRunArgs>> run() {
+        return Optional.ofNullable(this.run);
     }
 
     /**
@@ -263,6 +279,7 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.requireApproval = $.requireApproval;
+        this.run = $.run;
         this.targetId = $.targetId;
         this.uid = $.uid;
         this.updateTime = $.updateTime;
@@ -467,7 +484,7 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The location for the resource
+         * @param location Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
          * 
          * @return builder
          * 
@@ -478,7 +495,7 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The location for the resource
+         * @param location Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
          * 
          * @return builder
          * 
@@ -548,6 +565,27 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder requireApproval(Boolean requireApproval) {
             return requireApproval(Output.of(requireApproval));
+        }
+
+        /**
+         * @param run (Beta only) Information specifying a Cloud Run deployment target.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder run(@Nullable Output<TargetRunArgs> run) {
+            $.run = run;
+            return this;
+        }
+
+        /**
+         * @param run (Beta only) Information specifying a Cloud Run deployment target.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder run(TargetRunArgs run) {
+            return run(Output.of(run));
         }
 
         /**

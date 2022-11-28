@@ -388,7 +388,7 @@ namespace Pulumi.Gcp.Redis
         public Output<ImmutableArray<Outputs.InstanceNode>> Nodes { get; private set; } = null!;
 
         /// <summary>
-        /// Maintenance policy for an instance.
+        /// Persistence configuration for an instance.
         /// Structure is documented below.
         /// </summary>
         [Output("persistenceConfig")]
@@ -662,7 +662,7 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Maintenance policy for an instance.
+        /// Persistence configuration for an instance.
         /// Structure is documented below.
         /// </summary>
         [Input("persistenceConfig")]
@@ -916,7 +916,7 @@ namespace Pulumi.Gcp.Redis
         }
 
         /// <summary>
-        /// Maintenance policy for an instance.
+        /// Persistence configuration for an instance.
         /// Structure is documented below.
         /// </summary>
         [Input("persistenceConfig")]

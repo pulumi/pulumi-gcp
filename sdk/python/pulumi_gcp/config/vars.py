@@ -65,6 +65,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('batching')
 
     @property
+    def beyondcorp_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('beyondcorpCustomEndpoint')
+
+    @property
     def big_query_custom_endpoint(self) -> Optional[str]:
         return __config__.get('bigQueryCustomEndpoint')
 
@@ -271,6 +275,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def firebase_custom_endpoint(self) -> Optional[str]:
         return __config__.get('firebaseCustomEndpoint')
+
+    @property
+    def firebase_hosting_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('firebaseHostingCustomEndpoint')
 
     @property
     def firebaserules_custom_endpoint(self) -> Optional[str]:

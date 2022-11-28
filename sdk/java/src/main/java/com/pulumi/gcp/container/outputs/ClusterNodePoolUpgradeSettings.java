@@ -4,20 +4,32 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolUpgradeSettingsBlueGreenSettings;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodePoolUpgradeSettings {
-    private Integer maxSurge;
-    private Integer maxUnavailable;
+    private @Nullable ClusterNodePoolUpgradeSettingsBlueGreenSettings blueGreenSettings;
+    private @Nullable Integer maxSurge;
+    private @Nullable Integer maxUnavailable;
+    private @Nullable String strategy;
 
     private ClusterNodePoolUpgradeSettings() {}
-    public Integer maxSurge() {
-        return this.maxSurge;
+    public Optional<ClusterNodePoolUpgradeSettingsBlueGreenSettings> blueGreenSettings() {
+        return Optional.ofNullable(this.blueGreenSettings);
     }
-    public Integer maxUnavailable() {
-        return this.maxUnavailable;
+    public Optional<Integer> maxSurge() {
+        return Optional.ofNullable(this.maxSurge);
+    }
+    public Optional<Integer> maxUnavailable() {
+        return Optional.ofNullable(this.maxUnavailable);
+    }
+    public Optional<String> strategy() {
+        return Optional.ofNullable(this.strategy);
     }
 
     public static Builder builder() {
@@ -29,29 +41,45 @@ public final class ClusterNodePoolUpgradeSettings {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer maxSurge;
-        private Integer maxUnavailable;
+        private @Nullable ClusterNodePoolUpgradeSettingsBlueGreenSettings blueGreenSettings;
+        private @Nullable Integer maxSurge;
+        private @Nullable Integer maxUnavailable;
+        private @Nullable String strategy;
         public Builder() {}
         public Builder(ClusterNodePoolUpgradeSettings defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.blueGreenSettings = defaults.blueGreenSettings;
     	      this.maxSurge = defaults.maxSurge;
     	      this.maxUnavailable = defaults.maxUnavailable;
+    	      this.strategy = defaults.strategy;
         }
 
         @CustomType.Setter
-        public Builder maxSurge(Integer maxSurge) {
-            this.maxSurge = Objects.requireNonNull(maxSurge);
+        public Builder blueGreenSettings(@Nullable ClusterNodePoolUpgradeSettingsBlueGreenSettings blueGreenSettings) {
+            this.blueGreenSettings = blueGreenSettings;
             return this;
         }
         @CustomType.Setter
-        public Builder maxUnavailable(Integer maxUnavailable) {
-            this.maxUnavailable = Objects.requireNonNull(maxUnavailable);
+        public Builder maxSurge(@Nullable Integer maxSurge) {
+            this.maxSurge = maxSurge;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxUnavailable(@Nullable Integer maxUnavailable) {
+            this.maxUnavailable = maxUnavailable;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder strategy(@Nullable String strategy) {
+            this.strategy = strategy;
             return this;
         }
         public ClusterNodePoolUpgradeSettings build() {
             final var o = new ClusterNodePoolUpgradeSettings();
+            o.blueGreenSettings = blueGreenSettings;
             o.maxSurge = maxSurge;
             o.maxUnavailable = maxUnavailable;
+            o.strategy = strategy;
             return o;
         }
     }

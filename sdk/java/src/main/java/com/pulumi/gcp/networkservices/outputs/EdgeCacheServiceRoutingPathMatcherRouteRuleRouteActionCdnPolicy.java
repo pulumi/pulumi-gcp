@@ -4,7 +4,9 @@
 package com.pulumi.gcp.networkservices.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.networkservices.outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy;
+import com.pulumi.gcp.networkservices.outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -14,6 +16,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy {
+    /**
+     * @return Enable signature generation or propagation on this route.
+     * This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures addSignatures;
     /**
      * @return Defines the request parameters that contribute to the cache key.
      * Structure is documented below.
@@ -89,15 +98,40 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
      */
     private @Nullable String signedRequestKeyset;
     /**
+     * @return Limit how far into the future the expiration time of a signed request may be.
+     * When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
+     * - The TTL must be &gt; 0.
+     * - Fractions of a second are not allowed.
+     *   By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
+     * 
+     */
+    private @Nullable String signedRequestMaximumExpirationTtl;
+    /**
      * @return Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
      * You must also set a signedRequestKeyset to enable signed requests.
      * When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-     * Possible values are `DISABLED` and `REQUIRE_SIGNATURES`.
+     * Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
      * 
      */
     private @Nullable String signedRequestMode;
+    /**
+     * @return Additional options for signed tokens.
+     * signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions signedTokenOptions;
 
     private EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy() {}
+    /**
+     * @return Enable signature generation or propagation on this route.
+     * This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures> addSignatures() {
+        return Optional.ofNullable(this.addSignatures);
+    }
     /**
      * @return Defines the request parameters that contribute to the cache key.
      * Structure is documented below.
@@ -189,14 +223,34 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
         return Optional.ofNullable(this.signedRequestKeyset);
     }
     /**
+     * @return Limit how far into the future the expiration time of a signed request may be.
+     * When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
+     * - The TTL must be &gt; 0.
+     * - Fractions of a second are not allowed.
+     *   By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
+     * 
+     */
+    public Optional<String> signedRequestMaximumExpirationTtl() {
+        return Optional.ofNullable(this.signedRequestMaximumExpirationTtl);
+    }
+    /**
      * @return Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
      * You must also set a signedRequestKeyset to enable signed requests.
      * When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-     * Possible values are `DISABLED` and `REQUIRE_SIGNATURES`.
+     * Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
      * 
      */
     public Optional<String> signedRequestMode() {
         return Optional.ofNullable(this.signedRequestMode);
+    }
+    /**
+     * @return Additional options for signed tokens.
+     * signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions> signedTokenOptions() {
+        return Optional.ofNullable(this.signedTokenOptions);
     }
 
     public static Builder builder() {
@@ -208,6 +262,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures addSignatures;
         private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy cacheKeyPolicy;
         private @Nullable String cacheMode;
         private @Nullable String clientTtl;
@@ -216,10 +271,13 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
         private @Nullable Boolean negativeCaching;
         private @Nullable Map<String,String> negativeCachingPolicy;
         private @Nullable String signedRequestKeyset;
+        private @Nullable String signedRequestMaximumExpirationTtl;
         private @Nullable String signedRequestMode;
+        private @Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions signedTokenOptions;
         public Builder() {}
         public Builder(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.addSignatures = defaults.addSignatures;
     	      this.cacheKeyPolicy = defaults.cacheKeyPolicy;
     	      this.cacheMode = defaults.cacheMode;
     	      this.clientTtl = defaults.clientTtl;
@@ -228,9 +286,16 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
     	      this.negativeCaching = defaults.negativeCaching;
     	      this.negativeCachingPolicy = defaults.negativeCachingPolicy;
     	      this.signedRequestKeyset = defaults.signedRequestKeyset;
+    	      this.signedRequestMaximumExpirationTtl = defaults.signedRequestMaximumExpirationTtl;
     	      this.signedRequestMode = defaults.signedRequestMode;
+    	      this.signedTokenOptions = defaults.signedTokenOptions;
         }
 
+        @CustomType.Setter
+        public Builder addSignatures(@Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures addSignatures) {
+            this.addSignatures = addSignatures;
+            return this;
+        }
         @CustomType.Setter
         public Builder cacheKeyPolicy(@Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy cacheKeyPolicy) {
             this.cacheKeyPolicy = cacheKeyPolicy;
@@ -272,12 +337,23 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
             return this;
         }
         @CustomType.Setter
+        public Builder signedRequestMaximumExpirationTtl(@Nullable String signedRequestMaximumExpirationTtl) {
+            this.signedRequestMaximumExpirationTtl = signedRequestMaximumExpirationTtl;
+            return this;
+        }
+        @CustomType.Setter
         public Builder signedRequestMode(@Nullable String signedRequestMode) {
             this.signedRequestMode = signedRequestMode;
             return this;
         }
+        @CustomType.Setter
+        public Builder signedTokenOptions(@Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions signedTokenOptions) {
+            this.signedTokenOptions = signedTokenOptions;
+            return this;
+        }
         public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy build() {
             final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy();
+            o.addSignatures = addSignatures;
             o.cacheKeyPolicy = cacheKeyPolicy;
             o.cacheMode = cacheMode;
             o.clientTtl = clientTtl;
@@ -286,7 +362,9 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
             o.negativeCaching = negativeCaching;
             o.negativeCachingPolicy = negativeCachingPolicy;
             o.signedRequestKeyset = signedRequestKeyset;
+            o.signedRequestMaximumExpirationTtl = signedRequestMaximumExpirationTtl;
             o.signedRequestMode = signedRequestMode;
+            o.signedTokenOptions = signedTokenOptions;
             return o;
         }
     }

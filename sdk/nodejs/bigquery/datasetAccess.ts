@@ -67,6 +67,51 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Dataset Access Authorized Routine
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const publicDataset = new gcp.bigquery.Dataset("publicDataset", {
+ *     datasetId: "public_dataset",
+ *     description: "This dataset is public",
+ * });
+ * const publicRoutine = new gcp.bigquery.Routine("publicRoutine", {
+ *     datasetId: publicDataset.datasetId,
+ *     routineId: "public_routine",
+ *     routineType: "TABLE_VALUED_FUNCTION",
+ *     language: "SQL",
+ *     definitionBody: "SELECT 1 + value AS value\n",
+ *     arguments: [{
+ *         name: "value",
+ *         argumentKind: "FIXED_TYPE",
+ *         dataType: JSON.stringify({
+ *             typeKind: "INT64",
+ *         }),
+ *     }],
+ *     returnTableType: JSON.stringify({
+ *         columns: [{
+ *             name: "value",
+ *             type: {
+ *                 typeKind: "INT64",
+ *             },
+ *         }],
+ *     }),
+ * });
+ * const _private = new gcp.bigquery.Dataset("private", {
+ *     datasetId: "private_dataset",
+ *     description: "This dataset is private",
+ * });
+ * const authorizedRoutine = new gcp.bigquery.DatasetAccess("authorizedRoutine", {
+ *     datasetId: _private.datasetId,
+ *     routine: {
+ *         projectId: publicRoutine.project,
+ *         datasetId: publicRoutine.datasetId,
+ *         routineId: publicRoutine.routineId,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -143,6 +188,15 @@ export class DatasetAccess extends pulumi.CustomResource {
      */
     public readonly role!: pulumi.Output<string | undefined>;
     /**
+     * A routine from a different dataset to grant access to. Queries
+     * executed against that routine will have read access to tables in
+     * this dataset. The role field is not required when this field is
+     * set. If that routine is updated by any user, access to the routine
+     * needs to be granted again via an update operation.
+     * Structure is documented below.
+     */
+    public readonly routine!: pulumi.Output<outputs.bigquery.DatasetAccessRoutine | undefined>;
+    /**
      * A special group to grant access to. Possible values include:
      */
     public readonly specialGroup!: pulumi.Output<string | undefined>;
@@ -182,6 +236,7 @@ export class DatasetAccess extends pulumi.CustomResource {
             resourceInputs["iamMember"] = state ? state.iamMember : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["routine"] = state ? state.routine : undefined;
             resourceInputs["specialGroup"] = state ? state.specialGroup : undefined;
             resourceInputs["userByEmail"] = state ? state.userByEmail : undefined;
             resourceInputs["view"] = state ? state.view : undefined;
@@ -197,6 +252,7 @@ export class DatasetAccess extends pulumi.CustomResource {
             resourceInputs["iamMember"] = args ? args.iamMember : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["routine"] = args ? args.routine : undefined;
             resourceInputs["specialGroup"] = args ? args.specialGroup : undefined;
             resourceInputs["userByEmail"] = args ? args.userByEmail : undefined;
             resourceInputs["view"] = args ? args.view : undefined;
@@ -253,6 +309,15 @@ export interface DatasetAccessState {
      * [official docs](https://cloud.google.com/bigquery/docs/access-control).
      */
     role?: pulumi.Input<string>;
+    /**
+     * A routine from a different dataset to grant access to. Queries
+     * executed against that routine will have read access to tables in
+     * this dataset. The role field is not required when this field is
+     * set. If that routine is updated by any user, access to the routine
+     * needs to be granted again via an update operation.
+     * Structure is documented below.
+     */
+    routine?: pulumi.Input<inputs.bigquery.DatasetAccessRoutine>;
     /**
      * A special group to grant access to. Possible values include:
      */
@@ -314,6 +379,15 @@ export interface DatasetAccessArgs {
      * [official docs](https://cloud.google.com/bigquery/docs/access-control).
      */
     role?: pulumi.Input<string>;
+    /**
+     * A routine from a different dataset to grant access to. Queries
+     * executed against that routine will have read access to tables in
+     * this dataset. The role field is not required when this field is
+     * set. If that routine is updated by any user, access to the routine
+     * needs to be granted again via an update operation.
+     * Structure is documented below.
+     */
+    routine?: pulumi.Input<inputs.bigquery.DatasetAccessRoutine>;
     /**
      * A special group to grant access to. Possible values include:
      */

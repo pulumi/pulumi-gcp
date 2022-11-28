@@ -21,8 +21,8 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         public readonly string Path;
         /// <summary>
         /// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-        /// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
-        /// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
+        /// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
+        /// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
         /// </summary>
         public readonly string RepoType;
         /// <summary>

@@ -6,12 +6,75 @@ package com.pulumi.gcp.dataloss.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs;
+import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs Empty = new PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs();
+
+    /**
+     * Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
+     * If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
+     * specified. Cannot be used in conjunction with TimespanConfig.
+     * 
+     */
+    @Import(name="rowsLimit")
+    private @Nullable Output<Integer> rowsLimit;
+
+    /**
+     * @return Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
+     * If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
+     * specified. Cannot be used in conjunction with TimespanConfig.
+     * 
+     */
+    public Optional<Output<Integer>> rowsLimit() {
+        return Optional.ofNullable(this.rowsLimit);
+    }
+
+    /**
+     * Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down.
+     * Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of
+     * rowsLimit and rowsLimitPercent can be specified. Cannot be used in conjunction with TimespanConfig.
+     * 
+     */
+    @Import(name="rowsLimitPercent")
+    private @Nullable Output<Integer> rowsLimitPercent;
+
+    /**
+     * @return Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down.
+     * Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of
+     * rowsLimit and rowsLimitPercent can be specified. Cannot be used in conjunction with TimespanConfig.
+     * 
+     */
+    public Optional<Output<Integer>> rowsLimitPercent() {
+        return Optional.ofNullable(this.rowsLimitPercent);
+    }
+
+    /**
+     * How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+     * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+     * Default value is `TOP`.
+     * Possible values are `TOP` and `RANDOM_START`.
+     * 
+     */
+    @Import(name="sampleMethod")
+    private @Nullable Output<String> sampleMethod;
+
+    /**
+     * @return How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+     * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+     * Default value is `TOP`.
+     * Possible values are `TOP` and `RANDOM_START`.
+     * 
+     */
+    public Optional<Output<String>> sampleMethod() {
+        return Optional.ofNullable(this.sampleMethod);
+    }
 
     /**
      * Set of files to scan.
@@ -33,6 +96,9 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArg
     private PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs() {}
 
     private PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs $) {
+        this.rowsLimit = $.rowsLimit;
+        this.rowsLimitPercent = $.rowsLimitPercent;
+        this.sampleMethod = $.sampleMethod;
         this.tableReference = $.tableReference;
     }
 
@@ -52,6 +118,83 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArg
 
         public Builder(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs defaults) {
             $ = new PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param rowsLimit Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
+         * If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
+         * specified. Cannot be used in conjunction with TimespanConfig.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rowsLimit(@Nullable Output<Integer> rowsLimit) {
+            $.rowsLimit = rowsLimit;
+            return this;
+        }
+
+        /**
+         * @param rowsLimit Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
+         * If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
+         * specified. Cannot be used in conjunction with TimespanConfig.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rowsLimit(Integer rowsLimit) {
+            return rowsLimit(Output.of(rowsLimit));
+        }
+
+        /**
+         * @param rowsLimitPercent Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down.
+         * Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of
+         * rowsLimit and rowsLimitPercent can be specified. Cannot be used in conjunction with TimespanConfig.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rowsLimitPercent(@Nullable Output<Integer> rowsLimitPercent) {
+            $.rowsLimitPercent = rowsLimitPercent;
+            return this;
+        }
+
+        /**
+         * @param rowsLimitPercent Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down.
+         * Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of
+         * rowsLimit and rowsLimitPercent can be specified. Cannot be used in conjunction with TimespanConfig.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rowsLimitPercent(Integer rowsLimitPercent) {
+            return rowsLimitPercent(Output.of(rowsLimitPercent));
+        }
+
+        /**
+         * @param sampleMethod How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+         * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+         * Default value is `TOP`.
+         * Possible values are `TOP` and `RANDOM_START`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sampleMethod(@Nullable Output<String> sampleMethod) {
+            $.sampleMethod = sampleMethod;
+            return this;
+        }
+
+        /**
+         * @param sampleMethod How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+         * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+         * Default value is `TOP`.
+         * Possible values are `TOP` and `RANDOM_START`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sampleMethod(String sampleMethod) {
+            return sampleMethod(Output.of(sampleMethod));
         }
 
         /**

@@ -8241,9 +8241,12 @@ func (o PreventionJobTriggerInspectJobPtrOutput) StorageConfig() PreventionJobTr
 }
 
 type PreventionJobTriggerInspectJobAction struct {
+	// Publish a message into a given Pub/Sub topic when the job completes.
+	// Structure is documented below.
+	PubSub *PreventionJobTriggerInspectJobActionPubSub `pulumi:"pubSub"`
 	// Schedule for triggered jobs
 	// Structure is documented below.
-	SaveFindings PreventionJobTriggerInspectJobActionSaveFindings `pulumi:"saveFindings"`
+	SaveFindings *PreventionJobTriggerInspectJobActionSaveFindings `pulumi:"saveFindings"`
 }
 
 // PreventionJobTriggerInspectJobActionInput is an input type that accepts PreventionJobTriggerInspectJobActionArgs and PreventionJobTriggerInspectJobActionOutput values.
@@ -8258,9 +8261,12 @@ type PreventionJobTriggerInspectJobActionInput interface {
 }
 
 type PreventionJobTriggerInspectJobActionArgs struct {
+	// Publish a message into a given Pub/Sub topic when the job completes.
+	// Structure is documented below.
+	PubSub PreventionJobTriggerInspectJobActionPubSubPtrInput `pulumi:"pubSub"`
 	// Schedule for triggered jobs
 	// Structure is documented below.
-	SaveFindings PreventionJobTriggerInspectJobActionSaveFindingsInput `pulumi:"saveFindings"`
+	SaveFindings PreventionJobTriggerInspectJobActionSaveFindingsPtrInput `pulumi:"saveFindings"`
 }
 
 func (PreventionJobTriggerInspectJobActionArgs) ElementType() reflect.Type {
@@ -8314,12 +8320,20 @@ func (o PreventionJobTriggerInspectJobActionOutput) ToPreventionJobTriggerInspec
 	return o
 }
 
+// Publish a message into a given Pub/Sub topic when the job completes.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobActionOutput) PubSub() PreventionJobTriggerInspectJobActionPubSubPtrOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobAction) *PreventionJobTriggerInspectJobActionPubSub {
+		return v.PubSub
+	}).(PreventionJobTriggerInspectJobActionPubSubPtrOutput)
+}
+
 // Schedule for triggered jobs
 // Structure is documented below.
-func (o PreventionJobTriggerInspectJobActionOutput) SaveFindings() PreventionJobTriggerInspectJobActionSaveFindingsOutput {
-	return o.ApplyT(func(v PreventionJobTriggerInspectJobAction) PreventionJobTriggerInspectJobActionSaveFindings {
+func (o PreventionJobTriggerInspectJobActionOutput) SaveFindings() PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobAction) *PreventionJobTriggerInspectJobActionSaveFindings {
 		return v.SaveFindings
-	}).(PreventionJobTriggerInspectJobActionSaveFindingsOutput)
+	}).(PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput)
 }
 
 type PreventionJobTriggerInspectJobActionArrayOutput struct{ *pulumi.OutputState }
@@ -8340,6 +8354,143 @@ func (o PreventionJobTriggerInspectJobActionArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionJobTriggerInspectJobAction {
 		return vs[0].([]PreventionJobTriggerInspectJobAction)[vs[1].(int)]
 	}).(PreventionJobTriggerInspectJobActionOutput)
+}
+
+type PreventionJobTriggerInspectJobActionPubSub struct {
+	// Cloud Pub/Sub topic to send notifications to.
+	Topic string `pulumi:"topic"`
+}
+
+// PreventionJobTriggerInspectJobActionPubSubInput is an input type that accepts PreventionJobTriggerInspectJobActionPubSubArgs and PreventionJobTriggerInspectJobActionPubSubOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobActionPubSubInput` via:
+//
+//	PreventionJobTriggerInspectJobActionPubSubArgs{...}
+type PreventionJobTriggerInspectJobActionPubSubInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobActionPubSubOutput() PreventionJobTriggerInspectJobActionPubSubOutput
+	ToPreventionJobTriggerInspectJobActionPubSubOutputWithContext(context.Context) PreventionJobTriggerInspectJobActionPubSubOutput
+}
+
+type PreventionJobTriggerInspectJobActionPubSubArgs struct {
+	// Cloud Pub/Sub topic to send notifications to.
+	Topic pulumi.StringInput `pulumi:"topic"`
+}
+
+func (PreventionJobTriggerInspectJobActionPubSubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobActionPubSub)(nil)).Elem()
+}
+
+func (i PreventionJobTriggerInspectJobActionPubSubArgs) ToPreventionJobTriggerInspectJobActionPubSubOutput() PreventionJobTriggerInspectJobActionPubSubOutput {
+	return i.ToPreventionJobTriggerInspectJobActionPubSubOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobActionPubSubArgs) ToPreventionJobTriggerInspectJobActionPubSubOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionPubSubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionPubSubOutput)
+}
+
+func (i PreventionJobTriggerInspectJobActionPubSubArgs) ToPreventionJobTriggerInspectJobActionPubSubPtrOutput() PreventionJobTriggerInspectJobActionPubSubPtrOutput {
+	return i.ToPreventionJobTriggerInspectJobActionPubSubPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobActionPubSubArgs) ToPreventionJobTriggerInspectJobActionPubSubPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionPubSubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionPubSubOutput).ToPreventionJobTriggerInspectJobActionPubSubPtrOutputWithContext(ctx)
+}
+
+// PreventionJobTriggerInspectJobActionPubSubPtrInput is an input type that accepts PreventionJobTriggerInspectJobActionPubSubArgs, PreventionJobTriggerInspectJobActionPubSubPtr and PreventionJobTriggerInspectJobActionPubSubPtrOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobActionPubSubPtrInput` via:
+//
+//	        PreventionJobTriggerInspectJobActionPubSubArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionJobTriggerInspectJobActionPubSubPtrInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobActionPubSubPtrOutput() PreventionJobTriggerInspectJobActionPubSubPtrOutput
+	ToPreventionJobTriggerInspectJobActionPubSubPtrOutputWithContext(context.Context) PreventionJobTriggerInspectJobActionPubSubPtrOutput
+}
+
+type preventionJobTriggerInspectJobActionPubSubPtrType PreventionJobTriggerInspectJobActionPubSubArgs
+
+func PreventionJobTriggerInspectJobActionPubSubPtr(v *PreventionJobTriggerInspectJobActionPubSubArgs) PreventionJobTriggerInspectJobActionPubSubPtrInput {
+	return (*preventionJobTriggerInspectJobActionPubSubPtrType)(v)
+}
+
+func (*preventionJobTriggerInspectJobActionPubSubPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionPubSub)(nil)).Elem()
+}
+
+func (i *preventionJobTriggerInspectJobActionPubSubPtrType) ToPreventionJobTriggerInspectJobActionPubSubPtrOutput() PreventionJobTriggerInspectJobActionPubSubPtrOutput {
+	return i.ToPreventionJobTriggerInspectJobActionPubSubPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionJobTriggerInspectJobActionPubSubPtrType) ToPreventionJobTriggerInspectJobActionPubSubPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionPubSubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionPubSubPtrOutput)
+}
+
+type PreventionJobTriggerInspectJobActionPubSubOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobActionPubSubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobActionPubSub)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobActionPubSubOutput) ToPreventionJobTriggerInspectJobActionPubSubOutput() PreventionJobTriggerInspectJobActionPubSubOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionPubSubOutput) ToPreventionJobTriggerInspectJobActionPubSubOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionPubSubOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionPubSubOutput) ToPreventionJobTriggerInspectJobActionPubSubPtrOutput() PreventionJobTriggerInspectJobActionPubSubPtrOutput {
+	return o.ToPreventionJobTriggerInspectJobActionPubSubPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionJobTriggerInspectJobActionPubSubOutput) ToPreventionJobTriggerInspectJobActionPubSubPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionPubSubPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionJobTriggerInspectJobActionPubSub) *PreventionJobTriggerInspectJobActionPubSub {
+		return &v
+	}).(PreventionJobTriggerInspectJobActionPubSubPtrOutput)
+}
+
+// Cloud Pub/Sub topic to send notifications to.
+func (o PreventionJobTriggerInspectJobActionPubSubOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobActionPubSub) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type PreventionJobTriggerInspectJobActionPubSubPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobActionPubSubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionPubSub)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobActionPubSubPtrOutput) ToPreventionJobTriggerInspectJobActionPubSubPtrOutput() PreventionJobTriggerInspectJobActionPubSubPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionPubSubPtrOutput) ToPreventionJobTriggerInspectJobActionPubSubPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionPubSubPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionPubSubPtrOutput) Elem() PreventionJobTriggerInspectJobActionPubSubOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionPubSub) PreventionJobTriggerInspectJobActionPubSub {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionJobTriggerInspectJobActionPubSub
+		return ret
+	}).(PreventionJobTriggerInspectJobActionPubSubOutput)
+}
+
+// Cloud Pub/Sub topic to send notifications to.
+func (o PreventionJobTriggerInspectJobActionPubSubPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionPubSub) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Topic
+	}).(pulumi.StringPtrOutput)
 }
 
 type PreventionJobTriggerInspectJobActionSaveFindings struct {
@@ -8377,6 +8528,47 @@ func (i PreventionJobTriggerInspectJobActionSaveFindingsArgs) ToPreventionJobTri
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionSaveFindingsOutput)
 }
 
+func (i PreventionJobTriggerInspectJobActionSaveFindingsArgs) ToPreventionJobTriggerInspectJobActionSaveFindingsPtrOutput() PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput {
+	return i.ToPreventionJobTriggerInspectJobActionSaveFindingsPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobActionSaveFindingsArgs) ToPreventionJobTriggerInspectJobActionSaveFindingsPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionSaveFindingsOutput).ToPreventionJobTriggerInspectJobActionSaveFindingsPtrOutputWithContext(ctx)
+}
+
+// PreventionJobTriggerInspectJobActionSaveFindingsPtrInput is an input type that accepts PreventionJobTriggerInspectJobActionSaveFindingsArgs, PreventionJobTriggerInspectJobActionSaveFindingsPtr and PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobActionSaveFindingsPtrInput` via:
+//
+//	        PreventionJobTriggerInspectJobActionSaveFindingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionJobTriggerInspectJobActionSaveFindingsPtrInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobActionSaveFindingsPtrOutput() PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput
+	ToPreventionJobTriggerInspectJobActionSaveFindingsPtrOutputWithContext(context.Context) PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput
+}
+
+type preventionJobTriggerInspectJobActionSaveFindingsPtrType PreventionJobTriggerInspectJobActionSaveFindingsArgs
+
+func PreventionJobTriggerInspectJobActionSaveFindingsPtr(v *PreventionJobTriggerInspectJobActionSaveFindingsArgs) PreventionJobTriggerInspectJobActionSaveFindingsPtrInput {
+	return (*preventionJobTriggerInspectJobActionSaveFindingsPtrType)(v)
+}
+
+func (*preventionJobTriggerInspectJobActionSaveFindingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionSaveFindings)(nil)).Elem()
+}
+
+func (i *preventionJobTriggerInspectJobActionSaveFindingsPtrType) ToPreventionJobTriggerInspectJobActionSaveFindingsPtrOutput() PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput {
+	return i.ToPreventionJobTriggerInspectJobActionSaveFindingsPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionJobTriggerInspectJobActionSaveFindingsPtrType) ToPreventionJobTriggerInspectJobActionSaveFindingsPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput)
+}
+
 type PreventionJobTriggerInspectJobActionSaveFindingsOutput struct{ *pulumi.OutputState }
 
 func (PreventionJobTriggerInspectJobActionSaveFindingsOutput) ElementType() reflect.Type {
@@ -8391,12 +8583,57 @@ func (o PreventionJobTriggerInspectJobActionSaveFindingsOutput) ToPreventionJobT
 	return o
 }
 
+func (o PreventionJobTriggerInspectJobActionSaveFindingsOutput) ToPreventionJobTriggerInspectJobActionSaveFindingsPtrOutput() PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput {
+	return o.ToPreventionJobTriggerInspectJobActionSaveFindingsPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionJobTriggerInspectJobActionSaveFindingsOutput) ToPreventionJobTriggerInspectJobActionSaveFindingsPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionJobTriggerInspectJobActionSaveFindings) *PreventionJobTriggerInspectJobActionSaveFindings {
+		return &v
+	}).(PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput)
+}
+
 // Information on where to store output
 // Structure is documented below.
 func (o PreventionJobTriggerInspectJobActionSaveFindingsOutput) OutputConfig() PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigOutput {
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobActionSaveFindings) PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig {
 		return v.OutputConfig
 	}).(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigOutput)
+}
+
+type PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionSaveFindings)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput) ToPreventionJobTriggerInspectJobActionSaveFindingsPtrOutput() PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput) ToPreventionJobTriggerInspectJobActionSaveFindingsPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput) Elem() PreventionJobTriggerInspectJobActionSaveFindingsOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionSaveFindings) PreventionJobTriggerInspectJobActionSaveFindings {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionJobTriggerInspectJobActionSaveFindings
+		return ret
+	}).(PreventionJobTriggerInspectJobActionSaveFindingsOutput)
+}
+
+// Information on where to store output
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput) OutputConfig() PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionSaveFindings) *PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.OutputConfig
+	}).(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput)
 }
 
 type PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig struct {
@@ -8452,6 +8689,47 @@ func (i PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs) ToPrev
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigOutput)
 }
 
+func (i PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs) ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput() PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput {
+	return i.ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs) ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigOutput).ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutputWithContext(ctx)
+}
+
+// PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrInput is an input type that accepts PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs, PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtr and PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrInput` via:
+//
+//	        PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput() PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput
+	ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutputWithContext(context.Context) PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput
+}
+
+type preventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrType PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs
+
+func PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtr(v *PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs) PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrInput {
+	return (*preventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrType)(v)
+}
+
+func (*preventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig)(nil)).Elem()
+}
+
+func (i *preventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrType) ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput() PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput {
+	return i.ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrType) ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput)
+}
+
 type PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigOutput struct{ *pulumi.OutputState }
 
 func (PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigOutput) ElementType() reflect.Type {
@@ -8464,6 +8742,16 @@ func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigOutput) ToPr
 
 func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigOutput) ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigOutput {
 	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigOutput) ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput() PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput {
+	return o.ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigOutput) ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig) *PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig {
+		return &v
+	}).(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput)
 }
 
 // Schema used for writing the findings for Inspect jobs. This field is only used for
@@ -8484,6 +8772,58 @@ func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigOutput) Tabl
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig) PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable {
 		return v.Table
 	}).(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput)
+}
+
+type PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput) ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput() PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput) ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput) Elem() PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig) PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig
+		return ret
+	}).(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigOutput)
+}
+
+// Schema used for writing the findings for Inspect jobs. This field is only used for
+// Inspect and must be unspecified for Risk jobs. Columns are derived from the Finding
+// object. If appending to an existing table, any columns from the predefined schema
+// that are missing will be added. No columns in the existing table will be deleted.
+// If unspecified, then all available columns will be used for a new table or an (existing)
+// table with no schema, and no changes will be made to an existing table that has a schema.
+// Only for use with external storage.
+// Possible values are `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, and `ALL_COLUMNS`.
+func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput) OutputSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information on the location of the target BigQuery Table.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput) Table() PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig) *PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable {
+		if v == nil {
+			return nil
+		}
+		return &v.Table
+	}).(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput)
 }
 
 type PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable struct {
@@ -8529,6 +8869,47 @@ func (i PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput)
 }
 
+func (i PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs) ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput() PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput {
+	return i.ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs) ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput).ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutputWithContext(ctx)
+}
+
+// PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrInput is an input type that accepts PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs, PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtr and PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrInput` via:
+//
+//	        PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput() PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput
+	ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutputWithContext(context.Context) PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput
+}
+
+type preventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrType PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs
+
+func PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtr(v *PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs) PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrInput {
+	return (*preventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrType)(v)
+}
+
+func (*preventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable)(nil)).Elem()
+}
+
+func (i *preventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrType) ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput() PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput {
+	return i.ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrType) ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput)
+}
+
 type PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput struct{ *pulumi.OutputState }
 
 func (PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput) ElementType() reflect.Type {
@@ -8541,6 +8922,16 @@ func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput)
 
 func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput) ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput {
 	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput) ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput() PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput {
+	return o.ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput) ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable) *PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable {
+		return &v
+	}).(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput)
 }
 
 // Dataset ID of the table.
@@ -8557,6 +8948,61 @@ func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput)
 // `dlp_googleapis_yyyy_mm_dd_[dlpJobId]`. Pacific timezone will be used for generating the date details.
 func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput) TableId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable) *string { return v.TableId }).(pulumi.StringPtrOutput)
+}
+
+type PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput) ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput() PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput) ToPreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput) Elem() PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable) PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable
+		return ret
+	}).(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput)
+}
+
+// Dataset ID of the table.
+func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Google Cloud Platform project ID of the project containing the table.
+func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the table. If is not set a new one will be generated for you with the following format:
+// `dlp_googleapis_yyyy_mm_dd_[dlpJobId]`. Pacific timezone will be used for generating the date details.
+func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput) TableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TableId
+	}).(pulumi.StringPtrOutput)
 }
 
 type PreventionJobTriggerInspectJobStorageConfig struct {
@@ -8778,6 +9224,19 @@ func (o PreventionJobTriggerInspectJobStorageConfigPtrOutput) TimespanConfig() P
 }
 
 type PreventionJobTriggerInspectJobStorageConfigBigQueryOptions struct {
+	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
+	// If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
+	// specified. Cannot be used in conjunction with TimespanConfig.
+	RowsLimit *int `pulumi:"rowsLimit"`
+	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down.
+	// Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of
+	// rowsLimit and rowsLimitPercent can be specified. Cannot be used in conjunction with TimespanConfig.
+	RowsLimitPercent *int `pulumi:"rowsLimitPercent"`
+	// How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+	// rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+	// Default value is `TOP`.
+	// Possible values are `TOP` and `RANDOM_START`.
+	SampleMethod *string `pulumi:"sampleMethod"`
 	// Set of files to scan.
 	// Structure is documented below.
 	TableReference PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference `pulumi:"tableReference"`
@@ -8795,6 +9254,19 @@ type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsInput interface {
 }
 
 type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs struct {
+	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
+	// If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
+	// specified. Cannot be used in conjunction with TimespanConfig.
+	RowsLimit pulumi.IntPtrInput `pulumi:"rowsLimit"`
+	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down.
+	// Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of
+	// rowsLimit and rowsLimitPercent can be specified. Cannot be used in conjunction with TimespanConfig.
+	RowsLimitPercent pulumi.IntPtrInput `pulumi:"rowsLimitPercent"`
+	// How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+	// rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+	// Default value is `TOP`.
+	// Possible values are `TOP` and `RANDOM_START`.
+	SampleMethod pulumi.StringPtrInput `pulumi:"sampleMethod"`
 	// Set of files to scan.
 	// Structure is documented below.
 	TableReference PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceInput `pulumi:"tableReference"`
@@ -8877,6 +9349,28 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput) ToPrev
 	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput)
 }
 
+// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
+// If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
+// specified. Cannot be used in conjunction with TimespanConfig.
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput) RowsLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigBigQueryOptions) *int { return v.RowsLimit }).(pulumi.IntPtrOutput)
+}
+
+// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down.
+// Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of
+// rowsLimit and rowsLimitPercent can be specified. Cannot be used in conjunction with TimespanConfig.
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput) RowsLimitPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigBigQueryOptions) *int { return v.RowsLimitPercent }).(pulumi.IntPtrOutput)
+}
+
+// How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+// rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+// Default value is `TOP`.
+// Possible values are `TOP` and `RANDOM_START`.
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput) SampleMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigBigQueryOptions) *string { return v.SampleMethod }).(pulumi.StringPtrOutput)
+}
+
 // Set of files to scan.
 // Structure is documented below.
 func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput) TableReference() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceOutput {
@@ -8907,6 +9401,43 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput) Ele
 		var ret PreventionJobTriggerInspectJobStorageConfigBigQueryOptions
 		return ret
 	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput)
+}
+
+// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
+// If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
+// specified. Cannot be used in conjunction with TimespanConfig.
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput) RowsLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigBigQueryOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RowsLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down.
+// Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of
+// rowsLimit and rowsLimitPercent can be specified. Cannot be used in conjunction with TimespanConfig.
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput) RowsLimitPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigBigQueryOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RowsLimitPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+// rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+// Default value is `TOP`.
+// Possible values are `TOP` and `RANDOM_START`.
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput) SampleMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigBigQueryOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SampleMethod
+	}).(pulumi.StringPtrOutput)
 }
 
 // Set of files to scan.
@@ -9123,8 +9654,9 @@ type PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions struct {
 	// Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down.
 	// Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
 	FilesLimitPercent *int `pulumi:"filesLimitPercent"`
-	// How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
-	// If not specified, scanning would start from the top.
+	// How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+	// rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+	// Default value is `TOP`.
 	// Possible values are `TOP` and `RANDOM_START`.
 	SampleMethod *string `pulumi:"sampleMethod"`
 }
@@ -9158,8 +9690,9 @@ type PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs struct {
 	// Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down.
 	// Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
 	FilesLimitPercent pulumi.IntPtrInput `pulumi:"filesLimitPercent"`
-	// How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
-	// If not specified, scanning would start from the top.
+	// How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+	// rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+	// Default value is `TOP`.
 	// Possible values are `TOP` and `RANDOM_START`.
 	SampleMethod pulumi.StringPtrInput `pulumi:"sampleMethod"`
 }
@@ -9281,8 +9814,9 @@ func (o PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsOutput) Fi
 	}).(pulumi.IntPtrOutput)
 }
 
-// How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
-// If not specified, scanning would start from the top.
+// How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+// rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+// Default value is `TOP`.
 // Possible values are `TOP` and `RANDOM_START`.
 func (o PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsOutput) SampleMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions) *string { return v.SampleMethod }).(pulumi.StringPtrOutput)
@@ -9369,8 +9903,9 @@ func (o PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsPtrOutput)
 	}).(pulumi.IntPtrOutput)
 }
 
-// How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
-// If not specified, scanning would start from the top.
+// How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+// rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+// Default value is `TOP`.
 // Possible values are `TOP` and `RANDOM_START`.
 func (o PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsPtrOutput) SampleMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions) *string {
@@ -12482,9 +13017,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionArrayInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionPubSubInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionPubSubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionPubSubPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionPubSubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionSaveFindingsInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionSaveFindingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionSaveFindingsPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionSaveFindingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs{})
@@ -12634,9 +13174,14 @@ func init() {
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionArrayOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionPubSubOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionPubSubPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionSaveFindingsOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionSaveFindingsPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput{})

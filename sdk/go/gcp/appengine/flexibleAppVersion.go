@@ -275,7 +275,7 @@ type FlexibleAppVersion struct {
 	Service pulumi.StringOutput `pulumi:"service"`
 	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
 	// default if this field is neither provided in app.yaml file nor through CLI flag.
-	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
+	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Default value is `SERVING`.
 	// Possible values are `SERVING` and `STOPPED`.
@@ -922,8 +922,8 @@ func (o FlexibleAppVersionOutput) Service() pulumi.StringOutput {
 
 // The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
 // default if this field is neither provided in app.yaml file nor through CLI flag.
-func (o FlexibleAppVersionOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FlexibleAppVersion) pulumi.StringPtrOutput { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+func (o FlexibleAppVersionOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlexibleAppVersion) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
 // Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.

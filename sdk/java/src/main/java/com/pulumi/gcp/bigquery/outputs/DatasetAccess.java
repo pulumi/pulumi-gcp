@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.bigquery.outputs.DatasetAccessDataset;
+import com.pulumi.gcp.bigquery.outputs.DatasetAccessRoutine;
 import com.pulumi.gcp.bigquery.outputs.DatasetAccessView;
 import java.lang.String;
 import java.util.Objects;
@@ -39,6 +40,16 @@ public final class DatasetAccess {
      * 
      */
     private @Nullable String role;
+    /**
+     * @return A routine from a different dataset to grant access to. Queries
+     * executed against that routine will have read access to tables in
+     * this dataset. The role field is not required when this field is
+     * set. If that routine is updated by any user, access to the routine
+     * needs to be granted again via an update operation.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable DatasetAccessRoutine routine;
     /**
      * @return A special group to grant access to. Possible values include:
      * 
@@ -97,6 +108,18 @@ public final class DatasetAccess {
         return Optional.ofNullable(this.role);
     }
     /**
+     * @return A routine from a different dataset to grant access to. Queries
+     * executed against that routine will have read access to tables in
+     * this dataset. The role field is not required when this field is
+     * set. If that routine is updated by any user, access to the routine
+     * needs to be granted again via an update operation.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<DatasetAccessRoutine> routine() {
+        return Optional.ofNullable(this.routine);
+    }
+    /**
      * @return A special group to grant access to. Possible values include:
      * 
      */
@@ -137,6 +160,7 @@ public final class DatasetAccess {
         private @Nullable String domain;
         private @Nullable String groupByEmail;
         private @Nullable String role;
+        private @Nullable DatasetAccessRoutine routine;
         private @Nullable String specialGroup;
         private @Nullable String userByEmail;
         private @Nullable DatasetAccessView view;
@@ -147,6 +171,7 @@ public final class DatasetAccess {
     	      this.domain = defaults.domain;
     	      this.groupByEmail = defaults.groupByEmail;
     	      this.role = defaults.role;
+    	      this.routine = defaults.routine;
     	      this.specialGroup = defaults.specialGroup;
     	      this.userByEmail = defaults.userByEmail;
     	      this.view = defaults.view;
@@ -173,6 +198,11 @@ public final class DatasetAccess {
             return this;
         }
         @CustomType.Setter
+        public Builder routine(@Nullable DatasetAccessRoutine routine) {
+            this.routine = routine;
+            return this;
+        }
+        @CustomType.Setter
         public Builder specialGroup(@Nullable String specialGroup) {
             this.specialGroup = specialGroup;
             return this;
@@ -193,6 +223,7 @@ public final class DatasetAccess {
             o.domain = domain;
             o.groupByEmail = groupByEmail;
             o.role = role;
+            o.routine = routine;
             o.specialGroup = specialGroup;
             o.userByEmail = userByEmail;
             o.view = view;

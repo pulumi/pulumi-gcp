@@ -6,6 +6,7 @@ package com.pulumi.gcp.networkservices;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheKeysetPublicKeyArgs;
+import com.pulumi.gcp.networkservices.inputs.EdgeCacheKeysetValidationSharedKeyArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -86,25 +87,52 @@ public final class EdgeCacheKeysetArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * An ordered list of Ed25519 public keys to use for validating signed requests.
-     * You must specify at least one (1) key, and may have up to three (3) keys.
+     * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+     * You may specify no more than one Google-managed public key.
+     * If you specify `public_keys`, you must specify at least one (1) key and may specify up to three (3) keys.
      * Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
-     * You should ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
+     * Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
      * Structure is documented below.
      * 
      */
-    @Import(name="publicKeys", required=true)
-    private Output<List<EdgeCacheKeysetPublicKeyArgs>> publicKeys;
+    @Import(name="publicKeys")
+    private @Nullable Output<List<EdgeCacheKeysetPublicKeyArgs>> publicKeys;
 
     /**
      * @return An ordered list of Ed25519 public keys to use for validating signed requests.
-     * You must specify at least one (1) key, and may have up to three (3) keys.
+     * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+     * You may specify no more than one Google-managed public key.
+     * If you specify `public_keys`, you must specify at least one (1) key and may specify up to three (3) keys.
      * Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
-     * You should ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
+     * Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
      * Structure is documented below.
      * 
      */
-    public Output<List<EdgeCacheKeysetPublicKeyArgs>> publicKeys() {
-        return this.publicKeys;
+    public Optional<Output<List<EdgeCacheKeysetPublicKeyArgs>>> publicKeys() {
+        return Optional.ofNullable(this.publicKeys);
+    }
+
+    /**
+     * An ordered list of shared keys to use for validating signed requests.
+     * Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
+     * You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
+     * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="validationSharedKeys")
+    private @Nullable Output<List<EdgeCacheKeysetValidationSharedKeyArgs>> validationSharedKeys;
+
+    /**
+     * @return An ordered list of shared keys to use for validating signed requests.
+     * Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
+     * You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
+     * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<EdgeCacheKeysetValidationSharedKeyArgs>>> validationSharedKeys() {
+        return Optional.ofNullable(this.validationSharedKeys);
     }
 
     private EdgeCacheKeysetArgs() {}
@@ -115,6 +143,7 @@ public final class EdgeCacheKeysetArgs extends com.pulumi.resources.ResourceArgs
         this.name = $.name;
         this.project = $.project;
         this.publicKeys = $.publicKeys;
+        this.validationSharedKeys = $.validationSharedKeys;
     }
 
     public static Builder builder() {
@@ -227,24 +256,28 @@ public final class EdgeCacheKeysetArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param publicKeys An ordered list of Ed25519 public keys to use for validating signed requests.
-         * You must specify at least one (1) key, and may have up to three (3) keys.
+         * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+         * You may specify no more than one Google-managed public key.
+         * If you specify `public_keys`, you must specify at least one (1) key and may specify up to three (3) keys.
          * Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
-         * You should ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
+         * Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
          * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder publicKeys(Output<List<EdgeCacheKeysetPublicKeyArgs>> publicKeys) {
+        public Builder publicKeys(@Nullable Output<List<EdgeCacheKeysetPublicKeyArgs>> publicKeys) {
             $.publicKeys = publicKeys;
             return this;
         }
 
         /**
          * @param publicKeys An ordered list of Ed25519 public keys to use for validating signed requests.
-         * You must specify at least one (1) key, and may have up to three (3) keys.
+         * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+         * You may specify no more than one Google-managed public key.
+         * If you specify `public_keys`, you must specify at least one (1) key and may specify up to three (3) keys.
          * Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
-         * You should ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
+         * Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
          * Structure is documented below.
          * 
          * @return builder
@@ -256,9 +289,11 @@ public final class EdgeCacheKeysetArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param publicKeys An ordered list of Ed25519 public keys to use for validating signed requests.
-         * You must specify at least one (1) key, and may have up to three (3) keys.
+         * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+         * You may specify no more than one Google-managed public key.
+         * If you specify `public_keys`, you must specify at least one (1) key and may specify up to three (3) keys.
          * Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
-         * You should ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
+         * Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
          * Structure is documented below.
          * 
          * @return builder
@@ -268,8 +303,50 @@ public final class EdgeCacheKeysetArgs extends com.pulumi.resources.ResourceArgs
             return publicKeys(List.of(publicKeys));
         }
 
+        /**
+         * @param validationSharedKeys An ordered list of shared keys to use for validating signed requests.
+         * Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
+         * You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
+         * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validationSharedKeys(@Nullable Output<List<EdgeCacheKeysetValidationSharedKeyArgs>> validationSharedKeys) {
+            $.validationSharedKeys = validationSharedKeys;
+            return this;
+        }
+
+        /**
+         * @param validationSharedKeys An ordered list of shared keys to use for validating signed requests.
+         * Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
+         * You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
+         * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validationSharedKeys(List<EdgeCacheKeysetValidationSharedKeyArgs> validationSharedKeys) {
+            return validationSharedKeys(Output.of(validationSharedKeys));
+        }
+
+        /**
+         * @param validationSharedKeys An ordered list of shared keys to use for validating signed requests.
+         * Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
+         * You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
+         * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validationSharedKeys(EdgeCacheKeysetValidationSharedKeyArgs... validationSharedKeys) {
+            return validationSharedKeys(List.of(validationSharedKeys));
+        }
+
         public EdgeCacheKeysetArgs build() {
-            $.publicKeys = Objects.requireNonNull($.publicKeys, "expected parameter 'publicKeys' to be non-null");
             return $;
         }
     }

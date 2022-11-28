@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterClusterAutoscaling
     {
         /// <summary>
-        /// Contains defaults for a node pool created by NAP.
+        /// Contains defaults for a node pool created by NAP. A subset of fields also apply to
+        /// GKE Autopilot clusters.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterClusterAutoscalingAutoProvisioningDefaults? AutoProvisioningDefaults;
@@ -29,7 +30,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Enable the PodSecurityPolicy controller for this cluster.
         /// If enabled, pods must be valid under a PodSecurityPolicy to be created.
         /// </summary>
-        public readonly bool Enabled;
+        public readonly bool? Enabled;
         /// <summary>
         /// Global constraints for machine resources in the
         /// cluster. Configuring the `cpu` and `memory` types is required if node
@@ -44,7 +45,7 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? autoscalingProfile,
 
-            bool enabled,
+            bool? enabled,
 
             ImmutableArray<Outputs.ClusterClusterAutoscalingResourceLimit> resourceLimits)
         {

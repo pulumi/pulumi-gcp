@@ -5,16 +5,21 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolDefaultNodeConfigDefault {
     private List<GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig> gcfsConfigs;
+    private String loggingVariant;
 
     private GetClusterNodePoolDefaultNodeConfigDefault() {}
     public List<GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig> gcfsConfigs() {
         return this.gcfsConfigs;
+    }
+    public String loggingVariant() {
+        return this.loggingVariant;
     }
 
     public static Builder builder() {
@@ -27,10 +32,12 @@ public final class GetClusterNodePoolDefaultNodeConfigDefault {
     @CustomType.Builder
     public static final class Builder {
         private List<GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig> gcfsConfigs;
+        private String loggingVariant;
         public Builder() {}
         public Builder(GetClusterNodePoolDefaultNodeConfigDefault defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gcfsConfigs = defaults.gcfsConfigs;
+    	      this.loggingVariant = defaults.loggingVariant;
         }
 
         @CustomType.Setter
@@ -41,9 +48,15 @@ public final class GetClusterNodePoolDefaultNodeConfigDefault {
         public Builder gcfsConfigs(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig... gcfsConfigs) {
             return gcfsConfigs(List.of(gcfsConfigs));
         }
+        @CustomType.Setter
+        public Builder loggingVariant(String loggingVariant) {
+            this.loggingVariant = Objects.requireNonNull(loggingVariant);
+            return this;
+        }
         public GetClusterNodePoolDefaultNodeConfigDefault build() {
             final var o = new GetClusterNodePoolDefaultNodeConfigDefault();
             o.gcfsConfigs = gcfsConfigs;
+            o.loggingVariant = loggingVariant;
             return o;
         }
     }

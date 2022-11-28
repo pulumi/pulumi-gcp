@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .folder_feed import *
+from .get_resources_search_all import *
 from .organization_feed import *
 from .project_feed import *
 from ._inputs import *

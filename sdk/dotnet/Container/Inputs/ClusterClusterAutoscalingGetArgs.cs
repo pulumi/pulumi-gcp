@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterClusterAutoscalingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Contains defaults for a node pool created by NAP.
+        /// Contains defaults for a node pool created by NAP. A subset of fields also apply to
+        /// GKE Autopilot clusters.
         /// Structure is documented below.
         /// </summary>
         [Input("autoProvisioningDefaults")]
@@ -32,8 +33,8 @@ namespace Pulumi.Gcp.Container.Inputs
         /// Enable the PodSecurityPolicy controller for this cluster.
         /// If enabled, pods must be valid under a PodSecurityPolicy to be created.
         /// </summary>
-        [Input("enabled", required: true)]
-        public Input<bool> Enabled { get; set; } = null!;
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         [Input("resourceLimits")]
         private InputList<Inputs.ClusterClusterAutoscalingResourceLimitGetArgs>? _resourceLimits;

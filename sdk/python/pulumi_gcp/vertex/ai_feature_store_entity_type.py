@@ -97,6 +97,7 @@ class _AiFeatureStoreEntityTypeState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  monitoring_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AiFeatureStoreEntityType resources.
@@ -109,6 +110,7 @@ class _AiFeatureStoreEntityTypeState:
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
+        :param pulumi.Input[str] region: The region of the EntityType.
         :param pulumi.Input[str] update_time: The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
                to nine fractional digits.
         """
@@ -124,6 +126,8 @@ class _AiFeatureStoreEntityTypeState:
             pulumi.set(__self__, "monitoring_config", monitoring_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -203,6 +207,18 @@ class _AiFeatureStoreEntityTypeState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the EntityType.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -257,7 +273,24 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            featurestore=featurestore.id)
+            featurestore=featurestore.id,
+            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
+                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
+                    disabled=False,
+                    monitoring_interval_days=1,
+                    staleness_days=21,
+                ),
+                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
+                    value=0.8,
+                ),
+                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
+                    value=10,
+                ),
+                import_features_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs(
+                    state="ENABLED",
+                    anomaly_detection_baseline="PREVIOUS_IMPORT_FEATURES_STATS",
+                ),
+            ))
         ```
         ### Vertex Ai Featurestore Entitytype With Beta Fields
 
@@ -286,6 +319,12 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
                     disabled=False,
                     monitoring_interval="86400s",
+                ),
+                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
+                    value=0.3,
+                ),
+                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
+                    value=0.3,
                 ),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -345,7 +384,24 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            featurestore=featurestore.id)
+            featurestore=featurestore.id,
+            monitoring_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs(
+                snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
+                    disabled=False,
+                    monitoring_interval_days=1,
+                    staleness_days=21,
+                ),
+                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
+                    value=0.8,
+                ),
+                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
+                    value=10,
+                ),
+                import_features_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs(
+                    state="ENABLED",
+                    anomaly_detection_baseline="PREVIOUS_IMPORT_FEATURES_STATS",
+                ),
+            ))
         ```
         ### Vertex Ai Featurestore Entitytype With Beta Fields
 
@@ -374,6 +430,12 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                 snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
                     disabled=False,
                     monitoring_interval="86400s",
+                ),
+                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
+                    value=0.3,
+                ),
+                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
+                    value=0.3,
                 ),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -423,6 +485,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["create_time"] = None
             __props__.__dict__["etag"] = None
+            __props__.__dict__["region"] = None
             __props__.__dict__["update_time"] = None
         super(AiFeatureStoreEntityType, __self__).__init__(
             'gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType',
@@ -440,6 +503,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             monitoring_config: Optional[pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AiFeatureStoreEntityType':
         """
         Get an existing AiFeatureStoreEntityType resource's state with the given name, id, and optional extra
@@ -457,6 +521,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
+        :param pulumi.Input[str] region: The region of the EntityType.
         :param pulumi.Input[str] update_time: The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
                to nine fractional digits.
         """
@@ -470,6 +535,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["monitoring_config"] = monitoring_config
         __props__.__dict__["name"] = name
+        __props__.__dict__["region"] = region
         __props__.__dict__["update_time"] = update_time
         return AiFeatureStoreEntityType(resource_name, opts=opts, __props__=__props__)
 
@@ -523,6 +589,14 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        The region of the EntityType.
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="updateTime")

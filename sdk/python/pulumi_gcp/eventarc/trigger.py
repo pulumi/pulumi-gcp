@@ -19,6 +19,7 @@ class TriggerArgs:
                  destination: pulumi.Input['TriggerDestinationArgs'],
                  location: pulumi.Input[str],
                  matching_criterias: pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]],
+                 channel: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -29,6 +30,7 @@ class TriggerArgs:
         :param pulumi.Input['TriggerDestinationArgs'] destination: Required. Destination specifies where the events should be sent to.
         :param pulumi.Input[str] location: Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
         :param pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+        :param pulumi.Input[str] channel: Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[str] project: The project for the resource
@@ -38,6 +40,8 @@ class TriggerArgs:
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "matching_criterias", matching_criterias)
+        if channel is not None:
+            pulumi.set(__self__, "channel", channel)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -84,6 +88,18 @@ class TriggerArgs:
     @matching_criterias.setter
     def matching_criterias(self, value: pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]]):
         pulumi.set(self, "matching_criterias", value)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        """
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "channel", value)
 
     @property
     @pulumi.getter
@@ -149,6 +165,8 @@ class TriggerArgs:
 @pulumi.input_type
 class _TriggerState:
     def __init__(__self__, *,
+                 channel: Optional[pulumi.Input[str]] = None,
+                 conditions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input['TriggerDestinationArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -163,6 +181,8 @@ class _TriggerState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Trigger resources.
+        :param pulumi.Input[str] channel: Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] conditions: Output only. The reason(s) why a trigger is in FAILED state.
         :param pulumi.Input[str] create_time: Output only. The creation time.
         :param pulumi.Input['TriggerDestinationArgs'] destination: Required. Destination specifies where the events should be sent to.
         :param pulumi.Input[str] etag: Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
@@ -178,6 +198,10 @@ class _TriggerState:
                unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: Output only. The last-modified time.
         """
+        if channel is not None:
+            pulumi.set(__self__, "channel", channel)
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if destination is not None:
@@ -202,6 +226,30 @@ class _TriggerState:
             pulumi.set(__self__, "uid", uid)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        """
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "channel", value)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Output only. The reason(s) why a trigger is in FAILED state.
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "conditions", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -355,6 +403,7 @@ class Trigger(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 channel: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['TriggerDestinationArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -430,6 +479,7 @@ class Trigger(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] channel: Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
         :param pulumi.Input[pulumi.InputType['TriggerDestinationArgs']] destination: Required. Destination specifies where the events should be sent to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] location: Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
@@ -524,6 +574,7 @@ class Trigger(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 channel: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['TriggerDestinationArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -541,6 +592,7 @@ class Trigger(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TriggerArgs.__new__(TriggerArgs)
 
+            __props__.__dict__["channel"] = channel
             if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
             __props__.__dict__["destination"] = destination
@@ -555,6 +607,7 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["transports"] = transports
+            __props__.__dict__["conditions"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["uid"] = None
@@ -569,6 +622,8 @@ class Trigger(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            channel: Optional[pulumi.Input[str]] = None,
+            conditions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             destination: Optional[pulumi.Input[pulumi.InputType['TriggerDestinationArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
@@ -588,6 +643,8 @@ class Trigger(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] channel: Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] conditions: Output only. The reason(s) why a trigger is in FAILED state.
         :param pulumi.Input[str] create_time: Output only. The creation time.
         :param pulumi.Input[pulumi.InputType['TriggerDestinationArgs']] destination: Required. Destination specifies where the events should be sent to.
         :param pulumi.Input[str] etag: Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
@@ -607,6 +664,8 @@ class Trigger(pulumi.CustomResource):
 
         __props__ = _TriggerState.__new__(_TriggerState)
 
+        __props__.__dict__["channel"] = channel
+        __props__.__dict__["conditions"] = conditions
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["destination"] = destination
         __props__.__dict__["etag"] = etag
@@ -620,6 +679,22 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return Trigger(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        """
+        return pulumi.get(self, "channel")
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Output only. The reason(s) why a trigger is in FAILED state.
+        """
+        return pulumi.get(self, "conditions")
 
     @property
     @pulumi.getter(name="createTime")

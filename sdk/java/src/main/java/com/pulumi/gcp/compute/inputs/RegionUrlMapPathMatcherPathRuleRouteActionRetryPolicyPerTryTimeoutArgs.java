@@ -17,18 +17,16 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTi
     public static final RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs Empty = new RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs();
 
     /**
-     * Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations
-     * less than one second are represented with a 0 `seconds` field and a positive
-     * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+     * Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations less than one second are
+     * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
      * 
      */
     @Import(name="nanos")
     private @Nullable Output<Integer> nanos;
 
     /**
-     * @return Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations
-     * less than one second are represented with a 0 `seconds` field and a positive
-     * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+     * @return Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations less than one second are
+     * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
      * 
      */
     public Optional<Output<Integer>> nanos() {
@@ -36,16 +34,16 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTi
     }
 
     /**
-     * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-     * inclusive.
+     * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+     * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
      * 
      */
     @Import(name="seconds", required=true)
     private Output<String> seconds;
 
     /**
-     * @return Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-     * inclusive.
+     * @return Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+     * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
      * 
      */
     public Output<String> seconds() {
@@ -78,9 +76,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTi
         }
 
         /**
-         * @param nanos Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations
-         * less than one second are represented with a 0 `seconds` field and a positive
-         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         * @param nanos Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations less than one second are
+         * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
          * 
          * @return builder
          * 
@@ -91,9 +88,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTi
         }
 
         /**
-         * @param nanos Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations
-         * less than one second are represented with a 0 `seconds` field and a positive
-         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         * @param nanos Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations less than one second are
+         * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
          * 
          * @return builder
          * 
@@ -103,8 +99,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTi
         }
 
         /**
-         * @param seconds Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-         * inclusive.
+         * @param seconds Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+         * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
          * 
          * @return builder
          * 
@@ -115,8 +111,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTi
         }
 
         /**
-         * @param seconds Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-         * inclusive.
+         * @param seconds Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+         * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
          * 
          * @return builder
          * 

@@ -70,8 +70,7 @@ class NodePoolArgs:
                nodes.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
-        :param pulumi.Input['NodePoolUpgradeSettingsArgs'] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to
-               upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+        :param pulumi.Input['NodePoolUpgradeSettingsArgs'] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
@@ -306,8 +305,7 @@ class NodePoolArgs:
     @pulumi.getter(name="upgradeSettings")
     def upgrade_settings(self) -> Optional[pulumi.Input['NodePoolUpgradeSettingsArgs']]:
         """
-        Specify node upgrade settings to change how many nodes GKE attempts to
-        upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+        Specify node upgrade settings to change how GKE upgrades nodes.
         The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         """
         return pulumi.get(self, "upgrade_settings")
@@ -396,8 +394,7 @@ class _NodePoolState:
                nodes.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
-        :param pulumi.Input['NodePoolUpgradeSettingsArgs'] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to
-               upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+        :param pulumi.Input['NodePoolUpgradeSettingsArgs'] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
@@ -672,8 +669,7 @@ class _NodePoolState:
     @pulumi.getter(name="upgradeSettings")
     def upgrade_settings(self) -> Optional[pulumi.Input['NodePoolUpgradeSettingsArgs']]:
         """
-        Specify node upgrade settings to change how many nodes GKE attempts to
-        upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+        Specify node upgrade settings to change how GKE upgrades nodes.
         The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         """
         return pulumi.get(self, "upgrade_settings")
@@ -802,8 +798,7 @@ class NodePool(pulumi.CustomResource):
                nodes.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
-        :param pulumi.Input[pulumi.InputType['NodePoolUpgradeSettingsArgs']] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to
-               upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+        :param pulumi.Input[pulumi.InputType['NodePoolUpgradeSettingsArgs']] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
@@ -995,8 +990,7 @@ class NodePool(pulumi.CustomResource):
                nodes.
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
-        :param pulumi.Input[pulumi.InputType['NodePoolUpgradeSettingsArgs']] upgrade_settings: Specify node upgrade settings to change how many nodes GKE attempts to
-               upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+        :param pulumi.Input[pulumi.InputType['NodePoolUpgradeSettingsArgs']] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
                and `auto_upgrade` are both specified, they will fight each other for what the node version should
@@ -1189,8 +1183,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="upgradeSettings")
     def upgrade_settings(self) -> pulumi.Output['outputs.NodePoolUpgradeSettings']:
         """
-        Specify node upgrade settings to change how many nodes GKE attempts to
-        upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+        Specify node upgrade settings to change how GKE upgrades nodes.
         The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         """
         return pulumi.get(self, "upgrade_settings")

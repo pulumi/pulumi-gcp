@@ -70,6 +70,12 @@ import * as utilities from "../utilities";
  *             disabled: false,
  *             monitoringInterval: "86400s",
  *         },
+ *         categoricalThresholdConfig: {
+ *             value: 0.3,
+ *         },
+ *         numericalThresholdConfig: {
+ *             value: 0.3,
+ *         },
  *     },
  * }, {
  *     provider: google_beta,

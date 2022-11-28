@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networkservices.EdgeCacheOriginArgs;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginState;
+import com.pulumi.gcp.networkservices.outputs.EdgeCacheOriginAwsV4Authentication;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheOriginTimeout;
 import java.lang.Integer;
 import java.lang.String;
@@ -108,6 +109,59 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Network Services Edge Cache Origin V4auth
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.networkservices.EdgeCacheOrigin;
+ * import com.pulumi.gcp.networkservices.EdgeCacheOriginArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginAwsV4AuthenticationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var secret_basic = new Secret(&#34;secret-basic&#34;, SecretArgs.builder()        
+ *             .secretId(&#34;secret-name&#34;)
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .automatic(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var secret_version_basic = new SecretVersion(&#34;secret-version-basic&#34;, SecretVersionArgs.builder()        
+ *             .secret(secret_basic.id())
+ *             .secretData(&#34;secret-data&#34;)
+ *             .build());
+ * 
+ *         var default_ = new EdgeCacheOrigin(&#34;default&#34;, EdgeCacheOriginArgs.builder()        
+ *             .originAddress(&#34;gs://media-edge-default&#34;)
+ *             .description(&#34;The default bucket for V4 authentication&#34;)
+ *             .awsV4Authentication(EdgeCacheOriginAwsV4AuthenticationArgs.builder()
+ *                 .accessKeyId(&#34;ACCESSKEYID&#34;)
+ *                 .secretAccessKeyVersion(secret_version_basic.id())
+ *                 .originRegion(&#34;auto&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -128,6 +182,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin")
 public class EdgeCacheOrigin extends com.pulumi.resources.CustomResource {
+    /**
+     * Enable AWS Signature Version 4 origin authentication.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="awsV4Authentication", type=EdgeCacheOriginAwsV4Authentication.class, parameters={})
+    private Output</* @Nullable */ EdgeCacheOriginAwsV4Authentication> awsV4Authentication;
+
+    /**
+     * @return Enable AWS Signature Version 4 origin authentication.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<EdgeCacheOriginAwsV4Authentication>> awsV4Authentication() {
+        return Codegen.optional(this.awsV4Authentication);
+    }
     /**
      * A human-readable description of the resource.
      * 

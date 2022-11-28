@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,6 +35,59 @@ import (
 //					&networkservices.EdgeCacheKeysetPublicKeyArgs{
 //						Id:    pulumi.String("my-public-key-2"),
 //						Value: pulumi.String("hzd03llxB1u5FOLKFkZ6_wCJqC7jtN0bg7xlBqS6WVM"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Services Edge Cache Keyset Dual Token
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("secret-name"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Automatic: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
+//				Secret:     secret_basic.ID(),
+//				SecretData: pulumi.String("secret-data"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkservices.NewEdgeCacheKeyset(ctx, "default", &networkservices.EdgeCacheKeysetArgs{
+//				Description: pulumi.String("The default keyset"),
+//				PublicKeys: networkservices.EdgeCacheKeysetPublicKeyArray{
+//					&networkservices.EdgeCacheKeysetPublicKeyArgs{
+//						Id:      pulumi.String("my-public-key"),
+//						Managed: pulumi.Bool(true),
+//					},
+//				},
+//				ValidationSharedKeys: networkservices.EdgeCacheKeysetValidationSharedKeyArray{
+//					&networkservices.EdgeCacheKeysetValidationSharedKeyArgs{
+//						SecretVersion: secret_version_basic.ID(),
 //					},
 //				},
 //			})
@@ -84,23 +136,28 @@ type EdgeCacheKeyset struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// An ordered list of Ed25519 public keys to use for validating signed requests.
-	// You must specify at least one (1) key, and may have up to three (3) keys.
+	// You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
+	// You may specify no more than one Google-managed public key.
+	// If you specify `publicKeys`, you must specify at least one (1) key and may specify up to three (3) keys.
 	// Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
-	// You should ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
+	// Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
 	// Structure is documented below.
 	PublicKeys EdgeCacheKeysetPublicKeyArrayOutput `pulumi:"publicKeys"`
+	// An ordered list of shared keys to use for validating signed requests.
+	// Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
+	// You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
+	// You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
+	// Structure is documented below.
+	ValidationSharedKeys EdgeCacheKeysetValidationSharedKeyArrayOutput `pulumi:"validationSharedKeys"`
 }
 
 // NewEdgeCacheKeyset registers a new resource with the given unique name, arguments, and options.
 func NewEdgeCacheKeyset(ctx *pulumi.Context,
 	name string, args *EdgeCacheKeysetArgs, opts ...pulumi.ResourceOption) (*EdgeCacheKeyset, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &EdgeCacheKeysetArgs{}
 	}
 
-	if args.PublicKeys == nil {
-		return nil, errors.New("invalid value for required argument 'PublicKeys'")
-	}
 	var resource EdgeCacheKeyset
 	err := ctx.RegisterResource("gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset", name, args, &resource, opts...)
 	if err != nil {
@@ -135,11 +192,19 @@ type edgeCacheKeysetState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// An ordered list of Ed25519 public keys to use for validating signed requests.
-	// You must specify at least one (1) key, and may have up to three (3) keys.
+	// You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
+	// You may specify no more than one Google-managed public key.
+	// If you specify `publicKeys`, you must specify at least one (1) key and may specify up to three (3) keys.
 	// Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
-	// You should ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
+	// Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
 	// Structure is documented below.
 	PublicKeys []EdgeCacheKeysetPublicKey `pulumi:"publicKeys"`
+	// An ordered list of shared keys to use for validating signed requests.
+	// Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
+	// You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
+	// You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
+	// Structure is documented below.
+	ValidationSharedKeys []EdgeCacheKeysetValidationSharedKey `pulumi:"validationSharedKeys"`
 }
 
 type EdgeCacheKeysetState struct {
@@ -155,11 +220,19 @@ type EdgeCacheKeysetState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// An ordered list of Ed25519 public keys to use for validating signed requests.
-	// You must specify at least one (1) key, and may have up to three (3) keys.
+	// You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
+	// You may specify no more than one Google-managed public key.
+	// If you specify `publicKeys`, you must specify at least one (1) key and may specify up to three (3) keys.
 	// Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
-	// You should ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
+	// Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
 	// Structure is documented below.
 	PublicKeys EdgeCacheKeysetPublicKeyArrayInput
+	// An ordered list of shared keys to use for validating signed requests.
+	// Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
+	// You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
+	// You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
+	// Structure is documented below.
+	ValidationSharedKeys EdgeCacheKeysetValidationSharedKeyArrayInput
 }
 
 func (EdgeCacheKeysetState) ElementType() reflect.Type {
@@ -179,11 +252,19 @@ type edgeCacheKeysetArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// An ordered list of Ed25519 public keys to use for validating signed requests.
-	// You must specify at least one (1) key, and may have up to three (3) keys.
+	// You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
+	// You may specify no more than one Google-managed public key.
+	// If you specify `publicKeys`, you must specify at least one (1) key and may specify up to three (3) keys.
 	// Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
-	// You should ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
+	// Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
 	// Structure is documented below.
 	PublicKeys []EdgeCacheKeysetPublicKey `pulumi:"publicKeys"`
+	// An ordered list of shared keys to use for validating signed requests.
+	// Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
+	// You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
+	// You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
+	// Structure is documented below.
+	ValidationSharedKeys []EdgeCacheKeysetValidationSharedKey `pulumi:"validationSharedKeys"`
 }
 
 // The set of arguments for constructing a EdgeCacheKeyset resource.
@@ -200,11 +281,19 @@ type EdgeCacheKeysetArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// An ordered list of Ed25519 public keys to use for validating signed requests.
-	// You must specify at least one (1) key, and may have up to three (3) keys.
+	// You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
+	// You may specify no more than one Google-managed public key.
+	// If you specify `publicKeys`, you must specify at least one (1) key and may specify up to three (3) keys.
 	// Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
-	// You should ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
+	// Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
 	// Structure is documented below.
 	PublicKeys EdgeCacheKeysetPublicKeyArrayInput
+	// An ordered list of shared keys to use for validating signed requests.
+	// Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
+	// You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
+	// You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
+	// Structure is documented below.
+	ValidationSharedKeys EdgeCacheKeysetValidationSharedKeyArrayInput
 }
 
 func (EdgeCacheKeysetArgs) ElementType() reflect.Type {
@@ -318,12 +407,23 @@ func (o EdgeCacheKeysetOutput) Project() pulumi.StringOutput {
 }
 
 // An ordered list of Ed25519 public keys to use for validating signed requests.
-// You must specify at least one (1) key, and may have up to three (3) keys.
+// You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
+// You may specify no more than one Google-managed public key.
+// If you specify `publicKeys`, you must specify at least one (1) key and may specify up to three (3) keys.
 // Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
-// You should ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
+// Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
 // Structure is documented below.
 func (o EdgeCacheKeysetOutput) PublicKeys() EdgeCacheKeysetPublicKeyArrayOutput {
 	return o.ApplyT(func(v *EdgeCacheKeyset) EdgeCacheKeysetPublicKeyArrayOutput { return v.PublicKeys }).(EdgeCacheKeysetPublicKeyArrayOutput)
+}
+
+// An ordered list of shared keys to use for validating signed requests.
+// Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
+// You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
+// You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
+// Structure is documented below.
+func (o EdgeCacheKeysetOutput) ValidationSharedKeys() EdgeCacheKeysetValidationSharedKeyArrayOutput {
+	return o.ApplyT(func(v *EdgeCacheKeyset) EdgeCacheKeysetValidationSharedKeyArrayOutput { return v.ValidationSharedKeys }).(EdgeCacheKeysetValidationSharedKeyArrayOutput)
 }
 
 type EdgeCacheKeysetArrayOutput struct{ *pulumi.OutputState }

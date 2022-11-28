@@ -165,20 +165,22 @@ public class Group extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.initialGroupConfig);
     }
     /**
-     * The labels that apply to the Group.
-     * Must not contain more than one entry. Must contain the entry
-     * &#39;cloudidentity.googleapis.com/groups.discussion_forum&#39;: &#39;&#39; if the Group is a Google Group or
-     * &#39;system/groups/external&#39;: &#39;&#39; if the Group is an external-identity-mapped group.
+     * One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
+     * Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
+     * Existing Google Groups can have an additional label with a key of cloudidentity.googleapis.com/groups.security and an empty value added to them. This is an immutable change and the security label cannot be removed once added.
+     * Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
+     * Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
      * 
      */
     @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output<Map<String,String>> labels;
 
     /**
-     * @return The labels that apply to the Group.
-     * Must not contain more than one entry. Must contain the entry
-     * &#39;cloudidentity.googleapis.com/groups.discussion_forum&#39;: &#39;&#39; if the Group is a Google Group or
-     * &#39;system/groups/external&#39;: &#39;&#39; if the Group is an external-identity-mapped group.
+     * @return One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
+     * Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
+     * Existing Google Groups can have an additional label with a key of cloudidentity.googleapis.com/groups.security and an empty value added to them. This is an immutable change and the security label cannot be removed once added.
+     * Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
+     * Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
      * 
      */
     public Output<Map<String,String>> labels() {

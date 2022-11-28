@@ -30,8 +30,8 @@ import * as utilities from "../utilities";
  *             saveFindings: {
  *                 outputConfig: {
  *                     table: {
- *                         datasetId: "asdf",
- *                         projectId: "asdf",
+ *                         datasetId: "dataset",
+ *                         projectId: "project",
  *                     },
  *                 },
  *             },
@@ -41,6 +41,88 @@ import * as utilities from "../utilities";
  *             cloudStorageOptions: {
  *                 fileSet: {
  *                     url: "gs://mybucket/directory/",
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     parent: "projects/my-project-name",
+ *     triggers: [{
+ *         schedule: {
+ *             recurrencePeriodDuration: "86400s",
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Dlp Job Trigger Bigquery Row Limit
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bigqueryRowLimit = new gcp.dataloss.PreventionJobTrigger("bigquery_row_limit", {
+ *     description: "Description",
+ *     displayName: "Displayname",
+ *     inspectJob: {
+ *         actions: [{
+ *             saveFindings: {
+ *                 outputConfig: {
+ *                     table: {
+ *                         datasetId: "dataset",
+ *                         projectId: "project",
+ *                     },
+ *                 },
+ *             },
+ *         }],
+ *         inspectTemplateName: "fake",
+ *         storageConfig: {
+ *             bigQueryOptions: {
+ *                 rowsLimit: 1000,
+ *                 sampleMethod: "RANDOM_START",
+ *                 tableReference: {
+ *                     datasetId: "dataset",
+ *                     projectId: "project",
+ *                     tableId: "table_to_scan",
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     parent: "projects/my-project-name",
+ *     triggers: [{
+ *         schedule: {
+ *             recurrencePeriodDuration: "86400s",
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Dlp Job Trigger Bigquery Row Limit Percentage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bigqueryRowLimitPercentage = new gcp.dataloss.PreventionJobTrigger("bigquery_row_limit_percentage", {
+ *     description: "Description",
+ *     displayName: "Displayname",
+ *     inspectJob: {
+ *         actions: [{
+ *             saveFindings: {
+ *                 outputConfig: {
+ *                     table: {
+ *                         datasetId: "dataset",
+ *                         projectId: "project",
+ *                     },
+ *                 },
+ *             },
+ *         }],
+ *         inspectTemplateName: "fake",
+ *         storageConfig: {
+ *             bigQueryOptions: {
+ *                 rowsLimitPercent: 50,
+ *                 sampleMethod: "RANDOM_START",
+ *                 tableReference: {
+ *                     datasetId: "dataset",
+ *                     projectId: "project",
+ *                     tableId: "table_to_scan",
  *                 },
  *             },
  *         },

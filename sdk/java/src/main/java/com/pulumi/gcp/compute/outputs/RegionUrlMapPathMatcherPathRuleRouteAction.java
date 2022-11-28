@@ -38,10 +38,9 @@ public final class RegionUrlMapPathMatcherPathRuleRouteAction {
      */
     private @Nullable RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy faultInjectionPolicy;
     /**
-     * @return Specifies the policy on how requests intended for the route&#39;s backends are
-     * shadowed to a separate mirrored backend service. Loadbalancer does not wait for
-     * responses from the shadow service. Prior to sending traffic to the shadow
-     * service, the host / authority header is suffixed with -shadow.
+     * @return Specifies the policy on how requests intended for the route&#39;s backends are shadowed to a separate mirrored backend service.
+     * The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+     * Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
      * Structure is documented below.
      * 
      */
@@ -69,14 +68,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteAction {
      */
     private @Nullable RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite urlRewrite;
     /**
-     * @return A list of weighted backend services to send traffic to when a route match
-     * occurs. The weights determine the fraction of traffic that flows to their
-     * corresponding backend service. If all traffic needs to go to a single backend
-     * service, there must be one  weightedBackendService with weight set to a non 0
-     * number. Once a backendService is identified and before forwarding the request to
-     * the backend service, advanced routing actions like Url rewrites and header
-     * transformations are applied depending on additional settings specified in this
-     * HttpRouteAction.
+     * @return A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
+     * After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
      * Structure is documented below.
      * 
      */
@@ -107,10 +100,9 @@ public final class RegionUrlMapPathMatcherPathRuleRouteAction {
         return Optional.ofNullable(this.faultInjectionPolicy);
     }
     /**
-     * @return Specifies the policy on how requests intended for the route&#39;s backends are
-     * shadowed to a separate mirrored backend service. Loadbalancer does not wait for
-     * responses from the shadow service. Prior to sending traffic to the shadow
-     * service, the host / authority header is suffixed with -shadow.
+     * @return Specifies the policy on how requests intended for the route&#39;s backends are shadowed to a separate mirrored backend service.
+     * The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
+     * Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
      * Structure is documented below.
      * 
      */
@@ -146,14 +138,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteAction {
         return Optional.ofNullable(this.urlRewrite);
     }
     /**
-     * @return A list of weighted backend services to send traffic to when a route match
-     * occurs. The weights determine the fraction of traffic that flows to their
-     * corresponding backend service. If all traffic needs to go to a single backend
-     * service, there must be one  weightedBackendService with weight set to a non 0
-     * number. Once a backendService is identified and before forwarding the request to
-     * the backend service, advanced routing actions like Url rewrites and header
-     * transformations are applied depending on additional settings specified in this
-     * HttpRouteAction.
+     * @return A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
+     * After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
      * Structure is documented below.
      * 
      */

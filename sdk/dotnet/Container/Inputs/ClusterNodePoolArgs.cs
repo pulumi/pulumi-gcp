@@ -42,6 +42,9 @@ namespace Pulumi.Gcp.Container.Inputs
             set => _managedInstanceGroupUrls = value;
         }
 
+        /// <summary>
+        /// NodeManagement configuration for this NodePool. Structure is documented below.
+        /// </summary>
         [Input("management")]
         public Input<Inputs.ClusterNodePoolManagementArgs>? Management { get; set; }
 

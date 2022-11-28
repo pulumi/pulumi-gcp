@@ -69,7 +69,7 @@ class InstanceArgs:
         :param pulumi.Input['InstanceMaintenanceScheduleArgs'] maintenance_schedule: Upcoming maintenance schedule.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-        :param pulumi.Input['InstancePersistenceConfigArgs'] persistence_config: Maintenance policy for an instance.
+        :param pulumi.Input['InstancePersistenceConfigArgs'] persistence_config: Persistence configuration for an instance.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -320,7 +320,7 @@ class InstanceArgs:
     @pulumi.getter(name="persistenceConfig")
     def persistence_config(self) -> Optional[pulumi.Input['InstancePersistenceConfigArgs']]:
         """
-        Maintenance policy for an instance.
+        Persistence configuration for an instance.
         Structure is documented below.
         """
         return pulumi.get(self, "persistence_config")
@@ -554,7 +554,7 @@ class _InstanceState:
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]] nodes: Output only. Info per node.
-        :param pulumi.Input['InstancePersistenceConfigArgs'] persistence_config: Maintenance policy for an instance.
+        :param pulumi.Input['InstancePersistenceConfigArgs'] persistence_config: Persistence configuration for an instance.
                Structure is documented below.
         :param pulumi.Input[str] persistence_iam_identity: Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
                "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
@@ -901,7 +901,7 @@ class _InstanceState:
     @pulumi.getter(name="persistenceConfig")
     def persistence_config(self) -> Optional[pulumi.Input['InstancePersistenceConfigArgs']]:
         """
-        Maintenance policy for an instance.
+        Persistence configuration for an instance.
         Structure is documented below.
         """
         return pulumi.get(self, "persistence_config")
@@ -1344,7 +1344,7 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-        :param pulumi.Input[pulumi.InputType['InstancePersistenceConfigArgs']] persistence_config: Maintenance policy for an instance.
+        :param pulumi.Input[pulumi.InputType['InstancePersistenceConfigArgs']] persistence_config: Persistence configuration for an instance.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1724,7 +1724,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNodeArgs']]]] nodes: Output only. Info per node.
-        :param pulumi.Input[pulumi.InputType['InstancePersistenceConfigArgs']] persistence_config: Maintenance policy for an instance.
+        :param pulumi.Input[pulumi.InputType['InstancePersistenceConfigArgs']] persistence_config: Persistence configuration for an instance.
                Structure is documented below.
         :param pulumi.Input[str] persistence_iam_identity: Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
                "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
@@ -1975,7 +1975,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="persistenceConfig")
     def persistence_config(self) -> pulumi.Output['outputs.InstancePersistenceConfig']:
         """
-        Maintenance policy for an instance.
+        Persistence configuration for an instance.
         Structure is documented below.
         """
         return pulumi.get(self, "persistence_config")

@@ -11,6 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetDatabaseInstanceSettingInsightsConfig {
     private Boolean queryInsightsEnabled;
+    private Integer queryPlansPerMinute;
     private Integer queryStringLength;
     private Boolean recordApplicationTags;
     private Boolean recordClientAddress;
@@ -18,6 +19,9 @@ public final class GetDatabaseInstanceSettingInsightsConfig {
     private GetDatabaseInstanceSettingInsightsConfig() {}
     public Boolean queryInsightsEnabled() {
         return this.queryInsightsEnabled;
+    }
+    public Integer queryPlansPerMinute() {
+        return this.queryPlansPerMinute;
     }
     public Integer queryStringLength() {
         return this.queryStringLength;
@@ -39,6 +43,7 @@ public final class GetDatabaseInstanceSettingInsightsConfig {
     @CustomType.Builder
     public static final class Builder {
         private Boolean queryInsightsEnabled;
+        private Integer queryPlansPerMinute;
         private Integer queryStringLength;
         private Boolean recordApplicationTags;
         private Boolean recordClientAddress;
@@ -46,6 +51,7 @@ public final class GetDatabaseInstanceSettingInsightsConfig {
         public Builder(GetDatabaseInstanceSettingInsightsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.queryInsightsEnabled = defaults.queryInsightsEnabled;
+    	      this.queryPlansPerMinute = defaults.queryPlansPerMinute;
     	      this.queryStringLength = defaults.queryStringLength;
     	      this.recordApplicationTags = defaults.recordApplicationTags;
     	      this.recordClientAddress = defaults.recordClientAddress;
@@ -54,6 +60,11 @@ public final class GetDatabaseInstanceSettingInsightsConfig {
         @CustomType.Setter
         public Builder queryInsightsEnabled(Boolean queryInsightsEnabled) {
             this.queryInsightsEnabled = Objects.requireNonNull(queryInsightsEnabled);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder queryPlansPerMinute(Integer queryPlansPerMinute) {
+            this.queryPlansPerMinute = Objects.requireNonNull(queryPlansPerMinute);
             return this;
         }
         @CustomType.Setter
@@ -74,6 +85,7 @@ public final class GetDatabaseInstanceSettingInsightsConfig {
         public GetDatabaseInstanceSettingInsightsConfig build() {
             final var o = new GetDatabaseInstanceSettingInsightsConfig();
             o.queryInsightsEnabled = queryInsightsEnabled;
+            o.queryPlansPerMinute = queryPlansPerMinute;
             o.queryStringLength = queryStringLength;
             o.recordApplicationTags = recordApplicationTags;
             o.recordClientAddress = recordClientAddress;

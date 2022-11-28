@@ -593,6 +593,844 @@ func (o InboundSamlConfigSpConfigSpCertificateArrayOutput) Index(i pulumi.IntInp
 	}).(InboundSamlConfigSpConfigSpCertificateOutput)
 }
 
+type ProjectDefaultConfigSignIn struct {
+	// Whether to allow more than one account to have the same email.
+	AllowDuplicateEmails *bool `pulumi:"allowDuplicateEmails"`
+	// Configuration options related to authenticating an anonymous user.
+	// Structure is documented below.
+	Anonymous *ProjectDefaultConfigSignInAnonymous `pulumi:"anonymous"`
+	// Configuration options related to authenticating a user by their email address.
+	// Structure is documented below.
+	Email *ProjectDefaultConfigSignInEmail `pulumi:"email"`
+	// -
+	// Output only. Hash config information.
+	// Structure is documented below.
+	HashConfigs []ProjectDefaultConfigSignInHashConfig `pulumi:"hashConfigs"`
+	// Configuration options related to authenticated a user by their phone number.
+	// Structure is documented below.
+	PhoneNumber *ProjectDefaultConfigSignInPhoneNumber `pulumi:"phoneNumber"`
+}
+
+// ProjectDefaultConfigSignInInput is an input type that accepts ProjectDefaultConfigSignInArgs and ProjectDefaultConfigSignInOutput values.
+// You can construct a concrete instance of `ProjectDefaultConfigSignInInput` via:
+//
+//	ProjectDefaultConfigSignInArgs{...}
+type ProjectDefaultConfigSignInInput interface {
+	pulumi.Input
+
+	ToProjectDefaultConfigSignInOutput() ProjectDefaultConfigSignInOutput
+	ToProjectDefaultConfigSignInOutputWithContext(context.Context) ProjectDefaultConfigSignInOutput
+}
+
+type ProjectDefaultConfigSignInArgs struct {
+	// Whether to allow more than one account to have the same email.
+	AllowDuplicateEmails pulumi.BoolPtrInput `pulumi:"allowDuplicateEmails"`
+	// Configuration options related to authenticating an anonymous user.
+	// Structure is documented below.
+	Anonymous ProjectDefaultConfigSignInAnonymousPtrInput `pulumi:"anonymous"`
+	// Configuration options related to authenticating a user by their email address.
+	// Structure is documented below.
+	Email ProjectDefaultConfigSignInEmailPtrInput `pulumi:"email"`
+	// -
+	// Output only. Hash config information.
+	// Structure is documented below.
+	HashConfigs ProjectDefaultConfigSignInHashConfigArrayInput `pulumi:"hashConfigs"`
+	// Configuration options related to authenticated a user by their phone number.
+	// Structure is documented below.
+	PhoneNumber ProjectDefaultConfigSignInPhoneNumberPtrInput `pulumi:"phoneNumber"`
+}
+
+func (ProjectDefaultConfigSignInArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectDefaultConfigSignIn)(nil)).Elem()
+}
+
+func (i ProjectDefaultConfigSignInArgs) ToProjectDefaultConfigSignInOutput() ProjectDefaultConfigSignInOutput {
+	return i.ToProjectDefaultConfigSignInOutputWithContext(context.Background())
+}
+
+func (i ProjectDefaultConfigSignInArgs) ToProjectDefaultConfigSignInOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInOutput)
+}
+
+func (i ProjectDefaultConfigSignInArgs) ToProjectDefaultConfigSignInPtrOutput() ProjectDefaultConfigSignInPtrOutput {
+	return i.ToProjectDefaultConfigSignInPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectDefaultConfigSignInArgs) ToProjectDefaultConfigSignInPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInOutput).ToProjectDefaultConfigSignInPtrOutputWithContext(ctx)
+}
+
+// ProjectDefaultConfigSignInPtrInput is an input type that accepts ProjectDefaultConfigSignInArgs, ProjectDefaultConfigSignInPtr and ProjectDefaultConfigSignInPtrOutput values.
+// You can construct a concrete instance of `ProjectDefaultConfigSignInPtrInput` via:
+//
+//	        ProjectDefaultConfigSignInArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProjectDefaultConfigSignInPtrInput interface {
+	pulumi.Input
+
+	ToProjectDefaultConfigSignInPtrOutput() ProjectDefaultConfigSignInPtrOutput
+	ToProjectDefaultConfigSignInPtrOutputWithContext(context.Context) ProjectDefaultConfigSignInPtrOutput
+}
+
+type projectDefaultConfigSignInPtrType ProjectDefaultConfigSignInArgs
+
+func ProjectDefaultConfigSignInPtr(v *ProjectDefaultConfigSignInArgs) ProjectDefaultConfigSignInPtrInput {
+	return (*projectDefaultConfigSignInPtrType)(v)
+}
+
+func (*projectDefaultConfigSignInPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectDefaultConfigSignIn)(nil)).Elem()
+}
+
+func (i *projectDefaultConfigSignInPtrType) ToProjectDefaultConfigSignInPtrOutput() ProjectDefaultConfigSignInPtrOutput {
+	return i.ToProjectDefaultConfigSignInPtrOutputWithContext(context.Background())
+}
+
+func (i *projectDefaultConfigSignInPtrType) ToProjectDefaultConfigSignInPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInPtrOutput)
+}
+
+type ProjectDefaultConfigSignInOutput struct{ *pulumi.OutputState }
+
+func (ProjectDefaultConfigSignInOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectDefaultConfigSignIn)(nil)).Elem()
+}
+
+func (o ProjectDefaultConfigSignInOutput) ToProjectDefaultConfigSignInOutput() ProjectDefaultConfigSignInOutput {
+	return o
+}
+
+func (o ProjectDefaultConfigSignInOutput) ToProjectDefaultConfigSignInOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInOutput {
+	return o
+}
+
+func (o ProjectDefaultConfigSignInOutput) ToProjectDefaultConfigSignInPtrOutput() ProjectDefaultConfigSignInPtrOutput {
+	return o.ToProjectDefaultConfigSignInPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectDefaultConfigSignInOutput) ToProjectDefaultConfigSignInPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectDefaultConfigSignIn) *ProjectDefaultConfigSignIn {
+		return &v
+	}).(ProjectDefaultConfigSignInPtrOutput)
+}
+
+// Whether to allow more than one account to have the same email.
+func (o ProjectDefaultConfigSignInOutput) AllowDuplicateEmails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectDefaultConfigSignIn) *bool { return v.AllowDuplicateEmails }).(pulumi.BoolPtrOutput)
+}
+
+// Configuration options related to authenticating an anonymous user.
+// Structure is documented below.
+func (o ProjectDefaultConfigSignInOutput) Anonymous() ProjectDefaultConfigSignInAnonymousPtrOutput {
+	return o.ApplyT(func(v ProjectDefaultConfigSignIn) *ProjectDefaultConfigSignInAnonymous { return v.Anonymous }).(ProjectDefaultConfigSignInAnonymousPtrOutput)
+}
+
+// Configuration options related to authenticating a user by their email address.
+// Structure is documented below.
+func (o ProjectDefaultConfigSignInOutput) Email() ProjectDefaultConfigSignInEmailPtrOutput {
+	return o.ApplyT(func(v ProjectDefaultConfigSignIn) *ProjectDefaultConfigSignInEmail { return v.Email }).(ProjectDefaultConfigSignInEmailPtrOutput)
+}
+
+// -
+// Output only. Hash config information.
+// Structure is documented below.
+func (o ProjectDefaultConfigSignInOutput) HashConfigs() ProjectDefaultConfigSignInHashConfigArrayOutput {
+	return o.ApplyT(func(v ProjectDefaultConfigSignIn) []ProjectDefaultConfigSignInHashConfig { return v.HashConfigs }).(ProjectDefaultConfigSignInHashConfigArrayOutput)
+}
+
+// Configuration options related to authenticated a user by their phone number.
+// Structure is documented below.
+func (o ProjectDefaultConfigSignInOutput) PhoneNumber() ProjectDefaultConfigSignInPhoneNumberPtrOutput {
+	return o.ApplyT(func(v ProjectDefaultConfigSignIn) *ProjectDefaultConfigSignInPhoneNumber { return v.PhoneNumber }).(ProjectDefaultConfigSignInPhoneNumberPtrOutput)
+}
+
+type ProjectDefaultConfigSignInPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectDefaultConfigSignInPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectDefaultConfigSignIn)(nil)).Elem()
+}
+
+func (o ProjectDefaultConfigSignInPtrOutput) ToProjectDefaultConfigSignInPtrOutput() ProjectDefaultConfigSignInPtrOutput {
+	return o
+}
+
+func (o ProjectDefaultConfigSignInPtrOutput) ToProjectDefaultConfigSignInPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInPtrOutput {
+	return o
+}
+
+func (o ProjectDefaultConfigSignInPtrOutput) Elem() ProjectDefaultConfigSignInOutput {
+	return o.ApplyT(func(v *ProjectDefaultConfigSignIn) ProjectDefaultConfigSignIn {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectDefaultConfigSignIn
+		return ret
+	}).(ProjectDefaultConfigSignInOutput)
+}
+
+// Whether to allow more than one account to have the same email.
+func (o ProjectDefaultConfigSignInPtrOutput) AllowDuplicateEmails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectDefaultConfigSignIn) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowDuplicateEmails
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration options related to authenticating an anonymous user.
+// Structure is documented below.
+func (o ProjectDefaultConfigSignInPtrOutput) Anonymous() ProjectDefaultConfigSignInAnonymousPtrOutput {
+	return o.ApplyT(func(v *ProjectDefaultConfigSignIn) *ProjectDefaultConfigSignInAnonymous {
+		if v == nil {
+			return nil
+		}
+		return v.Anonymous
+	}).(ProjectDefaultConfigSignInAnonymousPtrOutput)
+}
+
+// Configuration options related to authenticating a user by their email address.
+// Structure is documented below.
+func (o ProjectDefaultConfigSignInPtrOutput) Email() ProjectDefaultConfigSignInEmailPtrOutput {
+	return o.ApplyT(func(v *ProjectDefaultConfigSignIn) *ProjectDefaultConfigSignInEmail {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(ProjectDefaultConfigSignInEmailPtrOutput)
+}
+
+// -
+// Output only. Hash config information.
+// Structure is documented below.
+func (o ProjectDefaultConfigSignInPtrOutput) HashConfigs() ProjectDefaultConfigSignInHashConfigArrayOutput {
+	return o.ApplyT(func(v *ProjectDefaultConfigSignIn) []ProjectDefaultConfigSignInHashConfig {
+		if v == nil {
+			return nil
+		}
+		return v.HashConfigs
+	}).(ProjectDefaultConfigSignInHashConfigArrayOutput)
+}
+
+// Configuration options related to authenticated a user by their phone number.
+// Structure is documented below.
+func (o ProjectDefaultConfigSignInPtrOutput) PhoneNumber() ProjectDefaultConfigSignInPhoneNumberPtrOutput {
+	return o.ApplyT(func(v *ProjectDefaultConfigSignIn) *ProjectDefaultConfigSignInPhoneNumber {
+		if v == nil {
+			return nil
+		}
+		return v.PhoneNumber
+	}).(ProjectDefaultConfigSignInPhoneNumberPtrOutput)
+}
+
+type ProjectDefaultConfigSignInAnonymous struct {
+	// Whether anonymous user auth is enabled for the project or not.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ProjectDefaultConfigSignInAnonymousInput is an input type that accepts ProjectDefaultConfigSignInAnonymousArgs and ProjectDefaultConfigSignInAnonymousOutput values.
+// You can construct a concrete instance of `ProjectDefaultConfigSignInAnonymousInput` via:
+//
+//	ProjectDefaultConfigSignInAnonymousArgs{...}
+type ProjectDefaultConfigSignInAnonymousInput interface {
+	pulumi.Input
+
+	ToProjectDefaultConfigSignInAnonymousOutput() ProjectDefaultConfigSignInAnonymousOutput
+	ToProjectDefaultConfigSignInAnonymousOutputWithContext(context.Context) ProjectDefaultConfigSignInAnonymousOutput
+}
+
+type ProjectDefaultConfigSignInAnonymousArgs struct {
+	// Whether anonymous user auth is enabled for the project or not.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ProjectDefaultConfigSignInAnonymousArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectDefaultConfigSignInAnonymous)(nil)).Elem()
+}
+
+func (i ProjectDefaultConfigSignInAnonymousArgs) ToProjectDefaultConfigSignInAnonymousOutput() ProjectDefaultConfigSignInAnonymousOutput {
+	return i.ToProjectDefaultConfigSignInAnonymousOutputWithContext(context.Background())
+}
+
+func (i ProjectDefaultConfigSignInAnonymousArgs) ToProjectDefaultConfigSignInAnonymousOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInAnonymousOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInAnonymousOutput)
+}
+
+func (i ProjectDefaultConfigSignInAnonymousArgs) ToProjectDefaultConfigSignInAnonymousPtrOutput() ProjectDefaultConfigSignInAnonymousPtrOutput {
+	return i.ToProjectDefaultConfigSignInAnonymousPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectDefaultConfigSignInAnonymousArgs) ToProjectDefaultConfigSignInAnonymousPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInAnonymousPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInAnonymousOutput).ToProjectDefaultConfigSignInAnonymousPtrOutputWithContext(ctx)
+}
+
+// ProjectDefaultConfigSignInAnonymousPtrInput is an input type that accepts ProjectDefaultConfigSignInAnonymousArgs, ProjectDefaultConfigSignInAnonymousPtr and ProjectDefaultConfigSignInAnonymousPtrOutput values.
+// You can construct a concrete instance of `ProjectDefaultConfigSignInAnonymousPtrInput` via:
+//
+//	        ProjectDefaultConfigSignInAnonymousArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProjectDefaultConfigSignInAnonymousPtrInput interface {
+	pulumi.Input
+
+	ToProjectDefaultConfigSignInAnonymousPtrOutput() ProjectDefaultConfigSignInAnonymousPtrOutput
+	ToProjectDefaultConfigSignInAnonymousPtrOutputWithContext(context.Context) ProjectDefaultConfigSignInAnonymousPtrOutput
+}
+
+type projectDefaultConfigSignInAnonymousPtrType ProjectDefaultConfigSignInAnonymousArgs
+
+func ProjectDefaultConfigSignInAnonymousPtr(v *ProjectDefaultConfigSignInAnonymousArgs) ProjectDefaultConfigSignInAnonymousPtrInput {
+	return (*projectDefaultConfigSignInAnonymousPtrType)(v)
+}
+
+func (*projectDefaultConfigSignInAnonymousPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectDefaultConfigSignInAnonymous)(nil)).Elem()
+}
+
+func (i *projectDefaultConfigSignInAnonymousPtrType) ToProjectDefaultConfigSignInAnonymousPtrOutput() ProjectDefaultConfigSignInAnonymousPtrOutput {
+	return i.ToProjectDefaultConfigSignInAnonymousPtrOutputWithContext(context.Background())
+}
+
+func (i *projectDefaultConfigSignInAnonymousPtrType) ToProjectDefaultConfigSignInAnonymousPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInAnonymousPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInAnonymousPtrOutput)
+}
+
+type ProjectDefaultConfigSignInAnonymousOutput struct{ *pulumi.OutputState }
+
+func (ProjectDefaultConfigSignInAnonymousOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectDefaultConfigSignInAnonymous)(nil)).Elem()
+}
+
+func (o ProjectDefaultConfigSignInAnonymousOutput) ToProjectDefaultConfigSignInAnonymousOutput() ProjectDefaultConfigSignInAnonymousOutput {
+	return o
+}
+
+func (o ProjectDefaultConfigSignInAnonymousOutput) ToProjectDefaultConfigSignInAnonymousOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInAnonymousOutput {
+	return o
+}
+
+func (o ProjectDefaultConfigSignInAnonymousOutput) ToProjectDefaultConfigSignInAnonymousPtrOutput() ProjectDefaultConfigSignInAnonymousPtrOutput {
+	return o.ToProjectDefaultConfigSignInAnonymousPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectDefaultConfigSignInAnonymousOutput) ToProjectDefaultConfigSignInAnonymousPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInAnonymousPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectDefaultConfigSignInAnonymous) *ProjectDefaultConfigSignInAnonymous {
+		return &v
+	}).(ProjectDefaultConfigSignInAnonymousPtrOutput)
+}
+
+// Whether anonymous user auth is enabled for the project or not.
+func (o ProjectDefaultConfigSignInAnonymousOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ProjectDefaultConfigSignInAnonymous) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ProjectDefaultConfigSignInAnonymousPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectDefaultConfigSignInAnonymousPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectDefaultConfigSignInAnonymous)(nil)).Elem()
+}
+
+func (o ProjectDefaultConfigSignInAnonymousPtrOutput) ToProjectDefaultConfigSignInAnonymousPtrOutput() ProjectDefaultConfigSignInAnonymousPtrOutput {
+	return o
+}
+
+func (o ProjectDefaultConfigSignInAnonymousPtrOutput) ToProjectDefaultConfigSignInAnonymousPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInAnonymousPtrOutput {
+	return o
+}
+
+func (o ProjectDefaultConfigSignInAnonymousPtrOutput) Elem() ProjectDefaultConfigSignInAnonymousOutput {
+	return o.ApplyT(func(v *ProjectDefaultConfigSignInAnonymous) ProjectDefaultConfigSignInAnonymous {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectDefaultConfigSignInAnonymous
+		return ret
+	}).(ProjectDefaultConfigSignInAnonymousOutput)
+}
+
+// Whether anonymous user auth is enabled for the project or not.
+func (o ProjectDefaultConfigSignInAnonymousPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectDefaultConfigSignInAnonymous) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ProjectDefaultConfigSignInEmail struct {
+	// Whether anonymous user auth is enabled for the project or not.
+	Enabled *bool `pulumi:"enabled"`
+	// Whether a password is required for email auth or not. If true, both an email and
+	// password must be provided to sign in. If false, a user may sign in via either
+	// email/password or email link.
+	PasswordRequired *bool `pulumi:"passwordRequired"`
+}
+
+// ProjectDefaultConfigSignInEmailInput is an input type that accepts ProjectDefaultConfigSignInEmailArgs and ProjectDefaultConfigSignInEmailOutput values.
+// You can construct a concrete instance of `ProjectDefaultConfigSignInEmailInput` via:
+//
+//	ProjectDefaultConfigSignInEmailArgs{...}
+type ProjectDefaultConfigSignInEmailInput interface {
+	pulumi.Input
+
+	ToProjectDefaultConfigSignInEmailOutput() ProjectDefaultConfigSignInEmailOutput
+	ToProjectDefaultConfigSignInEmailOutputWithContext(context.Context) ProjectDefaultConfigSignInEmailOutput
+}
+
+type ProjectDefaultConfigSignInEmailArgs struct {
+	// Whether anonymous user auth is enabled for the project or not.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Whether a password is required for email auth or not. If true, both an email and
+	// password must be provided to sign in. If false, a user may sign in via either
+	// email/password or email link.
+	PasswordRequired pulumi.BoolPtrInput `pulumi:"passwordRequired"`
+}
+
+func (ProjectDefaultConfigSignInEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectDefaultConfigSignInEmail)(nil)).Elem()
+}
+
+func (i ProjectDefaultConfigSignInEmailArgs) ToProjectDefaultConfigSignInEmailOutput() ProjectDefaultConfigSignInEmailOutput {
+	return i.ToProjectDefaultConfigSignInEmailOutputWithContext(context.Background())
+}
+
+func (i ProjectDefaultConfigSignInEmailArgs) ToProjectDefaultConfigSignInEmailOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInEmailOutput)
+}
+
+func (i ProjectDefaultConfigSignInEmailArgs) ToProjectDefaultConfigSignInEmailPtrOutput() ProjectDefaultConfigSignInEmailPtrOutput {
+	return i.ToProjectDefaultConfigSignInEmailPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectDefaultConfigSignInEmailArgs) ToProjectDefaultConfigSignInEmailPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInEmailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInEmailOutput).ToProjectDefaultConfigSignInEmailPtrOutputWithContext(ctx)
+}
+
+// ProjectDefaultConfigSignInEmailPtrInput is an input type that accepts ProjectDefaultConfigSignInEmailArgs, ProjectDefaultConfigSignInEmailPtr and ProjectDefaultConfigSignInEmailPtrOutput values.
+// You can construct a concrete instance of `ProjectDefaultConfigSignInEmailPtrInput` via:
+//
+//	        ProjectDefaultConfigSignInEmailArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProjectDefaultConfigSignInEmailPtrInput interface {
+	pulumi.Input
+
+	ToProjectDefaultConfigSignInEmailPtrOutput() ProjectDefaultConfigSignInEmailPtrOutput
+	ToProjectDefaultConfigSignInEmailPtrOutputWithContext(context.Context) ProjectDefaultConfigSignInEmailPtrOutput
+}
+
+type projectDefaultConfigSignInEmailPtrType ProjectDefaultConfigSignInEmailArgs
+
+func ProjectDefaultConfigSignInEmailPtr(v *ProjectDefaultConfigSignInEmailArgs) ProjectDefaultConfigSignInEmailPtrInput {
+	return (*projectDefaultConfigSignInEmailPtrType)(v)
+}
+
+func (*projectDefaultConfigSignInEmailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectDefaultConfigSignInEmail)(nil)).Elem()
+}
+
+func (i *projectDefaultConfigSignInEmailPtrType) ToProjectDefaultConfigSignInEmailPtrOutput() ProjectDefaultConfigSignInEmailPtrOutput {
+	return i.ToProjectDefaultConfigSignInEmailPtrOutputWithContext(context.Background())
+}
+
+func (i *projectDefaultConfigSignInEmailPtrType) ToProjectDefaultConfigSignInEmailPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInEmailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInEmailPtrOutput)
+}
+
+type ProjectDefaultConfigSignInEmailOutput struct{ *pulumi.OutputState }
+
+func (ProjectDefaultConfigSignInEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectDefaultConfigSignInEmail)(nil)).Elem()
+}
+
+func (o ProjectDefaultConfigSignInEmailOutput) ToProjectDefaultConfigSignInEmailOutput() ProjectDefaultConfigSignInEmailOutput {
+	return o
+}
+
+func (o ProjectDefaultConfigSignInEmailOutput) ToProjectDefaultConfigSignInEmailOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInEmailOutput {
+	return o
+}
+
+func (o ProjectDefaultConfigSignInEmailOutput) ToProjectDefaultConfigSignInEmailPtrOutput() ProjectDefaultConfigSignInEmailPtrOutput {
+	return o.ToProjectDefaultConfigSignInEmailPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectDefaultConfigSignInEmailOutput) ToProjectDefaultConfigSignInEmailPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInEmailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectDefaultConfigSignInEmail) *ProjectDefaultConfigSignInEmail {
+		return &v
+	}).(ProjectDefaultConfigSignInEmailPtrOutput)
+}
+
+// Whether anonymous user auth is enabled for the project or not.
+func (o ProjectDefaultConfigSignInEmailOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectDefaultConfigSignInEmail) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether a password is required for email auth or not. If true, both an email and
+// password must be provided to sign in. If false, a user may sign in via either
+// email/password or email link.
+func (o ProjectDefaultConfigSignInEmailOutput) PasswordRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectDefaultConfigSignInEmail) *bool { return v.PasswordRequired }).(pulumi.BoolPtrOutput)
+}
+
+type ProjectDefaultConfigSignInEmailPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectDefaultConfigSignInEmailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectDefaultConfigSignInEmail)(nil)).Elem()
+}
+
+func (o ProjectDefaultConfigSignInEmailPtrOutput) ToProjectDefaultConfigSignInEmailPtrOutput() ProjectDefaultConfigSignInEmailPtrOutput {
+	return o
+}
+
+func (o ProjectDefaultConfigSignInEmailPtrOutput) ToProjectDefaultConfigSignInEmailPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInEmailPtrOutput {
+	return o
+}
+
+func (o ProjectDefaultConfigSignInEmailPtrOutput) Elem() ProjectDefaultConfigSignInEmailOutput {
+	return o.ApplyT(func(v *ProjectDefaultConfigSignInEmail) ProjectDefaultConfigSignInEmail {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectDefaultConfigSignInEmail
+		return ret
+	}).(ProjectDefaultConfigSignInEmailOutput)
+}
+
+// Whether anonymous user auth is enabled for the project or not.
+func (o ProjectDefaultConfigSignInEmailPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectDefaultConfigSignInEmail) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether a password is required for email auth or not. If true, both an email and
+// password must be provided to sign in. If false, a user may sign in via either
+// email/password or email link.
+func (o ProjectDefaultConfigSignInEmailPtrOutput) PasswordRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectDefaultConfigSignInEmail) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ProjectDefaultConfigSignInHashConfig struct {
+	// -
+	// Different password hash algorithms used in Identity Toolkit.
+	Algorithm *string `pulumi:"algorithm"`
+	// -
+	// Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
+	MemoryCost *int `pulumi:"memoryCost"`
+	// -
+	// How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
+	Rounds *int `pulumi:"rounds"`
+	// -
+	// Non-printable character to be inserted between the salt and plain text password in base64.
+	SaltSeparator *string `pulumi:"saltSeparator"`
+	// -
+	// Signer key in base64.
+	SignerKey *string `pulumi:"signerKey"`
+}
+
+// ProjectDefaultConfigSignInHashConfigInput is an input type that accepts ProjectDefaultConfigSignInHashConfigArgs and ProjectDefaultConfigSignInHashConfigOutput values.
+// You can construct a concrete instance of `ProjectDefaultConfigSignInHashConfigInput` via:
+//
+//	ProjectDefaultConfigSignInHashConfigArgs{...}
+type ProjectDefaultConfigSignInHashConfigInput interface {
+	pulumi.Input
+
+	ToProjectDefaultConfigSignInHashConfigOutput() ProjectDefaultConfigSignInHashConfigOutput
+	ToProjectDefaultConfigSignInHashConfigOutputWithContext(context.Context) ProjectDefaultConfigSignInHashConfigOutput
+}
+
+type ProjectDefaultConfigSignInHashConfigArgs struct {
+	// -
+	// Different password hash algorithms used in Identity Toolkit.
+	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
+	// -
+	// Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
+	MemoryCost pulumi.IntPtrInput `pulumi:"memoryCost"`
+	// -
+	// How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
+	Rounds pulumi.IntPtrInput `pulumi:"rounds"`
+	// -
+	// Non-printable character to be inserted between the salt and plain text password in base64.
+	SaltSeparator pulumi.StringPtrInput `pulumi:"saltSeparator"`
+	// -
+	// Signer key in base64.
+	SignerKey pulumi.StringPtrInput `pulumi:"signerKey"`
+}
+
+func (ProjectDefaultConfigSignInHashConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectDefaultConfigSignInHashConfig)(nil)).Elem()
+}
+
+func (i ProjectDefaultConfigSignInHashConfigArgs) ToProjectDefaultConfigSignInHashConfigOutput() ProjectDefaultConfigSignInHashConfigOutput {
+	return i.ToProjectDefaultConfigSignInHashConfigOutputWithContext(context.Background())
+}
+
+func (i ProjectDefaultConfigSignInHashConfigArgs) ToProjectDefaultConfigSignInHashConfigOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInHashConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInHashConfigOutput)
+}
+
+// ProjectDefaultConfigSignInHashConfigArrayInput is an input type that accepts ProjectDefaultConfigSignInHashConfigArray and ProjectDefaultConfigSignInHashConfigArrayOutput values.
+// You can construct a concrete instance of `ProjectDefaultConfigSignInHashConfigArrayInput` via:
+//
+//	ProjectDefaultConfigSignInHashConfigArray{ ProjectDefaultConfigSignInHashConfigArgs{...} }
+type ProjectDefaultConfigSignInHashConfigArrayInput interface {
+	pulumi.Input
+
+	ToProjectDefaultConfigSignInHashConfigArrayOutput() ProjectDefaultConfigSignInHashConfigArrayOutput
+	ToProjectDefaultConfigSignInHashConfigArrayOutputWithContext(context.Context) ProjectDefaultConfigSignInHashConfigArrayOutput
+}
+
+type ProjectDefaultConfigSignInHashConfigArray []ProjectDefaultConfigSignInHashConfigInput
+
+func (ProjectDefaultConfigSignInHashConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectDefaultConfigSignInHashConfig)(nil)).Elem()
+}
+
+func (i ProjectDefaultConfigSignInHashConfigArray) ToProjectDefaultConfigSignInHashConfigArrayOutput() ProjectDefaultConfigSignInHashConfigArrayOutput {
+	return i.ToProjectDefaultConfigSignInHashConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectDefaultConfigSignInHashConfigArray) ToProjectDefaultConfigSignInHashConfigArrayOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInHashConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInHashConfigArrayOutput)
+}
+
+type ProjectDefaultConfigSignInHashConfigOutput struct{ *pulumi.OutputState }
+
+func (ProjectDefaultConfigSignInHashConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectDefaultConfigSignInHashConfig)(nil)).Elem()
+}
+
+func (o ProjectDefaultConfigSignInHashConfigOutput) ToProjectDefaultConfigSignInHashConfigOutput() ProjectDefaultConfigSignInHashConfigOutput {
+	return o
+}
+
+func (o ProjectDefaultConfigSignInHashConfigOutput) ToProjectDefaultConfigSignInHashConfigOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInHashConfigOutput {
+	return o
+}
+
+// -
+// Different password hash algorithms used in Identity Toolkit.
+func (o ProjectDefaultConfigSignInHashConfigOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectDefaultConfigSignInHashConfig) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+}
+
+// -
+// Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
+func (o ProjectDefaultConfigSignInHashConfigOutput) MemoryCost() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectDefaultConfigSignInHashConfig) *int { return v.MemoryCost }).(pulumi.IntPtrOutput)
+}
+
+// -
+// How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
+func (o ProjectDefaultConfigSignInHashConfigOutput) Rounds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectDefaultConfigSignInHashConfig) *int { return v.Rounds }).(pulumi.IntPtrOutput)
+}
+
+// -
+// Non-printable character to be inserted between the salt and plain text password in base64.
+func (o ProjectDefaultConfigSignInHashConfigOutput) SaltSeparator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectDefaultConfigSignInHashConfig) *string { return v.SaltSeparator }).(pulumi.StringPtrOutput)
+}
+
+// -
+// Signer key in base64.
+func (o ProjectDefaultConfigSignInHashConfigOutput) SignerKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectDefaultConfigSignInHashConfig) *string { return v.SignerKey }).(pulumi.StringPtrOutput)
+}
+
+type ProjectDefaultConfigSignInHashConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectDefaultConfigSignInHashConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectDefaultConfigSignInHashConfig)(nil)).Elem()
+}
+
+func (o ProjectDefaultConfigSignInHashConfigArrayOutput) ToProjectDefaultConfigSignInHashConfigArrayOutput() ProjectDefaultConfigSignInHashConfigArrayOutput {
+	return o
+}
+
+func (o ProjectDefaultConfigSignInHashConfigArrayOutput) ToProjectDefaultConfigSignInHashConfigArrayOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInHashConfigArrayOutput {
+	return o
+}
+
+func (o ProjectDefaultConfigSignInHashConfigArrayOutput) Index(i pulumi.IntInput) ProjectDefaultConfigSignInHashConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectDefaultConfigSignInHashConfig {
+		return vs[0].([]ProjectDefaultConfigSignInHashConfig)[vs[1].(int)]
+	}).(ProjectDefaultConfigSignInHashConfigOutput)
+}
+
+type ProjectDefaultConfigSignInPhoneNumber struct {
+	// Whether anonymous user auth is enabled for the project or not.
+	Enabled *bool `pulumi:"enabled"`
+	// A map of <test phone number, fake code> that can be used for phone auth testing.
+	TestPhoneNumbers map[string]string `pulumi:"testPhoneNumbers"`
+}
+
+// ProjectDefaultConfigSignInPhoneNumberInput is an input type that accepts ProjectDefaultConfigSignInPhoneNumberArgs and ProjectDefaultConfigSignInPhoneNumberOutput values.
+// You can construct a concrete instance of `ProjectDefaultConfigSignInPhoneNumberInput` via:
+//
+//	ProjectDefaultConfigSignInPhoneNumberArgs{...}
+type ProjectDefaultConfigSignInPhoneNumberInput interface {
+	pulumi.Input
+
+	ToProjectDefaultConfigSignInPhoneNumberOutput() ProjectDefaultConfigSignInPhoneNumberOutput
+	ToProjectDefaultConfigSignInPhoneNumberOutputWithContext(context.Context) ProjectDefaultConfigSignInPhoneNumberOutput
+}
+
+type ProjectDefaultConfigSignInPhoneNumberArgs struct {
+	// Whether anonymous user auth is enabled for the project or not.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// A map of <test phone number, fake code> that can be used for phone auth testing.
+	TestPhoneNumbers pulumi.StringMapInput `pulumi:"testPhoneNumbers"`
+}
+
+func (ProjectDefaultConfigSignInPhoneNumberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectDefaultConfigSignInPhoneNumber)(nil)).Elem()
+}
+
+func (i ProjectDefaultConfigSignInPhoneNumberArgs) ToProjectDefaultConfigSignInPhoneNumberOutput() ProjectDefaultConfigSignInPhoneNumberOutput {
+	return i.ToProjectDefaultConfigSignInPhoneNumberOutputWithContext(context.Background())
+}
+
+func (i ProjectDefaultConfigSignInPhoneNumberArgs) ToProjectDefaultConfigSignInPhoneNumberOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInPhoneNumberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInPhoneNumberOutput)
+}
+
+func (i ProjectDefaultConfigSignInPhoneNumberArgs) ToProjectDefaultConfigSignInPhoneNumberPtrOutput() ProjectDefaultConfigSignInPhoneNumberPtrOutput {
+	return i.ToProjectDefaultConfigSignInPhoneNumberPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectDefaultConfigSignInPhoneNumberArgs) ToProjectDefaultConfigSignInPhoneNumberPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInPhoneNumberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInPhoneNumberOutput).ToProjectDefaultConfigSignInPhoneNumberPtrOutputWithContext(ctx)
+}
+
+// ProjectDefaultConfigSignInPhoneNumberPtrInput is an input type that accepts ProjectDefaultConfigSignInPhoneNumberArgs, ProjectDefaultConfigSignInPhoneNumberPtr and ProjectDefaultConfigSignInPhoneNumberPtrOutput values.
+// You can construct a concrete instance of `ProjectDefaultConfigSignInPhoneNumberPtrInput` via:
+//
+//	        ProjectDefaultConfigSignInPhoneNumberArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProjectDefaultConfigSignInPhoneNumberPtrInput interface {
+	pulumi.Input
+
+	ToProjectDefaultConfigSignInPhoneNumberPtrOutput() ProjectDefaultConfigSignInPhoneNumberPtrOutput
+	ToProjectDefaultConfigSignInPhoneNumberPtrOutputWithContext(context.Context) ProjectDefaultConfigSignInPhoneNumberPtrOutput
+}
+
+type projectDefaultConfigSignInPhoneNumberPtrType ProjectDefaultConfigSignInPhoneNumberArgs
+
+func ProjectDefaultConfigSignInPhoneNumberPtr(v *ProjectDefaultConfigSignInPhoneNumberArgs) ProjectDefaultConfigSignInPhoneNumberPtrInput {
+	return (*projectDefaultConfigSignInPhoneNumberPtrType)(v)
+}
+
+func (*projectDefaultConfigSignInPhoneNumberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectDefaultConfigSignInPhoneNumber)(nil)).Elem()
+}
+
+func (i *projectDefaultConfigSignInPhoneNumberPtrType) ToProjectDefaultConfigSignInPhoneNumberPtrOutput() ProjectDefaultConfigSignInPhoneNumberPtrOutput {
+	return i.ToProjectDefaultConfigSignInPhoneNumberPtrOutputWithContext(context.Background())
+}
+
+func (i *projectDefaultConfigSignInPhoneNumberPtrType) ToProjectDefaultConfigSignInPhoneNumberPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInPhoneNumberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigSignInPhoneNumberPtrOutput)
+}
+
+type ProjectDefaultConfigSignInPhoneNumberOutput struct{ *pulumi.OutputState }
+
+func (ProjectDefaultConfigSignInPhoneNumberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectDefaultConfigSignInPhoneNumber)(nil)).Elem()
+}
+
+func (o ProjectDefaultConfigSignInPhoneNumberOutput) ToProjectDefaultConfigSignInPhoneNumberOutput() ProjectDefaultConfigSignInPhoneNumberOutput {
+	return o
+}
+
+func (o ProjectDefaultConfigSignInPhoneNumberOutput) ToProjectDefaultConfigSignInPhoneNumberOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInPhoneNumberOutput {
+	return o
+}
+
+func (o ProjectDefaultConfigSignInPhoneNumberOutput) ToProjectDefaultConfigSignInPhoneNumberPtrOutput() ProjectDefaultConfigSignInPhoneNumberPtrOutput {
+	return o.ToProjectDefaultConfigSignInPhoneNumberPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectDefaultConfigSignInPhoneNumberOutput) ToProjectDefaultConfigSignInPhoneNumberPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInPhoneNumberPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectDefaultConfigSignInPhoneNumber) *ProjectDefaultConfigSignInPhoneNumber {
+		return &v
+	}).(ProjectDefaultConfigSignInPhoneNumberPtrOutput)
+}
+
+// Whether anonymous user auth is enabled for the project or not.
+func (o ProjectDefaultConfigSignInPhoneNumberOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectDefaultConfigSignInPhoneNumber) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// A map of <test phone number, fake code> that can be used for phone auth testing.
+func (o ProjectDefaultConfigSignInPhoneNumberOutput) TestPhoneNumbers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ProjectDefaultConfigSignInPhoneNumber) map[string]string { return v.TestPhoneNumbers }).(pulumi.StringMapOutput)
+}
+
+type ProjectDefaultConfigSignInPhoneNumberPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectDefaultConfigSignInPhoneNumberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectDefaultConfigSignInPhoneNumber)(nil)).Elem()
+}
+
+func (o ProjectDefaultConfigSignInPhoneNumberPtrOutput) ToProjectDefaultConfigSignInPhoneNumberPtrOutput() ProjectDefaultConfigSignInPhoneNumberPtrOutput {
+	return o
+}
+
+func (o ProjectDefaultConfigSignInPhoneNumberPtrOutput) ToProjectDefaultConfigSignInPhoneNumberPtrOutputWithContext(ctx context.Context) ProjectDefaultConfigSignInPhoneNumberPtrOutput {
+	return o
+}
+
+func (o ProjectDefaultConfigSignInPhoneNumberPtrOutput) Elem() ProjectDefaultConfigSignInPhoneNumberOutput {
+	return o.ApplyT(func(v *ProjectDefaultConfigSignInPhoneNumber) ProjectDefaultConfigSignInPhoneNumber {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectDefaultConfigSignInPhoneNumber
+		return ret
+	}).(ProjectDefaultConfigSignInPhoneNumberOutput)
+}
+
+// Whether anonymous user auth is enabled for the project or not.
+func (o ProjectDefaultConfigSignInPhoneNumberPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectDefaultConfigSignInPhoneNumber) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A map of <test phone number, fake code> that can be used for phone auth testing.
+func (o ProjectDefaultConfigSignInPhoneNumberPtrOutput) TestPhoneNumbers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ProjectDefaultConfigSignInPhoneNumber) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.TestPhoneNumbers
+	}).(pulumi.StringMapOutput)
+}
+
 type TenantInboundSamlConfigIdpConfig struct {
 	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 	// Structure is documented below.
@@ -1187,6 +2025,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigSpConfigPtrInput)(nil)).Elem(), InboundSamlConfigSpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigSpConfigSpCertificateInput)(nil)).Elem(), InboundSamlConfigSpConfigSpCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigSpConfigSpCertificateArrayInput)(nil)).Elem(), InboundSamlConfigSpConfigSpCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectDefaultConfigSignInInput)(nil)).Elem(), ProjectDefaultConfigSignInArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectDefaultConfigSignInPtrInput)(nil)).Elem(), ProjectDefaultConfigSignInArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectDefaultConfigSignInAnonymousInput)(nil)).Elem(), ProjectDefaultConfigSignInAnonymousArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectDefaultConfigSignInAnonymousPtrInput)(nil)).Elem(), ProjectDefaultConfigSignInAnonymousArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectDefaultConfigSignInEmailInput)(nil)).Elem(), ProjectDefaultConfigSignInEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectDefaultConfigSignInEmailPtrInput)(nil)).Elem(), ProjectDefaultConfigSignInEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectDefaultConfigSignInHashConfigInput)(nil)).Elem(), ProjectDefaultConfigSignInHashConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectDefaultConfigSignInHashConfigArrayInput)(nil)).Elem(), ProjectDefaultConfigSignInHashConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectDefaultConfigSignInPhoneNumberInput)(nil)).Elem(), ProjectDefaultConfigSignInPhoneNumberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectDefaultConfigSignInPhoneNumberPtrInput)(nil)).Elem(), ProjectDefaultConfigSignInPhoneNumberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigIdpConfigInput)(nil)).Elem(), TenantInboundSamlConfigIdpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigIdpConfigPtrInput)(nil)).Elem(), TenantInboundSamlConfigIdpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigIdpConfigIdpCertificateInput)(nil)).Elem(), TenantInboundSamlConfigIdpConfigIdpCertificateArgs{})
@@ -1203,6 +2051,16 @@ func init() {
 	pulumi.RegisterOutputType(InboundSamlConfigSpConfigPtrOutput{})
 	pulumi.RegisterOutputType(InboundSamlConfigSpConfigSpCertificateOutput{})
 	pulumi.RegisterOutputType(InboundSamlConfigSpConfigSpCertificateArrayOutput{})
+	pulumi.RegisterOutputType(ProjectDefaultConfigSignInOutput{})
+	pulumi.RegisterOutputType(ProjectDefaultConfigSignInPtrOutput{})
+	pulumi.RegisterOutputType(ProjectDefaultConfigSignInAnonymousOutput{})
+	pulumi.RegisterOutputType(ProjectDefaultConfigSignInAnonymousPtrOutput{})
+	pulumi.RegisterOutputType(ProjectDefaultConfigSignInEmailOutput{})
+	pulumi.RegisterOutputType(ProjectDefaultConfigSignInEmailPtrOutput{})
+	pulumi.RegisterOutputType(ProjectDefaultConfigSignInHashConfigOutput{})
+	pulumi.RegisterOutputType(ProjectDefaultConfigSignInHashConfigArrayOutput{})
+	pulumi.RegisterOutputType(ProjectDefaultConfigSignInPhoneNumberOutput{})
+	pulumi.RegisterOutputType(ProjectDefaultConfigSignInPhoneNumberPtrOutput{})
 	pulumi.RegisterOutputType(TenantInboundSamlConfigIdpConfigOutput{})
 	pulumi.RegisterOutputType(TenantInboundSamlConfigIdpConfigPtrOutput{})
 	pulumi.RegisterOutputType(TenantInboundSamlConfigIdpConfigIdpCertificateOutput{})

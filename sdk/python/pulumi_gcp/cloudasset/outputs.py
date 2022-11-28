@@ -20,6 +20,7 @@ __all__ = [
     'ProjectFeedCondition',
     'ProjectFeedFeedOutputConfig',
     'ProjectFeedFeedOutputConfigPubsubDestination',
+    'GetResourcesSearchAllResultResult',
 ]
 
 @pulumi.output_type
@@ -365,5 +366,111 @@ class ProjectFeedFeedOutputConfigPubsubDestination(dict):
         Destination on Cloud Pubsub topic.
         """
         return pulumi.get(self, "topic")
+
+
+@pulumi.output_type
+class GetResourcesSearchAllResultResult(dict):
+    def __init__(__self__, *,
+                 additional_attributes: Sequence[str],
+                 asset_type: str,
+                 description: str,
+                 display_name: str,
+                 labels: Mapping[str, str],
+                 location: str,
+                 name: str,
+                 network_tags: Sequence[str],
+                 project: str):
+        """
+        :param Sequence[str] additional_attributes: Additional searchable attributes of this resource. Informational only. The exact set of attributes is subject to change. For example: project id, DNS name etc.
+        :param str asset_type: The type of this resource.
+        :param str description: One or more paragraphs of text description of this resource. Maximum length could be up to 1M bytes.
+        :param str display_name: The display name of this resource.
+        :param Mapping[str, str] labels: Labels associated with this resource.
+        :param str location: Location can be `global`, regional like `us-east1`, or zonal like `us-west1-b`.
+        :param str name: The full resource name. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
+        :param Sequence[str] network_tags: Network tags associated with this resource.
+        :param str project: The project that this resource belongs to, in the form of `projects/{project_number}`.
+        """
+        pulumi.set(__self__, "additional_attributes", additional_attributes)
+        pulumi.set(__self__, "asset_type", asset_type)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_tags", network_tags)
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="additionalAttributes")
+    def additional_attributes(self) -> Sequence[str]:
+        """
+        Additional searchable attributes of this resource. Informational only. The exact set of attributes is subject to change. For example: project id, DNS name etc.
+        """
+        return pulumi.get(self, "additional_attributes")
+
+    @property
+    @pulumi.getter(name="assetType")
+    def asset_type(self) -> str:
+        """
+        The type of this resource.
+        """
+        return pulumi.get(self, "asset_type")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        One or more paragraphs of text description of this resource. Maximum length could be up to 1M bytes.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The display name of this resource.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Labels associated with this resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Location can be `global`, regional like `us-east1`, or zonal like `us-west1-b`.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The full resource name. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> Sequence[str]:
+        """
+        Network tags associated with this resource.
+        """
+        return pulumi.get(self, "network_tags")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The project that this resource belongs to, in the form of `projects/{project_number}`.
+        """
+        return pulumi.get(self, "project")
 
 

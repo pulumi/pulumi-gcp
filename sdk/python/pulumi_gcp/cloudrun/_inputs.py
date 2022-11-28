@@ -33,11 +33,13 @@ __all__ = [
     'ServiceTemplateSpecContainerEnvValueFromArgs',
     'ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs',
     'ServiceTemplateSpecContainerLivenessProbeArgs',
+    'ServiceTemplateSpecContainerLivenessProbeGrpcArgs',
     'ServiceTemplateSpecContainerLivenessProbeHttpGetArgs',
     'ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs',
     'ServiceTemplateSpecContainerPortArgs',
     'ServiceTemplateSpecContainerResourcesArgs',
     'ServiceTemplateSpecContainerStartupProbeArgs',
+    'ServiceTemplateSpecContainerStartupProbeGrpcArgs',
     'ServiceTemplateSpecContainerStartupProbeHttpGetArgs',
     'ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs',
     'ServiceTemplateSpecContainerStartupProbeTcpSocketArgs',
@@ -1743,6 +1745,7 @@ class ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs:
 class ServiceTemplateSpecContainerLivenessProbeArgs:
     def __init__(__self__, *,
                  failure_threshold: Optional[pulumi.Input[int]] = None,
+                 grpc: Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeGrpcArgs']] = None,
                  http_get: Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetArgs']] = None,
                  initial_delay_seconds: Optional[pulumi.Input[int]] = None,
                  period_seconds: Optional[pulumi.Input[int]] = None,
@@ -1750,6 +1753,8 @@ class ServiceTemplateSpecContainerLivenessProbeArgs:
         """
         :param pulumi.Input[int] failure_threshold: Minimum consecutive failures for the probe to be considered failed after
                having succeeded. Defaults to 3. Minimum value is 1.
+        :param pulumi.Input['ServiceTemplateSpecContainerLivenessProbeGrpcArgs'] grpc: GRPC specifies an action involving a GRPC port.
+               Structure is documented below.
         :param pulumi.Input['ServiceTemplateSpecContainerLivenessProbeHttpGetArgs'] http_get: HttpGet specifies the http request to perform.
                Structure is documented below.
         :param pulumi.Input[int] initial_delay_seconds: Number of seconds after the container has started before the probe is
@@ -1763,6 +1768,8 @@ class ServiceTemplateSpecContainerLivenessProbeArgs:
         """
         if failure_threshold is not None:
             pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if grpc is not None:
+            pulumi.set(__self__, "grpc", grpc)
         if http_get is not None:
             pulumi.set(__self__, "http_get", http_get)
         if initial_delay_seconds is not None:
@@ -1784,6 +1791,19 @@ class ServiceTemplateSpecContainerLivenessProbeArgs:
     @failure_threshold.setter
     def failure_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "failure_threshold", value)
+
+    @property
+    @pulumi.getter
+    def grpc(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeGrpcArgs']]:
+        """
+        GRPC specifies an action involving a GRPC port.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "grpc")
+
+    @grpc.setter
+    def grpc(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerLivenessProbeGrpcArgs']]):
+        pulumi.set(self, "grpc", value)
 
     @property
     @pulumi.getter(name="httpGet")
@@ -1838,6 +1858,49 @@ class ServiceTemplateSpecContainerLivenessProbeArgs:
     @timeout_seconds.setter
     def timeout_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout_seconds", value)
+
+
+@pulumi.input_type
+class ServiceTemplateSpecContainerLivenessProbeGrpcArgs:
+    def __init__(__self__, *,
+                 port: Optional[pulumi.Input[int]] = None,
+                 service: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] port: Port number to access on the container. Number must be in the range 1 to 65535.
+        :param pulumi.Input[str] service: The name of the service to place in the gRPC HealthCheckRequest
+               (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+               If this is not specified, the default behavior is defined by gRPC.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the service to place in the gRPC HealthCheckRequest
+        (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+        If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
 
 
 @pulumi.input_type
@@ -2035,6 +2098,7 @@ class ServiceTemplateSpecContainerResourcesArgs:
 class ServiceTemplateSpecContainerStartupProbeArgs:
     def __init__(__self__, *,
                  failure_threshold: Optional[pulumi.Input[int]] = None,
+                 grpc: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeGrpcArgs']] = None,
                  http_get: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeHttpGetArgs']] = None,
                  initial_delay_seconds: Optional[pulumi.Input[int]] = None,
                  period_seconds: Optional[pulumi.Input[int]] = None,
@@ -2043,6 +2107,8 @@ class ServiceTemplateSpecContainerStartupProbeArgs:
         """
         :param pulumi.Input[int] failure_threshold: Minimum consecutive failures for the probe to be considered failed after
                having succeeded. Defaults to 3. Minimum value is 1.
+        :param pulumi.Input['ServiceTemplateSpecContainerStartupProbeGrpcArgs'] grpc: GRPC specifies an action involving a GRPC port.
+               Structure is documented below.
         :param pulumi.Input['ServiceTemplateSpecContainerStartupProbeHttpGetArgs'] http_get: HttpGet specifies the http request to perform.
                Structure is documented below.
         :param pulumi.Input[int] initial_delay_seconds: Number of seconds after the container has started before the probe is
@@ -2058,6 +2124,8 @@ class ServiceTemplateSpecContainerStartupProbeArgs:
         """
         if failure_threshold is not None:
             pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if grpc is not None:
+            pulumi.set(__self__, "grpc", grpc)
         if http_get is not None:
             pulumi.set(__self__, "http_get", http_get)
         if initial_delay_seconds is not None:
@@ -2081,6 +2149,19 @@ class ServiceTemplateSpecContainerStartupProbeArgs:
     @failure_threshold.setter
     def failure_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "failure_threshold", value)
+
+    @property
+    @pulumi.getter
+    def grpc(self) -> Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeGrpcArgs']]:
+        """
+        GRPC specifies an action involving a GRPC port.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "grpc")
+
+    @grpc.setter
+    def grpc(self, value: Optional[pulumi.Input['ServiceTemplateSpecContainerStartupProbeGrpcArgs']]):
+        pulumi.set(self, "grpc", value)
 
     @property
     @pulumi.getter(name="httpGet")
@@ -2148,6 +2229,49 @@ class ServiceTemplateSpecContainerStartupProbeArgs:
     @timeout_seconds.setter
     def timeout_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout_seconds", value)
+
+
+@pulumi.input_type
+class ServiceTemplateSpecContainerStartupProbeGrpcArgs:
+    def __init__(__self__, *,
+                 port: Optional[pulumi.Input[int]] = None,
+                 service: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] port: Port number to access on the container. Number must be in the range 1 to 65535.
+        :param pulumi.Input[str] service: The name of the service to place in the gRPC HealthCheckRequest
+               (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+               If this is not specified, the default behavior is defined by gRPC.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the service to place in the gRPC HealthCheckRequest
+        (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+        If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
 
 
 @pulumi.input_type

@@ -18,6 +18,8 @@ __all__ = [
     'ClusterBackupSourceArgs',
     'ClusterInitialUserArgs',
     'ClusterMigrationSourceArgs',
+    'InstanceMachineConfigArgs',
+    'InstanceReadPoolConfigArgs',
 ]
 
 @pulumi.input_type
@@ -405,5 +407,51 @@ class ClusterMigrationSourceArgs:
     @source_type.setter
     def source_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_type", value)
+
+
+@pulumi.input_type
+class InstanceMachineConfigArgs:
+    def __init__(__self__, *,
+                 cpu_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] cpu_count: The number of CPU's in the VM instance.
+        """
+        if cpu_count is not None:
+            pulumi.set(__self__, "cpu_count", cpu_count)
+
+    @property
+    @pulumi.getter(name="cpuCount")
+    def cpu_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of CPU's in the VM instance.
+        """
+        return pulumi.get(self, "cpu_count")
+
+    @cpu_count.setter
+    def cpu_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_count", value)
+
+
+@pulumi.input_type
+class InstanceReadPoolConfigArgs:
+    def __init__(__self__, *,
+                 node_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] node_count: Read capacity, i.e. number of nodes in a read pool instance.
+        """
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Read capacity, i.e. number of nodes in a read pool instance.
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "node_count", value)
 
 

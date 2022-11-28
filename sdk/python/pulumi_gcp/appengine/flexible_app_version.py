@@ -1853,7 +1853,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> pulumi.Output[Optional[str]]:
+    def service_account(self) -> pulumi.Output[str]:
         """
         The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
         default if this field is neither provided in app.yaml file nor through CLI flag.

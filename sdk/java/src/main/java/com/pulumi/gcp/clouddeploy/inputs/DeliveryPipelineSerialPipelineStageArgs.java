@@ -5,6 +5,7 @@ package com.pulumi.gcp.clouddeploy.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageStrategyArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -32,6 +33,21 @@ public final class DeliveryPipelineSerialPipelineStageArgs extends com.pulumi.re
     }
 
     /**
+     * (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+     * 
+     */
+    @Import(name="strategy")
+    private @Nullable Output<DeliveryPipelineSerialPipelineStageStrategyArgs> strategy;
+
+    /**
+     * @return (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+     * 
+     */
+    public Optional<Output<DeliveryPipelineSerialPipelineStageStrategyArgs>> strategy() {
+        return Optional.ofNullable(this.strategy);
+    }
+
+    /**
      * The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
      * 
      */
@@ -50,6 +66,7 @@ public final class DeliveryPipelineSerialPipelineStageArgs extends com.pulumi.re
 
     private DeliveryPipelineSerialPipelineStageArgs(DeliveryPipelineSerialPipelineStageArgs $) {
         this.profiles = $.profiles;
+        this.strategy = $.strategy;
         this.targetId = $.targetId;
     }
 
@@ -100,6 +117,27 @@ public final class DeliveryPipelineSerialPipelineStageArgs extends com.pulumi.re
          */
         public Builder profiles(String... profiles) {
             return profiles(List.of(profiles));
+        }
+
+        /**
+         * @param strategy (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder strategy(@Nullable Output<DeliveryPipelineSerialPipelineStageStrategyArgs> strategy) {
+            $.strategy = strategy;
+            return this;
+        }
+
+        /**
+         * @param strategy (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder strategy(DeliveryPipelineSerialPipelineStageStrategyArgs strategy) {
+            return strategy(Output.of(strategy));
         }
 
         /**

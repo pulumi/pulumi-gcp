@@ -101,6 +101,14 @@ export class Trigger extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+     */
+    public readonly channel!: pulumi.Output<string | undefined>;
+    /**
+     * Output only. The reason(s) why a trigger is in FAILED state.
+     */
+    public /*out*/ readonly conditions!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Output only. The creation time.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -164,6 +172,8 @@ export class Trigger extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TriggerState | undefined;
+            resourceInputs["channel"] = state ? state.channel : undefined;
+            resourceInputs["conditions"] = state ? state.conditions : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["destination"] = state ? state.destination : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
@@ -187,6 +197,7 @@ export class Trigger extends pulumi.CustomResource {
             if ((!args || args.matchingCriterias === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'matchingCriterias'");
             }
+            resourceInputs["channel"] = args ? args.channel : undefined;
             resourceInputs["destination"] = args ? args.destination : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -195,6 +206,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["transports"] = args ? args.transports : undefined;
+            resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
@@ -209,6 +221,14 @@ export class Trigger extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Trigger resources.
  */
 export interface TriggerState {
+    /**
+     * Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+     */
+    channel?: pulumi.Input<string>;
+    /**
+     * Output only. The reason(s) why a trigger is in FAILED state.
+     */
+    conditions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Output only. The creation time.
      */
@@ -265,6 +285,10 @@ export interface TriggerState {
  * The set of arguments for constructing a Trigger resource.
  */
 export interface TriggerArgs {
+    /**
+     * Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+     */
+    channel?: pulumi.Input<string>;
     /**
      * Required. Destination specifies where the events should be sent to.
      */

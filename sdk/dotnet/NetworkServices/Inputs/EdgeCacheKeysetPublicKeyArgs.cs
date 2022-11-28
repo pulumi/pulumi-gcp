@@ -20,7 +20,13 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
-        [Input("value", required: true)]
+        /// <summary>
+        /// Set to true to have the CDN automatically manage this public key value.
+        /// </summary>
+        [Input("managed")]
+        public Input<bool>? Managed { get; set; }
+
+        [Input("value")]
         private Input<string>? _value;
 
         /// <summary>

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerStartupProbeGrpc;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerStartupProbeHttpGet;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerStartupProbeTcpSocket;
 import java.lang.Integer;
@@ -13,6 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceTemplateSpecContainerStartupProbe {
     private Integer failureThreshold;
+    private List<GetServiceTemplateSpecContainerStartupProbeGrpc> grpcs;
     private List<GetServiceTemplateSpecContainerStartupProbeHttpGet> httpGets;
     private Integer initialDelaySeconds;
     private Integer periodSeconds;
@@ -22,6 +24,9 @@ public final class GetServiceTemplateSpecContainerStartupProbe {
     private GetServiceTemplateSpecContainerStartupProbe() {}
     public Integer failureThreshold() {
         return this.failureThreshold;
+    }
+    public List<GetServiceTemplateSpecContainerStartupProbeGrpc> grpcs() {
+        return this.grpcs;
     }
     public List<GetServiceTemplateSpecContainerStartupProbeHttpGet> httpGets() {
         return this.httpGets;
@@ -49,6 +54,7 @@ public final class GetServiceTemplateSpecContainerStartupProbe {
     @CustomType.Builder
     public static final class Builder {
         private Integer failureThreshold;
+        private List<GetServiceTemplateSpecContainerStartupProbeGrpc> grpcs;
         private List<GetServiceTemplateSpecContainerStartupProbeHttpGet> httpGets;
         private Integer initialDelaySeconds;
         private Integer periodSeconds;
@@ -58,6 +64,7 @@ public final class GetServiceTemplateSpecContainerStartupProbe {
         public Builder(GetServiceTemplateSpecContainerStartupProbe defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.failureThreshold = defaults.failureThreshold;
+    	      this.grpcs = defaults.grpcs;
     	      this.httpGets = defaults.httpGets;
     	      this.initialDelaySeconds = defaults.initialDelaySeconds;
     	      this.periodSeconds = defaults.periodSeconds;
@@ -69,6 +76,14 @@ public final class GetServiceTemplateSpecContainerStartupProbe {
         public Builder failureThreshold(Integer failureThreshold) {
             this.failureThreshold = Objects.requireNonNull(failureThreshold);
             return this;
+        }
+        @CustomType.Setter
+        public Builder grpcs(List<GetServiceTemplateSpecContainerStartupProbeGrpc> grpcs) {
+            this.grpcs = Objects.requireNonNull(grpcs);
+            return this;
+        }
+        public Builder grpcs(GetServiceTemplateSpecContainerStartupProbeGrpc... grpcs) {
+            return grpcs(List.of(grpcs));
         }
         @CustomType.Setter
         public Builder httpGets(List<GetServiceTemplateSpecContainerStartupProbeHttpGet> httpGets) {
@@ -104,6 +119,7 @@ public final class GetServiceTemplateSpecContainerStartupProbe {
         public GetServiceTemplateSpecContainerStartupProbe build() {
             final var o = new GetServiceTemplateSpecContainerStartupProbe();
             o.failureThreshold = failureThreshold;
+            o.grpcs = grpcs;
             o.httpGets = httpGets;
             o.initialDelaySeconds = initialDelaySeconds;
             o.periodSeconds = periodSeconds;

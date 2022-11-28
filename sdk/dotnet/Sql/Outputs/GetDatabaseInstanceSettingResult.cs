@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly string AvailabilityType;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingBackupConfigurationResult> BackupConfigurations;
         public readonly string Collation;
+        public readonly string ConnectorEnforcement;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingDatabaseFlagResult> DatabaseFlags;
         public readonly bool DiskAutoresize;
         public readonly int DiskAutoresizeLimit;
@@ -46,6 +47,8 @@ namespace Pulumi.Gcp.Sql.Outputs
             ImmutableArray<Outputs.GetDatabaseInstanceSettingBackupConfigurationResult> backupConfigurations,
 
             string collation,
+
+            string connectorEnforcement,
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingDatabaseFlagResult> databaseFlags,
 
@@ -84,6 +87,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             AvailabilityType = availabilityType;
             BackupConfigurations = backupConfigurations;
             Collation = collation;
+            ConnectorEnforcement = connectorEnforcement;
             DatabaseFlags = databaseFlags;
             DiskAutoresize = diskAutoresize;
             DiskAutoresizeLimit = diskAutoresizeLimit;

@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * A Google Cloud Firebase instance. This enables Firebase resources on a given google project.
  * Since a FirebaseProject is actually also a GCP Project, a FirebaseProject uses underlying GCP
  * identifiers (most importantly, the projectId) as its own for easy interop with GCP APIs.
- *
  * Once Firebase has been added to a Google Project it cannot be removed.
  *
  * To get more information about Project, see:

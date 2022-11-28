@@ -148,6 +148,100 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// ### Dns Managed Zone Private Gke
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network_1 = new Gcp.Compute.Network("network-1", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var subnetwork_1 = new Gcp.Compute.Subnetwork("subnetwork-1", new()
+    ///     {
+    ///         Network = network_1.Name,
+    ///         IpCidrRange = "10.0.36.0/24",
+    ///         Region = "us-central1",
+    ///         PrivateIpGoogleAccess = true,
+    ///         SecondaryIpRanges = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.SubnetworkSecondaryIpRangeArgs
+    ///             {
+    ///                 RangeName = "pod",
+    ///                 IpCidrRange = "10.0.0.0/19",
+    ///             },
+    ///             new Gcp.Compute.Inputs.SubnetworkSecondaryIpRangeArgs
+    ///             {
+    ///                 RangeName = "svc",
+    ///                 IpCidrRange = "10.0.32.0/22",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var cluster_1 = new Gcp.Container.Cluster("cluster-1", new()
+    ///     {
+    ///         Location = "us-central1-c",
+    ///         InitialNodeCount = 1,
+    ///         NetworkingMode = "VPC_NATIVE",
+    ///         DefaultSnatStatus = new Gcp.Container.Inputs.ClusterDefaultSnatStatusArgs
+    ///         {
+    ///             Disabled = true,
+    ///         },
+    ///         Network = network_1.Name,
+    ///         Subnetwork = subnetwork_1.Name,
+    ///         PrivateClusterConfig = new Gcp.Container.Inputs.ClusterPrivateClusterConfigArgs
+    ///         {
+    ///             EnablePrivateEndpoint = true,
+    ///             EnablePrivateNodes = true,
+    ///             MasterIpv4CidrBlock = "10.42.0.0/28",
+    ///             MasterGlobalAccessConfig = new Gcp.Container.Inputs.ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///         MasterAuthorizedNetworksConfig = null,
+    ///         IpAllocationPolicy = new Gcp.Container.Inputs.ClusterIpAllocationPolicyArgs
+    ///         {
+    ///             ClusterSecondaryRangeName = subnetwork_1.SecondaryIpRanges.Apply(secondaryIpRanges =&gt; secondaryIpRanges[0].RangeName),
+    ///             ServicesSecondaryRangeName = subnetwork_1.SecondaryIpRanges.Apply(secondaryIpRanges =&gt; secondaryIpRanges[1].RangeName),
+    ///         },
+    ///     });
+    /// 
+    ///     var private_zone_gke = new Gcp.Dns.ManagedZone("private-zone-gke", new()
+    ///     {
+    ///         DnsName = "private.example.com.",
+    ///         Description = "Example private DNS zone",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Visibility = "private",
+    ///         PrivateVisibilityConfig = new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigArgs
+    ///         {
+    ///             Networks = new[]
+    ///             {
+    ///                 new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs
+    ///                 {
+    ///                     NetworkUrl = network_1.Id,
+    ///                 },
+    ///             },
+    ///             GkeClusters = new[]
+    ///             {
+    ///                 new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigGkeClusterArgs
+    ///                 {
+    ///                     GkeClusterName = cluster_1.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Dns Managed Zone Private Peering
     /// 
     /// ```csharp

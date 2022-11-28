@@ -36,6 +36,7 @@ public final class GetClusterNodeConfig {
     private Map<String,String> labels;
     private List<GetClusterNodeConfigLinuxNodeConfig> linuxNodeConfigs;
     private Integer localSsdCount;
+    private String loggingVariant;
     private String machineType;
     private Map<String,String> metadata;
     private String minCpuPlatform;
@@ -87,6 +88,9 @@ public final class GetClusterNodeConfig {
     }
     public Integer localSsdCount() {
         return this.localSsdCount;
+    }
+    public String loggingVariant() {
+        return this.loggingVariant;
     }
     public String machineType() {
         return this.machineType;
@@ -152,6 +156,7 @@ public final class GetClusterNodeConfig {
         private Map<String,String> labels;
         private List<GetClusterNodeConfigLinuxNodeConfig> linuxNodeConfigs;
         private Integer localSsdCount;
+        private String loggingVariant;
         private String machineType;
         private Map<String,String> metadata;
         private String minCpuPlatform;
@@ -181,6 +186,7 @@ public final class GetClusterNodeConfig {
     	      this.labels = defaults.labels;
     	      this.linuxNodeConfigs = defaults.linuxNodeConfigs;
     	      this.localSsdCount = defaults.localSsdCount;
+    	      this.loggingVariant = defaults.loggingVariant;
     	      this.machineType = defaults.machineType;
     	      this.metadata = defaults.metadata;
     	      this.minCpuPlatform = defaults.minCpuPlatform;
@@ -273,6 +279,11 @@ public final class GetClusterNodeConfig {
         @CustomType.Setter
         public Builder localSsdCount(Integer localSsdCount) {
             this.localSsdCount = Objects.requireNonNull(localSsdCount);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder loggingVariant(String loggingVariant) {
+            this.loggingVariant = Objects.requireNonNull(loggingVariant);
             return this;
         }
         @CustomType.Setter
@@ -380,6 +391,7 @@ public final class GetClusterNodeConfig {
             o.labels = labels;
             o.linuxNodeConfigs = linuxNodeConfigs;
             o.localSsdCount = localSsdCount;
+            o.loggingVariant = loggingVariant;
             o.machineType = machineType;
             o.metadata = metadata;
             o.minCpuPlatform = minCpuPlatform;

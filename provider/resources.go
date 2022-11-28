@@ -38,6 +38,7 @@ const (
 	gcpAppEngine            = "AppEngine"            // AppEngine resources
 	gcpArtifactRegistry     = "ArtifactRegistry"     // ArtifactRegistry resources
 	gcpAssuredWorkloads     = "AssuredWorkloads"     // AssuredWorkloads resources
+	gcpBeyondcorp           = "Beyondcorp"           // Beyondcorp resources
 	gcpBigQueryAnalyticsHub = "BigQueryAnalyticsHub" // BigQuery Analytics Hub resources
 	gcpBigQueryDataPolicy   = "BigQueryDataPolicy"   // BigQuery Data Policy resources
 	gcpBigQuery             = "BigQuery"             // BigQuery resources
@@ -347,7 +348,8 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Alloydb
-			"google_alloydb_cluster": {Tok: gcpResource(gcpAlloydb, "Cluster")},
+			"google_alloydb_cluster":  {Tok: gcpResource(gcpAlloydb, "Cluster")},
+			"google_alloydb_instance": {Tok: gcpResource(gcpAlloydb, "Instance")},
 
 			// AppEngine
 			"google_app_engine_application": {Tok: gcpResource(gcpAppEngine, "Application")},
@@ -368,6 +370,10 @@ func Provider() tfbridge.ProviderInfo {
 
 			// AssuredWorkloads
 			"google_assured_workloads_workload": {Tok: gcpResource(gcpAssuredWorkloads, "Workload")},
+
+			// Beyondcorp
+			"google_beyondcorp_app_connector": {Tok: gcpResource(gcpBeyondcorp, "AppConnector")},
+			"google_beyondcorp_app_gateway":   {Tok: gcpResource(gcpBeyondcorp, "AppGateway")},
 
 			// BigQuery Analytics Hub
 			"google_bigquery_analytics_hub_data_exchange": {Tok: gcpResource(gcpBigQueryAnalyticsHub, "DataExchange")},
@@ -673,11 +679,6 @@ func Provider() tfbridge.ProviderInfo {
 			// Cloud IDs
 			"google_cloud_ids_endpoint": {
 				Tok: gcpResource(gcpCloudIds, "Endpoint"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"endpoint": {
-						CSharpName: "EndpointName",
-					},
-				},
 			},
 
 			// Dataform
@@ -1026,27 +1027,33 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "compute_network_endpoint_group.html.markdown",
 				},
 			},
-			"google_compute_network_peering":               {Tok: gcpResource(gcpCompute, "NetworkPeering")},
-			"google_compute_network_peering_routes_config": {Tok: gcpResource(gcpCompute, "NetworkPeeringRoutesConfig")},
-			"google_compute_network":                       {Tok: gcpResource(gcpCompute, "Network")},
-			"google_compute_project_default_network_tier":  {Tok: gcpResource(gcpCompute, "ProjectDefaultNetworkTier")},
-			"google_compute_project_metadata":              {Tok: gcpResource(gcpCompute, "ProjectMetadata")},
-			"google_compute_project_metadata_item":         {Tok: gcpResource(gcpCompute, "ProjectMetadataItem")},
-			"google_compute_region_autoscaler":             {Tok: gcpResource(gcpCompute, "RegionAutoscaler")},
-			"google_compute_region_backend_service":        {Tok: gcpResource(gcpCompute, "RegionBackendService")},
-			"google_compute_region_disk":                   {Tok: gcpResource(gcpCompute, "RegionDisk")},
-			"google_compute_region_instance_group_manager": {Tok: gcpResource(gcpCompute, "RegionInstanceGroupManager")},
-			"google_compute_region_ssl_certificate":        {Tok: gcpResource(gcpCompute, "RegionSslCertificate")},
-			"google_compute_region_target_http_proxy":      {Tok: gcpResource(gcpCompute, "RegionTargetHttpProxy")},
-			"google_compute_region_target_https_proxy":     {Tok: gcpResource(gcpCompute, "RegionTargetHttpsProxy")},
-			"google_compute_region_target_tcp_proxy":       {Tok: gcpResource(gcpCompute, "RegionTargetTcpProxy")},
-			"google_compute_region_network_endpoint_group": {Tok: gcpResource(gcpCompute, "RegionNetworkEndpointGroup")},
-			"google_compute_region_ssl_policy":             {Tok: gcpResource(gcpCompute, "RegionSslPolicy")},
-			"google_compute_resource_policy":               {Tok: gcpResource(gcpCompute, "ResourcePolicy")},
-			"google_compute_route":                         {Tok: gcpResource(gcpCompute, "Route")},
-			"google_compute_router":                        {Tok: gcpResource(gcpCompute, "Router")},
-			"google_compute_router_interface":              {Tok: gcpResource(gcpCompute, "RouterInterface")},
-			"google_compute_router_nat":                    {Tok: gcpResource(gcpCompute, "RouterNat")},
+			"google_compute_network_firewall_policy":                    {Tok: gcpResource(gcpCompute, "NetworkFirewallPolicy")},
+			"google_compute_network_firewall_policy_association":        {Tok: gcpResource(gcpCompute, "NetworkFirewallPolicyAssociation")},
+			"google_compute_network_firewall_policy_rule":               {Tok: gcpResource(gcpCompute, "NetworkFirewallPolicyRule")},
+			"google_compute_network_peering":                            {Tok: gcpResource(gcpCompute, "NetworkPeering")},
+			"google_compute_network_peering_routes_config":              {Tok: gcpResource(gcpCompute, "NetworkPeeringRoutesConfig")},
+			"google_compute_network":                                    {Tok: gcpResource(gcpCompute, "Network")},
+			"google_compute_project_default_network_tier":               {Tok: gcpResource(gcpCompute, "ProjectDefaultNetworkTier")},
+			"google_compute_project_metadata":                           {Tok: gcpResource(gcpCompute, "ProjectMetadata")},
+			"google_compute_project_metadata_item":                      {Tok: gcpResource(gcpCompute, "ProjectMetadataItem")},
+			"google_compute_region_autoscaler":                          {Tok: gcpResource(gcpCompute, "RegionAutoscaler")},
+			"google_compute_region_backend_service":                     {Tok: gcpResource(gcpCompute, "RegionBackendService")},
+			"google_compute_region_disk":                                {Tok: gcpResource(gcpCompute, "RegionDisk")},
+			"google_compute_region_instance_group_manager":              {Tok: gcpResource(gcpCompute, "RegionInstanceGroupManager")},
+			"google_compute_region_network_firewall_policy":             {Tok: gcpResource(gcpCompute, "RegionNetworkFirewallPolicy")},
+			"google_compute_region_network_firewall_policy_association": {Tok: gcpResource(gcpCompute, "RegionNetworkFirewallPolicyAssociation")},
+			"google_compute_region_network_firewall_policy_rule":        {Tok: gcpResource(gcpCompute, "RegionNetworkFirewallPolicyRule")},
+			"google_compute_region_ssl_certificate":                     {Tok: gcpResource(gcpCompute, "RegionSslCertificate")},
+			"google_compute_region_target_http_proxy":                   {Tok: gcpResource(gcpCompute, "RegionTargetHttpProxy")},
+			"google_compute_region_target_https_proxy":                  {Tok: gcpResource(gcpCompute, "RegionTargetHttpsProxy")},
+			"google_compute_region_target_tcp_proxy":                    {Tok: gcpResource(gcpCompute, "RegionTargetTcpProxy")},
+			"google_compute_region_network_endpoint_group":              {Tok: gcpResource(gcpCompute, "RegionNetworkEndpointGroup")},
+			"google_compute_region_ssl_policy":                          {Tok: gcpResource(gcpCompute, "RegionSslPolicy")},
+			"google_compute_resource_policy":                            {Tok: gcpResource(gcpCompute, "ResourcePolicy")},
+			"google_compute_route":                                      {Tok: gcpResource(gcpCompute, "Route")},
+			"google_compute_router":                                     {Tok: gcpResource(gcpCompute, "Router")},
+			"google_compute_router_interface":                           {Tok: gcpResource(gcpCompute, "RouterInterface")},
+			"google_compute_router_nat":                                 {Tok: gcpResource(gcpCompute, "RouterNat")},
 			"google_compute_router_peer": {
 				Tok: gcpResource(gcpCompute, "RouterPeer"),
 				Docs: &tfbridge.DocInfo{
@@ -1424,8 +1431,11 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_firebase_project_location": {Tok: gcpResource(gcpFirebase, "ProjectLocation")},
-			"google_firebase_web_app":          {Tok: gcpResource(gcpFirebase, "WebApp")},
 			"google_firebase_android_app":      {Tok: gcpResource(gcpFirebase, "AndroidApp")},
+			"google_firebase_apple_app":        {Tok: gcpResource(gcpFirebase, "AppleApp")},
+			"google_firebase_web_app":          {Tok: gcpResource(gcpFirebase, "WebApp")},
+			"google_firebase_hosting_channel":  {Tok: gcpResource(gcpFirebase, "HostingChannel")},
+			"google_firebase_hosting_site":     {Tok: gcpResource(gcpFirebase, "HostingSite")},
 
 			// Firebaserules
 			"google_firebaserules_release": {Tok: gcpResource(gcpFirebaserules, "Release")},
@@ -1672,6 +1682,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_storage_notification":                  {Tok: gcpResource(gcpStorage, "Notification")},
 			"google_storage_object_access_control":         {Tok: gcpResource(gcpStorage, "ObjectAccessControl")},
 			"google_storage_object_acl":                    {Tok: gcpResource(gcpStorage, "ObjectACL")},
+			"google_storage_transfer_agent_pool":           {Tok: gcpResource(gcpStorage, "TransferAgentPool")},
 			"google_storage_transfer_job":                  {Tok: gcpResource(gcpStorage, "TransferJob")},
 			"google_storage_bucket_access_control":         {Tok: gcpResource(gcpStorage, "BucketAccessControl")},
 			"google_storage_hmac_key":                      {Tok: gcpResource(gcpStorage, "HmacKey")},
@@ -2124,8 +2135,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_identity_platform_default_supported_idp_config": {
 				Tok: gcpResource(gcpIdentityPlatform, "DefaultSupportedIdpConfig"),
 			},
-			"google_identity_platform_inbound_saml_config": {Tok: gcpResource(gcpIdentityPlatform, "InboundSamlConfig")},
-			"google_identity_platform_oauth_idp_config":    {Tok: gcpResource(gcpIdentityPlatform, "OauthIdpConfig")},
+			"google_identity_platform_inbound_saml_config":    {Tok: gcpResource(gcpIdentityPlatform, "InboundSamlConfig")},
+			"google_identity_platform_oauth_idp_config":       {Tok: gcpResource(gcpIdentityPlatform, "OauthIdpConfig")},
+			"google_identity_platform_project_default_config": {Tok: gcpResource(gcpIdentityPlatform, "ProjectDefaultConfig")},
 			"google_identity_platform_tenant_default_supported_idp_config": {
 				Tok: gcpResource(gcpIdentityPlatform, "TenantDefaultSupportedIdpConfig"),
 			},
@@ -2608,6 +2620,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_workflows_workflow": {Tok: gcpResource(gcpWorkflows, "Workflow")},
 
 			//eventarc
+			"google_eventarc_channel": {
+				Tok: gcpResource(gcpEventarc, "Channel"),
+			},
 			"google_eventarc_trigger": {
 				Tok: gcpResource(gcpEventarc, "Trigger"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -2725,6 +2740,10 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_folders": {Tok: gcpDataSource(gcpOrganization, "getFolders")},
+
+			"google_cloud_asset_resources_search_all": {
+				Tok: gcpDataSource(gcpCloudAsset, "getResourcesSearchAll"),
+			},
 
 			"google_cloudfunctions_function": {
 				Tok: gcpDataSource(gcpCloudFunctions, "getFunction"),

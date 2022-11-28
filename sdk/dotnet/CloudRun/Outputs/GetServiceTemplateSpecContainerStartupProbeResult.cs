@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     public sealed class GetServiceTemplateSpecContainerStartupProbeResult
     {
         public readonly int FailureThreshold;
+        public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerStartupProbeGrpcResult> Grpcs;
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerStartupProbeHttpGetResult> HttpGets;
         public readonly int InitialDelaySeconds;
         public readonly int PeriodSeconds;
@@ -23,6 +24,8 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         [OutputConstructor]
         private GetServiceTemplateSpecContainerStartupProbeResult(
             int failureThreshold,
+
+            ImmutableArray<Outputs.GetServiceTemplateSpecContainerStartupProbeGrpcResult> grpcs,
 
             ImmutableArray<Outputs.GetServiceTemplateSpecContainerStartupProbeHttpGetResult> httpGets,
 
@@ -35,6 +38,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
             int timeoutSeconds)
         {
             FailureThreshold = failureThreshold;
+            Grpcs = grpcs;
             HttpGets = httpGets;
             InitialDelaySeconds = initialDelaySeconds;
             PeriodSeconds = periodSeconds;

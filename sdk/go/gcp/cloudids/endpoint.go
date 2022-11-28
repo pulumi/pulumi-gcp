@@ -101,10 +101,10 @@ type Endpoint struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// An optional description of the endpoint.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Internal IP address of the endpoint's network entry point.
-	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
 	EndpointForwardingRule pulumi.StringOutput `pulumi:"endpointForwardingRule"`
+	// Internal IP address of the endpoint's network entry point.
+	EndpointIp pulumi.StringOutput `pulumi:"endpointIp"`
 	// The location for the endpoint.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
@@ -163,10 +163,10 @@ type endpointState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// An optional description of the endpoint.
 	Description *string `pulumi:"description"`
-	// Internal IP address of the endpoint's network entry point.
-	Endpoint *string `pulumi:"endpoint"`
 	// URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
 	EndpointForwardingRule *string `pulumi:"endpointForwardingRule"`
+	// Internal IP address of the endpoint's network entry point.
+	EndpointIp *string `pulumi:"endpointIp"`
 	// The location for the endpoint.
 	Location *string `pulumi:"location"`
 	// Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
@@ -188,10 +188,10 @@ type EndpointState struct {
 	CreateTime pulumi.StringPtrInput
 	// An optional description of the endpoint.
 	Description pulumi.StringPtrInput
-	// Internal IP address of the endpoint's network entry point.
-	Endpoint pulumi.StringPtrInput
 	// URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
 	EndpointForwardingRule pulumi.StringPtrInput
+	// Internal IP address of the endpoint's network entry point.
+	EndpointIp pulumi.StringPtrInput
 	// The location for the endpoint.
 	Location pulumi.StringPtrInput
 	// Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
@@ -344,14 +344,14 @@ func (o EndpointOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Internal IP address of the endpoint's network entry point.
-func (o EndpointOutput) Endpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
-}
-
 // URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
 func (o EndpointOutput) EndpointForwardingRule() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.EndpointForwardingRule }).(pulumi.StringOutput)
+}
+
+// Internal IP address of the endpoint's network entry point.
+func (o EndpointOutput) EndpointIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.EndpointIp }).(pulumi.StringOutput)
 }
 
 // The location for the endpoint.

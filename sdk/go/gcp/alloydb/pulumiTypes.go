@@ -1215,6 +1215,280 @@ func (o ClusterMigrationSourceArrayOutput) Index(i pulumi.IntInput) ClusterMigra
 	}).(ClusterMigrationSourceOutput)
 }
 
+type InstanceMachineConfig struct {
+	// The number of CPU's in the VM instance.
+	CpuCount *int `pulumi:"cpuCount"`
+}
+
+// InstanceMachineConfigInput is an input type that accepts InstanceMachineConfigArgs and InstanceMachineConfigOutput values.
+// You can construct a concrete instance of `InstanceMachineConfigInput` via:
+//
+//	InstanceMachineConfigArgs{...}
+type InstanceMachineConfigInput interface {
+	pulumi.Input
+
+	ToInstanceMachineConfigOutput() InstanceMachineConfigOutput
+	ToInstanceMachineConfigOutputWithContext(context.Context) InstanceMachineConfigOutput
+}
+
+type InstanceMachineConfigArgs struct {
+	// The number of CPU's in the VM instance.
+	CpuCount pulumi.IntPtrInput `pulumi:"cpuCount"`
+}
+
+func (InstanceMachineConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMachineConfig)(nil)).Elem()
+}
+
+func (i InstanceMachineConfigArgs) ToInstanceMachineConfigOutput() InstanceMachineConfigOutput {
+	return i.ToInstanceMachineConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceMachineConfigArgs) ToInstanceMachineConfigOutputWithContext(ctx context.Context) InstanceMachineConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMachineConfigOutput)
+}
+
+func (i InstanceMachineConfigArgs) ToInstanceMachineConfigPtrOutput() InstanceMachineConfigPtrOutput {
+	return i.ToInstanceMachineConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceMachineConfigArgs) ToInstanceMachineConfigPtrOutputWithContext(ctx context.Context) InstanceMachineConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMachineConfigOutput).ToInstanceMachineConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceMachineConfigPtrInput is an input type that accepts InstanceMachineConfigArgs, InstanceMachineConfigPtr and InstanceMachineConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceMachineConfigPtrInput` via:
+//
+//	        InstanceMachineConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceMachineConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceMachineConfigPtrOutput() InstanceMachineConfigPtrOutput
+	ToInstanceMachineConfigPtrOutputWithContext(context.Context) InstanceMachineConfigPtrOutput
+}
+
+type instanceMachineConfigPtrType InstanceMachineConfigArgs
+
+func InstanceMachineConfigPtr(v *InstanceMachineConfigArgs) InstanceMachineConfigPtrInput {
+	return (*instanceMachineConfigPtrType)(v)
+}
+
+func (*instanceMachineConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMachineConfig)(nil)).Elem()
+}
+
+func (i *instanceMachineConfigPtrType) ToInstanceMachineConfigPtrOutput() InstanceMachineConfigPtrOutput {
+	return i.ToInstanceMachineConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceMachineConfigPtrType) ToInstanceMachineConfigPtrOutputWithContext(ctx context.Context) InstanceMachineConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMachineConfigPtrOutput)
+}
+
+type InstanceMachineConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceMachineConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMachineConfig)(nil)).Elem()
+}
+
+func (o InstanceMachineConfigOutput) ToInstanceMachineConfigOutput() InstanceMachineConfigOutput {
+	return o
+}
+
+func (o InstanceMachineConfigOutput) ToInstanceMachineConfigOutputWithContext(ctx context.Context) InstanceMachineConfigOutput {
+	return o
+}
+
+func (o InstanceMachineConfigOutput) ToInstanceMachineConfigPtrOutput() InstanceMachineConfigPtrOutput {
+	return o.ToInstanceMachineConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceMachineConfigOutput) ToInstanceMachineConfigPtrOutputWithContext(ctx context.Context) InstanceMachineConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceMachineConfig) *InstanceMachineConfig {
+		return &v
+	}).(InstanceMachineConfigPtrOutput)
+}
+
+// The number of CPU's in the VM instance.
+func (o InstanceMachineConfigOutput) CpuCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMachineConfig) *int { return v.CpuCount }).(pulumi.IntPtrOutput)
+}
+
+type InstanceMachineConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceMachineConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMachineConfig)(nil)).Elem()
+}
+
+func (o InstanceMachineConfigPtrOutput) ToInstanceMachineConfigPtrOutput() InstanceMachineConfigPtrOutput {
+	return o
+}
+
+func (o InstanceMachineConfigPtrOutput) ToInstanceMachineConfigPtrOutputWithContext(ctx context.Context) InstanceMachineConfigPtrOutput {
+	return o
+}
+
+func (o InstanceMachineConfigPtrOutput) Elem() InstanceMachineConfigOutput {
+	return o.ApplyT(func(v *InstanceMachineConfig) InstanceMachineConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceMachineConfig
+		return ret
+	}).(InstanceMachineConfigOutput)
+}
+
+// The number of CPU's in the VM instance.
+func (o InstanceMachineConfigPtrOutput) CpuCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceMachineConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type InstanceReadPoolConfig struct {
+	// Read capacity, i.e. number of nodes in a read pool instance.
+	NodeCount *int `pulumi:"nodeCount"`
+}
+
+// InstanceReadPoolConfigInput is an input type that accepts InstanceReadPoolConfigArgs and InstanceReadPoolConfigOutput values.
+// You can construct a concrete instance of `InstanceReadPoolConfigInput` via:
+//
+//	InstanceReadPoolConfigArgs{...}
+type InstanceReadPoolConfigInput interface {
+	pulumi.Input
+
+	ToInstanceReadPoolConfigOutput() InstanceReadPoolConfigOutput
+	ToInstanceReadPoolConfigOutputWithContext(context.Context) InstanceReadPoolConfigOutput
+}
+
+type InstanceReadPoolConfigArgs struct {
+	// Read capacity, i.e. number of nodes in a read pool instance.
+	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
+}
+
+func (InstanceReadPoolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceReadPoolConfig)(nil)).Elem()
+}
+
+func (i InstanceReadPoolConfigArgs) ToInstanceReadPoolConfigOutput() InstanceReadPoolConfigOutput {
+	return i.ToInstanceReadPoolConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceReadPoolConfigArgs) ToInstanceReadPoolConfigOutputWithContext(ctx context.Context) InstanceReadPoolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReadPoolConfigOutput)
+}
+
+func (i InstanceReadPoolConfigArgs) ToInstanceReadPoolConfigPtrOutput() InstanceReadPoolConfigPtrOutput {
+	return i.ToInstanceReadPoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceReadPoolConfigArgs) ToInstanceReadPoolConfigPtrOutputWithContext(ctx context.Context) InstanceReadPoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReadPoolConfigOutput).ToInstanceReadPoolConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceReadPoolConfigPtrInput is an input type that accepts InstanceReadPoolConfigArgs, InstanceReadPoolConfigPtr and InstanceReadPoolConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceReadPoolConfigPtrInput` via:
+//
+//	        InstanceReadPoolConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceReadPoolConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceReadPoolConfigPtrOutput() InstanceReadPoolConfigPtrOutput
+	ToInstanceReadPoolConfigPtrOutputWithContext(context.Context) InstanceReadPoolConfigPtrOutput
+}
+
+type instanceReadPoolConfigPtrType InstanceReadPoolConfigArgs
+
+func InstanceReadPoolConfigPtr(v *InstanceReadPoolConfigArgs) InstanceReadPoolConfigPtrInput {
+	return (*instanceReadPoolConfigPtrType)(v)
+}
+
+func (*instanceReadPoolConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceReadPoolConfig)(nil)).Elem()
+}
+
+func (i *instanceReadPoolConfigPtrType) ToInstanceReadPoolConfigPtrOutput() InstanceReadPoolConfigPtrOutput {
+	return i.ToInstanceReadPoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceReadPoolConfigPtrType) ToInstanceReadPoolConfigPtrOutputWithContext(ctx context.Context) InstanceReadPoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReadPoolConfigPtrOutput)
+}
+
+type InstanceReadPoolConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceReadPoolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceReadPoolConfig)(nil)).Elem()
+}
+
+func (o InstanceReadPoolConfigOutput) ToInstanceReadPoolConfigOutput() InstanceReadPoolConfigOutput {
+	return o
+}
+
+func (o InstanceReadPoolConfigOutput) ToInstanceReadPoolConfigOutputWithContext(ctx context.Context) InstanceReadPoolConfigOutput {
+	return o
+}
+
+func (o InstanceReadPoolConfigOutput) ToInstanceReadPoolConfigPtrOutput() InstanceReadPoolConfigPtrOutput {
+	return o.ToInstanceReadPoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceReadPoolConfigOutput) ToInstanceReadPoolConfigPtrOutputWithContext(ctx context.Context) InstanceReadPoolConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceReadPoolConfig) *InstanceReadPoolConfig {
+		return &v
+	}).(InstanceReadPoolConfigPtrOutput)
+}
+
+// Read capacity, i.e. number of nodes in a read pool instance.
+func (o InstanceReadPoolConfigOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceReadPoolConfig) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+}
+
+type InstanceReadPoolConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceReadPoolConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceReadPoolConfig)(nil)).Elem()
+}
+
+func (o InstanceReadPoolConfigPtrOutput) ToInstanceReadPoolConfigPtrOutput() InstanceReadPoolConfigPtrOutput {
+	return o
+}
+
+func (o InstanceReadPoolConfigPtrOutput) ToInstanceReadPoolConfigPtrOutputWithContext(ctx context.Context) InstanceReadPoolConfigPtrOutput {
+	return o
+}
+
+func (o InstanceReadPoolConfigPtrOutput) Elem() InstanceReadPoolConfigOutput {
+	return o.ApplyT(func(v *InstanceReadPoolConfig) InstanceReadPoolConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceReadPoolConfig
+		return ret
+	}).(InstanceReadPoolConfigOutput)
+}
+
+// Read capacity, i.e. number of nodes in a read pool instance.
+func (o InstanceReadPoolConfigPtrOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceReadPoolConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupPolicyInput)(nil)).Elem(), ClusterAutomatedBackupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupPolicyPtrInput)(nil)).Elem(), ClusterAutomatedBackupPolicyArgs{})
@@ -1232,6 +1506,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterInitialUserPtrInput)(nil)).Elem(), ClusterInitialUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMigrationSourceInput)(nil)).Elem(), ClusterMigrationSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMigrationSourceArrayInput)(nil)).Elem(), ClusterMigrationSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMachineConfigInput)(nil)).Elem(), InstanceMachineConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMachineConfigPtrInput)(nil)).Elem(), InstanceMachineConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReadPoolConfigInput)(nil)).Elem(), InstanceReadPoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReadPoolConfigPtrInput)(nil)).Elem(), InstanceReadPoolConfigArgs{})
 	pulumi.RegisterOutputType(ClusterAutomatedBackupPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterAutomatedBackupPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAutomatedBackupPolicyQuantityBasedRetentionOutput{})
@@ -1248,4 +1526,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterInitialUserPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMigrationSourceOutput{})
 	pulumi.RegisterOutputType(ClusterMigrationSourceArrayOutput{})
+	pulumi.RegisterOutputType(InstanceMachineConfigOutput{})
+	pulumi.RegisterOutputType(InstanceMachineConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceReadPoolConfigOutput{})
+	pulumi.RegisterOutputType(InstanceReadPoolConfigPtrOutput{})
 }

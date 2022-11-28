@@ -125,20 +125,6 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Internal IP address of the endpoint&#39;s network entry point.
-     * 
-     */
-    @Export(name="endpoint", type=String.class, parameters={})
-    private Output<String> endpoint;
-
-    /**
-     * @return Internal IP address of the endpoint&#39;s network entry point.
-     * 
-     */
-    public Output<String> endpoint() {
-        return this.endpoint;
-    }
-    /**
      * URL of the endpoint&#39;s network address to which traffic is to be sent by Packet Mirroring.
      * 
      */
@@ -151,6 +137,20 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<String> endpointForwardingRule() {
         return this.endpointForwardingRule;
+    }
+    /**
+     * Internal IP address of the endpoint&#39;s network entry point.
+     * 
+     */
+    @Export(name="endpointIp", type=String.class, parameters={})
+    private Output<String> endpointIp;
+
+    /**
+     * @return Internal IP address of the endpoint&#39;s network entry point.
+     * 
+     */
+    public Output<String> endpointIp() {
+        return this.endpointIp;
     }
     /**
      * The location for the endpoint.

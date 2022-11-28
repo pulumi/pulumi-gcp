@@ -20,19 +20,26 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Set to true to have the CDN automatically manage this public key value.
+        /// </summary>
+        public readonly bool? Managed;
+        /// <summary>
         /// The base64-encoded value of the Ed25519 public key. The base64 encoding can be padded (44 bytes) or unpadded (43 bytes).
         /// Representations or encodings of the public key other than this will be rejected with an error.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        public readonly string Value;
+        public readonly string? Value;
 
         [OutputConstructor]
         private EdgeCacheKeysetPublicKey(
             string id,
 
-            string value)
+            bool? managed,
+
+            string? value)
         {
             Id = id;
+            Managed = managed;
             Value = value;
         }
     }

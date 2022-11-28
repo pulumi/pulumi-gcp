@@ -51,6 +51,9 @@ namespace Pulumi.Gcp
         [Output("assuredWorkloadsCustomEndpoint")]
         public Output<string?> AssuredWorkloadsCustomEndpoint { get; private set; } = null!;
 
+        [Output("beyondcorpCustomEndpoint")]
+        public Output<string?> BeyondcorpCustomEndpoint { get; private set; } = null!;
+
         [Output("bigQueryCustomEndpoint")]
         public Output<string?> BigQueryCustomEndpoint { get; private set; } = null!;
 
@@ -203,6 +206,9 @@ namespace Pulumi.Gcp
 
         [Output("firebaseCustomEndpoint")]
         public Output<string?> FirebaseCustomEndpoint { get; private set; } = null!;
+
+        [Output("firebaseHostingCustomEndpoint")]
+        public Output<string?> FirebaseHostingCustomEndpoint { get; private set; } = null!;
 
         [Output("firebaserulesCustomEndpoint")]
         public Output<string?> FirebaserulesCustomEndpoint { get; private set; } = null!;
@@ -442,6 +448,9 @@ namespace Pulumi.Gcp
         [Input("batching", json: true)]
         public Input<Inputs.ProviderBatchingArgs>? Batching { get; set; }
 
+        [Input("beyondcorpCustomEndpoint")]
+        public Input<string>? BeyondcorpCustomEndpoint { get; set; }
+
         [Input("bigQueryCustomEndpoint")]
         public Input<string>? BigQueryCustomEndpoint { get; set; }
 
@@ -597,6 +606,9 @@ namespace Pulumi.Gcp
 
         [Input("firebaseCustomEndpoint")]
         public Input<string>? FirebaseCustomEndpoint { get; set; }
+
+        [Input("firebaseHostingCustomEndpoint")]
+        public Input<string>? FirebaseHostingCustomEndpoint { get; set; }
 
         [Input("firebaserulesCustomEndpoint")]
         public Input<string>? FirebaserulesCustomEndpoint { get; set; }

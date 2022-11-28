@@ -468,7 +468,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterNodePoolAutoConfig> NodePoolAutoConfig { get; private set; } = null!;
 
         /// <summary>
-        /// ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+        /// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
         /// </summary>
         [Output("nodePoolDefaults")]
         public Output<Outputs.ClusterNodePoolDefaults> NodePoolDefaults { get; private set; } = null!;
@@ -1019,7 +1019,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterNodePoolAutoConfigArgs>? NodePoolAutoConfig { get; set; }
 
         /// <summary>
-        /// ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+        /// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
         /// </summary>
         [Input("nodePoolDefaults")]
         public Input<Inputs.ClusterNodePoolDefaultsArgs>? NodePoolDefaults { get; set; }
@@ -1538,7 +1538,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterNodePoolAutoConfigGetArgs>? NodePoolAutoConfig { get; set; }
 
         /// <summary>
-        /// ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+        /// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
         /// </summary>
         [Input("nodePoolDefaults")]
         public Input<Inputs.ClusterNodePoolDefaultsGetArgs>? NodePoolDefaults { get; set; }

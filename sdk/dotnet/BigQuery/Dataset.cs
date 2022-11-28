@@ -170,6 +170,83 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// ### Bigquery Dataset Authorized Routine
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var publicDataset = new Gcp.BigQuery.Dataset("publicDataset", new()
+    ///     {
+    ///         DatasetId = "public_dataset",
+    ///         Description = "This dataset is public",
+    ///     });
+    /// 
+    ///     var publicRoutine = new Gcp.BigQuery.Routine("publicRoutine", new()
+    ///     {
+    ///         DatasetId = publicDataset.DatasetId,
+    ///         RoutineId = "public_routine",
+    ///         RoutineType = "TABLE_VALUED_FUNCTION",
+    ///         Language = "SQL",
+    ///         DefinitionBody = @"SELECT 1 + value AS value
+    /// ",
+    ///         Arguments = new[]
+    ///         {
+    ///             new Gcp.BigQuery.Inputs.RoutineArgumentArgs
+    ///             {
+    ///                 Name = "value",
+    ///                 ArgumentKind = "FIXED_TYPE",
+    ///                 DataType = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["typeKind"] = "INT64",
+    ///                 }),
+    ///             },
+    ///         },
+    ///         ReturnTableType = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["columns"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["name"] = "value",
+    ///                     ["type"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["typeKind"] = "INT64",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    ///     var @private = new Gcp.BigQuery.Dataset("private", new()
+    ///     {
+    ///         DatasetId = "private_dataset",
+    ///         Description = "This dataset is private",
+    ///         Accesses = new[]
+    ///         {
+    ///             new Gcp.BigQuery.Inputs.DatasetAccessArgs
+    ///             {
+    ///                 Role = "OWNER",
+    ///                 UserByEmail = "emailAddress:my@service-account.com",
+    ///             },
+    ///             new Gcp.BigQuery.Inputs.DatasetAccessArgs
+    ///             {
+    ///                 Routine = new Gcp.BigQuery.Inputs.DatasetAccessRoutineArgs
+    ///                 {
+    ///                     ProjectId = publicRoutine.Project,
+    ///                     DatasetId = publicRoutine.DatasetId,
+    ///                     RoutineId = publicRoutine.RoutineId,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

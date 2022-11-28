@@ -18,6 +18,11 @@ public final class DatabaseInstanceSettingsInsightsConfig {
      */
     private @Nullable Boolean queryInsightsEnabled;
     /**
+     * @return Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+     * 
+     */
+    private @Nullable Integer queryPlansPerMinute;
+    /**
      * @return Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
      * 
      */
@@ -40,6 +45,13 @@ public final class DatabaseInstanceSettingsInsightsConfig {
      */
     public Optional<Boolean> queryInsightsEnabled() {
         return Optional.ofNullable(this.queryInsightsEnabled);
+    }
+    /**
+     * @return Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+     * 
+     */
+    public Optional<Integer> queryPlansPerMinute() {
+        return Optional.ofNullable(this.queryPlansPerMinute);
     }
     /**
      * @return Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
@@ -73,6 +85,7 @@ public final class DatabaseInstanceSettingsInsightsConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean queryInsightsEnabled;
+        private @Nullable Integer queryPlansPerMinute;
         private @Nullable Integer queryStringLength;
         private @Nullable Boolean recordApplicationTags;
         private @Nullable Boolean recordClientAddress;
@@ -80,6 +93,7 @@ public final class DatabaseInstanceSettingsInsightsConfig {
         public Builder(DatabaseInstanceSettingsInsightsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.queryInsightsEnabled = defaults.queryInsightsEnabled;
+    	      this.queryPlansPerMinute = defaults.queryPlansPerMinute;
     	      this.queryStringLength = defaults.queryStringLength;
     	      this.recordApplicationTags = defaults.recordApplicationTags;
     	      this.recordClientAddress = defaults.recordClientAddress;
@@ -88,6 +102,11 @@ public final class DatabaseInstanceSettingsInsightsConfig {
         @CustomType.Setter
         public Builder queryInsightsEnabled(@Nullable Boolean queryInsightsEnabled) {
             this.queryInsightsEnabled = queryInsightsEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder queryPlansPerMinute(@Nullable Integer queryPlansPerMinute) {
+            this.queryPlansPerMinute = queryPlansPerMinute;
             return this;
         }
         @CustomType.Setter
@@ -108,6 +127,7 @@ public final class DatabaseInstanceSettingsInsightsConfig {
         public DatabaseInstanceSettingsInsightsConfig build() {
             final var o = new DatabaseInstanceSettingsInsightsConfig();
             o.queryInsightsEnabled = queryInsightsEnabled;
+            o.queryPlansPerMinute = queryPlansPerMinute;
             o.queryStringLength = queryStringLength;
             o.recordApplicationTags = recordApplicationTags;
             o.recordClientAddress = recordClientAddress;

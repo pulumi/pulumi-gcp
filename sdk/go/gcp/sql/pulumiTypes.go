@@ -971,8 +971,10 @@ type DatabaseInstanceSettings struct {
 	AvailabilityType    *string                                      `pulumi:"availabilityType"`
 	BackupConfiguration *DatabaseInstanceSettingsBackupConfiguration `pulumi:"backupConfiguration"`
 	// The name of server instance collation.
-	Collation     *string                                `pulumi:"collation"`
-	DatabaseFlags []DatabaseInstanceSettingsDatabaseFlag `pulumi:"databaseFlags"`
+	Collation *string `pulumi:"collation"`
+	// Specifies if connections must use Cloud SQL connectors.
+	ConnectorEnforcement *string                                `pulumi:"connectorEnforcement"`
+	DatabaseFlags        []DatabaseInstanceSettingsDatabaseFlag `pulumi:"databaseFlags"`
 	// Enables auto-resizing of the storage size. Defaults to `true`.
 	DiskAutoresize *bool `pulumi:"diskAutoresize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
@@ -992,7 +994,8 @@ type DatabaseInstanceSettings struct {
 	// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
 	// for more details and supported versions. Postgres supports only shared-core machine types,
 	// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
-	Tier     string  `pulumi:"tier"`
+	Tier string `pulumi:"tier"`
+	// The timeZone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
 	TimeZone *string `pulumi:"timeZone"`
 	// A set of key/value user label pairs to assign to the instance.
 	UserLabels map[string]string `pulumi:"userLabels"`
@@ -1024,8 +1027,10 @@ type DatabaseInstanceSettingsArgs struct {
 	AvailabilityType    pulumi.StringPtrInput                               `pulumi:"availabilityType"`
 	BackupConfiguration DatabaseInstanceSettingsBackupConfigurationPtrInput `pulumi:"backupConfiguration"`
 	// The name of server instance collation.
-	Collation     pulumi.StringPtrInput                          `pulumi:"collation"`
-	DatabaseFlags DatabaseInstanceSettingsDatabaseFlagArrayInput `pulumi:"databaseFlags"`
+	Collation pulumi.StringPtrInput `pulumi:"collation"`
+	// Specifies if connections must use Cloud SQL connectors.
+	ConnectorEnforcement pulumi.StringPtrInput                          `pulumi:"connectorEnforcement"`
+	DatabaseFlags        DatabaseInstanceSettingsDatabaseFlagArrayInput `pulumi:"databaseFlags"`
 	// Enables auto-resizing of the storage size. Defaults to `true`.
 	DiskAutoresize pulumi.BoolPtrInput `pulumi:"diskAutoresize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
@@ -1045,7 +1050,8 @@ type DatabaseInstanceSettingsArgs struct {
 	// The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
 	// for more details and supported versions. Postgres supports only shared-core machine types,
 	// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
-	Tier     pulumi.StringInput    `pulumi:"tier"`
+	Tier pulumi.StringInput `pulumi:"tier"`
+	// The timeZone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
 	// A set of key/value user label pairs to assign to the instance.
 	UserLabels pulumi.StringMapInput `pulumi:"userLabels"`
@@ -1162,6 +1168,11 @@ func (o DatabaseInstanceSettingsOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.Collation }).(pulumi.StringPtrOutput)
 }
 
+// Specifies if connections must use Cloud SQL connectors.
+func (o DatabaseInstanceSettingsOutput) ConnectorEnforcement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.ConnectorEnforcement }).(pulumi.StringPtrOutput)
+}
+
 func (o DatabaseInstanceSettingsOutput) DatabaseFlags() DatabaseInstanceSettingsDatabaseFlagArrayOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) []DatabaseInstanceSettingsDatabaseFlag { return v.DatabaseFlags }).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
 }
@@ -1230,6 +1241,7 @@ func (o DatabaseInstanceSettingsOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) string { return v.Tier }).(pulumi.StringOutput)
 }
 
+// The timeZone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
 func (o DatabaseInstanceSettingsOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
@@ -1318,6 +1330,16 @@ func (o DatabaseInstanceSettingsPtrOutput) Collation() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Collation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies if connections must use Cloud SQL connectors.
+func (o DatabaseInstanceSettingsPtrOutput) ConnectorEnforcement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectorEnforcement
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1446,6 +1468,7 @@ func (o DatabaseInstanceSettingsPtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The timeZone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
 func (o DatabaseInstanceSettingsPtrOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
 		if v == nil {
@@ -2155,6 +2178,8 @@ func (o DatabaseInstanceSettingsDatabaseFlagArrayOutput) Index(i pulumi.IntInput
 type DatabaseInstanceSettingsInsightsConfig struct {
 	// True if Query Insights feature is enabled.
 	QueryInsightsEnabled *bool `pulumi:"queryInsightsEnabled"`
+	// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+	QueryPlansPerMinute *int `pulumi:"queryPlansPerMinute"`
 	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
 	QueryStringLength *int `pulumi:"queryStringLength"`
 	// True if Query Insights will record application tags from query when enabled.
@@ -2177,6 +2202,8 @@ type DatabaseInstanceSettingsInsightsConfigInput interface {
 type DatabaseInstanceSettingsInsightsConfigArgs struct {
 	// True if Query Insights feature is enabled.
 	QueryInsightsEnabled pulumi.BoolPtrInput `pulumi:"queryInsightsEnabled"`
+	// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+	QueryPlansPerMinute pulumi.IntPtrInput `pulumi:"queryPlansPerMinute"`
 	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
 	QueryStringLength pulumi.IntPtrInput `pulumi:"queryStringLength"`
 	// True if Query Insights will record application tags from query when enabled.
@@ -2267,6 +2294,11 @@ func (o DatabaseInstanceSettingsInsightsConfigOutput) QueryInsightsEnabled() pul
 	return o.ApplyT(func(v DatabaseInstanceSettingsInsightsConfig) *bool { return v.QueryInsightsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+func (o DatabaseInstanceSettingsInsightsConfigOutput) QueryPlansPerMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsInsightsConfig) *int { return v.QueryPlansPerMinute }).(pulumi.IntPtrOutput)
+}
+
 // Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
 func (o DatabaseInstanceSettingsInsightsConfigOutput) QueryStringLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsInsightsConfig) *int { return v.QueryStringLength }).(pulumi.IntPtrOutput)
@@ -2314,6 +2346,16 @@ func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) QueryInsightsEnabled() 
 		}
 		return v.QueryInsightsEnabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) QueryPlansPerMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsInsightsConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.QueryPlansPerMinute
+	}).(pulumi.IntPtrOutput)
 }
 
 // Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
@@ -4621,6 +4663,7 @@ type GetDatabaseInstanceSetting struct {
 	AvailabilityType           string                                               `pulumi:"availabilityType"`
 	BackupConfigurations       []GetDatabaseInstanceSettingBackupConfiguration      `pulumi:"backupConfigurations"`
 	Collation                  string                                               `pulumi:"collation"`
+	ConnectorEnforcement       string                                               `pulumi:"connectorEnforcement"`
 	DatabaseFlags              []GetDatabaseInstanceSettingDatabaseFlag             `pulumi:"databaseFlags"`
 	DiskAutoresize             bool                                                 `pulumi:"diskAutoresize"`
 	DiskAutoresizeLimit        int                                                  `pulumi:"diskAutoresizeLimit"`
@@ -4656,6 +4699,7 @@ type GetDatabaseInstanceSettingArgs struct {
 	AvailabilityType           pulumi.StringInput                                           `pulumi:"availabilityType"`
 	BackupConfigurations       GetDatabaseInstanceSettingBackupConfigurationArrayInput      `pulumi:"backupConfigurations"`
 	Collation                  pulumi.StringInput                                           `pulumi:"collation"`
+	ConnectorEnforcement       pulumi.StringInput                                           `pulumi:"connectorEnforcement"`
 	DatabaseFlags              GetDatabaseInstanceSettingDatabaseFlagArrayInput             `pulumi:"databaseFlags"`
 	DiskAutoresize             pulumi.BoolInput                                             `pulumi:"diskAutoresize"`
 	DiskAutoresizeLimit        pulumi.IntInput                                              `pulumi:"diskAutoresizeLimit"`
@@ -4747,6 +4791,10 @@ func (o GetDatabaseInstanceSettingOutput) BackupConfigurations() GetDatabaseInst
 
 func (o GetDatabaseInstanceSettingOutput) Collation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.Collation }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceSettingOutput) ConnectorEnforcement() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.ConnectorEnforcement }).(pulumi.StringOutput)
 }
 
 func (o GetDatabaseInstanceSettingOutput) DatabaseFlags() GetDatabaseInstanceSettingDatabaseFlagArrayOutput {
@@ -5280,6 +5328,7 @@ func (o GetDatabaseInstanceSettingDatabaseFlagArrayOutput) Index(i pulumi.IntInp
 
 type GetDatabaseInstanceSettingInsightsConfig struct {
 	QueryInsightsEnabled  bool `pulumi:"queryInsightsEnabled"`
+	QueryPlansPerMinute   int  `pulumi:"queryPlansPerMinute"`
 	QueryStringLength     int  `pulumi:"queryStringLength"`
 	RecordApplicationTags bool `pulumi:"recordApplicationTags"`
 	RecordClientAddress   bool `pulumi:"recordClientAddress"`
@@ -5298,6 +5347,7 @@ type GetDatabaseInstanceSettingInsightsConfigInput interface {
 
 type GetDatabaseInstanceSettingInsightsConfigArgs struct {
 	QueryInsightsEnabled  pulumi.BoolInput `pulumi:"queryInsightsEnabled"`
+	QueryPlansPerMinute   pulumi.IntInput  `pulumi:"queryPlansPerMinute"`
 	QueryStringLength     pulumi.IntInput  `pulumi:"queryStringLength"`
 	RecordApplicationTags pulumi.BoolInput `pulumi:"recordApplicationTags"`
 	RecordClientAddress   pulumi.BoolInput `pulumi:"recordClientAddress"`
@@ -5356,6 +5406,10 @@ func (o GetDatabaseInstanceSettingInsightsConfigOutput) ToGetDatabaseInstanceSet
 
 func (o GetDatabaseInstanceSettingInsightsConfigOutput) QueryInsightsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingInsightsConfig) bool { return v.QueryInsightsEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseInstanceSettingInsightsConfigOutput) QueryPlansPerMinute() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingInsightsConfig) int { return v.QueryPlansPerMinute }).(pulumi.IntOutput)
 }
 
 func (o GetDatabaseInstanceSettingInsightsConfigOutput) QueryStringLength() pulumi.IntOutput {

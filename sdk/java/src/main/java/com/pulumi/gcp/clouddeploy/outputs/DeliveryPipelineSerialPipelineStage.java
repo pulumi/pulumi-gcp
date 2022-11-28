@@ -4,6 +4,7 @@
 package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategy;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,6 +19,11 @@ public final class DeliveryPipelineSerialPipelineStage {
      */
     private @Nullable List<String> profiles;
     /**
+     * @return (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+     * 
+     */
+    private @Nullable DeliveryPipelineSerialPipelineStageStrategy strategy;
+    /**
      * @return The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
      * 
      */
@@ -30,6 +36,13 @@ public final class DeliveryPipelineSerialPipelineStage {
      */
     public List<String> profiles() {
         return this.profiles == null ? List.of() : this.profiles;
+    }
+    /**
+     * @return (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+     * 
+     */
+    public Optional<DeliveryPipelineSerialPipelineStageStrategy> strategy() {
+        return Optional.ofNullable(this.strategy);
     }
     /**
      * @return The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
@@ -49,11 +62,13 @@ public final class DeliveryPipelineSerialPipelineStage {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> profiles;
+        private @Nullable DeliveryPipelineSerialPipelineStageStrategy strategy;
         private @Nullable String targetId;
         public Builder() {}
         public Builder(DeliveryPipelineSerialPipelineStage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.profiles = defaults.profiles;
+    	      this.strategy = defaults.strategy;
     	      this.targetId = defaults.targetId;
         }
 
@@ -66,6 +81,11 @@ public final class DeliveryPipelineSerialPipelineStage {
             return profiles(List.of(profiles));
         }
         @CustomType.Setter
+        public Builder strategy(@Nullable DeliveryPipelineSerialPipelineStageStrategy strategy) {
+            this.strategy = strategy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder targetId(@Nullable String targetId) {
             this.targetId = targetId;
             return this;
@@ -73,6 +93,7 @@ public final class DeliveryPipelineSerialPipelineStage {
         public DeliveryPipelineSerialPipelineStage build() {
             final var o = new DeliveryPipelineSerialPipelineStage();
             o.profiles = profiles;
+            o.strategy = strategy;
             o.targetId = targetId;
             return o;
         }

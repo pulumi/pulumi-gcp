@@ -13,9 +13,9 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The default RegionBackendService resource. Before
-        /// forwarding the request to backendService, the loadbalancer applies any relevant
-        /// headerActions specified as part of this backendServiceWeight.
+        /// The full or partial URL to the RegionBackendService resource being mirrored to.
+        /// The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
+        /// Serverless NEG backends are not currently supported as a mirrored backend service.
         /// </summary>
         [Input("backendService", required: true)]
         public Input<string> BackendService { get; set; } = null!;

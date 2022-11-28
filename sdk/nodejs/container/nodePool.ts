@@ -167,8 +167,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Specify node upgrade settings to change how many nodes GKE attempts to
-     * upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
+     * Specify node upgrade settings to change how GKE upgrades nodes.
      * The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
      */
     public readonly upgradeSettings!: pulumi.Output<outputs.container.NodePoolUpgradeSettings>;
@@ -336,8 +335,7 @@ export interface NodePoolState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Specify node upgrade settings to change how many nodes GKE attempts to
-     * upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
+     * Specify node upgrade settings to change how GKE upgrades nodes.
      * The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
      */
     upgradeSettings?: pulumi.Input<inputs.container.NodePoolUpgradeSettings>;
@@ -435,8 +433,7 @@ export interface NodePoolArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Specify node upgrade settings to change how many nodes GKE attempts to
-     * upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
+     * Specify node upgrade settings to change how GKE upgrades nodes.
      * The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
      */
     upgradeSettings?: pulumi.Input<inputs.container.NodePoolUpgradeSettings>;
