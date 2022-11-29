@@ -36,6 +36,15 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly string? Role;
         /// <summary>
+        /// A routine from a different dataset to grant access to. Queries
+        /// executed against that routine will have read access to tables in
+        /// this dataset. The role field is not required when this field is
+        /// set. If that routine is updated by any user, access to the routine
+        /// needs to be granted again via an update operation.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.DatasetAccessRoutine? Routine;
+        /// <summary>
         /// A special group to grant access to. Possible values include:
         /// </summary>
         public readonly string? SpecialGroup;
@@ -64,6 +73,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             string? role,
 
+            Outputs.DatasetAccessRoutine? routine,
+
             string? specialGroup,
 
             string? userByEmail,
@@ -74,6 +85,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             Domain = domain;
             GroupByEmail = groupByEmail;
             Role = role;
+            Routine = routine;
             SpecialGroup = specialGroup;
             UserByEmail = userByEmail;
             View = view;

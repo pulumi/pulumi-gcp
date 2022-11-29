@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<bool>? QueryInsightsEnabled { get; set; }
 
         /// <summary>
+        /// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+        /// </summary>
+        [Input("queryPlansPerMinute")]
+        public Input<int>? QueryPlansPerMinute { get; set; }
+
+        /// <summary>
         /// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
         /// </summary>
         [Input("queryStringLength")]

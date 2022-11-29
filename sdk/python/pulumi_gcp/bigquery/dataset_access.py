@@ -23,6 +23,7 @@ class DatasetAccessInitArgs:
                  iam_member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
+                 routine: Optional[pulumi.Input['DatasetAccessRoutineArgs']] = None,
                  special_group: Optional[pulumi.Input[str]] = None,
                  user_by_email: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input['DatasetAccessViewArgs']] = None):
@@ -44,6 +45,12 @@ class DatasetAccessInitArgs:
                swapped by the API to their basic counterparts, and will show a diff
                post-create. See
                [official docs](https://cloud.google.com/bigquery/docs/access-control).
+        :param pulumi.Input['DatasetAccessRoutineArgs'] routine: A routine from a different dataset to grant access to. Queries
+               executed against that routine will have read access to tables in
+               this dataset. The role field is not required when this field is
+               set. If that routine is updated by any user, access to the routine
+               needs to be granted again via an update operation.
+               Structure is documented below.
         :param pulumi.Input[str] special_group: A special group to grant access to. Possible values include:
         :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example:
                fred@example.com
@@ -67,6 +74,8 @@ class DatasetAccessInitArgs:
             pulumi.set(__self__, "project", project)
         if role is not None:
             pulumi.set(__self__, "role", role)
+        if routine is not None:
+            pulumi.set(__self__, "routine", routine)
         if special_group is not None:
             pulumi.set(__self__, "special_group", special_group)
         if user_by_email is not None:
@@ -168,6 +177,23 @@ class DatasetAccessInitArgs:
         pulumi.set(self, "role", value)
 
     @property
+    @pulumi.getter
+    def routine(self) -> Optional[pulumi.Input['DatasetAccessRoutineArgs']]:
+        """
+        A routine from a different dataset to grant access to. Queries
+        executed against that routine will have read access to tables in
+        this dataset. The role field is not required when this field is
+        set. If that routine is updated by any user, access to the routine
+        needs to be granted again via an update operation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "routine")
+
+    @routine.setter
+    def routine(self, value: Optional[pulumi.Input['DatasetAccessRoutineArgs']]):
+        pulumi.set(self, "routine", value)
+
+    @property
     @pulumi.getter(name="specialGroup")
     def special_group(self) -> Optional[pulumi.Input[str]]:
         """
@@ -221,6 +247,7 @@ class _DatasetAccessState:
                  iam_member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
+                 routine: Optional[pulumi.Input['DatasetAccessRoutineArgs']] = None,
                  special_group: Optional[pulumi.Input[str]] = None,
                  user_by_email: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input['DatasetAccessViewArgs']] = None):
@@ -244,6 +271,12 @@ class _DatasetAccessState:
                swapped by the API to their basic counterparts, and will show a diff
                post-create. See
                [official docs](https://cloud.google.com/bigquery/docs/access-control).
+        :param pulumi.Input['DatasetAccessRoutineArgs'] routine: A routine from a different dataset to grant access to. Queries
+               executed against that routine will have read access to tables in
+               this dataset. The role field is not required when this field is
+               set. If that routine is updated by any user, access to the routine
+               needs to be granted again via an update operation.
+               Structure is documented below.
         :param pulumi.Input[str] special_group: A special group to grant access to. Possible values include:
         :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example:
                fred@example.com
@@ -270,6 +303,8 @@ class _DatasetAccessState:
             pulumi.set(__self__, "project", project)
         if role is not None:
             pulumi.set(__self__, "role", role)
+        if routine is not None:
+            pulumi.set(__self__, "routine", routine)
         if special_group is not None:
             pulumi.set(__self__, "special_group", special_group)
         if user_by_email is not None:
@@ -384,6 +419,23 @@ class _DatasetAccessState:
         pulumi.set(self, "role", value)
 
     @property
+    @pulumi.getter
+    def routine(self) -> Optional[pulumi.Input['DatasetAccessRoutineArgs']]:
+        """
+        A routine from a different dataset to grant access to. Queries
+        executed against that routine will have read access to tables in
+        this dataset. The role field is not required when this field is
+        set. If that routine is updated by any user, access to the routine
+        needs to be granted again via an update operation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "routine")
+
+    @routine.setter
+    def routine(self, value: Optional[pulumi.Input['DatasetAccessRoutineArgs']]):
+        pulumi.set(self, "routine", value)
+
+    @property
     @pulumi.getter(name="specialGroup")
     def special_group(self) -> Optional[pulumi.Input[str]]:
         """
@@ -438,6 +490,7 @@ class DatasetAccess(pulumi.CustomResource):
                  iam_member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
+                 routine: Optional[pulumi.Input[pulumi.InputType['DatasetAccessRoutineArgs']]] = None,
                  special_group: Optional[pulumi.Input[str]] = None,
                  user_by_email: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input[pulumi.InputType['DatasetAccessViewArgs']]] = None,
@@ -499,6 +552,48 @@ class DatasetAccess(pulumi.CustomResource):
                 target_types=["VIEWS"],
             ))
         ```
+        ### Bigquery Dataset Access Authorized Routine
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        public_dataset = gcp.bigquery.Dataset("publicDataset",
+            dataset_id="public_dataset",
+            description="This dataset is public")
+        public_routine = gcp.bigquery.Routine("publicRoutine",
+            dataset_id=public_dataset.dataset_id,
+            routine_id="public_routine",
+            routine_type="TABLE_VALUED_FUNCTION",
+            language="SQL",
+            definition_body="SELECT 1 + value AS value\\n",
+            arguments=[gcp.bigquery.RoutineArgumentArgs(
+                name="value",
+                argument_kind="FIXED_TYPE",
+                data_type=json.dumps({
+                    "typeKind": "INT64",
+                }),
+            )],
+            return_table_type=json.dumps({
+                "columns": [{
+                    "name": "value",
+                    "type": {
+                        "typeKind": "INT64",
+                    },
+                }],
+            }))
+        private = gcp.bigquery.Dataset("private",
+            dataset_id="private_dataset",
+            description="This dataset is private")
+        authorized_routine = gcp.bigquery.DatasetAccess("authorizedRoutine",
+            dataset_id=private.dataset_id,
+            routine=gcp.bigquery.DatasetAccessRoutineArgs(
+                project_id=public_routine.project,
+                dataset_id=public_routine.dataset_id,
+                routine_id=public_routine.routine_id,
+            ))
+        ```
 
         ## Import
 
@@ -522,6 +617,12 @@ class DatasetAccess(pulumi.CustomResource):
                swapped by the API to their basic counterparts, and will show a diff
                post-create. See
                [official docs](https://cloud.google.com/bigquery/docs/access-control).
+        :param pulumi.Input[pulumi.InputType['DatasetAccessRoutineArgs']] routine: A routine from a different dataset to grant access to. Queries
+               executed against that routine will have read access to tables in
+               this dataset. The role field is not required when this field is
+               set. If that routine is updated by any user, access to the routine
+               needs to be granted again via an update operation.
+               Structure is documented below.
         :param pulumi.Input[str] special_group: A special group to grant access to. Possible values include:
         :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example:
                fred@example.com
@@ -595,6 +696,48 @@ class DatasetAccess(pulumi.CustomResource):
                 target_types=["VIEWS"],
             ))
         ```
+        ### Bigquery Dataset Access Authorized Routine
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        public_dataset = gcp.bigquery.Dataset("publicDataset",
+            dataset_id="public_dataset",
+            description="This dataset is public")
+        public_routine = gcp.bigquery.Routine("publicRoutine",
+            dataset_id=public_dataset.dataset_id,
+            routine_id="public_routine",
+            routine_type="TABLE_VALUED_FUNCTION",
+            language="SQL",
+            definition_body="SELECT 1 + value AS value\\n",
+            arguments=[gcp.bigquery.RoutineArgumentArgs(
+                name="value",
+                argument_kind="FIXED_TYPE",
+                data_type=json.dumps({
+                    "typeKind": "INT64",
+                }),
+            )],
+            return_table_type=json.dumps({
+                "columns": [{
+                    "name": "value",
+                    "type": {
+                        "typeKind": "INT64",
+                    },
+                }],
+            }))
+        private = gcp.bigquery.Dataset("private",
+            dataset_id="private_dataset",
+            description="This dataset is private")
+        authorized_routine = gcp.bigquery.DatasetAccess("authorizedRoutine",
+            dataset_id=private.dataset_id,
+            routine=gcp.bigquery.DatasetAccessRoutineArgs(
+                project_id=public_routine.project,
+                dataset_id=public_routine.dataset_id,
+                routine_id=public_routine.routine_id,
+            ))
+        ```
 
         ## Import
 
@@ -622,6 +765,7 @@ class DatasetAccess(pulumi.CustomResource):
                  iam_member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
+                 routine: Optional[pulumi.Input[pulumi.InputType['DatasetAccessRoutineArgs']]] = None,
                  special_group: Optional[pulumi.Input[str]] = None,
                  user_by_email: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input[pulumi.InputType['DatasetAccessViewArgs']]] = None,
@@ -643,6 +787,7 @@ class DatasetAccess(pulumi.CustomResource):
             __props__.__dict__["iam_member"] = iam_member
             __props__.__dict__["project"] = project
             __props__.__dict__["role"] = role
+            __props__.__dict__["routine"] = routine
             __props__.__dict__["special_group"] = special_group
             __props__.__dict__["user_by_email"] = user_by_email
             __props__.__dict__["view"] = view
@@ -665,6 +810,7 @@ class DatasetAccess(pulumi.CustomResource):
             iam_member: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             role: Optional[pulumi.Input[str]] = None,
+            routine: Optional[pulumi.Input[pulumi.InputType['DatasetAccessRoutineArgs']]] = None,
             special_group: Optional[pulumi.Input[str]] = None,
             user_by_email: Optional[pulumi.Input[str]] = None,
             view: Optional[pulumi.Input[pulumi.InputType['DatasetAccessViewArgs']]] = None) -> 'DatasetAccess':
@@ -693,6 +839,12 @@ class DatasetAccess(pulumi.CustomResource):
                swapped by the API to their basic counterparts, and will show a diff
                post-create. See
                [official docs](https://cloud.google.com/bigquery/docs/access-control).
+        :param pulumi.Input[pulumi.InputType['DatasetAccessRoutineArgs']] routine: A routine from a different dataset to grant access to. Queries
+               executed against that routine will have read access to tables in
+               this dataset. The role field is not required when this field is
+               set. If that routine is updated by any user, access to the routine
+               needs to be granted again via an update operation.
+               Structure is documented below.
         :param pulumi.Input[str] special_group: A special group to grant access to. Possible values include:
         :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example:
                fred@example.com
@@ -715,6 +867,7 @@ class DatasetAccess(pulumi.CustomResource):
         __props__.__dict__["iam_member"] = iam_member
         __props__.__dict__["project"] = project
         __props__.__dict__["role"] = role
+        __props__.__dict__["routine"] = routine
         __props__.__dict__["special_group"] = special_group
         __props__.__dict__["user_by_email"] = user_by_email
         __props__.__dict__["view"] = view
@@ -793,6 +946,19 @@ class DatasetAccess(pulumi.CustomResource):
         [official docs](https://cloud.google.com/bigquery/docs/access-control).
         """
         return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter
+    def routine(self) -> pulumi.Output[Optional['outputs.DatasetAccessRoutine']]:
+        """
+        A routine from a different dataset to grant access to. Queries
+        executed against that routine will have read access to tables in
+        this dataset. The role field is not required when this field is
+        set. If that routine is updated by any user, access to the routine
+        needs to be granted again via an update operation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "routine")
 
     @property
     @pulumi.getter(name="specialGroup")

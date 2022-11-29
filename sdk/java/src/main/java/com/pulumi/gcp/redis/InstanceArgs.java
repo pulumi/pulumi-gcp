@@ -234,7 +234,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Maintenance policy for an instance.
+     * Persistence configuration for an instance.
      * Structure is documented below.
      * 
      */
@@ -242,7 +242,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<InstancePersistenceConfigArgs> persistenceConfig;
 
     /**
-     * @return Maintenance policy for an instance.
+     * @return Persistence configuration for an instance.
      * Structure is documented below.
      * 
      */
@@ -787,7 +787,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param persistenceConfig Maintenance policy for an instance.
+         * @param persistenceConfig Persistence configuration for an instance.
          * Structure is documented below.
          * 
          * @return builder
@@ -799,7 +799,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param persistenceConfig Maintenance policy for an instance.
+         * @param persistenceConfig Persistence configuration for an instance.
          * Structure is documented below.
          * 
          * @return builder

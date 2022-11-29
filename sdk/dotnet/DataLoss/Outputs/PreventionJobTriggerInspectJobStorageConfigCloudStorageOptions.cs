@@ -41,8 +41,9 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly int? FilesLimitPercent;
         /// <summary>
-        /// How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
-        /// If not specified, scanning would start from the top.
+        /// How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+        /// rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+        /// Default value is `TOP`.
         /// Possible values are `TOP` and `RANDOM_START`.
         /// </summary>
         public readonly string? SampleMethod;

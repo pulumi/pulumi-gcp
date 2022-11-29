@@ -24,6 +24,7 @@ from .hmac_key import *
 from .notification import *
 from .object_access_control import *
 from .object_acl import *
+from .transfer_agent_pool import *
 from .transfer_job import *
 from ._inputs import *
 from . import outputs

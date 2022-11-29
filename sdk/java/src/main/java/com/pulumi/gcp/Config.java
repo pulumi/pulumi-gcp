@@ -50,6 +50,9 @@ public final class Config {
     public Optional<Batching> batching() {
         return Codegen.objectProp("batching", Batching.class).config(config).get();
     }
+    public Optional<String> beyondcorpCustomEndpoint() {
+        return Codegen.stringProp("beyondcorpCustomEndpoint").config(config).get();
+    }
     public Optional<String> bigQueryCustomEndpoint() {
         return Codegen.stringProp("bigQueryCustomEndpoint").config(config).get();
     }
@@ -205,6 +208,9 @@ public final class Config {
     }
     public Optional<String> firebaseCustomEndpoint() {
         return Codegen.stringProp("firebaseCustomEndpoint").config(config).get();
+    }
+    public Optional<String> firebaseHostingCustomEndpoint() {
+        return Codegen.stringProp("firebaseHostingCustomEndpoint").config(config).get();
     }
     public Optional<String> firebaserulesCustomEndpoint() {
         return Codegen.stringProp("firebaserulesCustomEndpoint").config(config).get();

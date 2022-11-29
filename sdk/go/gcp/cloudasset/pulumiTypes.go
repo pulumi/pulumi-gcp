@@ -1468,6 +1468,175 @@ func (o ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput) Topic() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetResourcesSearchAllResult struct {
+	// Additional searchable attributes of this resource. Informational only. The exact set of attributes is subject to change. For example: project id, DNS name etc.
+	AdditionalAttributes []string `pulumi:"additionalAttributes"`
+	// The type of this resource.
+	AssetType string `pulumi:"assetType"`
+	// One or more paragraphs of text description of this resource. Maximum length could be up to 1M bytes.
+	Description string `pulumi:"description"`
+	// The display name of this resource.
+	DisplayName string `pulumi:"displayName"`
+	// Labels associated with this resource.
+	Labels map[string]string `pulumi:"labels"`
+	// Location can be `global`, regional like `us-east1`, or zonal like `us-west1-b`.
+	Location string `pulumi:"location"`
+	// The full resource name. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
+	Name string `pulumi:"name"`
+	// Network tags associated with this resource.
+	NetworkTags []string `pulumi:"networkTags"`
+	// The project that this resource belongs to, in the form of `projects/{project_number}`.
+	Project string `pulumi:"project"`
+}
+
+// GetResourcesSearchAllResultInput is an input type that accepts GetResourcesSearchAllResultArgs and GetResourcesSearchAllResultOutput values.
+// You can construct a concrete instance of `GetResourcesSearchAllResultInput` via:
+//
+//	GetResourcesSearchAllResultArgs{...}
+type GetResourcesSearchAllResultInput interface {
+	pulumi.Input
+
+	ToGetResourcesSearchAllResultOutput() GetResourcesSearchAllResultOutput
+	ToGetResourcesSearchAllResultOutputWithContext(context.Context) GetResourcesSearchAllResultOutput
+}
+
+type GetResourcesSearchAllResultArgs struct {
+	// Additional searchable attributes of this resource. Informational only. The exact set of attributes is subject to change. For example: project id, DNS name etc.
+	AdditionalAttributes pulumi.StringArrayInput `pulumi:"additionalAttributes"`
+	// The type of this resource.
+	AssetType pulumi.StringInput `pulumi:"assetType"`
+	// One or more paragraphs of text description of this resource. Maximum length could be up to 1M bytes.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The display name of this resource.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Labels associated with this resource.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Location can be `global`, regional like `us-east1`, or zonal like `us-west1-b`.
+	Location pulumi.StringInput `pulumi:"location"`
+	// The full resource name. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Network tags associated with this resource.
+	NetworkTags pulumi.StringArrayInput `pulumi:"networkTags"`
+	// The project that this resource belongs to, in the form of `projects/{project_number}`.
+	Project pulumi.StringInput `pulumi:"project"`
+}
+
+func (GetResourcesSearchAllResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcesSearchAllResult)(nil)).Elem()
+}
+
+func (i GetResourcesSearchAllResultArgs) ToGetResourcesSearchAllResultOutput() GetResourcesSearchAllResultOutput {
+	return i.ToGetResourcesSearchAllResultOutputWithContext(context.Background())
+}
+
+func (i GetResourcesSearchAllResultArgs) ToGetResourcesSearchAllResultOutputWithContext(ctx context.Context) GetResourcesSearchAllResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcesSearchAllResultOutput)
+}
+
+// GetResourcesSearchAllResultArrayInput is an input type that accepts GetResourcesSearchAllResultArray and GetResourcesSearchAllResultArrayOutput values.
+// You can construct a concrete instance of `GetResourcesSearchAllResultArrayInput` via:
+//
+//	GetResourcesSearchAllResultArray{ GetResourcesSearchAllResultArgs{...} }
+type GetResourcesSearchAllResultArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcesSearchAllResultArrayOutput() GetResourcesSearchAllResultArrayOutput
+	ToGetResourcesSearchAllResultArrayOutputWithContext(context.Context) GetResourcesSearchAllResultArrayOutput
+}
+
+type GetResourcesSearchAllResultArray []GetResourcesSearchAllResultInput
+
+func (GetResourcesSearchAllResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcesSearchAllResult)(nil)).Elem()
+}
+
+func (i GetResourcesSearchAllResultArray) ToGetResourcesSearchAllResultArrayOutput() GetResourcesSearchAllResultArrayOutput {
+	return i.ToGetResourcesSearchAllResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcesSearchAllResultArray) ToGetResourcesSearchAllResultArrayOutputWithContext(ctx context.Context) GetResourcesSearchAllResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcesSearchAllResultArrayOutput)
+}
+
+type GetResourcesSearchAllResultOutput struct{ *pulumi.OutputState }
+
+func (GetResourcesSearchAllResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcesSearchAllResult)(nil)).Elem()
+}
+
+func (o GetResourcesSearchAllResultOutput) ToGetResourcesSearchAllResultOutput() GetResourcesSearchAllResultOutput {
+	return o
+}
+
+func (o GetResourcesSearchAllResultOutput) ToGetResourcesSearchAllResultOutputWithContext(ctx context.Context) GetResourcesSearchAllResultOutput {
+	return o
+}
+
+// Additional searchable attributes of this resource. Informational only. The exact set of attributes is subject to change. For example: project id, DNS name etc.
+func (o GetResourcesSearchAllResultOutput) AdditionalAttributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetResourcesSearchAllResult) []string { return v.AdditionalAttributes }).(pulumi.StringArrayOutput)
+}
+
+// The type of this resource.
+func (o GetResourcesSearchAllResultOutput) AssetType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcesSearchAllResult) string { return v.AssetType }).(pulumi.StringOutput)
+}
+
+// One or more paragraphs of text description of this resource. Maximum length could be up to 1M bytes.
+func (o GetResourcesSearchAllResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcesSearchAllResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The display name of this resource.
+func (o GetResourcesSearchAllResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcesSearchAllResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Labels associated with this resource.
+func (o GetResourcesSearchAllResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourcesSearchAllResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Location can be `global`, regional like `us-east1`, or zonal like `us-west1-b`.
+func (o GetResourcesSearchAllResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcesSearchAllResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The full resource name. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
+func (o GetResourcesSearchAllResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcesSearchAllResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Network tags associated with this resource.
+func (o GetResourcesSearchAllResultOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetResourcesSearchAllResult) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
+}
+
+// The project that this resource belongs to, in the form of `projects/{project_number}`.
+func (o GetResourcesSearchAllResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcesSearchAllResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+type GetResourcesSearchAllResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcesSearchAllResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcesSearchAllResult)(nil)).Elem()
+}
+
+func (o GetResourcesSearchAllResultArrayOutput) ToGetResourcesSearchAllResultArrayOutput() GetResourcesSearchAllResultArrayOutput {
+	return o
+}
+
+func (o GetResourcesSearchAllResultArrayOutput) ToGetResourcesSearchAllResultArrayOutputWithContext(ctx context.Context) GetResourcesSearchAllResultArrayOutput {
+	return o
+}
+
+func (o GetResourcesSearchAllResultArrayOutput) Index(i pulumi.IntInput) GetResourcesSearchAllResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcesSearchAllResult {
+		return vs[0].([]GetResourcesSearchAllResult)[vs[1].(int)]
+	}).(GetResourcesSearchAllResultOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderFeedConditionInput)(nil)).Elem(), FolderFeedConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderFeedConditionPtrInput)(nil)).Elem(), FolderFeedConditionArgs{})
@@ -1487,6 +1656,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeedFeedOutputConfigPtrInput)(nil)).Elem(), ProjectFeedFeedOutputConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeedFeedOutputConfigPubsubDestinationInput)(nil)).Elem(), ProjectFeedFeedOutputConfigPubsubDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeedFeedOutputConfigPubsubDestinationPtrInput)(nil)).Elem(), ProjectFeedFeedOutputConfigPubsubDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcesSearchAllResultInput)(nil)).Elem(), GetResourcesSearchAllResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcesSearchAllResultArrayInput)(nil)).Elem(), GetResourcesSearchAllResultArray{})
 	pulumi.RegisterOutputType(FolderFeedConditionOutput{})
 	pulumi.RegisterOutputType(FolderFeedConditionPtrOutput{})
 	pulumi.RegisterOutputType(FolderFeedFeedOutputConfigOutput{})
@@ -1505,4 +1676,6 @@ func init() {
 	pulumi.RegisterOutputType(ProjectFeedFeedOutputConfigPtrOutput{})
 	pulumi.RegisterOutputType(ProjectFeedFeedOutputConfigPubsubDestinationOutput{})
 	pulumi.RegisterOutputType(ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput{})
+	pulumi.RegisterOutputType(GetResourcesSearchAllResultOutput{})
+	pulumi.RegisterOutputType(GetResourcesSearchAllResultArrayOutput{})
 }

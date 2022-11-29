@@ -14,11 +14,16 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterNodePoolDefaultNodeConfigDefaultResult
     {
         public readonly ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult> GcfsConfigs;
+        public readonly string LoggingVariant;
 
         [OutputConstructor]
-        private GetClusterNodePoolDefaultNodeConfigDefaultResult(ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult> gcfsConfigs)
+        private GetClusterNodePoolDefaultNodeConfigDefaultResult(
+            ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult> gcfsConfigs,
+
+            string loggingVariant)
         {
             GcfsConfigs = gcfsConfigs;
+            LoggingVariant = loggingVariant;
         }
     }
 }

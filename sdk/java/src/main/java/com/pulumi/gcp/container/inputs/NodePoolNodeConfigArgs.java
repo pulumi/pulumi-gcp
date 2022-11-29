@@ -114,6 +114,13 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.localSsdCount);
     }
 
+    @Import(name="loggingVariant")
+    private @Nullable Output<String> loggingVariant;
+
+    public Optional<Output<String>> loggingVariant() {
+        return Optional.ofNullable(this.loggingVariant);
+    }
+
     @Import(name="machineType")
     private @Nullable Output<String> machineType;
 
@@ -227,6 +234,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.labels = $.labels;
         this.linuxNodeConfig = $.linuxNodeConfig;
         this.localSsdCount = $.localSsdCount;
+        this.loggingVariant = $.loggingVariant;
         this.machineType = $.machineType;
         this.metadata = $.metadata;
         this.minCpuPlatform = $.minCpuPlatform;
@@ -371,6 +379,15 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
 
         public Builder localSsdCount(Integer localSsdCount) {
             return localSsdCount(Output.of(localSsdCount));
+        }
+
+        public Builder loggingVariant(@Nullable Output<String> loggingVariant) {
+            $.loggingVariant = loggingVariant;
+            return this;
+        }
+
+        public Builder loggingVariant(String loggingVariant) {
+            return loggingVariant(Output.of(loggingVariant));
         }
 
         public Builder machineType(@Nullable Output<String> machineType) {

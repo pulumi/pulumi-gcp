@@ -69,9 +69,17 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.managedInstanceGroupUrls);
     }
 
+    /**
+     * NodeManagement configuration for this NodePool. Structure is documented below.
+     * 
+     */
     @Import(name="management")
     private @Nullable Output<ClusterNodePoolManagementArgs> management;
 
+    /**
+     * @return NodeManagement configuration for this NodePool. Structure is documented below.
+     * 
+     */
     public Optional<Output<ClusterNodePoolManagementArgs>> management() {
         return Optional.ofNullable(this.management);
     }
@@ -300,11 +308,23 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
             return managedInstanceGroupUrls(List.of(managedInstanceGroupUrls));
         }
 
+        /**
+         * @param management NodeManagement configuration for this NodePool. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder management(@Nullable Output<ClusterNodePoolManagementArgs> management) {
             $.management = management;
             return this;
         }
 
+        /**
+         * @param management NodeManagement configuration for this NodePool. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder management(ClusterNodePoolManagementArgs management) {
             return management(Output.of(management));
         }

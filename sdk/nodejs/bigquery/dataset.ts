@@ -112,6 +112,56 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Bigquery Dataset Authorized Routine
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const publicDataset = new gcp.bigquery.Dataset("publicDataset", {
+ *     datasetId: "public_dataset",
+ *     description: "This dataset is public",
+ * });
+ * const publicRoutine = new gcp.bigquery.Routine("publicRoutine", {
+ *     datasetId: publicDataset.datasetId,
+ *     routineId: "public_routine",
+ *     routineType: "TABLE_VALUED_FUNCTION",
+ *     language: "SQL",
+ *     definitionBody: "SELECT 1 + value AS value\n",
+ *     arguments: [{
+ *         name: "value",
+ *         argumentKind: "FIXED_TYPE",
+ *         dataType: JSON.stringify({
+ *             typeKind: "INT64",
+ *         }),
+ *     }],
+ *     returnTableType: JSON.stringify({
+ *         columns: [{
+ *             name: "value",
+ *             type: {
+ *                 typeKind: "INT64",
+ *             },
+ *         }],
+ *     }),
+ * });
+ * const _private = new gcp.bigquery.Dataset("private", {
+ *     datasetId: "private_dataset",
+ *     description: "This dataset is private",
+ *     accesses: [
+ *         {
+ *             role: "OWNER",
+ *             userByEmail: "emailAddress:my@service-account.com",
+ *         },
+ *         {
+ *             routine: {
+ *                 projectId: publicRoutine.project,
+ *                 datasetId: publicRoutine.datasetId,
+ *                 routineId: publicRoutine.routineId,
+ *             },
+ *         },
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *

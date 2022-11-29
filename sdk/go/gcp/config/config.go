@@ -44,6 +44,9 @@ func GetAssuredWorkloadsCustomEndpoint(ctx *pulumi.Context) string {
 func GetBatching(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:batching")
 }
+func GetBeyondcorpCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:beyondcorpCustomEndpoint")
+}
 func GetBigQueryCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:bigQueryCustomEndpoint")
 }
@@ -199,6 +202,9 @@ func GetFilestoreCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetFirebaseCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firebaseCustomEndpoint")
+}
+func GetFirebaseHostingCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:firebaseHostingCustomEndpoint")
 }
 func GetFirebaserulesCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firebaserulesCustomEndpoint")

@@ -907,7 +907,7 @@ type FunctionEventTrigger struct {
 	// The email of the service account for this function.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// -
-	// The resource name of the Eventarc trigger.
+	// Output only. The resource name of the Eventarc trigger.
 	Trigger *string `pulumi:"trigger"`
 	// The region that the trigger will be in. The trigger will only receive
 	// events originating in this region. It can be the same
@@ -943,7 +943,7 @@ type FunctionEventTriggerArgs struct {
 	// The email of the service account for this function.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 	// -
-	// The resource name of the Eventarc trigger.
+	// Output only. The resource name of the Eventarc trigger.
 	Trigger pulumi.StringPtrInput `pulumi:"trigger"`
 	// The region that the trigger will be in. The trigger will only receive
 	// events originating in this region. It can be the same
@@ -1059,7 +1059,7 @@ func (o FunctionEventTriggerOutput) ServiceAccountEmail() pulumi.StringPtrOutput
 }
 
 // -
-// The resource name of the Eventarc trigger.
+// Output only. The resource name of the Eventarc trigger.
 func (o FunctionEventTriggerOutput) Trigger() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionEventTrigger) *string { return v.Trigger }).(pulumi.StringPtrOutput)
 }
@@ -1151,7 +1151,7 @@ func (o FunctionEventTriggerPtrOutput) ServiceAccountEmail() pulumi.StringPtrOut
 }
 
 // -
-// The resource name of the Eventarc trigger.
+// Output only. The resource name of the Eventarc trigger.
 func (o FunctionEventTriggerPtrOutput) Trigger() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionEventTrigger) *string {
 		if v == nil {

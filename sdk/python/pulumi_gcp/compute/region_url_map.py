@@ -16,6 +16,7 @@ __all__ = ['RegionUrlMapArgs', 'RegionUrlMap']
 @pulumi.input_type
 class RegionUrlMapArgs:
     def __init__(__self__, *,
+                 default_route_action: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionArgs']] = None,
                  default_service: Optional[pulumi.Input[str]] = None,
                  default_url_redirect: Optional[pulumi.Input['RegionUrlMapDefaultUrlRedirectArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -27,6 +28,11 @@ class RegionUrlMapArgs:
                  tests: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapTestArgs']]]] = None):
         """
         The set of arguments for constructing a RegionUrlMap resource.
+        :param pulumi.Input['RegionUrlMapDefaultRouteActionArgs'] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+               Only one of defaultRouteAction or defaultUrlRedirect must be set.
+               URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
+               defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+               Structure is documented below.
         :param pulumi.Input[str] default_service: A reference to a RegionBackendService resource. This will be used if
                none of the pathRules defined by this PathMatcher is matched by
                the URL's path portion.
@@ -49,6 +55,8 @@ class RegionUrlMapArgs:
                succeed only if all of the test cases pass.
                Structure is documented below.
         """
+        if default_route_action is not None:
+            pulumi.set(__self__, "default_route_action", default_route_action)
         if default_service is not None:
             pulumi.set(__self__, "default_service", default_service)
         if default_url_redirect is not None:
@@ -67,6 +75,22 @@ class RegionUrlMapArgs:
             pulumi.set(__self__, "region", region)
         if tests is not None:
             pulumi.set(__self__, "tests", tests)
+
+    @property
+    @pulumi.getter(name="defaultRouteAction")
+    def default_route_action(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionArgs']]:
+        """
+        defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
+        defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_route_action")
+
+    @default_route_action.setter
+    def default_route_action(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionArgs']]):
+        pulumi.set(self, "default_route_action", value)
 
     @property
     @pulumi.getter(name="defaultService")
@@ -193,6 +217,7 @@ class RegionUrlMapArgs:
 class _RegionUrlMapState:
     def __init__(__self__, *,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
+                 default_route_action: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionArgs']] = None,
                  default_service: Optional[pulumi.Input[str]] = None,
                  default_url_redirect: Optional[pulumi.Input['RegionUrlMapDefaultUrlRedirectArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -208,6 +233,11 @@ class _RegionUrlMapState:
         """
         Input properties used for looking up and filtering RegionUrlMap resources.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input['RegionUrlMapDefaultRouteActionArgs'] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+               Only one of defaultRouteAction or defaultUrlRedirect must be set.
+               URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
+               defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+               Structure is documented below.
         :param pulumi.Input[str] default_service: A reference to a RegionBackendService resource. This will be used if
                none of the pathRules defined by this PathMatcher is matched by
                the URL's path portion.
@@ -235,6 +265,8 @@ class _RegionUrlMapState:
         """
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if default_route_action is not None:
+            pulumi.set(__self__, "default_route_action", default_route_action)
         if default_service is not None:
             pulumi.set(__self__, "default_service", default_service)
         if default_url_redirect is not None:
@@ -271,6 +303,22 @@ class _RegionUrlMapState:
     @creation_timestamp.setter
     def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "creation_timestamp", value)
+
+    @property
+    @pulumi.getter(name="defaultRouteAction")
+    def default_route_action(self) -> Optional[pulumi.Input['RegionUrlMapDefaultRouteActionArgs']]:
+        """
+        defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
+        defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_route_action")
+
+    @default_route_action.setter
+    def default_route_action(self, value: Optional[pulumi.Input['RegionUrlMapDefaultRouteActionArgs']]):
+        pulumi.set(self, "default_route_action", value)
 
     @property
     @pulumi.getter(name="defaultService")
@@ -434,6 +482,7 @@ class RegionUrlMap(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 default_route_action: Optional[pulumi.Input[pulumi.InputType['RegionUrlMapDefaultRouteActionArgs']]] = None,
                  default_service: Optional[pulumi.Input[str]] = None,
                  default_url_redirect: Optional[pulumi.Input[pulumi.InputType['RegionUrlMapDefaultUrlRedirectArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -472,6 +521,11 @@ class RegionUrlMap(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['RegionUrlMapDefaultRouteActionArgs']] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+               Only one of defaultRouteAction or defaultUrlRedirect must be set.
+               URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
+               defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+               Structure is documented below.
         :param pulumi.Input[str] default_service: A reference to a RegionBackendService resource. This will be used if
                none of the pathRules defined by this PathMatcher is matched by
                the URL's path portion.
@@ -541,6 +595,7 @@ class RegionUrlMap(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 default_route_action: Optional[pulumi.Input[pulumi.InputType['RegionUrlMapDefaultRouteActionArgs']]] = None,
                  default_service: Optional[pulumi.Input[str]] = None,
                  default_url_redirect: Optional[pulumi.Input[pulumi.InputType['RegionUrlMapDefaultUrlRedirectArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -559,6 +614,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegionUrlMapArgs.__new__(RegionUrlMapArgs)
 
+            __props__.__dict__["default_route_action"] = default_route_action
             __props__.__dict__["default_service"] = default_service
             __props__.__dict__["default_url_redirect"] = default_url_redirect
             __props__.__dict__["description"] = description
@@ -583,6 +639,7 @@ class RegionUrlMap(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
+            default_route_action: Optional[pulumi.Input[pulumi.InputType['RegionUrlMapDefaultRouteActionArgs']]] = None,
             default_service: Optional[pulumi.Input[str]] = None,
             default_url_redirect: Optional[pulumi.Input[pulumi.InputType['RegionUrlMapDefaultUrlRedirectArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -603,6 +660,11 @@ class RegionUrlMap(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[pulumi.InputType['RegionUrlMapDefaultRouteActionArgs']] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+               Only one of defaultRouteAction or defaultUrlRedirect must be set.
+               URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
+               defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+               Structure is documented below.
         :param pulumi.Input[str] default_service: A reference to a RegionBackendService resource. This will be used if
                none of the pathRules defined by this PathMatcher is matched by
                the URL's path portion.
@@ -633,6 +695,7 @@ class RegionUrlMap(pulumi.CustomResource):
         __props__ = _RegionUrlMapState.__new__(_RegionUrlMapState)
 
         __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["default_route_action"] = default_route_action
         __props__.__dict__["default_service"] = default_service
         __props__.__dict__["default_url_redirect"] = default_url_redirect
         __props__.__dict__["description"] = description
@@ -654,6 +717,18 @@ class RegionUrlMap(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="defaultRouteAction")
+    def default_route_action(self) -> pulumi.Output[Optional['outputs.RegionUrlMapDefaultRouteAction']]:
+        """
+        defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
+        defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_route_action")
 
     @property
     @pulumi.getter(name="defaultService")

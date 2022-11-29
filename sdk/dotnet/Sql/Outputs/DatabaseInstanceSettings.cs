@@ -33,6 +33,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The name of server instance collation.
         /// </summary>
         public readonly string? Collation;
+        /// <summary>
+        /// Specifies if connections must use Cloud SQL connectors.
+        /// </summary>
+        public readonly string? ConnectorEnforcement;
         public readonly ImmutableArray<Outputs.DatabaseInstanceSettingsDatabaseFlag> DatabaseFlags;
         /// <summary>
         /// Enables auto-resizing of the storage size. Defaults to `true`.
@@ -66,6 +70,9 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
         /// </summary>
         public readonly string Tier;
+        /// <summary>
+        /// The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+        /// </summary>
         public readonly string? TimeZone;
         /// <summary>
         /// A set of key/value user label pairs to assign to the instance.
@@ -84,6 +91,8 @@ namespace Pulumi.Gcp.Sql.Outputs
             Outputs.DatabaseInstanceSettingsBackupConfiguration? backupConfiguration,
 
             string? collation,
+
+            string? connectorEnforcement,
 
             ImmutableArray<Outputs.DatabaseInstanceSettingsDatabaseFlag> databaseFlags,
 
@@ -122,6 +131,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             AvailabilityType = availabilityType;
             BackupConfiguration = backupConfiguration;
             Collation = collation;
+            ConnectorEnforcement = connectorEnforcement;
             DatabaseFlags = databaseFlags;
             DiskAutoresize = diskAutoresize;
             DiskAutoresizeLimit = diskAutoresizeLimit;

@@ -57,8 +57,8 @@ namespace Pulumi.Gcp.Firebase
     public partial class AndroidApp : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-        /// token, as the data format is not specified.
+        /// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+        /// the data format is not specified.
         /// </summary>
         [Output("appId")]
         public Output<string> AppId { get; private set; } = null!;
@@ -180,8 +180,8 @@ namespace Pulumi.Gcp.Firebase
     public sealed class AndroidAppState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-        /// token, as the data format is not specified.
+        /// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+        /// the data format is not specified.
         /// </summary>
         [Input("appId")]
         public Input<string>? AppId { get; set; }

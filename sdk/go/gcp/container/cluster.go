@@ -315,7 +315,7 @@ type Cluster struct {
 	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
 	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
 	NodePoolAutoConfig ClusterNodePoolAutoConfigOutput `pulumi:"nodePoolAutoConfig"`
-	// ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+	// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
 	NodePoolDefaults ClusterNodePoolDefaultsOutput `pulumi:"nodePoolDefaults"`
 	// List of node pools associated with this cluster.
 	// See container.NodePool for schema.
@@ -605,7 +605,7 @@ type clusterState struct {
 	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
 	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
 	NodePoolAutoConfig *ClusterNodePoolAutoConfig `pulumi:"nodePoolAutoConfig"`
-	// ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+	// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
 	NodePoolDefaults *ClusterNodePoolDefaults `pulumi:"nodePoolDefaults"`
 	// List of node pools associated with this cluster.
 	// See container.NodePool for schema.
@@ -867,7 +867,7 @@ type ClusterState struct {
 	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
 	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
 	NodePoolAutoConfig ClusterNodePoolAutoConfigPtrInput
-	// ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+	// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
 	NodePoolDefaults ClusterNodePoolDefaultsPtrInput
 	// List of node pools associated with this cluster.
 	// See container.NodePool for schema.
@@ -1125,7 +1125,7 @@ type clusterArgs struct {
 	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
 	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
 	NodePoolAutoConfig *ClusterNodePoolAutoConfig `pulumi:"nodePoolAutoConfig"`
-	// ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+	// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
 	NodePoolDefaults *ClusterNodePoolDefaults `pulumi:"nodePoolDefaults"`
 	// List of node pools associated with this cluster.
 	// See container.NodePool for schema.
@@ -1368,7 +1368,7 @@ type ClusterArgs struct {
 	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
 	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
 	NodePoolAutoConfig ClusterNodePoolAutoConfigPtrInput
-	// ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+	// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
 	NodePoolDefaults ClusterNodePoolDefaultsPtrInput
 	// List of node pools associated with this cluster.
 	// See container.NodePool for schema.
@@ -1841,7 +1841,7 @@ func (o ClusterOutput) NodePoolAutoConfig() ClusterNodePoolAutoConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterNodePoolAutoConfigOutput { return v.NodePoolAutoConfig }).(ClusterNodePoolAutoConfigOutput)
 }
 
-// ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
 func (o ClusterOutput) NodePoolDefaults() ClusterNodePoolDefaultsOutput {
 	return o.ApplyT(func(v *Cluster) ClusterNodePoolDefaultsOutput { return v.NodePoolDefaults }).(ClusterNodePoolDefaultsOutput)
 }

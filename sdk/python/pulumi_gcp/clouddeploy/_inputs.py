@@ -15,9 +15,12 @@ __all__ = [
     'DeliveryPipelineConditionTargetsPresentConditionArgs',
     'DeliveryPipelineSerialPipelineArgs',
     'DeliveryPipelineSerialPipelineStageArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardArgs',
     'TargetAnthosClusterArgs',
     'TargetExecutionConfigArgs',
     'TargetGkeArgs',
+    'TargetRunArgs',
 ]
 
 @pulumi.input_type
@@ -146,13 +149,17 @@ class DeliveryPipelineSerialPipelineArgs:
 class DeliveryPipelineSerialPipelineStageArgs:
     def __init__(__self__, *,
                  profiles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 strategy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyArgs']] = None,
                  target_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] profiles: Skaffold profiles to use when rendering the manifest for this stage's `Target`.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyArgs'] strategy: (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
         :param pulumi.Input[str] target_id: The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
         """
         if profiles is not None:
             pulumi.set(__self__, "profiles", profiles)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
         if target_id is not None:
             pulumi.set(__self__, "target_id", target_id)
 
@@ -169,6 +176,18 @@ class DeliveryPipelineSerialPipelineStageArgs:
         pulumi.set(self, "profiles", value)
 
     @property
+    @pulumi.getter
+    def strategy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyArgs']]:
+        """
+        (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+        """
+        return pulumi.get(self, "strategy")
+
+    @strategy.setter
+    def strategy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyArgs']]):
+        pulumi.set(self, "strategy", value)
+
+    @property
     @pulumi.getter(name="targetId")
     def target_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -179,6 +198,52 @@ class DeliveryPipelineSerialPipelineStageArgs:
     @target_id.setter
     def target_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target_id", value)
+
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyArgs:
+    def __init__(__self__, *,
+                 standard: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardArgs']] = None):
+        """
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardArgs'] standard: Standard deployment strategy executes a single deploy and allows verifying the deployment.
+        """
+        if standard is not None:
+            pulumi.set(__self__, "standard", standard)
+
+    @property
+    @pulumi.getter
+    def standard(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardArgs']]:
+        """
+        Standard deployment strategy executes a single deploy and allows verifying the deployment.
+        """
+        return pulumi.get(self, "standard")
+
+    @standard.setter
+    def standard(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardArgs']]):
+        pulumi.set(self, "standard", value)
+
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyStandardArgs:
+    def __init__(__self__, *,
+                 verify: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] verify: Whether to verify a deployment.
+        """
+        if verify is not None:
+            pulumi.set(__self__, "verify", verify)
+
+    @property
+    @pulumi.getter
+    def verify(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to verify a deployment.
+        """
+        return pulumi.get(self, "verify")
+
+    @verify.setter
+    def verify(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "verify", value)
 
 
 @pulumi.input_type
@@ -209,17 +274,21 @@ class TargetExecutionConfigArgs:
     def __init__(__self__, *,
                  usages: pulumi.Input[Sequence[pulumi.Input[str]]],
                  artifact_storage: Optional[pulumi.Input[str]] = None,
+                 execution_timeout: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  worker_pool: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] usages: Required. Usages when this configuration should be applied.
         :param pulumi.Input[str] artifact_storage: Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
+        :param pulumi.Input[str] execution_timeout: Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
         :param pulumi.Input[str] service_account: Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
         :param pulumi.Input[str] worker_pool: Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
         """
         pulumi.set(__self__, "usages", usages)
         if artifact_storage is not None:
             pulumi.set(__self__, "artifact_storage", artifact_storage)
+        if execution_timeout is not None:
+            pulumi.set(__self__, "execution_timeout", execution_timeout)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if worker_pool is not None:
@@ -248,6 +317,18 @@ class TargetExecutionConfigArgs:
     @artifact_storage.setter
     def artifact_storage(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "artifact_storage", value)
+
+    @property
+    @pulumi.getter(name="executionTimeout")
+    def execution_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+        """
+        return pulumi.get(self, "execution_timeout")
+
+    @execution_timeout.setter
+    def execution_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "execution_timeout", value)
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -311,5 +392,27 @@ class TargetGkeArgs:
     @internal_ip.setter
     def internal_ip(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "internal_ip", value)
+
+
+@pulumi.input_type
+class TargetRunArgs:
+    def __init__(__self__, *,
+                 location: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] location: Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+        """
+        pulumi.set(__self__, "location", location)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        """
+        Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
 

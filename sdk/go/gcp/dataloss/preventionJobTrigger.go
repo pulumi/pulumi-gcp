@@ -43,8 +43,8 @@ import (
 //							SaveFindings: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs{
 //								OutputConfig: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{
 //									Table: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{
-//										DatasetId: pulumi.String("asdf"),
-//										ProjectId: pulumi.String("asdf"),
+//										DatasetId: pulumi.String("dataset"),
+//										ProjectId: pulumi.String("project"),
 //									},
 //								},
 //							},
@@ -55,6 +55,126 @@ import (
 //						CloudStorageOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{
 //							FileSet: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{
 //								Url: pulumi.String("gs://mybucket/directory/"),
+//							},
+//						},
+//					},
+//				},
+//				Parent: pulumi.String("projects/my-project-name"),
+//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
+//					&dataloss.PreventionJobTriggerTriggerArgs{
+//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
+//							RecurrencePeriodDuration: pulumi.String("86400s"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dlp Job Trigger Bigquery Row Limit
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataloss.NewPreventionJobTrigger(ctx, "bigqueryRowLimit", &dataloss.PreventionJobTriggerArgs{
+//				Description: pulumi.String("Description"),
+//				DisplayName: pulumi.String("Displayname"),
+//				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+//					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
+//						&dataloss.PreventionJobTriggerInspectJobActionArgs{
+//							SaveFindings: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs{
+//								OutputConfig: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{
+//									Table: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{
+//										DatasetId: pulumi.String("dataset"),
+//										ProjectId: pulumi.String("project"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//					InspectTemplateName: pulumi.String("fake"),
+//					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
+//						BigQueryOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs{
+//							RowsLimit:    pulumi.Int(1000),
+//							SampleMethod: pulumi.String("RANDOM_START"),
+//							TableReference: &dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs{
+//								DatasetId: pulumi.String("dataset"),
+//								ProjectId: pulumi.String("project"),
+//								TableId:   pulumi.String("table_to_scan"),
+//							},
+//						},
+//					},
+//				},
+//				Parent: pulumi.String("projects/my-project-name"),
+//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
+//					&dataloss.PreventionJobTriggerTriggerArgs{
+//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
+//							RecurrencePeriodDuration: pulumi.String("86400s"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dlp Job Trigger Bigquery Row Limit Percentage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataloss.NewPreventionJobTrigger(ctx, "bigqueryRowLimitPercentage", &dataloss.PreventionJobTriggerArgs{
+//				Description: pulumi.String("Description"),
+//				DisplayName: pulumi.String("Displayname"),
+//				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+//					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
+//						&dataloss.PreventionJobTriggerInspectJobActionArgs{
+//							SaveFindings: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs{
+//								OutputConfig: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{
+//									Table: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{
+//										DatasetId: pulumi.String("dataset"),
+//										ProjectId: pulumi.String("project"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//					InspectTemplateName: pulumi.String("fake"),
+//					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
+//						BigQueryOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs{
+//							RowsLimitPercent: pulumi.Int(50),
+//							SampleMethod:     pulumi.String("RANDOM_START"),
+//							TableReference: &dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs{
+//								DatasetId: pulumi.String("dataset"),
+//								ProjectId: pulumi.String("project"),
+//								TableId:   pulumi.String("table_to_scan"),
 //							},
 //						},
 //					},

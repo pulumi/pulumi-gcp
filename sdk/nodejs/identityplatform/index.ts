@@ -25,6 +25,11 @@ export type OauthIdpConfig = import("./oauthIdpConfig").OauthIdpConfig;
 export const OauthIdpConfig: typeof import("./oauthIdpConfig").OauthIdpConfig = null as any;
 utilities.lazyLoad(exports, ["OauthIdpConfig"], () => require("./oauthIdpConfig"));
 
+export { ProjectDefaultConfigArgs, ProjectDefaultConfigState } from "./projectDefaultConfig";
+export type ProjectDefaultConfig = import("./projectDefaultConfig").ProjectDefaultConfig;
+export const ProjectDefaultConfig: typeof import("./projectDefaultConfig").ProjectDefaultConfig = null as any;
+utilities.lazyLoad(exports, ["ProjectDefaultConfig"], () => require("./projectDefaultConfig"));
+
 export { TenantArgs, TenantState } from "./tenant";
 export type Tenant = import("./tenant").Tenant;
 export const Tenant: typeof import("./tenant").Tenant = null as any;
@@ -58,6 +63,8 @@ const _module = {
                 return new InboundSamlConfig(name, <any>undefined, { urn })
             case "gcp:identityplatform/oauthIdpConfig:OauthIdpConfig":
                 return new OauthIdpConfig(name, <any>undefined, { urn })
+            case "gcp:identityplatform/projectDefaultConfig:ProjectDefaultConfig":
+                return new ProjectDefaultConfig(name, <any>undefined, { urn })
             case "gcp:identityplatform/tenant:Tenant":
                 return new Tenant(name, <any>undefined, { urn })
             case "gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig":
@@ -75,6 +82,7 @@ pulumi.runtime.registerResourceModule("gcp", "identityplatform/config", _module)
 pulumi.runtime.registerResourceModule("gcp", "identityplatform/defaultSupportedIdpConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "identityplatform/inboundSamlConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "identityplatform/oauthIdpConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "identityplatform/projectDefaultConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "identityplatform/tenant", _module)
 pulumi.runtime.registerResourceModule("gcp", "identityplatform/tenantDefaultSupportedIdpConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "identityplatform/tenantInboundSamlConfig", _module)

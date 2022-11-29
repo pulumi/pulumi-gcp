@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleMatch;
+import com.pulumi.gcp.compute.outputs.SecurityPolicyRulePreconfiguredWafConfig;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleRateLimitOptions;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleRedirectOptions;
 import java.lang.Boolean;
@@ -37,6 +38,11 @@ public final class SecurityPolicyRule {
      * 
      */
     private SecurityPolicyRuleMatch match;
+    /**
+     * @return ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+     * 
+     */
+    private @Nullable SecurityPolicyRulePreconfiguredWafConfig preconfiguredWafConfig;
     /**
      * @return When set to true, the `action` specified above is not enforced.
      * Stackdriver logs for requests that trigger a preview action are annotated as such.
@@ -89,6 +95,13 @@ public final class SecurityPolicyRule {
         return this.match;
     }
     /**
+     * @return ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+     * 
+     */
+    public Optional<SecurityPolicyRulePreconfiguredWafConfig> preconfiguredWafConfig() {
+        return Optional.ofNullable(this.preconfiguredWafConfig);
+    }
+    /**
      * @return When set to true, the `action` specified above is not enforced.
      * Stackdriver logs for requests that trigger a preview action are annotated as such.
      * 
@@ -131,6 +144,7 @@ public final class SecurityPolicyRule {
         private String action;
         private @Nullable String description;
         private SecurityPolicyRuleMatch match;
+        private @Nullable SecurityPolicyRulePreconfiguredWafConfig preconfiguredWafConfig;
         private @Nullable Boolean preview;
         private Integer priority;
         private @Nullable SecurityPolicyRuleRateLimitOptions rateLimitOptions;
@@ -141,6 +155,7 @@ public final class SecurityPolicyRule {
     	      this.action = defaults.action;
     	      this.description = defaults.description;
     	      this.match = defaults.match;
+    	      this.preconfiguredWafConfig = defaults.preconfiguredWafConfig;
     	      this.preview = defaults.preview;
     	      this.priority = defaults.priority;
     	      this.rateLimitOptions = defaults.rateLimitOptions;
@@ -160,6 +175,11 @@ public final class SecurityPolicyRule {
         @CustomType.Setter
         public Builder match(SecurityPolicyRuleMatch match) {
             this.match = Objects.requireNonNull(match);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder preconfiguredWafConfig(@Nullable SecurityPolicyRulePreconfiguredWafConfig preconfiguredWafConfig) {
+            this.preconfiguredWafConfig = preconfiguredWafConfig;
             return this;
         }
         @CustomType.Setter
@@ -187,6 +207,7 @@ public final class SecurityPolicyRule {
             o.action = action;
             o.description = description;
             o.match = match;
+            o.preconfiguredWafConfig = preconfiguredWafConfig;
             o.preview = preview;
             o.priority = priority;
             o.rateLimitOptions = rateLimitOptions;

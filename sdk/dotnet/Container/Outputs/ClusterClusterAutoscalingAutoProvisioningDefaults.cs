@@ -32,6 +32,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? ImageType;
         /// <summary>
+        /// NodeManagement configuration for this NodePool. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsManagement? Management;
+        /// <summary>
         /// Minimum CPU platform to be used by this instance.
         /// The instance may be scheduled on the specified or newer CPU platform. Applicable
         /// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
@@ -50,6 +54,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// If not specified, the "default" service account is used.
         /// </summary>
         public readonly string? ServiceAccount;
+        /// <summary>
+        /// Shielded Instance options. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig? ShieldedInstanceConfig;
 
         [OutputConstructor]
         private ClusterClusterAutoscalingAutoProvisioningDefaults(
@@ -61,19 +69,25 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? imageType,
 
+            Outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsManagement? management,
+
             string? minCpuPlatform,
 
             ImmutableArray<string> oauthScopes,
 
-            string? serviceAccount)
+            string? serviceAccount,
+
+            Outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig? shieldedInstanceConfig)
         {
             BootDiskKmsKey = bootDiskKmsKey;
             DiskSize = diskSize;
             DiskType = diskType;
             ImageType = imageType;
+            Management = management;
             MinCpuPlatform = minCpuPlatform;
             OauthScopes = oauthScopes;
             ServiceAccount = serviceAccount;
+            ShieldedInstanceConfig = shieldedInstanceConfig;
         }
     }
 }

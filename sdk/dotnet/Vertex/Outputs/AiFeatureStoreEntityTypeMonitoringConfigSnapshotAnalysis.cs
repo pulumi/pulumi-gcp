@@ -18,15 +18,30 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// </summary>
         public readonly bool? Disabled;
         public readonly string? MonitoringInterval;
+        /// <summary>
+        /// Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
+        /// If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
+        /// </summary>
+        public readonly int? MonitoringIntervalDays;
+        /// <summary>
+        /// Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
+        /// </summary>
+        public readonly int? StalenessDays;
 
         [OutputConstructor]
         private AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis(
             bool? disabled,
 
-            string? monitoringInterval)
+            string? monitoringInterval,
+
+            int? monitoringIntervalDays,
+
+            int? stalenessDays)
         {
             Disabled = disabled;
             MonitoringInterval = monitoringInterval;
+            MonitoringIntervalDays = monitoringIntervalDays;
+            StalenessDays = stalenessDays;
         }
     }
 }

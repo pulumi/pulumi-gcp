@@ -631,7 +631,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.nodes;
     }
     /**
-     * Maintenance policy for an instance.
+     * Persistence configuration for an instance.
      * Structure is documented below.
      * 
      */
@@ -639,7 +639,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<InstancePersistenceConfig> persistenceConfig;
 
     /**
-     * @return Maintenance policy for an instance.
+     * @return Persistence configuration for an instance.
      * Structure is documented below.
      * 
      */

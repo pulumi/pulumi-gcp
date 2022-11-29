@@ -102,6 +102,63 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// ### Serivce Mesh
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cluster = new Gcp.Container.Cluster("cluster", new()
+    ///     {
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var membership = new Gcp.GkeHub.Membership("membership", new()
+    ///     {
+    ///         MembershipId = "my-membership",
+    ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
+    ///         {
+    ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
+    ///             {
+    ///                 ResourceLink = cluster.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         Location = "global",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("featureMember", new()
+    ///     {
+    ///         Location = "global",
+    ///         Feature = feature.Name,
+    ///         Membership = membership.MembershipId,
+    ///         Mesh = new Gcp.GkeHub.Inputs.FeatureMembershipMeshArgs
+    ///         {
+    ///             Management = "MANAGEMENT_AUTOMATIC",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -126,7 +183,7 @@ namespace Pulumi.Gcp.GkeHub
         /// Config Management-specific spec. Structure is documented below.
         /// </summary>
         [Output("configmanagement")]
-        public Output<Outputs.FeatureMembershipConfigmanagement> Configmanagement { get; private set; } = null!;
+        public Output<Outputs.FeatureMembershipConfigmanagement?> Configmanagement { get; private set; } = null!;
 
         /// <summary>
         /// The name of the feature
@@ -145,6 +202,12 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Output("membership")]
         public Output<string> Membership { get; private set; } = null!;
+
+        /// <summary>
+        /// Service mesh specific spec. Structure is documented below.
+        /// </summary>
+        [Output("mesh")]
+        public Output<Outputs.FeatureMembershipMesh?> Mesh { get; private set; } = null!;
 
         /// <summary>
         /// The project of the feature
@@ -201,8 +264,8 @@ namespace Pulumi.Gcp.GkeHub
         /// <summary>
         /// Config Management-specific spec. Structure is documented below.
         /// </summary>
-        [Input("configmanagement", required: true)]
-        public Input<Inputs.FeatureMembershipConfigmanagementArgs> Configmanagement { get; set; } = null!;
+        [Input("configmanagement")]
+        public Input<Inputs.FeatureMembershipConfigmanagementArgs>? Configmanagement { get; set; }
 
         /// <summary>
         /// The name of the feature
@@ -221,6 +284,12 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Input("membership", required: true)]
         public Input<string> Membership { get; set; } = null!;
+
+        /// <summary>
+        /// Service mesh specific spec. Structure is documented below.
+        /// </summary>
+        [Input("mesh")]
+        public Input<Inputs.FeatureMembershipMeshArgs>? Mesh { get; set; }
 
         /// <summary>
         /// The project of the feature
@@ -259,6 +328,12 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Input("membership")]
         public Input<string>? Membership { get; set; }
+
+        /// <summary>
+        /// Service mesh specific spec. Structure is documented below.
+        /// </summary>
+        [Input("mesh")]
+        public Input<Inputs.FeatureMembershipMeshGetArgs>? Mesh { get; set; }
 
         /// <summary>
         /// The project of the feature

@@ -88,6 +88,25 @@ public final class RouterInterfaceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The name of the interface that is redundant to
+     * this interface. Changing this forces a new interface to
+     * be created.
+     * 
+     */
+    @Import(name="redundantInterface")
+    private @Nullable Output<String> redundantInterface;
+
+    /**
+     * @return The name of the interface that is redundant to
+     * this interface. Changing this forces a new interface to
+     * be created.
+     * 
+     */
+    public Optional<Output<String>> redundantInterface() {
+        return Optional.ofNullable(this.redundantInterface);
+    }
+
+    /**
      * The region this interface&#39;s router sits in. If not specified,
      * the project region will be used. Changing this forces a new interface to be
      * created.
@@ -149,6 +168,7 @@ public final class RouterInterfaceState extends com.pulumi.resources.ResourceArg
         this.ipRange = $.ipRange;
         this.name = $.name;
         this.project = $.project;
+        this.redundantInterface = $.redundantInterface;
         this.region = $.region;
         this.router = $.router;
         this.vpnTunnel = $.vpnTunnel;
@@ -266,6 +286,31 @@ public final class RouterInterfaceState extends com.pulumi.resources.ResourceArg
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param redundantInterface The name of the interface that is redundant to
+         * this interface. Changing this forces a new interface to
+         * be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redundantInterface(@Nullable Output<String> redundantInterface) {
+            $.redundantInterface = redundantInterface;
+            return this;
+        }
+
+        /**
+         * @param redundantInterface The name of the interface that is redundant to
+         * this interface. Changing this forces a new interface to
+         * be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redundantInterface(String redundantInterface) {
+            return redundantInterface(Output.of(redundantInterface));
         }
 
         /**

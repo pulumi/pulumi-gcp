@@ -167,6 +167,105 @@ import (
 //	}
 //
 // ```
+// ### Dns Managed Zone Private Gke
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSubnetwork(ctx, "subnetwork-1", &compute.SubnetworkArgs{
+//				Network:               network_1.Name,
+//				IpCidrRange:           pulumi.String("10.0.36.0/24"),
+//				Region:                pulumi.String("us-central1"),
+//				PrivateIpGoogleAccess: pulumi.Bool(true),
+//				SecondaryIpRanges: compute.SubnetworkSecondaryIpRangeArray{
+//					&compute.SubnetworkSecondaryIpRangeArgs{
+//						RangeName:   pulumi.String("pod"),
+//						IpCidrRange: pulumi.String("10.0.0.0/19"),
+//					},
+//					&compute.SubnetworkSecondaryIpRangeArgs{
+//						RangeName:   pulumi.String("svc"),
+//						IpCidrRange: pulumi.String("10.0.32.0/22"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = container.NewCluster(ctx, "cluster-1", &container.ClusterArgs{
+//				Location:         pulumi.String("us-central1-c"),
+//				InitialNodeCount: pulumi.Int(1),
+//				NetworkingMode:   pulumi.String("VPC_NATIVE"),
+//				DefaultSnatStatus: &container.ClusterDefaultSnatStatusArgs{
+//					Disabled: pulumi.Bool(true),
+//				},
+//				Network:    network_1.Name,
+//				Subnetwork: subnetwork_1.Name,
+//				PrivateClusterConfig: &container.ClusterPrivateClusterConfigArgs{
+//					EnablePrivateEndpoint: pulumi.Bool(true),
+//					EnablePrivateNodes:    pulumi.Bool(true),
+//					MasterIpv4CidrBlock:   pulumi.String("10.42.0.0/28"),
+//					MasterGlobalAccessConfig: &container.ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//				MasterAuthorizedNetworksConfig: nil,
+//				IpAllocationPolicy: &container.ClusterIpAllocationPolicyArgs{
+//					ClusterSecondaryRangeName: subnetwork_1.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (string, error) {
+//						return secondaryIpRanges[0].RangeName, nil
+//					}).(pulumi.StringOutput),
+//					ServicesSecondaryRangeName: subnetwork_1.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (string, error) {
+//						return secondaryIpRanges[1].RangeName, nil
+//					}).(pulumi.StringOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewManagedZone(ctx, "private-zone-gke", &dns.ManagedZoneArgs{
+//				DnsName:     pulumi.String("private.example.com."),
+//				Description: pulumi.String("Example private DNS zone"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Visibility: pulumi.String("private"),
+//				PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
+//					Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
+//						&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
+//							NetworkUrl: network_1.ID(),
+//						},
+//					},
+//					GkeClusters: dns.ManagedZonePrivateVisibilityConfigGkeClusterArray{
+//						&dns.ManagedZonePrivateVisibilityConfigGkeClusterArgs{
+//							GkeClusterName: cluster_1.ID(),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Dns Managed Zone Private Peering
 //
 // ```go

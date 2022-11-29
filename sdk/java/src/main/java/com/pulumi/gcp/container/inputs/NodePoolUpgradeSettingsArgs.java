@@ -5,8 +5,12 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.NodePoolUpgradeSettingsBlueGreenSettingsArgs;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.ResourceArgs {
@@ -14,13 +18,30 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
     public static final NodePoolUpgradeSettingsArgs Empty = new NodePoolUpgradeSettingsArgs();
 
     /**
+     * The settings to adjust [blue green upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy).
+     * Structure is documented below
+     * 
+     */
+    @Import(name="blueGreenSettings")
+    private @Nullable Output<NodePoolUpgradeSettingsBlueGreenSettingsArgs> blueGreenSettings;
+
+    /**
+     * @return The settings to adjust [blue green upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy).
+     * Structure is documented below
+     * 
+     */
+    public Optional<Output<NodePoolUpgradeSettingsBlueGreenSettingsArgs>> blueGreenSettings() {
+        return Optional.ofNullable(this.blueGreenSettings);
+    }
+
+    /**
      * The number of additional nodes that can be added to the node pool during
      * an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
      * Can be set to 0 or greater.
      * 
      */
-    @Import(name="maxSurge", required=true)
-    private Output<Integer> maxSurge;
+    @Import(name="maxSurge")
+    private @Nullable Output<Integer> maxSurge;
 
     /**
      * @return The number of additional nodes that can be added to the node pool during
@@ -28,8 +49,8 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
      * Can be set to 0 or greater.
      * 
      */
-    public Output<Integer> maxSurge() {
-        return this.maxSurge;
+    public Optional<Output<Integer>> maxSurge() {
+        return Optional.ofNullable(this.maxSurge);
     }
 
     /**
@@ -38,8 +59,8 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
      * parallel. Can be set to 0 or greater.
      * 
      */
-    @Import(name="maxUnavailable", required=true)
-    private Output<Integer> maxUnavailable;
+    @Import(name="maxUnavailable")
+    private @Nullable Output<Integer> maxUnavailable;
 
     /**
      * @return The number of nodes that can be simultaneously unavailable during
@@ -47,15 +68,32 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
      * parallel. Can be set to 0 or greater.
      * 
      */
-    public Output<Integer> maxUnavailable() {
-        return this.maxUnavailable;
+    public Optional<Output<Integer>> maxUnavailable() {
+        return Optional.ofNullable(this.maxUnavailable);
+    }
+
+    /**
+     * The upgrade stragey to be used for upgrading the nodes.
+     * 
+     */
+    @Import(name="strategy")
+    private @Nullable Output<String> strategy;
+
+    /**
+     * @return The upgrade stragey to be used for upgrading the nodes.
+     * 
+     */
+    public Optional<Output<String>> strategy() {
+        return Optional.ofNullable(this.strategy);
     }
 
     private NodePoolUpgradeSettingsArgs() {}
 
     private NodePoolUpgradeSettingsArgs(NodePoolUpgradeSettingsArgs $) {
+        this.blueGreenSettings = $.blueGreenSettings;
         this.maxSurge = $.maxSurge;
         this.maxUnavailable = $.maxUnavailable;
+        this.strategy = $.strategy;
     }
 
     public static Builder builder() {
@@ -77,6 +115,29 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
         }
 
         /**
+         * @param blueGreenSettings The settings to adjust [blue green upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy).
+         * Structure is documented below
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blueGreenSettings(@Nullable Output<NodePoolUpgradeSettingsBlueGreenSettingsArgs> blueGreenSettings) {
+            $.blueGreenSettings = blueGreenSettings;
+            return this;
+        }
+
+        /**
+         * @param blueGreenSettings The settings to adjust [blue green upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy).
+         * Structure is documented below
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blueGreenSettings(NodePoolUpgradeSettingsBlueGreenSettingsArgs blueGreenSettings) {
+            return blueGreenSettings(Output.of(blueGreenSettings));
+        }
+
+        /**
          * @param maxSurge The number of additional nodes that can be added to the node pool during
          * an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
          * Can be set to 0 or greater.
@@ -84,7 +145,7 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder maxSurge(Output<Integer> maxSurge) {
+        public Builder maxSurge(@Nullable Output<Integer> maxSurge) {
             $.maxSurge = maxSurge;
             return this;
         }
@@ -109,7 +170,7 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder maxUnavailable(Output<Integer> maxUnavailable) {
+        public Builder maxUnavailable(@Nullable Output<Integer> maxUnavailable) {
             $.maxUnavailable = maxUnavailable;
             return this;
         }
@@ -126,9 +187,28 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
             return maxUnavailable(Output.of(maxUnavailable));
         }
 
+        /**
+         * @param strategy The upgrade stragey to be used for upgrading the nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder strategy(@Nullable Output<String> strategy) {
+            $.strategy = strategy;
+            return this;
+        }
+
+        /**
+         * @param strategy The upgrade stragey to be used for upgrading the nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder strategy(String strategy) {
+            return strategy(Output.of(strategy));
+        }
+
         public NodePoolUpgradeSettingsArgs build() {
-            $.maxSurge = Objects.requireNonNull($.maxSurge, "expected parameter 'maxSurge' to be non-null");
-            $.maxUnavailable = Objects.requireNonNull($.maxUnavailable, "expected parameter 'maxUnavailable' to be non-null");
             return $;
         }
     }

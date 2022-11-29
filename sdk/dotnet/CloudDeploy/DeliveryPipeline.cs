@@ -61,6 +61,57 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
+    /// ### Verify_delivery_pipeline
+    /// tests creating and updating a delivery pipeline with deployment verification strategy
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.CloudDeploy.DeliveryPipeline("primary", new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         Annotations = 
+    ///         {
+    ///             { "my_first_annotation", "example-annotation-1" },
+    ///             { "my_second_annotation", "example-annotation-2" },
+    ///         },
+    ///         Description = "basic description",
+    ///         Labels = 
+    ///         {
+    ///             { "my_first_label", "example-label-1" },
+    ///             { "my_second_label", "example-label-2" },
+    ///         },
+    ///         Project = "my-project-name",
+    ///         SerialPipeline = new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineArgs
+    ///         {
+    ///             Stages = new[]
+    ///             {
+    ///                 new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageArgs
+    ///                 {
+    ///                     Profiles = new[]
+    ///                     {
+    ///                         "example-profile-one",
+    ///                         "example-profile-two",
+    ///                     },
+    ///                     TargetId = "example-target-one",
+    ///                 },
+    ///                 new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageArgs
+    ///                 {
+    ///                     Profiles = new[] {},
+    ///                     TargetId = "example-target-two",
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

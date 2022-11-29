@@ -5,6 +5,9 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs;
+import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs;
+import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs;
 import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,7 +19,58 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigArgs extends com.pulu
     public static final AiFeatureStoreEntityTypeMonitoringConfigArgs Empty = new AiFeatureStoreEntityTypeMonitoringConfigArgs();
 
     /**
-     * Configuration of how features in Featurestore are monitored.
+     * Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="categoricalThresholdConfig")
+    private @Nullable Output<AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs> categoricalThresholdConfig;
+
+    /**
+     * @return Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs>> categoricalThresholdConfig() {
+        return Optional.ofNullable(this.categoricalThresholdConfig);
+    }
+
+    /**
+     * The config for ImportFeatures Analysis Based Feature Monitoring.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="importFeaturesAnalysis")
+    private @Nullable Output<AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs> importFeaturesAnalysis;
+
+    /**
+     * @return The config for ImportFeatures Analysis Based Feature Monitoring.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs>> importFeaturesAnalysis() {
+        return Optional.ofNullable(this.importFeaturesAnalysis);
+    }
+
+    /**
+     * Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="numericalThresholdConfig")
+    private @Nullable Output<AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs> numericalThresholdConfig;
+
+    /**
+     * @return Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs>> numericalThresholdConfig() {
+        return Optional.ofNullable(this.numericalThresholdConfig);
+    }
+
+    /**
+     * The config for Snapshot Analysis Based Feature Monitoring.
      * Structure is documented below.
      * 
      */
@@ -24,7 +78,7 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigArgs extends com.pulu
     private @Nullable Output<AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs> snapshotAnalysis;
 
     /**
-     * @return Configuration of how features in Featurestore are monitored.
+     * @return The config for Snapshot Analysis Based Feature Monitoring.
      * Structure is documented below.
      * 
      */
@@ -35,6 +89,9 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigArgs extends com.pulu
     private AiFeatureStoreEntityTypeMonitoringConfigArgs() {}
 
     private AiFeatureStoreEntityTypeMonitoringConfigArgs(AiFeatureStoreEntityTypeMonitoringConfigArgs $) {
+        this.categoricalThresholdConfig = $.categoricalThresholdConfig;
+        this.importFeaturesAnalysis = $.importFeaturesAnalysis;
+        this.numericalThresholdConfig = $.numericalThresholdConfig;
         this.snapshotAnalysis = $.snapshotAnalysis;
     }
 
@@ -57,7 +114,76 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigArgs extends com.pulu
         }
 
         /**
-         * @param snapshotAnalysis Configuration of how features in Featurestore are monitored.
+         * @param categoricalThresholdConfig Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder categoricalThresholdConfig(@Nullable Output<AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs> categoricalThresholdConfig) {
+            $.categoricalThresholdConfig = categoricalThresholdConfig;
+            return this;
+        }
+
+        /**
+         * @param categoricalThresholdConfig Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder categoricalThresholdConfig(AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs categoricalThresholdConfig) {
+            return categoricalThresholdConfig(Output.of(categoricalThresholdConfig));
+        }
+
+        /**
+         * @param importFeaturesAnalysis The config for ImportFeatures Analysis Based Feature Monitoring.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFeaturesAnalysis(@Nullable Output<AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs> importFeaturesAnalysis) {
+            $.importFeaturesAnalysis = importFeaturesAnalysis;
+            return this;
+        }
+
+        /**
+         * @param importFeaturesAnalysis The config for ImportFeatures Analysis Based Feature Monitoring.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importFeaturesAnalysis(AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs importFeaturesAnalysis) {
+            return importFeaturesAnalysis(Output.of(importFeaturesAnalysis));
+        }
+
+        /**
+         * @param numericalThresholdConfig Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numericalThresholdConfig(@Nullable Output<AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs> numericalThresholdConfig) {
+            $.numericalThresholdConfig = numericalThresholdConfig;
+            return this;
+        }
+
+        /**
+         * @param numericalThresholdConfig Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numericalThresholdConfig(AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs numericalThresholdConfig) {
+            return numericalThresholdConfig(Output.of(numericalThresholdConfig));
+        }
+
+        /**
+         * @param snapshotAnalysis The config for Snapshot Analysis Based Feature Monitoring.
          * Structure is documented below.
          * 
          * @return builder
@@ -69,7 +195,7 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigArgs extends com.pulu
         }
 
         /**
-         * @param snapshotAnalysis Configuration of how features in Featurestore are monitored.
+         * @param snapshotAnalysis The config for Snapshot Analysis Based Feature Monitoring.
          * Structure is documented below.
          * 
          * @return builder

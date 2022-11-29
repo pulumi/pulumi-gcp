@@ -105,6 +105,14 @@ Object.defineProperty(exports, "batching", {
     enumerable: true,
 });
 
+export declare const beyondcorpCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "beyondcorpCustomEndpoint", {
+    get() {
+        return __config.get("beyondcorpCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const bigQueryCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "bigQueryCustomEndpoint", {
     get() {
@@ -517,6 +525,14 @@ export declare const firebaseCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "firebaseCustomEndpoint", {
     get() {
         return __config.get("firebaseCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const firebaseHostingCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "firebaseHostingCustomEndpoint", {
+    get() {
+        return __config.get("firebaseHostingCustomEndpoint");
     },
     enumerable: true,
 });

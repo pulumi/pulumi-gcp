@@ -69,6 +69,42 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Serivce Mesh
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cluster = new gcp.container.Cluster("cluster", {
+ *     location: "us-central1-a",
+ *     initialNodeCount: 1,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const membership = new gcp.gkehub.Membership("membership", {
+ *     membershipId: "my-membership",
+ *     endpoint: {
+ *         gkeCluster: {
+ *             resourceLink: pulumi.interpolate`//container.googleapis.com/${cluster.id}`,
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const feature = new gcp.gkehub.Feature("feature", {location: "global"}, {
+ *     provider: google_beta,
+ * });
+ * const featureMember = new gcp.gkehub.FeatureMembership("featureMember", {
+ *     location: "global",
+ *     feature: feature.name,
+ *     membership: membership.membershipId,
+ *     mesh: {
+ *         management: "MANAGEMENT_AUTOMATIC",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -117,7 +153,7 @@ export class FeatureMembership extends pulumi.CustomResource {
     /**
      * Config Management-specific spec. Structure is documented below.
      */
-    public readonly configmanagement!: pulumi.Output<outputs.gkehub.FeatureMembershipConfigmanagement>;
+    public readonly configmanagement!: pulumi.Output<outputs.gkehub.FeatureMembershipConfigmanagement | undefined>;
     /**
      * The name of the feature
      */
@@ -130,6 +166,10 @@ export class FeatureMembership extends pulumi.CustomResource {
      * The name of the membership
      */
     public readonly membership!: pulumi.Output<string>;
+    /**
+     * Service mesh specific spec. Structure is documented below.
+     */
+    public readonly mesh!: pulumi.Output<outputs.gkehub.FeatureMembershipMesh | undefined>;
     /**
      * The project of the feature
      */
@@ -152,12 +192,10 @@ export class FeatureMembership extends pulumi.CustomResource {
             resourceInputs["feature"] = state ? state.feature : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["membership"] = state ? state.membership : undefined;
+            resourceInputs["mesh"] = state ? state.mesh : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as FeatureMembershipArgs | undefined;
-            if ((!args || args.configmanagement === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'configmanagement'");
-            }
             if ((!args || args.feature === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'feature'");
             }
@@ -171,6 +209,7 @@ export class FeatureMembership extends pulumi.CustomResource {
             resourceInputs["feature"] = args ? args.feature : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["membership"] = args ? args.membership : undefined;
+            resourceInputs["mesh"] = args ? args.mesh : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -199,6 +238,10 @@ export interface FeatureMembershipState {
      */
     membership?: pulumi.Input<string>;
     /**
+     * Service mesh specific spec. Structure is documented below.
+     */
+    mesh?: pulumi.Input<inputs.gkehub.FeatureMembershipMesh>;
+    /**
      * The project of the feature
      */
     project?: pulumi.Input<string>;
@@ -211,7 +254,7 @@ export interface FeatureMembershipArgs {
     /**
      * Config Management-specific spec. Structure is documented below.
      */
-    configmanagement: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagement>;
+    configmanagement?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagement>;
     /**
      * The name of the feature
      */
@@ -224,6 +267,10 @@ export interface FeatureMembershipArgs {
      * The name of the membership
      */
     membership: pulumi.Input<string>;
+    /**
+     * Service mesh specific spec. Structure is documented below.
+     */
+    mesh?: pulumi.Input<inputs.gkehub.FeatureMembershipMesh>;
     /**
      * The project of the feature
      */

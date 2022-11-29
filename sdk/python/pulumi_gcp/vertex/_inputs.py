@@ -20,6 +20,9 @@ __all__ = [
     'AiEndpointEncryptionSpecArgs',
     'AiFeatureStoreEncryptionSpecArgs',
     'AiFeatureStoreEntityTypeMonitoringConfigArgs',
+    'AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs',
+    'AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs',
+    'AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs',
     'AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs',
     'AiFeatureStoreIamBindingConditionArgs',
     'AiFeatureStoreIamMemberConditionArgs',
@@ -464,19 +467,73 @@ class AiFeatureStoreEncryptionSpecArgs:
 @pulumi.input_type
 class AiFeatureStoreEntityTypeMonitoringConfigArgs:
     def __init__(__self__, *,
+                 categorical_threshold_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs']] = None,
+                 import_features_analysis: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs']] = None,
+                 numerical_threshold_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs']] = None,
                  snapshot_analysis: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs']] = None):
         """
-        :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs'] snapshot_analysis: Configuration of how features in Featurestore are monitored.
+        :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs'] categorical_threshold_config: Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
+               Structure is documented below.
+        :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs'] import_features_analysis: The config for ImportFeatures Analysis Based Feature Monitoring.
+               Structure is documented below.
+        :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs'] numerical_threshold_config: Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
+               Structure is documented below.
+        :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs'] snapshot_analysis: The config for Snapshot Analysis Based Feature Monitoring.
                Structure is documented below.
         """
+        if categorical_threshold_config is not None:
+            pulumi.set(__self__, "categorical_threshold_config", categorical_threshold_config)
+        if import_features_analysis is not None:
+            pulumi.set(__self__, "import_features_analysis", import_features_analysis)
+        if numerical_threshold_config is not None:
+            pulumi.set(__self__, "numerical_threshold_config", numerical_threshold_config)
         if snapshot_analysis is not None:
             pulumi.set(__self__, "snapshot_analysis", snapshot_analysis)
+
+    @property
+    @pulumi.getter(name="categoricalThresholdConfig")
+    def categorical_threshold_config(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs']]:
+        """
+        Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "categorical_threshold_config")
+
+    @categorical_threshold_config.setter
+    def categorical_threshold_config(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs']]):
+        pulumi.set(self, "categorical_threshold_config", value)
+
+    @property
+    @pulumi.getter(name="importFeaturesAnalysis")
+    def import_features_analysis(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs']]:
+        """
+        The config for ImportFeatures Analysis Based Feature Monitoring.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "import_features_analysis")
+
+    @import_features_analysis.setter
+    def import_features_analysis(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs']]):
+        pulumi.set(self, "import_features_analysis", value)
+
+    @property
+    @pulumi.getter(name="numericalThresholdConfig")
+    def numerical_threshold_config(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs']]:
+        """
+        Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "numerical_threshold_config")
+
+    @numerical_threshold_config.setter
+    def numerical_threshold_config(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs']]):
+        pulumi.set(self, "numerical_threshold_config", value)
 
     @property
     @pulumi.getter(name="snapshotAnalysis")
     def snapshot_analysis(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs']]:
         """
-        Configuration of how features in Featurestore are monitored.
+        The config for Snapshot Analysis Based Feature Monitoring.
         Structure is documented below.
         """
         return pulumi.get(self, "snapshot_analysis")
@@ -487,12 +544,112 @@ class AiFeatureStoreEntityTypeMonitoringConfigArgs:
 
 
 @pulumi.input_type
+class AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs:
+    def __init__(__self__, *,
+                 value: pulumi.Input[float]):
+        """
+        :param pulumi.Input[float] value: Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+        """
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[float]:
+        """
+        Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[float]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs:
+    def __init__(__self__, *,
+                 anomaly_detection_baseline: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] anomaly_detection_baseline: Defines the baseline to do anomaly detection for feature values imported by each [entityTypes.importFeatureValues][] operation. The value must be one of the values below:
+               * LATEST_STATS: Choose the later one statistics generated by either most recent snapshot analysis or previous import features analysis. If non of them exists, skip anomaly detection and only generate a statistics.
+               * MOST_RECENT_SNAPSHOT_STATS: Use the statistics generated by the most recent snapshot analysis if exists.
+               * PREVIOUS_IMPORT_FEATURES_STATS: Use the statistics generated by the previous import features analysis if exists.
+        :param pulumi.Input[str] state: Whether to enable / disable / inherite default hebavior for import features analysis. The value must be one of the values below:
+               * DEFAULT: The default behavior of whether to enable the monitoring. EntityType-level config: disabled.
+               * ENABLED: Explicitly enables import features analysis. EntityType-level config: by default enables import features analysis for all Features under it.
+               * DISABLED: Explicitly disables import features analysis. EntityType-level config: by default disables import features analysis for all Features under it.
+        """
+        if anomaly_detection_baseline is not None:
+            pulumi.set(__self__, "anomaly_detection_baseline", anomaly_detection_baseline)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="anomalyDetectionBaseline")
+    def anomaly_detection_baseline(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the baseline to do anomaly detection for feature values imported by each [entityTypes.importFeatureValues][] operation. The value must be one of the values below:
+        * LATEST_STATS: Choose the later one statistics generated by either most recent snapshot analysis or previous import features analysis. If non of them exists, skip anomaly detection and only generate a statistics.
+        * MOST_RECENT_SNAPSHOT_STATS: Use the statistics generated by the most recent snapshot analysis if exists.
+        * PREVIOUS_IMPORT_FEATURES_STATS: Use the statistics generated by the previous import features analysis if exists.
+        """
+        return pulumi.get(self, "anomaly_detection_baseline")
+
+    @anomaly_detection_baseline.setter
+    def anomaly_detection_baseline(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "anomaly_detection_baseline", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable / disable / inherite default hebavior for import features analysis. The value must be one of the values below:
+        * DEFAULT: The default behavior of whether to enable the monitoring. EntityType-level config: disabled.
+        * ENABLED: Explicitly enables import features analysis. EntityType-level config: by default enables import features analysis for all Features under it.
+        * DISABLED: Explicitly disables import features analysis. EntityType-level config: by default disables import features analysis for all Features under it.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+
+@pulumi.input_type
+class AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs:
+    def __init__(__self__, *,
+                 value: pulumi.Input[float]):
+        """
+        :param pulumi.Input[float] value: Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+        """
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[float]:
+        """
+        Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[float]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
 class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
     def __init__(__self__, *,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 monitoring_interval: Optional[pulumi.Input[str]] = None):
+                 monitoring_interval: Optional[pulumi.Input[str]] = None,
+                 monitoring_interval_days: Optional[pulumi.Input[int]] = None,
+                 staleness_days: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] disabled: The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
+        :param pulumi.Input[int] monitoring_interval_days: Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
+               If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
+        :param pulumi.Input[int] staleness_days: Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
         """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
@@ -501,6 +658,10 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
             pulumi.log.warn("""monitoring_interval is deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""")
         if monitoring_interval is not None:
             pulumi.set(__self__, "monitoring_interval", monitoring_interval)
+        if monitoring_interval_days is not None:
+            pulumi.set(__self__, "monitoring_interval_days", monitoring_interval_days)
+        if staleness_days is not None:
+            pulumi.set(__self__, "staleness_days", staleness_days)
 
     @property
     @pulumi.getter
@@ -522,6 +683,31 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
     @monitoring_interval.setter
     def monitoring_interval(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "monitoring_interval", value)
+
+    @property
+    @pulumi.getter(name="monitoringIntervalDays")
+    def monitoring_interval_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
+        If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
+        """
+        return pulumi.get(self, "monitoring_interval_days")
+
+    @monitoring_interval_days.setter
+    def monitoring_interval_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "monitoring_interval_days", value)
+
+    @property
+    @pulumi.getter(name="stalenessDays")
+    def staleness_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
+        """
+        return pulumi.get(self, "staleness_days")
+
+    @staleness_days.setter
+    def staleness_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "staleness_days", value)
 
 
 @pulumi.input_type

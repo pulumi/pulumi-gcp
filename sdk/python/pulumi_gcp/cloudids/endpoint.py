@@ -121,8 +121,8 @@ class _EndpointState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 endpoint: Optional[pulumi.Input[str]] = None,
                  endpoint_forwarding_rule: Optional[pulumi.Input[str]] = None,
+                 endpoint_ip: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -133,8 +133,8 @@ class _EndpointState:
         Input properties used for looking up and filtering Endpoint resources.
         :param pulumi.Input[str] create_time: Creation timestamp in RFC 3339 text format.
         :param pulumi.Input[str] description: An optional description of the endpoint.
-        :param pulumi.Input[str] endpoint: Internal IP address of the endpoint's network entry point.
         :param pulumi.Input[str] endpoint_forwarding_rule: URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
+        :param pulumi.Input[str] endpoint_ip: Internal IP address of the endpoint's network entry point.
         :param pulumi.Input[str] location: The location for the endpoint.
         :param pulumi.Input[str] name: Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
         :param pulumi.Input[str] network: Name of the VPC network that is connected to the IDS endpoint. This can either contain the VPC network name itself (like "src-net") or the full URL to the network (like "projects/{project_id}/global/networks/src-net").
@@ -148,10 +148,10 @@ class _EndpointState:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if endpoint is not None:
-            pulumi.set(__self__, "endpoint", endpoint)
         if endpoint_forwarding_rule is not None:
             pulumi.set(__self__, "endpoint_forwarding_rule", endpoint_forwarding_rule)
+        if endpoint_ip is not None:
+            pulumi.set(__self__, "endpoint_ip", endpoint_ip)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -190,18 +190,6 @@ class _EndpointState:
         pulumi.set(self, "description", value)
 
     @property
-    @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[str]]:
-        """
-        Internal IP address of the endpoint's network entry point.
-        """
-        return pulumi.get(self, "endpoint")
-
-    @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "endpoint", value)
-
-    @property
     @pulumi.getter(name="endpointForwardingRule")
     def endpoint_forwarding_rule(self) -> Optional[pulumi.Input[str]]:
         """
@@ -212,6 +200,18 @@ class _EndpointState:
     @endpoint_forwarding_rule.setter
     def endpoint_forwarding_rule(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "endpoint_forwarding_rule", value)
+
+    @property
+    @pulumi.getter(name="endpointIp")
+    def endpoint_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        Internal IP address of the endpoint's network entry point.
+        """
+        return pulumi.get(self, "endpoint_ip")
+
+    @endpoint_ip.setter
+    def endpoint_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint_ip", value)
 
     @property
     @pulumi.getter
@@ -454,8 +454,8 @@ class Endpoint(pulumi.CustomResource):
                 raise TypeError("Missing required property 'severity'")
             __props__.__dict__["severity"] = severity
             __props__.__dict__["create_time"] = None
-            __props__.__dict__["endpoint"] = None
             __props__.__dict__["endpoint_forwarding_rule"] = None
+            __props__.__dict__["endpoint_ip"] = None
             __props__.__dict__["update_time"] = None
         super(Endpoint, __self__).__init__(
             'gcp:cloudids/endpoint:Endpoint',
@@ -469,8 +469,8 @@ class Endpoint(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            endpoint: Optional[pulumi.Input[str]] = None,
             endpoint_forwarding_rule: Optional[pulumi.Input[str]] = None,
+            endpoint_ip: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
@@ -486,8 +486,8 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Creation timestamp in RFC 3339 text format.
         :param pulumi.Input[str] description: An optional description of the endpoint.
-        :param pulumi.Input[str] endpoint: Internal IP address of the endpoint's network entry point.
         :param pulumi.Input[str] endpoint_forwarding_rule: URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
+        :param pulumi.Input[str] endpoint_ip: Internal IP address of the endpoint's network entry point.
         :param pulumi.Input[str] location: The location for the endpoint.
         :param pulumi.Input[str] name: Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
         :param pulumi.Input[str] network: Name of the VPC network that is connected to the IDS endpoint. This can either contain the VPC network name itself (like "src-net") or the full URL to the network (like "projects/{project_id}/global/networks/src-net").
@@ -503,8 +503,8 @@ class Endpoint(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
-        __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["endpoint_forwarding_rule"] = endpoint_forwarding_rule
+        __props__.__dict__["endpoint_ip"] = endpoint_ip
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
@@ -530,20 +530,20 @@ class Endpoint(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
-    @pulumi.getter
-    def endpoint(self) -> pulumi.Output[str]:
-        """
-        Internal IP address of the endpoint's network entry point.
-        """
-        return pulumi.get(self, "endpoint")
-
-    @property
     @pulumi.getter(name="endpointForwardingRule")
     def endpoint_forwarding_rule(self) -> pulumi.Output[str]:
         """
         URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
         """
         return pulumi.get(self, "endpoint_forwarding_rule")
+
+    @property
+    @pulumi.getter(name="endpointIp")
+    def endpoint_ip(self) -> pulumi.Output[str]:
+        """
+        Internal IP address of the endpoint's network entry point.
+        """
+        return pulumi.get(self, "endpoint_ip")
 
     @property
     @pulumi.getter

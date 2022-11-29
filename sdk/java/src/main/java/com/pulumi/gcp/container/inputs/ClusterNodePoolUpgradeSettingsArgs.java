@@ -5,33 +5,53 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ClusterNodePoolUpgradeSettingsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterNodePoolUpgradeSettingsArgs Empty = new ClusterNodePoolUpgradeSettingsArgs();
 
-    @Import(name="maxSurge", required=true)
-    private Output<Integer> maxSurge;
+    @Import(name="blueGreenSettings")
+    private @Nullable Output<ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs> blueGreenSettings;
 
-    public Output<Integer> maxSurge() {
-        return this.maxSurge;
+    public Optional<Output<ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs>> blueGreenSettings() {
+        return Optional.ofNullable(this.blueGreenSettings);
     }
 
-    @Import(name="maxUnavailable", required=true)
-    private Output<Integer> maxUnavailable;
+    @Import(name="maxSurge")
+    private @Nullable Output<Integer> maxSurge;
 
-    public Output<Integer> maxUnavailable() {
-        return this.maxUnavailable;
+    public Optional<Output<Integer>> maxSurge() {
+        return Optional.ofNullable(this.maxSurge);
+    }
+
+    @Import(name="maxUnavailable")
+    private @Nullable Output<Integer> maxUnavailable;
+
+    public Optional<Output<Integer>> maxUnavailable() {
+        return Optional.ofNullable(this.maxUnavailable);
+    }
+
+    @Import(name="strategy")
+    private @Nullable Output<String> strategy;
+
+    public Optional<Output<String>> strategy() {
+        return Optional.ofNullable(this.strategy);
     }
 
     private ClusterNodePoolUpgradeSettingsArgs() {}
 
     private ClusterNodePoolUpgradeSettingsArgs(ClusterNodePoolUpgradeSettingsArgs $) {
+        this.blueGreenSettings = $.blueGreenSettings;
         this.maxSurge = $.maxSurge;
         this.maxUnavailable = $.maxUnavailable;
+        this.strategy = $.strategy;
     }
 
     public static Builder builder() {
@@ -52,7 +72,16 @@ public final class ClusterNodePoolUpgradeSettingsArgs extends com.pulumi.resourc
             $ = new ClusterNodePoolUpgradeSettingsArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder maxSurge(Output<Integer> maxSurge) {
+        public Builder blueGreenSettings(@Nullable Output<ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs> blueGreenSettings) {
+            $.blueGreenSettings = blueGreenSettings;
+            return this;
+        }
+
+        public Builder blueGreenSettings(ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs blueGreenSettings) {
+            return blueGreenSettings(Output.of(blueGreenSettings));
+        }
+
+        public Builder maxSurge(@Nullable Output<Integer> maxSurge) {
             $.maxSurge = maxSurge;
             return this;
         }
@@ -61,7 +90,7 @@ public final class ClusterNodePoolUpgradeSettingsArgs extends com.pulumi.resourc
             return maxSurge(Output.of(maxSurge));
         }
 
-        public Builder maxUnavailable(Output<Integer> maxUnavailable) {
+        public Builder maxUnavailable(@Nullable Output<Integer> maxUnavailable) {
             $.maxUnavailable = maxUnavailable;
             return this;
         }
@@ -70,9 +99,16 @@ public final class ClusterNodePoolUpgradeSettingsArgs extends com.pulumi.resourc
             return maxUnavailable(Output.of(maxUnavailable));
         }
 
+        public Builder strategy(@Nullable Output<String> strategy) {
+            $.strategy = strategy;
+            return this;
+        }
+
+        public Builder strategy(String strategy) {
+            return strategy(Output.of(strategy));
+        }
+
         public ClusterNodePoolUpgradeSettingsArgs build() {
-            $.maxSurge = Objects.requireNonNull($.maxSurge, "expected parameter 'maxSurge' to be non-null");
-            $.maxUnavailable = Objects.requireNonNull($.maxUnavailable, "expected parameter 'maxUnavailable' to be non-null");
             return $;
         }
     }

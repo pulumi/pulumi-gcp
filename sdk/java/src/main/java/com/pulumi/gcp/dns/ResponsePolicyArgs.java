@@ -5,6 +5,7 @@ package com.pulumi.gcp.dns;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dns.inputs.ResponsePolicyGkeClusterArgs;
 import com.pulumi.gcp.dns.inputs.ResponsePolicyNetworkArgs;
 import java.lang.String;
 import java.util.List;
@@ -30,6 +31,23 @@ public final class ResponsePolicyArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The list of Google Kubernetes Engine clusters that can see this zone.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="gkeClusters")
+    private @Nullable Output<List<ResponsePolicyGkeClusterArgs>> gkeClusters;
+
+    /**
+     * @return The list of Google Kubernetes Engine clusters that can see this zone.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ResponsePolicyGkeClusterArgs>>> gkeClusters() {
+        return Optional.ofNullable(this.gkeClusters);
     }
 
     /**
@@ -85,6 +103,7 @@ public final class ResponsePolicyArgs extends com.pulumi.resources.ResourceArgs 
 
     private ResponsePolicyArgs(ResponsePolicyArgs $) {
         this.description = $.description;
+        this.gkeClusters = $.gkeClusters;
         this.networks = $.networks;
         this.project = $.project;
         this.responsePolicyName = $.responsePolicyName;
@@ -127,6 +146,40 @@ public final class ResponsePolicyArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param gkeClusters The list of Google Kubernetes Engine clusters that can see this zone.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gkeClusters(@Nullable Output<List<ResponsePolicyGkeClusterArgs>> gkeClusters) {
+            $.gkeClusters = gkeClusters;
+            return this;
+        }
+
+        /**
+         * @param gkeClusters The list of Google Kubernetes Engine clusters that can see this zone.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gkeClusters(List<ResponsePolicyGkeClusterArgs> gkeClusters) {
+            return gkeClusters(Output.of(gkeClusters));
+        }
+
+        /**
+         * @param gkeClusters The list of Google Kubernetes Engine clusters that can see this zone.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gkeClusters(ResponsePolicyGkeClusterArgs... gkeClusters) {
+            return gkeClusters(List.of(gkeClusters));
         }
 
         /**

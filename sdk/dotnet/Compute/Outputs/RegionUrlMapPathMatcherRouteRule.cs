@@ -14,9 +14,10 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class RegionUrlMapPathMatcherRouteRule
     {
         /// <summary>
-        /// Specifies changes to request and response headers that need to take effect for
-        /// the selected backendService. headerAction specified here take effect before
-        /// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+        /// Specifies changes to request and response headers that need to take effect for the selected backendService.
+        /// headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+        /// headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
+        /// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.RegionUrlMapPathMatcherRouteRuleHeaderAction? HeaderAction;

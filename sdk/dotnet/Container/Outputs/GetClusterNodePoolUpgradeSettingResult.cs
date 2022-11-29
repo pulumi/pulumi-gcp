@@ -13,17 +13,25 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolUpgradeSettingResult
     {
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolUpgradeSettingBlueGreenSettingResult> BlueGreenSettings;
         public readonly int MaxSurge;
         public readonly int MaxUnavailable;
+        public readonly string Strategy;
 
         [OutputConstructor]
         private GetClusterNodePoolUpgradeSettingResult(
+            ImmutableArray<Outputs.GetClusterNodePoolUpgradeSettingBlueGreenSettingResult> blueGreenSettings,
+
             int maxSurge,
 
-            int maxUnavailable)
+            int maxUnavailable,
+
+            string strategy)
         {
+            BlueGreenSettings = blueGreenSettings;
             MaxSurge = maxSurge;
             MaxUnavailable = maxUnavailable;
+            Strategy = strategy;
         }
     }
 }

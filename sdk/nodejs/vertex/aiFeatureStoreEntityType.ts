@@ -39,6 +39,23 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  *     featurestore: featurestore.id,
+ *     monitoringConfig: {
+ *         snapshotAnalysis: {
+ *             disabled: false,
+ *             monitoringIntervalDays: 1,
+ *             stalenessDays: 21,
+ *         },
+ *         numericalThresholdConfig: {
+ *             value: 0.8,
+ *         },
+ *         categoricalThresholdConfig: {
+ *             value: 10,
+ *         },
+ *         importFeaturesAnalysis: {
+ *             state: "ENABLED",
+ *             anomalyDetectionBaseline: "PREVIOUS_IMPORT_FEATURES_STATS",
+ *         },
+ *     },
  * });
  * ```
  * ### Vertex Ai Featurestore Entitytype With Beta Fields
@@ -70,6 +87,12 @@ import * as utilities from "../utilities";
  *         snapshotAnalysis: {
  *             disabled: false,
  *             monitoringInterval: "86400s",
+ *         },
+ *         categoricalThresholdConfig: {
+ *             value: 0.3,
+ *         },
+ *         numericalThresholdConfig: {
+ *             value: 0.3,
  *         },
  *     },
  * }, {
@@ -141,6 +164,10 @@ export class AiFeatureStoreEntityType extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The region of the EntityType.
+     */
+    public /*out*/ readonly region!: pulumi.Output<string>;
+    /**
      * The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
      * to nine fractional digits.
      */
@@ -165,6 +192,7 @@ export class AiFeatureStoreEntityType extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["monitoringConfig"] = state ? state.monitoringConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AiFeatureStoreEntityTypeArgs | undefined;
@@ -177,6 +205,7 @@ export class AiFeatureStoreEntityType extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -215,6 +244,10 @@ export interface AiFeatureStoreEntityTypeState {
      * The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The region of the EntityType.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
      * to nine fractional digits.

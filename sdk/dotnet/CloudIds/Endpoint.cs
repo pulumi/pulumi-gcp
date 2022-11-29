@@ -94,16 +94,16 @@ namespace Pulumi.Gcp.CloudIds
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Internal IP address of the endpoint's network entry point.
-        /// </summary>
-        [Output("endpoint")]
-        public Output<string> EndpointName { get; private set; } = null!;
-
-        /// <summary>
         /// URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
         /// </summary>
         [Output("endpointForwardingRule")]
         public Output<string> EndpointForwardingRule { get; private set; } = null!;
+
+        /// <summary>
+        /// Internal IP address of the endpoint's network entry point.
+        /// </summary>
+        [Output("endpointIp")]
+        public Output<string> EndpointIp { get; private set; } = null!;
 
         /// <summary>
         /// The location for the endpoint.
@@ -248,16 +248,16 @@ namespace Pulumi.Gcp.CloudIds
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Internal IP address of the endpoint's network entry point.
-        /// </summary>
-        [Input("endpoint")]
-        public Input<string>? EndpointName { get; set; }
-
-        /// <summary>
         /// URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
         /// </summary>
         [Input("endpointForwardingRule")]
         public Input<string>? EndpointForwardingRule { get; set; }
+
+        /// <summary>
+        /// Internal IP address of the endpoint's network entry point.
+        /// </summary>
+        [Input("endpointIp")]
+        public Input<string>? EndpointIp { get; set; }
 
         /// <summary>
         /// The location for the endpoint.

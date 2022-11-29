@@ -43,6 +43,17 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<string>? Role { get; set; }
 
         /// <summary>
+        /// A routine from a different dataset to grant access to. Queries
+        /// executed against that routine will have read access to tables in
+        /// this dataset. The role field is not required when this field is
+        /// set. If that routine is updated by any user, access to the routine
+        /// needs to be granted again via an update operation.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("routine")]
+        public Input<Inputs.DatasetAccessRoutineGetArgs>? Routine { get; set; }
+
+        /// <summary>
         /// A special group to grant access to. Possible values include:
         /// </summary>
         [Input("specialGroup")]

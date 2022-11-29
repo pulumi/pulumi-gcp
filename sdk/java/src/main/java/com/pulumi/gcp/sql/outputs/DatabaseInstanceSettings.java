@@ -47,6 +47,11 @@ public final class DatabaseInstanceSettings {
      * 
      */
     private @Nullable String collation;
+    /**
+     * @return Specifies if connections must use Cloud SQL connectors.
+     * 
+     */
+    private @Nullable String connectorEnforcement;
     private @Nullable List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags;
     /**
      * @return Enables auto-resizing of the storage size. Defaults to `true`.
@@ -86,6 +91,10 @@ public final class DatabaseInstanceSettings {
      * 
      */
     private String tier;
+    /**
+     * @return The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+     * 
+     */
     private @Nullable String timeZone;
     /**
      * @return A set of key/value user label pairs to assign to the instance.
@@ -127,6 +136,13 @@ public final class DatabaseInstanceSettings {
      */
     public Optional<String> collation() {
         return Optional.ofNullable(this.collation);
+    }
+    /**
+     * @return Specifies if connections must use Cloud SQL connectors.
+     * 
+     */
+    public Optional<String> connectorEnforcement() {
+        return Optional.ofNullable(this.connectorEnforcement);
     }
     public List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags() {
         return this.databaseFlags == null ? List.of() : this.databaseFlags;
@@ -193,6 +209,10 @@ public final class DatabaseInstanceSettings {
     public String tier() {
         return this.tier;
     }
+    /**
+     * @return The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+     * 
+     */
     public Optional<String> timeZone() {
         return Optional.ofNullable(this.timeZone);
     }
@@ -221,6 +241,7 @@ public final class DatabaseInstanceSettings {
         private @Nullable String availabilityType;
         private @Nullable DatabaseInstanceSettingsBackupConfiguration backupConfiguration;
         private @Nullable String collation;
+        private @Nullable String connectorEnforcement;
         private @Nullable List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags;
         private @Nullable Boolean diskAutoresize;
         private @Nullable Integer diskAutoresizeLimit;
@@ -245,6 +266,7 @@ public final class DatabaseInstanceSettings {
     	      this.availabilityType = defaults.availabilityType;
     	      this.backupConfiguration = defaults.backupConfiguration;
     	      this.collation = defaults.collation;
+    	      this.connectorEnforcement = defaults.connectorEnforcement;
     	      this.databaseFlags = defaults.databaseFlags;
     	      this.diskAutoresize = defaults.diskAutoresize;
     	      this.diskAutoresizeLimit = defaults.diskAutoresizeLimit;
@@ -286,6 +308,11 @@ public final class DatabaseInstanceSettings {
         @CustomType.Setter
         public Builder collation(@Nullable String collation) {
             this.collation = collation;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder connectorEnforcement(@Nullable String connectorEnforcement) {
+            this.connectorEnforcement = connectorEnforcement;
             return this;
         }
         @CustomType.Setter
@@ -378,6 +405,7 @@ public final class DatabaseInstanceSettings {
             o.availabilityType = availabilityType;
             o.backupConfiguration = backupConfiguration;
             o.collation = collation;
+            o.connectorEnforcement = connectorEnforcement;
             o.databaseFlags = databaseFlags;
             o.diskAutoresize = diskAutoresize;
             o.diskAutoresizeLimit = diskAutoresizeLimit;

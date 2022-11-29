@@ -383,7 +383,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly nodePoolAutoConfig!: pulumi.Output<outputs.container.ClusterNodePoolAutoConfig>;
     /**
-     * ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+     * Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
      */
     public readonly nodePoolDefaults!: pulumi.Output<outputs.container.ClusterNodePoolDefaults>;
     /**
@@ -930,7 +930,7 @@ export interface ClusterState {
      */
     nodePoolAutoConfig?: pulumi.Input<inputs.container.ClusterNodePoolAutoConfig>;
     /**
-     * ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+     * Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
      */
     nodePoolDefaults?: pulumi.Input<inputs.container.ClusterNodePoolDefaults>;
     /**
@@ -1311,7 +1311,7 @@ export interface ClusterArgs {
      */
     nodePoolAutoConfig?: pulumi.Input<inputs.container.ClusterNodePoolAutoConfig>;
     /**
-     * ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+     * Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
      */
     nodePoolDefaults?: pulumi.Input<inputs.container.ClusterNodePoolDefaults>;
     /**

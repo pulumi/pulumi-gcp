@@ -6,6 +6,7 @@ package com.pulumi.gcp.vertex.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -50,11 +51,45 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs 
         return Optional.ofNullable(this.monitoringInterval);
     }
 
+    /**
+     * Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
+     * If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
+     * 
+     */
+    @Import(name="monitoringIntervalDays")
+    private @Nullable Output<Integer> monitoringIntervalDays;
+
+    /**
+     * @return Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
+     * If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
+     * 
+     */
+    public Optional<Output<Integer>> monitoringIntervalDays() {
+        return Optional.ofNullable(this.monitoringIntervalDays);
+    }
+
+    /**
+     * Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
+     * 
+     */
+    @Import(name="stalenessDays")
+    private @Nullable Output<Integer> stalenessDays;
+
+    /**
+     * @return Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
+     * 
+     */
+    public Optional<Output<Integer>> stalenessDays() {
+        return Optional.ofNullable(this.stalenessDays);
+    }
+
     private AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs() {}
 
     private AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs $) {
         this.disabled = $.disabled;
         this.monitoringInterval = $.monitoringInterval;
+        this.monitoringIntervalDays = $.monitoringIntervalDays;
+        this.stalenessDays = $.stalenessDays;
     }
 
     public static Builder builder() {
@@ -119,6 +154,50 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs 
         @Deprecated /* This field is unavailable in the GA provider and will be removed from the beta provider in a future release. */
         public Builder monitoringInterval(String monitoringInterval) {
             return monitoringInterval(Output.of(monitoringInterval));
+        }
+
+        /**
+         * @param monitoringIntervalDays Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
+         * If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder monitoringIntervalDays(@Nullable Output<Integer> monitoringIntervalDays) {
+            $.monitoringIntervalDays = monitoringIntervalDays;
+            return this;
+        }
+
+        /**
+         * @param monitoringIntervalDays Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
+         * If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder monitoringIntervalDays(Integer monitoringIntervalDays) {
+            return monitoringIntervalDays(Output.of(monitoringIntervalDays));
+        }
+
+        /**
+         * @param stalenessDays Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stalenessDays(@Nullable Output<Integer> stalenessDays) {
+            $.stalenessDays = stalenessDays;
+            return this;
+        }
+
+        /**
+         * @param stalenessDays Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stalenessDays(Integer stalenessDays) {
+            return stalenessDays(Output.of(stalenessDays));
         }
 
         public AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs build() {

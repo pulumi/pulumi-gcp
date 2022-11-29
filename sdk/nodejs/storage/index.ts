@@ -100,6 +100,11 @@ export type ObjectAccessControl = import("./objectAccessControl").ObjectAccessCo
 export const ObjectAccessControl: typeof import("./objectAccessControl").ObjectAccessControl = null as any;
 utilities.lazyLoad(exports, ["ObjectAccessControl"], () => require("./objectAccessControl"));
 
+export { TransferAgentPoolArgs, TransferAgentPoolState } from "./transferAgentPool";
+export type TransferAgentPool = import("./transferAgentPool").TransferAgentPool;
+export const TransferAgentPool: typeof import("./transferAgentPool").TransferAgentPool = null as any;
+utilities.lazyLoad(exports, ["TransferAgentPool"], () => require("./transferAgentPool"));
+
 export { TransferJobArgs, TransferJobState } from "./transferJob";
 export type TransferJob = import("./transferJob").TransferJob;
 export const TransferJob: typeof import("./transferJob").TransferJob = null as any;
@@ -137,6 +142,8 @@ const _module = {
                 return new ObjectACL(name, <any>undefined, { urn })
             case "gcp:storage/objectAccessControl:ObjectAccessControl":
                 return new ObjectAccessControl(name, <any>undefined, { urn })
+            case "gcp:storage/transferAgentPool:TransferAgentPool":
+                return new TransferAgentPool(name, <any>undefined, { urn })
             case "gcp:storage/transferJob:TransferJob":
                 return new TransferJob(name, <any>undefined, { urn })
             default:
@@ -157,4 +164,5 @@ pulumi.runtime.registerResourceModule("gcp", "storage/hmacKey", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/notification", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/objectACL", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/objectAccessControl", _module)
+pulumi.runtime.registerResourceModule("gcp", "storage/transferAgentPool", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/transferJob", _module)

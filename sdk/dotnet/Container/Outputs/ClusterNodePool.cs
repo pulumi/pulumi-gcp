@@ -25,6 +25,9 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly int? InitialNodeCount;
         public readonly ImmutableArray<string> InstanceGroupUrls;
         public readonly ImmutableArray<string> ManagedInstanceGroupUrls;
+        /// <summary>
+        /// NodeManagement configuration for this NodePool. Structure is documented below.
+        /// </summary>
         public readonly Outputs.ClusterNodePoolManagement? Management;
         public readonly int? MaxPodsPerNode;
         /// <summary>

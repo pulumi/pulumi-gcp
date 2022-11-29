@@ -95,14 +95,14 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+     * ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
      * 
      */
     @Import(name="gcfsConfig")
     private @Nullable Output<ClusterNodeConfigGcfsConfigArgs> gcfsConfig;
 
     /**
-     * @return The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+     * @return ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNodeConfigGcfsConfigArgs>> gcfsConfig() {
@@ -232,6 +232,21 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<Integer>> localSsdCount() {
         return Optional.ofNullable(this.localSsdCount);
+    }
+
+    /**
+     * The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+     * 
+     */
+    @Import(name="loggingVariant")
+    private @Nullable Output<String> loggingVariant;
+
+    /**
+     * @return The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+     * 
+     */
+    public Optional<Output<String>> loggingVariant() {
+        return Optional.ofNullable(this.loggingVariant);
     }
 
     /**
@@ -501,6 +516,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         this.labels = $.labels;
         this.linuxNodeConfig = $.linuxNodeConfig;
         this.localSsdCount = $.localSsdCount;
+        this.loggingVariant = $.loggingVariant;
         this.machineType = $.machineType;
         this.metadata = $.metadata;
         this.minCpuPlatform = $.minCpuPlatform;
@@ -624,7 +640,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param gcfsConfig The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+         * @param gcfsConfig ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -635,7 +651,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param gcfsConfig The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+         * @param gcfsConfig ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -820,6 +836,27 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder localSsdCount(Integer localSsdCount) {
             return localSsdCount(Output.of(localSsdCount));
+        }
+
+        /**
+         * @param loggingVariant The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loggingVariant(@Nullable Output<String> loggingVariant) {
+            $.loggingVariant = loggingVariant;
+            return this;
+        }
+
+        /**
+         * @param loggingVariant The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loggingVariant(String loggingVariant) {
+            return loggingVariant(Output.of(loggingVariant));
         }
 
         /**

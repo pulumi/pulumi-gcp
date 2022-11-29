@@ -14,35 +14,31 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction {
     /**
-     * @return Headers to add to a matching request prior to forwarding the request to the
-     * backendService.
+     * @return Headers to add to a matching request before forwarding the request to the backendService.
      * Structure is documented below.
      * 
      */
     private @Nullable List<RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd> requestHeadersToAdds;
     /**
-     * @return A list of header names for headers that need to be removed from the request
-     * prior to forwarding the request to the backendService.
+     * @return A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
      * 
      */
     private @Nullable List<String> requestHeadersToRemoves;
     /**
-     * @return Headers to add the response prior to sending the response back to the client.
+     * @return Headers to add the response before sending the response back to the client.
      * Structure is documented below.
      * 
      */
     private @Nullable List<RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd> responseHeadersToAdds;
     /**
-     * @return A list of header names for headers that need to be removed from the response
-     * prior to sending the response back to the client.
+     * @return A list of header names for headers that need to be removed from the response before sending the response back to the client.
      * 
      */
     private @Nullable List<String> responseHeadersToRemoves;
 
     private RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction() {}
     /**
-     * @return Headers to add to a matching request prior to forwarding the request to the
-     * backendService.
+     * @return Headers to add to a matching request before forwarding the request to the backendService.
      * Structure is documented below.
      * 
      */
@@ -50,15 +46,14 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
         return this.requestHeadersToAdds == null ? List.of() : this.requestHeadersToAdds;
     }
     /**
-     * @return A list of header names for headers that need to be removed from the request
-     * prior to forwarding the request to the backendService.
+     * @return A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
      * 
      */
     public List<String> requestHeadersToRemoves() {
         return this.requestHeadersToRemoves == null ? List.of() : this.requestHeadersToRemoves;
     }
     /**
-     * @return Headers to add the response prior to sending the response back to the client.
+     * @return Headers to add the response before sending the response back to the client.
      * Structure is documented below.
      * 
      */
@@ -66,8 +61,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
         return this.responseHeadersToAdds == null ? List.of() : this.responseHeadersToAdds;
     }
     /**
-     * @return A list of header names for headers that need to be removed from the response
-     * prior to sending the response back to the client.
+     * @return A list of header names for headers that need to be removed from the response before sending the response back to the client.
      * 
      */
     public List<String> responseHeadersToRemoves() {

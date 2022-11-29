@@ -101,10 +101,11 @@ namespace Pulumi.Gcp.CloudIdentity
         public Output<string?> InitialGroupConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The labels that apply to the Group.
-        /// Must not contain more than one entry. Must contain the entry
-        /// 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
-        /// 'system/groups/external': '' if the Group is an external-identity-mapped group.
+        /// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
+        /// Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
+        /// Existing Google Groups can have an additional label with a key of cloudidentity.googleapis.com/groups.security and an empty value added to them. This is an immutable change and the security label cannot be removed once added.
+        /// Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
+        /// Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -211,10 +212,11 @@ namespace Pulumi.Gcp.CloudIdentity
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels that apply to the Group.
-        /// Must not contain more than one entry. Must contain the entry
-        /// 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
-        /// 'system/groups/external': '' if the Group is an external-identity-mapped group.
+        /// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
+        /// Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
+        /// Existing Google Groups can have an additional label with a key of cloudidentity.googleapis.com/groups.security and an empty value added to them. This is an immutable change and the security label cannot be removed once added.
+        /// Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
+        /// Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -280,10 +282,11 @@ namespace Pulumi.Gcp.CloudIdentity
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels that apply to the Group.
-        /// Must not contain more than one entry. Must contain the entry
-        /// 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
-        /// 'system/groups/external': '' if the Group is an external-identity-mapped group.
+        /// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
+        /// Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
+        /// Existing Google Groups can have an additional label with a key of cloudidentity.googleapis.com/groups.security and an empty value added to them. This is an immutable change and the security label cannot be removed once added.
+        /// Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
+        /// Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
         /// </summary>
         public InputMap<string> Labels
         {

@@ -432,7 +432,7 @@ class FunctionEventTrigger(dict):
                Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
         :param str service_account_email: The email of the service account for this function.
         :param str trigger: -
-               The resource name of the Eventarc trigger.
+               Output only. The resource name of the Eventarc trigger.
         :param str trigger_region: The region that the trigger will be in. The trigger will only receive
                events originating in this region. It can be the same
                region as the function, a different region or multi-region, or the global
@@ -502,7 +502,7 @@ class FunctionEventTrigger(dict):
     def trigger(self) -> Optional[str]:
         """
         -
-        The resource name of the Eventarc trigger.
+        Output only. The resource name of the Eventarc trigger.
         """
         return pulumi.get(self, "trigger")
 

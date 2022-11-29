@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networkservices.EdgeCacheKeysetArgs;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheKeysetState;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheKeysetPublicKey;
+import com.pulumi.gcp.networkservices.outputs.EdgeCacheKeysetValidationSharedKey;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -53,6 +54,61 @@ import javax.annotation.Nullable;
  *                     .id(&#34;my-public-key-2&#34;)
  *                     .value(&#34;hzd03llxB1u5FOLKFkZ6_wCJqC7jtN0bg7xlBqS6WVM&#34;)
  *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Network Services Edge Cache Keyset Dual Token
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.networkservices.EdgeCacheKeyset;
+ * import com.pulumi.gcp.networkservices.EdgeCacheKeysetArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheKeysetPublicKeyArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheKeysetValidationSharedKeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var secret_basic = new Secret(&#34;secret-basic&#34;, SecretArgs.builder()        
+ *             .secretId(&#34;secret-name&#34;)
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .automatic(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var secret_version_basic = new SecretVersion(&#34;secret-version-basic&#34;, SecretVersionArgs.builder()        
+ *             .secret(secret_basic.id())
+ *             .secretData(&#34;secret-data&#34;)
+ *             .build());
+ * 
+ *         var default_ = new EdgeCacheKeyset(&#34;default&#34;, EdgeCacheKeysetArgs.builder()        
+ *             .description(&#34;The default keyset&#34;)
+ *             .publicKeys(EdgeCacheKeysetPublicKeyArgs.builder()
+ *                 .id(&#34;my-public-key&#34;)
+ *                 .managed(true)
+ *                 .build())
+ *             .validationSharedKeys(EdgeCacheKeysetValidationSharedKeyArgs.builder()
+ *                 .secretVersion(secret_version_basic.id())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -142,25 +198,51 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
     }
     /**
      * An ordered list of Ed25519 public keys to use for validating signed requests.
-     * You must specify at least one (1) key, and may have up to three (3) keys.
+     * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+     * You may specify no more than one Google-managed public key.
+     * If you specify `public_keys`, you must specify at least one (1) key and may specify up to three (3) keys.
      * Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
-     * You should ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
+     * Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
      * Structure is documented below.
      * 
      */
     @Export(name="publicKeys", type=List.class, parameters={EdgeCacheKeysetPublicKey.class})
-    private Output<List<EdgeCacheKeysetPublicKey>> publicKeys;
+    private Output</* @Nullable */ List<EdgeCacheKeysetPublicKey>> publicKeys;
 
     /**
      * @return An ordered list of Ed25519 public keys to use for validating signed requests.
-     * You must specify at least one (1) key, and may have up to three (3) keys.
+     * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+     * You may specify no more than one Google-managed public key.
+     * If you specify `public_keys`, you must specify at least one (1) key and may specify up to three (3) keys.
      * Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
-     * You should ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
+     * Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
      * Structure is documented below.
      * 
      */
-    public Output<List<EdgeCacheKeysetPublicKey>> publicKeys() {
-        return this.publicKeys;
+    public Output<Optional<List<EdgeCacheKeysetPublicKey>>> publicKeys() {
+        return Codegen.optional(this.publicKeys);
+    }
+    /**
+     * An ordered list of shared keys to use for validating signed requests.
+     * Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
+     * You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
+     * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="validationSharedKeys", type=List.class, parameters={EdgeCacheKeysetValidationSharedKey.class})
+    private Output</* @Nullable */ List<EdgeCacheKeysetValidationSharedKey>> validationSharedKeys;
+
+    /**
+     * @return An ordered list of shared keys to use for validating signed requests.
+     * Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
+     * You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
+     * You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<EdgeCacheKeysetValidationSharedKey>>> validationSharedKeys() {
+        return Codegen.optional(this.validationSharedKeys);
     }
 
     /**
@@ -175,7 +257,7 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EdgeCacheKeyset(String name, EdgeCacheKeysetArgs args) {
+    public EdgeCacheKeyset(String name, @Nullable EdgeCacheKeysetArgs args) {
         this(name, args, null);
     }
     /**
@@ -184,7 +266,7 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EdgeCacheKeyset(String name, EdgeCacheKeysetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public EdgeCacheKeyset(String name, @Nullable EdgeCacheKeysetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset", name, args == null ? EdgeCacheKeysetArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

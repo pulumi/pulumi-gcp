@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerLivenessProbeGrpc;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerLivenessProbeHttpGet;
 import java.lang.Integer;
 import java.util.Objects;
@@ -18,6 +19,12 @@ public final class ServiceTemplateSpecContainerLivenessProbe {
      * 
      */
     private @Nullable Integer failureThreshold;
+    /**
+     * @return GRPC specifies an action involving a GRPC port.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ServiceTemplateSpecContainerLivenessProbeGrpc grpc;
     /**
      * @return HttpGet specifies the http request to perform.
      * Structure is documented below.
@@ -53,6 +60,14 @@ public final class ServiceTemplateSpecContainerLivenessProbe {
      */
     public Optional<Integer> failureThreshold() {
         return Optional.ofNullable(this.failureThreshold);
+    }
+    /**
+     * @return GRPC specifies an action involving a GRPC port.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ServiceTemplateSpecContainerLivenessProbeGrpc> grpc() {
+        return Optional.ofNullable(this.grpc);
     }
     /**
      * @return HttpGet specifies the http request to perform.
@@ -99,6 +114,7 @@ public final class ServiceTemplateSpecContainerLivenessProbe {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer failureThreshold;
+        private @Nullable ServiceTemplateSpecContainerLivenessProbeGrpc grpc;
         private @Nullable ServiceTemplateSpecContainerLivenessProbeHttpGet httpGet;
         private @Nullable Integer initialDelaySeconds;
         private @Nullable Integer periodSeconds;
@@ -107,6 +123,7 @@ public final class ServiceTemplateSpecContainerLivenessProbe {
         public Builder(ServiceTemplateSpecContainerLivenessProbe defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.failureThreshold = defaults.failureThreshold;
+    	      this.grpc = defaults.grpc;
     	      this.httpGet = defaults.httpGet;
     	      this.initialDelaySeconds = defaults.initialDelaySeconds;
     	      this.periodSeconds = defaults.periodSeconds;
@@ -116,6 +133,11 @@ public final class ServiceTemplateSpecContainerLivenessProbe {
         @CustomType.Setter
         public Builder failureThreshold(@Nullable Integer failureThreshold) {
             this.failureThreshold = failureThreshold;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder grpc(@Nullable ServiceTemplateSpecContainerLivenessProbeGrpc grpc) {
+            this.grpc = grpc;
             return this;
         }
         @CustomType.Setter
@@ -141,6 +163,7 @@ public final class ServiceTemplateSpecContainerLivenessProbe {
         public ServiceTemplateSpecContainerLivenessProbe build() {
             final var o = new ServiceTemplateSpecContainerLivenessProbe();
             o.failureThreshold = failureThreshold;
+            o.grpc = grpc;
             o.httpGet = httpGet;
             o.initialDelaySeconds = initialDelaySeconds;
             o.periodSeconds = periodSeconds;

@@ -58,6 +58,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("localSsdCount")]
         public Input<int>? LocalSsdCount { get; set; }
 
+        [Input("loggingVariant")]
+        public Input<string>? LoggingVariant { get; set; }
+
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
 

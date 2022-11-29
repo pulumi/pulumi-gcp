@@ -2197,6 +2197,13 @@ type DatasetAccessType struct {
 	// are swapped by the API to their basic counterparts. See
 	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role *string `pulumi:"role"`
+	// A routine from a different dataset to grant access to. Queries
+	// executed against that routine will have read access to tables in
+	// this dataset. The role field is not required when this field is
+	// set. If that routine is updated by any user, access to the routine
+	// needs to be granted again via an update operation.
+	// Structure is documented below.
+	Routine *DatasetAccessRoutine `pulumi:"routine"`
 	// A special group to grant access to. Possible values include:
 	SpecialGroup *string `pulumi:"specialGroup"`
 	// An email address of a user to grant access to. For example:
@@ -2237,6 +2244,13 @@ type DatasetAccessTypeArgs struct {
 	// are swapped by the API to their basic counterparts. See
 	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role pulumi.StringPtrInput `pulumi:"role"`
+	// A routine from a different dataset to grant access to. Queries
+	// executed against that routine will have read access to tables in
+	// this dataset. The role field is not required when this field is
+	// set. If that routine is updated by any user, access to the routine
+	// needs to be granted again via an update operation.
+	// Structure is documented below.
+	Routine DatasetAccessRoutinePtrInput `pulumi:"routine"`
 	// A special group to grant access to. Possible values include:
 	SpecialGroup pulumi.StringPtrInput `pulumi:"specialGroup"`
 	// An email address of a user to grant access to. For example:
@@ -2326,6 +2340,16 @@ func (o DatasetAccessTypeOutput) GroupByEmail() pulumi.StringPtrOutput {
 // [official docs](https://cloud.google.com/bigquery/docs/access-control).
 func (o DatasetAccessTypeOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasetAccessType) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+// A routine from a different dataset to grant access to. Queries
+// executed against that routine will have read access to tables in
+// this dataset. The role field is not required when this field is
+// set. If that routine is updated by any user, access to the routine
+// needs to be granted again via an update operation.
+// Structure is documented below.
+func (o DatasetAccessTypeOutput) Routine() DatasetAccessRoutinePtrOutput {
+	return o.ApplyT(func(v DatasetAccessType) *DatasetAccessRoutine { return v.Routine }).(DatasetAccessRoutinePtrOutput)
 }
 
 // A special group to grant access to. Possible values include:
@@ -3006,6 +3030,189 @@ func (o DatasetAccessDatasetDatasetPtrOutput) ProjectId() pulumi.StringPtrOutput
 			return nil
 		}
 		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatasetAccessRoutine struct {
+	// The ID of the dataset containing this table.
+	DatasetId string `pulumi:"datasetId"`
+	// The ID of the project containing this table.
+	ProjectId string `pulumi:"projectId"`
+	// The ID of the routine. The ID must contain only letters (a-z,
+	// A-Z), numbers (0-9), or underscores (_). The maximum length
+	// is 256 characters.
+	RoutineId string `pulumi:"routineId"`
+}
+
+// DatasetAccessRoutineInput is an input type that accepts DatasetAccessRoutineArgs and DatasetAccessRoutineOutput values.
+// You can construct a concrete instance of `DatasetAccessRoutineInput` via:
+//
+//	DatasetAccessRoutineArgs{...}
+type DatasetAccessRoutineInput interface {
+	pulumi.Input
+
+	ToDatasetAccessRoutineOutput() DatasetAccessRoutineOutput
+	ToDatasetAccessRoutineOutputWithContext(context.Context) DatasetAccessRoutineOutput
+}
+
+type DatasetAccessRoutineArgs struct {
+	// The ID of the dataset containing this table.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The ID of the project containing this table.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The ID of the routine. The ID must contain only letters (a-z,
+	// A-Z), numbers (0-9), or underscores (_). The maximum length
+	// is 256 characters.
+	RoutineId pulumi.StringInput `pulumi:"routineId"`
+}
+
+func (DatasetAccessRoutineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessRoutine)(nil)).Elem()
+}
+
+func (i DatasetAccessRoutineArgs) ToDatasetAccessRoutineOutput() DatasetAccessRoutineOutput {
+	return i.ToDatasetAccessRoutineOutputWithContext(context.Background())
+}
+
+func (i DatasetAccessRoutineArgs) ToDatasetAccessRoutineOutputWithContext(ctx context.Context) DatasetAccessRoutineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessRoutineOutput)
+}
+
+func (i DatasetAccessRoutineArgs) ToDatasetAccessRoutinePtrOutput() DatasetAccessRoutinePtrOutput {
+	return i.ToDatasetAccessRoutinePtrOutputWithContext(context.Background())
+}
+
+func (i DatasetAccessRoutineArgs) ToDatasetAccessRoutinePtrOutputWithContext(ctx context.Context) DatasetAccessRoutinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessRoutineOutput).ToDatasetAccessRoutinePtrOutputWithContext(ctx)
+}
+
+// DatasetAccessRoutinePtrInput is an input type that accepts DatasetAccessRoutineArgs, DatasetAccessRoutinePtr and DatasetAccessRoutinePtrOutput values.
+// You can construct a concrete instance of `DatasetAccessRoutinePtrInput` via:
+//
+//	        DatasetAccessRoutineArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatasetAccessRoutinePtrInput interface {
+	pulumi.Input
+
+	ToDatasetAccessRoutinePtrOutput() DatasetAccessRoutinePtrOutput
+	ToDatasetAccessRoutinePtrOutputWithContext(context.Context) DatasetAccessRoutinePtrOutput
+}
+
+type datasetAccessRoutinePtrType DatasetAccessRoutineArgs
+
+func DatasetAccessRoutinePtr(v *DatasetAccessRoutineArgs) DatasetAccessRoutinePtrInput {
+	return (*datasetAccessRoutinePtrType)(v)
+}
+
+func (*datasetAccessRoutinePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetAccessRoutine)(nil)).Elem()
+}
+
+func (i *datasetAccessRoutinePtrType) ToDatasetAccessRoutinePtrOutput() DatasetAccessRoutinePtrOutput {
+	return i.ToDatasetAccessRoutinePtrOutputWithContext(context.Background())
+}
+
+func (i *datasetAccessRoutinePtrType) ToDatasetAccessRoutinePtrOutputWithContext(ctx context.Context) DatasetAccessRoutinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessRoutinePtrOutput)
+}
+
+type DatasetAccessRoutineOutput struct{ *pulumi.OutputState }
+
+func (DatasetAccessRoutineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessRoutine)(nil)).Elem()
+}
+
+func (o DatasetAccessRoutineOutput) ToDatasetAccessRoutineOutput() DatasetAccessRoutineOutput {
+	return o
+}
+
+func (o DatasetAccessRoutineOutput) ToDatasetAccessRoutineOutputWithContext(ctx context.Context) DatasetAccessRoutineOutput {
+	return o
+}
+
+func (o DatasetAccessRoutineOutput) ToDatasetAccessRoutinePtrOutput() DatasetAccessRoutinePtrOutput {
+	return o.ToDatasetAccessRoutinePtrOutputWithContext(context.Background())
+}
+
+func (o DatasetAccessRoutineOutput) ToDatasetAccessRoutinePtrOutputWithContext(ctx context.Context) DatasetAccessRoutinePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetAccessRoutine) *DatasetAccessRoutine {
+		return &v
+	}).(DatasetAccessRoutinePtrOutput)
+}
+
+// The ID of the dataset containing this table.
+func (o DatasetAccessRoutineOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetAccessRoutine) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+// The ID of the project containing this table.
+func (o DatasetAccessRoutineOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetAccessRoutine) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The ID of the routine. The ID must contain only letters (a-z,
+// A-Z), numbers (0-9), or underscores (_). The maximum length
+// is 256 characters.
+func (o DatasetAccessRoutineOutput) RoutineId() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetAccessRoutine) string { return v.RoutineId }).(pulumi.StringOutput)
+}
+
+type DatasetAccessRoutinePtrOutput struct{ *pulumi.OutputState }
+
+func (DatasetAccessRoutinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetAccessRoutine)(nil)).Elem()
+}
+
+func (o DatasetAccessRoutinePtrOutput) ToDatasetAccessRoutinePtrOutput() DatasetAccessRoutinePtrOutput {
+	return o
+}
+
+func (o DatasetAccessRoutinePtrOutput) ToDatasetAccessRoutinePtrOutputWithContext(ctx context.Context) DatasetAccessRoutinePtrOutput {
+	return o
+}
+
+func (o DatasetAccessRoutinePtrOutput) Elem() DatasetAccessRoutineOutput {
+	return o.ApplyT(func(v *DatasetAccessRoutine) DatasetAccessRoutine {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetAccessRoutine
+		return ret
+	}).(DatasetAccessRoutineOutput)
+}
+
+// The ID of the dataset containing this table.
+func (o DatasetAccessRoutinePtrOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetAccessRoutine) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the project containing this table.
+func (o DatasetAccessRoutinePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetAccessRoutine) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the routine. The ID must contain only letters (a-z,
+// A-Z), numbers (0-9), or underscores (_). The maximum length
+// is 256 characters.
+func (o DatasetAccessRoutinePtrOutput) RoutineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetAccessRoutine) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RoutineId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10917,6 +11124,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessDatasetPtrInput)(nil)).Elem(), DatasetAccessDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessDatasetDatasetInput)(nil)).Elem(), DatasetAccessDatasetDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessDatasetDatasetPtrInput)(nil)).Elem(), DatasetAccessDatasetDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessRoutineInput)(nil)).Elem(), DatasetAccessRoutineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessRoutinePtrInput)(nil)).Elem(), DatasetAccessRoutineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessViewInput)(nil)).Elem(), DatasetAccessViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessViewPtrInput)(nil)).Elem(), DatasetAccessViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetDefaultEncryptionConfigurationInput)(nil)).Elem(), DatasetDefaultEncryptionConfigurationArgs{})
@@ -11029,6 +11238,8 @@ func init() {
 	pulumi.RegisterOutputType(DatasetAccessDatasetPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessDatasetDatasetOutput{})
 	pulumi.RegisterOutputType(DatasetAccessDatasetDatasetPtrOutput{})
+	pulumi.RegisterOutputType(DatasetAccessRoutineOutput{})
+	pulumi.RegisterOutputType(DatasetAccessRoutinePtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessViewOutput{})
 	pulumi.RegisterOutputType(DatasetAccessViewPtrOutput{})
 	pulumi.RegisterOutputType(DatasetDefaultEncryptionConfigurationOutput{})

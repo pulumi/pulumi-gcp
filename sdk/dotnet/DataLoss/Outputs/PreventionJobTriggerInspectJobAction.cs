@@ -14,14 +14,23 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionJobTriggerInspectJobAction
     {
         /// <summary>
+        /// Publish a message into a given Pub/Sub topic when the job completes.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionJobTriggerInspectJobActionPubSub? PubSub;
+        /// <summary>
         /// Schedule for triggered jobs
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.PreventionJobTriggerInspectJobActionSaveFindings SaveFindings;
+        public readonly Outputs.PreventionJobTriggerInspectJobActionSaveFindings? SaveFindings;
 
         [OutputConstructor]
-        private PreventionJobTriggerInspectJobAction(Outputs.PreventionJobTriggerInspectJobActionSaveFindings saveFindings)
+        private PreventionJobTriggerInspectJobAction(
+            Outputs.PreventionJobTriggerInspectJobActionPubSub? pubSub,
+
+            Outputs.PreventionJobTriggerInspectJobActionSaveFindings? saveFindings)
         {
+            PubSub = pubSub;
             SaveFindings = saveFindings;
         }
     }

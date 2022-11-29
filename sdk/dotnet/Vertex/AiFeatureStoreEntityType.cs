@@ -52,6 +52,28 @@ namespace Pulumi.Gcp.Vertex
     ///             { "foo", "bar" },
     ///         },
     ///         Featurestore = featurestore.Id,
+    ///         MonitoringConfig = new Gcp.Vertex.Inputs.AiFeatureStoreEntityTypeMonitoringConfigArgs
+    ///         {
+    ///             SnapshotAnalysis = new Gcp.Vertex.Inputs.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs
+    ///             {
+    ///                 Disabled = false,
+    ///                 MonitoringIntervalDays = 1,
+    ///                 StalenessDays = 21,
+    ///             },
+    ///             NumericalThresholdConfig = new Gcp.Vertex.Inputs.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs
+    ///             {
+    ///                 Value = 0.8,
+    ///             },
+    ///             CategoricalThresholdConfig = new Gcp.Vertex.Inputs.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs
+    ///             {
+    ///                 Value = 10,
+    ///             },
+    ///             ImportFeaturesAnalysis = new Gcp.Vertex.Inputs.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs
+    ///             {
+    ///                 State = "ENABLED",
+    ///                 AnomalyDetectionBaseline = "PREVIOUS_IMPORT_FEATURES_STATS",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -98,6 +120,14 @@ namespace Pulumi.Gcp.Vertex
     ///             {
     ///                 Disabled = false,
     ///                 MonitoringInterval = "86400s",
+    ///             },
+    ///             CategoricalThresholdConfig = new Gcp.Vertex.Inputs.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs
+    ///             {
+    ///                 Value = 0.3,
+    ///             },
+    ///             NumericalThresholdConfig = new Gcp.Vertex.Inputs.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs
+    ///             {
+    ///                 Value = 0.3,
     ///             },
     ///         },
     ///     }, new CustomResourceOptions
@@ -157,6 +187,12 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The region of the EntityType.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
@@ -295,6 +331,12 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The region of the EntityType.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up

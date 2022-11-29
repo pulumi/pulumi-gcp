@@ -1401,6 +1401,143 @@ func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) Ba
 	}).(pulumi.StringArrayOutput)
 }
 
+type FeatureMembershipMesh struct {
+	// Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
+	Management *string `pulumi:"management"`
+}
+
+// FeatureMembershipMeshInput is an input type that accepts FeatureMembershipMeshArgs and FeatureMembershipMeshOutput values.
+// You can construct a concrete instance of `FeatureMembershipMeshInput` via:
+//
+//	FeatureMembershipMeshArgs{...}
+type FeatureMembershipMeshInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipMeshOutput() FeatureMembershipMeshOutput
+	ToFeatureMembershipMeshOutputWithContext(context.Context) FeatureMembershipMeshOutput
+}
+
+type FeatureMembershipMeshArgs struct {
+	// Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
+	Management pulumi.StringPtrInput `pulumi:"management"`
+}
+
+func (FeatureMembershipMeshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipMesh)(nil)).Elem()
+}
+
+func (i FeatureMembershipMeshArgs) ToFeatureMembershipMeshOutput() FeatureMembershipMeshOutput {
+	return i.ToFeatureMembershipMeshOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipMeshArgs) ToFeatureMembershipMeshOutputWithContext(ctx context.Context) FeatureMembershipMeshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipMeshOutput)
+}
+
+func (i FeatureMembershipMeshArgs) ToFeatureMembershipMeshPtrOutput() FeatureMembershipMeshPtrOutput {
+	return i.ToFeatureMembershipMeshPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipMeshArgs) ToFeatureMembershipMeshPtrOutputWithContext(ctx context.Context) FeatureMembershipMeshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipMeshOutput).ToFeatureMembershipMeshPtrOutputWithContext(ctx)
+}
+
+// FeatureMembershipMeshPtrInput is an input type that accepts FeatureMembershipMeshArgs, FeatureMembershipMeshPtr and FeatureMembershipMeshPtrOutput values.
+// You can construct a concrete instance of `FeatureMembershipMeshPtrInput` via:
+//
+//	        FeatureMembershipMeshArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureMembershipMeshPtrInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipMeshPtrOutput() FeatureMembershipMeshPtrOutput
+	ToFeatureMembershipMeshPtrOutputWithContext(context.Context) FeatureMembershipMeshPtrOutput
+}
+
+type featureMembershipMeshPtrType FeatureMembershipMeshArgs
+
+func FeatureMembershipMeshPtr(v *FeatureMembershipMeshArgs) FeatureMembershipMeshPtrInput {
+	return (*featureMembershipMeshPtrType)(v)
+}
+
+func (*featureMembershipMeshPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipMesh)(nil)).Elem()
+}
+
+func (i *featureMembershipMeshPtrType) ToFeatureMembershipMeshPtrOutput() FeatureMembershipMeshPtrOutput {
+	return i.ToFeatureMembershipMeshPtrOutputWithContext(context.Background())
+}
+
+func (i *featureMembershipMeshPtrType) ToFeatureMembershipMeshPtrOutputWithContext(ctx context.Context) FeatureMembershipMeshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipMeshPtrOutput)
+}
+
+type FeatureMembershipMeshOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipMeshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipMesh)(nil)).Elem()
+}
+
+func (o FeatureMembershipMeshOutput) ToFeatureMembershipMeshOutput() FeatureMembershipMeshOutput {
+	return o
+}
+
+func (o FeatureMembershipMeshOutput) ToFeatureMembershipMeshOutputWithContext(ctx context.Context) FeatureMembershipMeshOutput {
+	return o
+}
+
+func (o FeatureMembershipMeshOutput) ToFeatureMembershipMeshPtrOutput() FeatureMembershipMeshPtrOutput {
+	return o.ToFeatureMembershipMeshPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureMembershipMeshOutput) ToFeatureMembershipMeshPtrOutputWithContext(ctx context.Context) FeatureMembershipMeshPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipMesh) *FeatureMembershipMesh {
+		return &v
+	}).(FeatureMembershipMeshPtrOutput)
+}
+
+// Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
+func (o FeatureMembershipMeshOutput) Management() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipMesh) *string { return v.Management }).(pulumi.StringPtrOutput)
+}
+
+type FeatureMembershipMeshPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipMeshPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipMesh)(nil)).Elem()
+}
+
+func (o FeatureMembershipMeshPtrOutput) ToFeatureMembershipMeshPtrOutput() FeatureMembershipMeshPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipMeshPtrOutput) ToFeatureMembershipMeshPtrOutputWithContext(ctx context.Context) FeatureMembershipMeshPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipMeshPtrOutput) Elem() FeatureMembershipMeshOutput {
+	return o.ApplyT(func(v *FeatureMembershipMesh) FeatureMembershipMesh {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureMembershipMesh
+		return ret
+	}).(FeatureMembershipMeshOutput)
+}
+
+// Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
+func (o FeatureMembershipMeshPtrOutput) Management() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipMesh) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Management
+	}).(pulumi.StringPtrOutput)
+}
+
 type FeatureResourceState struct {
 	HasResources *bool   `pulumi:"hasResources"`
 	State        *string `pulumi:"state"`
@@ -2727,6 +2864,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementPolicyControllerPtrInput)(nil)).Elem(), FeatureMembershipConfigmanagementPolicyControllerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementPolicyControllerMonitoringInput)(nil)).Elem(), FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrInput)(nil)).Elem(), FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipMeshInput)(nil)).Elem(), FeatureMembershipMeshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipMeshPtrInput)(nil)).Elem(), FeatureMembershipMeshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureResourceStateInput)(nil)).Elem(), FeatureResourceStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureResourceStateArrayInput)(nil)).Elem(), FeatureResourceStateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecInput)(nil)).Elem(), FeatureSpecArgs{})
@@ -2761,6 +2900,8 @@ func init() {
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementPolicyControllerPtrOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipMeshOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipMeshPtrOutput{})
 	pulumi.RegisterOutputType(FeatureResourceStateOutput{})
 	pulumi.RegisterOutputType(FeatureResourceStateArrayOutput{})
 	pulumi.RegisterOutputType(FeatureSpecOutput{})

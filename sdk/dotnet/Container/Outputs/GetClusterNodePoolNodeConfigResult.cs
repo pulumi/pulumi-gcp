@@ -25,6 +25,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigResult> LinuxNodeConfigs;
         public readonly int LocalSsdCount;
+        public readonly string LoggingVariant;
         public readonly string MachineType;
         public readonly ImmutableDictionary<string, string> Metadata;
         public readonly string MinCpuPlatform;
@@ -66,6 +67,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             int localSsdCount,
 
+            string loggingVariant,
+
             string machineType,
 
             ImmutableDictionary<string, string> metadata,
@@ -106,6 +109,7 @@ namespace Pulumi.Gcp.Container.Outputs
             Labels = labels;
             LinuxNodeConfigs = linuxNodeConfigs;
             LocalSsdCount = localSsdCount;
+            LoggingVariant = loggingVariant;
             MachineType = machineType;
             Metadata = metadata;
             MinCpuPlatform = minCpuPlatform;

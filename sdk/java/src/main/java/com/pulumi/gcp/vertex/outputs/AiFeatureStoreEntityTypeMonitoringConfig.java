@@ -4,6 +4,9 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.vertex.outputs.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig;
+import com.pulumi.gcp.vertex.outputs.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis;
+import com.pulumi.gcp.vertex.outputs.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig;
 import com.pulumi.gcp.vertex.outputs.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,7 +15,25 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiFeatureStoreEntityTypeMonitoringConfig {
     /**
-     * @return Configuration of how features in Featurestore are monitored.
+     * @return Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig categoricalThresholdConfig;
+    /**
+     * @return The config for ImportFeatures Analysis Based Feature Monitoring.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis importFeaturesAnalysis;
+    /**
+     * @return Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig numericalThresholdConfig;
+    /**
+     * @return The config for Snapshot Analysis Based Feature Monitoring.
      * Structure is documented below.
      * 
      */
@@ -20,7 +41,31 @@ public final class AiFeatureStoreEntityTypeMonitoringConfig {
 
     private AiFeatureStoreEntityTypeMonitoringConfig() {}
     /**
-     * @return Configuration of how features in Featurestore are monitored.
+     * @return Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig> categoricalThresholdConfig() {
+        return Optional.ofNullable(this.categoricalThresholdConfig);
+    }
+    /**
+     * @return The config for ImportFeatures Analysis Based Feature Monitoring.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis> importFeaturesAnalysis() {
+        return Optional.ofNullable(this.importFeaturesAnalysis);
+    }
+    /**
+     * @return Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig> numericalThresholdConfig() {
+        return Optional.ofNullable(this.numericalThresholdConfig);
+    }
+    /**
+     * @return The config for Snapshot Analysis Based Feature Monitoring.
      * Structure is documented below.
      * 
      */
@@ -37,13 +82,34 @@ public final class AiFeatureStoreEntityTypeMonitoringConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig categoricalThresholdConfig;
+        private @Nullable AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis importFeaturesAnalysis;
+        private @Nullable AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig numericalThresholdConfig;
         private @Nullable AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis snapshotAnalysis;
         public Builder() {}
         public Builder(AiFeatureStoreEntityTypeMonitoringConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.categoricalThresholdConfig = defaults.categoricalThresholdConfig;
+    	      this.importFeaturesAnalysis = defaults.importFeaturesAnalysis;
+    	      this.numericalThresholdConfig = defaults.numericalThresholdConfig;
     	      this.snapshotAnalysis = defaults.snapshotAnalysis;
         }
 
+        @CustomType.Setter
+        public Builder categoricalThresholdConfig(@Nullable AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig categoricalThresholdConfig) {
+            this.categoricalThresholdConfig = categoricalThresholdConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder importFeaturesAnalysis(@Nullable AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis importFeaturesAnalysis) {
+            this.importFeaturesAnalysis = importFeaturesAnalysis;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder numericalThresholdConfig(@Nullable AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig numericalThresholdConfig) {
+            this.numericalThresholdConfig = numericalThresholdConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder snapshotAnalysis(@Nullable AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis snapshotAnalysis) {
             this.snapshotAnalysis = snapshotAnalysis;
@@ -51,6 +117,9 @@ public final class AiFeatureStoreEntityTypeMonitoringConfig {
         }
         public AiFeatureStoreEntityTypeMonitoringConfig build() {
             final var o = new AiFeatureStoreEntityTypeMonitoringConfig();
+            o.categoricalThresholdConfig = categoricalThresholdConfig;
+            o.importFeaturesAnalysis = importFeaturesAnalysis;
+            o.numericalThresholdConfig = numericalThresholdConfig;
             o.snapshotAnalysis = snapshotAnalysis;
             return o;
         }

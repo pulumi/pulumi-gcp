@@ -16,8 +16,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddGetArgs>? _requestHeadersToAdds;
 
         /// <summary>
-        /// Headers to add to a matching request prior to forwarding the request to the
-        /// backendService.
+        /// Headers to add to a matching request before forwarding the request to the backendService.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddGetArgs> RequestHeadersToAdds
@@ -30,8 +29,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<string>? _requestHeadersToRemoves;
 
         /// <summary>
-        /// A list of header names for headers that need to be removed from the request
-        /// prior to forwarding the request to the backendService.
+        /// A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
         /// </summary>
         public InputList<string> RequestHeadersToRemoves
         {
@@ -43,7 +41,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddGetArgs>? _responseHeadersToAdds;
 
         /// <summary>
-        /// Headers to add the response prior to sending the response back to the client.
+        /// Headers to add the response before sending the response back to the client.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddGetArgs> ResponseHeadersToAdds
@@ -56,8 +54,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<string>? _responseHeadersToRemoves;
 
         /// <summary>
-        /// A list of header names for headers that need to be removed from the response
-        /// prior to sending the response back to the client.
+        /// A list of header names for headers that need to be removed from the response before sending the response back to the client.
         /// </summary>
         public InputList<string> ResponseHeadersToRemoves
         {

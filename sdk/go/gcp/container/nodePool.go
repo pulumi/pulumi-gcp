@@ -140,8 +140,7 @@ type NodePool struct {
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specify node upgrade settings to change how many nodes GKE attempts to
-	// upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
+	// Specify node upgrade settings to change how GKE upgrades nodes.
 	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
 	UpgradeSettings NodePoolUpgradeSettingsOutput `pulumi:"upgradeSettings"`
 	// The Kubernetes version for the nodes in this pool. Note that if this field
@@ -240,8 +239,7 @@ type nodePoolState struct {
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
 	Project *string `pulumi:"project"`
-	// Specify node upgrade settings to change how many nodes GKE attempts to
-	// upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
+	// Specify node upgrade settings to change how GKE upgrades nodes.
 	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
 	UpgradeSettings *NodePoolUpgradeSettings `pulumi:"upgradeSettings"`
 	// The Kubernetes version for the nodes in this pool. Note that if this field
@@ -309,8 +307,7 @@ type NodePoolState struct {
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
 	Project pulumi.StringPtrInput
-	// Specify node upgrade settings to change how many nodes GKE attempts to
-	// upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
+	// Specify node upgrade settings to change how GKE upgrades nodes.
 	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
 	UpgradeSettings NodePoolUpgradeSettingsPtrInput
 	// The Kubernetes version for the nodes in this pool. Note that if this field
@@ -377,8 +374,7 @@ type nodePoolArgs struct {
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
 	Project *string `pulumi:"project"`
-	// Specify node upgrade settings to change how many nodes GKE attempts to
-	// upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
+	// Specify node upgrade settings to change how GKE upgrades nodes.
 	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
 	UpgradeSettings *NodePoolUpgradeSettings `pulumi:"upgradeSettings"`
 	// The Kubernetes version for the nodes in this pool. Note that if this field
@@ -442,8 +438,7 @@ type NodePoolArgs struct {
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
 	Project pulumi.StringPtrInput
-	// Specify node upgrade settings to change how many nodes GKE attempts to
-	// upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
+	// Specify node upgrade settings to change how GKE upgrades nodes.
 	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
 	UpgradeSettings NodePoolUpgradeSettingsPtrInput
 	// The Kubernetes version for the nodes in this pool. Note that if this field
@@ -648,8 +643,7 @@ func (o NodePoolOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specify node upgrade settings to change how many nodes GKE attempts to
-// upgrade at once. The number of nodes upgraded simultaneously is the sum of `maxSurge` and `maxUnavailable`.
+// Specify node upgrade settings to change how GKE upgrades nodes.
 // The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
 func (o NodePoolOutput) UpgradeSettings() NodePoolUpgradeSettingsOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolUpgradeSettingsOutput { return v.UpgradeSettings }).(NodePoolUpgradeSettingsOutput)

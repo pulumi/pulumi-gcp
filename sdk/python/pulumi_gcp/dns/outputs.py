@@ -19,6 +19,7 @@ __all__ = [
     'ManagedZonePeeringConfig',
     'ManagedZonePeeringConfigTargetNetwork',
     'ManagedZonePrivateVisibilityConfig',
+    'ManagedZonePrivateVisibilityConfigGkeCluster',
     'ManagedZonePrivateVisibilityConfigNetwork',
     'ManagedZoneServiceDirectoryConfig',
     'ManagedZoneServiceDirectoryConfigNamespace',
@@ -38,6 +39,7 @@ __all__ = [
     'RecordSetRoutingPolicyWrr',
     'RecordSetRoutingPolicyWrrHealthCheckedTargets',
     'RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer',
+    'ResponsePolicyGkeCluster',
     'ResponsePolicyNetwork',
     'ResponsePolicyRuleLocalData',
     'ResponsePolicyRuleLocalDataLocalData',
@@ -432,14 +434,86 @@ class ManagedZonePeeringConfigTargetNetwork(dict):
 
 @pulumi.output_type
 class ManagedZonePrivateVisibilityConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gkeClusters":
+            suggest = "gke_clusters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedZonePrivateVisibilityConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedZonePrivateVisibilityConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedZonePrivateVisibilityConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 networks: Sequence['outputs.ManagedZonePrivateVisibilityConfigNetwork']):
+                 networks: Sequence['outputs.ManagedZonePrivateVisibilityConfigNetwork'],
+                 gke_clusters: Optional[Sequence['outputs.ManagedZonePrivateVisibilityConfigGkeCluster']] = None):
+        """
+        :param Sequence['ManagedZonePrivateVisibilityConfigGkeClusterArgs'] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
+               Structure is documented below.
+        """
         pulumi.set(__self__, "networks", networks)
+        if gke_clusters is not None:
+            pulumi.set(__self__, "gke_clusters", gke_clusters)
 
     @property
     @pulumi.getter
     def networks(self) -> Sequence['outputs.ManagedZonePrivateVisibilityConfigNetwork']:
         return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter(name="gkeClusters")
+    def gke_clusters(self) -> Optional[Sequence['outputs.ManagedZonePrivateVisibilityConfigGkeCluster']]:
+        """
+        The list of Google Kubernetes Engine clusters that can see this zone.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gke_clusters")
+
+
+@pulumi.output_type
+class ManagedZonePrivateVisibilityConfigGkeCluster(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gkeClusterName":
+            suggest = "gke_cluster_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedZonePrivateVisibilityConfigGkeCluster. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedZonePrivateVisibilityConfigGkeCluster.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedZonePrivateVisibilityConfigGkeCluster.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gke_cluster_name: str):
+        """
+        :param str gke_cluster_name: The resource name of the cluster to bind this ManagedZone to.
+               This should be specified in the format like
+               `projects/*/locations/*/clusters/*`
+        """
+        pulumi.set(__self__, "gke_cluster_name", gke_cluster_name)
+
+    @property
+    @pulumi.getter(name="gkeClusterName")
+    def gke_cluster_name(self) -> str:
+        """
+        The resource name of the cluster to bind this ManagedZone to.
+        This should be specified in the format like
+        `projects/*/locations/*/clusters/*`
+        """
+        return pulumi.get(self, "gke_cluster_name")
 
 
 @pulumi.output_type
@@ -1598,6 +1672,45 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer(dict):
         The region of the load balancer. Only needed for regional load balancers.
         """
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class ResponsePolicyGkeCluster(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gkeClusterName":
+            suggest = "gke_cluster_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResponsePolicyGkeCluster. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResponsePolicyGkeCluster.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResponsePolicyGkeCluster.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gke_cluster_name: str):
+        """
+        :param str gke_cluster_name: The resource name of the cluster to bind this ManagedZone to.
+               This should be specified in the format like
+               `projects/*/locations/*/clusters/*`
+        """
+        pulumi.set(__self__, "gke_cluster_name", gke_cluster_name)
+
+    @property
+    @pulumi.getter(name="gkeClusterName")
+    def gke_cluster_name(self) -> str:
+        """
+        The resource name of the cluster to bind this ManagedZone to.
+        This should be specified in the format like
+        `projects/*/locations/*/clusters/*`
+        """
+        return pulumi.get(self, "gke_cluster_name")
 
 
 @pulumi.output_type

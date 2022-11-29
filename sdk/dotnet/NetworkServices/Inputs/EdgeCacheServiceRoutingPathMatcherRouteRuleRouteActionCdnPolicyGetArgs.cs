@@ -13,6 +13,14 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
     public sealed class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Enable signature generation or propagation on this route.
+        /// This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("addSignatures")]
+        public Input<Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesGetArgs>? AddSignatures { get; set; }
+
+        /// <summary>
         /// Defines the request parameters that contribute to the cache key.
         /// Structure is documented below.
         /// </summary>
@@ -101,13 +109,31 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public Input<string>? SignedRequestKeyset { get; set; }
 
         /// <summary>
+        /// Limit how far into the future the expiration time of a signed request may be.
+        /// When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
+        /// - The TTL must be &gt; 0.
+        /// - Fractions of a second are not allowed.
+        /// By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
+        /// </summary>
+        [Input("signedRequestMaximumExpirationTtl")]
+        public Input<string>? SignedRequestMaximumExpirationTtl { get; set; }
+
+        /// <summary>
         /// Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
         /// You must also set a signedRequestKeyset to enable signed requests.
         /// When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-        /// Possible values are `DISABLED` and `REQUIRE_SIGNATURES`.
+        /// Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
         /// </summary>
         [Input("signedRequestMode")]
         public Input<string>? SignedRequestMode { get; set; }
+
+        /// <summary>
+        /// Additional options for signed tokens.
+        /// signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("signedTokenOptions")]
+        public Input<Inputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsGetArgs>? SignedTokenOptions { get; set; }
 
         public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyGetArgs()
         {

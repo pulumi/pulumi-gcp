@@ -911,14 +911,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+     * Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
      * 
      */
     @Import(name="nodePoolDefaults")
     private @Nullable Output<ClusterNodePoolDefaultsArgs> nodePoolDefaults;
 
     /**
-     * @return ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+     * @return Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNodePoolDefaultsArgs>> nodePoolDefaults() {
@@ -2525,7 +2525,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodePoolDefaults ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+         * @param nodePoolDefaults Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
          * 
          * @return builder
          * 
@@ -2536,7 +2536,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodePoolDefaults ) Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
+         * @param nodePoolDefaults Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
          * 
          * @return builder
          * 

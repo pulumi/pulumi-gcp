@@ -15,10 +15,12 @@ type EdgeCacheKeysetPublicKey struct {
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]*
 	// which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
 	Id string `pulumi:"id"`
+	// Set to true to have the CDN automatically manage this public key value.
+	Managed *bool `pulumi:"managed"`
 	// The base64-encoded value of the Ed25519 public key. The base64 encoding can be padded (44 bytes) or unpadded (43 bytes).
 	// Representations or encodings of the public key other than this will be rejected with an error.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // EdgeCacheKeysetPublicKeyInput is an input type that accepts EdgeCacheKeysetPublicKeyArgs and EdgeCacheKeysetPublicKeyOutput values.
@@ -37,10 +39,12 @@ type EdgeCacheKeysetPublicKeyArgs struct {
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]*
 	// which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
 	Id pulumi.StringInput `pulumi:"id"`
+	// Set to true to have the CDN automatically manage this public key value.
+	Managed pulumi.BoolPtrInput `pulumi:"managed"`
 	// The base64-encoded value of the Ed25519 public key. The base64 encoding can be padded (44 bytes) or unpadded (43 bytes).
 	// Representations or encodings of the public key other than this will be rejected with an error.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (EdgeCacheKeysetPublicKeyArgs) ElementType() reflect.Type {
@@ -101,11 +105,16 @@ func (o EdgeCacheKeysetPublicKeyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v EdgeCacheKeysetPublicKey) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Set to true to have the CDN automatically manage this public key value.
+func (o EdgeCacheKeysetPublicKeyOutput) Managed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EdgeCacheKeysetPublicKey) *bool { return v.Managed }).(pulumi.BoolPtrOutput)
+}
+
 // The base64-encoded value of the Ed25519 public key. The base64 encoding can be padded (44 bytes) or unpadded (43 bytes).
 // Representations or encodings of the public key other than this will be rejected with an error.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-func (o EdgeCacheKeysetPublicKeyOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v EdgeCacheKeysetPublicKey) string { return v.Value }).(pulumi.StringOutput)
+func (o EdgeCacheKeysetPublicKeyOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeCacheKeysetPublicKey) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type EdgeCacheKeysetPublicKeyArrayOutput struct{ *pulumi.OutputState }
@@ -126,6 +135,297 @@ func (o EdgeCacheKeysetPublicKeyArrayOutput) Index(i pulumi.IntInput) EdgeCacheK
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdgeCacheKeysetPublicKey {
 		return vs[0].([]EdgeCacheKeysetPublicKey)[vs[1].(int)]
 	}).(EdgeCacheKeysetPublicKeyOutput)
+}
+
+type EdgeCacheKeysetValidationSharedKey struct {
+	// The name of the secret version in Secret Manager.
+	// The resource name of the secret version must be in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the secrets themselves.
+	// The secrets must be at least 16 bytes large.  The recommended secret size depends on the signature algorithm you are using.
+	// * If you are using HMAC-SHA1, we suggest 20-byte secrets.
+	// * If you are using HMAC-SHA256, we suggest 32-byte secrets.
+	//   See RFC 2104, Section 3 for more details on these recommendations.
+	SecretVersion string `pulumi:"secretVersion"`
+}
+
+// EdgeCacheKeysetValidationSharedKeyInput is an input type that accepts EdgeCacheKeysetValidationSharedKeyArgs and EdgeCacheKeysetValidationSharedKeyOutput values.
+// You can construct a concrete instance of `EdgeCacheKeysetValidationSharedKeyInput` via:
+//
+//	EdgeCacheKeysetValidationSharedKeyArgs{...}
+type EdgeCacheKeysetValidationSharedKeyInput interface {
+	pulumi.Input
+
+	ToEdgeCacheKeysetValidationSharedKeyOutput() EdgeCacheKeysetValidationSharedKeyOutput
+	ToEdgeCacheKeysetValidationSharedKeyOutputWithContext(context.Context) EdgeCacheKeysetValidationSharedKeyOutput
+}
+
+type EdgeCacheKeysetValidationSharedKeyArgs struct {
+	// The name of the secret version in Secret Manager.
+	// The resource name of the secret version must be in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the secrets themselves.
+	// The secrets must be at least 16 bytes large.  The recommended secret size depends on the signature algorithm you are using.
+	// * If you are using HMAC-SHA1, we suggest 20-byte secrets.
+	// * If you are using HMAC-SHA256, we suggest 32-byte secrets.
+	//   See RFC 2104, Section 3 for more details on these recommendations.
+	SecretVersion pulumi.StringInput `pulumi:"secretVersion"`
+}
+
+func (EdgeCacheKeysetValidationSharedKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheKeysetValidationSharedKey)(nil)).Elem()
+}
+
+func (i EdgeCacheKeysetValidationSharedKeyArgs) ToEdgeCacheKeysetValidationSharedKeyOutput() EdgeCacheKeysetValidationSharedKeyOutput {
+	return i.ToEdgeCacheKeysetValidationSharedKeyOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheKeysetValidationSharedKeyArgs) ToEdgeCacheKeysetValidationSharedKeyOutputWithContext(ctx context.Context) EdgeCacheKeysetValidationSharedKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheKeysetValidationSharedKeyOutput)
+}
+
+// EdgeCacheKeysetValidationSharedKeyArrayInput is an input type that accepts EdgeCacheKeysetValidationSharedKeyArray and EdgeCacheKeysetValidationSharedKeyArrayOutput values.
+// You can construct a concrete instance of `EdgeCacheKeysetValidationSharedKeyArrayInput` via:
+//
+//	EdgeCacheKeysetValidationSharedKeyArray{ EdgeCacheKeysetValidationSharedKeyArgs{...} }
+type EdgeCacheKeysetValidationSharedKeyArrayInput interface {
+	pulumi.Input
+
+	ToEdgeCacheKeysetValidationSharedKeyArrayOutput() EdgeCacheKeysetValidationSharedKeyArrayOutput
+	ToEdgeCacheKeysetValidationSharedKeyArrayOutputWithContext(context.Context) EdgeCacheKeysetValidationSharedKeyArrayOutput
+}
+
+type EdgeCacheKeysetValidationSharedKeyArray []EdgeCacheKeysetValidationSharedKeyInput
+
+func (EdgeCacheKeysetValidationSharedKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeCacheKeysetValidationSharedKey)(nil)).Elem()
+}
+
+func (i EdgeCacheKeysetValidationSharedKeyArray) ToEdgeCacheKeysetValidationSharedKeyArrayOutput() EdgeCacheKeysetValidationSharedKeyArrayOutput {
+	return i.ToEdgeCacheKeysetValidationSharedKeyArrayOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheKeysetValidationSharedKeyArray) ToEdgeCacheKeysetValidationSharedKeyArrayOutputWithContext(ctx context.Context) EdgeCacheKeysetValidationSharedKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheKeysetValidationSharedKeyArrayOutput)
+}
+
+type EdgeCacheKeysetValidationSharedKeyOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheKeysetValidationSharedKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheKeysetValidationSharedKey)(nil)).Elem()
+}
+
+func (o EdgeCacheKeysetValidationSharedKeyOutput) ToEdgeCacheKeysetValidationSharedKeyOutput() EdgeCacheKeysetValidationSharedKeyOutput {
+	return o
+}
+
+func (o EdgeCacheKeysetValidationSharedKeyOutput) ToEdgeCacheKeysetValidationSharedKeyOutputWithContext(ctx context.Context) EdgeCacheKeysetValidationSharedKeyOutput {
+	return o
+}
+
+// The name of the secret version in Secret Manager.
+// The resource name of the secret version must be in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the secrets themselves.
+// The secrets must be at least 16 bytes large.  The recommended secret size depends on the signature algorithm you are using.
+//   - If you are using HMAC-SHA1, we suggest 20-byte secrets.
+//   - If you are using HMAC-SHA256, we suggest 32-byte secrets.
+//     See RFC 2104, Section 3 for more details on these recommendations.
+func (o EdgeCacheKeysetValidationSharedKeyOutput) SecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v EdgeCacheKeysetValidationSharedKey) string { return v.SecretVersion }).(pulumi.StringOutput)
+}
+
+type EdgeCacheKeysetValidationSharedKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheKeysetValidationSharedKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeCacheKeysetValidationSharedKey)(nil)).Elem()
+}
+
+func (o EdgeCacheKeysetValidationSharedKeyArrayOutput) ToEdgeCacheKeysetValidationSharedKeyArrayOutput() EdgeCacheKeysetValidationSharedKeyArrayOutput {
+	return o
+}
+
+func (o EdgeCacheKeysetValidationSharedKeyArrayOutput) ToEdgeCacheKeysetValidationSharedKeyArrayOutputWithContext(ctx context.Context) EdgeCacheKeysetValidationSharedKeyArrayOutput {
+	return o
+}
+
+func (o EdgeCacheKeysetValidationSharedKeyArrayOutput) Index(i pulumi.IntInput) EdgeCacheKeysetValidationSharedKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdgeCacheKeysetValidationSharedKey {
+		return vs[0].([]EdgeCacheKeysetValidationSharedKey)[vs[1].(int)]
+	}).(EdgeCacheKeysetValidationSharedKeyOutput)
+}
+
+type EdgeCacheOriginAwsV4Authentication struct {
+	// The access key ID your origin uses to identify the key.
+	AccessKeyId string `pulumi:"accessKeyId"`
+	// The name of the AWS region that your origin is in.
+	OriginRegion string `pulumi:"originRegion"`
+	// The Secret Manager secret version of the secret access key used by your origin.
+	// This is the resource name of the secret version in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the project, secret, and version you require.
+	SecretAccessKeyVersion string `pulumi:"secretAccessKeyVersion"`
+}
+
+// EdgeCacheOriginAwsV4AuthenticationInput is an input type that accepts EdgeCacheOriginAwsV4AuthenticationArgs and EdgeCacheOriginAwsV4AuthenticationOutput values.
+// You can construct a concrete instance of `EdgeCacheOriginAwsV4AuthenticationInput` via:
+//
+//	EdgeCacheOriginAwsV4AuthenticationArgs{...}
+type EdgeCacheOriginAwsV4AuthenticationInput interface {
+	pulumi.Input
+
+	ToEdgeCacheOriginAwsV4AuthenticationOutput() EdgeCacheOriginAwsV4AuthenticationOutput
+	ToEdgeCacheOriginAwsV4AuthenticationOutputWithContext(context.Context) EdgeCacheOriginAwsV4AuthenticationOutput
+}
+
+type EdgeCacheOriginAwsV4AuthenticationArgs struct {
+	// The access key ID your origin uses to identify the key.
+	AccessKeyId pulumi.StringInput `pulumi:"accessKeyId"`
+	// The name of the AWS region that your origin is in.
+	OriginRegion pulumi.StringInput `pulumi:"originRegion"`
+	// The Secret Manager secret version of the secret access key used by your origin.
+	// This is the resource name of the secret version in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the project, secret, and version you require.
+	SecretAccessKeyVersion pulumi.StringInput `pulumi:"secretAccessKeyVersion"`
+}
+
+func (EdgeCacheOriginAwsV4AuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheOriginAwsV4Authentication)(nil)).Elem()
+}
+
+func (i EdgeCacheOriginAwsV4AuthenticationArgs) ToEdgeCacheOriginAwsV4AuthenticationOutput() EdgeCacheOriginAwsV4AuthenticationOutput {
+	return i.ToEdgeCacheOriginAwsV4AuthenticationOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheOriginAwsV4AuthenticationArgs) ToEdgeCacheOriginAwsV4AuthenticationOutputWithContext(ctx context.Context) EdgeCacheOriginAwsV4AuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginAwsV4AuthenticationOutput)
+}
+
+func (i EdgeCacheOriginAwsV4AuthenticationArgs) ToEdgeCacheOriginAwsV4AuthenticationPtrOutput() EdgeCacheOriginAwsV4AuthenticationPtrOutput {
+	return i.ToEdgeCacheOriginAwsV4AuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheOriginAwsV4AuthenticationArgs) ToEdgeCacheOriginAwsV4AuthenticationPtrOutputWithContext(ctx context.Context) EdgeCacheOriginAwsV4AuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginAwsV4AuthenticationOutput).ToEdgeCacheOriginAwsV4AuthenticationPtrOutputWithContext(ctx)
+}
+
+// EdgeCacheOriginAwsV4AuthenticationPtrInput is an input type that accepts EdgeCacheOriginAwsV4AuthenticationArgs, EdgeCacheOriginAwsV4AuthenticationPtr and EdgeCacheOriginAwsV4AuthenticationPtrOutput values.
+// You can construct a concrete instance of `EdgeCacheOriginAwsV4AuthenticationPtrInput` via:
+//
+//	        EdgeCacheOriginAwsV4AuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type EdgeCacheOriginAwsV4AuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToEdgeCacheOriginAwsV4AuthenticationPtrOutput() EdgeCacheOriginAwsV4AuthenticationPtrOutput
+	ToEdgeCacheOriginAwsV4AuthenticationPtrOutputWithContext(context.Context) EdgeCacheOriginAwsV4AuthenticationPtrOutput
+}
+
+type edgeCacheOriginAwsV4AuthenticationPtrType EdgeCacheOriginAwsV4AuthenticationArgs
+
+func EdgeCacheOriginAwsV4AuthenticationPtr(v *EdgeCacheOriginAwsV4AuthenticationArgs) EdgeCacheOriginAwsV4AuthenticationPtrInput {
+	return (*edgeCacheOriginAwsV4AuthenticationPtrType)(v)
+}
+
+func (*edgeCacheOriginAwsV4AuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCacheOriginAwsV4Authentication)(nil)).Elem()
+}
+
+func (i *edgeCacheOriginAwsV4AuthenticationPtrType) ToEdgeCacheOriginAwsV4AuthenticationPtrOutput() EdgeCacheOriginAwsV4AuthenticationPtrOutput {
+	return i.ToEdgeCacheOriginAwsV4AuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *edgeCacheOriginAwsV4AuthenticationPtrType) ToEdgeCacheOriginAwsV4AuthenticationPtrOutputWithContext(ctx context.Context) EdgeCacheOriginAwsV4AuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginAwsV4AuthenticationPtrOutput)
+}
+
+type EdgeCacheOriginAwsV4AuthenticationOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheOriginAwsV4AuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheOriginAwsV4Authentication)(nil)).Elem()
+}
+
+func (o EdgeCacheOriginAwsV4AuthenticationOutput) ToEdgeCacheOriginAwsV4AuthenticationOutput() EdgeCacheOriginAwsV4AuthenticationOutput {
+	return o
+}
+
+func (o EdgeCacheOriginAwsV4AuthenticationOutput) ToEdgeCacheOriginAwsV4AuthenticationOutputWithContext(ctx context.Context) EdgeCacheOriginAwsV4AuthenticationOutput {
+	return o
+}
+
+func (o EdgeCacheOriginAwsV4AuthenticationOutput) ToEdgeCacheOriginAwsV4AuthenticationPtrOutput() EdgeCacheOriginAwsV4AuthenticationPtrOutput {
+	return o.ToEdgeCacheOriginAwsV4AuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o EdgeCacheOriginAwsV4AuthenticationOutput) ToEdgeCacheOriginAwsV4AuthenticationPtrOutputWithContext(ctx context.Context) EdgeCacheOriginAwsV4AuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheOriginAwsV4Authentication) *EdgeCacheOriginAwsV4Authentication {
+		return &v
+	}).(EdgeCacheOriginAwsV4AuthenticationPtrOutput)
+}
+
+// The access key ID your origin uses to identify the key.
+func (o EdgeCacheOriginAwsV4AuthenticationOutput) AccessKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v EdgeCacheOriginAwsV4Authentication) string { return v.AccessKeyId }).(pulumi.StringOutput)
+}
+
+// The name of the AWS region that your origin is in.
+func (o EdgeCacheOriginAwsV4AuthenticationOutput) OriginRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v EdgeCacheOriginAwsV4Authentication) string { return v.OriginRegion }).(pulumi.StringOutput)
+}
+
+// The Secret Manager secret version of the secret access key used by your origin.
+// This is the resource name of the secret version in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the project, secret, and version you require.
+func (o EdgeCacheOriginAwsV4AuthenticationOutput) SecretAccessKeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v EdgeCacheOriginAwsV4Authentication) string { return v.SecretAccessKeyVersion }).(pulumi.StringOutput)
+}
+
+type EdgeCacheOriginAwsV4AuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheOriginAwsV4AuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCacheOriginAwsV4Authentication)(nil)).Elem()
+}
+
+func (o EdgeCacheOriginAwsV4AuthenticationPtrOutput) ToEdgeCacheOriginAwsV4AuthenticationPtrOutput() EdgeCacheOriginAwsV4AuthenticationPtrOutput {
+	return o
+}
+
+func (o EdgeCacheOriginAwsV4AuthenticationPtrOutput) ToEdgeCacheOriginAwsV4AuthenticationPtrOutputWithContext(ctx context.Context) EdgeCacheOriginAwsV4AuthenticationPtrOutput {
+	return o
+}
+
+func (o EdgeCacheOriginAwsV4AuthenticationPtrOutput) Elem() EdgeCacheOriginAwsV4AuthenticationOutput {
+	return o.ApplyT(func(v *EdgeCacheOriginAwsV4Authentication) EdgeCacheOriginAwsV4Authentication {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheOriginAwsV4Authentication
+		return ret
+	}).(EdgeCacheOriginAwsV4AuthenticationOutput)
+}
+
+// The access key ID your origin uses to identify the key.
+func (o EdgeCacheOriginAwsV4AuthenticationPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeCacheOriginAwsV4Authentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the AWS region that your origin is in.
+func (o EdgeCacheOriginAwsV4AuthenticationPtrOutput) OriginRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeCacheOriginAwsV4Authentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OriginRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Secret Manager secret version of the secret access key used by your origin.
+// This is the resource name of the secret version in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the project, secret, and version you require.
+func (o EdgeCacheOriginAwsV4AuthenticationPtrOutput) SecretAccessKeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeCacheOriginAwsV4Authentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretAccessKeyVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 type EdgeCacheOriginTimeout struct {
@@ -2445,6 +2745,10 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutput) UrlRewr
 }
 
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy struct {
+	// Enable signature generation or propagation on this route.
+	// This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
+	// Structure is documented below.
+	AddSignatures *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures `pulumi:"addSignatures"`
 	// Defines the request parameters that contribute to the cache key.
 	// Structure is documented below.
 	CacheKeyPolicy *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy `pulumi:"cacheKeyPolicy"`
@@ -2495,11 +2799,21 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy struct {
 	NegativeCachingPolicy map[string]string `pulumi:"negativeCachingPolicy"`
 	// The EdgeCacheKeyset containing the set of public keys used to validate signed requests at the edge.
 	SignedRequestKeyset *string `pulumi:"signedRequestKeyset"`
+	// Limit how far into the future the expiration time of a signed request may be.
+	// When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
+	// - The TTL must be > 0.
+	// - Fractions of a second are not allowed.
+	//   By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
+	SignedRequestMaximumExpirationTtl *string `pulumi:"signedRequestMaximumExpirationTtl"`
 	// Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
 	// You must also set a signedRequestKeyset to enable signed requests.
 	// When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-	// Possible values are `DISABLED` and `REQUIRE_SIGNATURES`.
+	// Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
 	SignedRequestMode *string `pulumi:"signedRequestMode"`
+	// Additional options for signed tokens.
+	// signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
+	// Structure is documented below.
+	SignedTokenOptions *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions `pulumi:"signedTokenOptions"`
 }
 
 // EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs and EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput values.
@@ -2514,6 +2828,10 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyInput interf
 }
 
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs struct {
+	// Enable signature generation or propagation on this route.
+	// This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
+	// Structure is documented below.
+	AddSignatures EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrInput `pulumi:"addSignatures"`
 	// Defines the request parameters that contribute to the cache key.
 	// Structure is documented below.
 	CacheKeyPolicy EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrInput `pulumi:"cacheKeyPolicy"`
@@ -2564,11 +2882,21 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs struct 
 	NegativeCachingPolicy pulumi.StringMapInput `pulumi:"negativeCachingPolicy"`
 	// The EdgeCacheKeyset containing the set of public keys used to validate signed requests at the edge.
 	SignedRequestKeyset pulumi.StringPtrInput `pulumi:"signedRequestKeyset"`
+	// Limit how far into the future the expiration time of a signed request may be.
+	// When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
+	// - The TTL must be > 0.
+	// - Fractions of a second are not allowed.
+	//   By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
+	SignedRequestMaximumExpirationTtl pulumi.StringPtrInput `pulumi:"signedRequestMaximumExpirationTtl"`
 	// Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
 	// You must also set a signedRequestKeyset to enable signed requests.
 	// When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-	// Possible values are `DISABLED` and `REQUIRE_SIGNATURES`.
+	// Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
 	SignedRequestMode pulumi.StringPtrInput `pulumi:"signedRequestMode"`
+	// Additional options for signed tokens.
+	// signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
+	// Structure is documented below.
+	SignedTokenOptions EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrInput `pulumi:"signedTokenOptions"`
 }
 
 func (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs) ElementType() reflect.Type {
@@ -2646,6 +2974,15 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) T
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy {
 		return &v
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput)
+}
+
+// Enable signature generation or propagation on this route.
+// This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
+// Structure is documented below.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) AddSignatures() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput {
+	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures {
+		return v.AddSignatures
+	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput)
 }
 
 // Defines the request parameters that contribute to the cache key.
@@ -2730,14 +3067,34 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Limit how far into the future the expiration time of a signed request may be.
+// When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
+//   - The TTL must be > 0.
+//   - Fractions of a second are not allowed.
+//     By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) SignedRequestMaximumExpirationTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *string {
+		return v.SignedRequestMaximumExpirationTtl
+	}).(pulumi.StringPtrOutput)
+}
+
 // Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
 // You must also set a signedRequestKeyset to enable signed requests.
 // When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-// Possible values are `DISABLED` and `REQUIRE_SIGNATURES`.
+// Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) SignedRequestMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *string {
 		return v.SignedRequestMode
 	}).(pulumi.StringPtrOutput)
+}
+
+// Additional options for signed tokens.
+// signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
+// Structure is documented below.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) SignedTokenOptions() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput {
+	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions {
+		return v.SignedTokenOptions
+	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput)
 }
 
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput struct{ *pulumi.OutputState }
@@ -2762,6 +3119,18 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput
 		var ret EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy
 		return ret
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput)
+}
+
+// Enable signature generation or propagation on this route.
+// This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
+// Structure is documented below.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput) AddSignatures() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput {
+	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures {
+		if v == nil {
+			return nil
+		}
+		return v.AddSignatures
+	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput)
 }
 
 // Defines the request parameters that contribute to the cache key.
@@ -2878,16 +3247,369 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Limit how far into the future the expiration time of a signed request may be.
+// When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
+//   - The TTL must be > 0.
+//   - Fractions of a second are not allowed.
+//     By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput) SignedRequestMaximumExpirationTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignedRequestMaximumExpirationTtl
+	}).(pulumi.StringPtrOutput)
+}
+
 // Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
 // You must also set a signedRequestKeyset to enable signed requests.
 // When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-// Possible values are `DISABLED` and `REQUIRE_SIGNATURES`.
+// Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput) SignedRequestMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *string {
 		if v == nil {
 			return nil
 		}
 		return v.SignedRequestMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional options for signed tokens.
+// signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
+// Structure is documented below.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput) SignedTokenOptions() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput {
+	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions {
+		if v == nil {
+			return nil
+		}
+		return v.SignedTokenOptions
+	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput)
+}
+
+type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures struct {
+	// The actions to take to add signatures to responses.
+	// Each value may be one of `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, and `PROPAGATE_TOKEN_HLS_COOKIELESS`.
+	Actions string `pulumi:"actions"`
+	// The parameters to copy from the verified token to the generated token.
+	// Only the following parameters may be copied:
+	// * `PathGlobs`
+	// * `paths`
+	// * `acl`
+	// * `URLPrefix`
+	// * `IPRanges`
+	// * `SessionID`
+	// * `id`
+	// * `Data`
+	// * `data`
+	// * `payload`
+	// * `Headers`
+	//   You may specify up to 6 parameters to copy.  A given parameter is be copied only if the parameter exists in the verified token.  Parameter names are matched exactly as specified.  The order of the parameters does not matter.  Duplicates are not allowed.
+	//   This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
+	CopiedParameters []string `pulumi:"copiedParameters"`
+	// The keyset to use for signature generation.
+	// The following are both valid paths to an EdgeCacheKeyset resource:
+	// * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+	// * `yourKeyset`
+	//   This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
+	Keyset *string `pulumi:"keyset"`
+	// The query parameter in which to put the generated token.
+	// If not specified, defaults to `edge-cache-token`.
+	// If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+	// This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+	TokenQueryParameter *string `pulumi:"tokenQueryParameter"`
+	// The duration the token is valid starting from the moment the token is first generated.
+	// Defaults to `86400s` (1 day).
+	// The TTL must be >= 0 and <= 604,800 seconds (1 week).
+	// This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	TokenTtl *string `pulumi:"tokenTtl"`
+}
+
+// EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs and EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput values.
+// You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesInput` via:
+//
+//	EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs{...}
+type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesInput interface {
+	pulumi.Input
+
+	ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput
+	ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutputWithContext(context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput
+}
+
+type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs struct {
+	// The actions to take to add signatures to responses.
+	// Each value may be one of `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, and `PROPAGATE_TOKEN_HLS_COOKIELESS`.
+	Actions pulumi.StringInput `pulumi:"actions"`
+	// The parameters to copy from the verified token to the generated token.
+	// Only the following parameters may be copied:
+	// * `PathGlobs`
+	// * `paths`
+	// * `acl`
+	// * `URLPrefix`
+	// * `IPRanges`
+	// * `SessionID`
+	// * `id`
+	// * `Data`
+	// * `data`
+	// * `payload`
+	// * `Headers`
+	//   You may specify up to 6 parameters to copy.  A given parameter is be copied only if the parameter exists in the verified token.  Parameter names are matched exactly as specified.  The order of the parameters does not matter.  Duplicates are not allowed.
+	//   This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
+	CopiedParameters pulumi.StringArrayInput `pulumi:"copiedParameters"`
+	// The keyset to use for signature generation.
+	// The following are both valid paths to an EdgeCacheKeyset resource:
+	// * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+	// * `yourKeyset`
+	//   This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
+	Keyset pulumi.StringPtrInput `pulumi:"keyset"`
+	// The query parameter in which to put the generated token.
+	// If not specified, defaults to `edge-cache-token`.
+	// If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+	// This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+	TokenQueryParameter pulumi.StringPtrInput `pulumi:"tokenQueryParameter"`
+	// The duration the token is valid starting from the moment the token is first generated.
+	// Defaults to `86400s` (1 day).
+	// The TTL must be >= 0 and <= 604,800 seconds (1 week).
+	// This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	TokenTtl pulumi.StringPtrInput `pulumi:"tokenTtl"`
+}
+
+func (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures)(nil)).Elem()
+}
+
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput {
+	return i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput)
+}
+
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput {
+	return i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput).ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutputWithContext(ctx)
+}
+
+// EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs, EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtr and EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput values.
+// You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrInput` via:
+//
+//	        EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs{...}
+//
+//	or:
+//
+//	        nil
+type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrInput interface {
+	pulumi.Input
+
+	ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput
+	ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutputWithContext(context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput
+}
+
+type edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrType EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs
+
+func EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtr(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrInput {
+	return (*edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrType)(v)
+}
+
+func (*edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures)(nil)).Elem()
+}
+
+func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrType) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput {
+	return i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutputWithContext(context.Background())
+}
+
+func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrType) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput)
+}
+
+type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures)(nil)).Elem()
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput {
+	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput {
+	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput {
+	return o.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutputWithContext(context.Background())
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures {
+		return &v
+	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput)
+}
+
+// The actions to take to add signatures to responses.
+// Each value may be one of `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, and `PROPAGATE_TOKEN_HLS_COOKIELESS`.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput) Actions() pulumi.StringOutput {
+	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) string {
+		return v.Actions
+	}).(pulumi.StringOutput)
+}
+
+// The parameters to copy from the verified token to the generated token.
+// Only the following parameters may be copied:
+//   - `PathGlobs`
+//   - `paths`
+//   - `acl`
+//   - `URLPrefix`
+//   - `IPRanges`
+//   - `SessionID`
+//   - `id`
+//   - `Data`
+//   - `data`
+//   - `payload`
+//   - `Headers`
+//     You may specify up to 6 parameters to copy.  A given parameter is be copied only if the parameter exists in the verified token.  Parameter names are matched exactly as specified.  The order of the parameters does not matter.  Duplicates are not allowed.
+//     This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput) CopiedParameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) []string {
+		return v.CopiedParameters
+	}).(pulumi.StringArrayOutput)
+}
+
+// The keyset to use for signature generation.
+// The following are both valid paths to an EdgeCacheKeyset resource:
+//   - `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+//   - `yourKeyset`
+//     This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput) Keyset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) *string {
+		return v.Keyset
+	}).(pulumi.StringPtrOutput)
+}
+
+// The query parameter in which to put the generated token.
+// If not specified, defaults to `edge-cache-token`.
+// If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+// This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput) TokenQueryParameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) *string {
+		return v.TokenQueryParameter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The duration the token is valid starting from the moment the token is first generated.
+// Defaults to `86400s` (1 day).
+// The TTL must be >= 0 and <= 604,800 seconds (1 week).
+// This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput) TokenTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) *string {
+		return v.TokenTtl
+	}).(pulumi.StringPtrOutput)
+}
+
+type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures)(nil)).Elem()
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput {
+	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput {
+	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput) Elem() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput {
+	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures
+		return ret
+	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput)
+}
+
+// The actions to take to add signatures to responses.
+// Each value may be one of `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, and `PROPAGATE_TOKEN_HLS_COOKIELESS`.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput) Actions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Actions
+	}).(pulumi.StringPtrOutput)
+}
+
+// The parameters to copy from the verified token to the generated token.
+// Only the following parameters may be copied:
+//   - `PathGlobs`
+//   - `paths`
+//   - `acl`
+//   - `URLPrefix`
+//   - `IPRanges`
+//   - `SessionID`
+//   - `id`
+//   - `Data`
+//   - `data`
+//   - `payload`
+//   - `Headers`
+//     You may specify up to 6 parameters to copy.  A given parameter is be copied only if the parameter exists in the verified token.  Parameter names are matched exactly as specified.  The order of the parameters does not matter.  Duplicates are not allowed.
+//     This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput) CopiedParameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CopiedParameters
+	}).(pulumi.StringArrayOutput)
+}
+
+// The keyset to use for signature generation.
+// The following are both valid paths to an EdgeCacheKeyset resource:
+//   - `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+//   - `yourKeyset`
+//     This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput) Keyset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Keyset
+	}).(pulumi.StringPtrOutput)
+}
+
+// The query parameter in which to put the generated token.
+// If not specified, defaults to `edge-cache-token`.
+// If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+// This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput) TokenQueryParameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenQueryParameter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The duration the token is valid starting from the moment the token is first generated.
+// Defaults to `86400s` (1 day).
+// The TTL must be >= 0 and <= 604,800 seconds (1 week).
+// This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput) TokenTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenTtl
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3226,6 +3948,190 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyP
 		}
 		return v.IncludedQueryParameters
 	}).(pulumi.StringArrayOutput)
+}
+
+type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions struct {
+	// The allowed signature algorithms to use.
+	// Defaults to using only ED25519.
+	// You may specify up to 3 signature algorithms to use.
+	// Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
+	AllowedSignatureAlgorithms []string `pulumi:"allowedSignatureAlgorithms"`
+	// The query parameter in which to put the generated token.
+	// If not specified, defaults to `edge-cache-token`.
+	// If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+	// This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+	TokenQueryParameter *string `pulumi:"tokenQueryParameter"`
+}
+
+// EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs and EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput values.
+// You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsInput` via:
+//
+//	EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs{...}
+type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsInput interface {
+	pulumi.Input
+
+	ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput
+	ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutputWithContext(context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput
+}
+
+type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs struct {
+	// The allowed signature algorithms to use.
+	// Defaults to using only ED25519.
+	// You may specify up to 3 signature algorithms to use.
+	// Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
+	AllowedSignatureAlgorithms pulumi.StringArrayInput `pulumi:"allowedSignatureAlgorithms"`
+	// The query parameter in which to put the generated token.
+	// If not specified, defaults to `edge-cache-token`.
+	// If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+	// This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+	TokenQueryParameter pulumi.StringPtrInput `pulumi:"tokenQueryParameter"`
+}
+
+func (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions)(nil)).Elem()
+}
+
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput {
+	return i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput)
+}
+
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput {
+	return i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput).ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutputWithContext(ctx)
+}
+
+// EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs, EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtr and EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput values.
+// You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrInput` via:
+//
+//	        EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrInput interface {
+	pulumi.Input
+
+	ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput
+	ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutputWithContext(context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput
+}
+
+type edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrType EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs
+
+func EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtr(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrInput {
+	return (*edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrType)(v)
+}
+
+func (*edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions)(nil)).Elem()
+}
+
+func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrType) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput {
+	return i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrType) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput)
+}
+
+type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions)(nil)).Elem()
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput {
+	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput {
+	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput {
+	return o.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions {
+		return &v
+	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput)
+}
+
+// The allowed signature algorithms to use.
+// Defaults to using only ED25519.
+// You may specify up to 3 signature algorithms to use.
+// Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput) AllowedSignatureAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions) []string {
+		return v.AllowedSignatureAlgorithms
+	}).(pulumi.StringArrayOutput)
+}
+
+// The query parameter in which to put the generated token.
+// If not specified, defaults to `edge-cache-token`.
+// If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+// This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput) TokenQueryParameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions) *string {
+		return v.TokenQueryParameter
+	}).(pulumi.StringPtrOutput)
+}
+
+type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions)(nil)).Elem()
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput {
+	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput {
+	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput) Elem() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput {
+	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions
+		return ret
+	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput)
+}
+
+// The allowed signature algorithms to use.
+// Defaults to using only ED25519.
+// You may specify up to 3 signature algorithms to use.
+// Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput) AllowedSignatureAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedSignatureAlgorithms
+	}).(pulumi.StringArrayOutput)
+}
+
+// The query parameter in which to put the generated token.
+// If not specified, defaults to `edge-cache-token`.
+// If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+// This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput) TokenQueryParameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenQueryParameter
+	}).(pulumi.StringPtrOutput)
 }
 
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy struct {
@@ -3995,6 +4901,10 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput) StripQu
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetPublicKeyInput)(nil)).Elem(), EdgeCacheKeysetPublicKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetPublicKeyArrayInput)(nil)).Elem(), EdgeCacheKeysetPublicKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetValidationSharedKeyInput)(nil)).Elem(), EdgeCacheKeysetValidationSharedKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetValidationSharedKeyArrayInput)(nil)).Elem(), EdgeCacheKeysetValidationSharedKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginAwsV4AuthenticationInput)(nil)).Elem(), EdgeCacheOriginAwsV4AuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginAwsV4AuthenticationPtrInput)(nil)).Elem(), EdgeCacheOriginAwsV4AuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginTimeoutInput)(nil)).Elem(), EdgeCacheOriginTimeoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginTimeoutPtrInput)(nil)).Elem(), EdgeCacheOriginTimeoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceLogConfigInput)(nil)).Elem(), EdgeCacheServiceLogConfigArgs{})
@@ -4027,8 +4937,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs{})
@@ -4037,6 +4951,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetPublicKeyOutput{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetPublicKeyArrayOutput{})
+	pulumi.RegisterOutputType(EdgeCacheKeysetValidationSharedKeyOutput{})
+	pulumi.RegisterOutputType(EdgeCacheKeysetValidationSharedKeyArrayOutput{})
+	pulumi.RegisterOutputType(EdgeCacheOriginAwsV4AuthenticationOutput{})
+	pulumi.RegisterOutputType(EdgeCacheOriginAwsV4AuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheOriginTimeoutOutput{})
 	pulumi.RegisterOutputType(EdgeCacheOriginTimeoutPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceLogConfigOutput{})
@@ -4069,8 +4987,12 @@ func init() {
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput{})
+	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput{})
+	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutput{})
+	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput{})
+	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteOutput{})

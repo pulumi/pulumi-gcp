@@ -17,16 +17,16 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
     public static final WebAppState Empty = new WebAppState();
 
     /**
-     * Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-     * token, as the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+     * the data format is not specified.
      * 
      */
     @Import(name="appId")
     private @Nullable Output<String> appId;
 
     /**
-     * @return Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-     * token, as the data format is not specified.
+     * @return The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+     * the data format is not specified.
      * 
      */
     public Optional<Output<String>> appId() {
@@ -142,8 +142,8 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appId Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-         * token, as the data format is not specified.
+         * @param appId The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+         * the data format is not specified.
          * 
          * @return builder
          * 
@@ -154,8 +154,8 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appId Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-         * token, as the data format is not specified.
+         * @param appId The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+         * the data format is not specified.
          * 
          * @return builder
          * 

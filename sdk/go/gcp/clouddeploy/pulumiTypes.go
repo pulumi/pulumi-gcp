@@ -460,6 +460,8 @@ func (o DeliveryPipelineSerialPipelinePtrOutput) Stages() DeliveryPipelineSerial
 type DeliveryPipelineSerialPipelineStage struct {
 	// Skaffold profiles to use when rendering the manifest for this stage's `Target`.
 	Profiles []string `pulumi:"profiles"`
+	// (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+	Strategy *DeliveryPipelineSerialPipelineStageStrategy `pulumi:"strategy"`
 	// The targetId to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
 	TargetId *string `pulumi:"targetId"`
 }
@@ -478,6 +480,8 @@ type DeliveryPipelineSerialPipelineStageInput interface {
 type DeliveryPipelineSerialPipelineStageArgs struct {
 	// Skaffold profiles to use when rendering the manifest for this stage's `Target`.
 	Profiles pulumi.StringArrayInput `pulumi:"profiles"`
+	// (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+	Strategy DeliveryPipelineSerialPipelineStageStrategyPtrInput `pulumi:"strategy"`
 	// The targetId to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
 	TargetId pulumi.StringPtrInput `pulumi:"targetId"`
 }
@@ -538,6 +542,13 @@ func (o DeliveryPipelineSerialPipelineStageOutput) Profiles() pulumi.StringArray
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStage) []string { return v.Profiles }).(pulumi.StringArrayOutput)
 }
 
+// (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+func (o DeliveryPipelineSerialPipelineStageOutput) Strategy() DeliveryPipelineSerialPipelineStageStrategyPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStage) *DeliveryPipelineSerialPipelineStageStrategy {
+		return v.Strategy
+	}).(DeliveryPipelineSerialPipelineStageStrategyPtrOutput)
+}
+
 // The targetId to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
 func (o DeliveryPipelineSerialPipelineStageOutput) TargetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStage) *string { return v.TargetId }).(pulumi.StringPtrOutput)
@@ -561,6 +572,282 @@ func (o DeliveryPipelineSerialPipelineStageArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeliveryPipelineSerialPipelineStage {
 		return vs[0].([]DeliveryPipelineSerialPipelineStage)[vs[1].(int)]
 	}).(DeliveryPipelineSerialPipelineStageOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategy struct {
+	// Standard deployment strategy executes a single deploy and allows verifying the deployment.
+	Standard *DeliveryPipelineSerialPipelineStageStrategyStandard `pulumi:"standard"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyArgs and DeliveryPipelineSerialPipelineStageStrategyOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyOutput() DeliveryPipelineSerialPipelineStageStrategyOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyArgs struct {
+	// Standard deployment strategy executes a single deploy and allows verifying the deployment.
+	Standard DeliveryPipelineSerialPipelineStageStrategyStandardPtrInput `pulumi:"standard"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategy)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyArgs) ToDeliveryPipelineSerialPipelineStageStrategyOutput() DeliveryPipelineSerialPipelineStageStrategyOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyArgs) ToDeliveryPipelineSerialPipelineStageStrategyOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyArgs) ToDeliveryPipelineSerialPipelineStageStrategyPtrOutput() DeliveryPipelineSerialPipelineStageStrategyPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyArgs) ToDeliveryPipelineSerialPipelineStageStrategyPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyOutput).ToDeliveryPipelineSerialPipelineStageStrategyPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyArgs, DeliveryPipelineSerialPipelineStageStrategyPtr and DeliveryPipelineSerialPipelineStageStrategyPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyPtrOutput() DeliveryPipelineSerialPipelineStageStrategyPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyPtrType DeliveryPipelineSerialPipelineStageStrategyArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyPtr(v *DeliveryPipelineSerialPipelineStageStrategyArgs) DeliveryPipelineSerialPipelineStageStrategyPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategy)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyPtrType) ToDeliveryPipelineSerialPipelineStageStrategyPtrOutput() DeliveryPipelineSerialPipelineStageStrategyPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyPtrType) ToDeliveryPipelineSerialPipelineStageStrategyPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategy)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyOutput) ToDeliveryPipelineSerialPipelineStageStrategyOutput() DeliveryPipelineSerialPipelineStageStrategyOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyOutput) ToDeliveryPipelineSerialPipelineStageStrategyOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyOutput) ToDeliveryPipelineSerialPipelineStageStrategyPtrOutput() DeliveryPipelineSerialPipelineStageStrategyPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyOutput) ToDeliveryPipelineSerialPipelineStageStrategyPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategy) *DeliveryPipelineSerialPipelineStageStrategy {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyPtrOutput)
+}
+
+// Standard deployment strategy executes a single deploy and allows verifying the deployment.
+func (o DeliveryPipelineSerialPipelineStageStrategyOutput) Standard() DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategy) *DeliveryPipelineSerialPipelineStageStrategyStandard {
+		return v.Standard
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategy)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyPtrOutput() DeliveryPipelineSerialPipelineStageStrategyPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategy) DeliveryPipelineSerialPipelineStageStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategy
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyOutput)
+}
+
+// Standard deployment strategy executes a single deploy and allows verifying the deployment.
+func (o DeliveryPipelineSerialPipelineStageStrategyPtrOutput) Standard() DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategy) *DeliveryPipelineSerialPipelineStageStrategyStandard {
+		if v == nil {
+			return nil
+		}
+		return v.Standard
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandard struct {
+	// Whether to verify a deployment.
+	Verify *bool `pulumi:"verify"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardArgs and DeliveryPipelineSerialPipelineStageStrategyStandardOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyStandardInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardOutput() DeliveryPipelineSerialPipelineStageStrategyStandardOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardArgs struct {
+	// Whether to verify a deployment.
+	Verify pulumi.BoolPtrInput `pulumi:"verify"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandard)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardOutput() DeliveryPipelineSerialPipelineStageStrategyStandardOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardOutput).ToDeliveryPipelineSerialPipelineStageStrategyStandardPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardArgs, DeliveryPipelineSerialPipelineStageStrategyStandardPtr and DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyStandardArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyStandardPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyStandardPtrType DeliveryPipelineSerialPipelineStageStrategyStandardArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyStandardPtr(v *DeliveryPipelineSerialPipelineStageStrategyStandardArgs) DeliveryPipelineSerialPipelineStageStrategyStandardPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyStandardPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyStandardPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandard)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandard)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardOutput() DeliveryPipelineSerialPipelineStageStrategyStandardOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyStandardPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyStandard) *DeliveryPipelineSerialPipelineStageStrategyStandard {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput)
+}
+
+// Whether to verify a deployment.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) Verify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandard) *bool { return v.Verify }).(pulumi.BoolPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandard)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyStandardOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandard) DeliveryPipelineSerialPipelineStageStrategyStandard {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyStandard
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardOutput)
+}
+
+// Whether to verify a deployment.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) Verify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandard) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Verify
+	}).(pulumi.BoolPtrOutput)
 }
 
 type TargetAnthosCluster struct {
@@ -703,6 +990,8 @@ func (o TargetAnthosClusterPtrOutput) Membership() pulumi.StringPtrOutput {
 type TargetExecutionConfig struct {
 	// Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
 	ArtifactStorage *string `pulumi:"artifactStorage"`
+	// Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+	ExecutionTimeout *string `pulumi:"executionTimeout"`
 	// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Required. Usages when this configuration should be applied.
@@ -725,6 +1014,8 @@ type TargetExecutionConfigInput interface {
 type TargetExecutionConfigArgs struct {
 	// Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
 	ArtifactStorage pulumi.StringPtrInput `pulumi:"artifactStorage"`
+	// Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+	ExecutionTimeout pulumi.StringPtrInput `pulumi:"executionTimeout"`
 	// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Required. Usages when this configuration should be applied.
@@ -787,6 +1078,11 @@ func (o TargetExecutionConfigOutput) ToTargetExecutionConfigOutputWithContext(ct
 // Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
 func (o TargetExecutionConfigOutput) ArtifactStorage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TargetExecutionConfig) *string { return v.ArtifactStorage }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+func (o TargetExecutionConfigOutput) ExecutionTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetExecutionConfig) *string { return v.ExecutionTimeout }).(pulumi.StringPtrOutput)
 }
 
 // Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
@@ -980,6 +1276,143 @@ func (o TargetGkePtrOutput) InternalIp() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type TargetRun struct {
+	// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+	Location string `pulumi:"location"`
+}
+
+// TargetRunInput is an input type that accepts TargetRunArgs and TargetRunOutput values.
+// You can construct a concrete instance of `TargetRunInput` via:
+//
+//	TargetRunArgs{...}
+type TargetRunInput interface {
+	pulumi.Input
+
+	ToTargetRunOutput() TargetRunOutput
+	ToTargetRunOutputWithContext(context.Context) TargetRunOutput
+}
+
+type TargetRunArgs struct {
+	// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+	Location pulumi.StringInput `pulumi:"location"`
+}
+
+func (TargetRunArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetRun)(nil)).Elem()
+}
+
+func (i TargetRunArgs) ToTargetRunOutput() TargetRunOutput {
+	return i.ToTargetRunOutputWithContext(context.Background())
+}
+
+func (i TargetRunArgs) ToTargetRunOutputWithContext(ctx context.Context) TargetRunOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetRunOutput)
+}
+
+func (i TargetRunArgs) ToTargetRunPtrOutput() TargetRunPtrOutput {
+	return i.ToTargetRunPtrOutputWithContext(context.Background())
+}
+
+func (i TargetRunArgs) ToTargetRunPtrOutputWithContext(ctx context.Context) TargetRunPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetRunOutput).ToTargetRunPtrOutputWithContext(ctx)
+}
+
+// TargetRunPtrInput is an input type that accepts TargetRunArgs, TargetRunPtr and TargetRunPtrOutput values.
+// You can construct a concrete instance of `TargetRunPtrInput` via:
+//
+//	        TargetRunArgs{...}
+//
+//	or:
+//
+//	        nil
+type TargetRunPtrInput interface {
+	pulumi.Input
+
+	ToTargetRunPtrOutput() TargetRunPtrOutput
+	ToTargetRunPtrOutputWithContext(context.Context) TargetRunPtrOutput
+}
+
+type targetRunPtrType TargetRunArgs
+
+func TargetRunPtr(v *TargetRunArgs) TargetRunPtrInput {
+	return (*targetRunPtrType)(v)
+}
+
+func (*targetRunPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetRun)(nil)).Elem()
+}
+
+func (i *targetRunPtrType) ToTargetRunPtrOutput() TargetRunPtrOutput {
+	return i.ToTargetRunPtrOutputWithContext(context.Background())
+}
+
+func (i *targetRunPtrType) ToTargetRunPtrOutputWithContext(ctx context.Context) TargetRunPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetRunPtrOutput)
+}
+
+type TargetRunOutput struct{ *pulumi.OutputState }
+
+func (TargetRunOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetRun)(nil)).Elem()
+}
+
+func (o TargetRunOutput) ToTargetRunOutput() TargetRunOutput {
+	return o
+}
+
+func (o TargetRunOutput) ToTargetRunOutputWithContext(ctx context.Context) TargetRunOutput {
+	return o
+}
+
+func (o TargetRunOutput) ToTargetRunPtrOutput() TargetRunPtrOutput {
+	return o.ToTargetRunPtrOutputWithContext(context.Background())
+}
+
+func (o TargetRunOutput) ToTargetRunPtrOutputWithContext(ctx context.Context) TargetRunPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetRun) *TargetRun {
+		return &v
+	}).(TargetRunPtrOutput)
+}
+
+// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+func (o TargetRunOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetRun) string { return v.Location }).(pulumi.StringOutput)
+}
+
+type TargetRunPtrOutput struct{ *pulumi.OutputState }
+
+func (TargetRunPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetRun)(nil)).Elem()
+}
+
+func (o TargetRunPtrOutput) ToTargetRunPtrOutput() TargetRunPtrOutput {
+	return o
+}
+
+func (o TargetRunPtrOutput) ToTargetRunPtrOutputWithContext(ctx context.Context) TargetRunPtrOutput {
+	return o
+}
+
+func (o TargetRunPtrOutput) Elem() TargetRunOutput {
+	return o.ApplyT(func(v *TargetRun) TargetRun {
+		if v != nil {
+			return *v
+		}
+		var ret TargetRun
+		return ret
+	}).(TargetRunOutput)
+}
+
+// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+func (o TargetRunPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetRun) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineConditionInput)(nil)).Elem(), DeliveryPipelineConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineConditionArrayInput)(nil)).Elem(), DeliveryPipelineConditionArray{})
@@ -991,12 +1424,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelinePtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageArrayInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetAnthosClusterInput)(nil)).Elem(), TargetAnthosClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetAnthosClusterPtrInput)(nil)).Elem(), TargetAnthosClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetExecutionConfigInput)(nil)).Elem(), TargetExecutionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetExecutionConfigArrayInput)(nil)).Elem(), TargetExecutionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetGkeInput)(nil)).Elem(), TargetGkeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetGkePtrInput)(nil)).Elem(), TargetGkeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetRunInput)(nil)).Elem(), TargetRunArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetRunPtrInput)(nil)).Elem(), TargetRunArgs{})
 	pulumi.RegisterOutputType(DeliveryPipelineConditionOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineConditionArrayOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineConditionPipelineReadyConditionOutput{})
@@ -1007,10 +1446,16 @@ func init() {
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelinePtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageArrayOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput{})
 	pulumi.RegisterOutputType(TargetAnthosClusterOutput{})
 	pulumi.RegisterOutputType(TargetAnthosClusterPtrOutput{})
 	pulumi.RegisterOutputType(TargetExecutionConfigOutput{})
 	pulumi.RegisterOutputType(TargetExecutionConfigArrayOutput{})
 	pulumi.RegisterOutputType(TargetGkeOutput{})
 	pulumi.RegisterOutputType(TargetGkePtrOutput{})
+	pulumi.RegisterOutputType(TargetRunOutput{})
+	pulumi.RegisterOutputType(TargetRunPtrOutput{})
 }

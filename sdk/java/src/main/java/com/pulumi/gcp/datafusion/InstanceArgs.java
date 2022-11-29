@@ -67,6 +67,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Option to enable granular role-based access control.
+     * 
+     */
+    @Import(name="enableRbac")
+    private @Nullable Output<Boolean> enableRbac;
+
+    /**
+     * @return Option to enable granular role-based access control.
+     * 
+     */
+    public Optional<Output<Boolean>> enableRbac() {
+        return Optional.ofNullable(this.enableRbac);
+    }
+
+    /**
      * Option to enable Stackdriver Logging.
      * 
      */
@@ -267,6 +282,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.cryptoKeyConfig = $.cryptoKeyConfig;
         this.dataprocServiceAccount = $.dataprocServiceAccount;
         this.description = $.description;
+        this.enableRbac = $.enableRbac;
         this.enableStackdriverLogging = $.enableStackdriverLogging;
         this.enableStackdriverMonitoring = $.enableStackdriverMonitoring;
         this.labels = $.labels;
@@ -361,6 +377,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param enableRbac Option to enable granular role-based access control.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableRbac(@Nullable Output<Boolean> enableRbac) {
+            $.enableRbac = enableRbac;
+            return this;
+        }
+
+        /**
+         * @param enableRbac Option to enable granular role-based access control.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableRbac(Boolean enableRbac) {
+            return enableRbac(Output.of(enableRbac));
         }
 
         /**

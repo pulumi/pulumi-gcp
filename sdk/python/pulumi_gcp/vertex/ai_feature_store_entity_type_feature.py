@@ -309,6 +309,12 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                     disabled=False,
                     monitoring_interval="86400s",
                 ),
+                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
+                    value=0.3,
+                ),
+                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
+                    value=0.3,
+                ),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         feature = gcp.vertex.AiFeatureStoreEntityTypeFeature("feature",
@@ -402,6 +408,12 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 snapshot_analysis=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs(
                     disabled=False,
                     monitoring_interval="86400s",
+                ),
+                categorical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs(
+                    value=0.3,
+                ),
+                numerical_threshold_config=gcp.vertex.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs(
+                    value=0.3,
                 ),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))

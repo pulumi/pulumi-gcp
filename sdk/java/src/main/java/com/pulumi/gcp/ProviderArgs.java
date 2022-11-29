@@ -103,6 +103,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.batching);
     }
 
+    @Import(name="beyondcorpCustomEndpoint")
+    private @Nullable Output<String> beyondcorpCustomEndpoint;
+
+    public Optional<Output<String>> beyondcorpCustomEndpoint() {
+        return Optional.ofNullable(this.beyondcorpCustomEndpoint);
+    }
+
     @Import(name="bigQueryCustomEndpoint")
     private @Nullable Output<String> bigQueryCustomEndpoint;
 
@@ -465,6 +472,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> firebaseCustomEndpoint() {
         return Optional.ofNullable(this.firebaseCustomEndpoint);
+    }
+
+    @Import(name="firebaseHostingCustomEndpoint")
+    private @Nullable Output<String> firebaseHostingCustomEndpoint;
+
+    public Optional<Output<String>> firebaseHostingCustomEndpoint() {
+        return Optional.ofNullable(this.firebaseHostingCustomEndpoint);
     }
 
     @Import(name="firebaserulesCustomEndpoint")
@@ -909,6 +923,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.artifactRegistryCustomEndpoint = $.artifactRegistryCustomEndpoint;
         this.assuredWorkloadsCustomEndpoint = $.assuredWorkloadsCustomEndpoint;
         this.batching = $.batching;
+        this.beyondcorpCustomEndpoint = $.beyondcorpCustomEndpoint;
         this.bigQueryCustomEndpoint = $.bigQueryCustomEndpoint;
         this.bigqueryAnalyticsHubCustomEndpoint = $.bigqueryAnalyticsHubCustomEndpoint;
         this.bigqueryConnectionCustomEndpoint = $.bigqueryConnectionCustomEndpoint;
@@ -961,6 +976,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.eventarcCustomEndpoint = $.eventarcCustomEndpoint;
         this.filestoreCustomEndpoint = $.filestoreCustomEndpoint;
         this.firebaseCustomEndpoint = $.firebaseCustomEndpoint;
+        this.firebaseHostingCustomEndpoint = $.firebaseHostingCustomEndpoint;
         this.firebaserulesCustomEndpoint = $.firebaserulesCustomEndpoint;
         this.firestoreCustomEndpoint = $.firestoreCustomEndpoint;
         this.gameServicesCustomEndpoint = $.gameServicesCustomEndpoint;
@@ -1148,6 +1164,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder batching(ProviderBatchingArgs batching) {
             return batching(Output.of(batching));
+        }
+
+        public Builder beyondcorpCustomEndpoint(@Nullable Output<String> beyondcorpCustomEndpoint) {
+            $.beyondcorpCustomEndpoint = beyondcorpCustomEndpoint;
+            return this;
+        }
+
+        public Builder beyondcorpCustomEndpoint(String beyondcorpCustomEndpoint) {
+            return beyondcorpCustomEndpoint(Output.of(beyondcorpCustomEndpoint));
         }
 
         public Builder bigQueryCustomEndpoint(@Nullable Output<String> bigQueryCustomEndpoint) {
@@ -1616,6 +1641,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder firebaseCustomEndpoint(String firebaseCustomEndpoint) {
             return firebaseCustomEndpoint(Output.of(firebaseCustomEndpoint));
+        }
+
+        public Builder firebaseHostingCustomEndpoint(@Nullable Output<String> firebaseHostingCustomEndpoint) {
+            $.firebaseHostingCustomEndpoint = firebaseHostingCustomEndpoint;
+            return this;
+        }
+
+        public Builder firebaseHostingCustomEndpoint(String firebaseHostingCustomEndpoint) {
+            return firebaseHostingCustomEndpoint(Output.of(firebaseHostingCustomEndpoint));
         }
 
         public Builder firebaserulesCustomEndpoint(@Nullable Output<String> firebaserulesCustomEndpoint) {

@@ -127,6 +127,28 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
+    /// ### Data Fusion Instance Enterprise
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var enterpriseInstance = new Gcp.DataFusion.Instance("enterpriseInstance", new()
+    ///     {
+    ///         EnableRbac = true,
+    ///         Options = 
+    ///         {
+    ///             { "prober_test_run", "true" },
+    ///         },
+    ///         Region = "us-central1",
+    ///         Type = "ENTERPRISE",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -175,6 +197,12 @@ namespace Pulumi.Gcp.DataFusion
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Option to enable granular role-based access control.
+        /// </summary>
+        [Output("enableRbac")]
+        public Output<bool?> EnableRbac { get; private set; } = null!;
 
         /// <summary>
         /// Option to enable Stackdriver Logging.
@@ -367,6 +395,12 @@ namespace Pulumi.Gcp.DataFusion
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Option to enable granular role-based access control.
+        /// </summary>
+        [Input("enableRbac")]
+        public Input<bool>? EnableRbac { get; set; }
+
+        /// <summary>
         /// Option to enable Stackdriver Logging.
         /// </summary>
         [Input("enableStackdriverLogging")]
@@ -491,6 +525,12 @@ namespace Pulumi.Gcp.DataFusion
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Option to enable granular role-based access control.
+        /// </summary>
+        [Input("enableRbac")]
+        public Input<bool>? EnableRbac { get; set; }
 
         /// <summary>
         /// Option to enable Stackdriver Logging.

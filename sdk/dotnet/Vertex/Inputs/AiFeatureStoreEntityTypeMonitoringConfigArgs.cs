@@ -13,7 +13,28 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiFeatureStoreEntityTypeMonitoringConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration of how features in Featurestore are monitored.
+        /// Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
+        /// Structure is documented below.
+        /// </summary>
+        [Input("categoricalThresholdConfig")]
+        public Input<Inputs.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs>? CategoricalThresholdConfig { get; set; }
+
+        /// <summary>
+        /// The config for ImportFeatures Analysis Based Feature Monitoring.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("importFeaturesAnalysis")]
+        public Input<Inputs.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs>? ImportFeaturesAnalysis { get; set; }
+
+        /// <summary>
+        /// Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
+        /// Structure is documented below.
+        /// </summary>
+        [Input("numericalThresholdConfig")]
+        public Input<Inputs.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs>? NumericalThresholdConfig { get; set; }
+
+        /// <summary>
+        /// The config for Snapshot Analysis Based Feature Monitoring.
         /// Structure is documented below.
         /// </summary>
         [Input("snapshotAnalysis")]

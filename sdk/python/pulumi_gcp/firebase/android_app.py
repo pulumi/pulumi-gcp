@@ -101,8 +101,8 @@ class _AndroidAppState:
                  project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AndroidApp resources.
-        :param pulumi.Input[str] app_id: Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-               token, as the data format is not specified.
+        :param pulumi.Input[str] app_id: The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+               the data format is not specified.
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
                'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
                AndroidApp. Default to 'DELETE'.
@@ -130,8 +130,8 @@ class _AndroidAppState:
     @pulumi.getter(name="appId")
     def app_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-        token, as the data format is not specified.
+        The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+        the data format is not specified.
         """
         return pulumi.get(self, "app_id")
 
@@ -360,8 +360,8 @@ class AndroidApp(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] app_id: Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-               token, as the data format is not specified.
+        :param pulumi.Input[str] app_id: The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+               the data format is not specified.
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
                'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
                AndroidApp. Default to 'DELETE'.
@@ -388,8 +388,8 @@ class AndroidApp(pulumi.CustomResource):
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[str]:
         """
-        Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-        token, as the data format is not specified.
+        The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+        the data format is not specified.
         """
         return pulumi.get(self, "app_id")
 

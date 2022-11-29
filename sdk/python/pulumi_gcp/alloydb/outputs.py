@@ -19,6 +19,8 @@ __all__ = [
     'ClusterBackupSource',
     'ClusterInitialUser',
     'ClusterMigrationSource',
+    'InstanceMachineConfig',
+    'InstanceReadPoolConfig',
 ]
 
 @pulumi.output_type
@@ -419,5 +421,77 @@ class ClusterMigrationSource(dict):
     @pulumi.getter(name="sourceType")
     def source_type(self) -> Optional[str]:
         return pulumi.get(self, "source_type")
+
+
+@pulumi.output_type
+class InstanceMachineConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuCount":
+            suggest = "cpu_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceMachineConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceMachineConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceMachineConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpu_count: Optional[int] = None):
+        """
+        :param int cpu_count: The number of CPU's in the VM instance.
+        """
+        if cpu_count is not None:
+            pulumi.set(__self__, "cpu_count", cpu_count)
+
+    @property
+    @pulumi.getter(name="cpuCount")
+    def cpu_count(self) -> Optional[int]:
+        """
+        The number of CPU's in the VM instance.
+        """
+        return pulumi.get(self, "cpu_count")
+
+
+@pulumi.output_type
+class InstanceReadPoolConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeCount":
+            suggest = "node_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceReadPoolConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceReadPoolConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceReadPoolConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_count: Optional[int] = None):
+        """
+        :param int node_count: Read capacity, i.e. number of nodes in a read pool instance.
+        """
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[int]:
+        """
+        Read capacity, i.e. number of nodes in a read pool instance.
+        """
+        return pulumi.get(self, "node_count")
 
 

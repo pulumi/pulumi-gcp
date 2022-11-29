@@ -317,6 +317,161 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Network Services Edge Cache Service Dual Token
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.networkservices.EdgeCacheKeyset;
+ * import com.pulumi.gcp.networkservices.EdgeCacheKeysetArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheKeysetPublicKeyArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheKeysetValidationSharedKeyArgs;
+ * import com.pulumi.gcp.networkservices.EdgeCacheOrigin;
+ * import com.pulumi.gcp.networkservices.EdgeCacheOriginArgs;
+ * import com.pulumi.gcp.networkservices.EdgeCacheService;
+ * import com.pulumi.gcp.networkservices.EdgeCacheServiceArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var secret_basic = new Secret(&#34;secret-basic&#34;, SecretArgs.builder()        
+ *             .secretId(&#34;secret-name&#34;)
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .automatic(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var secret_version_basic = new SecretVersion(&#34;secret-version-basic&#34;, SecretVersionArgs.builder()        
+ *             .secret(secret_basic.id())
+ *             .secretData(&#34;secret-data&#34;)
+ *             .build());
+ * 
+ *         var keyset = new EdgeCacheKeyset(&#34;keyset&#34;, EdgeCacheKeysetArgs.builder()        
+ *             .description(&#34;The default keyset&#34;)
+ *             .publicKeys(EdgeCacheKeysetPublicKeyArgs.builder()
+ *                 .id(&#34;my-public-key&#34;)
+ *                 .managed(true)
+ *                 .build())
+ *             .validationSharedKeys(EdgeCacheKeysetValidationSharedKeyArgs.builder()
+ *                 .secretVersion(secret_version_basic.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         var instanceEdgeCacheOrigin = new EdgeCacheOrigin(&#34;instanceEdgeCacheOrigin&#34;, EdgeCacheOriginArgs.builder()        
+ *             .originAddress(&#34;gs://media-edge-default&#34;)
+ *             .description(&#34;The default bucket for media edge test&#34;)
+ *             .build());
+ * 
+ *         var instanceEdgeCacheService = new EdgeCacheService(&#34;instanceEdgeCacheService&#34;, EdgeCacheServiceArgs.builder()        
+ *             .description(&#34;some description&#34;)
+ *             .routing(EdgeCacheServiceRoutingArgs.builder()
+ *                 .hostRules(EdgeCacheServiceRoutingHostRuleArgs.builder()
+ *                     .description(&#34;host rule description&#34;)
+ *                     .hosts(&#34;sslcert.tf-test.club&#34;)
+ *                     .pathMatcher(&#34;routes&#34;)
+ *                     .build())
+ *                 .pathMatchers(EdgeCacheServiceRoutingPathMatcherArgs.builder()
+ *                     .name(&#34;routes&#34;)
+ *                     .routeRules(                    
+ *                         EdgeCacheServiceRoutingPathMatcherRouteRuleArgs.builder()
+ *                             .description(&#34;a route rule to match against master playlist&#34;)
+ *                             .priority(1)
+ *                             .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
+ *                                 .pathTemplateMatch(&#34;/master.m3u8&#34;)
+ *                                 .build())
+ *                             .origin(instanceEdgeCacheOrigin.name())
+ *                             .routeAction(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs.builder()
+ *                                 .cdnPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs.builder()
+ *                                     .signedRequestMode(&#34;REQUIRE_TOKENS&#34;)
+ *                                     .signedRequestKeyset(keyset.id())
+ *                                     .signedTokenOptions(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs.builder()
+ *                                         .tokenQueryParameter(&#34;edge-cache-token&#34;)
+ *                                         .build())
+ *                                     .signedRequestMaximumExpirationTtl(&#34;600s&#34;)
+ *                                     .addSignatures(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs.builder()
+ *                                         .actions(&#34;GENERATE_COOKIE&#34;)
+ *                                         .keyset(keyset.id())
+ *                                         .copiedParameters(                                        
+ *                                             &#34;PathGlobs&#34;,
+ *                                             &#34;SessionID&#34;)
+ *                                         .build())
+ *                                     .build())
+ *                                 .build())
+ *                             .build(),
+ *                         EdgeCacheServiceRoutingPathMatcherRouteRuleArgs.builder()
+ *                             .description(&#34;a route rule to match against all playlists&#34;)
+ *                             .priority(2)
+ *                             .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
+ *                                 .pathTemplateMatch(&#34;/*.m3u8&#34;)
+ *                                 .build())
+ *                             .origin(instanceEdgeCacheOrigin.name())
+ *                             .routeAction(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs.builder()
+ *                                 .cdnPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs.builder()
+ *                                     .signedRequestMode(&#34;REQUIRE_TOKENS&#34;)
+ *                                     .signedRequestKeyset(keyset.id())
+ *                                     .signedTokenOptions(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs.builder()
+ *                                         .tokenQueryParameter(&#34;hdnts&#34;)
+ *                                         .allowedSignatureAlgorithms(                                        
+ *                                             &#34;ED25519&#34;,
+ *                                             &#34;HMAC_SHA_256&#34;,
+ *                                             &#34;HMAC_SHA1&#34;)
+ *                                         .build())
+ *                                     .addSignatures(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs.builder()
+ *                                         .actions(&#34;GENERATE_TOKEN_HLS_COOKIELESS&#34;)
+ *                                         .keyset(keyset.id())
+ *                                         .tokenTtl(&#34;1200s&#34;)
+ *                                         .tokenQueryParameter(&#34;hdntl&#34;)
+ *                                         .copiedParameters(&#34;URLPrefix&#34;)
+ *                                         .build())
+ *                                     .build())
+ *                                 .build())
+ *                             .build(),
+ *                         EdgeCacheServiceRoutingPathMatcherRouteRuleArgs.builder()
+ *                             .description(&#34;a route rule to match against&#34;)
+ *                             .priority(3)
+ *                             .matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs.builder()
+ *                                 .pathTemplateMatch(&#34;/**.m3u8&#34;)
+ *                                 .build())
+ *                             .origin(instanceEdgeCacheOrigin.name())
+ *                             .routeAction(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs.builder()
+ *                                 .cdnPolicy(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs.builder()
+ *                                     .signedRequestMode(&#34;REQUIRE_TOKENS&#34;)
+ *                                     .signedRequestKeyset(keyset.id())
+ *                                     .signedTokenOptions(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs.builder()
+ *                                         .tokenQueryParameter(&#34;hdntl&#34;)
+ *                                         .build())
+ *                                     .addSignatures(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs.builder()
+ *                                         .actions(&#34;PROPAGATE_TOKEN_HLS_COOKIELESS&#34;)
+ *                                         .tokenQueryParameter(&#34;hdntl&#34;)
+ *                                         .build())
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

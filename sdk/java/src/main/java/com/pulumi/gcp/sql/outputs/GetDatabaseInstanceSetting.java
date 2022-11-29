@@ -27,6 +27,7 @@ public final class GetDatabaseInstanceSetting {
     private String availabilityType;
     private List<GetDatabaseInstanceSettingBackupConfiguration> backupConfigurations;
     private String collation;
+    private String connectorEnforcement;
     private List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags;
     private Boolean diskAutoresize;
     private Integer diskAutoresizeLimit;
@@ -59,6 +60,9 @@ public final class GetDatabaseInstanceSetting {
     }
     public String collation() {
         return this.collation;
+    }
+    public String connectorEnforcement() {
+        return this.connectorEnforcement;
     }
     public List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags() {
         return this.databaseFlags;
@@ -123,6 +127,7 @@ public final class GetDatabaseInstanceSetting {
         private String availabilityType;
         private List<GetDatabaseInstanceSettingBackupConfiguration> backupConfigurations;
         private String collation;
+        private String connectorEnforcement;
         private List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags;
         private Boolean diskAutoresize;
         private Integer diskAutoresizeLimit;
@@ -147,6 +152,7 @@ public final class GetDatabaseInstanceSetting {
     	      this.availabilityType = defaults.availabilityType;
     	      this.backupConfigurations = defaults.backupConfigurations;
     	      this.collation = defaults.collation;
+    	      this.connectorEnforcement = defaults.connectorEnforcement;
     	      this.databaseFlags = defaults.databaseFlags;
     	      this.diskAutoresize = defaults.diskAutoresize;
     	      this.diskAutoresizeLimit = defaults.diskAutoresizeLimit;
@@ -194,6 +200,11 @@ public final class GetDatabaseInstanceSetting {
         @CustomType.Setter
         public Builder collation(String collation) {
             this.collation = Objects.requireNonNull(collation);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder connectorEnforcement(String connectorEnforcement) {
+            this.connectorEnforcement = Objects.requireNonNull(connectorEnforcement);
             return this;
         }
         @CustomType.Setter
@@ -304,6 +315,7 @@ public final class GetDatabaseInstanceSetting {
             o.availabilityType = availabilityType;
             o.backupConfigurations = backupConfigurations;
             o.collation = collation;
+            o.connectorEnforcement = connectorEnforcement;
             o.databaseFlags = databaseFlags;
             o.diskAutoresize = diskAutoresize;
             o.diskAutoresizeLimit = diskAutoresizeLimit;

@@ -189,6 +189,93 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Dataset Authorized Routine
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			publicDataset, err := bigquery.NewDataset(ctx, "publicDataset", &bigquery.DatasetArgs{
+//				DatasetId:   pulumi.String("public_dataset"),
+//				Description: pulumi.String("This dataset is public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"typeKind": "INT64",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"columns": []map[string]interface{}{
+//					map[string]interface{}{
+//						"name": "value",
+//						"type": map[string]interface{}{
+//							"typeKind": "INT64",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			publicRoutine, err := bigquery.NewRoutine(ctx, "publicRoutine", &bigquery.RoutineArgs{
+//				DatasetId:      publicDataset.DatasetId,
+//				RoutineId:      pulumi.String("public_routine"),
+//				RoutineType:    pulumi.String("TABLE_VALUED_FUNCTION"),
+//				Language:       pulumi.String("SQL"),
+//				DefinitionBody: pulumi.String("SELECT 1 + value AS value\n"),
+//				Arguments: bigquery.RoutineArgumentArray{
+//					&bigquery.RoutineArgumentArgs{
+//						Name:         pulumi.String("value"),
+//						ArgumentKind: pulumi.String("FIXED_TYPE"),
+//						DataType:     pulumi.String(json0),
+//					},
+//				},
+//				ReturnTableType: pulumi.String(json1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDataset(ctx, "private", &bigquery.DatasetArgs{
+//				DatasetId:   pulumi.String("private_dataset"),
+//				Description: pulumi.String("This dataset is private"),
+//				Accesses: bigquery.DatasetAccessTypeArray{
+//					&bigquery.DatasetAccessTypeArgs{
+//						Role:        pulumi.String("OWNER"),
+//						UserByEmail: pulumi.String("emailAddress:my@service-account.com"),
+//					},
+//					&bigquery.DatasetAccessTypeArgs{
+//						Routine: &bigquery.DatasetAccessRoutineArgs{
+//							ProjectId: publicRoutine.Project,
+//							DatasetId: publicRoutine.DatasetId,
+//							RoutineId: publicRoutine.RoutineId,
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

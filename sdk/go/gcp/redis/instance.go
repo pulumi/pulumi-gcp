@@ -382,7 +382,7 @@ type Instance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Output only. Info per node.
 	Nodes InstanceNodeArrayOutput `pulumi:"nodes"`
-	// Maintenance policy for an instance.
+	// Persistence configuration for an instance.
 	// Structure is documented below.
 	PersistenceConfig InstancePersistenceConfigOutput `pulumi:"persistenceConfig"`
 	// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
@@ -541,7 +541,7 @@ type instanceState struct {
 	Name *string `pulumi:"name"`
 	// Output only. Info per node.
 	Nodes []InstanceNode `pulumi:"nodes"`
-	// Maintenance policy for an instance.
+	// Persistence configuration for an instance.
 	// Structure is documented below.
 	PersistenceConfig *InstancePersistenceConfig `pulumi:"persistenceConfig"`
 	// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
@@ -665,7 +665,7 @@ type InstanceState struct {
 	Name pulumi.StringPtrInput
 	// Output only. Info per node.
 	Nodes InstanceNodeArrayInput
-	// Maintenance policy for an instance.
+	// Persistence configuration for an instance.
 	// Structure is documented below.
 	PersistenceConfig InstancePersistenceConfigPtrInput
 	// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
@@ -778,7 +778,7 @@ type instanceArgs struct {
 	MemorySizeGb int `pulumi:"memorySizeGb"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name *string `pulumi:"name"`
-	// Maintenance policy for an instance.
+	// Persistence configuration for an instance.
 	// Structure is documented below.
 	PersistenceConfig *InstancePersistenceConfig `pulumi:"persistenceConfig"`
 	// The ID of the project in which the resource belongs.
@@ -873,7 +873,7 @@ type InstanceArgs struct {
 	MemorySizeGb pulumi.IntInput
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringPtrInput
-	// Maintenance policy for an instance.
+	// Persistence configuration for an instance.
 	// Structure is documented below.
 	PersistenceConfig InstancePersistenceConfigPtrInput
 	// The ID of the project in which the resource belongs.
@@ -1119,7 +1119,7 @@ func (o InstanceOutput) Nodes() InstanceNodeArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceNodeArrayOutput { return v.Nodes }).(InstanceNodeArrayOutput)
 }
 
-// Maintenance policy for an instance.
+// Persistence configuration for an instance.
 // Structure is documented below.
 func (o InstanceOutput) PersistenceConfig() InstancePersistenceConfigOutput {
 	return o.ApplyT(func(v *Instance) InstancePersistenceConfigOutput { return v.PersistenceConfig }).(InstancePersistenceConfigOutput)

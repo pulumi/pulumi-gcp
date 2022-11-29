@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigquery.DatasetAccessArgs;
 import com.pulumi.gcp.bigquery.inputs.DatasetAccessState;
 import com.pulumi.gcp.bigquery.outputs.DatasetAccessAuthorizedDataset;
+import com.pulumi.gcp.bigquery.outputs.DatasetAccessRoutine;
 import com.pulumi.gcp.bigquery.outputs.DatasetAccessView;
 import java.lang.Boolean;
 import java.lang.String;
@@ -168,6 +169,84 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Bigquery Dataset Access Authorized Routine
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Routine;
+ * import com.pulumi.gcp.bigquery.RoutineArgs;
+ * import com.pulumi.gcp.bigquery.inputs.RoutineArgumentArgs;
+ * import com.pulumi.gcp.bigquery.DatasetAccess;
+ * import com.pulumi.gcp.bigquery.DatasetAccessArgs;
+ * import com.pulumi.gcp.bigquery.inputs.DatasetAccessRoutineArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var publicDataset = new Dataset(&#34;publicDataset&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;public_dataset&#34;)
+ *             .description(&#34;This dataset is public&#34;)
+ *             .build());
+ * 
+ *         var publicRoutine = new Routine(&#34;publicRoutine&#34;, RoutineArgs.builder()        
+ *             .datasetId(publicDataset.datasetId())
+ *             .routineId(&#34;public_routine&#34;)
+ *             .routineType(&#34;TABLE_VALUED_FUNCTION&#34;)
+ *             .language(&#34;SQL&#34;)
+ *             .definitionBody(&#34;&#34;&#34;
+ * SELECT 1 + value AS value
+ *             &#34;&#34;&#34;)
+ *             .arguments(RoutineArgumentArgs.builder()
+ *                 .name(&#34;value&#34;)
+ *                 .argumentKind(&#34;FIXED_TYPE&#34;)
+ *                 .dataType(serializeJson(
+ *                     jsonObject(
+ *                         jsonProperty(&#34;typeKind&#34;, &#34;INT64&#34;)
+ *                     )))
+ *                 .build())
+ *             .returnTableType(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;columns&#34;, jsonArray(jsonObject(
+ *                         jsonProperty(&#34;name&#34;, &#34;value&#34;),
+ *                         jsonProperty(&#34;type&#34;, jsonObject(
+ *                             jsonProperty(&#34;typeKind&#34;, &#34;INT64&#34;)
+ *                         ))
+ *                     )))
+ *                 )))
+ *             .build());
+ * 
+ *         var private_ = new Dataset(&#34;private&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;private_dataset&#34;)
+ *             .description(&#34;This dataset is private&#34;)
+ *             .build());
+ * 
+ *         var authorizedRoutine = new DatasetAccess(&#34;authorizedRoutine&#34;, DatasetAccessArgs.builder()        
+ *             .datasetId(private_.datasetId())
+ *             .routine(DatasetAccessRoutineArgs.builder()
+ *                 .projectId(publicRoutine.project())
+ *                 .datasetId(publicRoutine.datasetId())
+ *                 .routineId(publicRoutine.routineId())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -307,6 +386,30 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> role() {
         return Codegen.optional(this.role);
+    }
+    /**
+     * A routine from a different dataset to grant access to. Queries
+     * executed against that routine will have read access to tables in
+     * this dataset. The role field is not required when this field is
+     * set. If that routine is updated by any user, access to the routine
+     * needs to be granted again via an update operation.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="routine", type=DatasetAccessRoutine.class, parameters={})
+    private Output</* @Nullable */ DatasetAccessRoutine> routine;
+
+    /**
+     * @return A routine from a different dataset to grant access to. Queries
+     * executed against that routine will have read access to tables in
+     * this dataset. The role field is not required when this field is
+     * set. If that routine is updated by any user, access to the routine
+     * needs to be granted again via an update operation.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<DatasetAccessRoutine>> routine() {
+        return Codegen.optional(this.routine);
     }
     /**
      * A special group to grant access to. Possible values include:

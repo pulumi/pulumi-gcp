@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
 
         /// <summary>
         /// -
-        /// The resource name of the Eventarc trigger.
+        /// Output only. The resource name of the Eventarc trigger.
         /// </summary>
         [Input("trigger")]
         public Input<string>? Trigger { get; set; }

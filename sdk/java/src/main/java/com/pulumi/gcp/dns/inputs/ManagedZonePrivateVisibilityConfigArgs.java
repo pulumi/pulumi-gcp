@@ -5,14 +5,34 @@ package com.pulumi.gcp.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigGkeClusterArgs;
 import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigNetworkArgs;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ManagedZonePrivateVisibilityConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ManagedZonePrivateVisibilityConfigArgs Empty = new ManagedZonePrivateVisibilityConfigArgs();
+
+    /**
+     * The list of Google Kubernetes Engine clusters that can see this zone.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="gkeClusters")
+    private @Nullable Output<List<ManagedZonePrivateVisibilityConfigGkeClusterArgs>> gkeClusters;
+
+    /**
+     * @return The list of Google Kubernetes Engine clusters that can see this zone.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ManagedZonePrivateVisibilityConfigGkeClusterArgs>>> gkeClusters() {
+        return Optional.ofNullable(this.gkeClusters);
+    }
 
     @Import(name="networks", required=true)
     private Output<List<ManagedZonePrivateVisibilityConfigNetworkArgs>> networks;
@@ -24,6 +44,7 @@ public final class ManagedZonePrivateVisibilityConfigArgs extends com.pulumi.res
     private ManagedZonePrivateVisibilityConfigArgs() {}
 
     private ManagedZonePrivateVisibilityConfigArgs(ManagedZonePrivateVisibilityConfigArgs $) {
+        this.gkeClusters = $.gkeClusters;
         this.networks = $.networks;
     }
 
@@ -43,6 +64,40 @@ public final class ManagedZonePrivateVisibilityConfigArgs extends com.pulumi.res
 
         public Builder(ManagedZonePrivateVisibilityConfigArgs defaults) {
             $ = new ManagedZonePrivateVisibilityConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param gkeClusters The list of Google Kubernetes Engine clusters that can see this zone.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gkeClusters(@Nullable Output<List<ManagedZonePrivateVisibilityConfigGkeClusterArgs>> gkeClusters) {
+            $.gkeClusters = gkeClusters;
+            return this;
+        }
+
+        /**
+         * @param gkeClusters The list of Google Kubernetes Engine clusters that can see this zone.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gkeClusters(List<ManagedZonePrivateVisibilityConfigGkeClusterArgs> gkeClusters) {
+            return gkeClusters(Output.of(gkeClusters));
+        }
+
+        /**
+         * @param gkeClusters The list of Google Kubernetes Engine clusters that can see this zone.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gkeClusters(ManagedZonePrivateVisibilityConfigGkeClusterArgs... gkeClusters) {
+            return gkeClusters(List.of(gkeClusters));
         }
 
         public Builder networks(Output<List<ManagedZonePrivateVisibilityConfigNetworkArgs>> networks) {

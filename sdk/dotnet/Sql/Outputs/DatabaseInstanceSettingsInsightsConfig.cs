@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly bool? QueryInsightsEnabled;
         /// <summary>
+        /// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+        /// </summary>
+        public readonly int? QueryPlansPerMinute;
+        /// <summary>
         /// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
         /// </summary>
         public readonly int? QueryStringLength;
@@ -34,6 +38,8 @@ namespace Pulumi.Gcp.Sql.Outputs
         private DatabaseInstanceSettingsInsightsConfig(
             bool? queryInsightsEnabled,
 
+            int? queryPlansPerMinute,
+
             int? queryStringLength,
 
             bool? recordApplicationTags,
@@ -41,6 +47,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             bool? recordClientAddress)
         {
             QueryInsightsEnabled = queryInsightsEnabled;
+            QueryPlansPerMinute = queryPlansPerMinute;
             QueryStringLength = queryStringLength;
             RecordApplicationTags = recordApplicationTags;
             RecordClientAddress = recordClientAddress;

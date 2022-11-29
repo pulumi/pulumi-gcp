@@ -36,8 +36,8 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
 
     /**
      * The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-     * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
-     * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
+     * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
+     * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
      * 
      */
     @Import(name="repoType", required=true)
@@ -45,8 +45,8 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-     * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
-     * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
+     * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
+     * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
      * 
      */
     public Output<String> repoType() {
@@ -141,8 +141,8 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param repoType The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-         * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
-         * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
+         * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
+         * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
          * 
          * @return builder
          * 
@@ -154,8 +154,8 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param repoType The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-         * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET
-         * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET`.
+         * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
+         * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
          * 
          * @return builder
          * 

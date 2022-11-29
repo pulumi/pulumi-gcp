@@ -11,7 +11,9 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.gkehub.FeatureMembershipArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureMembershipState;
 import com.pulumi.gcp.gkehub.outputs.FeatureMembershipConfigmanagement;
+import com.pulumi.gcp.gkehub.outputs.FeatureMembershipMesh;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -127,6 +129,76 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Serivce Mesh
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.gkehub.Membership;
+ * import com.pulumi.gcp.gkehub.MembershipArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointGkeClusterArgs;
+ * import com.pulumi.gcp.gkehub.Feature;
+ * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import com.pulumi.gcp.gkehub.FeatureMembership;
+ * import com.pulumi.gcp.gkehub.FeatureMembershipArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipMeshArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
+ *             .location(&#34;us-central1-a&#34;)
+ *             .initialNodeCount(1)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
+ *             .membershipId(&#34;my-membership&#34;)
+ *             .endpoint(MembershipEndpointArgs.builder()
+ *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
+ *                     .resourceLink(cluster.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .location(&#34;global&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var featureMember = new FeatureMembership(&#34;featureMember&#34;, FeatureMembershipArgs.builder()        
+ *             .location(&#34;global&#34;)
+ *             .feature(feature.name())
+ *             .membership(membership.membershipId())
+ *             .mesh(FeatureMembershipMeshArgs.builder()
+ *                 .management(&#34;MANAGEMENT_AUTOMATIC&#34;)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -152,14 +224,14 @@ public class FeatureMembership extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="configmanagement", type=FeatureMembershipConfigmanagement.class, parameters={})
-    private Output<FeatureMembershipConfigmanagement> configmanagement;
+    private Output</* @Nullable */ FeatureMembershipConfigmanagement> configmanagement;
 
     /**
      * @return Config Management-specific spec. Structure is documented below.
      * 
      */
-    public Output<FeatureMembershipConfigmanagement> configmanagement() {
-        return this.configmanagement;
+    public Output<Optional<FeatureMembershipConfigmanagement>> configmanagement() {
+        return Codegen.optional(this.configmanagement);
     }
     /**
      * The name of the feature
@@ -202,6 +274,20 @@ public class FeatureMembership extends com.pulumi.resources.CustomResource {
      */
     public Output<String> membership() {
         return this.membership;
+    }
+    /**
+     * Service mesh specific spec. Structure is documented below.
+     * 
+     */
+    @Export(name="mesh", type=FeatureMembershipMesh.class, parameters={})
+    private Output</* @Nullable */ FeatureMembershipMesh> mesh;
+
+    /**
+     * @return Service mesh specific spec. Structure is documented below.
+     * 
+     */
+    public Output<Optional<FeatureMembershipMesh>> mesh() {
+        return Codegen.optional(this.mesh);
     }
     /**
      * The project of the feature

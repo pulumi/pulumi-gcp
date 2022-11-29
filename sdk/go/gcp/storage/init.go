@@ -47,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ObjectACL{}
 	case "gcp:storage/objectAccessControl:ObjectAccessControl":
 		r = &ObjectAccessControl{}
+	case "gcp:storage/transferAgentPool:TransferAgentPool":
+		r = &TransferAgentPool{}
 	case "gcp:storage/transferJob:TransferJob":
 		r = &TransferJob{}
 	default:
@@ -125,6 +127,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"storage/objectAccessControl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"storage/transferAgentPool",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

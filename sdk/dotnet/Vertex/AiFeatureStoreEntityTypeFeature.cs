@@ -101,6 +101,14 @@ namespace Pulumi.Gcp.Vertex
     ///                 Disabled = false,
     ///                 MonitoringInterval = "86400s",
     ///             },
+    ///             CategoricalThresholdConfig = new Gcp.Vertex.Inputs.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs
+    ///             {
+    ///                 Value = 0.3,
+    ///             },
+    ///             NumericalThresholdConfig = new Gcp.Vertex.Inputs.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs
+    ///             {
+    ///                 Value = 0.3,
+    ///             },
     ///         },
     ///     }, new CustomResourceOptions
     ///     {

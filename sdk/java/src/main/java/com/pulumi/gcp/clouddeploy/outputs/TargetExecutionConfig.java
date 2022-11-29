@@ -18,6 +18,11 @@ public final class TargetExecutionConfig {
      */
     private @Nullable String artifactStorage;
     /**
+     * @return Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+     * 
+     */
+    private @Nullable String executionTimeout;
+    /**
      * @return Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
      * 
      */
@@ -40,6 +45,13 @@ public final class TargetExecutionConfig {
      */
     public Optional<String> artifactStorage() {
         return Optional.ofNullable(this.artifactStorage);
+    }
+    /**
+     * @return Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+     * 
+     */
+    public Optional<String> executionTimeout() {
+        return Optional.ofNullable(this.executionTimeout);
     }
     /**
      * @return Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
@@ -73,6 +85,7 @@ public final class TargetExecutionConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String artifactStorage;
+        private @Nullable String executionTimeout;
         private @Nullable String serviceAccount;
         private List<String> usages;
         private @Nullable String workerPool;
@@ -80,6 +93,7 @@ public final class TargetExecutionConfig {
         public Builder(TargetExecutionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.artifactStorage = defaults.artifactStorage;
+    	      this.executionTimeout = defaults.executionTimeout;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.usages = defaults.usages;
     	      this.workerPool = defaults.workerPool;
@@ -88,6 +102,11 @@ public final class TargetExecutionConfig {
         @CustomType.Setter
         public Builder artifactStorage(@Nullable String artifactStorage) {
             this.artifactStorage = artifactStorage;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder executionTimeout(@Nullable String executionTimeout) {
+            this.executionTimeout = executionTimeout;
             return this;
         }
         @CustomType.Setter
@@ -111,6 +130,7 @@ public final class TargetExecutionConfig {
         public TargetExecutionConfig build() {
             final var o = new TargetExecutionConfig();
             o.artifactStorage = artifactStorage;
+            o.executionTimeout = executionTimeout;
             o.serviceAccount = serviceAccount;
             o.usages = usages;
             o.workerPool = workerPool;

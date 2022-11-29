@@ -88,6 +88,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vertex.AiFeatureStoreEntityTypeArgs;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigArgs;
  * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs;
  * import com.pulumi.gcp.vertex.AiFeatureStoreEntityTypeFeature;
  * import com.pulumi.gcp.vertex.AiFeatureStoreEntityTypeFeatureArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -121,6 +123,12 @@ import javax.annotation.Nullable;
  *                 .snapshotAnalysis(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs.builder()
  *                     .disabled(false)
  *                     .monitoringInterval(&#34;86400s&#34;)
+ *                     .build())
+ *                 .categoricalThresholdConfig(AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs.builder()
+ *                     .value(0.3)
+ *                     .build())
+ *                 .numericalThresholdConfig(AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs.builder()
+ *                     .value(0.3)
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()

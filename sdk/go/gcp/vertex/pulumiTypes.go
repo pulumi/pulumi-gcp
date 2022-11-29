@@ -1130,7 +1130,16 @@ func (o AiFeatureStoreEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutp
 }
 
 type AiFeatureStoreEntityTypeMonitoringConfig struct {
-	// Configuration of how features in Featurestore are monitored.
+	// Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
+	// Structure is documented below.
+	CategoricalThresholdConfig *AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig `pulumi:"categoricalThresholdConfig"`
+	// The config for ImportFeatures Analysis Based Feature Monitoring.
+	// Structure is documented below.
+	ImportFeaturesAnalysis *AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis `pulumi:"importFeaturesAnalysis"`
+	// Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
+	// Structure is documented below.
+	NumericalThresholdConfig *AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig `pulumi:"numericalThresholdConfig"`
+	// The config for Snapshot Analysis Based Feature Monitoring.
 	// Structure is documented below.
 	SnapshotAnalysis *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis `pulumi:"snapshotAnalysis"`
 }
@@ -1147,7 +1156,16 @@ type AiFeatureStoreEntityTypeMonitoringConfigInput interface {
 }
 
 type AiFeatureStoreEntityTypeMonitoringConfigArgs struct {
-	// Configuration of how features in Featurestore are monitored.
+	// Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
+	// Structure is documented below.
+	CategoricalThresholdConfig AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrInput `pulumi:"categoricalThresholdConfig"`
+	// The config for ImportFeatures Analysis Based Feature Monitoring.
+	// Structure is documented below.
+	ImportFeaturesAnalysis AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrInput `pulumi:"importFeaturesAnalysis"`
+	// Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
+	// Structure is documented below.
+	NumericalThresholdConfig AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrInput `pulumi:"numericalThresholdConfig"`
+	// The config for Snapshot Analysis Based Feature Monitoring.
 	// Structure is documented below.
 	SnapshotAnalysis AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrInput `pulumi:"snapshotAnalysis"`
 }
@@ -1229,7 +1247,31 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigOutput) ToAiFeatureStoreEntityTy
 	}).(AiFeatureStoreEntityTypeMonitoringConfigPtrOutput)
 }
 
-// Configuration of how features in Featurestore are monitored.
+// Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
+// Structure is documented below.
+func (o AiFeatureStoreEntityTypeMonitoringConfigOutput) CategoricalThresholdConfig() AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfig) *AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig {
+		return v.CategoricalThresholdConfig
+	}).(AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput)
+}
+
+// The config for ImportFeatures Analysis Based Feature Monitoring.
+// Structure is documented below.
+func (o AiFeatureStoreEntityTypeMonitoringConfigOutput) ImportFeaturesAnalysis() AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfig) *AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis {
+		return v.ImportFeaturesAnalysis
+	}).(AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput)
+}
+
+// Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
+// Structure is documented below.
+func (o AiFeatureStoreEntityTypeMonitoringConfigOutput) NumericalThresholdConfig() AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfig) *AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig {
+		return v.NumericalThresholdConfig
+	}).(AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput)
+}
+
+// The config for Snapshot Analysis Based Feature Monitoring.
 // Structure is documented below.
 func (o AiFeatureStoreEntityTypeMonitoringConfigOutput) SnapshotAnalysis() AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput {
 	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfig) *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
@@ -1261,7 +1303,40 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigPtrOutput) Elem() AiFeatureStore
 	}).(AiFeatureStoreEntityTypeMonitoringConfigOutput)
 }
 
-// Configuration of how features in Featurestore are monitored.
+// Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
+// Structure is documented below.
+func (o AiFeatureStoreEntityTypeMonitoringConfigPtrOutput) CategoricalThresholdConfig() AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfig) *AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CategoricalThresholdConfig
+	}).(AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput)
+}
+
+// The config for ImportFeatures Analysis Based Feature Monitoring.
+// Structure is documented below.
+func (o AiFeatureStoreEntityTypeMonitoringConfigPtrOutput) ImportFeaturesAnalysis() AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfig) *AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis {
+		if v == nil {
+			return nil
+		}
+		return v.ImportFeaturesAnalysis
+	}).(AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput)
+}
+
+// Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
+// Structure is documented below.
+func (o AiFeatureStoreEntityTypeMonitoringConfigPtrOutput) NumericalThresholdConfig() AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfig) *AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NumericalThresholdConfig
+	}).(AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput)
+}
+
+// The config for Snapshot Analysis Based Feature Monitoring.
 // Structure is documented below.
 func (o AiFeatureStoreEntityTypeMonitoringConfigPtrOutput) SnapshotAnalysis() AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfig) *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
@@ -1272,11 +1347,472 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigPtrOutput) SnapshotAnalysis() Ai
 	}).(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput)
 }
 
+type AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig struct {
+	// Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+	Value float64 `pulumi:"value"`
+}
+
+// AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigInput is an input type that accepts AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs and AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput values.
+// You can construct a concrete instance of `AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigInput` via:
+//
+//	AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs{...}
+type AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput() AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput
+	ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutputWithContext(context.Context) AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput
+}
+
+type AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs struct {
+	// Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig)(nil)).Elem()
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs) ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput() AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput {
+	return i.ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs) ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput)
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs) ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput {
+	return i.ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs) ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput).ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutputWithContext(ctx)
+}
+
+// AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrInput is an input type that accepts AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs, AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtr and AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput values.
+// You can construct a concrete instance of `AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrInput` via:
+//
+//	        AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput
+	ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutputWithContext(context.Context) AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput
+}
+
+type aiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrType AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs
+
+func AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtr(v *AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs) AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrInput {
+	return (*aiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrType)(v)
+}
+
+func (*aiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig)(nil)).Elem()
+}
+
+func (i *aiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrType) ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput {
+	return i.ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrType) ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput)
+}
+
+type AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig)(nil)).Elem()
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput) ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput() AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput) ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput) ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput {
+	return o.ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput) ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig) *AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig {
+		return &v
+	}).(AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput)
+}
+
+// Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+func (o AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig)(nil)).Elem()
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput) ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput) ToAiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput) Elem() AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig) AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig
+		return ret
+	}).(AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput)
+}
+
+// Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+func (o AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.Float64PtrOutput)
+}
+
+type AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis struct {
+	// Defines the baseline to do anomaly detection for feature values imported by each [entityTypes.importFeatureValues][] operation. The value must be one of the values below:
+	// * LATEST_STATS: Choose the later one statistics generated by either most recent snapshot analysis or previous import features analysis. If non of them exists, skip anomaly detection and only generate a statistics.
+	// * MOST_RECENT_SNAPSHOT_STATS: Use the statistics generated by the most recent snapshot analysis if exists.
+	// * PREVIOUS_IMPORT_FEATURES_STATS: Use the statistics generated by the previous import features analysis if exists.
+	AnomalyDetectionBaseline *string `pulumi:"anomalyDetectionBaseline"`
+	// Whether to enable / disable / inherite default hebavior for import features analysis. The value must be one of the values below:
+	// * DEFAULT: The default behavior of whether to enable the monitoring. EntityType-level config: disabled.
+	// * ENABLED: Explicitly enables import features analysis. EntityType-level config: by default enables import features analysis for all Features under it.
+	// * DISABLED: Explicitly disables import features analysis. EntityType-level config: by default disables import features analysis for all Features under it.
+	State *string `pulumi:"state"`
+}
+
+// AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisInput is an input type that accepts AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs and AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput values.
+// You can construct a concrete instance of `AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisInput` via:
+//
+//	AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs{...}
+type AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput() AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput
+	ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutputWithContext(context.Context) AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput
+}
+
+type AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs struct {
+	// Defines the baseline to do anomaly detection for feature values imported by each [entityTypes.importFeatureValues][] operation. The value must be one of the values below:
+	// * LATEST_STATS: Choose the later one statistics generated by either most recent snapshot analysis or previous import features analysis. If non of them exists, skip anomaly detection and only generate a statistics.
+	// * MOST_RECENT_SNAPSHOT_STATS: Use the statistics generated by the most recent snapshot analysis if exists.
+	// * PREVIOUS_IMPORT_FEATURES_STATS: Use the statistics generated by the previous import features analysis if exists.
+	AnomalyDetectionBaseline pulumi.StringPtrInput `pulumi:"anomalyDetectionBaseline"`
+	// Whether to enable / disable / inherite default hebavior for import features analysis. The value must be one of the values below:
+	// * DEFAULT: The default behavior of whether to enable the monitoring. EntityType-level config: disabled.
+	// * ENABLED: Explicitly enables import features analysis. EntityType-level config: by default enables import features analysis for all Features under it.
+	// * DISABLED: Explicitly disables import features analysis. EntityType-level config: by default disables import features analysis for all Features under it.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis)(nil)).Elem()
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs) ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput() AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput {
+	return i.ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs) ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput)
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs) ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput {
+	return i.ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs) ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput).ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutputWithContext(ctx)
+}
+
+// AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrInput is an input type that accepts AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs, AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtr and AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput values.
+// You can construct a concrete instance of `AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrInput` via:
+//
+//	        AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput
+	ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutputWithContext(context.Context) AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput
+}
+
+type aiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrType AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs
+
+func AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtr(v *AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs) AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrInput {
+	return (*aiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrType)(v)
+}
+
+func (*aiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis)(nil)).Elem()
+}
+
+func (i *aiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrType) ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput {
+	return i.ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrType) ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput)
+}
+
+type AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis)(nil)).Elem()
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput) ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput() AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput) ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput) ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput {
+	return o.ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput) ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis) *AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis {
+		return &v
+	}).(AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput)
+}
+
+// Defines the baseline to do anomaly detection for feature values imported by each [entityTypes.importFeatureValues][] operation. The value must be one of the values below:
+// * LATEST_STATS: Choose the later one statistics generated by either most recent snapshot analysis or previous import features analysis. If non of them exists, skip anomaly detection and only generate a statistics.
+// * MOST_RECENT_SNAPSHOT_STATS: Use the statistics generated by the most recent snapshot analysis if exists.
+// * PREVIOUS_IMPORT_FEATURES_STATS: Use the statistics generated by the previous import features analysis if exists.
+func (o AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput) AnomalyDetectionBaseline() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis) *string {
+		return v.AnomalyDetectionBaseline
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable / disable / inherite default hebavior for import features analysis. The value must be one of the values below:
+// * DEFAULT: The default behavior of whether to enable the monitoring. EntityType-level config: disabled.
+// * ENABLED: Explicitly enables import features analysis. EntityType-level config: by default enables import features analysis for all Features under it.
+// * DISABLED: Explicitly disables import features analysis. EntityType-level config: by default disables import features analysis for all Features under it.
+func (o AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis)(nil)).Elem()
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput) ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput) ToAiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput) Elem() AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis) AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis
+		return ret
+	}).(AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput)
+}
+
+// Defines the baseline to do anomaly detection for feature values imported by each [entityTypes.importFeatureValues][] operation. The value must be one of the values below:
+// * LATEST_STATS: Choose the later one statistics generated by either most recent snapshot analysis or previous import features analysis. If non of them exists, skip anomaly detection and only generate a statistics.
+// * MOST_RECENT_SNAPSHOT_STATS: Use the statistics generated by the most recent snapshot analysis if exists.
+// * PREVIOUS_IMPORT_FEATURES_STATS: Use the statistics generated by the previous import features analysis if exists.
+func (o AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput) AnomalyDetectionBaseline() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AnomalyDetectionBaseline
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable / disable / inherite default hebavior for import features analysis. The value must be one of the values below:
+// * DEFAULT: The default behavior of whether to enable the monitoring. EntityType-level config: disabled.
+// * ENABLED: Explicitly enables import features analysis. EntityType-level config: by default enables import features analysis for all Features under it.
+// * DISABLED: Explicitly disables import features analysis. EntityType-level config: by default disables import features analysis for all Features under it.
+func (o AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig struct {
+	// Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+	Value float64 `pulumi:"value"`
+}
+
+// AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigInput is an input type that accepts AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs and AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput values.
+// You can construct a concrete instance of `AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigInput` via:
+//
+//	AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs{...}
+type AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput() AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput
+	ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutputWithContext(context.Context) AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput
+}
+
+type AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs struct {
+	// Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig)(nil)).Elem()
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs) ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput() AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput {
+	return i.ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs) ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput)
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs) ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput {
+	return i.ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs) ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput).ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutputWithContext(ctx)
+}
+
+// AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrInput is an input type that accepts AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs, AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtr and AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput values.
+// You can construct a concrete instance of `AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrInput` via:
+//
+//	        AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput
+	ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutputWithContext(context.Context) AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput
+}
+
+type aiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrType AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs
+
+func AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtr(v *AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs) AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrInput {
+	return (*aiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrType)(v)
+}
+
+func (*aiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig)(nil)).Elem()
+}
+
+func (i *aiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrType) ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput {
+	return i.ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrType) ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput)
+}
+
+type AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig)(nil)).Elem()
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput) ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput() AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput) ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput) ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput {
+	return o.ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput) ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig) *AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig {
+		return &v
+	}).(AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput)
+}
+
+// Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig)(nil)).Elem()
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput) ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput() AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput) ToAiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput) Elem() AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig) AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig
+		return ret
+	}).(AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput)
+}
+
+// Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.Float64PtrOutput)
+}
+
 type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis struct {
 	// The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
 	Disabled *bool `pulumi:"disabled"`
 	// Deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
 	MonitoringInterval *string `pulumi:"monitoringInterval"`
+	// Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
+	// If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
+	MonitoringIntervalDays *int `pulumi:"monitoringIntervalDays"`
+	// Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
+	StalenessDays *int `pulumi:"stalenessDays"`
 }
 
 // AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisInput is an input type that accepts AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs and AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput values.
@@ -1295,6 +1831,11 @@ type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs struct {
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
 	MonitoringInterval pulumi.StringPtrInput `pulumi:"monitoringInterval"`
+	// Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
+	// If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
+	MonitoringIntervalDays pulumi.IntPtrInput `pulumi:"monitoringIntervalDays"`
+	// Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
+	StalenessDays pulumi.IntPtrInput `pulumi:"stalenessDays"`
 }
 
 func (AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs) ElementType() reflect.Type {
@@ -1384,6 +1925,17 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) Monitori
 	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *string { return v.MonitoringInterval }).(pulumi.StringPtrOutput)
 }
 
+// Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
+// If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
+func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) MonitoringIntervalDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *int { return v.MonitoringIntervalDays }).(pulumi.IntPtrOutput)
+}
+
+// Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
+func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) StalenessDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *int { return v.StalenessDays }).(pulumi.IntPtrOutput)
+}
+
 type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) ElementType() reflect.Type {
@@ -1426,6 +1978,27 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) Monit
 		}
 		return v.MonitoringInterval
 	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
+// If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
+func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) MonitoringIntervalDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MonitoringIntervalDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
+func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) StalenessDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StalenessDays
+	}).(pulumi.IntPtrOutput)
 }
 
 type AiFeatureStoreIamBindingCondition struct {
@@ -2147,6 +2720,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEncryptionSpecPtrInput)(nil)).Elem(), AiFeatureStoreEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigPtrInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreIamBindingConditionInput)(nil)).Elem(), AiFeatureStoreIamBindingConditionArgs{})
@@ -2179,6 +2758,12 @@ func init() {
 	pulumi.RegisterOutputType(AiFeatureStoreEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreIamBindingConditionOutput{})

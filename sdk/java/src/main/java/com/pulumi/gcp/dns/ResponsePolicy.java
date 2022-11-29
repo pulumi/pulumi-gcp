@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.dns.ResponsePolicyArgs;
 import com.pulumi.gcp.dns.inputs.ResponsePolicyState;
+import com.pulumi.gcp.dns.outputs.ResponsePolicyGkeCluster;
 import com.pulumi.gcp.dns.outputs.ResponsePolicyNetwork;
 import java.lang.String;
 import java.util.List;
@@ -27,9 +28,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.Network;
  * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.inputs.SubnetworkSecondaryIpRangeArgs;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterDefaultSnatStatusArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterPrivateClusterConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterMasterAuthorizedNetworksConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyArgs;
  * import com.pulumi.gcp.dns.ResponsePolicy;
  * import com.pulumi.gcp.dns.ResponsePolicyArgs;
  * import com.pulumi.gcp.dns.inputs.ResponsePolicyNetworkArgs;
+ * import com.pulumi.gcp.dns.inputs.ResponsePolicyGkeClusterArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -56,6 +68,50 @@ import javax.annotation.Nullable;
  *                 .provider(google_beta)
  *                 .build());
  * 
+ *         var subnetwork_1 = new Subnetwork(&#34;subnetwork-1&#34;, SubnetworkArgs.builder()        
+ *             .network(network_1.name())
+ *             .ipCidrRange(&#34;10.0.36.0/24&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .privateIpGoogleAccess(true)
+ *             .secondaryIpRanges(            
+ *                 SubnetworkSecondaryIpRangeArgs.builder()
+ *                     .rangeName(&#34;pod&#34;)
+ *                     .ipCidrRange(&#34;10.0.0.0/19&#34;)
+ *                     .build(),
+ *                 SubnetworkSecondaryIpRangeArgs.builder()
+ *                     .rangeName(&#34;svc&#34;)
+ *                     .ipCidrRange(&#34;10.0.32.0/22&#34;)
+ *                     .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var cluster_1 = new Cluster(&#34;cluster-1&#34;, ClusterArgs.builder()        
+ *             .location(&#34;us-central1-c&#34;)
+ *             .initialNodeCount(1)
+ *             .networkingMode(&#34;VPC_NATIVE&#34;)
+ *             .defaultSnatStatus(ClusterDefaultSnatStatusArgs.builder()
+ *                 .disabled(true)
+ *                 .build())
+ *             .network(network_1.name())
+ *             .subnetwork(subnetwork_1.name())
+ *             .privateClusterConfig(ClusterPrivateClusterConfigArgs.builder()
+ *                 .enablePrivateEndpoint(true)
+ *                 .enablePrivateNodes(true)
+ *                 .masterIpv4CidrBlock(&#34;10.42.0.0/28&#34;)
+ *                 .masterGlobalAccessConfig(ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .masterAuthorizedNetworksConfig()
+ *             .ipAllocationPolicy(ClusterIpAllocationPolicyArgs.builder()
+ *                 .clusterSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(secondaryIpRanges -&gt; secondaryIpRanges[0].rangeName()))
+ *                 .servicesSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(secondaryIpRanges -&gt; secondaryIpRanges[1].rangeName()))
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
  *         var example_response_policy = new ResponsePolicy(&#34;example-response-policy&#34;, ResponsePolicyArgs.builder()        
  *             .responsePolicyName(&#34;example-response-policy&#34;)
  *             .networks(            
@@ -65,6 +121,9 @@ import javax.annotation.Nullable;
  *                 ResponsePolicyNetworkArgs.builder()
  *                     .networkUrl(network_2.id())
  *                     .build())
+ *             .gkeClusters(ResponsePolicyGkeClusterArgs.builder()
+ *                 .gkeClusterName(cluster_1.id())
+ *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
@@ -105,6 +164,22 @@ public class ResponsePolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * The list of Google Kubernetes Engine clusters that can see this zone.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="gkeClusters", type=List.class, parameters={ResponsePolicyGkeCluster.class})
+    private Output</* @Nullable */ List<ResponsePolicyGkeCluster>> gkeClusters;
+
+    /**
+     * @return The list of Google Kubernetes Engine clusters that can see this zone.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<ResponsePolicyGkeCluster>>> gkeClusters() {
+        return Codegen.optional(this.gkeClusters);
     }
     /**
      * The list of network names specifying networks to which this policy is applied.

@@ -11,6 +11,8 @@ from .. import _utilities
 
 __all__ = [
     'EdgeCacheKeysetPublicKeyArgs',
+    'EdgeCacheKeysetValidationSharedKeyArgs',
+    'EdgeCacheOriginAwsV4AuthenticationArgs',
     'EdgeCacheOriginTimeoutArgs',
     'EdgeCacheServiceLogConfigArgs',
     'EdgeCacheServiceRoutingArgs',
@@ -27,7 +29,9 @@ __all__ = [
     'EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs',
     'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs',
     'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs',
     'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs',
     'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs',
     'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs',
     'EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs',
@@ -37,17 +41,22 @@ __all__ = [
 class EdgeCacheKeysetPublicKeyArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
-                 value: pulumi.Input[str]):
+                 managed: Optional[pulumi.Input[bool]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] id: The ID of the public key. The ID must be 1-63 characters long, and comply with RFC1035.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]*
                which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+        :param pulumi.Input[bool] managed: Set to true to have the CDN automatically manage this public key value.
         :param pulumi.Input[str] value: The base64-encoded value of the Ed25519 public key. The base64 encoding can be padded (44 bytes) or unpadded (43 bytes).
                Representations or encodings of the public key other than this will be rejected with an error.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "value", value)
+        if managed is not None:
+            pulumi.set(__self__, "managed", managed)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -65,7 +74,19 @@ class EdgeCacheKeysetPublicKeyArgs:
 
     @property
     @pulumi.getter
-    def value(self) -> pulumi.Input[str]:
+    def managed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to have the CDN automatically manage this public key value.
+        """
+        return pulumi.get(self, "managed")
+
+    @managed.setter
+    def managed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "managed", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
         """
         The base64-encoded value of the Ed25519 public key. The base64 encoding can be padded (44 bytes) or unpadded (43 bytes).
         Representations or encodings of the public key other than this will be rejected with an error.
@@ -74,8 +95,94 @@ class EdgeCacheKeysetPublicKeyArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: pulumi.Input[str]):
+    def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class EdgeCacheKeysetValidationSharedKeyArgs:
+    def __init__(__self__, *,
+                 secret_version: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] secret_version: The name of the secret version in Secret Manager.
+               The resource name of the secret version must be in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the secrets themselves.
+               The secrets must be at least 16 bytes large.  The recommended secret size depends on the signature algorithm you are using.
+               * If you are using HMAC-SHA1, we suggest 20-byte secrets.
+               * If you are using HMAC-SHA256, we suggest 32-byte secrets.
+               See RFC 2104, Section 3 for more details on these recommendations.
+        """
+        pulumi.set(__self__, "secret_version", secret_version)
+
+    @property
+    @pulumi.getter(name="secretVersion")
+    def secret_version(self) -> pulumi.Input[str]:
+        """
+        The name of the secret version in Secret Manager.
+        The resource name of the secret version must be in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the secrets themselves.
+        The secrets must be at least 16 bytes large.  The recommended secret size depends on the signature algorithm you are using.
+        * If you are using HMAC-SHA1, we suggest 20-byte secrets.
+        * If you are using HMAC-SHA256, we suggest 32-byte secrets.
+        See RFC 2104, Section 3 for more details on these recommendations.
+        """
+        return pulumi.get(self, "secret_version")
+
+    @secret_version.setter
+    def secret_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_version", value)
+
+
+@pulumi.input_type
+class EdgeCacheOriginAwsV4AuthenticationArgs:
+    def __init__(__self__, *,
+                 access_key_id: pulumi.Input[str],
+                 origin_region: pulumi.Input[str],
+                 secret_access_key_version: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] access_key_id: The access key ID your origin uses to identify the key.
+        :param pulumi.Input[str] origin_region: The name of the AWS region that your origin is in.
+        :param pulumi.Input[str] secret_access_key_version: The Secret Manager secret version of the secret access key used by your origin.
+               This is the resource name of the secret version in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the project, secret, and version you require.
+        """
+        pulumi.set(__self__, "access_key_id", access_key_id)
+        pulumi.set(__self__, "origin_region", origin_region)
+        pulumi.set(__self__, "secret_access_key_version", secret_access_key_version)
+
+    @property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> pulumi.Input[str]:
+        """
+        The access key ID your origin uses to identify the key.
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @access_key_id.setter
+    def access_key_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_key_id", value)
+
+    @property
+    @pulumi.getter(name="originRegion")
+    def origin_region(self) -> pulumi.Input[str]:
+        """
+        The name of the AWS region that your origin is in.
+        """
+        return pulumi.get(self, "origin_region")
+
+    @origin_region.setter
+    def origin_region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "origin_region", value)
+
+    @property
+    @pulumi.getter(name="secretAccessKeyVersion")
+    def secret_access_key_version(self) -> pulumi.Input[str]:
+        """
+        The Secret Manager secret version of the secret access key used by your origin.
+        This is the resource name of the secret version in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the project, secret, and version you require.
+        """
+        return pulumi.get(self, "secret_access_key_version")
+
+    @secret_access_key_version.setter
+    def secret_access_key_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret_access_key_version", value)
 
 
 @pulumi.input_type
@@ -1098,6 +1205,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs:
 @pulumi.input_type
 class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
     def __init__(__self__, *,
+                 add_signatures: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs']] = None,
                  cache_key_policy: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs']] = None,
                  cache_mode: Optional[pulumi.Input[str]] = None,
                  client_ttl: Optional[pulumi.Input[str]] = None,
@@ -1106,8 +1214,13 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
                  negative_caching: Optional[pulumi.Input[bool]] = None,
                  negative_caching_policy: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  signed_request_keyset: Optional[pulumi.Input[str]] = None,
-                 signed_request_mode: Optional[pulumi.Input[str]] = None):
+                 signed_request_maximum_expiration_ttl: Optional[pulumi.Input[str]] = None,
+                 signed_request_mode: Optional[pulumi.Input[str]] = None,
+                 signed_token_options: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs']] = None):
         """
+        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs'] add_signatures: Enable signature generation or propagation on this route.
+               This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
+               Structure is documented below.
         :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs'] cache_key_policy: Defines the request parameters that contribute to the cache key.
                Structure is documented below.
         :param pulumi.Input[str] cache_mode: Cache modes allow users to control the behaviour of the cache, what content it should cache automatically, whether to respect origin headers, or whether to unconditionally cache all responses.
@@ -1150,11 +1263,21 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
                - TTLs must be >= 0 (where 0 is "always revalidate") and <= 86400s (1 day)
                Note that when specifying an explicit negativeCachingPolicy, you should take care to specify a cache TTL for all response codes that you wish to cache. The CDNPolicy will not apply any default negative caching when a policy exists.
         :param pulumi.Input[str] signed_request_keyset: The EdgeCacheKeyset containing the set of public keys used to validate signed requests at the edge.
+        :param pulumi.Input[str] signed_request_maximum_expiration_ttl: Limit how far into the future the expiration time of a signed request may be.
+               When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
+               - The TTL must be > 0.
+               - Fractions of a second are not allowed.
+               By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
         :param pulumi.Input[str] signed_request_mode: Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
                You must also set a signedRequestKeyset to enable signed requests.
                When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-               Possible values are `DISABLED` and `REQUIRE_SIGNATURES`.
+               Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
+        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs'] signed_token_options: Additional options for signed tokens.
+               signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
+               Structure is documented below.
         """
+        if add_signatures is not None:
+            pulumi.set(__self__, "add_signatures", add_signatures)
         if cache_key_policy is not None:
             pulumi.set(__self__, "cache_key_policy", cache_key_policy)
         if cache_mode is not None:
@@ -1171,8 +1294,26 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
             pulumi.set(__self__, "negative_caching_policy", negative_caching_policy)
         if signed_request_keyset is not None:
             pulumi.set(__self__, "signed_request_keyset", signed_request_keyset)
+        if signed_request_maximum_expiration_ttl is not None:
+            pulumi.set(__self__, "signed_request_maximum_expiration_ttl", signed_request_maximum_expiration_ttl)
         if signed_request_mode is not None:
             pulumi.set(__self__, "signed_request_mode", signed_request_mode)
+        if signed_token_options is not None:
+            pulumi.set(__self__, "signed_token_options", signed_token_options)
+
+    @property
+    @pulumi.getter(name="addSignatures")
+    def add_signatures(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs']]:
+        """
+        Enable signature generation or propagation on this route.
+        This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "add_signatures")
+
+    @add_signatures.setter
+    def add_signatures(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs']]):
+        pulumi.set(self, "add_signatures", value)
 
     @property
     @pulumi.getter(name="cacheKeyPolicy")
@@ -1305,19 +1446,187 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
         pulumi.set(self, "signed_request_keyset", value)
 
     @property
+    @pulumi.getter(name="signedRequestMaximumExpirationTtl")
+    def signed_request_maximum_expiration_ttl(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit how far into the future the expiration time of a signed request may be.
+        When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
+        - The TTL must be > 0.
+        - Fractions of a second are not allowed.
+        By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
+        """
+        return pulumi.get(self, "signed_request_maximum_expiration_ttl")
+
+    @signed_request_maximum_expiration_ttl.setter
+    def signed_request_maximum_expiration_ttl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "signed_request_maximum_expiration_ttl", value)
+
+    @property
     @pulumi.getter(name="signedRequestMode")
     def signed_request_mode(self) -> Optional[pulumi.Input[str]]:
         """
         Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
         You must also set a signedRequestKeyset to enable signed requests.
         When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-        Possible values are `DISABLED` and `REQUIRE_SIGNATURES`.
+        Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
         """
         return pulumi.get(self, "signed_request_mode")
 
     @signed_request_mode.setter
     def signed_request_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "signed_request_mode", value)
+
+    @property
+    @pulumi.getter(name="signedTokenOptions")
+    def signed_token_options(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs']]:
+        """
+        Additional options for signed tokens.
+        signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "signed_token_options")
+
+    @signed_token_options.setter
+    def signed_token_options(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs']]):
+        pulumi.set(self, "signed_token_options", value)
+
+
+@pulumi.input_type
+class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs:
+    def __init__(__self__, *,
+                 actions: pulumi.Input[str],
+                 copied_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 keyset: Optional[pulumi.Input[str]] = None,
+                 token_query_parameter: Optional[pulumi.Input[str]] = None,
+                 token_ttl: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] actions: The actions to take to add signatures to responses.
+               Each value may be one of `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, and `PROPAGATE_TOKEN_HLS_COOKIELESS`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] copied_parameters: The parameters to copy from the verified token to the generated token.
+               Only the following parameters may be copied:
+               * `PathGlobs`
+               * `paths`
+               * `acl`
+               * `URLPrefix`
+               * `IPRanges`
+               * `SessionID`
+               * `id`
+               * `Data`
+               * `data`
+               * `payload`
+               * `Headers`
+               You may specify up to 6 parameters to copy.  A given parameter is be copied only if the parameter exists in the verified token.  Parameter names are matched exactly as specified.  The order of the parameters does not matter.  Duplicates are not allowed.
+               This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
+        :param pulumi.Input[str] keyset: The keyset to use for signature generation.
+               The following are both valid paths to an EdgeCacheKeyset resource:
+               * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+               * `yourKeyset`
+               This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
+        :param pulumi.Input[str] token_query_parameter: The query parameter in which to put the generated token.
+               If not specified, defaults to `edge-cache-token`.
+               If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+               This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+        :param pulumi.Input[str] token_ttl: The duration the token is valid starting from the moment the token is first generated.
+               Defaults to `86400s` (1 day).
+               The TTL must be >= 0 and <= 604,800 seconds (1 week).
+               This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        pulumi.set(__self__, "actions", actions)
+        if copied_parameters is not None:
+            pulumi.set(__self__, "copied_parameters", copied_parameters)
+        if keyset is not None:
+            pulumi.set(__self__, "keyset", keyset)
+        if token_query_parameter is not None:
+            pulumi.set(__self__, "token_query_parameter", token_query_parameter)
+        if token_ttl is not None:
+            pulumi.set(__self__, "token_ttl", token_ttl)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> pulumi.Input[str]:
+        """
+        The actions to take to add signatures to responses.
+        Each value may be one of `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, and `PROPAGATE_TOKEN_HLS_COOKIELESS`.
+        """
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: pulumi.Input[str]):
+        pulumi.set(self, "actions", value)
+
+    @property
+    @pulumi.getter(name="copiedParameters")
+    def copied_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The parameters to copy from the verified token to the generated token.
+        Only the following parameters may be copied:
+        * `PathGlobs`
+        * `paths`
+        * `acl`
+        * `URLPrefix`
+        * `IPRanges`
+        * `SessionID`
+        * `id`
+        * `Data`
+        * `data`
+        * `payload`
+        * `Headers`
+        You may specify up to 6 parameters to copy.  A given parameter is be copied only if the parameter exists in the verified token.  Parameter names are matched exactly as specified.  The order of the parameters does not matter.  Duplicates are not allowed.
+        This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
+        """
+        return pulumi.get(self, "copied_parameters")
+
+    @copied_parameters.setter
+    def copied_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "copied_parameters", value)
+
+    @property
+    @pulumi.getter
+    def keyset(self) -> Optional[pulumi.Input[str]]:
+        """
+        The keyset to use for signature generation.
+        The following are both valid paths to an EdgeCacheKeyset resource:
+        * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
+        * `yourKeyset`
+        This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
+        """
+        return pulumi.get(self, "keyset")
+
+    @keyset.setter
+    def keyset(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "keyset", value)
+
+    @property
+    @pulumi.getter(name="tokenQueryParameter")
+    def token_query_parameter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The query parameter in which to put the generated token.
+        If not specified, defaults to `edge-cache-token`.
+        If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+        This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+        """
+        return pulumi.get(self, "token_query_parameter")
+
+    @token_query_parameter.setter
+    def token_query_parameter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token_query_parameter", value)
+
+    @property
+    @pulumi.getter(name="tokenTtl")
+    def token_ttl(self) -> Optional[pulumi.Input[str]]:
+        """
+        The duration the token is valid starting from the moment the token is first generated.
+        Defaults to `86400s` (1 day).
+        The TTL must be >= 0 and <= 604,800 seconds (1 week).
+        This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "token_ttl")
+
+    @token_ttl.setter
+    def token_ttl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token_ttl", value)
 
 
 @pulumi.input_type
@@ -1473,6 +1782,57 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
     @included_query_parameters.setter
     def included_query_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "included_query_parameters", value)
+
+
+@pulumi.input_type
+class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs:
+    def __init__(__self__, *,
+                 allowed_signature_algorithms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 token_query_parameter: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_signature_algorithms: The allowed signature algorithms to use.
+               Defaults to using only ED25519.
+               You may specify up to 3 signature algorithms to use.
+               Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
+        :param pulumi.Input[str] token_query_parameter: The query parameter in which to put the generated token.
+               If not specified, defaults to `edge-cache-token`.
+               If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+               This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+        """
+        if allowed_signature_algorithms is not None:
+            pulumi.set(__self__, "allowed_signature_algorithms", allowed_signature_algorithms)
+        if token_query_parameter is not None:
+            pulumi.set(__self__, "token_query_parameter", token_query_parameter)
+
+    @property
+    @pulumi.getter(name="allowedSignatureAlgorithms")
+    def allowed_signature_algorithms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The allowed signature algorithms to use.
+        Defaults to using only ED25519.
+        You may specify up to 3 signature algorithms to use.
+        Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
+        """
+        return pulumi.get(self, "allowed_signature_algorithms")
+
+    @allowed_signature_algorithms.setter
+    def allowed_signature_algorithms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_signature_algorithms", value)
+
+    @property
+    @pulumi.getter(name="tokenQueryParameter")
+    def token_query_parameter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The query parameter in which to put the generated token.
+        If not specified, defaults to `edge-cache-token`.
+        If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+        This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+        """
+        return pulumi.get(self, "token_query_parameter")
+
+    @token_query_parameter.setter
+    def token_query_parameter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token_query_parameter", value)
 
 
 @pulumi.input_type

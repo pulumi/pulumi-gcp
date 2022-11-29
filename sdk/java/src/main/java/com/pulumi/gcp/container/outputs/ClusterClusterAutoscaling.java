@@ -16,7 +16,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterAutoscaling {
     /**
-     * @return Contains defaults for a node pool created by NAP.
+     * @return Contains defaults for a node pool created by NAP. A subset of fields also apply to
+     * GKE Autopilot clusters.
      * Structure is documented below.
      * 
      */
@@ -34,7 +35,7 @@ public final class ClusterClusterAutoscaling {
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
      * 
      */
-    private Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return Global constraints for machine resources in the
      * cluster. Configuring the `cpu` and `memory` types is required if node
@@ -46,7 +47,8 @@ public final class ClusterClusterAutoscaling {
 
     private ClusterClusterAutoscaling() {}
     /**
-     * @return Contains defaults for a node pool created by NAP.
+     * @return Contains defaults for a node pool created by NAP. A subset of fields also apply to
+     * GKE Autopilot clusters.
      * Structure is documented below.
      * 
      */
@@ -68,8 +70,8 @@ public final class ClusterClusterAutoscaling {
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
      * 
      */
-    public Boolean enabled() {
-        return this.enabled;
+    public Optional<Boolean> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
     /**
      * @return Global constraints for machine resources in the
@@ -93,7 +95,7 @@ public final class ClusterClusterAutoscaling {
     public static final class Builder {
         private @Nullable ClusterClusterAutoscalingAutoProvisioningDefaults autoProvisioningDefaults;
         private @Nullable String autoscalingProfile;
-        private Boolean enabled;
+        private @Nullable Boolean enabled;
         private @Nullable List<ClusterClusterAutoscalingResourceLimit> resourceLimits;
         public Builder() {}
         public Builder(ClusterClusterAutoscaling defaults) {
@@ -115,8 +117,8 @@ public final class ClusterClusterAutoscaling {
             return this;
         }
         @CustomType.Setter
-        public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+        public Builder enabled(@Nullable Boolean enabled) {
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter

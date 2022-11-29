@@ -4,26 +4,43 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPubSub;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionSaveFindings;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class PreventionJobTriggerInspectJobAction {
     /**
-     * @return Schedule for triggered jobs
+     * @return Publish a message into a given Pub/Sub topic when the job completes.
      * Structure is documented below.
      * 
      */
-    private PreventionJobTriggerInspectJobActionSaveFindings saveFindings;
-
-    private PreventionJobTriggerInspectJobAction() {}
+    private @Nullable PreventionJobTriggerInspectJobActionPubSub pubSub;
     /**
      * @return Schedule for triggered jobs
      * Structure is documented below.
      * 
      */
-    public PreventionJobTriggerInspectJobActionSaveFindings saveFindings() {
-        return this.saveFindings;
+    private @Nullable PreventionJobTriggerInspectJobActionSaveFindings saveFindings;
+
+    private PreventionJobTriggerInspectJobAction() {}
+    /**
+     * @return Publish a message into a given Pub/Sub topic when the job completes.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionJobTriggerInspectJobActionPubSub> pubSub() {
+        return Optional.ofNullable(this.pubSub);
+    }
+    /**
+     * @return Schedule for triggered jobs
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionJobTriggerInspectJobActionSaveFindings> saveFindings() {
+        return Optional.ofNullable(this.saveFindings);
     }
 
     public static Builder builder() {
@@ -35,20 +52,28 @@ public final class PreventionJobTriggerInspectJobAction {
     }
     @CustomType.Builder
     public static final class Builder {
-        private PreventionJobTriggerInspectJobActionSaveFindings saveFindings;
+        private @Nullable PreventionJobTriggerInspectJobActionPubSub pubSub;
+        private @Nullable PreventionJobTriggerInspectJobActionSaveFindings saveFindings;
         public Builder() {}
         public Builder(PreventionJobTriggerInspectJobAction defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.pubSub = defaults.pubSub;
     	      this.saveFindings = defaults.saveFindings;
         }
 
         @CustomType.Setter
-        public Builder saveFindings(PreventionJobTriggerInspectJobActionSaveFindings saveFindings) {
-            this.saveFindings = Objects.requireNonNull(saveFindings);
+        public Builder pubSub(@Nullable PreventionJobTriggerInspectJobActionPubSub pubSub) {
+            this.pubSub = pubSub;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder saveFindings(@Nullable PreventionJobTriggerInspectJobActionSaveFindings saveFindings) {
+            this.saveFindings = saveFindings;
             return this;
         }
         public PreventionJobTriggerInspectJobAction build() {
             final var o = new PreventionJobTriggerInspectJobAction();
+            o.pubSub = pubSub;
             o.saveFindings = saveFindings;
             return o;
         }

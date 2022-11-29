@@ -83,6 +83,22 @@ import * as utilities from "../utilities";
  *     dependsOn: [cryptoKeyBinding],
  * });
  * ```
+ * ### Data Fusion Instance Enterprise
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const enterpriseInstance = new gcp.datafusion.Instance("enterprise_instance", {
+ *     enableRbac: true,
+ *     // Mark for testing to avoid service networking connection usage that is not cleaned up
+ *     options: {
+ *         prober_test_run: "true",
+ *     },
+ *     region: "us-central1",
+ *     type: "ENTERPRISE",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -149,6 +165,10 @@ export class Instance extends pulumi.CustomResource {
      * An optional description of the instance.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Option to enable granular role-based access control.
+     */
+    public readonly enableRbac!: pulumi.Output<boolean | undefined>;
     /**
      * Option to enable Stackdriver Logging.
      */
@@ -258,6 +278,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["cryptoKeyConfig"] = state ? state.cryptoKeyConfig : undefined;
             resourceInputs["dataprocServiceAccount"] = state ? state.dataprocServiceAccount : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableRbac"] = state ? state.enableRbac : undefined;
             resourceInputs["enableStackdriverLogging"] = state ? state.enableStackdriverLogging : undefined;
             resourceInputs["enableStackdriverMonitoring"] = state ? state.enableStackdriverMonitoring : undefined;
             resourceInputs["gcsBucket"] = state ? state.gcsBucket : undefined;
@@ -284,6 +305,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["cryptoKeyConfig"] = args ? args.cryptoKeyConfig : undefined;
             resourceInputs["dataprocServiceAccount"] = args ? args.dataprocServiceAccount : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableRbac"] = args ? args.enableRbac : undefined;
             resourceInputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
             resourceInputs["enableStackdriverMonitoring"] = args ? args.enableStackdriverMonitoring : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -330,6 +352,10 @@ export interface InstanceState {
      * An optional description of the instance.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Option to enable granular role-based access control.
+     */
+    enableRbac?: pulumi.Input<boolean>;
     /**
      * Option to enable Stackdriver Logging.
      */
@@ -440,6 +466,10 @@ export interface InstanceArgs {
      * An optional description of the instance.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Option to enable granular role-based access control.
+     */
+    enableRbac?: pulumi.Input<boolean>;
     /**
      * Option to enable Stackdriver Logging.
      */

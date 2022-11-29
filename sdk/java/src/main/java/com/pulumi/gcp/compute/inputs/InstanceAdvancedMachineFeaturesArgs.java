@@ -47,14 +47,14 @@ public final class InstanceAdvancedMachineFeaturesArgs extends com.pulumi.resour
     }
 
     /**
-     * ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+     * The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
      * 
      */
     @Import(name="visibleCoreCount")
     private @Nullable Output<Integer> visibleCoreCount;
 
     /**
-     * @return ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+     * @return The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
      * 
      */
     public Optional<Output<Integer>> visibleCoreCount() {
@@ -130,7 +130,7 @@ public final class InstanceAdvancedMachineFeaturesArgs extends com.pulumi.resour
         }
 
         /**
-         * @param visibleCoreCount ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+         * @param visibleCoreCount The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class InstanceAdvancedMachineFeaturesArgs extends com.pulumi.resour
         }
 
         /**
-         * @param visibleCoreCount ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+         * @param visibleCoreCount The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
          * 
          * @return builder
          * 

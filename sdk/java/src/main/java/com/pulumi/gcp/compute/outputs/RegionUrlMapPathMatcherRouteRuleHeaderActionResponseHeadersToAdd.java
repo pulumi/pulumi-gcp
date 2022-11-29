@@ -21,9 +21,8 @@ public final class RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersTo
      */
     private String headerValue;
     /**
-     * @return If false, headerValue is appended to any values that already exist for the
-     * header. If true, headerValue is set for the header, discarding any values that
-     * were set for that header.
+     * @return If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+     * The default value is false.
      * 
      */
     private Boolean replace;
@@ -44,9 +43,8 @@ public final class RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersTo
         return this.headerValue;
     }
     /**
-     * @return If false, headerValue is appended to any values that already exist for the
-     * header. If true, headerValue is set for the header, discarding any values that
-     * were set for that header.
+     * @return If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+     * The default value is false.
      * 
      */
     public Boolean replace() {

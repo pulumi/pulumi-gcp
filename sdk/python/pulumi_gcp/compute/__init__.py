@@ -96,6 +96,9 @@ from .manged_ssl_certificate import *
 from .network import *
 from .network_endpoint import *
 from .network_endpoint_group import *
+from .network_firewall_policy import *
+from .network_firewall_policy_association import *
+from .network_firewall_policy_rule import *
 from .network_peering import *
 from .network_peering_routes_config import *
 from .node_group import *
@@ -121,6 +124,9 @@ from .region_disk_resource_policy_attachment import *
 from .region_health_check import *
 from .region_instance_group_manager import *
 from .region_network_endpoint_group import *
+from .region_network_firewall_policy import *
+from .region_network_firewall_policy_association import *
+from .region_network_firewall_policy_rule import *
 from .region_per_instance_config import *
 from .region_ssl_certificate import *
 from .region_ssl_policy import *

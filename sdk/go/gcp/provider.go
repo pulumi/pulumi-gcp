@@ -28,6 +28,7 @@ type Provider struct {
 	AppEngineCustomEndpoint            pulumi.StringPtrOutput `pulumi:"appEngineCustomEndpoint"`
 	ArtifactRegistryCustomEndpoint     pulumi.StringPtrOutput `pulumi:"artifactRegistryCustomEndpoint"`
 	AssuredWorkloadsCustomEndpoint     pulumi.StringPtrOutput `pulumi:"assuredWorkloadsCustomEndpoint"`
+	BeyondcorpCustomEndpoint           pulumi.StringPtrOutput `pulumi:"beyondcorpCustomEndpoint"`
 	BigQueryCustomEndpoint             pulumi.StringPtrOutput `pulumi:"bigQueryCustomEndpoint"`
 	BigqueryAnalyticsHubCustomEndpoint pulumi.StringPtrOutput `pulumi:"bigqueryAnalyticsHubCustomEndpoint"`
 	BigqueryConnectionCustomEndpoint   pulumi.StringPtrOutput `pulumi:"bigqueryConnectionCustomEndpoint"`
@@ -79,6 +80,7 @@ type Provider struct {
 	EventarcCustomEndpoint             pulumi.StringPtrOutput `pulumi:"eventarcCustomEndpoint"`
 	FilestoreCustomEndpoint            pulumi.StringPtrOutput `pulumi:"filestoreCustomEndpoint"`
 	FirebaseCustomEndpoint             pulumi.StringPtrOutput `pulumi:"firebaseCustomEndpoint"`
+	FirebaseHostingCustomEndpoint      pulumi.StringPtrOutput `pulumi:"firebaseHostingCustomEndpoint"`
 	FirebaserulesCustomEndpoint        pulumi.StringPtrOutput `pulumi:"firebaserulesCustomEndpoint"`
 	FirestoreCustomEndpoint            pulumi.StringPtrOutput `pulumi:"firestoreCustomEndpoint"`
 	GameServicesCustomEndpoint         pulumi.StringPtrOutput `pulumi:"gameServicesCustomEndpoint"`
@@ -176,6 +178,7 @@ type providerArgs struct {
 	ArtifactRegistryCustomEndpoint     *string           `pulumi:"artifactRegistryCustomEndpoint"`
 	AssuredWorkloadsCustomEndpoint     *string           `pulumi:"assuredWorkloadsCustomEndpoint"`
 	Batching                           *ProviderBatching `pulumi:"batching"`
+	BeyondcorpCustomEndpoint           *string           `pulumi:"beyondcorpCustomEndpoint"`
 	BigQueryCustomEndpoint             *string           `pulumi:"bigQueryCustomEndpoint"`
 	BigqueryAnalyticsHubCustomEndpoint *string           `pulumi:"bigqueryAnalyticsHubCustomEndpoint"`
 	BigqueryConnectionCustomEndpoint   *string           `pulumi:"bigqueryConnectionCustomEndpoint"`
@@ -228,6 +231,7 @@ type providerArgs struct {
 	EventarcCustomEndpoint             *string           `pulumi:"eventarcCustomEndpoint"`
 	FilestoreCustomEndpoint            *string           `pulumi:"filestoreCustomEndpoint"`
 	FirebaseCustomEndpoint             *string           `pulumi:"firebaseCustomEndpoint"`
+	FirebaseHostingCustomEndpoint      *string           `pulumi:"firebaseHostingCustomEndpoint"`
 	FirebaserulesCustomEndpoint        *string           `pulumi:"firebaserulesCustomEndpoint"`
 	FirestoreCustomEndpoint            *string           `pulumi:"firestoreCustomEndpoint"`
 	GameServicesCustomEndpoint         *string           `pulumi:"gameServicesCustomEndpoint"`
@@ -305,6 +309,7 @@ type ProviderArgs struct {
 	ArtifactRegistryCustomEndpoint     pulumi.StringPtrInput
 	AssuredWorkloadsCustomEndpoint     pulumi.StringPtrInput
 	Batching                           ProviderBatchingPtrInput
+	BeyondcorpCustomEndpoint           pulumi.StringPtrInput
 	BigQueryCustomEndpoint             pulumi.StringPtrInput
 	BigqueryAnalyticsHubCustomEndpoint pulumi.StringPtrInput
 	BigqueryConnectionCustomEndpoint   pulumi.StringPtrInput
@@ -357,6 +362,7 @@ type ProviderArgs struct {
 	EventarcCustomEndpoint             pulumi.StringPtrInput
 	FilestoreCustomEndpoint            pulumi.StringPtrInput
 	FirebaseCustomEndpoint             pulumi.StringPtrInput
+	FirebaseHostingCustomEndpoint      pulumi.StringPtrInput
 	FirebaserulesCustomEndpoint        pulumi.StringPtrInput
 	FirestoreCustomEndpoint            pulumi.StringPtrInput
 	GameServicesCustomEndpoint         pulumi.StringPtrInput
@@ -499,6 +505,10 @@ func (o ProviderOutput) ArtifactRegistryCustomEndpoint() pulumi.StringPtrOutput 
 
 func (o ProviderOutput) AssuredWorkloadsCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AssuredWorkloadsCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) BeyondcorpCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BeyondcorpCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) BigQueryCustomEndpoint() pulumi.StringPtrOutput {
@@ -703,6 +713,10 @@ func (o ProviderOutput) FilestoreCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) FirebaseCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.FirebaseCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) FirebaseHostingCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.FirebaseHostingCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) FirebaserulesCustomEndpoint() pulumi.StringPtrOutput {

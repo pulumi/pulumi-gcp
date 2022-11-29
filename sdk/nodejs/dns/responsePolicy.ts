@@ -20,6 +20,49 @@ import * as utilities from "../utilities";
  * const network_2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false}, {
  *     provider: google_beta,
  * });
+ * const subnetwork_1 = new gcp.compute.Subnetwork("subnetwork-1", {
+ *     network: network_1.name,
+ *     ipCidrRange: "10.0.36.0/24",
+ *     region: "us-central1",
+ *     privateIpGoogleAccess: true,
+ *     secondaryIpRanges: [
+ *         {
+ *             rangeName: "pod",
+ *             ipCidrRange: "10.0.0.0/19",
+ *         },
+ *         {
+ *             rangeName: "svc",
+ *             ipCidrRange: "10.0.32.0/22",
+ *         },
+ *     ],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const cluster_1 = new gcp.container.Cluster("cluster-1", {
+ *     location: "us-central1-c",
+ *     initialNodeCount: 1,
+ *     networkingMode: "VPC_NATIVE",
+ *     defaultSnatStatus: {
+ *         disabled: true,
+ *     },
+ *     network: network_1.name,
+ *     subnetwork: subnetwork_1.name,
+ *     privateClusterConfig: {
+ *         enablePrivateEndpoint: true,
+ *         enablePrivateNodes: true,
+ *         masterIpv4CidrBlock: "10.42.0.0/28",
+ *         masterGlobalAccessConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ *     masterAuthorizedNetworksConfig: {},
+ *     ipAllocationPolicy: {
+ *         clusterSecondaryRangeName: subnetwork_1.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[0].rangeName),
+ *         servicesSecondaryRangeName: subnetwork_1.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[1].rangeName),
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
  * const example_response_policy = new gcp.dns.ResponsePolicy("example-response-policy", {
  *     responsePolicyName: "example-response-policy",
  *     networks: [
@@ -30,6 +73,9 @@ import * as utilities from "../utilities";
  *             networkUrl: network_2.id,
  *         },
  *     ],
+ *     gkeClusters: [{
+ *         gkeClusterName: cluster_1.id,
+ *     }],
  * }, {
  *     provider: google_beta,
  * });
@@ -84,6 +130,11 @@ export class ResponsePolicy extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The list of Google Kubernetes Engine clusters that can see this zone.
+     * Structure is documented below.
+     */
+    public readonly gkeClusters!: pulumi.Output<outputs.dns.ResponsePolicyGkeCluster[] | undefined>;
+    /**
      * The list of network names specifying networks to which this policy is applied.
      * Structure is documented below.
      */
@@ -112,6 +163,7 @@ export class ResponsePolicy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ResponsePolicyState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["gkeClusters"] = state ? state.gkeClusters : undefined;
             resourceInputs["networks"] = state ? state.networks : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["responsePolicyName"] = state ? state.responsePolicyName : undefined;
@@ -121,6 +173,7 @@ export class ResponsePolicy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'responsePolicyName'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["gkeClusters"] = args ? args.gkeClusters : undefined;
             resourceInputs["networks"] = args ? args.networks : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["responsePolicyName"] = args ? args.responsePolicyName : undefined;
@@ -138,6 +191,11 @@ export interface ResponsePolicyState {
      * The description of the response policy, such as `My new response policy`.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The list of Google Kubernetes Engine clusters that can see this zone.
+     * Structure is documented below.
+     */
+    gkeClusters?: pulumi.Input<pulumi.Input<inputs.dns.ResponsePolicyGkeCluster>[]>;
     /**
      * The list of network names specifying networks to which this policy is applied.
      * Structure is documented below.
@@ -162,6 +220,11 @@ export interface ResponsePolicyArgs {
      * The description of the response policy, such as `My new response policy`.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The list of Google Kubernetes Engine clusters that can see this zone.
+     * Structure is documented below.
+     */
+    gkeClusters?: pulumi.Input<pulumi.Input<inputs.dns.ResponsePolicyGkeCluster>[]>;
     /**
      * The list of network names specifying networks to which this policy is applied.
      * Structure is documented below.

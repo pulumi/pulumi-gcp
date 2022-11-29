@@ -119,6 +119,34 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:eventarc/trigger:Trigger")
 public class Trigger extends com.pulumi.resources.CustomResource {
     /**
+     * Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+     * 
+     */
+    @Export(name="channel", type=String.class, parameters={})
+    private Output</* @Nullable */ String> channel;
+
+    /**
+     * @return Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+     * 
+     */
+    public Output<Optional<String>> channel() {
+        return Codegen.optional(this.channel);
+    }
+    /**
+     * Output only. The reason(s) why a trigger is in FAILED state.
+     * 
+     */
+    @Export(name="conditions", type=Map.class, parameters={String.class, String.class})
+    private Output<Map<String,String>> conditions;
+
+    /**
+     * @return Output only. The reason(s) why a trigger is in FAILED state.
+     * 
+     */
+    public Output<Map<String,String>> conditions() {
+        return this.conditions;
+    }
+    /**
      * Output only. The creation time.
      * 
      */

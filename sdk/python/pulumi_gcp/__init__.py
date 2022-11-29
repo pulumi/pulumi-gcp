@@ -28,6 +28,8 @@ if typing.TYPE_CHECKING:
     artifactregistry = __artifactregistry
     import pulumi_gcp.assuredworkloads as __assuredworkloads
     assuredworkloads = __assuredworkloads
+    import pulumi_gcp.beyondcorp as __beyondcorp
+    beyondcorp = __beyondcorp
     import pulumi_gcp.bigquery as __bigquery
     bigquery = __bigquery
     import pulumi_gcp.bigqueryanalyticshub as __bigqueryanalyticshub
@@ -206,6 +208,7 @@ else:
     appengine = _utilities.lazy_import('pulumi_gcp.appengine')
     artifactregistry = _utilities.lazy_import('pulumi_gcp.artifactregistry')
     assuredworkloads = _utilities.lazy_import('pulumi_gcp.assuredworkloads')
+    beyondcorp = _utilities.lazy_import('pulumi_gcp.beyondcorp')
     bigquery = _utilities.lazy_import('pulumi_gcp.bigquery')
     bigqueryanalyticshub = _utilities.lazy_import('pulumi_gcp.bigqueryanalyticshub')
     bigquerydatapolicy = _utilities.lazy_import('pulumi_gcp.bigquerydatapolicy')
@@ -412,6 +415,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.alloydb",
   "classes": {
    "gcp:alloydb/cluster:Cluster": "Cluster"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "alloydb/instance",
+  "fqn": "pulumi_gcp.alloydb",
+  "classes": {
+   "gcp:alloydb/instance:Instance": "Instance"
   }
  },
  {
@@ -700,6 +711,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.assuredworkloads",
   "classes": {
    "gcp:assuredworkloads/workload:Workload": "Workload"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "beyondcorp/appConnector",
+  "fqn": "pulumi_gcp.beyondcorp",
+  "classes": {
+   "gcp:beyondcorp/appConnector:AppConnector": "AppConnector"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "beyondcorp/appGateway",
+  "fqn": "pulumi_gcp.beyondcorp",
+  "classes": {
+   "gcp:beyondcorp/appGateway:AppGateway": "AppGateway"
   }
  },
  {
@@ -1904,6 +1931,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/networkFirewallPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy": "NetworkFirewallPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/networkFirewallPolicyAssociation",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation": "NetworkFirewallPolicyAssociation"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/networkFirewallPolicyRule",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule": "NetworkFirewallPolicyRule"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/networkPeering",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -2100,6 +2151,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup": "RegionNetworkEndpointGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionNetworkFirewallPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy": "RegionNetworkFirewallPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionNetworkFirewallPolicyAssociation",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation": "RegionNetworkFirewallPolicyAssociation"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionNetworkFirewallPolicyRule",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule": "RegionNetworkFirewallPolicyRule"
   }
  },
  {
@@ -3144,6 +3219,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "eventarc/channel",
+  "fqn": "pulumi_gcp.eventarc",
+  "classes": {
+   "gcp:eventarc/channel:Channel": "Channel"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "eventarc/trigger",
   "fqn": "pulumi_gcp.eventarc",
   "classes": {
@@ -3172,6 +3255,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.firebase",
   "classes": {
    "gcp:firebase/androidApp:AndroidApp": "AndroidApp"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebase/appleApp",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/appleApp:AppleApp": "AppleApp"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebase/hostingChannel",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/hostingChannel:HostingChannel": "HostingChannel"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebase/hostingSite",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/hostingSite:HostingSite": "HostingSite"
   }
  },
  {
@@ -3796,6 +3903,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.identityplatform",
   "classes": {
    "gcp:identityplatform/oauthIdpConfig:OauthIdpConfig": "OauthIdpConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "identityplatform/projectDefaultConfig",
+  "fqn": "pulumi_gcp.identityplatform",
+  "classes": {
+   "gcp:identityplatform/projectDefaultConfig:ProjectDefaultConfig": "ProjectDefaultConfig"
   }
  },
  {
@@ -5132,6 +5247,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.storage",
   "classes": {
    "gcp:storage/objectAccessControl:ObjectAccessControl": "ObjectAccessControl"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "storage/transferAgentPool",
+  "fqn": "pulumi_gcp.storage",
+  "classes": {
+   "gcp:storage/transferAgentPool:TransferAgentPool": "TransferAgentPool"
   }
  },
  {

@@ -12,11 +12,17 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterNodePoolUpgradeSettingsGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("maxSurge", required: true)]
-        public Input<int> MaxSurge { get; set; } = null!;
+        [Input("blueGreenSettings")]
+        public Input<Inputs.ClusterNodePoolUpgradeSettingsBlueGreenSettingsGetArgs>? BlueGreenSettings { get; set; }
 
-        [Input("maxUnavailable", required: true)]
-        public Input<int> MaxUnavailable { get; set; } = null!;
+        [Input("maxSurge")]
+        public Input<int>? MaxSurge { get; set; }
+
+        [Input("maxUnavailable")]
+        public Input<int>? MaxUnavailable { get; set; }
+
+        [Input("strategy")]
+        public Input<string>? Strategy { get; set; }
 
         public ClusterNodePoolUpgradeSettingsGetArgs()
         {

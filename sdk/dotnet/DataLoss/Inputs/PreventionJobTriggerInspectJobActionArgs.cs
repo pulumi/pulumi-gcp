@@ -13,11 +13,18 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionJobTriggerInspectJobActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Publish a message into a given Pub/Sub topic when the job completes.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pubSub")]
+        public Input<Inputs.PreventionJobTriggerInspectJobActionPubSubArgs>? PubSub { get; set; }
+
+        /// <summary>
         /// Schedule for triggered jobs
         /// Structure is documented below.
         /// </summary>
-        [Input("saveFindings", required: true)]
-        public Input<Inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs> SaveFindings { get; set; } = null!;
+        [Input("saveFindings")]
+        public Input<Inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs>? SaveFindings { get; set; }
 
         public PreventionJobTriggerInspectJobActionArgs()
         {

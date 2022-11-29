@@ -39,6 +39,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? ImageType { get; set; }
 
         /// <summary>
+        /// NodeManagement configuration for this NodePool. Structure is documented below.
+        /// </summary>
+        [Input("management")]
+        public Input<Inputs.ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs>? Management { get; set; }
+
+        /// <summary>
         /// Minimum CPU platform to be used by this instance.
         /// The instance may be scheduled on the specified or newer CPU platform. Applicable
         /// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
@@ -68,6 +74,12 @@ namespace Pulumi.Gcp.Container.Inputs
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Shielded Instance options. Structure is documented below.
+        /// </summary>
+        [Input("shieldedInstanceConfig")]
+        public Input<Inputs.ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }
 
         public ClusterClusterAutoscalingAutoProvisioningDefaultsArgs()
         {

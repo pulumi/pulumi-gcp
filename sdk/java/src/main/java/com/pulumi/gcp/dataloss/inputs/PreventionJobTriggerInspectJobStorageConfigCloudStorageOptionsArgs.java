@@ -108,8 +108,9 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
     }
 
     /**
-     * How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
-     * If not specified, scanning would start from the top.
+     * How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+     * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+     * Default value is `TOP`.
      * Possible values are `TOP` and `RANDOM_START`.
      * 
      */
@@ -117,8 +118,9 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
     private @Nullable Output<String> sampleMethod;
 
     /**
-     * @return How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
-     * If not specified, scanning would start from the top.
+     * @return How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+     * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+     * Default value is `TOP`.
      * Possible values are `TOP` and `RANDOM_START`.
      * 
      */
@@ -288,8 +290,9 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
         }
 
         /**
-         * @param sampleMethod How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
-         * If not specified, scanning would start from the top.
+         * @param sampleMethod How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+         * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+         * Default value is `TOP`.
          * Possible values are `TOP` and `RANDOM_START`.
          * 
          * @return builder
@@ -301,8 +304,9 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
         }
 
         /**
-         * @param sampleMethod How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
-         * If not specified, scanning would start from the top.
+         * @param sampleMethod How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
+         * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
+         * Default value is `TOP`.
          * Possible values are `TOP` and `RANDOM_START`.
          * 
          * @return builder

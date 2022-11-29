@@ -70,8 +70,8 @@ import (
 type AndroidApp struct {
 	pulumi.CustomResourceState
 
-	// Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-	// token, as the data format is not specified.
+	// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+	// the data format is not specified.
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
 	// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
@@ -121,8 +121,8 @@ func GetAndroidApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AndroidApp resources.
 type androidAppState struct {
-	// Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-	// token, as the data format is not specified.
+	// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+	// the data format is not specified.
 	AppId *string `pulumi:"appId"`
 	// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
 	// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
@@ -141,8 +141,8 @@ type androidAppState struct {
 }
 
 type AndroidAppState struct {
-	// Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-	// token, as the data format is not specified.
+	// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+	// the data format is not specified.
 	AppId pulumi.StringPtrInput
 	// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
 	// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
@@ -282,8 +282,8 @@ func (o AndroidAppOutput) ToAndroidAppOutputWithContext(ctx context.Context) And
 	return o
 }
 
-// Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-// token, as the data format is not specified.
+// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+// the data format is not specified.
 func (o AndroidAppOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }

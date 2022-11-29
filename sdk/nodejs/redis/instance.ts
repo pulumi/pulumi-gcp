@@ -303,7 +303,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly nodes!: pulumi.Output<outputs.redis.InstanceNode[]>;
     /**
-     * Maintenance policy for an instance.
+     * Persistence configuration for an instance.
      * Structure is documented below.
      */
     public readonly persistenceConfig!: pulumi.Output<outputs.redis.InstancePersistenceConfig>;
@@ -587,7 +587,7 @@ export interface InstanceState {
      */
     nodes?: pulumi.Input<pulumi.Input<inputs.redis.InstanceNode>[]>;
     /**
-     * Maintenance policy for an instance.
+     * Persistence configuration for an instance.
      * Structure is documented below.
      */
     persistenceConfig?: pulumi.Input<inputs.redis.InstancePersistenceConfig>;
@@ -755,7 +755,7 @@ export interface InstanceArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Maintenance policy for an instance.
+     * Persistence configuration for an instance.
      * Structure is documented below.
      */
     persistenceConfig?: pulumi.Input<inputs.redis.InstancePersistenceConfig>;

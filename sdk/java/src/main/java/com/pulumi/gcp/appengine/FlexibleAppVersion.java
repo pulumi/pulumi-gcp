@@ -619,15 +619,15 @@ public class FlexibleAppVersion extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="serviceAccount", type=String.class, parameters={})
-    private Output</* @Nullable */ String> serviceAccount;
+    private Output<String> serviceAccount;
 
     /**
      * @return The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
      * default if this field is neither provided in app.yaml file nor through CLI flag.
      * 
      */
-    public Output<Optional<String>> serviceAccount() {
-        return Codegen.optional(this.serviceAccount);
+    public Output<String> serviceAccount() {
+        return this.serviceAccount;
     }
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.

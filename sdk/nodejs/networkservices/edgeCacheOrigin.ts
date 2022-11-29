@@ -59,6 +59,32 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Network Services Edge Cache Origin V4auth
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
+ *     secretId: "secret-name",
+ *     replication: {
+ *         automatic: true,
+ *     },
+ * });
+ * const secret_version_basic = new gcp.secretmanager.SecretVersion("secret-version-basic", {
+ *     secret: secret_basic.id,
+ *     secretData: "secret-data",
+ * });
+ * const _default = new gcp.networkservices.EdgeCacheOrigin("default", {
+ *     originAddress: "gs://media-edge-default",
+ *     description: "The default bucket for V4 authentication",
+ *     awsV4Authentication: {
+ *         accessKeyId: "ACCESSKEYID",
+ *         secretAccessKeyVersion: secret_version_basic.id,
+ *         originRegion: "auto",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -104,6 +130,11 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
         return obj['__pulumiType'] === EdgeCacheOrigin.__pulumiType;
     }
 
+    /**
+     * Enable AWS Signature Version 4 origin authentication.
+     * Structure is documented below.
+     */
+    public readonly awsV4Authentication!: pulumi.Output<outputs.networkservices.EdgeCacheOriginAwsV4Authentication | undefined>;
     /**
      * A human-readable description of the resource.
      */
@@ -195,6 +226,7 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EdgeCacheOriginState | undefined;
+            resourceInputs["awsV4Authentication"] = state ? state.awsV4Authentication : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["failoverOrigin"] = state ? state.failoverOrigin : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -211,6 +243,7 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
             if ((!args || args.originAddress === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'originAddress'");
             }
+            resourceInputs["awsV4Authentication"] = args ? args.awsV4Authentication : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["failoverOrigin"] = args ? args.failoverOrigin : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -232,6 +265,11 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EdgeCacheOrigin resources.
  */
 export interface EdgeCacheOriginState {
+    /**
+     * Enable AWS Signature Version 4 origin authentication.
+     * Structure is documented below.
+     */
+    awsV4Authentication?: pulumi.Input<inputs.networkservices.EdgeCacheOriginAwsV4Authentication>;
     /**
      * A human-readable description of the resource.
      */
@@ -315,6 +353,11 @@ export interface EdgeCacheOriginState {
  * The set of arguments for constructing a EdgeCacheOrigin resource.
  */
 export interface EdgeCacheOriginArgs {
+    /**
+     * Enable AWS Signature Version 4 origin authentication.
+     * Structure is documented below.
+     */
+    awsV4Authentication?: pulumi.Input<inputs.networkservices.EdgeCacheOriginAwsV4Authentication>;
     /**
      * A human-readable description of the resource.
      */

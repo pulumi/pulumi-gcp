@@ -4,15 +4,31 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dns.outputs.ManagedZonePrivateVisibilityConfigGkeCluster;
 import com.pulumi.gcp.dns.outputs.ManagedZonePrivateVisibilityConfigNetwork;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ManagedZonePrivateVisibilityConfig {
+    /**
+     * @return The list of Google Kubernetes Engine clusters that can see this zone.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<ManagedZonePrivateVisibilityConfigGkeCluster> gkeClusters;
     private List<ManagedZonePrivateVisibilityConfigNetwork> networks;
 
     private ManagedZonePrivateVisibilityConfig() {}
+    /**
+     * @return The list of Google Kubernetes Engine clusters that can see this zone.
+     * Structure is documented below.
+     * 
+     */
+    public List<ManagedZonePrivateVisibilityConfigGkeCluster> gkeClusters() {
+        return this.gkeClusters == null ? List.of() : this.gkeClusters;
+    }
     public List<ManagedZonePrivateVisibilityConfigNetwork> networks() {
         return this.networks;
     }
@@ -26,13 +42,23 @@ public final class ManagedZonePrivateVisibilityConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<ManagedZonePrivateVisibilityConfigGkeCluster> gkeClusters;
         private List<ManagedZonePrivateVisibilityConfigNetwork> networks;
         public Builder() {}
         public Builder(ManagedZonePrivateVisibilityConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.gkeClusters = defaults.gkeClusters;
     	      this.networks = defaults.networks;
         }
 
+        @CustomType.Setter
+        public Builder gkeClusters(@Nullable List<ManagedZonePrivateVisibilityConfigGkeCluster> gkeClusters) {
+            this.gkeClusters = gkeClusters;
+            return this;
+        }
+        public Builder gkeClusters(ManagedZonePrivateVisibilityConfigGkeCluster... gkeClusters) {
+            return gkeClusters(List.of(gkeClusters));
+        }
         @CustomType.Setter
         public Builder networks(List<ManagedZonePrivateVisibilityConfigNetwork> networks) {
             this.networks = Objects.requireNonNull(networks);
@@ -43,6 +69,7 @@ public final class ManagedZonePrivateVisibilityConfig {
         }
         public ManagedZonePrivateVisibilityConfig build() {
             final var o = new ManagedZonePrivateVisibilityConfig();
+            o.gkeClusters = gkeClusters;
             o.networks = networks;
             return o;
         }

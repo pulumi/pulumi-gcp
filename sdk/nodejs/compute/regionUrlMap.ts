@@ -65,6 +65,14 @@ export class RegionUrlMap extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
+     * defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+     * Only one of defaultRouteAction or defaultUrlRedirect must be set.
+     * URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
+     * defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+     * Structure is documented below.
+     */
+    public readonly defaultRouteAction!: pulumi.Output<outputs.compute.RegionUrlMapDefaultRouteAction | undefined>;
+    /**
      * A reference to a RegionBackendService resource. This will be used if
      * none of the pathRules defined by this PathMatcher is matched by
      * the URL's path portion.
@@ -139,6 +147,7 @@ export class RegionUrlMap extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RegionUrlMapState | undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["defaultRouteAction"] = state ? state.defaultRouteAction : undefined;
             resourceInputs["defaultService"] = state ? state.defaultService : undefined;
             resourceInputs["defaultUrlRedirect"] = state ? state.defaultUrlRedirect : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -153,6 +162,7 @@ export class RegionUrlMap extends pulumi.CustomResource {
             resourceInputs["tests"] = state ? state.tests : undefined;
         } else {
             const args = argsOrState as RegionUrlMapArgs | undefined;
+            resourceInputs["defaultRouteAction"] = args ? args.defaultRouteAction : undefined;
             resourceInputs["defaultService"] = args ? args.defaultService : undefined;
             resourceInputs["defaultUrlRedirect"] = args ? args.defaultUrlRedirect : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -180,6 +190,14 @@ export interface RegionUrlMapState {
      * Creation timestamp in RFC3339 text format.
      */
     creationTimestamp?: pulumi.Input<string>;
+    /**
+     * defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+     * Only one of defaultRouteAction or defaultUrlRedirect must be set.
+     * URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
+     * defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+     * Structure is documented below.
+     */
+    defaultRouteAction?: pulumi.Input<inputs.compute.RegionUrlMapDefaultRouteAction>;
     /**
      * A reference to a RegionBackendService resource. This will be used if
      * none of the pathRules defined by this PathMatcher is matched by
@@ -246,6 +264,14 @@ export interface RegionUrlMapState {
  * The set of arguments for constructing a RegionUrlMap resource.
  */
 export interface RegionUrlMapArgs {
+    /**
+     * defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+     * Only one of defaultRouteAction or defaultUrlRedirect must be set.
+     * URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
+     * defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+     * Structure is documented below.
+     */
+    defaultRouteAction?: pulumi.Input<inputs.compute.RegionUrlMapDefaultRouteAction>;
     /**
      * A reference to a RegionBackendService resource. This will be used if
      * none of the pathRules defined by this PathMatcher is matched by

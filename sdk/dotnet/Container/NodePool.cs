@@ -193,8 +193,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specify node upgrade settings to change how many nodes GKE attempts to
-        /// upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+        /// Specify node upgrade settings to change how GKE upgrades nodes.
         /// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         /// </summary>
         [Output("upgradeSettings")]
@@ -370,8 +369,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specify node upgrade settings to change how many nodes GKE attempts to
-        /// upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+        /// Specify node upgrade settings to change how GKE upgrades nodes.
         /// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         /// </summary>
         [Input("upgradeSettings")]
@@ -536,8 +534,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specify node upgrade settings to change how many nodes GKE attempts to
-        /// upgrade at once. The number of nodes upgraded simultaneously is the sum of `max_surge` and `max_unavailable`.
+        /// Specify node upgrade settings to change how GKE upgrades nodes.
         /// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         /// </summary>
         [Input("upgradeSettings")]

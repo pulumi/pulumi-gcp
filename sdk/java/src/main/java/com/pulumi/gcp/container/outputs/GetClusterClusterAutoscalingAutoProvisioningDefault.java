@@ -4,6 +4,8 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultManagement;
+import com.pulumi.gcp.container.outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -15,9 +17,11 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
     private Integer diskSize;
     private String diskType;
     private String imageType;
+    private List<GetClusterClusterAutoscalingAutoProvisioningDefaultManagement> managements;
     private String minCpuPlatform;
     private List<String> oauthScopes;
     private String serviceAccount;
+    private List<GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig> shieldedInstanceConfigs;
 
     private GetClusterClusterAutoscalingAutoProvisioningDefault() {}
     public String bootDiskKmsKey() {
@@ -32,6 +36,9 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
     public String imageType() {
         return this.imageType;
     }
+    public List<GetClusterClusterAutoscalingAutoProvisioningDefaultManagement> managements() {
+        return this.managements;
+    }
     public String minCpuPlatform() {
         return this.minCpuPlatform;
     }
@@ -40,6 +47,9 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
     }
     public String serviceAccount() {
         return this.serviceAccount;
+    }
+    public List<GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig> shieldedInstanceConfigs() {
+        return this.shieldedInstanceConfigs;
     }
 
     public static Builder builder() {
@@ -55,9 +65,11 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
         private Integer diskSize;
         private String diskType;
         private String imageType;
+        private List<GetClusterClusterAutoscalingAutoProvisioningDefaultManagement> managements;
         private String minCpuPlatform;
         private List<String> oauthScopes;
         private String serviceAccount;
+        private List<GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig> shieldedInstanceConfigs;
         public Builder() {}
         public Builder(GetClusterClusterAutoscalingAutoProvisioningDefault defaults) {
     	      Objects.requireNonNull(defaults);
@@ -65,9 +77,11 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
     	      this.diskSize = defaults.diskSize;
     	      this.diskType = defaults.diskType;
     	      this.imageType = defaults.imageType;
+    	      this.managements = defaults.managements;
     	      this.minCpuPlatform = defaults.minCpuPlatform;
     	      this.oauthScopes = defaults.oauthScopes;
     	      this.serviceAccount = defaults.serviceAccount;
+    	      this.shieldedInstanceConfigs = defaults.shieldedInstanceConfigs;
         }
 
         @CustomType.Setter
@@ -91,6 +105,14 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
             return this;
         }
         @CustomType.Setter
+        public Builder managements(List<GetClusterClusterAutoscalingAutoProvisioningDefaultManagement> managements) {
+            this.managements = Objects.requireNonNull(managements);
+            return this;
+        }
+        public Builder managements(GetClusterClusterAutoscalingAutoProvisioningDefaultManagement... managements) {
+            return managements(List.of(managements));
+        }
+        @CustomType.Setter
         public Builder minCpuPlatform(String minCpuPlatform) {
             this.minCpuPlatform = Objects.requireNonNull(minCpuPlatform);
             return this;
@@ -108,15 +130,25 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
             this.serviceAccount = Objects.requireNonNull(serviceAccount);
             return this;
         }
+        @CustomType.Setter
+        public Builder shieldedInstanceConfigs(List<GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig> shieldedInstanceConfigs) {
+            this.shieldedInstanceConfigs = Objects.requireNonNull(shieldedInstanceConfigs);
+            return this;
+        }
+        public Builder shieldedInstanceConfigs(GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig... shieldedInstanceConfigs) {
+            return shieldedInstanceConfigs(List.of(shieldedInstanceConfigs));
+        }
         public GetClusterClusterAutoscalingAutoProvisioningDefault build() {
             final var o = new GetClusterClusterAutoscalingAutoProvisioningDefault();
             o.bootDiskKmsKey = bootDiskKmsKey;
             o.diskSize = diskSize;
             o.diskType = diskType;
             o.imageType = imageType;
+            o.managements = managements;
             o.minCpuPlatform = minCpuPlatform;
             o.oauthScopes = oauthScopes;
             o.serviceAccount = serviceAccount;
+            o.shieldedInstanceConfigs = shieldedInstanceConfigs;
             return o;
         }
     }

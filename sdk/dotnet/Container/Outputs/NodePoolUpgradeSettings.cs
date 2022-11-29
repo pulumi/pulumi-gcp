@@ -14,26 +14,41 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class NodePoolUpgradeSettings
     {
         /// <summary>
+        /// The settings to adjust [blue green upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy).
+        /// Structure is documented below
+        /// </summary>
+        public readonly Outputs.NodePoolUpgradeSettingsBlueGreenSettings? BlueGreenSettings;
+        /// <summary>
         /// The number of additional nodes that can be added to the node pool during
         /// an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
         /// Can be set to 0 or greater.
         /// </summary>
-        public readonly int MaxSurge;
+        public readonly int? MaxSurge;
         /// <summary>
         /// The number of nodes that can be simultaneously unavailable during
         /// an upgrade. Increasing `max_unavailable` raises the number of nodes that can be upgraded in
         /// parallel. Can be set to 0 or greater.
         /// </summary>
-        public readonly int MaxUnavailable;
+        public readonly int? MaxUnavailable;
+        /// <summary>
+        /// The upgrade stragey to be used for upgrading the nodes.
+        /// </summary>
+        public readonly string? Strategy;
 
         [OutputConstructor]
         private NodePoolUpgradeSettings(
-            int maxSurge,
+            Outputs.NodePoolUpgradeSettingsBlueGreenSettings? blueGreenSettings,
 
-            int maxUnavailable)
+            int? maxSurge,
+
+            int? maxUnavailable,
+
+            string? strategy)
         {
+            BlueGreenSettings = blueGreenSettings;
             MaxSurge = maxSurge;
             MaxUnavailable = maxUnavailable;
+            Strategy = strategy;
         }
     }
 }

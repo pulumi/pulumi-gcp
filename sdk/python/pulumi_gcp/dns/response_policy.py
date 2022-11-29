@@ -18,12 +18,15 @@ class ResponsePolicyArgs:
     def __init__(__self__, *,
                  response_policy_name: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ResponsePolicy resource.
         :param pulumi.Input[str] response_policy_name: The user assigned name for this Response Policy, such as `myresponsepolicy`.
         :param pulumi.Input[str] description: The description of the response policy, such as `My new response policy`.
+        :param pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]] networks: The list of network names specifying networks to which this policy is applied.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -32,6 +35,8 @@ class ResponsePolicyArgs:
         pulumi.set(__self__, "response_policy_name", response_policy_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if gke_clusters is not None:
+            pulumi.set(__self__, "gke_clusters", gke_clusters)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
         if project is not None:
@@ -60,6 +65,19 @@ class ResponsePolicyArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="gkeClusters")
+    def gke_clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]]:
+        """
+        The list of Google Kubernetes Engine clusters that can see this zone.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gke_clusters")
+
+    @gke_clusters.setter
+    def gke_clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]]):
+        pulumi.set(self, "gke_clusters", value)
 
     @property
     @pulumi.getter
@@ -92,12 +110,15 @@ class ResponsePolicyArgs:
 class _ResponsePolicyState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  response_policy_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ResponsePolicy resources.
         :param pulumi.Input[str] description: The description of the response policy, such as `My new response policy`.
+        :param pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]] networks: The list of network names specifying networks to which this policy is applied.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -106,6 +127,8 @@ class _ResponsePolicyState:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if gke_clusters is not None:
+            pulumi.set(__self__, "gke_clusters", gke_clusters)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
         if project is not None:
@@ -124,6 +147,19 @@ class _ResponsePolicyState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="gkeClusters")
+    def gke_clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]]:
+        """
+        The list of Google Kubernetes Engine clusters that can see this zone.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gke_clusters")
+
+    @gke_clusters.setter
+    def gke_clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]]):
+        pulumi.set(self, "gke_clusters", value)
 
     @property
     @pulumi.getter
@@ -170,6 +206,7 @@ class ResponsePolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyGkeClusterArgs']]]]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyNetworkArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  response_policy_name: Optional[pulumi.Input[str]] = None,
@@ -186,6 +223,45 @@ class ResponsePolicy(pulumi.CustomResource):
         opts=pulumi.ResourceOptions(provider=google_beta))
         network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False,
         opts=pulumi.ResourceOptions(provider=google_beta))
+        subnetwork_1 = gcp.compute.Subnetwork("subnetwork-1",
+            network=network_1.name,
+            ip_cidr_range="10.0.36.0/24",
+            region="us-central1",
+            private_ip_google_access=True,
+            secondary_ip_ranges=[
+                gcp.compute.SubnetworkSecondaryIpRangeArgs(
+                    range_name="pod",
+                    ip_cidr_range="10.0.0.0/19",
+                ),
+                gcp.compute.SubnetworkSecondaryIpRangeArgs(
+                    range_name="svc",
+                    ip_cidr_range="10.0.32.0/22",
+                ),
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        cluster_1 = gcp.container.Cluster("cluster-1",
+            location="us-central1-c",
+            initial_node_count=1,
+            networking_mode="VPC_NATIVE",
+            default_snat_status=gcp.container.ClusterDefaultSnatStatusArgs(
+                disabled=True,
+            ),
+            network=network_1.name,
+            subnetwork=subnetwork_1.name,
+            private_cluster_config=gcp.container.ClusterPrivateClusterConfigArgs(
+                enable_private_endpoint=True,
+                enable_private_nodes=True,
+                master_ipv4_cidr_block="10.42.0.0/28",
+                master_global_access_config=gcp.container.ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            master_authorized_networks_config=gcp.container.ClusterMasterAuthorizedNetworksConfigArgs(),
+            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
+                cluster_secondary_range_name=subnetwork_1.secondary_ip_ranges[0].range_name,
+                services_secondary_range_name=subnetwork_1.secondary_ip_ranges[1].range_name,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         example_response_policy = gcp.dns.ResponsePolicy("example-response-policy",
             response_policy_name="example-response-policy",
             networks=[
@@ -196,6 +272,9 @@ class ResponsePolicy(pulumi.CustomResource):
                     network_url=network_2.id,
                 ),
             ],
+            gke_clusters=[gcp.dns.ResponsePolicyGkeClusterArgs(
+                gke_cluster_name=cluster_1.id,
+            )],
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
@@ -218,6 +297,8 @@ class ResponsePolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the response policy, such as `My new response policy`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyGkeClusterArgs']]]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyNetworkArgs']]]] networks: The list of network names specifying networks to which this policy is applied.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -242,6 +323,45 @@ class ResponsePolicy(pulumi.CustomResource):
         opts=pulumi.ResourceOptions(provider=google_beta))
         network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False,
         opts=pulumi.ResourceOptions(provider=google_beta))
+        subnetwork_1 = gcp.compute.Subnetwork("subnetwork-1",
+            network=network_1.name,
+            ip_cidr_range="10.0.36.0/24",
+            region="us-central1",
+            private_ip_google_access=True,
+            secondary_ip_ranges=[
+                gcp.compute.SubnetworkSecondaryIpRangeArgs(
+                    range_name="pod",
+                    ip_cidr_range="10.0.0.0/19",
+                ),
+                gcp.compute.SubnetworkSecondaryIpRangeArgs(
+                    range_name="svc",
+                    ip_cidr_range="10.0.32.0/22",
+                ),
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        cluster_1 = gcp.container.Cluster("cluster-1",
+            location="us-central1-c",
+            initial_node_count=1,
+            networking_mode="VPC_NATIVE",
+            default_snat_status=gcp.container.ClusterDefaultSnatStatusArgs(
+                disabled=True,
+            ),
+            network=network_1.name,
+            subnetwork=subnetwork_1.name,
+            private_cluster_config=gcp.container.ClusterPrivateClusterConfigArgs(
+                enable_private_endpoint=True,
+                enable_private_nodes=True,
+                master_ipv4_cidr_block="10.42.0.0/28",
+                master_global_access_config=gcp.container.ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs(
+                    enabled=True,
+                ),
+            ),
+            master_authorized_networks_config=gcp.container.ClusterMasterAuthorizedNetworksConfigArgs(),
+            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
+                cluster_secondary_range_name=subnetwork_1.secondary_ip_ranges[0].range_name,
+                services_secondary_range_name=subnetwork_1.secondary_ip_ranges[1].range_name,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         example_response_policy = gcp.dns.ResponsePolicy("example-response-policy",
             response_policy_name="example-response-policy",
             networks=[
@@ -252,6 +372,9 @@ class ResponsePolicy(pulumi.CustomResource):
                     network_url=network_2.id,
                 ),
             ],
+            gke_clusters=[gcp.dns.ResponsePolicyGkeClusterArgs(
+                gke_cluster_name=cluster_1.id,
+            )],
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
@@ -287,6 +410,7 @@ class ResponsePolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyGkeClusterArgs']]]]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyNetworkArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  response_policy_name: Optional[pulumi.Input[str]] = None,
@@ -300,6 +424,7 @@ class ResponsePolicy(pulumi.CustomResource):
             __props__ = ResponsePolicyArgs.__new__(ResponsePolicyArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["gke_clusters"] = gke_clusters
             __props__.__dict__["networks"] = networks
             __props__.__dict__["project"] = project
             if response_policy_name is None and not opts.urn:
@@ -316,6 +441,7 @@ class ResponsePolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyGkeClusterArgs']]]]] = None,
             networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyNetworkArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             response_policy_name: Optional[pulumi.Input[str]] = None) -> 'ResponsePolicy':
@@ -327,6 +453,8 @@ class ResponsePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the response policy, such as `My new response policy`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyGkeClusterArgs']]]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyNetworkArgs']]]] networks: The list of network names specifying networks to which this policy is applied.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -338,6 +466,7 @@ class ResponsePolicy(pulumi.CustomResource):
         __props__ = _ResponsePolicyState.__new__(_ResponsePolicyState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["gke_clusters"] = gke_clusters
         __props__.__dict__["networks"] = networks
         __props__.__dict__["project"] = project
         __props__.__dict__["response_policy_name"] = response_policy_name
@@ -350,6 +479,15 @@ class ResponsePolicy(pulumi.CustomResource):
         The description of the response policy, such as `My new response policy`.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="gkeClusters")
+    def gke_clusters(self) -> pulumi.Output[Optional[Sequence['outputs.ResponsePolicyGkeCluster']]]:
+        """
+        The list of Google Kubernetes Engine clusters that can see this zone.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gke_clusters")
 
     @property
     @pulumi.getter

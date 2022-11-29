@@ -75,16 +75,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:firebase/androidApp:AndroidApp")
 public class AndroidApp extends com.pulumi.resources.CustomResource {
     /**
-     * Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-     * token, as the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+     * the data format is not specified.
      * 
      */
     @Export(name="appId", type=String.class, parameters={})
     private Output<String> appId;
 
     /**
-     * @return Immutable. The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque
-     * token, as the data format is not specified.
+     * @return The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
+     * the data format is not specified.
      * 
      */
     public Output<String> appId() {

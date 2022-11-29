@@ -38,6 +38,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly appEngineCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly artifactRegistryCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly assuredWorkloadsCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly beyondcorpCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly bigQueryCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly bigqueryAnalyticsHubCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly bigqueryConnectionCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -89,6 +90,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly eventarcCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly filestoreCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly firebaseHostingCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaserulesCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firestoreCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gameServicesCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -171,6 +173,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["artifactRegistryCustomEndpoint"] = args ? args.artifactRegistryCustomEndpoint : undefined;
             resourceInputs["assuredWorkloadsCustomEndpoint"] = args ? args.assuredWorkloadsCustomEndpoint : undefined;
             resourceInputs["batching"] = pulumi.output(args ? args.batching : undefined).apply(JSON.stringify);
+            resourceInputs["beyondcorpCustomEndpoint"] = args ? args.beyondcorpCustomEndpoint : undefined;
             resourceInputs["bigQueryCustomEndpoint"] = args ? args.bigQueryCustomEndpoint : undefined;
             resourceInputs["bigqueryAnalyticsHubCustomEndpoint"] = args ? args.bigqueryAnalyticsHubCustomEndpoint : undefined;
             resourceInputs["bigqueryConnectionCustomEndpoint"] = args ? args.bigqueryConnectionCustomEndpoint : undefined;
@@ -223,6 +226,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["eventarcCustomEndpoint"] = args ? args.eventarcCustomEndpoint : undefined;
             resourceInputs["filestoreCustomEndpoint"] = args ? args.filestoreCustomEndpoint : undefined;
             resourceInputs["firebaseCustomEndpoint"] = args ? args.firebaseCustomEndpoint : undefined;
+            resourceInputs["firebaseHostingCustomEndpoint"] = args ? args.firebaseHostingCustomEndpoint : undefined;
             resourceInputs["firebaserulesCustomEndpoint"] = args ? args.firebaserulesCustomEndpoint : undefined;
             resourceInputs["firestoreCustomEndpoint"] = args ? args.firestoreCustomEndpoint : undefined;
             resourceInputs["gameServicesCustomEndpoint"] = args ? args.gameServicesCustomEndpoint : undefined;
@@ -306,6 +310,7 @@ export interface ProviderArgs {
     artifactRegistryCustomEndpoint?: pulumi.Input<string>;
     assuredWorkloadsCustomEndpoint?: pulumi.Input<string>;
     batching?: pulumi.Input<inputs.ProviderBatching>;
+    beyondcorpCustomEndpoint?: pulumi.Input<string>;
     bigQueryCustomEndpoint?: pulumi.Input<string>;
     bigqueryAnalyticsHubCustomEndpoint?: pulumi.Input<string>;
     bigqueryConnectionCustomEndpoint?: pulumi.Input<string>;
@@ -358,6 +363,7 @@ export interface ProviderArgs {
     eventarcCustomEndpoint?: pulumi.Input<string>;
     filestoreCustomEndpoint?: pulumi.Input<string>;
     firebaseCustomEndpoint?: pulumi.Input<string>;
+    firebaseHostingCustomEndpoint?: pulumi.Input<string>;
     firebaserulesCustomEndpoint?: pulumi.Input<string>;
     firestoreCustomEndpoint?: pulumi.Input<string>;
     gameServicesCustomEndpoint?: pulumi.Input<string>;

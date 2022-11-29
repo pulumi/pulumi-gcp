@@ -21,6 +21,36 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     public static final TriggerState Empty = new TriggerState();
 
     /**
+     * Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+     * 
+     */
+    @Import(name="channel")
+    private @Nullable Output<String> channel;
+
+    /**
+     * @return Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+     * 
+     */
+    public Optional<Output<String>> channel() {
+        return Optional.ofNullable(this.channel);
+    }
+
+    /**
+     * Output only. The reason(s) why a trigger is in FAILED state.
+     * 
+     */
+    @Import(name="conditions")
+    private @Nullable Output<Map<String,String>> conditions;
+
+    /**
+     * @return Output only. The reason(s) why a trigger is in FAILED state.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> conditions() {
+        return Optional.ofNullable(this.conditions);
+    }
+
+    /**
      * Output only. The creation time.
      * 
      */
@@ -207,6 +237,8 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     private TriggerState() {}
 
     private TriggerState(TriggerState $) {
+        this.channel = $.channel;
+        this.conditions = $.conditions;
         this.createTime = $.createTime;
         this.destination = $.destination;
         this.etag = $.etag;
@@ -237,6 +269,48 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(TriggerState defaults) {
             $ = new TriggerState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param channel Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder channel(@Nullable Output<String> channel) {
+            $.channel = channel;
+            return this;
+        }
+
+        /**
+         * @param channel Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder channel(String channel) {
+            return channel(Output.of(channel));
+        }
+
+        /**
+         * @param conditions Output only. The reason(s) why a trigger is in FAILED state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditions(@Nullable Output<Map<String,String>> conditions) {
+            $.conditions = conditions;
+            return this;
+        }
+
+        /**
+         * @param conditions Output only. The reason(s) why a trigger is in FAILED state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditions(Map<String,String> conditions) {
+            return conditions(Output.of(conditions));
         }
 
         /**

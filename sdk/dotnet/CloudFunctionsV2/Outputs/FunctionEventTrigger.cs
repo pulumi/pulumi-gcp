@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         public readonly string? ServiceAccountEmail;
         /// <summary>
         /// -
-        /// The resource name of the Eventarc trigger.
+        /// Output only. The resource name of the Eventarc trigger.
         /// </summary>
         public readonly string? Trigger;
         /// <summary>

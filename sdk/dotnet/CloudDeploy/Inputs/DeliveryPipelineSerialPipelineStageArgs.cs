@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         }
 
         /// <summary>
+        /// (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+        /// </summary>
+        [Input("strategy")]
+        public Input<Inputs.DeliveryPipelineSerialPipelineStageStrategyArgs>? Strategy { get; set; }
+
+        /// <summary>
         /// The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
         /// </summary>
         [Input("targetId")]

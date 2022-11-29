@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class ClusterNodePoolManagement
     {
+        /// <summary>
+        /// Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+        /// </summary>
         public readonly bool? AutoRepair;
+        /// <summary>
+        /// Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
+        /// </summary>
         public readonly bool? AutoUpgrade;
 
         [OutputConstructor]

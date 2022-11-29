@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.RegionUrlMapArgs;
 import com.pulumi.gcp.compute.inputs.RegionUrlMapState;
+import com.pulumi.gcp.compute.outputs.RegionUrlMapDefaultRouteAction;
 import com.pulumi.gcp.compute.outputs.RegionUrlMapDefaultUrlRedirect;
 import com.pulumi.gcp.compute.outputs.RegionUrlMapHostRule;
 import com.pulumi.gcp.compute.outputs.RegionUrlMapPathMatcher;
@@ -86,6 +87,161 @@ import javax.annotation.Nullable;
  *             .region(&#34;us-central1&#34;)
  *             .description(&#34;a description&#34;)
  *             .defaultService(home.id())
+ *             .hostRules(RegionUrlMapHostRuleArgs.builder()
+ *                 .hosts(&#34;mysite.com&#34;)
+ *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .build())
+ *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
+ *                 .name(&#34;allpaths&#34;)
+ *                 .defaultService(home.id())
+ *                 .pathRules(                
+ *                     RegionUrlMapPathMatcherPathRuleArgs.builder()
+ *                         .paths(&#34;/home&#34;)
+ *                         .service(home.id())
+ *                         .build(),
+ *                     RegionUrlMapPathMatcherPathRuleArgs.builder()
+ *                         .paths(&#34;/login&#34;)
+ *                         .service(login.id())
+ *                         .build())
+ *                 .build())
+ *             .tests(RegionUrlMapTestArgs.builder()
+ *                 .service(home.id())
+ *                 .host(&#34;hi.com&#34;)
+ *                 .path(&#34;/home&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Region Url Map Default Route Action
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.RegionUrlMap;
+ * import com.pulumi.gcp.compute.RegionUrlMapArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionRetryPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapTestArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RegionHealthCheck(&#34;default&#34;, RegionHealthCheckArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .checkIntervalSec(1)
+ *             .timeoutSec(1)
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .requestPath(&#34;/&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var login = new RegionBackendService(&#34;login&#34;, RegionBackendServiceArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .timeoutSec(10)
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var home = new RegionBackendService(&#34;home&#34;, RegionBackendServiceArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .timeoutSec(10)
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var regionurlmap = new RegionUrlMap(&#34;regionurlmap&#34;, RegionUrlMapArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .description(&#34;a description&#34;)
+ *             .defaultRouteAction(RegionUrlMapDefaultRouteActionArgs.builder()
+ *                 .retryPolicy(RegionUrlMapDefaultRouteActionRetryPolicyArgs.builder()
+ *                     .retryConditions(                    
+ *                         &#34;5xx&#34;,
+ *                         &#34;gateway-error&#34;)
+ *                     .numRetries(3)
+ *                     .perTryTimeout(RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs.builder()
+ *                         .seconds(0)
+ *                         .nanos(500)
+ *                         .build())
+ *                     .build())
+ *                 .requestMirrorPolicy(RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs.builder()
+ *                     .backendService(home.id())
+ *                     .build())
+ *                 .weightedBackendServices(                
+ *                     RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs.builder()
+ *                         .backendService(login.id())
+ *                         .weight(200)
+ *                         .headerAction(RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs.builder()
+ *                             .requestHeadersToAdds(RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs.builder()
+ *                                 .headerName(&#34;foo-request-1&#34;)
+ *                                 .headerValue(&#34;bar&#34;)
+ *                                 .replace(true)
+ *                                 .build())
+ *                             .requestHeadersToRemoves(&#34;fizz&#34;)
+ *                             .responseHeadersToAdds(RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs.builder()
+ *                                 .headerName(&#34;foo-response-1&#34;)
+ *                                 .headerValue(&#34;bar&#34;)
+ *                                 .replace(true)
+ *                                 .build())
+ *                             .responseHeadersToRemoves(&#34;buzz&#34;)
+ *                             .build())
+ *                         .build(),
+ *                     RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs.builder()
+ *                         .backendService(home.id())
+ *                         .weight(100)
+ *                         .headerAction(RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs.builder()
+ *                             .requestHeadersToAdds(                            
+ *                                 RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs.builder()
+ *                                     .headerName(&#34;foo-request-1&#34;)
+ *                                     .headerValue(&#34;bar&#34;)
+ *                                     .replace(true)
+ *                                     .build(),
+ *                                 RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs.builder()
+ *                                     .headerName(&#34;foo-request-2&#34;)
+ *                                     .headerValue(&#34;bar&#34;)
+ *                                     .replace(true)
+ *                                     .build())
+ *                             .requestHeadersToRemoves(&#34;fizz&#34;)
+ *                             .responseHeadersToAdds(                            
+ *                                 RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs.builder()
+ *                                     .headerName(&#34;foo-response-2&#34;)
+ *                                     .headerValue(&#34;bar&#34;)
+ *                                     .replace(true)
+ *                                     .build(),
+ *                                 RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs.builder()
+ *                                     .headerName(&#34;foo-response-1&#34;)
+ *                                     .headerValue(&#34;bar&#34;)
+ *                                     .replace(true)
+ *                                     .build())
+ *                             .responseHeadersToRemoves(&#34;buzz&#34;)
+ *                             .build())
+ *                         .build())
+ *                 .build())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()
  *                 .hosts(&#34;mysite.com&#34;)
  *                 .pathMatcher(&#34;allpaths&#34;)
@@ -571,6 +727,28 @@ public class RegionUrlMap extends com.pulumi.resources.CustomResource {
      */
     public Output<String> creationTimestamp() {
         return this.creationTimestamp;
+    }
+    /**
+     * defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+     * Only one of defaultRouteAction or defaultUrlRedirect must be set.
+     * URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
+     * defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="defaultRouteAction", type=RegionUrlMapDefaultRouteAction.class, parameters={})
+    private Output</* @Nullable */ RegionUrlMapDefaultRouteAction> defaultRouteAction;
+
+    /**
+     * @return defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+     * Only one of defaultRouteAction or defaultUrlRedirect must be set.
+     * URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
+     * defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RegionUrlMapDefaultRouteAction>> defaultRouteAction() {
+        return Codegen.optional(this.defaultRouteAction);
     }
     /**
      * A reference to a RegionBackendService resource. This will be used if

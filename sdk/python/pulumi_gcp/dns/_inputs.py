@@ -18,6 +18,7 @@ __all__ = [
     'ManagedZonePeeringConfigArgs',
     'ManagedZonePeeringConfigTargetNetworkArgs',
     'ManagedZonePrivateVisibilityConfigArgs',
+    'ManagedZonePrivateVisibilityConfigGkeClusterArgs',
     'ManagedZonePrivateVisibilityConfigNetworkArgs',
     'ManagedZoneServiceDirectoryConfigArgs',
     'ManagedZoneServiceDirectoryConfigNamespaceArgs',
@@ -37,6 +38,7 @@ __all__ = [
     'RecordSetRoutingPolicyWrrArgs',
     'RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs',
     'RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs',
+    'ResponsePolicyGkeClusterArgs',
     'ResponsePolicyNetworkArgs',
     'ResponsePolicyRuleLocalDataArgs',
     'ResponsePolicyRuleLocalDataLocalDataArgs',
@@ -359,8 +361,15 @@ class ManagedZonePeeringConfigTargetNetworkArgs:
 @pulumi.input_type
 class ManagedZonePrivateVisibilityConfigArgs:
     def __init__(__self__, *,
-                 networks: pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]):
+                 networks: pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]],
+                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArgs']]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
+               Structure is documented below.
+        """
         pulumi.set(__self__, "networks", networks)
+        if gke_clusters is not None:
+            pulumi.set(__self__, "gke_clusters", gke_clusters)
 
     @property
     @pulumi.getter
@@ -370,6 +379,45 @@ class ManagedZonePrivateVisibilityConfigArgs:
     @networks.setter
     def networks(self, value: pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]):
         pulumi.set(self, "networks", value)
+
+    @property
+    @pulumi.getter(name="gkeClusters")
+    def gke_clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArgs']]]]:
+        """
+        The list of Google Kubernetes Engine clusters that can see this zone.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gke_clusters")
+
+    @gke_clusters.setter
+    def gke_clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArgs']]]]):
+        pulumi.set(self, "gke_clusters", value)
+
+
+@pulumi.input_type
+class ManagedZonePrivateVisibilityConfigGkeClusterArgs:
+    def __init__(__self__, *,
+                 gke_cluster_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] gke_cluster_name: The resource name of the cluster to bind this ManagedZone to.
+               This should be specified in the format like
+               `projects/*/locations/*/clusters/*`
+        """
+        pulumi.set(__self__, "gke_cluster_name", gke_cluster_name)
+
+    @property
+    @pulumi.getter(name="gkeClusterName")
+    def gke_cluster_name(self) -> pulumi.Input[str]:
+        """
+        The resource name of the cluster to bind this ManagedZone to.
+        This should be specified in the format like
+        `projects/*/locations/*/clusters/*`
+        """
+        return pulumi.get(self, "gke_cluster_name")
+
+    @gke_cluster_name.setter
+    def gke_cluster_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gke_cluster_name", value)
 
 
 @pulumi.input_type
@@ -1414,6 +1462,32 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class ResponsePolicyGkeClusterArgs:
+    def __init__(__self__, *,
+                 gke_cluster_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] gke_cluster_name: The resource name of the cluster to bind this ManagedZone to.
+               This should be specified in the format like
+               `projects/*/locations/*/clusters/*`
+        """
+        pulumi.set(__self__, "gke_cluster_name", gke_cluster_name)
+
+    @property
+    @pulumi.getter(name="gkeClusterName")
+    def gke_cluster_name(self) -> pulumi.Input[str]:
+        """
+        The resource name of the cluster to bind this ManagedZone to.
+        This should be specified in the format like
+        `projects/*/locations/*/clusters/*`
+        """
+        return pulumi.get(self, "gke_cluster_name")
+
+    @gke_cluster_name.setter
+    def gke_cluster_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gke_cluster_name", value)
 
 
 @pulumi.input_type

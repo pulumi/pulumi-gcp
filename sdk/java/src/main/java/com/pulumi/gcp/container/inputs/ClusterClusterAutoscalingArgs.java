@@ -20,7 +20,8 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
     public static final ClusterClusterAutoscalingArgs Empty = new ClusterClusterAutoscalingArgs();
 
     /**
-     * Contains defaults for a node pool created by NAP.
+     * Contains defaults for a node pool created by NAP. A subset of fields also apply to
+     * GKE Autopilot clusters.
      * Structure is documented below.
      * 
      */
@@ -28,7 +29,8 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
     private @Nullable Output<ClusterClusterAutoscalingAutoProvisioningDefaultsArgs> autoProvisioningDefaults;
 
     /**
-     * @return Contains defaults for a node pool created by NAP.
+     * @return Contains defaults for a node pool created by NAP. A subset of fields also apply to
+     * GKE Autopilot clusters.
      * Structure is documented below.
      * 
      */
@@ -62,16 +64,16 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
      * 
      */
-    @Import(name="enabled", required=true)
-    private Output<Boolean> enabled;
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
 
     /**
      * @return Enable the PodSecurityPolicy controller for this cluster.
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
      * 
      */
-    public Output<Boolean> enabled() {
-        return this.enabled;
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
     /**
@@ -123,7 +125,8 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param autoProvisioningDefaults Contains defaults for a node pool created by NAP.
+         * @param autoProvisioningDefaults Contains defaults for a node pool created by NAP. A subset of fields also apply to
+         * GKE Autopilot clusters.
          * Structure is documented below.
          * 
          * @return builder
@@ -135,7 +138,8 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param autoProvisioningDefaults Contains defaults for a node pool created by NAP.
+         * @param autoProvisioningDefaults Contains defaults for a node pool created by NAP. A subset of fields also apply to
+         * GKE Autopilot clusters.
          * Structure is documented below.
          * 
          * @return builder
@@ -179,7 +183,7 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder enabled(Output<Boolean> enabled) {
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
@@ -236,7 +240,6 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
         }
 
         public ClusterClusterAutoscalingArgs build() {
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
             return $;
         }
     }

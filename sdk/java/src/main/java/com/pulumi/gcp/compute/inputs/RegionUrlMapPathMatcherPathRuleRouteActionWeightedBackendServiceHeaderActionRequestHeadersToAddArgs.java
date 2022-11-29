@@ -45,18 +45,16 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
     }
 
     /**
-     * If false, headerValue is appended to any values that already exist for the
-     * header. If true, headerValue is set for the header, discarding any values that
-     * were set for that header.
+     * If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+     * The default value is false.
      * 
      */
     @Import(name="replace", required=true)
     private Output<Boolean> replace;
 
     /**
-     * @return If false, headerValue is appended to any values that already exist for the
-     * header. If true, headerValue is set for the header, discarding any values that
-     * were set for that header.
+     * @return If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+     * The default value is false.
      * 
      */
     public Output<Boolean> replace() {
@@ -132,9 +130,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
         }
 
         /**
-         * @param replace If false, headerValue is appended to any values that already exist for the
-         * header. If true, headerValue is set for the header, discarding any values that
-         * were set for that header.
+         * @param replace If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+         * The default value is false.
          * 
          * @return builder
          * 
@@ -145,9 +142,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
         }
 
         /**
-         * @param replace If false, headerValue is appended to any values that already exist for the
-         * header. If true, headerValue is set for the header, discarding any values that
-         * were set for that header.
+         * @param replace If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
+         * The default value is false.
          * 
          * @return builder
          * 

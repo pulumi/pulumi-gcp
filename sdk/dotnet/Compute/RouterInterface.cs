@@ -77,6 +77,14 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The name of the interface that is redundant to
+        /// this interface. Changing this forces a new interface to
+        /// be created.
+        /// </summary>
+        [Output("redundantInterface")]
+        public Output<string?> RedundantInterface { get; private set; } = null!;
+
+        /// <summary>
         /// The region this interface's router sits in. If not specified,
         /// the project region will be used. Changing this forces a new interface to be
         /// created.
@@ -176,6 +184,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// The name of the interface that is redundant to
+        /// this interface. Changing this forces a new interface to
+        /// be created.
+        /// </summary>
+        [Input("redundantInterface")]
+        public Input<string>? RedundantInterface { get; set; }
+
+        /// <summary>
         /// The region this interface's router sits in. If not specified,
         /// the project region will be used. Changing this forces a new interface to be
         /// created.
@@ -235,6 +251,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The name of the interface that is redundant to
+        /// this interface. Changing this forces a new interface to
+        /// be created.
+        /// </summary>
+        [Input("redundantInterface")]
+        public Input<string>? RedundantInterface { get; set; }
 
         /// <summary>
         /// The region this interface's router sits in. If not specified,

@@ -20,6 +20,13 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public Input<int>? FailureThreshold { get; set; }
 
         /// <summary>
+        /// GRPC specifies an action involving a GRPC port.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("grpc")]
+        public Input<Inputs.ServiceTemplateSpecContainerStartupProbeGrpcGetArgs>? Grpc { get; set; }
+
+        /// <summary>
         /// HttpGet specifies the http request to perform.
         /// Structure is documented below.
         /// </summary>

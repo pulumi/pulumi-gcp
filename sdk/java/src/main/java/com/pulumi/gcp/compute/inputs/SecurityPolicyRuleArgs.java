@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchArgs;
+import com.pulumi.gcp.compute.inputs.SecurityPolicyRulePreconfiguredWafConfigArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRateLimitOptionsArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRedirectOptionsArgs;
 import java.lang.Boolean;
@@ -78,6 +79,21 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+     * 
+     */
+    @Import(name="preconfiguredWafConfig")
+    private @Nullable Output<SecurityPolicyRulePreconfiguredWafConfigArgs> preconfiguredWafConfig;
+
+    /**
+     * @return ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityPolicyRulePreconfiguredWafConfigArgs>> preconfiguredWafConfig() {
+        return Optional.ofNullable(this.preconfiguredWafConfig);
+    }
+
+    /**
      * When set to true, the `action` specified above is not enforced.
      * Stackdriver logs for requests that trigger a preview action are annotated as such.
      * 
@@ -147,6 +163,7 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
         this.action = $.action;
         this.description = $.description;
         this.match = $.match;
+        this.preconfiguredWafConfig = $.preconfiguredWafConfig;
         this.preview = $.preview;
         this.priority = $.priority;
         this.rateLimitOptions = $.rateLimitOptions;
@@ -244,6 +261,27 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
          */
         public Builder match(SecurityPolicyRuleMatchArgs match) {
             return match(Output.of(match));
+        }
+
+        /**
+         * @param preconfiguredWafConfig ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preconfiguredWafConfig(@Nullable Output<SecurityPolicyRulePreconfiguredWafConfigArgs> preconfiguredWafConfig) {
+            $.preconfiguredWafConfig = preconfiguredWafConfig;
+            return this;
+        }
+
+        /**
+         * @param preconfiguredWafConfig ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preconfiguredWafConfig(SecurityPolicyRulePreconfiguredWafConfigArgs preconfiguredWafConfig) {
+            return preconfiguredWafConfig(Output.of(preconfiguredWafConfig));
         }
 
         /**

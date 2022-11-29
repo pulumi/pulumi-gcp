@@ -19,6 +19,7 @@ class RouterInterfaceArgs:
                  ip_range: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 redundant_interface: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  vpn_tunnel: Optional[pulumi.Input[str]] = None):
         """
@@ -35,6 +36,9 @@ class RouterInterfaceArgs:
                this forces a new interface to be created.
         :param pulumi.Input[str] project: The ID of the project in which this interface's router belongs. If it
                is not provided, the provider project is used. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] redundant_interface: The name of the interface that is redundant to
+               this interface. Changing this forces a new interface to
+               be created.
         :param pulumi.Input[str] region: The region this interface's router sits in. If not specified,
                the project region will be used. Changing this forces a new interface to be
                created.
@@ -51,6 +55,8 @@ class RouterInterfaceArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if redundant_interface is not None:
+            pulumi.set(__self__, "redundant_interface", redundant_interface)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if vpn_tunnel is not None:
@@ -124,6 +130,20 @@ class RouterInterfaceArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="redundantInterface")
+    def redundant_interface(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the interface that is redundant to
+        this interface. Changing this forces a new interface to
+        be created.
+        """
+        return pulumi.get(self, "redundant_interface")
+
+    @redundant_interface.setter
+    def redundant_interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redundant_interface", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -159,6 +179,7 @@ class _RouterInterfaceState:
                  ip_range: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 redundant_interface: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  vpn_tunnel: Optional[pulumi.Input[str]] = None):
@@ -174,6 +195,9 @@ class _RouterInterfaceState:
                this forces a new interface to be created.
         :param pulumi.Input[str] project: The ID of the project in which this interface's router belongs. If it
                is not provided, the provider project is used. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] redundant_interface: The name of the interface that is redundant to
+               this interface. Changing this forces a new interface to
+               be created.
         :param pulumi.Input[str] region: The region this interface's router sits in. If not specified,
                the project region will be used. Changing this forces a new interface to be
                created.
@@ -191,6 +215,8 @@ class _RouterInterfaceState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if redundant_interface is not None:
+            pulumi.set(__self__, "redundant_interface", redundant_interface)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if router is not None:
@@ -253,6 +279,20 @@ class _RouterInterfaceState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="redundantInterface")
+    def redundant_interface(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the interface that is redundant to
+        this interface. Changing this forces a new interface to
+        be created.
+        """
+        return pulumi.get(self, "redundant_interface")
+
+    @redundant_interface.setter
+    def redundant_interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redundant_interface", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -303,6 +343,7 @@ class RouterInterface(pulumi.CustomResource):
                  ip_range: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 redundant_interface: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  vpn_tunnel: Optional[pulumi.Input[str]] = None,
@@ -346,6 +387,9 @@ class RouterInterface(pulumi.CustomResource):
                this forces a new interface to be created.
         :param pulumi.Input[str] project: The ID of the project in which this interface's router belongs. If it
                is not provided, the provider project is used. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] redundant_interface: The name of the interface that is redundant to
+               this interface. Changing this forces a new interface to
+               be created.
         :param pulumi.Input[str] region: The region this interface's router sits in. If not specified,
                the project region will be used. Changing this forces a new interface to be
                created.
@@ -407,6 +451,7 @@ class RouterInterface(pulumi.CustomResource):
                  ip_range: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 redundant_interface: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  vpn_tunnel: Optional[pulumi.Input[str]] = None,
@@ -423,6 +468,7 @@ class RouterInterface(pulumi.CustomResource):
             __props__.__dict__["ip_range"] = ip_range
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["redundant_interface"] = redundant_interface
             __props__.__dict__["region"] = region
             if router is None and not opts.urn:
                 raise TypeError("Missing required property 'router'")
@@ -442,6 +488,7 @@ class RouterInterface(pulumi.CustomResource):
             ip_range: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            redundant_interface: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             router: Optional[pulumi.Input[str]] = None,
             vpn_tunnel: Optional[pulumi.Input[str]] = None) -> 'RouterInterface':
@@ -462,6 +509,9 @@ class RouterInterface(pulumi.CustomResource):
                this forces a new interface to be created.
         :param pulumi.Input[str] project: The ID of the project in which this interface's router belongs. If it
                is not provided, the provider project is used. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] redundant_interface: The name of the interface that is redundant to
+               this interface. Changing this forces a new interface to
+               be created.
         :param pulumi.Input[str] region: The region this interface's router sits in. If not specified,
                the project region will be used. Changing this forces a new interface to be
                created.
@@ -479,6 +529,7 @@ class RouterInterface(pulumi.CustomResource):
         __props__.__dict__["ip_range"] = ip_range
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["redundant_interface"] = redundant_interface
         __props__.__dict__["region"] = region
         __props__.__dict__["router"] = router
         __props__.__dict__["vpn_tunnel"] = vpn_tunnel
@@ -521,6 +572,16 @@ class RouterInterface(pulumi.CustomResource):
         is not provided, the provider project is used. Changing this forces a new interface to be created.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="redundantInterface")
+    def redundant_interface(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the interface that is redundant to
+        this interface. Changing this forces a new interface to
+        be created.
+        """
+        return pulumi.get(self, "redundant_interface")
 
     @property
     @pulumi.getter

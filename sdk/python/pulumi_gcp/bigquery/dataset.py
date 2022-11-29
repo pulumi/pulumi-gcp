@@ -640,6 +640,54 @@ class Dataset(pulumi.CustomResource):
                 ),
             ])
         ```
+        ### Bigquery Dataset Authorized Routine
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        public_dataset = gcp.bigquery.Dataset("publicDataset",
+            dataset_id="public_dataset",
+            description="This dataset is public")
+        public_routine = gcp.bigquery.Routine("publicRoutine",
+            dataset_id=public_dataset.dataset_id,
+            routine_id="public_routine",
+            routine_type="TABLE_VALUED_FUNCTION",
+            language="SQL",
+            definition_body="SELECT 1 + value AS value\\n",
+            arguments=[gcp.bigquery.RoutineArgumentArgs(
+                name="value",
+                argument_kind="FIXED_TYPE",
+                data_type=json.dumps({
+                    "typeKind": "INT64",
+                }),
+            )],
+            return_table_type=json.dumps({
+                "columns": [{
+                    "name": "value",
+                    "type": {
+                        "typeKind": "INT64",
+                    },
+                }],
+            }))
+        private = gcp.bigquery.Dataset("private",
+            dataset_id="private_dataset",
+            description="This dataset is private",
+            accesses=[
+                gcp.bigquery.DatasetAccessArgs(
+                    role="OWNER",
+                    user_by_email="emailAddress:my@service-account.com",
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    routine=gcp.bigquery.DatasetAccessRoutineArgs(
+                        project_id=public_routine.project,
+                        dataset_id=public_routine.dataset_id,
+                        routine_id=public_routine.routine_id,
+                    ),
+                ),
+            ])
+        ```
 
         ## Import
 
@@ -787,6 +835,54 @@ class Dataset(pulumi.CustomResource):
                             dataset_id=public.dataset_id,
                         ),
                         target_types=["VIEWS"],
+                    ),
+                ),
+            ])
+        ```
+        ### Bigquery Dataset Authorized Routine
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        public_dataset = gcp.bigquery.Dataset("publicDataset",
+            dataset_id="public_dataset",
+            description="This dataset is public")
+        public_routine = gcp.bigquery.Routine("publicRoutine",
+            dataset_id=public_dataset.dataset_id,
+            routine_id="public_routine",
+            routine_type="TABLE_VALUED_FUNCTION",
+            language="SQL",
+            definition_body="SELECT 1 + value AS value\\n",
+            arguments=[gcp.bigquery.RoutineArgumentArgs(
+                name="value",
+                argument_kind="FIXED_TYPE",
+                data_type=json.dumps({
+                    "typeKind": "INT64",
+                }),
+            )],
+            return_table_type=json.dumps({
+                "columns": [{
+                    "name": "value",
+                    "type": {
+                        "typeKind": "INT64",
+                    },
+                }],
+            }))
+        private = gcp.bigquery.Dataset("private",
+            dataset_id="private_dataset",
+            description="This dataset is private",
+            accesses=[
+                gcp.bigquery.DatasetAccessArgs(
+                    role="OWNER",
+                    user_by_email="emailAddress:my@service-account.com",
+                ),
+                gcp.bigquery.DatasetAccessArgs(
+                    routine=gcp.bigquery.DatasetAccessRoutineArgs(
+                        project_id=public_routine.project,
+                        dataset_id=public_routine.dataset_id,
+                        routine_id=public_routine.routine_id,
                     ),
                 ),
             ])

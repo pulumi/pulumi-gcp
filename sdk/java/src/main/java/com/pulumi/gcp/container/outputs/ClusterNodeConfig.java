@@ -49,7 +49,7 @@ public final class ClusterNodeConfig {
      */
     private @Nullable ClusterNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
     /**
-     * @return The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+     * @return ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodeConfigGcfsConfig gcfsConfig;
@@ -98,6 +98,11 @@ public final class ClusterNodeConfig {
      * 
      */
     private @Nullable Integer localSsdCount;
+    /**
+     * @return The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+     * 
+     */
+    private @Nullable String loggingVariant;
     /**
      * @return The name of a Google Compute Engine machine type.
      * Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
@@ -222,7 +227,7 @@ public final class ClusterNodeConfig {
         return Optional.ofNullable(this.ephemeralStorageConfig);
     }
     /**
-     * @return The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+     * @return ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
      * 
      */
     public Optional<ClusterNodeConfigGcfsConfig> gcfsConfig() {
@@ -286,6 +291,13 @@ public final class ClusterNodeConfig {
      */
     public Optional<Integer> localSsdCount() {
         return Optional.ofNullable(this.localSsdCount);
+    }
+    /**
+     * @return The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+     * 
+     */
+    public Optional<String> loggingVariant() {
+        return Optional.ofNullable(this.loggingVariant);
     }
     /**
      * @return The name of a Google Compute Engine machine type.
@@ -428,6 +440,7 @@ public final class ClusterNodeConfig {
         private @Nullable Map<String,String> labels;
         private @Nullable ClusterNodeConfigLinuxNodeConfig linuxNodeConfig;
         private @Nullable Integer localSsdCount;
+        private @Nullable String loggingVariant;
         private @Nullable String machineType;
         private @Nullable Map<String,String> metadata;
         private @Nullable String minCpuPlatform;
@@ -457,6 +470,7 @@ public final class ClusterNodeConfig {
     	      this.labels = defaults.labels;
     	      this.linuxNodeConfig = defaults.linuxNodeConfig;
     	      this.localSsdCount = defaults.localSsdCount;
+    	      this.loggingVariant = defaults.loggingVariant;
     	      this.machineType = defaults.machineType;
     	      this.metadata = defaults.metadata;
     	      this.minCpuPlatform = defaults.minCpuPlatform;
@@ -534,6 +548,11 @@ public final class ClusterNodeConfig {
         @CustomType.Setter
         public Builder localSsdCount(@Nullable Integer localSsdCount) {
             this.localSsdCount = localSsdCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder loggingVariant(@Nullable String loggingVariant) {
+            this.loggingVariant = loggingVariant;
             return this;
         }
         @CustomType.Setter
@@ -629,6 +648,7 @@ public final class ClusterNodeConfig {
             o.labels = labels;
             o.linuxNodeConfig = linuxNodeConfig;
             o.localSsdCount = localSsdCount;
+            o.loggingVariant = loggingVariant;
             o.machineType = machineType;
             o.metadata = metadata;
             o.minCpuPlatform = minCpuPlatform;

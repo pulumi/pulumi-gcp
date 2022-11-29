@@ -32,6 +32,21 @@ public final class TargetExecutionConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+     * 
+     */
+    @Import(name="executionTimeout")
+    private @Nullable Output<String> executionTimeout;
+
+    /**
+     * @return Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+     * 
+     */
+    public Optional<Output<String>> executionTimeout() {
+        return Optional.ofNullable(this.executionTimeout);
+    }
+
+    /**
      * Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
      * 
      */
@@ -80,6 +95,7 @@ public final class TargetExecutionConfigArgs extends com.pulumi.resources.Resour
 
     private TargetExecutionConfigArgs(TargetExecutionConfigArgs $) {
         this.artifactStorage = $.artifactStorage;
+        this.executionTimeout = $.executionTimeout;
         this.serviceAccount = $.serviceAccount;
         this.usages = $.usages;
         this.workerPool = $.workerPool;
@@ -122,6 +138,27 @@ public final class TargetExecutionConfigArgs extends com.pulumi.resources.Resour
          */
         public Builder artifactStorage(String artifactStorage) {
             return artifactStorage(Output.of(artifactStorage));
+        }
+
+        /**
+         * @param executionTimeout Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executionTimeout(@Nullable Output<String> executionTimeout) {
+            $.executionTimeout = executionTimeout;
+            return this;
+        }
+
+        /**
+         * @param executionTimeout Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executionTimeout(String executionTimeout) {
+            return executionTimeout(Output.of(executionTimeout));
         }
 
         /**

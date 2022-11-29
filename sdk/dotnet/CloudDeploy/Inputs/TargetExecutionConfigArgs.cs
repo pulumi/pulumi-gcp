@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         public Input<string>? ArtifactStorage { get; set; }
 
         /// <summary>
+        /// Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+        /// </summary>
+        [Input("executionTimeout")]
+        public Input<string>? ExecutionTimeout { get; set; }
+
+        /// <summary>
         /// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
         /// </summary>
         [Input("serviceAccount")]

@@ -116,6 +116,13 @@ namespace Pulumi.Gcp
             set => _batching.Set(value);
         }
 
+        private static readonly __Value<string?> _beyondcorpCustomEndpoint = new __Value<string?>(() => __config.Get("beyondcorpCustomEndpoint"));
+        public static string? BeyondcorpCustomEndpoint
+        {
+            get => _beyondcorpCustomEndpoint.Get();
+            set => _beyondcorpCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _bigQueryCustomEndpoint = new __Value<string?>(() => __config.Get("bigQueryCustomEndpoint"));
         public static string? BigQueryCustomEndpoint
         {
@@ -478,6 +485,13 @@ namespace Pulumi.Gcp
         {
             get => _firebaseCustomEndpoint.Get();
             set => _firebaseCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _firebaseHostingCustomEndpoint = new __Value<string?>(() => __config.Get("firebaseHostingCustomEndpoint"));
+        public static string? FirebaseHostingCustomEndpoint
+        {
+            get => _firebaseHostingCustomEndpoint.Get();
+            set => _firebaseHostingCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _firebaserulesCustomEndpoint = new __Value<string?>(() => __config.Get("firebaserulesCustomEndpoint"));

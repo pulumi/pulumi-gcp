@@ -21,6 +21,21 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     public static final TriggerArgs Empty = new TriggerArgs();
 
     /**
+     * Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+     * 
+     */
+    @Import(name="channel")
+    private @Nullable Output<String> channel;
+
+    /**
+     * @return Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+     * 
+     */
+    public Optional<Output<String>> channel() {
+        return Optional.ofNullable(this.channel);
+    }
+
+    /**
      * Required. Destination specifies where the events should be sent to.
      * 
      */
@@ -143,6 +158,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     private TriggerArgs() {}
 
     private TriggerArgs(TriggerArgs $) {
+        this.channel = $.channel;
         this.destination = $.destination;
         this.labels = $.labels;
         this.location = $.location;
@@ -169,6 +185,27 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(TriggerArgs defaults) {
             $ = new TriggerArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param channel Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder channel(@Nullable Output<String> channel) {
+            $.channel = channel;
+            return this;
+        }
+
+        /**
+         * @param channel Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder channel(String channel) {
+            return channel(Output.of(channel));
         }
 
         /**

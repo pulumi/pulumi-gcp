@@ -20,6 +20,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -39,6 +40,55 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = compute.NewSubnetwork(ctx, "subnetwork-1", &compute.SubnetworkArgs{
+//				Network:               network_1.Name,
+//				IpCidrRange:           pulumi.String("10.0.36.0/24"),
+//				Region:                pulumi.String("us-central1"),
+//				PrivateIpGoogleAccess: pulumi.Bool(true),
+//				SecondaryIpRanges: compute.SubnetworkSecondaryIpRangeArray{
+//					&compute.SubnetworkSecondaryIpRangeArgs{
+//						RangeName:   pulumi.String("pod"),
+//						IpCidrRange: pulumi.String("10.0.0.0/19"),
+//					},
+//					&compute.SubnetworkSecondaryIpRangeArgs{
+//						RangeName:   pulumi.String("svc"),
+//						IpCidrRange: pulumi.String("10.0.32.0/22"),
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = container.NewCluster(ctx, "cluster-1", &container.ClusterArgs{
+//				Location:         pulumi.String("us-central1-c"),
+//				InitialNodeCount: pulumi.Int(1),
+//				NetworkingMode:   pulumi.String("VPC_NATIVE"),
+//				DefaultSnatStatus: &container.ClusterDefaultSnatStatusArgs{
+//					Disabled: pulumi.Bool(true),
+//				},
+//				Network:    network_1.Name,
+//				Subnetwork: subnetwork_1.Name,
+//				PrivateClusterConfig: &container.ClusterPrivateClusterConfigArgs{
+//					EnablePrivateEndpoint: pulumi.Bool(true),
+//					EnablePrivateNodes:    pulumi.Bool(true),
+//					MasterIpv4CidrBlock:   pulumi.String("10.42.0.0/28"),
+//					MasterGlobalAccessConfig: &container.ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//				MasterAuthorizedNetworksConfig: nil,
+//				IpAllocationPolicy: &container.ClusterIpAllocationPolicyArgs{
+//					ClusterSecondaryRangeName: subnetwork_1.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (string, error) {
+//						return secondaryIpRanges[0].RangeName, nil
+//					}).(pulumi.StringOutput),
+//					ServicesSecondaryRangeName: subnetwork_1.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (string, error) {
+//						return secondaryIpRanges[1].RangeName, nil
+//					}).(pulumi.StringOutput),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
 //			_, err = dns.NewResponsePolicy(ctx, "example-response-policy", &dns.ResponsePolicyArgs{
 //				ResponsePolicyName: pulumi.String("example-response-policy"),
 //				Networks: dns.ResponsePolicyNetworkArray{
@@ -47,6 +97,11 @@ import (
 //					},
 //					&dns.ResponsePolicyNetworkArgs{
 //						NetworkUrl: network_2.ID(),
+//					},
+//				},
+//				GkeClusters: dns.ResponsePolicyGkeClusterArray{
+//					&dns.ResponsePolicyGkeClusterArgs{
+//						GkeClusterName: cluster_1.ID(),
 //					},
 //				},
 //			}, pulumi.Provider(google_beta))
@@ -85,6 +140,9 @@ type ResponsePolicy struct {
 
 	// The description of the response policy, such as `My new response policy`.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The list of Google Kubernetes Engine clusters that can see this zone.
+	// Structure is documented below.
+	GkeClusters ResponsePolicyGkeClusterArrayOutput `pulumi:"gkeClusters"`
 	// The list of network names specifying networks to which this policy is applied.
 	// Structure is documented below.
 	Networks ResponsePolicyNetworkArrayOutput `pulumi:"networks"`
@@ -129,6 +187,9 @@ func GetResponsePolicy(ctx *pulumi.Context,
 type responsePolicyState struct {
 	// The description of the response policy, such as `My new response policy`.
 	Description *string `pulumi:"description"`
+	// The list of Google Kubernetes Engine clusters that can see this zone.
+	// Structure is documented below.
+	GkeClusters []ResponsePolicyGkeCluster `pulumi:"gkeClusters"`
 	// The list of network names specifying networks to which this policy is applied.
 	// Structure is documented below.
 	Networks []ResponsePolicyNetwork `pulumi:"networks"`
@@ -142,6 +203,9 @@ type responsePolicyState struct {
 type ResponsePolicyState struct {
 	// The description of the response policy, such as `My new response policy`.
 	Description pulumi.StringPtrInput
+	// The list of Google Kubernetes Engine clusters that can see this zone.
+	// Structure is documented below.
+	GkeClusters ResponsePolicyGkeClusterArrayInput
 	// The list of network names specifying networks to which this policy is applied.
 	// Structure is documented below.
 	Networks ResponsePolicyNetworkArrayInput
@@ -159,6 +223,9 @@ func (ResponsePolicyState) ElementType() reflect.Type {
 type responsePolicyArgs struct {
 	// The description of the response policy, such as `My new response policy`.
 	Description *string `pulumi:"description"`
+	// The list of Google Kubernetes Engine clusters that can see this zone.
+	// Structure is documented below.
+	GkeClusters []ResponsePolicyGkeCluster `pulumi:"gkeClusters"`
 	// The list of network names specifying networks to which this policy is applied.
 	// Structure is documented below.
 	Networks []ResponsePolicyNetwork `pulumi:"networks"`
@@ -173,6 +240,9 @@ type responsePolicyArgs struct {
 type ResponsePolicyArgs struct {
 	// The description of the response policy, such as `My new response policy`.
 	Description pulumi.StringPtrInput
+	// The list of Google Kubernetes Engine clusters that can see this zone.
+	// Structure is documented below.
+	GkeClusters ResponsePolicyGkeClusterArrayInput
 	// The list of network names specifying networks to which this policy is applied.
 	// Structure is documented below.
 	Networks ResponsePolicyNetworkArrayInput
@@ -273,6 +343,12 @@ func (o ResponsePolicyOutput) ToResponsePolicyOutputWithContext(ctx context.Cont
 // The description of the response policy, such as `My new response policy`.
 func (o ResponsePolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResponsePolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The list of Google Kubernetes Engine clusters that can see this zone.
+// Structure is documented below.
+func (o ResponsePolicyOutput) GkeClusters() ResponsePolicyGkeClusterArrayOutput {
+	return o.ApplyT(func(v *ResponsePolicy) ResponsePolicyGkeClusterArrayOutput { return v.GkeClusters }).(ResponsePolicyGkeClusterArrayOutput)
 }
 
 // The list of network names specifying networks to which this policy is applied.

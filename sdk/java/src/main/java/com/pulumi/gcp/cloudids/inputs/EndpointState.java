@@ -46,21 +46,6 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Internal IP address of the endpoint&#39;s network entry point.
-     * 
-     */
-    @Import(name="endpoint")
-    private @Nullable Output<String> endpoint;
-
-    /**
-     * @return Internal IP address of the endpoint&#39;s network entry point.
-     * 
-     */
-    public Optional<Output<String>> endpoint() {
-        return Optional.ofNullable(this.endpoint);
-    }
-
-    /**
      * URL of the endpoint&#39;s network address to which traffic is to be sent by Packet Mirroring.
      * 
      */
@@ -73,6 +58,21 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> endpointForwardingRule() {
         return Optional.ofNullable(this.endpointForwardingRule);
+    }
+
+    /**
+     * Internal IP address of the endpoint&#39;s network entry point.
+     * 
+     */
+    @Import(name="endpointIp")
+    private @Nullable Output<String> endpointIp;
+
+    /**
+     * @return Internal IP address of the endpoint&#39;s network entry point.
+     * 
+     */
+    public Optional<Output<String>> endpointIp() {
+        return Optional.ofNullable(this.endpointIp);
     }
 
     /**
@@ -174,8 +174,8 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
     private EndpointState(EndpointState $) {
         this.createTime = $.createTime;
         this.description = $.description;
-        this.endpoint = $.endpoint;
         this.endpointForwardingRule = $.endpointForwardingRule;
+        this.endpointIp = $.endpointIp;
         this.location = $.location;
         this.name = $.name;
         this.network = $.network;
@@ -245,27 +245,6 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpoint Internal IP address of the endpoint&#39;s network entry point.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder endpoint(@Nullable Output<String> endpoint) {
-            $.endpoint = endpoint;
-            return this;
-        }
-
-        /**
-         * @param endpoint Internal IP address of the endpoint&#39;s network entry point.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder endpoint(String endpoint) {
-            return endpoint(Output.of(endpoint));
-        }
-
-        /**
          * @param endpointForwardingRule URL of the endpoint&#39;s network address to which traffic is to be sent by Packet Mirroring.
          * 
          * @return builder
@@ -284,6 +263,27 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder endpointForwardingRule(String endpointForwardingRule) {
             return endpointForwardingRule(Output.of(endpointForwardingRule));
+        }
+
+        /**
+         * @param endpointIp Internal IP address of the endpoint&#39;s network entry point.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointIp(@Nullable Output<String> endpointIp) {
+            $.endpointIp = endpointIp;
+            return this;
+        }
+
+        /**
+         * @param endpointIp Internal IP address of the endpoint&#39;s network entry point.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointIp(String endpointIp) {
+            return endpointIp(Output.of(endpointIp));
         }
 
         /**

@@ -34,6 +34,8 @@ assuredWorkloadsCustomEndpoint: Optional[str]
 
 batching: Optional[str]
 
+beyondcorpCustomEndpoint: Optional[str]
+
 bigQueryCustomEndpoint: Optional[str]
 
 bigqueryAnalyticsHubCustomEndpoint: Optional[str]
@@ -137,6 +139,8 @@ eventarcCustomEndpoint: Optional[str]
 filestoreCustomEndpoint: Optional[str]
 
 firebaseCustomEndpoint: Optional[str]
+
+firebaseHostingCustomEndpoint: Optional[str]
 
 firebaserulesCustomEndpoint: Optional[str]
 

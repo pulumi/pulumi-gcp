@@ -5,8 +5,11 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPubSubArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.resources.ResourceArgs {
@@ -14,25 +17,43 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
     public static final PreventionJobTriggerInspectJobActionArgs Empty = new PreventionJobTriggerInspectJobActionArgs();
 
     /**
+     * Publish a message into a given Pub/Sub topic when the job completes.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pubSub")
+    private @Nullable Output<PreventionJobTriggerInspectJobActionPubSubArgs> pubSub;
+
+    /**
+     * @return Publish a message into a given Pub/Sub topic when the job completes.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionJobTriggerInspectJobActionPubSubArgs>> pubSub() {
+        return Optional.ofNullable(this.pubSub);
+    }
+
+    /**
      * Schedule for triggered jobs
      * Structure is documented below.
      * 
      */
-    @Import(name="saveFindings", required=true)
-    private Output<PreventionJobTriggerInspectJobActionSaveFindingsArgs> saveFindings;
+    @Import(name="saveFindings")
+    private @Nullable Output<PreventionJobTriggerInspectJobActionSaveFindingsArgs> saveFindings;
 
     /**
      * @return Schedule for triggered jobs
      * Structure is documented below.
      * 
      */
-    public Output<PreventionJobTriggerInspectJobActionSaveFindingsArgs> saveFindings() {
-        return this.saveFindings;
+    public Optional<Output<PreventionJobTriggerInspectJobActionSaveFindingsArgs>> saveFindings() {
+        return Optional.ofNullable(this.saveFindings);
     }
 
     private PreventionJobTriggerInspectJobActionArgs() {}
 
     private PreventionJobTriggerInspectJobActionArgs(PreventionJobTriggerInspectJobActionArgs $) {
+        this.pubSub = $.pubSub;
         this.saveFindings = $.saveFindings;
     }
 
@@ -55,13 +76,36 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
         }
 
         /**
+         * @param pubSub Publish a message into a given Pub/Sub topic when the job completes.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pubSub(@Nullable Output<PreventionJobTriggerInspectJobActionPubSubArgs> pubSub) {
+            $.pubSub = pubSub;
+            return this;
+        }
+
+        /**
+         * @param pubSub Publish a message into a given Pub/Sub topic when the job completes.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pubSub(PreventionJobTriggerInspectJobActionPubSubArgs pubSub) {
+            return pubSub(Output.of(pubSub));
+        }
+
+        /**
          * @param saveFindings Schedule for triggered jobs
          * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder saveFindings(Output<PreventionJobTriggerInspectJobActionSaveFindingsArgs> saveFindings) {
+        public Builder saveFindings(@Nullable Output<PreventionJobTriggerInspectJobActionSaveFindingsArgs> saveFindings) {
             $.saveFindings = saveFindings;
             return this;
         }
@@ -78,7 +122,6 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
         }
 
         public PreventionJobTriggerInspectJobActionArgs build() {
-            $.saveFindings = Objects.requireNonNull($.saveFindings, "expected parameter 'saveFindings' to be non-null");
             return $;
         }
     }

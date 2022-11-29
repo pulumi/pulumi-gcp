@@ -4,35 +4,58 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.NodePoolUpgradeSettingsBlueGreenSettings;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolUpgradeSettings {
+    /**
+     * @return The settings to adjust [blue green upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy).
+     * Structure is documented below
+     * 
+     */
+    private @Nullable NodePoolUpgradeSettingsBlueGreenSettings blueGreenSettings;
     /**
      * @return The number of additional nodes that can be added to the node pool during
      * an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
      * Can be set to 0 or greater.
      * 
      */
-    private Integer maxSurge;
+    private @Nullable Integer maxSurge;
     /**
      * @return The number of nodes that can be simultaneously unavailable during
      * an upgrade. Increasing `max_unavailable` raises the number of nodes that can be upgraded in
      * parallel. Can be set to 0 or greater.
      * 
      */
-    private Integer maxUnavailable;
+    private @Nullable Integer maxUnavailable;
+    /**
+     * @return The upgrade stragey to be used for upgrading the nodes.
+     * 
+     */
+    private @Nullable String strategy;
 
     private NodePoolUpgradeSettings() {}
+    /**
+     * @return The settings to adjust [blue green upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy).
+     * Structure is documented below
+     * 
+     */
+    public Optional<NodePoolUpgradeSettingsBlueGreenSettings> blueGreenSettings() {
+        return Optional.ofNullable(this.blueGreenSettings);
+    }
     /**
      * @return The number of additional nodes that can be added to the node pool during
      * an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
      * Can be set to 0 or greater.
      * 
      */
-    public Integer maxSurge() {
-        return this.maxSurge;
+    public Optional<Integer> maxSurge() {
+        return Optional.ofNullable(this.maxSurge);
     }
     /**
      * @return The number of nodes that can be simultaneously unavailable during
@@ -40,8 +63,15 @@ public final class NodePoolUpgradeSettings {
      * parallel. Can be set to 0 or greater.
      * 
      */
-    public Integer maxUnavailable() {
-        return this.maxUnavailable;
+    public Optional<Integer> maxUnavailable() {
+        return Optional.ofNullable(this.maxUnavailable);
+    }
+    /**
+     * @return The upgrade stragey to be used for upgrading the nodes.
+     * 
+     */
+    public Optional<String> strategy() {
+        return Optional.ofNullable(this.strategy);
     }
 
     public static Builder builder() {
@@ -53,29 +83,45 @@ public final class NodePoolUpgradeSettings {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer maxSurge;
-        private Integer maxUnavailable;
+        private @Nullable NodePoolUpgradeSettingsBlueGreenSettings blueGreenSettings;
+        private @Nullable Integer maxSurge;
+        private @Nullable Integer maxUnavailable;
+        private @Nullable String strategy;
         public Builder() {}
         public Builder(NodePoolUpgradeSettings defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.blueGreenSettings = defaults.blueGreenSettings;
     	      this.maxSurge = defaults.maxSurge;
     	      this.maxUnavailable = defaults.maxUnavailable;
+    	      this.strategy = defaults.strategy;
         }
 
         @CustomType.Setter
-        public Builder maxSurge(Integer maxSurge) {
-            this.maxSurge = Objects.requireNonNull(maxSurge);
+        public Builder blueGreenSettings(@Nullable NodePoolUpgradeSettingsBlueGreenSettings blueGreenSettings) {
+            this.blueGreenSettings = blueGreenSettings;
             return this;
         }
         @CustomType.Setter
-        public Builder maxUnavailable(Integer maxUnavailable) {
-            this.maxUnavailable = Objects.requireNonNull(maxUnavailable);
+        public Builder maxSurge(@Nullable Integer maxSurge) {
+            this.maxSurge = maxSurge;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxUnavailable(@Nullable Integer maxUnavailable) {
+            this.maxUnavailable = maxUnavailable;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder strategy(@Nullable String strategy) {
+            this.strategy = strategy;
             return this;
         }
         public NodePoolUpgradeSettings build() {
             final var o = new NodePoolUpgradeSettings();
+            o.blueGreenSettings = blueGreenSettings;
             o.maxSurge = maxSurge;
             o.maxUnavailable = maxUnavailable;
+            o.strategy = strategy;
             return o;
         }
     }

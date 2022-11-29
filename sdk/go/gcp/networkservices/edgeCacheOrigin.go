@@ -96,6 +96,54 @@ import (
 //	}
 //
 // ```
+// ### Network Services Edge Cache Origin V4auth
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("secret-name"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Automatic: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
+//				Secret:     secret_basic.ID(),
+//				SecretData: pulumi.String("secret-data"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkservices.NewEdgeCacheOrigin(ctx, "default", &networkservices.EdgeCacheOriginArgs{
+//				OriginAddress: pulumi.String("gs://media-edge-default"),
+//				Description:   pulumi.String("The default bucket for V4 authentication"),
+//				AwsV4Authentication: &networkservices.EdgeCacheOriginAwsV4AuthenticationArgs{
+//					AccessKeyId:            pulumi.String("ACCESSKEYID"),
+//					SecretAccessKeyVersion: secret_version_basic.ID(),
+//					OriginRegion:           pulumi.String("auto"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -121,6 +169,9 @@ import (
 type EdgeCacheOrigin struct {
 	pulumi.CustomResourceState
 
+	// Enable AWS Signature Version 4 origin authentication.
+	// Structure is documented below.
+	AwsV4Authentication EdgeCacheOriginAwsV4AuthenticationPtrOutput `pulumi:"awsV4Authentication"`
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The Origin resource to try when the current origin cannot be reached.
@@ -210,6 +261,9 @@ func GetEdgeCacheOrigin(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EdgeCacheOrigin resources.
 type edgeCacheOriginState struct {
+	// Enable AWS Signature Version 4 origin authentication.
+	// Structure is documented below.
+	AwsV4Authentication *EdgeCacheOriginAwsV4Authentication `pulumi:"awsV4Authentication"`
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
 	// The Origin resource to try when the current origin cannot be reached.
@@ -268,6 +322,9 @@ type edgeCacheOriginState struct {
 }
 
 type EdgeCacheOriginState struct {
+	// Enable AWS Signature Version 4 origin authentication.
+	// Structure is documented below.
+	AwsV4Authentication EdgeCacheOriginAwsV4AuthenticationPtrInput
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
 	// The Origin resource to try when the current origin cannot be reached.
@@ -330,6 +387,9 @@ func (EdgeCacheOriginState) ElementType() reflect.Type {
 }
 
 type edgeCacheOriginArgs struct {
+	// Enable AWS Signature Version 4 origin authentication.
+	// Structure is documented below.
+	AwsV4Authentication *EdgeCacheOriginAwsV4Authentication `pulumi:"awsV4Authentication"`
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
 	// The Origin resource to try when the current origin cannot be reached.
@@ -389,6 +449,9 @@ type edgeCacheOriginArgs struct {
 
 // The set of arguments for constructing a EdgeCacheOrigin resource.
 type EdgeCacheOriginArgs struct {
+	// Enable AWS Signature Version 4 origin authentication.
+	// Structure is documented below.
+	AwsV4Authentication EdgeCacheOriginAwsV4AuthenticationPtrInput
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
 	// The Origin resource to try when the current origin cannot be reached.
@@ -531,6 +594,12 @@ func (o EdgeCacheOriginOutput) ToEdgeCacheOriginOutput() EdgeCacheOriginOutput {
 
 func (o EdgeCacheOriginOutput) ToEdgeCacheOriginOutputWithContext(ctx context.Context) EdgeCacheOriginOutput {
 	return o
+}
+
+// Enable AWS Signature Version 4 origin authentication.
+// Structure is documented below.
+func (o EdgeCacheOriginOutput) AwsV4Authentication() EdgeCacheOriginAwsV4AuthenticationPtrOutput {
+	return o.ApplyT(func(v *EdgeCacheOrigin) EdgeCacheOriginAwsV4AuthenticationPtrOutput { return v.AwsV4Authentication }).(EdgeCacheOriginAwsV4AuthenticationPtrOutput)
 }
 
 // A human-readable description of the resource.

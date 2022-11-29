@@ -464,6 +464,7 @@ class DatabaseInstanceSettingsArgs:
                  availability_type: Optional[pulumi.Input[str]] = None,
                  backup_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationArgs']] = None,
                  collation: Optional[pulumi.Input[str]] = None,
+                 connector_enforcement: Optional[pulumi.Input[str]] = None,
                  database_flags: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]] = None,
                  disk_autoresize: Optional[pulumi.Input[bool]] = None,
                  disk_autoresize_limit: Optional[pulumi.Input[int]] = None,
@@ -492,11 +493,13 @@ class DatabaseInstanceSettingsArgs:
                For Postgres instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
                is set to `true`. Defaults to `ZONAL`.
         :param pulumi.Input[str] collation: The name of server instance collation.
+        :param pulumi.Input[str] connector_enforcement: Specifies if connections must use Cloud SQL connectors.
         :param pulumi.Input[bool] disk_autoresize: Enables auto-resizing of the storage size. Defaults to `true`.
         :param pulumi.Input[int] disk_autoresize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
         :param pulumi.Input[str] disk_type: The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
         :param pulumi.Input[str] pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
+        :param pulumi.Input[str] time_zone: The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: A set of key/value user label pairs to assign to the instance.
         """
         pulumi.set(__self__, "tier", tier)
@@ -510,6 +513,8 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "backup_configuration", backup_configuration)
         if collation is not None:
             pulumi.set(__self__, "collation", collation)
+        if connector_enforcement is not None:
+            pulumi.set(__self__, "connector_enforcement", connector_enforcement)
         if database_flags is not None:
             pulumi.set(__self__, "database_flags", database_flags)
         if disk_autoresize is not None:
@@ -614,6 +619,18 @@ class DatabaseInstanceSettingsArgs:
     @collation.setter
     def collation(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "collation", value)
+
+    @property
+    @pulumi.getter(name="connectorEnforcement")
+    def connector_enforcement(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies if connections must use Cloud SQL connectors.
+        """
+        return pulumi.get(self, "connector_enforcement")
+
+    @connector_enforcement.setter
+    def connector_enforcement(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connector_enforcement", value)
 
     @property
     @pulumi.getter(name="databaseFlags")
@@ -741,6 +758,9 @@ class DatabaseInstanceSettingsArgs:
     @property
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+        """
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
@@ -1001,17 +1021,21 @@ class DatabaseInstanceSettingsDatabaseFlagArgs:
 class DatabaseInstanceSettingsInsightsConfigArgs:
     def __init__(__self__, *,
                  query_insights_enabled: Optional[pulumi.Input[bool]] = None,
+                 query_plans_per_minute: Optional[pulumi.Input[int]] = None,
                  query_string_length: Optional[pulumi.Input[int]] = None,
                  record_application_tags: Optional[pulumi.Input[bool]] = None,
                  record_client_address: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] query_insights_enabled: True if Query Insights feature is enabled.
+        :param pulumi.Input[int] query_plans_per_minute: Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
         :param pulumi.Input[int] query_string_length: Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
         :param pulumi.Input[bool] record_application_tags: True if Query Insights will record application tags from query when enabled.
         :param pulumi.Input[bool] record_client_address: True if Query Insights will record client address when enabled.
         """
         if query_insights_enabled is not None:
             pulumi.set(__self__, "query_insights_enabled", query_insights_enabled)
+        if query_plans_per_minute is not None:
+            pulumi.set(__self__, "query_plans_per_minute", query_plans_per_minute)
         if query_string_length is not None:
             pulumi.set(__self__, "query_string_length", query_string_length)
         if record_application_tags is not None:
@@ -1030,6 +1054,18 @@ class DatabaseInstanceSettingsInsightsConfigArgs:
     @query_insights_enabled.setter
     def query_insights_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "query_insights_enabled", value)
+
+    @property
+    @pulumi.getter(name="queryPlansPerMinute")
+    def query_plans_per_minute(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+        """
+        return pulumi.get(self, "query_plans_per_minute")
+
+    @query_plans_per_minute.setter
+    def query_plans_per_minute(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "query_plans_per_minute", value)
 
     @property
     @pulumi.getter(name="queryStringLength")
