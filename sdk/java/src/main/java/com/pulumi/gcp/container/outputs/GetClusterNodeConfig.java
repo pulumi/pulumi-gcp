@@ -44,6 +44,7 @@ public final class GetClusterNodeConfig {
     private List<String> oauthScopes;
     private Boolean preemptible;
     private List<GetClusterNodeConfigReservationAffinity> reservationAffinities;
+    private Map<String,String> resourceLabels;
     private List<GetClusterNodeConfigSandboxConfig> sandboxConfigs;
     private String serviceAccount;
     private List<GetClusterNodeConfigShieldedInstanceConfig> shieldedInstanceConfigs;
@@ -113,6 +114,9 @@ public final class GetClusterNodeConfig {
     public List<GetClusterNodeConfigReservationAffinity> reservationAffinities() {
         return this.reservationAffinities;
     }
+    public Map<String,String> resourceLabels() {
+        return this.resourceLabels;
+    }
     public List<GetClusterNodeConfigSandboxConfig> sandboxConfigs() {
         return this.sandboxConfigs;
     }
@@ -164,6 +168,7 @@ public final class GetClusterNodeConfig {
         private List<String> oauthScopes;
         private Boolean preemptible;
         private List<GetClusterNodeConfigReservationAffinity> reservationAffinities;
+        private Map<String,String> resourceLabels;
         private List<GetClusterNodeConfigSandboxConfig> sandboxConfigs;
         private String serviceAccount;
         private List<GetClusterNodeConfigShieldedInstanceConfig> shieldedInstanceConfigs;
@@ -194,6 +199,7 @@ public final class GetClusterNodeConfig {
     	      this.oauthScopes = defaults.oauthScopes;
     	      this.preemptible = defaults.preemptible;
     	      this.reservationAffinities = defaults.reservationAffinities;
+    	      this.resourceLabels = defaults.resourceLabels;
     	      this.sandboxConfigs = defaults.sandboxConfigs;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.shieldedInstanceConfigs = defaults.shieldedInstanceConfigs;
@@ -328,6 +334,11 @@ public final class GetClusterNodeConfig {
             return reservationAffinities(List.of(reservationAffinities));
         }
         @CustomType.Setter
+        public Builder resourceLabels(Map<String,String> resourceLabels) {
+            this.resourceLabels = Objects.requireNonNull(resourceLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder sandboxConfigs(List<GetClusterNodeConfigSandboxConfig> sandboxConfigs) {
             this.sandboxConfigs = Objects.requireNonNull(sandboxConfigs);
             return this;
@@ -399,6 +410,7 @@ public final class GetClusterNodeConfig {
             o.oauthScopes = oauthScopes;
             o.preemptible = preemptible;
             o.reservationAffinities = reservationAffinities;
+            o.resourceLabels = resourceLabels;
             o.sandboxConfigs = sandboxConfigs;
             o.serviceAccount = serviceAccount;
             o.shieldedInstanceConfigs = shieldedInstanceConfigs;

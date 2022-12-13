@@ -300,7 +300,7 @@ export class Cluster extends pulumi.CustomResource {
      * the cluster node IPs, which GKE automatically whitelists).
      * Structure is documented below.
      */
-    public readonly masterAuthorizedNetworksConfig!: pulumi.Output<outputs.container.ClusterMasterAuthorizedNetworksConfig | undefined>;
+    public readonly masterAuthorizedNetworksConfig!: pulumi.Output<outputs.container.ClusterMasterAuthorizedNetworksConfig>;
     /**
      * The current version of the master in the cluster. This may
      * be different than the `minMasterVersion` set in the config if the master
@@ -451,7 +451,8 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly removeDefaultNodePool!: pulumi.Output<boolean | undefined>;
     /**
-     * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+     * The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+     * for how these labels are applied to clusters, node pools and nodes.
      */
     public readonly resourceLabels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -998,7 +999,8 @@ export interface ClusterState {
      */
     removeDefaultNodePool?: pulumi.Input<boolean>;
     /**
-     * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+     * The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+     * for how these labels are applied to clusters, node pools and nodes.
      */
     resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -1378,7 +1380,8 @@ export interface ClusterArgs {
      */
     removeDefaultNodePool?: pulumi.Input<boolean>;
     /**
-     * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+     * The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+     * for how these labels are applied to clusters, node pools and nodes.
      */
     resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

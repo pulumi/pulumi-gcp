@@ -56,8 +56,9 @@ class NodePoolArgs:
                auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning
                with the specified prefix. Conflicts with `name`.
-        :param pulumi.Input['NodePoolNetworkConfigArgs'] network_config: The network configuration of the pool. See
-               container.Cluster for schema.
+        :param pulumi.Input['NodePoolNetworkConfigArgs'] network_config: The network configuration of the pool. Such as
+               configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+               documented below
         :param pulumi.Input['NodePoolNodeConfigArgs'] node_config: Parameters used in creating the node pool. See
                container.Cluster for schema.
         :param pulumi.Input[int] node_count: The number of nodes per instance group. This field can be used to
@@ -225,8 +226,9 @@ class NodePoolArgs:
     @pulumi.getter(name="networkConfig")
     def network_config(self) -> Optional[pulumi.Input['NodePoolNetworkConfigArgs']]:
         """
-        The network configuration of the pool. See
-        container.Cluster for schema.
+        The network configuration of the pool. Such as
+        configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+        documented below
         """
         return pulumi.get(self, "network_config")
 
@@ -380,8 +382,9 @@ class _NodePoolState:
                auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning
                with the specified prefix. Conflicts with `name`.
-        :param pulumi.Input['NodePoolNetworkConfigArgs'] network_config: The network configuration of the pool. See
-               container.Cluster for schema.
+        :param pulumi.Input['NodePoolNetworkConfigArgs'] network_config: The network configuration of the pool. Such as
+               configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+               documented below
         :param pulumi.Input['NodePoolNodeConfigArgs'] node_config: Parameters used in creating the node pool. See
                container.Cluster for schema.
         :param pulumi.Input[int] node_count: The number of nodes per instance group. This field can be used to
@@ -580,8 +583,9 @@ class _NodePoolState:
     @pulumi.getter(name="networkConfig")
     def network_config(self) -> Optional[pulumi.Input['NodePoolNetworkConfigArgs']]:
         """
-        The network configuration of the pool. See
-        container.Cluster for schema.
+        The network configuration of the pool. Such as
+        configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+        documented below
         """
         return pulumi.get(self, "network_config")
 
@@ -784,8 +788,9 @@ class NodePool(pulumi.CustomResource):
                auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning
                with the specified prefix. Conflicts with `name`.
-        :param pulumi.Input[pulumi.InputType['NodePoolNetworkConfigArgs']] network_config: The network configuration of the pool. See
-               container.Cluster for schema.
+        :param pulumi.Input[pulumi.InputType['NodePoolNetworkConfigArgs']] network_config: The network configuration of the pool. Such as
+               configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+               documented below
         :param pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']] node_config: Parameters used in creating the node pool. See
                container.Cluster for schema.
         :param pulumi.Input[int] node_count: The number of nodes per instance group. This field can be used to
@@ -976,8 +981,9 @@ class NodePool(pulumi.CustomResource):
                auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning
                with the specified prefix. Conflicts with `name`.
-        :param pulumi.Input[pulumi.InputType['NodePoolNetworkConfigArgs']] network_config: The network configuration of the pool. See
-               container.Cluster for schema.
+        :param pulumi.Input[pulumi.InputType['NodePoolNetworkConfigArgs']] network_config: The network configuration of the pool. Such as
+               configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+               documented below
         :param pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']] node_config: Parameters used in creating the node pool. See
                container.Cluster for schema.
         :param pulumi.Input[int] node_count: The number of nodes per instance group. This field can be used to
@@ -1122,8 +1128,9 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="networkConfig")
     def network_config(self) -> pulumi.Output['outputs.NodePoolNetworkConfig']:
         """
-        The network configuration of the pool. See
-        container.Cluster for schema.
+        The network configuration of the pool. Such as
+        configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+        documented below
         """
         return pulumi.get(self, "network_config")
 

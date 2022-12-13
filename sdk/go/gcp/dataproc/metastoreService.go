@@ -13,6 +13,12 @@ import (
 
 // A managed metastore service that serves metadata queries.
 //
+// To get more information about Service, see:
+//
+// * [API documentation](https://cloud.google.com/dataproc-metastore/docs/reference/rest/v1/projects.locations.services)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
+//
 // ## Example Usage
 // ### Dataproc Metastore Service Basic
 //
@@ -95,6 +101,58 @@ import (
 //	}
 //
 // ```
+// ### Dataproc Metastore Service Private Service Connect
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			net, err := compute.NewNetwork(ctx, "net", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
+//				Region:                pulumi.String("us-central1"),
+//				Network:               net.ID(),
+//				IpCidrRange:           pulumi.String("10.0.0.0/22"),
+//				PrivateIpGoogleAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataproc.NewMetastoreService(ctx, "default", &dataproc.MetastoreServiceArgs{
+//				ServiceId: pulumi.String("metastore-srv"),
+//				Location:  pulumi.String("us-central1"),
+//				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
+//					Version: pulumi.String("3.1.2"),
+//				},
+//				NetworkConfig: &dataproc.MetastoreServiceNetworkConfigArgs{
+//					Consumers: dataproc.MetastoreServiceNetworkConfigConsumerArray{
+//						&dataproc.MetastoreServiceNetworkConfigConsumerArgs{
+//							Subnetwork: subnet.ID(),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -130,6 +188,7 @@ type MetastoreService struct {
 	// customer data at rest.
 	// Structure is documented below.
 	EncryptionConfig MetastoreServiceEncryptionConfigPtrOutput `pulumi:"encryptionConfig"`
+	// -
 	// The URI of the endpoint used to access the metastore service.
 	EndpointUri pulumi.StringOutput `pulumi:"endpointUri"`
 	// Configuration information specific to running Hive metastore software as the metastore service.
@@ -152,6 +211,9 @@ type MetastoreService struct {
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
 	Network pulumi.StringOutput `pulumi:"network"`
+	// The configuration specifying the network settings for the Dataproc Metastore service.
+	// Structure is documented below.
+	NetworkConfig MetastoreServiceNetworkConfigPtrOutput `pulumi:"networkConfig"`
 	// The TCP port at which the metastore service is reached. Default: 9083.
 	Port pulumi.IntOutput `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
@@ -218,6 +280,7 @@ type metastoreServiceState struct {
 	// customer data at rest.
 	// Structure is documented below.
 	EncryptionConfig *MetastoreServiceEncryptionConfig `pulumi:"encryptionConfig"`
+	// -
 	// The URI of the endpoint used to access the metastore service.
 	EndpointUri *string `pulumi:"endpointUri"`
 	// Configuration information specific to running Hive metastore software as the metastore service.
@@ -240,6 +303,9 @@ type metastoreServiceState struct {
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
 	Network *string `pulumi:"network"`
+	// The configuration specifying the network settings for the Dataproc Metastore service.
+	// Structure is documented below.
+	NetworkConfig *MetastoreServiceNetworkConfig `pulumi:"networkConfig"`
 	// The TCP port at which the metastore service is reached. Default: 9083.
 	Port *int `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
@@ -275,6 +341,7 @@ type MetastoreServiceState struct {
 	// customer data at rest.
 	// Structure is documented below.
 	EncryptionConfig MetastoreServiceEncryptionConfigPtrInput
+	// -
 	// The URI of the endpoint used to access the metastore service.
 	EndpointUri pulumi.StringPtrInput
 	// Configuration information specific to running Hive metastore software as the metastore service.
@@ -297,6 +364,9 @@ type MetastoreServiceState struct {
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
 	Network pulumi.StringPtrInput
+	// The configuration specifying the network settings for the Dataproc Metastore service.
+	// Structure is documented below.
+	NetworkConfig MetastoreServiceNetworkConfigPtrInput
 	// The TCP port at which the metastore service is reached. Default: 9083.
 	Port pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
@@ -352,6 +422,9 @@ type metastoreServiceArgs struct {
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
 	Network *string `pulumi:"network"`
+	// The configuration specifying the network settings for the Dataproc Metastore service.
+	// Structure is documented below.
+	NetworkConfig *MetastoreServiceNetworkConfig `pulumi:"networkConfig"`
 	// The TCP port at which the metastore service is reached. Default: 9083.
 	Port *int `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
@@ -398,6 +471,9 @@ type MetastoreServiceArgs struct {
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
 	Network pulumi.StringPtrInput
+	// The configuration specifying the network settings for the Dataproc Metastore service.
+	// Structure is documented below.
+	NetworkConfig MetastoreServiceNetworkConfigPtrInput
 	// The TCP port at which the metastore service is reached. Default: 9083.
 	Port pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
@@ -522,6 +598,7 @@ func (o MetastoreServiceOutput) EncryptionConfig() MetastoreServiceEncryptionCon
 	return o.ApplyT(func(v *MetastoreService) MetastoreServiceEncryptionConfigPtrOutput { return v.EncryptionConfig }).(MetastoreServiceEncryptionConfigPtrOutput)
 }
 
+// -
 // The URI of the endpoint used to access the metastore service.
 func (o MetastoreServiceOutput) EndpointUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.EndpointUri }).(pulumi.StringOutput)
@@ -566,6 +643,12 @@ func (o MetastoreServiceOutput) Name() pulumi.StringOutput {
 // "projects/{projectNumber}/global/networks/{network_id}".
 func (o MetastoreServiceOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// The configuration specifying the network settings for the Dataproc Metastore service.
+// Structure is documented below.
+func (o MetastoreServiceOutput) NetworkConfig() MetastoreServiceNetworkConfigPtrOutput {
+	return o.ApplyT(func(v *MetastoreService) MetastoreServiceNetworkConfigPtrOutput { return v.NetworkConfig }).(MetastoreServiceNetworkConfigPtrOutput)
 }
 
 // The TCP port at which the metastore service is reached. Default: 9083.

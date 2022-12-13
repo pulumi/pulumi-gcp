@@ -169,6 +169,15 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly instanceGroup!: pulumi.Output<string>;
     /**
+     * Pagination behavior of the `listManagedInstances` API
+     * method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+     * If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+     * `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+     * response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+     * respected.
+     */
+    public readonly listManagedInstancesResults!: pulumi.Output<string | undefined>;
+    /**
      * - Version name.
      */
     public readonly name!: pulumi.Output<string>;
@@ -253,6 +262,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["distributionPolicyZones"] = state ? state.distributionPolicyZones : undefined;
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
             resourceInputs["instanceGroup"] = state ? state.instanceGroup : undefined;
+            resourceInputs["listManagedInstancesResults"] = state ? state.listManagedInstancesResults : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namedPorts"] = state ? state.namedPorts : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -280,6 +290,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["distributionPolicyTargetShape"] = args ? args.distributionPolicyTargetShape : undefined;
             resourceInputs["distributionPolicyZones"] = args ? args.distributionPolicyZones : undefined;
+            resourceInputs["listManagedInstancesResults"] = args ? args.listManagedInstancesResults : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namedPorts"] = args ? args.namedPorts : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -348,6 +359,15 @@ export interface RegionInstanceGroupManagerState {
      * The full URL of the instance group created by the manager.
      */
     instanceGroup?: pulumi.Input<string>;
+    /**
+     * Pagination behavior of the `listManagedInstances` API
+     * method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+     * If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+     * `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+     * response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+     * respected.
+     */
+    listManagedInstancesResults?: pulumi.Input<string>;
     /**
      * - Version name.
      */
@@ -452,6 +472,15 @@ export interface RegionInstanceGroupManagerArgs {
      * group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
      */
     distributionPolicyZones?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Pagination behavior of the `listManagedInstances` API
+     * method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+     * If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+     * `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+     * response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+     * respected.
+     */
+    listManagedInstancesResults?: pulumi.Input<string>;
     /**
      * - Version name.
      */

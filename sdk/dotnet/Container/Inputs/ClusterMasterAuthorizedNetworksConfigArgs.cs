@@ -25,6 +25,13 @@ namespace Pulumi.Gcp.Container.Inputs
             set => _cidrBlocks = value;
         }
 
+        /// <summary>
+        /// Whether Kubernetes master is
+        /// accessible via Google Compute Engine Public IPs.
+        /// </summary>
+        [Input("gcpPublicCidrsAccessEnabled")]
+        public Input<bool>? GcpPublicCidrsAccessEnabled { get; set; }
+
         public ClusterMasterAuthorizedNetworksConfigArgs()
         {
         }

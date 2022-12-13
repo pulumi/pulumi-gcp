@@ -26,7 +26,8 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
-               to as many as possible within 8 cloud regions. See structure below.
+               to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
+               to default to the backend value. See structure below.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
                in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
@@ -63,7 +64,8 @@ class InstanceArgs:
     def clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]]]:
         """
         A block of cluster configuration options. This can be specified at least once, and up 
-        to as many as possible within 8 cloud regions. See structure below.
+        to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
+        to default to the backend value. See structure below.
         """
         return pulumi.get(self, "clusters")
 
@@ -163,7 +165,8 @@ class _InstanceState:
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
-               to as many as possible within 8 cloud regions. See structure below.
+               to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
+               to default to the backend value. See structure below.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
                in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
@@ -200,7 +203,8 @@ class _InstanceState:
     def clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]]]:
         """
         A block of cluster configuration options. This can be specified at least once, and up 
-        to as many as possible within 8 cloud regions. See structure below.
+        to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
+        to default to the backend value. See structure below.
         """
         return pulumi.get(self, "clusters")
 
@@ -383,7 +387,8 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
-               to as many as possible within 8 cloud regions. See structure below.
+               to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
+               to default to the backend value. See structure below.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
                in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
@@ -549,7 +554,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
-               to as many as possible within 8 cloud regions. See structure below.
+               to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
+               to default to the backend value. See structure below.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
                in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
@@ -581,7 +587,8 @@ class Instance(pulumi.CustomResource):
     def clusters(self) -> pulumi.Output[Sequence['outputs.InstanceCluster']]:
         """
         A block of cluster configuration options. This can be specified at least once, and up 
-        to as many as possible within 8 cloud regions. See structure below.
+        to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
+        to default to the backend value. See structure below.
         """
         return pulumi.get(self, "clusters")
 

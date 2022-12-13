@@ -17,8 +17,7 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
     public static final RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs Empty = new RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs();
 
     /**
-     * The specification for how client requests are aborted as part of fault
-     * injection.
+     * The specification for how client requests are aborted as part of fault injection.
      * Structure is documented below.
      * 
      */
@@ -26,8 +25,7 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
     private @Nullable Output<RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs> abort;
 
     /**
-     * @return The specification for how client requests are aborted as part of fault
-     * injection.
+     * @return The specification for how client requests are aborted as part of fault injection.
      * Structure is documented below.
      * 
      */
@@ -36,8 +34,7 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
     }
 
     /**
-     * The specification for how client requests are delayed as part of fault
-     * injection, before being sent to a backend service.
+     * The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
      * Structure is documented below.
      * 
      */
@@ -45,8 +42,7 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
     private @Nullable Output<RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs> delay;
 
     /**
-     * @return The specification for how client requests are delayed as part of fault
-     * injection, before being sent to a backend service.
+     * @return The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
      * Structure is documented below.
      * 
      */
@@ -80,8 +76,7 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
         }
 
         /**
-         * @param abort The specification for how client requests are aborted as part of fault
-         * injection.
+         * @param abort The specification for how client requests are aborted as part of fault injection.
          * Structure is documented below.
          * 
          * @return builder
@@ -93,8 +88,7 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
         }
 
         /**
-         * @param abort The specification for how client requests are aborted as part of fault
-         * injection.
+         * @param abort The specification for how client requests are aborted as part of fault injection.
          * Structure is documented below.
          * 
          * @return builder
@@ -105,8 +99,7 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
         }
 
         /**
-         * @param delay The specification for how client requests are delayed as part of fault
-         * injection, before being sent to a backend service.
+         * @param delay The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
          * Structure is documented below.
          * 
          * @return builder
@@ -118,8 +111,7 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
         }
 
         /**
-         * @param delay The specification for how client requests are delayed as part of fault
-         * injection, before being sent to a backend service.
+         * @param delay The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
          * Structure is documented below.
          * 
          * @return builder

@@ -13,16 +13,14 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The specification for how client requests are aborted as part of fault
-        /// injection.
+        /// The specification for how client requests are aborted as part of fault injection.
         /// Structure is documented below.
         /// </summary>
         [Input("abort")]
         public Input<Inputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortGetArgs>? Abort { get; set; }
 
         /// <summary>
-        /// The specification for how client requests are delayed as part of fault
-        /// injection, before being sent to a backend service.
+        /// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
         /// Structure is documented below.
         /// </summary>
         [Input("delay")]

@@ -14,6 +14,8 @@ import (
 // see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
 // and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
 //
+// Security Policy is used by google_compute_backend_service.
+//
 // ## Example Usage
 //
 // ```go
@@ -66,6 +68,113 @@ import (
 //	}
 //
 // ```
+// ### With ReCAPTCHA Configuration Options
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/recaptcha"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			primary, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
+//				DisplayName: pulumi.String("display-name"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				Project: pulumi.String("my-project-name"),
+//				WebSettings: &recaptcha.EnterpriseKeyWebSettingsArgs{
+//					IntegrationType: pulumi.String("INVISIBLE"),
+//					AllowAllDomains: pulumi.Bool(true),
+//					AllowedDomains: pulumi.StringArray{
+//						pulumi.String("localhost"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
+//				Description: pulumi.String("basic security policy"),
+//				Type:        pulumi.String("CLOUD_ARMOR"),
+//				RecaptchaOptionsConfig: &compute.SecurityPolicyRecaptchaOptionsConfigArgs{
+//					RedirectSiteKey: primary.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### With Header Actions
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
+//				Rules: compute.SecurityPolicyRuleArray{
+//					&compute.SecurityPolicyRuleArgs{
+//						Action:      pulumi.String("allow"),
+//						Description: pulumi.String("default rule"),
+//						Match: &compute.SecurityPolicyRuleMatchArgs{
+//							Config: &compute.SecurityPolicyRuleMatchConfigArgs{
+//								SrcIpRanges: pulumi.StringArray{
+//									pulumi.String("*"),
+//								},
+//							},
+//							VersionedExpr: pulumi.String("SRC_IPS_V1"),
+//						},
+//						Priority: pulumi.Int(2147483647),
+//					},
+//					&compute.SecurityPolicyRuleArgs{
+//						Action: pulumi.String("allow"),
+//						HeaderAction: &compute.SecurityPolicyRuleHeaderActionArgs{
+//							RequestHeadersToAdds: compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArray{
+//								&compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs{
+//									HeaderName:  pulumi.String("reCAPTCHA-Warning"),
+//									HeaderValue: pulumi.String("high"),
+//								},
+//								&compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs{
+//									HeaderName:  pulumi.String("X-Resource"),
+//									HeaderValue: pulumi.String("test"),
+//								},
+//							},
+//						},
+//						Match: &compute.SecurityPolicyRuleMatchArgs{
+//							Expr: &compute.SecurityPolicyRuleMatchExprArgs{
+//								Expression: pulumi.String("request.path.matches(\"/login.html\") && token.recaptcha_session.score < 0.2"),
+//							},
+//						},
+//						Priority: pulumi.Int(1000),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type SecurityPolicy struct {
 	pulumi.CustomResourceState
 
@@ -83,6 +192,8 @@ type SecurityPolicy struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+	RecaptchaOptionsConfig SecurityPolicyRecaptchaOptionsConfigPtrOutput `pulumi:"recaptchaOptionsConfig"`
 	// The set of rules that belong to this policy. There must always be a default
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
@@ -136,6 +247,8 @@ type securityPolicyState struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+	RecaptchaOptionsConfig *SecurityPolicyRecaptchaOptionsConfig `pulumi:"recaptchaOptionsConfig"`
 	// The set of rules that belong to this policy. There must always be a default
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
@@ -161,6 +274,8 @@ type SecurityPolicyState struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+	RecaptchaOptionsConfig SecurityPolicyRecaptchaOptionsConfigPtrInput
 	// The set of rules that belong to this policy. There must always be a default
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
@@ -188,6 +303,8 @@ type securityPolicyArgs struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+	RecaptchaOptionsConfig *SecurityPolicyRecaptchaOptionsConfig `pulumi:"recaptchaOptionsConfig"`
 	// The set of rules that belong to this policy. There must always be a default
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
@@ -210,6 +327,8 @@ type SecurityPolicyArgs struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+	RecaptchaOptionsConfig SecurityPolicyRecaptchaOptionsConfigPtrInput
 	// The set of rules that belong to this policy. There must always be a default
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
@@ -337,6 +456,11 @@ func (o SecurityPolicyOutput) Name() pulumi.StringOutput {
 // is not provided, the provider project is used.
 func (o SecurityPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+func (o SecurityPolicyOutput) RecaptchaOptionsConfig() SecurityPolicyRecaptchaOptionsConfigPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicy) SecurityPolicyRecaptchaOptionsConfigPtrOutput { return v.RecaptchaOptionsConfig }).(SecurityPolicyRecaptchaOptionsConfigPtrOutput)
 }
 
 // The set of rules that belong to this policy. There must always be a default

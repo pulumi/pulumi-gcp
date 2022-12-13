@@ -19,6 +19,12 @@ public final class BackendServiceCdnPolicyCacheKeyPolicy {
      */
     private @Nullable Boolean includeHost;
     /**
+     * @return Allows HTTP request headers (by name) to be used in the
+     * cache key.
+     * 
+     */
+    private @Nullable List<String> includeHttpHeaders;
+    /**
      * @return Names of cookies to include in cache keys.
      * 
      */
@@ -64,6 +70,14 @@ public final class BackendServiceCdnPolicyCacheKeyPolicy {
      */
     public Optional<Boolean> includeHost() {
         return Optional.ofNullable(this.includeHost);
+    }
+    /**
+     * @return Allows HTTP request headers (by name) to be used in the
+     * cache key.
+     * 
+     */
+    public List<String> includeHttpHeaders() {
+        return this.includeHttpHeaders == null ? List.of() : this.includeHttpHeaders;
     }
     /**
      * @return Names of cookies to include in cache keys.
@@ -124,6 +138,7 @@ public final class BackendServiceCdnPolicyCacheKeyPolicy {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean includeHost;
+        private @Nullable List<String> includeHttpHeaders;
         private @Nullable List<String> includeNamedCookies;
         private @Nullable Boolean includeProtocol;
         private @Nullable Boolean includeQueryString;
@@ -133,6 +148,7 @@ public final class BackendServiceCdnPolicyCacheKeyPolicy {
         public Builder(BackendServiceCdnPolicyCacheKeyPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.includeHost = defaults.includeHost;
+    	      this.includeHttpHeaders = defaults.includeHttpHeaders;
     	      this.includeNamedCookies = defaults.includeNamedCookies;
     	      this.includeProtocol = defaults.includeProtocol;
     	      this.includeQueryString = defaults.includeQueryString;
@@ -144,6 +160,14 @@ public final class BackendServiceCdnPolicyCacheKeyPolicy {
         public Builder includeHost(@Nullable Boolean includeHost) {
             this.includeHost = includeHost;
             return this;
+        }
+        @CustomType.Setter
+        public Builder includeHttpHeaders(@Nullable List<String> includeHttpHeaders) {
+            this.includeHttpHeaders = includeHttpHeaders;
+            return this;
+        }
+        public Builder includeHttpHeaders(String... includeHttpHeaders) {
+            return includeHttpHeaders(List.of(includeHttpHeaders));
         }
         @CustomType.Setter
         public Builder includeNamedCookies(@Nullable List<String> includeNamedCookies) {
@@ -182,6 +206,7 @@ public final class BackendServiceCdnPolicyCacheKeyPolicy {
         public BackendServiceCdnPolicyCacheKeyPolicy build() {
             final var o = new BackendServiceCdnPolicyCacheKeyPolicy();
             o.includeHost = includeHost;
+            o.includeHttpHeaders = includeHttpHeaders;
             o.includeNamedCookies = includeNamedCookies;
             o.includeProtocol = includeProtocol;
             o.includeQueryString = includeQueryString;

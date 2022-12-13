@@ -13061,6 +13061,9 @@ type ClusterMasterAuthorizedNetworksConfig struct {
 	// External networks that can access the
 	// Kubernetes cluster master through HTTPS.
 	CidrBlocks []ClusterMasterAuthorizedNetworksConfigCidrBlock `pulumi:"cidrBlocks"`
+	// Whether Kubernetes master is
+	// accessible via Google Compute Engine Public IPs.
+	GcpPublicCidrsAccessEnabled *bool `pulumi:"gcpPublicCidrsAccessEnabled"`
 }
 
 // ClusterMasterAuthorizedNetworksConfigInput is an input type that accepts ClusterMasterAuthorizedNetworksConfigArgs and ClusterMasterAuthorizedNetworksConfigOutput values.
@@ -13078,6 +13081,9 @@ type ClusterMasterAuthorizedNetworksConfigArgs struct {
 	// External networks that can access the
 	// Kubernetes cluster master through HTTPS.
 	CidrBlocks ClusterMasterAuthorizedNetworksConfigCidrBlockArrayInput `pulumi:"cidrBlocks"`
+	// Whether Kubernetes master is
+	// accessible via Google Compute Engine Public IPs.
+	GcpPublicCidrsAccessEnabled pulumi.BoolPtrInput `pulumi:"gcpPublicCidrsAccessEnabled"`
 }
 
 func (ClusterMasterAuthorizedNetworksConfigArgs) ElementType() reflect.Type {
@@ -13165,6 +13171,12 @@ func (o ClusterMasterAuthorizedNetworksConfigOutput) CidrBlocks() ClusterMasterA
 	}).(ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
 }
 
+// Whether Kubernetes master is
+// accessible via Google Compute Engine Public IPs.
+func (o ClusterMasterAuthorizedNetworksConfigOutput) GcpPublicCidrsAccessEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterMasterAuthorizedNetworksConfig) *bool { return v.GcpPublicCidrsAccessEnabled }).(pulumi.BoolPtrOutput)
+}
+
 type ClusterMasterAuthorizedNetworksConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterMasterAuthorizedNetworksConfigPtrOutput) ElementType() reflect.Type {
@@ -13198,6 +13210,17 @@ func (o ClusterMasterAuthorizedNetworksConfigPtrOutput) CidrBlocks() ClusterMast
 		}
 		return v.CidrBlocks
 	}).(ClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
+}
+
+// Whether Kubernetes master is
+// accessible via Google Compute Engine Public IPs.
+func (o ClusterMasterAuthorizedNetworksConfigPtrOutput) GcpPublicCidrsAccessEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterMasterAuthorizedNetworksConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GcpPublicCidrsAccessEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterMasterAuthorizedNetworksConfigCidrBlock struct {
@@ -13970,7 +13993,10 @@ type ClusterNodeConfig struct {
 	Preemptible *bool `pulumi:"preemptible"`
 	// The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
 	ReservationAffinity *ClusterNodeConfigReservationAffinity `pulumi:"reservationAffinity"`
-	SandboxConfig       *ClusterNodeConfigSandboxConfig       `pulumi:"sandboxConfig"`
+	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+	// for how these labels are applied to clusters, node pools and nodes.
+	ResourceLabels map[string]string               `pulumi:"resourceLabels"`
+	SandboxConfig  *ClusterNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -14074,7 +14100,10 @@ type ClusterNodeConfigArgs struct {
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
 	// The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
 	ReservationAffinity ClusterNodeConfigReservationAffinityPtrInput `pulumi:"reservationAffinity"`
-	SandboxConfig       ClusterNodeConfigSandboxConfigPtrInput       `pulumi:"sandboxConfig"`
+	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+	// for how these labels are applied to clusters, node pools and nodes.
+	ResourceLabels pulumi.StringMapInput                  `pulumi:"resourceLabels"`
+	SandboxConfig  ClusterNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
@@ -14301,6 +14330,12 @@ func (o ClusterNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 // The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
 func (o ClusterNodeConfigOutput) ReservationAffinity() ClusterNodeConfigReservationAffinityPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigReservationAffinity { return v.ReservationAffinity }).(ClusterNodeConfigReservationAffinityPtrOutput)
+}
+
+// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+// for how these labels are applied to clusters, node pools and nodes.
+func (o ClusterNodeConfigOutput) ResourceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
 }
 
 func (o ClusterNodeConfigOutput) SandboxConfig() ClusterNodeConfigSandboxConfigPtrOutput {
@@ -14596,6 +14631,17 @@ func (o ClusterNodeConfigPtrOutput) ReservationAffinity() ClusterNodeConfigReser
 		}
 		return v.ReservationAffinity
 	}).(ClusterNodeConfigReservationAffinityPtrOutput)
+}
+
+// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+// for how these labels are applied to clusters, node pools and nodes.
+func (o ClusterNodeConfigPtrOutput) ResourceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceLabels
+	}).(pulumi.StringMapOutput)
 }
 
 func (o ClusterNodeConfigPtrOutput) SandboxConfig() ClusterNodeConfigSandboxConfigPtrOutput {
@@ -17777,10 +17823,15 @@ func (o ClusterNodePoolManagementPtrOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 type ClusterNodePoolNetworkConfig struct {
 	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 	CreatePodRange *bool `pulumi:"createPodRange"`
+	// Enables the private cluster feature,
+	// creating a private endpoint on the cluster. In a private cluster, nodes only
+	// have RFC 1918 private addresses and communicate with the master's private
+	// endpoint via private networking.
+	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
 	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 	PodIpv4CidrBlock *string `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
-	PodRange string `pulumi:"podRange"`
+	PodRange *string `pulumi:"podRange"`
 }
 
 // ClusterNodePoolNetworkConfigInput is an input type that accepts ClusterNodePoolNetworkConfigArgs and ClusterNodePoolNetworkConfigOutput values.
@@ -17797,10 +17848,15 @@ type ClusterNodePoolNetworkConfigInput interface {
 type ClusterNodePoolNetworkConfigArgs struct {
 	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 	CreatePodRange pulumi.BoolPtrInput `pulumi:"createPodRange"`
+	// Enables the private cluster feature,
+	// creating a private endpoint on the cluster. In a private cluster, nodes only
+	// have RFC 1918 private addresses and communicate with the master's private
+	// endpoint via private networking.
+	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
 	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 	PodIpv4CidrBlock pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
-	PodRange pulumi.StringInput `pulumi:"podRange"`
+	PodRange pulumi.StringPtrInput `pulumi:"podRange"`
 }
 
 func (ClusterNodePoolNetworkConfigArgs) ElementType() reflect.Type {
@@ -17885,14 +17941,22 @@ func (o ClusterNodePoolNetworkConfigOutput) CreatePodRange() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *bool { return v.CreatePodRange }).(pulumi.BoolPtrOutput)
 }
 
+// Enables the private cluster feature,
+// creating a private endpoint on the cluster. In a private cluster, nodes only
+// have RFC 1918 private addresses and communicate with the master's private
+// endpoint via private networking.
+func (o ClusterNodePoolNetworkConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
+}
+
 // The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 func (o ClusterNodePoolNetworkConfigOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *string { return v.PodIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
-func (o ClusterNodePoolNetworkConfigOutput) PodRange() pulumi.StringOutput {
-	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) string { return v.PodRange }).(pulumi.StringOutput)
+func (o ClusterNodePoolNetworkConfigOutput) PodRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *string { return v.PodRange }).(pulumi.StringPtrOutput)
 }
 
 type ClusterNodePoolNetworkConfigPtrOutput struct{ *pulumi.OutputState }
@@ -17929,6 +17993,19 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) CreatePodRange() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Enables the private cluster feature,
+// creating a private endpoint on the cluster. In a private cluster, nodes only
+// have RFC 1918 private addresses and communicate with the master's private
+// endpoint via private networking.
+func (o ClusterNodePoolNetworkConfigPtrOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePrivateNodes
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 func (o ClusterNodePoolNetworkConfigPtrOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) *string {
@@ -17945,7 +18022,7 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput
 		if v == nil {
 			return nil
 		}
-		return &v.PodRange
+		return v.PodRange
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18016,7 +18093,10 @@ type ClusterNodePoolNodeConfig struct {
 	Preemptible *bool `pulumi:"preemptible"`
 	// The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
 	ReservationAffinity *ClusterNodePoolNodeConfigReservationAffinity `pulumi:"reservationAffinity"`
-	SandboxConfig       *ClusterNodePoolNodeConfigSandboxConfig       `pulumi:"sandboxConfig"`
+	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+	// for how these labels are applied to clusters, node pools and nodes.
+	ResourceLabels map[string]string                       `pulumi:"resourceLabels"`
+	SandboxConfig  *ClusterNodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -18120,7 +18200,10 @@ type ClusterNodePoolNodeConfigArgs struct {
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
 	// The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
 	ReservationAffinity ClusterNodePoolNodeConfigReservationAffinityPtrInput `pulumi:"reservationAffinity"`
-	SandboxConfig       ClusterNodePoolNodeConfigSandboxConfigPtrInput       `pulumi:"sandboxConfig"`
+	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+	// for how these labels are applied to clusters, node pools and nodes.
+	ResourceLabels pulumi.StringMapInput                          `pulumi:"resourceLabels"`
+	SandboxConfig  ClusterNodePoolNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
@@ -18353,6 +18436,12 @@ func (o ClusterNodePoolNodeConfigOutput) ReservationAffinity() ClusterNodePoolNo
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigReservationAffinity {
 		return v.ReservationAffinity
 	}).(ClusterNodePoolNodeConfigReservationAffinityPtrOutput)
+}
+
+// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+// for how these labels are applied to clusters, node pools and nodes.
+func (o ClusterNodePoolNodeConfigOutput) ResourceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
 }
 
 func (o ClusterNodePoolNodeConfigOutput) SandboxConfig() ClusterNodePoolNodeConfigSandboxConfigPtrOutput {
@@ -18652,6 +18741,17 @@ func (o ClusterNodePoolNodeConfigPtrOutput) ReservationAffinity() ClusterNodePoo
 		}
 		return v.ReservationAffinity
 	}).(ClusterNodePoolNodeConfigReservationAffinityPtrOutput)
+}
+
+// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+// for how these labels are applied to clusters, node pools and nodes.
+func (o ClusterNodePoolNodeConfigPtrOutput) ResourceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceLabels
+	}).(pulumi.StringMapOutput)
 }
 
 func (o ClusterNodePoolNodeConfigPtrOutput) SandboxConfig() ClusterNodePoolNodeConfigSandboxConfigPtrOutput {
@@ -21766,7 +21866,7 @@ type ClusterPrivateClusterConfig struct {
 	// endpoint is used as the cluster endpoint and access through the public endpoint
 	// is disabled. When `false`, either endpoint can be used. This field only applies
 	// to private clusters, when `enablePrivateNodes` is `true`.
-	EnablePrivateEndpoint bool `pulumi:"enablePrivateEndpoint"`
+	EnablePrivateEndpoint *bool `pulumi:"enablePrivateEndpoint"`
 	// Enables the private cluster feature,
 	// creating a private endpoint on the cluster. In a private cluster, nodes only
 	// have RFC 1918 private addresses and communicate with the master's private
@@ -21788,6 +21888,8 @@ type ClusterPrivateClusterConfig struct {
 	PeeringName *string `pulumi:"peeringName"`
 	// The internal IP address of this cluster's master endpoint.
 	PrivateEndpoint *string `pulumi:"privateEndpoint"`
+	// Subnetwork in cluster's network where master's endpoint will be provisioned.
+	PrivateEndpointSubnetwork *string `pulumi:"privateEndpointSubnetwork"`
 	// The external IP address of this cluster's master endpoint.
 	PublicEndpoint *string `pulumi:"publicEndpoint"`
 }
@@ -21808,7 +21910,7 @@ type ClusterPrivateClusterConfigArgs struct {
 	// endpoint is used as the cluster endpoint and access through the public endpoint
 	// is disabled. When `false`, either endpoint can be used. This field only applies
 	// to private clusters, when `enablePrivateNodes` is `true`.
-	EnablePrivateEndpoint pulumi.BoolInput `pulumi:"enablePrivateEndpoint"`
+	EnablePrivateEndpoint pulumi.BoolPtrInput `pulumi:"enablePrivateEndpoint"`
 	// Enables the private cluster feature,
 	// creating a private endpoint on the cluster. In a private cluster, nodes only
 	// have RFC 1918 private addresses and communicate with the master's private
@@ -21830,6 +21932,8 @@ type ClusterPrivateClusterConfigArgs struct {
 	PeeringName pulumi.StringPtrInput `pulumi:"peeringName"`
 	// The internal IP address of this cluster's master endpoint.
 	PrivateEndpoint pulumi.StringPtrInput `pulumi:"privateEndpoint"`
+	// Subnetwork in cluster's network where master's endpoint will be provisioned.
+	PrivateEndpointSubnetwork pulumi.StringPtrInput `pulumi:"privateEndpointSubnetwork"`
 	// The external IP address of this cluster's master endpoint.
 	PublicEndpoint pulumi.StringPtrInput `pulumi:"publicEndpoint"`
 }
@@ -21915,8 +22019,8 @@ func (o ClusterPrivateClusterConfigOutput) ToClusterPrivateClusterConfigPtrOutpu
 // endpoint is used as the cluster endpoint and access through the public endpoint
 // is disabled. When `false`, either endpoint can be used. This field only applies
 // to private clusters, when `enablePrivateNodes` is `true`.
-func (o ClusterPrivateClusterConfigOutput) EnablePrivateEndpoint() pulumi.BoolOutput {
-	return o.ApplyT(func(v ClusterPrivateClusterConfig) bool { return v.EnablePrivateEndpoint }).(pulumi.BoolOutput)
+func (o ClusterPrivateClusterConfigOutput) EnablePrivateEndpoint() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterPrivateClusterConfig) *bool { return v.EnablePrivateEndpoint }).(pulumi.BoolPtrOutput)
 }
 
 // Enables the private cluster feature,
@@ -21957,6 +22061,11 @@ func (o ClusterPrivateClusterConfigOutput) PrivateEndpoint() pulumi.StringPtrOut
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.PrivateEndpoint }).(pulumi.StringPtrOutput)
 }
 
+// Subnetwork in cluster's network where master's endpoint will be provisioned.
+func (o ClusterPrivateClusterConfigOutput) PrivateEndpointSubnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.PrivateEndpointSubnetwork }).(pulumi.StringPtrOutput)
+}
+
 // The external IP address of this cluster's master endpoint.
 func (o ClusterPrivateClusterConfigOutput) PublicEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.PublicEndpoint }).(pulumi.StringPtrOutput)
@@ -21995,7 +22104,7 @@ func (o ClusterPrivateClusterConfigPtrOutput) EnablePrivateEndpoint() pulumi.Boo
 		if v == nil {
 			return nil
 		}
-		return &v.EnablePrivateEndpoint
+		return v.EnablePrivateEndpoint
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -22057,6 +22166,16 @@ func (o ClusterPrivateClusterConfigPtrOutput) PrivateEndpoint() pulumi.StringPtr
 			return nil
 		}
 		return v.PrivateEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subnetwork in cluster's network where master's endpoint will be provisioned.
+func (o ClusterPrivateClusterConfigPtrOutput) PrivateEndpointSubnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPrivateClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateEndpointSubnetwork
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -23698,9 +23817,14 @@ func (o NodePoolManagementPtrOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 }
 
 type NodePoolNetworkConfig struct {
-	CreatePodRange   *bool   `pulumi:"createPodRange"`
+	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
+	CreatePodRange *bool `pulumi:"createPodRange"`
+	// Whether nodes have internal IP addresses only.
+	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
+	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 	PodIpv4CidrBlock *string `pulumi:"podIpv4CidrBlock"`
-	PodRange         string  `pulumi:"podRange"`
+	// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
+	PodRange *string `pulumi:"podRange"`
 }
 
 // NodePoolNetworkConfigInput is an input type that accepts NodePoolNetworkConfigArgs and NodePoolNetworkConfigOutput values.
@@ -23715,9 +23839,14 @@ type NodePoolNetworkConfigInput interface {
 }
 
 type NodePoolNetworkConfigArgs struct {
-	CreatePodRange   pulumi.BoolPtrInput   `pulumi:"createPodRange"`
+	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
+	CreatePodRange pulumi.BoolPtrInput `pulumi:"createPodRange"`
+	// Whether nodes have internal IP addresses only.
+	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
+	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 	PodIpv4CidrBlock pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
-	PodRange         pulumi.StringInput    `pulumi:"podRange"`
+	// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
+	PodRange pulumi.StringPtrInput `pulumi:"podRange"`
 }
 
 func (NodePoolNetworkConfigArgs) ElementType() reflect.Type {
@@ -23797,16 +23926,24 @@ func (o NodePoolNetworkConfigOutput) ToNodePoolNetworkConfigPtrOutputWithContext
 	}).(NodePoolNetworkConfigPtrOutput)
 }
 
+// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 func (o NodePoolNetworkConfigOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolNetworkConfig) *bool { return v.CreatePodRange }).(pulumi.BoolPtrOutput)
 }
 
+// Whether nodes have internal IP addresses only.
+func (o NodePoolNetworkConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolNetworkConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
+}
+
+// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 func (o NodePoolNetworkConfigOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNetworkConfig) *string { return v.PodIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
-func (o NodePoolNetworkConfigOutput) PodRange() pulumi.StringOutput {
-	return o.ApplyT(func(v NodePoolNetworkConfig) string { return v.PodRange }).(pulumi.StringOutput)
+// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
+func (o NodePoolNetworkConfigOutput) PodRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNetworkConfig) *string { return v.PodRange }).(pulumi.StringPtrOutput)
 }
 
 type NodePoolNetworkConfigPtrOutput struct{ *pulumi.OutputState }
@@ -23833,6 +23970,7 @@ func (o NodePoolNetworkConfigPtrOutput) Elem() NodePoolNetworkConfigOutput {
 	}).(NodePoolNetworkConfigOutput)
 }
 
+// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 func (o NodePoolNetworkConfigPtrOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolNetworkConfig) *bool {
 		if v == nil {
@@ -23842,6 +23980,17 @@ func (o NodePoolNetworkConfigPtrOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether nodes have internal IP addresses only.
+func (o NodePoolNetworkConfigPtrOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolNetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePrivateNodes
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 func (o NodePoolNetworkConfigPtrOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolNetworkConfig) *string {
 		if v == nil {
@@ -23851,12 +24000,13 @@ func (o NodePoolNetworkConfigPtrOutput) PodIpv4CidrBlock() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
 func (o NodePoolNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolNetworkConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.PodRange
+		return v.PodRange
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -23881,6 +24031,7 @@ type NodePoolNodeConfig struct {
 	OauthScopes            []string                                  `pulumi:"oauthScopes"`
 	Preemptible            *bool                                     `pulumi:"preemptible"`
 	ReservationAffinity    *NodePoolNodeConfigReservationAffinity    `pulumi:"reservationAffinity"`
+	ResourceLabels         map[string]string                         `pulumi:"resourceLabels"`
 	SandboxConfig          *NodePoolNodeConfigSandboxConfig          `pulumi:"sandboxConfig"`
 	ServiceAccount         *string                                   `pulumi:"serviceAccount"`
 	ShieldedInstanceConfig *NodePoolNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
@@ -23922,6 +24073,7 @@ type NodePoolNodeConfigArgs struct {
 	OauthScopes            pulumi.StringArrayInput                          `pulumi:"oauthScopes"`
 	Preemptible            pulumi.BoolPtrInput                              `pulumi:"preemptible"`
 	ReservationAffinity    NodePoolNodeConfigReservationAffinityPtrInput    `pulumi:"reservationAffinity"`
+	ResourceLabels         pulumi.StringMapInput                            `pulumi:"resourceLabels"`
 	SandboxConfig          NodePoolNodeConfigSandboxConfigPtrInput          `pulumi:"sandboxConfig"`
 	ServiceAccount         pulumi.StringPtrInput                            `pulumi:"serviceAccount"`
 	ShieldedInstanceConfig NodePoolNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
@@ -24086,6 +24238,10 @@ func (o NodePoolNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 
 func (o NodePoolNodeConfigOutput) ReservationAffinity() NodePoolNodeConfigReservationAffinityPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigReservationAffinity { return v.ReservationAffinity }).(NodePoolNodeConfigReservationAffinityPtrOutput)
+}
+
+func (o NodePoolNodeConfigOutput) ResourceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
 }
 
 func (o NodePoolNodeConfigOutput) SandboxConfig() NodePoolNodeConfigSandboxConfigPtrOutput {
@@ -24318,6 +24474,15 @@ func (o NodePoolNodeConfigPtrOutput) ReservationAffinity() NodePoolNodeConfigRes
 		}
 		return v.ReservationAffinity
 	}).(NodePoolNodeConfigReservationAffinityPtrOutput)
+}
+
+func (o NodePoolNodeConfigPtrOutput) ResourceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceLabels
+	}).(pulumi.StringMapOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) SandboxConfig() NodePoolNodeConfigSandboxConfigPtrOutput {
@@ -30439,7 +30604,8 @@ func (o GetClusterMasterAuthClientCertificateConfigArrayOutput) Index(i pulumi.I
 }
 
 type GetClusterMasterAuthorizedNetworksConfig struct {
-	CidrBlocks []GetClusterMasterAuthorizedNetworksConfigCidrBlock `pulumi:"cidrBlocks"`
+	CidrBlocks                  []GetClusterMasterAuthorizedNetworksConfigCidrBlock `pulumi:"cidrBlocks"`
+	GcpPublicCidrsAccessEnabled bool                                                `pulumi:"gcpPublicCidrsAccessEnabled"`
 }
 
 // GetClusterMasterAuthorizedNetworksConfigInput is an input type that accepts GetClusterMasterAuthorizedNetworksConfigArgs and GetClusterMasterAuthorizedNetworksConfigOutput values.
@@ -30454,7 +30620,8 @@ type GetClusterMasterAuthorizedNetworksConfigInput interface {
 }
 
 type GetClusterMasterAuthorizedNetworksConfigArgs struct {
-	CidrBlocks GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayInput `pulumi:"cidrBlocks"`
+	CidrBlocks                  GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayInput `pulumi:"cidrBlocks"`
+	GcpPublicCidrsAccessEnabled pulumi.BoolInput                                            `pulumi:"gcpPublicCidrsAccessEnabled"`
 }
 
 func (GetClusterMasterAuthorizedNetworksConfigArgs) ElementType() reflect.Type {
@@ -30512,6 +30679,10 @@ func (o GetClusterMasterAuthorizedNetworksConfigOutput) CidrBlocks() GetClusterM
 	return o.ApplyT(func(v GetClusterMasterAuthorizedNetworksConfig) []GetClusterMasterAuthorizedNetworksConfigCidrBlock {
 		return v.CidrBlocks
 	}).(GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
+}
+
+func (o GetClusterMasterAuthorizedNetworksConfigOutput) GcpPublicCidrsAccessEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterMasterAuthorizedNetworksConfig) bool { return v.GcpPublicCidrsAccessEnabled }).(pulumi.BoolOutput)
 }
 
 type GetClusterMasterAuthorizedNetworksConfigArrayOutput struct{ *pulumi.OutputState }
@@ -31045,6 +31216,7 @@ type GetClusterNodeConfig struct {
 	OauthScopes             []string                                     `pulumi:"oauthScopes"`
 	Preemptible             bool                                         `pulumi:"preemptible"`
 	ReservationAffinities   []GetClusterNodeConfigReservationAffinity    `pulumi:"reservationAffinities"`
+	ResourceLabels          map[string]string                            `pulumi:"resourceLabels"`
 	SandboxConfigs          []GetClusterNodeConfigSandboxConfig          `pulumi:"sandboxConfigs"`
 	ServiceAccount          string                                       `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs []GetClusterNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfigs"`
@@ -31086,6 +31258,7 @@ type GetClusterNodeConfigArgs struct {
 	OauthScopes             pulumi.StringArrayInput                              `pulumi:"oauthScopes"`
 	Preemptible             pulumi.BoolInput                                     `pulumi:"preemptible"`
 	ReservationAffinities   GetClusterNodeConfigReservationAffinityArrayInput    `pulumi:"reservationAffinities"`
+	ResourceLabels          pulumi.StringMapInput                                `pulumi:"resourceLabels"`
 	SandboxConfigs          GetClusterNodeConfigSandboxConfigArrayInput          `pulumi:"sandboxConfigs"`
 	ServiceAccount          pulumi.StringInput                                   `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs GetClusterNodeConfigShieldedInstanceConfigArrayInput `pulumi:"shieldedInstanceConfigs"`
@@ -31226,6 +31399,10 @@ func (o GetClusterNodeConfigOutput) Preemptible() pulumi.BoolOutput {
 
 func (o GetClusterNodeConfigOutput) ReservationAffinities() GetClusterNodeConfigReservationAffinityArrayOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigReservationAffinity { return v.ReservationAffinities }).(GetClusterNodeConfigReservationAffinityArrayOutput)
+}
+
+func (o GetClusterNodeConfigOutput) ResourceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
 }
 
 func (o GetClusterNodeConfigOutput) SandboxConfigs() GetClusterNodeConfigSandboxConfigArrayOutput {
@@ -33356,9 +33533,10 @@ func (o GetClusterNodePoolManagementArrayOutput) Index(i pulumi.IntInput) GetClu
 }
 
 type GetClusterNodePoolNetworkConfig struct {
-	CreatePodRange   bool   `pulumi:"createPodRange"`
-	PodIpv4CidrBlock string `pulumi:"podIpv4CidrBlock"`
-	PodRange         string `pulumi:"podRange"`
+	CreatePodRange     bool   `pulumi:"createPodRange"`
+	EnablePrivateNodes bool   `pulumi:"enablePrivateNodes"`
+	PodIpv4CidrBlock   string `pulumi:"podIpv4CidrBlock"`
+	PodRange           string `pulumi:"podRange"`
 }
 
 // GetClusterNodePoolNetworkConfigInput is an input type that accepts GetClusterNodePoolNetworkConfigArgs and GetClusterNodePoolNetworkConfigOutput values.
@@ -33373,9 +33551,10 @@ type GetClusterNodePoolNetworkConfigInput interface {
 }
 
 type GetClusterNodePoolNetworkConfigArgs struct {
-	CreatePodRange   pulumi.BoolInput   `pulumi:"createPodRange"`
-	PodIpv4CidrBlock pulumi.StringInput `pulumi:"podIpv4CidrBlock"`
-	PodRange         pulumi.StringInput `pulumi:"podRange"`
+	CreatePodRange     pulumi.BoolInput   `pulumi:"createPodRange"`
+	EnablePrivateNodes pulumi.BoolInput   `pulumi:"enablePrivateNodes"`
+	PodIpv4CidrBlock   pulumi.StringInput `pulumi:"podIpv4CidrBlock"`
+	PodRange           pulumi.StringInput `pulumi:"podRange"`
 }
 
 func (GetClusterNodePoolNetworkConfigArgs) ElementType() reflect.Type {
@@ -33433,6 +33612,10 @@ func (o GetClusterNodePoolNetworkConfigOutput) CreatePodRange() pulumi.BoolOutpu
 	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) bool { return v.CreatePodRange }).(pulumi.BoolOutput)
 }
 
+func (o GetClusterNodePoolNetworkConfigOutput) EnablePrivateNodes() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) bool { return v.EnablePrivateNodes }).(pulumi.BoolOutput)
+}
+
 func (o GetClusterNodePoolNetworkConfigOutput) PodIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) string { return v.PodIpv4CidrBlock }).(pulumi.StringOutput)
 }
@@ -33482,6 +33665,7 @@ type GetClusterNodePoolNodeConfig struct {
 	OauthScopes             []string                                             `pulumi:"oauthScopes"`
 	Preemptible             bool                                                 `pulumi:"preemptible"`
 	ReservationAffinities   []GetClusterNodePoolNodeConfigReservationAffinity    `pulumi:"reservationAffinities"`
+	ResourceLabels          map[string]string                                    `pulumi:"resourceLabels"`
 	SandboxConfigs          []GetClusterNodePoolNodeConfigSandboxConfig          `pulumi:"sandboxConfigs"`
 	ServiceAccount          string                                               `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs []GetClusterNodePoolNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfigs"`
@@ -33523,6 +33707,7 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	OauthScopes             pulumi.StringArrayInput                                      `pulumi:"oauthScopes"`
 	Preemptible             pulumi.BoolInput                                             `pulumi:"preemptible"`
 	ReservationAffinities   GetClusterNodePoolNodeConfigReservationAffinityArrayInput    `pulumi:"reservationAffinities"`
+	ResourceLabels          pulumi.StringMapInput                                        `pulumi:"resourceLabels"`
 	SandboxConfigs          GetClusterNodePoolNodeConfigSandboxConfigArrayInput          `pulumi:"sandboxConfigs"`
 	ServiceAccount          pulumi.StringInput                                           `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayInput `pulumi:"shieldedInstanceConfigs"`
@@ -33671,6 +33856,10 @@ func (o GetClusterNodePoolNodeConfigOutput) ReservationAffinities() GetClusterNo
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigReservationAffinity {
 		return v.ReservationAffinities
 	}).(GetClusterNodePoolNodeConfigReservationAffinityArrayOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigOutput) ResourceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) SandboxConfigs() GetClusterNodePoolNodeConfigSandboxConfigArrayOutput {
@@ -35746,6 +35935,7 @@ type GetClusterPrivateClusterConfig struct {
 	MasterIpv4CidrBlock       string                                                   `pulumi:"masterIpv4CidrBlock"`
 	PeeringName               string                                                   `pulumi:"peeringName"`
 	PrivateEndpoint           string                                                   `pulumi:"privateEndpoint"`
+	PrivateEndpointSubnetwork string                                                   `pulumi:"privateEndpointSubnetwork"`
 	PublicEndpoint            string                                                   `pulumi:"publicEndpoint"`
 }
 
@@ -35767,6 +35957,7 @@ type GetClusterPrivateClusterConfigArgs struct {
 	MasterIpv4CidrBlock       pulumi.StringInput                                               `pulumi:"masterIpv4CidrBlock"`
 	PeeringName               pulumi.StringInput                                               `pulumi:"peeringName"`
 	PrivateEndpoint           pulumi.StringInput                                               `pulumi:"privateEndpoint"`
+	PrivateEndpointSubnetwork pulumi.StringInput                                               `pulumi:"privateEndpointSubnetwork"`
 	PublicEndpoint            pulumi.StringInput                                               `pulumi:"publicEndpoint"`
 }
 
@@ -35845,6 +36036,10 @@ func (o GetClusterPrivateClusterConfigOutput) PeeringName() pulumi.StringOutput 
 
 func (o GetClusterPrivateClusterConfigOutput) PrivateEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterPrivateClusterConfig) string { return v.PrivateEndpoint }).(pulumi.StringOutput)
+}
+
+func (o GetClusterPrivateClusterConfigOutput) PrivateEndpointSubnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterPrivateClusterConfig) string { return v.PrivateEndpointSubnetwork }).(pulumi.StringOutput)
 }
 
 func (o GetClusterPrivateClusterConfigOutput) PublicEndpoint() pulumi.StringOutput {

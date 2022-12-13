@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { InstanceIamBindingArgs, InstanceIamBindingState } from "./instanceIamBinding";
+export type InstanceIamBinding = import("./instanceIamBinding").InstanceIamBinding;
+export const InstanceIamBinding: typeof import("./instanceIamBinding").InstanceIamBinding = null as any;
+utilities.lazyLoad(exports, ["InstanceIamBinding"], () => require("./instanceIamBinding"));
+
+export { InstanceIamMemberArgs, InstanceIamMemberState } from "./instanceIamMember";
+export type InstanceIamMember = import("./instanceIamMember").InstanceIamMember;
+export const InstanceIamMember: typeof import("./instanceIamMember").InstanceIamMember = null as any;
+utilities.lazyLoad(exports, ["InstanceIamMember"], () => require("./instanceIamMember"));
+
+export { InstanceIamPolicyArgs, InstanceIamPolicyState } from "./instanceIamPolicy";
+export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
+export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
+
 export { NotificationConfigArgs, NotificationConfigState } from "./notificationConfig";
 export type NotificationConfig = import("./notificationConfig").NotificationConfig;
 export const NotificationConfig: typeof import("./notificationConfig").NotificationConfig = null as any;
@@ -35,6 +50,12 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:securitycenter/instanceIamBinding:InstanceIamBinding":
+                return new InstanceIamBinding(name, <any>undefined, { urn })
+            case "gcp:securitycenter/instanceIamMember:InstanceIamMember":
+                return new InstanceIamMember(name, <any>undefined, { urn })
+            case "gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy":
+                return new InstanceIamPolicy(name, <any>undefined, { urn })
             case "gcp:securitycenter/notificationConfig:NotificationConfig":
                 return new NotificationConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/source:Source":
@@ -50,6 +71,9 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/notificationConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/source", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamBinding", _module)

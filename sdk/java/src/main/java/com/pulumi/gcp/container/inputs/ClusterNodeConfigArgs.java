@@ -382,6 +382,23 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.reservationAffinity);
     }
 
+    /**
+     * The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+     * for how these labels are applied to clusters, node pools and nodes.
+     * 
+     */
+    @Import(name="resourceLabels")
+    private @Nullable Output<Map<String,String>> resourceLabels;
+
+    /**
+     * @return The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+     * for how these labels are applied to clusters, node pools and nodes.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> resourceLabels() {
+        return Optional.ofNullable(this.resourceLabels);
+    }
+
     @Import(name="sandboxConfig")
     private @Nullable Output<ClusterNodeConfigSandboxConfigArgs> sandboxConfig;
 
@@ -524,6 +541,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         this.oauthScopes = $.oauthScopes;
         this.preemptible = $.preemptible;
         this.reservationAffinity = $.reservationAffinity;
+        this.resourceLabels = $.resourceLabels;
         this.sandboxConfig = $.sandboxConfig;
         this.serviceAccount = $.serviceAccount;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
@@ -1044,6 +1062,29 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder reservationAffinity(ClusterNodeConfigReservationAffinityArgs reservationAffinity) {
             return reservationAffinity(Output.of(reservationAffinity));
+        }
+
+        /**
+         * @param resourceLabels The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+         * for how these labels are applied to clusters, node pools and nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceLabels(@Nullable Output<Map<String,String>> resourceLabels) {
+            $.resourceLabels = resourceLabels;
+            return this;
+        }
+
+        /**
+         * @param resourceLabels The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+         * for how these labels are applied to clusters, node pools and nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceLabels(Map<String,String> resourceLabels) {
+            return resourceLabels(Output.of(resourceLabels));
         }
 
         public Builder sandboxConfig(@Nullable Output<ClusterNodeConfigSandboxConfigArgs> sandboxConfig) {

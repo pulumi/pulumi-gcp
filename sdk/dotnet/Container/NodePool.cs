@@ -146,8 +146,9 @@ namespace Pulumi.Gcp.Container
         public Output<string> NamePrefix { get; private set; } = null!;
 
         /// <summary>
-        /// The network configuration of the pool. See
-        /// gcp.container.Cluster for schema.
+        /// The network configuration of the pool. Such as
+        /// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+        /// documented below
         /// </summary>
         [Output("networkConfig")]
         public Output<Outputs.NodePoolNetworkConfig> NetworkConfig { get; private set; } = null!;
@@ -319,8 +320,9 @@ namespace Pulumi.Gcp.Container
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
-        /// The network configuration of the pool. See
-        /// gcp.container.Cluster for schema.
+        /// The network configuration of the pool. Such as
+        /// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+        /// documented below
         /// </summary>
         [Input("networkConfig")]
         public Input<Inputs.NodePoolNetworkConfigArgs>? NetworkConfig { get; set; }
@@ -481,8 +483,9 @@ namespace Pulumi.Gcp.Container
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
-        /// The network configuration of the pool. See
-        /// gcp.container.Cluster for schema.
+        /// The network configuration of the pool. Such as
+        /// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+        /// documented below
         /// </summary>
         [Input("networkConfig")]
         public Input<Inputs.NodePoolNetworkConfigGetArgs>? NetworkConfig { get; set; }

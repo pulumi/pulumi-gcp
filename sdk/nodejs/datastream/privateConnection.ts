@@ -86,6 +86,10 @@ export class PrivateConnection extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * The PrivateConnection error in case of failure.
+     */
+    public /*out*/ readonly errors!: pulumi.Output<outputs.datastream.PrivateConnectionError[]>;
+    /**
      * Labels.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -107,6 +111,10 @@ export class PrivateConnection extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * State of the PrivateConnection.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
      * The VPC Peering configuration is used to create VPC peering
      * between Datastream and the consumer's VPC.
      * Structure is documented below.
@@ -127,11 +135,13 @@ export class PrivateConnection extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PrivateConnectionState | undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["errors"] = state ? state.errors : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["privateConnectionId"] = state ? state.privateConnectionId : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["vpcPeeringConfig"] = state ? state.vpcPeeringConfig : undefined;
         } else {
             const args = argsOrState as PrivateConnectionArgs | undefined;
@@ -153,7 +163,9 @@ export class PrivateConnection extends pulumi.CustomResource {
             resourceInputs["privateConnectionId"] = args ? args.privateConnectionId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["vpcPeeringConfig"] = args ? args.vpcPeeringConfig : undefined;
+            resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PrivateConnection.__pulumiType, name, resourceInputs, opts);
@@ -168,6 +180,10 @@ export interface PrivateConnectionState {
      * Display name.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * The PrivateConnection error in case of failure.
+     */
+    errors?: pulumi.Input<pulumi.Input<inputs.datastream.PrivateConnectionError>[]>;
     /**
      * Labels.
      */
@@ -189,6 +205,10 @@ export interface PrivateConnectionState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * State of the PrivateConnection.
+     */
+    state?: pulumi.Input<string>;
     /**
      * The VPC Peering configuration is used to create VPC peering
      * between Datastream and the consumer's VPC.

@@ -182,6 +182,19 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("reservationAffinity")]
         public Input<Inputs.ClusterNodeConfigReservationAffinityArgs>? ReservationAffinity { get; set; }
 
+        [Input("resourceLabels")]
+        private InputMap<string>? _resourceLabels;
+
+        /// <summary>
+        /// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+        /// for how these labels are applied to clusters, node pools and nodes.
+        /// </summary>
+        public InputMap<string> ResourceLabels
+        {
+            get => _resourceLabels ?? (_resourceLabels = new InputMap<string>());
+            set => _resourceLabels = value;
+        }
+
         [Input("sandboxConfig")]
         public Input<Inputs.ClusterNodeConfigSandboxConfigArgs>? SandboxConfig { get; set; }
 

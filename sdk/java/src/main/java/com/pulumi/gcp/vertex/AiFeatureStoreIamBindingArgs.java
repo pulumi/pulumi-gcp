@@ -24,9 +24,17 @@ public final class AiFeatureStoreIamBindingArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.condition);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="featurestore", required=true)
     private Output<String> featurestore;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> featurestore() {
         return this.featurestore;
     }
@@ -40,7 +48,7 @@ public final class AiFeatureStoreIamBindingArgs extends com.pulumi.resources.Res
 
     /**
      * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      * 
      */
     @Import(name="project")
@@ -48,7 +56,7 @@ public final class AiFeatureStoreIamBindingArgs extends com.pulumi.resources.Res
 
     /**
      * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -56,23 +64,39 @@ public final class AiFeatureStoreIamBindingArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The region of the dataset. eg us-central1
+     * The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region of the dataset. eg us-central1
+     * @return The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
      * 
      */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * The role that should be applied. Only one
+     * `gcp.vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * 
+     */
     @Import(name="role", required=true)
     private Output<String> role;
 
+    /**
+     * @return The role that should be applied. Only one
+     * `gcp.vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * 
+     */
     public Output<String> role() {
         return this.role;
     }
@@ -115,11 +139,23 @@ public final class AiFeatureStoreIamBindingArgs extends com.pulumi.resources.Res
             return condition(Output.of(condition));
         }
 
+        /**
+         * @param featurestore Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder featurestore(Output<String> featurestore) {
             $.featurestore = featurestore;
             return this;
         }
 
+        /**
+         * @param featurestore Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder featurestore(String featurestore) {
             return featurestore(Output.of(featurestore));
         }
@@ -139,7 +175,7 @@ public final class AiFeatureStoreIamBindingArgs extends com.pulumi.resources.Res
 
         /**
          * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
+         * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
          * 
          * @return builder
          * 
@@ -151,7 +187,7 @@ public final class AiFeatureStoreIamBindingArgs extends com.pulumi.resources.Res
 
         /**
          * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
+         * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
          * 
          * @return builder
          * 
@@ -161,7 +197,9 @@ public final class AiFeatureStoreIamBindingArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param region The region of the dataset. eg us-central1
+         * @param region The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+         * region is specified, it is taken from the provider configuration.
          * 
          * @return builder
          * 
@@ -172,7 +210,9 @@ public final class AiFeatureStoreIamBindingArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param region The region of the dataset. eg us-central1
+         * @param region The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+         * region is specified, it is taken from the provider configuration.
          * 
          * @return builder
          * 
@@ -181,11 +221,27 @@ public final class AiFeatureStoreIamBindingArgs extends com.pulumi.resources.Res
             return region(Output.of(region));
         }
 
+        /**
+         * @param role The role that should be applied. Only one
+         * `gcp.vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
+         * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(Output<String> role) {
             $.role = role;
             return this;
         }
 
+        /**
+         * @param role The role that should be applied. Only one
+         * `gcp.vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
+         * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(String role) {
             return role(Output.of(role));
         }

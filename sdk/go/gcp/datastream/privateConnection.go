@@ -86,6 +86,8 @@ type PrivateConnection struct {
 
 	// Display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// The PrivateConnection error in case of failure.
+	Errors PrivateConnectionErrorArrayOutput `pulumi:"errors"`
 	// Labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the location this repository is located in.
@@ -97,6 +99,8 @@ type PrivateConnection struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// State of the PrivateConnection.
+	State pulumi.StringOutput `pulumi:"state"`
 	// The VPC Peering configuration is used to create VPC peering
 	// between Datastream and the consumer's VPC.
 	// Structure is documented below.
@@ -146,6 +150,8 @@ func GetPrivateConnection(ctx *pulumi.Context,
 type privateConnectionState struct {
 	// Display name.
 	DisplayName *string `pulumi:"displayName"`
+	// The PrivateConnection error in case of failure.
+	Errors []PrivateConnectionError `pulumi:"errors"`
 	// Labels.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this repository is located in.
@@ -157,6 +163,8 @@ type privateConnectionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// State of the PrivateConnection.
+	State *string `pulumi:"state"`
 	// The VPC Peering configuration is used to create VPC peering
 	// between Datastream and the consumer's VPC.
 	// Structure is documented below.
@@ -166,6 +174,8 @@ type privateConnectionState struct {
 type PrivateConnectionState struct {
 	// Display name.
 	DisplayName pulumi.StringPtrInput
+	// The PrivateConnection error in case of failure.
+	Errors PrivateConnectionErrorArrayInput
 	// Labels.
 	Labels pulumi.StringMapInput
 	// The name of the location this repository is located in.
@@ -177,6 +187,8 @@ type PrivateConnectionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// State of the PrivateConnection.
+	State pulumi.StringPtrInput
 	// The VPC Peering configuration is used to create VPC peering
 	// between Datastream and the consumer's VPC.
 	// Structure is documented below.
@@ -316,6 +328,11 @@ func (o PrivateConnectionOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// The PrivateConnection error in case of failure.
+func (o PrivateConnectionOutput) Errors() PrivateConnectionErrorArrayOutput {
+	return o.ApplyT(func(v *PrivateConnection) PrivateConnectionErrorArrayOutput { return v.Errors }).(PrivateConnectionErrorArrayOutput)
+}
+
 // Labels.
 func (o PrivateConnectionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
@@ -340,6 +357,11 @@ func (o PrivateConnectionOutput) PrivateConnectionId() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o PrivateConnectionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// State of the PrivateConnection.
+func (o PrivateConnectionOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 // The VPC Peering configuration is used to create VPC peering

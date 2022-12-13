@@ -168,6 +168,31 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
     }
 
     /**
+     * Pagination behavior of the `listManagedInstances` API
+     * method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+     * If `PAGELESS` (default), Pagination is disabled for the group&#39;s `listManagedInstances` API method.
+     * `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+     * response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+     * respected.
+     * 
+     */
+    @Import(name="listManagedInstancesResults")
+    private @Nullable Output<String> listManagedInstancesResults;
+
+    /**
+     * @return Pagination behavior of the `listManagedInstances` API
+     * method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+     * If `PAGELESS` (default), Pagination is disabled for the group&#39;s `listManagedInstances` API method.
+     * `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+     * response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+     * respected.
+     * 
+     */
+    public Optional<Output<String>> listManagedInstancesResults() {
+        return Optional.ofNullable(this.listManagedInstancesResults);
+    }
+
+    /**
      * - Version name.
      * 
      */
@@ -395,6 +420,7 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
         this.distributionPolicyZones = $.distributionPolicyZones;
         this.fingerprint = $.fingerprint;
         this.instanceGroup = $.instanceGroup;
+        this.listManagedInstancesResults = $.listManagedInstancesResults;
         this.name = $.name;
         this.namedPorts = $.namedPorts;
         this.project = $.project;
@@ -627,6 +653,37 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
          */
         public Builder instanceGroup(String instanceGroup) {
             return instanceGroup(Output.of(instanceGroup));
+        }
+
+        /**
+         * @param listManagedInstancesResults Pagination behavior of the `listManagedInstances` API
+         * method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+         * If `PAGELESS` (default), Pagination is disabled for the group&#39;s `listManagedInstances` API method.
+         * `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+         * response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+         * respected.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder listManagedInstancesResults(@Nullable Output<String> listManagedInstancesResults) {
+            $.listManagedInstancesResults = listManagedInstancesResults;
+            return this;
+        }
+
+        /**
+         * @param listManagedInstancesResults Pagination behavior of the `listManagedInstances` API
+         * method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+         * If `PAGELESS` (default), Pagination is disabled for the group&#39;s `listManagedInstances` API method.
+         * `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+         * response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+         * respected.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder listManagedInstancesResults(String listManagedInstancesResults) {
+            return listManagedInstancesResults(Output.of(listManagedInstancesResults));
         }
 
         /**

@@ -13,15 +13,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
     /**
-     * @return The specification for how client requests are aborted as part of fault
-     * injection.
+     * @return The specification for how client requests are aborted as part of fault injection.
      * Structure is documented below.
      * 
      */
     private @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort abort;
     /**
-     * @return The specification for how client requests are delayed as part of fault
-     * injection, before being sent to a backend service.
+     * @return The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
      * Structure is documented below.
      * 
      */
@@ -29,8 +27,7 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
 
     private RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy() {}
     /**
-     * @return The specification for how client requests are aborted as part of fault
-     * injection.
+     * @return The specification for how client requests are aborted as part of fault injection.
      * Structure is documented below.
      * 
      */
@@ -38,8 +35,7 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
         return Optional.ofNullable(this.abort);
     }
     /**
-     * @return The specification for how client requests are delayed as part of fault
-     * injection, before being sent to a backend service.
+     * @return The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
      * Structure is documented below.
      * 
      */

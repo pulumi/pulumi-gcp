@@ -24,8 +24,6 @@ import * as utilities from "../utilities";
  *     certificateAuthorityId: "my-certificate-authority",
  *     location: "us-central1",
  *     pool: "",
- *     ignoreActiveCertificatesOnDeletion: true,
- *     deletionProtection: false,
  *     config: {
  *         subjectConfig: {
  *             subject: {
@@ -54,6 +52,9 @@ import * as utilities from "../utilities";
  *     keySpec: {
  *         algorithm: "RSA_PKCS1_4096_SHA256",
  *     },
+ *     deletionProtection: false,
+ *     skipGracePeriod: true,
+ *     ignoreActiveCertificatesOnDeletion: true,
  * });
  * const _default = new gcp.certificateauthority.Certificate("default", {
  *     pool: "",
@@ -182,7 +183,6 @@ import * as utilities from "../utilities";
  *     pool: "",
  *     certificateAuthorityId: "my-certificate-authority",
  *     location: "us-central1",
- *     deletionProtection: false,
  *     config: {
  *         subjectConfig: {
  *             subject: {
@@ -211,6 +211,9 @@ import * as utilities from "../utilities";
  *     keySpec: {
  *         algorithm: "RSA_PKCS1_4096_SHA256",
  *     },
+ *     deletionProtection: false,
+ *     skipGracePeriod: true,
+ *     ignoreActiveCertificatesOnDeletion: true,
  * });
  * const _default = new gcp.certificateauthority.Certificate("default", {
  *     pool: "",
@@ -232,7 +235,6 @@ import * as utilities from "../utilities";
  *     pool: "",
  *     certificateAuthorityId: "my-certificate-authority",
  *     location: "us-central1",
- *     deletionProtection: false,
  *     config: {
  *         subjectConfig: {
  *             subject: {
@@ -261,6 +263,9 @@ import * as utilities from "../utilities";
  *     keySpec: {
  *         algorithm: "RSA_PKCS1_4096_SHA256",
  *     },
+ *     deletionProtection: false,
+ *     skipGracePeriod: true,
+ *     ignoreActiveCertificatesOnDeletion: true,
  * });
  * const _default = new gcp.certificateauthority.Certificate("default", {
  *     pool: "",
@@ -281,7 +286,6 @@ import * as utilities from "../utilities";
  *     pool: "",
  *     certificateAuthorityId: "my-authority",
  *     location: "us-central1",
- *     deletionProtection: false,
  *     config: {
  *         subjectConfig: {
  *             subject: {
@@ -312,6 +316,9 @@ import * as utilities from "../utilities";
  *     keySpec: {
  *         algorithm: "RSA_PKCS1_4096_SHA256",
  *     },
+ *     deletionProtection: false,
+ *     skipGracePeriod: true,
+ *     ignoreActiveCertificatesOnDeletion: true,
  * });
  * const _default = new gcp.certificateauthority.Certificate("default", {
  *     pool: "",

@@ -19,9 +19,8 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
      */
     private @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay fixedDelay;
     /**
-     * @return The percentage of traffic (connections/operations/requests) on which delay will
-     * be introduced as part of fault injection. The value must be between 0.0 and
-     * 100.0 inclusive.
+     * @return The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+     * The value must be between 0.0 and 100.0 inclusive.
      * 
      */
     private @Nullable Double percentage;
@@ -36,9 +35,8 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
         return Optional.ofNullable(this.fixedDelay);
     }
     /**
-     * @return The percentage of traffic (connections/operations/requests) on which delay will
-     * be introduced as part of fault injection. The value must be between 0.0 and
-     * 100.0 inclusive.
+     * @return The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+     * The value must be between 0.0 and 100.0 inclusive.
      * 
      */
     public Optional<Double> percentage() {

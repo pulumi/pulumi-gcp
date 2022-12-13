@@ -18,23 +18,33 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly bool? CreatePodRange;
         /// <summary>
+        /// Enables the private cluster feature,
+        /// creating a private endpoint on the cluster. In a private cluster, nodes only
+        /// have RFC 1918 private addresses and communicate with the master's private
+        /// endpoint via private networking.
+        /// </summary>
+        public readonly bool? EnablePrivateNodes;
+        /// <summary>
         /// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         /// </summary>
         public readonly string? PodIpv4CidrBlock;
         /// <summary>
         /// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
         /// </summary>
-        public readonly string PodRange;
+        public readonly string? PodRange;
 
         [OutputConstructor]
         private ClusterNodePoolNetworkConfig(
             bool? createPodRange,
 
+            bool? enablePrivateNodes,
+
             string? podIpv4CidrBlock,
 
-            string podRange)
+            string? podRange)
         {
             CreatePodRange = createPodRange;
+            EnablePrivateNodes = enablePrivateNodes;
             PodIpv4CidrBlock = podIpv4CidrBlock;
             PodRange = podRange;
         }

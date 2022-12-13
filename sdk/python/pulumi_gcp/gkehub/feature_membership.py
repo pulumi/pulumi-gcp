@@ -309,6 +309,7 @@ class FeatureMembership(pulumi.CustomResource):
             membership=membership.membership_id,
             mesh=gcp.gkehub.FeatureMembershipMeshArgs(
                 management="MANAGEMENT_AUTOMATIC",
+                control_plane="AUTOMATIC",
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
@@ -423,6 +424,7 @@ class FeatureMembership(pulumi.CustomResource):
             membership=membership.membership_id,
             mesh=gcp.gkehub.FeatureMembershipMeshArgs(
                 management="MANAGEMENT_AUTOMATIC",
+                control_plane="AUTOMATIC",
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```

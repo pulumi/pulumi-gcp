@@ -568,8 +568,6 @@ class Certificate(pulumi.CustomResource):
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
             pool="",
-            ignore_active_certificates_on_deletion=True,
-            deletion_protection=False,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -597,7 +595,10 @@ class Certificate(pulumi.CustomResource):
             ),
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
-            ))
+            ),
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True)
         default = gcp.certificateauthority.Certificate("default",
             pool="",
             location="us-central1",
@@ -722,7 +723,6 @@ class Certificate(pulumi.CustomResource):
             pool="",
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
-            deletion_protection=False,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -750,7 +750,10 @@ class Certificate(pulumi.CustomResource):
             ),
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
-            ))
+            ),
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True)
         default = gcp.certificateauthority.Certificate("default",
             pool="",
             location="us-central1",
@@ -769,7 +772,6 @@ class Certificate(pulumi.CustomResource):
             pool="",
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
-            deletion_protection=False,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -797,7 +799,10 @@ class Certificate(pulumi.CustomResource):
             ),
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
-            ))
+            ),
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True)
         default = gcp.certificateauthority.Certificate("default",
             pool="",
             location="us-central1",
@@ -816,7 +821,6 @@ class Certificate(pulumi.CustomResource):
             pool="",
             certificate_authority_id="my-authority",
             location="us-central1",
-            deletion_protection=False,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -846,7 +850,10 @@ class Certificate(pulumi.CustomResource):
             lifetime="86400s",
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
-            ))
+            ),
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True)
         default = gcp.certificateauthority.Certificate("default",
             pool="",
             location="us-central1",
@@ -950,8 +957,6 @@ class Certificate(pulumi.CustomResource):
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
             pool="",
-            ignore_active_certificates_on_deletion=True,
-            deletion_protection=False,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -979,7 +984,10 @@ class Certificate(pulumi.CustomResource):
             ),
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
-            ))
+            ),
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True)
         default = gcp.certificateauthority.Certificate("default",
             pool="",
             location="us-central1",
@@ -1104,7 +1112,6 @@ class Certificate(pulumi.CustomResource):
             pool="",
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
-            deletion_protection=False,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -1132,7 +1139,10 @@ class Certificate(pulumi.CustomResource):
             ),
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
-            ))
+            ),
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True)
         default = gcp.certificateauthority.Certificate("default",
             pool="",
             location="us-central1",
@@ -1151,7 +1161,6 @@ class Certificate(pulumi.CustomResource):
             pool="",
             certificate_authority_id="my-certificate-authority",
             location="us-central1",
-            deletion_protection=False,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -1179,7 +1188,10 @@ class Certificate(pulumi.CustomResource):
             ),
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
-            ))
+            ),
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True)
         default = gcp.certificateauthority.Certificate("default",
             pool="",
             location="us-central1",
@@ -1198,7 +1210,6 @@ class Certificate(pulumi.CustomResource):
             pool="",
             certificate_authority_id="my-authority",
             location="us-central1",
-            deletion_protection=False,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -1228,7 +1239,10 @@ class Certificate(pulumi.CustomResource):
             lifetime="86400s",
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
-            ))
+            ),
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True)
         default = gcp.certificateauthority.Certificate("default",
             pool="",
             location="us-central1",

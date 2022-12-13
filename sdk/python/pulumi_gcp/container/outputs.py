@@ -4325,6 +4325,8 @@ class ClusterMasterAuthorizedNetworksConfig(dict):
         suggest = None
         if key == "cidrBlocks":
             suggest = "cidr_blocks"
+        elif key == "gcpPublicCidrsAccessEnabled":
+            suggest = "gcp_public_cidrs_access_enabled"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterMasterAuthorizedNetworksConfig. Access the value via the '{suggest}' property getter instead.")
@@ -4338,13 +4340,18 @@ class ClusterMasterAuthorizedNetworksConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 cidr_blocks: Optional[Sequence['outputs.ClusterMasterAuthorizedNetworksConfigCidrBlock']] = None):
+                 cidr_blocks: Optional[Sequence['outputs.ClusterMasterAuthorizedNetworksConfigCidrBlock']] = None,
+                 gcp_public_cidrs_access_enabled: Optional[bool] = None):
         """
         :param Sequence['ClusterMasterAuthorizedNetworksConfigCidrBlockArgs'] cidr_blocks: External networks that can access the
                Kubernetes cluster master through HTTPS.
+        :param bool gcp_public_cidrs_access_enabled: Whether Kubernetes master is
+               accessible via Google Compute Engine Public IPs.
         """
         if cidr_blocks is not None:
             pulumi.set(__self__, "cidr_blocks", cidr_blocks)
+        if gcp_public_cidrs_access_enabled is not None:
+            pulumi.set(__self__, "gcp_public_cidrs_access_enabled", gcp_public_cidrs_access_enabled)
 
     @property
     @pulumi.getter(name="cidrBlocks")
@@ -4354,6 +4361,15 @@ class ClusterMasterAuthorizedNetworksConfig(dict):
         Kubernetes cluster master through HTTPS.
         """
         return pulumi.get(self, "cidr_blocks")
+
+    @property
+    @pulumi.getter(name="gcpPublicCidrsAccessEnabled")
+    def gcp_public_cidrs_access_enabled(self) -> Optional[bool]:
+        """
+        Whether Kubernetes master is
+        accessible via Google Compute Engine Public IPs.
+        """
+        return pulumi.get(self, "gcp_public_cidrs_access_enabled")
 
 
 @pulumi.output_type
@@ -4581,6 +4597,8 @@ class ClusterNodeConfig(dict):
             suggest = "oauth_scopes"
         elif key == "reservationAffinity":
             suggest = "reservation_affinity"
+        elif key == "resourceLabels":
+            suggest = "resource_labels"
         elif key == "sandboxConfig":
             suggest = "sandbox_config"
         elif key == "serviceAccount":
@@ -4622,6 +4640,7 @@ class ClusterNodeConfig(dict):
                  oauth_scopes: Optional[Sequence[str]] = None,
                  preemptible: Optional[bool] = None,
                  reservation_affinity: Optional['outputs.ClusterNodeConfigReservationAffinity'] = None,
+                 resource_labels: Optional[Mapping[str, str]] = None,
                  sandbox_config: Optional['outputs.ClusterNodeConfigSandboxConfig'] = None,
                  service_account: Optional[str] = None,
                  shielded_instance_config: Optional['outputs.ClusterNodeConfigShieldedInstanceConfig'] = None,
@@ -4676,6 +4695,8 @@ class ClusterNodeConfig(dict):
                are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
                for more information. Defaults to false.
         :param 'ClusterNodeConfigReservationAffinityArgs' reservation_affinity: The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+        :param Mapping[str, str] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+               for how these labels are applied to clusters, node pools and nodes.
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param 'ClusterNodeConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
@@ -4734,6 +4755,8 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "preemptible", preemptible)
         if reservation_affinity is not None:
             pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+        if resource_labels is not None:
+            pulumi.set(__self__, "resource_labels", resource_labels)
         if sandbox_config is not None:
             pulumi.set(__self__, "sandbox_config", sandbox_config)
         if service_account is not None:
@@ -4934,6 +4957,15 @@ class ClusterNodeConfig(dict):
         The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
         """
         return pulumi.get(self, "reservation_affinity")
+
+    @property
+    @pulumi.getter(name="resourceLabels")
+    def resource_labels(self) -> Optional[Mapping[str, str]]:
+        """
+        The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+        for how these labels are applied to clusters, node pools and nodes.
+        """
+        return pulumi.get(self, "resource_labels")
 
     @property
     @pulumi.getter(name="sandboxConfig")
@@ -6012,12 +6044,14 @@ class ClusterNodePoolNetworkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "podRange":
-            suggest = "pod_range"
-        elif key == "createPodRange":
+        if key == "createPodRange":
             suggest = "create_pod_range"
+        elif key == "enablePrivateNodes":
+            suggest = "enable_private_nodes"
         elif key == "podIpv4CidrBlock":
             suggest = "pod_ipv4_cidr_block"
+        elif key == "podRange":
+            suggest = "pod_range"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNetworkConfig. Access the value via the '{suggest}' property getter instead.")
@@ -6031,27 +6065,27 @@ class ClusterNodePoolNetworkConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 pod_range: str,
                  create_pod_range: Optional[bool] = None,
-                 pod_ipv4_cidr_block: Optional[str] = None):
+                 enable_private_nodes: Optional[bool] = None,
+                 pod_ipv4_cidr_block: Optional[str] = None,
+                 pod_range: Optional[str] = None):
         """
-        :param str pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
         :param bool create_pod_range: Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+        :param bool enable_private_nodes: Enables the private cluster feature,
+               creating a private endpoint on the cluster. In a private cluster, nodes only
+               have RFC 1918 private addresses and communicate with the master's private
+               endpoint via private networking.
         :param str pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+        :param str pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
         """
-        pulumi.set(__self__, "pod_range", pod_range)
         if create_pod_range is not None:
             pulumi.set(__self__, "create_pod_range", create_pod_range)
+        if enable_private_nodes is not None:
+            pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
         if pod_ipv4_cidr_block is not None:
             pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
-
-    @property
-    @pulumi.getter(name="podRange")
-    def pod_range(self) -> str:
-        """
-        The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
-        """
-        return pulumi.get(self, "pod_range")
+        if pod_range is not None:
+            pulumi.set(__self__, "pod_range", pod_range)
 
     @property
     @pulumi.getter(name="createPodRange")
@@ -6062,12 +6096,31 @@ class ClusterNodePoolNetworkConfig(dict):
         return pulumi.get(self, "create_pod_range")
 
     @property
+    @pulumi.getter(name="enablePrivateNodes")
+    def enable_private_nodes(self) -> Optional[bool]:
+        """
+        Enables the private cluster feature,
+        creating a private endpoint on the cluster. In a private cluster, nodes only
+        have RFC 1918 private addresses and communicate with the master's private
+        endpoint via private networking.
+        """
+        return pulumi.get(self, "enable_private_nodes")
+
+    @property
     @pulumi.getter(name="podIpv4CidrBlock")
     def pod_ipv4_cidr_block(self) -> Optional[str]:
         """
         The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         """
         return pulumi.get(self, "pod_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="podRange")
+    def pod_range(self) -> Optional[str]:
+        """
+        The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+        """
+        return pulumi.get(self, "pod_range")
 
 
 @pulumi.output_type
@@ -6107,6 +6160,8 @@ class ClusterNodePoolNodeConfig(dict):
             suggest = "oauth_scopes"
         elif key == "reservationAffinity":
             suggest = "reservation_affinity"
+        elif key == "resourceLabels":
+            suggest = "resource_labels"
         elif key == "sandboxConfig":
             suggest = "sandbox_config"
         elif key == "serviceAccount":
@@ -6148,6 +6203,7 @@ class ClusterNodePoolNodeConfig(dict):
                  oauth_scopes: Optional[Sequence[str]] = None,
                  preemptible: Optional[bool] = None,
                  reservation_affinity: Optional['outputs.ClusterNodePoolNodeConfigReservationAffinity'] = None,
+                 resource_labels: Optional[Mapping[str, str]] = None,
                  sandbox_config: Optional['outputs.ClusterNodePoolNodeConfigSandboxConfig'] = None,
                  service_account: Optional[str] = None,
                  shielded_instance_config: Optional['outputs.ClusterNodePoolNodeConfigShieldedInstanceConfig'] = None,
@@ -6202,6 +6258,8 @@ class ClusterNodePoolNodeConfig(dict):
                are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
                for more information. Defaults to false.
         :param 'ClusterNodePoolNodeConfigReservationAffinityArgs' reservation_affinity: The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+        :param Mapping[str, str] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+               for how these labels are applied to clusters, node pools and nodes.
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param 'ClusterNodePoolNodeConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
@@ -6260,6 +6318,8 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "preemptible", preemptible)
         if reservation_affinity is not None:
             pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+        if resource_labels is not None:
+            pulumi.set(__self__, "resource_labels", resource_labels)
         if sandbox_config is not None:
             pulumi.set(__self__, "sandbox_config", sandbox_config)
         if service_account is not None:
@@ -6460,6 +6520,15 @@ class ClusterNodePoolNodeConfig(dict):
         The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
         """
         return pulumi.get(self, "reservation_affinity")
+
+    @property
+    @pulumi.getter(name="resourceLabels")
+    def resource_labels(self) -> Optional[Mapping[str, str]]:
+        """
+        The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+        for how these labels are applied to clusters, node pools and nodes.
+        """
+        return pulumi.get(self, "resource_labels")
 
     @property
     @pulumi.getter(name="sandboxConfig")
@@ -7335,6 +7404,8 @@ class ClusterPrivateClusterConfig(dict):
             suggest = "peering_name"
         elif key == "privateEndpoint":
             suggest = "private_endpoint"
+        elif key == "privateEndpointSubnetwork":
+            suggest = "private_endpoint_subnetwork"
         elif key == "publicEndpoint":
             suggest = "public_endpoint"
 
@@ -7350,12 +7421,13 @@ class ClusterPrivateClusterConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 enable_private_endpoint: bool,
+                 enable_private_endpoint: Optional[bool] = None,
                  enable_private_nodes: Optional[bool] = None,
                  master_global_access_config: Optional['outputs.ClusterPrivateClusterConfigMasterGlobalAccessConfig'] = None,
                  master_ipv4_cidr_block: Optional[str] = None,
                  peering_name: Optional[str] = None,
                  private_endpoint: Optional[str] = None,
+                 private_endpoint_subnetwork: Optional[str] = None,
                  public_endpoint: Optional[str] = None):
         """
         :param bool enable_private_endpoint: When `true`, the cluster's private
@@ -7378,9 +7450,11 @@ class ClusterPrivateClusterConfig(dict):
                `enable_private_nodes` is `true`.
         :param str peering_name: The name of the peering between this cluster and the Google owned VPC.
         :param str private_endpoint: The internal IP address of this cluster's master endpoint.
+        :param str private_endpoint_subnetwork: Subnetwork in cluster's network where master's endpoint will be provisioned.
         :param str public_endpoint: The external IP address of this cluster's master endpoint.
         """
-        pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
+        if enable_private_endpoint is not None:
+            pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
         if enable_private_nodes is not None:
             pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
         if master_global_access_config is not None:
@@ -7391,12 +7465,14 @@ class ClusterPrivateClusterConfig(dict):
             pulumi.set(__self__, "peering_name", peering_name)
         if private_endpoint is not None:
             pulumi.set(__self__, "private_endpoint", private_endpoint)
+        if private_endpoint_subnetwork is not None:
+            pulumi.set(__self__, "private_endpoint_subnetwork", private_endpoint_subnetwork)
         if public_endpoint is not None:
             pulumi.set(__self__, "public_endpoint", public_endpoint)
 
     @property
     @pulumi.getter(name="enablePrivateEndpoint")
-    def enable_private_endpoint(self) -> bool:
+    def enable_private_endpoint(self) -> Optional[bool]:
         """
         When `true`, the cluster's private
         endpoint is used as the cluster endpoint and access through the public endpoint
@@ -7455,6 +7531,14 @@ class ClusterPrivateClusterConfig(dict):
         The internal IP address of this cluster's master endpoint.
         """
         return pulumi.get(self, "private_endpoint")
+
+    @property
+    @pulumi.getter(name="privateEndpointSubnetwork")
+    def private_endpoint_subnetwork(self) -> Optional[str]:
+        """
+        Subnetwork in cluster's network where master's endpoint will be provisioned.
+        """
+        return pulumi.get(self, "private_endpoint_subnetwork")
 
     @property
     @pulumi.getter(name="publicEndpoint")
@@ -7913,12 +7997,14 @@ class NodePoolNetworkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "podRange":
-            suggest = "pod_range"
-        elif key == "createPodRange":
+        if key == "createPodRange":
             suggest = "create_pod_range"
+        elif key == "enablePrivateNodes":
+            suggest = "enable_private_nodes"
         elif key == "podIpv4CidrBlock":
             suggest = "pod_ipv4_cidr_block"
+        elif key == "podRange":
+            suggest = "pod_range"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NodePoolNetworkConfig. Access the value via the '{suggest}' property getter instead.")
@@ -7932,29 +8018,56 @@ class NodePoolNetworkConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 pod_range: str,
                  create_pod_range: Optional[bool] = None,
-                 pod_ipv4_cidr_block: Optional[str] = None):
-        pulumi.set(__self__, "pod_range", pod_range)
+                 enable_private_nodes: Optional[bool] = None,
+                 pod_ipv4_cidr_block: Optional[str] = None,
+                 pod_range: Optional[str] = None):
+        """
+        :param bool create_pod_range: Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+        :param bool enable_private_nodes: Whether nodes have internal IP addresses only.
+        :param str pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+        :param str pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+        """
         if create_pod_range is not None:
             pulumi.set(__self__, "create_pod_range", create_pod_range)
+        if enable_private_nodes is not None:
+            pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
         if pod_ipv4_cidr_block is not None:
             pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
-
-    @property
-    @pulumi.getter(name="podRange")
-    def pod_range(self) -> str:
-        return pulumi.get(self, "pod_range")
+        if pod_range is not None:
+            pulumi.set(__self__, "pod_range", pod_range)
 
     @property
     @pulumi.getter(name="createPodRange")
     def create_pod_range(self) -> Optional[bool]:
+        """
+        Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+        """
         return pulumi.get(self, "create_pod_range")
+
+    @property
+    @pulumi.getter(name="enablePrivateNodes")
+    def enable_private_nodes(self) -> Optional[bool]:
+        """
+        Whether nodes have internal IP addresses only.
+        """
+        return pulumi.get(self, "enable_private_nodes")
 
     @property
     @pulumi.getter(name="podIpv4CidrBlock")
     def pod_ipv4_cidr_block(self) -> Optional[str]:
+        """
+        The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+        """
         return pulumi.get(self, "pod_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="podRange")
+    def pod_range(self) -> Optional[str]:
+        """
+        The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+        """
+        return pulumi.get(self, "pod_range")
 
 
 @pulumi.output_type
@@ -7994,6 +8107,8 @@ class NodePoolNodeConfig(dict):
             suggest = "oauth_scopes"
         elif key == "reservationAffinity":
             suggest = "reservation_affinity"
+        elif key == "resourceLabels":
+            suggest = "resource_labels"
         elif key == "sandboxConfig":
             suggest = "sandbox_config"
         elif key == "serviceAccount":
@@ -8035,6 +8150,7 @@ class NodePoolNodeConfig(dict):
                  oauth_scopes: Optional[Sequence[str]] = None,
                  preemptible: Optional[bool] = None,
                  reservation_affinity: Optional['outputs.NodePoolNodeConfigReservationAffinity'] = None,
+                 resource_labels: Optional[Mapping[str, str]] = None,
                  sandbox_config: Optional['outputs.NodePoolNodeConfigSandboxConfig'] = None,
                  service_account: Optional[str] = None,
                  shielded_instance_config: Optional['outputs.NodePoolNodeConfigShieldedInstanceConfig'] = None,
@@ -8082,6 +8198,8 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "preemptible", preemptible)
         if reservation_affinity is not None:
             pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+        if resource_labels is not None:
+            pulumi.set(__self__, "resource_labels", resource_labels)
         if sandbox_config is not None:
             pulumi.set(__self__, "sandbox_config", sandbox_config)
         if service_account is not None:
@@ -8196,6 +8314,11 @@ class NodePoolNodeConfig(dict):
     @pulumi.getter(name="reservationAffinity")
     def reservation_affinity(self) -> Optional['outputs.NodePoolNodeConfigReservationAffinity']:
         return pulumi.get(self, "reservation_affinity")
+
+    @property
+    @pulumi.getter(name="resourceLabels")
+    def resource_labels(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "resource_labels")
 
     @property
     @pulumi.getter(name="sandboxConfig")
@@ -9588,13 +9711,20 @@ class GetClusterMasterAuthClientCertificateConfigResult(dict):
 @pulumi.output_type
 class GetClusterMasterAuthorizedNetworksConfigResult(dict):
     def __init__(__self__, *,
-                 cidr_blocks: Sequence['outputs.GetClusterMasterAuthorizedNetworksConfigCidrBlockResult']):
+                 cidr_blocks: Sequence['outputs.GetClusterMasterAuthorizedNetworksConfigCidrBlockResult'],
+                 gcp_public_cidrs_access_enabled: bool):
         pulumi.set(__self__, "cidr_blocks", cidr_blocks)
+        pulumi.set(__self__, "gcp_public_cidrs_access_enabled", gcp_public_cidrs_access_enabled)
 
     @property
     @pulumi.getter(name="cidrBlocks")
     def cidr_blocks(self) -> Sequence['outputs.GetClusterMasterAuthorizedNetworksConfigCidrBlockResult']:
         return pulumi.get(self, "cidr_blocks")
+
+    @property
+    @pulumi.getter(name="gcpPublicCidrsAccessEnabled")
+    def gcp_public_cidrs_access_enabled(self) -> bool:
+        return pulumi.get(self, "gcp_public_cidrs_access_enabled")
 
 
 @pulumi.output_type
@@ -9701,6 +9831,7 @@ class GetClusterNodeConfigResult(dict):
                  oauth_scopes: Sequence[str],
                  preemptible: bool,
                  reservation_affinities: Sequence['outputs.GetClusterNodeConfigReservationAffinityResult'],
+                 resource_labels: Mapping[str, str],
                  sandbox_configs: Sequence['outputs.GetClusterNodeConfigSandboxConfigResult'],
                  service_account: str,
                  shielded_instance_configs: Sequence['outputs.GetClusterNodeConfigShieldedInstanceConfigResult'],
@@ -9728,6 +9859,7 @@ class GetClusterNodeConfigResult(dict):
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         pulumi.set(__self__, "preemptible", preemptible)
         pulumi.set(__self__, "reservation_affinities", reservation_affinities)
+        pulumi.set(__self__, "resource_labels", resource_labels)
         pulumi.set(__self__, "sandbox_configs", sandbox_configs)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_configs", shielded_instance_configs)
@@ -9835,6 +9967,11 @@ class GetClusterNodeConfigResult(dict):
     @pulumi.getter(name="reservationAffinities")
     def reservation_affinities(self) -> Sequence['outputs.GetClusterNodeConfigReservationAffinityResult']:
         return pulumi.get(self, "reservation_affinities")
+
+    @property
+    @pulumi.getter(name="resourceLabels")
+    def resource_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "resource_labels")
 
     @property
     @pulumi.getter(name="sandboxConfigs")
@@ -10339,9 +10476,11 @@ class GetClusterNodePoolManagementResult(dict):
 class GetClusterNodePoolNetworkConfigResult(dict):
     def __init__(__self__, *,
                  create_pod_range: bool,
+                 enable_private_nodes: bool,
                  pod_ipv4_cidr_block: str,
                  pod_range: str):
         pulumi.set(__self__, "create_pod_range", create_pod_range)
+        pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
         pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
         pulumi.set(__self__, "pod_range", pod_range)
 
@@ -10349,6 +10488,11 @@ class GetClusterNodePoolNetworkConfigResult(dict):
     @pulumi.getter(name="createPodRange")
     def create_pod_range(self) -> bool:
         return pulumi.get(self, "create_pod_range")
+
+    @property
+    @pulumi.getter(name="enablePrivateNodes")
+    def enable_private_nodes(self) -> bool:
+        return pulumi.get(self, "enable_private_nodes")
 
     @property
     @pulumi.getter(name="podIpv4CidrBlock")
@@ -10384,6 +10528,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  oauth_scopes: Sequence[str],
                  preemptible: bool,
                  reservation_affinities: Sequence['outputs.GetClusterNodePoolNodeConfigReservationAffinityResult'],
+                 resource_labels: Mapping[str, str],
                  sandbox_configs: Sequence['outputs.GetClusterNodePoolNodeConfigSandboxConfigResult'],
                  service_account: str,
                  shielded_instance_configs: Sequence['outputs.GetClusterNodePoolNodeConfigShieldedInstanceConfigResult'],
@@ -10411,6 +10556,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         pulumi.set(__self__, "preemptible", preemptible)
         pulumi.set(__self__, "reservation_affinities", reservation_affinities)
+        pulumi.set(__self__, "resource_labels", resource_labels)
         pulumi.set(__self__, "sandbox_configs", sandbox_configs)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_configs", shielded_instance_configs)
@@ -10518,6 +10664,11 @@ class GetClusterNodePoolNodeConfigResult(dict):
     @pulumi.getter(name="reservationAffinities")
     def reservation_affinities(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigReservationAffinityResult']:
         return pulumi.get(self, "reservation_affinities")
+
+    @property
+    @pulumi.getter(name="resourceLabels")
+    def resource_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "resource_labels")
 
     @property
     @pulumi.getter(name="sandboxConfigs")
@@ -10937,6 +11088,7 @@ class GetClusterPrivateClusterConfigResult(dict):
                  master_ipv4_cidr_block: str,
                  peering_name: str,
                  private_endpoint: str,
+                 private_endpoint_subnetwork: str,
                  public_endpoint: str):
         pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
         pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
@@ -10944,6 +11096,7 @@ class GetClusterPrivateClusterConfigResult(dict):
         pulumi.set(__self__, "master_ipv4_cidr_block", master_ipv4_cidr_block)
         pulumi.set(__self__, "peering_name", peering_name)
         pulumi.set(__self__, "private_endpoint", private_endpoint)
+        pulumi.set(__self__, "private_endpoint_subnetwork", private_endpoint_subnetwork)
         pulumi.set(__self__, "public_endpoint", public_endpoint)
 
     @property
@@ -10975,6 +11128,11 @@ class GetClusterPrivateClusterConfigResult(dict):
     @pulumi.getter(name="privateEndpoint")
     def private_endpoint(self) -> str:
         return pulumi.get(self, "private_endpoint")
+
+    @property
+    @pulumi.getter(name="privateEndpointSubnetwork")
+    def private_endpoint_subnetwork(self) -> str:
+        return pulumi.get(self, "private_endpoint_subnetwork")
 
     @property
     @pulumi.getter(name="publicEndpoint")

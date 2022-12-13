@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -70,6 +72,12 @@ export class FolderBucketConfig extends pulumi.CustomResource {
      */
     public readonly bucketId!: pulumi.Output<string>;
     /**
+     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+     * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+     * updating the log bucket. Changing the KMS key is allowed.
+     */
+    public readonly cmekSettings!: pulumi.Output<outputs.logging.FolderBucketConfigCmekSettings | undefined>;
+    /**
      * Describes this bucket.
      */
     public readonly description!: pulumi.Output<string>;
@@ -108,6 +116,7 @@ export class FolderBucketConfig extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as FolderBucketConfigState | undefined;
             resourceInputs["bucketId"] = state ? state.bucketId : undefined;
+            resourceInputs["cmekSettings"] = state ? state.cmekSettings : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["folder"] = state ? state.folder : undefined;
             resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
@@ -126,6 +135,7 @@ export class FolderBucketConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["bucketId"] = args ? args.bucketId : undefined;
+            resourceInputs["cmekSettings"] = args ? args.cmekSettings : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["folder"] = args ? args.folder : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -146,6 +156,12 @@ export interface FolderBucketConfigState {
      * The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
      */
     bucketId?: pulumi.Input<string>;
+    /**
+     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+     * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+     * updating the log bucket. Changing the KMS key is allowed.
+     */
+    cmekSettings?: pulumi.Input<inputs.logging.FolderBucketConfigCmekSettings>;
     /**
      * Describes this bucket.
      */
@@ -180,6 +196,12 @@ export interface FolderBucketConfigArgs {
      * The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
      */
     bucketId: pulumi.Input<string>;
+    /**
+     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+     * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+     * updating the log bucket. Changing the KMS key is allowed.
+     */
+    cmekSettings?: pulumi.Input<inputs.logging.FolderBucketConfigCmekSettings>;
     /**
      * Describes this bucket.
      */

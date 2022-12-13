@@ -17,16 +17,16 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
     public static final RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs Empty = new RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs();
 
     /**
-     * The HTTP status code used to abort the request. The value must be between 200
-     * and 599 inclusive.
+     * The HTTP status code used to abort the request.
+     * The value must be between 200 and 599 inclusive.
      * 
      */
     @Import(name="httpStatus")
     private @Nullable Output<Integer> httpStatus;
 
     /**
-     * @return The HTTP status code used to abort the request. The value must be between 200
-     * and 599 inclusive.
+     * @return The HTTP status code used to abort the request.
+     * The value must be between 200 and 599 inclusive.
      * 
      */
     public Optional<Output<Integer>> httpStatus() {
@@ -34,18 +34,16 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
     }
 
     /**
-     * The percentage of traffic (connections/operations/requests) on which delay will
-     * be introduced as part of fault injection. The value must be between 0.0 and
-     * 100.0 inclusive.
+     * The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+     * The value must be between 0.0 and 100.0 inclusive.
      * 
      */
     @Import(name="percentage")
     private @Nullable Output<Double> percentage;
 
     /**
-     * @return The percentage of traffic (connections/operations/requests) on which delay will
-     * be introduced as part of fault injection. The value must be between 0.0 and
-     * 100.0 inclusive.
+     * @return The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+     * The value must be between 0.0 and 100.0 inclusive.
      * 
      */
     public Optional<Output<Double>> percentage() {
@@ -78,8 +76,8 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
         }
 
         /**
-         * @param httpStatus The HTTP status code used to abort the request. The value must be between 200
-         * and 599 inclusive.
+         * @param httpStatus The HTTP status code used to abort the request.
+         * The value must be between 200 and 599 inclusive.
          * 
          * @return builder
          * 
@@ -90,8 +88,8 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
         }
 
         /**
-         * @param httpStatus The HTTP status code used to abort the request. The value must be between 200
-         * and 599 inclusive.
+         * @param httpStatus The HTTP status code used to abort the request.
+         * The value must be between 200 and 599 inclusive.
          * 
          * @return builder
          * 
@@ -101,9 +99,8 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
         }
 
         /**
-         * @param percentage The percentage of traffic (connections/operations/requests) on which delay will
-         * be introduced as part of fault injection. The value must be between 0.0 and
-         * 100.0 inclusive.
+         * @param percentage The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+         * The value must be between 0.0 and 100.0 inclusive.
          * 
          * @return builder
          * 
@@ -114,9 +111,8 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPoli
         }
 
         /**
-         * @param percentage The percentage of traffic (connections/operations/requests) on which delay will
-         * be introduced as part of fault injection. The value must be between 0.0 and
-         * 100.0 inclusive.
+         * @param percentage The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+         * The value must be between 0.0 and 100.0 inclusive.
          * 
          * @return builder
          * 

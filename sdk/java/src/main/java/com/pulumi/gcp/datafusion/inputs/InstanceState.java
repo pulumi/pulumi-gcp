@@ -6,6 +6,7 @@ package com.pulumi.gcp.datafusion.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.datafusion.inputs.InstanceCryptoKeyConfigArgs;
+import com.pulumi.gcp.datafusion.inputs.InstanceEventPublishConfigArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -18,6 +19,21 @@ import javax.annotation.Nullable;
 public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceState Empty = new InstanceState();
+
+    /**
+     * Endpoint on which the REST APIs is accessible.
+     * 
+     */
+    @Import(name="apiEndpoint")
+    private @Nullable Output<String> apiEndpoint;
+
+    /**
+     * @return Endpoint on which the REST APIs is accessible.
+     * 
+     */
+    public Optional<Output<String>> apiEndpoint() {
+        return Optional.ofNullable(this.apiEndpoint);
+    }
 
     /**
      * The time the instance was created in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds.
@@ -82,6 +98,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Display name for an instance.
+     * 
+     */
+    @Import(name="displayName")
+    private @Nullable Output<String> displayName;
+
+    /**
+     * @return Display name for an instance.
+     * 
+     */
+    public Optional<Output<String>> displayName() {
+        return Optional.ofNullable(this.displayName);
+    }
+
+    /**
      * Option to enable granular role-based access control.
      * 
      */
@@ -124,6 +155,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> enableStackdriverMonitoring() {
         return Optional.ofNullable(this.enableStackdriverMonitoring);
+    }
+
+    /**
+     * Option to enable and pass metadata for event publishing.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="eventPublishConfig")
+    private @Nullable Output<InstanceEventPublishConfigArgs> eventPublishConfig;
+
+    /**
+     * @return Option to enable and pass metadata for event publishing.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceEventPublishConfigArgs>> eventPublishConfig() {
+        return Optional.ofNullable(this.eventPublishConfig);
     }
 
     /**
@@ -203,6 +251,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> options() {
         return Optional.ofNullable(this.options);
+    }
+
+    /**
+     * P4 service account for the customer project.
+     * 
+     */
+    @Import(name="p4ServiceAccount")
+    private @Nullable Output<String> p4ServiceAccount;
+
+    /**
+     * @return P4 service account for the customer project.
+     * 
+     */
+    public Optional<Output<String>> p4ServiceAccount() {
+        return Optional.ofNullable(this.p4ServiceAccount);
     }
 
     /**
@@ -408,21 +471,40 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.version);
     }
 
+    /**
+     * Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+     * 
+     */
+    @Import(name="zone")
+    private @Nullable Output<String> zone;
+
+    /**
+     * @return Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+     * 
+     */
+    public Optional<Output<String>> zone() {
+        return Optional.ofNullable(this.zone);
+    }
+
     private InstanceState() {}
 
     private InstanceState(InstanceState $) {
+        this.apiEndpoint = $.apiEndpoint;
         this.createTime = $.createTime;
         this.cryptoKeyConfig = $.cryptoKeyConfig;
         this.dataprocServiceAccount = $.dataprocServiceAccount;
         this.description = $.description;
+        this.displayName = $.displayName;
         this.enableRbac = $.enableRbac;
         this.enableStackdriverLogging = $.enableStackdriverLogging;
         this.enableStackdriverMonitoring = $.enableStackdriverMonitoring;
+        this.eventPublishConfig = $.eventPublishConfig;
         this.gcsBucket = $.gcsBucket;
         this.labels = $.labels;
         this.name = $.name;
         this.networkConfig = $.networkConfig;
         this.options = $.options;
+        this.p4ServiceAccount = $.p4ServiceAccount;
         this.privateInstance = $.privateInstance;
         this.project = $.project;
         this.region = $.region;
@@ -434,6 +516,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.type = $.type;
         this.updateTime = $.updateTime;
         this.version = $.version;
+        this.zone = $.zone;
     }
 
     public static Builder builder() {
@@ -452,6 +535,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(InstanceState defaults) {
             $ = new InstanceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param apiEndpoint Endpoint on which the REST APIs is accessible.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiEndpoint(@Nullable Output<String> apiEndpoint) {
+            $.apiEndpoint = apiEndpoint;
+            return this;
+        }
+
+        /**
+         * @param apiEndpoint Endpoint on which the REST APIs is accessible.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiEndpoint(String apiEndpoint) {
+            return apiEndpoint(Output.of(apiEndpoint));
         }
 
         /**
@@ -541,6 +645,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param displayName Display name for an instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(@Nullable Output<String> displayName) {
+            $.displayName = displayName;
+            return this;
+        }
+
+        /**
+         * @param displayName Display name for an instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(String displayName) {
+            return displayName(Output.of(displayName));
+        }
+
+        /**
          * @param enableRbac Option to enable granular role-based access control.
          * 
          * @return builder
@@ -601,6 +726,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableStackdriverMonitoring(Boolean enableStackdriverMonitoring) {
             return enableStackdriverMonitoring(Output.of(enableStackdriverMonitoring));
+        }
+
+        /**
+         * @param eventPublishConfig Option to enable and pass metadata for event publishing.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eventPublishConfig(@Nullable Output<InstanceEventPublishConfigArgs> eventPublishConfig) {
+            $.eventPublishConfig = eventPublishConfig;
+            return this;
+        }
+
+        /**
+         * @param eventPublishConfig Option to enable and pass metadata for event publishing.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eventPublishConfig(InstanceEventPublishConfigArgs eventPublishConfig) {
+            return eventPublishConfig(Output.of(eventPublishConfig));
         }
 
         /**
@@ -710,6 +858,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder options(Map<String,String> options) {
             return options(Output.of(options));
+        }
+
+        /**
+         * @param p4ServiceAccount P4 service account for the customer project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder p4ServiceAccount(@Nullable Output<String> p4ServiceAccount) {
+            $.p4ServiceAccount = p4ServiceAccount;
+            return this;
+        }
+
+        /**
+         * @param p4ServiceAccount P4 service account for the customer project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder p4ServiceAccount(String p4ServiceAccount) {
+            return p4ServiceAccount(Output.of(p4ServiceAccount));
         }
 
         /**
@@ -979,6 +1148,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder version(String version) {
             return version(Output.of(version));
+        }
+
+        /**
+         * @param zone Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zone(@Nullable Output<String> zone) {
+            $.zone = zone;
+            return this;
+        }
+
+        /**
+         * @param zone Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zone(String zone) {
+            return zone(Output.of(zone));
         }
 
         public InstanceState build() {

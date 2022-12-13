@@ -33,6 +33,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly ImmutableArray<string> OauthScopes;
         public readonly bool? Preemptible;
         public readonly Outputs.NodePoolNodeConfigReservationAffinity? ReservationAffinity;
+        public readonly ImmutableDictionary<string, string>? ResourceLabels;
         public readonly Outputs.NodePoolNodeConfigSandboxConfig? SandboxConfig;
         public readonly string? ServiceAccount;
         public readonly Outputs.NodePoolNodeConfigShieldedInstanceConfig? ShieldedInstanceConfig;
@@ -83,6 +84,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.NodePoolNodeConfigReservationAffinity? reservationAffinity,
 
+            ImmutableDictionary<string, string>? resourceLabels,
+
             Outputs.NodePoolNodeConfigSandboxConfig? sandboxConfig,
 
             string? serviceAccount,
@@ -117,6 +120,7 @@ namespace Pulumi.Gcp.Container.Outputs
             OauthScopes = oauthScopes;
             Preemptible = preemptible;
             ReservationAffinity = reservationAffinity;
+            ResourceLabels = resourceLabels;
             SandboxConfig = sandboxConfig;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfig = shieldedInstanceConfig;

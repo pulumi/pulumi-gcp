@@ -49,6 +49,7 @@ class ProviderArgs:
                  cloud_iot_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_run_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  clouddeploy_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -81,9 +82,11 @@ class ProviderArgs:
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_hosting_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebase_storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebaserules_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 gke_backup_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gkehub_feature_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  google_partner_name: Optional[pulumi.Input[str]] = None,
@@ -213,6 +216,8 @@ class ProviderArgs:
             pulumi.set(__self__, "cloud_resource_manager_custom_endpoint", cloud_resource_manager_custom_endpoint)
         if cloud_run_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_run_custom_endpoint", cloud_run_custom_endpoint)
+        if cloud_run_v2_custom_endpoint is not None:
+            pulumi.set(__self__, "cloud_run_v2_custom_endpoint", cloud_run_v2_custom_endpoint)
         if cloud_scheduler_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_scheduler_custom_endpoint", cloud_scheduler_custom_endpoint)
         if cloud_tasks_custom_endpoint is not None:
@@ -277,12 +282,16 @@ class ProviderArgs:
             pulumi.set(__self__, "firebase_custom_endpoint", firebase_custom_endpoint)
         if firebase_hosting_custom_endpoint is not None:
             pulumi.set(__self__, "firebase_hosting_custom_endpoint", firebase_hosting_custom_endpoint)
+        if firebase_storage_custom_endpoint is not None:
+            pulumi.set(__self__, "firebase_storage_custom_endpoint", firebase_storage_custom_endpoint)
         if firebaserules_custom_endpoint is not None:
             pulumi.set(__self__, "firebaserules_custom_endpoint", firebaserules_custom_endpoint)
         if firestore_custom_endpoint is not None:
             pulumi.set(__self__, "firestore_custom_endpoint", firestore_custom_endpoint)
         if game_services_custom_endpoint is not None:
             pulumi.set(__self__, "game_services_custom_endpoint", game_services_custom_endpoint)
+        if gke_backup_custom_endpoint is not None:
+            pulumi.set(__self__, "gke_backup_custom_endpoint", gke_backup_custom_endpoint)
         if gke_hub_custom_endpoint is not None:
             pulumi.set(__self__, "gke_hub_custom_endpoint", gke_hub_custom_endpoint)
         if gkehub_feature_custom_endpoint is not None:
@@ -713,6 +722,15 @@ class ProviderArgs:
         pulumi.set(self, "cloud_run_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="cloudRunV2CustomEndpoint")
+    def cloud_run_v2_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cloud_run_v2_custom_endpoint")
+
+    @cloud_run_v2_custom_endpoint.setter
+    def cloud_run_v2_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_run_v2_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="cloudSchedulerCustomEndpoint")
     def cloud_scheduler_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "cloud_scheduler_custom_endpoint")
@@ -1001,6 +1019,15 @@ class ProviderArgs:
         pulumi.set(self, "firebase_hosting_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="firebaseStorageCustomEndpoint")
+    def firebase_storage_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "firebase_storage_custom_endpoint")
+
+    @firebase_storage_custom_endpoint.setter
+    def firebase_storage_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "firebase_storage_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="firebaserulesCustomEndpoint")
     def firebaserules_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "firebaserules_custom_endpoint")
@@ -1026,6 +1053,15 @@ class ProviderArgs:
     @game_services_custom_endpoint.setter
     def game_services_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "game_services_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="gkeBackupCustomEndpoint")
+    def gke_backup_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "gke_backup_custom_endpoint")
+
+    @gke_backup_custom_endpoint.setter
+    def gke_backup_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gke_backup_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="gkeHubCustomEndpoint")
@@ -1589,6 +1625,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_iot_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_run_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  clouddeploy_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1621,9 +1658,11 @@ class Provider(pulumi.ProviderResource):
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_hosting_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebase_storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebaserules_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 gke_backup_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gkehub_feature_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  google_partner_name: Optional[pulumi.Input[str]] = None,
@@ -1753,6 +1792,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_iot_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_run_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 cloud_run_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_scheduler_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  clouddeploy_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1785,9 +1825,11 @@ class Provider(pulumi.ProviderResource):
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_hosting_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebase_storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebaserules_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 gke_backup_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gkehub_feature_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  google_partner_name: Optional[pulumi.Input[str]] = None,
@@ -1889,6 +1931,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["cloud_iot_custom_endpoint"] = cloud_iot_custom_endpoint
             __props__.__dict__["cloud_resource_manager_custom_endpoint"] = cloud_resource_manager_custom_endpoint
             __props__.__dict__["cloud_run_custom_endpoint"] = cloud_run_custom_endpoint
+            __props__.__dict__["cloud_run_v2_custom_endpoint"] = cloud_run_v2_custom_endpoint
             __props__.__dict__["cloud_scheduler_custom_endpoint"] = cloud_scheduler_custom_endpoint
             __props__.__dict__["cloud_tasks_custom_endpoint"] = cloud_tasks_custom_endpoint
             __props__.__dict__["clouddeploy_custom_endpoint"] = clouddeploy_custom_endpoint
@@ -1921,9 +1964,11 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["filestore_custom_endpoint"] = filestore_custom_endpoint
             __props__.__dict__["firebase_custom_endpoint"] = firebase_custom_endpoint
             __props__.__dict__["firebase_hosting_custom_endpoint"] = firebase_hosting_custom_endpoint
+            __props__.__dict__["firebase_storage_custom_endpoint"] = firebase_storage_custom_endpoint
             __props__.__dict__["firebaserules_custom_endpoint"] = firebaserules_custom_endpoint
             __props__.__dict__["firestore_custom_endpoint"] = firestore_custom_endpoint
             __props__.__dict__["game_services_custom_endpoint"] = game_services_custom_endpoint
+            __props__.__dict__["gke_backup_custom_endpoint"] = gke_backup_custom_endpoint
             __props__.__dict__["gke_hub_custom_endpoint"] = gke_hub_custom_endpoint
             __props__.__dict__["gkehub_feature_custom_endpoint"] = gkehub_feature_custom_endpoint
             __props__.__dict__["google_partner_name"] = google_partner_name
@@ -2160,6 +2205,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "cloud_run_custom_endpoint")
 
     @property
+    @pulumi.getter(name="cloudRunV2CustomEndpoint")
+    def cloud_run_v2_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "cloud_run_v2_custom_endpoint")
+
+    @property
     @pulumi.getter(name="cloudSchedulerCustomEndpoint")
     def cloud_scheduler_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "cloud_scheduler_custom_endpoint")
@@ -2315,6 +2365,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "firebase_hosting_custom_endpoint")
 
     @property
+    @pulumi.getter(name="firebaseStorageCustomEndpoint")
+    def firebase_storage_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "firebase_storage_custom_endpoint")
+
+    @property
     @pulumi.getter(name="firebaserulesCustomEndpoint")
     def firebaserules_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "firebaserules_custom_endpoint")
@@ -2328,6 +2383,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="gameServicesCustomEndpoint")
     def game_services_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "game_services_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="gkeBackupCustomEndpoint")
+    def gke_backup_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "gke_backup_custom_endpoint")
 
     @property
     @pulumi.getter(name="gkeHubCustomEndpoint")

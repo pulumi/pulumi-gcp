@@ -1129,6 +1129,332 @@ func (o AiFeatureStoreEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+type AiFeatureStoreEntityTypeIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AiFeatureStoreEntityTypeIamBindingConditionInput is an input type that accepts AiFeatureStoreEntityTypeIamBindingConditionArgs and AiFeatureStoreEntityTypeIamBindingConditionOutput values.
+// You can construct a concrete instance of `AiFeatureStoreEntityTypeIamBindingConditionInput` via:
+//
+//	AiFeatureStoreEntityTypeIamBindingConditionArgs{...}
+type AiFeatureStoreEntityTypeIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreEntityTypeIamBindingConditionOutput() AiFeatureStoreEntityTypeIamBindingConditionOutput
+	ToAiFeatureStoreEntityTypeIamBindingConditionOutputWithContext(context.Context) AiFeatureStoreEntityTypeIamBindingConditionOutput
+}
+
+type AiFeatureStoreEntityTypeIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AiFeatureStoreEntityTypeIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreEntityTypeIamBindingCondition)(nil)).Elem()
+}
+
+func (i AiFeatureStoreEntityTypeIamBindingConditionArgs) ToAiFeatureStoreEntityTypeIamBindingConditionOutput() AiFeatureStoreEntityTypeIamBindingConditionOutput {
+	return i.ToAiFeatureStoreEntityTypeIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreEntityTypeIamBindingConditionArgs) ToAiFeatureStoreEntityTypeIamBindingConditionOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeIamBindingConditionOutput)
+}
+
+func (i AiFeatureStoreEntityTypeIamBindingConditionArgs) ToAiFeatureStoreEntityTypeIamBindingConditionPtrOutput() AiFeatureStoreEntityTypeIamBindingConditionPtrOutput {
+	return i.ToAiFeatureStoreEntityTypeIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreEntityTypeIamBindingConditionArgs) ToAiFeatureStoreEntityTypeIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeIamBindingConditionOutput).ToAiFeatureStoreEntityTypeIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// AiFeatureStoreEntityTypeIamBindingConditionPtrInput is an input type that accepts AiFeatureStoreEntityTypeIamBindingConditionArgs, AiFeatureStoreEntityTypeIamBindingConditionPtr and AiFeatureStoreEntityTypeIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `AiFeatureStoreEntityTypeIamBindingConditionPtrInput` via:
+//
+//	        AiFeatureStoreEntityTypeIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureStoreEntityTypeIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreEntityTypeIamBindingConditionPtrOutput() AiFeatureStoreEntityTypeIamBindingConditionPtrOutput
+	ToAiFeatureStoreEntityTypeIamBindingConditionPtrOutputWithContext(context.Context) AiFeatureStoreEntityTypeIamBindingConditionPtrOutput
+}
+
+type aiFeatureStoreEntityTypeIamBindingConditionPtrType AiFeatureStoreEntityTypeIamBindingConditionArgs
+
+func AiFeatureStoreEntityTypeIamBindingConditionPtr(v *AiFeatureStoreEntityTypeIamBindingConditionArgs) AiFeatureStoreEntityTypeIamBindingConditionPtrInput {
+	return (*aiFeatureStoreEntityTypeIamBindingConditionPtrType)(v)
+}
+
+func (*aiFeatureStoreEntityTypeIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreEntityTypeIamBindingCondition)(nil)).Elem()
+}
+
+func (i *aiFeatureStoreEntityTypeIamBindingConditionPtrType) ToAiFeatureStoreEntityTypeIamBindingConditionPtrOutput() AiFeatureStoreEntityTypeIamBindingConditionPtrOutput {
+	return i.ToAiFeatureStoreEntityTypeIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureStoreEntityTypeIamBindingConditionPtrType) ToAiFeatureStoreEntityTypeIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeIamBindingConditionPtrOutput)
+}
+
+type AiFeatureStoreEntityTypeIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreEntityTypeIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreEntityTypeIamBindingCondition)(nil)).Elem()
+}
+
+func (o AiFeatureStoreEntityTypeIamBindingConditionOutput) ToAiFeatureStoreEntityTypeIamBindingConditionOutput() AiFeatureStoreEntityTypeIamBindingConditionOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeIamBindingConditionOutput) ToAiFeatureStoreEntityTypeIamBindingConditionOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamBindingConditionOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeIamBindingConditionOutput) ToAiFeatureStoreEntityTypeIamBindingConditionPtrOutput() AiFeatureStoreEntityTypeIamBindingConditionPtrOutput {
+	return o.ToAiFeatureStoreEntityTypeIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureStoreEntityTypeIamBindingConditionOutput) ToAiFeatureStoreEntityTypeIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreEntityTypeIamBindingCondition) *AiFeatureStoreEntityTypeIamBindingCondition {
+		return &v
+	}).(AiFeatureStoreEntityTypeIamBindingConditionPtrOutput)
+}
+
+func (o AiFeatureStoreEntityTypeIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureStoreEntityTypeIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AiFeatureStoreEntityTypeIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AiFeatureStoreEntityTypeIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreEntityTypeIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreEntityTypeIamBindingCondition)(nil)).Elem()
+}
+
+func (o AiFeatureStoreEntityTypeIamBindingConditionPtrOutput) ToAiFeatureStoreEntityTypeIamBindingConditionPtrOutput() AiFeatureStoreEntityTypeIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeIamBindingConditionPtrOutput) ToAiFeatureStoreEntityTypeIamBindingConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeIamBindingConditionPtrOutput) Elem() AiFeatureStoreEntityTypeIamBindingConditionOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeIamBindingCondition) AiFeatureStoreEntityTypeIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureStoreEntityTypeIamBindingCondition
+		return ret
+	}).(AiFeatureStoreEntityTypeIamBindingConditionOutput)
+}
+
+func (o AiFeatureStoreEntityTypeIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureStoreEntityTypeIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureStoreEntityTypeIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiFeatureStoreEntityTypeIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AiFeatureStoreEntityTypeIamMemberConditionInput is an input type that accepts AiFeatureStoreEntityTypeIamMemberConditionArgs and AiFeatureStoreEntityTypeIamMemberConditionOutput values.
+// You can construct a concrete instance of `AiFeatureStoreEntityTypeIamMemberConditionInput` via:
+//
+//	AiFeatureStoreEntityTypeIamMemberConditionArgs{...}
+type AiFeatureStoreEntityTypeIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreEntityTypeIamMemberConditionOutput() AiFeatureStoreEntityTypeIamMemberConditionOutput
+	ToAiFeatureStoreEntityTypeIamMemberConditionOutputWithContext(context.Context) AiFeatureStoreEntityTypeIamMemberConditionOutput
+}
+
+type AiFeatureStoreEntityTypeIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AiFeatureStoreEntityTypeIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreEntityTypeIamMemberCondition)(nil)).Elem()
+}
+
+func (i AiFeatureStoreEntityTypeIamMemberConditionArgs) ToAiFeatureStoreEntityTypeIamMemberConditionOutput() AiFeatureStoreEntityTypeIamMemberConditionOutput {
+	return i.ToAiFeatureStoreEntityTypeIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreEntityTypeIamMemberConditionArgs) ToAiFeatureStoreEntityTypeIamMemberConditionOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeIamMemberConditionOutput)
+}
+
+func (i AiFeatureStoreEntityTypeIamMemberConditionArgs) ToAiFeatureStoreEntityTypeIamMemberConditionPtrOutput() AiFeatureStoreEntityTypeIamMemberConditionPtrOutput {
+	return i.ToAiFeatureStoreEntityTypeIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureStoreEntityTypeIamMemberConditionArgs) ToAiFeatureStoreEntityTypeIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeIamMemberConditionOutput).ToAiFeatureStoreEntityTypeIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// AiFeatureStoreEntityTypeIamMemberConditionPtrInput is an input type that accepts AiFeatureStoreEntityTypeIamMemberConditionArgs, AiFeatureStoreEntityTypeIamMemberConditionPtr and AiFeatureStoreEntityTypeIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `AiFeatureStoreEntityTypeIamMemberConditionPtrInput` via:
+//
+//	        AiFeatureStoreEntityTypeIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureStoreEntityTypeIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureStoreEntityTypeIamMemberConditionPtrOutput() AiFeatureStoreEntityTypeIamMemberConditionPtrOutput
+	ToAiFeatureStoreEntityTypeIamMemberConditionPtrOutputWithContext(context.Context) AiFeatureStoreEntityTypeIamMemberConditionPtrOutput
+}
+
+type aiFeatureStoreEntityTypeIamMemberConditionPtrType AiFeatureStoreEntityTypeIamMemberConditionArgs
+
+func AiFeatureStoreEntityTypeIamMemberConditionPtr(v *AiFeatureStoreEntityTypeIamMemberConditionArgs) AiFeatureStoreEntityTypeIamMemberConditionPtrInput {
+	return (*aiFeatureStoreEntityTypeIamMemberConditionPtrType)(v)
+}
+
+func (*aiFeatureStoreEntityTypeIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreEntityTypeIamMemberCondition)(nil)).Elem()
+}
+
+func (i *aiFeatureStoreEntityTypeIamMemberConditionPtrType) ToAiFeatureStoreEntityTypeIamMemberConditionPtrOutput() AiFeatureStoreEntityTypeIamMemberConditionPtrOutput {
+	return i.ToAiFeatureStoreEntityTypeIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureStoreEntityTypeIamMemberConditionPtrType) ToAiFeatureStoreEntityTypeIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeIamMemberConditionPtrOutput)
+}
+
+type AiFeatureStoreEntityTypeIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreEntityTypeIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureStoreEntityTypeIamMemberCondition)(nil)).Elem()
+}
+
+func (o AiFeatureStoreEntityTypeIamMemberConditionOutput) ToAiFeatureStoreEntityTypeIamMemberConditionOutput() AiFeatureStoreEntityTypeIamMemberConditionOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeIamMemberConditionOutput) ToAiFeatureStoreEntityTypeIamMemberConditionOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamMemberConditionOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeIamMemberConditionOutput) ToAiFeatureStoreEntityTypeIamMemberConditionPtrOutput() AiFeatureStoreEntityTypeIamMemberConditionPtrOutput {
+	return o.ToAiFeatureStoreEntityTypeIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureStoreEntityTypeIamMemberConditionOutput) ToAiFeatureStoreEntityTypeIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureStoreEntityTypeIamMemberCondition) *AiFeatureStoreEntityTypeIamMemberCondition {
+		return &v
+	}).(AiFeatureStoreEntityTypeIamMemberConditionPtrOutput)
+}
+
+func (o AiFeatureStoreEntityTypeIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureStoreEntityTypeIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AiFeatureStoreEntityTypeIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureStoreEntityTypeIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AiFeatureStoreEntityTypeIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureStoreEntityTypeIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureStoreEntityTypeIamMemberCondition)(nil)).Elem()
+}
+
+func (o AiFeatureStoreEntityTypeIamMemberConditionPtrOutput) ToAiFeatureStoreEntityTypeIamMemberConditionPtrOutput() AiFeatureStoreEntityTypeIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeIamMemberConditionPtrOutput) ToAiFeatureStoreEntityTypeIamMemberConditionPtrOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AiFeatureStoreEntityTypeIamMemberConditionPtrOutput) Elem() AiFeatureStoreEntityTypeIamMemberConditionOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeIamMemberCondition) AiFeatureStoreEntityTypeIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureStoreEntityTypeIamMemberCondition
+		return ret
+	}).(AiFeatureStoreEntityTypeIamMemberConditionOutput)
+}
+
+func (o AiFeatureStoreEntityTypeIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureStoreEntityTypeIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiFeatureStoreEntityTypeIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type AiFeatureStoreEntityTypeMonitoringConfig struct {
 	// Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
 	// Structure is documented below.
@@ -2464,6 +2790,1112 @@ func (o AiFeatureStoreOnlineServingConfigPtrOutput) FixedNodeCount() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
+type AiIndexDeployedIndex struct {
+	DeployedIndexId *string `pulumi:"deployedIndexId"`
+	IndexEndpoint   *string `pulumi:"indexEndpoint"`
+}
+
+// AiIndexDeployedIndexInput is an input type that accepts AiIndexDeployedIndexArgs and AiIndexDeployedIndexOutput values.
+// You can construct a concrete instance of `AiIndexDeployedIndexInput` via:
+//
+//	AiIndexDeployedIndexArgs{...}
+type AiIndexDeployedIndexInput interface {
+	pulumi.Input
+
+	ToAiIndexDeployedIndexOutput() AiIndexDeployedIndexOutput
+	ToAiIndexDeployedIndexOutputWithContext(context.Context) AiIndexDeployedIndexOutput
+}
+
+type AiIndexDeployedIndexArgs struct {
+	DeployedIndexId pulumi.StringPtrInput `pulumi:"deployedIndexId"`
+	IndexEndpoint   pulumi.StringPtrInput `pulumi:"indexEndpoint"`
+}
+
+func (AiIndexDeployedIndexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexDeployedIndex)(nil)).Elem()
+}
+
+func (i AiIndexDeployedIndexArgs) ToAiIndexDeployedIndexOutput() AiIndexDeployedIndexOutput {
+	return i.ToAiIndexDeployedIndexOutputWithContext(context.Background())
+}
+
+func (i AiIndexDeployedIndexArgs) ToAiIndexDeployedIndexOutputWithContext(ctx context.Context) AiIndexDeployedIndexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexDeployedIndexOutput)
+}
+
+// AiIndexDeployedIndexArrayInput is an input type that accepts AiIndexDeployedIndexArray and AiIndexDeployedIndexArrayOutput values.
+// You can construct a concrete instance of `AiIndexDeployedIndexArrayInput` via:
+//
+//	AiIndexDeployedIndexArray{ AiIndexDeployedIndexArgs{...} }
+type AiIndexDeployedIndexArrayInput interface {
+	pulumi.Input
+
+	ToAiIndexDeployedIndexArrayOutput() AiIndexDeployedIndexArrayOutput
+	ToAiIndexDeployedIndexArrayOutputWithContext(context.Context) AiIndexDeployedIndexArrayOutput
+}
+
+type AiIndexDeployedIndexArray []AiIndexDeployedIndexInput
+
+func (AiIndexDeployedIndexArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiIndexDeployedIndex)(nil)).Elem()
+}
+
+func (i AiIndexDeployedIndexArray) ToAiIndexDeployedIndexArrayOutput() AiIndexDeployedIndexArrayOutput {
+	return i.ToAiIndexDeployedIndexArrayOutputWithContext(context.Background())
+}
+
+func (i AiIndexDeployedIndexArray) ToAiIndexDeployedIndexArrayOutputWithContext(ctx context.Context) AiIndexDeployedIndexArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexDeployedIndexArrayOutput)
+}
+
+type AiIndexDeployedIndexOutput struct{ *pulumi.OutputState }
+
+func (AiIndexDeployedIndexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexDeployedIndex)(nil)).Elem()
+}
+
+func (o AiIndexDeployedIndexOutput) ToAiIndexDeployedIndexOutput() AiIndexDeployedIndexOutput {
+	return o
+}
+
+func (o AiIndexDeployedIndexOutput) ToAiIndexDeployedIndexOutputWithContext(ctx context.Context) AiIndexDeployedIndexOutput {
+	return o
+}
+
+func (o AiIndexDeployedIndexOutput) DeployedIndexId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiIndexDeployedIndex) *string { return v.DeployedIndexId }).(pulumi.StringPtrOutput)
+}
+
+func (o AiIndexDeployedIndexOutput) IndexEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiIndexDeployedIndex) *string { return v.IndexEndpoint }).(pulumi.StringPtrOutput)
+}
+
+type AiIndexDeployedIndexArrayOutput struct{ *pulumi.OutputState }
+
+func (AiIndexDeployedIndexArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiIndexDeployedIndex)(nil)).Elem()
+}
+
+func (o AiIndexDeployedIndexArrayOutput) ToAiIndexDeployedIndexArrayOutput() AiIndexDeployedIndexArrayOutput {
+	return o
+}
+
+func (o AiIndexDeployedIndexArrayOutput) ToAiIndexDeployedIndexArrayOutputWithContext(ctx context.Context) AiIndexDeployedIndexArrayOutput {
+	return o
+}
+
+func (o AiIndexDeployedIndexArrayOutput) Index(i pulumi.IntInput) AiIndexDeployedIndexOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiIndexDeployedIndex {
+		return vs[0].([]AiIndexDeployedIndex)[vs[1].(int)]
+	}).(AiIndexDeployedIndexOutput)
+}
+
+type AiIndexIndexStat struct {
+	ShardsCount  *int    `pulumi:"shardsCount"`
+	VectorsCount *string `pulumi:"vectorsCount"`
+}
+
+// AiIndexIndexStatInput is an input type that accepts AiIndexIndexStatArgs and AiIndexIndexStatOutput values.
+// You can construct a concrete instance of `AiIndexIndexStatInput` via:
+//
+//	AiIndexIndexStatArgs{...}
+type AiIndexIndexStatInput interface {
+	pulumi.Input
+
+	ToAiIndexIndexStatOutput() AiIndexIndexStatOutput
+	ToAiIndexIndexStatOutputWithContext(context.Context) AiIndexIndexStatOutput
+}
+
+type AiIndexIndexStatArgs struct {
+	ShardsCount  pulumi.IntPtrInput    `pulumi:"shardsCount"`
+	VectorsCount pulumi.StringPtrInput `pulumi:"vectorsCount"`
+}
+
+func (AiIndexIndexStatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexIndexStat)(nil)).Elem()
+}
+
+func (i AiIndexIndexStatArgs) ToAiIndexIndexStatOutput() AiIndexIndexStatOutput {
+	return i.ToAiIndexIndexStatOutputWithContext(context.Background())
+}
+
+func (i AiIndexIndexStatArgs) ToAiIndexIndexStatOutputWithContext(ctx context.Context) AiIndexIndexStatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexIndexStatOutput)
+}
+
+// AiIndexIndexStatArrayInput is an input type that accepts AiIndexIndexStatArray and AiIndexIndexStatArrayOutput values.
+// You can construct a concrete instance of `AiIndexIndexStatArrayInput` via:
+//
+//	AiIndexIndexStatArray{ AiIndexIndexStatArgs{...} }
+type AiIndexIndexStatArrayInput interface {
+	pulumi.Input
+
+	ToAiIndexIndexStatArrayOutput() AiIndexIndexStatArrayOutput
+	ToAiIndexIndexStatArrayOutputWithContext(context.Context) AiIndexIndexStatArrayOutput
+}
+
+type AiIndexIndexStatArray []AiIndexIndexStatInput
+
+func (AiIndexIndexStatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiIndexIndexStat)(nil)).Elem()
+}
+
+func (i AiIndexIndexStatArray) ToAiIndexIndexStatArrayOutput() AiIndexIndexStatArrayOutput {
+	return i.ToAiIndexIndexStatArrayOutputWithContext(context.Background())
+}
+
+func (i AiIndexIndexStatArray) ToAiIndexIndexStatArrayOutputWithContext(ctx context.Context) AiIndexIndexStatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexIndexStatArrayOutput)
+}
+
+type AiIndexIndexStatOutput struct{ *pulumi.OutputState }
+
+func (AiIndexIndexStatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexIndexStat)(nil)).Elem()
+}
+
+func (o AiIndexIndexStatOutput) ToAiIndexIndexStatOutput() AiIndexIndexStatOutput {
+	return o
+}
+
+func (o AiIndexIndexStatOutput) ToAiIndexIndexStatOutputWithContext(ctx context.Context) AiIndexIndexStatOutput {
+	return o
+}
+
+func (o AiIndexIndexStatOutput) ShardsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiIndexIndexStat) *int { return v.ShardsCount }).(pulumi.IntPtrOutput)
+}
+
+func (o AiIndexIndexStatOutput) VectorsCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiIndexIndexStat) *string { return v.VectorsCount }).(pulumi.StringPtrOutput)
+}
+
+type AiIndexIndexStatArrayOutput struct{ *pulumi.OutputState }
+
+func (AiIndexIndexStatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiIndexIndexStat)(nil)).Elem()
+}
+
+func (o AiIndexIndexStatArrayOutput) ToAiIndexIndexStatArrayOutput() AiIndexIndexStatArrayOutput {
+	return o
+}
+
+func (o AiIndexIndexStatArrayOutput) ToAiIndexIndexStatArrayOutputWithContext(ctx context.Context) AiIndexIndexStatArrayOutput {
+	return o
+}
+
+func (o AiIndexIndexStatArrayOutput) Index(i pulumi.IntInput) AiIndexIndexStatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiIndexIndexStat {
+		return vs[0].([]AiIndexIndexStat)[vs[1].(int)]
+	}).(AiIndexIndexStatOutput)
+}
+
+type AiIndexMetadata struct {
+	// The configuration of the Matching Engine Index.
+	// Structure is documented below.
+	Config *AiIndexMetadataConfig `pulumi:"config"`
+	// Allows inserting, updating  or deleting the contents of the Matching Engine Index.
+	// The string must be a valid Cloud Storage directory path. If this
+	// field is set when calling IndexService.UpdateIndex, then no other
+	// Index field can be also updated as part of the same call.
+	// The expected structure and format of the files this URI points to is
+	// described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+	ContentsDeltaUri *string `pulumi:"contentsDeltaUri"`
+	// If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
+	// then existing content of the Index will be replaced by the data from the contentsDeltaUri.
+	IsCompleteOverwrite *bool `pulumi:"isCompleteOverwrite"`
+}
+
+// AiIndexMetadataInput is an input type that accepts AiIndexMetadataArgs and AiIndexMetadataOutput values.
+// You can construct a concrete instance of `AiIndexMetadataInput` via:
+//
+//	AiIndexMetadataArgs{...}
+type AiIndexMetadataInput interface {
+	pulumi.Input
+
+	ToAiIndexMetadataOutput() AiIndexMetadataOutput
+	ToAiIndexMetadataOutputWithContext(context.Context) AiIndexMetadataOutput
+}
+
+type AiIndexMetadataArgs struct {
+	// The configuration of the Matching Engine Index.
+	// Structure is documented below.
+	Config AiIndexMetadataConfigPtrInput `pulumi:"config"`
+	// Allows inserting, updating  or deleting the contents of the Matching Engine Index.
+	// The string must be a valid Cloud Storage directory path. If this
+	// field is set when calling IndexService.UpdateIndex, then no other
+	// Index field can be also updated as part of the same call.
+	// The expected structure and format of the files this URI points to is
+	// described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+	ContentsDeltaUri pulumi.StringPtrInput `pulumi:"contentsDeltaUri"`
+	// If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
+	// then existing content of the Index will be replaced by the data from the contentsDeltaUri.
+	IsCompleteOverwrite pulumi.BoolPtrInput `pulumi:"isCompleteOverwrite"`
+}
+
+func (AiIndexMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexMetadata)(nil)).Elem()
+}
+
+func (i AiIndexMetadataArgs) ToAiIndexMetadataOutput() AiIndexMetadataOutput {
+	return i.ToAiIndexMetadataOutputWithContext(context.Background())
+}
+
+func (i AiIndexMetadataArgs) ToAiIndexMetadataOutputWithContext(ctx context.Context) AiIndexMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataOutput)
+}
+
+func (i AiIndexMetadataArgs) ToAiIndexMetadataPtrOutput() AiIndexMetadataPtrOutput {
+	return i.ToAiIndexMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i AiIndexMetadataArgs) ToAiIndexMetadataPtrOutputWithContext(ctx context.Context) AiIndexMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataOutput).ToAiIndexMetadataPtrOutputWithContext(ctx)
+}
+
+// AiIndexMetadataPtrInput is an input type that accepts AiIndexMetadataArgs, AiIndexMetadataPtr and AiIndexMetadataPtrOutput values.
+// You can construct a concrete instance of `AiIndexMetadataPtrInput` via:
+//
+//	        AiIndexMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiIndexMetadataPtrInput interface {
+	pulumi.Input
+
+	ToAiIndexMetadataPtrOutput() AiIndexMetadataPtrOutput
+	ToAiIndexMetadataPtrOutputWithContext(context.Context) AiIndexMetadataPtrOutput
+}
+
+type aiIndexMetadataPtrType AiIndexMetadataArgs
+
+func AiIndexMetadataPtr(v *AiIndexMetadataArgs) AiIndexMetadataPtrInput {
+	return (*aiIndexMetadataPtrType)(v)
+}
+
+func (*aiIndexMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexMetadata)(nil)).Elem()
+}
+
+func (i *aiIndexMetadataPtrType) ToAiIndexMetadataPtrOutput() AiIndexMetadataPtrOutput {
+	return i.ToAiIndexMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *aiIndexMetadataPtrType) ToAiIndexMetadataPtrOutputWithContext(ctx context.Context) AiIndexMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataPtrOutput)
+}
+
+type AiIndexMetadataOutput struct{ *pulumi.OutputState }
+
+func (AiIndexMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexMetadata)(nil)).Elem()
+}
+
+func (o AiIndexMetadataOutput) ToAiIndexMetadataOutput() AiIndexMetadataOutput {
+	return o
+}
+
+func (o AiIndexMetadataOutput) ToAiIndexMetadataOutputWithContext(ctx context.Context) AiIndexMetadataOutput {
+	return o
+}
+
+func (o AiIndexMetadataOutput) ToAiIndexMetadataPtrOutput() AiIndexMetadataPtrOutput {
+	return o.ToAiIndexMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o AiIndexMetadataOutput) ToAiIndexMetadataPtrOutputWithContext(ctx context.Context) AiIndexMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiIndexMetadata) *AiIndexMetadata {
+		return &v
+	}).(AiIndexMetadataPtrOutput)
+}
+
+// The configuration of the Matching Engine Index.
+// Structure is documented below.
+func (o AiIndexMetadataOutput) Config() AiIndexMetadataConfigPtrOutput {
+	return o.ApplyT(func(v AiIndexMetadata) *AiIndexMetadataConfig { return v.Config }).(AiIndexMetadataConfigPtrOutput)
+}
+
+// Allows inserting, updating  or deleting the contents of the Matching Engine Index.
+// The string must be a valid Cloud Storage directory path. If this
+// field is set when calling IndexService.UpdateIndex, then no other
+// Index field can be also updated as part of the same call.
+// The expected structure and format of the files this URI points to is
+// described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+func (o AiIndexMetadataOutput) ContentsDeltaUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiIndexMetadata) *string { return v.ContentsDeltaUri }).(pulumi.StringPtrOutput)
+}
+
+// If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
+// then existing content of the Index will be replaced by the data from the contentsDeltaUri.
+func (o AiIndexMetadataOutput) IsCompleteOverwrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiIndexMetadata) *bool { return v.IsCompleteOverwrite }).(pulumi.BoolPtrOutput)
+}
+
+type AiIndexMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (AiIndexMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexMetadata)(nil)).Elem()
+}
+
+func (o AiIndexMetadataPtrOutput) ToAiIndexMetadataPtrOutput() AiIndexMetadataPtrOutput {
+	return o
+}
+
+func (o AiIndexMetadataPtrOutput) ToAiIndexMetadataPtrOutputWithContext(ctx context.Context) AiIndexMetadataPtrOutput {
+	return o
+}
+
+func (o AiIndexMetadataPtrOutput) Elem() AiIndexMetadataOutput {
+	return o.ApplyT(func(v *AiIndexMetadata) AiIndexMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret AiIndexMetadata
+		return ret
+	}).(AiIndexMetadataOutput)
+}
+
+// The configuration of the Matching Engine Index.
+// Structure is documented below.
+func (o AiIndexMetadataPtrOutput) Config() AiIndexMetadataConfigPtrOutput {
+	return o.ApplyT(func(v *AiIndexMetadata) *AiIndexMetadataConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Config
+	}).(AiIndexMetadataConfigPtrOutput)
+}
+
+// Allows inserting, updating  or deleting the contents of the Matching Engine Index.
+// The string must be a valid Cloud Storage directory path. If this
+// field is set when calling IndexService.UpdateIndex, then no other
+// Index field can be also updated as part of the same call.
+// The expected structure and format of the files this URI points to is
+// described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+func (o AiIndexMetadataPtrOutput) ContentsDeltaUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiIndexMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentsDeltaUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
+// then existing content of the Index will be replaced by the data from the contentsDeltaUri.
+func (o AiIndexMetadataPtrOutput) IsCompleteOverwrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiIndexMetadata) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsCompleteOverwrite
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AiIndexMetadataConfig struct {
+	// The configuration with regard to the algorithms used for efficient search.
+	// Structure is documented below.
+	AlgorithmConfig *AiIndexMetadataConfigAlgorithmConfig `pulumi:"algorithmConfig"`
+	// The default number of neighbors to find via approximate search before exact reordering is
+	// performed. Exact reordering is a procedure where results returned by an
+	// approximate search algorithm are reordered via a more expensive distance computation.
+	// Required if tree-AH algorithm is used.
+	ApproximateNeighborsCount *int `pulumi:"approximateNeighborsCount"`
+	// The number of dimensions of the input vectors.
+	Dimensions int `pulumi:"dimensions"`
+	// The distance measure used in nearest neighbor search. The value must be one of the followings:
+	// * SQUARED_L2_DISTANCE: Euclidean (L_2) Distance
+	// * L1_DISTANCE: Manhattan (L_1) Distance
+	// * COSINE_DISTANCE: Cosine Distance. Defined as 1 - cosine similarity.
+	// * DOT_PRODUCT_DISTANCE: Dot Product Distance. Defined as a negative of the dot product
+	DistanceMeasureType *string `pulumi:"distanceMeasureType"`
+	// Type of normalization to be carried out on each vector. The value must be one of the followings:
+	// * UNIT_L2_NORM: Unit L2 normalization type
+	// * NONE: No normalization type is specified.
+	FeatureNormType *string `pulumi:"featureNormType"`
+}
+
+// AiIndexMetadataConfigInput is an input type that accepts AiIndexMetadataConfigArgs and AiIndexMetadataConfigOutput values.
+// You can construct a concrete instance of `AiIndexMetadataConfigInput` via:
+//
+//	AiIndexMetadataConfigArgs{...}
+type AiIndexMetadataConfigInput interface {
+	pulumi.Input
+
+	ToAiIndexMetadataConfigOutput() AiIndexMetadataConfigOutput
+	ToAiIndexMetadataConfigOutputWithContext(context.Context) AiIndexMetadataConfigOutput
+}
+
+type AiIndexMetadataConfigArgs struct {
+	// The configuration with regard to the algorithms used for efficient search.
+	// Structure is documented below.
+	AlgorithmConfig AiIndexMetadataConfigAlgorithmConfigPtrInput `pulumi:"algorithmConfig"`
+	// The default number of neighbors to find via approximate search before exact reordering is
+	// performed. Exact reordering is a procedure where results returned by an
+	// approximate search algorithm are reordered via a more expensive distance computation.
+	// Required if tree-AH algorithm is used.
+	ApproximateNeighborsCount pulumi.IntPtrInput `pulumi:"approximateNeighborsCount"`
+	// The number of dimensions of the input vectors.
+	Dimensions pulumi.IntInput `pulumi:"dimensions"`
+	// The distance measure used in nearest neighbor search. The value must be one of the followings:
+	// * SQUARED_L2_DISTANCE: Euclidean (L_2) Distance
+	// * L1_DISTANCE: Manhattan (L_1) Distance
+	// * COSINE_DISTANCE: Cosine Distance. Defined as 1 - cosine similarity.
+	// * DOT_PRODUCT_DISTANCE: Dot Product Distance. Defined as a negative of the dot product
+	DistanceMeasureType pulumi.StringPtrInput `pulumi:"distanceMeasureType"`
+	// Type of normalization to be carried out on each vector. The value must be one of the followings:
+	// * UNIT_L2_NORM: Unit L2 normalization type
+	// * NONE: No normalization type is specified.
+	FeatureNormType pulumi.StringPtrInput `pulumi:"featureNormType"`
+}
+
+func (AiIndexMetadataConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexMetadataConfig)(nil)).Elem()
+}
+
+func (i AiIndexMetadataConfigArgs) ToAiIndexMetadataConfigOutput() AiIndexMetadataConfigOutput {
+	return i.ToAiIndexMetadataConfigOutputWithContext(context.Background())
+}
+
+func (i AiIndexMetadataConfigArgs) ToAiIndexMetadataConfigOutputWithContext(ctx context.Context) AiIndexMetadataConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigOutput)
+}
+
+func (i AiIndexMetadataConfigArgs) ToAiIndexMetadataConfigPtrOutput() AiIndexMetadataConfigPtrOutput {
+	return i.ToAiIndexMetadataConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiIndexMetadataConfigArgs) ToAiIndexMetadataConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigOutput).ToAiIndexMetadataConfigPtrOutputWithContext(ctx)
+}
+
+// AiIndexMetadataConfigPtrInput is an input type that accepts AiIndexMetadataConfigArgs, AiIndexMetadataConfigPtr and AiIndexMetadataConfigPtrOutput values.
+// You can construct a concrete instance of `AiIndexMetadataConfigPtrInput` via:
+//
+//	        AiIndexMetadataConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiIndexMetadataConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiIndexMetadataConfigPtrOutput() AiIndexMetadataConfigPtrOutput
+	ToAiIndexMetadataConfigPtrOutputWithContext(context.Context) AiIndexMetadataConfigPtrOutput
+}
+
+type aiIndexMetadataConfigPtrType AiIndexMetadataConfigArgs
+
+func AiIndexMetadataConfigPtr(v *AiIndexMetadataConfigArgs) AiIndexMetadataConfigPtrInput {
+	return (*aiIndexMetadataConfigPtrType)(v)
+}
+
+func (*aiIndexMetadataConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexMetadataConfig)(nil)).Elem()
+}
+
+func (i *aiIndexMetadataConfigPtrType) ToAiIndexMetadataConfigPtrOutput() AiIndexMetadataConfigPtrOutput {
+	return i.ToAiIndexMetadataConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiIndexMetadataConfigPtrType) ToAiIndexMetadataConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigPtrOutput)
+}
+
+type AiIndexMetadataConfigOutput struct{ *pulumi.OutputState }
+
+func (AiIndexMetadataConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexMetadataConfig)(nil)).Elem()
+}
+
+func (o AiIndexMetadataConfigOutput) ToAiIndexMetadataConfigOutput() AiIndexMetadataConfigOutput {
+	return o
+}
+
+func (o AiIndexMetadataConfigOutput) ToAiIndexMetadataConfigOutputWithContext(ctx context.Context) AiIndexMetadataConfigOutput {
+	return o
+}
+
+func (o AiIndexMetadataConfigOutput) ToAiIndexMetadataConfigPtrOutput() AiIndexMetadataConfigPtrOutput {
+	return o.ToAiIndexMetadataConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiIndexMetadataConfigOutput) ToAiIndexMetadataConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiIndexMetadataConfig) *AiIndexMetadataConfig {
+		return &v
+	}).(AiIndexMetadataConfigPtrOutput)
+}
+
+// The configuration with regard to the algorithms used for efficient search.
+// Structure is documented below.
+func (o AiIndexMetadataConfigOutput) AlgorithmConfig() AiIndexMetadataConfigAlgorithmConfigPtrOutput {
+	return o.ApplyT(func(v AiIndexMetadataConfig) *AiIndexMetadataConfigAlgorithmConfig { return v.AlgorithmConfig }).(AiIndexMetadataConfigAlgorithmConfigPtrOutput)
+}
+
+// The default number of neighbors to find via approximate search before exact reordering is
+// performed. Exact reordering is a procedure where results returned by an
+// approximate search algorithm are reordered via a more expensive distance computation.
+// Required if tree-AH algorithm is used.
+func (o AiIndexMetadataConfigOutput) ApproximateNeighborsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiIndexMetadataConfig) *int { return v.ApproximateNeighborsCount }).(pulumi.IntPtrOutput)
+}
+
+// The number of dimensions of the input vectors.
+func (o AiIndexMetadataConfigOutput) Dimensions() pulumi.IntOutput {
+	return o.ApplyT(func(v AiIndexMetadataConfig) int { return v.Dimensions }).(pulumi.IntOutput)
+}
+
+// The distance measure used in nearest neighbor search. The value must be one of the followings:
+// * SQUARED_L2_DISTANCE: Euclidean (L_2) Distance
+// * L1_DISTANCE: Manhattan (L_1) Distance
+// * COSINE_DISTANCE: Cosine Distance. Defined as 1 - cosine similarity.
+// * DOT_PRODUCT_DISTANCE: Dot Product Distance. Defined as a negative of the dot product
+func (o AiIndexMetadataConfigOutput) DistanceMeasureType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiIndexMetadataConfig) *string { return v.DistanceMeasureType }).(pulumi.StringPtrOutput)
+}
+
+// Type of normalization to be carried out on each vector. The value must be one of the followings:
+// * UNIT_L2_NORM: Unit L2 normalization type
+// * NONE: No normalization type is specified.
+func (o AiIndexMetadataConfigOutput) FeatureNormType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiIndexMetadataConfig) *string { return v.FeatureNormType }).(pulumi.StringPtrOutput)
+}
+
+type AiIndexMetadataConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiIndexMetadataConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexMetadataConfig)(nil)).Elem()
+}
+
+func (o AiIndexMetadataConfigPtrOutput) ToAiIndexMetadataConfigPtrOutput() AiIndexMetadataConfigPtrOutput {
+	return o
+}
+
+func (o AiIndexMetadataConfigPtrOutput) ToAiIndexMetadataConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigPtrOutput {
+	return o
+}
+
+func (o AiIndexMetadataConfigPtrOutput) Elem() AiIndexMetadataConfigOutput {
+	return o.ApplyT(func(v *AiIndexMetadataConfig) AiIndexMetadataConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiIndexMetadataConfig
+		return ret
+	}).(AiIndexMetadataConfigOutput)
+}
+
+// The configuration with regard to the algorithms used for efficient search.
+// Structure is documented below.
+func (o AiIndexMetadataConfigPtrOutput) AlgorithmConfig() AiIndexMetadataConfigAlgorithmConfigPtrOutput {
+	return o.ApplyT(func(v *AiIndexMetadataConfig) *AiIndexMetadataConfigAlgorithmConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AlgorithmConfig
+	}).(AiIndexMetadataConfigAlgorithmConfigPtrOutput)
+}
+
+// The default number of neighbors to find via approximate search before exact reordering is
+// performed. Exact reordering is a procedure where results returned by an
+// approximate search algorithm are reordered via a more expensive distance computation.
+// Required if tree-AH algorithm is used.
+func (o AiIndexMetadataConfigPtrOutput) ApproximateNeighborsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiIndexMetadataConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ApproximateNeighborsCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of dimensions of the input vectors.
+func (o AiIndexMetadataConfigPtrOutput) Dimensions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiIndexMetadataConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Dimensions
+	}).(pulumi.IntPtrOutput)
+}
+
+// The distance measure used in nearest neighbor search. The value must be one of the followings:
+// * SQUARED_L2_DISTANCE: Euclidean (L_2) Distance
+// * L1_DISTANCE: Manhattan (L_1) Distance
+// * COSINE_DISTANCE: Cosine Distance. Defined as 1 - cosine similarity.
+// * DOT_PRODUCT_DISTANCE: Dot Product Distance. Defined as a negative of the dot product
+func (o AiIndexMetadataConfigPtrOutput) DistanceMeasureType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiIndexMetadataConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DistanceMeasureType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of normalization to be carried out on each vector. The value must be one of the followings:
+// * UNIT_L2_NORM: Unit L2 normalization type
+// * NONE: No normalization type is specified.
+func (o AiIndexMetadataConfigPtrOutput) FeatureNormType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiIndexMetadataConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FeatureNormType
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiIndexMetadataConfigAlgorithmConfig struct {
+	// Configuration options for using brute force search, which simply implements the
+	// standard linear search in the database for each query.
+	BruteForceConfig *AiIndexMetadataConfigAlgorithmConfigBruteForceConfig `pulumi:"bruteForceConfig"`
+	// Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
+	// Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+	// Structure is documented below.
+	TreeAhConfig *AiIndexMetadataConfigAlgorithmConfigTreeAhConfig `pulumi:"treeAhConfig"`
+}
+
+// AiIndexMetadataConfigAlgorithmConfigInput is an input type that accepts AiIndexMetadataConfigAlgorithmConfigArgs and AiIndexMetadataConfigAlgorithmConfigOutput values.
+// You can construct a concrete instance of `AiIndexMetadataConfigAlgorithmConfigInput` via:
+//
+//	AiIndexMetadataConfigAlgorithmConfigArgs{...}
+type AiIndexMetadataConfigAlgorithmConfigInput interface {
+	pulumi.Input
+
+	ToAiIndexMetadataConfigAlgorithmConfigOutput() AiIndexMetadataConfigAlgorithmConfigOutput
+	ToAiIndexMetadataConfigAlgorithmConfigOutputWithContext(context.Context) AiIndexMetadataConfigAlgorithmConfigOutput
+}
+
+type AiIndexMetadataConfigAlgorithmConfigArgs struct {
+	// Configuration options for using brute force search, which simply implements the
+	// standard linear search in the database for each query.
+	BruteForceConfig AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrInput `pulumi:"bruteForceConfig"`
+	// Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
+	// Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+	// Structure is documented below.
+	TreeAhConfig AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrInput `pulumi:"treeAhConfig"`
+}
+
+func (AiIndexMetadataConfigAlgorithmConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexMetadataConfigAlgorithmConfig)(nil)).Elem()
+}
+
+func (i AiIndexMetadataConfigAlgorithmConfigArgs) ToAiIndexMetadataConfigAlgorithmConfigOutput() AiIndexMetadataConfigAlgorithmConfigOutput {
+	return i.ToAiIndexMetadataConfigAlgorithmConfigOutputWithContext(context.Background())
+}
+
+func (i AiIndexMetadataConfigAlgorithmConfigArgs) ToAiIndexMetadataConfigAlgorithmConfigOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigAlgorithmConfigOutput)
+}
+
+func (i AiIndexMetadataConfigAlgorithmConfigArgs) ToAiIndexMetadataConfigAlgorithmConfigPtrOutput() AiIndexMetadataConfigAlgorithmConfigPtrOutput {
+	return i.ToAiIndexMetadataConfigAlgorithmConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiIndexMetadataConfigAlgorithmConfigArgs) ToAiIndexMetadataConfigAlgorithmConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigAlgorithmConfigOutput).ToAiIndexMetadataConfigAlgorithmConfigPtrOutputWithContext(ctx)
+}
+
+// AiIndexMetadataConfigAlgorithmConfigPtrInput is an input type that accepts AiIndexMetadataConfigAlgorithmConfigArgs, AiIndexMetadataConfigAlgorithmConfigPtr and AiIndexMetadataConfigAlgorithmConfigPtrOutput values.
+// You can construct a concrete instance of `AiIndexMetadataConfigAlgorithmConfigPtrInput` via:
+//
+//	        AiIndexMetadataConfigAlgorithmConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiIndexMetadataConfigAlgorithmConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiIndexMetadataConfigAlgorithmConfigPtrOutput() AiIndexMetadataConfigAlgorithmConfigPtrOutput
+	ToAiIndexMetadataConfigAlgorithmConfigPtrOutputWithContext(context.Context) AiIndexMetadataConfigAlgorithmConfigPtrOutput
+}
+
+type aiIndexMetadataConfigAlgorithmConfigPtrType AiIndexMetadataConfigAlgorithmConfigArgs
+
+func AiIndexMetadataConfigAlgorithmConfigPtr(v *AiIndexMetadataConfigAlgorithmConfigArgs) AiIndexMetadataConfigAlgorithmConfigPtrInput {
+	return (*aiIndexMetadataConfigAlgorithmConfigPtrType)(v)
+}
+
+func (*aiIndexMetadataConfigAlgorithmConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexMetadataConfigAlgorithmConfig)(nil)).Elem()
+}
+
+func (i *aiIndexMetadataConfigAlgorithmConfigPtrType) ToAiIndexMetadataConfigAlgorithmConfigPtrOutput() AiIndexMetadataConfigAlgorithmConfigPtrOutput {
+	return i.ToAiIndexMetadataConfigAlgorithmConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiIndexMetadataConfigAlgorithmConfigPtrType) ToAiIndexMetadataConfigAlgorithmConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigAlgorithmConfigPtrOutput)
+}
+
+type AiIndexMetadataConfigAlgorithmConfigOutput struct{ *pulumi.OutputState }
+
+func (AiIndexMetadataConfigAlgorithmConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexMetadataConfigAlgorithmConfig)(nil)).Elem()
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigOutput) ToAiIndexMetadataConfigAlgorithmConfigOutput() AiIndexMetadataConfigAlgorithmConfigOutput {
+	return o
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigOutput) ToAiIndexMetadataConfigAlgorithmConfigOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigOutput {
+	return o
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigOutput) ToAiIndexMetadataConfigAlgorithmConfigPtrOutput() AiIndexMetadataConfigAlgorithmConfigPtrOutput {
+	return o.ToAiIndexMetadataConfigAlgorithmConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigOutput) ToAiIndexMetadataConfigAlgorithmConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiIndexMetadataConfigAlgorithmConfig) *AiIndexMetadataConfigAlgorithmConfig {
+		return &v
+	}).(AiIndexMetadataConfigAlgorithmConfigPtrOutput)
+}
+
+// Configuration options for using brute force search, which simply implements the
+// standard linear search in the database for each query.
+func (o AiIndexMetadataConfigAlgorithmConfigOutput) BruteForceConfig() AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput {
+	return o.ApplyT(func(v AiIndexMetadataConfigAlgorithmConfig) *AiIndexMetadataConfigAlgorithmConfigBruteForceConfig {
+		return v.BruteForceConfig
+	}).(AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput)
+}
+
+// Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
+// Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+// Structure is documented below.
+func (o AiIndexMetadataConfigAlgorithmConfigOutput) TreeAhConfig() AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput {
+	return o.ApplyT(func(v AiIndexMetadataConfigAlgorithmConfig) *AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
+		return v.TreeAhConfig
+	}).(AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput)
+}
+
+type AiIndexMetadataConfigAlgorithmConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiIndexMetadataConfigAlgorithmConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexMetadataConfigAlgorithmConfig)(nil)).Elem()
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigPtrOutput) ToAiIndexMetadataConfigAlgorithmConfigPtrOutput() AiIndexMetadataConfigAlgorithmConfigPtrOutput {
+	return o
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigPtrOutput) ToAiIndexMetadataConfigAlgorithmConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigPtrOutput {
+	return o
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigPtrOutput) Elem() AiIndexMetadataConfigAlgorithmConfigOutput {
+	return o.ApplyT(func(v *AiIndexMetadataConfigAlgorithmConfig) AiIndexMetadataConfigAlgorithmConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiIndexMetadataConfigAlgorithmConfig
+		return ret
+	}).(AiIndexMetadataConfigAlgorithmConfigOutput)
+}
+
+// Configuration options for using brute force search, which simply implements the
+// standard linear search in the database for each query.
+func (o AiIndexMetadataConfigAlgorithmConfigPtrOutput) BruteForceConfig() AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput {
+	return o.ApplyT(func(v *AiIndexMetadataConfigAlgorithmConfig) *AiIndexMetadataConfigAlgorithmConfigBruteForceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.BruteForceConfig
+	}).(AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput)
+}
+
+// Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
+// Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+// Structure is documented below.
+func (o AiIndexMetadataConfigAlgorithmConfigPtrOutput) TreeAhConfig() AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput {
+	return o.ApplyT(func(v *AiIndexMetadataConfigAlgorithmConfig) *AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TreeAhConfig
+	}).(AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput)
+}
+
+type AiIndexMetadataConfigAlgorithmConfigBruteForceConfig struct {
+}
+
+// AiIndexMetadataConfigAlgorithmConfigBruteForceConfigInput is an input type that accepts AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs and AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput values.
+// You can construct a concrete instance of `AiIndexMetadataConfigAlgorithmConfigBruteForceConfigInput` via:
+//
+//	AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs{...}
+type AiIndexMetadataConfigAlgorithmConfigBruteForceConfigInput interface {
+	pulumi.Input
+
+	ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput() AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput
+	ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutputWithContext(context.Context) AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput
+}
+
+type AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs struct {
+}
+
+func (AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexMetadataConfigAlgorithmConfigBruteForceConfig)(nil)).Elem()
+}
+
+func (i AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs) ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput() AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput {
+	return i.ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutputWithContext(context.Background())
+}
+
+func (i AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs) ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput)
+}
+
+func (i AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs) ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput() AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput {
+	return i.ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs) ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput).ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutputWithContext(ctx)
+}
+
+// AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrInput is an input type that accepts AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs, AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtr and AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput values.
+// You can construct a concrete instance of `AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrInput` via:
+//
+//	        AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput() AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput
+	ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutputWithContext(context.Context) AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput
+}
+
+type aiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrType AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs
+
+func AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtr(v *AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs) AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrInput {
+	return (*aiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrType)(v)
+}
+
+func (*aiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexMetadataConfigAlgorithmConfigBruteForceConfig)(nil)).Elem()
+}
+
+func (i *aiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrType) ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput() AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput {
+	return i.ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrType) ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput)
+}
+
+type AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput struct{ *pulumi.OutputState }
+
+func (AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexMetadataConfigAlgorithmConfigBruteForceConfig)(nil)).Elem()
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput) ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput() AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput {
+	return o
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput) ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput {
+	return o
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput) ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput() AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput {
+	return o.ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput) ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiIndexMetadataConfigAlgorithmConfigBruteForceConfig) *AiIndexMetadataConfigAlgorithmConfigBruteForceConfig {
+		return &v
+	}).(AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput)
+}
+
+type AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexMetadataConfigAlgorithmConfigBruteForceConfig)(nil)).Elem()
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput) ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput() AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput {
+	return o
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput) ToAiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput {
+	return o
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput) Elem() AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput {
+	return o.ApplyT(func(v *AiIndexMetadataConfigAlgorithmConfigBruteForceConfig) AiIndexMetadataConfigAlgorithmConfigBruteForceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiIndexMetadataConfigAlgorithmConfigBruteForceConfig
+		return ret
+	}).(AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput)
+}
+
+type AiIndexMetadataConfigAlgorithmConfigTreeAhConfig struct {
+	// Number of embeddings on each leaf node. The default value is 1000 if not set.
+	LeafNodeEmbeddingCount *int `pulumi:"leafNodeEmbeddingCount"`
+	// The default percentage of leaf nodes that any query may be searched. Must be in
+	// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+	LeafNodesToSearchPercent *int `pulumi:"leafNodesToSearchPercent"`
+}
+
+// AiIndexMetadataConfigAlgorithmConfigTreeAhConfigInput is an input type that accepts AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs and AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput values.
+// You can construct a concrete instance of `AiIndexMetadataConfigAlgorithmConfigTreeAhConfigInput` via:
+//
+//	AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs{...}
+type AiIndexMetadataConfigAlgorithmConfigTreeAhConfigInput interface {
+	pulumi.Input
+
+	ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput() AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput
+	ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutputWithContext(context.Context) AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput
+}
+
+type AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs struct {
+	// Number of embeddings on each leaf node. The default value is 1000 if not set.
+	LeafNodeEmbeddingCount pulumi.IntPtrInput `pulumi:"leafNodeEmbeddingCount"`
+	// The default percentage of leaf nodes that any query may be searched. Must be in
+	// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+	LeafNodesToSearchPercent pulumi.IntPtrInput `pulumi:"leafNodesToSearchPercent"`
+}
+
+func (AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexMetadataConfigAlgorithmConfigTreeAhConfig)(nil)).Elem()
+}
+
+func (i AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs) ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput() AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput {
+	return i.ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutputWithContext(context.Background())
+}
+
+func (i AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs) ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput)
+}
+
+func (i AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs) ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput() AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput {
+	return i.ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs) ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput).ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutputWithContext(ctx)
+}
+
+// AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrInput is an input type that accepts AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs, AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtr and AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput values.
+// You can construct a concrete instance of `AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrInput` via:
+//
+//	        AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput() AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput
+	ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutputWithContext(context.Context) AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput
+}
+
+type aiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrType AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs
+
+func AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtr(v *AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs) AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrInput {
+	return (*aiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrType)(v)
+}
+
+func (*aiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexMetadataConfigAlgorithmConfigTreeAhConfig)(nil)).Elem()
+}
+
+func (i *aiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrType) ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput() AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput {
+	return i.ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrType) ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput)
+}
+
+type AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput struct{ *pulumi.OutputState }
+
+func (AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexMetadataConfigAlgorithmConfigTreeAhConfig)(nil)).Elem()
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput() AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput {
+	return o
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput {
+	return o
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput() AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput {
+	return o.ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiIndexMetadataConfigAlgorithmConfigTreeAhConfig) *AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
+		return &v
+	}).(AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput)
+}
+
+// Number of embeddings on each leaf node. The default value is 1000 if not set.
+func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) LeafNodeEmbeddingCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiIndexMetadataConfigAlgorithmConfigTreeAhConfig) *int { return v.LeafNodeEmbeddingCount }).(pulumi.IntPtrOutput)
+}
+
+// The default percentage of leaf nodes that any query may be searched. Must be in
+// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) LeafNodesToSearchPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiIndexMetadataConfigAlgorithmConfigTreeAhConfig) *int { return v.LeafNodesToSearchPercent }).(pulumi.IntPtrOutput)
+}
+
+type AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiIndexMetadataConfigAlgorithmConfigTreeAhConfig)(nil)).Elem()
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput) ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput() AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput {
+	return o
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput) ToAiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutputWithContext(ctx context.Context) AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput {
+	return o
+}
+
+func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput) Elem() AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput {
+	return o.ApplyT(func(v *AiIndexMetadataConfigAlgorithmConfigTreeAhConfig) AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiIndexMetadataConfigAlgorithmConfigTreeAhConfig
+		return ret
+	}).(AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput)
+}
+
+// Number of embeddings on each leaf node. The default value is 1000 if not set.
+func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput) LeafNodeEmbeddingCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiIndexMetadataConfigAlgorithmConfigTreeAhConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LeafNodeEmbeddingCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The default percentage of leaf nodes that any query may be searched. Must be in
+// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+func (o AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput) LeafNodesToSearchPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiIndexMetadataConfigAlgorithmConfigTreeAhConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LeafNodesToSearchPercent
+	}).(pulumi.IntPtrOutput)
+}
+
 type AiMetadataStoreEncryptionSpec struct {
 	// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
 	// Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
@@ -2699,6 +4131,147 @@ func (o AiMetadataStoreStateTypeArrayOutput) Index(i pulumi.IntInput) AiMetadata
 	}).(AiMetadataStoreStateTypeOutput)
 }
 
+type AiTensorboardEncryptionSpec struct {
+	// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+	// Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// AiTensorboardEncryptionSpecInput is an input type that accepts AiTensorboardEncryptionSpecArgs and AiTensorboardEncryptionSpecOutput values.
+// You can construct a concrete instance of `AiTensorboardEncryptionSpecInput` via:
+//
+//	AiTensorboardEncryptionSpecArgs{...}
+type AiTensorboardEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToAiTensorboardEncryptionSpecOutput() AiTensorboardEncryptionSpecOutput
+	ToAiTensorboardEncryptionSpecOutputWithContext(context.Context) AiTensorboardEncryptionSpecOutput
+}
+
+type AiTensorboardEncryptionSpecArgs struct {
+	// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+	// Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (AiTensorboardEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTensorboardEncryptionSpec)(nil)).Elem()
+}
+
+func (i AiTensorboardEncryptionSpecArgs) ToAiTensorboardEncryptionSpecOutput() AiTensorboardEncryptionSpecOutput {
+	return i.ToAiTensorboardEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i AiTensorboardEncryptionSpecArgs) ToAiTensorboardEncryptionSpecOutputWithContext(ctx context.Context) AiTensorboardEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTensorboardEncryptionSpecOutput)
+}
+
+func (i AiTensorboardEncryptionSpecArgs) ToAiTensorboardEncryptionSpecPtrOutput() AiTensorboardEncryptionSpecPtrOutput {
+	return i.ToAiTensorboardEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiTensorboardEncryptionSpecArgs) ToAiTensorboardEncryptionSpecPtrOutputWithContext(ctx context.Context) AiTensorboardEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTensorboardEncryptionSpecOutput).ToAiTensorboardEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// AiTensorboardEncryptionSpecPtrInput is an input type that accepts AiTensorboardEncryptionSpecArgs, AiTensorboardEncryptionSpecPtr and AiTensorboardEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `AiTensorboardEncryptionSpecPtrInput` via:
+//
+//	        AiTensorboardEncryptionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiTensorboardEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiTensorboardEncryptionSpecPtrOutput() AiTensorboardEncryptionSpecPtrOutput
+	ToAiTensorboardEncryptionSpecPtrOutputWithContext(context.Context) AiTensorboardEncryptionSpecPtrOutput
+}
+
+type aiTensorboardEncryptionSpecPtrType AiTensorboardEncryptionSpecArgs
+
+func AiTensorboardEncryptionSpecPtr(v *AiTensorboardEncryptionSpecArgs) AiTensorboardEncryptionSpecPtrInput {
+	return (*aiTensorboardEncryptionSpecPtrType)(v)
+}
+
+func (*aiTensorboardEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTensorboardEncryptionSpec)(nil)).Elem()
+}
+
+func (i *aiTensorboardEncryptionSpecPtrType) ToAiTensorboardEncryptionSpecPtrOutput() AiTensorboardEncryptionSpecPtrOutput {
+	return i.ToAiTensorboardEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiTensorboardEncryptionSpecPtrType) ToAiTensorboardEncryptionSpecPtrOutputWithContext(ctx context.Context) AiTensorboardEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiTensorboardEncryptionSpecPtrOutput)
+}
+
+type AiTensorboardEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (AiTensorboardEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiTensorboardEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiTensorboardEncryptionSpecOutput) ToAiTensorboardEncryptionSpecOutput() AiTensorboardEncryptionSpecOutput {
+	return o
+}
+
+func (o AiTensorboardEncryptionSpecOutput) ToAiTensorboardEncryptionSpecOutputWithContext(ctx context.Context) AiTensorboardEncryptionSpecOutput {
+	return o
+}
+
+func (o AiTensorboardEncryptionSpecOutput) ToAiTensorboardEncryptionSpecPtrOutput() AiTensorboardEncryptionSpecPtrOutput {
+	return o.ToAiTensorboardEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiTensorboardEncryptionSpecOutput) ToAiTensorboardEncryptionSpecPtrOutputWithContext(ctx context.Context) AiTensorboardEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiTensorboardEncryptionSpec) *AiTensorboardEncryptionSpec {
+		return &v
+	}).(AiTensorboardEncryptionSpecPtrOutput)
+}
+
+// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+// Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+func (o AiTensorboardEncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AiTensorboardEncryptionSpec) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type AiTensorboardEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiTensorboardEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiTensorboardEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiTensorboardEncryptionSpecPtrOutput) ToAiTensorboardEncryptionSpecPtrOutput() AiTensorboardEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiTensorboardEncryptionSpecPtrOutput) ToAiTensorboardEncryptionSpecPtrOutputWithContext(ctx context.Context) AiTensorboardEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiTensorboardEncryptionSpecPtrOutput) Elem() AiTensorboardEncryptionSpecOutput {
+	return o.ApplyT(func(v *AiTensorboardEncryptionSpec) AiTensorboardEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiTensorboardEncryptionSpec
+		return ret
+	}).(AiTensorboardEncryptionSpecOutput)
+}
+
+// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+// Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+func (o AiTensorboardEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiTensorboardEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetEncryptionSpecInput)(nil)).Elem(), AiDatasetEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetEncryptionSpecPtrInput)(nil)).Elem(), AiDatasetEncryptionSpecArgs{})
@@ -2718,6 +4291,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointEncryptionSpecPtrInput)(nil)).Elem(), AiEndpointEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEncryptionSpecInput)(nil)).Elem(), AiFeatureStoreEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEncryptionSpecPtrInput)(nil)).Elem(), AiFeatureStoreEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeIamBindingConditionInput)(nil)).Elem(), AiFeatureStoreEntityTypeIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeIamBindingConditionPtrInput)(nil)).Elem(), AiFeatureStoreEntityTypeIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeIamMemberConditionInput)(nil)).Elem(), AiFeatureStoreEntityTypeIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeIamMemberConditionPtrInput)(nil)).Elem(), AiFeatureStoreEntityTypeIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigPtrInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigInput)(nil)).Elem(), AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs{})
@@ -2734,10 +4311,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreIamMemberConditionPtrInput)(nil)).Elem(), AiFeatureStoreIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreOnlineServingConfigInput)(nil)).Elem(), AiFeatureStoreOnlineServingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreOnlineServingConfigPtrInput)(nil)).Elem(), AiFeatureStoreOnlineServingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexDeployedIndexInput)(nil)).Elem(), AiIndexDeployedIndexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexDeployedIndexArrayInput)(nil)).Elem(), AiIndexDeployedIndexArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexIndexStatInput)(nil)).Elem(), AiIndexIndexStatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexIndexStatArrayInput)(nil)).Elem(), AiIndexIndexStatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexMetadataInput)(nil)).Elem(), AiIndexMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexMetadataPtrInput)(nil)).Elem(), AiIndexMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexMetadataConfigInput)(nil)).Elem(), AiIndexMetadataConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexMetadataConfigPtrInput)(nil)).Elem(), AiIndexMetadataConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexMetadataConfigAlgorithmConfigInput)(nil)).Elem(), AiIndexMetadataConfigAlgorithmConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexMetadataConfigAlgorithmConfigPtrInput)(nil)).Elem(), AiIndexMetadataConfigAlgorithmConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexMetadataConfigAlgorithmConfigBruteForceConfigInput)(nil)).Elem(), AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrInput)(nil)).Elem(), AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexMetadataConfigAlgorithmConfigTreeAhConfigInput)(nil)).Elem(), AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrInput)(nil)).Elem(), AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreEncryptionSpecInput)(nil)).Elem(), AiMetadataStoreEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreEncryptionSpecPtrInput)(nil)).Elem(), AiMetadataStoreEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreStateTypeInput)(nil)).Elem(), AiMetadataStoreStateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreStateTypeArrayInput)(nil)).Elem(), AiMetadataStoreStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTensorboardEncryptionSpecInput)(nil)).Elem(), AiTensorboardEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiTensorboardEncryptionSpecPtrInput)(nil)).Elem(), AiTensorboardEncryptionSpecArgs{})
 	pulumi.RegisterOutputType(AiDatasetEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiDatasetEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiEndpointDeployedModelOutput{})
@@ -2756,6 +4349,10 @@ func init() {
 	pulumi.RegisterOutputType(AiEndpointEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEncryptionSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigOutput{})
@@ -2772,8 +4369,24 @@ func init() {
 	pulumi.RegisterOutputType(AiFeatureStoreIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreOnlineServingConfigOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreOnlineServingConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiIndexDeployedIndexOutput{})
+	pulumi.RegisterOutputType(AiIndexDeployedIndexArrayOutput{})
+	pulumi.RegisterOutputType(AiIndexIndexStatOutput{})
+	pulumi.RegisterOutputType(AiIndexIndexStatArrayOutput{})
+	pulumi.RegisterOutputType(AiIndexMetadataOutput{})
+	pulumi.RegisterOutputType(AiIndexMetadataPtrOutput{})
+	pulumi.RegisterOutputType(AiIndexMetadataConfigOutput{})
+	pulumi.RegisterOutputType(AiIndexMetadataConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiIndexMetadataConfigAlgorithmConfigOutput{})
+	pulumi.RegisterOutputType(AiIndexMetadataConfigAlgorithmConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput{})
+	pulumi.RegisterOutputType(AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput{})
+	pulumi.RegisterOutputType(AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiMetadataStoreEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiMetadataStoreEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiMetadataStoreStateTypeOutput{})
 	pulumi.RegisterOutputType(AiMetadataStoreStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(AiTensorboardEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(AiTensorboardEncryptionSpecPtrOutput{})
 }

@@ -71,6 +71,8 @@ __all__ = [
     'MetastoreServiceMaintenanceWindow',
     'MetastoreServiceMetadataIntegration',
     'MetastoreServiceMetadataIntegrationDataCatalogConfig',
+    'MetastoreServiceNetworkConfig',
+    'MetastoreServiceNetworkConfigConsumer',
     'WorkflowTemplateJob',
     'WorkflowTemplateJobHadoopJob',
     'WorkflowTemplateJobHadoopJobLoggingConfig',
@@ -4218,6 +4220,81 @@ class MetastoreServiceMetadataIntegrationDataCatalogConfig(dict):
         Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class MetastoreServiceNetworkConfig(dict):
+    def __init__(__self__, *,
+                 consumers: Sequence['outputs.MetastoreServiceNetworkConfigConsumer']):
+        """
+        :param Sequence['MetastoreServiceNetworkConfigConsumerArgs'] consumers: The consumer-side network configuration for the Dataproc Metastore instance.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "consumers", consumers)
+
+    @property
+    @pulumi.getter
+    def consumers(self) -> Sequence['outputs.MetastoreServiceNetworkConfigConsumer']:
+        """
+        The consumer-side network configuration for the Dataproc Metastore instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "consumers")
+
+
+@pulumi.output_type
+class MetastoreServiceNetworkConfigConsumer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointUri":
+            suggest = "endpoint_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetastoreServiceNetworkConfigConsumer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetastoreServiceNetworkConfigConsumer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetastoreServiceNetworkConfigConsumer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 subnetwork: str,
+                 endpoint_uri: Optional[str] = None):
+        """
+        :param str subnetwork: The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
+               It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network.
+               There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:
+               `projects/{projectNumber}/regions/{region_id}/subnetworks/{subnetwork_id}
+        :param str endpoint_uri: -
+               The URI of the endpoint used to access the metastore service.
+        """
+        pulumi.set(__self__, "subnetwork", subnetwork)
+        if endpoint_uri is not None:
+            pulumi.set(__self__, "endpoint_uri", endpoint_uri)
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> str:
+        """
+        The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
+        It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network.
+        There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:
+        `projects/{projectNumber}/regions/{region_id}/subnetworks/{subnetwork_id}
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter(name="endpointUri")
+    def endpoint_uri(self) -> Optional[str]:
+        """
+        -
+        The URI of the endpoint used to access the metastore service.
+        """
+        return pulumi.get(self, "endpoint_uri")
 
 
 @pulumi.output_type

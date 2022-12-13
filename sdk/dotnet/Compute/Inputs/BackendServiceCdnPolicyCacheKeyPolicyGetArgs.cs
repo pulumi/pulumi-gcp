@@ -18,6 +18,19 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("includeHost")]
         public Input<bool>? IncludeHost { get; set; }
 
+        [Input("includeHttpHeaders")]
+        private InputList<string>? _includeHttpHeaders;
+
+        /// <summary>
+        /// Allows HTTP request headers (by name) to be used in the
+        /// cache key.
+        /// </summary>
+        public InputList<string> IncludeHttpHeaders
+        {
+            get => _includeHttpHeaders ?? (_includeHttpHeaders = new InputList<string>());
+            set => _includeHttpHeaders = value;
+        }
+
         [Input("includeNamedCookies")]
         private InputList<string>? _includeNamedCookies;
 

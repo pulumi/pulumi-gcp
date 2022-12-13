@@ -21,6 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:securitycenter/instanceIamBinding:InstanceIamBinding":
+		r = &InstanceIamBinding{}
+	case "gcp:securitycenter/instanceIamMember:InstanceIamMember":
+		r = &InstanceIamMember{}
+	case "gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy":
+		r = &InstanceIamPolicy{}
 	case "gcp:securitycenter/notificationConfig:NotificationConfig":
 		r = &NotificationConfig{}
 	case "gcp:securitycenter/source:Source":
@@ -44,6 +50,21 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/instanceIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/instanceIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/instanceIamPolicy",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"securitycenter/notificationConfig",

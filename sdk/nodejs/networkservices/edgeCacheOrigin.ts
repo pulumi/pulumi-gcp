@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const fallback = new gcp.networkservices.EdgeCacheOrigin("fallback", {
- *     originAddress: "gs://media-edge-fallback",
+ *     originAddress: "fallback.example.com",
  *     description: "The default bucket for media edge test",
  *     maxAttempts: 3,
  *     protocol: "HTTP",
@@ -44,6 +44,27 @@ import * as utilities from "../utilities";
  *         maxAttemptsTimeout: "20s",
  *         responseTimeout: "60s",
  *         readTimeout: "5s",
+ *     },
+ *     originOverrideAction: {
+ *         urlRewrite: {
+ *             hostRewrite: "example.com",
+ *         },
+ *         headerAction: {
+ *             requestHeadersToAdds: [{
+ *                 headerName: "x-header",
+ *                 headerValue: "value",
+ *                 replace: true,
+ *             }],
+ *         },
+ *     },
+ *     originRedirect: {
+ *         redirectConditions: [
+ *             "MOVED_PERMANENTLY",
+ *             "FOUND",
+ *             "SEE_OTHER",
+ *             "TEMPORARY_REDIRECT",
+ *             "PERMANENT_REDIRECT",
+ *         ],
  *     },
  * });
  * const _default = new gcp.networkservices.EdgeCacheOrigin("default", {
@@ -175,6 +196,17 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
      */
     public readonly originAddress!: pulumi.Output<string>;
     /**
+     * The override actions, including url rewrites and header
+     * additions, for requests that use this origin.
+     * Structure is documented below.
+     */
+    public readonly originOverrideAction!: pulumi.Output<outputs.networkservices.EdgeCacheOriginOriginOverrideAction | undefined>;
+    /**
+     * Follow redirects from this origin.
+     * Structure is documented below.
+     */
+    public readonly originRedirect!: pulumi.Output<outputs.networkservices.EdgeCacheOriginOriginRedirect | undefined>;
+    /**
      * The port to connect to the origin on.
      * Defaults to port 443 for HTTP2 and HTTPS protocols, and port 80 for HTTP.
      */
@@ -233,6 +265,8 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
             resourceInputs["maxAttempts"] = state ? state.maxAttempts : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["originAddress"] = state ? state.originAddress : undefined;
+            resourceInputs["originOverrideAction"] = state ? state.originOverrideAction : undefined;
+            resourceInputs["originRedirect"] = state ? state.originRedirect : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
@@ -250,6 +284,8 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
             resourceInputs["maxAttempts"] = args ? args.maxAttempts : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["originAddress"] = args ? args.originAddress : undefined;
+            resourceInputs["originOverrideAction"] = args ? args.originOverrideAction : undefined;
+            resourceInputs["originRedirect"] = args ? args.originRedirect : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
@@ -309,6 +345,17 @@ export interface EdgeCacheOriginState {
      * If a Cloud Storage bucket is provided, it must be in the canonical "gs://bucketname" format. Other forms, such as "storage.googleapis.com", will be rejected.
      */
     originAddress?: pulumi.Input<string>;
+    /**
+     * The override actions, including url rewrites and header
+     * additions, for requests that use this origin.
+     * Structure is documented below.
+     */
+    originOverrideAction?: pulumi.Input<inputs.networkservices.EdgeCacheOriginOriginOverrideAction>;
+    /**
+     * Follow redirects from this origin.
+     * Structure is documented below.
+     */
+    originRedirect?: pulumi.Input<inputs.networkservices.EdgeCacheOriginOriginRedirect>;
     /**
      * The port to connect to the origin on.
      * Defaults to port 443 for HTTP2 and HTTPS protocols, and port 80 for HTTP.
@@ -397,6 +444,17 @@ export interface EdgeCacheOriginArgs {
      * If a Cloud Storage bucket is provided, it must be in the canonical "gs://bucketname" format. Other forms, such as "storage.googleapis.com", will be rejected.
      */
     originAddress: pulumi.Input<string>;
+    /**
+     * The override actions, including url rewrites and header
+     * additions, for requests that use this origin.
+     * Structure is documented below.
+     */
+    originOverrideAction?: pulumi.Input<inputs.networkservices.EdgeCacheOriginOriginOverrideAction>;
+    /**
+     * Follow redirects from this origin.
+     * Structure is documented below.
+     */
+    originRedirect?: pulumi.Input<inputs.networkservices.EdgeCacheOriginOriginRedirect>;
     /**
      * The port to connect to the origin on.
      * Defaults to port 443 for HTTP2 and HTTPS protocols, and port 80 for HTTP.

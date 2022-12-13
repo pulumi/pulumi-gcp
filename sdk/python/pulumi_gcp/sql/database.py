@@ -17,6 +17,7 @@ class DatabaseArgs:
                  instance: pulumi.Input[str],
                  charset: Optional[pulumi.Input[str]] = None,
                  collation: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -33,6 +34,10 @@ class DatabaseArgs:
                and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
                for more details and supported values. Postgres databases only support
                a value of `en_US.UTF8` at creation time.
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the database. Setting ABANDON allows the resource 
+               to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+               deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+               values are: "ABANDON".
         :param pulumi.Input[str] name: The name of the database in the Cloud SQL instance.
                This does not include the project ID or instance name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -43,6 +48,8 @@ class DatabaseArgs:
             pulumi.set(__self__, "charset", charset)
         if collation is not None:
             pulumi.set(__self__, "collation", collation)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -94,6 +101,21 @@ class DatabaseArgs:
         pulumi.set(self, "collation", value)
 
     @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The deletion policy for the database. Setting ABANDON allows the resource 
+        to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+        deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+        values are: "ABANDON".
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -125,6 +147,7 @@ class _DatabaseState:
     def __init__(__self__, *,
                  charset: Optional[pulumi.Input[str]] = None,
                  collation: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -141,6 +164,10 @@ class _DatabaseState:
                and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
                for more details and supported values. Postgres databases only support
                a value of `en_US.UTF8` at creation time.
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the database. Setting ABANDON allows the resource 
+               to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+               deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+               values are: "ABANDON".
         :param pulumi.Input[str] instance: The name of the Cloud SQL instance. This does not include the project
                ID.
         :param pulumi.Input[str] name: The name of the database in the Cloud SQL instance.
@@ -153,6 +180,8 @@ class _DatabaseState:
             pulumi.set(__self__, "charset", charset)
         if collation is not None:
             pulumi.set(__self__, "collation", collation)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
         if name is not None:
@@ -193,6 +222,21 @@ class _DatabaseState:
     @collation.setter
     def collation(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "collation", value)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The deletion policy for the database. Setting ABANDON allows the resource 
+        to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+        deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+        values are: "ABANDON".
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter
@@ -253,6 +297,7 @@ class Database(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  charset: Optional[pulumi.Input[str]] = None,
                  collation: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -277,6 +322,24 @@ class Database(pulumi.CustomResource):
             ),
             deletion_protection=True)
         database = gcp.sql.Database("database", instance=instance.name)
+        ```
+        ### Sql Database Deletion Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+        instance = gcp.sql.DatabaseInstance("instance",
+            region="us-central1",
+            database_version="POSTGRES_14",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-g1-small",
+            ),
+            deletion_protection=True)
+        database_deletion_policy = gcp.sql.Database("databaseDeletionPolicy",
+            instance=instance.name,
+            deletion_policy="ABANDON")
         ```
 
         ## Import
@@ -315,6 +378,10 @@ class Database(pulumi.CustomResource):
                and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
                for more details and supported values. Postgres databases only support
                a value of `en_US.UTF8` at creation time.
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the database. Setting ABANDON allows the resource 
+               to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+               deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+               values are: "ABANDON".
         :param pulumi.Input[str] instance: The name of the Cloud SQL instance. This does not include the project
                ID.
         :param pulumi.Input[str] name: The name of the database in the Cloud SQL instance.
@@ -348,6 +415,24 @@ class Database(pulumi.CustomResource):
             ),
             deletion_protection=True)
         database = gcp.sql.Database("database", instance=instance.name)
+        ```
+        ### Sql Database Deletion Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+        instance = gcp.sql.DatabaseInstance("instance",
+            region="us-central1",
+            database_version="POSTGRES_14",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-g1-small",
+            ),
+            deletion_protection=True)
+        database_deletion_policy = gcp.sql.Database("databaseDeletionPolicy",
+            instance=instance.name,
+            deletion_policy="ABANDON")
         ```
 
         ## Import
@@ -391,6 +476,7 @@ class Database(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  charset: Optional[pulumi.Input[str]] = None,
                  collation: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -405,6 +491,7 @@ class Database(pulumi.CustomResource):
 
             __props__.__dict__["charset"] = charset
             __props__.__dict__["collation"] = collation
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")
             __props__.__dict__["instance"] = instance
@@ -423,6 +510,7 @@ class Database(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             charset: Optional[pulumi.Input[str]] = None,
             collation: Optional[pulumi.Input[str]] = None,
+            deletion_policy: Optional[pulumi.Input[str]] = None,
             instance: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -444,6 +532,10 @@ class Database(pulumi.CustomResource):
                and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
                for more details and supported values. Postgres databases only support
                a value of `en_US.UTF8` at creation time.
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the database. Setting ABANDON allows the resource 
+               to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+               deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+               values are: "ABANDON".
         :param pulumi.Input[str] instance: The name of the Cloud SQL instance. This does not include the project
                ID.
         :param pulumi.Input[str] name: The name of the database in the Cloud SQL instance.
@@ -458,6 +550,7 @@ class Database(pulumi.CustomResource):
 
         __props__.__dict__["charset"] = charset
         __props__.__dict__["collation"] = collation
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["instance"] = instance
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -487,6 +580,17 @@ class Database(pulumi.CustomResource):
         a value of `en_US.UTF8` at creation time.
         """
         return pulumi.get(self, "collation")
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        The deletion policy for the database. Setting ABANDON allows the resource 
+        to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+        deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+        values are: "ABANDON".
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @property
     @pulumi.getter

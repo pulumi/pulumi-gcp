@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceTemplateSpecContainerPort {
     /**
-     * @return Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
+     * @return Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to &#34;8080&#34;.
      * 
      */
     private @Nullable Integer containerPort;
@@ -30,7 +30,7 @@ public final class ServiceTemplateSpecContainerPort {
 
     private ServiceTemplateSpecContainerPort() {}
     /**
-     * @return Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
+     * @return Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to &#34;8080&#34;.
      * 
      */
     public Optional<Integer> containerPort() {

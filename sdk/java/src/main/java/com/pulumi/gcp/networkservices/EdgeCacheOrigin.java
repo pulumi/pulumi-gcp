@@ -11,6 +11,8 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networkservices.EdgeCacheOriginArgs;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginState;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheOriginAwsV4Authentication;
+import com.pulumi.gcp.networkservices.outputs.EdgeCacheOriginOriginOverrideAction;
+import com.pulumi.gcp.networkservices.outputs.EdgeCacheOriginOriginRedirect;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheOriginTimeout;
 import java.lang.Integer;
 import java.lang.String;
@@ -63,6 +65,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkservices.EdgeCacheOrigin;
  * import com.pulumi.gcp.networkservices.EdgeCacheOriginArgs;
  * import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginTimeoutArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginOverrideActionArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginOverrideActionUrlRewriteArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginOverrideActionHeaderActionArgs;
+ * import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginRedirectArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -77,7 +83,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var fallback = new EdgeCacheOrigin(&#34;fallback&#34;, EdgeCacheOriginArgs.builder()        
- *             .originAddress(&#34;gs://media-edge-fallback&#34;)
+ *             .originAddress(&#34;fallback.example.com&#34;)
  *             .description(&#34;The default bucket for media edge test&#34;)
  *             .maxAttempts(3)
  *             .protocol(&#34;HTTP&#34;)
@@ -92,6 +98,26 @@ import javax.annotation.Nullable;
  *                 .maxAttemptsTimeout(&#34;20s&#34;)
  *                 .responseTimeout(&#34;60s&#34;)
  *                 .readTimeout(&#34;5s&#34;)
+ *                 .build())
+ *             .originOverrideAction(EdgeCacheOriginOriginOverrideActionArgs.builder()
+ *                 .urlRewrite(EdgeCacheOriginOriginOverrideActionUrlRewriteArgs.builder()
+ *                     .hostRewrite(&#34;example.com&#34;)
+ *                     .build())
+ *                 .headerAction(EdgeCacheOriginOriginOverrideActionHeaderActionArgs.builder()
+ *                     .requestHeadersToAdds(EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs.builder()
+ *                         .headerName(&#34;x-header&#34;)
+ *                         .headerValue(&#34;value&#34;)
+ *                         .replace(true)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .originRedirect(EdgeCacheOriginOriginRedirectArgs.builder()
+ *                 .redirectConditions(                
+ *                     &#34;MOVED_PERMANENTLY&#34;,
+ *                     &#34;FOUND&#34;,
+ *                     &#34;SEE_OTHER&#34;,
+ *                     &#34;TEMPORARY_REDIRECT&#34;,
+ *                     &#34;PERMANENT_REDIRECT&#34;)
  *                 .build())
  *             .build());
  * 
@@ -311,6 +337,40 @@ public class EdgeCacheOrigin extends com.pulumi.resources.CustomResource {
      */
     public Output<String> originAddress() {
         return this.originAddress;
+    }
+    /**
+     * The override actions, including url rewrites and header
+     * additions, for requests that use this origin.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="originOverrideAction", type=EdgeCacheOriginOriginOverrideAction.class, parameters={})
+    private Output</* @Nullable */ EdgeCacheOriginOriginOverrideAction> originOverrideAction;
+
+    /**
+     * @return The override actions, including url rewrites and header
+     * additions, for requests that use this origin.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<EdgeCacheOriginOriginOverrideAction>> originOverrideAction() {
+        return Codegen.optional(this.originOverrideAction);
+    }
+    /**
+     * Follow redirects from this origin.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="originRedirect", type=EdgeCacheOriginOriginRedirect.class, parameters={})
+    private Output</* @Nullable */ EdgeCacheOriginOriginRedirect> originRedirect;
+
+    /**
+     * @return Follow redirects from this origin.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<EdgeCacheOriginOriginRedirect>> originRedirect() {
+        return Codegen.optional(this.originRedirect);
     }
     /**
      * The port to connect to the origin on.

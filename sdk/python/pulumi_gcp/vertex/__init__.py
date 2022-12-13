@@ -10,9 +10,14 @@ from .ai_endpoint import *
 from .ai_feature_store import *
 from .ai_feature_store_entity_type import *
 from .ai_feature_store_entity_type_feature import *
+from .ai_feature_store_entity_type_iam_binding import *
+from .ai_feature_store_entity_type_iam_member import *
+from .ai_feature_store_entity_type_iam_policy import *
 from .ai_feature_store_iam_binding import *
 from .ai_feature_store_iam_member import *
 from .ai_feature_store_iam_policy import *
+from .ai_index import *
 from .ai_metadata_store import *
+from .ai_tensorboard import *
 from ._inputs import *
 from . import outputs

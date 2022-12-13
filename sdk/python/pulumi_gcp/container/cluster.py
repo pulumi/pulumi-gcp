@@ -242,7 +242,8 @@ class ClusterArgs:
                pool upon cluster creation. If you're using `container.NodePool`
                resources with no default node pool, this should be set to `true`, alongside
                setting `initial_node_count` to at least `1`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+               for how these labels are applied to clusters, node pools and nodes.
         :param pulumi.Input['ClusterResourceUsageExportConfigArgs'] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
@@ -1119,7 +1120,8 @@ class ClusterArgs:
     @pulumi.getter(name="resourceLabels")
     def resource_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+        for how these labels are applied to clusters, node pools and nodes.
         """
         return pulumi.get(self, "resource_labels")
 
@@ -1447,7 +1449,8 @@ class _ClusterState:
                pool upon cluster creation. If you're using `container.NodePool`
                resources with no default node pool, this should be set to `true`, alongside
                setting `initial_node_count` to at least `1`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+               for how these labels are applied to clusters, node pools and nodes.
         :param pulumi.Input['ClusterResourceUsageExportConfigArgs'] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
@@ -2393,7 +2396,8 @@ class _ClusterState:
     @pulumi.getter(name="resourceLabels")
     def resource_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+        for how these labels are applied to clusters, node pools and nodes.
         """
         return pulumi.get(self, "resource_labels")
 
@@ -2823,7 +2827,8 @@ class Cluster(pulumi.CustomResource):
                pool upon cluster creation. If you're using `container.NodePool`
                resources with no default node pool, this should be set to `true`, alongside
                setting `initial_node_count` to at least `1`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+               for how these labels are applied to clusters, node pools and nodes.
         :param pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
@@ -3318,7 +3323,8 @@ class Cluster(pulumi.CustomResource):
                pool upon cluster creation. If you're using `container.NodePool`
                resources with no default node pool, this should be set to `true`, alongside
                setting `initial_node_count` to at least `1`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+               for how these labels are applied to clusters, node pools and nodes.
         :param pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
@@ -3721,7 +3727,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterAuthorizedNetworksConfig")
-    def master_authorized_networks_config(self) -> pulumi.Output[Optional['outputs.ClusterMasterAuthorizedNetworksConfig']]:
+    def master_authorized_networks_config(self) -> pulumi.Output['outputs.ClusterMasterAuthorizedNetworksConfig']:
         """
         The desired
         configuration options for master authorized networks. Omit the
@@ -3976,7 +3982,8 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="resourceLabels")
     def resource_labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+        for how these labels are applied to clusters, node pools and nodes.
         """
         return pulumi.get(self, "resource_labels")
 

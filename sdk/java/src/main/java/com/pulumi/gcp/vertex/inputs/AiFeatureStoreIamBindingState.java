@@ -24,16 +24,32 @@ public final class AiFeatureStoreIamBindingState extends com.pulumi.resources.Re
         return Optional.ofNullable(this.condition);
     }
 
+    /**
+     * (Computed) The etag of the IAM policy.
+     * 
+     */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
+    /**
+     * @return (Computed) The etag of the IAM policy.
+     * 
+     */
     public Optional<Output<String>> etag() {
         return Optional.ofNullable(this.etag);
     }
 
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="featurestore")
     private @Nullable Output<String> featurestore;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> featurestore() {
         return Optional.ofNullable(this.featurestore);
     }
@@ -47,7 +63,7 @@ public final class AiFeatureStoreIamBindingState extends com.pulumi.resources.Re
 
     /**
      * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      * 
      */
     @Import(name="project")
@@ -55,7 +71,7 @@ public final class AiFeatureStoreIamBindingState extends com.pulumi.resources.Re
 
     /**
      * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -63,23 +79,39 @@ public final class AiFeatureStoreIamBindingState extends com.pulumi.resources.Re
     }
 
     /**
-     * The region of the dataset. eg us-central1
+     * The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region of the dataset. eg us-central1
+     * @return The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
      * 
      */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * The role that should be applied. Only one
+     * `gcp.vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * 
+     */
     @Import(name="role")
     private @Nullable Output<String> role;
 
+    /**
+     * @return The role that should be applied. Only one
+     * `gcp.vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * 
+     */
     public Optional<Output<String>> role() {
         return Optional.ofNullable(this.role);
     }
@@ -123,20 +155,44 @@ public final class AiFeatureStoreIamBindingState extends com.pulumi.resources.Re
             return condition(Output.of(condition));
         }
 
+        /**
+         * @param etag (Computed) The etag of the IAM policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder etag(@Nullable Output<String> etag) {
             $.etag = etag;
             return this;
         }
 
+        /**
+         * @param etag (Computed) The etag of the IAM policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder etag(String etag) {
             return etag(Output.of(etag));
         }
 
+        /**
+         * @param featurestore Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder featurestore(@Nullable Output<String> featurestore) {
             $.featurestore = featurestore;
             return this;
         }
 
+        /**
+         * @param featurestore Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder featurestore(String featurestore) {
             return featurestore(Output.of(featurestore));
         }
@@ -156,7 +212,7 @@ public final class AiFeatureStoreIamBindingState extends com.pulumi.resources.Re
 
         /**
          * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
+         * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
          * 
          * @return builder
          * 
@@ -168,7 +224,7 @@ public final class AiFeatureStoreIamBindingState extends com.pulumi.resources.Re
 
         /**
          * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
+         * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
          * 
          * @return builder
          * 
@@ -178,7 +234,9 @@ public final class AiFeatureStoreIamBindingState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param region The region of the dataset. eg us-central1
+         * @param region The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+         * region is specified, it is taken from the provider configuration.
          * 
          * @return builder
          * 
@@ -189,7 +247,9 @@ public final class AiFeatureStoreIamBindingState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param region The region of the dataset. eg us-central1
+         * @param region The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+         * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+         * region is specified, it is taken from the provider configuration.
          * 
          * @return builder
          * 
@@ -198,11 +258,27 @@ public final class AiFeatureStoreIamBindingState extends com.pulumi.resources.Re
             return region(Output.of(region));
         }
 
+        /**
+         * @param role The role that should be applied. Only one
+         * `gcp.vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
+         * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(@Nullable Output<String> role) {
             $.role = role;
             return this;
         }
 
+        /**
+         * @param role The role that should be applied. Only one
+         * `gcp.vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
+         * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(String role) {
             return role(Output.of(role));
         }

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsActiveDirectoryConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDatabaseFlagArgs;
+import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDenyMaintenancePeriodArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsInsightsConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsLocationPreferenceArgs;
@@ -119,6 +120,13 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
 
     public Optional<Output<List<DatabaseInstanceSettingsDatabaseFlagArgs>>> databaseFlags() {
         return Optional.ofNullable(this.databaseFlags);
+    }
+
+    @Import(name="denyMaintenancePeriod")
+    private @Nullable Output<DatabaseInstanceSettingsDenyMaintenancePeriodArgs> denyMaintenancePeriod;
+
+    public Optional<Output<DatabaseInstanceSettingsDenyMaintenancePeriodArgs>> denyMaintenancePeriod() {
+        return Optional.ofNullable(this.denyMaintenancePeriod);
     }
 
     /**
@@ -304,6 +312,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.collation = $.collation;
         this.connectorEnforcement = $.connectorEnforcement;
         this.databaseFlags = $.databaseFlags;
+        this.denyMaintenancePeriod = $.denyMaintenancePeriod;
         this.diskAutoresize = $.diskAutoresize;
         this.diskAutoresizeLimit = $.diskAutoresizeLimit;
         this.diskSize = $.diskSize;
@@ -464,6 +473,15 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
 
         public Builder databaseFlags(DatabaseInstanceSettingsDatabaseFlagArgs... databaseFlags) {
             return databaseFlags(List.of(databaseFlags));
+        }
+
+        public Builder denyMaintenancePeriod(@Nullable Output<DatabaseInstanceSettingsDenyMaintenancePeriodArgs> denyMaintenancePeriod) {
+            $.denyMaintenancePeriod = denyMaintenancePeriod;
+            return this;
+        }
+
+        public Builder denyMaintenancePeriod(DatabaseInstanceSettingsDenyMaintenancePeriodArgs denyMaintenancePeriod) {
+            return denyMaintenancePeriod(Output.of(denyMaintenancePeriod));
         }
 
         /**

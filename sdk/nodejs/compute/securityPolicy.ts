@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
  * and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
  *
+ * Security Policy is used by google_compute_backend_service.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -40,6 +42,75 @@ import * as utilities from "../utilities";
  *                 versionedExpr: "SRC_IPS_V1",
  *             },
  *             priority: 2147483647,
+ *         },
+ *     ],
+ * });
+ * ```
+ * ### With ReCAPTCHA Configuration Options
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.recaptcha.EnterpriseKey("primary", {
+ *     displayName: "display-name",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     project: "my-project-name",
+ *     webSettings: {
+ *         integrationType: "INVISIBLE",
+ *         allowAllDomains: true,
+ *         allowedDomains: ["localhost"],
+ *     },
+ * });
+ * const policy = new gcp.compute.SecurityPolicy("policy", {
+ *     description: "basic security policy",
+ *     type: "CLOUD_ARMOR",
+ *     recaptchaOptionsConfig: {
+ *         redirectSiteKey: primary.name,
+ *     },
+ * });
+ * ```
+ * ### With Header Actions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = new gcp.compute.SecurityPolicy("policy", {
+ *     rules: [
+ *         {
+ *             action: "allow",
+ *             description: "default rule",
+ *             match: {
+ *                 config: {
+ *                     srcIpRanges: ["*"],
+ *                 },
+ *                 versionedExpr: "SRC_IPS_V1",
+ *             },
+ *             priority: 2147483647,
+ *         },
+ *         {
+ *             action: "allow",
+ *             headerAction: {
+ *                 requestHeadersToAdds: [
+ *                     {
+ *                         headerName: "reCAPTCHA-Warning",
+ *                         headerValue: "high",
+ *                     },
+ *                     {
+ *                         headerName: "X-Resource",
+ *                         headerValue: "test",
+ *                     },
+ *                 ],
+ *             },
+ *             match: {
+ *                 expr: {
+ *                     expression: "request.path.matches(\"/login.html\") && token.recaptcha_session.score < 0.2",
+ *                 },
+ *             },
+ *             priority: 1000,
  *         },
  *     ],
  * });
@@ -100,6 +171,10 @@ export class SecurityPolicy extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+     */
+    public readonly recaptchaOptionsConfig!: pulumi.Output<outputs.compute.SecurityPolicyRecaptchaOptionsConfig | undefined>;
+    /**
      * The set of rules that belong to this policy. There must always be a default
      * rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
      * security policy, a default rule with action "allow" will be added. Structure is documented below.
@@ -133,6 +208,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["recaptchaOptionsConfig"] = state ? state.recaptchaOptionsConfig : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -143,6 +219,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["recaptchaOptionsConfig"] = args ? args.recaptchaOptionsConfig : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["fingerprint"] = undefined /*out*/;
@@ -183,6 +260,10 @@ export interface SecurityPolicyState {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+     */
+    recaptchaOptionsConfig?: pulumi.Input<inputs.compute.SecurityPolicyRecaptchaOptionsConfig>;
     /**
      * The set of rules that belong to this policy. There must always be a default
      * rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
@@ -225,6 +306,10 @@ export interface SecurityPolicyArgs {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+     */
+    recaptchaOptionsConfig?: pulumi.Input<inputs.compute.SecurityPolicyRecaptchaOptionsConfig>;
     /**
      * The set of rules that belong to this policy. There must always be a default
      * rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a

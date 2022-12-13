@@ -62,10 +62,15 @@ namespace Pulumi.Gcp.BigTable
     ///         InstanceName = instance.Name,
     ///         Table = table.Name,
     ///         ColumnFamily = "name",
-    ///         MaxAge = new Gcp.BigTable.Inputs.GCPolicyMaxAgeArgs
-    ///         {
-    ///             Duration = "168h",
-    ///         },
+    ///         DeletionPolicy = "ABANDON",
+    ///         GcRules = @"  {
+    ///     ""rules"": [
+    ///       {
+    ///         ""max_age"": ""168h""
+    ///       }
+    ///     ]
+    ///   }
+    /// ",
     ///     });
     /// 
     /// });
@@ -85,26 +90,25 @@ namespace Pulumi.Gcp.BigTable
     ///         InstanceName = google_bigtable_instance.Instance.Name,
     ///         Table = google_bigtable_table.Table.Name,
     ///         ColumnFamily = "name",
-    ///         Mode = "UNION",
-    ///         MaxAge = new Gcp.BigTable.Inputs.GCPolicyMaxAgeArgs
-    ///         {
-    ///             Duration = "168h",
-    ///         },
-    ///         MaxVersions = new[]
-    ///         {
-    ///             new Gcp.BigTable.Inputs.GCPolicyMaxVersionArgs
-    ///             {
-    ///                 Number = 10,
-    ///             },
-    ///         },
+    ///         DeletionPolicy = "ABANDON",
+    ///         GcRules = @"  {
+    ///     ""mode"": ""union"",
+    ///     ""rules"": [
+    ///       {
+    ///         ""max_age"": ""168h""
+    ///       },
+    ///       {
+    ///         ""max_version"": 10
+    ///       }
+    ///     ]
+    ///   }
+    /// ",
     ///     });
     /// 
     /// });
     /// ```
     /// 
-    /// For complex, nested policies, an optional `gc_rules` field are supported. This field
-    /// conflicts with `mode`, `max_age` and `max_version`. This field is a serialized JSON
-    /// string. Example:
+    /// An example of more complex GC policy:
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;
@@ -143,25 +147,26 @@ namespace Pulumi.Gcp.BigTable
     ///         InstanceName = instance.Id,
     ///         Table = table.Name,
     ///         ColumnFamily = "cf1",
-    ///         GcRules = @"{
-    ///   ""mode"": ""union"",
-    ///   ""rules"": [
-    ///     {
-    ///       ""max_age"": ""10h""
-    ///     },
-    ///     {
-    ///       ""mode"": ""intersection"",
-    ///       ""rules"": [
-    ///         {
-    ///           ""max_age"": ""2h""
-    ///         },
-    ///         {
-    ///           ""max_version"": 2
-    ///         }
-    ///       ]
-    ///     }
-    ///   ]
-    /// }
+    ///         DeletionPolicy = "ABANDON",
+    ///         GcRules = @"  {
+    ///     ""mode"": ""union"",
+    ///     ""rules"": [
+    ///       {
+    ///         ""max_age"": ""10h""
+    ///       },
+    ///       {
+    ///         ""mode"": ""intersection"",
+    ///         ""rules"": [
+    ///           {
+    ///             ""max_age"": ""2h""
+    ///           },
+    ///           {
+    ///             ""max_version"": 2
+    ///           }
+    ///         ]
+    ///       }
+    ///     ]
+    ///   }
     /// ",
     ///     });
     /// 
@@ -189,6 +194,13 @@ namespace Pulumi.Gcp.BigTable
         /// </summary>
         [Output("columnFamily")]
         public Output<string> ColumnFamily { get; private set; } = null!;
+
+        /// <summary>
+        /// The deletion policy for the GC policy.
+        /// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
@@ -285,6 +297,13 @@ namespace Pulumi.Gcp.BigTable
         public Input<string> ColumnFamily { get; set; } = null!;
 
         /// <summary>
+        /// The deletion policy for the GC policy.
+        /// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         /// </summary>
         [Input("gcRules")]
@@ -345,6 +364,13 @@ namespace Pulumi.Gcp.BigTable
         /// </summary>
         [Input("columnFamily")]
         public Input<string>? ColumnFamily { get; set; }
+
+        /// <summary>
+        /// The deletion policy for the GC policy.
+        /// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.

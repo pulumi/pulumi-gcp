@@ -12,19 +12,55 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolNetworkConfig {
+    /**
+     * @return Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+     * 
+     */
     private @Nullable Boolean createPodRange;
+    /**
+     * @return Whether nodes have internal IP addresses only.
+     * 
+     */
+    private @Nullable Boolean enablePrivateNodes;
+    /**
+     * @return The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+     * 
+     */
     private @Nullable String podIpv4CidrBlock;
-    private String podRange;
+    /**
+     * @return The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+     * 
+     */
+    private @Nullable String podRange;
 
     private NodePoolNetworkConfig() {}
+    /**
+     * @return Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+     * 
+     */
     public Optional<Boolean> createPodRange() {
         return Optional.ofNullable(this.createPodRange);
     }
+    /**
+     * @return Whether nodes have internal IP addresses only.
+     * 
+     */
+    public Optional<Boolean> enablePrivateNodes() {
+        return Optional.ofNullable(this.enablePrivateNodes);
+    }
+    /**
+     * @return The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+     * 
+     */
     public Optional<String> podIpv4CidrBlock() {
         return Optional.ofNullable(this.podIpv4CidrBlock);
     }
-    public String podRange() {
-        return this.podRange;
+    /**
+     * @return The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+     * 
+     */
+    public Optional<String> podRange() {
+        return Optional.ofNullable(this.podRange);
     }
 
     public static Builder builder() {
@@ -37,12 +73,14 @@ public final class NodePoolNetworkConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean createPodRange;
+        private @Nullable Boolean enablePrivateNodes;
         private @Nullable String podIpv4CidrBlock;
-        private String podRange;
+        private @Nullable String podRange;
         public Builder() {}
         public Builder(NodePoolNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createPodRange = defaults.createPodRange;
+    	      this.enablePrivateNodes = defaults.enablePrivateNodes;
     	      this.podIpv4CidrBlock = defaults.podIpv4CidrBlock;
     	      this.podRange = defaults.podRange;
         }
@@ -53,18 +91,24 @@ public final class NodePoolNetworkConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder enablePrivateNodes(@Nullable Boolean enablePrivateNodes) {
+            this.enablePrivateNodes = enablePrivateNodes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder podIpv4CidrBlock(@Nullable String podIpv4CidrBlock) {
             this.podIpv4CidrBlock = podIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
-        public Builder podRange(String podRange) {
-            this.podRange = Objects.requireNonNull(podRange);
+        public Builder podRange(@Nullable String podRange) {
+            this.podRange = podRange;
             return this;
         }
         public NodePoolNetworkConfig build() {
             final var o = new NodePoolNetworkConfig();
             o.createPodRange = createPodRange;
+            o.enablePrivateNodes = enablePrivateNodes;
             o.podIpv4CidrBlock = podIpv4CidrBlock;
             o.podRange = podRange;
             return o;

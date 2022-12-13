@@ -24,8 +24,8 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
      * to private clusters, when `enable_private_nodes` is `true`.
      * 
      */
-    @Import(name="enablePrivateEndpoint", required=true)
-    private Output<Boolean> enablePrivateEndpoint;
+    @Import(name="enablePrivateEndpoint")
+    private @Nullable Output<Boolean> enablePrivateEndpoint;
 
     /**
      * @return When `true`, the cluster&#39;s private
@@ -34,8 +34,8 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
      * to private clusters, when `enable_private_nodes` is `true`.
      * 
      */
-    public Output<Boolean> enablePrivateEndpoint() {
-        return this.enablePrivateEndpoint;
+    public Optional<Output<Boolean>> enablePrivateEndpoint() {
+        return Optional.ofNullable(this.enablePrivateEndpoint);
     }
 
     /**
@@ -136,6 +136,21 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
     }
 
     /**
+     * Subnetwork in cluster&#39;s network where master&#39;s endpoint will be provisioned.
+     * 
+     */
+    @Import(name="privateEndpointSubnetwork")
+    private @Nullable Output<String> privateEndpointSubnetwork;
+
+    /**
+     * @return Subnetwork in cluster&#39;s network where master&#39;s endpoint will be provisioned.
+     * 
+     */
+    public Optional<Output<String>> privateEndpointSubnetwork() {
+        return Optional.ofNullable(this.privateEndpointSubnetwork);
+    }
+
+    /**
      * The external IP address of this cluster&#39;s master endpoint.
      * 
      */
@@ -159,6 +174,7 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
         this.masterIpv4CidrBlock = $.masterIpv4CidrBlock;
         this.peeringName = $.peeringName;
         this.privateEndpoint = $.privateEndpoint;
+        this.privateEndpointSubnetwork = $.privateEndpointSubnetwork;
         this.publicEndpoint = $.publicEndpoint;
     }
 
@@ -189,7 +205,7 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder enablePrivateEndpoint(Output<Boolean> enablePrivateEndpoint) {
+        public Builder enablePrivateEndpoint(@Nullable Output<Boolean> enablePrivateEndpoint) {
             $.enablePrivateEndpoint = enablePrivateEndpoint;
             return this;
         }
@@ -335,6 +351,27 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param privateEndpointSubnetwork Subnetwork in cluster&#39;s network where master&#39;s endpoint will be provisioned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateEndpointSubnetwork(@Nullable Output<String> privateEndpointSubnetwork) {
+            $.privateEndpointSubnetwork = privateEndpointSubnetwork;
+            return this;
+        }
+
+        /**
+         * @param privateEndpointSubnetwork Subnetwork in cluster&#39;s network where master&#39;s endpoint will be provisioned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateEndpointSubnetwork(String privateEndpointSubnetwork) {
+            return privateEndpointSubnetwork(Output.of(privateEndpointSubnetwork));
+        }
+
+        /**
          * @param publicEndpoint The external IP address of this cluster&#39;s master endpoint.
          * 
          * @return builder
@@ -356,7 +393,6 @@ public final class ClusterPrivateClusterConfigArgs extends com.pulumi.resources.
         }
 
         public ClusterPrivateClusterConfigArgs build() {
-            $.enablePrivateEndpoint = Objects.requireNonNull($.enablePrivateEndpoint, "expected parameter 'enablePrivateEndpoint' to be non-null");
             return $;
         }
     }

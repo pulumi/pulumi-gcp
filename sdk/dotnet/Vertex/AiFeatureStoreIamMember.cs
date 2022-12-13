@@ -10,64 +10,29 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Vertex
 {
     /// <summary>
-    /// A collection of DataItems and Annotations on them.
-    /// 
-    /// To get more information about Featurestore, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores)
-    /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
-    /// 
-    /// ## Example Usage
-    /// ### Vertex Ai Featurestore
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
-    ///     {
-    ///         EncryptionSpec = new Gcp.Vertex.Inputs.AiFeatureStoreEncryptionSpecArgs
-    ///         {
-    ///             KmsKeyName = "kms-name",
-    ///         },
-    ///         ForceDestroy = true,
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///         OnlineServingConfig = new Gcp.Vertex.Inputs.AiFeatureStoreOnlineServingConfigArgs
-    ///         {
-    ///             FixedNodeCount = 2,
-    ///         },
-    ///         Region = "us-central1",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// Featurestore can be imported using any of these accepted formats
+    /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{region}}/featurestores/{{name}} * {{project}}/{{region}}/{{name}} * {{region}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Vertex AI featurestore IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember default projects/{{project}}/locations/{{region}}/featurestores/{{name}}
+    ///  $ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember editor "projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer user:jane@example.com"
     /// ```
     /// 
-    /// ```sh
-    ///  $ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember default {{project}}/{{region}}/{{name}}
-    /// ```
+    ///  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember default {{region}}/{{name}}
+    ///  $ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember editor "projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer"
     /// ```
     /// 
+    ///  IAM policy imports use the identifier of the resource in question, e.g.
+    /// 
     /// ```sh
-    ///  $ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember default {{name}}
+    ///  $ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember editor projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}}
     /// ```
+    /// 
+    ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+    /// 
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember")]
     public partial class AiFeatureStoreIamMember : global::Pulumi.CustomResource
@@ -75,9 +40,15 @@ namespace Pulumi.Gcp.Vertex
         [Output("condition")]
         public Output<Outputs.AiFeatureStoreIamMemberCondition?> Condition { get; private set; } = null!;
 
+        /// <summary>
+        /// (Computed) The etag of the IAM policy.
+        /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("featurestore")]
         public Output<string> Featurestore { get; private set; } = null!;
 
@@ -86,17 +57,24 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
+        /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The region of the dataset. eg us-central1
+        /// The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+        /// region is specified, it is taken from the provider configuration.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
+        /// <summary>
+        /// The role that should be applied. Only one
+        /// `gcp.vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
@@ -149,6 +127,9 @@ namespace Pulumi.Gcp.Vertex
         [Input("condition")]
         public Input<Inputs.AiFeatureStoreIamMemberConditionArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("featurestore", required: true)]
         public Input<string> Featurestore { get; set; } = null!;
 
@@ -157,17 +138,24 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
+        /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The region of the dataset. eg us-central1
+        /// The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+        /// region is specified, it is taken from the provider configuration.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// The role that should be applied. Only one
+        /// `gcp.vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
@@ -182,9 +170,15 @@ namespace Pulumi.Gcp.Vertex
         [Input("condition")]
         public Input<Inputs.AiFeatureStoreIamMemberConditionGetArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// (Computed) The etag of the IAM policy.
+        /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("featurestore")]
         public Input<string>? Featurestore { get; set; }
 
@@ -193,17 +187,24 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
+        /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The region of the dataset. eg us-central1
+        /// The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+        /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+        /// region is specified, it is taken from the provider configuration.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// The role that should be applied. Only one
+        /// `gcp.vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 

@@ -39,6 +39,7 @@ import * as cloudfunctionsv2 from "./cloudfunctionsv2";
 import * as cloudidentity from "./cloudidentity";
 import * as cloudids from "./cloudids";
 import * as cloudrun from "./cloudrun";
+import * as cloudrunv2 from "./cloudrunv2";
 import * as cloudscheduler from "./cloudscheduler";
 import * as cloudtasks from "./cloudtasks";
 import * as composer from "./composer";
@@ -67,6 +68,7 @@ import * as firebaserules from "./firebaserules";
 import * as firestore from "./firestore";
 import * as folder from "./folder";
 import * as gameservices from "./gameservices";
+import * as gkebackup from "./gkebackup";
 import * as gkehub from "./gkehub";
 import * as healthcare from "./healthcare";
 import * as iam from "./iam";
@@ -136,6 +138,7 @@ export {
     cloudidentity,
     cloudids,
     cloudrun,
+    cloudrunv2,
     cloudscheduler,
     cloudtasks,
     composer,
@@ -164,6 +167,7 @@ export {
     firestore,
     folder,
     gameservices,
+    gkebackup,
     gkehub,
     healthcare,
     iam,

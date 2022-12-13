@@ -31,6 +31,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -62,12 +64,20 @@ import (
 //				return err
 //			}
 //			_, err = bigtable.NewGCPolicy(ctx, "policy", &bigtable.GCPolicyArgs{
-//				InstanceName: instance.Name,
-//				Table:        table.Name,
-//				ColumnFamily: pulumi.String("name"),
-//				MaxAge: &bigtable.GCPolicyMaxAgeArgs{
-//					Duration: pulumi.String("168h"),
-//				},
+//				InstanceName:   instance.Name,
+//				Table:          table.Name,
+//				ColumnFamily:   pulumi.String("name"),
+//				DeletionPolicy: pulumi.String("ABANDON"),
+//				GcRules: pulumi.String(fmt.Sprintf(`  {
+//	    "rules": [
+//	      {
+//	        "max_age": "168h"
+//	      }
+//	    ]
+//	  }
+//
+// `)),
+//
 //			})
 //			if err != nil {
 //				return err
@@ -85,6 +95,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigtable"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -93,18 +105,24 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigtable.NewGCPolicy(ctx, "policy", &bigtable.GCPolicyArgs{
-//				InstanceName: pulumi.Any(google_bigtable_instance.Instance.Name),
-//				Table:        pulumi.Any(google_bigtable_table.Table.Name),
-//				ColumnFamily: pulumi.String("name"),
-//				Mode:         pulumi.String("UNION"),
-//				MaxAge: &bigtable.GCPolicyMaxAgeArgs{
-//					Duration: pulumi.String("168h"),
-//				},
-//				MaxVersions: bigtable.GCPolicyMaxVersionArray{
-//					&bigtable.GCPolicyMaxVersionArgs{
-//						Number: pulumi.Int(10),
-//					},
-//				},
+//				InstanceName:   pulumi.Any(google_bigtable_instance.Instance.Name),
+//				Table:          pulumi.Any(google_bigtable_table.Table.Name),
+//				ColumnFamily:   pulumi.String("name"),
+//				DeletionPolicy: pulumi.String("ABANDON"),
+//				GcRules: pulumi.String(fmt.Sprintf(`  {
+//	    "mode": "union",
+//	    "rules": [
+//	      {
+//	        "max_age": "168h"
+//	      },
+//	      {
+//	        "max_version": 10
+//	      }
+//	    ]
+//	  }
+//
+// `)),
+//
 //			})
 //			if err != nil {
 //				return err
@@ -115,9 +133,7 @@ import (
 //
 // ```
 //
-// For complex, nested policies, an optional `gcRules` field are supported. This field
-// conflicts with `mode`, `maxAge` and `maxVersion`. This field is a serialized JSON
-// string. Example:
+// An example of more complex GC policy:
 // ```go
 // package main
 //
@@ -157,28 +173,29 @@ import (
 //				return err
 //			}
 //			_, err = bigtable.NewGCPolicy(ctx, "policy", &bigtable.GCPolicyArgs{
-//				InstanceName: instance.ID(),
-//				Table:        table.Name,
-//				ColumnFamily: pulumi.String("cf1"),
-//				GcRules: pulumi.String(fmt.Sprintf(`{
-//	  "mode": "union",
-//	  "rules": [
-//	    {
-//	      "max_age": "10h"
-//	    },
-//	    {
-//	      "mode": "intersection",
-//	      "rules": [
-//	        {
-//	          "max_age": "2h"
-//	        },
-//	        {
-//	          "max_version": 2
-//	        }
-//	      ]
-//	    }
-//	  ]
-//	}
+//				InstanceName:   instance.ID(),
+//				Table:          table.Name,
+//				ColumnFamily:   pulumi.String("cf1"),
+//				DeletionPolicy: pulumi.String("ABANDON"),
+//				GcRules: pulumi.String(fmt.Sprintf(`  {
+//	    "mode": "union",
+//	    "rules": [
+//	      {
+//	        "max_age": "10h"
+//	      },
+//	      {
+//	        "mode": "intersection",
+//	        "rules": [
+//	          {
+//	            "max_age": "2h"
+//	          },
+//	          {
+//	            "max_version": 2
+//	          }
+//	        ]
+//	      }
+//	    ]
+//	  }
 //
 // `)),
 //
@@ -217,6 +234,9 @@ type GCPolicy struct {
 
 	// The name of the column family.
 	ColumnFamily pulumi.StringOutput `pulumi:"columnFamily"`
+	// The deletion policy for the GC policy.
+	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules pulumi.StringPtrOutput `pulumi:"gcRules"`
 	// The name of the Bigtable instance.
@@ -273,6 +293,9 @@ func GetGCPolicy(ctx *pulumi.Context,
 type gcpolicyState struct {
 	// The name of the column family.
 	ColumnFamily *string `pulumi:"columnFamily"`
+	// The deletion policy for the GC policy.
+	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules *string `pulumi:"gcRules"`
 	// The name of the Bigtable instance.
@@ -292,6 +315,9 @@ type gcpolicyState struct {
 type GCPolicyState struct {
 	// The name of the column family.
 	ColumnFamily pulumi.StringPtrInput
+	// The deletion policy for the GC policy.
+	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+	DeletionPolicy pulumi.StringPtrInput
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules pulumi.StringPtrInput
 	// The name of the Bigtable instance.
@@ -315,6 +341,9 @@ func (GCPolicyState) ElementType() reflect.Type {
 type gcpolicyArgs struct {
 	// The name of the column family.
 	ColumnFamily string `pulumi:"columnFamily"`
+	// The deletion policy for the GC policy.
+	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules *string `pulumi:"gcRules"`
 	// The name of the Bigtable instance.
@@ -335,6 +364,9 @@ type gcpolicyArgs struct {
 type GCPolicyArgs struct {
 	// The name of the column family.
 	ColumnFamily pulumi.StringInput
+	// The deletion policy for the GC policy.
+	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+	DeletionPolicy pulumi.StringPtrInput
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules pulumi.StringPtrInput
 	// The name of the Bigtable instance.
@@ -441,6 +473,12 @@ func (o GCPolicyOutput) ToGCPolicyOutputWithContext(ctx context.Context) GCPolic
 // The name of the column family.
 func (o GCPolicyOutput) ColumnFamily() pulumi.StringOutput {
 	return o.ApplyT(func(v *GCPolicy) pulumi.StringOutput { return v.ColumnFamily }).(pulumi.StringOutput)
+}
+
+// The deletion policy for the GC policy.
+// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+func (o GCPolicyOutput) DeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GCPolicy) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.

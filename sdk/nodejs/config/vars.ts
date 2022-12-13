@@ -281,6 +281,14 @@ Object.defineProperty(exports, "cloudRunCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const cloudRunV2CustomEndpoint: string | undefined;
+Object.defineProperty(exports, "cloudRunV2CustomEndpoint", {
+    get() {
+        return __config.get("cloudRunV2CustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const cloudSchedulerCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "cloudSchedulerCustomEndpoint", {
     get() {
@@ -537,6 +545,14 @@ Object.defineProperty(exports, "firebaseHostingCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const firebaseStorageCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "firebaseStorageCustomEndpoint", {
+    get() {
+        return __config.get("firebaseStorageCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const firebaserulesCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "firebaserulesCustomEndpoint", {
     get() {
@@ -557,6 +573,14 @@ export declare const gameServicesCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "gameServicesCustomEndpoint", {
     get() {
         return __config.get("gameServicesCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const gkeBackupCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "gkeBackupCustomEndpoint", {
+    get() {
+        return __config.get("gkeBackupCustomEndpoint");
     },
     enumerable: true,
 });

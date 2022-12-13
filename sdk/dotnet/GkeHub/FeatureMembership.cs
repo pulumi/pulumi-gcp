@@ -151,6 +151,7 @@ namespace Pulumi.Gcp.GkeHub
     ///         Mesh = new Gcp.GkeHub.Inputs.FeatureMembershipMeshArgs
     ///         {
     ///             Management = "MANAGEMENT_AUTOMATIC",
+    ///             ControlPlane = "AUTOMATIC",
     ///         },
     ///     }, new CustomResourceOptions
     ///     {

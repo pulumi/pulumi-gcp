@@ -41,9 +41,15 @@ import * as utilities from "../utilities";
  *     instanceName: instance.name,
  *     table: table.name,
  *     columnFamily: "name",
- *     maxAge: {
- *         duration: "168h",
- *     },
+ *     deletionPolicy: "ABANDON",
+ *     gcRules: `  {
+ *     "rules": [
+ *       {
+ *         "max_age": "168h"
+ *       }
+ *     ]
+ *   }
+ * `,
  * });
  * ```
  *
@@ -57,19 +63,23 @@ import * as utilities from "../utilities";
  *     instanceName: google_bigtable_instance.instance.name,
  *     table: google_bigtable_table.table.name,
  *     columnFamily: "name",
- *     mode: "UNION",
- *     maxAge: {
- *         duration: "168h",
- *     },
- *     maxVersions: [{
- *         number: 10,
- *     }],
+ *     deletionPolicy: "ABANDON",
+ *     gcRules: `  {
+ *     "mode": "union",
+ *     "rules": [
+ *       {
+ *         "max_age": "168h"
+ *       },
+ *       {
+ *         "max_version": 10
+ *       }
+ *     ]
+ *   }
+ * `,
  * });
  * ```
  *
- * For complex, nested policies, an optional `gcRules` field are supported. This field
- * conflicts with `mode`, `maxAge` and `maxVersion`. This field is a serialized JSON
- * string. Example:
+ * An example of more complex GC policy:
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -92,25 +102,26 @@ import * as utilities from "../utilities";
  *     instanceName: instance.id,
  *     table: table.name,
  *     columnFamily: "cf1",
- *     gcRules: `{
- *   "mode": "union",
- *   "rules": [
- *     {
- *       "max_age": "10h"
- *     },
- *     {
- *       "mode": "intersection",
- *       "rules": [
- *         {
- *           "max_age": "2h"
- *         },
- *         {
- *           "max_version": 2
- *         }
- *       ]
- *     }
- *   ]
- * }
+ *     deletionPolicy: "ABANDON",
+ *     gcRules: `  {
+ *     "mode": "union",
+ *     "rules": [
+ *       {
+ *         "max_age": "10h"
+ *       },
+ *       {
+ *         "mode": "intersection",
+ *         "rules": [
+ *           {
+ *             "max_age": "2h"
+ *           },
+ *           {
+ *             "max_version": 2
+ *           }
+ *         ]
+ *       }
+ *     ]
+ *   }
  * `,
  * });
  * ```
@@ -156,6 +167,11 @@ export class GCPolicy extends pulumi.CustomResource {
      */
     public readonly columnFamily!: pulumi.Output<string>;
     /**
+     * The deletion policy for the GC policy.
+     * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+     */
+    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    /**
      * Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
      */
     public readonly gcRules!: pulumi.Output<string | undefined>;
@@ -198,6 +214,7 @@ export class GCPolicy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GCPolicyState | undefined;
             resourceInputs["columnFamily"] = state ? state.columnFamily : undefined;
+            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["gcRules"] = state ? state.gcRules : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["maxAge"] = state ? state.maxAge : undefined;
@@ -217,6 +234,7 @@ export class GCPolicy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'table'");
             }
             resourceInputs["columnFamily"] = args ? args.columnFamily : undefined;
+            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["gcRules"] = args ? args.gcRules : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["maxAge"] = args ? args.maxAge : undefined;
@@ -238,6 +256,11 @@ export interface GCPolicyState {
      * The name of the column family.
      */
     columnFamily?: pulumi.Input<string>;
+    /**
+     * The deletion policy for the GC policy.
+     * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
      */
@@ -276,6 +299,11 @@ export interface GCPolicyArgs {
      * The name of the column family.
      */
     columnFamily: pulumi.Input<string>;
+    /**
+     * The deletion policy for the GC policy.
+     * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
      */

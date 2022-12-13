@@ -270,6 +270,13 @@ namespace Pulumi.Gcp
             set => _cloudRunCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _cloudRunV2CustomEndpoint = new __Value<string?>(() => __config.Get("cloudRunV2CustomEndpoint"));
+        public static string? CloudRunV2CustomEndpoint
+        {
+            get => _cloudRunV2CustomEndpoint.Get();
+            set => _cloudRunV2CustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _cloudSchedulerCustomEndpoint = new __Value<string?>(() => __config.Get("cloudSchedulerCustomEndpoint"));
         public static string? CloudSchedulerCustomEndpoint
         {
@@ -494,6 +501,13 @@ namespace Pulumi.Gcp
             set => _firebaseHostingCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _firebaseStorageCustomEndpoint = new __Value<string?>(() => __config.Get("firebaseStorageCustomEndpoint"));
+        public static string? FirebaseStorageCustomEndpoint
+        {
+            get => _firebaseStorageCustomEndpoint.Get();
+            set => _firebaseStorageCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _firebaserulesCustomEndpoint = new __Value<string?>(() => __config.Get("firebaserulesCustomEndpoint"));
         public static string? FirebaserulesCustomEndpoint
         {
@@ -513,6 +527,13 @@ namespace Pulumi.Gcp
         {
             get => _gameServicesCustomEndpoint.Get();
             set => _gameServicesCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _gkeBackupCustomEndpoint = new __Value<string?>(() => __config.Get("gkeBackupCustomEndpoint"));
+        public static string? GkeBackupCustomEndpoint
+        {
+            get => _gkeBackupCustomEndpoint.Get();
+            set => _gkeBackupCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _gkeHubCustomEndpoint = new __Value<string?>(() => __config.Get("gkeHubCustomEndpoint"));

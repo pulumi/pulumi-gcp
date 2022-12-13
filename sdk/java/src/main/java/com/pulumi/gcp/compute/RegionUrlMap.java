@@ -133,6 +133,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionRetryPolicyArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionUrlRewriteArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionCorsPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionTimeoutArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapTestArgs;
@@ -241,6 +248,38 @@ import javax.annotation.Nullable;
  *                             .responseHeadersToRemoves(&#34;buzz&#34;)
  *                             .build())
  *                         .build())
+ *                 .urlRewrite(RegionUrlMapDefaultRouteActionUrlRewriteArgs.builder()
+ *                     .hostRewrite(&#34;dev.example.com&#34;)
+ *                     .pathPrefixRewrite(&#34;/v1/api/&#34;)
+ *                     .build())
+ *                 .corsPolicy(RegionUrlMapDefaultRouteActionCorsPolicyArgs.builder()
+ *                     .disabled(false)
+ *                     .allowCredentials(true)
+ *                     .allowHeaders(&#34;foobar&#34;)
+ *                     .allowMethods(                    
+ *                         &#34;GET&#34;,
+ *                         &#34;POST&#34;)
+ *                     .allowOrigins(&#34;example.com&#34;)
+ *                     .exposeHeaders(&#34;foobar&#34;)
+ *                     .maxAge(60)
+ *                     .build())
+ *                 .faultInjectionPolicy(RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs.builder()
+ *                     .delay(RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgs.builder()
+ *                         .fixedDelay(RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs.builder()
+ *                             .seconds(0)
+ *                             .nanos(500)
+ *                             .build())
+ *                         .percentage(0.5)
+ *                         .build())
+ *                     .abort(RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgs.builder()
+ *                         .httpStatus(500)
+ *                         .percentage(0.5)
+ *                         .build())
+ *                     .build())
+ *                 .timeout(RegionUrlMapDefaultRouteActionTimeoutArgs.builder()
+ *                     .seconds(0)
+ *                     .nanos(500)
+ *                     .build())
  *                 .build())
  *             .hostRules(RegionUrlMapHostRuleArgs.builder()
  *                 .hosts(&#34;mysite.com&#34;)
@@ -365,8 +404,8 @@ import javax.annotation.Nullable;
  *                             .nanos(750000000)
  *                             .build())
  *                         .urlRewrite(RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs.builder()
- *                             .hostRewrite(&#34;A replacement header&#34;)
- *                             .pathPrefixRewrite(&#34;A replacement path&#34;)
+ *                             .hostRewrite(&#34;dev.example.com&#34;)
+ *                             .pathPrefixRewrite(&#34;/v1/api/&#34;)
  *                             .build())
  *                         .weightedBackendServices(RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs.builder()
  *                             .backendService(home.id())
@@ -470,8 +509,8 @@ import javax.annotation.Nullable;
  *                             .nanos(750000000)
  *                             .build())
  *                         .urlRewrite(RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs.builder()
- *                             .hostRewrite(&#34;A replacement header&#34;)
- *                             .pathPrefixRewrite(&#34;A replacement path&#34;)
+ *                             .hostRewrite(&#34;dev.example.com&#34;)
+ *                             .pathPrefixRewrite(&#34;/v1/api/&#34;)
  *                             .build())
  *                         .weightedBackendServices(RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs.builder()
  *                             .backendService(home.id())

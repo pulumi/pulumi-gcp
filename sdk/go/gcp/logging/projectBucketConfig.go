@@ -83,6 +83,72 @@ import (
 //
 // ```
 //
+// # Create logging bucket with customId and cmekSettings
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cmekSettings, err := logging.GetProjectCmekSettings(ctx, &logging.GetProjectCmekSettingsArgs{
+//				Project: "project_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			key, err := kms.NewCryptoKey(ctx, "key", &kms.CryptoKeyArgs{
+//				KeyRing:        keyring.ID(),
+//				RotationPeriod: pulumi.String("100000s"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cryptoKeyBinding, err := kms.NewCryptoKeyIAMBinding(ctx, "cryptoKeyBinding", &kms.CryptoKeyIAMBindingArgs{
+//				CryptoKeyId: key.ID(),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Members: pulumi.StringArray{
+//					pulumi.String(fmt.Sprintf("serviceAccount:%v", cmekSettings.ServiceAccountId)),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = logging.NewProjectBucketConfig(ctx, "example-project-bucket-cmek-settings", &logging.ProjectBucketConfigArgs{
+//				Project:       pulumi.String("project_id"),
+//				Location:      pulumi.String("us-central1"),
+//				RetentionDays: pulumi.Int(30),
+//				BucketId:      pulumi.String("custom-bucket"),
+//				CmekSettings: &logging.ProjectBucketConfigCmekSettingsArgs{
+//					KmsKeyName: key.ID(),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				cryptoKeyBinding,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # This resource can be imported using the following format
@@ -97,13 +163,15 @@ type ProjectBucketConfig struct {
 
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId pulumi.StringOutput `pulumi:"bucketId"`
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+	CmekSettings ProjectBucketConfigCmekSettingsPtrOutput `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
 	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
 	// The location of the bucket.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
+	// The resource name of the CMEK settings.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent resource that contains the logging bucket.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -151,13 +219,15 @@ func GetProjectBucketConfig(ctx *pulumi.Context,
 type projectBucketConfigState struct {
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId *string `pulumi:"bucketId"`
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+	CmekSettings *ProjectBucketConfigCmekSettings `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
 	LifecycleState *string `pulumi:"lifecycleState"`
 	// The location of the bucket.
 	Location *string `pulumi:"location"`
-	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
+	// The resource name of the CMEK settings.
 	Name *string `pulumi:"name"`
 	// The parent resource that contains the logging bucket.
 	Project *string `pulumi:"project"`
@@ -168,13 +238,15 @@ type projectBucketConfigState struct {
 type ProjectBucketConfigState struct {
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId pulumi.StringPtrInput
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+	CmekSettings ProjectBucketConfigCmekSettingsPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
 	LifecycleState pulumi.StringPtrInput
 	// The location of the bucket.
 	Location pulumi.StringPtrInput
-	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
+	// The resource name of the CMEK settings.
 	Name pulumi.StringPtrInput
 	// The parent resource that contains the logging bucket.
 	Project pulumi.StringPtrInput
@@ -189,6 +261,8 @@ func (ProjectBucketConfigState) ElementType() reflect.Type {
 type projectBucketConfigArgs struct {
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId string `pulumi:"bucketId"`
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+	CmekSettings *ProjectBucketConfigCmekSettings `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
 	// The location of the bucket.
@@ -203,6 +277,8 @@ type projectBucketConfigArgs struct {
 type ProjectBucketConfigArgs struct {
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId pulumi.StringInput
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+	CmekSettings ProjectBucketConfigCmekSettingsPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
 	// The location of the bucket.
@@ -305,6 +381,11 @@ func (o ProjectBucketConfigOutput) BucketId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectBucketConfig) pulumi.StringOutput { return v.BucketId }).(pulumi.StringOutput)
 }
 
+// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+func (o ProjectBucketConfigOutput) CmekSettings() ProjectBucketConfigCmekSettingsPtrOutput {
+	return o.ApplyT(func(v *ProjectBucketConfig) ProjectBucketConfigCmekSettingsPtrOutput { return v.CmekSettings }).(ProjectBucketConfigCmekSettingsPtrOutput)
+}
+
 // Describes this bucket.
 func (o ProjectBucketConfigOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectBucketConfig) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -320,7 +401,7 @@ func (o ProjectBucketConfigOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectBucketConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
+// The resource name of the CMEK settings.
 func (o ProjectBucketConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectBucketConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

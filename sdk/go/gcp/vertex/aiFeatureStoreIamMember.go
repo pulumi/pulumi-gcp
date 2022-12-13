@@ -11,91 +11,55 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A collection of DataItems and Annotations on them.
-//
-// To get more information about Featurestore, see:
-//
-// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores)
-// * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/vertex-ai/docs)
-//
-// ## Example Usage
-// ### Vertex Ai Featurestore
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vertex.NewAiFeatureStore(ctx, "featurestore", &vertex.AiFeatureStoreArgs{
-//				EncryptionSpec: &vertex.AiFeatureStoreEncryptionSpecArgs{
-//					KmsKeyName: pulumi.String("kms-name"),
-//				},
-//				ForceDestroy: pulumi.Bool(true),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//				OnlineServingConfig: &vertex.AiFeatureStoreOnlineServingConfigArgs{
-//					FixedNodeCount: pulumi.Int(2),
-//				},
-//				Region: pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// # Featurestore can be imported using any of these accepted formats
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{region}}/featurestores/{{name}} * {{project}}/{{region}}/{{name}} * {{region}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Vertex AI featurestore IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 //
 // ```sh
 //
-//	$ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember default projects/{{project}}/locations/{{region}}/featurestores/{{name}}
+//	$ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember editor "projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer user:jane@example.com"
 //
 // ```
+//
+//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 //
 // ```sh
 //
-//	$ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember default {{project}}/{{region}}/{{name}}
+//	$ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember editor "projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer"
 //
 // ```
+//
+//	IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
 //
-//	$ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember default {{region}}/{{name}}
+//	$ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember editor projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}}
 //
 // ```
 //
-// ```sh
+//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
-//	$ pulumi import gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember default {{name}}
-//
-// ```
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type AiFeatureStoreIamMember struct {
 	pulumi.CustomResourceState
 
-	Condition    AiFeatureStoreIamMemberConditionPtrOutput `pulumi:"condition"`
-	Etag         pulumi.StringOutput                       `pulumi:"etag"`
-	Featurestore pulumi.StringOutput                       `pulumi:"featurestore"`
-	Member       pulumi.StringOutput                       `pulumi:"member"`
+	Condition AiFeatureStoreIamMemberConditionPtrOutput `pulumi:"condition"`
+	// (Computed) The etag of the IAM policy.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Used to find the parent resource to bind the IAM policy to
+	Featurestore pulumi.StringOutput `pulumi:"featurestore"`
+	Member       pulumi.StringOutput `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The region of the dataset. eg us-central1
+	// The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
 	Region pulumi.StringOutput `pulumi:"region"`
-	Role   pulumi.StringOutput `pulumi:"role"`
+	// The role that should be applied. Only one
+	// `vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role pulumi.StringOutput `pulumi:"role"`
 }
 
 // NewAiFeatureStoreIamMember registers a new resource with the given unique name, arguments, and options.
@@ -136,29 +100,43 @@ func GetAiFeatureStoreIamMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiFeatureStoreIamMember resources.
 type aiFeatureStoreIamMemberState struct {
-	Condition    *AiFeatureStoreIamMemberCondition `pulumi:"condition"`
-	Etag         *string                           `pulumi:"etag"`
-	Featurestore *string                           `pulumi:"featurestore"`
-	Member       *string                           `pulumi:"member"`
+	Condition *AiFeatureStoreIamMemberCondition `pulumi:"condition"`
+	// (Computed) The etag of the IAM policy.
+	Etag *string `pulumi:"etag"`
+	// Used to find the parent resource to bind the IAM policy to
+	Featurestore *string `pulumi:"featurestore"`
+	Member       *string `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The region of the dataset. eg us-central1
+	// The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
 	Region *string `pulumi:"region"`
-	Role   *string `pulumi:"role"`
+	// The role that should be applied. Only one
+	// `vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role *string `pulumi:"role"`
 }
 
 type AiFeatureStoreIamMemberState struct {
-	Condition    AiFeatureStoreIamMemberConditionPtrInput
-	Etag         pulumi.StringPtrInput
+	Condition AiFeatureStoreIamMemberConditionPtrInput
+	// (Computed) The etag of the IAM policy.
+	Etag pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	Featurestore pulumi.StringPtrInput
 	Member       pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The region of the dataset. eg us-central1
+	// The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
 	Region pulumi.StringPtrInput
-	Role   pulumi.StringPtrInput
+	// The role that should be applied. Only one
+	// `vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role pulumi.StringPtrInput
 }
 
 func (AiFeatureStoreIamMemberState) ElementType() reflect.Type {
@@ -166,28 +144,40 @@ func (AiFeatureStoreIamMemberState) ElementType() reflect.Type {
 }
 
 type aiFeatureStoreIamMemberArgs struct {
-	Condition    *AiFeatureStoreIamMemberCondition `pulumi:"condition"`
-	Featurestore string                            `pulumi:"featurestore"`
-	Member       string                            `pulumi:"member"`
+	Condition *AiFeatureStoreIamMemberCondition `pulumi:"condition"`
+	// Used to find the parent resource to bind the IAM policy to
+	Featurestore string `pulumi:"featurestore"`
+	Member       string `pulumi:"member"`
 	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The region of the dataset. eg us-central1
+	// The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
 	Region *string `pulumi:"region"`
-	Role   string  `pulumi:"role"`
+	// The role that should be applied. Only one
+	// `vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role string `pulumi:"role"`
 }
 
 // The set of arguments for constructing a AiFeatureStoreIamMember resource.
 type AiFeatureStoreIamMemberArgs struct {
-	Condition    AiFeatureStoreIamMemberConditionPtrInput
+	Condition AiFeatureStoreIamMemberConditionPtrInput
+	// Used to find the parent resource to bind the IAM policy to
 	Featurestore pulumi.StringInput
 	Member       pulumi.StringInput
 	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The region of the dataset. eg us-central1
+	// The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+	// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+	// region is specified, it is taken from the provider configuration.
 	Region pulumi.StringPtrInput
-	Role   pulumi.StringInput
+	// The role that should be applied. Only one
+	// `vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role pulumi.StringInput
 }
 
 func (AiFeatureStoreIamMemberArgs) ElementType() reflect.Type {
@@ -281,10 +271,12 @@ func (o AiFeatureStoreIamMemberOutput) Condition() AiFeatureStoreIamMemberCondit
 	return o.ApplyT(func(v *AiFeatureStoreIamMember) AiFeatureStoreIamMemberConditionPtrOutput { return v.Condition }).(AiFeatureStoreIamMemberConditionPtrOutput)
 }
 
+// (Computed) The etag of the IAM policy.
 func (o AiFeatureStoreIamMemberOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreIamMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o AiFeatureStoreIamMemberOutput) Featurestore() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreIamMember) pulumi.StringOutput { return v.Featurestore }).(pulumi.StringOutput)
 }
@@ -294,16 +286,21 @@ func (o AiFeatureStoreIamMemberOutput) Member() pulumi.StringOutput {
 }
 
 // The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
+// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 func (o AiFeatureStoreIamMemberOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreIamMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The region of the dataset. eg us-central1
+// The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+// region is specified, it is taken from the provider configuration.
 func (o AiFeatureStoreIamMemberOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreIamMember) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
+// The role that should be applied. Only one
+// `vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
+// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (o AiFeatureStoreIamMemberOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

@@ -31,14 +31,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AiFeatureStoreEntityType{}
 	case "gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature":
 		r = &AiFeatureStoreEntityTypeFeature{}
+	case "gcp:vertex/aiFeatureStoreEntityTypeIamBinding:AiFeatureStoreEntityTypeIamBinding":
+		r = &AiFeatureStoreEntityTypeIamBinding{}
+	case "gcp:vertex/aiFeatureStoreEntityTypeIamMember:AiFeatureStoreEntityTypeIamMember":
+		r = &AiFeatureStoreEntityTypeIamMember{}
+	case "gcp:vertex/aiFeatureStoreEntityTypeIamPolicy:AiFeatureStoreEntityTypeIamPolicy":
+		r = &AiFeatureStoreEntityTypeIamPolicy{}
 	case "gcp:vertex/aiFeatureStoreIamBinding:AiFeatureStoreIamBinding":
 		r = &AiFeatureStoreIamBinding{}
 	case "gcp:vertex/aiFeatureStoreIamMember:AiFeatureStoreIamMember":
 		r = &AiFeatureStoreIamMember{}
 	case "gcp:vertex/aiFeatureStoreIamPolicy:AiFeatureStoreIamPolicy":
 		r = &AiFeatureStoreIamPolicy{}
+	case "gcp:vertex/aiIndex:AiIndex":
+		r = &AiIndex{}
 	case "gcp:vertex/aiMetadataStore:AiMetadataStore":
 		r = &AiMetadataStore{}
+	case "gcp:vertex/aiTensorboard:AiTensorboard":
+		r = &AiTensorboard{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -79,6 +89,21 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"vertex/aiFeatureStoreEntityTypeIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiFeatureStoreEntityTypeIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiFeatureStoreEntityTypeIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"vertex/aiFeatureStoreIamBinding",
 		&module{version},
 	)
@@ -94,7 +119,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"vertex/aiIndex",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"vertex/aiMetadataStore",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiTensorboard",
 		&module{version},
 	)
 }

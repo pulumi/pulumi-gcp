@@ -152,6 +152,12 @@ public final class ClusterNodeConfig {
      * 
      */
     private @Nullable ClusterNodeConfigReservationAffinity reservationAffinity;
+    /**
+     * @return The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+     * for how these labels are applied to clusters, node pools and nodes.
+     * 
+     */
+    private @Nullable Map<String,String> resourceLabels;
     private @Nullable ClusterNodeConfigSandboxConfig sandboxConfig;
     /**
      * @return The service account to be used by the Node VMs.
@@ -362,6 +368,14 @@ public final class ClusterNodeConfig {
     public Optional<ClusterNodeConfigReservationAffinity> reservationAffinity() {
         return Optional.ofNullable(this.reservationAffinity);
     }
+    /**
+     * @return The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+     * for how these labels are applied to clusters, node pools and nodes.
+     * 
+     */
+    public Map<String,String> resourceLabels() {
+        return this.resourceLabels == null ? Map.of() : this.resourceLabels;
+    }
     public Optional<ClusterNodeConfigSandboxConfig> sandboxConfig() {
         return Optional.ofNullable(this.sandboxConfig);
     }
@@ -448,6 +462,7 @@ public final class ClusterNodeConfig {
         private @Nullable List<String> oauthScopes;
         private @Nullable Boolean preemptible;
         private @Nullable ClusterNodeConfigReservationAffinity reservationAffinity;
+        private @Nullable Map<String,String> resourceLabels;
         private @Nullable ClusterNodeConfigSandboxConfig sandboxConfig;
         private @Nullable String serviceAccount;
         private @Nullable ClusterNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
@@ -478,6 +493,7 @@ public final class ClusterNodeConfig {
     	      this.oauthScopes = defaults.oauthScopes;
     	      this.preemptible = defaults.preemptible;
     	      this.reservationAffinity = defaults.reservationAffinity;
+    	      this.resourceLabels = defaults.resourceLabels;
     	      this.sandboxConfig = defaults.sandboxConfig;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
@@ -594,6 +610,11 @@ public final class ClusterNodeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder resourceLabels(@Nullable Map<String,String> resourceLabels) {
+            this.resourceLabels = resourceLabels;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sandboxConfig(@Nullable ClusterNodeConfigSandboxConfig sandboxConfig) {
             this.sandboxConfig = sandboxConfig;
             return this;
@@ -656,6 +677,7 @@ public final class ClusterNodeConfig {
             o.oauthScopes = oauthScopes;
             o.preemptible = preemptible;
             o.reservationAffinity = reservationAffinity;
+            o.resourceLabels = resourceLabels;
             o.sandboxConfig = sandboxConfig;
             o.serviceAccount = serviceAccount;
             o.shieldedInstanceConfig = shieldedInstanceConfig;

@@ -51,25 +51,41 @@ namespace Pulumi.Gcp.DataFusion
     /// {
     ///     var @default = Gcp.AppEngine.GetDefaultServiceAccount.Invoke();
     /// 
+    ///     var network = new Gcp.Compute.Network("network");
+    /// 
+    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new()
+    ///     {
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "VPC_PEERING",
+    ///         PrefixLength = 22,
+    ///         Network = network.Id,
+    ///     });
+    /// 
     ///     var extendedInstance = new Gcp.DataFusion.Instance("extendedInstance", new()
     ///     {
     ///         Description = "My Data Fusion instance",
+    ///         DisplayName = "My Data Fusion instance",
     ///         Region = "us-central1",
     ///         Type = "BASIC",
     ///         EnableStackdriverLogging = true,
     ///         EnableStackdriverMonitoring = true,
+    ///         PrivateInstance = true,
+    ///         Version = "6.6.0",
+    ///         DataprocServiceAccount = @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult).Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
     ///         Labels = 
     ///         {
     ///             { "example_key", "example_value" },
     ///         },
-    ///         PrivateInstance = true,
     ///         NetworkConfig = new Gcp.DataFusion.Inputs.InstanceNetworkConfigArgs
     ///         {
     ///             Network = "default",
-    ///             IpAllocation = "10.89.48.0/22",
+    ///             IpAllocation = Output.Tuple(privateIpAlloc.Address, privateIpAlloc.PrefixLength).Apply(values =&gt;
+    ///             {
+    ///                 var address = values.Item1;
+    ///                 var prefixLength = values.Item2;
+    ///                 return $"{address}/{prefixLength}";
+    ///             }),
     ///         },
-    ///         Version = "6.3.0",
-    ///         DataprocServiceAccount = @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult).Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)),
     ///         Options = 
     ///         {
     ///             { "prober_test_run", "true" },
@@ -109,7 +125,7 @@ namespace Pulumi.Gcp.DataFusion
     ///         },
     ///     });
     /// 
-    ///     var basicCmek = new Gcp.DataFusion.Instance("basicCmek", new()
+    ///     var cmek = new Gcp.DataFusion.Instance("cmek", new()
     ///     {
     ///         Region = "us-central1",
     ///         Type = "BASIC",
@@ -149,6 +165,49 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
+    /// ### Data Fusion Instance Event
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var eventTopic = new Gcp.PubSub.Topic("eventTopic");
+    /// 
+    ///     var eventInstance = new Gcp.DataFusion.Instance("eventInstance", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Type = "BASIC",
+    ///         Version = "6.7.0",
+    ///         EventPublishConfig = new Gcp.DataFusion.Inputs.InstanceEventPublishConfigArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Topic = eventTopic.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Data Fusion Instance Zone
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var zone = new Gcp.DataFusion.Instance("zone", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Type = "DEVELOPER",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -173,6 +232,12 @@ namespace Pulumi.Gcp.DataFusion
     [GcpResourceType("gcp:datafusion/instance:Instance")]
     public partial class Instance : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Endpoint on which the REST APIs is accessible.
+        /// </summary>
+        [Output("apiEndpoint")]
+        public Output<string> ApiEndpoint { get; private set; } = null!;
+
         /// <summary>
         /// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         /// </summary>
@@ -199,6 +264,12 @@ namespace Pulumi.Gcp.DataFusion
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Display name for an instance.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string?> DisplayName { get; private set; } = null!;
+
+        /// <summary>
         /// Option to enable granular role-based access control.
         /// </summary>
         [Output("enableRbac")]
@@ -215,6 +286,13 @@ namespace Pulumi.Gcp.DataFusion
         /// </summary>
         [Output("enableStackdriverMonitoring")]
         public Output<bool?> EnableStackdriverMonitoring { get; private set; } = null!;
+
+        /// <summary>
+        /// Option to enable and pass metadata for event publishing.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("eventPublishConfig")]
+        public Output<Outputs.InstanceEventPublishConfig?> EventPublishConfig { get; private set; } = null!;
 
         /// <summary>
         /// Cloud Storage bucket generated by Data Fusion in the customer project.
@@ -247,6 +325,12 @@ namespace Pulumi.Gcp.DataFusion
         /// </summary>
         [Output("options")]
         public Output<ImmutableDictionary<string, string>?> Options { get; private set; } = null!;
+
+        /// <summary>
+        /// P4 service account for the customer project.
+        /// </summary>
+        [Output("p4ServiceAccount")]
+        public Output<string> P4ServiceAccount { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether the Data Fusion instance should be private. If set to
@@ -329,6 +413,12 @@ namespace Pulumi.Gcp.DataFusion
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+        /// </summary>
+        [Output("zone")]
+        public Output<string> Zone { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Instance resource with the given unique name, arguments, and options.
@@ -395,6 +485,12 @@ namespace Pulumi.Gcp.DataFusion
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Display name for an instance.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
         /// Option to enable granular role-based access control.
         /// </summary>
         [Input("enableRbac")]
@@ -411,6 +507,13 @@ namespace Pulumi.Gcp.DataFusion
         /// </summary>
         [Input("enableStackdriverMonitoring")]
         public Input<bool>? EnableStackdriverMonitoring { get; set; }
+
+        /// <summary>
+        /// Option to enable and pass metadata for event publishing.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("eventPublishConfig")]
+        public Input<Inputs.InstanceEventPublishConfigArgs>? EventPublishConfig { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -493,6 +596,12 @@ namespace Pulumi.Gcp.DataFusion
         [Input("version")]
         public Input<string>? Version { get; set; }
 
+        /// <summary>
+        /// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+        /// </summary>
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
+
         public InstanceArgs()
         {
         }
@@ -501,6 +610,12 @@ namespace Pulumi.Gcp.DataFusion
 
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Endpoint on which the REST APIs is accessible.
+        /// </summary>
+        [Input("apiEndpoint")]
+        public Input<string>? ApiEndpoint { get; set; }
+
         /// <summary>
         /// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         /// </summary>
@@ -527,6 +642,12 @@ namespace Pulumi.Gcp.DataFusion
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Display name for an instance.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
         /// Option to enable granular role-based access control.
         /// </summary>
         [Input("enableRbac")]
@@ -543,6 +664,13 @@ namespace Pulumi.Gcp.DataFusion
         /// </summary>
         [Input("enableStackdriverMonitoring")]
         public Input<bool>? EnableStackdriverMonitoring { get; set; }
+
+        /// <summary>
+        /// Option to enable and pass metadata for event publishing.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("eventPublishConfig")]
+        public Input<Inputs.InstanceEventPublishConfigGetArgs>? EventPublishConfig { get; set; }
 
         /// <summary>
         /// Cloud Storage bucket generated by Data Fusion in the customer project.
@@ -587,6 +715,12 @@ namespace Pulumi.Gcp.DataFusion
             get => _options ?? (_options = new InputMap<string>());
             set => _options = value;
         }
+
+        /// <summary>
+        /// P4 service account for the customer project.
+        /// </summary>
+        [Input("p4ServiceAccount")]
+        public Input<string>? P4ServiceAccount { get; set; }
 
         /// <summary>
         /// Specifies whether the Data Fusion instance should be private. If set to
@@ -668,6 +802,12 @@ namespace Pulumi.Gcp.DataFusion
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
+
+        /// <summary>
+        /// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+        /// </summary>
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public InstanceState()
         {

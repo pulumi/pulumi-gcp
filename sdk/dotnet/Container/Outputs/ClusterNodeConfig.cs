@@ -119,6 +119,11 @@ namespace Pulumi.Gcp.Container.Outputs
         /// The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodeConfigReservationAffinity? ReservationAffinity;
+        /// <summary>
+        /// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+        /// for how these labels are applied to clusters, node pools and nodes.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? ResourceLabels;
         public readonly Outputs.ClusterNodeConfigSandboxConfig? SandboxConfig;
         /// <summary>
         /// The service account to be used by the Node VMs.
@@ -198,6 +203,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterNodeConfigReservationAffinity? reservationAffinity,
 
+            ImmutableDictionary<string, string>? resourceLabels,
+
             Outputs.ClusterNodeConfigSandboxConfig? sandboxConfig,
 
             string? serviceAccount,
@@ -232,6 +239,7 @@ namespace Pulumi.Gcp.Container.Outputs
             OauthScopes = oauthScopes;
             Preemptible = preemptible;
             ReservationAffinity = reservationAffinity;
+            ResourceLabels = resourceLabels;
             SandboxConfig = sandboxConfig;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfig = shieldedInstanceConfig;

@@ -172,16 +172,18 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The network configuration of the pool. See
-     * gcp.container.Cluster for schema.
+     * The network configuration of the pool. Such as
+     * configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+     * documented below
      * 
      */
     @Import(name="networkConfig")
     private @Nullable Output<NodePoolNetworkConfigArgs> networkConfig;
 
     /**
-     * @return The network configuration of the pool. See
-     * gcp.container.Cluster for schema.
+     * @return The network configuration of the pool. Such as
+     * configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+     * documented below
      * 
      */
     public Optional<Output<NodePoolNetworkConfigArgs>> networkConfig() {
@@ -555,8 +557,9 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkConfig The network configuration of the pool. See
-         * gcp.container.Cluster for schema.
+         * @param networkConfig The network configuration of the pool. Such as
+         * configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+         * documented below
          * 
          * @return builder
          * 
@@ -567,8 +570,9 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkConfig The network configuration of the pool. See
-         * gcp.container.Cluster for schema.
+         * @param networkConfig The network configuration of the pool. Such as
+         * configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+         * documented below
          * 
          * @return builder
          * 

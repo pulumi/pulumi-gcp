@@ -25,6 +25,7 @@ class MetastoreServiceArgs:
                  maintenance_window: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']] = None,
                  metadata_integration: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
@@ -52,6 +53,8 @@ class MetastoreServiceArgs:
         :param pulumi.Input['MetastoreServiceMetadataIntegrationArgs'] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
+        :param pulumi.Input['MetastoreServiceNetworkConfigArgs'] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
+               Structure is documented below.
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -78,6 +81,8 @@ class MetastoreServiceArgs:
             pulumi.set(__self__, "metadata_integration", metadata_integration)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if project is not None:
@@ -208,6 +213,19 @@ class MetastoreServiceArgs:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']]:
+        """
+        The configuration specifying the network settings for the Dataproc Metastore service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_config")
+
+    @network_config.setter
+    def network_config(self, value: Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']]):
+        pulumi.set(self, "network_config", value)
+
+    @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
@@ -274,6 +292,7 @@ class _MetastoreServiceState:
                  metadata_integration: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
@@ -291,7 +310,8 @@ class _MetastoreServiceState:
         :param pulumi.Input['MetastoreServiceEncryptionConfigArgs'] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
                Structure is documented below.
-        :param pulumi.Input[str] endpoint_uri: The URI of the endpoint used to access the metastore service.
+        :param pulumi.Input[str] endpoint_uri: -
+               The URI of the endpoint used to access the metastore service.
         :param pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs'] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
@@ -305,6 +325,8 @@ class _MetastoreServiceState:
         :param pulumi.Input[str] name: The relative resource name of the metastore service.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
+        :param pulumi.Input['MetastoreServiceNetworkConfigArgs'] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
+               Structure is documented below.
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -342,6 +364,8 @@ class _MetastoreServiceState:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if project is not None:
@@ -403,6 +427,7 @@ class _MetastoreServiceState:
     @pulumi.getter(name="endpointUri")
     def endpoint_uri(self) -> Optional[pulumi.Input[str]]:
         """
+        -
         The URI of the endpoint used to access the metastore service.
         """
         return pulumi.get(self, "endpoint_uri")
@@ -500,6 +525,19 @@ class _MetastoreServiceState:
     @network.setter
     def network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']]:
+        """
+        The configuration specifying the network settings for the Dataproc Metastore service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_config")
+
+    @network_config.setter
+    def network_config(self, value: Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']]):
+        pulumi.set(self, "network_config", value)
 
     @property
     @pulumi.getter
@@ -617,6 +655,7 @@ class MetastoreService(pulumi.CustomResource):
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMaintenanceWindowArgs']]] = None,
                  metadata_integration: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArgs']]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceNetworkConfigArgs']]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
@@ -625,6 +664,12 @@ class MetastoreService(pulumi.CustomResource):
                  __props__=None):
         """
         A managed metastore service that serves metadata queries.
+
+        To get more information about Service, see:
+
+        * [API documentation](https://cloud.google.com/dataproc-metastore/docs/reference/rest/v1/projects.locations.services)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
 
         ## Example Usage
         ### Dataproc Metastore Service Basic
@@ -668,6 +713,30 @@ class MetastoreService(pulumi.CustomResource):
                 version="3.1.2",
             ))
         ```
+        ### Dataproc Metastore Service Private Service Connect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        net = gcp.compute.Network("net", auto_create_subnetworks=False)
+        subnet = gcp.compute.Subnetwork("subnet",
+            region="us-central1",
+            network=net.id,
+            ip_cidr_range="10.0.0.0/22",
+            private_ip_google_access=True)
+        default = gcp.dataproc.MetastoreService("default",
+            service_id="metastore-srv",
+            location="us-central1",
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+            ),
+            network_config=gcp.dataproc.MetastoreServiceNetworkConfigArgs(
+                consumers=[gcp.dataproc.MetastoreServiceNetworkConfigConsumerArgs(
+                    subnetwork=subnet.id,
+                )],
+            ))
+        ```
 
         ## Import
 
@@ -705,6 +774,8 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArgs']] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceNetworkConfigArgs']] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
+               Structure is documented below.
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -725,6 +796,12 @@ class MetastoreService(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A managed metastore service that serves metadata queries.
+
+        To get more information about Service, see:
+
+        * [API documentation](https://cloud.google.com/dataproc-metastore/docs/reference/rest/v1/projects.locations.services)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
 
         ## Example Usage
         ### Dataproc Metastore Service Basic
@@ -766,6 +843,30 @@ class MetastoreService(pulumi.CustomResource):
             ),
             hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
                 version="3.1.2",
+            ))
+        ```
+        ### Dataproc Metastore Service Private Service Connect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        net = gcp.compute.Network("net", auto_create_subnetworks=False)
+        subnet = gcp.compute.Subnetwork("subnet",
+            region="us-central1",
+            network=net.id,
+            ip_cidr_range="10.0.0.0/22",
+            private_ip_google_access=True)
+        default = gcp.dataproc.MetastoreService("default",
+            service_id="metastore-srv",
+            location="us-central1",
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+            ),
+            network_config=gcp.dataproc.MetastoreServiceNetworkConfigArgs(
+                consumers=[gcp.dataproc.MetastoreServiceNetworkConfigConsumerArgs(
+                    subnetwork=subnet.id,
+                )],
             ))
         ```
 
@@ -808,6 +909,7 @@ class MetastoreService(pulumi.CustomResource):
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMaintenanceWindowArgs']]] = None,
                  metadata_integration: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArgs']]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceNetworkConfigArgs']]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
@@ -830,6 +932,7 @@ class MetastoreService(pulumi.CustomResource):
             __props__.__dict__["maintenance_window"] = maintenance_window
             __props__.__dict__["metadata_integration"] = metadata_integration
             __props__.__dict__["network"] = network
+            __props__.__dict__["network_config"] = network_config
             __props__.__dict__["port"] = port
             __props__.__dict__["project"] = project
             __props__.__dict__["release_channel"] = release_channel
@@ -864,6 +967,7 @@ class MetastoreService(pulumi.CustomResource):
             metadata_integration: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
+            network_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceNetworkConfigArgs']]] = None,
             port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             release_channel: Optional[pulumi.Input[str]] = None,
@@ -886,7 +990,8 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArgs']] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
                Structure is documented below.
-        :param pulumi.Input[str] endpoint_uri: The URI of the endpoint used to access the metastore service.
+        :param pulumi.Input[str] endpoint_uri: -
+               The URI of the endpoint used to access the metastore service.
         :param pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArgs']] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
@@ -900,6 +1005,8 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] name: The relative resource name of the metastore service.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceNetworkConfigArgs']] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
+               Structure is documented below.
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -930,6 +1037,7 @@ class MetastoreService(pulumi.CustomResource):
         __props__.__dict__["metadata_integration"] = metadata_integration
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
+        __props__.__dict__["network_config"] = network_config
         __props__.__dict__["port"] = port
         __props__.__dict__["project"] = project
         __props__.__dict__["release_channel"] = release_channel
@@ -972,6 +1080,7 @@ class MetastoreService(pulumi.CustomResource):
     @pulumi.getter(name="endpointUri")
     def endpoint_uri(self) -> pulumi.Output[str]:
         """
+        -
         The URI of the endpoint used to access the metastore service.
         """
         return pulumi.get(self, "endpoint_uri")
@@ -1037,6 +1146,15 @@ class MetastoreService(pulumi.CustomResource):
         "projects/{projectNumber}/global/networks/{network_id}".
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> pulumi.Output[Optional['outputs.MetastoreServiceNetworkConfig']]:
+        """
+        The configuration specifying the network settings for the Dataproc Metastore service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_config")
 
     @property
     @pulumi.getter

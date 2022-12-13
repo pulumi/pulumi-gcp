@@ -117,9 +117,17 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
         return this.exceedAction;
     }
 
+    /**
+     * Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
+     * 
+     */
     @Import(name="exceedRedirectOptions")
     private @Nullable Output<SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs> exceedRedirectOptions;
 
+    /**
+     * @return Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
+     * 
+     */
     public Optional<Output<SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs>> exceedRedirectOptions() {
         return Optional.ofNullable(this.exceedRedirectOptions);
     }
@@ -304,11 +312,23 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
             return exceedAction(Output.of(exceedAction));
         }
 
+        /**
+         * @param exceedRedirectOptions Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder exceedRedirectOptions(@Nullable Output<SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs> exceedRedirectOptions) {
             $.exceedRedirectOptions = exceedRedirectOptions;
             return this;
         }
 
+        /**
+         * @param exceedRedirectOptions Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder exceedRedirectOptions(SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs exceedRedirectOptions) {
             return exceedRedirectOptions(Output.of(exceedRedirectOptions));
         }

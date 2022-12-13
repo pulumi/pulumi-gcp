@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -40,6 +42,38 @@ import * as utilities from "../utilities";
  *     location: "global",
  *     project: "project_id",
  *     retentionDays: 30,
+ * });
+ * ```
+ *
+ * Create logging bucket with customId and cmekSettings
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cmekSettings = gcp.logging.getProjectCmekSettings({
+ *     project: "project_id",
+ * });
+ * const keyring = new gcp.kms.KeyRing("keyring", {location: "us-central1"});
+ * const key = new gcp.kms.CryptoKey("key", {
+ *     keyRing: keyring.id,
+ *     rotationPeriod: "100000s",
+ * });
+ * const cryptoKeyBinding = new gcp.kms.CryptoKeyIAMBinding("cryptoKeyBinding", {
+ *     cryptoKeyId: key.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     members: [cmekSettings.then(cmekSettings => `serviceAccount:${cmekSettings.serviceAccountId}`)],
+ * });
+ * const example_project_bucket_cmek_settings = new gcp.logging.ProjectBucketConfig("example-project-bucket-cmek-settings", {
+ *     project: "project_id",
+ *     location: "us-central1",
+ *     retentionDays: 30,
+ *     bucketId: "custom-bucket",
+ *     cmekSettings: {
+ *         kmsKeyName: key.id,
+ *     },
+ * }, {
+ *     dependsOn: [cryptoKeyBinding],
  * });
  * ```
  *
@@ -84,6 +118,10 @@ export class ProjectBucketConfig extends pulumi.CustomResource {
      */
     public readonly bucketId!: pulumi.Output<string>;
     /**
+     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+     */
+    public readonly cmekSettings!: pulumi.Output<outputs.logging.ProjectBucketConfigCmekSettings | undefined>;
+    /**
      * Describes this bucket.
      */
     public readonly description!: pulumi.Output<string>;
@@ -96,7 +134,7 @@ export class ProjectBucketConfig extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
+     * The resource name of the CMEK settings.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -122,6 +160,7 @@ export class ProjectBucketConfig extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ProjectBucketConfigState | undefined;
             resourceInputs["bucketId"] = state ? state.bucketId : undefined;
+            resourceInputs["cmekSettings"] = state ? state.cmekSettings : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -140,6 +179,7 @@ export class ProjectBucketConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             resourceInputs["bucketId"] = args ? args.bucketId : undefined;
+            resourceInputs["cmekSettings"] = args ? args.cmekSettings : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -161,6 +201,10 @@ export interface ProjectBucketConfigState {
      */
     bucketId?: pulumi.Input<string>;
     /**
+     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+     */
+    cmekSettings?: pulumi.Input<inputs.logging.ProjectBucketConfigCmekSettings>;
+    /**
      * Describes this bucket.
      */
     description?: pulumi.Input<string>;
@@ -173,7 +217,7 @@ export interface ProjectBucketConfigState {
      */
     location?: pulumi.Input<string>;
     /**
-     * The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
+     * The resource name of the CMEK settings.
      */
     name?: pulumi.Input<string>;
     /**
@@ -194,6 +238,10 @@ export interface ProjectBucketConfigArgs {
      * The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
      */
     bucketId: pulumi.Input<string>;
+    /**
+     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+     */
+    cmekSettings?: pulumi.Input<inputs.logging.ProjectBucketConfigCmekSettings>;
     /**
      * Describes this bucket.
      */

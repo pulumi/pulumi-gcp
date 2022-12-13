@@ -47,6 +47,9 @@ import * as utilities from "../utilities";
  *     cluster: defaultCluster.name,
  *     instanceId: "alloydb-instance",
  *     instanceType: "PRIMARY",
+ *     machineConfig: {
+ *         cpuCount: 2,
+ *     },
  * }, {
  *     provider: google_beta,
  *     dependsOn: [vpcConnection],

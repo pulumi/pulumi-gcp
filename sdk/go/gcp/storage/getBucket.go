@@ -57,6 +57,7 @@ type LookupBucketArgs struct {
 
 // A collection of values returned by getBucket.
 type LookupBucketResult struct {
+	Autoclasses            []GetBucketAutoclass             `pulumi:"autoclasses"`
 	Cors                   []GetBucketCor                   `pulumi:"cors"`
 	CustomPlacementConfigs []GetBucketCustomPlacementConfig `pulumi:"customPlacementConfigs"`
 	DefaultEventBasedHold  bool                             `pulumi:"defaultEventBasedHold"`
@@ -117,6 +118,10 @@ func (o LookupBucketResultOutput) ToLookupBucketResultOutput() LookupBucketResul
 
 func (o LookupBucketResultOutput) ToLookupBucketResultOutputWithContext(ctx context.Context) LookupBucketResultOutput {
 	return o
+}
+
+func (o LookupBucketResultOutput) Autoclasses() GetBucketAutoclassArrayOutput {
+	return o.ApplyT(func(v LookupBucketResult) []GetBucketAutoclass { return v.Autoclasses }).(GetBucketAutoclassArrayOutput)
 }
 
 func (o LookupBucketResultOutput) Cors() GetBucketCorArrayOutput {

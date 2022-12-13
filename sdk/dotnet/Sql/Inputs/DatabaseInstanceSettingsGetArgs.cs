@@ -56,6 +56,9 @@ namespace Pulumi.Gcp.Sql.Inputs
             set => _databaseFlags = value;
         }
 
+        [Input("denyMaintenancePeriod")]
+        public Input<Inputs.DatabaseInstanceSettingsDenyMaintenancePeriodGetArgs>? DenyMaintenancePeriod { get; set; }
+
         /// <summary>
         /// Enables auto-resizing of the storage size. Defaults to `true`.
         /// </summary>

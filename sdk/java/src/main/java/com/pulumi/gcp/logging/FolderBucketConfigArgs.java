@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.logging.inputs.FolderBucketConfigCmekSettingsArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -29,6 +30,25 @@ public final class FolderBucketConfigArgs extends com.pulumi.resources.ResourceA
      */
     public Output<String> bucketId() {
         return this.bucketId;
+    }
+
+    /**
+     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+     * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+     * updating the log bucket. Changing the KMS key is allowed.
+     * 
+     */
+    @Import(name="cmekSettings")
+    private @Nullable Output<FolderBucketConfigCmekSettingsArgs> cmekSettings;
+
+    /**
+     * @return The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+     * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+     * updating the log bucket. Changing the KMS key is allowed.
+     * 
+     */
+    public Optional<Output<FolderBucketConfigCmekSettingsArgs>> cmekSettings() {
+        return Optional.ofNullable(this.cmekSettings);
     }
 
     /**
@@ -95,6 +115,7 @@ public final class FolderBucketConfigArgs extends com.pulumi.resources.ResourceA
 
     private FolderBucketConfigArgs(FolderBucketConfigArgs $) {
         this.bucketId = $.bucketId;
+        this.cmekSettings = $.cmekSettings;
         this.description = $.description;
         this.folder = $.folder;
         this.location = $.location;
@@ -138,6 +159,31 @@ public final class FolderBucketConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder bucketId(String bucketId) {
             return bucketId(Output.of(bucketId));
+        }
+
+        /**
+         * @param cmekSettings The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+         * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+         * updating the log bucket. Changing the KMS key is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cmekSettings(@Nullable Output<FolderBucketConfigCmekSettingsArgs> cmekSettings) {
+            $.cmekSettings = cmekSettings;
+            return this;
+        }
+
+        /**
+         * @param cmekSettings The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+         * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+         * updating the log bucket. Changing the KMS key is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cmekSettings(FolderBucketConfigCmekSettingsArgs cmekSettings) {
+            return cmekSettings(Output.of(cmekSettings));
         }
 
         /**

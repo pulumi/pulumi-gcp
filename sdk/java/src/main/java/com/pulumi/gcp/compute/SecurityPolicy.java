@@ -12,6 +12,7 @@ import com.pulumi.gcp.compute.SecurityPolicyArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyState;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyAdaptiveProtectionConfig;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyAdvancedOptionsConfig;
+import com.pulumi.gcp.compute.outputs.SecurityPolicyRecaptchaOptionsConfig;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRule;
 import java.lang.String;
 import java.util.List;
@@ -22,6 +23,8 @@ import javax.annotation.Nullable;
  * A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
  * see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
  * and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
+ * 
+ * Security Policy is used by google_compute_backend_service.
  * 
  * ## Example Usage
  * ```java
@@ -71,6 +74,119 @@ import javax.annotation.Nullable;
  *                         .versionedExpr(&#34;SRC_IPS_V1&#34;)
  *                         .build())
  *                     .priority(&#34;2147483647&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### With ReCAPTCHA Configuration Options
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.recaptcha.EnterpriseKey;
+ * import com.pulumi.gcp.recaptcha.EnterpriseKeyArgs;
+ * import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyWebSettingsArgs;
+ * import com.pulumi.gcp.compute.SecurityPolicy;
+ * import com.pulumi.gcp.compute.SecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRecaptchaOptionsConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new EnterpriseKey(&#34;primary&#34;, EnterpriseKeyArgs.builder()        
+ *             .displayName(&#34;display-name&#34;)
+ *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .project(&#34;my-project-name&#34;)
+ *             .webSettings(EnterpriseKeyWebSettingsArgs.builder()
+ *                 .integrationType(&#34;INVISIBLE&#34;)
+ *                 .allowAllDomains(true)
+ *                 .allowedDomains(&#34;localhost&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new SecurityPolicy(&#34;policy&#34;, SecurityPolicyArgs.builder()        
+ *             .description(&#34;basic security policy&#34;)
+ *             .type(&#34;CLOUD_ARMOR&#34;)
+ *             .recaptchaOptionsConfig(SecurityPolicyRecaptchaOptionsConfigArgs.builder()
+ *                 .redirectSiteKey(primary.name())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### With Header Actions
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.SecurityPolicy;
+ * import com.pulumi.gcp.compute.SecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleHeaderActionArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchExprArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var policy = new SecurityPolicy(&#34;policy&#34;, SecurityPolicyArgs.builder()        
+ *             .rules(            
+ *                 SecurityPolicyRuleArgs.builder()
+ *                     .action(&#34;allow&#34;)
+ *                     .description(&#34;default rule&#34;)
+ *                     .match(SecurityPolicyRuleMatchArgs.builder()
+ *                         .config(SecurityPolicyRuleMatchConfigArgs.builder()
+ *                             .srcIpRanges(&#34;*&#34;)
+ *                             .build())
+ *                         .versionedExpr(&#34;SRC_IPS_V1&#34;)
+ *                         .build())
+ *                     .priority(&#34;2147483647&#34;)
+ *                     .build(),
+ *                 SecurityPolicyRuleArgs.builder()
+ *                     .action(&#34;allow&#34;)
+ *                     .headerAction(SecurityPolicyRuleHeaderActionArgs.builder()
+ *                         .requestHeadersToAdds(                        
+ *                             SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs.builder()
+ *                                 .headerName(&#34;reCAPTCHA-Warning&#34;)
+ *                                 .headerValue(&#34;high&#34;)
+ *                                 .build(),
+ *                             SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs.builder()
+ *                                 .headerName(&#34;X-Resource&#34;)
+ *                                 .headerValue(&#34;test&#34;)
+ *                                 .build())
+ *                         .build())
+ *                     .match(SecurityPolicyRuleMatchArgs.builder()
+ *                         .expr(SecurityPolicyRuleMatchExprArgs.builder()
+ *                             .expression(&#34;request.path.matches(\&#34;/login.html\&#34;) &amp;&amp; token.recaptcha_session.score &lt; 0.2&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .priority(&#34;1000&#34;)
  *                     .build())
  *             .build());
  * 
@@ -168,6 +284,20 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+     * 
+     */
+    @Export(name="recaptchaOptionsConfig", type=SecurityPolicyRecaptchaOptionsConfig.class, parameters={})
+    private Output</* @Nullable */ SecurityPolicyRecaptchaOptionsConfig> recaptchaOptionsConfig;
+
+    /**
+     * @return [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+     * 
+     */
+    public Output<Optional<SecurityPolicyRecaptchaOptionsConfig>> recaptchaOptionsConfig() {
+        return Codegen.optional(this.recaptchaOptionsConfig);
     }
     /**
      * The set of rules that belong to this policy. There must always be a default

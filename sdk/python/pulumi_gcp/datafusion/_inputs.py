@@ -11,6 +11,7 @@ from .. import _utilities
 
 __all__ = [
     'InstanceCryptoKeyConfigArgs',
+    'InstanceEventPublishConfigArgs',
     'InstanceNetworkConfigArgs',
 ]
 
@@ -34,6 +35,43 @@ class InstanceCryptoKeyConfigArgs:
     @key_reference.setter
     def key_reference(self, value: pulumi.Input[str]):
         pulumi.set(self, "key_reference", value)
+
+
+@pulumi.input_type
+class InstanceEventPublishConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 topic: pulumi.Input[str]):
+        """
+        :param pulumi.Input[bool] enabled: Option to enable Event Publishing.
+        :param pulumi.Input[str] topic: The resource name of the Pub/Sub topic. Format: projects/{projectId}/topics/{topic_id}
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Option to enable Event Publishing.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> pulumi.Input[str]:
+        """
+        The resource name of the Pub/Sub topic. Format: projects/{projectId}/topics/{topic_id}
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: pulumi.Input[str]):
+        pulumi.set(self, "topic", value)
 
 
 @pulumi.input_type

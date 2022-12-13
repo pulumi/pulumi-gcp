@@ -12,6 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
     private Boolean includeHost;
+    private List<String> includeHttpHeaders;
     private List<String> includeNamedCookies;
     private Boolean includeProtocol;
     private Boolean includeQueryString;
@@ -21,6 +22,9 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
     private GetBackendServiceCdnPolicyCacheKeyPolicy() {}
     public Boolean includeHost() {
         return this.includeHost;
+    }
+    public List<String> includeHttpHeaders() {
+        return this.includeHttpHeaders;
     }
     public List<String> includeNamedCookies() {
         return this.includeNamedCookies;
@@ -48,6 +52,7 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
     @CustomType.Builder
     public static final class Builder {
         private Boolean includeHost;
+        private List<String> includeHttpHeaders;
         private List<String> includeNamedCookies;
         private Boolean includeProtocol;
         private Boolean includeQueryString;
@@ -57,6 +62,7 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
         public Builder(GetBackendServiceCdnPolicyCacheKeyPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.includeHost = defaults.includeHost;
+    	      this.includeHttpHeaders = defaults.includeHttpHeaders;
     	      this.includeNamedCookies = defaults.includeNamedCookies;
     	      this.includeProtocol = defaults.includeProtocol;
     	      this.includeQueryString = defaults.includeQueryString;
@@ -68,6 +74,14 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
         public Builder includeHost(Boolean includeHost) {
             this.includeHost = Objects.requireNonNull(includeHost);
             return this;
+        }
+        @CustomType.Setter
+        public Builder includeHttpHeaders(List<String> includeHttpHeaders) {
+            this.includeHttpHeaders = Objects.requireNonNull(includeHttpHeaders);
+            return this;
+        }
+        public Builder includeHttpHeaders(String... includeHttpHeaders) {
+            return includeHttpHeaders(List.of(includeHttpHeaders));
         }
         @CustomType.Setter
         public Builder includeNamedCookies(List<String> includeNamedCookies) {
@@ -106,6 +120,7 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
         public GetBackendServiceCdnPolicyCacheKeyPolicy build() {
             final var o = new GetBackendServiceCdnPolicyCacheKeyPolicy();
             o.includeHost = includeHost;
+            o.includeHttpHeaders = includeHttpHeaders;
             o.includeNamedCookies = includeNamedCookies;
             o.includeProtocol = includeProtocol;
             o.includeQueryString = includeQueryString;

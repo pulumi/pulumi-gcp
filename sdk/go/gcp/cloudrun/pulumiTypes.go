@@ -4809,7 +4809,7 @@ func (o ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput) I
 }
 
 type ServiceTemplateSpecContainerPort struct {
-	// Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+	// Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to "8080".
 	ContainerPort *int `pulumi:"containerPort"`
 	// Volume's name.
 	Name *string `pulumi:"name"`
@@ -4829,7 +4829,7 @@ type ServiceTemplateSpecContainerPortInput interface {
 }
 
 type ServiceTemplateSpecContainerPortArgs struct {
-	// Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+	// Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to "8080".
 	ContainerPort pulumi.IntPtrInput `pulumi:"containerPort"`
 	// Volume's name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -4888,7 +4888,7 @@ func (o ServiceTemplateSpecContainerPortOutput) ToServiceTemplateSpecContainerPo
 	return o
 }
 
-// Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+// Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to "8080".
 func (o ServiceTemplateSpecContainerPortOutput) ContainerPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainerPort) *int { return v.ContainerPort }).(pulumi.IntPtrOutput)
 }

@@ -11409,6 +11409,265 @@ func (o MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput) Enabled()
 	}).(pulumi.BoolPtrOutput)
 }
 
+type MetastoreServiceNetworkConfig struct {
+	// The consumer-side network configuration for the Dataproc Metastore instance.
+	// Structure is documented below.
+	Consumers []MetastoreServiceNetworkConfigConsumer `pulumi:"consumers"`
+}
+
+// MetastoreServiceNetworkConfigInput is an input type that accepts MetastoreServiceNetworkConfigArgs and MetastoreServiceNetworkConfigOutput values.
+// You can construct a concrete instance of `MetastoreServiceNetworkConfigInput` via:
+//
+//	MetastoreServiceNetworkConfigArgs{...}
+type MetastoreServiceNetworkConfigInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceNetworkConfigOutput() MetastoreServiceNetworkConfigOutput
+	ToMetastoreServiceNetworkConfigOutputWithContext(context.Context) MetastoreServiceNetworkConfigOutput
+}
+
+type MetastoreServiceNetworkConfigArgs struct {
+	// The consumer-side network configuration for the Dataproc Metastore instance.
+	// Structure is documented below.
+	Consumers MetastoreServiceNetworkConfigConsumerArrayInput `pulumi:"consumers"`
+}
+
+func (MetastoreServiceNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceNetworkConfig)(nil)).Elem()
+}
+
+func (i MetastoreServiceNetworkConfigArgs) ToMetastoreServiceNetworkConfigOutput() MetastoreServiceNetworkConfigOutput {
+	return i.ToMetastoreServiceNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceNetworkConfigArgs) ToMetastoreServiceNetworkConfigOutputWithContext(ctx context.Context) MetastoreServiceNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceNetworkConfigOutput)
+}
+
+func (i MetastoreServiceNetworkConfigArgs) ToMetastoreServiceNetworkConfigPtrOutput() MetastoreServiceNetworkConfigPtrOutput {
+	return i.ToMetastoreServiceNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceNetworkConfigArgs) ToMetastoreServiceNetworkConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceNetworkConfigOutput).ToMetastoreServiceNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// MetastoreServiceNetworkConfigPtrInput is an input type that accepts MetastoreServiceNetworkConfigArgs, MetastoreServiceNetworkConfigPtr and MetastoreServiceNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `MetastoreServiceNetworkConfigPtrInput` via:
+//
+//	        MetastoreServiceNetworkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetastoreServiceNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceNetworkConfigPtrOutput() MetastoreServiceNetworkConfigPtrOutput
+	ToMetastoreServiceNetworkConfigPtrOutputWithContext(context.Context) MetastoreServiceNetworkConfigPtrOutput
+}
+
+type metastoreServiceNetworkConfigPtrType MetastoreServiceNetworkConfigArgs
+
+func MetastoreServiceNetworkConfigPtr(v *MetastoreServiceNetworkConfigArgs) MetastoreServiceNetworkConfigPtrInput {
+	return (*metastoreServiceNetworkConfigPtrType)(v)
+}
+
+func (*metastoreServiceNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceNetworkConfig)(nil)).Elem()
+}
+
+func (i *metastoreServiceNetworkConfigPtrType) ToMetastoreServiceNetworkConfigPtrOutput() MetastoreServiceNetworkConfigPtrOutput {
+	return i.ToMetastoreServiceNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreServiceNetworkConfigPtrType) ToMetastoreServiceNetworkConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceNetworkConfigPtrOutput)
+}
+
+type MetastoreServiceNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceNetworkConfig)(nil)).Elem()
+}
+
+func (o MetastoreServiceNetworkConfigOutput) ToMetastoreServiceNetworkConfigOutput() MetastoreServiceNetworkConfigOutput {
+	return o
+}
+
+func (o MetastoreServiceNetworkConfigOutput) ToMetastoreServiceNetworkConfigOutputWithContext(ctx context.Context) MetastoreServiceNetworkConfigOutput {
+	return o
+}
+
+func (o MetastoreServiceNetworkConfigOutput) ToMetastoreServiceNetworkConfigPtrOutput() MetastoreServiceNetworkConfigPtrOutput {
+	return o.ToMetastoreServiceNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreServiceNetworkConfigOutput) ToMetastoreServiceNetworkConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceNetworkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceNetworkConfig) *MetastoreServiceNetworkConfig {
+		return &v
+	}).(MetastoreServiceNetworkConfigPtrOutput)
+}
+
+// The consumer-side network configuration for the Dataproc Metastore instance.
+// Structure is documented below.
+func (o MetastoreServiceNetworkConfigOutput) Consumers() MetastoreServiceNetworkConfigConsumerArrayOutput {
+	return o.ApplyT(func(v MetastoreServiceNetworkConfig) []MetastoreServiceNetworkConfigConsumer { return v.Consumers }).(MetastoreServiceNetworkConfigConsumerArrayOutput)
+}
+
+type MetastoreServiceNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceNetworkConfig)(nil)).Elem()
+}
+
+func (o MetastoreServiceNetworkConfigPtrOutput) ToMetastoreServiceNetworkConfigPtrOutput() MetastoreServiceNetworkConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceNetworkConfigPtrOutput) ToMetastoreServiceNetworkConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceNetworkConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceNetworkConfigPtrOutput) Elem() MetastoreServiceNetworkConfigOutput {
+	return o.ApplyT(func(v *MetastoreServiceNetworkConfig) MetastoreServiceNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreServiceNetworkConfig
+		return ret
+	}).(MetastoreServiceNetworkConfigOutput)
+}
+
+// The consumer-side network configuration for the Dataproc Metastore instance.
+// Structure is documented below.
+func (o MetastoreServiceNetworkConfigPtrOutput) Consumers() MetastoreServiceNetworkConfigConsumerArrayOutput {
+	return o.ApplyT(func(v *MetastoreServiceNetworkConfig) []MetastoreServiceNetworkConfigConsumer {
+		if v == nil {
+			return nil
+		}
+		return v.Consumers
+	}).(MetastoreServiceNetworkConfigConsumerArrayOutput)
+}
+
+type MetastoreServiceNetworkConfigConsumer struct {
+	// -
+	// The URI of the endpoint used to access the metastore service.
+	EndpointUri *string `pulumi:"endpointUri"`
+	// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
+	// It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network.
+	// There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:
+	// `projects/{projectNumber}/regions/{region_id}/subnetworks/{subnetwork_id}
+	Subnetwork string `pulumi:"subnetwork"`
+}
+
+// MetastoreServiceNetworkConfigConsumerInput is an input type that accepts MetastoreServiceNetworkConfigConsumerArgs and MetastoreServiceNetworkConfigConsumerOutput values.
+// You can construct a concrete instance of `MetastoreServiceNetworkConfigConsumerInput` via:
+//
+//	MetastoreServiceNetworkConfigConsumerArgs{...}
+type MetastoreServiceNetworkConfigConsumerInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceNetworkConfigConsumerOutput() MetastoreServiceNetworkConfigConsumerOutput
+	ToMetastoreServiceNetworkConfigConsumerOutputWithContext(context.Context) MetastoreServiceNetworkConfigConsumerOutput
+}
+
+type MetastoreServiceNetworkConfigConsumerArgs struct {
+	// -
+	// The URI of the endpoint used to access the metastore service.
+	EndpointUri pulumi.StringPtrInput `pulumi:"endpointUri"`
+	// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
+	// It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network.
+	// There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:
+	// `projects/{projectNumber}/regions/{region_id}/subnetworks/{subnetwork_id}
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+}
+
+func (MetastoreServiceNetworkConfigConsumerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceNetworkConfigConsumer)(nil)).Elem()
+}
+
+func (i MetastoreServiceNetworkConfigConsumerArgs) ToMetastoreServiceNetworkConfigConsumerOutput() MetastoreServiceNetworkConfigConsumerOutput {
+	return i.ToMetastoreServiceNetworkConfigConsumerOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceNetworkConfigConsumerArgs) ToMetastoreServiceNetworkConfigConsumerOutputWithContext(ctx context.Context) MetastoreServiceNetworkConfigConsumerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceNetworkConfigConsumerOutput)
+}
+
+// MetastoreServiceNetworkConfigConsumerArrayInput is an input type that accepts MetastoreServiceNetworkConfigConsumerArray and MetastoreServiceNetworkConfigConsumerArrayOutput values.
+// You can construct a concrete instance of `MetastoreServiceNetworkConfigConsumerArrayInput` via:
+//
+//	MetastoreServiceNetworkConfigConsumerArray{ MetastoreServiceNetworkConfigConsumerArgs{...} }
+type MetastoreServiceNetworkConfigConsumerArrayInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceNetworkConfigConsumerArrayOutput() MetastoreServiceNetworkConfigConsumerArrayOutput
+	ToMetastoreServiceNetworkConfigConsumerArrayOutputWithContext(context.Context) MetastoreServiceNetworkConfigConsumerArrayOutput
+}
+
+type MetastoreServiceNetworkConfigConsumerArray []MetastoreServiceNetworkConfigConsumerInput
+
+func (MetastoreServiceNetworkConfigConsumerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetastoreServiceNetworkConfigConsumer)(nil)).Elem()
+}
+
+func (i MetastoreServiceNetworkConfigConsumerArray) ToMetastoreServiceNetworkConfigConsumerArrayOutput() MetastoreServiceNetworkConfigConsumerArrayOutput {
+	return i.ToMetastoreServiceNetworkConfigConsumerArrayOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceNetworkConfigConsumerArray) ToMetastoreServiceNetworkConfigConsumerArrayOutputWithContext(ctx context.Context) MetastoreServiceNetworkConfigConsumerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceNetworkConfigConsumerArrayOutput)
+}
+
+type MetastoreServiceNetworkConfigConsumerOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceNetworkConfigConsumerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceNetworkConfigConsumer)(nil)).Elem()
+}
+
+func (o MetastoreServiceNetworkConfigConsumerOutput) ToMetastoreServiceNetworkConfigConsumerOutput() MetastoreServiceNetworkConfigConsumerOutput {
+	return o
+}
+
+func (o MetastoreServiceNetworkConfigConsumerOutput) ToMetastoreServiceNetworkConfigConsumerOutputWithContext(ctx context.Context) MetastoreServiceNetworkConfigConsumerOutput {
+	return o
+}
+
+// -
+// The URI of the endpoint used to access the metastore service.
+func (o MetastoreServiceNetworkConfigConsumerOutput) EndpointUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetastoreServiceNetworkConfigConsumer) *string { return v.EndpointUri }).(pulumi.StringPtrOutput)
+}
+
+// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
+// It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network.
+// There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:
+// `projects/{projectNumber}/regions/{region_id}/subnetworks/{subnetwork_id}
+func (o MetastoreServiceNetworkConfigConsumerOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreServiceNetworkConfigConsumer) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+type MetastoreServiceNetworkConfigConsumerArrayOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceNetworkConfigConsumerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetastoreServiceNetworkConfigConsumer)(nil)).Elem()
+}
+
+func (o MetastoreServiceNetworkConfigConsumerArrayOutput) ToMetastoreServiceNetworkConfigConsumerArrayOutput() MetastoreServiceNetworkConfigConsumerArrayOutput {
+	return o
+}
+
+func (o MetastoreServiceNetworkConfigConsumerArrayOutput) ToMetastoreServiceNetworkConfigConsumerArrayOutputWithContext(ctx context.Context) MetastoreServiceNetworkConfigConsumerArrayOutput {
+	return o
+}
+
+func (o MetastoreServiceNetworkConfigConsumerArrayOutput) Index(i pulumi.IntInput) MetastoreServiceNetworkConfigConsumerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetastoreServiceNetworkConfigConsumer {
+		return vs[0].([]MetastoreServiceNetworkConfigConsumer)[vs[1].(int)]
+	}).(MetastoreServiceNetworkConfigConsumerOutput)
+}
+
 type WorkflowTemplateJob struct {
 	// Optional. Job is a Hadoop job.
 	HadoopJob *WorkflowTemplateJobHadoopJob `pulumi:"hadoopJob"`
@@ -21846,6 +22105,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceMetadataIntegrationPtrInput)(nil)).Elem(), MetastoreServiceMetadataIntegrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceMetadataIntegrationDataCatalogConfigInput)(nil)).Elem(), MetastoreServiceMetadataIntegrationDataCatalogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceMetadataIntegrationDataCatalogConfigPtrInput)(nil)).Elem(), MetastoreServiceMetadataIntegrationDataCatalogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceNetworkConfigInput)(nil)).Elem(), MetastoreServiceNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceNetworkConfigPtrInput)(nil)).Elem(), MetastoreServiceNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceNetworkConfigConsumerInput)(nil)).Elem(), MetastoreServiceNetworkConfigConsumerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceNetworkConfigConsumerArrayInput)(nil)).Elem(), MetastoreServiceNetworkConfigConsumerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateJobInput)(nil)).Elem(), WorkflowTemplateJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateJobArrayInput)(nil)).Elem(), WorkflowTemplateJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateJobHadoopJobInput)(nil)).Elem(), WorkflowTemplateJobHadoopJobArgs{})
@@ -22078,6 +22341,10 @@ func init() {
 	pulumi.RegisterOutputType(MetastoreServiceMetadataIntegrationPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceMetadataIntegrationDataCatalogConfigOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceNetworkConfigOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceNetworkConfigConsumerOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceNetworkConfigConsumerArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateJobOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateJobArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateJobHadoopJobOutput{})

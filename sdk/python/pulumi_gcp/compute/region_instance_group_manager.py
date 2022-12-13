@@ -23,6 +23,7 @@ class RegionInstanceGroupManagerArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy_target_shape: Optional[pulumi.Input[str]] = None,
                  distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -55,6 +56,12 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input[str] distribution_policy_target_shape: The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] distribution_policy_zones: The distribution policy for this managed instance
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
+        :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
+               method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+               If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+               `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+               response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+               respected.
         :param pulumi.Input[str] name: - Version name.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration.
@@ -87,6 +94,8 @@ class RegionInstanceGroupManagerArgs:
             pulumi.set(__self__, "distribution_policy_target_shape", distribution_policy_target_shape)
         if distribution_policy_zones is not None:
             pulumi.set(__self__, "distribution_policy_zones", distribution_policy_zones)
+        if list_managed_instances_results is not None:
+            pulumi.set(__self__, "list_managed_instances_results", list_managed_instances_results)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if named_ports is not None:
@@ -204,6 +213,23 @@ class RegionInstanceGroupManagerArgs:
     @distribution_policy_zones.setter
     def distribution_policy_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "distribution_policy_zones", value)
+
+    @property
+    @pulumi.getter(name="listManagedInstancesResults")
+    def list_managed_instances_results(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pagination behavior of the `listManagedInstances` API
+        method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+        If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+        `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+        response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+        respected.
+        """
+        return pulumi.get(self, "list_managed_instances_results")
+
+    @list_managed_instances_results.setter
+    def list_managed_instances_results(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "list_managed_instances_results", value)
 
     @property
     @pulumi.getter
@@ -346,6 +372,7 @@ class _RegionInstanceGroupManagerState:
                  distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  instance_group: Optional[pulumi.Input[str]] = None,
+                 list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -380,6 +407,12 @@ class _RegionInstanceGroupManagerState:
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
         :param pulumi.Input[str] fingerprint: The fingerprint of the instance group manager.
         :param pulumi.Input[str] instance_group: The full URL of the instance group created by the manager.
+        :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
+               method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+               If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+               `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+               response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+               respected.
         :param pulumi.Input[str] name: - Version name.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration.
@@ -421,6 +454,8 @@ class _RegionInstanceGroupManagerState:
             pulumi.set(__self__, "fingerprint", fingerprint)
         if instance_group is not None:
             pulumi.set(__self__, "instance_group", instance_group)
+        if list_managed_instances_results is not None:
+            pulumi.set(__self__, "list_managed_instances_results", list_managed_instances_results)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if named_ports is not None:
@@ -554,6 +589,23 @@ class _RegionInstanceGroupManagerState:
     @instance_group.setter
     def instance_group(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_group", value)
+
+    @property
+    @pulumi.getter(name="listManagedInstancesResults")
+    def list_managed_instances_results(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pagination behavior of the `listManagedInstances` API
+        method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+        If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+        `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+        response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+        respected.
+        """
+        return pulumi.get(self, "list_managed_instances_results")
+
+    @list_managed_instances_results.setter
+    def list_managed_instances_results(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "list_managed_instances_results", value)
 
     @property
     @pulumi.getter
@@ -734,6 +786,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy_target_shape: Optional[pulumi.Input[str]] = None,
                  distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerNamedPortArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -853,6 +906,12 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[str] distribution_policy_target_shape: The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] distribution_policy_zones: The distribution policy for this managed instance
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
+        :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
+               method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+               If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+               `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+               response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+               respected.
         :param pulumi.Input[str] name: - Version name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerNamedPortArgs']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
@@ -991,6 +1050,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy_target_shape: Optional[pulumi.Input[str]] = None,
                  distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerNamedPortArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -1019,6 +1079,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["distribution_policy_target_shape"] = distribution_policy_target_shape
             __props__.__dict__["distribution_policy_zones"] = distribution_policy_zones
+            __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
             __props__.__dict__["name"] = name
             __props__.__dict__["named_ports"] = named_ports
             __props__.__dict__["project"] = project
@@ -1054,6 +1115,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
             instance_group: Optional[pulumi.Input[str]] = None,
+            list_managed_instances_results: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerNamedPortArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -1093,6 +1155,12 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
         :param pulumi.Input[str] fingerprint: The fingerprint of the instance group manager.
         :param pulumi.Input[str] instance_group: The full URL of the instance group created by the manager.
+        :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
+               method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+               If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+               `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+               response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+               respected.
         :param pulumi.Input[str] name: - Version name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerNamedPortArgs']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
@@ -1130,6 +1198,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["distribution_policy_zones"] = distribution_policy_zones
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["instance_group"] = instance_group
+        __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
         __props__.__dict__["name"] = name
         __props__.__dict__["named_ports"] = named_ports
         __props__.__dict__["project"] = project
@@ -1219,6 +1288,19 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         The full URL of the instance group created by the manager.
         """
         return pulumi.get(self, "instance_group")
+
+    @property
+    @pulumi.getter(name="listManagedInstancesResults")
+    def list_managed_instances_results(self) -> pulumi.Output[Optional[str]]:
+        """
+        Pagination behavior of the `listManagedInstances` API
+        method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+        If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+        `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+        response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+        respected.
+        """
+        return pulumi.get(self, "list_managed_instances_results")
 
     @property
     @pulumi.getter

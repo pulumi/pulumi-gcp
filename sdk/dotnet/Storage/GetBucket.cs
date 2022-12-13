@@ -107,6 +107,7 @@ namespace Pulumi.Gcp.Storage
     [OutputType]
     public sealed class GetBucketResult
     {
+        public readonly ImmutableArray<Outputs.GetBucketAutoclassResult> Autoclasses;
         public readonly ImmutableArray<Outputs.GetBucketCorResult> Cors;
         public readonly ImmutableArray<Outputs.GetBucketCustomPlacementConfigResult> CustomPlacementConfigs;
         public readonly bool DefaultEventBasedHold;
@@ -134,6 +135,8 @@ namespace Pulumi.Gcp.Storage
 
         [OutputConstructor]
         private GetBucketResult(
+            ImmutableArray<Outputs.GetBucketAutoclassResult> autoclasses,
+
             ImmutableArray<Outputs.GetBucketCorResult> cors,
 
             ImmutableArray<Outputs.GetBucketCustomPlacementConfigResult> customPlacementConfigs,
@@ -176,6 +179,7 @@ namespace Pulumi.Gcp.Storage
 
             ImmutableArray<Outputs.GetBucketWebsiteResult> websites)
         {
+            Autoclasses = autoclasses;
             Cors = cors;
             CustomPlacementConfigs = customPlacementConfigs;
             DefaultEventBasedHold = defaultEventBasedHold;

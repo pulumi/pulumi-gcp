@@ -11,6 +11,7 @@ from .get_testable_permissions import *
 from .get_workload_identity_pool import *
 from .get_workload_identity_pool_provider import *
 from .workforce_pool import *
+from .workforce_pool_provider import *
 from .workload_identity_pool import *
 from .workload_identity_pool_provider import *
 from ._inputs import *

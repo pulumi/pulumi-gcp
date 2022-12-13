@@ -153,6 +153,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('cloudRunCustomEndpoint')
 
     @property
+    def cloud_run_v2_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('cloudRunV2CustomEndpoint')
+
+    @property
     def cloud_scheduler_custom_endpoint(self) -> Optional[str]:
         return __config__.get('cloudSchedulerCustomEndpoint')
 
@@ -281,6 +285,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('firebaseHostingCustomEndpoint')
 
     @property
+    def firebase_storage_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('firebaseStorageCustomEndpoint')
+
+    @property
     def firebaserules_custom_endpoint(self) -> Optional[str]:
         return __config__.get('firebaserulesCustomEndpoint')
 
@@ -291,6 +299,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def game_services_custom_endpoint(self) -> Optional[str]:
         return __config__.get('gameServicesCustomEndpoint')
+
+    @property
+    def gke_backup_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('gkeBackupCustomEndpoint')
 
     @property
     def gke_hub_custom_endpoint(self) -> Optional[str]:

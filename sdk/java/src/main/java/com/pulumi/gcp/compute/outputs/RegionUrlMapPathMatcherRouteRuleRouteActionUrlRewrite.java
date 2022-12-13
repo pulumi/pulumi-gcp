@@ -12,34 +12,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite {
     /**
-     * @return Prior to forwarding the request to the selected service, the request&#39;s host
-     * header is replaced with contents of hostRewrite. The value must be between 1 and
-     * 255 characters.
+     * @return Before forwarding the request to the selected service, the request&#39;s host header is replaced with contents of hostRewrite.
+     * The value must be from 1 to 255 characters.
      * 
      */
     private @Nullable String hostRewrite;
     /**
-     * @return Prior to forwarding the request to the selected backend service, the matching
-     * portion of the request&#39;s path is replaced by pathPrefixRewrite. The value must
-     * be between 1 and 1024 characters.
+     * @return Before forwarding the request to the selected backend service, the matching portion of the request&#39;s path is replaced by pathPrefixRewrite.
+     * The value must be from 1 to 1024 characters.
      * 
      */
     private @Nullable String pathPrefixRewrite;
 
     private RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite() {}
     /**
-     * @return Prior to forwarding the request to the selected service, the request&#39;s host
-     * header is replaced with contents of hostRewrite. The value must be between 1 and
-     * 255 characters.
+     * @return Before forwarding the request to the selected service, the request&#39;s host header is replaced with contents of hostRewrite.
+     * The value must be from 1 to 255 characters.
      * 
      */
     public Optional<String> hostRewrite() {
         return Optional.ofNullable(this.hostRewrite);
     }
     /**
-     * @return Prior to forwarding the request to the selected backend service, the matching
-     * portion of the request&#39;s path is replaced by pathPrefixRewrite. The value must
-     * be between 1 and 1024 characters.
+     * @return Before forwarding the request to the selected backend service, the matching portion of the request&#39;s path is replaced by pathPrefixRewrite.
+     * The value must be from 1 to 1024 characters.
      * 
      */
     public Optional<String> pathPrefixRewrite() {

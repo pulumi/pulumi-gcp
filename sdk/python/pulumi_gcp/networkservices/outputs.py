@@ -14,6 +14,11 @@ __all__ = [
     'EdgeCacheKeysetPublicKey',
     'EdgeCacheKeysetValidationSharedKey',
     'EdgeCacheOriginAwsV4Authentication',
+    'EdgeCacheOriginOriginOverrideAction',
+    'EdgeCacheOriginOriginOverrideActionHeaderAction',
+    'EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd',
+    'EdgeCacheOriginOriginOverrideActionUrlRewrite',
+    'EdgeCacheOriginOriginRedirect',
     'EdgeCacheOriginTimeout',
     'EdgeCacheServiceLogConfig',
     'EdgeCacheServiceRouting',
@@ -194,6 +199,258 @@ class EdgeCacheOriginAwsV4Authentication(dict):
         This is the resource name of the secret version in the format `projects/*/secrets/*/versions/*` where the `*` values are replaced by the project, secret, and version you require.
         """
         return pulumi.get(self, "secret_access_key_version")
+
+
+@pulumi.output_type
+class EdgeCacheOriginOriginOverrideAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerAction":
+            suggest = "header_action"
+        elif key == "urlRewrite":
+            suggest = "url_rewrite"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdgeCacheOriginOriginOverrideAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdgeCacheOriginOriginOverrideAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdgeCacheOriginOriginOverrideAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 header_action: Optional['outputs.EdgeCacheOriginOriginOverrideActionHeaderAction'] = None,
+                 url_rewrite: Optional['outputs.EdgeCacheOriginOriginOverrideActionUrlRewrite'] = None):
+        """
+        :param 'EdgeCacheOriginOriginOverrideActionHeaderActionArgs' header_action: The header actions, including adding and removing
+               headers, for request handled by this origin.
+               Structure is documented below.
+        :param 'EdgeCacheOriginOriginOverrideActionUrlRewriteArgs' url_rewrite: The URL rewrite configuration for request that are
+               handled by this origin.
+               Structure is documented below.
+        """
+        if header_action is not None:
+            pulumi.set(__self__, "header_action", header_action)
+        if url_rewrite is not None:
+            pulumi.set(__self__, "url_rewrite", url_rewrite)
+
+    @property
+    @pulumi.getter(name="headerAction")
+    def header_action(self) -> Optional['outputs.EdgeCacheOriginOriginOverrideActionHeaderAction']:
+        """
+        The header actions, including adding and removing
+        headers, for request handled by this origin.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_action")
+
+    @property
+    @pulumi.getter(name="urlRewrite")
+    def url_rewrite(self) -> Optional['outputs.EdgeCacheOriginOriginOverrideActionUrlRewrite']:
+        """
+        The URL rewrite configuration for request that are
+        handled by this origin.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "url_rewrite")
+
+
+@pulumi.output_type
+class EdgeCacheOriginOriginOverrideActionHeaderAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requestHeadersToAdds":
+            suggest = "request_headers_to_adds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdgeCacheOriginOriginOverrideActionHeaderAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdgeCacheOriginOriginOverrideActionHeaderAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdgeCacheOriginOriginOverrideActionHeaderAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 request_headers_to_adds: Optional[Sequence['outputs.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd']] = None):
+        """
+        :param Sequence['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: Describes a header to add.
+               You may add a maximum of 5 request headers.
+               Structure is documented below.
+        """
+        if request_headers_to_adds is not None:
+            pulumi.set(__self__, "request_headers_to_adds", request_headers_to_adds)
+
+    @property
+    @pulumi.getter(name="requestHeadersToAdds")
+    def request_headers_to_adds(self) -> Optional[Sequence['outputs.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd']]:
+        """
+        Describes a header to add.
+        You may add a maximum of 5 request headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "request_headers_to_adds")
+
+
+@pulumi.output_type
+class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerName":
+            suggest = "header_name"
+        elif key == "headerValue":
+            suggest = "header_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 header_name: str,
+                 header_value: str,
+                 replace: Optional[bool] = None):
+        """
+        :param str header_name: The name of the header to add.
+        :param str header_value: The value of the header to add.
+        :param bool replace: Whether to replace all existing headers with the same name.
+               By default, added header values are appended
+               to the response or request headers with the
+               same field names. The added values are
+               separated by commas.
+               To overwrite existing values, set `replace` to `true`.
+        """
+        pulumi.set(__self__, "header_name", header_name)
+        pulumi.set(__self__, "header_value", header_value)
+        if replace is not None:
+            pulumi.set(__self__, "replace", replace)
+
+    @property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> str:
+        """
+        The name of the header to add.
+        """
+        return pulumi.get(self, "header_name")
+
+    @property
+    @pulumi.getter(name="headerValue")
+    def header_value(self) -> str:
+        """
+        The value of the header to add.
+        """
+        return pulumi.get(self, "header_value")
+
+    @property
+    @pulumi.getter
+    def replace(self) -> Optional[bool]:
+        """
+        Whether to replace all existing headers with the same name.
+        By default, added header values are appended
+        to the response or request headers with the
+        same field names. The added values are
+        separated by commas.
+        To overwrite existing values, set `replace` to `true`.
+        """
+        return pulumi.get(self, "replace")
+
+
+@pulumi.output_type
+class EdgeCacheOriginOriginOverrideActionUrlRewrite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostRewrite":
+            suggest = "host_rewrite"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdgeCacheOriginOriginOverrideActionUrlRewrite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdgeCacheOriginOriginOverrideActionUrlRewrite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdgeCacheOriginOriginOverrideActionUrlRewrite.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host_rewrite: Optional[str] = None):
+        """
+        :param str host_rewrite: Prior to forwarding the request to the selected
+               origin, the request's host header is replaced with
+               contents of the hostRewrite.
+               This value must be between 1 and 255 characters.
+        """
+        if host_rewrite is not None:
+            pulumi.set(__self__, "host_rewrite", host_rewrite)
+
+    @property
+    @pulumi.getter(name="hostRewrite")
+    def host_rewrite(self) -> Optional[str]:
+        """
+        Prior to forwarding the request to the selected
+        origin, the request's host header is replaced with
+        contents of the hostRewrite.
+        This value must be between 1 and 255 characters.
+        """
+        return pulumi.get(self, "host_rewrite")
+
+
+@pulumi.output_type
+class EdgeCacheOriginOriginRedirect(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "redirectConditions":
+            suggest = "redirect_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdgeCacheOriginOriginRedirect. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdgeCacheOriginOriginRedirect.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdgeCacheOriginOriginRedirect.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 redirect_conditions: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] redirect_conditions: The set of redirect response codes that the CDN
+               follows. Values of
+               [RedirectConditions](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#redirectconditions)
+               are accepted.
+        """
+        if redirect_conditions is not None:
+            pulumi.set(__self__, "redirect_conditions", redirect_conditions)
+
+    @property
+    @pulumi.getter(name="redirectConditions")
+    def redirect_conditions(self) -> Optional[Sequence[str]]:
+        """
+        The set of redirect response codes that the CDN
+        follows. Values of
+        [RedirectConditions](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#redirectconditions)
+        are accepted.
+        """
+        return pulumi.get(self, "redirect_conditions")
 
 
 @pulumi.output_type

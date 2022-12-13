@@ -27,6 +27,36 @@ namespace Pulumi.Gcp.Compute
     /// state as plain-text.
     /// 
     /// ## Example Usage
+    /// ### Backend Service Cache Include Http Headers
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
+    ///         {
+    ///             CacheKeyPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyCacheKeyPolicyArgs
+    ///             {
+    ///                 IncludeHost = true,
+    ///                 IncludeHttpHeaders = new[]
+    ///                 {
+    ///                     "X-My-Header-Field",
+    ///                 },
+    ///                 IncludeProtocol = true,
+    ///                 IncludeQueryString = true,
+    ///             },
+    ///             CacheMode = "USE_ORIGIN_HEADERS",
+    ///         },
+    ///         EnableCdn = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Backend Service Cache Include Named Cookies
     /// 
     /// ```csharp

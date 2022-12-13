@@ -155,7 +155,8 @@ import (
 //				Feature:    feature.Name,
 //				Membership: membership.MembershipId,
 //				Mesh: &gkehub.FeatureMembershipMeshArgs{
-//					Management: pulumi.String("MANAGEMENT_AUTOMATIC"),
+//					Management:   pulumi.String("MANAGEMENT_AUTOMATIC"),
+//					ControlPlane: pulumi.String("AUTOMATIC"),
 //				},
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {

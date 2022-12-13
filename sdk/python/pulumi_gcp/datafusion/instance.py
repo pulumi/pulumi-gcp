@@ -20,9 +20,11 @@ class InstanceArgs:
                  crypto_key_config: Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  enable_rbac: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
+                 event_publish_config: Optional[pulumi.Input['InstanceEventPublishConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['InstanceNetworkConfigArgs']] = None,
@@ -30,7 +32,8 @@ class InstanceArgs:
                  private_instance: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 version: Optional[pulumi.Input[str]] = None):
+                 version: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
@@ -48,9 +51,12 @@ class InstanceArgs:
                Structure is documented below.
         :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
         :param pulumi.Input[str] description: An optional description of the instance.
+        :param pulumi.Input[str] display_name: Display name for an instance.
         :param pulumi.Input[bool] enable_rbac: Option to enable granular role-based access control.
         :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
         :param pulumi.Input[bool] enable_stackdriver_monitoring: Option to enable Stackdriver Monitoring.
+        :param pulumi.Input['InstanceEventPublishConfigArgs'] event_publish_config: Option to enable and pass metadata for event publishing.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for instance to use to annotate any related underlying resources,
                such as Compute Engine VMs.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
@@ -64,6 +70,7 @@ class InstanceArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the Data Fusion instance.
         :param pulumi.Input[str] version: Current version of the Data Fusion.
+        :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         """
         pulumi.set(__self__, "type", type)
         if crypto_key_config is not None:
@@ -72,12 +79,16 @@ class InstanceArgs:
             pulumi.set(__self__, "dataproc_service_account", dataproc_service_account)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
         if enable_rbac is not None:
             pulumi.set(__self__, "enable_rbac", enable_rbac)
         if enable_stackdriver_logging is not None:
             pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
         if enable_stackdriver_monitoring is not None:
             pulumi.set(__self__, "enable_stackdriver_monitoring", enable_stackdriver_monitoring)
+        if event_publish_config is not None:
+            pulumi.set(__self__, "event_publish_config", event_publish_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -94,6 +105,8 @@ class InstanceArgs:
             pulumi.set(__self__, "region", region)
         if version is not None:
             pulumi.set(__self__, "version", version)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
@@ -155,6 +168,18 @@ class InstanceArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name for an instance.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
     @pulumi.getter(name="enableRbac")
     def enable_rbac(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -189,6 +214,19 @@ class InstanceArgs:
     @enable_stackdriver_monitoring.setter
     def enable_stackdriver_monitoring(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_stackdriver_monitoring", value)
+
+    @property
+    @pulumi.getter(name="eventPublishConfig")
+    def event_publish_config(self) -> Optional[pulumi.Input['InstanceEventPublishConfigArgs']]:
+        """
+        Option to enable and pass metadata for event publishing.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "event_publish_config")
+
+    @event_publish_config.setter
+    def event_publish_config(self, value: Optional[pulumi.Input['InstanceEventPublishConfigArgs']]):
+        pulumi.set(self, "event_publish_config", value)
 
     @property
     @pulumi.getter
@@ -291,22 +329,38 @@ class InstanceArgs:
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
 
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 api_endpoint: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  crypto_key_config: Optional[pulumi.Input['InstanceCryptoKeyConfigArgs']] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  enable_rbac: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
+                 event_publish_config: Optional[pulumi.Input['InstanceEventPublishConfigArgs']] = None,
                  gcs_bucket: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['InstanceNetworkConfigArgs']] = None,
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 p4_service_account: Optional[pulumi.Input[str]] = None,
                  private_instance: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -317,17 +371,22 @@ class _InstanceState:
                  tenant_project_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 version: Optional[pulumi.Input[str]] = None):
+                 version: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[str] api_endpoint: Endpoint on which the REST APIs is accessible.
         :param pulumi.Input[str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         :param pulumi.Input['InstanceCryptoKeyConfigArgs'] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
                Structure is documented below.
         :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
         :param pulumi.Input[str] description: An optional description of the instance.
+        :param pulumi.Input[str] display_name: Display name for an instance.
         :param pulumi.Input[bool] enable_rbac: Option to enable granular role-based access control.
         :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
         :param pulumi.Input[bool] enable_stackdriver_monitoring: Option to enable Stackdriver Monitoring.
+        :param pulumi.Input['InstanceEventPublishConfigArgs'] event_publish_config: Option to enable and pass metadata for event publishing.
+               Structure is documented below.
         :param pulumi.Input[str] gcs_bucket: Cloud Storage bucket generated by Data Fusion in the customer project.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for instance to use to annotate any related underlying resources,
                such as Compute Engine VMs.
@@ -335,6 +394,7 @@ class _InstanceState:
         :param pulumi.Input['InstanceNetworkConfigArgs'] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map of additional options used to configure the behavior of Data Fusion instance.
+        :param pulumi.Input[str] p4_service_account: P4 service account for the customer project.
         :param pulumi.Input[bool] private_instance: Specifies whether the Data Fusion instance should be private. If set to
                true, all Data Fusion nodes will have private IP addresses and will not be
                able to access the public internet.
@@ -361,7 +421,10 @@ class _InstanceState:
                Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
         :param pulumi.Input[str] update_time: The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         :param pulumi.Input[str] version: Current version of the Data Fusion.
+        :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         """
+        if api_endpoint is not None:
+            pulumi.set(__self__, "api_endpoint", api_endpoint)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if crypto_key_config is not None:
@@ -370,12 +433,16 @@ class _InstanceState:
             pulumi.set(__self__, "dataproc_service_account", dataproc_service_account)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
         if enable_rbac is not None:
             pulumi.set(__self__, "enable_rbac", enable_rbac)
         if enable_stackdriver_logging is not None:
             pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
         if enable_stackdriver_monitoring is not None:
             pulumi.set(__self__, "enable_stackdriver_monitoring", enable_stackdriver_monitoring)
+        if event_publish_config is not None:
+            pulumi.set(__self__, "event_publish_config", event_publish_config)
         if gcs_bucket is not None:
             pulumi.set(__self__, "gcs_bucket", gcs_bucket)
         if labels is not None:
@@ -386,6 +453,8 @@ class _InstanceState:
             pulumi.set(__self__, "network_config", network_config)
         if options is not None:
             pulumi.set(__self__, "options", options)
+        if p4_service_account is not None:
+            pulumi.set(__self__, "p4_service_account", p4_service_account)
         if private_instance is not None:
             pulumi.set(__self__, "private_instance", private_instance)
         if project is not None:
@@ -411,6 +480,20 @@ class _InstanceState:
             pulumi.set(__self__, "update_time", update_time)
         if version is not None:
             pulumi.set(__self__, "version", version)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="apiEndpoint")
+    def api_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Endpoint on which the REST APIs is accessible.
+        """
+        return pulumi.get(self, "api_endpoint")
+
+    @api_endpoint.setter
+    def api_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_endpoint", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -462,6 +545,18 @@ class _InstanceState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name for an instance.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
     @pulumi.getter(name="enableRbac")
     def enable_rbac(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -496,6 +591,19 @@ class _InstanceState:
     @enable_stackdriver_monitoring.setter
     def enable_stackdriver_monitoring(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_stackdriver_monitoring", value)
+
+    @property
+    @pulumi.getter(name="eventPublishConfig")
+    def event_publish_config(self) -> Optional[pulumi.Input['InstanceEventPublishConfigArgs']]:
+        """
+        Option to enable and pass metadata for event publishing.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "event_publish_config")
+
+    @event_publish_config.setter
+    def event_publish_config(self, value: Optional[pulumi.Input['InstanceEventPublishConfigArgs']]):
+        pulumi.set(self, "event_publish_config", value)
 
     @property
     @pulumi.getter(name="gcsBucket")
@@ -558,6 +666,18 @@ class _InstanceState:
     @options.setter
     def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter(name="p4ServiceAccount")
+    def p4_service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        P4 service account for the customer project.
+        """
+        return pulumi.get(self, "p4_service_account")
+
+    @p4_service_account.setter
+    def p4_service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "p4_service_account", value)
 
     @property
     @pulumi.getter(name="privateInstance")
@@ -706,6 +826,18 @@ class _InstanceState:
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
 
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
 
 class Instance(pulumi.CustomResource):
     @overload
@@ -715,9 +847,11 @@ class Instance(pulumi.CustomResource):
                  crypto_key_config: Optional[pulumi.Input[pulumi.InputType['InstanceCryptoKeyConfigArgs']]] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  enable_rbac: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
+                 event_publish_config: Optional[pulumi.Input[pulumi.InputType['InstanceEventPublishConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']]] = None,
@@ -727,6 +861,7 @@ class Instance(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Represents a Data Fusion instance.
@@ -758,22 +893,29 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.appengine.get_default_service_account()
+        network = gcp.compute.Network("network")
+        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=22,
+            network=network.id)
         extended_instance = gcp.datafusion.Instance("extendedInstance",
             description="My Data Fusion instance",
+            display_name="My Data Fusion instance",
             region="us-central1",
             type="BASIC",
             enable_stackdriver_logging=True,
             enable_stackdriver_monitoring=True,
+            private_instance=True,
+            version="6.6.0",
+            dataproc_service_account=default.email,
             labels={
                 "example_key": "example_value",
             },
-            private_instance=True,
             network_config=gcp.datafusion.InstanceNetworkConfigArgs(
                 network="default",
-                ip_allocation="10.89.48.0/22",
+                ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
             ),
-            version="6.3.0",
-            dataproc_service_account=default.email,
             options={
                 "prober_test_run": "true",
             })
@@ -791,7 +933,7 @@ class Instance(pulumi.CustomResource):
             crypto_key_id=crypto_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com"])
-        basic_cmek = gcp.datafusion.Instance("basicCmek",
+        cmek = gcp.datafusion.Instance("cmek",
             region="us-central1",
             type="BASIC",
             crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
@@ -812,6 +954,33 @@ class Instance(pulumi.CustomResource):
             },
             region="us-central1",
             type="ENTERPRISE")
+        ```
+        ### Data Fusion Instance Event
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        event_topic = gcp.pubsub.Topic("eventTopic")
+        event_instance = gcp.datafusion.Instance("eventInstance",
+            region="us-central1",
+            type="BASIC",
+            version="6.7.0",
+            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
+                enabled=True,
+                topic=event_topic.id,
+            ))
+        ```
+        ### Data Fusion Instance Zone
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        zone = gcp.datafusion.Instance("zone",
+            region="us-central1",
+            type="DEVELOPER",
+            zone="us-central1-a")
         ```
 
         ## Import
@@ -840,9 +1009,12 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
         :param pulumi.Input[str] description: An optional description of the instance.
+        :param pulumi.Input[str] display_name: Display name for an instance.
         :param pulumi.Input[bool] enable_rbac: Option to enable granular role-based access control.
         :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
         :param pulumi.Input[bool] enable_stackdriver_monitoring: Option to enable Stackdriver Monitoring.
+        :param pulumi.Input[pulumi.InputType['InstanceEventPublishConfigArgs']] event_publish_config: Option to enable and pass metadata for event publishing.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for instance to use to annotate any related underlying resources,
                such as Compute Engine VMs.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
@@ -867,6 +1039,7 @@ class Instance(pulumi.CustomResource):
                pipelines at low cost.
                Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
         :param pulumi.Input[str] version: Current version of the Data Fusion.
+        :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         """
         ...
     @overload
@@ -904,22 +1077,29 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.appengine.get_default_service_account()
+        network = gcp.compute.Network("network")
+        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=22,
+            network=network.id)
         extended_instance = gcp.datafusion.Instance("extendedInstance",
             description="My Data Fusion instance",
+            display_name="My Data Fusion instance",
             region="us-central1",
             type="BASIC",
             enable_stackdriver_logging=True,
             enable_stackdriver_monitoring=True,
+            private_instance=True,
+            version="6.6.0",
+            dataproc_service_account=default.email,
             labels={
                 "example_key": "example_value",
             },
-            private_instance=True,
             network_config=gcp.datafusion.InstanceNetworkConfigArgs(
                 network="default",
-                ip_allocation="10.89.48.0/22",
+                ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
             ),
-            version="6.3.0",
-            dataproc_service_account=default.email,
             options={
                 "prober_test_run": "true",
             })
@@ -937,7 +1117,7 @@ class Instance(pulumi.CustomResource):
             crypto_key_id=crypto_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com"])
-        basic_cmek = gcp.datafusion.Instance("basicCmek",
+        cmek = gcp.datafusion.Instance("cmek",
             region="us-central1",
             type="BASIC",
             crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
@@ -958,6 +1138,33 @@ class Instance(pulumi.CustomResource):
             },
             region="us-central1",
             type="ENTERPRISE")
+        ```
+        ### Data Fusion Instance Event
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        event_topic = gcp.pubsub.Topic("eventTopic")
+        event_instance = gcp.datafusion.Instance("eventInstance",
+            region="us-central1",
+            type="BASIC",
+            version="6.7.0",
+            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
+                enabled=True,
+                topic=event_topic.id,
+            ))
+        ```
+        ### Data Fusion Instance Zone
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        zone = gcp.datafusion.Instance("zone",
+            region="us-central1",
+            type="DEVELOPER",
+            zone="us-central1-a")
         ```
 
         ## Import
@@ -998,9 +1205,11 @@ class Instance(pulumi.CustomResource):
                  crypto_key_config: Optional[pulumi.Input[pulumi.InputType['InstanceCryptoKeyConfigArgs']]] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  enable_rbac: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
+                 event_publish_config: Optional[pulumi.Input[pulumi.InputType['InstanceEventPublishConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']]] = None,
@@ -1010,6 +1219,7 @@ class Instance(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1022,9 +1232,11 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["crypto_key_config"] = crypto_key_config
             __props__.__dict__["dataproc_service_account"] = dataproc_service_account
             __props__.__dict__["description"] = description
+            __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enable_rbac"] = enable_rbac
             __props__.__dict__["enable_stackdriver_logging"] = enable_stackdriver_logging
             __props__.__dict__["enable_stackdriver_monitoring"] = enable_stackdriver_monitoring
+            __props__.__dict__["event_publish_config"] = event_publish_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["network_config"] = network_config
@@ -1036,8 +1248,11 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["version"] = version
+            __props__.__dict__["zone"] = zone
+            __props__.__dict__["api_endpoint"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["gcs_bucket"] = None
+            __props__.__dict__["p4_service_account"] = None
             __props__.__dict__["service_account"] = None
             __props__.__dict__["service_endpoint"] = None
             __props__.__dict__["state"] = None
@@ -1054,18 +1269,22 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            api_endpoint: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             crypto_key_config: Optional[pulumi.Input[pulumi.InputType['InstanceCryptoKeyConfigArgs']]] = None,
             dataproc_service_account: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            display_name: Optional[pulumi.Input[str]] = None,
             enable_rbac: Optional[pulumi.Input[bool]] = None,
             enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
             enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
+            event_publish_config: Optional[pulumi.Input[pulumi.InputType['InstanceEventPublishConfigArgs']]] = None,
             gcs_bucket: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']]] = None,
             options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            p4_service_account: Optional[pulumi.Input[str]] = None,
             private_instance: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -1076,7 +1295,8 @@ class Instance(pulumi.CustomResource):
             tenant_project_id: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            version: Optional[pulumi.Input[str]] = None) -> 'Instance':
+            version: Optional[pulumi.Input[str]] = None,
+            zone: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1084,14 +1304,18 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] api_endpoint: Endpoint on which the REST APIs is accessible.
         :param pulumi.Input[str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         :param pulumi.Input[pulumi.InputType['InstanceCryptoKeyConfigArgs']] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
                Structure is documented below.
         :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
         :param pulumi.Input[str] description: An optional description of the instance.
+        :param pulumi.Input[str] display_name: Display name for an instance.
         :param pulumi.Input[bool] enable_rbac: Option to enable granular role-based access control.
         :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
         :param pulumi.Input[bool] enable_stackdriver_monitoring: Option to enable Stackdriver Monitoring.
+        :param pulumi.Input[pulumi.InputType['InstanceEventPublishConfigArgs']] event_publish_config: Option to enable and pass metadata for event publishing.
+               Structure is documented below.
         :param pulumi.Input[str] gcs_bucket: Cloud Storage bucket generated by Data Fusion in the customer project.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for instance to use to annotate any related underlying resources,
                such as Compute Engine VMs.
@@ -1099,6 +1323,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map of additional options used to configure the behavior of Data Fusion instance.
+        :param pulumi.Input[str] p4_service_account: P4 service account for the customer project.
         :param pulumi.Input[bool] private_instance: Specifies whether the Data Fusion instance should be private. If set to
                true, all Data Fusion nodes will have private IP addresses and will not be
                able to access the public internet.
@@ -1125,23 +1350,28 @@ class Instance(pulumi.CustomResource):
                Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
         :param pulumi.Input[str] update_time: The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         :param pulumi.Input[str] version: Current version of the Data Fusion.
+        :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["api_endpoint"] = api_endpoint
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["crypto_key_config"] = crypto_key_config
         __props__.__dict__["dataproc_service_account"] = dataproc_service_account
         __props__.__dict__["description"] = description
+        __props__.__dict__["display_name"] = display_name
         __props__.__dict__["enable_rbac"] = enable_rbac
         __props__.__dict__["enable_stackdriver_logging"] = enable_stackdriver_logging
         __props__.__dict__["enable_stackdriver_monitoring"] = enable_stackdriver_monitoring
+        __props__.__dict__["event_publish_config"] = event_publish_config
         __props__.__dict__["gcs_bucket"] = gcs_bucket
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["network_config"] = network_config
         __props__.__dict__["options"] = options
+        __props__.__dict__["p4_service_account"] = p4_service_account
         __props__.__dict__["private_instance"] = private_instance
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
@@ -1153,7 +1383,16 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["version"] = version
+        __props__.__dict__["zone"] = zone
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiEndpoint")
+    def api_endpoint(self) -> pulumi.Output[str]:
+        """
+        Endpoint on which the REST APIs is accessible.
+        """
+        return pulumi.get(self, "api_endpoint")
 
     @property
     @pulumi.getter(name="createTime")
@@ -1189,6 +1428,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        Display name for an instance.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
     @pulumi.getter(name="enableRbac")
     def enable_rbac(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1211,6 +1458,15 @@ class Instance(pulumi.CustomResource):
         Option to enable Stackdriver Monitoring.
         """
         return pulumi.get(self, "enable_stackdriver_monitoring")
+
+    @property
+    @pulumi.getter(name="eventPublishConfig")
+    def event_publish_config(self) -> pulumi.Output[Optional['outputs.InstanceEventPublishConfig']]:
+        """
+        Option to enable and pass metadata for event publishing.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "event_publish_config")
 
     @property
     @pulumi.getter(name="gcsBucket")
@@ -1253,6 +1509,14 @@ class Instance(pulumi.CustomResource):
         Map of additional options used to configure the behavior of Data Fusion instance.
         """
         return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter(name="p4ServiceAccount")
+    def p4_service_account(self) -> pulumi.Output[str]:
+        """
+        P4 service account for the customer project.
+        """
+        return pulumi.get(self, "p4_service_account")
 
     @property
     @pulumi.getter(name="privateInstance")
@@ -1356,4 +1620,12 @@ class Instance(pulumi.CustomResource):
         Current version of the Data Fusion.
         """
         return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Output[str]:
+        """
+        Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+        """
+        return pulumi.get(self, "zone")
 

@@ -12,6 +12,12 @@ namespace Pulumi.Gcp.Dataproc
     /// <summary>
     /// A managed metastore service that serves metadata queries.
     /// 
+    /// To get more information about Service, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/dataproc-metastore/docs/reference/rest/v1/projects.locations.services)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
+    /// 
     /// ## Example Usage
     /// ### Dataproc Metastore Service Basic
     /// 
@@ -83,6 +89,50 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// ### Dataproc Metastore Service Private Service Connect
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var net = new Gcp.Compute.Network("net", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var subnet = new Gcp.Compute.Subnetwork("subnet", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Network = net.Id,
+    ///         IpCidrRange = "10.0.0.0/22",
+    ///         PrivateIpGoogleAccess = true,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Dataproc.MetastoreService("default", new()
+    ///     {
+    ///         ServiceId = "metastore-srv",
+    ///         Location = "us-central1",
+    ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
+    ///         {
+    ///             Version = "3.1.2",
+    ///         },
+    ///         NetworkConfig = new Gcp.Dataproc.Inputs.MetastoreServiceNetworkConfigArgs
+    ///         {
+    ///             Consumers = new[]
+    ///             {
+    ///                 new Gcp.Dataproc.Inputs.MetastoreServiceNetworkConfigConsumerArgs
+    ///                 {
+    ///                     Subnetwork = subnet.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -126,6 +176,7 @@ namespace Pulumi.Gcp.Dataproc
         public Output<Outputs.MetastoreServiceEncryptionConfig?> EncryptionConfig { get; private set; } = null!;
 
         /// <summary>
+        /// -
         /// The URI of the endpoint used to access the metastore service.
         /// </summary>
         [Output("endpointUri")]
@@ -178,6 +229,13 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
+
+        /// <summary>
+        /// The configuration specifying the network settings for the Dataproc Metastore service.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("networkConfig")]
+        public Output<Outputs.MetastoreServiceNetworkConfig?> NetworkConfig { get; private set; } = null!;
 
         /// <summary>
         /// The TCP port at which the metastore service is reached. Default: 9083.
@@ -344,6 +402,13 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? Network { get; set; }
 
         /// <summary>
+        /// The configuration specifying the network settings for the Dataproc Metastore service.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.MetastoreServiceNetworkConfigArgs>? NetworkConfig { get; set; }
+
+        /// <summary>
         /// The TCP port at which the metastore service is reached. Default: 9083.
         /// </summary>
         [Input("port")]
@@ -410,6 +475,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<Inputs.MetastoreServiceEncryptionConfigGetArgs>? EncryptionConfig { get; set; }
 
         /// <summary>
+        /// -
         /// The URI of the endpoint used to access the metastore service.
         /// </summary>
         [Input("endpointUri")]
@@ -468,6 +534,13 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// The configuration specifying the network settings for the Dataproc Metastore service.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.MetastoreServiceNetworkConfigGetArgs>? NetworkConfig { get; set; }
 
         /// <summary>
         /// The TCP port at which the metastore service is reached. Default: 9083.

@@ -561,6 +561,347 @@ func (o DenyPolicyRuleDenyRuleDenialConditionPtrOutput) Title() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkforcePoolProviderOidc struct {
+	// The client ID. Must match the audience claim of the JWT issued by the identity provider.
+	ClientId string `pulumi:"clientId"`
+	// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+	IssuerUri string `pulumi:"issuerUri"`
+}
+
+// WorkforcePoolProviderOidcInput is an input type that accepts WorkforcePoolProviderOidcArgs and WorkforcePoolProviderOidcOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderOidcInput` via:
+//
+//	WorkforcePoolProviderOidcArgs{...}
+type WorkforcePoolProviderOidcInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderOidcOutput() WorkforcePoolProviderOidcOutput
+	ToWorkforcePoolProviderOidcOutputWithContext(context.Context) WorkforcePoolProviderOidcOutput
+}
+
+type WorkforcePoolProviderOidcArgs struct {
+	// The client ID. Must match the audience claim of the JWT issued by the identity provider.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+	IssuerUri pulumi.StringInput `pulumi:"issuerUri"`
+}
+
+func (WorkforcePoolProviderOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderOidc)(nil)).Elem()
+}
+
+func (i WorkforcePoolProviderOidcArgs) ToWorkforcePoolProviderOidcOutput() WorkforcePoolProviderOidcOutput {
+	return i.ToWorkforcePoolProviderOidcOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderOidcArgs) ToWorkforcePoolProviderOidcOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderOidcOutput)
+}
+
+func (i WorkforcePoolProviderOidcArgs) ToWorkforcePoolProviderOidcPtrOutput() WorkforcePoolProviderOidcPtrOutput {
+	return i.ToWorkforcePoolProviderOidcPtrOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderOidcArgs) ToWorkforcePoolProviderOidcPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderOidcOutput).ToWorkforcePoolProviderOidcPtrOutputWithContext(ctx)
+}
+
+// WorkforcePoolProviderOidcPtrInput is an input type that accepts WorkforcePoolProviderOidcArgs, WorkforcePoolProviderOidcPtr and WorkforcePoolProviderOidcPtrOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderOidcPtrInput` via:
+//
+//	        WorkforcePoolProviderOidcArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkforcePoolProviderOidcPtrInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderOidcPtrOutput() WorkforcePoolProviderOidcPtrOutput
+	ToWorkforcePoolProviderOidcPtrOutputWithContext(context.Context) WorkforcePoolProviderOidcPtrOutput
+}
+
+type workforcePoolProviderOidcPtrType WorkforcePoolProviderOidcArgs
+
+func WorkforcePoolProviderOidcPtr(v *WorkforcePoolProviderOidcArgs) WorkforcePoolProviderOidcPtrInput {
+	return (*workforcePoolProviderOidcPtrType)(v)
+}
+
+func (*workforcePoolProviderOidcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderOidc)(nil)).Elem()
+}
+
+func (i *workforcePoolProviderOidcPtrType) ToWorkforcePoolProviderOidcPtrOutput() WorkforcePoolProviderOidcPtrOutput {
+	return i.ToWorkforcePoolProviderOidcPtrOutputWithContext(context.Background())
+}
+
+func (i *workforcePoolProviderOidcPtrType) ToWorkforcePoolProviderOidcPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderOidcPtrOutput)
+}
+
+type WorkforcePoolProviderOidcOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderOidc)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderOidcOutput) ToWorkforcePoolProviderOidcOutput() WorkforcePoolProviderOidcOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderOidcOutput) ToWorkforcePoolProviderOidcOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderOidcOutput) ToWorkforcePoolProviderOidcPtrOutput() WorkforcePoolProviderOidcPtrOutput {
+	return o.ToWorkforcePoolProviderOidcPtrOutputWithContext(context.Background())
+}
+
+func (o WorkforcePoolProviderOidcOutput) ToWorkforcePoolProviderOidcPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkforcePoolProviderOidc) *WorkforcePoolProviderOidc {
+		return &v
+	}).(WorkforcePoolProviderOidcPtrOutput)
+}
+
+// The client ID. Must match the audience claim of the JWT issued by the identity provider.
+func (o WorkforcePoolProviderOidcOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderOidc) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+func (o WorkforcePoolProviderOidcOutput) IssuerUri() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderOidc) string { return v.IssuerUri }).(pulumi.StringOutput)
+}
+
+type WorkforcePoolProviderOidcPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderOidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderOidc)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderOidcPtrOutput) ToWorkforcePoolProviderOidcPtrOutput() WorkforcePoolProviderOidcPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderOidcPtrOutput) ToWorkforcePoolProviderOidcPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderOidcPtrOutput) Elem() WorkforcePoolProviderOidcOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderOidc) WorkforcePoolProviderOidc {
+		if v != nil {
+			return *v
+		}
+		var ret WorkforcePoolProviderOidc
+		return ret
+	}).(WorkforcePoolProviderOidcOutput)
+}
+
+// The client ID. Must match the audience claim of the JWT issued by the identity provider.
+func (o WorkforcePoolProviderOidcPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+func (o WorkforcePoolProviderOidcPtrOutput) IssuerUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IssuerUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkforcePoolProviderSaml struct {
+	// SAML Identity provider configuration metadata xml doc.
+	// The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
+	// The max size of the acceptable xml document will be bounded to 128k characters.
+	// The metadata xml document should satisfy the following constraints:
+	// 1) Must contain an Identity Provider Entity ID.
+	// 2) Must contain at least one non-expired signing key certificate.
+	// 3) For each signing key:
+	//    a) Valid from should be no more than 7 days from now.
+	//    b) Valid to should be no more than 10 years in the future.
+	// 4) Up to 3 IdP signing keys are allowed in the metadata xml.
+	//    When updating the provider's metadata xml, at least one non-expired signing key
+	//    must overlap with the existing metadata. This requirement is skipped if there are
+	//    no non-expired signing keys present in the existing metadata.
+	IdpMetadataXml string `pulumi:"idpMetadataXml"`
+}
+
+// WorkforcePoolProviderSamlInput is an input type that accepts WorkforcePoolProviderSamlArgs and WorkforcePoolProviderSamlOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderSamlInput` via:
+//
+//	WorkforcePoolProviderSamlArgs{...}
+type WorkforcePoolProviderSamlInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderSamlOutput() WorkforcePoolProviderSamlOutput
+	ToWorkforcePoolProviderSamlOutputWithContext(context.Context) WorkforcePoolProviderSamlOutput
+}
+
+type WorkforcePoolProviderSamlArgs struct {
+	// SAML Identity provider configuration metadata xml doc.
+	// The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
+	// The max size of the acceptable xml document will be bounded to 128k characters.
+	// The metadata xml document should satisfy the following constraints:
+	// 1) Must contain an Identity Provider Entity ID.
+	// 2) Must contain at least one non-expired signing key certificate.
+	// 3) For each signing key:
+	//    a) Valid from should be no more than 7 days from now.
+	//    b) Valid to should be no more than 10 years in the future.
+	// 4) Up to 3 IdP signing keys are allowed in the metadata xml.
+	//    When updating the provider's metadata xml, at least one non-expired signing key
+	//    must overlap with the existing metadata. This requirement is skipped if there are
+	//    no non-expired signing keys present in the existing metadata.
+	IdpMetadataXml pulumi.StringInput `pulumi:"idpMetadataXml"`
+}
+
+func (WorkforcePoolProviderSamlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderSaml)(nil)).Elem()
+}
+
+func (i WorkforcePoolProviderSamlArgs) ToWorkforcePoolProviderSamlOutput() WorkforcePoolProviderSamlOutput {
+	return i.ToWorkforcePoolProviderSamlOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderSamlArgs) ToWorkforcePoolProviderSamlOutputWithContext(ctx context.Context) WorkforcePoolProviderSamlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderSamlOutput)
+}
+
+func (i WorkforcePoolProviderSamlArgs) ToWorkforcePoolProviderSamlPtrOutput() WorkforcePoolProviderSamlPtrOutput {
+	return i.ToWorkforcePoolProviderSamlPtrOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderSamlArgs) ToWorkforcePoolProviderSamlPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderSamlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderSamlOutput).ToWorkforcePoolProviderSamlPtrOutputWithContext(ctx)
+}
+
+// WorkforcePoolProviderSamlPtrInput is an input type that accepts WorkforcePoolProviderSamlArgs, WorkforcePoolProviderSamlPtr and WorkforcePoolProviderSamlPtrOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderSamlPtrInput` via:
+//
+//	        WorkforcePoolProviderSamlArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkforcePoolProviderSamlPtrInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderSamlPtrOutput() WorkforcePoolProviderSamlPtrOutput
+	ToWorkforcePoolProviderSamlPtrOutputWithContext(context.Context) WorkforcePoolProviderSamlPtrOutput
+}
+
+type workforcePoolProviderSamlPtrType WorkforcePoolProviderSamlArgs
+
+func WorkforcePoolProviderSamlPtr(v *WorkforcePoolProviderSamlArgs) WorkforcePoolProviderSamlPtrInput {
+	return (*workforcePoolProviderSamlPtrType)(v)
+}
+
+func (*workforcePoolProviderSamlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderSaml)(nil)).Elem()
+}
+
+func (i *workforcePoolProviderSamlPtrType) ToWorkforcePoolProviderSamlPtrOutput() WorkforcePoolProviderSamlPtrOutput {
+	return i.ToWorkforcePoolProviderSamlPtrOutputWithContext(context.Background())
+}
+
+func (i *workforcePoolProviderSamlPtrType) ToWorkforcePoolProviderSamlPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderSamlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderSamlPtrOutput)
+}
+
+type WorkforcePoolProviderSamlOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderSamlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderSaml)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderSamlOutput) ToWorkforcePoolProviderSamlOutput() WorkforcePoolProviderSamlOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderSamlOutput) ToWorkforcePoolProviderSamlOutputWithContext(ctx context.Context) WorkforcePoolProviderSamlOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderSamlOutput) ToWorkforcePoolProviderSamlPtrOutput() WorkforcePoolProviderSamlPtrOutput {
+	return o.ToWorkforcePoolProviderSamlPtrOutputWithContext(context.Background())
+}
+
+func (o WorkforcePoolProviderSamlOutput) ToWorkforcePoolProviderSamlPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderSamlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkforcePoolProviderSaml) *WorkforcePoolProviderSaml {
+		return &v
+	}).(WorkforcePoolProviderSamlPtrOutput)
+}
+
+// SAML Identity provider configuration metadata xml doc.
+// The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
+// The max size of the acceptable xml document will be bounded to 128k characters.
+// The metadata xml document should satisfy the following constraints:
+//  1. Must contain an Identity Provider Entity ID.
+//  2. Must contain at least one non-expired signing key certificate.
+//  3. For each signing key:
+//     a) Valid from should be no more than 7 days from now.
+//     b) Valid to should be no more than 10 years in the future.
+//  4. Up to 3 IdP signing keys are allowed in the metadata xml.
+//     When updating the provider's metadata xml, at least one non-expired signing key
+//     must overlap with the existing metadata. This requirement is skipped if there are
+//     no non-expired signing keys present in the existing metadata.
+func (o WorkforcePoolProviderSamlOutput) IdpMetadataXml() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderSaml) string { return v.IdpMetadataXml }).(pulumi.StringOutput)
+}
+
+type WorkforcePoolProviderSamlPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderSamlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderSaml)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderSamlPtrOutput) ToWorkforcePoolProviderSamlPtrOutput() WorkforcePoolProviderSamlPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderSamlPtrOutput) ToWorkforcePoolProviderSamlPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderSamlPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderSamlPtrOutput) Elem() WorkforcePoolProviderSamlOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderSaml) WorkforcePoolProviderSaml {
+		if v != nil {
+			return *v
+		}
+		var ret WorkforcePoolProviderSaml
+		return ret
+	}).(WorkforcePoolProviderSamlOutput)
+}
+
+// SAML Identity provider configuration metadata xml doc.
+// The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
+// The max size of the acceptable xml document will be bounded to 128k characters.
+// The metadata xml document should satisfy the following constraints:
+//  1. Must contain an Identity Provider Entity ID.
+//  2. Must contain at least one non-expired signing key certificate.
+//  3. For each signing key:
+//     a) Valid from should be no more than 7 days from now.
+//     b) Valid to should be no more than 10 years in the future.
+//  4. Up to 3 IdP signing keys are allowed in the metadata xml.
+//     When updating the provider's metadata xml, at least one non-expired signing key
+//     must overlap with the existing metadata. This requirement is skipped if there are
+//     no non-expired signing keys present in the existing metadata.
+func (o WorkforcePoolProviderSamlPtrOutput) IdpMetadataXml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderSaml) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdpMetadataXml
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkloadIdentityPoolProviderAws struct {
 	// The AWS account ID.
 	AccountId string `pulumi:"accountId"`
@@ -1270,6 +1611,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRulePtrInput)(nil)).Elem(), DenyPolicyRuleDenyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRuleDenialConditionInput)(nil)).Elem(), DenyPolicyRuleDenyRuleDenialConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRuleDenialConditionPtrInput)(nil)).Elem(), DenyPolicyRuleDenyRuleDenialConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcInput)(nil)).Elem(), WorkforcePoolProviderOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcPtrInput)(nil)).Elem(), WorkforcePoolProviderOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderSamlInput)(nil)).Elem(), WorkforcePoolProviderSamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderSamlPtrInput)(nil)).Elem(), WorkforcePoolProviderSamlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderAwsInput)(nil)).Elem(), WorkloadIdentityPoolProviderAwsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderAwsPtrInput)(nil)).Elem(), WorkloadIdentityPoolProviderAwsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderOidcInput)(nil)).Elem(), WorkloadIdentityPoolProviderOidcArgs{})
@@ -1286,6 +1631,10 @@ func init() {
 	pulumi.RegisterOutputType(DenyPolicyRuleDenyRulePtrOutput{})
 	pulumi.RegisterOutputType(DenyPolicyRuleDenyRuleDenialConditionOutput{})
 	pulumi.RegisterOutputType(DenyPolicyRuleDenyRuleDenialConditionPtrOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderOidcOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderOidcPtrOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderSamlOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderSamlPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderAwsOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderAwsPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderOidcOutput{})

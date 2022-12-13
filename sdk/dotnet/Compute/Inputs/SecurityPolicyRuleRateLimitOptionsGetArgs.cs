@@ -52,6 +52,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("exceedAction", required: true)]
         public Input<string> ExceedAction { get; set; } = null!;
 
+        /// <summary>
+        /// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
+        /// </summary>
         [Input("exceedRedirectOptions")]
         public Input<Inputs.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsGetArgs>? ExceedRedirectOptions { get; set; }
 

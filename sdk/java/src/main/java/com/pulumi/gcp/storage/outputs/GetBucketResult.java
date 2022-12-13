@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.storage.outputs.GetBucketAutoclass;
 import com.pulumi.gcp.storage.outputs.GetBucketCor;
 import com.pulumi.gcp.storage.outputs.GetBucketCustomPlacementConfig;
 import com.pulumi.gcp.storage.outputs.GetBucketEncryption;
@@ -20,6 +21,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketResult {
+    private List<GetBucketAutoclass> autoclasses;
     private List<GetBucketCor> cors;
     private List<GetBucketCustomPlacementConfig> customPlacementConfigs;
     private Boolean defaultEventBasedHold;
@@ -47,6 +49,9 @@ public final class GetBucketResult {
     private List<GetBucketWebsite> websites;
 
     private GetBucketResult() {}
+    public List<GetBucketAutoclass> autoclasses() {
+        return this.autoclasses;
+    }
     public List<GetBucketCor> cors() {
         return this.cors;
     }
@@ -124,6 +129,7 @@ public final class GetBucketResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetBucketAutoclass> autoclasses;
         private List<GetBucketCor> cors;
         private List<GetBucketCustomPlacementConfig> customPlacementConfigs;
         private Boolean defaultEventBasedHold;
@@ -148,6 +154,7 @@ public final class GetBucketResult {
         public Builder() {}
         public Builder(GetBucketResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoclasses = defaults.autoclasses;
     	      this.cors = defaults.cors;
     	      this.customPlacementConfigs = defaults.customPlacementConfigs;
     	      this.defaultEventBasedHold = defaults.defaultEventBasedHold;
@@ -171,6 +178,14 @@ public final class GetBucketResult {
     	      this.websites = defaults.websites;
         }
 
+        @CustomType.Setter
+        public Builder autoclasses(List<GetBucketAutoclass> autoclasses) {
+            this.autoclasses = Objects.requireNonNull(autoclasses);
+            return this;
+        }
+        public Builder autoclasses(GetBucketAutoclass... autoclasses) {
+            return autoclasses(List.of(autoclasses));
+        }
         @CustomType.Setter
         public Builder cors(List<GetBucketCor> cors) {
             this.cors = Objects.requireNonNull(cors);
@@ -302,6 +317,7 @@ public final class GetBucketResult {
         }
         public GetBucketResult build() {
             final var o = new GetBucketResult();
+            o.autoclasses = autoclasses;
             o.cors = cors;
             o.customPlacementConfigs = customPlacementConfigs;
             o.defaultEventBasedHold = defaultEventBasedHold;

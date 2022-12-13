@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var fallback = new Gcp.NetworkServices.EdgeCacheOrigin("fallback", new()
     ///     {
-    ///         OriginAddress = "gs://media-edge-fallback",
+    ///         OriginAddress = "fallback.example.com",
     ///         Description = "The default bucket for media edge test",
     ///         MaxAttempts = 3,
     ///         Protocol = "HTTP",
@@ -59,6 +59,36 @@ namespace Pulumi.Gcp.NetworkServices
     ///             MaxAttemptsTimeout = "20s",
     ///             ResponseTimeout = "60s",
     ///             ReadTimeout = "5s",
+    ///         },
+    ///         OriginOverrideAction = new Gcp.NetworkServices.Inputs.EdgeCacheOriginOriginOverrideActionArgs
+    ///         {
+    ///             UrlRewrite = new Gcp.NetworkServices.Inputs.EdgeCacheOriginOriginOverrideActionUrlRewriteArgs
+    ///             {
+    ///                 HostRewrite = "example.com",
+    ///             },
+    ///             HeaderAction = new Gcp.NetworkServices.Inputs.EdgeCacheOriginOriginOverrideActionHeaderActionArgs
+    ///             {
+    ///                 RequestHeadersToAdds = new[]
+    ///                 {
+    ///                     new Gcp.NetworkServices.Inputs.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs
+    ///                     {
+    ///                         HeaderName = "x-header",
+    ///                         HeaderValue = "value",
+    ///                         Replace = true,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         OriginRedirect = new Gcp.NetworkServices.Inputs.EdgeCacheOriginOriginRedirectArgs
+    ///         {
+    ///             RedirectConditions = new[]
+    ///             {
+    ///                 "MOVED_PERMANENTLY",
+    ///                 "FOUND",
+    ///                 "SEE_OTHER",
+    ///                 "TEMPORARY_REDIRECT",
+    ///                 "PERMANENT_REDIRECT",
+    ///             },
     ///         },
     ///     });
     /// 
@@ -195,6 +225,21 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Output("originAddress")]
         public Output<string> OriginAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// The override actions, including url rewrites and header
+        /// additions, for requests that use this origin.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("originOverrideAction")]
+        public Output<Outputs.EdgeCacheOriginOriginOverrideAction?> OriginOverrideAction { get; private set; } = null!;
+
+        /// <summary>
+        /// Follow redirects from this origin.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("originRedirect")]
+        public Output<Outputs.EdgeCacheOriginOriginRedirect?> OriginRedirect { get; private set; } = null!;
 
         /// <summary>
         /// The port to connect to the origin on.
@@ -355,6 +400,21 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<string> OriginAddress { get; set; } = null!;
 
         /// <summary>
+        /// The override actions, including url rewrites and header
+        /// additions, for requests that use this origin.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("originOverrideAction")]
+        public Input<Inputs.EdgeCacheOriginOriginOverrideActionArgs>? OriginOverrideAction { get; set; }
+
+        /// <summary>
+        /// Follow redirects from this origin.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("originRedirect")]
+        public Input<Inputs.EdgeCacheOriginOriginRedirectArgs>? OriginRedirect { get; set; }
+
+        /// <summary>
         /// The port to connect to the origin on.
         /// Defaults to port 443 for HTTP2 and HTTPS protocols, and port 80 for HTTP.
         /// </summary>
@@ -479,6 +539,21 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Input("originAddress")]
         public Input<string>? OriginAddress { get; set; }
+
+        /// <summary>
+        /// The override actions, including url rewrites and header
+        /// additions, for requests that use this origin.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("originOverrideAction")]
+        public Input<Inputs.EdgeCacheOriginOriginOverrideActionGetArgs>? OriginOverrideAction { get; set; }
+
+        /// <summary>
+        /// Follow redirects from this origin.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("originRedirect")]
+        public Input<Inputs.EdgeCacheOriginOriginRedirectGetArgs>? OriginRedirect { get; set; }
 
         /// <summary>
         /// The port to connect to the origin on.

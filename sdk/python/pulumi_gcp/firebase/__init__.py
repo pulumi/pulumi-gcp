@@ -7,10 +7,12 @@ import typing
 # Export this package's modules as members:
 from .android_app import *
 from .apple_app import *
+from .get_android_app import *
 from .get_web_app import *
 from .get_web_app_config import *
 from .hosting_channel import *
 from .hosting_site import *
 from .project import *
 from .project_location import *
+from .storage_bucket import *
 from .web_app import *

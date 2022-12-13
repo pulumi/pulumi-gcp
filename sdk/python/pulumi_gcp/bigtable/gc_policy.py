@@ -19,6 +19,7 @@ class GCPolicyArgs:
                  column_family: pulumi.Input[str],
                  instance_name: pulumi.Input[str],
                  table: pulumi.Input[str],
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  gc_rules: Optional[pulumi.Input[str]] = None,
                  max_age: Optional[pulumi.Input['GCPolicyMaxAgeArgs']] = None,
                  max_versions: Optional[pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]] = None,
@@ -29,6 +30,8 @@ class GCPolicyArgs:
         :param pulumi.Input[str] column_family: The name of the column family.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[str] table: The name of the table.
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the GC policy.
+               Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
         :param pulumi.Input[str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input['GCPolicyMaxAgeArgs'] max_age: GC policy that applies to all cells older than the given age.
         :param pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
@@ -38,6 +41,8 @@ class GCPolicyArgs:
         pulumi.set(__self__, "column_family", column_family)
         pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "table", table)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if gc_rules is not None:
             pulumi.set(__self__, "gc_rules", gc_rules)
         if max_age is not None:
@@ -84,6 +89,19 @@ class GCPolicyArgs:
     @table.setter
     def table(self, value: pulumi.Input[str]):
         pulumi.set(self, "table", value)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The deletion policy for the GC policy.
+        Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter(name="gcRules")
@@ -150,6 +168,7 @@ class GCPolicyArgs:
 class _GCPolicyState:
     def __init__(__self__, *,
                  column_family: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  gc_rules: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  max_age: Optional[pulumi.Input['GCPolicyMaxAgeArgs']] = None,
@@ -160,6 +179,8 @@ class _GCPolicyState:
         """
         Input properties used for looking up and filtering GCPolicy resources.
         :param pulumi.Input[str] column_family: The name of the column family.
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the GC policy.
+               Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
         :param pulumi.Input[str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input['GCPolicyMaxAgeArgs'] max_age: GC policy that applies to all cells older than the given age.
@@ -170,6 +191,8 @@ class _GCPolicyState:
         """
         if column_family is not None:
             pulumi.set(__self__, "column_family", column_family)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if gc_rules is not None:
             pulumi.set(__self__, "gc_rules", gc_rules)
         if instance_name is not None:
@@ -196,6 +219,19 @@ class _GCPolicyState:
     @column_family.setter
     def column_family(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "column_family", value)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The deletion policy for the GC policy.
+        Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter(name="gcRules")
@@ -288,6 +324,7 @@ class GCPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column_family: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  gc_rules: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  max_age: Optional[pulumi.Input[pulumi.InputType['GCPolicyMaxAgeArgs']]] = None,
@@ -330,9 +367,15 @@ class GCPolicy(pulumi.CustomResource):
             instance_name=instance.name,
             table=table.name,
             column_family="name",
-            max_age=gcp.bigtable.GCPolicyMaxAgeArgs(
-                duration="168h",
-            ))
+            deletion_policy="ABANDON",
+            gc_rules=\"\"\"  {
+            "rules": [
+              {
+                "max_age": "168h"
+              }
+            ]
+          }
+        \"\"\")
         ```
 
         Multiple conditions is also supported. `UNION` when any of its sub-policies apply (OR). `INTERSECTION` when all its sub-policies apply (AND)
@@ -345,18 +388,22 @@ class GCPolicy(pulumi.CustomResource):
             instance_name=google_bigtable_instance["instance"]["name"],
             table=google_bigtable_table["table"]["name"],
             column_family="name",
-            mode="UNION",
-            max_age=gcp.bigtable.GCPolicyMaxAgeArgs(
-                duration="168h",
-            ),
-            max_versions=[gcp.bigtable.GCPolicyMaxVersionArgs(
-                number=10,
-            )])
+            deletion_policy="ABANDON",
+            gc_rules=\"\"\"  {
+            "mode": "union",
+            "rules": [
+              {
+                "max_age": "168h"
+              },
+              {
+                "max_version": 10
+              }
+            ]
+          }
+        \"\"\")
         ```
 
-        For complex, nested policies, an optional `gc_rules` field are supported. This field
-        conflicts with `mode`, `max_age` and `max_version`. This field is a serialized JSON
-        string. Example:
+        An example of more complex GC policy:
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -377,25 +424,26 @@ class GCPolicy(pulumi.CustomResource):
             instance_name=instance.id,
             table=table.name,
             column_family="cf1",
-            gc_rules=\"\"\"{
-          "mode": "union",
-          "rules": [
-            {
-              "max_age": "10h"
-            },
-            {
-              "mode": "intersection",
-              "rules": [
-                {
-                  "max_age": "2h"
-                },
-                {
-                  "max_version": 2
-                }
-              ]
-            }
-          ]
-        }
+            deletion_policy="ABANDON",
+            gc_rules=\"\"\"  {
+            "mode": "union",
+            "rules": [
+              {
+                "max_age": "10h"
+              },
+              {
+                "mode": "intersection",
+                "rules": [
+                  {
+                    "max_age": "2h"
+                  },
+                  {
+                    "max_version": 2
+                  }
+                ]
+              }
+            ]
+          }
         \"\"\")
         ```
         This is equivalent to running the following `cbt` command:
@@ -410,6 +458,8 @@ class GCPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] column_family: The name of the column family.
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the GC policy.
+               Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
         :param pulumi.Input[str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[pulumi.InputType['GCPolicyMaxAgeArgs']] max_age: GC policy that applies to all cells older than the given age.
@@ -458,9 +508,15 @@ class GCPolicy(pulumi.CustomResource):
             instance_name=instance.name,
             table=table.name,
             column_family="name",
-            max_age=gcp.bigtable.GCPolicyMaxAgeArgs(
-                duration="168h",
-            ))
+            deletion_policy="ABANDON",
+            gc_rules=\"\"\"  {
+            "rules": [
+              {
+                "max_age": "168h"
+              }
+            ]
+          }
+        \"\"\")
         ```
 
         Multiple conditions is also supported. `UNION` when any of its sub-policies apply (OR). `INTERSECTION` when all its sub-policies apply (AND)
@@ -473,18 +529,22 @@ class GCPolicy(pulumi.CustomResource):
             instance_name=google_bigtable_instance["instance"]["name"],
             table=google_bigtable_table["table"]["name"],
             column_family="name",
-            mode="UNION",
-            max_age=gcp.bigtable.GCPolicyMaxAgeArgs(
-                duration="168h",
-            ),
-            max_versions=[gcp.bigtable.GCPolicyMaxVersionArgs(
-                number=10,
-            )])
+            deletion_policy="ABANDON",
+            gc_rules=\"\"\"  {
+            "mode": "union",
+            "rules": [
+              {
+                "max_age": "168h"
+              },
+              {
+                "max_version": 10
+              }
+            ]
+          }
+        \"\"\")
         ```
 
-        For complex, nested policies, an optional `gc_rules` field are supported. This field
-        conflicts with `mode`, `max_age` and `max_version`. This field is a serialized JSON
-        string. Example:
+        An example of more complex GC policy:
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -505,25 +565,26 @@ class GCPolicy(pulumi.CustomResource):
             instance_name=instance.id,
             table=table.name,
             column_family="cf1",
-            gc_rules=\"\"\"{
-          "mode": "union",
-          "rules": [
-            {
-              "max_age": "10h"
-            },
-            {
-              "mode": "intersection",
-              "rules": [
-                {
-                  "max_age": "2h"
-                },
-                {
-                  "max_version": 2
-                }
-              ]
-            }
-          ]
-        }
+            deletion_policy="ABANDON",
+            gc_rules=\"\"\"  {
+            "mode": "union",
+            "rules": [
+              {
+                "max_age": "10h"
+              },
+              {
+                "mode": "intersection",
+                "rules": [
+                  {
+                    "max_age": "2h"
+                  },
+                  {
+                    "max_version": 2
+                  }
+                ]
+              }
+            ]
+          }
         \"\"\")
         ```
         This is equivalent to running the following `cbt` command:
@@ -551,6 +612,7 @@ class GCPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column_family: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  gc_rules: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  max_age: Optional[pulumi.Input[pulumi.InputType['GCPolicyMaxAgeArgs']]] = None,
@@ -570,6 +632,7 @@ class GCPolicy(pulumi.CustomResource):
             if column_family is None and not opts.urn:
                 raise TypeError("Missing required property 'column_family'")
             __props__.__dict__["column_family"] = column_family
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["gc_rules"] = gc_rules
             if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
@@ -592,6 +655,7 @@ class GCPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             column_family: Optional[pulumi.Input[str]] = None,
+            deletion_policy: Optional[pulumi.Input[str]] = None,
             gc_rules: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             max_age: Optional[pulumi.Input[pulumi.InputType['GCPolicyMaxAgeArgs']]] = None,
@@ -607,6 +671,8 @@ class GCPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] column_family: The name of the column family.
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the GC policy.
+               Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
         :param pulumi.Input[str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[pulumi.InputType['GCPolicyMaxAgeArgs']] max_age: GC policy that applies to all cells older than the given age.
@@ -620,6 +686,7 @@ class GCPolicy(pulumi.CustomResource):
         __props__ = _GCPolicyState.__new__(_GCPolicyState)
 
         __props__.__dict__["column_family"] = column_family
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["gc_rules"] = gc_rules
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["max_age"] = max_age
@@ -636,6 +703,15 @@ class GCPolicy(pulumi.CustomResource):
         The name of the column family.
         """
         return pulumi.get(self, "column_family")
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        The deletion policy for the GC policy.
+        Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @property
     @pulumi.getter(name="gcRules")

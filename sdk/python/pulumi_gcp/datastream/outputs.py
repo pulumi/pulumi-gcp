@@ -19,6 +19,7 @@ __all__ = [
     'ConnectionProfileOracleProfile',
     'ConnectionProfilePostgresqlProfile',
     'ConnectionProfilePrivateConnectivity',
+    'PrivateConnectionError',
     'PrivateConnectionVpcPeeringConfig',
 ]
 
@@ -570,6 +571,27 @@ class ConnectionProfilePrivateConnectivity(dict):
         A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
         """
         return pulumi.get(self, "private_connection")
+
+
+@pulumi.output_type
+class PrivateConnectionError(dict):
+    def __init__(__self__, *,
+                 details: Optional[Mapping[str, str]] = None,
+                 message: Optional[str] = None):
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        return pulumi.get(self, "message")
 
 
 @pulumi.output_type

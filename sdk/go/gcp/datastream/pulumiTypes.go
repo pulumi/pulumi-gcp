@@ -1596,6 +1596,106 @@ func (o ConnectionProfilePrivateConnectivityPtrOutput) PrivateConnection() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+type PrivateConnectionError struct {
+	Details map[string]string `pulumi:"details"`
+	Message *string           `pulumi:"message"`
+}
+
+// PrivateConnectionErrorInput is an input type that accepts PrivateConnectionErrorArgs and PrivateConnectionErrorOutput values.
+// You can construct a concrete instance of `PrivateConnectionErrorInput` via:
+//
+//	PrivateConnectionErrorArgs{...}
+type PrivateConnectionErrorInput interface {
+	pulumi.Input
+
+	ToPrivateConnectionErrorOutput() PrivateConnectionErrorOutput
+	ToPrivateConnectionErrorOutputWithContext(context.Context) PrivateConnectionErrorOutput
+}
+
+type PrivateConnectionErrorArgs struct {
+	Details pulumi.StringMapInput `pulumi:"details"`
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (PrivateConnectionErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateConnectionError)(nil)).Elem()
+}
+
+func (i PrivateConnectionErrorArgs) ToPrivateConnectionErrorOutput() PrivateConnectionErrorOutput {
+	return i.ToPrivateConnectionErrorOutputWithContext(context.Background())
+}
+
+func (i PrivateConnectionErrorArgs) ToPrivateConnectionErrorOutputWithContext(ctx context.Context) PrivateConnectionErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionErrorOutput)
+}
+
+// PrivateConnectionErrorArrayInput is an input type that accepts PrivateConnectionErrorArray and PrivateConnectionErrorArrayOutput values.
+// You can construct a concrete instance of `PrivateConnectionErrorArrayInput` via:
+//
+//	PrivateConnectionErrorArray{ PrivateConnectionErrorArgs{...} }
+type PrivateConnectionErrorArrayInput interface {
+	pulumi.Input
+
+	ToPrivateConnectionErrorArrayOutput() PrivateConnectionErrorArrayOutput
+	ToPrivateConnectionErrorArrayOutputWithContext(context.Context) PrivateConnectionErrorArrayOutput
+}
+
+type PrivateConnectionErrorArray []PrivateConnectionErrorInput
+
+func (PrivateConnectionErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateConnectionError)(nil)).Elem()
+}
+
+func (i PrivateConnectionErrorArray) ToPrivateConnectionErrorArrayOutput() PrivateConnectionErrorArrayOutput {
+	return i.ToPrivateConnectionErrorArrayOutputWithContext(context.Background())
+}
+
+func (i PrivateConnectionErrorArray) ToPrivateConnectionErrorArrayOutputWithContext(ctx context.Context) PrivateConnectionErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionErrorArrayOutput)
+}
+
+type PrivateConnectionErrorOutput struct{ *pulumi.OutputState }
+
+func (PrivateConnectionErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateConnectionError)(nil)).Elem()
+}
+
+func (o PrivateConnectionErrorOutput) ToPrivateConnectionErrorOutput() PrivateConnectionErrorOutput {
+	return o
+}
+
+func (o PrivateConnectionErrorOutput) ToPrivateConnectionErrorOutputWithContext(ctx context.Context) PrivateConnectionErrorOutput {
+	return o
+}
+
+func (o PrivateConnectionErrorOutput) Details() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PrivateConnectionError) map[string]string { return v.Details }).(pulumi.StringMapOutput)
+}
+
+func (o PrivateConnectionErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateConnectionError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type PrivateConnectionErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateConnectionErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateConnectionError)(nil)).Elem()
+}
+
+func (o PrivateConnectionErrorArrayOutput) ToPrivateConnectionErrorArrayOutput() PrivateConnectionErrorArrayOutput {
+	return o
+}
+
+func (o PrivateConnectionErrorArrayOutput) ToPrivateConnectionErrorArrayOutputWithContext(ctx context.Context) PrivateConnectionErrorArrayOutput {
+	return o
+}
+
+func (o PrivateConnectionErrorArrayOutput) Index(i pulumi.IntInput) PrivateConnectionErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateConnectionError {
+		return vs[0].([]PrivateConnectionError)[vs[1].(int)]
+	}).(PrivateConnectionErrorOutput)
+}
+
 type PrivateConnectionVpcPeeringConfig struct {
 	// A free subnet for peering. (CIDR of /29)
 	Subnet string `pulumi:"subnet"`
@@ -1773,6 +1873,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlProfilePtrInput)(nil)).Elem(), ConnectionProfilePostgresqlProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePrivateConnectivityInput)(nil)).Elem(), ConnectionProfilePrivateConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePrivateConnectivityPtrInput)(nil)).Elem(), ConnectionProfilePrivateConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionErrorInput)(nil)).Elem(), PrivateConnectionErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionErrorArrayInput)(nil)).Elem(), PrivateConnectionErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionVpcPeeringConfigInput)(nil)).Elem(), PrivateConnectionVpcPeeringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionVpcPeeringConfigPtrInput)(nil)).Elem(), PrivateConnectionVpcPeeringConfigArgs{})
 	pulumi.RegisterOutputType(ConnectionProfileBigqueryProfileOutput{})
@@ -1791,6 +1893,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlProfilePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePrivateConnectivityOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePrivateConnectivityPtrOutput{})
+	pulumi.RegisterOutputType(PrivateConnectionErrorOutput{})
+	pulumi.RegisterOutputType(PrivateConnectionErrorArrayOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionVpcPeeringConfigOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionVpcPeeringConfigPtrOutput{})
 }

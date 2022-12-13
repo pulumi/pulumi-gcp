@@ -31,14 +31,14 @@ public final class BucketLifecycleRuleActionArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
+     * The type of the action of this Lifecycle Rule. Supported values include: `Delete`, `SetStorageClass` and `AbortIncompleteMultipartUpload`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
+     * @return The type of the action of this Lifecycle Rule. Supported values include: `Delete`, `SetStorageClass` and `AbortIncompleteMultipartUpload`.
      * 
      */
     public Output<String> type() {
@@ -92,7 +92,7 @@ public final class BucketLifecycleRuleActionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
+         * @param type The type of the action of this Lifecycle Rule. Supported values include: `Delete`, `SetStorageClass` and `AbortIncompleteMultipartUpload`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class BucketLifecycleRuleActionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
+         * @param type The type of the action of this Lifecycle Rule. Supported values include: `Delete`, `SetStorageClass` and `AbortIncompleteMultipartUpload`.
          * 
          * @return builder
          * 

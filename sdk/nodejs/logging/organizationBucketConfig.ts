@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -69,6 +71,12 @@ export class OrganizationBucketConfig extends pulumi.CustomResource {
      */
     public readonly bucketId!: pulumi.Output<string>;
     /**
+     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+     * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+     * updating the log bucket. Changing the KMS key is allowed.
+     */
+    public readonly cmekSettings!: pulumi.Output<outputs.logging.OrganizationBucketConfigCmekSettings | undefined>;
+    /**
      * Describes this bucket.
      */
     public readonly description!: pulumi.Output<string>;
@@ -107,6 +115,7 @@ export class OrganizationBucketConfig extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as OrganizationBucketConfigState | undefined;
             resourceInputs["bucketId"] = state ? state.bucketId : undefined;
+            resourceInputs["cmekSettings"] = state ? state.cmekSettings : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -125,6 +134,7 @@ export class OrganizationBucketConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'organization'");
             }
             resourceInputs["bucketId"] = args ? args.bucketId : undefined;
+            resourceInputs["cmekSettings"] = args ? args.cmekSettings : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["organization"] = args ? args.organization : undefined;
@@ -145,6 +155,12 @@ export interface OrganizationBucketConfigState {
      * The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
      */
     bucketId?: pulumi.Input<string>;
+    /**
+     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+     * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+     * updating the log bucket. Changing the KMS key is allowed.
+     */
+    cmekSettings?: pulumi.Input<inputs.logging.OrganizationBucketConfigCmekSettings>;
     /**
      * Describes this bucket.
      */
@@ -179,6 +195,12 @@ export interface OrganizationBucketConfigArgs {
      * The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
      */
     bucketId: pulumi.Input<string>;
+    /**
+     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+     * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+     * updating the log bucket. Changing the KMS key is allowed.
+     */
+    cmekSettings?: pulumi.Input<inputs.logging.OrganizationBucketConfigCmekSettings>;
     /**
      * Describes this bucket.
      */

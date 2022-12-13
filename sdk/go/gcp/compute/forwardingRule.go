@@ -131,16 +131,13 @@ type ForwardingRule struct {
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// This signifies what the ForwardingRule will be used for and can be
-	// EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
-	// Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
-	// and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
-	// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
-	// and internal TCP/UDP load balancers.
-	// EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
-	// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
-	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+	// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+	// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+	// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+	// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+	// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+	// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+	// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -308,16 +305,13 @@ type forwardingRuleState struct {
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
-	// This signifies what the ForwardingRule will be used for and can be
-	// EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
-	// Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
-	// and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
-	// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
-	// and internal TCP/UDP load balancers.
-	// EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
-	// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
-	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+	// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+	// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+	// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+	// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+	// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+	// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+	// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -457,16 +451,13 @@ type ForwardingRuleState struct {
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
-	// This signifies what the ForwardingRule will be used for and can be
-	// EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
-	// Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
-	// and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
-	// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
-	// and internal TCP/UDP load balancers.
-	// EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
-	// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
-	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+	// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+	// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+	// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+	// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+	// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+	// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+	// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -606,16 +597,13 @@ type forwardingRuleArgs struct {
 	IsMirroringCollector *bool `pulumi:"isMirroringCollector"`
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
-	// This signifies what the ForwardingRule will be used for and can be
-	// EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
-	// Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
-	// and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
-	// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
-	// and internal TCP/UDP load balancers.
-	// EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
-	// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
-	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+	// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+	// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+	// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+	// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+	// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+	// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+	// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -742,16 +730,13 @@ type ForwardingRuleArgs struct {
 	IsMirroringCollector pulumi.BoolPtrInput
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
-	// This signifies what the ForwardingRule will be used for and can be
-	// EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
-	// Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
-	// and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
-	// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
-	// and internal TCP/UDP load balancers.
-	// EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
-	// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
-	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+	// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+	// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+	// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+	// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+	// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+	// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+	// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -997,16 +982,13 @@ func (o ForwardingRuleOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// This signifies what the ForwardingRule will be used for and can be
-// EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
-// Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
-// and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
-// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
-// and internal TCP/UDP load balancers.
-// EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
-// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
-// Default value is `EXTERNAL`.
-// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
 func (o ForwardingRuleOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringPtrOutput { return v.LoadBalancingScheme }).(pulumi.StringPtrOutput)
 }

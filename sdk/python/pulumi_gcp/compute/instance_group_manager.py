@@ -21,6 +21,7 @@ class InstanceGroupManagerArgs:
                  all_instances_config: Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']] = None,
                  auto_healing_policies: Optional[pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -50,6 +51,12 @@ class InstanceGroupManagerArgs:
                group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
         :param pulumi.Input[str] description: An optional textual description of the instance
                group manager.
+        :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
+               method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+               If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+               `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+               response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+               respected.
         :param pulumi.Input[str] name: - Version name.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration.
@@ -79,6 +86,8 @@ class InstanceGroupManagerArgs:
             pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if list_managed_instances_results is not None:
+            pulumi.set(__self__, "list_managed_instances_results", list_managed_instances_results)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if named_ports is not None:
@@ -171,6 +180,23 @@ class InstanceGroupManagerArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="listManagedInstancesResults")
+    def list_managed_instances_results(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pagination behavior of the `listManagedInstances` API
+        method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+        If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+        `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+        response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+        respected.
+        """
+        return pulumi.get(self, "list_managed_instances_results")
+
+    @list_managed_instances_results.setter
+    def list_managed_instances_results(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "list_managed_instances_results", value)
 
     @property
     @pulumi.getter
@@ -312,6 +338,7 @@ class _InstanceGroupManagerState:
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  instance_group: Optional[pulumi.Input[str]] = None,
+                 list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]]] = None,
                  operation: Optional[pulumi.Input[str]] = None,
@@ -344,6 +371,12 @@ class _InstanceGroupManagerState:
                group manager.
         :param pulumi.Input[str] fingerprint: The fingerprint of the instance group manager.
         :param pulumi.Input[str] instance_group: The full URL of the instance group created by the manager.
+        :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
+               method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+               If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+               `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+               response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+               respected.
         :param pulumi.Input[str] name: - Version name.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration.
@@ -382,6 +415,8 @@ class _InstanceGroupManagerState:
             pulumi.set(__self__, "fingerprint", fingerprint)
         if instance_group is not None:
             pulumi.set(__self__, "instance_group", instance_group)
+        if list_managed_instances_results is not None:
+            pulumi.set(__self__, "list_managed_instances_results", list_managed_instances_results)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if named_ports is not None:
@@ -492,6 +527,23 @@ class _InstanceGroupManagerState:
     @instance_group.setter
     def instance_group(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_group", value)
+
+    @property
+    @pulumi.getter(name="listManagedInstancesResults")
+    def list_managed_instances_results(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pagination behavior of the `listManagedInstances` API
+        method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+        If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+        `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+        response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+        respected.
+        """
+        return pulumi.get(self, "list_managed_instances_results")
+
+    @list_managed_instances_results.setter
+    def list_managed_instances_results(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "list_managed_instances_results", value)
 
     @property
     @pulumi.getter
@@ -680,6 +732,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  auto_healing_policies: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPoliciesArgs']]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -802,6 +855,12 @@ class InstanceGroupManager(pulumi.CustomResource):
                name.
         :param pulumi.Input[str] description: An optional textual description of the instance
                group manager.
+        :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
+               method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+               If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+               `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+               response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+               respected.
         :param pulumi.Input[str] name: - Version name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
@@ -945,6 +1004,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  auto_healing_policies: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPoliciesArgs']]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -971,6 +1031,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                 raise TypeError("Missing required property 'base_instance_name'")
             __props__.__dict__["base_instance_name"] = base_instance_name
             __props__.__dict__["description"] = description
+            __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
             __props__.__dict__["name"] = name
             __props__.__dict__["named_ports"] = named_ports
             __props__.__dict__["project"] = project
@@ -1005,6 +1066,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
             instance_group: Optional[pulumi.Input[str]] = None,
+            list_managed_instances_results: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]]] = None,
             operation: Optional[pulumi.Input[str]] = None,
@@ -1042,6 +1104,12 @@ class InstanceGroupManager(pulumi.CustomResource):
                group manager.
         :param pulumi.Input[str] fingerprint: The fingerprint of the instance group manager.
         :param pulumi.Input[str] instance_group: The full URL of the instance group created by the manager.
+        :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
+               method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+               If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+               `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+               response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+               respected.
         :param pulumi.Input[str] name: - Version name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
@@ -1078,6 +1146,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["instance_group"] = instance_group
+        __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
         __props__.__dict__["name"] = name
         __props__.__dict__["named_ports"] = named_ports
         __props__.__dict__["operation"] = operation
@@ -1151,6 +1220,19 @@ class InstanceGroupManager(pulumi.CustomResource):
         The full URL of the instance group created by the manager.
         """
         return pulumi.get(self, "instance_group")
+
+    @property
+    @pulumi.getter(name="listManagedInstancesResults")
+    def list_managed_instances_results(self) -> pulumi.Output[Optional[str]]:
+        """
+        Pagination behavior of the `listManagedInstances` API
+        method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+        If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+        `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+        response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+        respected.
+        """
+        return pulumi.get(self, "list_managed_instances_results")
 
     @property
     @pulumi.getter

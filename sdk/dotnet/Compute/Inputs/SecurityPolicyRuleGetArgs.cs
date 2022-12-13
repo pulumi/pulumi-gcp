@@ -30,6 +30,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Additional actions that are performed on headers. Structure is documented below.
+        /// </summary>
+        [Input("headerAction")]
+        public Input<Inputs.SecurityPolicyRuleHeaderActionGetArgs>? HeaderAction { get; set; }
+
+        /// <summary>
         /// A match condition that incoming traffic is evaluated against.
         /// If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
         /// </summary>

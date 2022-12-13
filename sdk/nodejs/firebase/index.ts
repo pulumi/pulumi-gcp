@@ -15,6 +15,11 @@ export type AppleApp = import("./appleApp").AppleApp;
 export const AppleApp: typeof import("./appleApp").AppleApp = null as any;
 utilities.lazyLoad(exports, ["AppleApp"], () => require("./appleApp"));
 
+export { GetAndroidAppArgs, GetAndroidAppResult, GetAndroidAppOutputArgs } from "./getAndroidApp";
+export const getAndroidApp: typeof import("./getAndroidApp").getAndroidApp = null as any;
+export const getAndroidAppOutput: typeof import("./getAndroidApp").getAndroidAppOutput = null as any;
+utilities.lazyLoad(exports, ["getAndroidApp","getAndroidAppOutput"], () => require("./getAndroidApp"));
+
 export { GetWebAppArgs, GetWebAppResult, GetWebAppOutputArgs } from "./getWebApp";
 export const getWebApp: typeof import("./getWebApp").getWebApp = null as any;
 export const getWebAppOutput: typeof import("./getWebApp").getWebAppOutput = null as any;
@@ -45,6 +50,11 @@ export type ProjectLocation = import("./projectLocation").ProjectLocation;
 export const ProjectLocation: typeof import("./projectLocation").ProjectLocation = null as any;
 utilities.lazyLoad(exports, ["ProjectLocation"], () => require("./projectLocation"));
 
+export { StorageBucketArgs, StorageBucketState } from "./storageBucket";
+export type StorageBucket = import("./storageBucket").StorageBucket;
+export const StorageBucket: typeof import("./storageBucket").StorageBucket = null as any;
+utilities.lazyLoad(exports, ["StorageBucket"], () => require("./storageBucket"));
+
 export { WebAppArgs, WebAppState } from "./webApp";
 export type WebApp = import("./webApp").WebApp;
 export const WebApp: typeof import("./webApp").WebApp = null as any;
@@ -67,6 +77,8 @@ const _module = {
                 return new Project(name, <any>undefined, { urn })
             case "gcp:firebase/projectLocation:ProjectLocation":
                 return new ProjectLocation(name, <any>undefined, { urn })
+            case "gcp:firebase/storageBucket:StorageBucket":
+                return new StorageBucket(name, <any>undefined, { urn })
             case "gcp:firebase/webApp:WebApp":
                 return new WebApp(name, <any>undefined, { urn })
             default:
@@ -80,4 +92,5 @@ pulumi.runtime.registerResourceModule("gcp", "firebase/hostingChannel", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/hostingSite", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/project", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/projectLocation", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/storageBucket", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/webApp", _module)

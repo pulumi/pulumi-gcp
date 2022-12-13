@@ -5,8 +5,10 @@ package com.pulumi.gcp.datastream.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.datastream.inputs.PrivateConnectionErrorArgs;
 import com.pulumi.gcp.datastream.inputs.PrivateConnectionVpcPeeringConfigArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,6 +32,21 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * The PrivateConnection error in case of failure.
+     * 
+     */
+    @Import(name="errors")
+    private @Nullable Output<List<PrivateConnectionErrorArgs>> errors;
+
+    /**
+     * @return The PrivateConnection error in case of failure.
+     * 
+     */
+    public Optional<Output<List<PrivateConnectionErrorArgs>>> errors() {
+        return Optional.ofNullable(this.errors);
     }
 
     /**
@@ -110,6 +127,21 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * State of the PrivateConnection.
+     * 
+     */
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    /**
+     * @return State of the PrivateConnection.
+     * 
+     */
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
+    }
+
+    /**
      * The VPC Peering configuration is used to create VPC peering
      * between Datastream and the consumer&#39;s VPC.
      * Structure is documented below.
@@ -132,11 +164,13 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
 
     private PrivateConnectionState(PrivateConnectionState $) {
         this.displayName = $.displayName;
+        this.errors = $.errors;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
         this.privateConnectionId = $.privateConnectionId;
         this.project = $.project;
+        this.state = $.state;
         this.vpcPeeringConfig = $.vpcPeeringConfig;
     }
 
@@ -177,6 +211,37 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param errors The PrivateConnection error in case of failure.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errors(@Nullable Output<List<PrivateConnectionErrorArgs>> errors) {
+            $.errors = errors;
+            return this;
+        }
+
+        /**
+         * @param errors The PrivateConnection error in case of failure.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errors(List<PrivateConnectionErrorArgs> errors) {
+            return errors(Output.of(errors));
+        }
+
+        /**
+         * @param errors The PrivateConnection error in case of failure.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errors(PrivateConnectionErrorArgs... errors) {
+            return errors(List.of(errors));
         }
 
         /**
@@ -284,6 +349,27 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param state State of the PrivateConnection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        /**
+         * @param state State of the PrivateConnection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(String state) {
+            return state(Output.of(state));
         }
 
         /**

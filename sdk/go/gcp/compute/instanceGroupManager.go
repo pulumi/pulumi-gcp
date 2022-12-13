@@ -177,6 +177,13 @@ type InstanceGroupManager struct {
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The full URL of the instance group created by the manager.
 	InstanceGroup pulumi.StringOutput `pulumi:"instanceGroup"`
+	// Pagination behavior of the `listManagedInstances` API
+	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+	// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+	// `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+	// response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+	// respected.
+	ListManagedInstancesResults pulumi.StringPtrOutput `pulumi:"listManagedInstancesResults"`
 	// - Version name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The named port configuration. See the section below
@@ -275,6 +282,13 @@ type instanceGroupManagerState struct {
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The full URL of the instance group created by the manager.
 	InstanceGroup *string `pulumi:"instanceGroup"`
+	// Pagination behavior of the `listManagedInstances` API
+	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+	// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+	// `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+	// response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+	// respected.
+	ListManagedInstancesResults *string `pulumi:"listManagedInstancesResults"`
 	// - Version name.
 	Name *string `pulumi:"name"`
 	// The named port configuration. See the section below
@@ -339,6 +353,13 @@ type InstanceGroupManagerState struct {
 	Fingerprint pulumi.StringPtrInput
 	// The full URL of the instance group created by the manager.
 	InstanceGroup pulumi.StringPtrInput
+	// Pagination behavior of the `listManagedInstances` API
+	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+	// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+	// `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+	// response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+	// respected.
+	ListManagedInstancesResults pulumi.StringPtrInput
 	// - Version name.
 	Name pulumi.StringPtrInput
 	// The named port configuration. See the section below
@@ -403,6 +424,13 @@ type instanceGroupManagerArgs struct {
 	// An optional textual description of the instance
 	// group manager.
 	Description *string `pulumi:"description"`
+	// Pagination behavior of the `listManagedInstances` API
+	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+	// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+	// `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+	// response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+	// respected.
+	ListManagedInstancesResults *string `pulumi:"listManagedInstancesResults"`
 	// - Version name.
 	Name *string `pulumi:"name"`
 	// The named port configuration. See the section below
@@ -459,6 +487,13 @@ type InstanceGroupManagerArgs struct {
 	// An optional textual description of the instance
 	// group manager.
 	Description pulumi.StringPtrInput
+	// Pagination behavior of the `listManagedInstances` API
+	// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+	// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+	// `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+	// response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+	// respected.
+	ListManagedInstancesResults pulumi.StringPtrInput
 	// - Version name.
 	Name pulumi.StringPtrInput
 	// The named port configuration. See the section below
@@ -624,6 +659,16 @@ func (o InstanceGroupManagerOutput) Fingerprint() pulumi.StringOutput {
 // The full URL of the instance group created by the manager.
 func (o InstanceGroupManagerOutput) InstanceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.InstanceGroup }).(pulumi.StringOutput)
+}
+
+// Pagination behavior of the `listManagedInstances` API
+// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+// `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+// response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+// respected.
+func (o InstanceGroupManagerOutput) ListManagedInstancesResults() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringPtrOutput { return v.ListManagedInstancesResults }).(pulumi.StringPtrOutput)
 }
 
 // - Version name.

@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.logging.inputs.OrganizationBucketConfigCmekSettingsArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -29,6 +30,25 @@ public final class OrganizationBucketConfigState extends com.pulumi.resources.Re
      */
     public Optional<Output<String>> bucketId() {
         return Optional.ofNullable(this.bucketId);
+    }
+
+    /**
+     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+     * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+     * updating the log bucket. Changing the KMS key is allowed.
+     * 
+     */
+    @Import(name="cmekSettings")
+    private @Nullable Output<OrganizationBucketConfigCmekSettingsArgs> cmekSettings;
+
+    /**
+     * @return The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+     * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+     * updating the log bucket. Changing the KMS key is allowed.
+     * 
+     */
+    public Optional<Output<OrganizationBucketConfigCmekSettingsArgs>> cmekSettings() {
+        return Optional.ofNullable(this.cmekSettings);
     }
 
     /**
@@ -125,6 +145,7 @@ public final class OrganizationBucketConfigState extends com.pulumi.resources.Re
 
     private OrganizationBucketConfigState(OrganizationBucketConfigState $) {
         this.bucketId = $.bucketId;
+        this.cmekSettings = $.cmekSettings;
         this.description = $.description;
         this.lifecycleState = $.lifecycleState;
         this.location = $.location;
@@ -170,6 +191,31 @@ public final class OrganizationBucketConfigState extends com.pulumi.resources.Re
          */
         public Builder bucketId(String bucketId) {
             return bucketId(Output.of(bucketId));
+        }
+
+        /**
+         * @param cmekSettings The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+         * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+         * updating the log bucket. Changing the KMS key is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cmekSettings(@Nullable Output<OrganizationBucketConfigCmekSettingsArgs> cmekSettings) {
+            $.cmekSettings = cmekSettings;
+            return this;
+        }
+
+        /**
+         * @param cmekSettings The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+         * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+         * updating the log bucket. Changing the KMS key is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cmekSettings(OrganizationBucketConfigCmekSettingsArgs cmekSettings) {
+            return cmekSettings(Output.of(cmekSettings));
         }
 
         /**

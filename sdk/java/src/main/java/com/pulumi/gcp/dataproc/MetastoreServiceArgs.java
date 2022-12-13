@@ -9,6 +9,7 @@ import com.pulumi.gcp.dataproc.inputs.MetastoreServiceEncryptionConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMaintenanceWindowArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMetadataIntegrationArgs;
+import com.pulumi.gcp.dataproc.inputs.MetastoreServiceNetworkConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -162,6 +163,23 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The configuration specifying the network settings for the Dataproc Metastore service.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="networkConfig")
+    private @Nullable Output<MetastoreServiceNetworkConfigArgs> networkConfig;
+
+    /**
+     * @return The configuration specifying the network settings for the Dataproc Metastore service.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<MetastoreServiceNetworkConfigArgs>> networkConfig() {
+        return Optional.ofNullable(this.networkConfig);
+    }
+
+    /**
      * The TCP port at which the metastore service is reached. Default: 9083.
      * 
      */
@@ -259,6 +277,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
         this.maintenanceWindow = $.maintenanceWindow;
         this.metadataIntegration = $.metadataIntegration;
         this.network = $.network;
+        this.networkConfig = $.networkConfig;
         this.port = $.port;
         this.project = $.project;
         this.releaseChannel = $.releaseChannel;
@@ -470,6 +489,29 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param networkConfig The configuration specifying the network settings for the Dataproc Metastore service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkConfig(@Nullable Output<MetastoreServiceNetworkConfigArgs> networkConfig) {
+            $.networkConfig = networkConfig;
+            return this;
+        }
+
+        /**
+         * @param networkConfig The configuration specifying the network settings for the Dataproc Metastore service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkConfig(MetastoreServiceNetworkConfigArgs networkConfig) {
+            return networkConfig(Output.of(networkConfig));
         }
 
         /**

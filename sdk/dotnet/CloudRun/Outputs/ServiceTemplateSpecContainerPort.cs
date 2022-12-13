@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     public sealed class ServiceTemplateSpecContainerPort
     {
         /// <summary>
-        /// Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
+        /// Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to "8080".
         /// </summary>
         public readonly int? ContainerPort;
         /// <summary>

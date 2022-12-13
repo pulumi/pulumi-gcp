@@ -22,7 +22,10 @@ class GetBucketResult:
     """
     A collection of values returned by getBucket.
     """
-    def __init__(__self__, cors=None, custom_placement_configs=None, default_event_based_hold=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, public_access_prevention=None, requester_pays=None, retention_policies=None, self_link=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
+    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, public_access_prevention=None, requester_pays=None, retention_policies=None, self_link=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
+        if autoclasses and not isinstance(autoclasses, list):
+            raise TypeError("Expected argument 'autoclasses' to be a list")
+        pulumi.set(__self__, "autoclasses", autoclasses)
         if cors and not isinstance(cors, list):
             raise TypeError("Expected argument 'cors' to be a list")
         pulumi.set(__self__, "cors", cors)
@@ -86,6 +89,11 @@ class GetBucketResult:
         if websites and not isinstance(websites, list):
             raise TypeError("Expected argument 'websites' to be a list")
         pulumi.set(__self__, "websites", websites)
+
+    @property
+    @pulumi.getter
+    def autoclasses(self) -> Sequence['outputs.GetBucketAutoclassResult']:
+        return pulumi.get(self, "autoclasses")
 
     @property
     @pulumi.getter
@@ -202,6 +210,7 @@ class AwaitableGetBucketResult(GetBucketResult):
         if False:
             yield self
         return GetBucketResult(
+            autoclasses=self.autoclasses,
             cors=self.cors,
             custom_placement_configs=self.custom_placement_configs,
             default_event_based_hold=self.default_event_based_hold,
@@ -251,6 +260,7 @@ def get_bucket(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:storage/getBucket:getBucket', __args__, opts=opts, typ=GetBucketResult).value
 
     return AwaitableGetBucketResult(
+        autoclasses=__ret__.autoclasses,
         cors=__ret__.cors,
         custom_placement_configs=__ret__.custom_placement_configs,
         default_event_based_hold=__ret__.default_event_based_hold,

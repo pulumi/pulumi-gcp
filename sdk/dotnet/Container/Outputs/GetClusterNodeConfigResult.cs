@@ -33,6 +33,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly ImmutableArray<string> OauthScopes;
         public readonly bool Preemptible;
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigReservationAffinityResult> ReservationAffinities;
+        public readonly ImmutableDictionary<string, string> ResourceLabels;
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigSandboxConfigResult> SandboxConfigs;
         public readonly string ServiceAccount;
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigShieldedInstanceConfigResult> ShieldedInstanceConfigs;
@@ -83,6 +84,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.GetClusterNodeConfigReservationAffinityResult> reservationAffinities,
 
+            ImmutableDictionary<string, string> resourceLabels,
+
             ImmutableArray<Outputs.GetClusterNodeConfigSandboxConfigResult> sandboxConfigs,
 
             string serviceAccount,
@@ -117,6 +120,7 @@ namespace Pulumi.Gcp.Container.Outputs
             OauthScopes = oauthScopes;
             Preemptible = preemptible;
             ReservationAffinities = reservationAffinities;
+            ResourceLabels = resourceLabels;
             SandboxConfigs = sandboxConfigs;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfigs = shieldedInstanceConfigs;

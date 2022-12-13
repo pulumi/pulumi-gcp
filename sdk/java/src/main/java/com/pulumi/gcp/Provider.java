@@ -220,6 +220,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> cloudRunCustomEndpoint() {
         return Codegen.optional(this.cloudRunCustomEndpoint);
     }
+    @Export(name="cloudRunV2CustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> cloudRunV2CustomEndpoint;
+
+    public Output<Optional<String>> cloudRunV2CustomEndpoint() {
+        return Codegen.optional(this.cloudRunV2CustomEndpoint);
+    }
     @Export(name="cloudSchedulerCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> cloudSchedulerCustomEndpoint;
 
@@ -406,6 +412,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> firebaseHostingCustomEndpoint() {
         return Codegen.optional(this.firebaseHostingCustomEndpoint);
     }
+    @Export(name="firebaseStorageCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> firebaseStorageCustomEndpoint;
+
+    public Output<Optional<String>> firebaseStorageCustomEndpoint() {
+        return Codegen.optional(this.firebaseStorageCustomEndpoint);
+    }
     @Export(name="firebaserulesCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> firebaserulesCustomEndpoint;
 
@@ -423,6 +435,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> gameServicesCustomEndpoint() {
         return Codegen.optional(this.gameServicesCustomEndpoint);
+    }
+    @Export(name="gkeBackupCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> gkeBackupCustomEndpoint;
+
+    public Output<Optional<String>> gkeBackupCustomEndpoint() {
+        return Codegen.optional(this.gkeBackupCustomEndpoint);
     }
     @Export(name="gkeHubCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> gkeHubCustomEndpoint;

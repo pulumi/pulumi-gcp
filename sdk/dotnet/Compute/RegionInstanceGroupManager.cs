@@ -198,6 +198,17 @@ namespace Pulumi.Gcp.Compute
         public Output<string> InstanceGroup { get; private set; } = null!;
 
         /// <summary>
+        /// Pagination behavior of the `listManagedInstances` API
+        /// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+        /// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+        /// `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+        /// response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+        /// respected.
+        /// </summary>
+        [Output("listManagedInstancesResults")]
+        public Output<string?> ListManagedInstancesResults { get; private set; } = null!;
+
+        /// <summary>
         /// - Version name.
         /// </summary>
         [Output("name")]
@@ -386,6 +397,17 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// Pagination behavior of the `listManagedInstances` API
+        /// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+        /// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+        /// `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+        /// response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+        /// respected.
+        /// </summary>
+        [Input("listManagedInstancesResults")]
+        public Input<string>? ListManagedInstancesResults { get; set; }
+
+        /// <summary>
         /// - Version name.
         /// </summary>
         [Input("name")]
@@ -558,6 +580,17 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("instanceGroup")]
         public Input<string>? InstanceGroup { get; set; }
+
+        /// <summary>
+        /// Pagination behavior of the `listManagedInstances` API
+        /// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+        /// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
+        /// `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+        /// response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+        /// respected.
+        /// </summary>
+        [Input("listManagedInstancesResults")]
+        public Input<string>? ListManagedInstancesResults { get; set; }
 
         /// <summary>
         /// - Version name.

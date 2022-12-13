@@ -1944,7 +1944,7 @@ class ServiceTemplateSpecContainerPort(dict):
                  name: Optional[str] = None,
                  protocol: Optional[str] = None):
         """
-        :param int container_port: Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+        :param int container_port: Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to "8080".
         :param str name: Volume's name.
         :param str protocol: Protocol for port. Must be "TCP". Defaults to "TCP".
         """
@@ -1959,7 +1959,7 @@ class ServiceTemplateSpecContainerPort(dict):
     @pulumi.getter(name="containerPort")
     def container_port(self) -> Optional[int]:
         """
-        Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+        Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to "8080".
         """
         return pulumi.get(self, "container_port")
 

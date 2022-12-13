@@ -55,6 +55,7 @@ const (
 	gcpCloudIds             = "CloudIds"             // CloudIds resources
 	gcpCloudIdentity        = "CloudIdentity"        // CloudIdentity resources
 	gcpCloudRun             = "CloudRun"             // CloudRun resources
+	gcpCloudRunV2           = "CloudRunV2"           // CloudRun (2nd Gen) resources
 	gcpCloudScheduler       = "CloudScheduler"       // Cloud Scheduler resources
 	gcpCloudTasks           = "CloudTasks"           // Cloud Tasks resources
 	gcpComposer             = "Composer"             // Cloud Composer resources
@@ -81,6 +82,7 @@ const (
 	gcpFirestore            = "Firestore"            // Firestore resources
 	gcpFolder               = "Folder"               // Folder resources
 	gcpGameServices         = "GameServices"         // Game Services resources
+	gcpGkeBackup            = "GkeBackup"            // Gke Backup resources
 	gcpGkeHub               = "GkeHub"               // Gke Hub resources
 	gcpHealthcare           = "Healthcare"           // Healthcare resources
 	gcpIAM                  = "Iam"                  // IAM resources
@@ -1436,6 +1438,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_firebase_web_app":          {Tok: gcpResource(gcpFirebase, "WebApp")},
 			"google_firebase_hosting_channel":  {Tok: gcpResource(gcpFirebase, "HostingChannel")},
 			"google_firebase_hosting_site":     {Tok: gcpResource(gcpFirebase, "HostingSite")},
+			"google_firebase_storage_bucket":   {Tok: gcpResource(gcpFirebase, "StorageBucket")},
 
 			// Firebaserules
 			"google_firebaserules_release": {Tok: gcpResource(gcpFirebaserules, "Release")},
@@ -1694,27 +1697,47 @@ func Provider() tfbridge.ProviderInfo {
 			"google_vertex_ai_dataset":                         {Tok: gcpResource(gcpVertex, "AiDataset")},
 			"google_vertex_ai_featurestore_entitytype":         {Tok: gcpResource(gcpVertex, "AiFeatureStoreEntityType")},
 			"google_vertex_ai_featurestore_entitytype_feature": {Tok: gcpResource(gcpVertex, "AiFeatureStoreEntityTypeFeature")},
-			"google_vertex_ai_featurestore":                    {Tok: gcpResource(gcpVertex, "AiFeatureStore")},
+			"google_vertex_ai_featurestore_entitytype_iam_binding": {
+				Tok: gcpResource(gcpVertex, "AiFeatureStoreEntityTypeIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "vertex_ai_featurestore_entitytype_iam.html.markdown",
+				},
+			},
+			"google_vertex_ai_featurestore_entitytype_iam_member": {
+				Tok: gcpResource(gcpVertex, "AiFeatureStoreEntityTypeIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "vertex_ai_featurestore_entitytype_iam.html.markdown",
+				},
+			},
+			"google_vertex_ai_featurestore_entitytype_iam_policy": {
+				Tok: gcpResource(gcpVertex, "AiFeatureStoreEntityTypeIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "vertex_ai_featurestore_entitytype_iam.html.markdown",
+				},
+			},
+			"google_vertex_ai_featurestore": {Tok: gcpResource(gcpVertex, "AiFeatureStore")},
 			"google_vertex_ai_featurestore_iam_binding": {
 				Tok: gcpResource(gcpVertex, "AiFeatureStoreIamBinding"),
 				Docs: &tfbridge.DocInfo{
-					Source: "vertex_ai_featurestore.html.markdown",
+					Source: "vertex_ai_featurestore_iam.html.markdown",
 				},
 			},
 			"google_vertex_ai_featurestore_iam_member": {
 				Tok: gcpResource(gcpVertex, "AiFeatureStoreIamMember"),
 				Docs: &tfbridge.DocInfo{
-					Source: "vertex_ai_featurestore.html.markdown",
+					Source: "vertex_ai_featurestore_iam.html.markdown",
 				},
 			},
 			"google_vertex_ai_featurestore_iam_policy": {
 				Tok: gcpResource(gcpVertex, "AiFeatureStoreIamPolicy"),
 				Docs: &tfbridge.DocInfo{
-					Source: "vertex_ai_featurestore.html.markdown",
+					Source: "vertex_ai_featurestore_iam.html.markdown",
 				},
 			},
+			"google_vertex_ai_index":          {Tok: gcpResource(gcpVertex, "AiIndex")},
 			"google_vertex_ai_metadata_store": {Tok: gcpResource(gcpVertex, "AiMetadataStore")},
 			"google_vertex_ai_endpoint":       {Tok: gcpResource(gcpVertex, "AiEndpoint")},
+			"google_vertex_ai_tensorboard":    {Tok: gcpResource(gcpVertex, "AiTensorboard")},
 
 			// Key Management Service resources
 			"google_kms_key_ring": {
@@ -2073,6 +2096,10 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{Source: "cloud_run_service_iam.html.markdown"},
 			},
 
+			// CloudRun V2 Resources
+			"google_cloud_run_v2_job":     {Tok: gcpResource(gcpCloudRunV2, "Job")},
+			"google_cloud_run_v2_service": {Tok: gcpResource(gcpCloudRunV2, "Service")},
+
 			// Machine Learning
 			"google_ml_engine_model": {Tok: gcpResource(gcpMachingLearning, "EngineModel")},
 
@@ -2103,6 +2130,24 @@ func Provider() tfbridge.ProviderInfo {
 
 			// DataFusion
 			"google_data_fusion_instance": {Tok: gcpResource(gcpDataFusion, "Instance")},
+			"google_data_fusion_instance_iam_binding": {
+				Tok: gcpResource(gcpSecurityCenter, "InstanceIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "data_fusion_instance.html.markdown",
+				},
+			},
+			"google_data_fusion_instance_iam_member": {
+				Tok: gcpResource(gcpSecurityCenter, "InstanceIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "data_fusion_instance.html.markdown",
+				},
+			},
+			"google_data_fusion_instance_iam_policy": {
+				Tok: gcpResource(gcpSecurityCenter, "InstanceIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "data_fusion_instance.html.markdown",
+				},
+			},
 
 			// Cloudtasks
 			"google_cloud_tasks_queue": {Tok: gcpResource(gcpCloudTasks, "Queue")},
@@ -2473,6 +2518,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_iam_workload_identity_pool_provider": {Tok: gcpResource(gcpIAM, "WorkloadIdentityPoolProvider")},
 			"google_iam_deny_policy":                     {Tok: gcpResource(gcpIAM, "DenyPolicy")},
 			"google_iam_workforce_pool":                  {Tok: gcpResource(gcpIAM, "WorkforcePool")},
+			"google_iam_workforce_pool_provider":         {Tok: gcpResource(gcpIAM, "WorkforcePoolProvider")},
 
 			// apigee
 			"google_apigee_organization":        {Tok: gcpResource(gcpApigee, "Organization")},
@@ -2623,6 +2669,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_eventarc_channel": {
 				Tok: gcpResource(gcpEventarc, "Channel"),
 			},
+			"google_eventarc_google_channel_config": {
+				Tok: gcpResource(gcpEventarc, "GoogleChannelConfig"),
+			},
 			"google_eventarc_trigger": {
 				Tok: gcpResource(gcpEventarc, "Trigger"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -2640,6 +2689,9 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+
+			// GKE Backup
+			"google_gke_backup_backup_plan": {Tok: gcpResource(gcpGkeBackup, "BackupPlan")},
 
 			// gke hub
 			"google_gke_hub_membership":         {Tok: gcpResource(gcpGkeHub, "Membership")},
@@ -3046,6 +3098,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_kms_crypto_key_version": {Tok: gcpDataSource(gcpKMS, "getKMSCryptoKeyVersion")},
 			"google_kms_secret_asymmetric":  {Tok: gcpDataSource(gcpKMS, "getKMSSecretAsymmetric")},
 			"google_kms_secret_ciphertext":  {Tok: gcpDataSource(gcpKMS, "getKMSSecretCiphertext")},
+
+			"google_logging_project_cmek_settings": {Tok: gcpDataSource(gcpLogging, "getProjectCmekSettings")},
+
 			"google_organization": {
 				Tok: gcpDataSource(gcpOrganization, "getOrganization"),
 				Docs: &tfbridge.DocInfo{
@@ -3183,6 +3238,12 @@ func Provider() tfbridge.ProviderInfo {
 			"google_monitoring_istio_canonical_service": {Tok: gcpDataSource(gcpMonitoring, "getIstioCanonicalService")},
 
 			// Firebase
+			"google_firebase_android_app": {
+				Tok: gcpDataSource(gcpFirebase, "getAndroidApp"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_firebase_android_app.html.markdown",
+				},
+			},
 			"google_firebase_web_app_config": {
 				Tok: gcpDataSource(gcpFirebase, "getWebAppConfig"),
 				Docs: &tfbridge.DocInfo{

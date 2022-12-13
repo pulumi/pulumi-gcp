@@ -97,8 +97,6 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         Pool = "ca-pool",
     ///         CertificateAuthorityId = "my-certificate-authority-root",
     ///         Location = "us-central1",
-    ///         DeletionProtection = false,
-    ///         IgnoreActiveCertificatesOnDeletion = true,
     ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///         {
     ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -140,6 +138,9 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         {
     ///             Algorithm = "RSA_PKCS1_4096_SHA256",
     ///         },
+    ///         DeletionProtection = false,
+    ///         SkipGracePeriod = true,
+    ///         IgnoreActiveCertificatesOnDeletion = true,
     ///     });
     /// 
     ///     var @default = new Gcp.CertificateAuthority.Authority("default", new()

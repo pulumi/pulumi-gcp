@@ -67,6 +67,10 @@ type OrganizationBucketConfig struct {
 
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId pulumi.StringOutput `pulumi:"bucketId"`
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+	// updating the log bucket. Changing the KMS key is allowed.
+	CmekSettings OrganizationBucketConfigCmekSettingsPtrOutput `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
@@ -121,6 +125,10 @@ func GetOrganizationBucketConfig(ctx *pulumi.Context,
 type organizationBucketConfigState struct {
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId *string `pulumi:"bucketId"`
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+	// updating the log bucket. Changing the KMS key is allowed.
+	CmekSettings *OrganizationBucketConfigCmekSettings `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
@@ -138,6 +146,10 @@ type organizationBucketConfigState struct {
 type OrganizationBucketConfigState struct {
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId pulumi.StringPtrInput
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+	// updating the log bucket. Changing the KMS key is allowed.
+	CmekSettings OrganizationBucketConfigCmekSettingsPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
@@ -159,6 +171,10 @@ func (OrganizationBucketConfigState) ElementType() reflect.Type {
 type organizationBucketConfigArgs struct {
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId string `pulumi:"bucketId"`
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+	// updating the log bucket. Changing the KMS key is allowed.
+	CmekSettings *OrganizationBucketConfigCmekSettings `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
 	// The location of the bucket. The supported locations are: "global" "us-central1"
@@ -173,6 +189,10 @@ type organizationBucketConfigArgs struct {
 type OrganizationBucketConfigArgs struct {
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId pulumi.StringInput
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+	// updating the log bucket. Changing the KMS key is allowed.
+	CmekSettings OrganizationBucketConfigCmekSettingsPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
 	// The location of the bucket. The supported locations are: "global" "us-central1"
@@ -273,6 +293,13 @@ func (o OrganizationBucketConfigOutput) ToOrganizationBucketConfigOutputWithCont
 // The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 func (o OrganizationBucketConfigOutput) BucketId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBucketConfig) pulumi.StringOutput { return v.BucketId }).(pulumi.StringOutput)
+}
+
+// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+// updating the log bucket. Changing the KMS key is allowed.
+func (o OrganizationBucketConfigOutput) CmekSettings() OrganizationBucketConfigCmekSettingsPtrOutput {
+	return o.ApplyT(func(v *OrganizationBucketConfig) OrganizationBucketConfigCmekSettingsPtrOutput { return v.CmekSettings }).(OrganizationBucketConfigCmekSettingsPtrOutput)
 }
 
 // Describes this bucket.

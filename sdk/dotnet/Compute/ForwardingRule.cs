@@ -154,16 +154,13 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// This signifies what the ForwardingRule will be used for and can be
-        /// EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
-        /// Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
-        /// and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
-        /// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
-        /// and internal TCP/UDP load balancers.
-        /// EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
-        /// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
-        /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        /// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+        /// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+        /// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+        /// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+        /// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+        /// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+        /// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string?> LoadBalancingScheme { get; private set; } = null!;
@@ -444,16 +441,13 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// This signifies what the ForwardingRule will be used for and can be
-        /// EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
-        /// Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
-        /// and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
-        /// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
-        /// and internal TCP/UDP load balancers.
-        /// EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
-        /// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
-        /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        /// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+        /// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+        /// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+        /// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+        /// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+        /// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+        /// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -694,16 +688,13 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// This signifies what the ForwardingRule will be used for and can be
-        /// EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
-        /// Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
-        /// and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
-        /// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
-        /// and internal TCP/UDP load balancers.
-        /// EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
-        /// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
-        /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        /// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+        /// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+        /// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+        /// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+        /// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+        /// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+        /// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }

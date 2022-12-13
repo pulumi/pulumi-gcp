@@ -6,6 +6,8 @@ package com.pulumi.gcp.networkservices;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginAwsV4AuthenticationArgs;
+import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginOverrideActionArgs;
+import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginRedirectArgs;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginTimeoutArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -158,6 +160,42 @@ public final class EdgeCacheOriginArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The override actions, including url rewrites and header
+     * additions, for requests that use this origin.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="originOverrideAction")
+    private @Nullable Output<EdgeCacheOriginOriginOverrideActionArgs> originOverrideAction;
+
+    /**
+     * @return The override actions, including url rewrites and header
+     * additions, for requests that use this origin.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<EdgeCacheOriginOriginOverrideActionArgs>> originOverrideAction() {
+        return Optional.ofNullable(this.originOverrideAction);
+    }
+
+    /**
+     * Follow redirects from this origin.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="originRedirect")
+    private @Nullable Output<EdgeCacheOriginOriginRedirectArgs> originRedirect;
+
+    /**
+     * @return Follow redirects from this origin.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<EdgeCacheOriginOriginRedirectArgs>> originRedirect() {
+        return Optional.ofNullable(this.originRedirect);
+    }
+
+    /**
      * The port to connect to the origin on.
      * Defaults to port 443 for HTTP2 and HTTPS protocols, and port 80 for HTTP.
      * 
@@ -278,6 +316,8 @@ public final class EdgeCacheOriginArgs extends com.pulumi.resources.ResourceArgs
         this.maxAttempts = $.maxAttempts;
         this.name = $.name;
         this.originAddress = $.originAddress;
+        this.originOverrideAction = $.originOverrideAction;
+        this.originRedirect = $.originRedirect;
         this.port = $.port;
         this.project = $.project;
         this.protocol = $.protocol;
@@ -480,6 +520,54 @@ public final class EdgeCacheOriginArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder originAddress(String originAddress) {
             return originAddress(Output.of(originAddress));
+        }
+
+        /**
+         * @param originOverrideAction The override actions, including url rewrites and header
+         * additions, for requests that use this origin.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originOverrideAction(@Nullable Output<EdgeCacheOriginOriginOverrideActionArgs> originOverrideAction) {
+            $.originOverrideAction = originOverrideAction;
+            return this;
+        }
+
+        /**
+         * @param originOverrideAction The override actions, including url rewrites and header
+         * additions, for requests that use this origin.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originOverrideAction(EdgeCacheOriginOriginOverrideActionArgs originOverrideAction) {
+            return originOverrideAction(Output.of(originOverrideAction));
+        }
+
+        /**
+         * @param originRedirect Follow redirects from this origin.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originRedirect(@Nullable Output<EdgeCacheOriginOriginRedirectArgs> originRedirect) {
+            $.originRedirect = originRedirect;
+            return this;
+        }
+
+        /**
+         * @param originRedirect Follow redirects from this origin.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originRedirect(EdgeCacheOriginOriginRedirectArgs originRedirect) {
+            return originRedirect(Output.of(originRedirect));
         }
 
         /**

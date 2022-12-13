@@ -12,12 +12,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureMembershipMesh {
     /**
+     * @return Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
+     * 
+     */
+    private @Nullable String controlPlane;
+    /**
      * @return Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
      * 
      */
     private @Nullable String management;
 
     private FeatureMembershipMesh() {}
+    /**
+     * @return Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
+     * 
+     */
+    public Optional<String> controlPlane() {
+        return Optional.ofNullable(this.controlPlane);
+    }
     /**
      * @return Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
      * 
@@ -35,13 +47,20 @@ public final class FeatureMembershipMesh {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String controlPlane;
         private @Nullable String management;
         public Builder() {}
         public Builder(FeatureMembershipMesh defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.controlPlane = defaults.controlPlane;
     	      this.management = defaults.management;
         }
 
+        @CustomType.Setter
+        public Builder controlPlane(@Nullable String controlPlane) {
+            this.controlPlane = controlPlane;
+            return this;
+        }
         @CustomType.Setter
         public Builder management(@Nullable String management) {
             this.management = management;
@@ -49,6 +68,7 @@ public final class FeatureMembershipMesh {
         }
         public FeatureMembershipMesh build() {
             final var o = new FeatureMembershipMesh();
+            o.controlPlane = controlPlane;
             o.management = management;
             return o;
         }

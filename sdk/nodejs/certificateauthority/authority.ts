@@ -73,8 +73,6 @@ import * as utilities from "../utilities";
  *     pool: "ca-pool",
  *     certificateAuthorityId: "my-certificate-authority-root",
  *     location: "us-central1",
- *     deletionProtection: false,
- *     ignoreActiveCertificatesOnDeletion: true,
  *     config: {
  *         subjectConfig: {
  *             subject: {
@@ -103,6 +101,9 @@ import * as utilities from "../utilities";
  *     keySpec: {
  *         algorithm: "RSA_PKCS1_4096_SHA256",
  *     },
+ *     deletionProtection: false,
+ *     skipGracePeriod: true,
+ *     ignoreActiveCertificatesOnDeletion: true,
  * });
  * const _default = new gcp.certificateauthority.Authority("default", {
  *     pool: "ca-pool",

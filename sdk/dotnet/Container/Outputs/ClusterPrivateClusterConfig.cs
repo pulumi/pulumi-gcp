@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// is disabled. When `false`, either endpoint can be used. This field only applies
         /// to private clusters, when `enable_private_nodes` is `true`.
         /// </summary>
-        public readonly bool EnablePrivateEndpoint;
+        public readonly bool? EnablePrivateEndpoint;
         /// <summary>
         /// Enables the private cluster feature,
         /// creating a private endpoint on the cluster. In a private cluster, nodes only
@@ -52,13 +52,17 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? PrivateEndpoint;
         /// <summary>
+        /// Subnetwork in cluster's network where master's endpoint will be provisioned.
+        /// </summary>
+        public readonly string? PrivateEndpointSubnetwork;
+        /// <summary>
         /// The external IP address of this cluster's master endpoint.
         /// </summary>
         public readonly string? PublicEndpoint;
 
         [OutputConstructor]
         private ClusterPrivateClusterConfig(
-            bool enablePrivateEndpoint,
+            bool? enablePrivateEndpoint,
 
             bool? enablePrivateNodes,
 
@@ -70,6 +74,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? privateEndpoint,
 
+            string? privateEndpointSubnetwork,
+
             string? publicEndpoint)
         {
             EnablePrivateEndpoint = enablePrivateEndpoint;
@@ -78,6 +84,7 @@ namespace Pulumi.Gcp.Container.Outputs
             MasterIpv4CidrBlock = masterIpv4CidrBlock;
             PeeringName = peeringName;
             PrivateEndpoint = privateEndpoint;
+            PrivateEndpointSubnetwork = privateEndpointSubnetwork;
             PublicEndpoint = publicEndpoint;
         }
     }

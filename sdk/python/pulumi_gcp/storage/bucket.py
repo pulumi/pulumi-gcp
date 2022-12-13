@@ -17,6 +17,7 @@ __all__ = ['BucketArgs', 'Bucket']
 class BucketArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
+                 autoclass: Optional[pulumi.Input['BucketAutoclassArgs']] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]]] = None,
                  custom_placement_config: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
@@ -37,6 +38,7 @@ class BucketArgs:
         """
         The set of arguments for constructing a Bucket resource.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
+        :param pulumi.Input['BucketAutoclassArgs'] autoclass: The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input['BucketCustomPlacementConfigArgs'] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
@@ -59,6 +61,8 @@ class BucketArgs:
         :param pulumi.Input['BucketWebsiteArgs'] website: Configuration if the bucket acts as a website. Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
+        if autoclass is not None:
+            pulumi.set(__self__, "autoclass", autoclass)
         if cors is not None:
             pulumi.set(__self__, "cors", cors)
         if custom_placement_config is not None:
@@ -105,6 +109,18 @@ class BucketArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def autoclass(self) -> Optional[pulumi.Input['BucketAutoclassArgs']]:
+        """
+        The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+        """
+        return pulumi.get(self, "autoclass")
+
+    @autoclass.setter
+    def autoclass(self, value: Optional[pulumi.Input['BucketAutoclassArgs']]):
+        pulumi.set(self, "autoclass", value)
 
     @property
     @pulumi.getter
@@ -317,6 +333,7 @@ class BucketArgs:
 @pulumi.input_type
 class _BucketState:
     def __init__(__self__, *,
+                 autoclass: Optional[pulumi.Input['BucketAutoclassArgs']] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]]] = None,
                  custom_placement_config: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
@@ -339,6 +356,7 @@ class _BucketState:
                  website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
         """
         Input properties used for looking up and filtering Bucket resources.
+        :param pulumi.Input['BucketAutoclassArgs'] autoclass: The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input['BucketCustomPlacementConfigArgs'] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
@@ -363,6 +381,8 @@ class _BucketState:
         :param pulumi.Input['BucketVersioningArgs'] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
         :param pulumi.Input['BucketWebsiteArgs'] website: Configuration if the bucket acts as a website. Structure is documented below.
         """
+        if autoclass is not None:
+            pulumi.set(__self__, "autoclass", autoclass)
         if cors is not None:
             pulumi.set(__self__, "cors", cors)
         if custom_placement_config is not None:
@@ -403,6 +423,18 @@ class _BucketState:
             pulumi.set(__self__, "versioning", versioning)
         if website is not None:
             pulumi.set(__self__, "website", website)
+
+    @property
+    @pulumi.getter
+    def autoclass(self) -> Optional[pulumi.Input['BucketAutoclassArgs']]:
+        """
+        The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+        """
+        return pulumi.get(self, "autoclass")
+
+    @autoclass.setter
+    def autoclass(self, value: Optional[pulumi.Input['BucketAutoclassArgs']]):
+        pulumi.set(self, "autoclass", value)
 
     @property
     @pulumi.getter
@@ -653,6 +685,7 @@ class Bucket(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 autoclass: Optional[pulumi.Input[pulumi.InputType['BucketAutoclassArgs']]] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]]] = None,
                  custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
@@ -720,14 +753,24 @@ class Bucket(pulumi.CustomResource):
 
         auto_expire = gcp.storage.Bucket("auto-expire",
             force_destroy=True,
-            lifecycle_rules=[gcp.storage.BucketLifecycleRuleArgs(
-                action=gcp.storage.BucketLifecycleRuleActionArgs(
-                    type="Delete",
+            lifecycle_rules=[
+                gcp.storage.BucketLifecycleRuleArgs(
+                    action=gcp.storage.BucketLifecycleRuleActionArgs(
+                        type="Delete",
+                    ),
+                    condition=gcp.storage.BucketLifecycleRuleConditionArgs(
+                        age=3,
+                    ),
                 ),
-                condition=gcp.storage.BucketLifecycleRuleConditionArgs(
-                    age=3,
+                gcp.storage.BucketLifecycleRuleArgs(
+                    action=gcp.storage.BucketLifecycleRuleActionArgs(
+                        type="AbortIncompleteMultipartUpload",
+                    ),
+                    condition=gcp.storage.BucketLifecycleRuleConditionArgs(
+                        age=1,
+                    ),
                 ),
-            )],
+            ],
             location="US")
         ```
         ### Enabling Public Access Prevention
@@ -760,6 +803,7 @@ class Bucket(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['BucketAutoclassArgs']] autoclass: The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
@@ -836,14 +880,24 @@ class Bucket(pulumi.CustomResource):
 
         auto_expire = gcp.storage.Bucket("auto-expire",
             force_destroy=True,
-            lifecycle_rules=[gcp.storage.BucketLifecycleRuleArgs(
-                action=gcp.storage.BucketLifecycleRuleActionArgs(
-                    type="Delete",
+            lifecycle_rules=[
+                gcp.storage.BucketLifecycleRuleArgs(
+                    action=gcp.storage.BucketLifecycleRuleActionArgs(
+                        type="Delete",
+                    ),
+                    condition=gcp.storage.BucketLifecycleRuleConditionArgs(
+                        age=3,
+                    ),
                 ),
-                condition=gcp.storage.BucketLifecycleRuleConditionArgs(
-                    age=3,
+                gcp.storage.BucketLifecycleRuleArgs(
+                    action=gcp.storage.BucketLifecycleRuleActionArgs(
+                        type="AbortIncompleteMultipartUpload",
+                    ),
+                    condition=gcp.storage.BucketLifecycleRuleConditionArgs(
+                        age=1,
+                    ),
                 ),
-            )],
+            ],
             location="US")
         ```
         ### Enabling Public Access Prevention
@@ -889,6 +943,7 @@ class Bucket(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 autoclass: Optional[pulumi.Input[pulumi.InputType['BucketAutoclassArgs']]] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]]] = None,
                  custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
@@ -916,6 +971,7 @@ class Bucket(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BucketArgs.__new__(BucketArgs)
 
+            __props__.__dict__["autoclass"] = autoclass
             __props__.__dict__["cors"] = cors
             __props__.__dict__["custom_placement_config"] = custom_placement_config
             __props__.__dict__["default_event_based_hold"] = default_event_based_hold
@@ -948,6 +1004,7 @@ class Bucket(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            autoclass: Optional[pulumi.Input[pulumi.InputType['BucketAutoclassArgs']]] = None,
             cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]]] = None,
             custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
             default_event_based_hold: Optional[pulumi.Input[bool]] = None,
@@ -975,6 +1032,7 @@ class Bucket(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['BucketAutoclassArgs']] autoclass: The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
@@ -1003,6 +1061,7 @@ class Bucket(pulumi.CustomResource):
 
         __props__ = _BucketState.__new__(_BucketState)
 
+        __props__.__dict__["autoclass"] = autoclass
         __props__.__dict__["cors"] = cors
         __props__.__dict__["custom_placement_config"] = custom_placement_config
         __props__.__dict__["default_event_based_hold"] = default_event_based_hold
@@ -1024,6 +1083,14 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["versioning"] = versioning
         __props__.__dict__["website"] = website
         return Bucket(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def autoclass(self) -> pulumi.Output[Optional['outputs.BucketAutoclass']]:
+        """
+        The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+        """
+        return pulumi.get(self, "autoclass")
 
     @property
     @pulumi.getter
@@ -1182,7 +1249,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def website(self) -> pulumi.Output[Optional['outputs.BucketWebsite']]:
+    def website(self) -> pulumi.Output['outputs.BucketWebsite']:
         """
         Configuration if the bucket acts as a website. Structure is documented below.
         """
